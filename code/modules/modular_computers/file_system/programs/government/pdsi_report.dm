@@ -25,3 +25,11 @@
 		//current open pdsi report
 		data["report_id"] = current_rpt.id
 		data["report_title"] = current_rpt.title
+		
+/datum/nano_module/program/pdsi_report/Topic(href, href_list)
+	if(..()) return 1
+
+	if(href_list["back"])
+		. = 1
+		index = 0
+		reset_fields()
