@@ -52,9 +52,20 @@
 	if(href_list["back"])
 		. = 1
 		index = 0
-		reset_fields()
+
 
 	if(href_list["create_new"])
 		. = 1
-		index = 0
-		reset_fields()
+		index = 1
+		
+	if(href_list["find"])
+		. = 1
+		index = 2
+
+	if(href_list["view_case"])
+		. = 1
+		index = 3
+		
+	if(href_list["submit_case"])
+		. = 1
+		index = 4
