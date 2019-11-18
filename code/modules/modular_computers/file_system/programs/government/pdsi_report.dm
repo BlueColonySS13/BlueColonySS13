@@ -9,6 +9,7 @@
 /datum/nano_module/program/pdsi_report/
 	name = "PDSI Reporting Utility"
 	var/index = 0
+	var/page_msg
 
 	var/datum/pdsi_report/current_rpt
 
@@ -26,10 +27,34 @@
 		data["report_id"] = current_rpt.id
 		data["report_title"] = current_rpt.title
 		
+	if(index == 0) // main screen
+		page_msg = "Welcome to the PDSI Report application. The PDSI is a investigatory branch that aids in \
+		mediating and monitor internal affairs. Please choose from the options below."
+		
+	if(index == 1) 
+		page_msg = "Please fill in your details and elaborate on a concise summary of your case."
+		
+	if(index = 2)
+		page_msg = "Please enter a reference number."
+		
+	if(index = 3)
+		if(current_rpt && current_rpt.title)
+			page_msg = "<h4>[current_rpt.title]</h4><br>"
+			page_msg += "Case ID: <i>[current_rpt.id]</i>"
+			
+	if(index = 4)
+		page_msg = "Submit case?"
+
+		
 /datum/nano_module/program/pdsi_report/Topic(href, href_list)
 	if(..()) return 1
 
 	if(href_list["back"])
+		. = 1
+		index = 0
+		reset_fields()
+
+	if(href_list["create_new"])
 		. = 1
 		index = 0
 		reset_fields()
