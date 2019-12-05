@@ -182,3 +182,13 @@ proc/process_schedule_interval(var/process_name)
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, GLOB.CURRENT_TICKLIMIT))
 
 #undef DELTA_CALC
+
+/proc/start_watch()
+	return TimeOfGame
+
+/**
+ * Returns number of seconds elapsed.
+ * @param wh number The "Watch Handle" from start_watch(). (timestamp)
+ */
+/proc/stop_watch(wh)
+	return round(0.1 * (TimeOfGame - wh), 0.1)

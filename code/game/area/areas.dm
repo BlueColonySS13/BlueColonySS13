@@ -42,6 +42,8 @@
 	var/global/global_uid = 0
 	var/uid
 
+	var/lot_id
+
 /area/New()
 	icon_state = ""
 	uid = ++global_uid

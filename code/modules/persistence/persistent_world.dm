@@ -12,6 +12,9 @@
 	//save emails
 	save_all_emails()
 
+	//save all lots
+	SSlots.save_all_lots()
+
 	//saves all characters
 	for (var/mob/living/carbon/human/H in mob_list) //only humans, we don't really save AIs or robots.
 		H.save_mob_to_prefs()

@@ -1,0 +1,41 @@
+<h1>Landlord Management Program</h1><hr>
+
+{{:data.page_msg}}<hr>
+{{:data.error_msg}}
+<br>
+
+{{if data.index == 0}}
+{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+{{if data.index == -1}}
+{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+{{if data.index == 1}}
+
+<div class="itemLabel"><b>Lot and Housing Management:</b></div> <br><br>
+
+{{:helper.link("Buy New Properties", null, {'buy_lots' : 1})}}
+{{:helper.link("Sell Existing Properties", null, {'sell_lots' : 1})}}
+{{:helper.link("Manage Properties", null, {'notyet' : 1})}}
+<p><br>
+
+{{/if}}
+
+{{if data.index == 2}}
+
+
+
+<br><br>
+{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+{{if data.index == 3}}
+
+<p>
+
+
+<br><br>
+{{:helper.link("Return to Main", null, {'back' : 1})}}
+{{/if}}

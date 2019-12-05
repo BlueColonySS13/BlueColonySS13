@@ -325,3 +325,16 @@ var/global/list/##LIST_NAME = list();\
 #ifndef HTTP_POST_DLL_LOCATION
 #define HTTP_POST_DLL_LOCATION (world.system_type == MS_WINDOWS ? WINDOWS_HTTP_POST_DLL_LOCATION : UNIX_HTTP_POST_DLL_LOCATION)
 #endif
+
+#define DMM_IGNORE_AREAS 1
+#define DMM_IGNORE_TURFS 2
+#define DMM_IGNORE_OBJS 4
+#define DMM_IGNORE_NPCS 8
+#define DMM_IGNORE_PLAYERS 16
+#define DMM_IGNORE_MOBS 24
+
+#define VACANT "vacant"
+#define FOR_RENT "for rent"
+#define FOR_SALE "for sale"
+#define RENTED "rented"
+#define OWNED "owned"
