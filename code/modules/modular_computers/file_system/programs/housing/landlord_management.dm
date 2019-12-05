@@ -136,7 +136,7 @@
 
 				var/obj/item/weapon/card/id/I = usr.GetIdCard()
 
-				if(!I || I.associated_account_number || I.associated_pin_number)
+				if(!I || !I.associated_account_number || !I.associated_pin_number)
 					error_msg = "No identification payment card or valid valid bank details detected."
 					return
 
@@ -158,7 +158,7 @@
 
 				var/obj/item/weapon/card/id/I = usr.GetIdCard()
 
-				if(!I || I.associated_account_number || I.associated_pin_number)
+				if(!I || !I.associated_account_number || !I.associated_pin_number)
 					error_msg = "No identification payment card or valid valid bank details detected."
 					return
 
