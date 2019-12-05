@@ -140,7 +140,7 @@
 					error_msg = "No identification payment card or valid valid bank details detected."
 					return
 
-				if(!attempt_account_access(I.associated_account_number, I.associated_pin_number, 2) || !charge_to_account(I.associated_account_number, "Housing Purchase", "[LOT.name] Lot Purchase", "Landlord Management", LOT.price))
+				if(!attempt_account_access(I.associated_account_number, I.associated_pin_number, 2) || !charge_to_account(I.associated_account_number, "Housing Purchase", "[LOT.name] Lot Purchase", "Landlord Management", -LOT.price))
 					error_msg = "There was an error charging your bank account. Please contact your bank's administrator."
 					return
 				else
@@ -162,7 +162,7 @@
 					error_msg = "No identification payment card or valid valid bank details detected."
 					return
 
-				if(!charge_to_account(I.associated_account_number, "Housing Sell", "[LOT.name] Lot Sell", "Landlord Management", -LOT.price))
+				if(!charge_to_account(I.associated_account_number, "Housing Sell", "[LOT.name] Lot Sell", "Landlord Management", LOT.price))
 					error_msg = "There was an error charging your bank account. Please contact your bank's administrator."
 					return
 				else

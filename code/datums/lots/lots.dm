@@ -160,7 +160,7 @@
 
 /obj/effect/landmark/lotsign/proc/get_lot_data()
 	if(!lot_id)
-		var/area/_area = get_area()
+		var/area/_area = loc.loc
 		lot_id = _area.lot_id
 
 	var/datum/lot/lot = SSlots.get_lot_by_id(lot_id)

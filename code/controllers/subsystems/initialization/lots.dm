@@ -28,11 +28,11 @@ SUBSYSTEM_DEF(lots)
 	return 0
 
 /datum/controller/subsystem/lots/proc/get_lots_by_owner_uid(uid)
-	var/list/all_lots = list()
-	for(var/datum/lot/lot in all_lots)
-		if(lot.landlord_uid == uid)
-			all_lots += lot
-	return all_lots
+	var/list/sale_lots = list()
+	for(var/datum/lot/L in all_lots)
+		if(L.landlord_uid == uid)
+			sale_lots += L
+	return sale_lots
 
 /datum/controller/subsystem/lots/proc/get_lots_for_sale()
 	var/list/sale_lots = list()
