@@ -58,6 +58,12 @@
 		. = 1
 		index = 0
 
+	if(href_list["choice"])
+		switch(href_list["choice"])
+
+			if("select_case")
+				var/L = locate(href_list["case"])
+				
 
 	if(href_list["create_new"])
 		. = 1
