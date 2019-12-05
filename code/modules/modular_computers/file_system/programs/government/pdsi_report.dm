@@ -32,7 +32,10 @@
 		mediating and monitor internal affairs. Please choose from the options below."
 		
 	if(index == 1) 
-		page_msg = "Please fill in your details and elaborate on a concise summary of your case."
+		page_msg = "Please select a PDSI case to view."
+		for(var/datum/pdsi_report/P in pdsi_reports)
+			page_msg += "[P.name]"
+			page_msg += "<hr>"
 		
 	if(index = 2)
 		page_msg = "Please enter a reference number."
@@ -45,7 +48,9 @@
 	if(index = 4)
 		page_msg = "Submit case?"
 
-		
+	if(index == 5) 
+		page_msg = "Please fill in your details and elaborate on a concise summary of your case."		
+
 /datum/nano_module/program/pdsi_report/Topic(href, href_list)
 	if(..()) return 1
 
