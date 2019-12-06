@@ -25,6 +25,7 @@
 	var/tobacco_tax = 0.10
 	var/recreational_drug_tax = 0.10
 	var/gambling_tax = 0.10
+	var/housing_tax = 0.10
 
 	//contraband // See law/contraband.dm for potential contraband types.
 	var/law_CANNABIS = PERMIT_POSSESSION
@@ -117,6 +118,8 @@
 	S["tobacco_tax"] << tobacco_tax
 	S["recreational_drug_tax"] << recreational_drug_tax
 	S["gambling_tax"] << gambling_tax
+	S["housing_tax"] << housing_tax
+
 	S["law_CANNABIS"] << law_CANNABIS
 	S["law_ALCOHOL"] << law_ALCOHOL
 	S["law_ECSTASY"] << law_ECSTASY
@@ -172,6 +175,8 @@
 	S["tobacco_tax"] >> tobacco_tax
 	S["recreational_drug_tax"] >> recreational_drug_tax
 	S["gambling_tax"] >> gambling_tax
+	S["housing_tax"] >> housing_tax
+
 	S["law_CANNABIS"] >> law_CANNABIS
 	S["law_ALCOHOL"] >> law_ALCOHOL
 	S["law_ECSTASY"] >> law_ECSTASY

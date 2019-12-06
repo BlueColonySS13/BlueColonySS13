@@ -7,6 +7,7 @@
 #define TOBACCO_TAX persistent_economy.tobacco_tax
 #define DRUG_TAX persistent_economy.recreational_drug_tax
 #define GAMBLING_TAX persistent_economy.gambling_tax
+#define HOUSING_TAX persistent_economy.gambling_tax
 
 #define CONTRABAND_CANNABIS persistent_economy.law_CANNABIS
 #define CONTRABAND_ALCOHOL persistent_economy.law_ALCOHOL
@@ -31,3 +32,11 @@
 #define PERMIT_SELLING "Selling permit needed"
 #define PERMIT_POSSESSION "Possession and creation permit needed"
 #define LEGAL "Legal"
+
+/proc/get_tax_price(tax, price)
+	var/tax_amt = price / tax
+
+	return price + tax_amt
+
+/proc/get_tax_amount(tax, price)
+	return (price / tax)

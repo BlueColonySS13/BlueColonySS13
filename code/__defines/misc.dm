@@ -332,9 +332,3 @@ var/global/list/##LIST_NAME = list();\
 #define DMM_IGNORE_NPCS 8
 #define DMM_IGNORE_PLAYERS 16
 #define DMM_IGNORE_MOBS 24
-
-#define VACANT "vacant"
-#define FOR_RENT "for rent"
-#define FOR_SALE "for sale"
-#define RENTED "rented"
-#define OWNED "owned"

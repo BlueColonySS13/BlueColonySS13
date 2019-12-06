@@ -1,4 +1,12 @@
-
+//STATUSES
+#define FOR_RENT "for rent"
+#define FOR_SALE "for sale"
+#define RENTED "rented"
+#define OWNED "owned"
+#define LOT_HELD "seized"
+//SERVICES
+#define CLEANING_SERVICE "cleaning service"
+#define PEST_CONTROL "pest control"
 
 // Persistent lots are saved to /maps/persistent/lots by default, the id is the filename	~ Cassie
 
@@ -36,7 +44,14 @@
 	var/pest_control = FALSE // (not implemented)
 	var/pest_control_cost = 25 // (not implemented)
 
-	var/status = "vacant" // Vacant / For Rent / Occupied
+	/*
+	// possible descriptors (for now):
+	-	pest control
+	-	cleaning service
+	*/
+	var/list/landlord_does = list()
+
+	var/status = FOR_SALE
 
 	var/turf/top_left			//turf of top left
 	var/turf/bottom_right		//turf of bottom right
@@ -55,22 +70,36 @@
 	var/service_charge
 
 	//if they pay for cleaning, pest, etc, charge em.
-	if(cleaning_service)
+	if(cleaning_service && ("cleaning service" in landlord_does))
 		service_charge += cleaning_service_cost
 
-	if(pest_control) // no mice or lizards here, no suree.
+	if(pest_control && ("pest control" in landlord_does)) // no mice or lizards here, no suree.
 		service_charge += pest_control_cost
 
 	return service_charge
 
+/datum/lot/proc/get_tenant_charge()
+	var/tnt_charge
+
+	//if they pay for cleaning, pest, etc, charge em.
+	if(cleaning_service && !("cleaning service" in landlord_does))
+		tnt_charge += cleaning_service_cost
+
+	if(pest_control && !("pest control" in landlord_does)) // no mice or lizards here, no suree.
+		tnt_charge += pest_control_cost
+
+	return tnt_charge
+
 /datum/lot/proc/set_new_ownership(uid, l_name, bank)
 	//transfer price of lot to old owner's bank account
 	if(landlord_bank)
-		charge_to_account(landlord_bank, "Landlord Management", "Payment for [name]", "Landlord Management Console", -price)
+		charge_to_account(landlord_bank, "Landlord Management", "Payment for [name]", "Landlord Management Console", get_tax_price(HOUSING_TAX, price))
+		department_accounts["[station_name()] Funds"].money += get_tax_amount(HOUSING_TAX, price)
 
 	// Buying a lot as a landlord anew.
 	landlord_uid = uid
 	landlord_name = l_name
+
 	if(bank)
 		landlord_bank = bank
 	else
@@ -84,10 +113,10 @@
 	// Selling a property as a landlord, to a tenant
 	return
 
-/datum/lot/proc/sell_to_nanotrasen()
-	// Aka reset lot. Selling a property back to the bad boys
+/datum/lot/proc/sell_to_council()
+	// Aka reset lot. Selling a property back to the bad boy
 	set_new_ownership(null, null)
-	status = VACANT
+	status = FOR_SALE
 
 
 /datum/lot/proc/get_coordinates()
@@ -134,7 +163,7 @@
 /datum/controller/subsystem/lots/proc/monthly_payroll()
 	for(var/datum/lot/L in all_lots)
 		if(!(Days_Difference(L.last_payment , full_game_time() ) > 30 ) )
-			if(!L.status == VACANT)
+			if(!L.status == FOR_SALE)
 				if(L.status == RENTED)
 					L.tenant_balance += L.rent
 			L.landlord_balance += L.get_service_charge()
@@ -165,11 +194,29 @@
 
 	var/datum/lot/lot = SSlots.get_lot_by_id(lot_id)
 
-	if(lot && lot.status == VACANT)
+	if(lot && !(lot.status == RENTED))
 		var/obj/structure/sign/rent/R = new /obj/structure/sign/rent (src.loc)
-		R.name = "[lot.name] - For Rent ([lot.price]cr)"
-		R.desc = "This rent sign says <b>[lot.name] - For Rent ([lot.price]cr)</b><br>\
-		Underneath, the sign notes the housing is owned by <b>[lot.landlord_name ? lot.landlord_name : "Nanotrasen"]</b>. Contact them for more details."
+
+		if(lot.status == FOR_RENT)
+			R.icon_state = "rent"
+
+			R.name = "[lot.name] - For Rent ([lot.rent]cr per month)"
+			R.desc = "This rent sign says <b>[lot.name] - For Rent ([lot.price]cr)</b><br>\
+			Underneath, the sign notes the housing is owned by <b>[lot.landlord_name ? lot.landlord_name : "City Council"]</b>. Contact them for more details or buy from the Landlord Management Program on the computers in the library."
+
+		if(lot.status == FOR_SALE)
+			R.icon_state = "sale"
+
+			R.name = "[lot.name] - For Sale ([lot.price]cr)"
+			R.desc = "This rent sign says <b>[lot.name] - For Sale ([lot.price]cr)</b><br>\
+			Underneath, the sign notes the housing is owned by <b>[lot.landlord_name ? lot.landlord_name : "City Council"]</b>. Contact them for more details or buy from the Landlord Management Program on the computers in the library."
+
+		if(lot.status == LOT_HELD)
+			R.icon_state = "held"
+
+			R.name = "[lot.name] - Held"
+			R.desc = "This lot has been seized by city council."
+
 
 		//copy over mapping values.
 		R.pixel_z = pixel_z

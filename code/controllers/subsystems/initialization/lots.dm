@@ -37,6 +37,13 @@ SUBSYSTEM_DEF(lots)
 /datum/controller/subsystem/lots/proc/get_lots_for_sale()
 	var/list/sale_lots = list()
 	for(var/datum/lot/L in all_lots)
-		if(L.status == VACANT)
+		if(L.status == FOR_SALE)
 			sale_lots += L
 	return sale_lots
+
+/datum/controller/subsystem/lots/proc/get_lots_for_rent()
+	var/list/rent_lots = list()
+	for(var/datum/lot/L in all_lots)
+		if(L.status == FOR_RENT)
+			rent_lots += L
+	return rent_lots

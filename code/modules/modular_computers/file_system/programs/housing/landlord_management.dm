@@ -17,6 +17,7 @@
 	var/error_msg = " "
 	var/unique_id
 	var/full_name
+	var/acc_balance
 
 /datum/nano_module/landlord_management/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
 	var/list/data = list()
@@ -25,8 +26,12 @@
 
 	var/obj/item/weapon/card/id/I = user.GetIdCard()
 
-	full_name = I.registered_name
-	unique_id = I.unique_ID
+	if(I)
+		full_name = I.registered_name
+		unique_id = I.unique_ID
+
+		var/datum/money_account/bank = get_account(I.associated_account_number)
+		acc_balance = bank.money
 
 
 	if(!I || !I.unique_ID)
@@ -46,27 +51,26 @@
 
 		if(!isemptylist(SSlots.all_lots))
 			for(var/datum/lot/L in SSlots.get_lots_for_sale())
-				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name] (Owned by [L.landlord_name ? L.landlord_name : "Nanotrasen"])<br>"
+				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name] (Owned by [L.landlord_name ? L.landlord_name : "City Council"])<br>"
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
 				page_msg += "<font color=\"yellow\"><b>Price:</b></font> [L.price]CR<br>"
-				page_msg += "<a href='?src=\ref[src];choice=buy_lot;lot=\ref[L]'>Buy [L.name] for [L.price] credits.</a><hr>"
+				page_msg += "<font color=\"yellow\"><a href='?src=\ref[src];choice=buy_lot;lot=\ref[L]'>Buy [L.name] for [L.price] credits.</a></font><hr>"
 		else
 			page_msg += "No properties currently available for sale."
 
 		page_msg += "</fieldset>"
 
-	else if(index == 3) // Sell Property Page
-		page_msg = "These are all the properties you own. You can choose to sell them to Nanotrasen, or put them back on the market for someone to buy them."
+	else if(index == 3) // Manage Property Page
+		page_msg = "These are all the properties you own. You can choose to sell them to Nanotrasen, or put them back on the market for someone to buy them.<br>"
 
-		if(!isemptylist(SSlots.all_lots))
+		if(!isemptylist(SSlots.get_lots_by_owner_uid(unique_id)))
 			for(var/datum/lot/L in SSlots.get_lots_by_owner_uid(unique_id))
 				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name]<br>"
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
 				page_msg += "<font color=\"yellow\"><b>Price:</b></font> [L.price]CR<br>"
-				page_msg += "<a href='?src=\ref[src];choice=sell_lot;lot=\ref[L]'>Sell [L.name] to NT.</a>  <a href='?src=\ref[src];choice=market_lot;lot=\ref[L]'>Sell [L.name] on market.</a><hr>"
-
+				page_msg += "<font color=\"yellow\"><a href='?src=\ref[src];choice=sell_lot;lot=\ref[L]'>Sell [L.name] to NT.</a>  <a href='?src=\ref[src];choice=market_lot;lot=\ref[L]'>Sell [L.name] on market.</a></font><hr>"
 		else
 			page_msg += "There are no properties that you own."
 
@@ -81,6 +85,13 @@
 	else if(index == 6) // Lot put on market
 		page_msg = "Lot has been placed on the market. This can be withdrawn at any time."
 
+
+	else if(index == 7) // Lot proposals
+		page_msg = "This is a list of your tenancy and lot proposals. You may reject or accept them here."
+
+	else if(index == 8) // Lot put up for rent
+		page_msg = "Your lot has been put up for rent. You will now begin to recieve rent proposals."
+
 	if(index == -1)
 		page_msg = "This isn't a thing yet, sorry."
 
@@ -89,6 +100,7 @@
 	data["page_msg"] = page_msg
 	data["full_name"] = full_name
 	data["error_msg"] = error_msg
+	data["acc_balance"] = acc_balance
 
 
 
@@ -119,7 +131,7 @@
 		. = 1
 		index = 2
 
-	if(href_list["sell_lots"])
+	if(href_list["manage_lots"])
 		. = 1
 		index = 3
 
@@ -131,7 +143,10 @@
 
 				var/datum/lot/LOT = L
 
-				if("No" == alert("Buy [LOT.name] for [LOT.price] credits?", "Buy Lot", "No", "Yes"))
+				if("No" == alert("Buy [LOT.name] for [get_tax_price(HOUSING_TAX, LOT.price)] credits?", "Buy Lot", "No", "Yes"))
+					return
+
+				if(!(LOT.status == FOR_SALE))
 					return
 
 				var/obj/item/weapon/card/id/I = usr.GetIdCard()
@@ -140,7 +155,7 @@
 					error_msg = "No identification payment card or valid valid bank details detected."
 					return
 
-				if(!attempt_account_access(I.associated_account_number, I.associated_pin_number, 2) || !charge_to_account(I.associated_account_number, "Housing Purchase", "[LOT.name] Lot Purchase", "Landlord Management", -LOT.price))
+				if(!attempt_account_access(I.associated_account_number, I.associated_pin_number, 2) || !charge_to_account(I.associated_account_number, "Housing Purchase", "[LOT.name] Lot Purchase", "Landlord Management", -get_tax_price(HOUSING_TAX, LOT.price) ))
 					error_msg = "There was an error charging your bank account. Please contact your bank's administrator."
 					return
 				else
@@ -150,10 +165,13 @@
 
 			if("sell_lot")
 				var/L = locate(href_list["lot"])
-
 				var/datum/lot/LOT = L
 
+
 				if("No" == alert("Sell [LOT.name] to NT for [LOT.price] credits?", "Sell Lot", "No", "Yes"))
+					return
+
+				if(!LOT.landlord_uid == unique_id)
 					return
 
 				var/obj/item/weapon/card/id/I = usr.GetIdCard()
@@ -166,7 +184,10 @@
 					error_msg = "There was an error charging your bank account. Please contact your bank's administrator."
 					return
 				else
-					LOT.sell_to_nanotrasen()
+					var/datum/money_account/M = get_account(I.associated_account_number)
+					if(M)
+						M.money += LOT.price
+					LOT.sell_to_council()
 					index = 5
 
 
@@ -179,4 +200,18 @@
 				if("No" == alert("Put [LOT.name] on the market for selling?", "Sell Lot", "No", "Yes"))
 					return
 
+				LOT.status = FOR_SALE
+
 				index = 6
+
+			if("rent_lot")
+				var/L = locate(href_list["lot"])
+
+				var/datum/lot/LOT = L
+
+				if("No" == alert("Put [LOT.name] on the market for rent?", "Sell Lot", "No", "Yes"))
+					return
+
+				LOT.status = FOR_RENT
+
+				index = 8

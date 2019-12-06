@@ -18,36 +18,14 @@
 
 {{:helper.link("Buy New Properties", null, {'buy_lots' : 1})}}
 {{:helper.link("Sell Existing Properties", null, {'sell_lots' : 1})}}
-{{:helper.link("Manage Properties", null, {'notyet' : 1})}}
+{{:helper.link("Manage Properties", null, {'manage_lots' : 1})}}
 <p><br>
 
+{{else}}
+	<br>
+	<br>
+	{{:helper.link("Back", null, {'back' : 1})}}
+
 {{/if}}
 
-{{if data.index == 2}}
 
-
-
-<br><br>
-{{:helper.link("Back", null, {'back' : 1})}}
-{{/if}}
-
-{{if data.index == 3}}
-
-<p>
-
-{{:helper.link("Back", null, {'back' : 1})}}
-{{/if}}
-
-{{if data.index == 4}}
-
-<p>
-
-{{:helper.link("Back", null, {'back' : 1})}}
-{{/if}}
-
-{{if data.index == 5}}
-
-<p>
-
-{{:helper.link("Back", null, {'back' : 1})}}
-{{/if}}
