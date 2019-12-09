@@ -5,6 +5,7 @@
 	requires_ntnet = 1
 	size = 3
 	nanomodule_path = /datum/nano_module/program/pdsi_report/
+	required_access = access_cbia	
 
 /datum/nano_module/program/pdsi_report/
 	name = "PDSI Reporting Utility"
