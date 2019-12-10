@@ -155,10 +155,26 @@
 					error_msg = "No identification payment card or valid valid bank details detected."
 					return
 
+
 				if(!attempt_account_access(I.associated_account_number, I.associated_pin_number, 2) || !charge_to_account(I.associated_account_number, "Housing Purchase", "[LOT.name] Lot Purchase", "Landlord Management", -get_tax_price(HOUSING_TAX, LOT.price) ))
 					error_msg = "There was an error charging your bank account. Please contact your bank's administrator."
 					return
 				else
+
+				var/lot_tax_price = get_tax_price(HOUSING_TAX, LOT.price)
+
+				var/datum/money_account/M = get_account(I.associated_account_number)
+				if(lot_tax_price > M.money)
+					error_msg = "You have insufficient funds to buy this lot."
+					return
+
+
+				if(!attempt_account_access(I.associated_account_number, I.associated_pin_number, 2) || !charge_to_account(I.associated_account_number, "Housing Purchase", "[LOT.name] Lot Purchase", "Landlord Management", -lot_tax_price ))
+					error_msg = "There was an error charging your bank account. Please contact your bank's administrator."
+					return
+
+
+
 					LOT.set_new_ownership(unique_id, full_name, I.associated_account_number)
 					index = 4
 
@@ -203,6 +219,7 @@
 				LOT.status = FOR_SALE
 
 				index = 6
+
 
 			if("rent_lot")
 				var/L = locate(href_list["lot"])

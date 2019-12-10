@@ -21,6 +21,11 @@
 	var/landlord_name = ""
 	var/company_name	// if owned by a company. (not implemented)
 	var/landlord_uid
+
+
+	var/tenant_uid
+	var/landlord_uid
+
 	var/company_email	// if a company has an email for contact (not implemented)
 
 	var/last_payment			// date of last time the lots were charged, this is done monthly, goes from landlord
@@ -30,6 +35,8 @@
 
 	var/landlord_balance = 0
 	var/tenant_balance = 0
+
+	var/required_deposit
 
 	//money related
 	var/landlord_bank	// account id of who gets charged monthly for this

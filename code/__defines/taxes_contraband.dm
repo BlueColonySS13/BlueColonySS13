@@ -31,11 +31,11 @@
 #define PROFESSIONAL_ONLY "Professional Use Only"
 #define PERMIT_SELLING "Selling permit needed"
 #define PERMIT_POSSESSION "Possession and creation permit needed"
+
 #define LEGAL "Legal"
 
 /proc/get_tax_price(tax, price)
 	var/tax_amt = price / tax
-
 	return price + tax_amt
 
 /proc/get_tax_amount(tax, price)
