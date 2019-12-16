@@ -22,7 +22,7 @@
 			"Z"
 			)
 
-/dmm_suite/save_map(var/turf/t1 as turf, var/turf/t2 as turf, var/map_name as text, var/flags as num)
+/dmm_suite/proc/save_map(var/turf/t1 as turf, var/turf/t2 as turf, var/map_name as text, var/path, var/flags as num)
 	//Check for illegal characters in file name... in a cheap way.
 	if(!((ckeyEx(map_name)==map_name) && ckeyEx(map_name)))
 		CRASH("Invalid text supplied to proc save_map, invalid characters or empty string.")
@@ -32,6 +32,9 @@
 
 	var/map_prefix = "_maps/quicksave/"
 	var/map_path = "[map_prefix][map_name].dmm"
+	if(path)
+		map_path = "[path][map_name].dmm"
+
 	if(fexists(map_path))
 		fdel(map_path)
 	var/saved_map = file(map_path)
@@ -39,7 +42,7 @@
 	saved_map << map_text
 	return saved_map
 
-/dmm_suite/write_map(var/turf/t1 as turf, var/turf/t2 as turf, var/flags as num)
+/dmm_suite/proc/write_map(var/turf/t1 as turf, var/turf/t2 as turf, var/flags as num)
 	//Check for valid turfs.
 	if(!isturf(t1) || !isturf(t2))
 		CRASH("Invalid arguments supplied to proc write_map, arguments were not turfs.")
@@ -136,13 +139,13 @@
 	// Objects loop
 	if(!(flags & DMM_IGNORE_OBJS))
 		for(var/obj/O in model.contents)
-			if(O.dont_save || !isnull(O.gcDestroyed))
+			if(O.dont_save || !isnull(O.gc_destroyed))
 				continue
 			obj_template += "[O.type][check_attributes(O,use_json=use_json)],"
 
 	// Mobs Loop
 	for(var/mob/M in model.contents)
-		if(M.dont_save || !isnull(M.gcDestroyed))
+		if(M.dont_save || !isnull(M.gc_destroyed))
 			continue
 		if(M.client)
 			if(!(flags & DMM_IGNORE_PLAYERS))

@@ -95,6 +95,10 @@ var/list/all_maps = list()
 
 	var/list/usable_email_tlds = list("freemail.net")
 
+	// Government or public emails only relevent to this map.
+	var/list/map_specific_emails = list()
+	var/council_email = "city-council@nanotrasen.nt"				//should always be set on each map
+
 /datum/map/New()
 	..()
 	if(zlevel_datum_type)
@@ -104,6 +108,9 @@ var/list/all_maps = list()
 		map_levels = station_levels.Copy()
 	if(!allowed_jobs || !allowed_jobs.len)
 		allowed_jobs = subtypesof(/datum/job)
+
+	if(!isemptylist(map_specific_emails))
+		government_emails += council_email
 
 /datum/map/proc/setup_map()
 	return

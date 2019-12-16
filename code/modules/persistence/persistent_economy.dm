@@ -53,7 +53,7 @@
 	var/gambling_age = 18
 	var/synth_vote = TRUE			// Are FBPs allowed to vote?
 	var/citizenship_vote = TRUE		// Are starsystem immigrants allowed to vote?
-	var/criminal_vote = TRUE		// Can people with criminal records vote? (unimplemented)
+	var/criminal_vote = TRUE			// Can people with criminal records vote? (unimplemented)
 
 /datum/economy/bank_accounts/proc/set_economy()
 	if(!department_acc_list)

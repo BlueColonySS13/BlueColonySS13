@@ -93,7 +93,7 @@
 	light_color = "#8559FF" //a cross between the blue and purple
 
 /obj/structure/sign/neon/sale
-	name = "sale"
+	name = "neon_sale"
 	icon_state = "neon_sale"
 	light_color = "#6EB6FF" //sky blue
 
@@ -298,7 +298,6 @@
 	name = "Rent sign"
 	icon_state = "rent"
 	desc = "A sign that says 'For Rent' on it. This house might be vacant."
-	dont_save = TRUE
 
 /obj/structure/sign/city/coffee
 	name = "Coffee And Sweets"

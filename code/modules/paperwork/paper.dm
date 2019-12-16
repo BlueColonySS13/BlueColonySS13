@@ -591,6 +591,11 @@
 	add_fingerprint(user)
 	return
 
+/obj/item/weapon/paper/serialize()
+	var/list/data = ..()
+	data["info"] = info
+	return data
+
 /*
  * Premade paper
  */

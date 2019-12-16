@@ -4,9 +4,12 @@
 #define RENTED "rented"
 #define OWNED "owned"
 #define LOT_HELD "seized"
+#define LOT_LAWSUIT
 //SERVICES
 #define CLEANING_SERVICE "cleaning service"
 #define PEST_CONTROL "pest control"
+#define WATER_BILLS "water bills"
+#define ELECTRICITY_BILLS "electricity bills"
 
 // Persistent lots are saved to /maps/persistent/lots by default, the id is the filename	~ Cassie
 
@@ -19,16 +22,19 @@
 
 	//owner related
 	var/landlord_name = ""
+	var/tenant_name
 	var/company_name	// if owned by a company. (not implemented)
-	var/landlord_uid
-
 
 	var/tenant_uid
 	var/landlord_uid
+	var/company_uid	// not in use yet
 
 	var/company_email	// if a company has an email for contact (not implemented)
+	var/landlord_email
+	var/tenant_email
 
 	var/last_payment			// date of last time the lots were charged, this is done monthly, goes from landlord
+	var/last_payment_tnt		// last time tenant paid their bills
 
 	var/service_charge_warning = 15000	// how much debt landlord is in before letters start arriving. (not implemented)
 	var/service_charge_possession = 20000  //how much debt landlord is in with service charges before NT come be a bitch. (not implemented)
@@ -36,14 +42,20 @@
 	var/landlord_balance = 0
 	var/tenant_balance = 0
 
-	var/required_deposit
+	var/required_deposit = 200
 
 	//money related
 	var/landlord_bank	// account id of who gets charged monthly for this
 	var/tenant_bank	// account id of tenant who is the landlord bitch mon
 
-	var/electricity_bill	// this increases when lights are used.
-	var/water_bill			// this increases when water is used.
+	var/electricity_bill = 0 // this increases when lights are used.
+	var/water_bill = 0			// this increases when water is used.
+
+	var/electricity_service = TRUE
+	var/electricity_cost = 20
+
+	var/water_service = TRUE
+	var/water_cost = 10
 
 	var/cleaning_service = FALSE	// is this place cleaned on roundstart? (not implemented)
 	var/cleaning_service_cost = 120 // (not implemented)
@@ -73,35 +85,83 @@
 
 	..()
 
+/datum/lot/proc/get_lot_price()
+	if(HOUSING_TAX)
+		return get_tax_price(HOUSING_TAX, price)
+
+	return price
+
+/datum/lot/proc/get_lot_tax_diff()
+	return (HOUSING_TAX * price)
+
+/datum/lot/proc/get_lot_tax()
+	if(HOUSING_TAX)
+		return HOUSING_TAX
+
+	return 0
+
+
+/datum/lot/proc/get_rent()
+	var/total_rent = 0
+
+	total_rent = (get_tenant_charge() + rent)
+
+	return total_rent
+
+/datum/lot/proc/has_tenant()
+	if(tenant_uid)
+		return TRUE
+
+
 /datum/lot/proc/get_service_charge()
-	var/service_charge
+	var/service_charge = 0
 
-	//if they pay for cleaning, pest, etc, charge em.
-	if(cleaning_service && ("cleaning service" in landlord_does))
-		service_charge += cleaning_service_cost
+	if(has_tenant())
+		//if they pay for cleaning, pest, etc, charge em.
+		if(cleaning_service && (CLEANING_SERVICE in landlord_does))
+			service_charge += cleaning_service_cost
 
-	if(pest_control && ("pest control" in landlord_does)) // no mice or lizards here, no suree.
-		service_charge += pest_control_cost
+		if(pest_control && (PEST_CONTROL in landlord_does)) // no mice or lizards here, no suree.
+			service_charge += pest_control_cost
+
+		if(water_service && (WATER_BILLS in landlord_does))
+			service_charge += water_cost
+
+		if(electricity_service && (ELECTRICITY_BILLS in landlord_does))
+			service_charge += electricity_cost
+
+	else
+		if(cleaning_service)
+			service_charge += cleaning_service_cost
+
+		if(pest_control)
+			service_charge += pest_control_cost
+
+		if(water_service)
+			service_charge += water_cost
+
+		if(electricity_service)
+			service_charge += electricity_cost
 
 	return service_charge
 
 /datum/lot/proc/get_tenant_charge()
-	var/tnt_charge
+	var/tnt_charge = 0
 
 	//if they pay for cleaning, pest, etc, charge em.
-	if(cleaning_service && !("cleaning service" in landlord_does))
+	if(cleaning_service && !(CLEANING_SERVICE in landlord_does))
 		tnt_charge += cleaning_service_cost
 
-	if(pest_control && !("pest control" in landlord_does)) // no mice or lizards here, no suree.
+	if(pest_control && !(PEST_CONTROL in landlord_does)) // no mice or lizards here, no suree.
 		tnt_charge += pest_control_cost
 
 	return tnt_charge
 
-/datum/lot/proc/set_new_ownership(uid, l_name, bank)
+/datum/lot/proc/set_new_ownership(uid, l_name, bank, email)
 	//transfer price of lot to old owner's bank account
 	if(landlord_bank)
-		charge_to_account(landlord_bank, "Landlord Management", "Payment for [name]", "Landlord Management Console", get_tax_price(HOUSING_TAX, price))
-		department_accounts["[station_name()] Funds"].money += get_tax_amount(HOUSING_TAX, price)
+		charge_to_account(landlord_bank, "Landlord Management", "Payment for [name]", "Landlord Management Console", get_lot_price())
+		department_accounts["[station_name()] Funds"].money += get_lot_price()
 
 	// Buying a lot as a landlord anew.
 	landlord_uid = uid
@@ -110,21 +170,62 @@
 	if(bank)
 		landlord_bank = bank
 	else
-		landlord_bank = null
+		var/datum/money_account/CC_acc = department_accounts["City Council"]
+		landlord_bank = CC_acc.account_number
+
+
+	if(email)
+		landlord_email = email
+	else
+		landlord_email = using_map.council_email
 
 	landlord_balance = 0
-	status = OWNED
+
+	if(!tenant_uid)
+		status = OWNED
+
 	water_bill = 0
 
-/datum/lot/proc/sell_to_tenant(uid, l_name)
+/datum/lot/proc/make_tenant(uid, l_name, bank, email)
 	// Selling a property as a landlord, to a tenant
-	return
+	//transfer price of lot to old owner's bank account
+
+	// Buying a lot as a landlord anew.
+	tenant_uid = uid
+	tenant_name = l_name
+
+
+	if(bank)
+		tenant_bank = bank
+
+	if(email)
+		tenant_email = email
+	else
+		tenant_email = using_map.council_email
+
+	status = RENTED
+
+	return 1
 
 /datum/lot/proc/sell_to_council()
-	// Aka reset lot. Selling a property back to the bad boy
-	set_new_ownership(null, null)
+	// Aka reset lot. Selling a property back to the bad boys
+	set_new_ownership()
 	status = FOR_SALE
 
+/datum/lot/proc/remove_tenant()
+
+	// removes a tenant from the lot
+	tenant_uid = null
+	tenant_name = null
+	tenant_bank = null
+	tenant_email = null
+	tenant_email = null
+
+	// Resets lot status
+	if(landlord_uid)
+		status = OWNED
+	else
+		status = FOR_SALE
 
 /datum/lot/proc/get_coordinates()
 	for(var/obj/effect/landmark/lot_data/lot_data)
@@ -160,8 +261,14 @@
 		// one more time, as some things that delete leave things behind.
 		for(var/obj/O in lot_area)
 			QDEL_NULL(O)
-
+//		SSmapping.maploader.load_map_tg(file(full_path), top_left.x, bottom_right.y, top_left.z, 1, 0)
 		SSmapping.maploader.load_map(file(full_path), top_left.x, bottom_right.y, top_left.z, 1, 0)
+
+		// Some things don't initialize at all after being loaded, it's weird, but this is needed too.
+		for(var/obj/O in lot_area)
+			sleep(1)
+			O.initialize()
+
 		return 1
 
 	return 0
@@ -190,6 +297,7 @@
 	icon_state = "rent"
 
 	var/lot_id		//associated lot ID
+	dont_save = FALSE
 
 /obj/effect/landmark/lotsign/initialize()
 	SSlots.lotsigns += src

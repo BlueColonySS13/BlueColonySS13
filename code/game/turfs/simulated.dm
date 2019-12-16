@@ -14,6 +14,12 @@
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 	var/dirt = 0
 
+/turf/simulated/vars_to_save()
+ 	return list("color","dirt","name","thermite","wet")
+/turf/simulated/map_important_vars()
+	// A list of important things to save in the map editor
+ 	return list("color","dirt","name","thermite","wet")
+
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)
 	if (istype(src, /turf/simulated/wall))
