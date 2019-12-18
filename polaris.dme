@@ -91,7 +91,6 @@
 #define FILE_DIR "maps/southern_cross/icons/obj"
 #define FILE_DIR "nano"
 #define FILE_DIR "nano/images"
-#define FILE_DIR "nano/images/apps"
 #define FILE_DIR "nano/images/status_icons"
 #define FILE_DIR "sound"
 #define FILE_DIR "sound/AI"
