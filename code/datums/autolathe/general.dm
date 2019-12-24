@@ -5,6 +5,19 @@
 /datum/category_item/autolathe/general/cooler_bottle
 	name = "water-cooler bottle"
 	path =/obj/item/weapon/reagent_containers/glass/cooler_bottle
+	
+//TFF 24/12/19 - Let people print more spray bottles if needed.
+/datum/category_item/autolathe/general/spraybottle
+	name = "spray bottle"
+	path = /obj/item/weapon/reagent_containers/spray
+
+/datum/category_item/autolathe/general/grinder
+	name = "grinder"
+	path = /obj/item/weapon/grinder
+
+/datum/category_item/autolathe/general/ecig_cart
+	name = "ecigarette cartridge"
+	path = /obj/item/weapon/reagent_containers/ecig_cartridge/blank
 
 /datum/category_item/autolathe/general/drinkingglass_square
 	name = "half-pint glass"
