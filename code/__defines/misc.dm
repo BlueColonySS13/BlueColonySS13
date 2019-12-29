@@ -199,6 +199,13 @@
 #define ROLE_UNKNOWN			"unknown"
 #define ROLE_EVERYONE			"everyone"
 
+// PDSI case settings
+#define ACTIVE "active"
+#define RESOLVED "resolved"
+#define CLOSED "closed"
+#define SUSPENDED "suspended"
+#define IN_PROGRESS "in progess"
+
 // Canonical spellings of TSCs, so typos never have to happen again due to human error.
 #define TSC_NT		"NanoTrasen"
 #define TSC_HEPH	"Hephaestus" // Because everyone misspells it

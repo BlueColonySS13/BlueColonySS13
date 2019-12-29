@@ -62,7 +62,7 @@
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "criminal_records.tmpl", "Presidential Candidate Registration", 690, 680, state = state)
+		ui = new(user, src, ui_key, "criminal_records.tmpl", "Criminal Record Program", 690, 680, state = state)
 		if(program.update_layout())
 			ui.auto_update_layout = 1
 		ui.set_auto_update(1)

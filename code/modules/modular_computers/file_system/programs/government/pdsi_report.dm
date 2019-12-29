@@ -5,7 +5,7 @@
 	requires_ntnet = 1
 	size = 3
 	nanomodule_path = /datum/nano_module/program/pdsi_report/
-	required_access = access_cbia	
+	required_access = access_cbia
 
 /datum/nano_module/program/pdsi_report/
 	name = "PDSI Reporting Utility"
@@ -27,30 +27,41 @@
 		//current open pdsi report
 		data["report_id"] = current_rpt.id
 		data["report_title"] = current_rpt.title
-		
+
 	if(index == 0) // main screen
 		page_msg = "Welcome to the PDSI Report application. The PDSI is a investigatory branch that aids in \
 		mediating and monitor internal affairs. Please choose from the options below."
-		
-	if(index == 1) 
+
+	if(index == 1)
 		page_msg = "Please select a PDSI case to view."
 		for(var/datum/pdsi_report/P in pdsi_reports)
-			page_msg += "[P.name]"
+			page_msg += "[P.title]"
 			page_msg += "<hr>"
-		
-	if(index = 2)
+
+	if(index == 2)
 		page_msg = "Please enter a reference number."
-		
-	if(index = 3)
+
+	if(index == 3)
 		if(current_rpt && current_rpt.title)
 			page_msg = "<h4>[current_rpt.title]</h4><br>"
 			page_msg += "Case ID: <i>[current_rpt.id]</i>"
-			
-	if(index = 4)
+
+	if(index == 4)
 		page_msg = "Submit case?"
 
-	if(index == 5) 
-		page_msg = "Please fill in your details and elaborate on a concise summary of your case."		
+	if(index == 5)
+		page_msg = "Please fill in your details and elaborate on a concise summary of your case."
+
+
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	if (!ui)
+		ui = new(user, src, ui_key, "pdsi_reports.tmpl", "Presidential Candidate Registration", 690, 680, state = state)
+		if(program.update_layout())
+			ui.auto_update_layout = 1
+		ui.set_auto_update(1)
+		ui.set_initial_data(data)
+		ui.open()
+
 
 /datum/nano_module/program/pdsi_report/Topic(href, href_list)
 	if(..()) return 1
@@ -64,12 +75,16 @@
 
 			if("select_case")
 				var/L = locate(href_list["case"])
-				
+				var/datum/pdsi_report/P = L
+
+				current_rpt = P
+				index = 3
+
 
 	if(href_list["create_new"])
 		. = 1
 		index = 1
-		
+
 	if(href_list["find"])
 		. = 1
 		index = 2
@@ -77,7 +92,7 @@
 	if(href_list["view_case"])
 		. = 1
 		index = 3
-		
+
 	if(href_list["submit_case"])
 		. = 1
 		index = 4
