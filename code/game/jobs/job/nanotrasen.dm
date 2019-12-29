@@ -19,7 +19,7 @@
                       "Nanotrasen Officer" = /decl/hierarchy/outfit/job/nanotrasen/officer)
 	email_domain = "nanotrasen.gov.nt"
 	wage = 1000
-	minimum_character_age = 20 // Pushing it I guess, but possible
+	minimum_character_age = 25 // Pushing it I guess, but possible
 	ideal_character_age = 40
 	req_admin_notify = 1
 
@@ -38,11 +38,12 @@
 	total_positions = 1
 	spawn_positions = 1
 	flag = CEO
-	alt_titles = list("NanoTrasen Regional Director")
+	alt_titles = list("NanoTrasen Regional Director", "NanoTrasen CEO", "NanoTrasen COO")
 	wage = 10000
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/captain
 	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
-
+	minimum_character_age = 30
+	
 /datum/job/nanotrasen/cbia
 	title = "PDSI Agent"
 	flag = CBIA
@@ -64,7 +65,7 @@
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/cbia
 
 	wage = 1000
-	minimum_character_age = 20 // Pushing it I guess, but possible
+	minimum_character_age = 25 // Pushing it I guess, but possible
 	ideal_character_age = 40
 	req_admin_notify = 1
 

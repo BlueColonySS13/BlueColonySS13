@@ -126,9 +126,12 @@
 		else if(player_is_antag(player))
 			candidates -= player
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are already an antagonist! They have been removed from the draft.")
-		else if(player.prefs.age < 16)
+		else if(player.current.client.prefs.age < 16)
 			candidates -= player
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are too young! They have been removed from the draft.")
+		else if(player.current.client.prefs.criminal_status == "Incarcerated")
+			candidates -= player
+			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are in prison! They have been removed from the draft.")
 
 
 	return candidates

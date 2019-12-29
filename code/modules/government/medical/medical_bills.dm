@@ -26,12 +26,12 @@ var/global/list/medical_bills = list()
 	description = "A basic treatment which usually involves items within any medical pack under 50 ticks."
 	cost = 60
 	insurance_coverage = INSURANCE_BASIC
-	
+
 /datum/medical_bill/basic_treatment_over
 	name = "Damage (Oxyloss, Toxin, Burns, Brute) over 50 ticks"
 	description = "A basic treatment which usually involves items within any medical pack over 50 ticks."
 	cost = 80
-	insurance_coverage = INSURANCE_BASIC	
+	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/basic_treatment_vend
 	name = "NanoMed Vended Items"
@@ -44,22 +44,22 @@ var/global/list/medical_bills = list()
 	description = "Use of IV drip to restore patient blood."
 	cost = 250
 	insurance_coverage = INSURANCE_BASIC
-	
+
 /datum/medical_bill/machinery
 	name = "Body Scan"
 	description = "Scan of patient vitals through body scanner."
 	cost = 50
 	insurance_coverage = INSURANCE_BASIC
-	
+
 /datum/medical_bill/machinery_sleep
 	name = "Sleeper"
 	description = "Use of sleeper."
 	cost = 300
 	insurance_coverage = INSURANCE_BASIC
-	
+
 /datum/medical_bill/machinery_cryo
 	name = "Cryo Cell"
-	description = "Use of cyro cell."
+	description = "Use of cryo cell."
 	cost = 350
 	insurance_coverage = INSURANCE_BASIC
 
@@ -82,15 +82,21 @@ var/global/list/medical_bills = list()
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/organs_limbs
-	name = "Organ and Limb Replacement"
-	description = "Replacement of organs and limbs. Limbs and organs sold separately."
-	cost = 2500
+	name = "Organ Replacement"
+	description = "Organ replacement surgery. Organs sold separately."
+	cost = 2000
+	insurance_coverage = INSURANCE_HIGH
+
+/datum/medical_bill/organs_limbs
+	name = "Limb Replacement"
+	description = "Limb replacement surgery. Limbs sold separately."
+	cost = 1750
 	insurance_coverage = INSURANCE_HIGH
 
 /datum/medical_bill/facial
 	name = "Facial Reconstruction Surgery"
-	description = "Surgical repairment of face for cosmetic purposes."
-	cost = 2500
+	description = "Surgical reconstruction of a face for cosmetic purposes."
+	cost = 500
 	insurance_coverage = INSURANCE_HIGH
 
 /datum/medical_bill/miscellaneous_stasis
@@ -98,11 +104,11 @@ var/global/list/medical_bills = list()
 	description = "Use of stasis bag to transport an individual."
 	cost = 150
 	insurance_coverage = INSURANCE_BASIC
-	
+
 /datum/medical_bill/defib
-	name = "Defibilirator"
-	description = "Use of defibilirator to revive."
-	cost = 150
+	name = "Defibrillator"
+	description = "Use of Defibrillator to revive."
+	cost = 250
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/genetics_treatment
@@ -110,3 +116,9 @@ var/global/list/medical_bills = list()
 	description = "Any form of genetics treatment, that includes dna modification or cloning."
 	cost = 2000
 	insurance_coverage = INSURANCE_HIGH
+
+/datum/medical_bill/therapy
+	name = "Therapy Session"
+	description = "A psychotherapy session which is used to treat mental health."
+	cost = 150
+	insurance_coverage = INSURANCE_BASIC

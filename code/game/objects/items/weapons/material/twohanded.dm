@@ -28,6 +28,9 @@
 	var/unwielded_force_divisor = 0.25
 	drop_sound = 'sound/items/drop/axe.ogg'
 
+	get_tax()
+		return WEAPONS_TAX
+
 /obj/item/weapon/material/twohanded/update_held_icon()
 	var/mob/living/M = loc
 	if(istype(M) && M.can_wield_item(src) && is_held_twohanded(M))
@@ -97,6 +100,14 @@
 	applies_material_colour = 0
 	can_cleave = TRUE
 
+
+	get_tax()
+		return WEAPONS_TAX
+
+	is_contraband()
+		return CONTRABAND_KNIFELARGE
+
+
 /obj/item/weapon/material/twohanded/fireaxe/update_held_icon()
 	var/mob/living/M = loc
 	if(istype(M) && !issmall(M) && M.item_is_in_hands(src) && !M.hands_are_full())
@@ -158,3 +169,11 @@
 	fragile = 1	//It's a haphazard thing of glass, wire, and steel
 	reach = 2 // Spears are long.
 	attackspeed = 14
+
+
+	get_tax()
+		return WEAPONS_TAX
+
+	is_contraband()
+		return CONTRABAND_KNIFELARGE
+
