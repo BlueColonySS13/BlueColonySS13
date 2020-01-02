@@ -10,6 +10,8 @@
 	w_class = ITEMSIZE_SMALL
 	no_variants = FALSE
 
+	price_tag = 20
+
 /obj/item/stack/nanopaste/attack(mob/living/M as mob, mob/user as mob)
 	if (!istype(M) || !istype(user))
 		return 0
