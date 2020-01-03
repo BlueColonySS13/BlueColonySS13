@@ -1117,3 +1117,10 @@ obj/item/clothing/suit/storage/toggle/peacoat
 /obj/item/clothing/suit/storage/snowsuit/science
 	name = "science snowsuit"
 	icon_state = "snowsuit_science"
+
+/obj/item/clothing/suit/storage/toggle/hartcoat
+	name = "fur-lined greatcoat"
+	desc = "A fancy fur-lined greatcoat with golden buttons. It keeps you warm... in style."
+	icon_state = "hartcoat"
+	item_state_slots = list(slot_r_hand_str = "hartcoat", slot_l_hand_str = "hartcoat")
+	flags_inv = HIDEHOLSTER
