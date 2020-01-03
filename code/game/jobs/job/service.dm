@@ -114,7 +114,7 @@
 	minimal_access = list(access_lawyer, access_sec_doors, access_heads)
 //	minimal_player_age = 7 (More lawyers please.)
 	minimum_character_age = 20
-	alt_titles = list("Defense Lawyer","Defense Attorney","Barrister", "Legal Advisor")
+	alt_titles = list("Defense Lawyer","Defense Attorney","Barrister", "Legal Advisor", "Government Attorney", "Civilian Attorney")
 
 	outfit_type = /decl/hierarchy/outfit/job/civilian/defense/defense
 
