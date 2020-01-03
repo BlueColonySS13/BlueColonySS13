@@ -50,6 +50,7 @@
 		new /obj/item/weapon/storage/box/gun_permits(src)
 		new /obj/item/weapon/storage/box/social_service_cards(src)
 		new /obj/item/weapon/storage/box/social_service_cards( src )
+		new /obj/item/weapon/storage/lockbox/passport(src)
 		return
 
 /obj/structure/closet/secure_closet/hop2
