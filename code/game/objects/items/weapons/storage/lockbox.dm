@@ -105,7 +105,7 @@
 
 /obj/item/weapon/storage/lockbox/passport
 	name = "lockbox of passports"
-	desc = "A lockbox filled with passports."
+	desc = "A lockbox filled with temporary passports."
 	req_access = list(access_hop)
 	storage_slots = 7
 	starts_with = list(
