@@ -552,7 +552,8 @@ var/global/datum/controller/occupations/job_master
 			to_chat(H, "Your workplace's email address is <b>[job_email.login]</b> and the password is <b>[job_email.password]</b>.")
 		to_chat(H, "Your personal email address is <b>[EA.login]</b> and the password is <b>[EA.password]</b>. This information has also been placed into your notes.")
 		H.mind.store_memory("Your email account address is [EA.login] and the password is [EA.password].")
-		H.mind.store_memory("Your workplace account address is [job_email.login] and the password is [job_email.password].")
+		if(job_email)
+			H.mind.store_memory("Your workplace account address is [job_email.login] and the password is [job_email.password].")
 
 		// END EMAIL GENERATION
 
