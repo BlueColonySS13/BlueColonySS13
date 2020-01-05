@@ -16,6 +16,11 @@
 	display_name = "beret, red"
 	path = /obj/item/clothing/head/beret
 
+/datum/gear/head/cargo_beret
+	display_name = "cargo beret"
+	path = /obj/item/clothing/head/cargo_beret
+	allowed_roles = list("Factory Worker","Shaft Miner","Factory Manager")
+
 /datum/gear/head/beret/bsec
 	display_name = "beret, navy (officer)"
 	path = /obj/item/clothing/head/beret/sec/navy/officer
