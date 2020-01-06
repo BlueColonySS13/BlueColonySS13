@@ -19,13 +19,12 @@
 
 /datum/computer_file/data/email_account/New()
 	ntnet_global.email_accounts.Add(src)
+	if(check_persistent_email(login))
+		SSemails.get_persistent_data()
 	..()
 
 /datum/computer_file/data/email_account/Destroy()
 	ntnet_global.email_accounts.Remove(src)
-	
-	if(check_persistent_email(login))
-		get_persistent_data()
 	. = ..()
 
 /datum/computer_file/data/email_account/proc/all_emails()
