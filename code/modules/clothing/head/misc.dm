@@ -400,6 +400,13 @@
 	addblends = "beret_g_a"
 	body_parts_covered = 0
 
+/obj/item/clothing/head/cargo_beret
+	name = "cargo beret"
+	desc = "A simple, yellow beret. This one designates the wearer as a factory worker."
+	icon_state = "cargo_beret"
+	addblends = "beret_g_a"
+	body_parts_covered = 0
+
 /obj/item/clothing/head/sombrero
 	name = "sombrero"
 	desc = "A wide-brimmed hat popularly worn in Mexico."
