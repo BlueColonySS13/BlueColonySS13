@@ -171,8 +171,7 @@
 			NextToken() //skip function name
 			if(!CheckToken("(", /token/symbol)) //Check for and skip open parenthesis
 				return
-			var/loops = 0
-			for()
+			for(var/loops in 1 to 6001) //This is awful but this entire folder needs a bigger rewrite.
 				loops++
 				if(loops>=6000)
 					CRASH("Something TERRIBLE has gone wrong in ParseFunctionStatement ;__;")

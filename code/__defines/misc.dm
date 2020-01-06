@@ -41,40 +41,6 @@
 #define 	  LIFE_HUD 10 // STATUS_HUD that only reports dead or alive
 #define     TOTAL_HUDS 10 // Total number of HUDs. Like body layers, and other things, it comes up sometimes.
 
-//some colors
-#define COLOR_WHITE   			"#FFFFFF"
-#define COLOR_SILVER  			"#C0C0C0"
-#define COLOR_GRAY    			"#808080"
-#define COLOR_BLACK   			"#000000"
-#define COLOR_RED     			"#FF0000"
-#define COLOR_MAROON 			"#800000"
-#define COLOR_YELLOW  			"#FFFF00"
-#define COLOR_OLIVE  			"#808000"
-#define COLOR_LIME   			"#00FF00"
-#define COLOR_GREEN   			"#008000"
-#define COLOR_CYAN    			"#00FFFF"
-#define COLOR_TEAL    			"#008080"
-#define COLOR_BLUE    			"#0000FF"
-#define COLOR_NAVY    			"#000080"
-#define COLOR_PINK    			"#FF00FF"
-#define COLOR_PURPLE  			"#800080"
-#define COLOR_ORANGE  			"#FF9900"
-#define COLOR_LUMINOL 			"#66FFFF"
-#define COLOR_BEIGE 			"#CEB689"
-#define COLOR_BLUE_GRAY 		"#6A97B0"
-#define COLOR_BROWN 			"#B19664"
-#define COLOR_DARK_BROWN 		"#917448"
-#define COLOR_DARK_ORANGE 		"#B95A00"
-#define COLOR_GREEN_GRAY 		"#8DAF6A"
-#define COLOR_RED_GRAY 			"#AA5F61"
-#define COLOR_PALE_BLUE_GRAY	"#8BBBD5"
-#define COLOR_PALE_GREEN_GRAY 	"#AED18B"
-#define COLOR_PALE_RED_GRAY		"#CC9090"
-#define COLOR_PALE_PURPLE_GRAY	"#BDA2BA"
-#define COLOR_PURPLE_GRAY 		"#A2819E"
-#define COLOR_RED_LIGHT         "#FF3333"
-#define COLOR_DEEP_SKY_BLUE     "#00e1ff"
-
 #define AREA_FLAG_IS_NOT_PERSISTENT 8 // SSpersistence will not track values from this area.
 
 //	Shuttles.
@@ -140,7 +106,6 @@
 #define WALL_OPENING 2
 
 #define DEFAULT_TABLE_MATERIAL "plastic"
-#define DEFAULT_WALL_MATERIAL "steel"
 
 #define MAT_STEEL			"steel"
 #define MAT_GLASS			"glass"
@@ -154,18 +119,6 @@
 #define MAT_LOG				"log"
 #define MAT_SIFWOOD			"alien wood"
 #define MAT_SIFLOG			"alien log"
-
-#define SHARD_SHARD "shard"
-#define SHARD_SHRAPNEL "shrapnel"
-#define SHARD_STONE_PIECE "piece"
-#define SHARD_SPLINTER "splinters"
-#define SHARD_NONE ""
-
-#define MATERIAL_UNMELTABLE 0x1
-#define MATERIAL_BRITTLE    0x2
-#define MATERIAL_PADDING    0x4
-
-#define TABLE_BRITTLE_MATERIAL_MULTIPLIER 4 // Amount table damage is multiplied by if it is made of a brittle material (e.g. glass)
 
 #define BOMBCAP_DVSTN_RADIUS (max_explosion_range/4)
 #define BOMBCAP_HEAVY_RADIUS (max_explosion_range/2)
@@ -211,9 +164,6 @@
 #define TSC_GIL 	"Gilthari"
 
 #define MIDNIGHT_ROLLOVER		864000	//number of deciseconds in a day
-
-#define WORLD_ICON_SIZE 32 //Needed for the R-UST port
-#define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32 //Needed for the R-UST port
 
 // Maploader bounds indices
 #define MAP_MINX 1

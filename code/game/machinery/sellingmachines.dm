@@ -11,7 +11,6 @@
 	light_color = "#ebf7fe"  //white blue
 	density = 1
 	anchored = 1
-	bounds = "64,32"
 	plane = ABOVE_PLANE
 	layer = ABOVE_MOB_LAYER
 

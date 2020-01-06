@@ -55,3 +55,4 @@
 		icon_state = "appendixinflamed"
 		name = "inflamed appendix"
 	..()
+#undef PROCESS_ACCURACY

@@ -35,3 +35,5 @@
 			owner.custom_pain("You feel extremely tired, like you can't move!",1)
 			owner.m_intent = "walk"
 			owner.hud_used.move_intent.icon_state = "walking"
+
+#undef PROCESS_ACCURACY

@@ -19,6 +19,8 @@
 #define LAZYSET(L, K, V) if(!L) { L = list(); } L[K] = V;
 // Reads the length of L, returning 0 if null
 #define LAZYLEN(L) length(L)
+// Adds I to L, initalizing L if necessary, if I is not already in L
+#define LAZYDISTINCTADD(L, I) if(!L) { L = list(); } L |= I;
 // Null-safe L.Cut()
 #define LAZYCLEARLIST(L) if(L) L.Cut()
 // Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
@@ -53,4 +55,3 @@
 		LIST.Insert(__BIN_MID, IN);\
 	}
 
-#define islist(L) istype(L, /list)

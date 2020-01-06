@@ -25,6 +25,8 @@
 
     . = ..()
 
+#undef FOOTSTEP_SPRITE_AMT
+
 /turf/snow/update_icon()
     cut_overlays()
     for(var/d in crossed_dirs)

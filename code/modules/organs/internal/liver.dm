@@ -57,3 +57,5 @@
 		if(prob(1) && owner.getToxLoss() < owner.getMaxHealth()*0.3)
 			//owner << "" //Toxins provide their own messages for pain
 			owner.adjustToxLoss(5) //Not realistic to PA but there are basically no 'real' liver infections
+
+#undef PROCESS_ACCURACY

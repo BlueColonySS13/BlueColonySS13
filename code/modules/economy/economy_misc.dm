@@ -38,7 +38,7 @@
 #define MINERALS 8
 
 #define EMERGENCY 9
-#define GAS 10
+//#define GAS 10 //This define is unused and conflicts with the chemistry GAS define, so it's commented out for now. Consider renaming all of these to "#define ECONOMY_whatever"
 #define MAINTENANCE 11
 #define ELECTRICAL 12
 #define ROBOTICS 13
