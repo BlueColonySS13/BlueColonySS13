@@ -142,6 +142,11 @@
 			if(O.dont_save || !isnull(O.gc_destroyed))
 				continue
 			obj_template += "[O.type][check_attributes(O,use_json=use_json)],"
+			if("contents" in O.vars_to_save())
+				for(var/obj/OC in O.contents)
+					if(OC.dont_save || !isnull(OC.gc_destroyed))
+						continue
+					obj_template += "[OC.type][check_attributes(OC,use_json=use_json)],"
 
 	// Mobs Loop
 	for(var/mob/M in model.contents)

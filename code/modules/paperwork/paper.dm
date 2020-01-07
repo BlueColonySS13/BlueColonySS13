@@ -593,7 +593,7 @@
 
 /obj/item/weapon/paper/serialize()
 	var/list/data = ..()
-	data["info"] = info
+	data["info"] = "[info]"
 	return data
 
 /*
