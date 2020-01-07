@@ -434,6 +434,8 @@
 
     . = ..()
 
+#undef FOOTSTEP_SPRITE_AMT
+
 /turf/snow/update_icon()
     overlays.Cut()
     for(var/d in crossed_dirs)

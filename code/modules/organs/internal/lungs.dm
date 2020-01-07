@@ -39,3 +39,5 @@
 		if(prob(1))
 			owner.custom_pain("You suddenly feel short of breath and take a sharp, painful breath!",1)
 			owner.adjustOxyLoss(30) //Look it's hard to simulate low O2 perfusion okay
+
+#undef PROCESS_ACCURACY

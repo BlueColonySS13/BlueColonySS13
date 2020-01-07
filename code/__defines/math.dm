@@ -23,8 +23,6 @@
 #define REALTIMEOFDAY (world.timeofday + (MIDNIGHT_ROLLOVER * MIDNIGHT_ROLLOVER_CHECK))
 #define MIDNIGHT_ROLLOVER_CHECK ( rollovercheck_last_timeofday != world.timeofday ? update_midnight_rollover() : midnight_rollovers )
 
-#define SIGN(x) ( (x)!=0 ? (x) / abs(x) : 0 )
-
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
 
 // round() acts like floor(x, 1) by default but can't handle other values
@@ -215,8 +213,6 @@
 
 // )
 
-#define RAND_F(LOW, HIGH) (rand()*(HIGH-LOW) + LOW)
-
 #define SQUARE(x) (x*x)
 
 //Vector Algebra
@@ -224,5 +220,3 @@
 #define NORM(x, y) (sqrt(SQUAREDNORM(x,y)))
 #define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
 #define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
-
-#define DEFAULT(a, b) (a? a : b)

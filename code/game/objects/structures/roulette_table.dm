@@ -20,7 +20,6 @@
 	icon_state = "roulette"
 	density = 1
 	anchored = 1
-	bounds = "64,32"
 	var/highest_number = 36
 	var/win_number
 	var/win_color

@@ -1,4 +1,4 @@
-#define FONT_SIZE "5pt"
+#define SD_FONT_SIZE "5pt"
 #define FONT_COLOR "#09f"
 #define FONT_STYLE "Arial Black"
 #define SCROLL_SPEED 2
@@ -183,7 +183,7 @@
 	if(font_size)
 		fnt_sz = font_size
 	else
-		fnt_sz = FONT_SIZE
+		fnt_sz = SD_FONT_SIZE
 
 	if(font_color)
 		fnt_cl = font_color
@@ -253,8 +253,6 @@
 			mode = STATUS_DISPLAY_TIME
 	update()
 
-#undef CHARS_PER_LINE
-#undef FOND_SIZE
 #undef FONT_COLOR
 #undef FONT_STYLE
 #undef SCROLL_SPEED

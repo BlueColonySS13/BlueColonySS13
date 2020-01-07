@@ -103,5 +103,3 @@
 
 /proc/RoundUpToPowerOfTwo(var/val)
     return 2 ** -round(-log(2,val))
-
-#define WRAP(val, min, max) ( min == max ? min : (val) - (round(((val) - (min))/((max) - (min))) * ((max) - (min))) )

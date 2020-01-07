@@ -658,41 +658,32 @@
 
 /obj/machinery/cash_register/command
 	account_to_connect = "City Council"
-	..()
 
 /obj/machinery/cash_register/medical
 	account_to_connect = "Public Healthcare"
 	menu_items = MED
-	..()
 
 /obj/machinery/cash_register/engineering
 	account_to_connect = "Emergency and Maintenance"
-	..()
 
 /obj/machinery/cash_register/science
 	account_to_connect = "Research and Science"
-	..()
 
 /obj/machinery/cash_register/security
 	account_to_connect = "Police"
 	menu_items = LAW
-	..()
 
 /obj/machinery/cash_register/cargo
 	account_to_connect = "Cargo"
-	..()
 
 /obj/machinery/cash_register/civilian
 	account_to_connect = "Civilian"
-	..()
 
 /obj/machinery/cash_register/bar
 	account_to_connect = "Bar"
-	..()
 
 /obj/machinery/cash_register/botany
 	account_to_connect = "Botany"
-	..()
 
 #undef LAW
 #undef MED

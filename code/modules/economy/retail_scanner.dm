@@ -519,41 +519,32 @@
 
 /obj/item/device/retail_scanner/command
 	account_to_connect = "City Council"
-	..()
 
 /obj/item/device/retail_scanner/medical
 	account_to_connect = "Public Healthcare"
 	menu_items = MED
-	..()
 
 /obj/item/device/retail_scanner/engineering
 	account_to_connect = "Emergency and Maintenance"
-	..()
 
 /obj/item/device/retail_scanner/science
 	account_to_connect = "Research and Science"
-	..()
 
 /obj/item/device/retail_scanner/security
 	account_to_connect = "Police"
 	menu_items = LAW
-	..()
 
 /obj/item/device/retail_scanner/cargo
 	account_to_connect = "Cargo"
-	..()
 
 /obj/item/device/retail_scanner/civilian
 	account_to_connect = "Civilian"
-	..()
 
 /obj/item/device/retail_scanner/bar
 	account_to_connect = "Bar"
-	..()
 
 /obj/machinery/cash_register/botany
 	account_to_connect = "Botany"
-	..()
 
 #undef LAW
 #undef MED
