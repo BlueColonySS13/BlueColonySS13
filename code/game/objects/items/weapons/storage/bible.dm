@@ -19,9 +19,7 @@
 	starts_with = list(
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,
-		/obj/item/weapon/spacecash/c100,
-		/obj/item/weapon/spacecash/c100,
-		/obj/item/weapon/spacecash/c100
+		/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer
 	)
 
 /obj/item/weapon/storage/bible/afterattack(atom/A, mob/user as mob, proximity)
