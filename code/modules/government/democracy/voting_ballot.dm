@@ -148,7 +148,7 @@
 	if(href_list["no_confidence"])
 		if(!Adjacent(usr)) return
 
-		var/list/datum/president_candidate/prez = locate(href_list["votee"])
+		var/datum/president_candidate/prez = locate(href_list["votee"])
 		if(!prez)
 			to_chat(usr, SPAN_WARNING("ERROR: Somehow, no president exists."))
 			return
@@ -169,7 +169,7 @@
 
 		if(!Adjacent(usr)) return
 
-		var/list/datum/president_candidate/candidate = locate(href_list["candidate"])
+		var/datum/president_candidate/candidate = locate(href_list["candidate"])
 
 		if(!candidate)
 			to_chat(usr, SPAN_WARNING("ERROR: This candidate does not exist."))

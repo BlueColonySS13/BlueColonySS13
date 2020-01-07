@@ -101,7 +101,7 @@
 	nodamage = 1
 	check_armour = "bullet"
 
-/obj/item/projectile/meteor/Bump(atom/A as mob|obj|turf|area)
+/obj/item/projectile/meteor/Bump(atom/A as mob|obj|turf|area, forced=0)
 	if(A == firer)
 		loc = A.loc
 		return

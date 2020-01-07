@@ -332,7 +332,7 @@
 		if(!bumped && !isturf(original))
 			if(loc == get_turf(original))
 				if(!(original in permutated))
-					if(Bump(original))
+					if(Bump(original, forced=0))
 						return
 
 		if(first_step)
@@ -423,7 +423,7 @@
 	xo = null
 	var/result = 0 //To pass the message back to the gun.
 
-/obj/item/projectile/test/Bump(atom/A as mob|obj|turf|area)
+/obj/item/projectile/test/Bump(atom/A as mob|obj|turf|area, forced=0)
 	if(A == firer)
 		loc = A.loc
 		return //cannot shoot yourself
