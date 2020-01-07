@@ -5,7 +5,6 @@
 	icon_state = "horse0"
 	anchored = 1
 
-	var/obj/item/device/radio/radio
 	var/id = 0
 	var/datum/money_account/our_money_account
 
@@ -33,7 +32,6 @@
 	id = rand(1,99999)
 
 	our_money_account = create_account("horse racing terminal ([id])", rand(50000,70000))
-	radio = new(src)
 
 	update_icon()
 
