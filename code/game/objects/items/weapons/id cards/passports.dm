@@ -29,10 +29,10 @@
 /mob/proc/update_passport(var/obj/item/weapon/passport/pass)
 	if(pass.citizenship == "Unset") pass.citizenship = "Vetra" //Defaults unset birth systems to a vetra passport. Otherwise, it will say "X was born in Unset".
 
-	if(pass.citizenship == "Andromeda") icon_state = "androgov_passport"  //Matches icon to location
-	else if(pass.citizenship == "Vetra") icon_state = "polgov_passport"
-	else if(pass.citizenship == "Sol") icon_state = "solgov_passport"
-	else if(pass.citizenship == "Cobrastan") icon_state = "cobrastan_passport" //a cheeky little easter egg for fans of Papers, Please
+	if(pass.citizenship == "Andromeda") pass.icon_state = "androgov_passport"  //Matches icon to location
+	else if(pass.citizenship == "Vetra") pass.icon_state = "polgov_passport"
+	else if(pass.citizenship == "Sol") pass.icon_state = "solgov_passport"
+	else if(pass.citizenship == "Cobrastan") pass.icon_state = "cobrastan_passport" //a cheeky little easter egg for fans of Papers, Please
 	else icon_state = "passport"
 
 /obj/item/weapon/passport/attack_self(mob/user as mob)
