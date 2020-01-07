@@ -64,8 +64,6 @@ var/global/list/station_departments = list("City Council", "Public Healthcare", 
 		station_account.money = 950000
 		station_account.department = "[station_name()] Funds"
 
-		//add the account
-		station_account.transaction_log.Add(T)
 		department_acc_list.Add(station_account)
 
 
@@ -80,7 +78,7 @@ var/global/list/station_departments = list("City Council", "Public Healthcare", 
 		nanotrasen_account.department = "Nanotrasen"
 
 		department_acc_list.Add(nanotrasen_account)
-//		all_money_accounts.Add(station_account)
+
 
 /proc/create_department_account(department)
 	next_account_number = rand(111111, 999999)
