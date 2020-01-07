@@ -4,6 +4,13 @@ var/obj/screen/robot_inventory
 	HUD.robot_hud(ui_style, ui_color, ui_alpha, src)*/
 
 /datum/hud/proc/robot_hud(ui_style='icons/mob/screen1_robot.dmi', var/ui_color = "#ffffff", var/ui_alpha = 255, var/mob/living/silicon/robot/target)
+	if(!mymob)
+		stack_trace("robot_hud() called with null mymob")
+		return
+	if(!isrobot(mymob))
+		stack_trace("robot_hud() called on mob that is not type /mob/living/silicon/robot")
+		return
+	var/mob/living/silicon/robot/robomob = mymob
 /*	var/datum/hud_data/hud_data
 	if(!istype(target))
 		hud_data = new()
@@ -45,7 +52,7 @@ var/obj/screen/robot_inventory
 	using.screen_loc = ui_inv1
 	using.layer = HUD_LAYER
 	src.adding += using
-	mymob:inv1 = using
+	robomob.inv1 = using
 
 	using = new /obj/screen()
 	using.name = "module2"
@@ -57,7 +64,7 @@ var/obj/screen/robot_inventory
 	using.screen_loc = ui_inv2
 	using.layer = HUD_LAYER
 	src.adding += using
-	mymob:inv2 = using
+	robomob.inv2 = using
 
 	using = new /obj/screen()
 	using.name = "module3"
@@ -69,7 +76,7 @@ var/obj/screen/robot_inventory
 	using.screen_loc = ui_inv3
 	using.layer = HUD_LAYER
 	src.adding += using
-	mymob:inv3 = using
+	robomob.inv3 = using
 
 //End of module select
 
@@ -79,38 +86,40 @@ var/obj/screen/robot_inventory
 	using.set_dir(SOUTHWEST)
 	using.icon = ui_style
 	using.alpha = ui_alpha
-	using.icon_state = mymob.a_intent
+	using.icon_state = robomob.a_intent
 	using.screen_loc = ui_acti
 	using.layer = HUD_LAYER
 	src.adding += using
 	action_intent = using
 
 //Cell
-	mymob:cells = new /obj/screen()
-	mymob:cells.icon = ui_style
-	mymob:cells.icon_state = "charge-empty"
-	mymob:cells.alpha = ui_alpha
-	mymob:cells.name = "cell"
-	mymob:cells.screen_loc = ui_toxin
-	src.other += mymob:cells
+	
+	var/obj/screen/cellscreen = new
+	cellscreen.icon = ui_style
+	cellscreen.icon_state = "charge-empty"
+	cellscreen.alpha = ui_alpha
+	cellscreen.name = "cell"
+	cellscreen.screen_loc = ui_toxin
+	robomob.cells = cellscreen
+	src.other += robomob.cells
 
 //Health
-	mymob.healths = new /obj/screen()
-	mymob.healths.icon = ui_style
-	mymob.healths.icon_state = "health0"
-	mymob.healths.alpha = ui_alpha
-	mymob.healths.name = "health"
-	mymob.healths.screen_loc = ui_borg_health
-	src.other += mymob.healths
+	robomob.healths = new /obj/screen()
+	robomob.healths.icon = ui_style
+	robomob.healths.icon_state = "health0"
+	robomob.healths.alpha = ui_alpha
+	robomob.healths.name = "health"
+	robomob.healths.screen_loc = ui_borg_health
+	src.other += robomob.healths
 
 //Installed Module
-	mymob.hands = new /obj/screen()
-	mymob.hands.icon = ui_style
-	mymob.hands.icon_state = "nomod"
-	mymob.hands.alpha = ui_alpha
-	mymob.hands.name = "module"
-	mymob.hands.screen_loc = ui_borg_module
-	src.other += mymob.hands
+	robomob.hands = new /obj/screen()
+	robomob.hands.icon = ui_style
+	robomob.hands.icon_state = "nomod"
+	robomob.hands.alpha = ui_alpha
+	robomob.hands.name = "module"
+	robomob.hands.screen_loc = ui_borg_module
+	src.other += robomob.hands
 
 //Module Panel
 	using = new /obj/screen()
@@ -123,14 +132,14 @@ var/obj/screen/robot_inventory
 	src.adding += using
 
 //Store
-	mymob.throw_icon = new /obj/screen()
-	mymob.throw_icon.icon = ui_style
-	mymob.throw_icon.icon_state = "store"
-	mymob.throw_icon.alpha = ui_alpha
-	mymob.throw_icon.color = ui_color
-	mymob.throw_icon.name = "store"
-	mymob.throw_icon.screen_loc = ui_borg_store
-	src.other += mymob.throw_icon
+	robomob.throw_icon = new /obj/screen()
+	robomob.throw_icon.icon = ui_style
+	robomob.throw_icon.icon_state = "store"
+	robomob.throw_icon.alpha = ui_alpha
+	robomob.throw_icon.color = ui_color
+	robomob.throw_icon.name = "store"
+	robomob.throw_icon.screen_loc = ui_borg_store
+	src.other += robomob.throw_icon
 
 //Inventory
 	robot_inventory = new /obj/screen()
@@ -143,61 +152,61 @@ var/obj/screen/robot_inventory
 	src.other += robot_inventory
 
 //Temp
-	mymob.bodytemp = new /obj/screen()
-	mymob.bodytemp.icon_state = "temp0"
-	mymob.bodytemp.name = "body temperature"
-	mymob.bodytemp.screen_loc = ui_temp
+	robomob.bodytemp = new /obj/screen()
+	robomob.bodytemp.icon_state = "temp0"
+	robomob.bodytemp.name = "body temperature"
+	robomob.bodytemp.screen_loc = ui_temp
 
-	mymob.oxygen = new /obj/screen()
-	mymob.oxygen.icon = ui_style
-	mymob.oxygen.icon_state = "oxy0"
-	mymob.oxygen.alpha = ui_alpha
-	mymob.oxygen.name = "oxygen"
-	mymob.oxygen.screen_loc = ui_oxygen
-	src.other += mymob.oxygen
+	robomob.oxygen = new /obj/screen()
+	robomob.oxygen.icon = ui_style
+	robomob.oxygen.icon_state = "oxy0"
+	robomob.oxygen.alpha = ui_alpha
+	robomob.oxygen.name = "oxygen"
+	robomob.oxygen.screen_loc = ui_oxygen
+	src.other += robomob.oxygen
 
-	mymob.fire = new /obj/screen()
-	mymob.fire.icon = ui_style
-	mymob.fire.icon_state = "fire0"
-	mymob.fire.alpha = ui_alpha
-	mymob.fire.name = "fire"
-	mymob.fire.screen_loc = ui_fire
-	src.other += mymob.fire
+	robomob.fire = new /obj/screen()
+	robomob.fire.icon = ui_style
+	robomob.fire.icon_state = "fire0"
+	robomob.fire.alpha = ui_alpha
+	robomob.fire.name = "fire"
+	robomob.fire.screen_loc = ui_fire
+	src.other += robomob.fire
 
-	mymob.pullin = new /obj/screen()
-	mymob.pullin.icon = ui_style
-	mymob.pullin.icon_state = "pull0"
-	mymob.pullin.alpha = ui_alpha
-	mymob.pullin.color = ui_color
-	mymob.pullin.name = "pull"
-	mymob.pullin.screen_loc = ui_borg_pull
-	src.other += mymob.pullin
+	robomob.pullin = new /obj/screen()
+	robomob.pullin.icon = ui_style
+	robomob.pullin.icon_state = "pull0"
+	robomob.pullin.alpha = ui_alpha
+	robomob.pullin.color = ui_color
+	robomob.pullin.name = "pull"
+	robomob.pullin.screen_loc = ui_borg_pull
+	src.other += robomob.pullin
 
-	mymob.zone_sel = new /obj/screen/zone_sel()
-	mymob.zone_sel.icon = ui_style
-	mymob.zone_sel.alpha = ui_alpha
-	mymob.zone_sel.overlays.Cut()
-	mymob.zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[mymob.zone_sel.selecting]")
+	robomob.zone_sel = new /obj/screen/zone_sel()
+	robomob.zone_sel.icon = ui_style
+	robomob.zone_sel.alpha = ui_alpha
+	robomob.zone_sel.overlays.Cut()
+	robomob.zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[robomob.zone_sel.selecting]")
 
 	//Handle the gun settings buttons
-	mymob.gun_setting_icon = new /obj/screen/gun/mode(null)
-	mymob.gun_setting_icon.icon = ui_style
-	mymob.gun_setting_icon.alpha = ui_alpha
-	mymob.item_use_icon = new /obj/screen/gun/item(null)
-	mymob.item_use_icon.icon = ui_style
-	mymob.item_use_icon.alpha = ui_alpha
-	mymob.gun_move_icon = new /obj/screen/gun/move(null)
-	mymob.gun_move_icon.icon = ui_style
-	mymob.gun_move_icon.alpha = ui_alpha
-	mymob.radio_use_icon = new /obj/screen/gun/radio(null)
-	mymob.radio_use_icon.icon = ui_style
-	mymob.radio_use_icon.alpha = ui_alpha
+	robomob.gun_setting_icon = new /obj/screen/gun/mode(null)
+	robomob.gun_setting_icon.icon = ui_style
+	robomob.gun_setting_icon.alpha = ui_alpha
+	robomob.item_use_icon = new /obj/screen/gun/item(null)
+	robomob.item_use_icon.icon = ui_style
+	robomob.item_use_icon.alpha = ui_alpha
+	robomob.gun_move_icon = new /obj/screen/gun/move(null)
+	robomob.gun_move_icon.icon = ui_style
+	robomob.gun_move_icon.alpha = ui_alpha
+	robomob.radio_use_icon = new /obj/screen/gun/radio(null)
+	robomob.radio_use_icon.icon = ui_style
+	robomob.radio_use_icon.alpha = ui_alpha
 
-	mymob.client.screen = list()
+	robomob.client.screen = list()
 
-	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, mymob:cells, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
-	mymob.client.screen += src.adding + src.other
-	mymob.client.screen += mymob.client.void
+	robomob.client.screen += list( robomob.throw_icon, robomob.zone_sel, robomob.oxygen, robomob.fire, robomob.hands, robomob.healths, robomob.cells, robomob.pullin, robot_inventory, robomob.gun_setting_icon)
+	robomob.client.screen += src.adding + src.other
+	robomob.client.screen += robomob.client.void
 
 	return
 
