@@ -35,6 +35,15 @@
 
 	update_icon()
 
+/obj/machinery/computer/betting_terminal/proc/get_bet_cost()
+	return get_item_cost()
+
+/obj/machinery/computer/betting_terminal/get_item_cost()
+	return bet_cost
+
+/obj/machinery/computer/betting_terminal/get_tax()
+	return GAMBLING_TAX
+
 /obj/machinery/computer/betting_terminal/update_icon()
 	..()
 	var/initial_icon = initial(icon_state)
@@ -76,6 +85,7 @@
 	//Charge money:
 	if(stored_money >= bet_cost) //If there's cash in the machine
 		stored_money -= bet_cost
+		department_accounts["[station_name()] Funds"].money += post_tax_cost()
 	else
 		return
 
