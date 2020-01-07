@@ -25,14 +25,8 @@ addons:
       - libgcc1:i386
       - libstdc++6:i386
 
-before_install:
-        - chmod +x tools/travis/install_spaceman_dmm.sh
-        - chmod +x tools/travis/check_filedirs.sh
-
-install:
-  - tools/travis/install_spaceman_dmm.sh dreamchecker
-
 before_script:
+  - chmod +x tools/travis/check_filedirs.sh
   - chmod +x ./install-byond.sh
   - ./install-byond.sh
 
@@ -47,6 +41,5 @@ after_failure:
 script:
   - tools/travis/check_filedirs.sh ${DM_BUILDFILE}
   - (! grep 'step_[xy]' maps/**/*.dmm)
-  - ~/dreamchecker
   - source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
   - DreamMaker ${DM_BUILDFILE}
