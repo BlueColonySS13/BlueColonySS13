@@ -14,6 +14,11 @@
 	var/static/list/recipe_list = list()
 	var/current_category = null
 	var/obj/item/device/electronic_assembly/assembly_to_clone = null
+	var/static/list/ic_tool_list = list(
+		/obj/item/device/integrated_electronics/wirer,
+		/obj/item/device/integrated_electronics/debugger,
+		/obj/item/weapon/card/data
+	)
 
 /obj/item/device/integrated_circuit_printer/upgraded
 	upgraded = TRUE
@@ -168,6 +173,9 @@
 		else if(ispath(build_type, /obj/item/integrated_circuit))
 			var/obj/item/integrated_circuit/IC = build_type
 			cost = initial(IC.w_class)
+		else if(!(build_type in ic_tool_list))
+			log_and_message_admins("[key_name(usr)] attempted to href exploit with the integrated electronics printer.")
+			return
 
 		if(metal - cost < 0)
 			to_chat(usr, "<span class='warning'>You need [cost] metal to build that!.</span>")
