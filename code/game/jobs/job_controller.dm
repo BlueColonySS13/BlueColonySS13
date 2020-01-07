@@ -410,6 +410,8 @@ var/global/datum/controller/occupations/job_master
 			job.equip_backpack(H)
 //			job.equip_survival(H)
 			job.apply_fingerprints(H)
+
+			equip_passport(H)
 			if(job.title != "Cyborg" && job.title != "AI")
 				H.equip_post_job()
 
@@ -550,7 +552,8 @@ var/global/datum/controller/occupations/job_master
 			to_chat(H, "Your workplace's email address is <b>[job_email.login]</b> and the password is <b>[job_email.password]</b>.")
 		to_chat(H, "Your personal email address is <b>[EA.login]</b> and the password is <b>[EA.password]</b>. This information has also been placed into your notes.")
 		H.mind.store_memory("Your email account address is [EA.login] and the password is [EA.password].")
-		H.mind.store_memory("Your workplace account address is [job_email.login] and the password is [job_email.password].")
+		if(job_email)
+			H.mind.store_memory("Your workplace account address is [job_email.login] and the password is [job_email.password].")
 
 		// END EMAIL GENERATION
 
@@ -713,3 +716,18 @@ var/global/datum/controller/occupations/job_master
 		var/spawning = pick(latejoin)
 		.["turf"] = get_turf(spawning)
 		.["msg"] = "has arrived to the city"
+
+
+/proc/equip_passport(var/mob/living/carbon/human/H)
+	var/obj/item/weapon/passport/pass = new/obj/item/weapon/passport(get_turf(H))
+
+	if(!H.mind || !H.mind.prefs) return
+
+	pass.name = "[H.real_name]'s passport"
+	pass.citizenship = H.mind.prefs.home_system
+	pass.owner = H.real_name
+
+	H.update_passport(pass)
+	H.equip_to_slot_or_del(pass, slot_in_backpack)
+
+
