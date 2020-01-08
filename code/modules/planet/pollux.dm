@@ -123,7 +123,9 @@ var/datum/planet/sif/planet_sif = null
 		WEATHER_HAIL		= new /datum/weather/sif/hail(),
 		WEATHER_BLOOD_MOON	= new /datum/weather/sif/blood_moon(),
 		WEATHER_ACID_RAIN	= new /datum/weather/sif/acid_rain(),
-		WEATHER_RADSTORM	= new /datum/weather/sif/rad_storm()
+		WEATHER_RADSTORM	= new /datum/weather/sif/rad_storm(),
+		WEATHER_CARPFALL 	= new /datum/weather/sif/carpfall(),
+		WEATHER_CARPNADO 	= new /datum/weather/sif/carpnado()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_CLEAR		= 30,
@@ -334,20 +336,20 @@ var/datum/planet/sif/planet_sif = null
 			if(!T.outdoors)
 				continue // They're indoors, so no need to rain on them.
 
-			// Lazy wind code	
-			if(prob(10))	
-				if(istype(L.get_active_hand(), /obj/item/weapon/melee/umbrella))	
-					var/obj/item/weapon/melee/umbrella/U = L.get_active_hand()	
-					if(U.open)	
-						to_chat(L, "<span class='danger'>You struggle to keep hold of your umbrella!</span>")	
-						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)	// Closest sound I've got to "Umbrella in the wind"	
-				else if(istype(L.get_inactive_hand(), /obj/item/weapon/melee/umbrella))	
-					var/obj/item/weapon/melee/umbrella/U = L.get_inactive_hand()	
-					if(U.open)	
-						to_chat(L, "<span class='danger'>A gust of wind yanks the umbrella from your hand!</span>")	
-						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)	
-						L.drop_from_inventory(U)	
-						U.toggle_umbrella()	
+			// Lazy wind code
+			if(prob(10))
+				if(istype(L.get_active_hand(), /obj/item/weapon/melee/umbrella))
+					var/obj/item/weapon/melee/umbrella/U = L.get_active_hand()
+					if(U.open)
+						to_chat(L, "<span class='danger'>You struggle to keep hold of your umbrella!</span>")
+						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)	// Closest sound I've got to "Umbrella in the wind"
+				else if(istype(L.get_inactive_hand(), /obj/item/weapon/melee/umbrella))
+					var/obj/item/weapon/melee/umbrella/U = L.get_inactive_hand()
+					if(U.open)
+						to_chat(L, "<span class='danger'>A gust of wind yanks the umbrella from your hand!</span>")
+						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
+						L.drop_from_inventory(U)
+						U.toggle_umbrella()
 						U.throw_at(get_edge_target_turf(U, pick(alldirs)), 8, 1, L)
 
 			L.water_act(2)
@@ -485,3 +487,89 @@ var/datum/planet/sif/planet_sif = null
 		"The air begins to grow warm in a strange, inconsistent way.",
 		"The clouds begin to turn green, something seems terribly wrong."
 	)
+
+/datum/weather/sif/carpfall
+	name = "carpfall"
+
+	var/next_carpfall = 0 // world.time when carps fall.
+	var/min_carpfall_cooldown = 2 SECOND
+	var/max_carpfall_cooldown = 5 SECONDS
+
+	transition_chances = list(
+		WEATHER_CARPFALL = 90,
+		WEATHER_CARPNADO = 10
+		)
+	observed_message = "The sky turns weird. Strange purple things line the sky!"
+
+	transition_messages = list(
+		"Giant fish are falling from the sky!",
+		"The sky above is littered with weird purple dots. They seem to be getting closer and closer.",
+		"The smell of sea salt and sushi fills the air, something seems terribly wrong."
+	)
+
+/datum/weather/sif/carpfall/process_effects()
+	..()
+	handle_carps()
+
+
+/datum/weather/sif/carpfall/proc/handle_carps()
+	if(world.time < next_carpfall)
+		return // It's too soon to strike again.
+	next_carpfall = world.time + rand(min_carpfall_cooldown, max_carpfall_cooldown)
+	for(var/mob/living/carbon/L in living_mob_list)
+		if(L.z in holder.our_planet.expected_z_levels)
+			if(prob(50))
+				var/list/turfs_around = list()
+				for(var/turf/T in orange(7, L))
+					if(T.outdoors)
+						turfs_around += T
+					else
+						continue
+				var/turf/X = pick(turfs_around)
+				if(X)
+					new /obj/effect/falling_effect/carpfall(X)
+
+
+/datum/weather/sif/carpnado
+	name = "carpnado"
+
+	var/next_carpfall = 0 // world.time when carps fall.
+	var/min_carpfall_cooldown = 1 SECOND
+	var/max_carpfall_cooldown = 3 SECONDS
+
+	transition_chances = list(
+		WEATHER_CARPNADO = 100,
+		)
+	observed_message = "It's the carpnado! Skies turns dark purple and fishy winds starts blowing!"
+
+	transition_messages = list(
+		"Giant fish are falling from the sky at incredibly high speed!",
+		"The sky above is littered with weird purple dots. They seem to be getting closer and closer. And faster and faster! AND HOMING ONTO YOU!",
+		"The smell of natural disaster and seaweed fills the air."
+	)
+
+/datum/weather/sif/carpnado/process_effects()
+	..()
+	handle_carps()
+
+
+/datum/weather/sif/carpnado/proc/handle_carps()
+	if(world.time < next_carpfall)
+		return // It's too soon to strike again.
+	next_carpfall = world.time + rand(min_carpfall_cooldown, max_carpfall_cooldown)
+	for(var/mob/living/carbon/L in living_mob_list)
+		if(L.z in holder.our_planet.expected_z_levels)
+			if(prob(65))
+				var/list/turfs_around = list()
+				for(var/turf/T in orange(3, L))//They are spawning closer
+					if(T.outdoors)
+						turfs_around += T
+					else
+						continue
+				var/turf/X = pick(turfs_around)
+				if(X)
+					new /obj/effect/falling_effect/carpfall/carpnado(X)
+	if(prob(15))//In case everyone just fucking goes underground and no carps spawn anywhere because of it
+		var/turf/R = pick(holder.our_planet.planet_floors)
+		if(R)
+			new /obj/effect/falling_effect/carpfall/carpnado(R)
