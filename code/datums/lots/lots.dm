@@ -266,9 +266,10 @@
 
 		// Some things don't initialize at all after being loaded, it's weird, but this is needed too.
 		for(var/obj/O in lot_area)
+			O.persistence_save = FALSE
 			sleep(1)
-			O.initialize()
-
+			if(!O.initialized || istype(O,/obj/structure))
+				O.initialize()
 		return 1
 
 	return 0

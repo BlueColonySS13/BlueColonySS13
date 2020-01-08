@@ -80,7 +80,8 @@
 	stamps = null
 
 	if(info != initial(info))
-		info = html_encode(info)
+		if(!persistence_save)
+			info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
 		return
@@ -115,7 +116,8 @@
 		desc = "This is a paper titled '" + name + "'."
 
 	if(info != initial(info))
-		info = html_encode(info)
+		if(!persistence_save)
+			info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
 
@@ -593,7 +595,7 @@
 
 /obj/item/weapon/paper/serialize()
 	var/list/data = ..()
-	data["info"] = "[info]"
+	data["info"] = info
 	return data
 
 /*

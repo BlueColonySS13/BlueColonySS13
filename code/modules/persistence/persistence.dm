@@ -25,6 +25,7 @@
 	// This var isn't actually used for anything, but is present so that
 	// DM's map reader doesn't forfeit on reading a JSON-serialized map
 	var/map_json_data
+	var/persistence_save = FALSE //this prepares certain things for persistence loading.
 
 // This is so specific atoms can override these, and ignore certain ones
 /atom/proc/vars_to_save()

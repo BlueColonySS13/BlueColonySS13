@@ -139,6 +139,7 @@
 	// Objects loop
 	if(!(flags & DMM_IGNORE_OBJS))
 		for(var/obj/O in model.contents)
+			O.persistence_save = TRUE
 			if(O.dont_save || !isnull(O.gc_destroyed))
 				continue
 			obj_template += "[O.type][check_attributes(O,use_json=use_json)],"
