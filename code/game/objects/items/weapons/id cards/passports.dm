@@ -5,6 +5,7 @@
 	desc = "This is an electronic passport that allows you to travel between colonies."
 	icon = 'icons/obj/passport.dmi'
 	icon_state = "passport"
+	w_class = ITEMSIZE_SMALL
 
 	var/forged = FALSE
 	var/citizenship = "Vetra"	// other options
