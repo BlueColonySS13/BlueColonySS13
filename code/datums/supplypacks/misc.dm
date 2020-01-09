@@ -51,7 +51,7 @@
 /datum/supply_pack/misc/hoverpod
 	name = "Hoverpod Shipment"
 	contains = list()
-	cost = 80
+	cost = 800
 	containertype = /obj/structure/largecrate/hoverpod
 	containername = "Hoverpod Crate"
 
@@ -67,7 +67,7 @@
 			/obj/item/clothing/accessory/storage/white_drop_pouches,
 			/obj/item/clothing/accessory/storage/webbing
 			)
-	cost = 10
+	cost = 30
 	containertype = "/obj/structure/closet/crate"
 	containername = "Webbing crate"
 
@@ -83,7 +83,7 @@
 	contains = list(
 	/obj/item/device/camera,
 	/obj/item/device/camera_film = 2)
-	cost = 300
+	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "Journalism Kit"
 
@@ -91,6 +91,6 @@
 	name = "Camera Film Refills"
 	contains = list(
 	/obj/item/device/camera_film = 5)
-	cost = 230
+	cost = 15
 	containertype = /obj/structure/closet/crate
 	containername = "Camera Film Refills"

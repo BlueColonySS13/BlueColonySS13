@@ -364,7 +364,7 @@
 	if(istype(O,/obj/item/stack))
 		var/obj/item/stack/stack = O
 
-		if(!(stack.associated_reagent && stack.reagents.total_volume))
+		if(!(!isemptylist(stack.associated_reagents) && stack.reagents.total_volume))
 			user << "\The [O] is not suitable for blending."
 
 

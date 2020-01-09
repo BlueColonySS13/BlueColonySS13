@@ -4,7 +4,7 @@
 	if(!ishuman(H))
 		return 0
 
-	if(!(persistent_economy.voting_age >= H.age) )
+	if(!(persistent_economy.voting_age > H.age) )
 		return 0
 
 	if(!persistent_economy.synth_vote && H.isSynthetic() )
