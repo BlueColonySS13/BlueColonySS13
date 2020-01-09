@@ -281,7 +281,7 @@
 		stored_money = 0
 
 	else if(href_list["bet"])
-		if((stored_money >= bet_cost) && can_play())
+		if((stored_money >= 100) && can_play())
 			bet(usr)
 
 	src.updateUsrDialog()
