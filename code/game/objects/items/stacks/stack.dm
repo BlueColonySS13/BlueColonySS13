@@ -23,18 +23,17 @@
 	var/list/charge_costs = null
 	var/list/datum/matter_synth/synths = null
 	var/no_variants = TRUE // Determines whether the item should update it's sprites based on amount.
-	var/associated_reagent	// put reagent "id" here
+	var/list/associated_reagents = list() // put reagent "id" here
 	var/reagents_per_unit = 2
 
 /obj/item/stack/proc/update_reagents()
-
-	
 	if(reagents)
 		reagents.reagent_list.Cut()
-	if(associated_reagent)
-		var/total_volume = amount * reagents_per_unit
-		reagents.add_reagent(associated_reagent, total_volume)
-		
+	if(associated_reagents)
+		var/divided = (reagents_per_unit / associated_reagents.len) * amount
+		for(var/R	in associated_reagents)
+			reagents.add_reagent(R, divided)
+
 	return 1
 
 /obj/item/stack/New(var/loc, var/amount=null)
