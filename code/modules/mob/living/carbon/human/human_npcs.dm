@@ -472,7 +472,7 @@ proc/random_outfit(var/mob/living/carbon/human/M)
 			src.say("[thanks_msg]")
 			sleep(3)
 			src.say("Here's the payment, keep the change.")
-			new /obj/item/weapon/spacecash/c10(drink_area)
+			new /obj/item/weapon/spacecash/bundle/c10(drink_area)
 			served = null
 			held_drink = null
 
