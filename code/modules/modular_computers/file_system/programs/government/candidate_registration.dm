@@ -72,7 +72,7 @@
 		page_msg = "It is only possible to register an account during election registration days. Sorry for the inconvienience."
 
 	if(index == 8)
-		page_msg = "According to the current law, you are not eligible to register as a candidate, you must have the same criteria as voting rights to become a president. See law book for details."
+		page_msg = "According to the current law, you are not eligible to register as a candidate, you must be of the minimum age and have the same criteria of the general voting rights to become a president. See law book for details."
 
 	data["full_name"] = full_name
 	data["unique_id"] = unique_id
@@ -226,7 +226,13 @@
 			index = 7
 			return
 
-		if(!is_voting_eligible(usr))
+		var/old_enough = 0
+		if(ishuman(usr))
+			var/mob/living/carbon/human/H = usr
+			var/datum/job/presjob = job_master.GetJob("President")
+			if(presjob.minimum_character_age > H.age)
+				old_enough = 1
+		if(!is_voting_eligible(usr) || !old_enough)
 			index = 8
 			return
 		index = 2
