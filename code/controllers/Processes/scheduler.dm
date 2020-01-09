@@ -96,7 +96,7 @@
 	src.trigger_time = trigger_time
 	src.procedure = procedure
 	src.arguments = arguments ? arguments : list()
-	src.task_after_process = task_after_process ? task_after_process : /proc/destroy_scheduled_task
+	src.task_after_process = task_after_process ? task_after_process : destroy_scheduled_task()
 	src.task_after_process_args = istype(task_after_process_args) ? task_after_process_args : list()
 	task_after_process_args += src
 
