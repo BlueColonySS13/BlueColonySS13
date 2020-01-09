@@ -18,7 +18,7 @@
 	if(police_record)
 		var/list/criminal_record = police_record.fields["crim_record"]
 		if(!isemptylist(criminal_record))
-			return "criminal"
+			return 0
 
 	return 1
 
