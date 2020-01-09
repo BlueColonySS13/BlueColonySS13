@@ -71,6 +71,9 @@
 	if(index == 7)
 		page_msg = "It is only possible to register an account during election registration days. Sorry for the inconvienience."
 
+	if(index == 8)
+		page_msg = "According to the current law, you are not eligible to register as a candidate, you must have the same criteria as voting rights to become a president. See law book for details."
+
 	data["full_name"] = full_name
 	data["unique_id"] = unique_id
 	data["pitch"] = pitch
@@ -137,7 +140,7 @@
 	if(href_list["submit_register"])
 		. = 1
 
-		if(!SSelections.is_registration_days(get_game_day()))
+		if(!(SSelections.is_registration_days(get_game_day()) && !SSelections.snap_election) )
 			reg_error = "It is not possible to register a new candidate account during non-registration days."
 			return
 
@@ -219,8 +222,12 @@
 
 	if(href_list["register_new"])
 		. = 1
-		if(!SSelections.is_registration_days(get_game_day()))
+		if(!SSelections.is_registration_days( get_game_day() ) & !SSelections.snap_election)
 			index = 7
+			return
+
+		if(!is_voting_eligible(usr))
+			index = 8
 			return
 		index = 2
 
