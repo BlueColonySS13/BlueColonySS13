@@ -4,7 +4,7 @@
 	if(!ishuman(H))
 		return 0
 
-	if(!(persistent_economy.voting_age >= H.age) )
+	if(!(persistent_economy.voting_age > H.age) )
 		return 0
 
 	if(!persistent_economy.synth_vote && H.isSynthetic() )
@@ -18,7 +18,7 @@
 	if(police_record)
 		var/list/criminal_record = police_record.fields["crim_record"]
 		if(!isemptylist(criminal_record))
-			return 0
+			return "criminal"
 
 	return 1
 

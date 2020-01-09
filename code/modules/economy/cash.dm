@@ -18,6 +18,9 @@
 	drop_sound = 'sound/items/drop/paper.ogg'
 	var/list/possible_values = list(100,50,20,10,5,2,1)
 
+/obj/item/weapon/spacecash/get_item_cost()
+	return worth	// lol
+
 /obj/item/weapon/spacecash/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/spacecash))
 		if(istype(W, /obj/item/weapon/spacecash/ewallet)) return 0
