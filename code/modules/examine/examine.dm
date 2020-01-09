@@ -77,6 +77,8 @@
 
 //override examinate verb to update description holders when things are examined
 /mob/examinate(atom/A as mob|obj|turf in view())
+	if(..())
+		return TRUE
 	update_examine_panel(A)
 
 /mob/proc/update_examine_panel(var/atom/A)
