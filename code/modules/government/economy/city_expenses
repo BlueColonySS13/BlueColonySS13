@@ -1,0 +1,2 @@
+var/global/city_expenses = list()
+
