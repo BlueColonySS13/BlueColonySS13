@@ -402,8 +402,36 @@
 
 /obj/item/clothing/head/cargo_beret
 	name = "cargo beret"
-	desc = "A simple, yellow beret. This one designates the wearer as a factory worker."
+	desc = "A simple, yellow beret. This one designates the wearer as someone working in the supply industry."
 	icon_state = "cargo_beret"
+	addblends = "beret_g_a"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/engineering_beret
+	name = "engineering beret"
+	desc = "A simple, orange beret. This one designates the wearer as someone working in the engineering industry."
+	icon_state = "engineering_beret"
+	addblends = "beret_g_a"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/science_beret
+	name = "science beret"
+	desc = "A simple, purple beret. This one designates the wearer as someone working in the research industry."
+	icon_state = "science_beret"
+	addblends = "beret_g_a"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/service_beret
+	name = "service beret"
+	desc = "A simple, grey beret. This one designates the wearer as someone working in the service industry."
+	icon_state = "service_beret"
+	addblends = "beret_g_a"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/medical_beret
+	name = "medical beret"
+	desc = "A simple, blue beret. This one designates the wearer as someone working in the medical industry."
+	icon_state = "medical_beret"
 	addblends = "beret_g_a"
 	body_parts_covered = 0
 
