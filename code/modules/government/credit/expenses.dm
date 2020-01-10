@@ -107,7 +107,7 @@
 	color = COLOR_OLIVE
 
 /datum/expense/nanotrasen
-	name = "NanoTrasen Income"	// 
+	name = "NanoTrasen Income"	// nanotrasen's base expense cannot be removed. sorry!
 	cost_per_payroll = 500
 	comments = "Nanotrasen will recieve an allowance from the city's earnings."
 
@@ -127,7 +127,10 @@
 	cost_per_payroll = 250
 	comments = "The city will hire a specialized contractor to contain the carp menace."
 
-
+/datum/expense/nanotrasen/social_service
+	name = "Food Stamps"
+	cost_per_payroll = 350
+	comments = "The city will provide food stamps to people under a certain income."
 
 // This proc is just a default proc for paying expenses per payroll.
 
