@@ -39,7 +39,8 @@
 		charge += num
 
 	amount_left -= charge
-	department_accounts[department].money += charge
+	if(department)
+		department_accounts[department].money += charge
 
 	return charge
 
@@ -51,7 +52,7 @@
 //This if for if you have a expense, and a bank account.
 
 /proc/charge_expense(var/datum/expense/E, var/datum/money_account/bank_account, var/num)
-	if(!E.active)
+	if(!E.is_active())
 		return 0
 
 	E.process_charge(num)
@@ -70,10 +71,12 @@
 	bank_account.transaction_log.Add(T)
 
 
-	if(E.delete_paid)
-		if(!E.amount_left)
-			bank_account.expenses -= E
-			qdel(E)
+	if(E.delete_paid && !E.amount_left)
+		bank_account.expenses -= E
+		qdel(E)
+
+/datum/expense/proc/is_active()
+	return active
 
 /datum/expense/police
 	name = "Police Fine"
@@ -98,11 +101,32 @@
 /datum/expense/law
 	name = "Court Injunction"
 	cost_per_payroll = 50
-	var/datum/law/injunction
 
 	department = "Civilian"
 
 	color = COLOR_OLIVE
+
+/datum/expense/nanotrasen
+	name = "NanoTrasen Income"	// 
+	cost_per_payroll = 500
+	comments = "Nanotrasen will recieve an allowance from the city's earnings."
+
+/datum/expense/nanotrasen/cleaning
+	name = "City Cleaning Fund"
+	cost_per_payroll = 400
+	comments = "The city will hire a private contractor cleaning group to free the \
+	city from grime, blood and filth."
+
+/datum/expense/nanotrasen/pest_control/mice
+	name = "Pest Control Fund: Mice"
+	cost_per_payroll = 150
+	comments = "The city will hire a pest control service that deals with mice."
+	
+/datum/expense/nanotrasen/pest_control/carp
+	name = "Pest Control Fund: Carp"
+	cost_per_payroll = 250
+	comments = "The city will hire a specialized contractor to contain the carp menace."
+
 
 
 // This proc is just a default proc for paying expenses per payroll.
