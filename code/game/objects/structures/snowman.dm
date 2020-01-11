@@ -12,6 +12,8 @@
 		var/turf/simulated/floor/F = get_turf(src)
 		if (istype(F))
 			new /obj/item/stack/material/snow(F)
+			if(tophat)
+				new /obj/item/clothing/head/that(F)
 		qdel(src)
 
 /obj/structure/snowman/attackby(obj/item/W as obj, mob/user as mob)
