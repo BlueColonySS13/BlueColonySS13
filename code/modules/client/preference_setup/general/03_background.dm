@@ -8,13 +8,13 @@
 	S["gen_record"]				>> pref.gen_record
 	S["home_system"]				>> pref.home_system
 	S["citizenship"]				>> pref.citizenship
-//	S["faction"]					>> pref.faction
 	S["religion"]					>> pref.religion
 	S["economic_status"]			>> pref.economic_status
 	S["social_class"]				>> pref.social_class
 	S["crime_record"]				>> pref.crime_record
 	S["health_record"]				>> pref.health_record
 	S["job_record"]				>> pref.job_record
+	S["criminal_status"]			>> pref.criminal_status
 
 /datum/category_item/player_setup_item/general/background/save_character(var/savefile/S)
 	S["med_record"]				<< pref.med_record
@@ -22,13 +22,13 @@
 	S["gen_record"]				<< pref.gen_record
 	S["home_system"]				<< pref.home_system
 	S["citizenship"]				<< pref.citizenship
-//	S["faction"]					<< pref.faction
 	S["religion"]					<< pref.religion
 	S["economic_status"]			<< pref.economic_status
 	S["social_class"]				<< pref.social_class
 	S["crime_record"]				<< pref.crime_record
-	S["health_record"]				>> pref.health_record
-	S["job_record"]				>> pref.job_record
+	S["health_record"]				<< pref.health_record
+	S["job_record"]				<< pref.job_record
+	S["criminal_status"]			<< pref.criminal_status
 
 /datum/category_item/player_setup_item/general/background/delete_character(var/savefile/S)
 	pref.med_record = null
@@ -46,15 +46,19 @@
 
 	pref.faction = null
 	pref.religion = null
+	pref.criminal_status = "None"
 
 /datum/category_item/player_setup_item/general/background/sanitize_character()
-	if(!pref.home_system) pref.home_system = "Unset"
-	if(!pref.citizenship) pref.citizenship = "None"
+	if(!pref.home_system) pref.home_system = "Vetra"
+	if(!pref.citizenship) pref.citizenship = "Blue Colony"
+	pref.citizenship = sanitize_inlist(pref.citizenship, home_system_choices, initial(pref.citizenship))
 //	if(!pref.faction)     pref.faction =     "None"
 	if(!pref.religion)    pref.religion =    "None"
 	if(!pref.crime_record) pref.crime_record = list()
 	if(!pref.health_record) pref.health_record = list()
 	if(!pref.job_record) pref.job_record = list()
+
+	if(!pref.criminal_status) pref.criminal_status = "None"
 
 	pref.economic_status = get_economic_class(pref.money_balance)
 
@@ -64,6 +68,7 @@
 		pref.social_class = pref.economic_status
 
 	pref.social_class = sanitize_inlist(pref.social_class, ECONOMIC_CLASS, initial(pref.social_class))
+
 
 // Moved from /datum/preferences/proc/copy_to()
 /datum/category_item/player_setup_item/general/background/copy_to_mob(var/mob/living/carbon/human/character)
