@@ -31,7 +31,7 @@
 					break
 
 			//eligibility
-			if(!is_voting_eligible(H))
+			if(is_voting_ineligible(H))
 				eligible = 0
 
 			if(ckey in SSelections.current_president.no_confidence_votes)
@@ -42,6 +42,7 @@
 
 			if(!eligible)
 				dat += "<br><i>You currently do not qualify for voting as you do not possess the legal rights to do so.</i>"
+				dat += "<br><b>Reason:</b> [is_voting_ineligible(H) ? "[is_voting_ineligible(H)]" : ""]<br><br>"
 				dat += "<br><b><u>Current Critera:</u></b>"
 				dat += "<br><b>Minimum age:</b> [persistent_economy.voting_age]"
 				dat += "<br><b>Synthetics:</b> [persistent_economy.synth_vote ? "Can Vote" : "Cannot Vote"]"
