@@ -66,9 +66,6 @@
 		mind.prefs.sec_record = police_record.fields["notes"]
 		mind.prefs.criminal_status = police_record.fields["criminal"]
 
-		mind.prefs.prison_date = police_record.fields["prison_date"]
-		mind.prefs.prison_release_date = police_record.fields["prison_release_date"]
-
 	if(hospital_record)
 		mind.prefs.med_record = hospital_record.fields["notes"]
 
