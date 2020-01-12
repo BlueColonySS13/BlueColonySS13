@@ -513,7 +513,7 @@
 "jS" = (/obj/structure/table/steel,/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/west)
 "jT" = (/obj/structure/bed/chair{dir = 8},/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/west)
 "jU" = (/obj/structure/noticeboard,/turf/simulated/wall,/area/planets/Geminus/indoor/sewer/west)
-"jV" = (/obj/structure/table/steel,/obj/item/weapon/spacecash/c10,/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/west)
+"jV" = (/obj/structure/table/steel,/obj/item/weapon/spacecash/bundle/c10,/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/west)
 "jW" = (/obj/structure/table/steel,/obj/item/weapon/paper_bin,/obj/item/weapon/pen,/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/west)
 "jX" = (/obj/structure/bed/chair,/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/west)
 "jY" = (/obj/structure/bed/chair,/obj/machinery/light/colored/red{dir = 1},/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/west)

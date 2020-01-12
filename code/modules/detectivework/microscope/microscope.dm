@@ -87,7 +87,7 @@
 
 /obj/machinery/microscope/proc/remove_sample(var/mob/living/remover)
 	if(!istype(remover) || remover.incapacitated() || !Adjacent(remover))
-		return ..()
+		return
 	if(!sample)
 		remover << "<span class='warning'>\The [src] does not have a sample in it.</span>"
 		return

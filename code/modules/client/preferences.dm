@@ -137,8 +137,6 @@ datum/preferences
 	// Antag and Prison stuff
 
 	var/criminal_status = "None"
-	var/prison_date				//date someone was put in prison
-	var/prison_release_date			//date someone is due to be released from prison
 
 	var/disabilities = 0
 

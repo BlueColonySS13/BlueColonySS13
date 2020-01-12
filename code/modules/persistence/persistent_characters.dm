@@ -13,9 +13,9 @@
 	if(!(unique_id == mind.prefs.unique_id))
 		return 0
 
-	var/var/datum/data/record/police_record = get_sec_record(src)
-	var/var/datum/data/record/hospital_record = get_med_record(src)
-	var/var/datum/data/record/employment_record = get_gen_record(src)
+	var/datum/data/record/police_record = get_sec_record(src)
+	var/datum/data/record/hospital_record = get_med_record(src)
+	var/datum/data/record/employment_record = get_gen_record(src)
 
 	//There's no way (that I know of) to edit the "real name" of a character unless
 	//it's a body transformation, admin or antag fuckery. So this works.
@@ -65,9 +65,6 @@
 		mind.prefs.crime_record = police_record.fields["crim_record"]
 		mind.prefs.sec_record = police_record.fields["notes"]
 		mind.prefs.criminal_status = police_record.fields["criminal"]
-
-		mind.prefs.prison_date = police_record.fields["prison_date"]
-		mind.prefs.prison_release_date = police_record.fields["prison_release_date"]
 
 	if(hospital_record)
 		mind.prefs.med_record = hospital_record.fields["notes"]

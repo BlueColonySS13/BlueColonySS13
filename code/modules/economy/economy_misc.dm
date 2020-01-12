@@ -59,7 +59,7 @@ var/global/list/station_departments = list("City Council", "Public Healthcare", 
 
 		station_account = new()
 		station_account.owner_name = "[station_name()] Funds"
-		station_account.account_number = rand(111111, 999999)
+		station_account.account_number = md5("[station_name()] Funds")
 		station_account.remote_access_pin = rand(1111, 9999)
 		station_account.money = 950000
 		station_account.department = "[station_name()] Funds"
@@ -85,10 +85,11 @@ var/global/list/station_departments = list("City Council", "Public Healthcare", 
 
 	var/datum/money_account/department_account = new()
 	department_account.owner_name = "[department] Funds Account"
-	department_account.account_number = rand(111111, 999999)
+	department_account.account_number = md5("[department] Funds Account")
 	department_account.remote_access_pin = rand(1111, 9999)
 	department_account.money = 1500
 	department_account.department = department
+	department_account.security_level = 0
 
 	//create an entry in the account transaction log for when it was created
 	var/datum/transaction/T = new()

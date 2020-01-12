@@ -10,7 +10,9 @@
 #define WEATHER_HOT					"hot"
 #define WEATHER_BLOOD_MOON			"blood moon" // For admin fun or cult later on.
 #define WEATHER_ACID_RAIN			"acid rain"
-#define WEATHER_RADSTORM				"radiation storm"
+#define WEATHER_RADSTORM			"radiation storm"
+#define WEATHER_CARPFALL			"carpfall"
+#define WEATHER_CARPNADO			"carpnado"
 
 #define MOON_PHASE_NEW_MOON			"new moon"
 #define MOON_PHASE_WAXING_CRESCENT	"waxing crescent"

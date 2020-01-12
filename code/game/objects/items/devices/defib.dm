@@ -1,5 +1,5 @@
-#define DEFIB_TIME_LIMIT (10 MINUTES) //past this many seconds, defib is useless.
-#define DEFIB_TIME_LOSS  (2 MINUTES) //past this many seconds, brain damage occurs.
+#define DEFIB_TIME_LIMIT (30 MINUTES) //past this many seconds, defib is useless.
+#define DEFIB_TIME_LOSS  (5 MINUTES) //past this many seconds, brain damage occurs.
 
 //backpack item
 /obj/item/device/defib_kit
