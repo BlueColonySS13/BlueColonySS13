@@ -24,6 +24,7 @@
 	req_admin_notify = 1
 
 	hard_whitelisted = 1
+	clean_record_required = TRUE
 
 /datum/job/nanotrasen/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.rep_email
