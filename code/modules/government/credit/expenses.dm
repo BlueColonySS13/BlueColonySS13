@@ -73,7 +73,7 @@
 	//add the account
 	bank_account.transaction_log.Add(T)
 
-	do_effect()
+	E.do_effect()
 
 	if(E.delete_paid && !E.amount_left)
 		bank_account.expenses -= E
