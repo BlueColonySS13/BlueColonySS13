@@ -8,7 +8,10 @@
 	var/tax_middle
 	var/tax_rich
 	var/list/datum/money_account/eco_data
-	var/list/datum/money_account/treasury
+	var/datum/money_account/treasury
+	var/datum/money_account/nanotrasen
+	var/city_expenses = list()
+
 
 	//income tax rates
 	var/tax_rate_upper = 0.20
