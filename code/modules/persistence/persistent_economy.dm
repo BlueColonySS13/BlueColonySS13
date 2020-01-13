@@ -60,6 +60,8 @@
 	var/citizenship_vote = TRUE		// Are starsystem immigrants allowed to vote?
 	var/criminal_vote = TRUE		// Can people with criminal records vote? (unimplemented)
 
+	var/list/city_expenses = list()
+
 /datum/economy/bank_accounts/proc/set_economy()
 	if(!department_acc_list)
 		return 0
@@ -79,6 +81,10 @@
 
 	for(var/datum/money_account/D in department_acc_list)
 		department_accounts[D.department] = D
+
+	for(var/instance in subtypesof(/datum/expense/nanotrasen))
+		var/datum/expense/nanotrasen/E = new instance
+		city_expenses += E
 
 	sanitize_economy()
 
@@ -230,3 +236,5 @@
 	link_economy_accounts()
 
 	message_admins("Loaded all department accounts.", 1)
+
+

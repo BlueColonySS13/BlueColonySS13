@@ -23,7 +23,10 @@
 
   var/list/ckey_edit_list					// ckey of last editor(s)
 
+  var/can_remove = TRUE
 
+/datum/expense/proc/do_effect()	// this is actually does something, it'll trigger here.
+	return
 
 
 // This proc takes payment and then returns the "change"
@@ -70,6 +73,7 @@
 	//add the account
 	bank_account.transaction_log.Add(T)
 
+	do_effect()
 
 	if(E.delete_paid && !E.amount_left)
 		bank_account.expenses -= E
@@ -105,32 +109,6 @@
 	department = "Civilian"
 
 	color = COLOR_OLIVE
-
-/datum/expense/nanotrasen
-	name = "NanoTrasen Income"	// nanotrasen's base expense cannot be removed. sorry!
-	cost_per_payroll = 500
-	comments = "Nanotrasen will recieve an allowance from the city's earnings."
-
-/datum/expense/nanotrasen/cleaning
-	name = "City Cleaning Fund"
-	cost_per_payroll = 400
-	comments = "The city will hire a private contractor cleaning group to free the \
-	city from grime, blood and filth."
-
-/datum/expense/nanotrasen/pest_control/mice
-	name = "Pest Control Fund: Mice"
-	cost_per_payroll = 150
-	comments = "The city will hire a pest control service that deals with mice."
-	
-/datum/expense/nanotrasen/pest_control/carp
-	name = "Pest Control Fund: Carp"
-	cost_per_payroll = 250
-	comments = "The city will hire a specialized contractor to contain the carp menace."
-
-/datum/expense/nanotrasen/social_service
-	name = "Food Stamps"
-	cost_per_payroll = 350
-	comments = "The city will provide food stamps to people under a certain income."
 
 // This proc is just a default proc for paying expenses per payroll.
 
