@@ -27,6 +27,7 @@
 	outfit_type = /decl/hierarchy/outfit/job/medical/cmo
 	alt_titles = list(
 		"Chief of Medicine", "Medical Director")
+	clean_record_required = TRUE
 
 /datum/job/cmo/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email
@@ -53,6 +54,8 @@
 		"Emergency Physician" = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician,
 		"Nurse" = /decl/hierarchy/outfit/job/medical/doctor/nurse)
 
+	clean_record_required = TRUE
+
 //Chemist is a medical job damnit	//YEAH FUCK YOU SCIENCE	-Pete	//Guys, behave -Erro // Chemistry does more actual science than RnD at this point. But I'm glad you took time to bicker about which file it should go in instead of properly organizing the parenting. - Nappist
 /datum/job/chemist
 	email_domain = "med.gov.nt"
@@ -76,6 +79,8 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/chemist
 
+	clean_record_required = TRUE
+
 /datum/job/geneticist
 	title = "Geneticist"
 	flag = GENETICIST
@@ -92,7 +97,6 @@
 	minimal_access = list(access_genetics)
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/geneticist
-
 
 /datum/job/psychiatrist
 	title = "Psychiatrist"
@@ -113,6 +117,7 @@
 	outfit_type = /decl/hierarchy/outfit/job/medical/psychiatrist
 	alt_titles = list("Daycare Worker", "Therapist", "Social Worker", "Psychologist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist)
 
+	clean_record_required = TRUE
 
 /datum/job/medicalintern
 	title = "Medical Intern"
@@ -131,3 +136,4 @@
 	access = list(access_medical)
 	minimal_access = list(access_medical, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/medical/intern
+	clean_record_required = TRUE

@@ -18,19 +18,20 @@
 	var/req_admin_notify                  // If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/minimal_player_age = 0            // If you have use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
 	var/department = null                 // Does this position have a department tag?
-	var/head_position = 0                 // Is this position Command?
+	var/head_position = 0             	   // Is this position Command?
 	var/minimum_character_age = 18
 	var/ideal_character_age = 30
-	var/account_allowed = 1				  // Does this job type come with a station account?
-	var/wage = 20						  // Per Hour
+	var/account_allowed = 1		  		// Does this job type come with a station account?
+	var/wage = 20					    // Per Hour
 	var/outfit_type
 
 	// Email addresses will be created under this domain name. Mostly for the looks.
 	var/email_domain = "freemail.nt"
 
-	var/hard_whitelisted = 0 // jobs that are hard whitelisted need players to be added to hardjobwhitelist.txt with the format [ckey] - [job] in order to work.
+	var/hard_whitelisted = 0 			// jobs that are hard whitelisted need players to be added to hardjobwhitelist.txt with the format [ckey] - [job] in order to work.
+	var/clean_record_required = FALSE		// This job needs a clean record.
 
-/datum/job/proc/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
+/datum/job/proc/get_job_email()			// whatever this is set to will be the job's communal email. should be persistent.
 	return
 
 

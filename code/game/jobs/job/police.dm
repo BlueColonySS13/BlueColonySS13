@@ -25,6 +25,8 @@
 	outfit_type = /decl/hierarchy/outfit/job/security/hos
 	alt_titles = list("Head of Police", "Police Commander", "Police Commissioner", "Police Chief")
 
+	clean_record_required = TRUE
+
 /datum/job/hos/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email
 
@@ -49,6 +51,8 @@
 	outfit_type = /decl/hierarchy/outfit/job/security/warden
 	alt_titles = list("Correctional Officer", "Brig Attendant")
 
+	clean_record_required = TRUE
+
 /datum/job/detective
 	title = "Detective"
 	email_domain = "secure.plux.gov.nt"
@@ -70,6 +74,8 @@
 	outfit_type = /decl/hierarchy/outfit/job/security/detective
 	alt_titles = list("Forensic Technician" = /decl/hierarchy/outfit/job/security/detective/forensic, "Investigator")
 
+	clean_record_required = TRUE
+
 /datum/job/officer
 	title = "Police Officer"
 	email_domain = "secure.plux.gov.nt"
@@ -90,6 +96,8 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
 	alt_titles = list("Police Cadet","Traffic Warden" = /decl/hierarchy/outfit/job/security/traffic)
+
+	clean_record_required = TRUE
 
 /datum/job/prosecutor
 	title = "District Prosecutor"
@@ -113,6 +121,8 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/prosecution
 
+	clean_record_required = TRUE
+
 /datum/job/bguard
 	title = "City Hall Guard"
 	email_domain = "secure.plux.gov.nt"
@@ -133,3 +143,5 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/heads/secretary
 	alt_titles = list("Council Bodyguard", "City Hall Security", "Bailiff")
+
+	clean_record_required = TRUE
