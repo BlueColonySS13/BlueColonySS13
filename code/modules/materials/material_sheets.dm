@@ -47,7 +47,7 @@
 
 	
 	
-/obj/item/stack/material/proc/update_reagents()
+/obj/item/stack/material/update_reagents()
 	if(reagents)
 		reagents.reagent_list.Cut()
 	if(associated_reagents)
