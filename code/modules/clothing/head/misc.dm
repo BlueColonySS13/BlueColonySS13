@@ -421,7 +421,8 @@
 
 /obj/item/clothing/head/tinfoil
 	name = "tinfoil hat"
-	desc = "A hat made of high-quality DonkCo. aluminum foil, designed to protect from the harmful mind-controlling rays emitted by various technologies."
+	desc = "A hat made of high-quality DonkCo. aluminum foil, designed to protect from the harmful mind-controlling rays emitted by the government."
 	icon_state = "tinfoil"
 	body_parts_covered = BLOCKHAIR
 	siemens_coefficient = 0.6
+
