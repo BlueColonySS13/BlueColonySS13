@@ -6,7 +6,17 @@
 	hitsound = 'sound/weapons/baby_cry.ogg'
 	icon_state = "baby-blackeyed"
 	w_class = ITEMSIZE_LARGE
-	slot_flags = SLOT_BACK
+	slot_flags = SLOT_BACK|SLOT_OCLOTHING
+
+/obj/item/weapon/baby/equipped(var/mob/user, var/slot)
+	switch(slot)
+		if(slot_back) //Mask is the default for all the settings
+			icon_state = initial(icon_state)
+
+		if(slot_wear_suit)
+			icon_state = "[initial(icon_state)]_chest"
+
+	return ..()
 
 /obj/item/weapon/baby/attack_self(mob/living/user as mob)
 	if (user.client)
@@ -34,6 +44,19 @@
 
 	name = input
 	return
+
+/obj/item/weapon/baby/verb/baby_emote()
+	set name = "Baby Emote"
+	set category = "Object"
+	set desc = "Click to have your baby perform an emote."
+	set src in usr
+
+	var/message = sanitize(copytext(input(usr, "[name]...", "Baby Emote", null)  as text,1,MAX_MESSAGE_LEN))
+	if(!message)
+		return
+	if ((src.loc == usr && usr.stat == 0))
+		for(var/mob/O in (viewers(usr)))
+			O.show_message("<B>[src]</B> [message]")
 
 /obj/item/weapon/baby/black
 	icon_state = "baby-black"

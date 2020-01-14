@@ -233,7 +233,7 @@
 
 /obj/item/clothing/head/helmet/tinfoil
 	name = "anti-tachyonite ray helmet"
-	desc = "A poxball helmet covered with aluminum foil. This will definitely protect from the rays emitted by the Great Taker's machines."
+	desc = "A helmet covered with aluminum foil. This will definitely protect from the rays emitted by the Great Taker's machines."
 	icon_state = "tinfoil_helm"
 	body_parts_covered = BLOCKHAIR
 	siemens_coefficient = 0.6
