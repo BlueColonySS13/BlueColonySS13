@@ -651,3 +651,7 @@
 		var/obj/item/clothing/under/daisydukes/daisyduke_type = daisyduke
 		daisydukes[initial(daisyduke_type.name)] = daisyduke_type
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(daisydukes))
+
+/datum/gear/uniform/punk
+	display_name = "punk outfit"
+	path = /obj/item/clothing/under/punk

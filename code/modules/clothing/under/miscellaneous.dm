@@ -1072,3 +1072,8 @@
 /obj/item/clothing/under/daisydukes/grey
 	name = "grey daisy dukes"
 	icon_state = "d_dukes_gr"
+
+/obj/item/clothing/under/punk
+	name = "punk outfit"
+	desc = "Made in Seattle, 2281."
+	icon_state = "punk"
