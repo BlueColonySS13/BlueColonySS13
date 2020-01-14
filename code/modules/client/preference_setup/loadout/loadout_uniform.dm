@@ -644,6 +644,10 @@
 	display_name = "striped suit"
 	path = /obj/item/clothing/under/hartsuit
 
+/datum/gear/uniform/daisydukes
+	display_name = "daisy dukes selection"
+	path = /obj/item/clothing/under/daisydukes
+
 /datum/gear/uniform/daisydukes/New()
 	..()
 	var/list/daisydukes = list()
