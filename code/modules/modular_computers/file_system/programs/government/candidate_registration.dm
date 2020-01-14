@@ -130,7 +130,7 @@
 
 	if(href_list["withdraw_candidacy"])
 		. = 1
-		if(!registered in SSelections.political_candidates)
+		if(!(registered in SSelections.political_candidates))
 			reg_error = "You're not a current candidate!"
 
 		for(var/datum/president_candidate/P in SSelections.political_candidates)
