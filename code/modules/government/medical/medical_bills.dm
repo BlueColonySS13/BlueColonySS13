@@ -81,13 +81,13 @@ var/global/list/medical_bills = list()
 	cost = 700
 	insurance_coverage = INSURANCE_BASIC
 
-/datum/medical_bill/organs_limbs
+/datum/medical_bill/replacement_organs
 	name = "Organ Replacement"
 	description = "Organ replacement surgery. Organs sold separately."
 	cost = 2000
 	insurance_coverage = INSURANCE_HIGH
 
-/datum/medical_bill/organs_limbs
+/datum/medical_bill/replacement_limbs
 	name = "Limb Replacement"
 	description = "Limb replacement surgery. Limbs sold separately."
 	cost = 1750

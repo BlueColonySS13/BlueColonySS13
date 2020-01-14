@@ -27,14 +27,7 @@
 	var/reagents_per_unit = 2
 
 /obj/item/stack/proc/update_reagents()
-	if(reagents)
-		reagents.reagent_list.Cut()
-	if(associated_reagents)
-		var/divided = (reagents_per_unit / associated_reagents.len) * amount
-		for(var/R	in associated_reagents)
-			reagents.add_reagent(R, divided)
-
-	return 1
+	return
 
 /obj/item/stack/New(var/loc, var/amount=null)
 	..()
