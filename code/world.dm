@@ -57,10 +57,14 @@ var/global/datum/global_init/init = new ()
 		game_id = "[c[(t % l) + 1]][game_id]"
 		t = round(t / l)
 
-
+/world/proc/enable_debugger()
+    var/dll = world.GetConfig("env", "EXTOOLS_DLL")
+    if (dll)
+        call(dll, "debug_initialize")()
 
 #define RECOMMENDED_VERSION 501
 /world/New()
+	enable_debugger()
 	world.log << "Map Loading Complete"
 	//logs
 	log_path += time2text(world.realtime, "YYYY/MM-Month/DD-Day/[game_id]/round-hh-mm-ss")
