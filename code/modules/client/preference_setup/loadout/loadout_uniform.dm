@@ -646,7 +646,6 @@
 
 /datum/gear/uniform/daisydukes
 	display_name = "daisy dukes selection"
-	path = /obj/item/clothing/under/daisydukes
 
 /datum/gear/uniform/daisydukes/New()
 	..()
