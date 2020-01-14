@@ -251,4 +251,4 @@ var/global/list/image/splatter_cache=list()
 	..()
 	var/datum/disease2/disease/D = new
 	D.makerandom()
-	virus2 = D
+	virus2 += D
