@@ -418,3 +418,10 @@
 	desc = "Keeps hair out of the way for important... jobs."
 	icon_state = "maid"
 	body_parts_covered = 0
+
+/obj/item/clothing/head/tinfoil
+	name = "tinfoil hat"
+	desc = "A hat made of high-quality DonkCo. aluminum foil, designed to protect from the harmful mind-controlling rays emitted by various technologies."
+	icon_state = "tinfoil"
+	body_parts_covered = BLOCKHAIR
+	siemens_coefficient = 0.6
