@@ -1067,10 +1067,8 @@
 
 /obj/item/clothing/under/daisydukes/black
 	name = "black daisy dukes"
-	desc = "A pair of barely there denim shorts. It doesn't leave much to the imagination."
 	icon_state = "d_dukes_bl"
 
 /obj/item/clothing/under/daisydukes/grey
 	name = "grey daisy dukes"
-	desc = "A pair of barely there denim shorts. It doesn't leave much to the imagination."
 	icon_state = "d_dukes_gr"
