@@ -118,6 +118,7 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/civilian/defense/defense
 
+	clean_record_required = TRUE
 
 /datum/job/barber
 	title = "Barber"
@@ -160,6 +161,8 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/civilian/secretary
 
+	clean_record_required = TRUE
+
 //Cargo
 /datum/job/qm
 	title = "Factory Manager"
@@ -167,7 +170,6 @@
 	department = "Cargo"
 	department_flag = CIVILIAN
 	faction = "City"
-	head_position = 1
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the mayor"
@@ -175,7 +177,7 @@
 	selection_color = "#7a4f33"
 	idtype = /obj/item/weapon/card/id/cargo/head
 	wage = 150
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_heads)
+	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimum_character_age = 20
 	ideal_character_age = 35

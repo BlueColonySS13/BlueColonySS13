@@ -31,6 +31,7 @@
 	M.owner_name = new_owner_name
 	M.remote_access_pin = rand(1111, 9999)
 	M.money = starting_funds
+	M.security_level = 1
 
 	//create an entry in the account transaction log for when it was created
 	var/datum/transaction/T = new()
@@ -43,7 +44,7 @@
 		T.time = stationtime2text()
 		T.source_terminal = "NTGalaxyNet Terminal #[rand(111,1111)]"
 
-		M.account_number = rand(111111, 999999)
+		M.account_number = md5("[station_name()][current_date_string]")
 	else
 		T.date = current_date_string
 		T.time = stationtime2text()
@@ -85,7 +86,7 @@
 /proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
 
 	for(var/datum/money_account/D in all_money_accounts)
-		if(D.account_number == text2num(attempt_account_number) && !D.suspended || D.account_number == attempt_account_number && !D.suspended)
+		if(D.account_number == attempt_account_number && !D.suspended || D.account_number == attempt_account_number && !D.suspended)
 			D.money += amount
 			//create a transaction log entry
 			var/datum/transaction/T = new()

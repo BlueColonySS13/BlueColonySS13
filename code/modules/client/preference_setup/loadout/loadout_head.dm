@@ -21,6 +21,26 @@
 	path = /obj/item/clothing/head/cargo_beret
 	allowed_roles = list("Factory Worker","Shaft Miner","Factory Manager")
 
+/datum/gear/head/engineering_beret
+	display_name = "engineering beret"
+	path = /obj/item/clothing/head/engineering_beret
+	allowed_roles = list("Fire Chief","City Engineer","Firefighter")
+
+/datum/gear/head/science_beret
+	display_name = "science beret"
+	path = /obj/item/clothing/head/science_beret
+	allowed_roles = list("Research Director","Scientist","Xenobiologist","Roboticist","Research Assistant")
+
+/datum/gear/head/service_beret
+	display_name = "service beret"
+	path = /obj/item/clothing/head/service_beret
+	allowed_roles = list("Bartender","Chef","Botanist","Sanitation Technician","Journalist","Defense Attorney","Barber","City Hall Secretary")
+
+/datum/gear/head/medical_beret
+	display_name = "medical beret"
+	path = /obj/item/clothing/head/medical_beret
+	allowed_roles = list("Chief Medical Officer","Doctor","Chemist","Geneticist","Psychiatrist","Paramedic","Medical Intern")
+
 /datum/gear/head/beret/bsec
 	display_name = "beret, navy (officer)"
 	path = /obj/item/clothing/head/beret/sec/navy/officer

@@ -18,6 +18,7 @@
 		/obj/item/seeds,
 		/obj/item/stack/medical,
 		/obj/item/weapon/coin,
+		/obj/item/weapon/passport,
 		/obj/item/weapon/dice,
 		/obj/item/weapon/disk,
 		/obj/item/weapon/implanter,
@@ -129,7 +130,7 @@
 			update_icon()
 
 /obj/item/weapon/storage/wallet/womens
-	name = "women's wallet"
-	desc = "A stylish wallet typically used by women."
+	name = "clutch wallet"
+	desc = "A stylish wallet, often used by women or especially effeminate men."
 	icon_state = "girl_wallet"
 	item_state_slots = list(slot_r_hand_str = "wowallet", slot_l_hand_str = "wowallet")

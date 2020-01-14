@@ -1,26 +1,26 @@
 
 
-/proc/is_voting_eligible(var/mob/living/carbon/human/H)
+/proc/is_voting_ineligible(var/mob/living/carbon/human/H)
 	if(!ishuman(H))
-		return 0
+		return "Not Human"
 
-	if(!(persistent_economy.voting_age > H.age) )
-		return 0
+	if(persistent_economy.voting_age > H.age)
+		return "Not Old Enough"
 
 	if(!persistent_economy.synth_vote && H.isSynthetic() )
-		return 0
+		return "Is Synthetic"
 
 	if(!persistent_economy.citizenship_vote && H.home_system != using_map.starsys_name)
-		return 0
+		return "Is from [H.home_system] and not from [using_map.starsys_name]"
 
 	var/datum/data/record/police_record = get_sec_record(H)
 
 	if(police_record)
 		var/list/criminal_record = police_record.fields["crim_record"]
 		if(!isemptylist(criminal_record))
-			return 0
+			return "Has a criminal record"
 
-	return 1
+	return 0
 
 /atom/movable/proc/is_contraband()
 	return
