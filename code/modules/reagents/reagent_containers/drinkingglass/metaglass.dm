@@ -214,7 +214,7 @@ Drinks Data
 
 /datum/reagent/ethanol/euphoria
 	glass_icon_state = "euphoriaglass"
-	glass_center_of_mass = list("x"=16, "y"=9)
+	glass_center_of_mass = list("x"=16, "y"=8)
 
 /datum/reagent/ethanol/ale
 	glass_icon_state = "aleglass"
@@ -254,7 +254,7 @@ Drinks Data
 
 /datum/reagent/ethanol/sake
 	glass_icon_state = "sakeglass"
-	glass_center_of_mass = list("x"=16, "y"=12)
+	glass_center_of_mass = list("x"=15, "y"=10)
 
 /datum/reagent/ethanol/tequila
 	glass_icon_state = "tequillaglass"
