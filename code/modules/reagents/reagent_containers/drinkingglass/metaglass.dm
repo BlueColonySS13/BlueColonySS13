@@ -155,7 +155,7 @@ Drinks Data
 	glass_icon_state = "lemonadeglass"
 
 /datum/reagent/drink/soda/appleade
-	glass_icon_state = "appleadgeglass"
+	glass_icon_state = "appleadeglass"
 
 /datum/reagent/drink/soda/pineappleade
 	glass_icon_state = "pineappleadeglass"
