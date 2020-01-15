@@ -1,24 +1,14 @@
 
-/obj/item/weapon/baby
+/obj/item/clothing/suit/baby
 	name = "baby"
 	desc = "A very, very young child. How cute."
 	icon = 'icons/obj/baby.dmi'
 	hitsound = 'sound/weapons/baby_cry.ogg'
 	icon_state = "baby-blackeyed"
 	w_class = ITEMSIZE_LARGE
-	slot_flags = SLOT_BACK|SLOT_OCLOTHING
+	slot_flags = SLOT_OCLOTHING | SLOT_BACK
 
-/obj/item/weapon/baby/equipped(var/mob/user, var/slot)
-	switch(slot)
-		if(slot_back) //Mask is the default for all the settings
-			icon_state = initial(icon_state)
-
-		if(slot_wear_suit)
-			icon_state = "[initial(icon_state)]_chest"
-
-	return ..()
-
-/obj/item/weapon/baby/attack_self(mob/living/user as mob)
+/obj/item/clothing/suit/baby/attack_self(mob/living/user as mob)
 	if (user.client)
 		if(user.client.prefs.muted & MUTE_IC)
 			src << "\red You cannot speak in IC (muted)."
@@ -31,7 +21,7 @@
 		for(var/mob/O in (viewers(user)))
 			O.show_message("<B>[src]</B> [message]")
 
-/obj/item/weapon/baby/verb/rename_baby()
+/obj/item/clothing/suit/baby/verb/rename_baby()
 	set name = "Rename Baby"
 	set category = "Object"
 	set desc = "Click to rename your baby."
@@ -45,7 +35,7 @@
 	name = input
 	return
 
-/obj/item/weapon/baby/verb/baby_emote()
+/obj/item/clothing/suit/baby/verb/baby_emote()
 	set name = "Baby Emote"
 	set category = "Object"
 	set desc = "Click to have your baby perform an emote."
@@ -58,8 +48,8 @@
 		for(var/mob/O in (viewers(usr)))
 			O.show_message("<B>[src]</B> [message]")
 
-/obj/item/weapon/baby/black
+/obj/item/clothing/suit/baby/black
 	icon_state = "baby-black"
 
-/obj/item/weapon/baby/tanned
+/obj/item/clothing/suit/baby/tanned
 	icon_state = "baby-tanned"

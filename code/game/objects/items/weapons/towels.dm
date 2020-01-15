@@ -1,4 +1,4 @@
-/obj/item/weapon/towel
+/obj/item/clothing/suit/towel
 	name = "towel"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "towel"
@@ -11,7 +11,7 @@
 	desc = "A soft cotton towel."
 	drop_sound = 'sound/items/drop/clothing.ogg'
 
-/obj/item/weapon/towel/attack_self(mob/living/user as mob)
+/obj/item/clothing/suit/towel/attack_self(mob/living/user as mob)
 	var/mob/living/carbon/human/H = user
 	user.visible_message(text("<span class='notice'>[] uses [] to towel themselves off.</span>", user, src))
 	playsound(user, 'sound/weapons/towelwipe.ogg', 25, 1)
@@ -24,7 +24,7 @@
 
 
 
-/obj/item/weapon/towel/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/clothing/suit/towel/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(user.zone_sel.selecting == BP_HEAD) // lipstick wiping
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -42,6 +42,6 @@
 					H.update_icons_body()
 
 
-/obj/item/weapon/towel/random/New()
+/obj/item/clothing/suit/towel/random/New()
 	..()
 	color = "#"+get_random_colour()

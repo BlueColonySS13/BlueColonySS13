@@ -796,7 +796,7 @@
 	req_log_access = access_bar
 	has_logs = 1
 	vending_sound = "machines/vending_cans.ogg"
-	
+
 	charge_department = "Bar"
 	charge_free_to_department = TRUE
 
@@ -866,7 +866,7 @@
 							"soda")
 
 	..()
-	
+
 /obj/machinery/vending/fitness
 	name = "SweatMAX"
 	desc = "Fueled by your inner inadequacy!"
@@ -878,7 +878,7 @@
 					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 8,
 					/obj/item/weapon/reagent_containers/pill/diet = 8,
-					/obj/item/weapon/towel/random = 8)
+					/obj/item/clothing/suit/towel/random = 8)
 
 	prices = list(/obj/item/weapon/reagent_containers/food/drinks/smallmilk = 3,
 					/obj/item/weapon/reagent_containers/food/drinks/smallchocmilk = 3,
@@ -887,7 +887,7 @@
 					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 5,
 					/obj/item/weapon/reagent_containers/pill/diet = 35,
-					/obj/item/weapon/towel/random = 40)
+					/obj/item/clothing/suit/towel/random = 40)
 
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/steroid = 4)
 
@@ -978,17 +978,17 @@
 					/obj/item/weapon/reagent_containers/syringe/antiviral = 4,
 					/obj/item/weapon/reagent_containers/syringe = 12,
 					/obj/item/device/healthanalyzer = 5,
-					/obj/item/weapon/reagent_containers/glass/beaker = 4, 
+					/obj/item/weapon/reagent_containers/glass/beaker = 4,
 					/obj/item/weapon/reagent_containers/dropper = 5,
-					/obj/item/stack/medical/advanced/bruise_pack = 6, 
-					/obj/item/stack/medical/advanced/ointment = 6, 
+					/obj/item/stack/medical/advanced/bruise_pack = 6,
+					/obj/item/stack/medical/advanced/ointment = 6,
 					/obj/item/stack/medical/splint = 4,
 					/obj/item/weapon/storage/pill_bottle/carbon = 2,
 					/obj/item/weapon/reagent_containers/glass/bottle/alkysine = 5,
 					/obj/item/weapon/reagent_containers/glass/bottle/peridaxon = 5,
 					/obj/item/weapon/reagent_containers/pill/rezadone = 2)
-					
-					
+
+
 	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 3,/obj/item/weapon/reagent_containers/pill/stox = 4,/obj/item/weapon/reagent_containers/pill/antitox = 6)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	req_log_access = access_cmo
