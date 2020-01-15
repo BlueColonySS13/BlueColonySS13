@@ -3020,7 +3020,7 @@
 "bgd" = (/obj/structure/railing,/turf/simulated/open,/area/planets/Geminus/outdoor/west)
 "bge" = (/obj/effect/floor_decal/corner/red/diagonal,/obj/structure/closet/secure_closet/guncabinet/bodyguard,/obj/structure/painting/random,/obj/item/weapon/handcuffs,/obj/item/taperoll/police,/obj/item/device/flashlight/color/red,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/city_hall)
 "bgf" = (/obj/effect/floor_decal/corner/pink/diagonal,/obj/structure/bed/chair/comfy/brown{dir = 8},/obj/effect/landmark/start{name = "Civilian"},/turf/simulated/floor/tiled/red,/area/crew_quarters)
-"bgg" = (/obj/effect/floor_decal/corner/paleblue{dir = 5},/obj/machinery/organ_printer/robot/full,/obj/machinery/light/small{dir = 4; pixel_y = 0},/turf/simulated/floor/tiled/steel,/area/medical/surgeryobs)
+"bgg" = (/obj/effect/floor_decal/corner/paleblue{dir = 5},/obj/machinery/organ_printer/flesh/full,/obj/machinery/light/small{dir = 4; pixel_y = 0},/turf/simulated/floor/tiled/steel,/area/medical/surgeryobs)
 "bgh" = (/obj/structure/disposalpipe/segment{dir = 2; icon_state = "pipe-c"},/turf/simulated/floor/tiled/white,/area/medical/medbay)
 "bgi" = (/obj/effect/floor_decal/corner/blue{dir = 9},/obj/machinery/camera/network/command{c_tag = "COM - Mayor's Garage"; dir = 8},/turf/simulated/floor/tiled,/area/planets/Geminus/indoor/mayor_car_park)
 "bgj" = (/obj/machinery/disposal,/obj/structure/disposalpipe/trunk{icon_state = "pipe-t"; dir = 4},/obj/effect/floor_decal/spline/fancy{icon_state = "spline_fancy"; dir = 6},/turf/simulated/floor/tiled/steel,/area/library)
