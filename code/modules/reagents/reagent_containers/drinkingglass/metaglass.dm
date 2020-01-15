@@ -171,6 +171,15 @@ Drinks Data
 	glass_icon_state = "milkshake"
 	glass_center_of_mass = list("x"=16, "y"=7)
 
+/datum/reagent/drink/milkshake/berryshake
+	glass_icon_state = "berryshake"
+
+/datum/reagent/drink/milkshake/chocoshake
+	glass_icon_state = "chocoshake"
+
+/datum/reagent/drink/milkshake/coffeeshake
+	glass_icon_state = "coffeeshake"
+
 /datum/reagent/drink/rewriter
 	glass_icon_state = "rewriter"
 	glass_center_of_mass = list("x"=16, "y"=9)
@@ -208,6 +217,12 @@ Drinks Data
 /datum/reagent/drink/nothing
 	glass_icon_state = "nothing"
 
+/datum/reagent/drink/arnoldpalmer
+	glass_icon_state = "arnoldpalmerglass"
+
+/datum/reagent/drink/berrycordial
+	glass_icon_state = "berrycordialglass"
+
 /datum/reagent/ethanol/absinthe
 	glass_icon_state = "absintheglass"
 	glass_center_of_mass = list("x"=16, "y"=5)
@@ -219,6 +234,10 @@ Drinks Data
 /datum/reagent/ethanol/ale
 	glass_icon_state = "aleglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/balloon
+	glass_icon_state = "balloonglass"
+	glass_center_of_mass = list("x"=16, "y"=6)
 
 /datum/reagent/ethanol/beer
 	glass_icon_state = "beerglass"
