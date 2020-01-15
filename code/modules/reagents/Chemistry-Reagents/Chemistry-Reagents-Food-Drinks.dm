@@ -2557,6 +2557,8 @@
 	glass_name = "Euphoria"
 	glass_desc = "Invented by a Eutopian marketing team, this is one of the most expensive cocktails in existence."
 
+	price_tag = 1.2
+
 /datum/reagent/ethanol/xanaducannon
 	name = "Xanadu Cannon"
 	id = "xanaducannon"
