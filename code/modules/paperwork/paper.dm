@@ -80,8 +80,7 @@
 	stamps = null
 
 	if(info != initial(info))
-		if(!persistence_save)
-			info = html_encode(info)
+		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
 		return
@@ -116,8 +115,7 @@
 		desc = "This is a paper titled '" + name + "'."
 
 	if(info != initial(info))
-		if(!persistence_save)
-			info = html_encode(info)
+		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
 

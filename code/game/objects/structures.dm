@@ -17,12 +17,6 @@
 		new parts(loc)
 	. = ..()
 
-/obj/structure/vars_to_save()
- 	return list("color","dir","name","pixel_x","pixel_y","contents")
-/obj/structure/map_important_vars()
-	// A list of important things to save in the map editor
- 	return list("color","dir","layer","name","pixel_x","pixel_y","contents")
-
 /obj/structure/proc/update_connections(propagate = 0)
 	var/list/dirs = list()
 	var/list/other_dirs = list()

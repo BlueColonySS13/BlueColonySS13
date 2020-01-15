@@ -242,10 +242,38 @@
 
 	return 0
 
+
+/datum/lot/proc/map_file()
+	var/complete_map = map_to_file(test_map_write(), path, id)
+
+	return complete_map
+
+
+/datum/lot/proc/test_map_write()
+	var/CHUNK = make_chunk()
+
+	var/e_map = map_write(CHUNK, 1, 0)
+
+	return e_map
+
+/datum/lot/proc/make_chunk()
+	var/map_turfs = get_map_turfs(top_left, bottom_right)
+
+	return map_turfs
+
+/datum/lot/proc/maptofile()
+	var/mfile = map_to_file(mapwrite())
+	return mfile
+
+/datum/lot/proc/mapwrite()
+	var/mapw = map_write(make_chunk(), 1, 1)
+	return mapw
+
 /datum/lot/proc/save_lot_data()
 	if(!top_left || !bottom_right)
 		return 0
-	var/map = SSmapping.maploader.save_map(top_left, bottom_right, id, path, DMM_IGNORE_MOBS)
+//	var/map = SSmapping.maploader.save_map(top_left, bottom_right, id, path, DMM_IGNORE_MOBS)
+	var/map = save_map(top_left, bottom_right, id, path, TRUE, FALSE)
 
 	return map
 
@@ -253,7 +281,7 @@
 	if(!top_left || !bottom_right)
 		return 0
 
-	var/full_path = "[path][id].dmm"
+	var/full_path = "[path][id].sav"
 	if(fexists(full_path))
 		for(var/obj/O in lot_area)
 			QDEL_NULL(O)
@@ -262,8 +290,9 @@
 		for(var/obj/O in lot_area)
 			QDEL_NULL(O)
 //		SSmapping.maploader.load_map_tg(file(full_path), top_left.x, bottom_right.y, top_left.z, 1, 0)
-		SSmapping.maploader.load_map(file(full_path), top_left.x, bottom_right.y, top_left.z, 1, 0)
-
+//		SSmapping.maploader.load_map(file(full_path), top_left.x, bottom_right.y, top_left.z, 1, 0)
+		restore_map(id, path)
+/*
 		// Some things don't initialize at all after being loaded, it's weird, but this is needed too.
 		for(var/obj/O in lot_area)
 			O.persistence_save = FALSE
@@ -271,8 +300,8 @@
 			if(!O.initialized || istype(O,/obj/structure))
 				O.initialize()
 		return 1
-
-	return 0
+*/
+	return 1
 
 
 /datum/controller/subsystem/lots/proc/monthly_payroll()

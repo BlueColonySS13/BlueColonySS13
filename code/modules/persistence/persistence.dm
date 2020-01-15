@@ -29,7 +29,7 @@
 
 // This is so specific atoms can override these, and ignore certain ones
 /atom/proc/vars_to_save()
- 	return list("x","y","z","color","dir","icon","icon_state","name","pixel_x","pixel_y")
+ 	return list("x","y","z","color","dir","icon_state","name","pixel_x","pixel_y")
 
 /atom/proc/map_important_vars()
 	// A list of important things to save in the map editor
@@ -75,3 +75,15 @@
 	var/atom/movable/thing = new path(loc)
 	thing.deserialize(data)
 	return thing
+
+
+// Custom vars-to-save list
+
+/obj/structure/table/vars_to_save()
+ 	return list("color","dir","pixel_x","pixel_y","contents","connections","other_connections")	// name isn't saved because some structures shed their name, for some weird reason.
+
+
+// Don't save list - Better to keep a track of things here.
+
+/atom/movable/lighting_overlay
+	dont_save = TRUE
