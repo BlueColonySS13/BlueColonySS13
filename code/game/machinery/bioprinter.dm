@@ -50,12 +50,6 @@
 		"Head" = list(/obj/item/organ/external/head, 40)
 		)
 
-	var/list/anomalous_products = list(
-		"Lymphatic Complex" = list(/obj/item/organ/internal/immunehub, 120),
-		"Respiration Nexus" = list(/obj/item/organ/internal/lungs/replicant/mending, 80),
-		"Adrenal Valve Cluster" = list(/obj/item/organ/internal/heart/replicant/rage, 80)
-		)
-
 /obj/machinery/organ_printer/attackby(var/obj/item/O, var/mob/user)
 	if(default_deconstruction_screwdriver(user, O))
 		updateUsrDialog()
@@ -148,9 +142,6 @@
 	if(complex_organs)
 		possible_list |= complex_products
 
-	if(anomalous_organs)
-		possible_list |= anomalous_products
-
 	var/choice = input("What would you like to print?") as null|anything in possible_list
 
 	if(!choice || printing || (stat & (BROKEN|NOPOWER)))
@@ -234,7 +225,7 @@
 
 	if(malfunctioning && prob(30)) // Alien Tech is a hell of a drug.
 		malfunctioned = TRUE
-		var/possible_species = list(SPECIES_HUMAN, SPECIES_VOX, SPECIES_SKRELL, SPECIES_ZADDAT, SPECIES_UNATHI, SPECIES_GOLEM, SPECIES_SHADOW)
+		var/possible_species = list(SPECIES_HUMAN, SPECIES_VOX, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_GOLEM, SPECIES_SHADOW)
 		var/new_species = pick(possible_species)
 		if(!all_species[new_species])
 			new_species = SPECIES_HUMAN
