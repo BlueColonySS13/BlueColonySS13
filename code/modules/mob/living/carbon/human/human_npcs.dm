@@ -2,21 +2,6 @@ proc/random_outfit(var/mob/living/carbon/human/M)
 
 	var/outfit
 
-	/var/random_dress = pick(
-	/obj/item/clothing/under/dress/black_corset,
-	/obj/item/clothing/under/dress/dress_hr,
-	/obj/item/clothing/under/dress/dress_pink,
-	/obj/item/clothing/under/dress/dress_saloon,
-	/obj/item/clothing/under/dress/dress_green,
-	/obj/item/clothing/under/dress/dress_fire,
-	/obj/item/clothing/under/sundress_white,
-	/obj/item/clothing/under/suit_jacket/female,
-	/obj/item/clothing/under/dress/flower_dress,
-	/obj/item/clothing/under/dress/sailordress,
-	/obj/item/clothing/under/dress/stripeddress,
-	/obj/item/clothing/under/dress/westernbustle,
-	/obj/item/clothing/under/dress/darkred)
-
 	if(M.gender == MALE)
 		if(M.age < 90)
 			outfit = pick (

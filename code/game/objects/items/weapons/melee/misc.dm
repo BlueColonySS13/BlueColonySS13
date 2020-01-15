@@ -33,7 +33,7 @@
 	update_icon()
 
 /obj/item/weapon/melee/umbrella/attack_self()
-	src.toggle_umbrella()
+	toggle_umbrella()
 
 /obj/item/weapon/melee/umbrella/proc/toggle_umbrella()
 	open = !open
@@ -45,7 +45,6 @@
 		var/mob/living/carbon/human/H = src.loc
 		H.update_inv_l_hand(0)
 		H.update_inv_r_hand()
-	..()
 
 // Randomizes color
 /obj/item/weapon/melee/umbrella/random/New()

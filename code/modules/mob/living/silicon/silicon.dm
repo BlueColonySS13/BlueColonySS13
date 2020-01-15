@@ -182,7 +182,7 @@
 	onclose(src, "airoster")
 
 //can't inject synths
-/mob/living/silicon/can_inject(var/mob/user, var/error_msg)
+/mob/living/silicon/can_inject(user, error_msg, target_zone, ignore_thickness)
 	if(error_msg)
 		user << "<span class='alert'>The armoured plating is too tough.</span>"
 	return 0
