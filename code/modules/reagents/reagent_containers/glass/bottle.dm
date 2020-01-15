@@ -201,3 +201,10 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 	prefill = list("frostoil" = 60)
+	
+/obj/item/weapon/reagent_containers/glass/bottle/biomass
+	name = "biomass bottle"
+	desc = "A bottle of raw biomass! Gross!"
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "bottle-3"
+	prefill = list("biomass" = 60)
