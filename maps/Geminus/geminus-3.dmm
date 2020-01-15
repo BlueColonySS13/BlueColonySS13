@@ -871,7 +871,7 @@
 "aqM" = (/obj/machinery/light/colored/blue{tag = "icon-blue1 (NORTH)"; icon_state = "blue1"; dir = 1},/turf/simulated/floor/wood/walnut,/area/centcom/president_office)
 "aqN" = (/turf/simulated/floor/carpet/sblucarpet,/area/centcom/president_office)
 "aqO" = (/obj/structure/closet{icon_closed = "cabinet_closed"; icon_opened = "cabinet_open"; icon_state = "cabinet_closed"},/obj/item/clothing/suit/storage/toggle/presidential_jacket,/obj/item/clothing/under/rank/president,/obj/item/clothing/accessory/tie/president,/obj/item/weapon/cell/device/weapon/recharge/captain,/turf/simulated/floor/carpet/sblucarpet,/area/centcom/president_office)
-"aqP" = (/obj/machinery/organ_printer/robot/full,/obj/effect/floor_decal/corner/paleblue{dir = 9},/turf/simulated/floor/tiled/white,/area/centcom/medical)
+"aqP" = (/obj/machinery/organ_printer/flesh/full,/obj/effect/floor_decal/corner/paleblue{dir = 9},/turf/simulated/floor/tiled/white,/area/centcom/medical)
 "aqQ" = (/obj/structure/sink{dir = 8; icon_state = "sink"; pixel_x = -12; pixel_y = 2},/obj/effect/floor_decal/corner/paleblue{dir = 9},/turf/simulated/floor/tiled/white,/area/centcom/medical)
 "aqR" = (/obj/structure/table/reinforced,/obj/item/weapon/storage/firstaid,/turf/simulated/floor/tiled/white,/area/centcom/medical)
 "aqS" = (/obj/structure/table/reinforced,/obj/item/weapon/storage/firstaid/surgery,/turf/simulated/floor/tiled/white,/area/centcom/medical)
