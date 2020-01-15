@@ -154,6 +154,12 @@ Drinks Data
 /datum/reagent/drink/soda/lemonade
 	glass_icon_state = "lemonadeglass"
 
+/datum/reagent/drink/soda/appleade
+	glass_icon_state = "appleadgeglass"
+
+/datum/reagent/drink/soda/pineappleade
+	glass_icon_state = "pineappleadeglass"
+
 /datum/reagent/drink/soda/kiraspecial
 	glass_icon_state = "kiraspecial"
 	glass_center_of_mass = list("x"=16, "y"=12)
@@ -504,3 +510,4 @@ Drinks Data
 /datum/reagent/ethanol/specialwhiskey
 	glass_icon_state = "whiskeyglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
+
