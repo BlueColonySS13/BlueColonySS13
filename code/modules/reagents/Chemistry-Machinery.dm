@@ -63,7 +63,11 @@
 
 	else if(default_unfasten_wrench(user, B, 20))
 		return
-
+	if(default_deconstruction_screwdriver(user, B))
+		return
+	if(default_deconstruction_crowbar(user, B))
+		return
+		
 	return
 
 /obj/machinery/chem_master/attack_hand(mob/user as mob)
