@@ -32,7 +32,8 @@
 							"atluscity",
 							"sunstar",
 							"speedweed",
-							"golf")
+							"golf",
+							"visit_texas")
 
 	var/current_ad
 

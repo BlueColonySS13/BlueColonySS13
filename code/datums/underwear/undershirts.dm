@@ -166,3 +166,8 @@
 /datum/category_item/underwear/undershirt/tiedye
 	name = "Tiedye Shirt"
 	icon_state = "tiedye"
+
+/datum/category_item/underwear/undershirt/flannel_tied
+	name = "Shirt, Tied-Off Flannel, feminine"
+	icon_state = "flannel_tied"
+	has_color = TRUE

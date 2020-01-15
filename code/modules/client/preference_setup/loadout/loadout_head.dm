@@ -397,3 +397,7 @@
 /datum/gear/head/surgical/purple
 	display_name = "surgical cap, purple"
 	path = /obj/item/clothing/head/surgery/purple
+
+/datum/gear/head/tinfoil
+	display_name = "tinfoil hat"
+	path = /obj/item/clothing/head/tinfoil

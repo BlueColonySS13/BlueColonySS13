@@ -231,3 +231,11 @@
 			icon_state = initial(icon_state)
 			update_clothing_icon()
 
+/obj/item/clothing/head/helmet/tinfoil
+	name = "anti-tachyonite ray helmet"
+	desc = "A helmet covered with aluminum foil. This will definitely protect from the rays emitted by the Great Taker's machines."
+	icon_state = "tinfoil_helm"
+	body_parts_covered = BLOCKHAIR
+	siemens_coefficient = 0.6
+	item_state_slots = list(slot_r_hand_str = "helmet", slot_l_hand_str = "helmet")
+	armor = list(melee = 12, bullet = 5, laser = 5 ,energy = 5, bomb = 0, bio = 0, rad = 0)
