@@ -80,7 +80,8 @@
 	stamps = null
 
 	if(info != initial(info))
-		info = html_encode(info)
+		if(!persistence_loaded)
+			info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
 		return

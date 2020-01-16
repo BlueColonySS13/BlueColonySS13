@@ -61,6 +61,8 @@
 	for(var/turf/T in CHUNK)
 		if(T.dont_save) continue
 
+		T.on_persistence_save()
+
 		var/datum/map_turf/MT = new/datum/map_turf()
 		MT.turf_type = T.type
 		MT.x = T.x
@@ -74,6 +76,8 @@
 		if(save_obj)
 			for(var/obj/O in T.contents)
 				if(O.dont_save) continue
+
+				O.on_persistence_save()
 
 				var/datum/map_object/MO = new/datum/map_object
 				MO.savedtype = O.type
@@ -92,6 +96,8 @@
 			for(var/mob/living/M in T.contents)
 				if(M.dont_save) continue
 
+				M.on_persistence_save()
+
 				var/datum/map_mob/MM = new/datum/map_mob
 				MM.savedtype = M.type
 
@@ -107,7 +113,6 @@
 
 		full_map += MT
 
-
 	return full_map
 
 
@@ -120,6 +125,7 @@
 		for(var/V in newturf.vars_to_save())
 			if(MT.turf_vars[V])
 				newturf.vars[V] = MT.turf_vars[V]
+				newturf.on_persistence_load()
 
 		for(var/datum/map_object/MO in MT.objects)
 			var/obj/O = new MO.savedtype (newturf.loc)
@@ -129,7 +135,8 @@
 			for(var/V in O.vars_to_save())
 				if(MO.object_vars[V])
 					O.vars[V] = MO.object_vars[V]
-					O.update_icon()
+					O.on_persistence_load()
+
 
 		for(var/datum/map_mob/MM in MT.mobs)
 			var/mob/M = new MM.savedtype (newturf.loc)
@@ -139,7 +146,7 @@
 			for(var/V in M.vars_to_save())
 				if(MM.mob_vars[V])
 					M.vars[V] = MM.mob_vars[V]
-					M.update_icon()
+					M.on_persistence_load()
 
 	return 1
 

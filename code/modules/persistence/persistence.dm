@@ -25,11 +25,19 @@
 	// This var isn't actually used for anything, but is present so that
 	// DM's map reader doesn't forfeit on reading a JSON-serialized map
 	var/map_json_data
-	var/persistence_save = FALSE //this prepares certain things for persistence loading.
+	var/persistence_loaded = FALSE
+
+/atom/proc/on_persistence_load()
+	persistence_loaded = FALSE	// turns this off.
+	return
+
+/atom/proc/on_persistence_save()
+	persistence_loaded = TRUE
+	return
 
 // This is so specific atoms can override these, and ignore certain ones
 /atom/proc/vars_to_save()
- 	return list("x","y","z","color","dir","icon_state","name","pixel_x","pixel_y")
+ 	return list("x","y","z","color","dir","icon_state","name","pixel_x","pixel_y","contents")
 
 /atom/proc/map_important_vars()
 	// A list of important things to save in the map editor
@@ -77,13 +85,27 @@
 	return thing
 
 
-// Custom vars-to-save list
+// Custom vars-to-save/persistence load list
 
-/obj/structure/table/vars_to_save()
- 	return list("color","dir","pixel_x","pixel_y","contents","connections","other_connections")	// name isn't saved because some structures shed their name, for some weird reason.
+/obj/item/weapon/paper/vars_to_save()
+ 	return list("color","dir","icon","icon_state","layer","name","pixel_x","pixel_y","info")
 
+/obj/structure/closet/vars_to_save()
+	return list("color","dir","icon","icon_state","layer","name","pixel_x","pixel_y","opened","welded",)
+
+
+/obj/structure/on_persistence_load()
+	..()
+	update_icon()
+	update_connections(propagate=0)
 
 // Don't save list - Better to keep a track of things here.
 
 /atom/movable/lighting_overlay
+	dont_save = TRUE
+
+/obj/item/device/communicator
+	dont_save = TRUE
+
+/obj/item/weapon/card/id/gold/captain/spare
 	dont_save = TRUE
