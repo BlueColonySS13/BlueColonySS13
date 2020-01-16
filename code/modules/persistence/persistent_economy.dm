@@ -64,6 +64,20 @@
 	var/criminal_vote = TRUE		// Can people with criminal records vote? (unimplemented)
 
 	var/list/city_expenses = list()
+	
+	// Persistent City Option Vars
+	
+	var/NT_charge	= FALSE			// NT takes money from the city. Not intended to be controlled
+						// by any players but if an admin decides to switch it off this
+						// var is for that
+						
+	var/carp_control = FALSE		// If this is disabled, council cannot control carp infestations.
+	var/carp_pest_control = FALSE		// If this is disabled, carp will not pester the city.
+	
+	var/food_stamps_control = FALSE		// Are food stamps something the city has provided?
+	var/food_stamps = FALSE			// Do we use a stipend for food stamps to be provided to the city?
+	
+	
 
 /datum/economy/bank_accounts/proc/set_economy()
 	if(!department_acc_list)
@@ -158,7 +172,15 @@
 	S["synth_vote"] << synth_vote
 	S["citizenship_vote "] << citizenship_vote
 	S["criminal_vote"] << criminal_vote
+	
+	S["NT_charge"] << NT_charge
 
+	S["carp_control"] << carp_control
+	S["carp_pest_control"] << carp_pest_control
+	
+	S["food_stamps_control"] << food_stamps_control
+	S["food_stamps"] << food_stamps
+	
 	message_admins("Saved all department accounts.", 1)
 
 /datum/economy/bank_accounts/proc/load_accounts()
@@ -213,6 +235,14 @@
 	S["synth_vote"] >> synth_vote
 	S["citizenship_vote "] >> citizenship_vote
 	S["criminal_vote"] >> criminal_vote
+
+	S["NT_charge"] >> NT_charge
+
+	S["carp_control"] >> carp_control
+	S["carp_pest_control"] >> carp_pest_control
+	
+	S["food_stamps_control"] >> food_stamps_control
+	S["food_stamps"] >> food_stamps
 
 	sanitize_economy()
 
