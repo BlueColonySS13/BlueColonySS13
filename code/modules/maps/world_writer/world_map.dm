@@ -129,9 +129,6 @@
 
 		for(var/datum/map_object/MO in MT.objects)
 			var/obj/O = new MO.savedtype (newturf.loc)
-			O.x = MO.x
-			O.y = MO.y
-			O.z = MO.z
 			for(var/V in O.vars_to_save())
 				if(MO.object_vars[V])
 					O.vars[V] = MO.object_vars[V]
@@ -140,9 +137,6 @@
 
 		for(var/datum/map_mob/MM in MT.mobs)
 			var/mob/M = new MM.savedtype (newturf.loc)
-			M.x = MM.x
-			M.y = MM.y
-			M.z = MM.z
 			for(var/V in M.vars_to_save())
 				if(MM.mob_vars[V])
 					M.vars[V] = MM.mob_vars[V]
