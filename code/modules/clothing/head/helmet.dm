@@ -205,3 +205,37 @@
 	name = "emergency response team medical helmet"
 	desc = "A set of armor worn by medical members of the NanoTrasen Emergency Response Team. Has red and white highlights."
 	icon_state = "erthelmet_med"
+
+/obj/item/clothing/head/helmet/poxball
+	name = "poxball headguard"
+	desc = "A modified abalative helmet designed to protect against poxball surges.."
+	icon_state = "poxball_helm"
+	item_state_slots = list(slot_r_hand_str = "helmet", slot_l_hand_str = "helmet")
+	armor = list(melee = 10, bullet = 5, laser = 20 ,energy = 30, bomb = 0, bio = 0, rad = 0)
+	flags_inv = HIDEEARS
+	siemens_coefficient = 0.1
+	valid_accessory_slots = null
+
+/obj/item/clothing/head/helmet/poxball/verb/Set_Team_Color()
+	set name = "Set Team Color"
+	if(!usr.canmove || usr.stat || usr.restrained()) return
+
+	switch(alert("Select a color.", "Which team are you on?", "Red", "Blue", "Disable Team Color"))
+		if("Red")
+			icon_state = "poxball_helm_r"
+			update_clothing_icon()
+		if("Blue")
+			icon_state = "poxball_helm_b"
+			update_clothing_icon()
+		if("Disable Team Color")
+			icon_state = initial(icon_state)
+			update_clothing_icon()
+
+/obj/item/clothing/head/helmet/tinfoil
+	name = "anti-tachyonite ray helmet"
+	desc = "A helmet covered with aluminum foil. This will definitely protect from the rays emitted by the Great Taker's machines."
+	icon_state = "tinfoil_helm"
+	body_parts_covered = BLOCKHAIR
+	siemens_coefficient = 0.6
+	item_state_slots = list(slot_r_hand_str = "helmet", slot_l_hand_str = "helmet")
+	armor = list(melee = 12, bullet = 5, laser = 5 ,energy = 5, bomb = 0, bio = 0, rad = 0)

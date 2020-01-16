@@ -1,6 +1,3 @@
-#define ZONE_BLOCKED 2
-#define AIR_BLOCKED 1
-
 //Interactions
 /turf/simulated/wall/proc/toggle_open(var/mob/user)
 
@@ -36,9 +33,6 @@
 
 	can_open = WALL_CAN_OPEN
 	update_icon()
-
-#undef ZONE_BLOCKED
-#undef AIR_BLOCKED
 
 /turf/simulated/wall/proc/update_air()
 	if(!air_master)
@@ -90,8 +84,6 @@
 			dismantle_wall()
 			return 1
 
-	if(..()) return 1
-
 	if(!can_open)
 		to_chat(user, "<span class='notice'>You push the wall, but nothing happens.</span>")
 		playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
@@ -141,7 +133,7 @@
 	if(!construction_stage && try_graffiti(user, W))
 		return
 
-	if (!user.)
+	if(!user.IsAdvancedToolUser())
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 

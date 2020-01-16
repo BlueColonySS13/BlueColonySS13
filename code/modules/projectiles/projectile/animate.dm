@@ -10,7 +10,7 @@
 	light_color = "#55AAFF"
 	combustion = FALSE
 
-/obj/item/projectile/animate/Bump(var/atom/change)
+/obj/item/projectile/animate/Bump(var/atom/change, forced=0)
 	if((istype(change, /obj/item) || istype(change, /obj/structure)) && !is_type_in_list(change, protected_objects))
 		var/obj/O = change
 		new /mob/living/simple_animal/hostile/mimic/copy(O.loc, O, firer)

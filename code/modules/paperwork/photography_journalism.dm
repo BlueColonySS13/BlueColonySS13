@@ -82,7 +82,7 @@
 				if(H.mind)
 					var/job = H.mind.assigned_role
 
-					if(!job in security_positions)
+					if(!(job in security_positions))
 						scandalous += 10	// this person got a gun and ain't police?!
 		else
 			scandalous += 3 // a mystery!

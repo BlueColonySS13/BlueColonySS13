@@ -184,9 +184,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/clothing/under/pants/camo,
 		/obj/item/clothing/under/harness,
 		/obj/item/clothing/accessory/storage/webbing,
-		/obj/item/weapon/spacecash/c1,
-		/obj/item/weapon/spacecash/c10,
-		/obj/item/weapon/spacecash/c20,
+		/obj/item/weapon/spacecash/bundle/c1,
+		/obj/item/weapon/spacecash/bundle/c10,
+		/obj/item/weapon/spacecash/bundle/c20,
 		/obj/item/weapon/camera_assembly,
 		/obj/item/weapon/caution,
 		/obj/item/weapon/caution/cone,
@@ -204,12 +204,14 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/weapon/beartrap,
 		/obj/item/clothing/suit/storage/vest/press,
 		/obj/item/weapon/material/knife/tacknife,
-		/obj/item/weapon/material/butterfly/switchblade
+		/obj/item/weapon/material/butterfly/switchblade,
+		/obj/item/clothing/head/helmet/tinfoil
 	)
 
 	rare_loot = list(
 		/obj/item/clothing/suit/storage/vest/heavy/merc,
 		/obj/item/clothing/shoes/boots/combat,
+		/obj/item/weapon/gun/energy/poxball/street
 	)
 
 // Contains mostly useless garbage.
@@ -354,6 +356,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/weapon/circuitboard/jukebox,
 		/obj/item/weapon/circuitboard/message_monitor,
 		/obj/item/weapon/circuitboard/rcon_console,
+		/obj/item/weapon/circuitboard/chem_master,
 		/obj/item/weapon/smes_coil,
 		/obj/item/weapon/cartridge/engineering,
 		/obj/item/device/analyzer,

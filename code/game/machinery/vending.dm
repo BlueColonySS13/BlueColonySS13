@@ -190,7 +190,10 @@
 			var/obj/item/weapon/spacecash/C = W
 			paid = pay_with_cash(C, user)
 			handled = 1
-
+		else if(istype(W, /obj/item/weapon/card/foodstamp))
+			var/obj/item/weapon/card/foodstamp/C = W
+			paid = pay_with_foodstamp(C)
+			handled = 1
 		if(paid)
 			if(vendor_department)
 				department_accounts["[vendor_department]"].money += currently_vending.price
@@ -291,6 +294,26 @@
 		wallet.worth -= currently_vending.price
 		credit_purchase("[wallet.owner_name] (chargecard)")
 		return 1
+
+/**
+ * Scan food stamp card and dispense product.
+ *
+ * Returns 1 if successful, 0 if failed
+ */
+/obj/machinery/vending/proc/pay_with_foodstamp(var/obj/item/weapon/card/foodstamp/ebt)
+	visible_message("<span class='info'>\The [usr] taps \the [ebt] against \the [src]'s scanner.</span>")
+	if(istype(src, /obj/machinery/vending/foodstamp))
+		if(ebt.meals_remaining > 0)
+			ebt.meals_remaining = ebt.meals_remaining - 1
+			return 1
+		else
+			status_message = "No meals remaining on social service card."
+			status_error = 1
+			return 0
+	else
+		status_message = "Social service cards cannot be used at this machine."
+		status_error = 1
+		return 0
 
 /**
  * Scan a card and attempt to transfer payment from associated account.
@@ -774,6 +797,9 @@
 	has_logs = 1
 	vending_sound = "machines/vending_cans.ogg"
 
+	charge_department = "Bar"
+	charge_free_to_department = TRUE
+
 
 /obj/machinery/vending/assist
 	products = list(	/obj/item/device/assembly/prox_sensor = 5,/obj/item/device/assembly/igniter = 3,/obj/item/device/assembly/signaler = 4,
@@ -834,12 +860,12 @@
 	vending_sound = "machines/vending_cans.ogg"
 
 /obj/machinery/vending/cola/New()
-	..()
 	icon_state = pick("Cola_Machine",
 							"cola_black",
 							"space_up",
 							"soda")
 
+	..()
 
 /obj/machinery/vending/fitness
 	name = "SweatMAX"
@@ -852,7 +878,7 @@
 					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 8,
 					/obj/item/weapon/reagent_containers/pill/diet = 8,
-					/obj/item/weapon/towel/random = 8)
+					/obj/item/clothing/suit/towel/random = 8)
 
 	prices = list(/obj/item/weapon/reagent_containers/food/drinks/smallmilk = 3,
 					/obj/item/weapon/reagent_containers/food/drinks/smallchocmilk = 3,
@@ -861,12 +887,11 @@
 					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 5,
 					/obj/item/weapon/reagent_containers/pill/diet = 35,
-					/obj/item/weapon/towel/random = 40)
+					/obj/item/clothing/suit/towel/random = 40)
 
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/steroid = 4)
 
 	vendor_department = "Civilian"
-	auto_price = 1
 
 
 /obj/machinery/vending/cart
@@ -946,18 +971,31 @@
 	icon_deny = "med-deny"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
 	req_access = list(access_medical)
-	products = list(/obj/item/weapon/reagent_containers/glass/bottle/antitoxin = 4,/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = 4,
-					/obj/item/weapon/reagent_containers/glass/bottle/stoxin = 4,/obj/item/weapon/reagent_containers/glass/bottle/toxin = 4,
-					/obj/item/weapon/reagent_containers/syringe/antiviral = 4,/obj/item/weapon/reagent_containers/syringe = 12,
-					/obj/item/device/healthanalyzer = 5,/obj/item/weapon/reagent_containers/glass/beaker = 4, /obj/item/weapon/reagent_containers/dropper = 2,
-					/obj/item/stack/medical/advanced/bruise_pack = 6, /obj/item/stack/medical/advanced/ointment = 6, /obj/item/stack/medical/splint = 4,
+	products = list(/obj/item/weapon/reagent_containers/glass/bottle/antitoxin = 4,
+					/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = 4,
+					/obj/item/weapon/reagent_containers/glass/bottle/stoxin = 4,
+					/obj/item/weapon/reagent_containers/glass/bottle/toxin = 4,
+					/obj/item/weapon/reagent_containers/syringe/antiviral = 4,
+					/obj/item/weapon/reagent_containers/syringe = 12,
+					/obj/item/device/healthanalyzer = 5,
+					/obj/item/weapon/reagent_containers/glass/beaker = 4,
+					/obj/item/weapon/reagent_containers/dropper = 5,
+					/obj/item/stack/medical/advanced/bruise_pack = 6,
+					/obj/item/stack/medical/advanced/ointment = 6,
+					/obj/item/stack/medical/splint = 4,
 					/obj/item/weapon/storage/pill_bottle/carbon = 2,
 					/obj/item/weapon/reagent_containers/glass/bottle/alkysine = 5,
-					/obj/item/weapon/reagent_containers/glass/bottle/peridaxon = 5)
+					/obj/item/weapon/reagent_containers/glass/bottle/peridaxon = 5,
+					/obj/item/weapon/reagent_containers/pill/rezadone = 2)
+
+
 	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 3,/obj/item/weapon/reagent_containers/pill/stox = 4,/obj/item/weapon/reagent_containers/pill/antitox = 6)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	req_log_access = access_cmo
 	has_logs = 1
+
+	charge_department = "Public Healthcare"
+	charge_free_to_department = TRUE
 
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"
@@ -967,6 +1005,9 @@
 					/obj/item/device/assembly/prox_sensor = 6,/obj/item/device/assembly/igniter = 6)
 	req_log_access = access_rd
 	has_logs = 1
+
+	charge_department = "Research and Science"
+	charge_free_to_department = TRUE
 
 /obj/machinery/vending/wallmed1
 	name = "NanoMed"
@@ -979,6 +1020,9 @@
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/antitoxin = 4,/obj/item/weapon/reagent_containers/syringe/antiviral = 4,/obj/item/weapon/reagent_containers/pill/tox = 1)
 	req_log_access = access_cmo
 	has_logs = 1
+
+	charge_department = "Public Healthcare"
+	charge_free_to_department = TRUE
 
 /obj/machinery/vending/wallmed2
 	name = "NanoMed"
@@ -1010,6 +1054,9 @@
 	req_log_access = access_armory
 	has_logs = 1
 
+	charge_department = "Police"
+	charge_free_to_department = TRUE
+
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"
 	desc = "A plant nutrients vendor."
@@ -1036,8 +1083,12 @@
 					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2,
 					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3)
 	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
-					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,)
+					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,
+					  /obj/item/seeds/chacruna = 2,/obj/item/seeds/caapi = 2, /obj/item/seeds/coca)
 	premium = list(/obj/item/toy/waterflower = 1)
+
+	charge_department = "Botany"
+	charge_free_to_department = TRUE
 
 /**
  *  Populate hydroseeds product_records
@@ -1102,6 +1153,9 @@
 	/obj/item/weapon/storage/toolbox/lunchbox/nymph = 3,
 	/obj/item/weapon/storage/toolbox/lunchbox/syndicate = 3)
 	contraband = list(/obj/item/weapon/material/knife/butch = 2)
+
+	charge_department = "Bar"
+	charge_free_to_department = TRUE
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"
@@ -1815,3 +1869,65 @@
 
 
 	vendor_department = "Public Healthcare"
+
+//ration vending machines
+/obj/machinery/vending/foodstamp/rations
+	name = "Ration Dispenser"
+	desc = "A vending machine holding self-contained complete meals."
+	product_slogans = "Have you tried Menu #2? It's pizza time!; It's always Taco Tuesday with Menu #5!; Want something to spice up your life? Try Menu #8: Hot Chili!"
+	product_ads = ""
+	vend_delay = 15
+	icon_state = "rations"
+	products = list(/obj/item/weapon/storage/mre/menu2 = 5,
+					/obj/item/weapon/storage/mre/menu3 = 5,
+					/obj/item/weapon/storage/mre/menu4 = 5,
+					/obj/item/weapon/storage/mre/menu5 = 5,
+					/obj/item/weapon/storage/mre/menu6 = 5,
+					/obj/item/weapon/storage/mre/menu7 = 5,
+					/obj/item/weapon/storage/mre/menu8 = 5,
+					/obj/item/weapon/storage/mre/menu9 = 5,
+					/obj/item/weapon/storage/mre/menu10 = 5
+					)
+	contraband = list(/obj/item/weapon/storage/mre/menu12 = 5)
+	prices = list(/obj/item/weapon/storage/mre/menu2 = 50,
+					/obj/item/weapon/storage/mre/menu3 = 50,
+					/obj/item/weapon/storage/mre/menu4 = 50,
+					/obj/item/weapon/storage/mre/menu5 = 50,
+					/obj/item/weapon/storage/mre/menu6 = 50,
+					/obj/item/weapon/storage/mre/menu7 = 50,
+					/obj/item/weapon/storage/mre/menu8 = 50,
+					/obj/item/weapon/storage/mre/menu9 = 50,
+					/obj/item/weapon/storage/mre/menu10 = 50
+					)
+
+/obj/machinery/vending/foodstamp/rations/psp
+	name = "Ration Dispenser"
+	desc = "A vending machine holding self-contained complete meals. This particular machine has the Planetary Security Party's emblem on it."
+	product_slogans = "Have you tried Menu #2? It's pizza time!; It's always Taco Tuesday with Menu #5!; Liberals leave you thirsting for freedom? Wash that despair down with an Instant Grape packet!; Want something to spice up your life? Try Menu #8: Hot Chili!"
+	product_ads = "Order. Unity. Conduct.; Remember the Pillars of civilized society and we shall be successful.; The True Citizen knows the true value of Charity.; Remember, it is great to be part of the Greater Good."
+	vend_delay = 15
+	vend_reply = "Enjoy your delicious ration pack! Remember: it is great to be part of the Greater Good!"
+	icon_state = "rations-psp"
+	shut_up = 0
+	products = list(/obj/item/weapon/storage/mre/menu2 = 5,
+					/obj/item/weapon/storage/mre/menu3 = 5,
+					/obj/item/weapon/storage/mre/menu4 = 5,
+					/obj/item/weapon/storage/mre/menu5 = 5,
+					/obj/item/weapon/storage/mre/menu6 = 5,
+					/obj/item/weapon/storage/mre/menu7 = 5,
+					/obj/item/weapon/storage/mre/menu8 = 5,
+					/obj/item/weapon/storage/mre/menu9 = 5,
+					/obj/item/weapon/storage/mre/menu10 = 5
+					)
+	contraband = list(/obj/item/weapon/storage/mre/menu12 = 5)
+	prices = list(/obj/item/weapon/storage/mre/menu2 = 50,
+					/obj/item/weapon/storage/mre/menu3 = 50,
+					/obj/item/weapon/storage/mre/menu4 = 50,
+					/obj/item/weapon/storage/mre/menu5 = 50,
+					/obj/item/weapon/storage/mre/menu6 = 50,
+					/obj/item/weapon/storage/mre/menu7 = 50,
+					/obj/item/weapon/storage/mre/menu8 = 50,
+					/obj/item/weapon/storage/mre/menu9 = 50,
+					/obj/item/weapon/storage/mre/menu10 = 50
+					)
+

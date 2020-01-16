@@ -1075,7 +1075,6 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #undef EYES_LAYER
 #undef FACEMASK_LAYER
 #undef HEAD_LAYER
-#undef COLLAR_LAYER
 #undef HANDCUFF_LAYER
 #undef LEGCUFF_LAYER
 #undef L_HAND_LAYER

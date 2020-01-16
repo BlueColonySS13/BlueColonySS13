@@ -10,10 +10,10 @@
 /datum/supply_pack/hydro/monkey
 	name = "Monkey crate"
 	contains = list (/obj/item/weapon/storage/box/monkeycubes)
-	cost = 20
+	cost = 80
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "Monkey crate"
-
+/*
 /datum/supply_pack/hydro/farwa
 	name = "Farwa crate"
 	contains = list (/obj/item/weapon/storage/box/monkeycubes/farwacubes)
@@ -34,11 +34,11 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "Stok crate"
-
+*/
 /datum/supply_pack/hydro/lisa
 	name = "Corgi Crate"
 	contains = list()
-	cost = 50
+	cost = 70
 	containertype = /obj/structure/largecrate/animal/corgi
 	containername = "Corgi Crate"
 
@@ -55,21 +55,21 @@
 			/obj/item/weapon/material/minihoe,
 			/obj/item/weapon/storage/box/botanydisk
 			)
-	cost = 20
+	cost = 150
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Hydroponics crate"
 	access = access_hydroponics
 
 /datum/supply_pack/hydro/cow
 	name = "Cow crate"
-	cost = 25
+	cost = 70
 	containertype = /obj/structure/largecrate/animal/cow
 	containername = "Cow crate"
 	access = access_hydroponics
 
 /datum/supply_pack/hydro/goat
 	name = "Goat crate"
-	cost = 25
+	cost = 60
 	containertype = /obj/structure/largecrate/animal/goat
 	containername = "Goat crate"
 	access = access_hydroponics
@@ -102,7 +102,7 @@
 			/obj/item/seeds/potatoseed,
 			/obj/item/seeds/sugarcaneseed
 			)
-	cost = 10
+	cost = 100
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Seeds crate"
 	access = access_hydroponics
@@ -124,7 +124,7 @@
 /datum/supply_pack/hydro/watertank
 	name = "Water tank crate"
 	contains = list(/obj/structure/reagent_dispensers/watertank)
-	cost = 10
+	cost = 50
 	containertype = /obj/structure/largecrate
 	containername = "water tank crate"
 
@@ -136,14 +136,14 @@
 			/obj/item/honey_frame = 5,
 			/obj/item/bee_pack
 			)
-	cost = 40
+	cost = 120
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Beekeeping crate"
 	access = access_hydroponics
 
 /datum/supply_pack/hydro/tray
 	name = "Empty hydroponics trays"
-	cost = 50
+	cost = 150
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Hydroponics tray crate"
 	contains = list(/obj/machinery/portable_atmospherics/hydroponics{anchored = 0} = 3)

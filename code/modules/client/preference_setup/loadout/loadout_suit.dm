@@ -99,7 +99,7 @@
 	display_name = "trenchcoat, grey"
 	path = /obj/item/clothing/suit/storage/trench/grey
 
-datum/gear/suit/duster
+/datum/gear/suit/duster
 	display_name = "cowboy duster"
 	path = /obj/item/clothing/suit/storage/duster
 
@@ -490,3 +490,7 @@ datum/gear/suit/duster
 		tailcoats[initial(tailcoat.name)] = tailcoat
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(tailcoats))
 
+
+/datum/gear/suit/hartcoat
+	display_name = "fur-lined greatcoat"
+	path = /obj/item/clothing/suit/storage/toggle/hartcoat

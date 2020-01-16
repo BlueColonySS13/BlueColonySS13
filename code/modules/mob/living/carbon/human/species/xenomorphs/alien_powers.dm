@@ -144,15 +144,13 @@
 		P.firer = src
 		P.launch(A)
 		playsound(loc, 'sound/weapons/pierce.ogg', 25, 0)
-	else
-		..()
 
 /mob/living/carbon/human/proc/corrosive_acid(O as obj|turf in oview(1)) //If they right click to corrode, an error will flash if its an invalid target./N
 	set name = "Corrosive Acid (200)"
 	set desc = "Drench an object in acid, destroying it over time."
 	set category = "Abilities"
 
-	if(!O in oview(1))
+	if(!(O in oview(1)))
 		src << "<span class='alium'>[O] is too far away.</span>"
 		return
 

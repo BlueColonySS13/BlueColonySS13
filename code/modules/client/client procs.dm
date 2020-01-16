@@ -279,7 +279,6 @@
 	var/DBQuery/query_accesslog = dbcon.NewQuery("INSERT INTO `erro_connection_log`(`id`,`datetime`,`serverip`,`ckey`,`ip`,`computerid`) VALUES(null,Now(),'[serverip]','[sql_ckey]','[sql_ip]','[sql_computerid]');")
 	query_accesslog.Execute()
 
-#undef TOPIC_SPAM_DELAY
 #undef UPLOAD_LIMIT
 #undef MIN_CLIENT_VERSION
 
@@ -382,9 +381,9 @@ client/verb/character_setup()
 		return 1
 	if(bypass_ssd_guard)
 		return 1
-	if(mob && mob.job in security_positions)
+	if(mob && (mob.job in security_positions))
 		return 1
-	if(mob && mob.job in medical_positions)
+	if(mob && (mob.job in medical_positions))
 		return 1
 	if(check_rights(R_ADMIN, 0, mob))
 		return 1

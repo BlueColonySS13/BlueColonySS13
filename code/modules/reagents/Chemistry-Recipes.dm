@@ -2359,3 +2359,109 @@
 	result = "ecstasy"
 	required_reagents = list("mercury" = 1, "sugar" = 1, "lithium" = 1)
 	result_amount = 3
+
+/datum/chemical_reaction/ayahuasca
+	name = "Ayahuasca"
+	id = "ayahuasca"
+	result = "ayahuasca"
+	mix_message = "The smell of earthy herbs wafts into the air."
+	required_reagents = list("water" = 1, "chacruna_extract" = 1, "caapi_extract" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/bathsalts
+	name = "Bath Salts"
+	id = "bath_salts"
+	result = "bath_salts"
+	mix_message = "The solution crystallizes into a powder resembling epsom salts."
+	required_reagents = list("cleaner" = 1, "enzyme" = 1, "mercury" = 1, "fuel" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/dmt
+	name = "Dimethyltryptamine"
+	id = "dimethyltryptamine"
+	result = "dimethyltryptamine"
+	mix_message = "The solution dries and forms a pale brown powder."
+	required_reagents = list("ayahuasca" = 1, "enzyme" = 1, "ethanol" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/lsd
+	name = "Lysergic acid diethylamide"
+	id = "lsd"
+	result = "lsd"
+	required_reagents = list("hydrogen" = 1, "ethanol" = 1, "silicon" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/jenkem
+	name = "Jenkem"
+	id = "jenkem"
+	result = "jenkem"
+	required_reagents = list("toiletwater" = 1, "ammonia" = 1, "water" = 1)
+	result_amount = 3
+	mix_message = "The smell of a dirty restroom fills the room."
+
+/datum/chemical_reaction/krokodil
+	name = "Krokodil"
+	id = "krokodil"
+	result = "krokodil"
+	required_reagents = list("ammonia" = 1, "tramadol" = 1, "cleaner" = 1, "potassium" = 1, "phosphorus" = 1, "fuel" = 1)
+	result_amount = 6
+	mix_message = "The mixture dries into a pale blue powder."
+
+///// POWEDERED DRINK RECIPES /////
+
+/datum/chemical_reaction/drinks/coffee
+	name = "Coffee"
+	id = "coffee"
+	result = "coffee"
+	required_reagents = list("water" = 5, "coffeepowder" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/tea
+	name = "Black tea"
+	id = "tea"
+	result = "tea"
+	required_reagents = list("water" = 5, "teapowder" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/grapejuice
+	name = "Grape Juice"
+	id = "grapejuice"
+	result = "grapejuice"
+	required_reagents = list("water" = 3, "instantgrape" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/orangejuice
+	name = "Orange Juice"
+	id = "orangejuice"
+	result = "orangejuice"
+	required_reagents = list("water" = 3, "instantorange" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/watermelonjuice
+	name = "Watermelon Juice"
+	id = "watermelonjuice"
+	result = "watermelonjuice"
+	required_reagents = list("water" = 3, "instantwatermelon" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/applejuice
+	name = "Apple Juice"
+	id = "applejuice"
+	result = "applejuice"
+	required_reagents = list("water" = 3, "instantapple" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/food/mayonnaise
+	name = "mayonnaise"
+	id = "mayo"
+	result = "mayo"
+	required_reagents = list("egg" = 9, "cornoil" = 5, "lemonjuice" = 5, "sodiumchloride" = 1)
+	result_amount = 15
+
+/datum/chemical_reaction/food/peanutbutter
+	name = "Peanut Butter"
+	id = "peanutbutter"
+	result = "peanutbutter"
+	required_reagents = list("peanutoil" = 2, "sugar" = 1, "sodiumchloride" = 1)
+	catalysts = list("enzyme" = 5)
+	result_amount = 3

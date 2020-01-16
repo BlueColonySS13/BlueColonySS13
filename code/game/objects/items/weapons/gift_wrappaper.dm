@@ -71,7 +71,7 @@
 		/obj/item/toy/eight_ball/conch,
 		/obj/item/toy/griffin,
 		/obj/item/toy/snappop,
-		/obj/item/weapon/spacecash/c10,
+		/obj/item/weapon/spacecash/bundle/c10,
 		/obj/item/weapon/dice,
 		/obj/item/weapon/lipstick/random,
 		/obj/item/device/camera,

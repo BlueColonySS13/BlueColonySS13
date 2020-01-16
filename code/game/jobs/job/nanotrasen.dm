@@ -19,11 +19,15 @@
                       "Nanotrasen Officer" = /decl/hierarchy/outfit/job/nanotrasen/officer)
 	email_domain = "nanotrasen.gov.nt"
 	wage = 1000
-	minimum_character_age = 20 // Pushing it I guess, but possible
+	minimum_character_age = 25 // Pushing it I guess, but possible
 	ideal_character_age = 40
 	req_admin_notify = 1
 
 	hard_whitelisted = 1
+	clean_record_required = TRUE
+
+/datum/job/nanotrasen/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
+	return using_map.rep_email
 
 /datum/job/nanotrasen/New()
 	..()
@@ -42,6 +46,7 @@
 	wage = 10000
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/captain
 	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
+	minimum_character_age = 30
 
 /datum/job/nanotrasen/cbia
 	title = "PDSI Agent"
@@ -64,9 +69,12 @@
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/cbia
 
 	wage = 1000
-	minimum_character_age = 20 // Pushing it I guess, but possible
+	minimum_character_age = 25 // Pushing it I guess, but possible
 	ideal_character_age = 40
 	req_admin_notify = 1
+
+/datum/job/nanotrasen/cbia/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
+	return using_map.investigation_email
 
 /datum/job/nanotrasen/president
 	title = "President"
@@ -92,3 +100,5 @@
 	outfit_type = /decl/hierarchy/outfit/job/heads/president
 
 
+/datum/job/nanotrasen/president/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
+	return using_map.president_email

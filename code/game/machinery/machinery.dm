@@ -325,7 +325,7 @@ Class Procs:
 			RefreshParts()
 	else
 		user << "<span class='notice'>Following parts detected in the machine:</span>"
-		for(var/var/obj/item/C in component_parts) //var/var/obj/item/C?
+		for(var/obj/item/C in component_parts) //var/obj/item/C?
 			user << "<span class='notice'>    [C.name]</span>"
 	return 1
 

@@ -30,7 +30,7 @@
 /obj/machinery/tesla_act(power, explosive = FALSE)
 	..()
 	if(prob(85) && explosive)
-		explosion(loc, 1, 2, 4, /*flame_range = 2,*/ adminlog = FALSE/*, smoke = FALSE*/)
+		explosion(loc, 1, 2, 4, adminlog = FALSE)
 	else if(prob(50))
 		emp_act(2)
 	else
@@ -44,7 +44,7 @@
 
 /obj/machinery/light/tesla_act(power, explosive = FALSE)
 	if(explosive)
-		explosion(loc, 0, 0, 0/*, flame_range = 5*/, adminlog = FALSE)
+		explosion(loc, 0, 0, 0, adminlog = FALSE)
 		qdel(src)
 		return
 	on = TRUE

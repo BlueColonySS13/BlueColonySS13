@@ -1,3 +1,5 @@
+#define PROCESS_ACCURACY 10
+
 /obj/item/organ/external/chest/unathi
 	max_damage = 100
 	min_broken_damage = 40
@@ -48,3 +50,5 @@
 
 /obj/item/organ/internal/brain/unathi
 	color = "#b3cbc3"
+
+#undef PROCESS_ACCURACY

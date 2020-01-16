@@ -127,13 +127,24 @@ datum/preferences
 	var/med_record = ""
 	var/sec_record = ""
 	var/gen_record = ""
+
+	var/list/datum/record/police/crime_record = list()
+	var/list/datum/record/hospital/health_record = list()
+	var/list/datum/record/employment/job_record = list()
+
 	var/exploit_record = ""
+
+	// Antag and Prison stuff
+
+	var/criminal_status = "None"
+
 	var/disabilities = 0
 
 	var/economic_status = "Working Class"
+	var/social_class = "Working Class"
 
 	var/uplinklocation = "PDA"
-	var/email = null
+	var/email
 
 	// OOC Metadata:
 	var/metadata = ""

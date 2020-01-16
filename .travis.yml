@@ -11,7 +11,7 @@ notifications:
 env:
     global:
     - BYOND_MAJOR="512"
-    - BYOND_MINOR="1452"
+    - BYOND_MINOR="1488"
     - DM_BUILDFILE="polaris.dme"
 
 cache:
@@ -26,6 +26,7 @@ addons:
       - libstdc++6:i386
 
 before_script:
+  - chmod +x tools/travis/check_filedirs.sh
   - chmod +x ./install-byond.sh
   - ./install-byond.sh
 
@@ -38,6 +39,7 @@ after_failure:
   - ./send-to-discord.sh failure $WEBHOOK_URL
 
 script:
+  - tools/travis/check_filedirs.sh ${DM_BUILDFILE}
   - (! grep 'step_[xy]' maps/**/*.dmm)
   - source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
-  - DreamMaker polaris.dme
+  - DreamMaker ${DM_BUILDFILE}

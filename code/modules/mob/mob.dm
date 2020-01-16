@@ -222,7 +222,7 @@
 	set category = "IC"
 
 	if((is_blind(src) || usr.stat) && !isobserver(src))
-		src << "<span class='notice'>Something is there but you can't see it.</span>"
+		to_chat(src, SPAN_NOTICE("Something is there but you can't see it."))
 		return 1
 
 	face_atom(A)
@@ -536,7 +536,7 @@
 			for(var/name in H.organs_by_name)
 				var/obj/item/organ/external/e = H.organs_by_name[name]
 				if(e && H.lying)
-					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && e.splinted in e.contents && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
+					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && (e.splinted in e.contents) && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
 						return 1
 						break
 	return 0
@@ -1092,10 +1092,10 @@ mob/proc/yank_out_object()
 //Exploitable Info Update
 
 /mob/proc/amend_exploitable(var/obj/item/I)
-	var/obj/item/exploit_item = new I(src.loc)
-	exploit_addons |= exploit_item
-	var/exploitmsg = html_decode("\n" + "Has " + exploit_item.name + ".")
-	exploit_record += exploitmsg
+	if(istype(I))
+		exploit_addons |= I
+		var/exploitmsg = html_decode("\n" + "Has " + I.name + ".")
+		exploit_record += exploitmsg
 
 /client/proc/check_has_body_select()
 	return mob && mob.hud_used && istype(mob.zone_sel, /obj/screen/zone_sel)
