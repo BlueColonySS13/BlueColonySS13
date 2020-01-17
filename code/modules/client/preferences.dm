@@ -16,8 +16,8 @@ datum/preferences
 	var/first_seen
 	var/last_seen
 	
-	var/ips_associated
-	var/cids_associated
+	var/list/ips_associated	= list()
+	var/list/cids_associated = list()
 	
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
