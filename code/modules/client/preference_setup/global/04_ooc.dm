@@ -3,17 +3,34 @@
 	sort_order = 4
 
 /datum/category_item/player_setup_item/player_global/ooc/load_preferences(var/savefile/S)
-	S["ignored_players"]	>> pref.ignored_players
-
+	S["ignored_players"]	  >> pref.ignored_players
+	S["first_seen"]		  >> pref.first_seen
+	S["last_seen"]		  >> pref.last_seen
+	S["related_accounts_ip"]  >> pref.related_accounts_ip
+	S["related_accounts_cid"] >> pref.related_accounts_cid
 
 /datum/category_item/player_setup_item/player_global/ooc/save_preferences(var/savefile/S)
-	S["ignored_players"]	<< pref.ignored_players
-
+	S["ignored_players"]	  << pref.ignored_players
+	S["first_seen"]		  << pref.first_seen
+	S["last_seen"]		  << pref.last_seen
+	S["related_accounts_ip"]  << pref.related_accounts_ip
+	S["related_accounts_cid"] << pref.related_accounts_cid
 /*
 /datum/category_item/player_setup_item/player_global/ooc/sanitize_preferences()
 	if(isnull(pref.ignored_players))
 		pref.ignored_players = list()
 
+	if(!pref.first_seen)
+		pref.first_seen = full_game_time()
+	if(!pref.last_seen)
+		pref.last_seen = full_game_time()
+
+	if(isnull(pref.related_accounts_ip))
+		pref.related_accounts_ip = list()
+		
+	if(isnull(pref.related_accounts_cid))
+		pref.related_accounts_cid = list()
+		
 /datum/category_item/player_setup_item/player_global/ooc/content(var/mob/user)
 	. += "<b>OOC:</b><br>"
 	. += "Ignored Players<br>"
