@@ -216,7 +216,7 @@
 		return -1
 		
 /proc/hard_save_player_age(mob/M)
-	if(!M || !M.client || !M.client.prefs))
+	if(!M || !M.client || !M.client.prefs)
 		return 0
 
 	if(config.hard_saving)
