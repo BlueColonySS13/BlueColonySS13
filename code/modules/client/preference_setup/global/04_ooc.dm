@@ -6,8 +6,8 @@
 	S["ignored_players"]	  >> pref.ignored_players
 	S["first_seen"]		  >> pref.first_seen
 	S["last_seen"]		  >> pref.last_seen
-	S["related_accounts_ip"]  >> pref.related_accounts_ip
-	S["related_accounts_cid"] >> pref.related_accounts_cid
+	S["ips_associated"]  	  >> pref.ips_associated
+	S["cids_associated"]   	  >> pref.cids_associated
 
 /datum/category_item/player_setup_item/player_global/ooc/save_preferences(var/savefile/S)
 	S["ignored_players"]	  << pref.ignored_players
