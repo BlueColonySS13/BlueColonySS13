@@ -155,10 +155,10 @@
 			winset(src, null, "command=\".configure graphics-hwmode off\"")
 			sleep(2) // wait a bit more, possibly fixes hardware mode not re-activating right
 			winset(src, null, "command=\".configure graphics-hwmode on\"")
-	if(!first_seen)
-		first_seen = full_game_time()
-	if(!last_seen)
-		last_seen = full_game_time()
+	if(!prefs.first_seen)
+		prefs.first_seen = full_game_time()
+	if(!prefs.last_seen)
+		prefs.last_seen = full_game_time()
 
 	log_client_to_db()
 
@@ -199,26 +199,30 @@
 
 /proc/get_player_age(key)
 	establish_db_connection()
-	if(dbcon.IsConnected())
-		var/sql_ckey = sql_sanitize_text(ckey(key))
+	if(!dbcon.IsConnected())
+		return null
 
-		var/DBQuery/query = dbcon.NewQuery("SELECT datediff(Now(),firstseen) as age FROM erro_player WHERE ckey = '[sql_ckey]'")
-		query.Execute()
+	var/sql_ckey = sql_sanitize_text(ckey(key))
 
-		if(query.NextRow())
-			return text2num(query.item[1])
-		else
-			return -1
+	var/DBQuery/query = dbcon.NewQuery("SELECT datediff(Now(),firstseen) as age FROM erro_player WHERE ckey = '[sql_ckey]'")
+	query.Execute()
+
+	if(query.NextRow())
+		return text2num(query.item[1])
 	else
-		if(config.hard_saving)
-			if(!pref.first_seen)
-				pref.first_seen = full_game_time()
-			if(!pref.last_seen)
-				pref.last_seen = full_game_time()
-			
-			return Days_Difference(first_seen , last_seen)
+		return -1
+		
+/proc/hard_save_player_age(mob/M)
+	if(!M || !M.client || !M.client.prefs))
+		return 0
 
+	if(config.hard_saving)
+		if(!M.client.prefs.first_seen)
+			prefs.first_seen = full_game_time()
+		if(!prefs.last_seen)
+			prefs.last_seen = full_game_time()
 
+		return Days_Difference(prefs.first_seen , prefs.last_seen)
 
 
 /client/proc/log_client_to_db()
