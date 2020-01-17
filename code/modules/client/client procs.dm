@@ -200,8 +200,8 @@
 /proc/get_player_age(key)
 	establish_db_connection()
 	if(!dbcon.IsConnected())
-		if(config.hard_saving && get_mob_by_key(ckey))
-			return hard_save_player_age(ckey)
+		if(config.hard_saving && get_mob_by_key(key))
+			return hard_save_player_age(key)
 		else
 			return null
 
@@ -221,11 +221,11 @@
 
 	if(config.hard_saving)
 		if(!M.client.prefs.first_seen)
-			prefs.first_seen = full_game_time()
-		if(!prefs.last_seen)
-			prefs.last_seen = full_game_time()
+			M.client.prefs.first_seen = full_game_time()
+		if(!M.client.prefs.last_seen)
+			M.client.prefs.last_seen = full_game_time()
 
-		return Days_Difference(prefs.first_seen , prefs.last_seen)
+		return Days_Difference(M.client.prefs.first_seen , M.client.prefs.last_seen)
 
 
 /client/proc/log_client_to_db()
