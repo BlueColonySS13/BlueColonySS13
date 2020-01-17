@@ -211,10 +211,10 @@
 			return -1
 	else
 		if(config.hard_saving)
-			if(!first_seen)
-				first_seen = full_game_time()
-			if(!last_seen)
-				last_seen = full_game_time()
+			if(!pref.first_seen)
+				pref.first_seen = full_game_time()
+			if(!pref.last_seen)
+				pref.last_seen = full_game_time()
 			
 			return Days_Difference(first_seen , last_seen)
 
