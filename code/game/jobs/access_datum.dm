@@ -474,11 +474,17 @@
 	id = access_president
 	desc = "President"
 	region = ACCESS_TYPE_CENTCOM
-	
+
 /var/const/access_cbia = 111
 /datum/access/cbia
 	id = access_cbia
 	desc = "CBIA Agent"
+	region = ACCESS_TYPE_CENTCOM
+
+/var/const/access_high_court = 111
+/datum/access/high_court
+	id = access_high_court
+	desc = "High Court"
 	region = ACCESS_TYPE_CENTCOM
 
 /***************
