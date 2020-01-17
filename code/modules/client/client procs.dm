@@ -200,7 +200,10 @@
 /proc/get_player_age(key)
 	establish_db_connection()
 	if(!dbcon.IsConnected())
-		return null
+		if(config.hard_saving && get_mob_by_key(ckey))
+			return hard_save_player_age(ckey)
+		else
+			return null
 
 	var/sql_ckey = sql_sanitize_text(ckey(key))
 
