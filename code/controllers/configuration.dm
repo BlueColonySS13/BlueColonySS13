@@ -28,6 +28,7 @@ var/list/gamemode_cache = list()
 	var/log_runtime = 0					// logs world.log to a file
 	var/log_world_output = 0			// log world.log << messages
 	var/sql_enabled = 0					// for sql switching
+	var/hard_saving = 1				// If database decides to fail, do we save things to file?
 	var/allow_admin_ooccolor = 0		// Allows admins with relevant permissions to have their own ooc colour
 	var/allow_vote_restart = 0 			// allow votes to restart
 	var/ert_admin_call_only = 0
@@ -313,6 +314,9 @@ var/list/gamemode_cache = list()
 
 				if ("sql_enabled")
 					config.sql_enabled = 1
+
+				if ("hard_saving")
+					config.hard_saving = 1
 
 				if ("log_say")
 					config.log_say = 1
