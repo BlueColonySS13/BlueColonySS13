@@ -100,7 +100,7 @@
 	//CONNECT//
 	///////////
 /client/New(TopicData)
-	TopicData = null							//Prevent calls to client.Topic from connect
+	TopicData = null						//Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
@@ -131,6 +131,8 @@
 		preferences_datums[ckey] = prefs
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
+	
+	
 
 	. = ..()	//calls mob.Login()
 	prefs.sanitize_preferences()
@@ -153,6 +155,10 @@
 			winset(src, null, "command=\".configure graphics-hwmode off\"")
 			sleep(2) // wait a bit more, possibly fixes hardware mode not re-activating right
 			winset(src, null, "command=\".configure graphics-hwmode on\"")
+	if(!first_seen)
+		first_seen = full_game_time()
+	if(!last_seen)
+		last_seen = full_game_time()
 
 	log_client_to_db()
 
@@ -193,18 +199,26 @@
 
 /proc/get_player_age(key)
 	establish_db_connection()
-	if(!dbcon.IsConnected())
-		return null
+	if(dbcon.IsConnected())
+		var/sql_ckey = sql_sanitize_text(ckey(key))
 
-	var/sql_ckey = sql_sanitize_text(ckey(key))
+		var/DBQuery/query = dbcon.NewQuery("SELECT datediff(Now(),firstseen) as age FROM erro_player WHERE ckey = '[sql_ckey]'")
+		query.Execute()
 
-	var/DBQuery/query = dbcon.NewQuery("SELECT datediff(Now(),firstseen) as age FROM erro_player WHERE ckey = '[sql_ckey]'")
-	query.Execute()
-
-	if(query.NextRow())
-		return text2num(query.item[1])
+		if(query.NextRow())
+			return text2num(query.item[1])
+		else
+			return -1
 	else
-		return -1
+		if(config.hard_saving)
+			if(!first_seen)
+				first_seen = full_game_time()
+			if(!last_seen)
+				last_seen = full_game_time()
+			
+			return Days_Difference(first_seen , last_seen)
+
+
 
 
 /client/proc/log_client_to_db()
