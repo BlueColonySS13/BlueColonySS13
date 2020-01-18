@@ -3,7 +3,7 @@
 	desc = "The NT Sellatron 5000 uses the latest in quantum entanglement technology to transport your goods to NanoTrasen. \
 	All products sold will be compensated for. Please note all compensation enters the employer savings, and is not accessible by the employee."
 
-	icon = 'icons/obj/buysell.dmi'
+	icon = 'icons/obj/large_machinery.dmi'
 	icon_state = "sell"
 	unacidable = 1
 	light_range = 4

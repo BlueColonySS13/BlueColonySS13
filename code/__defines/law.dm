@@ -11,6 +11,7 @@
 #define CASE_ONGOING "Ongoing"						// case is still going on.
 #define CASE_SETTLED "Settled"						// for civil court cases that got settled.
 #define CASE_SETTLED_EXTERNAL "Settled Externally"		// for civil court cases that got settled.
+#define CASE_AWAITING_TRIAL "Awaiting Trial"		// for civil court cases that got settled.
 #define CASE_DROPPED "Dropped"						// cases that got cancelled.
 #define CASE_REJECTED "Rejected"						// invalid cases cancelled by the judge, or the high court - "I'M SUING THE PRESIDENT BECAUSE HE'S GAY".
 #define CASE_EXPIRED "Expired"						// cases that went nowhere and ended up expiring.
@@ -18,7 +19,6 @@
 // Case Statuses
 
 #define CASE_STATUS_ACTIVE "Active"
-#define CASE_STATUS_PAUSED "Paused"
 #define CASE_STATUS_ARCHIVED "Archived"
 
 // Case Representation Status

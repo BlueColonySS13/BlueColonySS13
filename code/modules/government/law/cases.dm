@@ -26,7 +26,7 @@ var/global/court_cases = list()
 	var/case_rep_status = CASE_REPRESENTATION_NEEDED
 
 	var/author = "Unknown"									// Who originally opened this case?
-	var/desired_outcome = list()							// Desired outcome of the case
+	var/desired_outcome = ""							// Desired outcome of the case
 
 
 	// People involved / Litigants
@@ -57,6 +57,8 @@ var/global/court_cases = list()
 
 	court_cases += src
 
+	expiry_date = AddDays(creation_date, 7)
+
 
 /datum/case_evidence
 	var/UID 												// The unique identifier for this incident
@@ -76,6 +78,11 @@ var/global/court_cases = list()
 		game_id_created = game_id
 
 
+/proc/all_public_cases()
+	var/all_cases
+	all_cases += get_public_open_cases()
+	all_cases += get_public_archived_cases()
+	return all_cases
 
 /proc/get_public_open_cases()
 	var/list/court_case_list = list()
@@ -96,7 +103,9 @@ var/global/court_cases = list()
 
 /proc/find_case_by_char_uid(UID)
 	var/list/court_case_list = list()
-	for(var/datum/court_case/C in (get_public_open_cases() || get_public_archived_cases()))
+
+
+	for(var/datum/court_case/C in all_public_cases() )
 
 		if(C.defendant["unique_id"] == UID)
 			court_case_list += C
@@ -108,7 +117,7 @@ var/global/court_cases = list()
 
 
 /proc/find_case_by_UID(UID)
-	for(var/datum/court_case/C in (get_public_open_cases() || get_public_archived_cases()))
+	for(var/datum/court_case/C in all_public_cases() )
 		if(C.UID == UID)
 			return C
 
@@ -116,7 +125,7 @@ var/global/court_cases = list()
 
 /proc/cases_need_lawyer()
 	var/list/court_case_list = list()
-	for(var/datum/court_case/C in (get_public_open_cases() || get_public_archived_cases()) )
+	for(var/datum/court_case/C in all_public_cases() )
 		if(C.case_rep_status == CASE_REPRESENTATION_NEEDED)
 			court_case_list += C
 

@@ -8,9 +8,13 @@
 	density = 1
 	anchored = 1
 	bounds = "64,32"
+	pixel_y = 25
+	pixel_x = -15		// it's intended to be centered into the courtroom
+	plane = ABOVE_PLANE
+	layer = ABOVE_MOB_LAYER
 
-	icon = 'icons/obj/buysell.dmi' // placeholder
-	icon_state = "sell" // placeholder
+	icon = 'icons/obj/large_machinery.dmi'
+	icon_state = "case_computer"
 
 	var/page = 1
 	var/search_type = "All"
@@ -121,11 +125,11 @@
 		if(1)
 			dat += "<b>Select an option:</b><br>"
 			dat += "<a href='?src=\ref[src];create_case=1'>Create a New Case</a><br>"
-			dat += "<a href='?src=\ref[src];case_list=view_all'>View Ongoing Public Cases</a><br>"
-			dat += "<a href='?src=\ref[src];case_list=archived'>Archived Cases</a><br>"
-			dat += "<a href='?src=\ref[src];case_list=search'>Find Case By ID</a><br>"
-			dat += "<a href='?src=\ref[src];case_list=lawyer_rep'>Cases Requiring Lawyer Representation</a><br>"
-			dat += "<a href='?src=\ref[src];case_list=own'>View My Cases</a><br>"
+			dat += "<a href='?src=\ref[src];choice=select_case;type=\ref\"view_all\"'>View Ongoing Public Cases</a><br>"
+			dat += "<a href='?src=\ref[src];choice=select_case;type=\ref\"archived\"'>Archived Cases</a><br>"
+			dat += "<a href='?src=\ref[src];choice=select_case;type=\ref\"search\"'>Find Case By ID</a><br>"
+			dat += "<a href='?src=\ref[src];choice=select_case;type=\ref\"lawyer_rep\"'>Cases Requiring Lawyer Representation</a><br>"
+			dat += "<a href='?src=\ref[src];choice=select_case;type=\ref\"own\"'>View My Cases</a><br>"
 
 		if(2)
 			if(missing_case())
@@ -232,9 +236,9 @@
 
 			/////// OPTIONS FOR CURRENT CASE ///////
 
-			dat += "<a href=''>View Case Notes Log[current_case.case_logs ? " ([current_case.case_logs.len])" : ""]</a><br>"
-			dat += "<a href=''>View Evidence List[current_case.case_evidence ? " ([current_case.case_evidence.len])" : ""]</a><br>"
-			dat += "<a href=''>View Case Logs[current_case.case_logs ? " ([current_case.case_logs.len])" : ""]</a><br>"
+			dat += "<a href=''>View Case Notes Log[current_case.case_logs ? " ([current_case.case_logs.len])" : ""]</a> "
+			dat += "<a href=''>View Evidence List[current_case.case_evidence ? " ([current_case.case_evidence.len])" : ""]</a> "
+			dat += "<a href=''>View Case Logs[current_case.case_logs ? " ([current_case.case_logs.len])" : ""]</a> "
 			dat += "<a href=''>Tape Recording List[current_case.evidence_recordings ? " ([current_case.evidence_recordings.len])" : ""]</a><br>"
 
 			dat += "<br><a href='?src=\ref[src];print_case=1'>Print Case File</a>"
@@ -267,14 +271,16 @@
 					total_cases = cases_need_lawyer()
 
 
-			if(isemptylist(total_cases))
+			if(!isemptylist(total_cases))
 				for(var/datum/court_case/C in total_cases)
-					dat += "<a href='?src=\ref[src];select_case=choose_case;case=\ref[C]''>[C.name]</a><br>"
+					dat += "<a href='?src=\ref[src];choice=choose_case;case=\ref[C]''>[C.name]</a><br>"
 			else
 				dat += "<i>No cases found.</i>"
 
+		if(5)
+			dat += "You have successfully deleted the court case. Press back to return to the main menu.<br>"
 
-	if(!(page = 1))
+	if(!(page == 1))
 		dat += "<br><a href='?src=\ref[src];back=1'>Back</a>"
 
 
@@ -293,18 +299,25 @@
 	return
 
 /obj/machinery/case_database/proc/create_case(mob/user)
-	var/list/case_types = list("I want to contest my criminal charges", "Sue the Police Department", "Open a civil dispute")
+	var/list/case_types = list("I want to contest my criminal charges", "Sue the Police Department", "Sue the City Council", "Open a civil dispute")
 
 	if(prosecutor_access)
 		case_types += "Prosecute a criminal as part of Police Force"
 
 	var/case_subject = input(user, "What kind of case do you wish to open?", "Edit Criminal Records") as null|anything in case_types
-
 	if(!case_subject) return
+
+	var/purpose = sanitize(input("Required: Enter purpose and description of the case.", "Purpose") as text)
+	if(!purpose) return
+
+	var/wanted_outcome = sanitize(input("What outcome are you looking for?", "Outcome") as text)
+	if(!wanted_outcome) return
 
 	var/datum/court_case/case = new /datum/court_case()
 
 	case.author = user_id.registered_name
+	case.description = purpose
+	case.desired_outcome = wanted_outcome
 
 	var/user_details = list("name" = user_id.registered_name, "unique_id" = user_id.unique_ID)
 	var/prosecuting = FALSE
@@ -315,23 +328,27 @@
 			case.plaintiff = list("name" = "[using_map.name] Police Department", "unique_id" = "")
 			case.case_type = CRIMINAL_CASE
 
-		else if("Prosecute a criminal as part of Police Force")
+		if("Prosecute a criminal as part of Police Force")
 			case.plaintiff = user_details
 			case.case_type = CRIMINAL_CASE
 			prosecuting = TRUE
 
-		else if("Sue the Police Department")
+		if("Sue the Police Department")
 			case.plaintiff = user_details
 			case.defendant = list("name" = "[using_map.name] Police Department", "unique_id" = "")
-			case.case_type = CRIMINAL_CASE
+			case.case_type = CIVIL_CASE
 
-		else if("Open a civil dispute")
+		if("Sue the City Council")
+			case.plaintiff = user_details
+			case.defendant = list("name" = "[using_map.name] Police Department", "unique_id" = "")
+			case.case_type = CIVIL_CASE
+
+		if("Open a civil dispute")
 			case.plaintiff = user_details
 			case.case_type = CIVIL_CASE
 			prosecuting = TRUE
 
 
-	case.name = "[case.plaintiff["name"]] vs. [case.defendant["name"]]"
 
 	if(prosecuting)
 		var/criminal_list = list()
@@ -352,7 +369,7 @@
 
 		case.defendant = list("name" = criminal, "unique_id" = unique_id_crim)
 
-
+	case.name = "[case.plaintiff["name"]] vs. [case.defendant["name"]]"
 	current_case = case
 	page = 3
 
@@ -378,9 +395,8 @@
 	if(href_list["print_case"])
 		print_case()
 
-	if(href_list["select_case"])
-		switch(href_list["select_case"])
-
+	if(href_list["choice"])
+		switch(href_list["choice"])
 			if("choose_case")
 				var/E = locate(href_list["case"])
 
@@ -390,21 +406,24 @@
 				current_case = E
 				page = 3
 
-	if(href_list["case_list"])
-		switch(href_list["case_list"])
-			if("view_all")
-				search_type = "All"
-			if("archived")
-				search_type = "Archived"
-			if("own")
-				search_type = "Own"
-			if("search")
-				search_type = "Search"
+			if("select_case")
+				var/E = locate(href_list["type"])
 
-			if("lawyer_rep")
-				search_type = "Lawyer Rep"
+				if(!E)
+					return
+				if("view_all")
+					search_type = "All"
+				if("archived")
+					search_type = "Archived"
+				if("own")
+					search_type = "Own"
+				if("search")
+					search_type = "Search"
 
-		page = 4
+				if("lawyer_rep")
+					search_type = "Lawyer Rep"
+
+				page = 4
 
 	if(href_list["delete_case"])
 		page = 5
