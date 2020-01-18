@@ -13,7 +13,12 @@ datum/preferences
 	var/muted = 0
 	var/last_ip
 	var/last_id
-
+	var/first_seen
+	var/last_seen
+	
+	var/list/ips_associated	= list()
+	var/list/cids_associated = list()
+	
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
 	var/ooccolor = "#010000"			//Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color
