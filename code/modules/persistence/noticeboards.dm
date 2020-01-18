@@ -124,7 +124,7 @@
 	..()
 
 /obj/structure/noticeboard/attack_ai(var/mob/user)
-	examine(user)
+	usr << "<span class = 'notice'>You are too far from \the [src] to examine it.</span>"
 
 /obj/structure/noticeboard/attack_hand(var/mob/user)
 	examine(user)
