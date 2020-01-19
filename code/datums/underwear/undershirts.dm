@@ -181,3 +181,8 @@
 	name = "Lace Corset"
 	icon_state = "lacecorset"
 	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/sleves
+	name = "Shirtless Longsleeves, female"
+	icon_state = "sleeves_female"
+	has_color = TRUE
