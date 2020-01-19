@@ -59,6 +59,7 @@
 
 /decl/hierarchy/outfit/job/service/janitor
 	name = OUTFIT_JOB_NAME("Janitor")
+	suit = /obj/item/clothing/suit/storage/toggle/hivisjacket
 	uniform = /obj/item/clothing/under/rank/janitor
 	id_type = /obj/item/weapon/card/id/civilian/janitor
 	pda_type = /obj/item/device/pda/janitor
