@@ -194,7 +194,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/device/camera,
 		/obj/item/device/pda,
 		/obj/item/device/radio/headset,
-		/obj/item/device/paicard
+		/obj/item/device/paicard,
+		/obj/item/clothing/head/tinfoil
 	)
 
 	uncommon_loot = list(
@@ -205,7 +206,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/clothing/suit/storage/vest/press,
 		/obj/item/weapon/material/knife/tacknife,
 		/obj/item/weapon/material/butterfly/switchblade,
-		/obj/item/clothing/head/helmet/tinfoil
+		/obj/item/clothing/head/helmet/tinfoil,
+		/obj/item/clothing/suit/storage/redbiker
 	)
 
 	rare_loot = list(

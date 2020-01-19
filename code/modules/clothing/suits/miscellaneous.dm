@@ -1142,9 +1142,9 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	/obj/item/weapon/crowbar, /obj/item/weapon/screwdriver, /obj/item/weapon/weldingtool, /obj/item/weapon/wirecutters, /obj/item/weapon/wrench, /obj/item/weapon/tank/emergency/oxygen,
 	/obj/item/clothing/mask/gas, /obj/item/taperoll/engineering)
 
-/obj/item/clothing/suit/storage/toggle/redbiker
+/obj/item/clothing/suit/storage/redbiker
 	name = "red motorcycle jacket"
-	desc = "Good for health; Bad for education."
+	desc = "Good for health; Bad for education." // "KANEDA!" - Shima Tetsuo
 	icon_state = "kaneda"
 	flags_inv = HIDEHOLSTER
 	body_parts_covered = UPPER_TORSO
