@@ -534,7 +534,7 @@ BLIND     // can't see anything
 	color = "#[get_random_colour()]"
 	update_icon()
 
-/obj/item/clothing/glasses/visor/attack_self(mob/user as mob)
+/obj/item/clothing/glasses/visor/attack_self(mob/user)
 	add_fingerprint(user)
 	var/new_color = input(usr, "Pick a new color", "Visor Color", color) as color|null
 
