@@ -155,11 +155,6 @@
 			winset(src, null, "command=\".configure graphics-hwmode off\"")
 			sleep(2) // wait a bit more, possibly fixes hardware mode not re-activating right
 			winset(src, null, "command=\".configure graphics-hwmode on\"")
-	if(!prefs.first_seen)
-		prefs.first_seen = full_real_time()
-	if(!prefs.last_seen)
-		prefs.last_seen = full_real_time()
-
 	log_client_to_db()
 
 	send_resources()
@@ -227,33 +222,23 @@
 /proc/hard_save_player_age(mob/M)
 	if(!ismob(M))
 		return 0
-
-	if(!M || !M.client || !M.client.prefs)
-		return 0
-
+		
 	var/age = 0
 
-	if(config.hard_saving)
-		if(!M.client.prefs.first_seen)
-			M.client.prefs.first_seen = full_real_time()
-		if(!M.client.prefs.last_seen)
-			M.client.prefs.last_seen = full_real_time()
-
-		age = text2num(Days_Difference(M.client.prefs.first_seen, M.client.prefs.last_seen))
+	age = text2num(Days_Difference(M.client.prefs.first_seen, M.client.prefs.last_seen))
 
 	return age
 
 
 /client/proc/log_client_to_db()
-
 	if ( IsGuestKey(src.key) )
 		return
 
+	if(config.hard_saving)
+		player_age = hard_save_player_age(mob)
+
 	establish_db_connection()
 	if(!dbcon.IsConnected())
-		if(config.hard_saving)
-			player_age = hard_save_player_age(mob)
-
 		return
 
 	var/sql_ckey = sql_sanitize_text(src.ckey)
