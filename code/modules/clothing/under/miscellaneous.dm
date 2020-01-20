@@ -1077,3 +1077,18 @@
 	name = "punk outfit"
 	desc = "Made in Seattle, 2281."
 	icon_state = "punk"
+
+/obj/item/clothing/under/hunter
+	name = "leather tribal outfit"
+	desc = "Relics of a more primitive time."
+	icon_state = "hunter"
+
+/obj/item/clothing/under/huntress
+	name = "leather tribal outfit"
+	desc = "Relics of a more primitive time. This one has a leather strap across the breast area."
+	icon_state = "huntress"
+
+/obj/item/clothing/under/wetsuit
+	name = "wetsuit"
+	desc = "A skin-tight neoprene wetsuit designed to provide thermal insulation and increase buoyancy."
+	icon_state = "wetsuit"

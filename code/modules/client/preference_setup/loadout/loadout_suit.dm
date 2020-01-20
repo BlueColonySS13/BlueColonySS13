@@ -494,3 +494,11 @@
 /datum/gear/suit/hartcoat
 	display_name = "fur-lined greatcoat"
 	path = /obj/item/clothing/suit/storage/toggle/hartcoat
+
+/datum/gear/suit/synthleatherjacket
+	display_name = "synth-leather jacket"
+	path = /obj/item/clothing/suit/storage/toggle/synthleatherjacket
+
+/datum/gear/suit/synthleatherjacket/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)

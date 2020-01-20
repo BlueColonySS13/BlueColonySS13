@@ -134,7 +134,7 @@
 				return TOPIC_REFRESH
 
 	if(href_list["soc_class"])
-		var/new_class = input(user, "Choose your starting social class. This will affect the amount of money you will start with, your position in the revolution and other events.", "Character Preference", pref.economic_status)  as null|anything in suitable_classes
+		var/new_class = input(user, "Choose your starting social class. This will affect the amount of money you will start with, your position in the revolution and other events.", "Character Preference", pref.social_class)  as null|anything in suitable_classes
 		if(new_class && CanUseTopic(user))
 			pref.social_class = new_class
 			return TOPIC_REFRESH
