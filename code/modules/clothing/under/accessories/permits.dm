@@ -41,33 +41,33 @@
 	desc = "A card indicating that the owner is allowed to carry a firearm."
 	tier = 0
 	price_tag = 200
-	
+
 /obj/item/clothing/accessory/permit/gun/tier_one
-	name = "tier one weapon permit"
+	name = "tier 1 weapon permit"
 	desc = "A card indicating that the owner is allowed to carry a firearm."
 	tier = 1
 	price_tag = 400
 
 /obj/item/clothing/accessory/permit/gun/tier_two
-	name = "tier two weapon permit"
+	name = "tier 2 weapon permit"
 	desc = "A card indicating that the owner is allowed to carry a firearm."
 	tier = 2
 	price_tag = 700
 
 /obj/item/clothing/accessory/permit/gun/tier_three
-	name = "tier three weapon permit"
+	name = "tier 3 weapon permit"
 	desc = "A card indicating that the owner is allowed to carry a firearm."
 	tier = 3
 	price_tag = 1000
 
 /obj/item/clothing/accessory/permit/gun/tier_four
-	name = "tier four weapon permit"
+	name = "tier 4 weapon permit"
 	desc = "A card indicating that the owner is allowed to carry a firearm."
 	tier = 4
 	price_tag = 1500
 
 /obj/item/clothing/accessory/permit/gun/tier_five
-	name = "tier five weapon permit"
+	name = "tier 5 weapon permit"
 	desc = "A card indicating that the owner is allowed to carry a firearm."
 	tier = 5
 
@@ -90,4 +90,10 @@
 	desc = "A box of spare gun permits."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "permit"
-	starts_with = list(	/obj/item/clothing/accessory/permit/gun = 8)
+	starts_with = list(
+	/obj/item/clothing/accessory/permit/gun = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_one = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_two = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_three = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_four = 5
+	)
