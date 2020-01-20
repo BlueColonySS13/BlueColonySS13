@@ -531,7 +531,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/visor/New()
 	..()
-	color = "#"+get_random_colour()
+	color = "#[get_random_colour()]"
 	update_icon()
 
 /obj/item/clothing/glasses/visor/attack_self(mob/user as mob)
