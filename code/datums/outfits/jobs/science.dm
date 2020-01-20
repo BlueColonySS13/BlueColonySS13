@@ -16,6 +16,12 @@
 	l_hand = /obj/item/weapon/clipboard
 	id_type = /obj/item/weapon/card/id/science/head
 	pda_type = /obj/item/device/pda/heads/rd
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun = 1)
+
+/decl/hierarchy/outfit/job/science/rd/post_equip(mob/living/carbon/human/H)
+	..()
+	for(var/obj/item/clothing/accessory/permit/gun/permit in H.back.contents)
+		permit.set_name(H.real_name)
 
 /decl/hierarchy/outfit/job/science/scientist
 	name = OUTFIT_JOB_NAME("Scientist")
