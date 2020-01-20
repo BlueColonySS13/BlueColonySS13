@@ -91,8 +91,9 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "permit"
 	starts_with = list(
-	/obj/item/clothing/accessory/permit/gun = 4,
-	/obj/item/clothing/accessory/permit/gun/tier_two = 4,
-	/obj/item/clothing/accessory/permit/gun/tier_three = 4,
-	/obj/item/clothing/accessory/permit/gun/tier_four = 4
+	/obj/item/clothing/accessory/permit/gun = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_one = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_two = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_three = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_four = 5
 	)
