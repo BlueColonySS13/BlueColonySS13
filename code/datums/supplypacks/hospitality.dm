@@ -22,7 +22,7 @@
 			/obj/item/weapon/reagent_containers/food/drinks/bottle/small/ale = 2,
 			/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer = 4,
 			)
-	cost = 10
+	cost = 100
 	containertype = /obj/structure/closet/crate
 	containername = "Party equipment"
 
@@ -42,7 +42,7 @@
 			/obj/item/weapon/storage/box/glass_extras/straws,
 			/obj/item/weapon/storage/box/glass_extras/sticks
 			)
-	cost = 10
+	cost = 100
 	containertype = /obj/structure/closet/crate
 	containername = "crate of bar supplies"
 
@@ -58,7 +58,7 @@
 			/obj/item/pizzabox/vegetable
 			)
 	name = "Surprise pack of five pizzas"
-	cost = 15
+	cost = 45
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "Pizza crate"
 
@@ -72,6 +72,6 @@
 		/obj/item/weapon/paper/card/cat,
 		/obj/item/weapon/paper/card/flower
 		)
-	cost = 10
+	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "crate of gifts"

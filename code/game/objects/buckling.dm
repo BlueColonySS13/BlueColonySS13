@@ -38,7 +38,7 @@
 			if(user_unbuckle_mob(buckled_mobs[1], user))
 				return TRUE
 
-/obj/buckle_mob(mob/living/M)
+/obj/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
 	. = ..()
 	if(.)
 		if(burn_state == 1) //Sets the mob on fire if you buckle them to a burning atom/movableect

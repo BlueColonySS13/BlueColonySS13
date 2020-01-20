@@ -52,14 +52,14 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
-#define INIT_ORDER_EARLY        19
-#define INIT_ORDER_CHEMISTRY	18
+#define INIT_ORDER_EARLY     		19
+#define INIT_ORDER_CHEMISTRY		18
 #define INIT_ORDER_MAPPING		17
 #define INIT_ORDER_DECALS		16
-#define INIT_ORDER_ATOMS		15
+#define INIT_ORDER_ATOMS			15
 #define INIT_ORDER_MACHINES		10
 #define INIT_ORDER_SHUTTLES		3
-#define INIT_ORDER_TIMER		1
+#define INIT_ORDER_TIMER			1
 #define INIT_ORDER_DEFAULT		0
 #define INIT_ORDER_LIGHTING		0
 #define INIT_ORDER_AIR			-1
@@ -68,12 +68,14 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_OVERLAY		-6
 #define INIT_ORDER_XENOARCH		-20
 #define INIT_ORDER_CIRCUIT		-21
-#define INIT_ORDER_AI			-22
-#define INIT_ORDER_PERSISTENCE	-23
-#define INIT_ORDER_PAYROLL		-24
-#define INIT_ORDER_ELECTIONS		-25
-#define INIT_ORDER_LAW			-26
-#define INIT_ORDER_LOTS			-27
+#define INIT_ORDER_EMAILS		-22
+#define INIT_ORDER_AI			-23
+#define INIT_ORDER_PERSISTENCE	-24
+#define INIT_ORDER_PAYROLL		-25
+#define INIT_ORDER_ELECTIONS		-26
+#define INIT_ORDER_LAW			-27
+#define INIT_ORDER_LOTS			-28
+
 
 
 // Subsystem fire priority, from lowest to highest priority

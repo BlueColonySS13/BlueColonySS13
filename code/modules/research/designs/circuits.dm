@@ -590,6 +590,13 @@ CIRCUITS BELOW
 	build_path = /obj/item/weapon/circuitboard/aicore
 	sort_string = "XAAAA"
 
+/datum/design/circuit/chem_master
+	name = "ChemMaster 3000"
+	id = "chemmaster"
+	req_tech = list(TECH_DATA = 3, TECH_MAGNET = 2)
+	build_path = /obj/item/weapon/circuitboard/chem_master
+	sort_string = "FAGAH"
+
 
 /* I have no idea how this was even running before, but it doesn't seem to be necessary.
 ///////////////////////////////////

@@ -10,7 +10,6 @@
 	light_color = "#ebf7fe"  //white blue
 	density = 1
 	anchored = 1
-	bounds = "64,32"
 	plane = ABOVE_PLANE
 	layer = ABOVE_MOB_LAYER
 	pixel_y = 10
@@ -20,7 +19,21 @@
 							"smoke",
 							"tunguska",
 							"rent",
-							"vets")
+							"vets",
+							"army",
+							"fitness",
+							"movie1",
+							"movie2",
+							"blank",
+							"gentrified",
+							"legalcoke",
+							"pollux",
+							"vacay",
+							"atluscity",
+							"sunstar",
+							"speedweed",
+							"golf",
+							"visit_texas")
 
 	var/current_ad
 

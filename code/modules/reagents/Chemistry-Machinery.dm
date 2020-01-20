@@ -1,19 +1,10 @@
-#define SOLID 1
-#define LIQUID 2
-#define GAS 3
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
 	density = 1
 	anchored = 1
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0"
+	circuit = /obj/item/weapon/circuitboard/chem_master
 	use_power = 1
 	idle_power_usage = 20
 	var/beaker = null
@@ -72,7 +63,11 @@
 
 	else if(default_unfasten_wrench(user, B, 20))
 		return
-
+	if(default_deconstruction_screwdriver(user, B))
+		return
+	if(default_deconstruction_crowbar(user, B))
+		return
+		
 	return
 
 /obj/machinery/chem_master/attack_hand(mob/user as mob)
@@ -374,7 +369,7 @@
 	if(istype(O,/obj/item/stack))
 		var/obj/item/stack/stack = O
 
-		if(!(stack.associated_reagent && stack.reagents.total_volume))
+		if(!(!isemptylist(stack.associated_reagents) && stack.reagents.total_volume))
 			user << "\The [O] is not suitable for blending."
 
 

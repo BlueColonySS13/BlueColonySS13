@@ -39,6 +39,11 @@
 	var/law_NICOTINE = PERMIT_SELLING
 	var/law_STIMM = LEGAL
 	var/law_CYANIDE = LEGAL
+	var/law_LSD = ILLEGAL
+	var/law_DMT = ILLEGAL
+	var/law_AYAHUASCA = ILLEGAL
+	var/law_BATHSALTS = ILLEGAL
+	var/law_KROKODIL = ILLEGAL
 	var/law_CHLORAL = ILLEGAL
 
 	var/law_GUNS = PERMIT_POSSESSION
@@ -51,6 +56,7 @@
 	var/drinking_age = 18
 	var/smoking_age = 18
 	var/gambling_age = 18
+	var/sentencing_age = 13
 	var/synth_vote = TRUE			// Are FBPs allowed to vote?
 	var/citizenship_vote = TRUE		// Are starsystem immigrants allowed to vote?
 	var/criminal_vote = TRUE			// Can people with criminal records vote? (unimplemented)

@@ -40,13 +40,13 @@
 	name = "tier 0 weapon permit"
 	desc = "A card indicating that the owner is allowed to carry a firearm."
 	tier = 0
-	price_tag = 50
+	price_tag = 200
 
 /obj/item/clothing/accessory/permit/gun/tier_one
 	name = "tier one weapon permit"
 	desc = "A card indicating that the owner is allowed to carry a flash."
 	tier = 1
-	price_tag = 200
+	price_tag = 400
 
 /obj/item/clothing/accessory/permit/gun/tier_two
 	name = "tier two weapon permit"
@@ -70,7 +70,6 @@
 	name = "tier five weapon permit"
 	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, ballistic pistols, all types of energy guns, and civilian grade shotguns."
 	tier = 5
-	price_tag = 3000
 
 /obj/item/clothing/accessory/permit/gun/tier_five/police
 	name = "tier five police weapon permit"
@@ -107,9 +106,3 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "permit"
 	starts_with = list(	/obj/item/clothing/accessory/permit/gun = 8)
-
-/obj/item/weapon/storage/box/gun_permits/New()
-	for(var/instance in subtypesof(/obj/item/clothing/accessory/permit/gun))	// gives one of each permit, in a box.
-		starts_with += instance[1]
-
-	..()

@@ -21,6 +21,11 @@
 #define CONTRABAND_STIMM persistent_economy.law_STIMM
 #define CONTRABAND_CYANIDE persistent_economy.law_CYANIDE
 #define CONTRABAND_CHLORAL persistent_economy.law_CHLORAL
+#define CONTRABAND_DMT persistent_economy.law_DMT
+#define CONTRABAND_LSD persistent_economy.law_LSD
+#define CONTRABAND_AYAHUASCA persistent_economy.law_AYAHUASCA
+#define CONTRABAND_BATHSALTS persistent_economy.law_BATHSALTS
+#define CONTRABAND_KROKODIL persistent_economy.law_KROKODIL
 
 #define CONTRABAND_GUN persistent_economy.law_GUNS
 #define CONTRABAND_KNIFESMALL persistent_economy.law_SMALLKNIVES
@@ -43,3 +48,22 @@
 	var/amt
 	amt = price / tax
 	return amt
+
+
+/proc/get_tax_rate(class)
+
+	switch(class)
+		if(CLASS_UPPER)
+			return persistent_economy.tax_rate_upper * 100
+		if(CLASS_MIDDLE)
+			return persistent_economy.tax_rate_middle * 100
+		if(CLASS_WORKING)
+			return persistent_economy.tax_rate_lower * 100
+
+/proc/get_economic_class(money)
+	switch(money)
+		if(0 to 9999)				return CLASS_WORKING
+		if(10000 to 79999)			return CLASS_MIDDLE
+		if(80,000 to INFINITY)		return CLASS_UPPER
+
+		else 					return CLASS_WORKING	// this accounts for balances that are negative

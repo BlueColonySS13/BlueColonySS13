@@ -289,9 +289,9 @@
 /mob/living/simple_animal/hostile/statue/proc/CanAttack(atom/the_target) //ignore clientless mobs
 	if(isliving(the_target))
 		var/mob/living/L = the_target
-		if(!L.client && !L.ckey)
-			return 0
-	return ..()
+		if(L?.client)
+			return TRUE
+	return FALSE
 
 // Statue powers
 
@@ -324,7 +324,7 @@
 		if(L == user || L == user.creator)
 			continue
 		var/turf/T = get_turf(L.loc)
-		if(T && T in targets)
+		if(T && (T in targets))
 			L.Blind(4)
 	return
 

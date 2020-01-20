@@ -22,50 +22,11 @@
 	desc = "A white folder."
 	icon_state = "folder_white"
 
-/obj/item/weapon/folder/blue_captain
-	desc = "A blue folder with Colony Director markings."
-	icon_state = "folder_captain"
-
-/obj/item/weapon/folder/blue_hop
-	desc = "A blue folder with HoP markings."
-	icon_state = "folder_hop"
-
-/obj/item/weapon/folder/white_cmo
-	desc = "A white folder with CMO markings."
-	icon_state = "folder_cmo"
-
-/obj/item/weapon/folder/white_rd
-	desc = "A white folder with RD markings."
-	icon_state = "folder_rd"
-
-/obj/item/weapon/folder/white_rd/New()
-	//add some memos
-	var/obj/item/weapon/paper/P = new()
-	P.name = "Memo RE: proper analysis procedure"
-	P.info = "<br>We keep test dummies in pens here for a reason"
-	src.contents += P
-	update_icon()
-
-/obj/item/weapon/folder/yellow_ce
-	desc = "A yellow folder with CE markings."
-	icon_state = "folder_ce"
-
-/obj/item/weapon/folder/red_hos
-	desc = "A red folder with HoS markings."
-	icon_state = "folder_hos"
-
-/obj/item/weapon/folder/update_icon()
-	overlays.Cut()
-	if(contents.len)
-		overlays += "folder_paper"
-	return
-
 /obj/item/weapon/folder/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/paper) || istype(W, /obj/item/weapon/photo) || istype(W, /obj/item/weapon/paper_bundle))
 		user.drop_item()
 		W.loc = src
 		user << "<span class='notice'>You put the [W] into \the [src].</span>"
-		update_icon()
 	else if(istype(W, /obj/item/weapon/pen))
 		var/n_name = sanitizeSafe(input(usr, "What would you like to label the folder?", "Folder Labelling", null)  as text, MAX_NAME_LEN)
 		if((loc == usr && usr.stat == 0))

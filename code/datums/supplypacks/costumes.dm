@@ -18,7 +18,7 @@
 			/obj/item/clothing/shoes/sandal,
 			/obj/item/clothing/head/wizard/fake
 			)
-	cost = 20
+	cost = 300
 	containertype = /obj/structure/closet/crate
 	containername = "Wizard costume crate"
 
@@ -47,7 +47,7 @@
 			/obj/item/clothing/head/collectable/petehat
 			)
 	name = "Collectable hat crate!"
-	cost = 200
+	cost = 100
 	containertype = /obj/structure/closet/crate
 	containername = "Collectable hats crate! Brought to you by Bass.inc!"
 
@@ -83,7 +83,7 @@
 			/obj/item/clothing/under/kilt
 			)
 	name = "Costumes crate"
-	cost = 10
+	cost = 200
 	containertype = /obj/structure/closet/crate
 	containername = "Actor Costumes"
 
@@ -105,7 +105,7 @@
 			/obj/item/clothing/accessory/wcoat
 			)
 	name = "Formalwear closet"
-	cost = 30
+	cost = 450
 	containertype = /obj/structure/closet
 	containername = "Formalwear for the best occasions."
 
@@ -113,7 +113,7 @@ datum/supply_pack/costumes/witch
 	name = "Witch costume"
 	containername = "Witch costume"
 	containertype = /obj/structure/closet
-	cost = 20
+	cost = 50
 	contains = list(
 			/obj/item/clothing/suit/wizrobe/marisa/fake,
 			/obj/item/clothing/shoes/sandal,
@@ -125,7 +125,7 @@ datum/supply_pack/costumes/witch
 	name = "Costume hats"
 	containername = "Actor hats crate"
 	containertype = /obj/structure/closet/crate
-	cost = 10
+	cost = 70
 	num_contained = 3
 	contains = list(
 			/obj/item/clothing/head/redcoat,
@@ -150,7 +150,7 @@ datum/supply_pack/costumes/witch
 	name = "Womens formal dress locker"
 	containername = "Pretty dress locker"
 	containertype = /obj/structure/closet
-	cost = 15
+	cost = 450
 	num_contained = 3
 	contains = list(
 			/obj/item/clothing/under/wedding/bride_orange,

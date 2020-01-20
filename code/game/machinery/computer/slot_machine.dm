@@ -1,6 +1,6 @@
 //#define DEBUG_SLOT_MACHINES
 #ifdef DEBUG_SLOT_MACHINES
-	#warning Slot machines are being debugged! Turn this off in code/game/machinery/computer/slot_machine.dm
+	#warn Slot machines are being debugged! Turn this off in code/game/machinery/computer/slot_machine.dm
 #endif
 
 #define SEVEN		1
@@ -56,7 +56,7 @@
 	radio = new(src)
 
 	update_icon()
-	
+
 /obj/machinery/computer/slot_machine/proc/get_spin_cost()
 	return get_item_cost()
 
@@ -297,7 +297,7 @@
 
 			if(stored_money > 0)
 				dat += {"There are <span style="color:[stored_money<get_spin_cost()?"red":"green"]"><b>$[num2septext(stored_money)]</b>
-					space credits insterted. <span style="color:blue"><a href='?src=\ref[src];reclaim=1'>Reclaim</a></span><br>"}
+					space credits inserted. <span style="color:blue"><a href='?src=\ref[src];reclaim=1'>Reclaim</a></span><br>"}
 			else
 				dat += {"You need at least <b>$[get_spin_cost()]</b> credits to play. Use a nearby ATM and retreive some cash from your money account!<br>"}
 

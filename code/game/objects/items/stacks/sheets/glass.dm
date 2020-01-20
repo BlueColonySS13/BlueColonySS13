@@ -55,7 +55,7 @@
 	if(!user || !src)	return 0
 	if(!istype(user.loc,/turf)) return 0
 	if(!user.IsAdvancedToolUser())
-		user << "\red You don't have the dexterity to do this!"
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return 0
 	var/title = "Sheet-Glass"
 	title += " ([src.amount] sheet\s left)"
@@ -67,7 +67,7 @@
 			for (var/obj/structure/window/win in user.loc)
 				directions-=win.dir
 				if(!(win.ini_dir in cardinal))
-					user << "\red Can't let you do that."
+					to_chat(user, "<span class='warning'>Can't let you do that...</span>")
 					return 1
 			var/dir_to_set = 2
 			//yes, this could probably be done better but hey... it works...
@@ -93,7 +93,7 @@
 			if(!src)	return 1
 			if(src.loc != user)	return 1
 			if(locate(/obj/structure/window) in user.loc)
-				user << "\red There is a window in the way."
+				to_chat(user, "<span class='warning'>There is a window in the way.</span>")
 				return 1
 			var/obj/structure/window/W
 			W = new /obj/structure/window/basic( user.loc, 0 )
@@ -121,7 +121,7 @@
 	singular_name = "phoron glass sheet"
 	icon_state = "sheet-phoronglass"
 	default_type = "phoron glass"
-	associated_reagent = "phoron"
+	associated_reagents = list("phoron")
 
 /obj/item/stack/material/glass/phoronglass/attackby(obj/item/W, mob/user)
 	..()

@@ -129,6 +129,9 @@
 		else if(player.current.client.prefs.age < 16)
 			candidates -= player
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are too young! They have been removed from the draft.")
+		else if(player.current.client.prefs.criminal_status == "Incarcerated")
+			candidates -= player
+			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are in prison! They have been removed from the draft.")
 
 
 	return candidates
@@ -182,7 +185,7 @@
 
 /datum/antagonist/proc/draft_antagonist(var/datum/mind/player)
 	//Check if the player can join in this antag role, or if the player has already been given an antag role.
-	if(!can_become_antag(player) || player.assigned_role in roundstart_restricted)
+	if(!can_become_antag(player) || (player.assigned_role in roundstart_restricted))
 		log_debug("[player.key] was selected for [role_text] by lottery, but is not allowed to be that role.")
 		return 0
 	if(player.current.client.prefs.economic_status in disallowed_classes)

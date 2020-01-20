@@ -21,7 +21,8 @@
 	var/last_use = 1.0
 	var/safety = 1
 	var/sprite_name = "fire_extinguisher"
-
+	price_tag = 5
+	
 /obj/item/weapon/extinguisher/mini
 	name = "fire extinguisher"
 	desc = "A light and compact fibreglass-framed model fire extinguisher."
@@ -34,7 +35,8 @@
 	max_water = 150
 	spray_particles = 3
 	sprite_name = "miniFE"
-
+	price_tag = 3
+	
 /obj/item/weapon/extinguisher/New()
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)

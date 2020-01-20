@@ -168,9 +168,9 @@
 	var/purge = 0					// A counter used for null-rod stuff
 	var/mob/living/target_mob		// Who I'm trying to attack
 	var/mob/living/follow_mob		// Who I'm recruited by
-	var/mob/living/list/friends = list() // People who are immune to my wrath, for now
-	var/mob/living/simple_animal/list/faction_friends = list() // Other simple mobs I am friends with
-	var/turf/list/walk_list = list()// List of turfs to walk through to get somewhere
+	var/list/friends = list() // People who are immune to my wrath, for now
+	var/list/faction_friends = list() // Other simple mobs I am friends with
+	var/list/walk_list = list()// List of turfs to walk through to get somewhere
 	var/astarpathing = 0			// Am I currently pathing to somewhere?
 	var/stance_changed = 0			// When our stance last changed (world.time)
 	var/last_target_time = 0		// When we last set our target, to prevent juggles
@@ -1324,10 +1324,10 @@
 	return 1
 
 //Check firing lines for faction_friends (if we're not cooperative, we don't care)
-/mob/living/simple_animal/proc/CheckFiringLine(var/turf/tturf)
+/mob/living/simple_animal/proc/CheckFiringLine(var/turf/tturf) //Man this code is bad but I don't have it in me to rewrite it
 	if(!tturf) return
 
-	var/turf/list/crosses = list()
+	var/list/crosses = list()
 	var/this_turf = get_turf(src)
 
 	while(this_turf != tturf)
@@ -1335,11 +1335,11 @@
 		crosses += this_turf
 
 	for(var/mob/living/FF in faction_friends)
-		if(FF.loc in crosses)
+		if(get_turf(FF) in crosses)
 			return 0
 
 	for(var/mob/living/F in friends)
-		if(F.loc in crosses)
+		if(get_turf(F) in crosses)
 			return 0
 
 	return 1

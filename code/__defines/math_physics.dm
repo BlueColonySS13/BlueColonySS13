@@ -1,5 +1,4 @@
 // Math constants.
-#define M_PI    3.14159265
 
 #define R_IDEAL_GAS_EQUATION       8.31    // kPa*L/(K*mol).
 #define ONE_ATMOSPHERE             101.325 // kPa.
@@ -20,7 +19,6 @@
 #define TCMB 2.7     // -270.3 degrees celcius
 #define TN60C 213.15 //    -60 degrees celcius
 
-#define CLAMP01(x) max(0, min(1, x))
 #define QUANTIZE(variable) (round(variable,0.0001))
 
 #define TICKS_IN_DAY 		24*60*60*10

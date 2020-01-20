@@ -238,6 +238,11 @@
 	icon_state = "sweatervest_red"
 	item_state = "sweatervest_red"
 
+/obj/item/clothing/accessory/wcoat/fancyvest
+	name = "fancy waistcoat"
+	icon_state = "fancyvest"
+	item_state = "fancyvest"
+
 //Sweaters.
 
 /obj/item/clothing/accessory/sweater

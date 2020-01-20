@@ -188,8 +188,5 @@
 	ice_creamed = 1
 
 #undef ICECREAM_VANILLA
-#undef FLAVOUR_CHOCOLATE
-#undef FLAVOUR_STRAWBERRY
-#undef FLAVOUR_BLUE
 #undef CONE_WAFFLE
 #undef CONE_CHOC

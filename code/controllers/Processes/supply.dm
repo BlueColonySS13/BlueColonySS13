@@ -95,9 +95,8 @@ var/datum/controller/supply/supply_controller = new()
 		if(istype(MA,/obj/structure/closet/crate))
 			var/obj/structure/closet/crate/CR = MA
 			callHook("sell_crate", list(CR, area_shuttle))
-			
+
 			department_accounts["Cargo"].money += CR.points_per_crate
-			var/find_slip = 1
 
 			for(var/atom/A in CR)
 				EC.contents[++EC.contents.len] = list(
@@ -106,30 +105,11 @@ var/datum/controller/supply/supply_controller = new()
 						"quantity" = 1
 					)
 
-				// Sell manifests
-				if(find_slip && istype(A,/obj/item/weapon/paper/manifest))
-					var/obj/item/weapon/paper/manifest/slip = A
-					if(!slip.is_copy && slip.stamped && slip.stamped.len) //yes, the clown stamp will work. clown is the highest authority on the station, it makes sense
-						department_accounts["Cargo"].money += points_per_slip
-						EC.contents[EC.contents.len]["value"] = points_per_slip
-						find_slip = 0
-					continue
 
-				// Sell phoron and platinum
-				if(istype(A, /obj/item/stack))
-					var/obj/item/stack/P = A
-					if(material_points_conversion[P.get_material_name()])
-						EC.contents[EC.contents.len]["value"] = P.get_amount() * material_points_conversion[P.get_material_name()]
-					EC.contents[EC.contents.len]["quantity"] = P.get_amount()
-					EC.value += EC.contents[EC.contents.len]["value"]
-
-
-				//Sell spacebucks
-				if(istype(A, /obj/item/weapon/spacecash))
-					var/obj/item/weapon/spacecash/cashmoney = A
-					EC.contents[EC.contents.len]["value"] = cashmoney.worth * points_per_money
-					EC.contents[EC.contents.len]["quantity"] = cashmoney.worth
-					EC.value += EC.contents[EC.contents.len]["value"]
+				var/obj/sold = A
+				EC.contents[EC.contents.len]["value"] = sold.get_item_cost()
+				EC.contents[EC.contents.len]["quantity"] = 1
+				EC.value += EC.contents[EC.contents.len]["value"]
 
 
 

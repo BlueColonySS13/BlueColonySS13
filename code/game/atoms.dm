@@ -524,5 +524,5 @@
 
 // Called when hitting the atom with a grab.
 // Will skip attackby() and afterattack() if returning TRUE.
-/atom/proc/grab_attack(var/obj/item/grab/G)
+/atom/proc/grab_attack(var/obj/item/weapon/grab/G)
 	return FALSE

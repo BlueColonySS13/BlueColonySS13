@@ -45,6 +45,18 @@
 	update_strings()
 	return 1
 
+	
+	
+/obj/item/stack/material/update_reagents()
+	if(reagents)
+		reagents.reagent_list.Cut()
+	if(associated_reagents)
+		var/divided = (reagents_per_unit / associated_reagents.len) * amount
+		for(var/R in associated_reagents)
+			reagents.add_reagent(R, divided)
+
+	return 1
+
 /obj/item/stack/material/get_material()
 	return material
 
@@ -94,7 +106,7 @@
 	default_type = "iron"
 	apply_colour = 1
 	no_variants = FALSE
-	associated_reagent = "iron"
+	associated_reagents = list("iron")
 
 /obj/item/stack/material/lead
 	name = "lead"
@@ -108,32 +120,37 @@
 	icon_state = "sheet-sandstone"
 	default_type = "sandstone"
 	no_variants = FALSE
-	associated_reagent = "silicon"
+	associated_reagents = list("silicon")
 
 /obj/item/stack/material/marble
 	name = "marble brick"
 	icon_state = "sheet-marble"
 	default_type = "marble"
 	no_variants = FALSE
+	associated_reagents = list("carbon")
 
 /obj/item/stack/material/diamond
 	name = "diamond"
 	icon_state = "sheet-diamond"
 	default_type = "diamond"
 	drop_sound = 'sound/items/drop/glass.ogg'
+	associated_reagents = list("carbon")
+
 
 /obj/item/stack/material/uranium
 	name = "uranium"
 	icon_state = "sheet-uranium"
 	default_type = "uranium"
 	no_variants = FALSE
+	associated_reagents = list("uranium")
 
 /obj/item/stack/material/phoron
 	name = "solid phoron"
 	icon_state = "sheet-phoron"
 	default_type = "phoron"
 	no_variants = FALSE
-	associated_reagent = "phoron"
+	associated_reagents = list("phoron")
+
 
 /obj/item/stack/material/plastic
 	name = "plastic"
@@ -143,21 +160,21 @@
 	burn_state = 0 //Burnable
 	burntime = 5
 	drop_sound = 'sound/items/drop/boots.ogg'
-	associated_reagent = "silicon"
+	associated_reagents = list("silicon")
 
 /obj/item/stack/material/gold
 	name = "gold"
 	icon_state = "sheet-gold"
 	default_type = "gold"
 	no_variants = FALSE
-	associated_reagent = "gold"
+	associated_reagents = list("gold")
 
 /obj/item/stack/material/silver
 	name = "silver"
 	icon_state = "sheet-silver"
 	default_type = "silver"
 	no_variants = FALSE
-	associated_reagent = "silver"
+	associated_reagents = list("silver")
 
 //Valuable resource, cargo can sell it.
 /obj/item/stack/material/platinum
@@ -165,7 +182,7 @@
 	icon_state = "sheet-adamantine"
 	default_type = "platinum"
 	no_variants = FALSE
-	associated_reagent = "platinum"
+	associated_reagents = list("platinum")
 
 //Extremely valuable to Research.
 /obj/item/stack/material/mhydrogen
@@ -173,7 +190,7 @@
 	icon_state = "sheet-mythril"
 	default_type = "mhydrogen"
 	no_variants = FALSE
-	associated_reagent = "hydrogen"
+	associated_reagents = list("hydrogen")
 
 //Fuel for MRSPACMAN generator.
 /obj/item/stack/material/tritium
@@ -204,12 +221,14 @@
 	icon_state = "sheet-metal"
 	default_type = DEFAULT_WALL_MATERIAL
 	no_variants = FALSE
+	associated_reagents = list("iron")
 
 /obj/item/stack/material/plasteel
 	name = "plasteel"
 	icon_state = "sheet-plasteel"
 	default_type = "plasteel"
 	no_variants = FALSE
+	associated_reagents = list("iron", "carbon", "platinum")
 
 /obj/item/stack/material/durasteel
 	name = "durasteel"
@@ -217,6 +236,7 @@
 	item_state = "sheet-metal"
 	default_type = "durasteel"
 	no_variants = FALSE
+	associated_reagents = list("iron")
 
 /obj/item/stack/material/wood
 	name = "wooden plank"
@@ -224,6 +244,7 @@
 	default_type = MAT_WOOD
 	burn_state = 0 //Burnable
 	burntime = MEDIUM_BURN
+	associated_reagents = list("woodpulp")
 
 /obj/item/stack/material/wood/ten
 	amount = 10
@@ -298,6 +319,7 @@
 	w_class = ITEMSIZE_HUGE
 	description_info = "Use inhand to craft things, or use a sharp and edged object on this to convert it into two wooden planks."
 	var/plank_type = /obj/item/stack/material/wood
+	associated_reagents = list("woodpulp")
 
 /obj/item/stack/material/log/sif
 	name = "alien log"
@@ -345,14 +367,14 @@
 	desc = "The temptation to build a snowman rises."
 	icon_state = "sheet-snow"
 	default_type = "snow"
-	associated_reagent = "water"
+	associated_reagents = list("water")
 
 /obj/item/stack/material/snowbrick
 	name = "snow brick"
 	desc = "For all of your igloo building needs."
 	icon_state = "sheet-snowbrick"
 	default_type = "packed snow"
-	associated_reagent = "water"
+	associated_reagents = list("water")
 
 /obj/item/stack/material/leather
 	name = "leather"
@@ -369,7 +391,7 @@
 	default_type = "glass"
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/glass.ogg'
-	associated_reagent = "silicon"
+	associated_reagents = list("silicon")
 
 /obj/item/stack/material/glass/reinforced
 	name = "reinforced glass"

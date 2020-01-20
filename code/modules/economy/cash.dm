@@ -18,6 +18,9 @@
 	drop_sound = 'sound/items/drop/paper.ogg'
 	var/list/possible_values = list(100,50,20,10,5,2,1)
 
+/obj/item/weapon/spacecash/get_item_cost()
+	return worth	// lol
+
 /obj/item/weapon/spacecash/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/spacecash))
 		if(istype(W, /obj/item/weapon/spacecash/ewallet)) return 0
@@ -106,43 +109,43 @@
 	if(!worth)
 		qdel(src)
 
-/obj/item/weapon/spacecash/c1
+/obj/item/weapon/spacecash/bundle/c1
 	name = "1 credit chip"
 	icon_state = "1"
 	desc = "It's worth 1 credit."
 	worth = 1
 
-/obj/item/weapon/spacecash/c2
+/obj/item/weapon/spacecash/bundle/c2
 	name = "2 credit chip"
 	icon_state = "2"
 	desc = "It's worth 2 credits."
 	worth = 2
 
-/obj/item/weapon/spacecash/c5
+/obj/item/weapon/spacecash/bundle/c5
 	name = "5 credit chip"
 	icon_state = "5"
 	desc = "It's worth 5 credits."
 	worth = 5
 
-/obj/item/weapon/spacecash/c10
+/obj/item/weapon/spacecash/bundle/c10
 	name = "10 credit chip"
 	icon_state = "10"
 	desc = "It's worth 10 credits."
 	worth = 10
 
-/obj/item/weapon/spacecash/c20
+/obj/item/weapon/spacecash/bundle/c20
 	name = "20 credit chip"
 	icon_state = "20"
 	desc = "It's worth 20 credits."
 	worth = 20
 
-/obj/item/weapon/spacecash/c50
+/obj/item/weapon/spacecash/bundle/c50
 	name = "50 credit chip"
 	icon_state = "50"
 	desc = "It's worth 50 credits."
 	worth = 50
-
-/obj/item/weapon/spacecash/c100
+	
+/obj/item/weapon/spacecash/bundle/c100
 	name = "100 credit chip"
 	icon_state = "100"
 	desc = "It's worth 100 credits."
@@ -163,7 +166,7 @@
 
 proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	if(sum in list(100,50,20,10,5,2,1))
-		var/cash_type = text2path("/obj/item/weapon/spacecash/c[sum]")
+		var/cash_type = text2path("/obj/item/weapon/spacecash/bundle/c[sum]")
 		var/obj/cash = new cash_type (usr.loc)
 		if(ishuman(human_user) && !human_user.get_active_hand())
 			human_user.put_in_hands(cash)

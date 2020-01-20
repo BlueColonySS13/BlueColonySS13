@@ -91,12 +91,12 @@
 	var/task_after_process
 	var/list/task_after_process_args
 
-/datum/scheduled_task/New(var/trigger_time, var/procedure, var/list/arguments, var/proc/task_after_process, var/list/task_after_process_args)
+/datum/scheduled_task/New(var/trigger_time, var/procedure, var/list/arguments, var/task_after_process, var/list/task_after_process_args)
 	..()
 	src.trigger_time = trigger_time
 	src.procedure = procedure
 	src.arguments = arguments ? arguments : list()
-	src.task_after_process = task_after_process ? task_after_process : /proc/destroy_scheduled_task
+	src.task_after_process = task_after_process ? task_after_process : destroy_scheduled_task()
 	src.task_after_process_args = istype(task_after_process_args) ? task_after_process_args : list()
 	task_after_process_args += src
 
@@ -128,7 +128,7 @@
 /datum/scheduled_task/source
 	var/datum/source
 
-/datum/scheduled_task/source/New(var/trigger_time, var/datum/source, var/procedure, var/list/arguments, var/proc/task_after_process, var/list/task_after_process_args)
+/datum/scheduled_task/source/New(var/trigger_time, var/datum/source, var/procedure, var/list/arguments, var/task_after_process, var/list/task_after_process_args)
 	src.source = source
 	GLOB.destroyed_event.register(src.source, src, /datum/scheduled_task/source/proc/source_destroyed)
 	..(trigger_time, procedure, arguments, task_after_process, task_after_process_args)

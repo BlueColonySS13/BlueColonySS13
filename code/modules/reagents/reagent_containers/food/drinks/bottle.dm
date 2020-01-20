@@ -212,8 +212,8 @@
 /obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey
 	name = "Special Blend Whiskey"
 	desc = "Just when you thought regular whiskey was good... This silky, amber goodness has to come along and ruin everything."
-	icon_state = "whiskeybottle2"
-	center_of_mass = list("x"=16, "y"=3)
+	icon_state = "specialwhiskeybottle"
+	center_of_mass = list("x"=16, "y"=6)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey/New()
 	..()
