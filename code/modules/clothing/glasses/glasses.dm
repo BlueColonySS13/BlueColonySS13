@@ -535,7 +535,7 @@ BLIND     // can't see anything
 	update_icon()
 
 /obj/item/clothing/glasses/visor/attack_self(mob/user as mob)
-	src.add_fingerprint(user)
+	add_fingerprint(user)
 	var/new_color = input(usr, "Pick a new color", "Visor Color", color) as color|null
 
 	if(new_color && (new_color != color))
