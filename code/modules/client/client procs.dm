@@ -219,16 +219,12 @@
 	else
 		return -1
 
-/proc/hard_save_player_age(mob/M)
-	if(!ismob(M))
-		return 0
-		
+/proc/hard_save_player_age(mob/M)		
 	var/age = 0
 
 	age = text2num(Days_Difference(M.client.prefs.first_seen, M.client.prefs.last_seen))
 
 	return age
-
 
 /client/proc/log_client_to_db()
 	if ( IsGuestKey(src.key) )
