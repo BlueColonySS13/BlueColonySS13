@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(economy)
 
 
 /datum/controller/subsystem/economy/proc/city_charges()
-	for(var/datum/expense/E in city_expenses)
+	for(var/datum/expense/E in persistent_economy.city_expenses)
 		E.payroll_expense(department_accounts["[station_name()] Funds"])
 	
 
