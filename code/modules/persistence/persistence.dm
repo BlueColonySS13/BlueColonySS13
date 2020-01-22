@@ -37,11 +37,11 @@
 
 // This is so specific atoms can override these, and ignore certain ones
 /atom/proc/vars_to_save()
- 	return list("x","y","z","color","dir","icon_state","name","pixel_x","pixel_y","contents")
+ 	return list("x","y","z","color","dir","name","pixel_x","pixel_y","contents")
 
 /atom/proc/map_important_vars()
 	// A list of important things to save in the map editor
- 	return list("color","dir","icon","icon_state","layer","name","pixel_x","pixel_y")
+ 	return list("x","y","z","color","dir","icon","icon_state","layer","name","pixel_x","pixel_y")
 
 /area/map_important_vars()
 	// Keep the area default icons, to keep things nice and legible
@@ -87,19 +87,34 @@
 
 // Custom vars-to-save/persistence load list
 
+/obj/vars_to_save()
+ 	 return list("x","y","z","anchored","color","dir","icon_state","name","pixel_x","pixel_y","contents","fingerprints","fingerprintshidden","fingerprintslast",\
+ 	 "suit_fibers"
+ 	 )
+
 /obj/item/weapon/paper/vars_to_save()
- 	return list("color","dir","icon","icon_state","layer","name","pixel_x","pixel_y","info")
+ 	return list("x","y","z","color","dir","icon","icon_state","layer","name","pixel_x","pixel_y","fingerprints","fingerprintshidden","fingerprintslast","info")
 
 /obj/structure/closet/vars_to_save()
-	return list("color","dir","icon","icon_state","layer","name","pixel_x","pixel_y","opened","welded",)
+	return list("x","y","z","anchored","color","dir","icon","icon_state","layer","name","pixel_x","pixel_y","opened","welded","contents")
 
-
+/obj/structure/safe/vars_to_save()
+ 	 return list("x","y","z","anchored","color","dir","icon_state","name","pixel_x","pixel_y","contents","fingerprints","fingerprintshidden","fingerprintslast",\
+ 	 "suit_fibers","open","tumbler_1_pos","tumbler_1_open","tumbler_2_pos","tumbler_2_open","dial",
+ 	 )
 /obj/structure/on_persistence_load()
 	..()
+	update_connections()
 	update_icon()
-	update_connections(propagate=0)
+
 
 // Don't save list - Better to keep a track of things here.
+
+/mob
+	dont_save = TRUE
+
+/obj/item/weapon/card/id/gold/captain/spare
+	dont_save = TRUE
 
 /atom/movable/lighting_overlay
 	dont_save = TRUE

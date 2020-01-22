@@ -41,12 +41,12 @@
 
 /proc/get_tax_price(tax, price)
 	var/tax_amt
-	tax_amt = price / tax
+	tax_amt = tax * price
 	return price + tax_amt
 
 /proc/get_tax_amount(tax, price)
 	var/amt
-	amt = price / tax
+	amt = tax * price
 	return amt
 
 
@@ -64,6 +64,6 @@
 	switch(money)
 		if(0 to 9999)				return CLASS_WORKING
 		if(10000 to 79999)			return CLASS_MIDDLE
-		if(80,000 to INFINITY)		return CLASS_UPPER
+		if(80000 to INFINITY)		return CLASS_UPPER
 
 		else 					return CLASS_WORKING	// this accounts for balances that are negative

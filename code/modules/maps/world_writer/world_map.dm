@@ -12,16 +12,10 @@
 /datum/map_object
 	var/savedtype
 	var/object_vars = list()
-	var/x
-	var/y
-	var/z
 
 /datum/map_mob
 	var/savedtype
 	var/mob_vars = list()
-	var/x
-	var/y
-	var/z
 
 
 /proc/save_map(var/turf/t1, var/turf/t2, var/id, var/path, var/save_obj = 1, var/save_mob = 0)
@@ -65,13 +59,14 @@
 
 		var/datum/map_turf/MT = new/datum/map_turf()
 		MT.turf_type = T.type
+
 		MT.x = T.x
 		MT.y = T.y
 		MT.z = T.z
-
 		for(var/V in T.vars_to_save() )
 			if(!(T.vars[V] == initial(T.vars[V])))
 				MT.turf_vars[V] = T.vars[V]
+
 
 		if(save_obj)
 			for(var/obj/O in T.contents)
@@ -86,9 +81,15 @@
 					if(!(O.vars[V] == initial(O.vars[V])))
 						MO.object_vars[V] = O.vars[V]
 
-				MO.x = O.x
-				MO.y = O.y
-				MO.z = O.z
+						if(V == "contents")
+							var/list/contents = MO.object_vars["contents"]
+							for(var/atom/A in contents)
+								if(A.dont_save)
+									A -= MO.object_vars["contents"]
+
+				MO.object_vars["x"] = O.vars["x"]
+				MO.object_vars["y"] = O.vars["y"]
+				MO.object_vars["z"] = O.vars["z"]
 
 				MT.objects += MO
 
@@ -101,13 +102,15 @@
 				var/datum/map_mob/MM = new/datum/map_mob
 				MM.savedtype = M.type
 
-				MM.x = M.x
-				MM.y = M.y
-				MM.z = M.z
 
 				for(var/V in M.vars_to_save() )
 					if(!(M.vars[V] == initial(M.vars[V])))
 						MM.mob_vars[V] = M.vars[V]
+
+
+				MM.mob_vars["x"] = M.vars["x"]
+				MM.mob_vars["y"] = M.vars["y"]
+				MM.mob_vars["z"] = M.vars["z"]
 
 				MT.mobs += MM
 
@@ -121,26 +124,37 @@
 
 	for(var/datum/map_turf/MT in full_map)
 		var/turf/newturf = locate(MT.x,MT.y,MT.z)
+
+		if(!newturf)
+			continue
+
 		newturf.ChangeTurf(MT.turf_type, 0, 1)
+		newturf.on_persistence_load()
 		for(var/V in newturf.vars_to_save())
 			if(MT.turf_vars[V])
 				newturf.vars[V] = MT.turf_vars[V]
-				newturf.on_persistence_load()
+
 
 		for(var/datum/map_object/MO in MT.objects)
 			var/obj/O = new MO.savedtype (newturf.loc)
 			for(var/V in O.vars_to_save())
 				if(MO.object_vars[V])
 					O.vars[V] = MO.object_vars[V]
-					O.on_persistence_load()
 
+			O.vars["x"] = MO.object_vars["x"]
+			O.vars["y"] = MO.object_vars["y"]
+			O.vars["z"] = MO.object_vars["z"]
 
 		for(var/datum/map_mob/MM in MT.mobs)
 			var/mob/M = new MM.savedtype (newturf.loc)
+			M.on_persistence_load()
 			for(var/V in M.vars_to_save())
 				if(MM.mob_vars[V])
 					M.vars[V] = MM.mob_vars[V]
-					M.on_persistence_load()
+
+			M.vars["x"] = MM.mob_vars["x"]
+			M.vars["y"] = MM.mob_vars["y"]
+			M.vars["z"] = MM.mob_vars["z"]
 
 	return 1
 

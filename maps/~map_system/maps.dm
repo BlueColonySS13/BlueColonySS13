@@ -121,9 +121,6 @@ var/list/all_maps = list()
 	if(!allowed_jobs || !allowed_jobs.len)
 		allowed_jobs = subtypesof(/datum/job)
 
-	if(!isemptylist(map_specific_emails))
-		government_emails += council_email
-
 /datum/map/proc/setup_map()
 	return
 

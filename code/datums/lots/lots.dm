@@ -48,20 +48,6 @@
 	var/landlord_bank	// account id of who gets charged monthly for this
 	var/tenant_bank	// account id of tenant who is the landlord bitch mon
 
-	var/electricity_bill = 0 // this increases when lights are used.
-	var/water_bill = 0			// this increases when water is used.
-
-	var/electricity_service = TRUE
-	var/electricity_cost = 20
-
-	var/water_service = TRUE
-	var/water_cost = 10
-
-	var/cleaning_service = FALSE	// is this place cleaned on roundstart? (not implemented)
-	var/cleaning_service_cost = 120 // (not implemented)
-
-	var/pest_control = FALSE // (not implemented)
-	var/pest_control_cost = 25 // (not implemented)
 
 	/*
 	// possible descriptors (for now):
@@ -95,10 +81,7 @@
 	return (HOUSING_TAX * price)
 
 /datum/lot/proc/get_lot_tax()
-	if(HOUSING_TAX)
-		return HOUSING_TAX
-
-	return 0
+	return HOUSING_TAX
 
 
 /datum/lot/proc/get_rent()
@@ -116,46 +99,10 @@
 /datum/lot/proc/get_service_charge()
 	var/service_charge = 0
 
-	if(has_tenant())
-		//if they pay for cleaning, pest, etc, charge em.
-		if(cleaning_service && (CLEANING_SERVICE in landlord_does))
-			service_charge += cleaning_service_cost
-
-		if(pest_control && (PEST_CONTROL in landlord_does)) // no mice or lizards here, no suree.
-			service_charge += pest_control_cost
-
-		if(water_service && (WATER_BILLS in landlord_does))
-			service_charge += water_cost
-
-		if(electricity_service && (ELECTRICITY_BILLS in landlord_does))
-			service_charge += electricity_cost
-
-	else
-		if(cleaning_service)
-			service_charge += cleaning_service_cost
-
-		if(pest_control)
-			service_charge += pest_control_cost
-
-		if(water_service)
-			service_charge += water_cost
-
-		if(electricity_service)
-			service_charge += electricity_cost
+	// to be expanded
 
 	return service_charge
 
-/datum/lot/proc/get_tenant_charge()
-	var/tnt_charge = 0
-
-	//if they pay for cleaning, pest, etc, charge em.
-	if(cleaning_service && !(CLEANING_SERVICE in landlord_does))
-		tnt_charge += cleaning_service_cost
-
-	if(pest_control && !(PEST_CONTROL in landlord_does)) // no mice or lizards here, no suree.
-		tnt_charge += pest_control_cost
-
-	return tnt_charge
 
 /datum/lot/proc/set_new_ownership(uid, l_name, bank, email)
 	//transfer price of lot to old owner's bank account
@@ -227,6 +174,16 @@
 	else
 		status = FOR_SALE
 
+
+
+
+/datum/lot/proc/repossess_lot()
+	if
+
+	remove_tenant()
+
+	return service_charge
+
 /datum/lot/proc/get_coordinates()
 	for(var/obj/effect/landmark/lot_data/lot_data)
 		if(lot_data.lot_id == id)
@@ -292,6 +249,9 @@
 //		SSmapping.maploader.load_map_tg(file(full_path), top_left.x, bottom_right.y, top_left.z, 1, 0)
 //		SSmapping.maploader.load_map(file(full_path), top_left.x, bottom_right.y, top_left.z, 1, 0)
 		restore_map(id, path)
+		for(var/obj/O in lot_area)
+			O.on_persistence_load()
+
 /*
 		// Some things don't initialize at all after being loaded, it's weird, but this is needed too.
 		for(var/obj/O in lot_area)
