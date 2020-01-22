@@ -138,7 +138,7 @@
 	. = ..()	//calls mob.Login()
 	prefs.sanitize_preferences()
 
-	prefs.first_seen = full_real_time()
+	prefs.last_seen = full_real_time()
 
 	if(custom_event_msg && custom_event_msg != "")
 		src << "<h1 class='alert'>Custom Event</h1>"
