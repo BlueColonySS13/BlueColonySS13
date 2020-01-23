@@ -246,7 +246,7 @@
 "eL" = (/obj/structure/table/reinforced,/obj/item/clothing/suit/straight_jacket,/turf/simulated/floor/tiled/dark,/area/medical/patients_rooms)
 "eM" = (/obj/turbolift_map_holder/geminushospital{dir = 1; icon = 'icons/obj/turbolift_preview_3x3.dmi'; icon_state = ""},/turf/simulated/wall,/area/turbolift/geminus_ground_hospital)
 "eN" = (/obj/structure/table/standard,/obj/effect/decal/cleanable/cobweb,/obj/machinery/light/small{dir = 1; pixel_y = 0},/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/panicbunker)
-"eO" = (/obj/machinery/photocopier/faxmachine,/obj/structure/table/standard,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/panicbunker)
+"eO" = (/obj/machinery/photocopier/faxmachine{department = "Bunker 101"},/obj/structure/table/standard,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/panicbunker)
 "eP" = (/obj/effect/floor_decal/corner/green{dir = 9},/obj/structure/table/standard,/obj/item/weapon/storage/box/syringes,/obj/item/weapon/storage/box/gloves{pixel_x = 4; pixel_y = 4},/turf/simulated/floor/tiled/white,/area/rnd/research)
 "eQ" = (/turf/simulated/floor/water,/area/skipjack_station/northwest_solars)
 "eR" = (/obj/machinery/portable_atmospherics/canister/nitrogen,/obj/effect/floor_decal/industrial/warning{dir = 9},/turf/simulated/floor/tiled/white,/area/rnd/research)
