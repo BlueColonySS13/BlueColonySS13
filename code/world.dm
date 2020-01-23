@@ -72,6 +72,7 @@ var/global/datum/global_init/init = new ()
 	href_logfile = file("[log_path]-hrefs.htm")
 	error_log = file("[log_path]-error.log")
 	vote_log = file("data/logs/vote.log")
+	money_log = file("[log_path]-money.log")
 	debug_log = file("[log_path]-debug.log")
 	debug_log << "[log_end]\n[log_end]\nStarting up. [time_stamp()][log_end]\n---------------------[log_end]"
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
@@ -573,11 +574,11 @@ var/world_topic_spam_protect_time = world.timeofday
 	s += "DISCORD"
 	s += "</a>"
 	s += ")"
-	
+
 	var/list/features = list()
 	if(SSelections && SSelections.current_president)
 		features += "<br><b>Current President:</b> [SSelections.current_president.name]"
-		
+
 	if(ticker)
 		if(master_mode)
 			features += master_mode
