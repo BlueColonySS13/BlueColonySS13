@@ -128,7 +128,7 @@
 			if("toggle_cash_lock")
 				cash_locked = !cash_locked
 			if("link_account")
-				var/attempt_account_num = input("Enter account number", "New account number") as num
+				var/attempt_account_num = sanitize(input("Enter account id", "New account id") as text)
 				var/attempt_pin = input("Enter PIN", "Account PIN") as num
 				linked_account = attempt_account_access(attempt_account_num, attempt_pin, 1)
 				if(linked_account)
