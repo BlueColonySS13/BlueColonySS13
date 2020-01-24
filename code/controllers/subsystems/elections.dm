@@ -149,6 +149,9 @@ SUBSYSTEM_DEF(elections)
 			else
 				current_president = vice_president
 				vice_president = null
+
+			// no confidence betters rejoice
+			finalise_bet("noconfidence", current_president.unique_id)
 			return 1
 
 /datum/controller/subsystem/elections/proc/getcandidatenames()
@@ -237,9 +240,14 @@ SUBSYSTEM_DEF(elections)
 	// change the prez email so the old president can't get back into the email...
 	SSemails.change_persistent_email_password(using_map.president_email, GenerateKey())
 
+	// did people bet on the election? let's let them win sweet money.
+	finalise_bet("election", current_president.unique_id)
+
 	postelection_email()
 
 	return winning_vote
+
+
 
 /datum/controller/subsystem/elections/proc/clear_president()
 	//clear the current president's votes and make them into a former president

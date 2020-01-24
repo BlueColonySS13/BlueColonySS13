@@ -8,7 +8,8 @@
 	var/tax_middle
 	var/tax_rich
 	var/list/datum/money_account/eco_data
-	var/list/datum/money_account/treasury
+	var/datum/money_account/treasury
+	var/list/bets = list()
 
 	//income tax rates
 	var/tax_rate_upper = 0.20
@@ -59,6 +60,7 @@
 	var/synth_vote = TRUE			// Are FBPs allowed to vote?
 	var/citizenship_vote = TRUE		// Are starsystem immigrants allowed to vote?
 	var/criminal_vote = TRUE		// Can people with criminal records vote? (unimplemented)
+
 
 /datum/economy/bank_accounts/proc/set_economy()
 	if(!department_acc_list)
@@ -150,6 +152,9 @@
 	S["citizenship_vote "] << citizenship_vote
 	S["criminal_vote"] << criminal_vote
 
+	if(SSbetting)
+		S["bets"] << SSbetting.gambling_bets
+
 	message_admins("Saved all department accounts.", 1)
 
 /datum/economy/bank_accounts/proc/load_accounts()
@@ -204,6 +209,9 @@
 	S["synth_vote"] >> synth_vote
 	S["citizenship_vote "] >> citizenship_vote
 	S["criminal_vote"] >> criminal_vote
+
+	if(SSbetting)
+		S["bets"] >> SSbetting.gambling_bets
 
 	sanitize_economy()
 

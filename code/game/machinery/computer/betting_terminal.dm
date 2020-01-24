@@ -1,6 +1,6 @@
 /obj/machinery/computer/betting_terminal
-	name = "horse racing terminal"
-	desc = "A betting terminal synced to the Horse Racing Association's database."
+	name = "virtual horse racing terminal"
+	desc = "A betting terminal synced to the Virtual Horse Racing Association's database. Almost as good as the real thing!"
 	icon = 'icons/obj/machines/betting_terminal.dmi'
 	icon_state = "horse0"
 	anchored = 1
@@ -98,13 +98,7 @@
 
 	//populate horses in the race - select 7
 	while(loop_count < 7)
-		horse_name = pick("Treasure", "Fleetlight", "Lord Kaine", "Joestar", "Pietro the Cuban", "Charm", "Annabel", "Jazzy", "Snowball", "Romeo", "Duke", "Elizabeth",
-		"Butt Stallion", "Karana", "Joye", "Mac", "Jeff", "Abacchio", "Morning Sparks", "Miles", "Fiddler", "Sugar", "Willow", "Sapphire", "Midnightfeet", "Lincoln",
-		"Flightsilver", "Archie", "Morningheart", "Barkley", "Thunder Step", "Landslide", "DIO", "Andrejana", "Sugarpuff", "Twilight Sparkle", "Vixen", "Red Baron", "Flash Forward",
-		"Red Racer", "Accelerator", "Polnareff", "Altair", "Oblivion", "Uniquess", "Paladine", "Carver", "Gatsby", "Chauncey", "Storm Blossom", "G.T. Melons", "Mr. Pibbs",
-		"Moonheart", "Scarlette", "Triggerfeet", "Nelson", "Rusty", "Baloo", "Highlight", "Xiao", "Pescao", "Falcor", "Gallow", "Gallena", "Faux", "Bama", "La Roux", "Humblebottom",
-		"Noble Stallion", "Bayjour", "Nanook", "Mustang", "Shirley", "Snipper", "Heap", "Sky", "Level", "Hawk", "Eternal","Creole", "Rain Ranger", "Starduster", "Bear", "Sisco",
-		"Sizzler", "Brocco", "Ledger", "Charmcaster", "Tennyson", "Bezel")
+		horse_name = pick(horse_names)
 
 		horses += horse_name
 		loop_count += 1

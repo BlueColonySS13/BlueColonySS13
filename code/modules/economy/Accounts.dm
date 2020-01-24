@@ -83,7 +83,7 @@
 
 	return M
 
-/proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
+/proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount, var/ignore_canon = 0)
 
 	for(var/datum/money_account/D in all_money_accounts)
 		if(D.account_number == attempt_account_number && !D.suspended || D.account_number == attempt_account_number && !D.suspended)
@@ -104,7 +104,7 @@
 			return 1
 
 
-	if(config.canonicity)
+	if(config.canonicity || ignore_canon)
 		if(check_persistent_account(attempt_account_number) && !get_persistent_acc_suspension(attempt_account_number))
 			persist_adjust_balance(attempt_account_number, amount)
 			//create a transaction log entry
