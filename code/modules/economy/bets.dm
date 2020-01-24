@@ -10,6 +10,10 @@
 
 	var/bets = list()
 
+/datum/gambling_bet/New()
+	..()
+	
+	SSbetting.gambling_bets += src
 
 /datum/gambling_bet/election
 	name = "Election Results"
