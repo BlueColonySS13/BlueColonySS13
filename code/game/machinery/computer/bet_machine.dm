@@ -35,7 +35,7 @@
 	if(get_dist(src,user) <= 1)
 		//js replicated from obj/machinery/computer/card
 		var/dat = "<h1>[src]</h1>"
-		dat += "<br><b>Place your bets, place your bets.</b> [src] will show you a range of betting options to get you rich! Select from the following!</br>"
+		dat += "<br><b>Place your bets, place your bets.</b> [src] will show you a range of betting options to get you rich! Select from the following!</br><br>"
 
 		if(!(has_ID && meets_gambling_age))
 			if(!has_ID)
@@ -53,15 +53,15 @@
 
 					dat += "<fieldset style='border: 2px solid white; display: inline'>"
 
-					dat += "([E.name])</b> (Minimum base bet: [E.base_bet] credits)."
+					dat += "<b>[E.name]</b> (Minimum base bet: [E.base_bet] credits):"
 					dat += "<br>Max Multiplier: [E.max_multiplier]x"
 					dat += "<br><i>[E.desc]</i>"
 
-					dat += "<a href=''>Place Bet</a> "
+					dat += "<br><a href=''>Place Bet</a> "
 
 					dat += "</fieldset>"
 
-					dat += "<br>"
+					dat += "<br><br>"
 
 			else
 				dat += "No bets currently available, come back later!"
