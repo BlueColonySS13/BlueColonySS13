@@ -8,7 +8,6 @@ SUBSYSTEM_DEF(betting)
 /datum/controller/subsystem/betting/proc/create_bets()
 	for(var/datum/gambling_bet/instance in subtypesof(/datum/gambling_bet))
 		var/datum/gambling_bet/G = new instance
-		SSbetting.gambling_bets += G
 
 var/global/list/horse_names = list("Treasure", "Fleetlight", "Lord Kaine", "Joestar", "Pietro the Cuban", "Charm", "Annabel", "Jazzy", "Snowball", "Romeo", "Duke", "Elizabeth",
 		"Butt Stallion", "Karana", "Joye", "Mac", "Jeff", "Abacchio", "Morning Sparks", "Miles", "Fiddler", "Sugar", "Willow", "Sapphire", "Midnightfeet", "Lincoln",
