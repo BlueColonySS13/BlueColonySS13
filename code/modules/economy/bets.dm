@@ -12,7 +12,7 @@
 
 /datum/gambling_bet/New()
 	..()
-	
+
 	SSbetting.gambling_bets += src
 
 /datum/gambling_bet/election
@@ -27,8 +27,9 @@
 	var/day = get_game_day()
 	if(SSelections.is_campaign_days(day) || SSelections.is_voting_days(day))
 		return TRUE
-	else
-		return FALSE
+
+/datum/gambling_bet/election/potential_betting_options()		// always needs to be something in order to work
+	return SSelections.getcandidatenames()
 
 /datum/gambling_bet/no_confidence
 	name = "No Confidence"
@@ -38,11 +39,12 @@
 
 	max_multiplier = 10
 
-/datum/gambling_bet/election/get_bet_status()		// when should this bet be available to bet on?
+/datum/gambling_bet/no_confidence/get_bet_status()		// when should this bet be available to bet on?
 	if(!SSelections.snap_election)
 		return TRUE
-	else
-		return FALSE
+
+/datum/gambling_bet/no_confidence/potential_betting_options()		// always needs to be something in order to work
+	return list("No Confidence", "Will Stay In Office")
 
 // to be implemented
 /*

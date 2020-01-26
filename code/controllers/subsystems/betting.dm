@@ -5,9 +5,15 @@ SUBSYSTEM_DEF(betting)
 
 	var/list/gambling_bets = list()
 
+/datum/controller/subsystem/betting/Initialize()
+	.=..()
+	create_bets()
+
+
 /datum/controller/subsystem/betting/proc/create_bets()
 	for(var/datum/gambling_bet/instance in subtypesof(/datum/gambling_bet))
 		var/datum/gambling_bet/G = new instance
+		gambling_bets += G
 
 var/global/list/horse_names = list("Treasure", "Fleetlight", "Lord Kaine", "Joestar", "Pietro the Cuban", "Charm", "Annabel", "Jazzy", "Snowball", "Romeo", "Duke", "Elizabeth",
 		"Butt Stallion", "Karana", "Joye", "Mac", "Jeff", "Abacchio", "Morning Sparks", "Miles", "Fiddler", "Sugar", "Willow", "Sapphire", "Midnightfeet", "Lincoln",
@@ -20,11 +26,21 @@ var/global/list/horse_names = list("Treasure", "Fleetlight", "Lord Kaine", "Joes
 
 
 /datum/gambling_bet/proc/add_better(name, betted, bet_amount = 0, bank_account_id, uid)
-	var/list/bet = list("name" = name, "betted" = betted, "bet_money" = bet_amount, "account" = bank_account_id, "unique_id" = uid)
+	var/list/bet = list(list("name" = name, "betted" = betted, "bet_money" = bet_amount, "account" = bank_account_id, "unique_id" = uid))
 	bets += bet
+
+/datum/gambling_bet/proc/get_bet_count()
+	var/list/bet_list = list()
+	for(var/list/V in bets)
+		bet_list[V[name]]++
+
+	return bet_list
 
 /datum/gambling_bet/proc/get_bet_status()
 	return active
+
+/datum/gambling_bet/proc/potential_betting_options()		// always needs to be something in order to work
+	return 0
 
 /datum/gambling_bet/proc/find_better(uid)
 	for(var/list/V in bets)
