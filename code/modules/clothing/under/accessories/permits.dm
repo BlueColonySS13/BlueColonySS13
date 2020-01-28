@@ -70,6 +70,7 @@
 	name = "tier five weapon permit"
 	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, ballistic pistols, all types of energy guns, and civilian grade shotguns."
 	tier = 5
+	price_tag = 7000
 
 /obj/item/clothing/accessory/permit/gun/tier_five/police
 	name = "tier five police weapon permit"
@@ -81,7 +82,7 @@
 	name = "bar shotgun permit"
 	desc = "A card indicating that the owner is allowed to carry a shotgun in the bar."
 	tier = 3
-
+  
 /obj/item/clothing/accessory/permit/gun/planetside
 	name = "planetside gun permit"
 	desc = "A card indicating that the owner is allowed to carry a firearm while on the surface."
@@ -105,4 +106,10 @@
 	desc = "A box of spare gun permits."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "permit"
-	starts_with = list(	/obj/item/clothing/accessory/permit/gun = 8)
+	starts_with = list(
+	/obj/item/clothing/accessory/permit/gun = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_one = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_two = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_three = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_four = 5
+	)
