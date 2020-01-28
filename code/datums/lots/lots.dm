@@ -85,16 +85,7 @@
 
 
 /datum/lot/proc/get_rent()
-	var/total_rent = 0
-
-	total_rent = (get_tenant_charge() + rent)
-
-	return total_rent
-
-/datum/lot/proc/has_tenant()
-	if(tenant_uid)
-		return TRUE
-
+	return rent
 
 /datum/lot/proc/get_service_charge()
 	var/service_charge = 0
@@ -131,7 +122,6 @@
 	if(!tenant_uid)
 		status = OWNED
 
-	water_bill = 0
 
 /datum/lot/proc/make_tenant(uid, l_name, bank, email)
 	// Selling a property as a landlord, to a tenant
@@ -178,11 +168,9 @@
 
 
 /datum/lot/proc/repossess_lot()
-	if
-
 	remove_tenant()
-
-	return service_charge
+	sell_to_council()
+	return 1
 
 /datum/lot/proc/get_coordinates()
 	for(var/obj/effect/landmark/lot_data/lot_data)

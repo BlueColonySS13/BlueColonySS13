@@ -5,7 +5,7 @@
 	program_icon_state = "generic"
 	size = 5
 	requires_ntnet = 1
-	available_on_ntnet = 1
+	available_on_ntnet = 0
 
 	nanomodule_path = /datum/nano_module/landlord_management
 
@@ -126,7 +126,7 @@
 				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name]<br>"
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
-				page_msg += "<font color=\"yellow\"><b>Rent:</b></font> [L.get_rent()]CR (with [L.get_tenant_charge()]CR tenant charges per month.)<br>"
+				page_msg += "<font color=\"yellow\"><b>Rent:</b></font> [L.get_rent()]CR (with [L.get_rent()]CR tenant charges per month.)<br>"
 				page_msg += "<font color=\"yellow\"><b>Required Deposit:</b></font> [L.required_deposit]CR<br>"
 
 				if(!(unique_id == L.landlord_uid))
@@ -150,7 +150,7 @@
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
 				page_msg += "<font color=\"yellow\"><b>Status:</b></font> \"[L.status]\"<br>"
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
-				page_msg += "<font color=\"yellow\"><b>Rent:</b></font> [L.get_rent()]CR (includes [L.get_tenant_charge()]CR service charges)<br>"
+				page_msg += "<font color=\"yellow\"><b>Rent:</b></font> [L.get_rent()]CR (includes [L.get_rent()]CR service charges)<br>"
 				page_msg += "<font color=\"yellow\"><b>Last Payment:</b></font> [L.last_payment_tnt]<br>"
 
 				page_msg += "<a href='?src=\ref[src];choice=end_tenancy;lot=\ref[L]'>Cancel Tenancy</a>"
