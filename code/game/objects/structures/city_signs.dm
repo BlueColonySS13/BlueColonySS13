@@ -93,8 +93,8 @@
 	light_color = "#8559FF" //a cross between the blue and purple
 
 /obj/structure/sign/neon/sale
-	name = "sale"
-	icon_state = "sale"
+	name = "neon_sale"
+	icon_state = "neon_sale"
 	light_color = "#6EB6FF" //sky blue
 
 /obj/structure/sign/neon/exit

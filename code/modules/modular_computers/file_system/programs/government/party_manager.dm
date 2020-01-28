@@ -3,6 +3,8 @@
 	filedesc = "Official Party Management"
 	extended_desc = "This program allows you to create an official party and also manage and view existing parties."
 	requires_ntnet = 1
+	available_on_ntnet = 0
+
 	size = 3
 	nanomodule_path = /datum/nano_module/program/party_manager/
 

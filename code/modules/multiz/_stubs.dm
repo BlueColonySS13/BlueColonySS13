@@ -14,3 +14,23 @@ HasBelow(var/z)
 // These give either the turf or null.
 GetAbove(var/atom/atom)
 GetBelow(var/atom/atom)
+
+
+/obj/effect/landmark/lot_data
+	var/lot_id
+	dont_save = TRUE
+
+/obj/effect/landmark/lot_data/initialize()
+	if(!lot_id)
+		var/area/_area = get_area(src)
+		lot_id = _area.lot_id
+
+
+/obj/effect/landmark/lot_data/top_left
+	name = "Lot - Top Left"
+	desc = "This is to be placed at the top left of a lot to find the turf."
+
+/obj/effect/landmark/lot_data/bottom_right
+	name = "Lot Placement - Bottom Right"
+	desc = "This is to be placed at the bottom right of a turf."
+
