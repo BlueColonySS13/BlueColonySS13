@@ -124,12 +124,12 @@ var/list/whitelist = list()
 /proc/get_available_classes(client/C)
 
 	if(!isnum(C.player_age))
-		return ECONOMIC_CLASS
+		return ECONOMIC_CLASS	// if there's no database, or hard player age saves, let's just enable all.
 
-	if(59 < C.player_age)
+	if(config.upper_class_age < C.player_age)
 		return ECONOMIC_CLASS //60 days unlocks all classes
 
-	else if (29 < C.player_age)
+	else if (config.middle_class_age < C.player_age)
 		return list(CLASS_WORKING, CLASS_MIDDLE)
 
 	else
