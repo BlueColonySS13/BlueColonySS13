@@ -438,7 +438,7 @@ var/global/datum/controller/occupations/job_master
 			var/datum/money_account/department_account = department_accounts[job.department]
 
 			if(department_account)
-				remembered_info += "<b>Your sector's account number is:</b> #[department_account.account_number]<br>"
+				remembered_info += "<b>Your sector's account id is:</b> #[department_account.account_number]<br>"
 				remembered_info += "<b>Your sector's account pin is:</b> [department_account.remote_access_pin]<br>"
 				remembered_info += "<b>Your sector's account funds are:</b> $[department_account.money]<br>"
 
@@ -544,6 +544,10 @@ var/global/datum/controller/occupations/job_master
 			EA.password = SSemails.get_persistent_email_password(complete_login)
 			EA.login = complete_login
 
+
+		if(SSemails.check_persistent_email(H.client.prefs.email))
+			EA.get_persistent_data()
+
 		if(!EA.password)
 			EA.password = GenerateKey()
 
@@ -551,8 +555,6 @@ var/global/datum/controller/occupations/job_master
 		H.mind.initial_email_login = list("login" = "[EA.login]", "password" = "[EA.password]")
 		H.mind.initial_email = EA
 
-		if(SSemails.check_persistent_email(H.client.prefs.email))
-			EA.get_persistent_data()
 
 		if(job_email)
 			to_chat(H, "Your workplace's email address is <b>[job_email.login]</b> and the password is <b>[job_email.password]</b>.")

@@ -45,6 +45,8 @@ var/global/photo_count = 0
 
 	drop_sound = 'sound/items/drop/paper.ogg'
 
+	dont_save = 1
+
 /obj/item/weapon/photo/New()
 	id = photo_count++
 

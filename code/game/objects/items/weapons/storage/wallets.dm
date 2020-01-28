@@ -64,8 +64,8 @@
 	overlays.Cut()
 	if(front_id)
 		var/tiny_state = "id-generic"
-		if("id-"+front_id.icon_state in icon_states(icon))
-			tiny_state = "id-"+front_id.icon_state
+		if("id-[front_id.icon_state]" in icon_states(icon))
+			tiny_state = "id-[front_id.icon_state]"
 		var/image/tiny_image = new/image(icon, icon_state = tiny_state)
 		tiny_image.appearance_flags = RESET_COLOR
 		overlays += tiny_image
@@ -130,7 +130,7 @@
 			update_icon()
 
 /obj/item/weapon/storage/wallet/womens
-	name = "women's wallet"
-	desc = "A stylish wallet typically used by women."
+	name = "clutch wallet"
+	desc = "A stylish wallet, often used by women or especially effeminate men."
 	icon_state = "girl_wallet"
 	item_state_slots = list(slot_r_hand_str = "wowallet", slot_l_hand_str = "wowallet")

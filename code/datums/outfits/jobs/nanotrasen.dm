@@ -9,7 +9,7 @@
 	id_type = /obj/item/weapon/card/id/nanotrasen/ntrep	//station
 	pda_slot = slot_r_store
 	pda_type = /obj/item/device/pda/heads
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun = 1)
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_five = 1)
 
 /decl/hierarchy/outfit/job/nanotrasen/post_equip(mob/living/carbon/human/H)
 	..()
@@ -36,7 +36,8 @@
 	gloves = /obj/item/clothing/gloves/swat
 	glasses = /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	back = /obj/item/weapon/storage/backpack/messenger/black
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun = 1, /obj/item/weapon/handcuffs = 1,
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_five = 1,
+							 /obj/item/weapon/handcuffs = 1,
 							 /obj/item/clothing/accessory/holster/leg = 1,
 							 /obj/item/clothing/accessory/armband/med/color = 1,
 							 /obj/item/weapon/gun/energy/stunrevolver = 1,

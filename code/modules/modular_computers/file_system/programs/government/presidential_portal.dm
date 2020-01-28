@@ -152,6 +152,7 @@
 	data["tobacco_tax"] = persistent_economy.tobacco_tax * 100
 	data["recreational_drug_tax"] = persistent_economy.recreational_drug_tax * 100
 	data["gambling_tax"] = persistent_economy.gambling_tax * 100
+	data["housing_tax"] = persistent_economy.housing_tax * 100
 
 	//legal statuses
 	data["voting_age"] = persistent_economy.voting_age
@@ -287,6 +288,9 @@
 				persistent_economy.gambling_tax = new_tax
 				return
 
+			if("Housing Tax")
+				persistent_economy.housing_tax = new_tax
+				return
 
 	if(href_list["contraband_edit"])
 		. = 1

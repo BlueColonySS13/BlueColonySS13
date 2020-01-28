@@ -29,6 +29,7 @@
 /////////////////////////////////
 
 /obj/item/organ/internal/voicebox/assist	// In the off chance we get a species that doesn't speak GalCom by default
+	will_assist_languages = list(LANGUAGE_GALCOM, LANGUAGE_EAL)
 
 /obj/item/organ/internal/voicebox/assist/New()
 	..()

@@ -83,17 +83,17 @@ var/next_station_date_change = 1 DAY
 	game_minute = (text2num(game_minute))
 	return game_minute
 
-/proc/get_year()
+/proc/get_real_year()
 	var/year = (time2text(world.timeofday, "YYYY"))
-	year = (text2num(year)) + config.years_in_future
+	year = (text2num(year))
 	return year
 
-/proc/get_month()
+/proc/get_real_month()
 	var/month = (time2text(world.timeofday, "MM"))
-	month = (text2num(month)) + config.months_in_future
+	month = (text2num(month))
 	return month
 
-/proc/get_day()
+/proc/get_real_day()
 	var/day = (time2text(world.timeofday, "DD"))
 	day = (text2num(day))
 	return day
@@ -101,6 +101,8 @@ var/next_station_date_change = 1 DAY
 /proc/full_game_time()
 	return "[get_game_day()]/[get_game_month()]/[get_game_year()]"
 
+/proc/full_real_time()
+	return "[get_real_day()]/[get_real_month()]/[get_real_year()]"
 
 //ISO 8601
 /proc/time_stamp()
@@ -182,3 +184,13 @@ proc/process_schedule_interval(var/process_name)
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, GLOB.CURRENT_TICKLIMIT))
 
 #undef DELTA_CALC
+
+/proc/start_watch()
+	return TimeOfGame
+
+/**
+ * Returns number of seconds elapsed.
+ * @param wh number The "Watch Handle" from start_watch(). (timestamp)
+ */
+/proc/stop_watch(wh)
+	return round(0.1 * (TimeOfGame - wh), 0.1)

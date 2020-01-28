@@ -110,6 +110,7 @@ var/list/all_maps = list()
 
 	var/council_email = "city-council@nanotrasen.gov.nt"
 
+
 /datum/map/New()
 	..()
 	if(zlevel_datum_type)

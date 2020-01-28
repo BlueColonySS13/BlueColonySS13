@@ -565,3 +565,11 @@
 	taste_description = "feces and urine"
 	reagent_state = LIQUID
 	color = "#757547"
+	
+/datum/reagent/nutriment/biomass
+	name = "Biomass"
+	id = "biomass"
+	description = "A slurry of compounds that contains the basic requirements for life."
+	taste_description = "salty meat"
+	reagent_state = LIQUID
+	color = "#DF9FBF"

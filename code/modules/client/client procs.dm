@@ -100,7 +100,7 @@
 	//CONNECT//
 	///////////
 /client/New(TopicData)
-	TopicData = null							//Prevent calls to client.Topic from connect
+	TopicData = null						//Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
@@ -129,18 +129,26 @@
 	if(!prefs)
 		prefs = new /datum/preferences(src)
 		preferences_datums[ckey] = prefs
+
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 
+	add_ip_cid_list(address, computer_id)
+
 	. = ..()	//calls mob.Login()
 	prefs.sanitize_preferences()
+
+	prefs.last_seen = full_real_time()
+	
+	if(!prefs.first_seen)
+		prefs.first_seen = full_real_time()
+		prefs.last_seen = full_real_time()
 
 	if(custom_event_msg && custom_event_msg != "")
 		src << "<h1 class='alert'>Custom Event</h1>"
 		src << "<h2 class='alert'>A custom event is taking place. OOC Info:</h2>"
 		src << "<span class='alert'>[custom_event_msg]</span>"
 		src << "<br>"
-
 
 	if(holder)
 		add_admin_verbs()
@@ -153,7 +161,6 @@
 			winset(src, null, "command=\".configure graphics-hwmode off\"")
 			sleep(2) // wait a bit more, possibly fixes hardware mode not re-activating right
 			winset(src, null, "command=\".configure graphics-hwmode on\"")
-
 	log_client_to_db()
 
 	send_resources()
@@ -169,6 +176,14 @@
 		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
 		if(config.aggressive_changelog)
 			src.changes()
+
+/client/proc/add_ip_cid_list(ip, cid)
+	// This is for hard saving.
+	if(ip && !(ip in prefs.ips_associated))
+		prefs.ips_associated += ip
+
+	if(cid && !(cid in prefs.cids_associated))
+		prefs.cids_associated += cid
 
 
 
@@ -194,7 +209,11 @@
 /proc/get_player_age(key)
 	establish_db_connection()
 	if(!dbcon.IsConnected())
-		return null
+		if(config.hard_saving)
+			var/player_mob = get_mob_by_key(key)
+			return hard_save_player_age(player_mob)
+		else
+			return null
 
 	var/sql_ckey = sql_sanitize_text(ckey(key))
 
@@ -206,11 +225,22 @@
 	else
 		return -1
 
+/proc/hard_save_player_age(mob/M)
+	if(!M || !M.client || !M.client.prefs)
+		return 0
+
+	var/age = 0
+
+	age = text2num(Days_Difference(M.client.prefs.first_seen, M.client.prefs.last_seen))
+
+	return age
 
 /client/proc/log_client_to_db()
-
 	if ( IsGuestKey(src.key) )
 		return
+
+	if(config.hard_saving)
+		player_age = hard_save_player_age(mob)
 
 	establish_db_connection()
 	if(!dbcon.IsConnected())
@@ -381,9 +411,9 @@ client/verb/character_setup()
 		return 1
 	if(bypass_ssd_guard)
 		return 1
-	if(mob && mob.job in security_positions)
+	if(mob && (mob.job in security_positions))
 		return 1
-	if(mob && mob.job in medical_positions)
+	if(mob && (mob.job in medical_positions))
 		return 1
 	if(check_rights(R_ADMIN, 0, mob))
 		return 1

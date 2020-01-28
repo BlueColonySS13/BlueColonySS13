@@ -1,29 +1,3 @@
-var/list/global/map_templates = list()
-
-// Called when the world starts, in world.dm
-/proc/load_map_templates()
-	for(var/T in subtypesof(/datum/map_template))
-		var/datum/map_template/template = T
-		if(!(initial(template.mappath))) // If it's missing the actual path its probably a base type or being used for inheritence.
-			continue
-		template = new T()
-		// some faction base business.
-		if(template.faction_type)
-			switch(template.faction_type)
-				if("Blue Moon Cartel")
-					blue_moon_cartel_bases[template.name] = template
-				if("Trust Fund")
-					trust_fund_bases[template.name] = template
-				if("Quercus Coalition")
-					quercus_coalition_bases[template.name] = template
-				if("Worker's Union")
-					workers_union_bases[template.name] = template
-				if("Generic")
-					generic_bases[template.name] = template
-		else
-			map_templates[template.name] = template
-	return TRUE
-
 /datum/map_template
 	var/name = "Default Template Name"
 	var/desc = "Some text should go here. Maybe."
@@ -40,7 +14,6 @@ var/list/global/map_templates = list()
 	var/allow_duplicates = FALSE // If false, only one map template will be spawned by the game. Doesn't affect admins spawning then manually.
 	var/discard_prob = 0 // If non-zero, there is a chance that the map seeding algorithm will skip this template when selecting potential templates to use.
 
-	var/static/dmm_suite/maploader = new
 	var/faction_type //Use "Generic" if it can be spawned by all factions.
 
 /datum/map_template/New(path = null, rename = null)
@@ -53,7 +26,7 @@ var/list/global/map_templates = list()
 		name = rename
 
 /datum/map_template/proc/preload_size(path)
-	var/bounds = maploader.load_map(file(path), 1, 1, 1, cropMap=FALSE, measureOnly=TRUE)
+	var/bounds = SSmapping.maploader.load_map(file(path), 1, 1, 1, cropMap=FALSE, measureOnly=TRUE)
 	if(bounds)
 		width = bounds[MAP_MAXX] // Assumes all templates are rectangular, have a single Z level, and begin at 1,1,1
 		height = bounds[MAP_MAXY]
@@ -105,7 +78,7 @@ var/list/global/map_templates = list()
 		x = round((world.maxx - width)/2)
 		y = round((world.maxy - height)/2)
 
-	var/list/bounds = maploader.load_map(file(mappath), x, y, no_changeturf = TRUE)
+	var/list/bounds = SSmapping.maploader.load_map(file(mappath), x, y, no_changeturf = TRUE)
 	if(!bounds)
 		return FALSE
 
@@ -130,7 +103,7 @@ var/list/global/map_templates = list()
 	if(annihilate)
 		annihilate_bounds(old_T, centered)
 
-	var/list/bounds = maploader.load_map(file(mappath), T.x, T.y, T.z, cropMap=TRUE)
+	var/list/bounds = SSmapping.maploader.load_map(file(mappath), T.x, T.y, T.z, cropMap=TRUE)
 	if(!bounds)
 		return
 
@@ -189,8 +162,8 @@ var/list/global/map_templates = list()
 	var/list/priority_submaps = list() // Submaps that will always be placed.
 
 	// Lets go find some submaps to make.
-	for(var/map in map_templates)
-		var/datum/map_template/MT = map_templates[map]
+	for(var/map in SSmapping.map_templates)
+		var/datum/map_template/MT = SSmapping.map_templates[map]
 		if(!MT.allow_duplicates && MT.loaded > 0) // This probably won't be an issue but we might as well.
 			continue
 		if(!istype(MT, desired_map_template_type)) // Not the type wanted.
@@ -202,7 +175,7 @@ var/list/global/map_templates = list()
 		else
 			potential_submaps += MT
 
-	CHECK_TICK
+//	CHECK_TICK
 
 	var/list/loaded_submap_names = list()
 	var/list/template_groups_used = list() // Used to avoid spawning three seperate versions of the same PoI.
@@ -222,7 +195,7 @@ var/list/global/map_templates = list()
 			admin_notice("Submap loader had no submaps to pick from with [budget] left to spend.", R_DEBUG)
 			break
 
-		CHECK_TICK
+//		CHECK_TICK
 
 		// Can we afford it?
 		if(chosen_template.cost > budget)
@@ -231,7 +204,7 @@ var/list/global/map_templates = list()
 			continue
 
 		// Did we already place down a very similar submap?
-		if(chosen_template.template_group && chosen_template.template_group in template_groups_used)
+		if(chosen_template.template_group && (chosen_template.template_group in template_groups_used))
 			priority_submaps -= chosen_template
 			potential_submaps -= chosen_template
 			continue
@@ -252,9 +225,9 @@ var/list/global/map_templates = list()
 					valid = FALSE // Probably overlapping something important.
 				//	world << "Invalid due to overlapping with area [new_area.type], when wanting area [whitelist]."
 					break
-				CHECK_TICK
+//				CHECK_TICK
 
-			CHECK_TICK
+//			CHECK_TICK
 
 			if(!valid)
 				continue
@@ -264,7 +237,7 @@ var/list/global/map_templates = list()
 			// Do loading here.
 			chosen_template.load(T, centered = TRUE) // This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
 
-			CHECK_TICK
+//			CHECK_TICK
 
 			// For pretty maploading statistics.
 			if(loaded_submap_names[chosen_template.name])

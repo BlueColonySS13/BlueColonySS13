@@ -84,14 +84,20 @@
 	. += "<h1>Character Background:</h1><hr>"
 	if(!pref.existing_character)
 		. += "Geminus City is on the planet Pollux, and is located in Blue Colony, in the Vetra star system. You may choose a different background. Social class and the system you are born in cannot be changed once set.</br><br>"
-		. += "Economic Class: [pref.economic_status]<br>"
-		. += "Social Class: <a href='?src=\ref[src];soc_class=1'>[pref.social_class]</a><br/>"
-		. += "Birth System: <a href='?src=\ref[src];home_system=1'>[pref.home_system]</a><br/>"
+
+		. += "There are the minimum days required to start each class:<br><br>"
+		. += "Working Class Minimum: 0 days (200CR inheritance)<br>"
+		. += "Middle Class Minimum: [config.middle_class_age] days (4000CR inheritance)<br>"
+		. += "Upper Class Minimum: [config.upper_class_age] day (10000CR inheritance)<br><br>"
+
+		. += "<b>Economic Class:</b> [pref.economic_status]<br>"
+		. += "<b>Social Class:</b> <a href='?src=\ref[src];soc_class=1'>[pref.social_class]</a><br/>"
+		. += "<b>Birth System:</b> <a href='?src=\ref[src];home_system=1'>[pref.home_system]</a><br/>"
 
 	else
-		. += "Social Class: [pref.social_class]<br/>"
-		. += "Economic Class: [pref.economic_status]<br>"
-		. += "Birth System: [pref.home_system]<br/>"
+		. += "<b>Social Class:</b> [pref.social_class]<br/>"
+		. += "<b>Economic Class:</b> [pref.economic_status]<br>"
+		. += "<b>Birth System:</b> [pref.home_system]<br/>"
 
 	. += "Continental Citizenship: <a href='?src=\ref[src];citizenship=1'>[pref.citizenship]</a><br/>"
 //	. += "Faction: <a href='?src=\ref[src];faction=1'>[pref.faction]</a><br/>" // meh do we even use this?
@@ -134,7 +140,7 @@
 				return TOPIC_REFRESH
 
 	if(href_list["soc_class"])
-		var/new_class = input(user, "Choose your starting social class. This will affect the amount of money you will start with, your position in the revolution and other events.", "Character Preference", pref.economic_status)  as null|anything in suitable_classes
+		var/new_class = input(user, "Choose your starting social class. This will affect the amount of money you will start with, your position in the revolution and other events.", "Character Preference", pref.social_class)  as null|anything in suitable_classes
 		if(new_class && CanUseTopic(user))
 			pref.social_class = new_class
 			return TOPIC_REFRESH
@@ -152,15 +158,10 @@
 		return TOPIC_REFRESH
 
 	else if(href_list["citizenship"])
-		var/choice = input(user, "Please choose your current citizenship.", "Character Preference", pref.citizenship) as null|anything in citizenship_choices + list("None","Other")
+		var/choice = input(user, "Please choose your current citizenship.", "Character Preference", pref.citizenship) as null|anything in citizenship_choices
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
-		if(choice == "Other")
-			var/raw_choice = sanitize(input(user, "Please enter your current citizenship.", "Character Preference") as text|null, MAX_NAME_LEN)
-			if(raw_choice && CanUseTopic(user))
-				pref.citizenship = raw_choice
-		else
-			pref.citizenship = choice
+		pref.citizenship = choice
 		return TOPIC_REFRESH
 /*
 	else if(href_list["faction"])

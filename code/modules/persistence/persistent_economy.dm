@@ -26,6 +26,7 @@
 	var/tobacco_tax = 0.10
 	var/recreational_drug_tax = 0.10
 	var/gambling_tax = 0.10
+	var/housing_tax = 0.10
 
 	//contraband // See law/contraband.dm for potential contraband types.
 	var/law_CANNABIS = PERMIT_POSSESSION
@@ -59,7 +60,7 @@
 	var/sentencing_age = 13
 	var/synth_vote = TRUE			// Are FBPs allowed to vote?
 	var/citizenship_vote = TRUE		// Are starsystem immigrants allowed to vote?
-	var/criminal_vote = TRUE		// Can people with criminal records vote? (unimplemented)
+	var/criminal_vote = TRUE			// Can people with criminal records vote? (unimplemented)
 
 	var/list/city_expenses = list()
 	
@@ -144,6 +145,8 @@
 	S["tobacco_tax"] << tobacco_tax
 	S["recreational_drug_tax"] << recreational_drug_tax
 	S["gambling_tax"] << gambling_tax
+	S["housing_tax"] << housing_tax
+
 	S["law_CANNABIS"] << law_CANNABIS
 	S["law_ALCOHOL"] << law_ALCOHOL
 	S["law_ECSTASY"] << law_ECSTASY
@@ -207,6 +210,8 @@
 	S["tobacco_tax"] >> tobacco_tax
 	S["recreational_drug_tax"] >> recreational_drug_tax
 	S["gambling_tax"] >> gambling_tax
+	S["housing_tax"] >> housing_tax
+
 	S["law_CANNABIS"] >> law_CANNABIS
 	S["law_ALCOHOL"] >> law_ALCOHOL
 	S["law_ECSTASY"] >> law_ECSTASY

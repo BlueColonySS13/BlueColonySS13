@@ -1122,5 +1122,29 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	name = "fur-lined greatcoat"
 	desc = "A fancy fur-lined greatcoat with golden buttons. It keeps you warm... in style."
 	icon_state = "hartcoat"
-	item_state_slots = list(slot_r_hand_str = "hartcoat", slot_l_hand_str = "hartcoat")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/toggle/synthleatherjacket
+	name = "synth-leather jacket"
+	desc = "A sleek jacket made of synth-leather. Eco-friendly and eternally in season."
+	icon_state = "neoleath_jacket"
+	body_parts_covered = UPPER_TORSO|ARMS
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/toggle/hivisjacket
+	name = "high visibility jacket"
+	desc = "A jacket made of highly reflective material. It can often be found in use by industrial workers."
+	icon_state = "hivis_jacket"
+	body_parts_covered = UPPER_TORSO|ARMS
+	flags_inv = HIDEHOLSTER
+	allowed = list (/obj/item/device/analyzer, /obj/item/device/flashlight, /obj/item/device/multitool, /obj/item/device/pipe_painter, /obj/item/device/radio, /obj/item/device/t_scanner,
+	/obj/item/weapon/crowbar, /obj/item/weapon/screwdriver, /obj/item/weapon/weldingtool, /obj/item/weapon/wirecutters, /obj/item/weapon/wrench, /obj/item/weapon/tank/emergency/oxygen,
+	/obj/item/clothing/mask/gas, /obj/item/taperoll/engineering)
+
+/obj/item/clothing/suit/storage/redbiker
+	name = "red motorcycle jacket"
+	desc = "Good for health; Bad for education." // "KANEDA!" - Shima Tetsuo
+	icon_state = "kaneda"
+	flags_inv = HIDEHOLSTER
+	body_parts_covered = UPPER_TORSO

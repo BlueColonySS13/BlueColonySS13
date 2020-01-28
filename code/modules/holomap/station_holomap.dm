@@ -51,7 +51,6 @@
 	. = ..()
 
 /obj/machinery/station_map/proc/setup_holomap()
-	. = ..()
 	bogus = FALSE
 	var/turf/T = get_turf(src)
 	original_zLevel = T.z

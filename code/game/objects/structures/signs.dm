@@ -294,6 +294,7 @@
 	icon = 'icons/obj/signs.dmi'
 	desc = "A sign that reads 'For Rent'."
 	icon_state = "rent"
+	dont_save = TRUE
 
 /obj/structure/sign/fine
 	name = "'Pay Your Fine' Sign"

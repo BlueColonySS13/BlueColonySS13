@@ -74,12 +74,17 @@
 	if(index == 8)
 		page_msg = "According to the current law, you are not eligible to register as a candidate, you must be of the minimum age and have the same criteria of the general voting rights to become a president. See law book for details."
 
+		var/datum/job/presjob = job_master.GetJob("President")
+
 		page_msg += "<br><br><b><u>Current Critera:</u></b>"
-		page_msg += "<br><b>Minimum age:</b> [persistent_economy.voting_age]"
+		page_msg += "<br><b>Minimum President age:</b> [presjob.minimum_character_age]"
 		page_msg += "<br><b>Synthetics:</b> [persistent_economy.synth_vote ? "Can Vote" : "Cannot Vote"]"
 		page_msg += "<br><b>Non-[using_map.starsys_name] Citizens:</b> [persistent_economy.citizenship_vote ? "Can Vote" : "Cannot Vote"]"
 
-		page_msg += "<br><br><b>Reason:</b> [is_voting_ineligible(user) ? "[is_voting_ineligible(user)]" : ""]"
+
+		if(is_voting_ineligible(user))
+			page_msg += "[is_voting_ineligible(user) ? "<br><br><b>Reason:</b> [is_voting_ineligible(user)]" : ""]"
+
 	data["full_name"] = full_name
 	data["unique_id"] = unique_id
 	data["pitch"] = pitch
@@ -125,7 +130,7 @@
 
 	if(href_list["withdraw_candidacy"])
 		. = 1
-		if(!registered in SSelections.political_candidates)
+		if(!(registered in SSelections.political_candidates))
 			reg_error = "You're not a current candidate!"
 
 		for(var/datum/president_candidate/P in SSelections.political_candidates)
@@ -146,7 +151,7 @@
 	if(href_list["submit_register"])
 		. = 1
 
-		if(!(SSelections.is_registration_days(get_game_day()) && !SSelections.snap_election) )
+		if(!SSelections.is_registration_days( get_game_day() ) || !SSelections.snap_election)
 			reg_error = "It is not possible to register a new candidate account during non-registration days."
 			return
 
@@ -228,7 +233,7 @@
 
 	if(href_list["register_new"])
 		. = 1
-		if(!SSelections.is_registration_days( get_game_day() ) & !SSelections.snap_election)
+		if(!SSelections.is_registration_days( get_game_day() ) || !SSelections.snap_election)
 			index = 7
 			return
 
