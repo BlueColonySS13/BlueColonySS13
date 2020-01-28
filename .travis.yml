@@ -33,7 +33,6 @@ install:
       
 before_script:
   - chmod +x tools/travis/check_filedirs.sh
-  - chmod +x tools/travis/check_dreamchecker_errors.sh
   - chmod +x ./install-byond.sh
   - ./install-byond.sh
 
@@ -49,6 +48,5 @@ script:
   - tools/travis/check_filedirs.sh ${DM_BUILDFILE}
   - (! grep 'step_[xy]' maps/**/*.dmm)
   - ~/dreamchecker || true
-  - tools/travis/check_dreamchecker_errors.sh
   - source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
   - DreamMaker ${DM_BUILDFILE}
