@@ -48,7 +48,7 @@ after_failure:
 script:
   - tools/travis/check_filedirs.sh ${DM_BUILDFILE}
   - (! grep 'step_[xy]' maps/**/*.dmm)
-  - ~/dreamchecker || true
+  - (! ~/dreamchecker | tee build_log.log) || true
   - tools/travis/check_dreamchecker_errors.sh
   - source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
   - DreamMaker ${DM_BUILDFILE}

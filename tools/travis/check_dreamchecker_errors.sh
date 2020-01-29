@@ -5,7 +5,6 @@ function check_dc_error_count {
 	#Current number of DreamChecker problems. Reduce it as you fix them
 	ERROR_COUNT=56
 	
-	tee build_log.log
 	DIAGNOSTICS=$(grep -oP '(?<=Found )[0-9]+' build_log.log)
 	
 
