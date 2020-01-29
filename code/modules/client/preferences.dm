@@ -64,6 +64,7 @@ datum/preferences
 	var/weight = 120
 	var/calories = 420000			// Used for calculation of weight.
 	var/nutrition = 300			// How hungry you are.
+	var/hydration = 300
 	var/species_preview                 //Used for the species selection window.
 	var/list/alternate_languages = list() //Secondary language(s)
 	var/list/language_prefixes = list() //Kanguage prefix keys
