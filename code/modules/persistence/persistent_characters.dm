@@ -60,7 +60,9 @@
 	mind.prefs.lip_color = lip_color
 	mind.prefs.calories = calories
 	mind.prefs.weight = calories_to_weight(calories)
-
+	mind.prefs.nutrition = nutrition
+	mind.prefs.hydration = hydration
+	
 	if(police_record)
 		mind.prefs.crime_record = police_record.fields["crim_record"]
 		mind.prefs.sec_record = police_record.fields["notes"]
