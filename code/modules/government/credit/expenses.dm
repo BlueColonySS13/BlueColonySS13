@@ -10,9 +10,10 @@
 
   var/amount_left
 
-  var/active = 1                      // If this is currently active, or not.
+  var/active = TRUE		               // If this is currently active, or not.
 
-  var/delete_paid = 1				// does this expense delete itself when paid?
+  var/delete_paid = TRUE				// does this expense delete itself when paid?
+  var/direct_debit = 0				// does this ever deplete? or does it keep topping itself up?
 
   var/applied_by					// ckey of the person who made this expense
   var/added_by						// IC version of the person who made this.
@@ -41,7 +42,11 @@
 	else
 		charge += num
 
+	if(direct_debit)
+		amount_left += direct_debit
+
 	amount_left -= charge
+
 	if(department)
 		department_accounts[department].money += charge
 

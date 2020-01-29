@@ -7,7 +7,7 @@
 
 	var/eventDept = "Security"			//Department name in announcement
 	var/list/areaName = list("Brig")	//Names of areas mentioned in AI and Engineering announcements
-	var/list/areaType = list(/area/security/prison, /area/security/brig, /area/planets/Geminus/indoor/prison, /area/planets/Geminus/indoor/police_station)//Area types to include.
+	var/list/areaType = list(/area/security/prison, /area/security/brig, /area/prison/cell_block, /area/security/security_processing)//Area types to include.
 	var/list/areaNotType = list()		//Area types to specifically exclude.
 
 // Don't see the point of these ones.

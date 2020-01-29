@@ -9,8 +9,8 @@
 	var/tax_rich
 	var/list/datum/money_account/eco_data
 	var/datum/money_account/treasury
-	var/datum/money_account/nanotrasen
-	
+	var/datum/money_account/nt_account
+
 	//income tax rates
 	var/tax_rate_upper = 0.20
 	var/tax_rate_middle = 0.20
@@ -63,20 +63,23 @@
 	var/criminal_vote = TRUE			// Can people with criminal records vote? (unimplemented)
 
 	var/list/city_expenses = list()
-	
+
 	// Persistent City Option Vars
-	
+
 	var/NT_charge	= FALSE			// NT takes money from the city. Not intended to be controlled
-						// by any players but if an admin decides to switch it off this
-						// var is for that
-						
-	var/carp_control = FALSE		// If this is disabled, council cannot control carp infestations.
-	var/carp_pest_control = FALSE		// If this is disabled, carp will not pester the city.
-	
-	var/food_stamps_control = FALSE		// Are food stamps something the city has provided?
-	var/food_stamps = FALSE			// Do we use a stipend for food stamps to be provided to the city?
-	
-	
+								// by any players but if an admin decides to switch it off this
+								// var is for that
+
+
+	//expense options: city council can toggle these on and off to enable services
+	//control options: president needs to enable control for city council - if toggled off council can't use or access these options
+
+	var/carp_control = FALSE			// If this is disabled, council cannot control carp infestations.
+	var/carp_pest_control = TRUE		// If this is disabled, carp will not pester the city.
+
+	var/antivirus = FALSE			// Is the President a boomer?
+	var/antivirus_control = TRUE		// Does the city run on McAfee or nah?
+
 
 /datum/economy/bank_accounts/proc/set_economy()
 	if(!department_acc_list)
@@ -98,11 +101,8 @@
 	for(var/datum/money_account/D in department_acc_list)
 		department_accounts[D.department] = D
 
-	for(var/instance in subtypesof(/datum/expense/nanotrasen))
-		var/datum/expense/nanotrasen/E = new instance
-		city_expenses += E
-
 	sanitize_economy()
+	init_expenses()
 
 	message_admins("Set economy.", 1)
 
@@ -173,15 +173,15 @@
 	S["synth_vote"] << synth_vote
 	S["citizenship_vote "] << citizenship_vote
 	S["criminal_vote"] << criminal_vote
-	
+
 	S["NT_charge"] << NT_charge
 
 	S["carp_control"] << carp_control
 	S["carp_pest_control"] << carp_pest_control
-	
-	S["food_stamps_control"] << food_stamps_control
-	S["food_stamps"] << food_stamps
-	
+
+	S["antivirus_control"] << antivirus_control
+	S["antivirus"] << antivirus
+
 	message_admins("Saved all department accounts.", 1)
 
 /datum/economy/bank_accounts/proc/load_accounts()
@@ -243,9 +243,9 @@
 
 	S["carp_control"] >> carp_control
 	S["carp_pest_control"] >> carp_pest_control
-	
-	S["food_stamps_control"] >> food_stamps_control
-	S["food_stamps"] >> food_stamps
+
+	S["antivirus_control"] >> antivirus_control
+	S["antivirus"] >> antivirus
 
 	sanitize_economy()
 
@@ -256,6 +256,7 @@
 	department_acc_list = eco_data
 
 	station_account = treasury
+	nanotrasen_account = nt_account
 
 	all_money_accounts.Add(department_acc_list)
 
@@ -273,4 +274,12 @@
 
 	message_admins("Loaded all department accounts.", 1)
 
+
+
+/datum/economy/bank_accounts/proc/init_expenses()
+	for(var/E in subtypesof(/datum/expense/nanotrasen))
+		var/datum/expense/new_expense = new E
+		city_expenses += new_expense
+
+		new_expense.do_effect()
 

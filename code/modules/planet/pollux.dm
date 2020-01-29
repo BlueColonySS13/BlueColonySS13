@@ -301,6 +301,9 @@ var/datum/planet/sif/planet_sif = null
 			if(show_message)
 				to_chat(L, effect_message)
 
+	for(var/obj/effect/decal/cleanable/dirty in holder.our_planet.expected_z_levels)
+		dirty.clean_blood()
+
 /datum/weather/sif/storm
 	name = "storm"
 	icon_state = "storm"
@@ -354,7 +357,8 @@ var/datum/planet/sif/planet_sif = null
 
 			L.water_act(2)
 //			to_chat(L, "<span class='warning'>Rain falls on you, drenching you in water.</span>")
-
+	for(var/obj/effect/decal/cleanable/dirty in holder.our_planet.expected_z_levels)
+		dirty.clean_blood()
 	handle_lightning()
 
 // This gets called to do lightning periodically.
@@ -470,6 +474,8 @@ var/datum/planet/sif/planet_sif = null
 			L.water_act(1)
 			if(show_message)
 				to_chat(L, effect_message)
+	for(var/obj/effect/decal/cleanable/dirty in holder.our_planet.expected_z_levels)
+		dirty.clean_blood()
 
 /datum/weather/sif/rad_storm
 	name = "radiation storm"
@@ -515,6 +521,10 @@ var/datum/planet/sif/planet_sif = null
 /datum/weather/sif/carpfall/proc/handle_carps()
 	if(world.time < next_carpfall)
 		return // It's too soon to strike again.
+
+	if(!(persistent_economy.carp_pest_control && persistent_economy.carp_control))
+		return	// city paid for these fucks to leave.
+
 	next_carpfall = world.time + rand(min_carpfall_cooldown, max_carpfall_cooldown)
 	for(var/mob/living/carbon/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -556,6 +566,10 @@ var/datum/planet/sif/planet_sif = null
 /datum/weather/sif/carpnado/proc/handle_carps()
 	if(world.time < next_carpfall)
 		return // It's too soon to strike again.
+
+	if(!(persistent_economy.carp_pest_control && persistent_economy.carp_control))
+		return	// city paid for these fucks to leave.
+
 	next_carpfall = world.time + rand(min_carpfall_cooldown, max_carpfall_cooldown)
 	for(var/mob/living/carbon/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)

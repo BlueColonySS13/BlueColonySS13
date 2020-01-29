@@ -54,14 +54,33 @@
 			<div class=item><font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font></div>
 		{{else}}
 			<div class=item>Set status: </div>
-			<div class=item>{{:helper.link('Yellow', null, {'action' : 'setalert', 'target' : data.def_SEC_LEVEL_YELLOW}, data.current_security_level === data.def_SEC_LEVEL_YELLOW || data.isAI ? 'disabled' : null)}} </div>
-			<div class=item>{{:helper.link('Orange', null, {'action' : 'setalert', 'target' : data.def_SEC_LEVEL_ORANGE}, data.current_security_level === data.def_SEC_LEVEL_ORANGE || data.isAI ? 'disabled' : null)}} </div>
-			<div class=item>{{:helper.link('Violet', null, {'action' : 'setalert', 'target' : data.def_SEC_LEVEL_VIOLET}, data.current_security_level === data.def_SEC_LEVEL_VIOLET || data.isAI ? 'disabled' : null)}} </div>
 			<div class=item>{{:helper.link('Blue', null, {'action' : 'setalert', 'target' : data.def_SEC_LEVEL_BLUE}, data.current_security_level === data.def_SEC_LEVEL_BLUE || data.isAI ? 'disabled' : null)}} </div>
 			<div class=item>{{:helper.link('Green', null, {'action' : 'setalert', 'target' : data.def_SEC_LEVEL_GREEN}, data.current_security_level === data.def_SEC_LEVEL_GREEN || data.isAI ? 'disabled' : null)}} </div>
 		{{/if}}
 		</br>
 		<div class=item>{{:helper.link('Back', null, {'action' : 'sw_menu', 'target' : 1})}} </div>
+
+	{{else data.state === 6}}
+		<h3>City Services</h3><hr>
+		The city can be charged (per payroll period) for various services, the service will take effect from the first payroll since activation.<br><br>
+
+		{{:helper.link('Edit Service Settings', null, {'action' : 'edit_service_expenses', 'target' : 1})}}
+
+		<b>Pest Control Services:</b><br>
+
+		{{if data.carp_control}}
+		<div class=item><b>Carp Control:</b> {{:data.carp_control}}</div>
+		{{/if}}
+
+		<b>Network Security Services:</b><br>
+
+		{{if data.antivirus}}
+		<div class=item><b>Network Anti-Virus - Gr3y.T1d3 Firewall:</b> {{:data.antivirus}} </div>
+		{{/if}}		
+
+		{{:helper.link('Back', null, {'action' : 'sw_menu', 'target' : 2})}}
+
+
 	{{else}}
 		Something went wrong. Please reset your console.
 		<div class=item>{{:helper.link('Back', null, {'action' : 'sw_menu', 'target' : 1})}}</div>

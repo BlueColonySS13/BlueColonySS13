@@ -92,6 +92,10 @@
 	else
 		data["have_shuttle"] = 0
 
+	data["carp_control"] = "[persistent_economy.carp_control ? "Enabled" : "Disabled"]"
+	data["antivirus"] = "[persistent_economy.antivirus_control ? "Enabled" : "Disabled"]"
+
+
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "mod_communication.tmpl", name, 550, 420, state = state)
@@ -124,6 +128,33 @@
 		if("sw_menu")
 			. = 1
 			current_status = text2num(href_list["target"])
+
+		if("edit_service_expenses")
+			. = 1
+
+			var/list/potential_services = list("Carp Control", "Gr3y.T1d3 Firewall") // this can be optimised
+
+			var/service = input(usr, "Please select which service you'd like to edit.", "Select Service") as null|anything in potential_services
+			if(!service) return
+
+			var/status = input(usr, "What status are we editing \"[service]\" to?", "Select Service Status") as null|anything in list("Enabled","Disabled")
+			if(!status) return
+
+			var/status_num = 0
+
+			switch(status)
+				if("Enabled")
+					status_num = 1
+				else
+					status_num = 0
+
+			switch(service)
+				if("Carp Control")
+					persistent_economy.carp_pest_control = status_num
+				if("Gr3y.T1d3 Firewall")
+					persistent_economy.antivirus_control = status_num
+
+
 		if("announce")
 			. = 1
 			if(get_authentication_level(user) == 2 && !issilicon(usr) && ntn_comm)
