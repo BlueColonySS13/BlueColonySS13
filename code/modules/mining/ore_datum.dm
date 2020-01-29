@@ -1,5 +1,5 @@
 var/global/list/ore_data = list()
-#define TEST_DEFINE_PLEASE_IGNORE_AGAIN 9
+
 /ore
 	var/name
 	var/display_name

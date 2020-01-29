@@ -24,5 +24,3 @@
 		else
 			world << "No ore data for [src]!"
 	return scanner_image
-
-#define TEST_DEFINE_PLEASE_IGNORE 8

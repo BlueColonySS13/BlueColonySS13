@@ -1,5 +1,5 @@
 var/list/mining_overlay_cache = list()
-#define TEST_DEFINE_PLEASE_IGNORE_AGAIN 5
+
 /**********************Mineral deposits**************************/
 /turf/unsimulated/mineral
 	name = "impassable rock"

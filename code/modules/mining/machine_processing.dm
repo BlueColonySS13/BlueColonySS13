@@ -1,6 +1,5 @@
 /**********************Mineral processing unit console**************************/
 
-#define TEST_DEFINE_PLEASE_IGNORE 5
 /obj/machinery/mineral/processing_unit_console
 	name = "production machine console"
 	icon = 'icons/obj/machines/mining_machines.dmi'
