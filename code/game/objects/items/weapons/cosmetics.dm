@@ -222,7 +222,6 @@
 	desc = "A surprisingly decent hairbrush with a false wood handle and semi-soft bristles."
 	slot_flags = null
 	icon_state = "brush"
-	item_state = "brush"
 	color = null
 
 /obj/item/weapon/haircomb/random/New()
