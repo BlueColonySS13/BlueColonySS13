@@ -139,7 +139,7 @@
 	prefs.sanitize_preferences()
 
 	prefs.last_seen = full_real_time()
-	
+
 	if(!prefs.first_seen)
 		prefs.first_seen = full_real_time()
 		prefs.last_seen = full_real_time()
