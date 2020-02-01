@@ -102,6 +102,9 @@
 	else if(index == 6) // Voting Eligibility Page
 		page_msg = "Here, you can change the voting eligibility of groups in the colony. Beware, this can be quite controversial."
 
+	else if(index == 7) // Voting Eligibility Page
+		page_msg = "This is the city council management page. You can enable and disable certain features that affect the council."
+
 
 	if(index == -1)
 		page_msg = "This isn't a thing yet, sorry."
