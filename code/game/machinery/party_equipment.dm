@@ -168,6 +168,7 @@
 	anchored = 1
 	layer = OBJ_LAYER
 	plane = ABOVE_MOB_PLANE
+	mouse_opacity = 0
 
 /obj/machinery/party/lasermachine/New()
 	turnoff() 		//||so verbs are correctly set
