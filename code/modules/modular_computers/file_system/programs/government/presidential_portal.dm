@@ -102,6 +102,9 @@
 	else if(index == 6) // Voting Eligibility Page
 		page_msg = "Here, you can change the voting eligibility of groups in the colony. Beware, this can be quite controversial."
 
+	else if(index == 7) // Voting Eligibility Page
+		page_msg = "This is the city council management page. You can enable and disable certain features that affect the council."
+
 
 	if(index == -1)
 		page_msg = "This isn't a thing yet, sorry."
@@ -163,6 +166,9 @@
 	data["synth_vote"] = "[persistent_economy.synth_vote ? "Can Vote" : "Cannot Vote"]"
 	data["citizenship_vote"] = "[persistent_economy.citizenship_vote ? "Can Vote" : "Cannot Vote"]"
 	data["criminal_vote"] = "[persistent_economy.criminal_vote ? "Can Vote" : "Cannot Vote"]"
+
+	//manage council
+	data["city_services_enable"] = "[persistent_economy.city_council_control ? "Can Manage City Services" : "Cannot Manage City Services"]"
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -240,6 +246,23 @@
 	if(href_list["contraband"])
 		. = 1
 		index = 4
+
+	if(href_list["manage_council"])
+		. = 1
+		index = 7
+
+	if(href_list["manage_council_services"])
+		. = 1
+
+		var/available_powers = list("Allow City Council to use services", "Don't Allow City Council to use services")
+
+		var/power = input(usr, "What would you like to do?.", "City Council Services") as null|anything in available_powers
+		if(!power) return
+
+		if("Allow City Council to use services")
+			persistent_economy.city_council_control = TRUE
+		else
+			persistent_economy.city_council_control = FALSE
 
 	if(href_list["adjust_main_taxes"])
 		. = 1

@@ -217,6 +217,13 @@
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	color = COLOR_PURPLE
 
+/obj/item/weapon/haircomb/brush
+	name = "hairbrush"
+	desc = "A surprisingly decent hairbrush with a false wood handle and semi-soft bristles."
+	slot_flags = null
+	icon_state = "brush"
+	color = null
+
 /obj/item/weapon/haircomb/random/New()
 	color = "#"+get_random_colour()
 	..()
@@ -334,6 +341,10 @@
 	desc = "Careful not to cut yourself on that edge."
 	icon_state = "razorblade"
 	shave_sound = null
+
+/obj/item/weapon/razor/blade/disposable
+	name = "disposable razor"
+	icon_state = "disporazor"
 
 //Pure fluff.
 
