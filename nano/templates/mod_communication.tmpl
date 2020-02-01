@@ -16,6 +16,8 @@
 		{{/if}} </div>
 		<div class=item>{{:helper.link('Set Status Display', null, {'action' : 'sw_menu', 'target' : 4}, !data.net_syscont ? 'disabled' : null)}} </div>
 		<div class=item>{{:helper.link('Message List', null, {'action' : 'sw_menu', 'target' : 2}, !data.net_comms ? 'disabled' : null)}} </div>
+		<div class=item>{{:helper.link('City Services', null, {'action' : 'sw_menu', 'target' : 6}, !data.net_syscont ? 'disabled' : null)}} </div>
+
 	{{else data.state === 2}}
 		Messages:
 		{{for data.messages}}
@@ -64,21 +66,30 @@
 		<h3>City Services</h3><hr>
 		The city can be charged (per payroll period) for various services, the service will take effect from the first payroll since activation.<br><br>
 
-		{{:helper.link('Edit Service Settings', null, {'action' : 'edit_service_expenses', 'target' : 1})}}
+		{{if data.city_council_control}}
 
-		<b>Pest Control Services:</b><br>
+			{{:helper.link('Edit Service Settings', null, {'action' : 'edit_service_expenses', 'target' : 1})}}
 
-		{{if data.carp_control}}
-		<div class=item><b>Carp Control:</b> {{:data.carp_control}}</div>
-		{{/if}}
+			<br>
+			<br>
 
-		<b>Network Security Services:</b><br>
+			<u>>Pest Control Services:</u><br>
 
-		{{if data.antivirus}}
-		<div class=item><b>Network Anti-Virus - Gr3y.T1d3 Firewall:</b> {{:data.antivirus}} </div>
-		{{/if}}		
+			{{if data.carp_control}}
+			<div class=item><b>Carp Control:</b> {{:data.carp_control}} - {{:data.carp_control_cost}}</div>
+			{{/if}}
 
-		{{:helper.link('Back', null, {'action' : 'sw_menu', 'target' : 2})}}
+			<br>
+
+			<u>Network Security Services:</u><br>
+
+			{{if data.antivirus}}
+			<div class=item><b>Network Anti-Virus - Gr3y.T1d3 Firewall:</b> {{:data.antivirus}} - {{:data.antivirus_cost}}</div>
+			{{/if}}	
+		{{else}}
+			<i>The current president has disabled control of city services for council members.</i>	
+
+		{{:helper.link('Back', null, {'action' : 'sw_menu', 'target' : 1})}}
 
 
 	{{else}}

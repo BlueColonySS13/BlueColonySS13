@@ -66,7 +66,7 @@
 
 	// Persistent City Option Vars
 
-	var/NT_charge	= FALSE			// NT takes money from the city. Not intended to be controlled
+	var/NT_charge	= TRUE			// NT takes money from the city. Not intended to be controlled
 								// by any players but if an admin decides to switch it off this
 								// var is for that
 
@@ -74,11 +74,10 @@
 	//expense options: city council can toggle these on and off to enable services
 	//control options: president needs to enable control for city council - if toggled off council can't use or access these options
 
-	var/carp_control = FALSE			// If this is disabled, council cannot control carp infestations.
-	var/carp_pest_control = TRUE		// If this is disabled, carp will not pester the city.
+	var/city_council_control	= TRUE	// If the president has allowed the city council to control the colony.
 
+	var/carp_control = FALSE			// If this is disabled, council cannot control carp infestations.
 	var/antivirus = FALSE			// Is the President a boomer?
-	var/antivirus_control = TRUE		// Does the city run on McAfee or nah?
 
 
 /datum/economy/bank_accounts/proc/set_economy()
@@ -86,6 +85,7 @@
 		return 0
 
 	treasury = station_account
+	nt_account = nanotrasen_account
 	eco_data = department_acc_list
 
 	for(var/M in department_acc_list)
@@ -133,6 +133,7 @@
 
 	S["eco_data"] << eco_data
 	S["treasury"] << treasury
+	S["nt_account"] << nt_account
 	S["tax_rate_upper"] << tax_rich
 	S["tax_rate_middle"] << tax_middle
 	S["tax_rate_lower"] << tax_poor
@@ -175,11 +176,8 @@
 	S["criminal_vote"] << criminal_vote
 
 	S["NT_charge"] << NT_charge
-
+	S["city_council_control"] << city_council_control
 	S["carp_control"] << carp_control
-	S["carp_pest_control"] << carp_pest_control
-
-	S["antivirus_control"] << antivirus_control
 	S["antivirus"] << antivirus
 
 	message_admins("Saved all department accounts.", 1)
@@ -197,6 +195,7 @@
 
 	S["eco_data"] >> eco_data
 	S["treasury"] >> treasury
+	S["nt_account"] >> nt_account
 	S["tax_rate_upper"] >> tax_rich
 	S["tax_rate_middle"] >> tax_middle
 	S["tax_rate_lower"] >> tax_poor
@@ -240,11 +239,8 @@
 	S["criminal_vote"] >> criminal_vote
 
 	S["NT_charge"] >> NT_charge
-
+	S["city_council_control"] >> city_council_control
 	S["carp_control"] >> carp_control
-	S["carp_pest_control"] >> carp_pest_control
-
-	S["antivirus_control"] >> antivirus_control
 	S["antivirus"] >> antivirus
 
 	sanitize_economy()
@@ -277,7 +273,9 @@
 
 
 /datum/economy/bank_accounts/proc/init_expenses()
-	for(var/E in subtypesof(/datum/expense/nanotrasen))
+	for(var/E in subtypesof(/datum/expense/nanotrasen) - list(/datum/expense/nanotrasen/pest_control,
+	 /datum/expense/nanotrasen/tech_support
+	 ))
 		var/datum/expense/new_expense = new E
 		city_expenses += new_expense
 

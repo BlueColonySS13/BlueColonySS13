@@ -8,10 +8,15 @@
 	comments = "Nanotrasen will recieve an allowance from the city's earnings."
 	can_remove = FALSE
 	direct_debit = TRUE
+	charge_department = "Nanotrasen"
 
 /datum/expense/nanotrasen/New()
 	..()
 	department = "[station_name()] Funds"
+
+/datum/expense/nanotrasen/is_active()
+	return persistent_economy.NT_charge
+
 /*
 /datum/expense/nanotrasen/cleaning
 	name = "City Cleaning Fund"
@@ -31,12 +36,10 @@
 	comments = "The city will hire a specialized contractor to contain the carp menace. A repellent will be provided to prevent carp from migrating."
 
 /datum/expense/nanotrasen/pest_control/carp/do_effect()
-	for(var/datum/event_meta/E in SSevents.event_containers)
-		if(E.name == "Carp School")
-			if(persistent_economy.carp_pest_control && persistent_economy.carp_control)
-				E.enabled = FALSE
-			else
-				E.enabled = TRUE
+	if(!active)
+		persistent_economy.carp_control = FALSE
+	else
+		persistent_economy.carp_control = TRUE
 
 	return 1
 
@@ -48,12 +51,10 @@
 	 Covers upgrades that combats the latest versions of this exploit."
 
 /datum/expense/nanotrasen/tech_support/prison_break/do_effect()
-	for(var/datum/event_meta/E in SSevents.event_containers)
-		if(E.name == "Prison Break")
-			if(persistent_economy.antivirus_control && persistent_economy.antivirus)
-				E.enabled = FALSE
-			else
-				E.enabled = TRUE
+	if(!active)
+		persistent_economy.antivirus = FALSE
+	else
+		persistent_economy.antivirus = TRUE
 
 	return 1
 
@@ -63,27 +64,27 @@
 	cost_per_payroll = 1000
 	comments = "The city will hire a very robust pest control specialist that will remove spiders from the sewers."
 
-/datum/expense/nanotrasen/social_service
+/datum/expense/nanotrasen/social_service/food_stamps
 	name = "Food Stamps"
 	cost_per_payroll = 350
 	comments = "The city will provide food stamps to people under a certain income."
 
-/datum/expense/nanotrasen/water_coolers
+/datum/expense/nanotrasen/department_supply/water_coolers
 	name = "Water Coolers"
 	cost_per_payroll = 10
 	comments = "Free water for all departments, this will provide."
 
-/datum/expense/nanotrasen/securitron
+/datum/expense/nanotrasen/department_supply/securitron
 	name = "Rented Securitrons"
 	cost_per_payroll = 400
 	comments = "This will rent five little securitrons that will be placed in various corners of the city."
 
-/datum/expense/nanotrasen/ed209
+/datum/expense/nanotrasen/department_supply/ed209
 	name = "Rented ED-209 Security Robot"
 	cost_per_payroll = 600
 	comments = "ED-209 Security Robots will patrol the city, you will recieve three of them..."
 
-/datum/expense/nanotrasen/odysseus
+/datum/expense/nanotrasen/department_supply/odysseus
 	name = "Rented ED-209 Security Robot"
 	cost_per_payroll = 600
 	comments = "This will rent 3x extra securitrons that will be placed in various corners of the city."

@@ -24,8 +24,7 @@ SUBSYSTEM_DEF(economy)
 
 /datum/controller/subsystem/economy/proc/city_charges()
 	for(var/datum/expense/E in persistent_economy.city_expenses)
-		charge_expense(E, department_accounts["[station_name()] Funds"], E.cost_per_payroll)
-
+		E.charge_department(E.cost_per_payroll)
 
 /proc/payroll(var/datum/data/record/G)
 	var/bank_number = G.fields["bank_account"]

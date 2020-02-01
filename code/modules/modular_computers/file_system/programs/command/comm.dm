@@ -92,9 +92,16 @@
 	else
 		data["have_shuttle"] = 0
 
+	//council options
 	data["carp_control"] = "[persistent_economy.carp_control ? "Enabled" : "Disabled"]"
-	data["antivirus"] = "[persistent_economy.antivirus_control ? "Enabled" : "Disabled"]"
+	data["antivirus"] = "[persistent_economy.antivirus ? "Enabled" : "Disabled"]"
 
+	//council option costs
+	var/datum/expense/nanotrasen/carp = locate(/datum/expense/nanotrasen/pest_control/carp) in persistent_economy.city_expenses
+	var/datum/expense/nanotrasen/antivirus = locate(/datum/expense/nanotrasen/tech_support/prison_break) in persistent_economy.city_expenses
+
+	data["carp_control_cost"] = "[carp.cost_per_payroll]PH (per hour)"
+	data["antivirus_cost"] = "[antivirus.cost_per_payroll]PH (per hour)"
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -150,9 +157,9 @@
 
 			switch(service)
 				if("Carp Control")
-					persistent_economy.carp_pest_control = status_num
+					persistent_economy.carp_control = status_num
 				if("Gr3y.T1d3 Firewall")
-					persistent_economy.antivirus_control = status_num
+					persistent_economy.antivirus = status_num
 
 
 		if("announce")

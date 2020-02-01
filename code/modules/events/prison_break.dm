@@ -43,6 +43,12 @@
 
 
 /datum/event/prison_break/start()
+	if(persistent_economy && persistent_economy.antivirus)
+		command_announcement.Announce("[pick("Gr3y.T1d3 virus","Malignant trojan")] was detected in [station_name()] [(eventDept == "Security")? "imprisonment":"containment"] and was subsequently terminated.", "[eventDept] Alert")
+
+		kill()
+		return
+
 	for(var/area/A in world)
 		if(is_type_in_list(A,areaType) && !is_type_in_list(A,areaNotType))
 			areas += A

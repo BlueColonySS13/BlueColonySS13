@@ -4,6 +4,8 @@
   var/department = "Civilian"
   var/purpose = "Bill"
 
+  var/charge_department			// if specified, this is the department that will be charged instead of an account.
+
   var/comments                      // comments on this particular case.
 
   var/initial_cost				//how much it cost in the beginning
@@ -56,6 +58,18 @@
 
 /datum/expense/proc/payroll_expense(var/datum/money_account/bank_account)
 	charge_expense(src, bank_account, cost_per_payroll)
+
+// If you want to charge a department.
+
+/datum/expense/proc/charge_department(num)
+	if(!charge_department) return
+
+	var/datum/money_account/bank_acc = department_accounts[charge_department]
+
+	if(!bank_acc) return
+
+	charge_expense(src, bank_acc, num)
+
 
 //This if for if you have a expense, and a bank account.
 
