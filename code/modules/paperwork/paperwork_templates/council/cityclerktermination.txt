@@ -1,0 +1,19 @@
+[center][h1]Form EX-3251-B: Termination of Assignment Record[/h1]
+[logo][/center]
+[hr]
+[small]
+[b]Terminated Employee: [/b] [field]
+[b]Terminated from the assignment of:[/b] [field]
+
+[b]Reason for Termination:[/b] [field][/small]
+
+[hr]
+[small]
+Guidelines that must be followed. If they are not followed, this form is void and unlawful.
+The department in which the terminated has been terminated must first be contacted, and the chief (acting or otherwise) of the department must have been consulted and have authorized a termination.
+
+If the terminated has been removed from his or her position for an invalid or illegal reason, this form is immediately void and unlawful.
+In the event a relevant head of staff retracts his or her approval for this assignment termination, this form is immediately void and unlawful.[/small]
+[hr]
+
+[b]City Clerk's Signature:[/b] [field]

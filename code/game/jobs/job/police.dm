@@ -113,8 +113,8 @@
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/prosecutor
 	wage = 100
-	access = list(access_prosecutor, access_sec_doors, access_maint_tunnels, access_heads)
-	minimal_access = list(access_prosecutor, access_sec_doors, access_heads)
+	access = list(access_prosecutor, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
+	minimal_access = list(access_prosecutor, access_sec_doors, access_heads, access_legal)
 //	minimal_player_age = 7 (need more prostitut-- prosecutors.)
 	minimum_character_age = 21
 	alt_titles = list("Prosecutor","Prosecuting Attorney","Prosecution Officer","Prosecuting Lawyer")
