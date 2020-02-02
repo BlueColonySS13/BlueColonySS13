@@ -109,7 +109,7 @@
 		page_msg = "You are now able to manage funds of the colony. You can transfer funds from a certain department to another.<hr><br><br>"
 
 		for(var/datum/money_account/M in department_acc_list)
-			if(!(M.name in public_departments))
+			if(!(M.department in public_departments))
 				continue
 			var/display_color = "green"
 			if(0 > M.money)
@@ -420,7 +420,7 @@
 		. = 1
 		var/datum/money_account/A = locate(href_list["transfer_funds"]) in department_acc_list
 
-		if(!A.name in public_departments)
+		if(!A.department in public_departments)
 			return
 
 
