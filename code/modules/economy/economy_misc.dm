@@ -3,7 +3,7 @@ var/global/current_date_string
 var/global/datum/money_account/vendor_account
 var/global/datum/money_account/station_account
 var/global/datum/money_account/nanotrasen_account
-var/global/list/department_accounts = list()
+var/global/list/datum/economy/bank_accounts/department_accounts = list()
 var/global/num_financial_terminals = 1
 var/global/next_account_number = 0
 var/global/list/all_money_accounts = list()
@@ -14,7 +14,8 @@ var/global/datum/economy/bank_accounts/persistent_economy
 var/global/list/datum/money_account/department_acc_list = list()
 
 var/global/list/station_departments = list("City Council", "Public Healthcare", "Emergency and Maintenance", "Research and Science", "Police", "Cargo", "Bar", "Botany", "Civilian")
-
+var/global/list/public_departments = list("City Council", "Public Healthcare", "Emergency and Maintenance", "Research and Science", "Police", "Civilian")
+var/global/list/private_departments = list("Cargo", "Bar", "Botany")
 /proc/setup_economy()
 	if(economy_init)
 		return 2
@@ -45,6 +46,9 @@ var/global/list/station_departments = list("City Council", "Public Healthcare", 
 
 	persistent_economy.set_economy()
 	persistent_economy.load_accounts()
+
+	if(!nanotrasen_account | !station_account)
+		create_city_accounts()
 
 	//end economy persistence
 

@@ -29,6 +29,7 @@
 
 <div class="itemLabel"><b>Economy:</b></div> <br>
 {{:helper.link("Economy Information", null, {'notyet' : 1})}}
+{{:helper.link("Manage Funds", null, {'manage_funds' : 1})}}
 {{:helper.link("Modify Public Jobs", null, {'notyet' : 1})}}
 {{:helper.link("Income Tax Rates", null, {'taxes' : 1})}}
 {{:helper.link("Item Tax", null, {'item_tax' : 1})}}
@@ -240,21 +241,27 @@
 
 	<div class="itemLabel">
 		Sentencing Age:
-	</div> {{:data.sentencing_age}}  {{:helper.link("Change", null, {'sentencing_age' : 1})}}<br>
-	<br>
+	</div> {{:data.sentencing_age}}  {{:helper.link("Change", null, {'sentencing_age' : 1})}}
+	<br><br>
+	{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
 
 {{if data.index == 7}}
 
-	{{:helper.link("Manage Council Services", null, {'manage_council_services' : 1})}}
+	{{:helper.link("Modify City Service Ability", null, {'manage_council_services' : 1})}}
 
+	<br>
+	<br>
 	<b>Council Services Allowance:</b> {{:data.city_services_enable}}
+
 
 	<br><br>
 	{{:helper.link("Back", null, {'back' : 1})}}
 {{/if}}
 
-<br><br>
-{{:helper.link("Back", null, {'back' : 1})}}
-{{/if}}
+{{if data.index == 8}}
 
+	{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
 
