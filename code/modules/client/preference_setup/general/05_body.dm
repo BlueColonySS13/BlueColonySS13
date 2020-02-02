@@ -121,21 +121,26 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.r_hair			= sanitize_integer(pref.r_hair, 0, 255, initial(pref.r_hair))
 	pref.g_hair			= sanitize_integer(pref.g_hair, 0, 255, initial(pref.g_hair))
 	pref.b_hair			= sanitize_integer(pref.b_hair, 0, 255, initial(pref.b_hair))
-	pref.r_facial		= sanitize_integer(pref.r_facial, 0, 255, initial(pref.r_facial))
-	pref.g_facial		= sanitize_integer(pref.g_facial, 0, 255, initial(pref.g_facial))
-	pref.b_facial		= sanitize_integer(pref.b_facial, 0, 255, initial(pref.b_facial))
+	pref.r_facial			= sanitize_integer(pref.r_facial, 0, 255, initial(pref.r_facial))
+	pref.g_facial			= sanitize_integer(pref.g_facial, 0, 255, initial(pref.g_facial))
+	pref.b_facial			= sanitize_integer(pref.b_facial, 0, 255, initial(pref.b_facial))
 	pref.s_tone			= sanitize_integer(pref.s_tone, -185, 34, initial(pref.s_tone))
 	pref.r_skin			= sanitize_integer(pref.r_skin, 0, 255, initial(pref.r_skin))
 	pref.g_skin			= sanitize_integer(pref.g_skin, 0, 255, initial(pref.g_skin))
 	pref.b_skin			= sanitize_integer(pref.b_skin, 0, 255, initial(pref.b_skin))
-	pref.h_style		= sanitize_inlist(pref.h_style, hair_styles_list, initial(pref.h_style))
-	pref.f_style		= sanitize_inlist(pref.f_style, facial_hair_styles_list, initial(pref.f_style))
+	pref.h_style			= sanitize_inlist(pref.h_style, hair_styles_list, initial(pref.h_style))
+	pref.f_style			= sanitize_inlist(pref.f_style, facial_hair_styles_list, initial(pref.f_style))
 	pref.r_eyes			= sanitize_integer(pref.r_eyes, 0, 255, initial(pref.r_eyes))
 	pref.g_eyes			= sanitize_integer(pref.g_eyes, 0, 255, initial(pref.g_eyes))
 	pref.b_eyes			= sanitize_integer(pref.b_eyes, 0, 255, initial(pref.b_eyes))
 	pref.b_type			= sanitize_text(pref.b_type, initial(pref.b_type))
 	pref.weight			= sanitize_integer(pref.weight, WEIGHT_MIN / CALORIES_MUL, WEIGHT_MAX / CALORIES_MUL, initial(pref.weight))
-	pref.calories		= sanitize_integer(pref.calories, WEIGHT_MIN, WEIGHT_MAX, initial(pref.calories))
+	pref.calories			= sanitize_integer(pref.calories, WEIGHT_MIN, WEIGHT_MAX, initial(pref.calories))
+
+	pref.hydration			= sanitize_integer(pref.hydration, 0, 400, initial(pref.hydration))
+	pref.nutrition			= sanitize_integer(pref.nutrition, 0, 400, initial(pref.nutrition))
+
+
 	pref.disabilities	= sanitize_integer(pref.disabilities, 0, 65535, initial(pref.disabilities))
 	if(!pref.organ_data) pref.organ_data = list()
 	if(!pref.rlimb_data) pref.rlimb_data = list()
@@ -173,6 +178,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.b_synth	= pref.b_synth
 	character.weight	= pref.weight
 	character.calories	= pref.calories
+	character.hydration	= pref.hydration
+	character.nutrition	= pref.nutrition
 
 	// Destroy/cyborgize organs and limbs.
 	for(var/name in list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO))
