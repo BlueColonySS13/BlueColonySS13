@@ -551,6 +551,8 @@ var/global/datum/controller/occupations/job_master
 		if(!EA.password)
 			EA.password = GenerateKey()
 
+		if(!EA.login)
+			EA.login = H.client.prefs.email
 
 		H.mind.initial_email_login = list("login" = "[EA.login]", "password" = "[EA.password]")
 		H.mind.initial_email = EA

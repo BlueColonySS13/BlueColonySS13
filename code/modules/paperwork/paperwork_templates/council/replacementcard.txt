@@ -1,0 +1,19 @@
+[h1]Form ID-4253: Replacement Identification Card[/h1]
+[logo]
+[hr]
+
+[small][b]Name/Aliases:[/b] [field]
+[b]Current Job:[/b] [field]
+
+[b]Was the card lost or damaged?:[/b] [field]
+
+[b]How was the card lost or damaged?:[/b] [field]
+[/small] 
+
+[hr]
+[small]New ID card requests are governed by fair use policy 67C3. NanoTrasen withholds the right to deny any and all applications for a replacement ID dependent on policy 67C3 and any other pertinent criteria designated by NanoTrasen at the time of the denial of application. Excessive ID loss or damage as laid out in 67C3 is to be compensated for out of personal income and accounts as specified under 67C6 and not uniform work expenditure allowances.[/small]
+[hr]
+
+[b]City Clerk's Signature[/b]: [field]
+
+[b]Recipient's Signature:[/b] [field]
