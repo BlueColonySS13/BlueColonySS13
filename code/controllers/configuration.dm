@@ -4,16 +4,16 @@ var/list/gamemode_cache = list()
 	var/server_name = null				// server name (for world name / status)
 	var/server_suffix = 0				// generate numeric suffix based on server port
 
-	var/nudge_script_path = "nudge.py"  // where the nudge.py script is located
+	var/nudge_script_path = "nudge.py"  	// where the nudge.py script is located
 
 	var/canonicity = 0					// if we're canon or not.
 	var/years_in_future = 544			// how many years in the future are we?
 	var/days_in_future = 0				// how many years in the future are we?
-	var/months_in_future = 0			// how many years in the future are we?
+	var/months_in_future = 0				// how many years in the future are we?
 
-	var/log_ooc = 0						// log OOC channel
+	var/log_ooc = 0					// log OOC channel
 	var/log_access = 0					// log login/logout
-	var/log_say = 0						// log client say
+	var/log_say = 0					// log client say
 	var/log_admin = 0					// log admin actions
 	var/log_debug = 0					// log debug output
 	var/log_game = 0					// log game events
@@ -23,41 +23,42 @@ var/list/gamemode_cache = list()
 	var/log_attack = 0					// log attack messages
 	var/log_adminchat = 0				// log admin chat messages
 	var/log_adminwarn = 0				// log warnings admins get about bomb construction and such
-	var/log_pda = 0						// log pda messages
+	var/log_pda = 0					// log pda messages
 	var/log_hrefs = 0					// logs all links clicked in-game. Could be used for debugging and tracking down exploits
 	var/log_runtime = 0					// logs world.log to a file
-	var/log_world_output = 0			// log world.log << messages
+	var/log_world_output = 0				// log world.log << messages
 	var/sql_enabled = 0					// for sql switching
-	var/allow_admin_ooccolor = 0		// Allows admins with relevant permissions to have their own ooc colour
+	var/hard_saving = 1					// If database decides to fail, do we save things to file?
+	var/allow_admin_ooccolor = 0			// Allows admins with relevant permissions to have their own ooc colour
 	var/allow_vote_restart = 0 			// allow votes to restart
 	var/ert_admin_call_only = 0
 	var/allow_vote_mode = 0				// allow votes to change mode
-	var/allow_admin_jump = 1			// allows admin jumping
-	var/allow_admin_spawning = 1		// allows admin item spawning
+	var/allow_admin_jump = 1				// allows admin jumping
+	var/allow_admin_spawning = 1			// allows admin item spawning
 	var/allow_admin_rev = 1				// allows admin revives
 	var/vote_delay = 6000				// minimum time between voting sessions (deciseconds, 10 minute default)
 	var/vote_period = 600				// length of voting period (deciseconds, default 1 minute)
-	var/vote_autotransfer_initial = 108000 // Length of time before the first autotransfer vote is called
-	var/vote_autotransfer_interval = 36000 // length of time before next sequential autotransfer vote
-	var/vote_autogamemode_timeleft = 100 //Length of time before round start when autogamemode vote is called (in seconds, default 100).
+	var/vote_autotransfer_initial = 108000  // Length of time before the first autotransfer vote is called
+	var/vote_autotransfer_interval = 36000  // length of time before next sequential autotransfer vote
+	var/vote_autogamemode_timeleft = 100    //Length of time before round start when autogamemode vote is called (in seconds, default 100).
 	var/vote_no_default = 0				// vote does not default to nochange/norestart (tbi)
 	var/vote_no_dead = 0				// dead people can't vote (tbi)
-//	var/enable_authentication = 0		// goon authentication
+//	var/enable_authentication = 0			// goon authentication
 	var/del_new_on_log = 1				// del's new players if they log before they spawn in
-	var/feature_object_spell_system = 0 //spawns a spellbook which gives object-type spells instead of verb-type spells for the wizard
-	var/traitor_scaling = 0 			//if amount of traitors scales based on amount of players
+	var/feature_object_spell_system = 0	 //spawns a spellbook which gives object-type spells instead of verb-type spells for the wizard
+	var/traitor_scaling = 0 				//if amount of traitors scales based on amount of players
 	var/objectives_disabled = 0 			//if objectives are disabled or not
-	var/protect_roles_from_antagonist = 0// If security and such can be traitor/cult/other
-	var/continous_rounds = 0			// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
+	var/protect_roles_from_antagonist = 0	// If security and such can be traitor/cult/other
+	var/continous_rounds = 0				// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
 	var/allow_Metadata = 0				// Metadata is supported.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/fps = 30
 	var/tick_limit_mc_init = TICK_LIMIT_MC_INIT_DEFAULT	//SSinitialization throttling
 	var/Tickcomp = 0
-	var/socket_talk	= 0					// use socket_talk to communicate with other processes
+	var/socket_talk	= 0				// use socket_talk to communicate with other processes
 	var/list/resource_urls = null
 	var/antag_hud_allowed = 0			// Ghosts can turn on Antagovision to see a HUD of who is the bad guys this round.
-	var/antag_hud_restricted = 0                    // Ghosts that turn on Antagovision cannot rejoin the round.
+	var/antag_hud_restricted = 0            // Ghosts that turn on Antagovision cannot rejoin the round.
 	var/list/mode_names = list()
 	var/list/modes = list()				// allowed modes
 	var/list/votable_modes = list()		// votable modes
@@ -80,20 +81,24 @@ var/list/gamemode_cache = list()
 	var/load_jobs_from_txt = 0
 	var/ToRban = 0
 	var/automute_on = 0					//enables automuting/spam prevention
-	var/jobs_have_minimal_access = 0	//determines whether jobs use minimal access or expanded access.
+	var/jobs_have_minimal_access = 0		//determines whether jobs use minimal access or expanded access.
 
-	var/cult_ghostwriter = 1               //Allows ghosts to write in blood in cult rounds...
-	var/cult_ghostwriter_req_cultists = 10 //...so long as this many cultists are active.
+	var/cult_ghostwriter = 1                //Allows ghosts to write in blood in cult rounds...
+	var/cult_ghostwriter_req_cultists = 10  //...so long as this many cultists are active.
 
 	var/character_slots = 10				// The number of available character slots
-	var/loadout_slots = 3					// The number of loadout slots per character
+	var/loadout_slots = 3				// The number of loadout slots per character
 
 	var/max_maint_drones = 5				//This many drones can spawn,
-	var/allow_drone_spawn = 1				//assuming the admin allow them to.
-	var/drone_build_time = 1200				//A drone will become available every X ticks since last drone spawn. Default is 2 minutes.
+	var/allow_drone_spawn = 1			//assuming the admin allow them to.
+	var/drone_build_time = 1200			//A drone will become available every X ticks since last drone spawn. Default is 2 minutes.
 
 	var/disable_player_mice = 0
-	var/uneducated_mice = 0 //Set to 1 to prevent newly-spawned mice from understanding human speech
+	var/uneducated_mice = 0 				//Set to 1 to prevent newly-spawned mice from understanding human speech
+
+	var/middle_class_age = 7 			// How many days a player must be before they can make a middle class character
+	var/upper_class_age = 14 				// How many days a player must be before they can make a upper class character
+
 
 	var/usealienwhitelist = 0
 	var/limitalienplayers = 0
@@ -305,6 +310,12 @@ var/list/gamemode_cache = list()
 				if ("multi_z_explosion_scalar")
 					multi_z_explosion_scalar = text2num(value)
 
+				if ("upper_class_age")
+					upper_class_age = text2num(value)
+
+				if ("middle_class_age")
+					middle_class_age = text2num(value)
+
 				if ("log_ooc")
 					config.log_ooc = 1
 
@@ -313,6 +324,9 @@ var/list/gamemode_cache = list()
 
 				if ("sql_enabled")
 					config.sql_enabled = 1
+
+				if ("hard_saving")
+					config.hard_saving = 1
 
 				if ("log_say")
 					config.log_say = 1

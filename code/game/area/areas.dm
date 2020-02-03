@@ -41,6 +41,9 @@
 	var/turf/base_turf //The base turf type of the area, which can be used to override the z-level's base turf
 	var/global/global_uid = 0
 	var/uid
+	var/there_can_be_many = FALSE
+	var/lot_id
+	dont_save = TRUE
 
 /area/New()
 	icon_state = ""

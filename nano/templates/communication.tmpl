@@ -14,6 +14,8 @@
 		{{/if}} </div>
 		<div class=item>{{:helper.link('Set Status Display', null, {'action' : 'sw_menu', 'target' : 4}, !data.net_syscont ? 'disabled' : null)}} </div>
 		<div class=item>{{:helper.link('Message List', null, {'action' : 'sw_menu', 'target' : 2}, !data.net_comms ? 'disabled' : null)}} </div>
+		<div class=item>{{:helper.link('City Control Panel', null, {'action' : 'sw_menu', 'target' : 5})}} </div>
+
 	{{else data.state === 2}}
 		Messages:
 		{{for data.messages}}
@@ -57,6 +59,11 @@
 		{{/if}}
 		</br>
 		<div class=item>{{:helper.link('Back', null, {'action' : 'sw_menu', 'target' : 1})}} </div>
+	{{else data.state === 5}}
+		City Control Panel:
+
+		{{:helper.link('Back', null, {'action' : 'sw_menu', 'target' : 1})}}		
+
 	{{else}}
 		Something went wrong. Please reset your console.
 		<div class=item>{{:helper.link('Back', null, {'action' : 'sw_menu', 'target' : 1})}}</div>

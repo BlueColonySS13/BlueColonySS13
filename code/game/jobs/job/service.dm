@@ -110,8 +110,8 @@
 	wage = 100
 	email_domain = "legal.nt"
 	req_admin_notify = 1
-	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads)
-	minimal_access = list(access_lawyer, access_sec_doors, access_heads)
+	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
+	minimal_access = list(access_lawyer, access_sec_doors, access_heads, access_legal)
 //	minimal_player_age = 7 (More lawyers please.)
 	minimum_character_age = 20
 	alt_titles = list("Defense Lawyer","Defense Attorney","Barrister", "Legal Advisor")

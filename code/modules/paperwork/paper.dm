@@ -80,7 +80,8 @@
 	stamps = null
 
 	if(info != initial(info))
-		info = html_encode(info)
+		if(!persistence_loaded)
+			info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
 		return
@@ -591,6 +592,11 @@
 
 	add_fingerprint(user)
 	return
+
+/obj/item/weapon/paper/serialize()
+	var/list/data = ..()
+	data["info"] = info
+	return data
 
 /*
  * Premade paper

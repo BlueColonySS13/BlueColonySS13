@@ -97,8 +97,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	selection_color = "#1D1D4F"
 	idtype = /obj/item/weapon/card/id/heads/judge
 	wage = 350
-	access = list(access_judge, access_warrant, access_sec_doors, access_maint_tunnels, access_heads)
-	minimal_access = list(access_judge, access_warrant, access_sec_doors, access_heads)
+	access = list(access_judge, access_warrant, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
+	minimal_access = list(access_judge, access_warrant, access_sec_doors, access_heads, access_legal)
 	minimal_player_age = 14
 	minimum_character_age = 25
 	alt_titles = list("Magistrate")

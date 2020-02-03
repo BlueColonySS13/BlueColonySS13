@@ -7,14 +7,15 @@
 	if(persistent_economy.voting_age > H.age)
 		return "Not Old Enough"
 
-	if(!persistent_economy.synth_vote && H.isSynthetic() )
-		return "Is Synthetic"
+	if(H.internal_organs_by_name[O_BRAIN])
+		var/obj/item/organ/internal/brain/B = H.internal_organs_by_name[O_BRAIN]
+		if(B.robotic)
+			return "Has a Synthetic Brain"
 
 	if(!persistent_economy.citizenship_vote && H.home_system != using_map.starsys_name)
 		return "Is from [H.home_system] and not from [using_map.starsys_name]"
 
 	var/datum/data/record/police_record = get_sec_record(H)
-
 	if(police_record)
 		var/list/criminal_record = police_record.fields["crim_record"]
 		if(!isemptylist(criminal_record))

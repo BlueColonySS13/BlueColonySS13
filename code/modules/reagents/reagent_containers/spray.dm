@@ -202,3 +202,15 @@
 /obj/item/weapon/reagent_containers/spray/plantbgone/New()
 	..()
 	reagents.add_reagent("plantbgone", 100)
+
+
+
+/obj/item/weapon/reagent_containers/spray/cleaner/deodorant
+	name = "deodorant"
+	desc = "A can of Gold Standard spray deodorant - for when you're too lazy to shower."
+	gender = PLURAL
+	volume = 35
+	icon = 'icons/obj/cosmetics.dmi'
+	icon_state = "deodorant"
+	item_state = "deodorant"
+
