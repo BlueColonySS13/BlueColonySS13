@@ -666,6 +666,13 @@ default behaviour is:
 
 	return
 
+/mob/living/rejuvenate()
+	var/was_dead = stat == DEAD
+	..()
+	if(was_dead && stat != DEAD)
+		// Arise!
+		cultnet.updateVisibility(src, 0)
+
 /mob/living/proc/UpdateDamageIcon()
 	return
 

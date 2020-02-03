@@ -228,6 +228,12 @@
 	face_atom(A)
 	A.examine(src)
 
+//override examinate verb to update description holders when things are examined
+/mob/examinate(atom/A as mob|obj|turf in view())
+	if(..())
+		return TRUE
+	update_examine_panel(A)
+
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
 	set category = "Object"
