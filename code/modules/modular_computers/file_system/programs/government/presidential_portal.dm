@@ -437,7 +437,7 @@
 			error_msg = "Please enter a valid amount."
 			return
 
-		if(amount > account_recieving.money)
+		if(amount > A.money)
 			error_msg = "Not enough funds in [A.department] to transfer to [category]."
 			return
 
