@@ -112,10 +112,11 @@
 			if(!(M.department in public_departments + list("[station_name()] Funds", "Nanotrasen")))
 				continue
 			var/display_color = "green"
-			if(100 > M.money)
-				display_color = "red"
 			if(1500 > M.money)
 				display_color = "yellow"
+			if(100 > M.money)
+				display_color = "red"
+
 			page_msg += "<a href='?src=\ref[src];manage_transfer=1;transfer_funds=\ref[M]'>Transfer Money From</a> <b>[M.department]</b> (<font color=\"[display_color]\">[M.money]</font>CR)<br>"
 
 
