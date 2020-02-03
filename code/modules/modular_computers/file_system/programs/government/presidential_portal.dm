@@ -422,7 +422,7 @@
 		. = 1
 		var/datum/money_account/A = locate(href_list["transfer_funds"]) in department_acc_list
 
-		if(!A.department in public_departments + list("[station_name()] Funds", "Nanotrasen"))
+		if(!(A.department in public_departments + list("[station_name()] Funds", "Nanotrasen")))
 			return
 
 
