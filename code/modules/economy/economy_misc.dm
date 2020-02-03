@@ -47,12 +47,15 @@ var/global/list/private_departments = list("Cargo", "Bar", "Botany")
 	persistent_economy.set_economy()
 	persistent_economy.load_accounts()
 
-	if(!nanotrasen_account | !station_account)
-		create_city_accounts()
 
 	//end economy persistence
 
 	link_economy_accounts()
+
+	if(!persistent_economy.nt_account || !persistent_economy.treasury)
+		persistent_economy.nt_account = nanotrasen_account
+		persistent_economy.treasury = station_account
+
 
 	economy_init = 1
 	return 1

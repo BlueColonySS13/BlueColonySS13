@@ -109,14 +109,14 @@
 		page_msg = "You are now able to manage funds of the colony. You can transfer funds from a certain department to another.<hr><br><br>"
 
 		for(var/datum/money_account/M in department_acc_list)
-			if(!(M.department in public_departments))
+			if(!(M.department in public_departments + list("[station_name()] Funds", "Nanotrasen")))
 				continue
 			var/display_color = "green"
-			if(0 > M.money)
+			if(100 > M.money)
 				display_color = "red"
 			if(1500 > M.money)
 				display_color = "yellow"
-			page_msg += "<b>[M.department]</b> | <font color=\"[display_color]\">[M.money]</font>CR | <a href='?src=\ref[src];manage_transfer=1;transfer_funds=\ref[M]'>Transfer Money From</a><br>"
+			page_msg += "<a href='?src=\ref[src];manage_transfer=1;transfer_funds=\ref[M]'>Transfer Money From</a> <b>[M.department]</b> (<font color=\"[display_color]\">[M.money]</font>CR)<br>"
 
 
 	if(index == -1)
@@ -274,10 +274,11 @@
 		var/power = input(usr, "What would you like to do?.", "City Council Services") as null|anything in available_powers
 		if(!power) return
 
-		if("Allow City Council to use services")
-			persistent_economy.city_council_control = TRUE
-		else if("Don't Allow City Council to use services")
-			persistent_economy.city_council_control = FALSE
+		switch(power)
+			if("Allow City Council to use services")
+				persistent_economy.city_council_control = TRUE
+			if("Don't Allow City Council to use services")
+				persistent_economy.city_council_control = FALSE
 
 	if(href_list["adjust_main_taxes"])
 		. = 1
@@ -420,7 +421,7 @@
 		. = 1
 		var/datum/money_account/A = locate(href_list["transfer_funds"]) in department_acc_list
 
-		if(!A.department in public_departments)
+		if(!A.department in public_departments + list("[station_name()] Funds", "Nanotrasen"))
 			return
 
 
