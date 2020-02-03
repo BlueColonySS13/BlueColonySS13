@@ -1366,7 +1366,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				if (!istype(C:dna, /datum/dna))
 					to_chat(user, "<span class='notice'>No fingerprints found on [C]</span>")
 				else
-					to_chat(user, text("<span class='notice'>\The [C]'s Fingerprints: [md5(C:dna.uni_identity)]</span>"))
+					to_chat(user, text("<span class='notice'>\The [C]'s Fingerprints: [md5(C.dna.uni_identity)]</span>"))
 				if ( !(C:blood_DNA) )
 					to_chat(user, "<span class='notice'>No blood found on [C]</span>")
 					if(C:blood_DNA)

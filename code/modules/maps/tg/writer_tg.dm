@@ -1,10 +1,4 @@
-#define DMM_IGNORE_AREAS 1
-#define DMM_IGNORE_TURFS 2
-#define DMM_IGNORE_OBJS 4
-#define DMM_IGNORE_NPCS 8
-#define DMM_IGNORE_PLAYERS 16
-#define DMM_IGNORE_MOBS 24
-#define DMM_USE_JSON 32
+
 /dmm_suite
 	var/quote = "\""
 	var/list/letter_digits = list(
