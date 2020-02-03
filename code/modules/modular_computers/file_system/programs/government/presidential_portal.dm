@@ -116,7 +116,7 @@
 				display_color = "red"
 			if(1500 > M.money)
 				display_color = "yellow"
-			page_msg += "<b>[M.department]</b> | <font color=\"[display_color]\">[M.money]</font>CR | <a href='?src=\ref[src];manage_transfer=1;transfer_funds=\ref[M]'>Transfer Money</a><br>"
+			page_msg += "<b>[M.department]</b> | <font color=\"[display_color]\">[M.money]</font>CR | <a href='?src=\ref[src];manage_transfer=1;transfer_funds=\ref[M]'>Transfer Money From</a><br>"
 
 
 	if(index == -1)
@@ -440,8 +440,8 @@
 			error_msg = "Not enough funds in [A.department] to transfer to [category]."
 			return
 
-		charge_to_account(A.account_number, "Government Funds Transfer System", "Presidential Portal Transfer", "President Transfer", amount)
-		charge_to_account(account_recieving.account_number, "Government Funds Transfer System", "Presidential Portal Transfer", "President Transfer", -amount)
+		charge_to_account(A.account_number, "Government Funds Transfer System", "Presidential Portal Transfer", "President Transfer", -amount)
+		charge_to_account(account_recieving.account_number, "Government Funds Transfer System", "Presidential Portal Transfer", "President Transfer", amount)
 
 		index = 8
 
