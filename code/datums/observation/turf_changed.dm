@@ -20,7 +20,7 @@ var/decl/observ/turf_changed/turf_changed_event = new()
 * Turf Changed Handling *
 ************************/
 
-/turf/ChangeTurf()
+/turf/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0, var/preserve_outdoors = FALSE)
 	var/old_density = density
 	var/old_opacity = opacity
 	. = ..()

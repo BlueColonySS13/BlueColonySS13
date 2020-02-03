@@ -68,7 +68,8 @@
 	var/emagged //Emagging removes Sec check.
 
 /obj/item/clothing/accessory/badge/holo/verb/Reset()
-	if(access_security in usr.GetIdCard().access || emagged)
+	var/obj/item/weapon/card/id/id_card = usr.GetIdCard()
+	if(istype(id_card) && ((access_security in id_card.access) || emagged))
 		if(!stored_name)
 			usr << "There is no information stored on the badge."
 		else
@@ -158,7 +159,8 @@
 	var/emagged //for the stealthy antag
 
 /obj/item/clothing/accessory/badge/press/verb/Reset()
-	if(access_library in usr.GetIdCard().access || emagged)
+	var/obj/item/weapon/card/id/id_card = usr.GetIdCard()
+	if(istype(id_card) && ((access_library in id_card.access) || emagged))
 		if(!stored_name)
 			usr << "There is no information stored on the badge."
 		else
