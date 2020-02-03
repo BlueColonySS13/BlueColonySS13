@@ -19,8 +19,8 @@
 
 /obj/machinery/vr_sleeper/examine(mob/user)
 	..()
-	if(occupant)
-		to_chat(user, "You see <b>[occupant]</b> inside. The game title above them says <b>[get_area(occupant)]</b>.")
+	if(avatar)
+		to_chat(user, "You see <b>[occupant]</b> inside. The game title above them says <b>[get_area(avatar)]</b>.")
 
 /obj/machinery/vr_sleeper/prison_vr
 	name = "prison virtual reality sleeper"

@@ -14,7 +14,8 @@ var/global/datum/economy/bank_accounts/persistent_economy
 var/global/list/datum/money_account/department_acc_list = list()
 
 var/global/list/station_departments = list("City Council", "Public Healthcare", "Emergency and Maintenance", "Research and Science", "Police", "Cargo", "Bar", "Botany", "Civilian")
-
+var/global/list/public_departments = list("City Council", "Public Healthcare", "Emergency and Maintenance", "Research and Science", "Police", "Civilian")
+var/global/list/private_departments = list("Cargo", "Bar", "Botany")
 /proc/setup_economy()
 	if(economy_init)
 		return 2
@@ -46,9 +47,15 @@ var/global/list/station_departments = list("City Council", "Public Healthcare", 
 	persistent_economy.set_economy()
 	persistent_economy.load_accounts()
 
+
 	//end economy persistence
 
 	link_economy_accounts()
+
+	if(!persistent_economy.nt_account || !persistent_economy.treasury)
+		persistent_economy.nt_account = nanotrasen_account
+		persistent_economy.treasury = station_account
+
 
 	economy_init = 1
 	return 1
