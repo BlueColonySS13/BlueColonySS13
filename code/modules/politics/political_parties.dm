@@ -250,6 +250,6 @@ var/global/list/political_parties = list()
 
 	dat += "</center>"
 
-	var/datum/browser/popup = new(usr, "Parties", "Parties", 640, 600, src)
+	var/datum/browser/popup = new(usr, "Parties", "Parties", 640, 600)
 	popup.set_content(jointext(dat,null))
 	popup.open()

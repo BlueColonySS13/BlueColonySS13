@@ -78,13 +78,14 @@
 	var/obj/machinery/mineral/stacking_unit_console/console
 	var/obj/machinery/mineral/input = null
 	var/obj/machinery/mineral/output = null
-	var/list/stack_storage[0]
-	var/list/stack_paths[0]
+	var/list/stack_storage
+	var/list/stack_paths
 	var/stack_amt = 50; // Amount to stack before releassing
 
 /obj/machinery/mineral/stacking_machine/New()
 	..()
-
+	stack_storage = list()
+	stack_paths = list()
 	for(var/stacktype in typesof(/obj/item/stack/material)-/obj/item/stack/material)
 		var/obj/item/stack/S = new stacktype(src)
 		stack_storage[S.name] = 0

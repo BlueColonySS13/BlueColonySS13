@@ -1,5 +1,3 @@
-
-
 // Persistent lots are saved to /maps/persistent/lots by default, the id is the filename	~ Cassie
 
 /datum/lot

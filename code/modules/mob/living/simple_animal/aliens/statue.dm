@@ -275,7 +275,7 @@
 
 // Cannot talk
 
-/mob/living/simple_animal/hostile/statue/say()
+/mob/living/simple_animal/hostile/statue/say(message, whispering)
 	return 0
 
 // Turn to dust when gibbed

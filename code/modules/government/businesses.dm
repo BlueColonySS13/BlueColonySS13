@@ -55,7 +55,7 @@ var/global/list/businesses = list()
 
 	dat += "</center>"
 
-	var/datum/browser/popup = new(usr, "Businesses", "Businesses", 640, 600, src)
+	var/datum/browser/popup = new(usr, "Businesses", "Businesses", 640, 600)
 	popup.set_content(jointext(dat,null))
 	popup.open()
 

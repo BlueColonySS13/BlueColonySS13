@@ -4,4 +4,3 @@
 #define RENTED "rented"
 #define OWNED "owned"
 #define LOT_HELD "seized"
-
