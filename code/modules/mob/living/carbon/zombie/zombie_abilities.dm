@@ -73,7 +73,7 @@
 	if(src.stat == DEAD)
 		src << "<span class='alium'>You can't use this while dead!</span>"
 	else
-		if(!O in oview(1))
+		if(!(O in oview(1)))
 			src << "<span class='alium'>[O] is too far away.</span>"
 			return
 

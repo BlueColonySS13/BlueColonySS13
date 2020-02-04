@@ -16,6 +16,12 @@
 	if(N)
 		amount_per_transfer_from_this = N
 
+/obj/item/weapon/reagent_containers/vars_to_save()
+ 	return list("color","dir","name","pixel_x","pixel_y","reagents")
+
+/obj/item/weapon/reagent_containers/map_important_vars()
+ 	return list("color","dir","layer","name","pixel_x","pixel_y","reagents")
+
 /obj/item/weapon/reagent_containers/New()
 	..()
 	if(!possible_transfer_amounts)

@@ -100,16 +100,16 @@ var/list/whitelist = list()
 
 	//The job isn't even whitelisted
 	if(!jobs.hard_whitelisted)
-		return 1
+		return TRUE
 
 	if(jobs.title == "President") // Only the player who is president and their allotted character can be president
-		if(!SSelections.current_president.ckey || !SSelections.current_president.name) //Just in case.
-			return 0
+		if(!SSelections.current_president || !SSelections.current_president.ckey || !SSelections.current_president.name) //Just in case. Also prevents runtimes in local testing
+			return FALSE
 
 		if(M.ckey == SSelections.current_president.ckey && M.client.prefs.real_name == SSelections.current_president.name)
-			return 1
+			return TRUE
 		else
-			return 0
+			return FALSE
 
 	//If we have a loaded file, search it
 	if(jobs.hard_whitelisted)
@@ -124,12 +124,12 @@ var/list/whitelist = list()
 /proc/get_available_classes(client/C)
 
 	if(!isnum(C.player_age))
-		return ECONOMIC_CLASS
+		return ECONOMIC_CLASS	// if there's no database, or hard player age saves, let's just enable all.
 
-	if(59 < C.player_age)
+	if(config.upper_class_age < C.player_age)
 		return ECONOMIC_CLASS //60 days unlocks all classes
 
-	else if (29 < C.player_age)
+	else if (config.middle_class_age < C.player_age)
 		return list(CLASS_WORKING, CLASS_MIDDLE)
 
 	else

@@ -41,48 +41,64 @@
 	desc = "A card indicating that the owner is allowed to carry a firearm."
 	tier = 0
 	price_tag = 200
-	
+
 /obj/item/clothing/accessory/permit/gun/tier_one
 	name = "tier one weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a firearm."
+	desc = "A card indicating that the owner is allowed to carry a flash."
 	tier = 1
 	price_tag = 400
 
 /obj/item/clothing/accessory/permit/gun/tier_two
 	name = "tier two weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a firearm."
+	desc = "A card indicating that the owner is allowed to carry a flash and a pepperspray."
 	tier = 2
 	price_tag = 700
 
 /obj/item/clothing/accessory/permit/gun/tier_three
 	name = "tier three weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a firearm."
+	desc = "A card indicating that the owner is allowed to carry a ballistic pistols for self-defense and energy stun weaponry/energy weapons that only have a stun setting."
 	tier = 3
 	price_tag = 1000
 
 /obj/item/clothing/accessory/permit/gun/tier_four
 	name = "tier four weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a firearm."
+	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, ballistic pistols, and both stun and lethal energy guns."
 	tier = 4
 	price_tag = 1500
 
 /obj/item/clothing/accessory/permit/gun/tier_five
 	name = "tier five weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a firearm."
+	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, ballistic pistols, all types of energy guns, and civilian grade shotguns."
 	tier = 5
+	price_tag = 7000
 
-/obj/item/clothing/accessory/permit/gun/bar
+/obj/item/clothing/accessory/permit/gun/tier_five/police
+	name = "tier five police weapon permit"
+	desc = "A card indicating that the owner is allowed to any type of weapon provided by the police department as long as they remain on the police force."
+	tier = 5
+	price_tag = 7000
+
+/obj/item/clothing/accessory/permit/gun/tier_three/bar
 	name = "bar shotgun permit"
 	desc = "A card indicating that the owner is allowed to carry a shotgun in the bar."
-
+	tier = 3
+  
 /obj/item/clothing/accessory/permit/gun/planetside
 	name = "planetside gun permit"
 	desc = "A card indicating that the owner is allowed to carry a firearm while on the surface."
+	tiered = FALSE
 
 /obj/item/clothing/accessory/permit/drone
 	name = "drone identification card"
-	desc = "A card issued by the EIO, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card within SolGov space, by law."
+	desc = "A card issued by the government, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card on PolGov colonies, by law."
 	icon_state = "permit_drone"
+	tiered = FALSE
+
+/obj/item/clothing/accessory/permit/synth
+	name = "synth identification card"
+	desc = "A card issued by the government, indicating that the owner is a Synthetic. Synths are mandated to carry this card on PolGov colonies, by law."
+	icon_state = "permit_drone"
+	tiered = FALSE
 
 //Some spare gun permits in a box
 /obj/item/weapon/storage/box/gun_permits
@@ -90,4 +106,10 @@
 	desc = "A box of spare gun permits."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "permit"
-	starts_with = list(	/obj/item/clothing/accessory/permit/gun = 8)
+	starts_with = list(
+	/obj/item/clothing/accessory/permit/gun = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_one = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_two = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_three = 5,
+	/obj/item/clothing/accessory/permit/gun/tier_four = 5
+	)

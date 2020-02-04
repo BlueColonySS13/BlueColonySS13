@@ -67,8 +67,7 @@ obj/dugpit/New(lnk)
 		if(istype(W, /obj/item/weapon/ore/glass) && pit_sand < 1 )
 			usr.show_message("<span class='notice'>You fill the hole with sand</span>", 1)
 			pit_sand = 1
-				qdel(W)
-	else return
+			qdel(W)
 
 /turf/simulated/floor/outdoors/dirt/attack_hand(mob/living/carbon/human/M)
 	if (dug)
@@ -127,9 +126,9 @@ obj/dugpit/New(lnk)
 			playsound(src, 'sound/misc/shovel_dig.ogg', 50, 1)
 			if(!(gravebody in loc)) // prevents burying yourself while not on the tile
 				gravebody = null
-			if(!gravecoffin in loc) // just sanity checking
+			if(!(gravecoffin in loc)) // just sanity checking
 				gravecoffin = null
-			if (gravebody!=null)
+			if (gravebody != null)
 				user.show_message("<span class='notice'>You start covering the body in the hole with dirt...</span>", 1)
 				if (do_after(user, (50 * digging_speed), target=gravebody))
 					if(istype(src, /turf/simulated/floor/outdoors/dirt))

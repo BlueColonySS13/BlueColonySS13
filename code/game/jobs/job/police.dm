@@ -25,6 +25,11 @@
 	outfit_type = /decl/hierarchy/outfit/job/security/hos
 	alt_titles = list("Head of Police", "Police Commander", "Police Commissioner", "Police Chief")
 
+	clean_record_required = TRUE
+
+/datum/job/hos/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
+	return using_map.council_email
+
 /datum/job/warden
 	title = "Prison Warden"
 	email_domain = "secure.plux.gov.nt"
@@ -45,6 +50,8 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/security/warden
 	alt_titles = list("Correctional Officer", "Brig Attendant")
+
+	clean_record_required = TRUE
 
 /datum/job/detective
 	title = "Detective"
@@ -67,6 +74,8 @@
 	outfit_type = /decl/hierarchy/outfit/job/security/detective
 	alt_titles = list("Forensic Technician" = /decl/hierarchy/outfit/job/security/detective/forensic, "Investigator")
 
+	clean_record_required = TRUE
+
 /datum/job/officer
 	title = "Police Officer"
 	email_domain = "secure.plux.gov.nt"
@@ -88,6 +97,8 @@
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
 	alt_titles = list("Police Cadet","Traffic Warden" = /decl/hierarchy/outfit/job/security/traffic)
 
+	clean_record_required = TRUE
+
 /datum/job/prosecutor
 	title = "District Prosecutor"
 	email_domain = "prosecute.nt"
@@ -102,13 +113,15 @@
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/prosecutor
 	wage = 100
-	access = list(access_prosecutor, access_sec_doors, access_maint_tunnels, access_heads)
-	minimal_access = list(access_prosecutor, access_sec_doors, access_heads)
+	access = list(access_prosecutor, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
+	minimal_access = list(access_prosecutor, access_sec_doors, access_heads, access_legal)
 //	minimal_player_age = 7 (need more prostitut-- prosecutors.)
 	minimum_character_age = 21
 	alt_titles = list("Prosecutor","Prosecuting Attorney","Prosecution Officer","Prosecuting Lawyer")
 
 	outfit_type = /decl/hierarchy/outfit/job/prosecution
+
+	clean_record_required = TRUE
 
 /datum/job/bguard
 	title = "City Hall Guard"
@@ -130,3 +143,5 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/heads/secretary
 	alt_titles = list("Council Bodyguard", "City Hall Security", "Bailiff")
+
+	clean_record_required = TRUE

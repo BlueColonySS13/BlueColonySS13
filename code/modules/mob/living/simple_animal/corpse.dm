@@ -11,6 +11,7 @@
 	name = "Unknown"
 	var/mobname = "Unknown"  //Unused now but it'd fuck up maps to remove it now
 	var/corpseuniform = null //Set this to an object path to have the slot filled with said object on the corpse.
+	var/corpserace = SPECIES_HUMAN
 	var/corpsesuit = null
 	var/corpseshoes = null
 	var/corpsegloves = null
@@ -58,6 +59,8 @@
 		M.equip_to_slot_or_del(new src.corpsepocket2(M), slot_l_store)
 	if(src.corpseback)
 		M.equip_to_slot_or_del(new src.corpseback(M), slot_back)
+	if(src.corpserace)
+		M.set_species(corpserace)
 	if(src.corpseid == 1)
 		var/obj/item/weapon/card/id/W = new(M)
 		W.name = "[M.real_name]'s ID Card"
@@ -156,3 +159,6 @@
 
 /obj/effect/landmark/mobcorpse/russian/ranged
 	corpsehelmet = /obj/item/clothing/head/ushanka
+
+/obj/effect/landmark/mobcorpse/zombie
+	corpserace = "Zombie"

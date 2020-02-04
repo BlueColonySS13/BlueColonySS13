@@ -207,7 +207,7 @@
 	taste_description = "metal"
 	reagent_state = SOLID
 	color = "#F7C430"
-	price_tag = 2.2
+	price_tag = 3.2
 
 /datum/reagent/silver
 	name = "Silver"
@@ -414,7 +414,7 @@
 	taste_description = "slime"
 	reagent_state = LIQUID
 	color = "#009CA8"
-	price_tag = 0.2
+	price_tag = 0.7
 
 /datum/reagent/lube/touch_turf(var/turf/simulated/T)
 	if(!istype(T))
@@ -445,6 +445,7 @@
 	taste_description = "sweetness"
 	reagent_state = LIQUID
 	color = "#808080"
+	price_tag = 0.9
 
 /datum/reagent/nitroglycerin
 	name = "Nitroglycerin"
@@ -453,6 +454,7 @@
 	taste_description = "oil"
 	reagent_state = LIQUID
 	color = "#808080"
+	price_tag = 0.7
 
 /datum/reagent/coolant
 	name = "Coolant"
@@ -462,6 +464,7 @@
 	taste_mult = 1.1
 	reagent_state = LIQUID
 	color = "#C8A5DC"
+	price_tag = 0.5
 
 /datum/reagent/ultraglue
 	name = "Ultra Glue"
@@ -469,6 +472,7 @@
 	description = "An extremely powerful bonding agent."
 	taste_description = "a special education class"
 	color = "#FFFFCC"
+	price_tag = 0.5
 
 /datum/reagent/woodpulp
 	name = "Wood Pulp"
@@ -477,6 +481,7 @@
 	taste_description = "wood"
 	reagent_state = LIQUID
 	color = "#B97A57"
+	price_tag = 0.9
 
 /datum/reagent/luminol
 	name = "Luminol"
@@ -528,3 +533,43 @@
 	overdose = REAGENTS_OVERDOSE * 0.25
 	scannable = 1
 	price_tag = 0.3
+
+/datum/reagent/caapi
+	name = "caapi extract"
+	id = "caapi_extract"
+	description = "An extract from the caapi plant."
+	taste_description = "a bitter gooey substance"
+	reagent_state = LIQUID
+	color = "#755202"
+	price_tag = 1.8
+
+	get_tax()
+		return DRUG_TAX
+
+/datum/reagent/chacruna
+	name = "chacruna extract"
+	id = "chacruna_extract"
+	description = "An extract from the chacruna plant."
+	taste_description = "a bitter gooey substance"
+	reagent_state = LIQUID
+	color = "#755202"
+	price_tag = 1.8
+
+	get_tax()
+		return DRUG_TAX
+
+/datum/reagent/toiletwater
+	name = "Toilet Water"
+	id = "toiletwater"
+	description = "Nasty water taken from a toilet."
+	taste_description = "feces and urine"
+	reagent_state = LIQUID
+	color = "#757547"
+	
+/datum/reagent/nutriment/biomass
+	name = "Biomass"
+	id = "biomass"
+	description = "A slurry of compounds that contains the basic requirements for life."
+	taste_description = "salty meat"
+	reagent_state = LIQUID
+	color = "#DF9FBF"

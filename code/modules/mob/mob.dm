@@ -222,11 +222,17 @@
 	set category = "IC"
 
 	if((is_blind(src) || usr.stat) && !isobserver(src))
-		src << "<span class='notice'>Something is there but you can't see it.</span>"
+		to_chat(src, SPAN_NOTICE("Something is there but you can't see it."))
 		return 1
 
 	face_atom(A)
 	A.examine(src)
+
+//override examinate verb to update description holders when things are examined
+/mob/examinate(atom/A as mob|obj|turf in view())
+	if(..())
+		return TRUE
+	update_examine_panel(A)
 
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
@@ -323,7 +329,7 @@
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
 		var/msg = replacetext(flavor_text, "\n", " ")
-		if(lentext(msg) <= 40)
+		if(length(msg) <= 40)
 			return "<font color='blue'>[msg]</font>"
 		else
 			return "<font color='blue'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
@@ -536,7 +542,7 @@
 			for(var/name in H.organs_by_name)
 				var/obj/item/organ/external/e = H.organs_by_name[name]
 				if(e && H.lying)
-					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && e.splinted in e.contents && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
+					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && (e.splinted in e.contents) && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
 						return 1
 						break
 	return 0

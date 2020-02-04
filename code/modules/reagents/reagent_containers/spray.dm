@@ -5,6 +5,8 @@
 	icon_state = "cleaner"
 	item_state = "cleaner"
 	flags = OPENCONTAINER|NOBLUDGEON
+	//TFF 24/12/19 - Let people print more spray bottles if needed.
+	matter = list("glass" = 300, DEFAULT_WALL_MATERIAL = 300)
 	slot_flags = SLOT_BELT
 	throwforce = 3
 	w_class = ITEMSIZE_SMALL
@@ -200,3 +202,15 @@
 /obj/item/weapon/reagent_containers/spray/plantbgone/New()
 	..()
 	reagents.add_reagent("plantbgone", 100)
+
+
+
+/obj/item/weapon/reagent_containers/spray/cleaner/deodorant
+	name = "deodorant"
+	desc = "A can of Gold Standard spray deodorant - for when you're too lazy to shower."
+	gender = PLURAL
+	volume = 35
+	icon = 'icons/obj/cosmetics.dmi'
+	icon_state = "deodorant"
+	item_state = "deodorant"
+

@@ -102,11 +102,11 @@
 	icon_state = "pulse1_bl"
 	var/life = 20
 
-	Bump(atom/A)
-		A.bullet_act(src, def_zone)
-		src.life -= 10
-		if(life <= 0)
-			qdel(src)
+/obj/item/projectile/beam/pulse/heavy/Bump(atom/A, forced=0)
+	A.bullet_act(src, def_zone)
+	src.life -= 10
+	if(life <= 0)
+		qdel(src)
 		return
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser

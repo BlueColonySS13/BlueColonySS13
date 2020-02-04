@@ -21,6 +21,12 @@
 	var/paper_type_carbon = /obj/item/weapon/paper/carbon
 	var/has_carbon_paper = 1		//Does this give you carbon copy paper?
 
+/obj/item/weapon/paper_bin/vars_to_save()
+ 	return list("icon_state","icon","color","dir","name","pixel_x","pixel_y","amount")
+
+/obj/item/weapon/paper_bin/map_important_vars()
+ 	return list("icon_state","icon","color","dir","layer","name","pixel_x","pixel_y","amount")
+
 
 /obj/item/weapon/paper_bin/MouseDrop(mob/user as mob)
 	if((user == usr && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))

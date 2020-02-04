@@ -1,4 +1,4 @@
-/mob/observer/dead/say(var/message)
+/mob/observer/dead/say(var/message, whispering)
 	message = sanitize(message)
 	//Allow them use to markup, if used.
 	message = process_chat_markup(message, list("~", "_"))

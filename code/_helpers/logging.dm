@@ -121,7 +121,7 @@
 		diary << "\[[time_stamp()]]DEADCHAT: [speaker.simple_info_line()]: [html_decode(text)][log_end]"
 
 	speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>DEADSAY:</u> - <span style=\"color:green\">[text]</span>"
-	GLOB.round_text_log += "<font size=1><span style=\"color:#7e668c\"><b>([time_stamp()])</b> (<b>[src]/[speaker.client]</b>) <u>DEADSAY:</u> - [text]</span></font>"
+	GLOB.round_text_log += "<font size=1><span style=\"color:#7e668c\"><b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>DEADSAY:</u> - [text]</span></font>"
 
 
 /proc/log_ghostemote(text, mob/speaker)
@@ -147,6 +147,10 @@
 
 /proc/log_election(mob/user, votee)
 	vote_log << "\[[time_stamp()]]VOTE: [user.client.simple_info_line()] voted for [votee] [log_end]"
+
+
+/proc/log_money(mob/user, didwhat, account_number, account_id, amount)
+	money_log << "\[[time_stamp()]]MONEY: [user.client.simple_info_line()] [didwhat] - [amount]CR from [account_number]/[account_id]."
 
 /proc/log_error(text)
 	world.log << text

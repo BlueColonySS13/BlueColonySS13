@@ -167,7 +167,7 @@
 				else
 					usr << "\icon[src]<span class='warning'>Incorrect code entered.</span>"
 			if("change_id")
-				var/attempt_code = text2num(input("Re-enter the current EFTPOS access code", "Confirm EFTPOS code"))
+				var/attempt_code = input("Re-enter the current EFTPOS access code", "Confirm EFTPOS code")
 				if(attempt_code == access_code)
 					eftpos_name = sanitize(input("Enter a new terminal ID for this device", "Enter new EFTPOS ID"), MAX_NAME_LEN) + " EFTPOS scanner"
 					print_reference()
@@ -218,7 +218,7 @@
 				var/obj/item/I = usr.get_active_hand()
 				if (istype(I, /obj/item/weapon/card))
 					var/obj/item/weapon/card/id/C = I
-					if(access_cent_captain in C.access || access_hop in C.access || access_captain in C.access)
+					if((access_cent_captain in C.access) || (access_hop in C.access) || (access_captain in C.access))
 						access_code = 0
 						usr << "\icon[src]<span class='info'>Access code reset to 0.</span>"
 				else if (istype(I, /obj/item/weapon/card/emag))
@@ -296,7 +296,5 @@
 				playsound(src, 'sound/machines/chime.ogg', 50, 1)
 				src.visible_message("\icon[src] \The [src] chimes.")
 				transaction_paid = 1
-	else
-		..()
 
 	//emag?

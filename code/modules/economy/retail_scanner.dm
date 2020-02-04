@@ -117,7 +117,7 @@
 				else
 					usr << "\icon[src]<span class='warning'>Insufficient access.</span>"
 			if("link_account")
-				var/attempt_account_num = input("Enter account number", "New account number") as num
+				var/attempt_account_num = sanitize(input("Enter account number", "New account number") as text)
 				var/attempt_pin = input("Enter PIN", "Account PIN") as num
 				linked_account = attempt_account_access(attempt_account_num, attempt_pin, 1)
 				if(linked_account)
@@ -519,41 +519,32 @@
 
 /obj/item/device/retail_scanner/command
 	account_to_connect = "City Council"
-	..()
 
 /obj/item/device/retail_scanner/medical
 	account_to_connect = "Public Healthcare"
 	menu_items = MED
-	..()
 
 /obj/item/device/retail_scanner/engineering
 	account_to_connect = "Emergency and Maintenance"
-	..()
 
 /obj/item/device/retail_scanner/science
 	account_to_connect = "Research and Science"
-	..()
 
 /obj/item/device/retail_scanner/security
 	account_to_connect = "Police"
 	menu_items = LAW
-	..()
 
 /obj/item/device/retail_scanner/cargo
 	account_to_connect = "Cargo"
-	..()
 
 /obj/item/device/retail_scanner/civilian
 	account_to_connect = "Civilian"
-	..()
 
 /obj/item/device/retail_scanner/bar
 	account_to_connect = "Bar"
-	..()
 
 /obj/machinery/cash_register/botany
 	account_to_connect = "Botany"
-	..()
 
 #undef LAW
 #undef MED

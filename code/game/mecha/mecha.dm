@@ -192,11 +192,6 @@
 	pr_give_air = new /datum/global_iterator/mecha_tank_give_air(list(src))
 	pr_internal_damage = new /datum/global_iterator/mecha_internal_damage(list(src),0)
 
-/obj/mecha/proc/do_after(delay as num)
-	sleep(delay)
-	if(src)
-		return 1
-	return 0
 
 /obj/mecha/proc/enter_after(delay as num, var/mob/user as mob, var/numticks = 5)
 	var/delayfraction = delay/numticks
@@ -869,7 +864,7 @@
 	return 0
 
 /obj/mecha/proc/mmi_moved_inside(var/obj/item/device/mmi/mmi_as_oc as obj,mob/user as mob)
-	if(mmi_as_oc && user in range(1))
+	if(mmi_as_oc && (user in range(1)))
 		if(!mmi_as_oc.brainmob || !mmi_as_oc.brainmob.client)
 			to_chat(user,"Consciousness matrix not detected.")
 			return 0
@@ -1116,7 +1111,7 @@
 	return
 
 /obj/mecha/proc/moved_inside(var/mob/living/carbon/human/H as mob)
-	if(H && H.client && H in range(1))
+	if(H && H.client && (H in range(1)))
 		H.reset_view(src)
 		/*
 		H.client.perspective = EYE_PERSPECTIVE

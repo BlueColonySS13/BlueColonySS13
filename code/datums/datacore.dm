@@ -228,8 +228,6 @@
 		S.fields["unique_id"]	= H.mind.prefs.unique_id // this is persistent
 		S.fields["crim_record"] = H.mind.prefs.crime_record
 		S.fields["criminal"] = H.mind.prefs.criminal_status
-		S.fields["prison_date"] = H.mind.prefs.prison_date
-		S.fields["prison_release_date"] = H.mind.prefs.prison_release_date
 
 		//Locked Record
 		var/datum/data/record/L = new()
@@ -325,6 +323,7 @@
 
 	R.fields["crim_record"]	= list()
 	R.fields["notes"]		= ""
+	R.fields["imprisoned_until"] = ""
 
 	data_core.security += R
 

@@ -384,11 +384,11 @@
 					return
 			return
 
-		if(parrot_interest && parrot_interest in view(src))
+		if(parrot_interest && (parrot_interest in view(src)))
 			parrot_state = PARROT_SWOOP | PARROT_STEAL
 			return
 
-		if(parrot_perch && parrot_perch in view(src))
+		if(parrot_perch && (parrot_perch in view(src)))
 			parrot_state = PARROT_SWOOP | PARROT_RETURN
 			return
 
@@ -697,7 +697,7 @@
 	available_channels = list(":e")
 	..()
 
-/mob/living/simple_animal/parrot/say(var/message)
+/mob/living/simple_animal/parrot/say(var/message, whispering)
 
 	if(stat)
 		return

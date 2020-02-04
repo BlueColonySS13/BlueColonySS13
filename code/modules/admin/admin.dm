@@ -365,7 +365,7 @@ proc/admin_notice(var/message, var/rights)
 					if(CHANNEL.is_admin_channel)
 						dat+="<B><FONT style='BACKGROUND-COLOR: LightGreen'><A href='?src=\ref[src];ac_show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A></FONT></B><BR>"
 					else
-						dat+="<B><A href='?src=\ref[src];ac_show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR></B>"
+						dat+="<B><A href='?src=\ref[src];ac_show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ""]<BR></B>"
 			dat+={"<BR><HR><A href='?src=\ref[src];ac_refresh=1'>Refresh</A>
 				<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Back</A>
 			"}
@@ -454,9 +454,9 @@ proc/admin_notice(var/message, var/rights)
 							if(MESSAGE.caption)
 								pic_data+="<FONT SIZE=1><B>[MESSAGE.caption]</B></FONT><BR>"
 
-						dat+= get_newspaper_content(MESSAGE.title, MESSAGE.body, MESSAGE.author,"#d4cec1", pic_data)
+						dat += get_newspaper_content(MESSAGE.title, MESSAGE.body, MESSAGE.author,"#d4cec1", pic_data)
 
-							dat+="<BR>"
+						dat+="<BR>"
 						dat+="<FONT SIZE=1>\[Story by <FONT COLOR='maroon'>[MESSAGE.author] - [MESSAGE.time_stamp]</FONT>\]</FONT><BR>"
 			dat+={"
 				<BR><HR><A href='?src=\ref[src];ac_refresh=1'>Refresh</A>
@@ -473,7 +473,7 @@ proc/admin_notice(var/message, var/rights)
 				dat+="<I>No feed channels found active...</I><BR>"
 			else
 				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
-					dat+="<A href='?src=\ref[src];ac_pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR>"
+					dat+="<A href='?src=\ref[src];ac_pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ""]<BR>"
 			dat+="<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Cancel</A>"
 		if(11)
 			dat+={"
@@ -486,7 +486,7 @@ proc/admin_notice(var/message, var/rights)
 				dat+="<I>No feed channels found active...</I><BR>"
 			else
 				for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
-					dat+="<A href='?src=\ref[src];ac_pick_d_notice=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR>"
+					dat+="<A href='?src=\ref[src];ac_pick_d_notice=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ""]<BR>"
 
 			dat+="<BR><A href='?src=\ref[src];ac_setScreen=[0]'>Back</A>"
 		if(12)
@@ -1238,7 +1238,7 @@ proc/admin_notice(var/message, var/rights)
 		out += "<b>Autotraitor <a href='?src=\ref[ticker.mode];toggle=autotraitor'>disabled</a></b>.<br/>"
 
 	out += "<b>All antag ids:</b>"
-	if(ticker.mode.antag_templates && ticker.mode.antag_templates.len).
+	if(ticker.mode.antag_templates && ticker.mode.antag_templates.len)
 		for(var/datum/antagonist/antag in ticker.mode.antag_templates)
 			antag.update_current_antag_max()
 			out += " <a href='?src=\ref[ticker.mode];debug_antag=[antag.id]'>[antag.id]</a>"
@@ -1350,15 +1350,15 @@ proc/admin_notice(var/message, var/rights)
 
 		if(2)	//Admins
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M, src)]) (<A HREF='?_src_=holder;check_antagonist=1'>CA</A>)</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M)]) (<A HREF='?_src_=holder;check_antagonist=1'>CA</A>)</b>"
 
 		if(3)	//Devs
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>)([admin_jump_link(M, src)])</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)](<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>)([admin_jump_link(M)])</b>"
 
 		if(4)	//Mentors
 			var/ref_mob = "\ref[M]"
-			return "<b>[key_name(C, link, name, highlight_special, ticket)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M, src)])</b>"
+			return "<b>[key_name(C, link, name, highlight_special, ticket)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[M]'>?</A>) (<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) (<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) ([admin_jump_link(M)])</b>"
 
 
 /proc/ishost(whom)
@@ -1547,7 +1547,8 @@ datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies
 		P.stamps += "<hr><i>This paper has been stamped by the [P.origin] Quantum Relay.</i>"
 
 		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-		var/{x; y;}
+		var/x
+		var/y
 		x = rand(-2, 0)
 		y = rand(-1, 2)
 		P.offset_x += x

@@ -101,13 +101,6 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 		else
 			embed_chance = max(5, round(force/(w_class*3)))
 
-/obj/item/equipped()
-	..()
-	var/mob/living/M = loc
-	if(!istype(M))
-		return
-	M.update_held_icons()
-
 /obj/item/Destroy()
 	if(ismob(loc))
 		var/mob/m = loc
@@ -311,7 +304,6 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 
 // apparently called whenever an item is removed from a slot, container, or anything else.
 /obj/item/proc/dropped(mob/user as mob)
-	..()
 	if(zoom)
 		zoom() //binoculars, scope, etc
 	appearance_flags &= ~NO_CLIENT_COLOR
@@ -340,9 +332,17 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 /obj/item/proc/equipped(var/mob/user, var/slot)
 	hud_layerise()
 	user.position_hud_item(src,slot)
+	if(isliving(user))
+		var/mob/living/L = user
+		L.update_held_icons()
 	if(user.client)	user.client.screen |= src
 	if(user.pulling == src) user.stop_pulling()
 	return
+
+/obj/item/equipped(var/mob/user, var/slot)
+	. = ..()
+	mob_equipped_event.raise_event(user, src, slot)
+	item_equipped_event.raise_event(src, user, slot)
 
 //Defines which slots correspond to which slot flags
 var/list/global/slot_flags_enumeration = list(
@@ -680,7 +680,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if(usr.stat || !(istype(usr,/mob/living/carbon/human)))
 		usr << "You are unable to focus through the [devicename]"
 		cannotzoom = 1
-	else if(!zoom && global_hud.darkMask[1] in usr.client.screen)
+	else if(!zoom && (global_hud.darkMask[1] in usr.client.screen))
 		usr << "Your visor gets in the way of looking through the [devicename]"
 		cannotzoom = 1
 	else if(!zoom && usr.get_active_hand() != src)

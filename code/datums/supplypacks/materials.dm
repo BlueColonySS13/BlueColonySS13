@@ -10,35 +10,28 @@
 /datum/supply_pack/materials/metal50
 	name = "50 metal sheets"
 	contains = list(/obj/fiftyspawner/steel)
-	cost = 10
+	cost = 50
 	containertype = /obj/structure/closet/crate
 	containername = "Metal sheets crate"
 
 /datum/supply_pack/materials/glass50
 	name = "50 glass sheets"
 	contains = list(/obj/fiftyspawner/glass)
-	cost = 10
+	cost = 50
 	containertype = /obj/structure/closet/crate
 	containername = "Glass sheets crate"
-
-/datum/supply_pack/materials/wood50
-	name = "50 wooden planks"
-	contains = list(/obj/fiftyspawner/wood)
-	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "Wooden planks crate"
 
 /datum/supply_pack/materials/plastic50
 	name = "50 plastic sheets"
 	contains = list(/obj/fiftyspawner/plastic)
-	cost = 10
+	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "Plastic sheets crate"
 
 /datum/supply_pack/materials/cardboard_sheets
 	contains = list(/obj/fiftyspawner/cardboard)
 	name = "50 cardboard sheets"
-	cost = 10
+	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "Cardboard sheets crate"
 
@@ -46,7 +39,7 @@
 	name = "Imported carpet"
 	containertype = /obj/structure/closet/crate
 	containername = "Imported carpet crate"
-	cost = 15
+	cost = 50
 	contains = list(
 					/obj/fiftyspawner/carpet,
 					/obj/fiftyspawner/tealcarpet
@@ -56,31 +49,31 @@
 /datum/supply_pack/materials/wood50
 	name = "50 wooden planks"
 	contains = list(/obj/item/stack/material/wood/fifty)
-	cost = 10
+	cost = 60
 	containername = "wooden planks crate"
 
 /datum/supply_pack/materials/mahogany25
 	name = "25 mahogany planks"
 	contains = list(/obj/item/stack/material/wood/mahogany/twentyfive)
-	cost = 10
+	cost = 30
 	containername = "wooden planks crate"
 
 /datum/supply_pack/materials/maple25
 	name = "25 maple planks"
 	contains = list(/obj/item/stack/material/wood/maple/twentyfive = 2)
-	cost = 10
+	cost = 50
 	containername = "wooden planks crate"
 
 /datum/supply_pack/materials/walnut25
 	name = "25 walnut planks"
 	contains = list(/obj/item/stack/material/wood/walnut/twentyfive)
-	cost = 10
+	cost = 50
 	containername = "walnut planks crate"
 
 /datum/supply_pack/materials/ebony25
 	name = "25 ebony planks"
 	contains = list(/obj/item/stack/material/wood/ebony/twentyfive)
-	cost = 15 //luxury tax
+	cost = 55 //luxury tax
 	containername = "ebony planks crate"
 
 

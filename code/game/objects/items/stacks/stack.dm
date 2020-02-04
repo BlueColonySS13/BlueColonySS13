@@ -23,19 +23,11 @@
 	var/list/charge_costs = null
 	var/list/datum/matter_synth/synths = null
 	var/no_variants = TRUE // Determines whether the item should update it's sprites based on amount.
-	var/associated_reagent	// put reagent "id" here
+	var/list/associated_reagents = list() // put reagent "id" here
 	var/reagents_per_unit = 2
 
 /obj/item/stack/proc/update_reagents()
-
-	
-	if(reagents)
-		reagents.reagent_list.Cut()
-	if(associated_reagent)
-		var/total_volume = amount * reagents_per_unit
-		reagents.add_reagent(associated_reagent, total_volume)
-		
-	return 1
+	return
 
 /obj/item/stack/New(var/loc, var/amount=null)
 	..()
@@ -106,7 +98,7 @@
 		if (istype(E, /datum/stack_recipe))
 			var/datum/stack_recipe/R = E
 			var/max_multiplier = round(amount / R.req_amount)
-			var/title as text
+			var/title
 			var/can_build = 1
 			can_build = can_build && (max_multiplier>0)
 			if (R.res_amount>1)

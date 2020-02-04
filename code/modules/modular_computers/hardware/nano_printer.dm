@@ -8,8 +8,10 @@
 	var/max_paper = 50
 	var/obj/item/weapon/paper/P = null	// Currently stored paper for scanning.
 
+	var/print_sound = 'sound/bureaucracy/print.ogg'
 
-/obj/item/weapon/computer_hardware/nano_printer/proc/print_text(var/text_to_print, var/paper_title = null)
+
+/obj/item/weapon/computer_hardware/nano_printer/proc/print_text(var/text_to_print, var/paper_title = null, var/paper_icon, var/paper_icon_state)
 	if(!stored_paper)
 		return 0
 
@@ -19,10 +21,21 @@
 		qdel(P)
 		P = null
 
+	playsound(src, print_sound, 100, 1)
+
 	P = new/obj/item/weapon/paper(get_turf(holder2))
 	P.info = text_to_print
 	if(paper_title)
 		P.name = paper_title
+
+	if(paper_icon)
+		P.icon = paper_icon
+
+	if(paper_icon_state)
+		P.icon_state = paper_icon_state
+
+	P.info = P.parsepencode(P.info)
+
 	P.update_icon()
 	stored_paper--
 	P = null

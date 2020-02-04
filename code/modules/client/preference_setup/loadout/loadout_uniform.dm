@@ -643,3 +643,18 @@
 /datum/gear/uniform/hartsuit
 	display_name = "striped suit"
 	path = /obj/item/clothing/under/hartsuit
+
+/datum/gear/uniform/daisydukes
+	display_name = "daisy dukes selection"
+
+/datum/gear/uniform/daisydukes/New()
+	..()
+	var/list/daisydukes = list()
+	for(var/daisyduke in typesof(/obj/item/clothing/under/daisydukes))
+		var/obj/item/clothing/under/daisydukes/daisyduke_type = daisyduke
+		daisydukes[initial(daisyduke_type.name)] = daisyduke_type
+	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(daisydukes))
+
+/datum/gear/uniform/punk
+	display_name = "punk outfit"
+	path = /obj/item/clothing/under/punk

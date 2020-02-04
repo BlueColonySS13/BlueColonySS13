@@ -9,7 +9,7 @@ var/const/BLOOD_VOLUME_SURVIVE = 40
 var/const/CE_STABLE_THRESHOLD = 0.5
 
 /mob/living/carbon/human/var/datum/reagents/vessel // Container for blood and BLOOD ONLY. Do not transfer other chems here.
-/mob/living/carbon/human/var/var/pale = 0          // Should affect how mob sprite is drawn, but currently doesn't.
+/mob/living/carbon/human/var/pale = 0          // Should affect how mob sprite is drawn, but currently doesn't.
 
 //Initializes blood vessels
 /mob/living/carbon/human/proc/make_blood()
@@ -299,8 +299,8 @@ proc/blood_incompatible(donor,receiver,donor_species,receiver_species)
 		if(donor_species != receiver_species)
 			return 1
 
-	var/donor_antigen = copytext(donor,1,lentext(donor))
-	var/receiver_antigen = copytext(receiver,1,lentext(receiver))
+	var/donor_antigen = copytext(donor,1,length(donor))
+	var/receiver_antigen = copytext(receiver,1,length(receiver))
 	var/donor_rh = (findtext(donor,"+")>0)
 	var/receiver_rh = (findtext(receiver,"+")>0)
 

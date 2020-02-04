@@ -410,6 +410,8 @@ var/global/datum/controller/occupations/job_master
 			job.equip_backpack(H)
 //			job.equip_survival(H)
 			job.apply_fingerprints(H)
+
+			equip_passport(H)
 			if(job.title != "Cyborg" && job.title != "AI")
 				H.equip_post_job()
 
@@ -436,7 +438,7 @@ var/global/datum/controller/occupations/job_master
 			var/datum/money_account/department_account = department_accounts[job.department]
 
 			if(department_account)
-				remembered_info += "<b>Your sector's account number is:</b> #[department_account.account_number]<br>"
+				remembered_info += "<b>Your sector's account id is:</b> #[department_account.account_number]<br>"
 				remembered_info += "<b>Your sector's account pin is:</b> [department_account.remote_access_pin]<br>"
 				remembered_info += "<b>Your sector's account funds are:</b> $[department_account.money]<br>"
 
@@ -524,6 +526,8 @@ var/global/datum/controller/occupations/job_master
 		var/complete_login = H.client.prefs.email
 		var/datum/computer_file/data/email_account/EA
 
+		var/datum/computer_file/data/email_account/job_email = get_email(job.get_job_email())
+
 		// If someone already joined and email is already in-game.
 		for(var/datum/computer_file/data/email_account/account in ntnet_global.email_accounts)
 			if(account.login == H.client.prefs.email)
@@ -531,22 +535,35 @@ var/global/datum/controller/occupations/job_master
 				EA = account
 				break
 
-		if(H.client.prefs.email && !check_persistent_email(H.client.prefs.email))
-			new_persistent_email(H.client.prefs.email) // so this saves without having to make dupes over and over.
+		if(H.client.prefs.email && !SSemails.check_persistent_email(H.client.prefs.email))
+			SSemails.new_persistent_email(H.client.prefs.email) // so this saves without having to make dupes over and over.
+			EA = SSemails.manifest_persistent_email(H.client.prefs.email)
 
 		if(!EA)
 			EA = new/datum/computer_file/data/email_account()
-			EA.password = get_persistent_email_password(complete_login)
+			EA.password = SSemails.get_persistent_email_password(complete_login)
 			EA.login = complete_login
+
+
+		if(SSemails.check_persistent_email(H.client.prefs.email))
 			EA.get_persistent_data()
+
+		if(!EA.password)
+			EA.password = GenerateKey()
+
+		if(!EA.login)
+			EA.login = H.client.prefs.email
 
 		H.mind.initial_email_login = list("login" = "[EA.login]", "password" = "[EA.password]")
 		H.mind.initial_email = EA
 
 
-		to_chat(H, "Your email account address is <b>[EA.login]</b> and the password is <b>[EA.password]</b>. This information has also been placed into your notes.")
+		if(job_email)
+			to_chat(H, "Your workplace's email address is <b>[job_email.login]</b> and the password is <b>[job_email.password]</b>.")
+		to_chat(H, "Your personal email address is <b>[EA.login]</b> and the password is <b>[EA.password]</b>. This information has also been placed into your notes.")
 		H.mind.store_memory("Your email account address is [EA.login] and the password is [EA.password].")
-
+		if(job_email)
+			H.mind.store_memory("Your workplace account address is [job_email.login] and the password is [job_email.password].")
 
 		// END EMAIL GENERATION
 
@@ -709,3 +726,18 @@ var/global/datum/controller/occupations/job_master
 		var/spawning = pick(latejoin)
 		.["turf"] = get_turf(spawning)
 		.["msg"] = "has arrived to the city"
+
+
+/proc/equip_passport(var/mob/living/carbon/human/H)
+	var/obj/item/weapon/passport/pass = new/obj/item/weapon/passport(get_turf(H))
+
+	if(!H.mind || !H.mind.prefs) return
+
+	pass.name = "[H.real_name]'s passport"
+	pass.citizenship = H.mind.prefs.home_system
+	pass.owner = H.real_name
+
+	H.update_passport(pass)
+	H.equip_to_slot_or_del(pass, slot_in_backpack)
+
+

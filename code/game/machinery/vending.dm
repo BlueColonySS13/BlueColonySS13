@@ -797,6 +797,9 @@
 	has_logs = 1
 	vending_sound = "machines/vending_cans.ogg"
 
+	charge_department = "Bar"
+	charge_free_to_department = TRUE
+
 
 /obj/machinery/vending/assist
 	products = list(	/obj/item/device/assembly/prox_sensor = 5,/obj/item/device/assembly/igniter = 3,/obj/item/device/assembly/signaler = 4,
@@ -857,12 +860,12 @@
 	vending_sound = "machines/vending_cans.ogg"
 
 /obj/machinery/vending/cola/New()
-	..()
 	icon_state = pick("Cola_Machine",
 							"cola_black",
 							"space_up",
 							"soda")
 
+	..()
 
 /obj/machinery/vending/fitness
 	name = "SweatMAX"
@@ -875,7 +878,7 @@
 					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 8,
 					/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 8,
 					/obj/item/weapon/reagent_containers/pill/diet = 8,
-					/obj/item/weapon/towel/random = 8)
+					/obj/item/clothing/suit/towel/random = 8)
 
 	prices = list(/obj/item/weapon/reagent_containers/food/drinks/smallmilk = 3,
 					/obj/item/weapon/reagent_containers/food/drinks/smallchocmilk = 3,
@@ -884,12 +887,11 @@
 					/obj/item/weapon/reagent_containers/food/snacks/candy/proteinbar = 5,
 					/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 5,
 					/obj/item/weapon/reagent_containers/pill/diet = 35,
-					/obj/item/weapon/towel/random = 40)
+					/obj/item/clothing/suit/towel/random = 40)
 
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/steroid = 4)
 
 	vendor_department = "Civilian"
-	auto_price = 1
 
 
 /obj/machinery/vending/cart
@@ -969,18 +971,31 @@
 	icon_deny = "med-deny"
 	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
 	req_access = list(access_medical)
-	products = list(/obj/item/weapon/reagent_containers/glass/bottle/antitoxin = 4,/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = 4,
-					/obj/item/weapon/reagent_containers/glass/bottle/stoxin = 4,/obj/item/weapon/reagent_containers/glass/bottle/toxin = 4,
-					/obj/item/weapon/reagent_containers/syringe/antiviral = 4,/obj/item/weapon/reagent_containers/syringe = 12,
-					/obj/item/device/healthanalyzer = 5,/obj/item/weapon/reagent_containers/glass/beaker = 4, /obj/item/weapon/reagent_containers/dropper = 2,
-					/obj/item/stack/medical/advanced/bruise_pack = 6, /obj/item/stack/medical/advanced/ointment = 6, /obj/item/stack/medical/splint = 4,
+	products = list(/obj/item/weapon/reagent_containers/glass/bottle/antitoxin = 4,
+					/obj/item/weapon/reagent_containers/glass/bottle/inaprovaline = 4,
+					/obj/item/weapon/reagent_containers/glass/bottle/stoxin = 4,
+					/obj/item/weapon/reagent_containers/glass/bottle/toxin = 4,
+					/obj/item/weapon/reagent_containers/syringe/antiviral = 4,
+					/obj/item/weapon/reagent_containers/syringe = 12,
+					/obj/item/device/healthanalyzer = 5,
+					/obj/item/weapon/reagent_containers/glass/beaker = 4,
+					/obj/item/weapon/reagent_containers/dropper = 5,
+					/obj/item/stack/medical/advanced/bruise_pack = 6,
+					/obj/item/stack/medical/advanced/ointment = 6,
+					/obj/item/stack/medical/splint = 4,
 					/obj/item/weapon/storage/pill_bottle/carbon = 2,
 					/obj/item/weapon/reagent_containers/glass/bottle/alkysine = 5,
-					/obj/item/weapon/reagent_containers/glass/bottle/peridaxon = 5)
+					/obj/item/weapon/reagent_containers/glass/bottle/peridaxon = 5,
+					/obj/item/weapon/reagent_containers/pill/rezadone = 2)
+
+
 	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 3,/obj/item/weapon/reagent_containers/pill/stox = 4,/obj/item/weapon/reagent_containers/pill/antitox = 6)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	req_log_access = access_cmo
 	has_logs = 1
+
+	charge_department = "Public Healthcare"
+	charge_free_to_department = TRUE
 
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"
@@ -990,6 +1005,9 @@
 					/obj/item/device/assembly/prox_sensor = 6,/obj/item/device/assembly/igniter = 6)
 	req_log_access = access_rd
 	has_logs = 1
+
+	charge_department = "Research and Science"
+	charge_free_to_department = TRUE
 
 /obj/machinery/vending/wallmed1
 	name = "NanoMed"
@@ -1002,6 +1020,9 @@
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/antitoxin = 4,/obj/item/weapon/reagent_containers/syringe/antiviral = 4,/obj/item/weapon/reagent_containers/pill/tox = 1)
 	req_log_access = access_cmo
 	has_logs = 1
+
+	charge_department = "Public Healthcare"
+	charge_free_to_department = TRUE
 
 /obj/machinery/vending/wallmed2
 	name = "NanoMed"
@@ -1033,6 +1054,9 @@
 	req_log_access = access_armory
 	has_logs = 1
 
+	charge_department = "Police"
+	charge_free_to_department = TRUE
+
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"
 	desc = "A plant nutrients vendor."
@@ -1059,8 +1083,12 @@
 					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2,
 					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3)
 	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
-					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,)
+					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,
+					  /obj/item/seeds/chacruna = 2,/obj/item/seeds/caapi = 2, /obj/item/seeds/coca)
 	premium = list(/obj/item/toy/waterflower = 1)
+
+	charge_department = "Botany"
+	charge_free_to_department = TRUE
 
 /**
  *  Populate hydroseeds product_records
@@ -1125,6 +1153,9 @@
 	/obj/item/weapon/storage/toolbox/lunchbox/nymph = 3,
 	/obj/item/weapon/storage/toolbox/lunchbox/syndicate = 3)
 	contraband = list(/obj/item/weapon/material/knife/butch = 2)
+
+	charge_department = "Bar"
+	charge_free_to_department = TRUE
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"

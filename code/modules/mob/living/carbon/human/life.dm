@@ -610,7 +610,8 @@
 			var/obj/mecha/M = loc
 			loc_temp =  M.return_temperature()
 		else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			loc_temp = loc:air_contents.temperature
+			var/obj/machinery/atmospherics/unary/cryo_cell/C = loc
+			loc_temp = C?.air_contents?.temperature
 		else
 			loc_temp = environment.temperature
 
@@ -1204,7 +1205,7 @@
 			see_in_dark = species.darksight
 			see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
 
-		var/tmp/glasses_processed = 0
+		var/glasses_processed = 0
 		var/obj/item/weapon/rig/rig = back
 		if(istype(rig) && rig.visor)
 			if(!rig.helmet || (head && rig.helmet == head))

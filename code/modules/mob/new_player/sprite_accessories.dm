@@ -898,6 +898,73 @@
 		name = "Vivi"
 		icon_state = "hair_vivi"
 
+	judge
+		name = "Judge"
+		icon_state = "hair_judge"
+
+	mia
+		name = "Mia"
+		icon_state = "hair_mia"
+
+	longbraid
+		name = "Long Braid"
+		icon_state = "hair_longbraid"
+
+	longundercut
+		name = "Long Undercut"
+		icon_state = "hair_undercutlong"
+
+	emoright
+		name = "Medium Emo Cut"
+		icon_state = "hair_emoright"
+
+	aradia
+		name = "Aradia"
+		icon_state = "hair_aradia"
+
+	dirk
+		name = "Dirk"
+		icon_state = "hair_dirk"
+
+	equius
+		name = "Equius"
+		icon_state = "hair_equius"
+
+	feferi
+		name = "Feferi"
+		icon_state = "hair_feferi"
+
+	gamzee
+		name = "Gamzee"
+		icon_state = "hair_gamzee"
+
+	kanaya
+		name = "Kanaya"
+		icon_state = "hair_kanaya"
+
+	nepeta
+		name = "Nepeta"
+		icon_state = "hair_nepeta"
+
+	rose
+		name = "Rose"
+		icon_state = "hair_rose"
+
+	roxy
+		name = "Roxy"
+		icon_state = "hair_roxy"
+
+	terezi
+		name = "Terezi"
+		icon_state = "hair_terezi"
+
+	vriska
+		name = "Vriska"
+		icon_state = "hair_vriska"
+
+	elize
+		name = "Elize"
+		icon_state = "hair_elize"
 
 /*
 ///////////////////////////////////

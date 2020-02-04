@@ -18,7 +18,7 @@
 
 	station_name  = "Geminus City"
 	station_short = "Geminus"
-	dock_name     = "Geminus City Spaceport"
+	dock_name     = "Geminus City Airbus"
 	boss_name     = "Central Polluxian Government"
 	boss_short    = "Pollux Gov"
 	company_name  = "Nanotrasen"
@@ -57,6 +57,8 @@
 							NETWORK_SECURITY,
 							NETWORK_INTERROGATION
 							)
+
+	council_email = "city-council@geminus.nt"
 
 // For making the 6-in-1 holomap, we calculate some offsets
 #define GEMINUS_MAP_SIZE 177 // Width and height of compiled in Southern Cross z levels.

@@ -128,7 +128,7 @@
 			if("toggle_cash_lock")
 				cash_locked = !cash_locked
 			if("link_account")
-				var/attempt_account_num = input("Enter account number", "New account number") as num
+				var/attempt_account_num = sanitize(input("Enter account id", "New account id") as text)
 				var/attempt_pin = input("Enter PIN", "Account PIN") as num
 				linked_account = attempt_account_access(attempt_account_num, attempt_pin, 1)
 				if(linked_account)
@@ -658,41 +658,32 @@
 
 /obj/machinery/cash_register/command
 	account_to_connect = "City Council"
-	..()
 
 /obj/machinery/cash_register/medical
 	account_to_connect = "Public Healthcare"
 	menu_items = MED
-	..()
 
 /obj/machinery/cash_register/engineering
 	account_to_connect = "Emergency and Maintenance"
-	..()
 
 /obj/machinery/cash_register/science
 	account_to_connect = "Research and Science"
-	..()
 
 /obj/machinery/cash_register/security
 	account_to_connect = "Police"
 	menu_items = LAW
-	..()
 
 /obj/machinery/cash_register/cargo
 	account_to_connect = "Cargo"
-	..()
 
 /obj/machinery/cash_register/civilian
 	account_to_connect = "Civilian"
-	..()
 
 /obj/machinery/cash_register/bar
 	account_to_connect = "Bar"
-	..()
 
 /obj/machinery/cash_register/botany
 	account_to_connect = "Botany"
-	..()
 
 #undef LAW
 #undef MED

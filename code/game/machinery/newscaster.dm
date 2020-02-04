@@ -321,7 +321,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 						if(CHANNEL.is_admin_channel)
 							dat+="<B><FONT style='BACKGROUND-COLOR: LightGreen '><A href='?src=\ref[src];show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A></FONT></B><BR>"
 						else
-							dat+="<B><A href='?src=\ref[src];show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR></B>"
+							dat+="<B><A href='?src=\ref[src];show_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ""]<BR></B>"
 
 				dat+="<BR><HR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
 				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Back</A>"
@@ -435,12 +435,12 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 								if(MESSAGE.caption)
 									pic_data+="<FONT SIZE=1><B>[MESSAGE.caption]</B></FONT><BR>"
 
-							dat+= get_newspaper_content(MESSAGE.title, MESSAGE.body, MESSAGE.author,"#d4cec1", pic_data)
+							dat += get_newspaper_content(MESSAGE.title, MESSAGE.body, MESSAGE.author,"#d4cec1", pic_data)
 
-								dat+="<BR>"
-							dat+="<FONT SIZE=1>\[Story by <FONT COLOR='maroon'>[MESSAGE.author] - [MESSAGE.time_stamp]</FONT>\]</FONT><BR>"
-				dat+="<BR><HR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
-				dat+="<BR><A href='?src=\ref[src];setScreen=[1]'>Back</A>"
+							dat += "<BR>"
+							dat += "<FONT SIZE=1>\[Story by <FONT COLOR='maroon'>[MESSAGE.author] - [MESSAGE.time_stamp]</FONT>\]</FONT><BR>"
+				dat += "<BR><HR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
+				dat += "<BR><A href='?src=\ref[src];setScreen=[1]'>Back</A>"
 			if(10)
 				dat+="<B>[using_map.company_name] Feed Censorship Tool</B><BR>"
 				dat+="<FONT SIZE=1>NOTE: Due to the nature of news Feeds, total deletion of a Feed Story is not possible.<BR>"
@@ -450,7 +450,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					dat+="<I>No feed channels found active...</I><BR>"
 				else
 					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
-						dat+="<A href='?src=\ref[src];pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR>"
+						dat+="<A href='?src=\ref[src];pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ""]<BR>"
 				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Cancel</A>"
 			if(11)
 				dat+="<B>[using_map.company_name] D-Notice Handler</B><HR>"
@@ -461,7 +461,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					dat+="<I>No feed channels found active...</I><BR>"
 				else
 					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
-						dat+="<A href='?src=\ref[src];pick_d_notice=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ()]<BR>"
+						dat+="<A href='?src=\ref[src];pick_d_notice=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ""]<BR>"
 
 				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Back</A>"
 			if(12)
@@ -609,7 +609,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			for(var/datum/feed_channel/F in news_network.network_channels)
 				if(check_rights(R_ADMIN, 0, usr))
 					available_channels += F.channel_name
-				else if(unique_id_card && unique_id_card in news_data.news_edit_list())
+				else if(unique_id_card && (unique_id_card in news_data.news_edit_list()))
 					available_channels += F.channel_name
 				else
 					if((!F.locked || F.author == scanned_user) && !F.censored)

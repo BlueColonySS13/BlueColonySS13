@@ -550,12 +550,12 @@ default behaviour is:
 	return 0
 
 
-/mob/living/proc/can_inject()
+/mob/living/proc/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	return 1
 
 /mob/living/proc/get_organ_target()
 	var/mob/shooter = src
-	var/t = shooter:zone_sel.selecting
+	var/t = shooter.zone_sel.selecting
 	if ((t in list( O_EYES, O_MOUTH )))
 		t = BP_HEAD
 	var/obj/item/organ/external/def_zone = ran_zone(t)
@@ -665,6 +665,13 @@ default behaviour is:
 	reload_fullscreen()
 
 	return
+
+/mob/living/rejuvenate()
+	var/was_dead = stat == DEAD
+	..()
+	if(was_dead && stat != DEAD)
+		// Arise!
+		cultnet.updateVisibility(src, 0)
 
 /mob/living/proc/UpdateDamageIcon()
 	return

@@ -3,6 +3,8 @@
 	filedesc = "Official Party Management"
 	extended_desc = "This program allows you to create an official party and also manage and view existing parties."
 	requires_ntnet = 1
+	available_on_ntnet = 0
+
 	size = 3
 	nanomodule_path = /datum/nano_module/program/party_manager/
 
@@ -305,33 +307,25 @@
 		. = 1
 
 
-		var/p_members
+		var/list/p_members = list()
 		if(current_party)
-			for(var/list/datum/party_member/party_mem in current_party.members)
+			for(var/datum/party_member/party_mem in current_party.members)
 				p_members += party_mem.name
 
-			if(!p_members)
+			if(!p_members.len)
 				return
 
 			var/new_leader = input(usr, "Select a new party leader", "New Leader")  as null|anything in p_members
 			var/choice = alert(usr,"Resign as party leader and set [new_leader] as new party leader?","[new_leader] as new party leader?","Yes","No")
 			if(choice == "Yes")
 
-				var/party_member
-
-				for(var/list/datum/party_member/PM in current_party.members)
+				for(var/datum/party_member/PM in current_party.members)
 					if(new_leader == PM.name)
-						party_member = PM
+						current_party.party_leader = PM
 						break
-
-				current_party.party_leader = party_member
 
 				index = 1
 				page_msg = "You have set [new_leader] as the new party leader of [current_party.name]."
-
-			else
-
-				return
 
 	if(href_list["apply_for_party"])
 		. = 1
@@ -343,7 +337,7 @@
 
 		var/mob/living/carbon/human/H = usr
 
-		var/obj/item/weapon/card/id/I = H.GetIdCard()
+		var/obj/item/weapon/card/id/I = H?.GetIdCard()
 
 		if(!I)
 			return

@@ -48,7 +48,7 @@ Frequency:
 	if (usr.stat || usr.restrained())
 		return
 	var/turf/current_location = get_turf(usr)//What turf is the user on?
-	if(!current_location|| usr.z in using_map.admin_levels)//If turf was not found or they're on centcom
+	if(!current_location || (usr.z in using_map.admin_levels))//If turf was not found or they're on centcom
 		usr << "The [src] is malfunctioning."
 		return
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
@@ -133,13 +133,13 @@ Frequency:
 
 /obj/item/weapon/hand_tele/attack_self(mob/user as mob)
 	var/turf/current_location = get_turf(user)//What turf is the user on?
-	if(!current_location || current_location.z in using_map.admin_levels || current_location.block_tele)//If turf was not found or they're on z level 2 or >7 which does not currently exist.
+	if(!current_location || (current_location.z in using_map.admin_levels) || current_location.block_tele)//If turf was not found or they're on z level 2 or >7 which does not currently exist.
 		user << "<span class='notice'>\The [src] is malfunctioning.</span>"
 		return
 	var/list/L = list(  )
 	for(var/obj/machinery/teleport/hub/R in world)
 		var/obj/machinery/computer/teleporter/com = locate(/obj/machinery/computer/teleporter, locate(R.x - 2, R.y, R.z))
-		if (istype(com, /obj/machinery/computer/teleporter) && com.locked && !com.one_time_use && !R.z in using_map.admin_levels)
+		if (istype(com, /obj/machinery/computer/teleporter) && com.locked && !com.one_time_use && !(R.z in using_map.admin_levels))
 			if(R.icon_state == "tele1") //I hate this code
 				L["[com.id] (Active)"] = com.locked
 			else

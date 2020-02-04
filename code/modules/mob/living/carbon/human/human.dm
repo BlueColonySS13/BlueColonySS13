@@ -1234,7 +1234,7 @@
 		W.message = message
 		W.add_fingerprint(src)
 
-/mob/living/carbon/human/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
+/mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone, ignore_thickness)
 	. = 1
 
 	if(!target_zone)

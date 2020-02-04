@@ -314,17 +314,17 @@ var/global/list/additional_antag_types = list()
 
 	var/list/area/escape_locations = list(/area/shuttle/escape/centcom, /area/shuttle/escape_pod1/centcom, /area/shuttle/escape_pod2/centcom, /area/shuttle/escape_pod3/centcom, /area/shuttle/escape_pod5/centcom)
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in player_list) //TODO: Refactor this entire for loop
 		if(M.client)
 			clients++
 			if(ishuman(M))
 				if(M.stat != DEAD)
 					surviving_humans++
-					if(M.loc && M.loc.loc && M.loc.loc.type in escape_locations)
+					if(M.loc && M.loc.loc && (M.loc.loc.type in escape_locations))
 						escaped_humans++
 			if(M.stat != DEAD)
 				surviving_total++
-				if(M.loc && M.loc.loc && M.loc.loc.type in escape_locations)
+				if(M.loc && M.loc.loc && (M.loc.loc.type in escape_locations))
 					escaped_total++
 
 				if(M.loc && M.loc.loc && M.loc.loc.type == /area/shuttle/escape/centcom)

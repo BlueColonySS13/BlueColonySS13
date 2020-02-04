@@ -2108,6 +2108,10 @@ area/space/atmosalert()
 	name = "\improper Research Restroom"
 	icon_state = "research_restroom"
 
+/area/rnd/research_breakroom
+	name = "\improper Research Breakroom"
+	icon_state = "research_restroom"
+
 /area/rnd/research_storage
 	name = "\improper Research Storage"
 	icon_state = "research_storage"

@@ -400,6 +400,41 @@
 	addblends = "beret_g_a"
 	body_parts_covered = 0
 
+/obj/item/clothing/head/cargo_beret
+	name = "cargo beret"
+	desc = "A simple, yellow beret. This one designates the wearer as someone working in the supply industry."
+	icon_state = "cargo_beret"
+	addblends = "beret_g_a"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/engineering_beret
+	name = "engineering beret"
+	desc = "A simple, orange beret. This one designates the wearer as someone working in the engineering industry."
+	icon_state = "engineering_beret"
+	addblends = "beret_g_a"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/science_beret
+	name = "science beret"
+	desc = "A simple, purple beret. This one designates the wearer as someone working in the research industry."
+	icon_state = "science_beret"
+	addblends = "beret_g_a"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/service_beret
+	name = "service beret"
+	desc = "A simple, grey beret. This one designates the wearer as someone working in the service industry."
+	icon_state = "service_beret"
+	addblends = "beret_g_a"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/medical_beret
+	name = "medical beret"
+	desc = "A simple, blue beret. This one designates the wearer as someone working in the medical industry."
+	icon_state = "medical_beret"
+	addblends = "beret_g_a"
+	body_parts_covered = 0
+
 /obj/item/clothing/head/sombrero
 	name = "sombrero"
 	desc = "A wide-brimmed hat popularly worn in Mexico."
@@ -411,3 +446,11 @@
 	desc = "Keeps hair out of the way for important... jobs."
 	icon_state = "maid"
 	body_parts_covered = 0
+
+/obj/item/clothing/head/tinfoil
+	name = "tinfoil hat"
+	desc = "A hat made of high-quality DonkCo. aluminum foil, designed to protect from the harmful mind-controlling rays emitted by the government."
+	icon_state = "tinfoil"
+	body_parts_covered = BLOCKHAIR
+	siemens_coefficient = 0.6
+

@@ -35,6 +35,9 @@
 	pref.money_balance		= sanitize_integer(pref.money_balance, 0, 999999, initial(pref.money_balance))
 	pref.bank_pin			= sanitize_integer(pref.bank_pin, 1111, 9999, initial(pref.bank_pin))
 
+	if(!pref.expenses)
+		pref.expenses = list()
+
 /datum/category_item/player_setup_item/general/economy/delete_character(var/savefile/S)
 	pref.money_balance		= 0
 	del_persistent_account(pref.bank_account)

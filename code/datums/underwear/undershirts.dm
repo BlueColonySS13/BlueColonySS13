@@ -166,3 +166,23 @@
 /datum/category_item/underwear/undershirt/tiedye
 	name = "Tiedye Shirt"
 	icon_state = "tiedye"
+
+/datum/category_item/underwear/undershirt/flannel_tied
+	name = "Shirt, Tied-Off Flannel, feminine"
+	icon_state = "flannel_tied"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/corset
+	name = "Corset"
+	icon_state = "corset"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/lacecorset
+	name = "Lace Corset"
+	icon_state = "lacecorset"
+	has_color = TRUE
+
+/datum/category_item/underwear/undershirt/sleves
+	name = "Shirtless Longsleeves, female"
+	icon_state = "sleeves_female"
+	has_color = TRUE

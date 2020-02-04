@@ -134,6 +134,40 @@
 				message = "looks."
 			m_type = 1
 
+		if("fanfare")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if (param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if (param)
+				message = "plays a fanfare at [param]."
+			else
+				message = "plays a fanfare."
+			playsound(src.loc, 'sound/machines/fanfare.ogg', 50, 0)
+			m_type = 1
+
+		if("sad")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if (param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if (param)
+				message = "makes a sad noise at [param]."
+			else
+				message = "makes a sad noise."
+			playsound(src.loc, 'sound/machines/sad_trombone.ogg', 50, 0)
+			m_type = 1
+
 		if("beep")
 			var/M = null
 			if(param)

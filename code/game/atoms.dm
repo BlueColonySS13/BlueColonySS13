@@ -14,7 +14,7 @@
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
-
+	var/dont_save = 0 // For atoms that are temporary by necessity - like lighting overlays
 	///Chemistry.
 	var/datum/reagents/reagents = null
 
@@ -524,5 +524,5 @@
 
 // Called when hitting the atom with a grab.
 // Will skip attackby() and afterattack() if returning TRUE.
-/atom/proc/grab_attack(var/obj/item/grab/G)
+/atom/proc/grab_attack(var/obj/item/weapon/grab/G)
 	return FALSE

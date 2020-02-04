@@ -612,12 +612,18 @@ Turf and target are seperate in case you want to teleport some distance from a t
 /proc/between(var/low, var/middle, var/high)
 	return max(min(middle, high), low)
 
-proc/arctan(x)
+
+#if DM_VERSION > 513
+#warn 513 is definitely stable now, remove this
+#endif
+#if DM_VERSION < 513
+/proc/arctan(x)
 	var/y=arcsin(x/sqrt(1+x*x))
 	return y
+#endif
 
 //returns random gauss number
-proc/GaussRand(var/sigma)
+/proc/GaussRand(var/sigma)
   var/x,y,rsq
   do
     x=2*rand()-1
@@ -627,7 +633,7 @@ proc/GaussRand(var/sigma)
   return sigma*y*sqrt(-2*log(rsq)/rsq)
 
 //returns random gauss number, rounded to 'roundto'
-proc/GaussRandRound(var/sigma,var/roundto)
+/proc/GaussRandRound(var/sigma,var/roundto)
 	return round(GaussRand(sigma),roundto)
 
 //Will return the contents of an atom recursivly to a depth of 'searchDepth'

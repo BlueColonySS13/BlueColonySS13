@@ -37,9 +37,9 @@ length to avoid portals or something i guess?? Not that they're counted right no
 // Also added 'exclude' turf to avoid travelling over; defaults to null
 
 
-PriorityQueue
+PriorityQueue //God this code is so bad but I don't have it in me to rewrite it //TODO: port TG A* implementation
 	var/list/queue
-	var/proc/comparison_function
+	var/comparison_function
 
 	New(compare)
 		queue = list()
@@ -123,7 +123,7 @@ PathNode
 proc/PathWeightCompare(PathNode/a, PathNode/b)
 	return a.estimated_cost - b.estimated_cost
 
-proc/AStar(var/start, var/end, var/proc/adjacent, var/proc/dist, var/max_nodes, var/max_node_depth = 30, var/min_target_dist = 0, var/min_node_dist, var/id, var/datum/exclude)
+proc/AStar(var/start, var/end, var/adjacent, var/dist, var/max_nodes, var/max_node_depth = 30, var/min_target_dist = 0, var/min_node_dist, var/id, var/datum/exclude)
 	var/PriorityQueue/open = new /PriorityQueue(/proc/PathWeightCompare)
 	var/list/closed = list()
 	var/list/path

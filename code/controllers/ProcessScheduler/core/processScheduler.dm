@@ -1,33 +1,34 @@
 // Singleton instance of game_controller_new, setup in world.New()
 var/global/datum/controller/processScheduler/processScheduler
 
+
 /datum/controller/processScheduler
 	// Processes known by the scheduler
-	var/tmp/datum/controller/process/list/processes = new
+	var/list/datum/controller/process/processes = list()
 
 	// Processes that are currently running
-	var/tmp/datum/controller/process/list/running = new
+	var/list/datum/controller/process/running = list()
 
 	// Processes that are idle
-	var/tmp/datum/controller/process/list/idle = new
+	var/list/datum/controller/process/idle = list()
 
 	// Processes that are queued to run
-	var/tmp/datum/controller/process/list/queued = new
+	var/list/datum/controller/process/queued = list()
 
 	// Process name -> process object map
-	var/tmp/datum/controller/process/list/nameToProcessMap = new
+	var/list/datum/controller/process/nameToProcessMap = list()
 
 	// Process last queued times (world time)
-	var/tmp/datum/controller/process/list/last_queued = new
+	var/list/datum/controller/process/last_queued = list()
 
 	// How long to sleep between runs (set to tick_lag in New)
-	var/tmp/scheduler_sleep_interval
+	var/scheduler_sleep_interval
 
 	// Controls whether the scheduler is running or not
-	var/tmp/isRunning = 0
+	var/isRunning = 0
 
 	// Setup for these processes will be deferred until all the other processes are set up.
-	var/tmp/list/deferredSetupList = new
+	var/list/deferredSetupList = list()
 
 /datum/controller/processScheduler/New()
 	..()

@@ -31,7 +31,7 @@
 					break
 
 			//eligibility
-			if(is_voting_eligible(H))
+			if(is_voting_ineligible(H))
 				eligible = 0
 
 			if(ckey in SSelections.current_president.no_confidence_votes)
@@ -39,6 +39,18 @@
 
 			if(SSelections.current_president)
 				dat += "The current president is <b>[SSelections.current_president.name]</b>.<br>"
+
+			if(SSelections.snap_election)
+				dat += "<h4>A snap election is in progress.</h4>"
+
+			if(!eligible)
+				dat += "<br><i>You currently do not qualify for voting as you do not possess the legal rights to do so.</i>"
+				dat += "<br><b>Reason:</b> [is_voting_ineligible(H) ? "[is_voting_ineligible(H)]" : ""]<br><br>"
+				dat += "<br><b><u>Current Critera:</u></b>"
+				dat += "<br><b>Minimum age:</b> [persistent_economy.voting_age]"
+				dat += "<br><b>Synthetics:</b> [persistent_economy.synth_vote ? "Can Vote" : "Cannot Vote"]"
+				dat += "<br><b>Non-[using_map.starsys_name] Citizens:</b> [persistent_economy.citizenship_vote ? "Can Vote" : "Cannot Vote"]"
+				dat += "<br><b>Citizens with a Criminal Record:<b> </b>[persistent_economy.criminal_vote ? "Can Vote" : "Cannot Vote"]"
 
 			if(SSelections.is_registration_days(get_game_day()))
 				dat += "<br>Registration period is in effect, people can register to be a candidate via the \"Presidential Candidate Registration\" program available on public and private computers."
@@ -55,39 +67,25 @@
 				dat += "<br>It is currently campaign period. <i>No further registrations can be registered at this time.</i> Voting starts on the 21st to the 27th.<p>"
 
 				dat += "<h3>Currently Registered Candidates for [get_month_from_num(get_game_month())] [get_game_year()]:</h3><hr>"
-				if(SSelections.political_candidates)
+				if(!isemptylist(SSelections.political_candidates))
 					for(var/datum/president_candidate/P in SSelections.political_candidates)
 						dat += "<b>[P.name]</b> - <i>[P.slogan]</i><p>"
 						dat += "<br>I will:</b> \"[P.pitch]\"<br><hr>"
 				else
 					dat += "<b>No political candidates registered.</b>"
 
-			else if(SSelections.is_voting_days(get_game_day()))
+			else if( SSelections.is_voting_days(get_game_day()) )
 				dat += "<h3>List of Candidates for [get_month_from_num(get_game_month())] [get_game_year()]:</h3><hr>"
 
-				for(var/datum/president_candidate/P in SSelections.political_candidates)
-					dat += "<h4>[P.name]</h4> - <i>[P.slogan]</i><p>"
-					dat += "<b>I will:</b> \"[P.pitch]\"<br><hr>"
-					if(!has_voted && eligible)
-						dat += "<br><a href='?src=\ref[src];vote=1;candidate=\ref[P]'>Vote for [P.name]</a><hr>"
-				if(!eligible)
-					dat += "<br><i>You currently do not qualify for voting as you do not possess the legal rights to do so.</i>"
-
-			else if(SSelections.snap_election)
-				dat += "<h4>A snap election is in progress.</h4>"
-
-				dat += "<h3>List of Candidates for [get_month_from_num(get_game_month())] [get_game_year()]:</h3><hr>"
-				if(SSelections.political_candidates)
+				if(!isemptylist(SSelections.political_candidates))
 					for(var/datum/president_candidate/P in SSelections.political_candidates)
 						dat += "<h4>[P.name]</h4> - <i>[P.slogan]</i><p>"
-						dat += "<b>I will:</b> \"[P.pitch]\"<br>"
+						dat += "<b>I will:</b> \"[P.pitch]\"<br><hr>"
 						if(!has_voted && eligible)
 							dat += "<br><a href='?src=\ref[src];vote=1;candidate=\ref[P]'>Vote for [P.name]</a><hr>"
 				else
 					dat += "<b>No political candidates registered.</b>"
 
-				if(!eligible)
-					dat += "<br><i>You currently do not qualify for voting as you do not possess the legal rights to do so.</i>"
 
 			else if(SSelections.is_election_day(get_game_day()))
 				dat += "<br><center>Election day is here. The <i>new</i> elected president is:<br>"
@@ -101,21 +99,23 @@
 
 				dat += "<br>Currently there is no election in progress. Candidate registration periods start on the <b>10th</b> of every month."
 
-			if(!SSelections.snap_election)
-				if(SSelections.current_president.no_confidence_votes)
-					dat += "<hr><h3>Vote of No Confidence/Impeachment:</h3><p>"
-					if(SSelections.current_president.no_confidence_votes.len)
-						dat += "<p>A <b>vote of no confidence</b> has been raised against [SSelections.current_president.name] to be impeached. This is completely anonymous."
-					dat += "<p>At present, there are <b>[SSelections.current_president.no_confidence_votes.len]</b>."
-					dat += "<p>If this reaches 30, [SSelections.current_president.name] will be removed from office, and the Vice President (if any) will take over - if there is no Vice, a new election will occur.</b>"
+
+			if(!SSelections.snap_election && SSelections.current_president.no_confidence_votes)
+				dat += "<hr><h3>Vote of No Confidence/Impeachment:</h3><p>"
+				if(SSelections.current_president.no_confidence_votes.len)
+					dat += "<p>A <b>vote of no confidence</b> has been raised against [SSelections.current_president.name] to be impeached. This is completely anonymous."
+				dat += "<p>At present, there are <b>[SSelections.current_president.no_confidence_votes.len]</b>."
+				dat += "<p>If this reaches 30, [SSelections.current_president.name] will be removed from office, and the Vice President (if any) will take over - if there is no Vice, a new election will occur.</b>"
+				if(eligible)
 					if(!no_confidence_voted)
 						dat += "<br><a href='?src=\ref[src];no_confidence=1;votee=\ref[SSelections.current_president]'>Vote \"No Confidence\" against [SSelections.current_president.name]</a>"
 					else
 						dat += "<b>You already have a no confidence vote raised against [SSelections.current_president.name].</b>"
-
 				else
-					dat += "<p>It is within the citizen rights to vote a vote of no confidence against a president. If you gain 30 votes, they will be removed from presidency."
-					dat += "<br><a href='?src=\ref[src];no_confidence=1;votee=\ref[SSelections.current_president]'>Vote \"No Confidence\" against [SSelections.current_president.name]</a>"
+					dat += "<b>You are not eligible to participate with a no-confidence vote.</b>"
+			else
+				dat += "<p>It is within the citizen rights to vote a vote of no confidence against a president. If you gain 30 votes, they will be removed from presidency."
+				dat += "<br><a href='?src=\ref[src];no_confidence=1;votee=\ref[SSelections.current_president]'>Vote \"No Confidence\" against [SSelections.current_president.name]</a>"
 
 			if(has_voted)
 				dat += "<hr>Thank <b>you</b> for taking part in the election by voting. Your vote matters!"
@@ -148,7 +148,7 @@
 	if(href_list["no_confidence"])
 		if(!Adjacent(usr)) return
 
-		var/list/datum/president_candidate/prez = locate(href_list["votee"])
+		var/datum/president_candidate/prez = locate(href_list["votee"])
 		if(!prez)
 			to_chat(usr, SPAN_WARNING("ERROR: Somehow, no president exists."))
 			return
@@ -169,7 +169,7 @@
 
 		if(!Adjacent(usr)) return
 
-		var/list/datum/president_candidate/candidate = locate(href_list["candidate"])
+		var/datum/president_candidate/candidate = locate(href_list["candidate"])
 
 		if(!candidate)
 			to_chat(usr, SPAN_WARNING("ERROR: This candidate does not exist."))

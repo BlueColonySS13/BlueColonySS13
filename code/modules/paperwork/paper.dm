@@ -80,7 +80,8 @@
 	stamps = null
 
 	if(info != initial(info))
-		info = html_encode(info)
+		if(!persistence_loaded)
+			info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
 		return
@@ -556,7 +557,8 @@
 		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [P.name].</i>"
 
 		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-		var/{x; y;}
+		var/x
+		var/y
 		if(istype(P, /obj/item/weapon/stamp/captain) || istype(P, /obj/item/weapon/stamp/centcomm))
 			x = rand(-2, 0)
 			y = rand(-1, 2)
@@ -590,6 +592,11 @@
 
 	add_fingerprint(user)
 	return
+
+/obj/item/weapon/paper/serialize()
+	var/list/data = ..()
+	data["info"] = info
+	return data
 
 /*
  * Premade paper

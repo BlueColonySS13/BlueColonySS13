@@ -1,7 +1,5 @@
 #define Clamp(x, y, z) 	(x <= y ? y : (x >= z ? z : x))
 
-#define CLAMP01(x) 		(Clamp(x, 0, 1))
-
 #define span(class, text) ("<span class='[class]'>[text]</span>")
 
 #define get_turf(A) get_step(A,0)
@@ -17,8 +15,6 @@
 #define isalien(A) istype(A, /mob/living/carbon/alien)
 
 #define isanimal(A) istype(A, /mob/living/simple_animal)
-
-#define isairlock(A) istype(A, /obj/machinery/door/airlock)
 
 #define isbrain(A) istype(A, /mob/living/carbon/brain)
 
@@ -38,8 +34,6 @@
 
 #define isobserver(A) istype(A, /mob/observer/dead)
 
-#define isorgan(A) istype(A, /obj/item/organ/external)
-
 #define ispAI(A) istype(A, /mob/living/silicon/pai)
 
 #define isrobot(A) istype(A, /mob/living/silicon/robot)
@@ -54,13 +48,9 @@
 
 #define isxeno(A) istype(A, /mob/living/simple_animal/xeno)
 
-#define isopenspace(A) istype(A, /turf/simulated/open)
-
 #define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
 
 #define random_id(key,min_id,max_id) uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
-
-#define isweakref(A) istype(A, /weakref)
 
 #define MAP_IMAGE_PATH "nano/images/[using_map.path]/"
 
@@ -92,36 +82,7 @@
 
 #define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
 
-// Helper macros to aid in optimizing lazy instantiation of lists.
-// All of these are null-safe, you can use them without knowing if the list var is initialized yet
-
-//Picks from the list, with some safeties, and returns the "default" arg if it fails
-#define DEFAULTPICK(L, default) ((istype(L, /list) && L:len) ? pick(L) : default)
-// Ensures L is initailized after this point
-#define LAZYINITLIST(L) if (!L) L = list()
-// Sets a L back to null iff it is empty
-#define UNSETEMPTY(L) if (L && !L.len) L = null
-// Removes I from list L, and sets I to null if it is now empty
-#define LAZYREMOVE(L, I) if(L) { L -= I; if(!L.len) { L = null; } }
-// Adds I to L, initalizing I if necessary
-#define LAZYADD(L, I) if(!L) { L = list(); } L += I;
-// Adds I to L, initalizing L if necessary, if I is not already in L
-#define LAZYDISTINCTADD(L, I) if(!L) { L = list(); } L |= I;
-// Reads I from L safely - Works with both associative and traditional lists.
-#define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= L.len ? L[I] : null) : L[I]) : null)
-// Reads the length of L, returning 0 if null
-#define LAZYLEN(L) length(L)
-// Null-safe L.Cut()
-#define LAZYCLEARLIST(L) if(L) L.Cut()
-// Reads L or an empty list if L is not a list.  Note: Does NOT assign, L may be an expression.
-#define SANITIZE_LIST(L) ( islist(L) ? L : list() )
-
-#define to_chat(target, message)                            target << message
-#define to_world(message)                                   world << message
-#define to_world_log(message)                               world.log << message
 #define sound_to(target, sound)                             target << sound
-#define to_file(file_entry, source_var)                     file_entry << source_var
-#define from_file(file_entry, target_var)                   file_entry >> target_var
 #define show_browser(target, browser_content, browser_name) target << browse(browser_content, browser_name)
 #define show_image(target, image)                           target << image
 #define send_rsc(target, rsc_content, rsc_name)             target << browse_rsc(rsc_content, rsc_name)

@@ -16,6 +16,7 @@
 	var/colourName = "red" //for updateIcon purposes
 	var/list/validSurfaces = list(/turf/simulated/floor)
 	var/edible = 1 //so you can't eat a spraycan
+	price_tag = 1
 
 /obj/item/weapon/pen/crayon/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]

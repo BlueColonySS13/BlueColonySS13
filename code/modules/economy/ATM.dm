@@ -253,6 +253,7 @@ log transactions
 						if(charge_to_account(target_account_number, authenticated_account.owner_name, transfer_purpose, machine_id, transfer_amount))
 							usr << "\icon[src]<span class='info'>Funds transfer successful.</span>"
 							authenticated_account.money -= transfer_amount
+							log_money(usr, "transferred money to [target_account_number] successfully", authenticated_account.account_number, authenticated_account.owner_name, transfer_amount)
 
 							//create an entry in the account transaction log
 							var/datum/transaction/T = new()
@@ -265,6 +266,9 @@ log transactions
 							authenticated_account.transaction_log.Add(T)
 						else
 							usr << "\icon[src]<span class='warning'>Funds transfer failed.</span>"
+							log_money(usr, "failed to transfer money to [target_account_number] (unsuccesful)", authenticated_account.account_number, authenticated_account.owner_name, transfer_amount)
+
+
 
 					else
 						usr << "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>"
@@ -274,13 +278,14 @@ log transactions
 				if(authenticated_account)
 					var/new_sec_level = max( min(text2num(href_list["new_security_level"]), 2), 0)
 					authenticated_account.security_level = new_sec_level
+					log_money(usr, "changed bank security level to [authenticated_account.security_level]", authenticated_account.account_number, authenticated_account.owner_name, 0)
 			if("attempt_auth")
 
 				// check if they have low security enabled
 				scan_user(usr)
 
 				if(!ticks_left_locked_down && held_card)
-					var/tried_account_num = text2num(href_list["account_num"])
+					var/tried_account_num = href_list["account_num"]
 					if(!tried_account_num)
 						tried_account_num = held_card.associated_account_number
 					var/tried_pin = text2num(href_list["account_pin"])
@@ -304,6 +309,7 @@ log transactions
 									T.date = current_date_string
 									T.time = stationtime2text()
 									failed_account.transaction_log.Add(T)
+									log_money(usr, "unsuccessfully attempted to log in", tried_account_num, "(no success)", "n/a")
 							else
 								usr << "<font color='red'>\icon[src] Incorrect pin/account combination entered, [max_pin_attempts - number_incorrect_tries] attempts remaining.</font>"
 								previous_account_number = tried_account_num
@@ -352,6 +358,7 @@ log transactions
 						T.date = current_date_string
 						T.time = stationtime2text()
 						authenticated_account.transaction_log.Add(T)
+						log_money(usr, "withdrew money from [src] (ewallet)", authenticated_account.account_number, authenticated_account.owner_name, amount)
 					else
 						usr << "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>"
 			if("withdrawal")
@@ -377,6 +384,7 @@ log transactions
 						T.date = current_date_string
 						T.time = stationtime2text()
 						authenticated_account.transaction_log.Add(T)
+						log_money(usr, "withdrew money from [src] (cash)", authenticated_account.account_number, authenticated_account.owner_name, amount)
 					else
 						usr << "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>"
 			if("balance_statement")

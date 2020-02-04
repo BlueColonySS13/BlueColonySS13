@@ -154,6 +154,12 @@ Drinks Data
 /datum/reagent/drink/soda/lemonade
 	glass_icon_state = "lemonadeglass"
 
+/datum/reagent/drink/soda/appleade
+	glass_icon_state = "appleadeglass"
+
+/datum/reagent/drink/soda/pineappleade
+	glass_icon_state = "pineappleadeglass"
+
 /datum/reagent/drink/soda/kiraspecial
 	glass_icon_state = "kiraspecial"
 	glass_center_of_mass = list("x"=16, "y"=12)
@@ -164,6 +170,15 @@ Drinks Data
 /datum/reagent/drink/milkshake
 	glass_icon_state = "milkshake"
 	glass_center_of_mass = list("x"=16, "y"=7)
+
+/datum/reagent/drink/milkshake/berryshake
+	glass_icon_state = "berryshake"
+
+/datum/reagent/drink/milkshake/chocoshake
+	glass_icon_state = "chocoshake"
+
+/datum/reagent/drink/milkshake/coffeeshake
+	glass_icon_state = "coffeeshake"
 
 /datum/reagent/drink/rewriter
 	glass_icon_state = "rewriter"
@@ -202,13 +217,27 @@ Drinks Data
 /datum/reagent/drink/nothing
 	glass_icon_state = "nothing"
 
+/datum/reagent/drink/arnoldpalmer
+	glass_icon_state = "arnoldpalmerglass"
+
+/datum/reagent/drink/berrycordial
+	glass_icon_state = "berrycordialglass"
+
 /datum/reagent/ethanol/absinthe
 	glass_icon_state = "absintheglass"
 	glass_center_of_mass = list("x"=16, "y"=5)
 
+/datum/reagent/ethanol/euphoria
+	glass_icon_state = "euphoriaglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
 /datum/reagent/ethanol/ale
 	glass_icon_state = "aleglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/balloon
+	glass_icon_state = "balloonglass"
+	glass_center_of_mass = list("x"=16, "y"=6)
 
 /datum/reagent/ethanol/beer
 	glass_icon_state = "beerglass"
@@ -243,8 +272,8 @@ Drinks Data
 	glass_center_of_mass = list("x"=16, "y"=12)
 
 /datum/reagent/ethanol/sake
-	glass_icon_state = "ginvodkaglass"
-	glass_center_of_mass = list("x"=16, "y"=12)
+	glass_icon_state = "sakeglass"
+	glass_center_of_mass = list("x"=15, "y"=10)
 
 /datum/reagent/ethanol/tequila
 	glass_icon_state = "tequillaglass"
@@ -504,3 +533,4 @@ Drinks Data
 /datum/reagent/ethanol/specialwhiskey
 	glass_icon_state = "whiskeyglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
+

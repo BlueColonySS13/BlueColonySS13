@@ -17,6 +17,10 @@
 
 /mob/new_player/New()
 	mob_list += src
+	
+/mob/new_player/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", whispering)
+	if (client)
+		client.ooc(message)
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr
@@ -329,6 +333,11 @@
 	if(!job.player_old_enough(src.client))	return 0
 	if(job.title == "Prisoner" && client.prefs.criminal_status != "Incarcerated")	return 0
 	if(job.title != "Prisoner" && client.prefs.criminal_status == "Incarcerated")	return 0
+
+	if(job.clean_record_required)
+		var/list/criminal_record = client.prefs.crime_record
+		if(!isemptylist(criminal_record)) return 0
+
 	return 1
 
 /mob/new_player/proc/AttemptLateSpawn(rank,var/spawning_at)

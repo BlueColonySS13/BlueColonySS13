@@ -9,6 +9,10 @@
 	faction = "geese"
 	intelligence_level = SA_ANIMAL
 
+
+	universal_speak = FALSE
+	universal_understand = TRUE
+
 	maxHealth = 15
 	health = 15
 	speed = 4
@@ -36,7 +40,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	has_langs = list("Bird")
+	has_langs = list(LANGUAGE_GALCOM, "Bird")
 	speak_chance = 10
 	speak = list("HONK!")
 	emote_hear = list("honks loudly!")

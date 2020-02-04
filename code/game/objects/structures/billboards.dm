@@ -10,7 +10,6 @@
 	light_color = "#ebf7fe"  //white blue
 	density = 1
 	anchored = 1
-	bounds = "64,32"
 	plane = ABOVE_PLANE
 	layer = ABOVE_MOB_LAYER
 	pixel_y = 10
@@ -33,7 +32,8 @@
 							"atluscity",
 							"sunstar",
 							"speedweed",
-							"golf")
+							"golf",
+							"visit_texas")
 
 	var/current_ad
 
