@@ -1,0 +1,47 @@
+[center][b]Pollux Division of Special Investigations[/b]
+[small]Report form PDSI-RT01[/small][/center]
+
+Reporting Individual:[field]
+Job title of reporting Individual:[field]
+Reporting Individual contact information:[field]
+
+Personnel Involved: [small][b](Name and Job Title. Offender/Witness/Other)[/b][/small]
+[field]
+
+
+Time of Incident[[small][i][b]Pollux Time and date[/b][/i][/small]]:[field]
+Real Time[[small][i][b]Sol Standard Time and date[/b][/i][/small]]:[field]
+Location of Incident:[field]
+
+Nature of Incident:
+[[Field]] - Workplace Hazard
+[[field]] - Accident/Injury
+[[field]] - Destruction of Property
+[[field]] - Neglect of Duty
+[[field]] - Harassment
+[[field]] - Assault
+[[field]] - Misconduct
+[[field]] - Crime: [field] ([i]Specify Severity and crime. Misdemeanour charges are not valid for a report[/i])
+[[field]] - Other: [field] ([i]Place an x in the boxes that apply. If Other, replace line and specify.[/i])
+
+[u][b]Overview of the Incident:[/b][/u]
+[field]
+
+
+Did you report it to City Council or a representative for the Pollux Division of Special Investigations?: [b]Y[/b][[field] ]  [b]N[/b][[field] ]
+
+[b](If Yes)[/b]
+Who was it reported to:[field]
+
+What actions were taken:[field]
+
+Signature:[field]
+
+[hr][b][center]POLLUX DIVISION OF SPECIAL INVESTIGATIONS SECTION
+[i][small]INTERNAL USE ONLY[/small][/i][/center][/b]
+
+
+[b]Receiving Agent[/b]:[field]
+[b]Receiving Agent Signature[/b]:[field]
+
+[b]Receiving Agent Notes[/b]:[field]
