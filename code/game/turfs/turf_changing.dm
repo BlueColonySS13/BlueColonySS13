@@ -110,3 +110,10 @@
 
 	if(preserve_outdoors)
 		outdoors = old_outdoors
+
+/turf/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0, var/preserve_outdoors = FALSE)
+	var/old_density = density
+	var/old_opacity = opacity
+	. = ..()
+	if(.)
+		turf_changed_event.raise_event(src, old_density, density, old_opacity, opacity)
