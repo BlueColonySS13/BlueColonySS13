@@ -69,3 +69,11 @@
 	title = "Arrest Report"
 	categories = list(PAPERWORK_POLICE)
 	file_source = 'code/modules/paperwork/paperwork_templates/police/arrestreport.txt'
+
+// GOVERNMENT
+
+/datum/paperwork_template/pdsi_report
+	name = "Pollux Division of Special Investigations Report"
+	title = "PDSI Report"
+	categories = list(PAPERWORK_GOVERNMENT)
+	file_source = 'code/modules/paperwork/paperwork_templates/Government/pdsireport.txt'
