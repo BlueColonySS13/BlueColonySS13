@@ -76,4 +76,4 @@
 	name = "Pollux Division of Special Investigations Report"
 	title = "PDSI Report"
 	categories = list(PAPERWORK_GOVERNMENT)
-	file_source = 'code/modules/paperwork/paperwork_templates/Government/pdsireport.txt'
+	file_source = 'code/modules/paperwork/paperwork_templates/government/pdsireport.txt'
