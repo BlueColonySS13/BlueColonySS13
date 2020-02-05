@@ -3020,7 +3020,10 @@
 	filling_color = "#F5DEB8"
 	center_of_mass = list("x"=16, "y"=6)
 	nutriment_desc = list("salt" = 1, "fish" = 1)
-	nutriment_amt = 1
+	nutriment_amt = 2
+	
+/obj/item/weapon/reagent_containers/food/snacks/caviar/get_item_cost()
+	return 120
 
 
 /////////////////////////////////////////////////PIZZA////////////////////////////////////////
