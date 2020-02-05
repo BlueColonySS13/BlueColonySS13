@@ -263,7 +263,6 @@
 
 				else if("search")
 
-					var/search = sanitize(input("Search case by unique ID", "Case Search") as text)
 
 					total_cases = find_case_by_UID(search)
 
@@ -329,7 +328,7 @@
 			case.case_type = CRIMINAL_CASE
 
 		if("Prosecute a criminal as part of Police Force")
-			case.plaintiff = user_details
+			case.plaintiff = list("name" = "[using_map.name] Police Department", "unique_id" = "")
 			case.case_type = CRIMINAL_CASE
 			prosecuting = TRUE
 
@@ -419,6 +418,7 @@
 					search_type = "Own"
 				if("search")
 					search_type = "Search"
+					var/search = sanitize(input("Search case by unique ID", "Case Search") as text)
 
 				if("lawyer_rep")
 					search_type = "Lawyer Rep"
