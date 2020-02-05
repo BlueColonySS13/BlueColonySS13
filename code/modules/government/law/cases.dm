@@ -59,16 +59,48 @@ var/global/court_cases = list()
 
 	expiry_date = AddDays(creation_date, 7)
 
+/datum/court_case/proc/is_lawyer(obj/item/weapon/card/id/I)
+	if(!I || !I.registered_name || !I.unique_id)
+		return FALSE
+
+	if((representative["name"] == I.registered_name) && (representative["unique_id"] == I.unique_ID)
+		return TRUE
+
+	return FALSE
+
+/datum/court_case/proc/is_plaintiff(obj/item/weapon/card/id/I)
+	if(!I || !I.registered_name || !I.unique_id)
+		return FALSE
+
+	if((plaintiff["name"] == I.registered_name) && (plaintiff["unique_id"] == I.unique_ID)
+		return TRUE
+
+	return FALSE
+
+/datum/court_case/proc/is_defendant(obj/item/weapon/card/id/I)
+	if(!I || !I.registered_name || !I.unique_id)
+		return FALSE
+
+	if((defendant["name"] == I.registered_name) && (defendant["unique_id"] == I.unique_ID)
+		return TRUE
+
+	return FALSE
 
 /datum/case_evidence
 	var/UID 												// The unique identifier for this incident
 	var/name												// name of the item scanned
 	var/description										// description copied from the actual item
+	var/comments
 	var/icon												// actual photo taken of the evidence.
 	var/icon_state
-	var/list/fingerprints									// fingerprints of the evidence
-	var/list/fingerprints_hidden								// same thing, but admin side
+	var/object_type										// the obj type
+	var/list/fingerprints = list()							// fingerprints of the evidence
+	var/list/fingerprints_hidden = list()						// same thing, but admin side
+	var/fingerprints_last
+	var/list/suit_fibers = list()
 	var/game_id_created										// The game-id this was created in. This should be obvious from the case id but w/e
+
+	var/icon/photo											// photos only
 
 /datum/case_evidence/New()
 	..()
@@ -77,6 +109,26 @@ var/global/court_cases = list()
 	if(!game_id_created)
 		game_id_created = game_id
 
+
+/datum/case_evidence/proc/obj_record(var/obj/O)
+	if(!O)
+		return
+
+	name = O.name
+	description = O.desc
+	icon = O.icon
+	icon_state = O.icon_state
+	object_type = O.type
+	fingerprints = O.fingerprints
+	fingerprints_hidden = O.fingerprintshidden
+	fingerprints_last = O.fingerprintslast
+	suit_fibers = O.suit_fibers
+
+	if(istype(O, /obj/item/weapon/photo))
+		var/obj/item/weapon/photo/foto = O
+		photo = foto.img
+
+	return 1
 
 /proc/all_public_cases()
 	var/all_cases

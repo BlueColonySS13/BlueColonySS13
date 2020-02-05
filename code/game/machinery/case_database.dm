@@ -18,6 +18,7 @@
 
 	var/page = 1
 	var/search_type = "All"
+	var/search_query = ""
 
 	// Types: "Archived", "Own", "ID", "Search", otherwise it will search all CASES
 
@@ -33,6 +34,8 @@
 	var/rep_access = FALSE
 	var/nt_access = FALSE
 	var/high_court_access = FALSE
+
+	var/evidence_access = FALSE
 
 	var/obj/item/device/taperecorder/empty/tape_player
 
@@ -82,8 +85,78 @@
 	if(high_court_access in user_id.access)
 		nt_access = TRUE
 
+	if(prosecutor_access || judge_access || police_access || access_cbia || nt_access || rep_access || plaintiff_access || defendant_access)
+		evidence_access = TRUE
+
 /obj/machinery/case_database/attack_hand(mob/user)
 	interact(user)
+
+/obj/machinery/case_database/attackby(obj/item/weapon/W, mob/user)
+	if(missing_case())
+		return
+
+	if(istype(W, /obj/item/device/tape))
+		var/obj/item/device/tape/input_tape = W
+		if(!isemptylist(input_tape.storedinfo))
+			add_tape(input_tape, user)
+			return
+
+	if(istype(W, /obj/item))
+		add_evidence(W, user)
+		return
+
+	..()
+
+/obj/machinery/case_database/proc/add_evidence(obj/item/held_item, mob/user)
+	if("No" == alert("Add [held_item] to the case: [current_case.name]?", "Add Evidence", "No", "Yes"))
+		return
+
+	var/datum/case_evidence/evidence = new()
+
+	if(!evidence.obj_record(held_item) || !current_case)
+		return
+
+	current_case.case_evidence += evidence
+
+	user.drop_from_inventory(held_item, src)
+	held_item.forceMove(src)
+	spawn(30)
+		held_item.forceMove(loc)
+
+	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 75, 1, -3)
+	to_chat(user, "You add [held_item] to the case evidence storage, the system takes a photograph and scans the item for evidence.")
+
+
+/obj/machinery/case_database/proc/add_tape(obj/item/device/tape/heldtape, mob/user)
+	var/obj/item/device/tape/newtape = new(loc)
+
+	if(!heldtape)
+		return
+
+	user.drop_from_inventory(heldtape, src)
+	heldtape.forceMove(src)
+	playsound(loc, 'sound/items/penclick.ogg', 5, 1, 5)
+
+	if(heldtape.ruined)
+		to_chat(user, "[src]'s monitor beeps, \"Error: Data corrupted\" as it ejects the tape.")
+		heldtape.forceMove(loc)
+		return
+
+	newtape.storedinfo = heldtape.storedinfo
+	newtape.timestamp = heldtape.timestamp
+	current_case.evidence_recordings += newtape
+
+	var/tapename = input(user, "What would you like to label this tape as? (Leave blank for no label)", "Label Tape Entry") as text
+	newtape.name = tapename
+
+	if(!tapename)
+		newtape.name = "Evidence Recording #[current_case.evidence_recordings.len]"
+
+	spawn(30)
+		heldtape.forceMove(loc)
+
+	to_chat(user, "You add [heldtape] to the case files, the system whirrs as it makes a copy of the tape.")
+
 
 /obj/machinery/case_database/proc/missing_case()
 	if(!current_case)
@@ -115,7 +188,7 @@
 		//4 - View Cases List (Will show depending on option)
 		//5 - Delete Case Confirmation
 
-		//6 - Add New Case Confirmation
+		//6 - [CASE ACTIVE] Case Logger
 		//7 - [CASE ACTIVE] Case notes screen
 		//8 - [CASE ACTIVE] Add Evidence Screen
 		//9 - [CASE ACTIVE] Add tape recordings
@@ -125,11 +198,11 @@
 		if(1)
 			dat += "<b>Select an option:</b><br>"
 			dat += "<a href='?src=\ref[src];create_case=1'>Create a New Case</a><br>"
-			dat += "<a href='?src=\ref[src];choice=select_case;type=\ref\"view_all\"'>View Ongoing Public Cases</a><br>"
-			dat += "<a href='?src=\ref[src];choice=select_case;type=\ref\"archived\"'>Archived Cases</a><br>"
-			dat += "<a href='?src=\ref[src];choice=select_case;type=\ref\"search\"'>Find Case By ID</a><br>"
-			dat += "<a href='?src=\ref[src];choice=select_case;type=\ref\"lawyer_rep\"'>Cases Requiring Lawyer Representation</a><br>"
-			dat += "<a href='?src=\ref[src];choice=select_case;type=\ref\"own\"'>View My Cases</a><br>"
+			dat += "<a href='?src=\ref[src];view_all=1'>View Ongoing Public Cases</a><br>"
+			dat += "<a href='?src=\ref[src];archived=1'>Archived Cases</a><br>"
+			dat += "<a href='?src=\ref[src];search=1'>Find Case By ID</a><br>"
+			dat += "<a href='?src=\ref[src];lawyer_rep=1'>Cases Requiring Lawyer Representation</a><br>"
+			dat += "<a href='?src=\ref[src];own=1'>View My Cases</a><br>"
 
 		if(2)
 			if(missing_case())
@@ -235,15 +308,13 @@
 
 
 			/////// OPTIONS FOR CURRENT CASE ///////
-
-			dat += "<a href=''>View Case Notes Log[current_case.case_logs ? " ([current_case.case_logs.len])" : ""]</a> "
-			dat += "<a href=''>View Evidence List[current_case.case_evidence ? " ([current_case.case_evidence.len])" : ""]</a> "
-			dat += "<a href=''>View Case Logs[current_case.case_logs ? " ([current_case.case_logs.len])" : ""]</a> "
-			dat += "<a href=''>Tape Recording List[current_case.evidence_recordings ? " ([current_case.evidence_recordings.len])" : ""]</a><br>"
+			if(evidence_access)
+				dat += "<a href='?src=\ref[src];case_notes=1'>View Case Notes Log[current_case.case_logs ? " ([current_case.case_logs.len])" : ""]</a> "
+				dat += "<a href='?src=\ref[src];evidence_screen=1'>View Evidence List[current_case.case_evidence ? " ([current_case.case_evidence.len])" : ""]</a> "
+				dat += "<a href='?src=\ref[src];view_case_log=1'>View Case Logs[current_case.case_logs ? " ([current_case.case_logs.len])" : ""]</a> "
+				dat += "<a href='?src=\ref[src];add_tape_recordings=1'>Tape Recording List[current_case.evidence_recordings ? " ([current_case.evidence_recordings.len])" : ""]</a><br>"
 
 			dat += "<br><a href='?src=\ref[src];print_case=1'>Print Case File</a>"
-
-
 
 		if(4)
 
@@ -262,9 +333,7 @@
 					total_cases = find_case_by_char_uid(user_id.unique_ID)
 
 				else if("search")
-
-
-					total_cases = find_case_by_UID(search)
+					total_cases = find_case_by_UID(search_query)
 
 				else if("lawyer_rep")
 					total_cases = cases_need_lawyer()
@@ -272,15 +341,57 @@
 
 			if(!isemptylist(total_cases))
 				for(var/datum/court_case/C in total_cases)
-					dat += "<a href='?src=\ref[src];choice=choose_case;case=\ref[C]''>[C.name]</a><br>"
+					dat += "<a href='?src=\ref[src];choice=choose_case;case=\ref[C]'>[C.name]</a><br>"
 			else
 				dat += "<i>No cases found.</i>"
 
 		if(5)
 			dat += "You have successfully deleted the court case. Press back to return to the main menu.<br>"
 
+
+		if(6)
+			dat += "<h3>Case Court Log:</h3><br><br>"
+
+			if(isemptylist(current_case.case_logs))
+				dat += "<i>No case logs.</i>"
+			else
+				for(var/C in current_case.case_logs)
+					dat += "<li>[C]</li>"
+
+		if(7)
+			dat += "<h3>Case Notes:</h3><br><br>"
+
+			if(isemptylist(current_case.case_notes))
+				dat += "<i>No case notes.</i>"
+			else
+				for(var/C in current_case.case_notes)
+					dat += "<li>[C]</li>"
+
+			dat += "Add Case Note"
+
+		if(8)
+			dat += "<h3>Evidence List:</h3><br><br>"
+
+			if(isemptylist(current_case.case_evidence))
+				dat += "<i>No evidence added. You can add new evidence by scanning it into the machine.</i><br>"
+			else
+				for(var/datum/case_evidence/E in current_case.case_evidence)
+					dat += "<li>[E.name]</li>"
+
+		if(9)
+			dat += "<h3>Tape Recording List:</h3><br><br>"
+
+			if(isemptylist(current_case.evidence_recordings))
+				dat += "<i>No tape recordings found. You can add a new tape by inserting a tape into the machine.</i><br>"
+			else
+				for(var/obj/item/device/tape/T in current_case.evidence_recordings)
+					dat += "<li>[T.name]</li>"
 	if(!(page == 1))
-		dat += "<br><a href='?src=\ref[src];back=1'>Back</a>"
+		if(!current_case)
+			dat += "<br><a href='?src=\ref[src];back=1'>Back</a>"
+		else
+			dat += "<br><a href='?src=\ref[src];view_case=1'>Back</a>"
+			dat += "<br><a href='?src=\ref[src];exit_case=1'>Exit Case</a>"
 
 
 	var/datum/browser/popup = new(user, "court_case_db", "[src]", 550, 650, src)
@@ -295,6 +406,7 @@
 	case_type = initial(case_type)
 	current_case = initial(current_case)
 	search_type = initial(search_type)
+	search_query = initial(search_query)
 	return
 
 /obj/machinery/case_database/proc/create_case(mob/user)
@@ -320,6 +432,26 @@
 
 	var/user_details = list("name" = user_id.registered_name, "unique_id" = user_id.unique_ID)
 	var/prosecuting = FALSE
+
+
+	if(prosecuting)
+		var/criminal_list = list()
+
+		for(var/datum/data/record/R in data_core.security)
+			criminal_list += R.fields["name"]
+
+		if(!criminal_list)
+			alert(user, "No police records exist on the system to select from!")
+
+		var/criminal = input(user, "Who are we opening the case against?", "Edit Criminal Records") as null|anything in criminal_list
+
+		var/unique_id_crim = ""
+
+		for(var/datum/data/record/C in data_core.security)
+			if(C.fields["name"] == criminal)
+				unique_id_crim = C.fields["unique_id"]
+
+		case.defendant = list("name" = criminal, "unique_id" = unique_id_crim)
 
 	switch(case_subject)
 		if("I want to contest my criminal charges")
@@ -349,24 +481,6 @@
 
 
 
-	if(prosecuting)
-		var/criminal_list = list()
-
-		for(var/datum/data/record/R in data_core.security)
-			criminal_list += R.fields["name"]
-
-		if(!criminal_list)
-			alert(user, "No police records exist on the system to select from!")
-
-		var/criminal = input(user, "Who are we opening the case against?", "Edit Criminal Records") as null|anything in criminal_list
-
-		var/unique_id_crim = ""
-
-		for(var/datum/data/record/C in data_core.security)
-			if(C.fields["name"] == criminal)
-				unique_id_crim = C.fields["unique_id"]
-
-		case.defendant = list("name" = criminal, "unique_id" = unique_id_crim)
 
 	case.name = "[case.plaintiff["name"]] vs. [case.defendant["name"]]"
 	current_case = case
@@ -383,6 +497,11 @@
 
 	if(href_list["back"])
 		clear_data()
+		page = 1
+
+	if(href_list["exit_case"])
+		clear_data()
+		current_case = null
 		page = 1
 
 	if(href_list["create_case"])
@@ -405,30 +524,36 @@
 				current_case = E
 				page = 3
 
-			if("select_case")
-				var/E = locate(href_list["type"])
 
-				if(!E)
-					return
-				if("view_all")
-					search_type = "All"
-				if("archived")
-					search_type = "Archived"
-				if("own")
-					search_type = "Own"
-				if("search")
-					search_type = "Search"
-					var/search = sanitize(input("Search case by unique ID", "Case Search") as text)
+	if(href_list["view_all"])
+		search_type = "All"
+		page = 4
 
-				if("lawyer_rep")
-					search_type = "Lawyer Rep"
+	if(href_list["archived"])
+		search_type = "Archived"
+		page = 4
 
-				page = 4
+	if(href_list["own"])
+		search_type = "Own"
+		page = 4
+
+
+	if(href_list["search"])
+		var/search = sanitize(input("Search case by unique ID", "Case Search") as text)
+		if(!search)
+			return
+		search_type = "Search"
+		page = 4
+
+	if(href_list["lawyer_rep"])
+		search_type = "Lawyer Rep"
+		page = 4
+
 
 	if(href_list["delete_case"])
 		page = 5
 
-	if(href_list["add_confirm"])
+	if(href_list["view_case_log"])
 		page = 6
 
 	if(href_list["case_notes"])
@@ -442,5 +567,7 @@
 
 	if(href_list["add_witnesses"])
 		page = 10
+
+
 	updateDialog()
 
