@@ -1,7 +1,7 @@
 /datum/job/nanotrasen
 	title = "Nanotrasen Representative"
 	flag = NANOTRASEN
-	department = "City Council"
+	department = "Nanotrasen"
 	head_position = 0
 	department_flag = GOVLAW
 	faction = "City"
@@ -48,7 +48,7 @@
 	title = "PDSI Agent"
 	flag = CBIA
 	alt_titles = list("PDSI Director", "PDSI Supervisory Agent", "PDSI Senior Agent")
-	department = "Police"
+	department = "Nanotrasen"
 	head_position = 0
 	department_flag = GOVLAW
 	faction = "City"
