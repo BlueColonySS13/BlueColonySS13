@@ -84,7 +84,8 @@ var/warrant_uid = 0
 		<small>Person authorizing arrest</small></br>
 		</BODY></HTML>
 		"}
-	if(activewarrant.fields["arrestsearch"] == "arrest")
+		
+	if(activewarrant.fields["arrestsearch"] == "search")
 		output= {"
 		<HTML><HEAD><TITLE>Search Warrant: [activewarrant.fields["namewarrant"]]</TITLE></HEAD>
 		<BODY bgcolor='#FFFFFF'><center>in the jurisdiction of the</br>
