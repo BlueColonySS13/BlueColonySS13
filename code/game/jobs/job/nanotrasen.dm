@@ -1,13 +1,13 @@
 /datum/job/nanotrasen
-	title = "Nanotrasen Representative"
+	title = "Government Representative"
 	flag = NANOTRASEN
-	department = "City Council"
+	department = "Nanotrasen"
 	head_position = 0
 	department_flag = GOVLAW
 	faction = "City"
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "the NanoTrasen CEO"
+	supervisors = "the Governors and President."
 	selection_color = "#0F0F6F"
 	idtype = /obj/item/weapon/card/id/nanotrasen/ntrep
 	access = list() 			//See get_access()
@@ -15,7 +15,7 @@
 	department = "Nanotrasen"
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/representative
 
-	alt_titles = list("Nanotrasen Security" = /decl/hierarchy/outfit/job/nanotrasen/guard,
+	alt_titles = list("Electoral Assistant" = /decl/hierarchy/outfit/job/nanotrasen/electoral,
                       "Nanotrasen Officer" = /decl/hierarchy/outfit/job/nanotrasen/officer)
 	email_domain = "nanotrasen.gov.nt"
 	wage = 1000
@@ -34,13 +34,15 @@
 	return get_all_centcom_access()
 
 /datum/job/nanotrasen/ceo
-	title = "NanoTrasen Sector Administrator"
+	title = "Governor"
 	total_positions = 1
 	spawn_positions = 1
 	flag = CEO
-	alt_titles = list("NanoTrasen Regional Director", "NanoTrasen CEO", "NanoTrasen COO")
+	alt_titles = list("Minister" = /decl/hierarchy/outfit/job/nanotrasen/minister,
+	 "Vice President" = /decl/hierarchy/outfit/job/heads/vpresident,
+	  "Supreme Justice" = /decl/hierarchy/outfit/job/nanotrasen/justice)
 	wage = 10000
-	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/captain
+	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/governor
 	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
 	minimum_character_age = 30
 
@@ -54,7 +56,7 @@
 	faction = "City"
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "NanoTrasen"
+	supervisors = "the President."
 	selection_color = "#0F0F6F"
 	idtype = /obj/item/weapon/card/id/nanotrasen/cbia
 	access = list() 			//See get_access()
