@@ -66,6 +66,7 @@
 	uniform = /obj/item/clothing/under/suit_jacket/navy
 	shoes = /obj/item/clothing/shoes/laceup
 	glasses = /obj/item/clothing/glasses/sunglasses/sechud
+	l_ear = /obj/item/device/radio/headset/government
 	belt = /obj/item/clothing/accessory/badge/holo/pdsi
 	l_hand = /obj/item/clothing/accessory/permit/gun/tier_five/police
 	id_pda_assignment = "PDSI Agent"
