@@ -46,8 +46,10 @@ GLOBAL_DATUM_INIT(moved_event, /decl/observ/moved, new)
 	if(. && !loc)
 		GLOB.moved_event.raise_event(src, old_loc, null)
 
+/* Moved to atoms_movable.dm
 /atom/movable/forceMove(atom/destination)
 	var/old_loc = loc
 	. = ..()
 	if(. && !loc)
 		GLOB.moved_event.raise_event(src, old_loc, null)
+*/
