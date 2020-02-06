@@ -62,14 +62,14 @@
 	id_type = /obj/item/weapon/card/id/nanotrasen/ceo
 
 /decl/hierarchy/outfit/job/nanotrasen/cbia
-	name = "Nanotrasen CBIA Agent"
-	head = /obj/item/clothing/head/beret/centcom/officer
-	uniform = /obj/item/clothing/under/rank/centcom
+	name = "Nanotrasen PDSI Agent"
+	uniform = /obj/item/clothing/under/suit_jacket/navy
 	shoes = /obj/item/clothing/shoes/laceup
-	gloves = /obj/item/clothing/gloves/white
-	glasses = /obj/item/clothing/glasses/sunglasses
-	belt = /obj/item/weapon/gun/energy
-	id_pda_assignment = "Nanotrasen CBIA Agent"
+	glasses = /obj/item/clothing/glasses/sunglasses/sechud
+	l_ear = /obj/item/device/radio/headset/government
+	belt = /obj/item/clothing/accessory/badge/holo/pdsi
+	l_hand = /obj/item/clothing/accessory/permit/gun/tier_five/police
+	id_pda_assignment = "PDSI Agent"
 	id_type = /obj/item/weapon/card/id/nanotrasen/cbia
 
 /decl/hierarchy/outfit/job/heads/president

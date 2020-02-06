@@ -484,7 +484,7 @@
 /var/const/access_cbia = 111
 /datum/access/cbia
 	id = access_cbia
-	desc = "CBIA Agent"
+	desc = "PDSI Agent"
 	access_type = ACCESS_TYPE_CENTCOM
 
 /***************

@@ -151,6 +151,13 @@
 	icon_state = "marshalbadge"
 	slot_flags = SLOT_TIE | SLOT_BELT
 
+/obj/item/clothing/accessory/badge/holo/pdsi
+	name = "agent's holobadge"
+	desc = "An immaculately polished gold badge on leather. Labeled 'PDSI Agent.'"
+	icon_state = "marshalbadge"
+	badge_string = "Pollux Division of Special Investigation"
+	slot_flags = SLOT_TIE | SLOT_BELT
+
 /obj/item/clothing/accessory/badge/press
 	name = "press badge"
 	desc = "A leather-backed plastic badge displaying that the owner is certified press personnel."
