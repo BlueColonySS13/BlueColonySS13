@@ -155,6 +155,29 @@
 	desc = "Really brings the room together."
 	icon = 'icons/obj/plants.dmi'
 	icon_state = "plant-01"
+	
+	var/obj/item/stored_item
+
+/obj/structure/flora/pottedplant/attackby(obj/item/I, mob/user)
+	if(stored_item)
+		to_chat(user, "<b>[I] won't fit in. There already appears to be something in here...</b>")
+		return
+	else
+		user.drop_from_inventory(I, src)
+		I.forceMove(src)
+		stored_item = I
+		src.visible_message("\icon[src] \icon[I] [user] places [I] into [src].")
+		return
+		
+/obj/structure/flora/pottedplant/attack_hand(mob/user)
+	if(!stored_item)
+		to_chat(user, "<b>You see nothing of interest in the plant ...</b>")
+	else
+		if(do_after(user, 10))
+			to_chat(user, "You find \icon[I] [stored_item] in [src]!")
+			I.forceMove(loc)
+			stored_item = null
+	..()
 
 /obj/structure/flora/pottedplant/large
 	name = "large potted plant"
