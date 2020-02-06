@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(afk_tracking)
 
 /datum/controller/subsystem/afk_tracking/Initialize(timeofday)
 	. = ..()
-	if(!config.kick_inactive)
+	if(config.kick_inactive == 0)
 		can_fire = FALSE
 
 /datum/controller/subsystem/afk_tracking/fire() //This isn't great but it's lifted directly from the old ProcessScheduler afk tracker because I'm lazy
