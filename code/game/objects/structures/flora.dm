@@ -174,8 +174,8 @@
 		to_chat(user, "<b>You see nothing of interest in the plant ...</b>")
 	else
 		if(do_after(user, 10))
-			to_chat(user, "You find \icon[I] [stored_item] in [src]!")
-			I.forceMove(loc)
+			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")
+			stored_item.forceMove(loc)
 			stored_item = null
 	..()
 
