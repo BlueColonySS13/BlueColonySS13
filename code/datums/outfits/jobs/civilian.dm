@@ -127,6 +127,7 @@
 	l_hand = /obj/item/weapon/clipboard
 	id_type = /obj/item/weapon/card/id/civilian/defense
 	pda_type = /obj/item/device/pda/lawyer
+	backpack_contents = list(/obj/item/device/camera = 1)
 
 /decl/hierarchy/outfit/job/prosecution
 	name = OUTFIT_JOB_NAME("District Prosecutor")
@@ -138,6 +139,7 @@
 	l_hand = /obj/item/weapon/clipboard
 	id_type = /obj/item/weapon/card/id/security/prosecutor
 	pda_type = /obj/item/device/pda/lawyer
+	backpack_contents = list(/obj/item/device/camera = 1)
 
 /decl/hierarchy/outfit/job/civilian/secretary
 	name = OUTFIT_JOB_NAME("Secretary")

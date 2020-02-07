@@ -60,28 +60,28 @@ var/global/court_cases = list()
 	expiry_date = AddDays(creation_date, 7)
 
 /datum/court_case/proc/is_lawyer(obj/item/weapon/card/id/I)
-	if(!I || !I.registered_name || !I.unique_id)
+	if(!I || !I.registered_name || !I.unique_ID)
 		return FALSE
 
-	if((representative["name"] == I.registered_name) && (representative["unique_id"] == I.unique_ID)
+	if((representative["name"] == I.registered_name) && (representative["unique_id"] == I.unique_ID))
 		return TRUE
 
 	return FALSE
 
 /datum/court_case/proc/is_plaintiff(obj/item/weapon/card/id/I)
-	if(!I || !I.registered_name || !I.unique_id)
+	if(!I || !I.registered_name || !I.unique_ID)
 		return FALSE
 
-	if((plaintiff["name"] == I.registered_name) && (plaintiff["unique_id"] == I.unique_ID)
+	if((plaintiff["name"] == I.registered_name) && (plaintiff["unique_id"] == I.unique_ID))
 		return TRUE
 
 	return FALSE
 
 /datum/court_case/proc/is_defendant(obj/item/weapon/card/id/I)
-	if(!I || !I.registered_name || !I.unique_id)
+	if(!I || !I.registered_name || !I.unique_ID)
 		return FALSE
 
-	if((defendant["name"] == I.registered_name) && (defendant["unique_id"] == I.unique_ID)
+	if((defendant["name"] == I.registered_name) && (defendant["unique_id"] == I.unique_ID))
 		return TRUE
 
 	return FALSE
@@ -98,9 +98,18 @@ var/global/court_cases = list()
 	var/list/fingerprints_hidden = list()						// same thing, but admin side
 	var/fingerprints_last
 	var/list/suit_fibers = list()
+
+	var/blood_color
+	var/list/blood_DNA = list()
+	var/was_bloodied = FALSE
+
 	var/game_id_created										// The game-id this was created in. This should be obvious from the case id but w/e
+	var/date_added
+	var/added_by = list("name" = "", "unique_id" = "")
 
 	var/icon/photo											// photos only
+
+	var/paper_content
 
 /datum/case_evidence/New()
 	..()
@@ -108,11 +117,15 @@ var/global/court_cases = list()
 		UID = "[game_id]-[rand(111, 999)]"
 	if(!game_id_created)
 		game_id_created = game_id
+	if(!date_added)
+		date_added = full_game_time()
 
 
-/datum/case_evidence/proc/obj_record(var/obj/O)
+/datum/case_evidence/proc/obj_record(var/obj/O, name, uid)
 	if(!O)
 		return
+
+	added_by = list("name" = name, "unique_id" = uid)
 
 	name = O.name
 	description = O.desc
@@ -124,9 +137,43 @@ var/global/court_cases = list()
 	fingerprints_last = O.fingerprintslast
 	suit_fibers = O.suit_fibers
 
+	blood_color = O.blood_color
+	blood_DNA = O.blood_DNA
+	was_bloodied = O.was_bloodied
+
 	if(istype(O, /obj/item/weapon/photo))
 		var/obj/item/weapon/photo/foto = O
 		photo = foto.img
+
+
+	if(istype(O, /obj/item/weapon/paper))
+		var/obj/item/weapon/paper/sheet = O
+		paper_content = sheet.info
+
+
+	if(istype(O, /obj/item/weapon/forensics/swab))
+		var/obj/item/weapon/forensics/swab/swabs = O
+		description += "<br><b>Found on Swab:<b>"
+
+		if(swabs.gsr)
+			description += "Residue from a [swabs.gsr] bullet detected."
+		else
+			description += "No gunpowder residue found."
+
+
+	if(istype(O, /obj/item/weapon/sample/fibers))
+		var/obj/item/weapon/sample/fibers/fibre = O
+		description += "<br><p>Fibers Collected:<p>"
+		for(var/fiber in fibre.evidence)
+			description += "<li>[fiber]</li>"
+
+
+	if(istype(O, /obj/item/weapon/sample/print))
+		var/obj/item/weapon/sample/print/prints = O
+		description += "<br><p>Fibers Collected:<p>"
+		for(var/print in prints.evidence)
+			description += "<li>[print]</li>"
+
 
 	return 1
 

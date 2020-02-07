@@ -2,14 +2,15 @@
 	hierarchy_type = /decl/hierarchy/outfit/job/security
 	glasses = /obj/item/clothing/glasses/sunglasses/sechud
 	l_ear = /obj/item/device/radio/headset/headset_sec
-	gloves = /obj/item/clothing/gloves/black
+	gloves = /obj/item/clothing/gloves/forensic/police
 	shoes = /obj/item/clothing/shoes/boots/jackboots
-	l_hand = /obj/item/weapon/book/manual/sop
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel_one = /obj/item/weapon/storage/backpack/satchel/sec
 	backpack_contents = list(/obj/item/weapon/handcuffs = 1,
 	/obj/item/clothing/accessory/permit/gun/tier_four = 1,
-	/obj/item/device/holowarrant = 1)
+	/obj/item/device/holowarrant = 1,
+	/obj/item/weapon/book/manual/sop = 1,
+	/obj/item/device/camera = 1)
 
 	messenger_bag = /obj/item/weapon/storage/backpack/messenger/sec
 
@@ -42,6 +43,7 @@
 	head = /obj/item/clothing/head/det
 	uniform = /obj/item/clothing/under/det
 	suit = /obj/item/clothing/suit/storage/det_trench
+	gloves = /obj/item/clothing/gloves/forensic
 	l_pocket = /obj/item/weapon/flame/lighter/zippo
 	shoes = /obj/item/clothing/shoes/laceup
 	r_hand = /obj/item/weapon/storage/briefcase/crimekit
@@ -49,7 +51,8 @@
 	pda_type = /obj/item/device/pda/detective
 	backpack = /obj/item/weapon/storage/backpack
 	satchel_one = /obj/item/weapon/storage/backpack/satchel/norm
-	backpack_contents = list(/obj/item/weapon/storage/box/evidence = 1)
+	backpack_contents = list(/obj/item/weapon/storage/box/evidence = 1,
+	/obj/item/device/camera = 1)
 
 /decl/hierarchy/outfit/job/security/detective/forensic
 	name = OUTFIT_JOB_NAME("Forensic technician")

@@ -17,11 +17,21 @@
 	icon_state = "forensic"
 	item_state = "black"
 	permeability_coefficient = 0.05
+	fingerprint_chance = 0
 
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
+
+/obj/item/clothing/gloves/forensic/police
+	desc = "Police gloves especially made for police officers to stop botching forensic investigations."
+	name = "police gloves"
+	icon_state = "black"
+	item_state = "black"
+
+	fingerprint_chance = 1
+
 
 /obj/item/clothing/gloves/swat
 	desc = "These tactical gloves are somewhat fire and impact-resistant."

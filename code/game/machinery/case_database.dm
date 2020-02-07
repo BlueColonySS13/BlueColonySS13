@@ -1,5 +1,5 @@
 /obj/machinery/case_database
-	name = "\improper Case Database"
+	name = "Case Database Machine"
 	desc = "A large database of legal cases can be accessed through this computer."
 	unacidable = 1
 	light_range = 4
@@ -18,11 +18,13 @@
 
 	var/page = 1
 	var/search_type = "All"
-	var/search_query = ""
+	var/search_query
 
 	// Types: "Archived", "Own", "ID", "Search", otherwise it will search all CASES
 
 	var/datum/court_case/current_case
+	var/datum/case_evidence/current_evidence
+	var/obj/item/device/tape/current_recording
 	var/obj/item/weapon/card/id/user_id
 
 	var/judge_access = FALSE
@@ -44,6 +46,8 @@
 
 	var/case_desc
 	var/case_type
+
+	var/busy = FALSE
 
 /obj/machinery/case_database/initialize()
 	..()
@@ -95,14 +99,22 @@
 	if(missing_case())
 		return
 
+	if(busy)
+		to_chat(user, "<b>The machine is busy, please wait!</b>")
+		return
+
 	if(istype(W, /obj/item/device/tape))
 		var/obj/item/device/tape/input_tape = W
 		if(!isemptylist(input_tape.storedinfo))
+			busy = TRUE
 			add_tape(input_tape, user)
+			busy = FALSE
 			return
 
 	if(istype(W, /obj/item))
+		busy = TRUE
 		add_evidence(W, user)
+		busy = FALSE
 		return
 
 	..()
@@ -113,7 +125,7 @@
 
 	var/datum/case_evidence/evidence = new()
 
-	if(!evidence.obj_record(held_item) || !current_case)
+	if(!evidence.obj_record(held_item, user_id.registered_name, user_id.unique_ID) || !current_case)
 		return
 
 	current_case.case_evidence += evidence
@@ -128,8 +140,6 @@
 
 
 /obj/machinery/case_database/proc/add_tape(obj/item/device/tape/heldtape, mob/user)
-	var/obj/item/device/tape/newtape = new(loc)
-
 	if(!heldtape)
 		return
 
@@ -142,6 +152,7 @@
 		heldtape.forceMove(loc)
 		return
 
+	var/obj/item/device/tape/newtape = new(loc)
 	newtape.storedinfo = heldtape.storedinfo
 	newtape.timestamp = heldtape.timestamp
 	current_case.evidence_recordings += newtape
@@ -193,6 +204,9 @@
 		//8 - [CASE ACTIVE] Add Evidence Screen
 		//9 - [CASE ACTIVE] Add tape recordings
 		//10 - [CASE ACTIVE] Add witnesses
+
+		//11 - [EVIDENCE ACTIVE] View Evidence
+		//12 - [RECORDING SELECTED] View/Play Recording
 
 		// HOMEPAGE
 		if(1)
@@ -309,7 +323,7 @@
 
 			/////// OPTIONS FOR CURRENT CASE ///////
 			if(evidence_access)
-				dat += "<a href='?src=\ref[src];case_notes=1'>View Case Notes Log[current_case.case_logs ? " ([current_case.case_logs.len])" : ""]</a> "
+				dat += "<a href='?src=\ref[src];case_notes=1'>View Case Notes Log[current_case.case_notes ? " ([current_case.case_notes.len])" : ""]</a> "
 				dat += "<a href='?src=\ref[src];evidence_screen=1'>View Evidence List[current_case.case_evidence ? " ([current_case.case_evidence.len])" : ""]</a> "
 				dat += "<a href='?src=\ref[src];view_case_log=1'>View Case Logs[current_case.case_logs ? " ([current_case.case_logs.len])" : ""]</a> "
 				dat += "<a href='?src=\ref[src];add_tape_recordings=1'>Tape Recording List[current_case.evidence_recordings ? " ([current_case.evidence_recordings.len])" : ""]</a><br>"
@@ -323,20 +337,20 @@
 
 			var/total_cases = list()
 
-			switch(case_type)
+			switch(search_type)
 				if("All")
-					total_cases = get_public_open_cases()
+					total_cases += get_public_open_cases()
 
-				else if("archived")
-					total_cases = get_public_archived_cases()
-				else if("own")
-					total_cases = find_case_by_char_uid(user_id.unique_ID)
+				if("Archived")
+					total_cases += get_public_archived_cases()
+				if("Own")
+					total_cases += find_case_by_char_uid(user_id.unique_ID)
 
-				else if("search")
-					total_cases = find_case_by_UID(search_query)
+				if("Search")
+					total_cases += find_case_by_UID(search_query)
 
-				else if("lawyer_rep")
-					total_cases = cases_need_lawyer()
+				if("Lawyer_rep")
+					total_cases += cases_need_lawyer()
 
 
 			if(!isemptylist(total_cases))
@@ -361,13 +375,15 @@
 		if(7)
 			dat += "<h3>Case Notes:</h3><br><br>"
 
+			dat += "<br><a href='?src=\ref[src];add_case_note=1'>Add Case Note</a>"
+
 			if(isemptylist(current_case.case_notes))
 				dat += "<i>No case notes.</i>"
 			else
 				for(var/C in current_case.case_notes)
 					dat += "<li>[C]</li>"
 
-			dat += "Add Case Note"
+
 
 		if(8)
 			dat += "<h3>Evidence List:</h3><br><br>"
@@ -376,7 +392,7 @@
 				dat += "<i>No evidence added. You can add new evidence by scanning it into the machine.</i><br>"
 			else
 				for(var/datum/case_evidence/E in current_case.case_evidence)
-					dat += "<li>[E.name]</li>"
+					dat += "<li><a href='?src=\ref[src];view_evidence=1;evidence=\ref[E]'>[E.name]</a></li>"
 
 		if(9)
 			dat += "<h3>Tape Recording List:</h3><br><br>"
@@ -385,7 +401,106 @@
 				dat += "<i>No tape recordings found. You can add a new tape by inserting a tape into the machine.</i><br>"
 			else
 				for(var/obj/item/device/tape/T in current_case.evidence_recordings)
-					dat += "<li>[T.name]</li>"
+					dat += "<li><a href='?src=\ref[src];view_evidence=1;recording=\ref[T]'>[T.name]</a></li>"
+
+		if(10)
+			return // TODO
+
+		if(11)
+			if(!current_evidence)
+				dat += "<b>ERROR:</b> <i>This evidence piece cannot be found on the system.</i><br>"
+			else
+				dat += "<h3>Evidence: [current_evidence.name]</h3><br>"
+
+
+				if(current_evidence.icon && current_evidence.icon_state)
+					var/icon/i = new(current_evidence.icon, current_evidence.icon_state)
+					user << browse_rsc(i, "evidence_[current_evidence.UID].png")
+					dat += "<img src='evidence_[current_evidence.UID].png' style='width: 64px; height: 64px; style='-ms-interpolation-mode:nearest-neighbor'><br>"
+
+				dat += "<b>Name:</b> [current_evidence.name]<br>"
+
+
+				if(current_evidence.description)
+					dat += "<b>Description:</b><br>"
+					dat += "[current_evidence.description]<br>"
+
+				dat += "<b>Added By:</b> [current_evidence.added_by["name"]]<br>"
+
+				dat += "<b>Fingerprints:</b> "
+				if(!isemptylist(current_evidence.fingerprints))
+					for(var/F in current_evidence.fingerprints)
+						dat += "<li>[F]</li>"
+				else
+					dat += "<i>No fingerprints found.</i>"
+
+				dat += "<br>"
+				dat += "<b>Fibers:</b> "
+				if(!isemptylist(current_evidence.suit_fibers))
+					for(var/F in current_evidence.suit_fibers)
+						dat += "<li>[F]</li>"
+				else
+					dat += "<i>No fibers found.</i>"
+
+				dat += "<br>"
+
+				if(!isemptylist(current_evidence.blood_DNA))
+					dat += "<b>Blood DNA Strings:</b> "
+					if(current_evidence.was_bloodied)
+						dat += "<i>Has traces of blood.</i>"
+					for(var/B in current_evidence.blood_DNA)
+						dat += "<li>[B]</li>"
+				else
+					dat += "<i>No blood dna found.</i>"
+
+				if(current_evidence.photo)
+					dat += "<br>"
+					dat += "<b>Photo Data:</b><br>"
+					user << browse_rsc(current_evidence.photo, "evidence_photo_[current_evidence.UID].png")
+					dat += "<img src='evidence_photo_[current_evidence.UID].png' style='-ms-interpolation-mode:nearest-neighbor' width='[64*3]'/><br>"
+
+				if(current_evidence.comments)
+					dat += "<br>"
+					dat += "<b>Comments:</b><br>"
+					dat += "[current_evidence.comments]"
+					dat += "<br>"
+					dat += "<a href='?src=\ref[src];evidence_comments=1'>Edit Comments</a>"
+
+				if(current_evidence.paper_content)
+					dat += "<br>"
+					dat += "<b>Paper Contents:</b><br>"
+					dat += "[current_evidence.paper_content]"
+					dat += "<br>"
+
+
+
+
+
+
+
+		if(12)
+			if(!current_recording)
+				dat += "<b>ERROR:</b> <i>Recording not found on the system.</i><br>"
+			else
+				dat += "<h3>Recording: [current_recording.name]</h3><br>"
+
+				dat += "<br><a href='?src=\ref[src];print_recording=1'>Print Recording Transcript</a>"
+
+				dat += "<a href='?src=\ref[src];play_recording=1'>Play</a>"
+				dat += "<a href='?src=\ref[src];pause_recording=1'>Pause</a>"
+
+				dat += "<br>Transcript:</br>"
+				if(!isemptylist(current_recording.storedinfo))
+					for(var/i=1,current_recording.storedinfo.len >= i,i++)
+						var/printedmessage = current_recording.storedinfo[i]
+						if (findtextEx(printedmessage,"*",1,2)) //replace action sounds
+							printedmessage = "\[[time2text(current_recording.timestamp[i]*10,"mm:ss")]\] (Unrecognized sound)"
+						dat += "[printedmessage]<BR>"
+				else
+					dat += "<i>Recording is empty.</i>"
+
+
+
 	if(!(page == 1))
 		if(!current_case)
 			dat += "<br><a href='?src=\ref[src];back=1'>Back</a>"
@@ -405,8 +520,10 @@
 	case_desc = initial(case_desc)
 	case_type = initial(case_type)
 	current_case = initial(current_case)
+	current_evidence = initial(current_evidence)
+	current_recording = initial(current_recording)
 	search_type = initial(search_type)
-	search_query = initial(search_query)
+
 	return
 
 /obj/machinery/case_database/proc/create_case(mob/user)
@@ -537,6 +654,9 @@
 		search_type = "Own"
 		page = 4
 
+	if(href_list["lawyer_rep"])
+		search_type = "Lawyer Rep"
+		page = 4
 
 	if(href_list["search"])
 		var/search = sanitize(input("Search case by unique ID", "Case Search") as text)
@@ -545,9 +665,28 @@
 		search_type = "Search"
 		page = 4
 
-	if(href_list["lawyer_rep"])
-		search_type = "Lawyer Rep"
-		page = 4
+
+	if(href_list["add_case_note"])
+		if(!current_case)
+			return
+
+		var/note = sanitize(input("Enter a note comment for this case.", "Case Notes") as message)
+
+		note = "\"[note]\" - <i>[user_id.registered_name]</i> ([full_game_time()])"
+
+		current_case.case_notes += note
+
+	if(href_list["evidence_comments"])
+		if(!current_evidence)
+			return
+
+		var/note = sanitize(input("You may edit the evidence commentary here.", "Case Notes", current_evidence.comments) as message)
+
+		current_evidence.comments = note
+
+
+
+
 
 
 	if(href_list["delete_case"])
@@ -567,6 +706,34 @@
 
 	if(href_list["add_witnesses"])
 		page = 10
+
+	if(href_list["view_evidence"])
+		var/E = locate(href_list["evidence"])
+		if(!E || (!(E in current_case.case_evidence)))
+			return
+
+		current_evidence = E
+
+		page = 11
+
+	if(href_list["view_recording"])
+		var/E = locate(href_list["recording"])
+		if(!E || (!(E in current_case.evidence_recordings)))
+			return
+
+		current_recording = E
+
+		page = 12
+
+	if(href_list["print_recording"])
+		var/E = locate(href_list["recording"])
+		if(!current_recording || !E || (!(E in current_case.evidence_recordings)))
+			return
+
+		tape_player.mytape = current_recording
+		tape_player.print_transcript()
+		tape_player.mytape = null
+
 
 
 	updateDialog()
