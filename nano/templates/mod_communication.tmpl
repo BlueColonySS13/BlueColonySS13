@@ -76,7 +76,7 @@
 			<u>>Pest Control Services:</u><br>
 
 			{{if data.carp_control}}
-			<div class=item><b>Carp Control:</b> {{:data.carp_control}} - {{:data.carp_control_cost}}</div>
+				<div class=item><b>Carp Control:</b> {{:data.carp_control}} - {{:data.carp_control_cost}}</div>
 			{{/if}}
 
 			<br>
@@ -86,8 +86,10 @@
 			{{if data.antivirus}}
 				<div class=item><b>Network Anti-Virus - Gr3y.T1d3 Firewall:</b> {{:data.antivirus}} - {{:data.antivirus_cost}}</div>
 			{{/if}}	
+			
 		{{else}}
-			<i>The current president has disabled control of city services for council members.</i>	
+
+			<i>The current president has disabled control of city services for council members.</i>	<br><br>
 
 		{{/if}}
 
