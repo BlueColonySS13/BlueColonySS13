@@ -425,7 +425,8 @@
 					dat += "<b>Description:</b><br>"
 					dat += "[current_evidence.description]<br>"
 
-				dat += "<b>Added By:</b> [current_evidence.added_by["name"]]<br>"
+				if(current_evidence.added_by["name"])
+					dat += "<b>Added By:</b> [current_evidence.added_by["name"]]<br>"
 
 				dat += "<b>Fingerprints:</b> "
 				if(!isemptylist(current_evidence.fingerprints))
@@ -444,7 +445,7 @@
 
 				dat += "<br>"
 
-				if(!isemptylist(current_evidence.blood_DNA))
+				if(!current_evidence.blood_DNA)
 					dat += "<b>Blood DNA Strings:</b> "
 					if(current_evidence.was_bloodied)
 						dat += "<i>Has traces of blood.</i>"

@@ -125,8 +125,6 @@ var/global/court_cases = list()
 	if(!O)
 		return
 
-	added_by = list("name" = name, "unique_id" = uid)
-
 	name = O.name
 	description = O.desc
 	icon = O.icon
@@ -141,6 +139,7 @@ var/global/court_cases = list()
 	blood_DNA = O.blood_DNA
 	was_bloodied = O.was_bloodied
 
+	added_by = list("name" = name, "unique_id" = uid)
 	if(istype(O, /obj/item/weapon/photo))
 		var/obj/item/weapon/photo/foto = O
 		photo = foto.img
