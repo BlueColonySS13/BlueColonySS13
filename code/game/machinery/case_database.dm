@@ -7,7 +7,6 @@
 	light_color = "#ebf7fe"  //white blue
 	density = 1
 	anchored = 1
-	bounds = "64,32"
 	pixel_y = 25
 	pixel_x = -15		// it's intended to be centered into the courtroom
 	plane = ABOVE_PLANE
