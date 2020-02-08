@@ -842,9 +842,30 @@
 	icon_state = "ianplushie"
 	anchored = 0
 	density = 1
+	var/opened = FALSE	// has this been slit open? this will allow you to store an object in a plushie.
+	var/obj/item/stored_item	// Note: Stored items can't be bigger than the plushie itself.
 	var/phrase = "I don't want to exist anymore!"
 
+/obj/structure/plushie/examine(mob/user)
+	..()
+	if(opened)
+		to_chat(user, "<i>You notice an incision has been made on [src].</i>")
+		if(in_range(user, src) && stored_item)
+			to_chat(user, "<i>You can see something in there...</i>")
+
+/obj/structure/plushie/on_persistence_load()
+	if(contents[1])
+		stored_item = contents[1]
+	..()
+
 /obj/structure/plushie/attack_hand(mob/user)
+	if(stored_item)
+		if(do_after(user, 10))
+			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")
+			stored_item.forceMove(loc)
+			stored_item = null
+			return
+
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.a_intent == I_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
@@ -856,6 +877,26 @@
 		user.visible_message("<span class='notice'><b>\The [user]</b> pokes the [src].</span>","<span class='notice'>You poke the [src].</span>")
 		visible_message("[src] says, \"[phrase]\"")
 
+
+/obj/structure/plushie/attackby(obj/item/I as obj, mob/user as mob)
+	if(istype(I, /obj/item/device/threadneedle))
+		to_chat(user, "You sew the hole in [src].")
+		opened = FALSE
+		return
+
+	if(is_sharp(I) && !opened)
+		to_chat(user, "You open a small incision in [src]. You can place tiny items inside.")
+		opened = TRUE
+		return
+
+	if( (!(I.w_class > w_class)) && opened)
+		to_chat(user, "You place [I] inside [src].")
+		user.drop_from_inventory(I, src)
+		I.forceMove(src)
+		stored_item = I
+		return
+
+	..()
 
 /obj/structure/plushie/ian
 	name = "plush corgi"
@@ -890,7 +931,30 @@
 	w_class = ITEMSIZE_TINY
 	var/last_message = 0
 
+	var/opened = FALSE	// has this been slit open? this will allow you to store an object in a plushie.
+	var/obj/item/stored_item	// Note: Stored items can't be bigger than the plushie itself.
+
+/obj/item/toy/plushie/on_persistence_load()
+	if(contents[1])
+		stored_item = contents[1]
+	..()
+
+
+/obj/item/toy/plushie/examine(mob/user)
+	..()
+	if(opened)
+		to_chat(user, "<i>You notice an incision has been made on [src].</i>")
+		if(in_range(user, src) && stored_item)
+			to_chat(user, "<i>You can see something in there...</i>")
+
 /obj/item/toy/plushie/attack_self(mob/user as mob)
+	if(stored_item)
+		if(do_after(user, 10))
+			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")
+			stored_item.forceMove(loc)
+			stored_item = null
+			return
+
 	if(world.time - last_message <= 1 SECOND)
 		return
 	if(user.a_intent == I_HELP)
@@ -922,6 +986,26 @@
 	if(istype(I, /obj/item/toy/plushie) || istype(I, /obj/item/organ/external/head))
 		user.visible_message("<span class='notice'>[user] makes \the [I] kiss \the [src]!.</span>", \
 		"<span class='notice'>You make \the [I] kiss \the [src]!.</span>")
+		return
+
+	if(istype(I, /obj/item/device/threadneedle))
+		to_chat(user, "You sew the hole underneath [src].")
+		opened = FALSE
+		return
+
+	if(is_sharp(I) && !opened)
+		to_chat(user, "You open a small incision in [src]. You can place tiny items inside.")
+		opened = TRUE
+		return
+
+	if( (!(I.w_class > w_class)) && opened)
+		to_chat(user, "You place [I] inside [src].")
+		user.drop_from_inventory(I, src)
+		I.forceMove(src)
+		stored_item = I
+		to_chat(user, "You placed [I] into [src].")
+		return
+
 	return ..()
 
 /obj/item/toy/plushie/nymph
