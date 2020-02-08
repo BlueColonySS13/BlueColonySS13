@@ -415,9 +415,9 @@
 "hY" = (/obj/machinery/door/airlock/glass_research{name = "Xenobiology Lab"; req_access = list(55)},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "hZ" = (/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "ia" = (/obj/machinery/disposal,/obj/structure/disposalpipe/trunk{dir = 1},/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"ib" = (/obj/structure/table/glass/white,/obj/item/weapon/storage/box/syringes,/obj/item/weapon/storage/box/beakers,/turf/simulated/floor/tiled/dark,/area/medical/virology)
+"ib" = (/obj/machinery/computer/diseasesplicer,/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "ic" = (/obj/structure/table/glass/white,/obj/item/weapon/virusdish/random,/obj/item/weapon/virusdish/random,/obj/item/weapon/virusdish/random,/obj/item/weapon/virusdish/random,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"id" = (/obj/machinery/smartfridge/chemistry/virology,/turf/simulated/floor/tiled/dark,/area/medical/virology)
+"id" = (/obj/machinery/smartfridge/secure/virology{req_access = list(55)},/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "ie" = (/obj/structure/closet/l3closet/virology,/obj/machinery/light/small{icon_state = "bulb1"; dir = 8},/turf/simulated/floor/tiled/dark,/area/medical/virologyaccess)
 "if" = (/obj/machinery/light/colored{tag = "icon-yellow1 (NORTH)"; icon_state = "yellow1"; dir = 1},/obj/structure/closet/crate/bin,/obj/effect/floor_decal/corner/purple{dir = 5},/obj/effect/floor_decal/corner/purple{dir = 9},/turf/simulated/floor/tiled/dark,/area/rnd/research)
 "ig" = (/turf/simulated/floor/tiled/dark,/area/rnd/research)
@@ -433,7 +433,7 @@
 "iq" = (/obj/machinery/status_display{density = 0; layer = 4; pixel_x = 0; pixel_y = 32},/obj/machinery/seed_extractor,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "ir" = (/obj/machinery/reagentgrinder,/obj/structure/table/glass,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "is" = (/obj/structure/table/glass,/obj/item/weapon/storage/box/beakers{pixel_x = 2; pixel_y = 2},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
-"it" = (/obj/machinery/button/crematorium{pixel_x = -32},/turf/simulated/floor/tiled/dark,/area/medical/virology)
+"it" = (/obj/machinery/button/crematorium{pixel_x = -32; req_access = list(55)},/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "iu" = (/obj/machinery/door/airlock/glass_research{dir = 8; icon_state = "closed"; name = "Virology"; req_access = list(55)},/turf/simulated/floor/tiled/dark,/area/medical/virologyaccess)
 "iv" = (/obj/machinery/shower{icon_state = "shower"; dir = 1},/turf/simulated/floor/tiled/dark,/area/medical/virologyaccess)
 "iw" = (/obj/machinery/hologram/holopad,/turf/simulated/floor/tiled/dark,/area/rnd/research)
@@ -724,6 +724,7 @@
 "nV" = (/obj/structure/bed/chair/sofa/purp/left,/turf/simulated/floor/carpet/purcarpet,/area/planets/Geminus/indoor/backroom)
 "nW" = (/obj/structure/bed/chair/sofa/right{icon_state = "sofaend_right"; dir = 4},/obj/effect/landmark/start{name = "Civilian"},/turf/simulated/floor/diamond,/area/crew_quarters/longue_area)
 "nX" = (/obj/structure/flora/pottedplant{icon_state = "plant-08"},/turf/simulated/floor/carpet/purcarpet,/area/crew_quarters/longue_area)
+"nY" = (/obj/structure/reagent_dispensers/virusfood{pixel_x = 32},/obj/structure/table/glass/white,/obj/item/weapon/storage/box/beakers,/obj/item/weapon/storage/box/syringes,/obj/item/weapon/reagent_containers/glass/beaker/radium,/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "nZ" = (/obj/structure/sign/double/city/gamecenter/left{pixel_y = 30},/turf/simulated/floor/carpet/turcarpet,/area/planets/Geminus/indoor/backroom)
 "oa" = (/obj/structure/sign/double/city/gamecenter/right{pixel_y = 30},/turf/simulated/floor/carpet/turcarpet,/area/planets/Geminus/indoor/backroom)
 "ob" = (/obj/machinery/computer/arcade,/turf/simulated/floor/diamond,/area/planets/Geminus/indoor/backroom)
@@ -965,12 +966,11 @@
 "sD" = (/obj/machinery/botany/extractor,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "sE" = (/obj/machinery/disease2/incubator,/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "sF" = (/obj/structure/bed/chair/office/dark{dir = 8},/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"sG" = (/obj/structure/reagent_dispensers/virusfood{pixel_x = 32},/turf/simulated/floor/tiled/dark,/area/medical/virology)
+"sG" = (/obj/structure/table/glass/white,/obj/item/weapon/paper_bin,/obj/item/weapon/pen,/obj/item/weapon/folder/white,/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "sH" = (/obj/structure/sink{icon_state = "sink"; dir = 8; pixel_x = -12; pixel_y = 2},/obj/effect/floor_decal/corner/purple{dir = 9},/turf/simulated/floor/tiled/dark,/area/rnd/research)
 "sI" = (/obj/machinery/light/colored{tag = "icon-yellow1 (EAST)"; icon_state = "yellow1"; dir = 4},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "sJ" = (/obj/structure/table/glass,/obj/item/weapon/paper_bin{pixel_x = 1; pixel_y = 9},/obj/item/weapon/pen,/obj/machinery/newscaster{pixel_x = 28; pixel_y = 0},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
-"sK" = (/obj/structure/table/glass/white,/obj/item/weapon/paper_bin,/obj/item/weapon/pen,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"sL" = (/obj/structure/table/glass/white,/obj/item/weapon/folder/white,/turf/simulated/floor/tiled/dark,/area/medical/virology)
+"sK" = (/obj/structure/table/glass/white,/obj/item/weapon/storage/fancy/vials,/obj/item/weapon/storage/lockbox/vials,/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "sM" = (/obj/structure/table/glass/white,/obj/item/weapon/storage/box/gloves,/obj/item/weapon/storage/box/masks,/obj/machinery/light/colored,/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "sN" = (/obj/machinery/power/apc{dir = 2; name = "south bump"; pixel_y = -24},/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "sO" = (/obj/machinery/power/apc{dir = 2; name = "south bump"; pixel_y = -24},/obj/machinery/light/colored,/obj/effect/floor_decal/corner/purple{dir = 10},/obj/effect/floor_decal/corner/purple{dir = 9},/turf/simulated/floor/tiled/dark,/area/rnd/research)
@@ -1077,8 +1077,8 @@ aedibUbUbUbUbUbUbUbUbUbUdidididididididididididididididididididididididiaiaiaiai
 aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVgCgCgDgDgDgDgDbWbndwdwdwdwdwdwdwdwdwbnbnbnbnbnbnbnbngEbpbpbpgFbnbVsfbpbpbpbpsfbpbpbpbpbpbpbpbpbpbpbpbVbngKgKgKgKgKhrgKgKgKgMhsbnbnbnbnbnbnbnbnbngEbpbpbpgFhpithZhZhZhZiuiviuigigiwigigiGiHiHiHiHiIiJcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
 aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVgCgCgCgCgCgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngPbpbpbpgFbnbVbpbpbpbpbpsfbpbpbpbpbpbpbpbpsfbVbVbVbnhAgKgKgKgMhBhCgKgKgKhDbnbnbnbnbnbnbnbnbngEbpbpbpgFhpsjhZskhZslsmsnsmsospsqsrssstsususuiHiHsvcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
 aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVgCgCgCgCgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbVbVbpbVbVbVbpbpbVbVbVbVbVbVbVbVbVbVbVbnhAgKgKgKgKbnhIgKgKgKgKbnbnbnbnbnbnbnbnbngEbpbpbpgFhpswhZhZhZsxsmsysmsoszsAsBssstsusususCiHsDcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbWbWbWdBgDgCgCgXbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnhNbnbnbnbnbnbnbnbnbnbnbnbnbnbnhObnbngEbpbpbpgFhpsEsFhZhZsGhSiehSsHigigigsscIsIiHiHiHiIsJcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbWbWbWbWgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbphThUhUhUhUhUhUhUhUhUhVhUhUhUhUhUhUhUhUhUhUhVhUhUhUhUhUhUhUhWhUhUhUhUhVhUhUhUhUhUhUhUhXbpbpbpgFhpsKsLsMsNhZiuiviusOsPsPsQigiGiHsRsSsTsUsVcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbWbWbWdBgDgCgCgXbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnhNbnbnbnbnbnbnbnbnbnbnbnbnbnbnhObnbngEbpbpbpgFhpsEsFhZhZnYhSiehSsHigigigsscIsIiHiHiHiIsJcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbWbWbWbWgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbphThUhUhUhUhUhUhUhUhUhVhUhUhUhUhUhUhUhUhUhUhVhUhUhUhUhUhUhUhWhUhUhUhUhVhUhUhUhUhUhUhUhXbpbpbpgFhpsGsKsMsNhZiuiviusOsPsPsQigiGiHsRsSsTsUsVcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
 aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbWbWbWbWgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpijhphqhqhqhqhqhShShSimininimsWipininimimimimimgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
 aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbVbWbWbWgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpgFbnsXsYsZsZtasXsXsXtbtctctcigtctctdimteimtfimgmbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
 aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbVbVbVbVgDgCgCbWbVbVbVbVbVbVbVbVbVbVbVbVbVbVbVbVbVbngEbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpgFbnsXtgthtitjsXtksXsoigigigigigigigigigtligimgmbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN

@@ -167,6 +167,18 @@
 		src.add_fingerprint(user)
 		return
 
+/obj/item/weapon/storage/secure/briefcase/pdsi
+	name = "secure briefcase"
+	desc = "A large briefcase with a digital locking system. The sigil of the PDSI is brazenly stamped on both sides. Very government. Very official."
+	starts_with = list(
+		/obj/item/device/camera,
+		/obj/item/device/camera_film,
+		/obj/item/device/taperecorder,
+		/obj/item/device/tape,
+		/obj/item/device/universal_translator,
+	)
+
+
 // -----------------------------
 //        Secure Safe
 // -----------------------------

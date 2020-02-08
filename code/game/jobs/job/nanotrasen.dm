@@ -49,7 +49,8 @@
 /datum/job/nanotrasen/cbia
 	title = "PDSI Agent"
 	flag = CBIA
-	alt_titles = list("PDSI Director", "PDSI Supervisory Agent", "PDSI Senior Agent")
+	alt_titles = list(
+		"PDSI Director", "PDSI Supervisory Agent", "PDSI Senior Agent")
 	department = "Nanotrasen"
 	head_position = 0
 	department_flag = GOVLAW
