@@ -68,13 +68,13 @@
 /obj/item/device/encryptionkey/heads/captain
 	name = "colony director's encryption key"
 	icon_state = "cap_cypherkey"
-	channels = list("Command" = 1, "Police" = 1, "Fire" = 0, "Science" = 0, "Hospital" = 0, "Factory" = 0, "Service" = 0, "Legal" = 1)
+	channels = list("Command" = 1, "Police" = 1, "Fire" = 0, "Science" = 0, "Hospital" = 0, "Factory" = 0, "Diner" = 0, "Legal" = 1)
 
 /obj/item/device/encryptionkey/heads/ai_integrated
 	name = "ai integrated encryption key"
 	desc = "Integrated encryption key"
 	icon_state = "cap_cypherkey"
-	channels = list("Command" = 1, "Police" = 1, "Fire" = 1, "Science" = 1, "Hospital" = 1, "Factory" = 1, "Service" = 1, "AI Private" = 1)
+	channels = list("Command" = 1, "Police" = 1, "Fire" = 1, "Science" = 1, "Hospital" = 1, "Factory" = 1, "Diner" = 1, "AI Private" = 1)
 
 /obj/item/device/encryptionkey/heads/rd
 	name = "research director's encryption key"
@@ -99,7 +99,7 @@
 /obj/item/device/encryptionkey/heads/hop
 	name = "head of personnel's encryption key"
 	icon_state = "hop_cypherkey"
-	channels = list("Factory" = 1, "Service" = 1, "Command" = 1, "Police" = 0, "Legal" = 1)
+	channels = list("Factory" = 1, "Diner" = 1, "Command" = 1, "Police" = 0, "Legal" = 1)
 /*
 /obj/item/device/encryptionkey/headset_mine
 	name = "mining radio encryption key"
@@ -119,7 +119,7 @@
 /obj/item/device/encryptionkey/headset_service
 	name = "service radio encryption key"
 	icon_state = "srv_cypherkey"
-	channels = list("Service" = 1)
+	channels = list("Diner" = 1)
 
 /obj/item/device/encryptionkey/headset_legal
 	name = "legal radio encryption key"
@@ -134,12 +134,12 @@
 /obj/item/device/encryptionkey/heads/headset_government
 	name = "government encryption key"
 	icon_state = "srv_cypherkey"
-	channels = list("Government" = 1, "Military" = 1, "Science" = 1, "Command" = 1, "Hospital" = 1, "Fire" = 1, "Police" = 1, "Factory" = 1, "Service" = 1)
+	channels = list("Government" = 1, "Military" = 1, "Science" = 1, "Command" = 1, "Hospital" = 1, "Fire" = 1, "Police" = 1, "Factory" = 1, "Diner" = 1)
 
 /obj/item/device/encryptionkey/ert
 	name = "\improper ERT radio encryption key"
 	icon_state = "cent_cypherkey"
-	channels = list("Military" = 1, "Science" = 1, "Command" = 1, "Hospital" = 1, "Fire" = 1, "Police" = 1, "Factory" = 1, "Service" = 1)
+	channels = list("Military" = 1, "Science" = 1, "Command" = 1, "Hospital" = 1, "Fire" = 1, "Police" = 1, "Factory" = 1, "Diner" = 1)
 
 /obj/item/device/encryptionkey/omni		//Literally only for the admin intercoms
-	channels = list("Mercenary" = 1, "Raider" = 1, "Military" = 1, "Science" = 1, "Command" = 1, "Hospital" = 1, "Fire" = 1, "Police" = 1, "Factory" = 1, "Service" = 1)
+	channels = list("Mercenary" = 1, "Raider" = 1, "Military" = 1, "Science" = 1, "Command" = 1, "Hospital" = 1, "Fire" = 1, "Police" = 1, "Factory" = 1, "Diner" = 1)
