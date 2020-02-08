@@ -71,7 +71,23 @@
 			var/obj/item/weapon/lipstick/lipstick = new /obj/item/weapon/lipstick(loc)
 			lipstick.colour = dye_color
 			making = 0
-			return
+		return
+
+	if(istype(W, /obj/item/clothing))
+		var/obj/item/clothing/C = W
+		if(!C.applies_material_color)
+			to_chat(user,"<span class='notice'>[src] cannot be dyed.</span>")
+		else
+			user.drop_from_inventory(C, src)
+			C.forceMove(src)
+			playsound(loc, 'sound/effects/bubbles2.ogg', 5, 1, 5)
+			W.color = dye_color
+			making = 1
+			spawn(70)
+				C.forceMove(loc)
+				making = 0
+
+		return
 
 	if(istype(W, /obj/item/hair_dye_bottle))
 		user.visible_message("<span class='notice'>[user] fills the [W] up with some dye.</span>","<span class='notice'>You fill the [W] up with some hair dye.</span>")
