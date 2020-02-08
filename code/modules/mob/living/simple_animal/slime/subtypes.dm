@@ -499,7 +499,7 @@
 	..()
 
 /mob/living/simple_animal/slime/green/proc/irradiate()
-	radiation_repository.radiate(src, rads)
+	SSradiation.radiate(src, rads)
 
 
 /mob/living/simple_animal/slime/pink

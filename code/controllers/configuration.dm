@@ -236,8 +236,10 @@ var/list/gamemode_cache = list()
 	var/allow_chat_markup = 0 // Mark-up enabling
 	var/show_human_death_message = 1
 
+	var/radiation_resistance_calc_mode = RAD_RESIST_CALC_SUB // 0:1 subtraction:division for computing effective radiation on a turf
 	var/radiation_decay_rate = 1 //How much radiation is reduced by each tick
 	var/radiation_resistance_multiplier = 6.5
+	var/radiation_material_resistance_divisor = 1
 	var/radiation_lower_limit = 0.35 //If the radiation level for a turf would be below this, ignore it.
 
 	var/ssd_protect = 0
@@ -774,6 +776,21 @@ var/list/gamemode_cache = list()
 
 				if("radiation_lower_limit")
 					radiation_lower_limit = text2num(value)
+				
+				if("radiation_resistance_calc_divide")
+					radiation_resistance_calc_mode = RAD_RESIST_CALC_DIV
+
+				if("radiation_resistance_calc_subtract")
+					radiation_resistance_calc_mode = RAD_RESIST_CALC_SUB
+
+				if("radiation_resistance_multiplier")
+					radiation_resistance_multiplier = text2num(value)
+
+				if("radiation_material_resistance_divisor")
+					radiation_material_resistance_divisor = text2num(value)
+
+				if("radiation_decay_rate")
+					radiation_decay_rate = text2num(value)
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")

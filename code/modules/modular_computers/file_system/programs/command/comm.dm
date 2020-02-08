@@ -93,6 +93,8 @@
 		data["have_shuttle"] = 0
 
 	//council options
+	data["city_council_control"] = persistent_economy.city_council_control
+
 	data["carp_control"] = "[persistent_economy.carp_control ? "Enabled" : "Disabled"]"
 	data["antivirus"] = "[persistent_economy.antivirus ? "Enabled" : "Disabled"]"
 
