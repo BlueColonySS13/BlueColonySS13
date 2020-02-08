@@ -9,7 +9,7 @@
 	icon_state = "gavelhammer"
 	force = 5
 	throwforce = 6
-	w_class = 2
+	w_class = ITEMSIZE_SMALL
 	attack_verb = list("bashed", "battered", "judged", "whacked")
 //	burn_state = 0 //Burnable
 
@@ -22,7 +22,7 @@
 	icon_state = "gavelblock"
 	force = 2
 	throwforce = 2
-	w_class = 1
+	w_class = ITEMSIZE_TINY
 //	burn_state = 0 //Burnable
 
 /obj/item/weapon/gavelblock/attackby(obj/item/I, mob/user, params)

@@ -88,7 +88,7 @@ SUBSYSTEM_DEF(economy)
 	if(!unique_id) // shouldn't happen, but you know.
 		return
 
-	if(linked_person.client)
+	if(linked_person && linked_person.client)
 		var/client/linked_client = linked_person.client
 
 		if(linked_client.inactivity > 18000) // About 30 minutes inactivity.
