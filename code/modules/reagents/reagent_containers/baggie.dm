@@ -9,6 +9,7 @@
 	possible_transfer_amounts = 2
 	volume = 10
 	flags = OPENCONTAINER
+	w_class = ITEMSIZE_TINY
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	var/label_text = ""
 

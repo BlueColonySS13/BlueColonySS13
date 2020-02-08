@@ -195,7 +195,7 @@
 	else
 		if(do_after(user, 10))
 			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")
-			stored_item.forceMove(loc)
+			stored_item.forceMove(get_turf(src))
 			stored_item = null
 	..()
 

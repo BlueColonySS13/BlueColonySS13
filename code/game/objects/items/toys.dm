@@ -844,6 +844,7 @@
 	density = 1
 	var/opened = FALSE	// has this been slit open? this will allow you to store an object in a plushie.
 	var/obj/item/stored_item	// Note: Stored items can't be bigger than the plushie itself.
+	var/searching = FALSE
 	var/phrase = "I don't want to exist anymore!"
 
 /obj/structure/plushie/examine(mob/user)
@@ -859,12 +860,16 @@
 	..()
 
 /obj/structure/plushie/attack_hand(mob/user)
-	if(stored_item)
+	if(stored_item && !searching)
+		searching = TRUE
 		if(do_after(user, 10))
 			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")
-			stored_item.forceMove(loc)
+			stored_item.forceMove(get_turf(src))
 			stored_item = null
+			searching = FALSE
 			return
+		else
+			searching = FALSE
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.a_intent == I_HELP)
@@ -879,7 +884,7 @@
 
 
 /obj/structure/plushie/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/device/threadneedle))
+	if(istype(I, /obj/item/device/threadneedle) && opened)
 		to_chat(user, "You sew the hole in [src].")
 		opened = FALSE
 		return
@@ -889,12 +894,16 @@
 		opened = TRUE
 		return
 
-	if( (!(I.w_class > w_class)) && opened)
-		to_chat(user, "You place [I] inside [src].")
-		user.drop_from_inventory(I, src)
-		I.forceMove(src)
-		stored_item = I
-		return
+	if(opened)
+		if(!(I.w_class > w_class))
+			to_chat(user, "You place [I] inside [src].")
+			user.drop_from_inventory(I, src)
+			I.forceMove(src)
+			stored_item = I
+			return
+		else
+			to_chat(user, "You open a small incision in [src]. You can place tiny items inside.")
+
 
 	..()
 
@@ -931,6 +940,7 @@
 	w_class = ITEMSIZE_TINY
 	var/last_message = 0
 
+	var/searching = FALSE
 	var/opened = FALSE	// has this been slit open? this will allow you to store an object in a plushie.
 	var/obj/item/stored_item	// Note: Stored items can't be bigger than the plushie itself.
 
@@ -948,12 +958,16 @@
 			to_chat(user, "<i>You can see something in there...</i>")
 
 /obj/item/toy/plushie/attack_self(mob/user as mob)
-	if(stored_item)
+	if(stored_item && !searching)
+		searching = TRUE
 		if(do_after(user, 10))
 			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")
-			stored_item.forceMove(loc)
+			stored_item.forceMove(get_turf(src))
 			stored_item = null
+			searching = FALSE
 			return
+		else
+			searching = FALSE
 
 	if(world.time - last_message <= 1 SECOND)
 		return
@@ -988,7 +1002,7 @@
 		"<span class='notice'>You make \the [I] kiss \the [src]!.</span>")
 		return
 
-	if(istype(I, /obj/item/device/threadneedle))
+	if(istype(I, /obj/item/device/threadneedle) && opened)
 		to_chat(user, "You sew the hole underneath [src].")
 		opened = FALSE
 		return
