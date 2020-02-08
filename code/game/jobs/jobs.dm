@@ -50,6 +50,7 @@ var/const/BARBER				=(1<<14)
 var/const/SECRETARY				=(1<<15)
 var/const/JUDGE				=(1<<16)
 var/const/PRISONER				=(1<<17)
+var/const/MANAGER              =(1<<18)
 
 var/const/GOVLAW				=(1<<3)
 
@@ -128,7 +129,8 @@ var/list/civilian_positions = list(
 	"Chaplain",
 	"Civilian",
 	"Barber",
-	"City Hall Secretary"
+	"City Hall Secretary",
+	"Bar Manager"
 )
 
 
