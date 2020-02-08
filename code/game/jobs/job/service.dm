@@ -43,7 +43,7 @@
 	flag = BOTANIST
 	faction = "City"
 	department_flag = CIVILIAN
-	department = "Botany"
+	department = "Bar"
 	total_positions = 2
 	spawn_positions = 1
 	supervisors = "the city clerk"
@@ -56,6 +56,25 @@
 	wage = 19
 	outfit_type = /decl/hierarchy/outfit/job/service/gardener
 	alt_titles = list("Hydroponicist", "Gardener","Farmer")
+
+/datum/job/bargm
+	title = "Bar Manager"
+	flag = MANAGER
+	faction = "City"
+	department_flag = CIVILIAN
+	department = "Bar"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the bar owner"
+	email_domain = "foodstuffs.nt"
+	selection_color = "#515151"
+	idtype = /obj/item/weapon/card/id/civilian/bartender
+	access = list(access_hydroponics, access_bar, access_kitchen)
+	minimal_access = list(access_hydroponics)
+	minimum_character_age = 23 // They have some standards
+	wage = 30
+	outfit_type = /decl/hierarchy/outfit/job/service/bartender
+	alt_titles = list("Executive Chef", "Diner Manager", "Bar Supervisor")
 
 //Service
 /datum/job/janitor
@@ -114,7 +133,7 @@
 	minimal_access = list(access_lawyer, access_sec_doors, access_heads, access_legal)
 //	minimal_player_age = 7 (More lawyers please.)
 	minimum_character_age = 20
-	alt_titles = list("Defense Lawyer","Defense Attorney","Barrister", "Legal Advisor")
+	alt_titles = list("Defense Lawyer","Defense Attorney","Barrister", "Legal Advisor", "Private Attorney")
 
 	outfit_type = /decl/hierarchy/outfit/job/civilian/defense/defense
 
@@ -157,7 +176,7 @@
 	minimum_character_age = 16
 	ideal_character_age = 20 //Really anyone can be this job, not just teens
 
-	alt_titles = list("Junior Clerk", "Assistant Notary", "Paralegal")
+	alt_titles = list("Junior Clerk", "Assistant Notary", "Paralegal", "City Hall Worker")
 
 	outfit_type = /decl/hierarchy/outfit/job/civilian/secretary
 
@@ -183,7 +202,7 @@
 	ideal_character_age = 35
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
-	alt_titles = list("Supply Chief")
+	alt_titles = list("Supply Chief", "Factory Foreman")
 
 /datum/job/cargo_tech
 	title = "Factory Worker"
