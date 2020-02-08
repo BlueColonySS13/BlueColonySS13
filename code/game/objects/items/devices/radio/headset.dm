@@ -168,13 +168,13 @@
 
 
 /obj/item/device/radio/headset/heads/captain
-	name = "colony director's headset"
+	name = "mayor's headset"
 	desc = "The headset of the boss."
 	icon_state = "com_headset"
 	ks2type = /obj/item/device/encryptionkey/heads/captain
 
 /obj/item/device/radio/headset/heads/captain/alt
-	name = "colony director's bowman headset"
+	name = "mayor's bowman headset"
 	desc = "The headset of the boss."
 	icon_state = "com_headset_alt"
 	ks2type = /obj/item/device/encryptionkey/heads/captain
@@ -268,8 +268,8 @@
 	ks2type = /obj/item/device/encryptionkey/headset_cargo
 
 /obj/item/device/radio/headset/headset_cargo
-	name = "supply radio headset"
-	desc = "A headset used by the QM and his slaves."
+	name = "manager's radio headset"
+	desc = "A headset used by the FM and his slaves."
 	icon_state = "cargo_headset"
 	ks2type = /obj/item/device/encryptionkey/headset_cargo
 
