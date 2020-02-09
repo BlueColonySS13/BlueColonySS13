@@ -191,7 +191,7 @@
 	faction = "City"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the mayor"
+	supervisors = "the factory owners"
 	email_domain = ".aoki.nt"
 	selection_color = "#7a4f33"
 	idtype = /obj/item/weapon/card/id/cargo/head
