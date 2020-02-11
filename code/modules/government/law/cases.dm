@@ -86,13 +86,17 @@ var/global/court_cases = list()
 
 	return FALSE
 
+
+/datum/court_case/proc/add_case_log(p_name, action)
+	case_logs += "[action] - <b>[p_name]</b> ([full_game_time()])"
+
+
 /datum/case_evidence
 	var/UID 												// The unique identifier for this incident
 	var/name												// name of the item scanned
 	var/description										// description copied from the actual item
 	var/comments
 	var/icon												// actual photo taken of the evidence.
-	var/icon_state
 	var/object_type										// the obj type
 	var/list/fingerprints = list()							// fingerprints of the evidence
 	var/list/fingerprints_hidden = list()						// same thing, but admin side
@@ -121,14 +125,20 @@ var/global/court_cases = list()
 		date_added = full_game_time()
 
 
-/datum/case_evidence/proc/obj_record(var/obj/O, name, uid)
+/datum/case_evidence/proc/obj_record(var/obj/O, p_name, p_uid)
 	if(!O)
 		return
+	if(O.name)
+		name = O.name
+	else
+		name = "Unknown Object #[UID]"
 
-	name = O.name
-	description = O.desc
-	icon = O.icon
-	icon_state = O.icon_state
+	if(O.desc)
+		description = O.desc
+	else
+		description = "No details found."
+
+	icon = getFlatIcon(O)
 	object_type = O.type
 	fingerprints = O.fingerprints
 	fingerprints_hidden = O.fingerprintshidden
@@ -139,7 +149,7 @@ var/global/court_cases = list()
 	blood_DNA = O.blood_DNA
 	was_bloodied = O.was_bloodied
 
-	added_by = list("name" = name, "unique_id" = uid)
+	added_by = list("name" = p_name, "unique_id" = p_uid)
 	if(istype(O, /obj/item/weapon/photo))
 		var/obj/item/weapon/photo/foto = O
 		photo = foto.img
@@ -149,10 +159,19 @@ var/global/court_cases = list()
 		var/obj/item/weapon/paper/sheet = O
 		paper_content = sheet.info
 
+	if(istype(O, /obj/item/weapon/reagent_containers))
+		var/obj/item/weapon/reagent_containers/RC = O
+		description += "<br><p>Reagents Found:<p><br>"
+		if(!isemptylist(RC.reagents.get_reagents()))
+			for(var/R in RC.reagents.get_reagents())
+				description += "<li>[R]</li>"
+		else
+			description += "No reagents found."
+
 
 	if(istype(O, /obj/item/weapon/forensics/swab))
 		var/obj/item/weapon/forensics/swab/swabs = O
-		description += "<br><b>Found on Swab:<b>"
+		description += "<br><b>Found on Swab:</b><br>"
 
 		if(swabs.gsr)
 			description += "Residue from a [swabs.gsr] bullet detected."
@@ -169,7 +188,7 @@ var/global/court_cases = list()
 
 	if(istype(O, /obj/item/weapon/sample/print))
 		var/obj/item/weapon/sample/print/prints = O
-		description += "<br><p>Fibers Collected:<p>"
+		description += "<br><p>Prints Collected on Card:<p>"
 		for(var/print in prints.evidence)
 			description += "<li>[print]</li>"
 

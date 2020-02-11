@@ -38,8 +38,6 @@
 
 	var/evidence_access = FALSE
 
-	var/obj/item/device/taperecorder/empty/tape_player
-
 
 	//case creation
 
@@ -48,10 +46,6 @@
 
 	var/busy = FALSE
 
-/obj/machinery/case_database/initialize()
-	..()
-	if(!tape_player)
-		tape_player = new /obj/item/device/taperecorder/empty(src)
 
 /obj/machinery/case_database/proc/check_for_id(mob/user)
 	var/obj/item/weapon/card/id/I = user.GetIdCard()
@@ -88,14 +82,19 @@
 	if(high_court_access in user_id.access)
 		nt_access = TRUE
 
-	if(prosecutor_access || judge_access || police_access || access_cbia || nt_access || rep_access || plaintiff_access || defendant_access)
+	if(prosecutor_access || judge_access || police_access || access_cbia || nt_access || rep_access || plaintiff_access)
 		evidence_access = TRUE
+
 
 /obj/machinery/case_database/attack_hand(mob/user)
 	interact(user)
 
 /obj/machinery/case_database/attackby(obj/item/weapon/W, mob/user)
 	if(missing_case())
+		return
+
+	if(!evidence_access)
+		to_chat(user, "<b>You lack permissions to add or remove evidence!</b>")
 		return
 
 	if(busy)
@@ -134,6 +133,7 @@
 	spawn(30)
 		held_item.forceMove(loc)
 
+	current_case.add_case_log(user_id.registered_name, "Added [held_item] (evidence) to [current_case.name]")
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 75, 1, -3)
 	to_chat(user, "You add [held_item] to the case evidence storage, the system takes a photograph and scans the item for evidence.")
 
@@ -151,12 +151,14 @@
 		heldtape.forceMove(loc)
 		return
 
-	var/obj/item/device/tape/newtape = new(loc)
+
+
+	var/tapename = input(user, "What would you like to label this tape as? (Leave blank for no label)", "Label Tape Entry") as text
+
+	var/obj/item/device/tape/newtape = new(src)
 	newtape.storedinfo = heldtape.storedinfo
 	newtape.timestamp = heldtape.timestamp
 	current_case.evidence_recordings += newtape
-
-	var/tapename = input(user, "What would you like to label this tape as? (Leave blank for no label)", "Label Tape Entry") as text
 	newtape.name = tapename
 
 	if(!tapename)
@@ -165,6 +167,7 @@
 	spawn(30)
 		heldtape.forceMove(loc)
 
+	current_case.add_case_log(user_id.registered_name, "Added [newtape.name] (recording) to [current_case.name]")
 	to_chat(user, "You add [heldtape] to the case files, the system whirrs as it makes a copy of the tape.")
 
 
@@ -331,8 +334,7 @@
 
 		if(4)
 
-			if(missing_case())
-				return
+			dat += "Choose from the following:<br>"
 
 			var/total_cases = list()
 
@@ -342,6 +344,7 @@
 
 				if("Archived")
 					total_cases += get_public_archived_cases()
+
 				if("Own")
 					total_cases += find_case_by_char_uid(user_id.unique_ID)
 
@@ -400,7 +403,7 @@
 				dat += "<i>No tape recordings found. You can add a new tape by inserting a tape into the machine.</i><br>"
 			else
 				for(var/obj/item/device/tape/T in current_case.evidence_recordings)
-					dat += "<li><a href='?src=\ref[src];view_evidence=1;recording=\ref[T]'>[T.name]</a></li>"
+					dat += "<li><a href='?src=\ref[src];view_recording=1;recording=\ref[T]'>[T.name]</a></li>"
 
 		if(10)
 			return // TODO
@@ -412,8 +415,8 @@
 				dat += "<h3>Evidence: [current_evidence.name]</h3><br>"
 
 
-				if(current_evidence.icon && current_evidence.icon_state)
-					var/icon/i = new(current_evidence.icon, current_evidence.icon_state)
+				if(current_evidence.icon)
+					var/icon/i = current_evidence.icon
 					user << browse_rsc(i, "evidence_[current_evidence.UID].png")
 					dat += "<img src='evidence_[current_evidence.UID].png' style='width: 64px; height: 64px; style='-ms-interpolation-mode:nearest-neighbor'><br>"
 
@@ -428,7 +431,7 @@
 					dat += "<b>Added By:</b> [current_evidence.added_by["name"]]<br>"
 
 				dat += "<b>Fingerprints:</b> "
-				if(!isemptylist(current_evidence.fingerprints))
+				if(!isemptylist(current_evidence.fingerprints) || !current_evidence.fingerprints)
 					for(var/F in current_evidence.fingerprints)
 						dat += "<li>[F]</li>"
 				else
@@ -444,10 +447,11 @@
 
 				dat += "<br>"
 
-				if(!current_evidence.blood_DNA)
-					dat += "<b>Blood DNA Strings:</b> "
+				dat += "<b>Blood DNA Strings:</b> "
+
+				if(current_evidence.blood_DNA)
 					if(current_evidence.was_bloodied)
-						dat += "<i>Has traces of blood.</i>"
+						dat += "<i>Has traces of blood.</i><br><br>"
 					for(var/B in current_evidence.blood_DNA)
 						dat += "<li>[B]</li>"
 				else
@@ -486,16 +490,10 @@
 
 				dat += "<br><a href='?src=\ref[src];print_recording=1'>Print Recording Transcript</a>"
 
-				dat += "<a href='?src=\ref[src];play_recording=1'>Play</a>"
-				dat += "<a href='?src=\ref[src];pause_recording=1'>Pause</a>"
-
-				dat += "<br>Transcript:</br>"
+				dat += "<br><br>Transcript:</br>"
 				if(!isemptylist(current_recording.storedinfo))
-					for(var/i=1,current_recording.storedinfo.len >= i,i++)
-						var/printedmessage = current_recording.storedinfo[i]
-						if (findtextEx(printedmessage,"*",1,2)) //replace action sounds
-							printedmessage = "\[[time2text(current_recording.timestamp[i]*10,"mm:ss")]\] (Unrecognized sound)"
-						dat += "[printedmessage]<BR>"
+					for(var/i in current_recording.storedinfo)
+						dat += "<li>[i]</li>"
 				else
 					dat += "<i>Recording is empty.</i>"
 
@@ -551,6 +549,32 @@
 	var/prosecuting = FALSE
 
 
+	switch(case_subject)
+		if("I want to contest my criminal charges")
+			case.defendant = user_details
+			case.plaintiff = list("name" = "[using_map.name] Police Department", "unique_id" = "")
+			case.case_type = CRIMINAL_CASE
+
+		if("Prosecute a criminal as part of Police Force")
+			case.plaintiff = list("name" = "[using_map.name] Police Department", "unique_id" = "")
+			case.case_type = CRIMINAL_CASE
+			prosecuting = TRUE
+
+		if("Sue the Police Department")
+			case.plaintiff = user_details
+			case.defendant = list("name" = "[using_map.name] Police Department", "unique_id" = "")
+			case.case_type = CIVIL_CASE
+
+		if("Sue the City Council")
+			case.plaintiff = user_details
+			case.defendant = list("name" = "[using_map.name] Council", "unique_id" = "")
+			case.case_type = CIVIL_CASE
+
+		if("Open a civil dispute")
+			case.plaintiff = user_details
+			case.case_type = CIVIL_CASE
+			prosecuting = TRUE
+
 	if(prosecuting)
 		var/criminal_list = list()
 
@@ -570,42 +594,20 @@
 
 		case.defendant = list("name" = criminal, "unique_id" = unique_id_crim)
 
-	switch(case_subject)
-		if("I want to contest my criminal charges")
-			case.defendant = user_details
-			case.plaintiff = list("name" = "[using_map.name] Police Department", "unique_id" = "")
-			case.case_type = CRIMINAL_CASE
-
-		if("Prosecute a criminal as part of Police Force")
-			case.plaintiff = list("name" = "[using_map.name] Police Department", "unique_id" = "")
-			case.case_type = CRIMINAL_CASE
-			prosecuting = TRUE
-
-		if("Sue the Police Department")
-			case.plaintiff = user_details
-			case.defendant = list("name" = "[using_map.name] Police Department", "unique_id" = "")
-			case.case_type = CIVIL_CASE
-
-		if("Sue the City Council")
-			case.plaintiff = user_details
-			case.defendant = list("name" = "[using_map.name] Police Department", "unique_id" = "")
-			case.case_type = CIVIL_CASE
-
-		if("Open a civil dispute")
-			case.plaintiff = user_details
-			case.case_type = CIVIL_CASE
-			prosecuting = TRUE
-
-
-
 
 	case.name = "[case.plaintiff["name"]] vs. [case.defendant["name"]]"
 	current_case = case
 	page = 3
 
 /obj/machinery/case_database/proc/print_case()
-	return
+	if(!current_case)
+		return
 
+	var/obj/item/weapon/paper/P = new(loc)
+
+	P.info += "<h1>[current_case.name]</h1>"
+	P.info += "<li></li>"
+	return
 
 
 /obj/machinery/case_database/Topic(var/href, var/href_list)
@@ -726,13 +728,15 @@
 		page = 12
 
 	if(href_list["print_recording"])
-		var/E = locate(href_list["recording"])
-		if(!current_recording || !E || (!(E in current_case.evidence_recordings)))
+		if(!current_recording)
 			return
 
-		tape_player.mytape = current_recording
-		tape_player.print_transcript()
-		tape_player.mytape = null
+		var/obj/item/weapon/paper/P = new(loc)
+
+		P.name = current_recording.name
+
+		for(var/i in current_recording.storedinfo)
+			P.info += "<li>[i]</li>"
 
 
 
