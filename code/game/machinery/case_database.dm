@@ -338,7 +338,8 @@
 				if(current_case.get_rep_status() == CASE_REPRESENTATION_NEEDED)
 					dat += "<a href='?src=\ref[src];view_offers=1'>View Representation Offers</a><br>"
 
-				dat += "<a href='?src=\ref[src];remove_rep=1'>Remove Representation</a><br>"
+				if(current_case.get_rep_status() == CASE_REPRESENTATION_REPRESENTED)
+					dat += "<a href='?src=\ref[src];remove_rep=1'>Remove Representation</a><br>"
 
 			if(judical_access)
 				dat += "<a href='?src=\ref[src];apply_rep=1'>Apply for Representation</a><br>"
@@ -563,7 +564,7 @@
 				dat += "<br><a href='?src=\ref[src];evidence_screen=1'>Back</a>"
 			if(current_recording)
 				dat += "<br><a href='?src=\ref[src];add_tape_recordings=1'>Back</a>"
-			if(!current_recording || !current_evidence)
+			if(!current_recording && !current_evidence)
 				dat += "<br><a href='?src=\ref[src];view_case=1'>Back</a>"
 
 			dat += "<br><a href='?src=\ref[src];exit_case=1'>Exit Case</a>"
@@ -723,25 +724,25 @@
 	if(href_list["back"])
 		clear_data()
 		page = 1
-		return
+
 
 	if(href_list["exit_case"])
 		clear_data()
 		current_case = null
 		page = 1
-		return
+
 
 	if(href_list["create_case"])
 		create_case(usr)
-		return
+
 
 	if(href_list["view_case"])
 		page = 3
-		return
+
 
 	if(href_list["print_case"])
 		print_case()
-		return
+
 
 	if(href_list["choice"])
 		switch(href_list["choice"])
@@ -765,22 +766,22 @@
 	if(href_list["view_all"])
 		search_type = "All"
 		page = 4
-		return
+
 
 	if(href_list["archived"])
 		search_type = "Archived"
 		page = 4
-		return
+
 
 	if(href_list["own"])
 		search_type = "Own"
 		page = 4
-		return
+
 
 	if(href_list["lawyer_rep"])
 		search_type = "Lawyer Rep"
 		page = 4
-		return
+
 
 	if(href_list["search"])
 		var/search = sanitize(input("Search case by unique ID", "Case Search") as text)
@@ -841,19 +842,19 @@
 
 	if(href_list["view_case_log"])
 		page = 6
-		return
+
 
 	if(href_list["case_notes"])
 		page = 7
-		return
+
 
 	if(href_list["evidence_screen"])
 		page = 8
-		return
+
 
 	if(href_list["add_tape_recordings"])
 		page = 9
-		return
+
 
 	if(href_list["case_status"])
 		var/option = alert("Set Case Status to what?", "Manage Case Status", CASE_STATUS_ARCHIVED, CASE_STATUS_ACTIVE, "Cancel")
@@ -903,7 +904,7 @@
 
 	if(href_list["view_offers"])
 		page = 13
-		return
+
 
 
 
@@ -986,7 +987,7 @@
 				for(var/E in current_case.witnesses)
 					if(E == witness_remove)
 						current_case.witnesses -= E
-						return
+
 
 
 	if(href_list["change_charges"])
@@ -1027,7 +1028,7 @@
 				for(var/E in current_case.charges)
 					if(E == charge_remove)
 						current_case.charges -= E
-						return
+
 
 
 	if(href_list["extend_case"])
@@ -1042,9 +1043,9 @@
 		switch(extension)
 			if(1 to 7)
 				AddDays(current_case.expiry_date, extension)
+			else
+				alert("You can only extend a case between 1 to 7 days at a time.", "Extend Case Limits")
 
-		alert("You can only extend a case between 1 to 7 days at a time.", "Extend Case Limits")
-		return
 
 
 
@@ -1053,6 +1054,9 @@
 			return
 
 		var/new_outcome = input(usr, "Select an outcome", "Case Outcome")  as null|anything in ALL_CASE_OUTCOMES
+
+		if(!new_outcome)
+			return
 
 		current_case.case_outcome = new_outcome
 
