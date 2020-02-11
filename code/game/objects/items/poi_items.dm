@@ -13,7 +13,7 @@
 	return ..()
 
 /obj/item/poi/pascalb/process()
-	radiation_repository.radiate(src, 5)
+	SSradiation.radiate(src, 5)
 
 /obj/item/poi/pascalb/Destroy()
 	processing_objects -= src
@@ -47,7 +47,7 @@
 	return ..()
 
 /obj/item/poi/brokenoldreactor/process()
-	radiation_repository.radiate(src, 25)
+	SSradiation.radiate(src, 25)
 
 /obj/item/poi/brokenoldreactor/Destroy()
 	processing_objects -= src
