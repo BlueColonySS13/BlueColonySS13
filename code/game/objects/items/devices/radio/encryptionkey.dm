@@ -114,7 +114,7 @@
 /obj/item/device/encryptionkey/headset_cargo
 	name = "supply radio encryption key"
 	icon_state = "cargo_cypherkey"
-	channels = list("Factory" = 1, "Command" = 1)
+	channels = list("Factory" = 1)
 
 /obj/item/device/encryptionkey/headset_service
 	name = "service radio encryption key"

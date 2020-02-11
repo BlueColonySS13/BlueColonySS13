@@ -52,7 +52,8 @@
 	alt_titles = list(
 		"Surgeon" = /decl/hierarchy/outfit/job/medical/doctor/surgeon,
 		"Emergency Physician" = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician,
-		"Nurse" = /decl/hierarchy/outfit/job/medical/doctor/nurse)
+		"Nurse" = /decl/hierarchy/outfit/job/medical/doctor/nurse,
+		"Coroner" = /decl/hierarchy/outfit/job/medical/doctor/surgeon)
 
 	clean_record_required = TRUE
 
