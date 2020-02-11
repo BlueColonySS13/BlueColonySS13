@@ -205,10 +205,13 @@
 		//7 - [CASE ACTIVE] Case notes screen
 		//8 - [CASE ACTIVE] Add Evidence Screen
 		//9 - [CASE ACTIVE] Add tape recordings
-		//10 - [CASE ACTIVE] Add witnesses
+		//10 - [CASE ACTIVE] Delete Evidence
 
 		//11 - [EVIDENCE ACTIVE] View Evidence
 		//12 - [RECORDING SELECTED] View/Play Recording
+
+		//13 - [CASE ACTIVE] View Lawyer Offers
+
 
 		// HOMEPAGE
 		if(1)
@@ -267,7 +270,7 @@
 			if(current_case.representative["unique_id"])
 				dat += "<tr><td><strong>Representative:</strong></td><td>[current_case.representative["name"]]</td></tr>"
 			else
-				dat += "<tr><td><strong>Representative:</strong></td><td>[current_case.case_rep_status]</td></tr>"
+				dat += "<tr><td><strong>Representative:</strong></td><td>[current_case.get_rep_status()]</td></tr>"
 
 			//Desired Outcome
 			dat += "<tr><td><strong>Desired Outcome:</strong></td><td>[current_case.desired_outcome]</td></tr>"
@@ -284,7 +287,7 @@
 			dat += "</ul></td></tr>"
 
 			//Charges Applied (only shows up if case is archived.
-			if(current_case.case_status == CASE_STATUS_ARCHIVED)
+			if(current_case.get_case_status() == CASE_STATUS_ARCHIVED)
 				dat += "<tr><td><strong>Applied Charges:</strong></td><td><ul>"
 
 				if(isemptylist(current_case.charges_applied))
@@ -297,23 +300,12 @@
 
 			//Witnesses List
 
-			dat += "<tr><td><strong>Witnesses:</strong></td><td><ul>"
+			dat += "<tr><td><strong>Witnesses/Other Parties:</strong></td><td><ul>"
 			if(isemptylist(current_case.witnesses))
 				dat += "<i>No witnesses supplied.</i>"
 			else
 				for(var/W in current_case.witnesses)
 					dat += "<li>[W]</li>"
-			dat += "</ul></td></tr>"
-
-			//Involved Parties
-			dat += "<tr><td><strong>Other Parties:</strong></td><td><ul>"
-
-			if(isemptylist(current_case.involved_parties))
-				dat += "<i>No supplied parties.</i>"
-			else
-				for(var/P in current_case.involved_parties)
-					dat += "<li>[P]</li>"
-
 			dat += "</ul></td></tr>"
 
 			//Court Date
@@ -329,6 +321,33 @@
 				dat += "<a href='?src=\ref[src];evidence_screen=1'>View Evidence List[current_case.case_evidence ? " ([current_case.case_evidence.len])" : ""]</a> "
 				dat += "<a href='?src=\ref[src];view_case_log=1'>View Case Logs[current_case.case_logs ? " ([current_case.case_logs.len])" : ""]</a> "
 				dat += "<a href='?src=\ref[src];add_tape_recordings=1'>Tape Recording List[current_case.evidence_recordings ? " ([current_case.evidence_recordings.len])" : ""]</a><br>"
+
+				dat += "<br><a href='?src=\ref[src];change_witness=1'>Change Witnesses/Parties Involved</a>"
+				dat += "<a href='?src=\ref[src];change_charges=1'>Add/Remove Charges</a><br>"
+
+			if(judge_access || high_court_access)
+				dat += "<a href='?src=\ref[src];extend_case=1'>Extend Case</a><br>"
+				dat += "<a href='?src=\ref[src];case_outcome=1'>Set Case Outcome</a><br>"
+				dat += "<a href='?src=\ref[src];case_status=1'>Set Case Status</a><br>"
+				dat += "<a href='?src=\ref[src];case_visibility=1'>Set Case Visibility</a><br>"
+
+			if(plaintiff_access)
+
+				dat += "<a href='?src=\ref[src];case_representation=1'>Set Representation Status</a><br>"
+
+				if(current_case.get_rep_status() == CASE_REPRESENTATION_NEEDED)
+					dat += "<a href='?src=\ref[src];view_offers=1'>View Representation Offers</a><br>"
+
+				dat += "<a href='?src=\ref[src];remove_rep=1'>Remove Representation</a><br>"
+
+			if(judical_access)
+				dat += "<a href='?src=\ref[src];apply_rep=1'>Apply for Representation</a><br>"
+
+			if(current_case.is_lawyer(user_id))
+				dat += "<a href='?src=\ref[src];withdraw_rep=1'>Withdraw Representation</a><br>"
+
+			if(nt_access || high_court_access)
+				dat += "<a href='?src=\ref[src];delete_case=1'>Delete Case</a><br>"
 
 			dat += "<br><a href='?src=\ref[src];print_case=1'>Print Case File</a>"
 
@@ -366,6 +385,9 @@
 
 
 		if(6)
+			if(missing_case())
+				return
+
 			dat += "<h3>Case Court Log:</h3><br><br>"
 
 			if(isemptylist(current_case.case_logs))
@@ -375,6 +397,9 @@
 					dat += "<li>[C]</li>"
 
 		if(7)
+			if(missing_case())
+				return
+
 			dat += "<h3>Case Notes:</h3><br><br>"
 
 			dat += "<br><a href='?src=\ref[src];add_case_note=1'>Add Case Note</a>"
@@ -388,6 +413,9 @@
 
 
 		if(8)
+			if(missing_case())
+				return
+
 			dat += "<h3>Evidence List:</h3><br><br>"
 
 			if(isemptylist(current_case.case_evidence))
@@ -397,6 +425,9 @@
 					dat += "<li><a href='?src=\ref[src];view_evidence=1;evidence=\ref[E]'>[E.name]</a></li>"
 
 		if(9)
+			if(missing_case())
+				return
+
 			dat += "<h3>Tape Recording List:</h3><br><br>"
 
 			if(isemptylist(current_case.evidence_recordings))
@@ -406,13 +437,21 @@
 					dat += "<li><a href='?src=\ref[src];view_recording=1;recording=\ref[T]'>[T.name]</a></li>"
 
 		if(10)
-			return // TODO
+			dat += "You have successfully deleted evidence. Press back to return to the main menu.<br>"
 
 		if(11)
+			if(missing_case())
+				return
+
 			if(!current_evidence)
 				dat += "<b>ERROR:</b> <i>This evidence piece cannot be found on the system.</i><br>"
 			else
 				dat += "<h3>Evidence: [current_evidence.name]</h3><br>"
+
+				if(nt_access)
+					dat += "<a href='?src=\ref[src];delete_evidence=1'>Delete Evidence</a><br>"
+
+				dat += "<a href='?src=\ref[src];evidence_comments=1'>Add Evidence Comment</a><br>"
 
 
 				if(current_evidence.icon)
@@ -473,8 +512,9 @@
 				if(current_evidence.paper_content)
 					dat += "<br>"
 					dat += "<b>Paper Contents:</b><br>"
+					dat += "<div style='background-color:white; color: black'>"
 					dat += "[current_evidence.paper_content]"
-					dat += "<br>"
+					dat += "</div><br>"
 
 
 
@@ -483,6 +523,9 @@
 
 
 		if(12)
+			if(missing_case())
+				return
+
 			if(!current_recording)
 				dat += "<b>ERROR:</b> <i>Recording not found on the system.</i><br>"
 			else
@@ -497,13 +540,32 @@
 				else
 					dat += "<i>Recording is empty.</i>"
 
+		if(13)
+			if(missing_case())
+				return
 
+			dat += "<h3>Representation Offers:</h3><br><br>"
+
+			if(!isemptylist(current_case.representative))
+				dat += "<i>You already have a lawyer allotted to this case.</i>"
+			else
+				if(isemptylist(current_case.lawyer_offers))
+					dat += "<i>No offers at this time. Check back later.</i>"
+				else
+					for(var/lawyer in current_case.lawyer_offers)
+						dat += "<a href='?src=\ref[src];choice=set_new_lawyer;case=\ref[lawyer]'>[lawyer["name"]]</a> - [lawyer["payment_required"]] credits (suggested offer)<br>"
 
 	if(!(page == 1))
 		if(!current_case)
 			dat += "<br><a href='?src=\ref[src];back=1'>Back</a>"
 		else
-			dat += "<br><a href='?src=\ref[src];view_case=1'>Back</a>"
+			if(current_evidence)
+				dat += "<br><a href='?src=\ref[src];evidence_screen=1'>Back</a>"
+			if(current_recording)
+				dat += "<br><a href='?src=\ref[src];add_tape_recordings=1'>Back</a>"
+			if(!current_recording || !current_evidence)
+				dat += "<br><a href='?src=\ref[src];view_case=1'>Back</a>"
+
 			dat += "<br><a href='?src=\ref[src];exit_case=1'>Exit Case</a>"
 
 
@@ -563,13 +625,18 @@
 		if("Sue the Police Department")
 			case.plaintiff = user_details
 			case.defendant = list("name" = "[using_map.name] Police Department", "unique_id" = "")
-			case.case_type = CIVIL_CASE
+			case.case_type = COLONIAL_CASE
 
 		if("Sue the City Council")
 			case.plaintiff = user_details
 			case.defendant = list("name" = "[using_map.name] Council", "unique_id" = "")
-			case.case_type = CIVIL_CASE
-
+			case.case_type = COLONIAL_CASE
+/*
+		if("Sue Nanotrasen")
+			case.plaintiff = user_details
+			case.defendant = list("name" = "Nanotrasen", "unique_id" = "")
+			case.case_type = COLONIAL_CASE
+*/
 		if("Open a civil dispute")
 			case.plaintiff = user_details
 			case.case_type = CIVIL_CASE
@@ -605,8 +672,47 @@
 
 	var/obj/item/weapon/paper/P = new(loc)
 
-	P.info += "<h1>[current_case.name]</h1>"
-	P.info += "<li></li>"
+	P.info += "<h3>[current_case.name]</h3><hr>[current_case.case_type]<br><br>"
+	P.info += "<b>Case ID:</b> [current_case.UID]<br>"
+	P.info += "<b>Status:</b> [current_case.get_case_status()]<br>"
+	P.info += "<b>Creation Date:</b> [current_case.creation_date]<br>"
+
+	P.info += "<b>Defendant:</b> [current_case.defendant["name"]]<br>"
+	P.info += "<b>Plaintiff:</b> [current_case.plaintiff["name"]]<br>"
+
+	P.info += "<b>Case Summary:</b><br>[current_case.description]<br><br>"
+
+	P.info += "<b>Court Date:</b> [current_case.court_date]<br>"
+	P.info += "<b>Expires:</b> [current_case.expiry_date]<br>"
+
+	P.info += "<b>Representation Status:</b> [current_case.get_rep_status()]<br>"
+
+	P.info += "<b>Witnesses/Parties Involved:</b><br>"
+	if(isemptylist(current_case.witnesses))
+		P.info += "<i>No provided witnesses.</i>"
+	else
+		for(var/W in current_case.witnesses)
+			P.info += "<li>[W]</li>"
+
+	P.info += "<br><b>Plaintiff Charges:</b><br>"
+	if(isemptylist(current_case.charges))
+		P.info += "<i>No charges.</i>"
+	else
+		for(var/C in current_case.charges)
+			P.info += "<li>[C]</li>"
+
+	P.info += "<br><b>Final Applied Charges/Outcome:</b><br>"
+	if(isemptylist(current_case.charges_applied))
+		P.info += "<i>No charges.</i>"
+	else
+		for(var/C in current_case.charges_applied)
+			P.info += "<li>[C]</li>"
+
+	P.info += "<br><b>Opened By:</b> [current_case.author]<br>"
+	P.info += "<hr>"
+
+	P.info += "<b>Desired Outcome:</b> [current_case.desired_outcome]<br>"
+	P.info += "<b>Final Outcome:</b> [current_case.case_outcome]<br>"
 	return
 
 
@@ -617,20 +723,25 @@
 	if(href_list["back"])
 		clear_data()
 		page = 1
+		return
 
 	if(href_list["exit_case"])
 		clear_data()
 		current_case = null
 		page = 1
+		return
 
 	if(href_list["create_case"])
 		create_case(usr)
+		return
 
 	if(href_list["view_case"])
 		page = 3
+		return
 
 	if(href_list["print_case"])
 		print_case()
+		return
 
 	if(href_list["choice"])
 		switch(href_list["choice"])
@@ -644,21 +755,32 @@
 				page = 3
 
 
+		if("set_new_lawyer")
+			var/L = locate(href_list["lawyer"])
+			if("No" == alert("Do you want to make [L["name"]] your new representative for this case? Remember, you must be willing to pay them.", "Assign new representative", "No", "Yes"))
+				return
+
+			current_case.representative = L
+
 	if(href_list["view_all"])
 		search_type = "All"
 		page = 4
+		return
 
 	if(href_list["archived"])
 		search_type = "Archived"
 		page = 4
+		return
 
 	if(href_list["own"])
 		search_type = "Own"
 		page = 4
+		return
 
 	if(href_list["lawyer_rep"])
 		search_type = "Lawyer Rep"
 		page = 4
+		return
 
 	if(href_list["search"])
 		var/search = sanitize(input("Search case by unique ID", "Case Search") as text)
@@ -686,28 +808,254 @@
 
 		current_evidence.comments = note
 
+	if(href_list["delete_evidence"])
+		if("No" == alert("Delete [current_evidence.name] from the evidence list?", "Remove Evidence", "No", "Yes"))
+			return
 
+		if("No" == alert("Are you really, really sure you want to remove [current_evidence.name]? This is irreverseable!", "Remove Evidence", "No", "Yes"))
+			return
 
+		if(!current_evidence || !current_case)
+			return
 
+		current_case -= current_evidence
+		qdel(current_evidence)
+		current_evidence = null
+		page = 10
 
 
 	if(href_list["delete_case"])
+		if("No" == alert("Delete [current_case.name] from the evidence list?", "Delete Case", "No", "Yes"))
+			return
+
+		if("No" == alert("Are you really, really sure you want to remove [current_case.name]? This is irreverseable!", "Delete Case", "No", "Yes"))
+			return
+
+		if(!current_case)
+			return
+
+		court_cases -= current_case
+		qdel(current_case)
+		current_case = null
 		page = 5
 
 	if(href_list["view_case_log"])
 		page = 6
+		return
 
 	if(href_list["case_notes"])
 		page = 7
+		return
 
 	if(href_list["evidence_screen"])
 		page = 8
+		return
 
 	if(href_list["add_tape_recordings"])
 		page = 9
+		return
 
-	if(href_list["add_witnesses"])
-		page = 10
+	if(href_list["case_status"])
+		var/option = alert("Set Case Status to what?", "Manage Case Status", CASE_STATUS_ARCHIVED, CASE_STATUS_ACTIVE, "Cancel")
+
+		if(!current_case)
+			return
+
+		switch(option)
+			if("Cancel")
+				return
+
+			if(CASE_STATUS_ARCHIVED)
+				current_case.archived = TRUE
+
+			if(CASE_STATUS_ACTIVE)
+				current_case.archived = FALSE
+
+	if(href_list["case_visibility"])
+		var/option = alert("Set case visibility - pick from the following.", "Manage Visibility", CASE_PUBLIC, CASE_HIDDEN, "Cancel")
+
+		if(!current_case)
+			return
+
+		switch(option)
+			if("Cancel")
+				return
+
+		current_case.case_visibility = option
+
+	if(href_list["case_representation"])
+		var/option = alert("Set representation status.", "Manage Visibility", "I will self represent (No lawyer needed)", "I want legal representation (Lawyer needed)", "Cancel")
+
+		if(!current_case)
+			return
+
+
+		switch(option)
+			if("Cancel")
+				return
+
+			if("I will self represent (No lawyer needed)")
+				current_case.looking_for_rep = FALSE
+
+			if("I want legal representation (Lawyer needed)")
+				current_case.looking_for_rep = TRUE
+
+
+	if(href_list["view_offers"])
+		page = 13
+		return
+
+
+
+	if(href_list["remove_rep"])
+		if("No" == alert("Are you sure you want to remove [current_case.representative["name"]] as your representative lawyer?", "Remove Lawyer", "No", "Yes"))
+			return
+
+		if("No" == alert("Just to confirm if you want to remove [current_case.representative["name"]] - this is not reverseable, any fees you have already agreed to this representative must be legally paid and this will be logged on the system.", "Remove Representative", "No", "Get Rid of Them!"))
+			return
+
+		current_case.representative = initial(current_case.representative)
+
+
+	if(href_list["withdraw_rep"])
+		if("No" == alert("Are you sure you want to withdraw from this case?", "Withdraw from case", "No", "Yes"))
+			return
+
+		if("No" == alert("Just to confirm - are you certain you wish to stop representing for this case? This is not reverseable, this uis also logged on the system.", "Remove Representative", "No", "Get me out of here!"))
+			return
+
+		current_case.representative = initial(current_case.representative)
+
+
+
+
+	if(href_list["apply_rep"])
+		if(!current_case)
+			return
+
+		if("No" == alert("Apply to represent [current_case.name]?", "Apply for Case", "No", "Yes"))
+			return
+
+		var/offered_fee = input(usr, "Input your base starting fee. Leave blank if there's no charge, or you have other conditionals for payment.", "Lawyer Offer")  as num
+
+		var/new_lawyer = list("name" = user_id.registered_name, "unique_id" = user_id.unique_ID, "payment_required" = offered_fee)
+
+		current_case.lawyer_offers[user_id.registered_name] = new_lawyer
+
+
+
+
+	if(href_list["withdraw_rep"])
+		if(!current_case)
+			return
+
+		if("No" == alert("Withdraw offer to [current_case.name]?", "Withdraw Application to Case", "No", "Yes"))
+			return
+
+		for(var/L in current_case.lawyer_offers)
+			if(L["unique_id"] == user_id.unique_ID)
+				current_case.lawyer_offers -= L
+
+	if(href_list["change_witness"])
+		if(!current_case)
+			return
+
+		var/option = alert("What would you like to do?", "Manage Witnesses", "Add Witness", "Remove Witness", "Cancel")
+
+		switch(option)
+			if("Cancel")
+				return
+
+			if("Add Witness")
+				var/witness_name = sanitize(copytext(input(usr, "Enter the witness name.", "Add Witness")  as message,1,90))
+
+				if(!current_case)
+					return
+
+				current_case.witnesses += witness_name
+
+			if("Remove Witness")
+				if(!current_case)
+					return
+
+				var/witness_remove = input(usr, "Select a witness", "Remove Witness")  as null|anything in current_case.witnesses
+
+				if(!witness_remove || !current_case)
+					return
+
+				for(var/E in current_case.witnesses)
+					if(E == witness_remove)
+						current_case.witnesses -= E
+						return
+
+
+	if(href_list["change_charges"])
+		if(!current_case)
+			return
+
+		var/option = alert("What would you like to do?", "Manage Charges", "Add Charges", "Remove Charges", "Cancel")
+
+		switch(option)
+			if("Cancel")
+				return
+
+			if("Add Charges")
+				var/charge
+
+				if(current_case.case_type == CIVIL_CASE)
+					charge = input(usr, "Enter the civil law charges you'd like to bring towards the accused.", "Add Charges")  as null|anything in get_law_names()
+
+				if(current_case.case_type == CRIMINAL_CASE)
+					charge = input(usr, "Enter law charges to bring against the defendant.", "Add Charges")  as null|anything in get_law_names()
+
+
+				if(!current_case || !charge)
+					return
+
+				current_case.charges += charge
+
+
+			if("Remove Witness")
+				if(!current_case)
+					return
+
+				var/charge_remove = input(usr, "Select a charge", "Remove Charge")  as null|anything in current_case.charges
+
+				if(!charge_remove)
+					return
+
+				for(var/E in current_case.charges)
+					if(E == charge_remove)
+						current_case.charges -= E
+						return
+
+
+	if(href_list["extend_case"])
+		if(!current_case)
+			return
+
+		var/extension = input(usr, "Extend by how many days? (Max 7)", "Extend Case")  as num
+
+		if(!extension)
+			return
+
+		switch(extension)
+			if(1 to 7)
+				AddDays(current_case.expiry_date, extension)
+
+		alert("You can only extend a case between 1 to 7 days at a time.", "Extend Case Limits")
+		return
+
+
+
+	if(href_list["case_outcome"])
+		if(!current_case)
+			return
+
+		var/new_outcome = input(usr, "Select an outcome", "Case Outcome")  as null|anything in ALL_CASE_OUTCOMES
+
+		current_case.case_outcome = new_outcome
+
 
 	if(href_list["view_evidence"])
 		var/E = locate(href_list["evidence"])

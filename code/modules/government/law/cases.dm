@@ -12,18 +12,19 @@ var/global/court_cases = list()
 	var/list/case_notes	= list()								// List of notes left by people who commented on crap.
 	var/list/case_evidence = list()							// Case evidence
 
-	var/list/admin_case_logs = list()							// OOC log of ckeys and "who dids" and stuff.
-
-
-
 	var/charges = list()									// Charges by name, if any.
 	var/charges_applied = list()								// Charges Applied after court is concluded. Shows up as "none" if unsuccessful
 
 	var/case_type = CRIMINAL_CASE
 	var/case_outcome = CASE_ONGOING
-	var/case_status = CASE_STATUS_ACTIVE
 	var/case_visibility = CASE_PUBLIC
-	var/case_rep_status = CASE_REPRESENTATION_NEEDED
+
+	var/looking_for_rep = TRUE
+
+	var/archived = FALSE
+
+// If we want to allow people to sue NT in the future.
+//	var/high_court_only = FALSE
 
 	var/author = "Unknown"									// Who originally opened this case?
 	var/desired_outcome = ""							// Desired outcome of the case
@@ -33,15 +34,15 @@ var/global/court_cases = list()
 	var/list/witnesses = list()
 	var/list/defendant = list("name" = "", "unique_id" = "")				// Needs a CID, always.
 	var/list/plaintiff = list("name" = "", "unique_id" = "")				// Needs a CID, always
-	var/list/involved_parties = list()
 
 	//Lawyer stuff
-	var/representative = list("name" = "", "unique_id" = "")
+	var/representative = list()	// eg: eg: "name" = "", "unique_id" = "", "payment_required" = 0
 
-	var/lawyer_offers = list()
+	var/lawyer_offers = list()	// eg: "name" = "", "unique_id" = "", "payment_required" = 0
 
 	var/creation_date										// What day this case was opened.
 	var/court_date											// Day of the next trial, if any.
+
 	var/expiry_date										// The date that this case starts to smell/gets expired.
 
 /datum/court_case/New()
@@ -58,6 +59,41 @@ var/global/court_cases = list()
 	court_cases += src
 
 	expiry_date = AddDays(creation_date, 7)
+
+/datum/court_case/proc/get_case_status() // this proc is meant to be called on a round basis to ensure that cases that are expired are actually expired.
+	var/case_day = Days_Difference(expiry_date , full_game_time() )
+
+	if(!case_day)
+		return CASE_STATUS_EXPIRED
+	else
+		var/should_be_today_date = SubtractDays(expiry_date, case_day)
+		if(should_be_today_date != full_game_time())
+			return CASE_STATUS_EXPIRED
+
+	if(archived)
+		return CASE_STATUS_ARCHIVED
+
+	return CASE_STATUS_ACTIVE
+
+
+/datum/court_case/proc/get_rep_status() // this proc is meant to be called on a round basis to ensure that cases that are expired are actually expired.
+	if(!isemptylist(representative))
+		return CASE_REPRESENTATION_REPRESENTED
+
+	if(looking_for_rep && isemptylist(representative))
+		return CASE_REPRESENTATION_NEEDED
+
+	if(!looking_for_rep && isemptylist(representative))
+		return CASE_REPRESENTATION_UNWANTED
+
+	return CASE_REPRESENTATION_NEEDED
+
+
+/datum/court_case/proc/is_public_suing()
+	if(!defendant["unique_id"])
+		return TRUE
+
+	return FALSE
 
 /datum/court_case/proc/is_lawyer(obj/item/weapon/card/id/I)
 	if(!I || !I.registered_name || !I.unique_ID)
@@ -204,7 +240,7 @@ var/global/court_cases = list()
 /proc/get_public_open_cases()
 	var/list/court_case_list = list()
 	for(var/datum/court_case/C in court_cases)
-		if(C.case_status == CASE_STATUS_ACTIVE && C.case_visibility == CASE_PUBLIC)
+		if(C.get_case_status() == CASE_STATUS_ACTIVE && C.case_visibility == CASE_PUBLIC)
 			court_case_list += C
 
 	return court_case_list
@@ -212,7 +248,7 @@ var/global/court_cases = list()
 /proc/get_public_archived_cases()
 	var/list/court_case_list = list()
 	for(var/datum/court_case/C in court_cases)
-		if(C.case_status == CASE_STATUS_ARCHIVED && C.case_visibility == CASE_PUBLIC)
+		if(C.get_case_status() == CASE_STATUS_ARCHIVED && C.case_visibility == CASE_PUBLIC)
 			court_case_list += C
 
 	return court_case_list
@@ -243,7 +279,7 @@ var/global/court_cases = list()
 /proc/cases_need_lawyer()
 	var/list/court_case_list = list()
 	for(var/datum/court_case/C in all_public_cases() )
-		if(C.case_rep_status == CASE_REPRESENTATION_NEEDED)
+		if(C.get_rep_status() == CASE_REPRESENTATION_NEEDED)
 			court_case_list += C
 
 	return court_case_list
