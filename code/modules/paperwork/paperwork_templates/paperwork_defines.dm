@@ -19,6 +19,15 @@
 	categories = list(PAPERWORK_LEGAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/legal/divorcepapers.txt'
 
+
+/datum/paperwork_template/criminal_complaint
+	name = "Criminal Complaint Form"
+	title = "Criminal Complaint"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/AO91.txt'
+
+
+
 // COUNCIL PAPERWORK
 
 
