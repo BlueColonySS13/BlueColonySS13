@@ -1,0 +1,35 @@
+[center]Geminus City High Court
+[small][b]Discovery Package[/b][/center][br]
+[hr]
+This Discovery Package is being submitted to the Geminus City High Court, by the:
+
+[[field]] Prosecuting Attorney's Office
+[[field]] Defense Attorney's Office
+[[field]] Plaintiff
+[[field]] Defendant
+[hr]
+[b]Prosecuting Attorney:[/b] [field] 
+[b]Assistant Prosecutor's (if any):[/b] [field]
+
+[b]Defense Attorney:[/b] [field]
+[b]Defendant:[/b] [field]
+[hr]
+[b]Witnesses Present:[/b][list]
+[*] [field]
+[*] [field]
+[*] [field][/list]
+[hr]
+[b]Attached Files:[/b]
+[[field]] Police Report
+[[field]] Deposition
+[[field]] Photographs
+
+[b]Material Evidence:[/b][list]
+[*] [field]
+[*] [field]
+[*] [field][/list]
+[hr]
+
+[b]Signature:[/b][field]
+
+[i]This document and any attached files/photographs are to be copied and delivered to the Judge/Magistrate, as well as the opposition.[/i]
