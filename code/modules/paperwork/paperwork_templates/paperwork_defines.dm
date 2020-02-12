@@ -19,11 +19,18 @@
 	categories = list(PAPERWORK_LEGAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/legal/divorcepapers.txt'
 
+/datum/paperwork_template/criminal_complaint
+	name = "Criminal Complaint Form"
+	title = "Criminal Complaint"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/AO91.txt'
+
 /datum/paperwork_template/discovery_package_cover
 	name = "Discovery Package Cover"
 	title = "Discovery Package Cover"
 	categories = list(PAPERWORK_LEGAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/legal/discovery_package_cover.txt'
+
 
 
 // COUNCIL PAPERWORK
