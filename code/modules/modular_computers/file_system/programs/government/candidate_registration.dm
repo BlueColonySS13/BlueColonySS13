@@ -233,7 +233,7 @@
 
 	if(href_list["register_new"])
 		. = 1
-		if(!SSelections.is_registration_days( get_game_day() ) || !SSelections.snap_election)
+		if(!SSelections.can_register())
 			index = 7
 			return
 
