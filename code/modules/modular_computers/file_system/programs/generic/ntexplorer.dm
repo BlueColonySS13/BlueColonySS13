@@ -36,7 +36,6 @@
 		browser_content = current_website.content
 		browser_title = current_website.title
 		browser_url = current_website.name
-		interactive_website = current_website.interactive_website
 		current_website.on_access()
 
 /datum/nano_module/nt_explorer/proc/browse_url(var/datum/website/browsed_website, mob/user)
@@ -45,7 +44,6 @@
 		browser_content = current_website.content
 		browser_title = current_website.title
 		browser_url = current_website.name
-		interactive_website = current_website.interactive_website
 
 	if(current_website.password)
 		var/entered_pass = input("This website requires a password to access. Please enter it below.", "Password Restricted", null, null) as text
@@ -86,7 +84,6 @@
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "ntnet_explorer.tmpl", "NtNet Explorer", 690, 680, state = state)
-		ui.add_template("Website", "ntnet_explorer_website.tmpl") // Main body
 		if(program.update_layout())
 			ui.auto_update_layout = 1
 		ui.set_auto_update(1)

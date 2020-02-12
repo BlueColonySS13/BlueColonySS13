@@ -1,5 +1,5 @@
 /datum/website/deepweb
-	deepweb = 1
+	deepweb = TRUE
 
 /datum/website/deepweb/syndiehub
 	name = "syndi.cat"

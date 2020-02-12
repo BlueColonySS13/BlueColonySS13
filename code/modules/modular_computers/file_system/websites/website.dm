@@ -19,9 +19,8 @@ var/global/list/websites = list()
 	var/path = null // If you want to load your site from a TXT, make a txt file in websites/ and edit path to point to it.
 	var/password = null //Set this if you require a password.
 	var/max_length = 10000 //Feel free to remove this. This limits your HTML to 1000 lines to prevent gigaspam.
-	var/interactive_website //If this is set to something, the browser will search for the website in ntnet_explorer_website.tmpl
 
-	var/searchable = 1 // If this is 1 it will appear on public search engines
+	var/searchable = TRUE // If this is 1 it will appear on public search engines
 
 	var/deepweb // If this is 1 this website can be found on the deepweb
 
@@ -52,10 +51,10 @@ var/global/list/websites = list()
 	name = "404"
 	title = "Error - Page not found"
 	path = "websites/404.txt"
-	searchable = 0
+	searchable = FALSE
 
 /datum/website/denied
 	name = "Access Denied"
 	title = "Error - Access Denied"
 	path = "<h3>Access Denied</h3> <br> Password for website was either incorrect or left blank."
-	searchable = 0
+	searchable = FALSE
