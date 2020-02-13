@@ -169,8 +169,8 @@
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/secretary
 	wage = 170
-	access = list(access_heads, access_hop, access_maint_tunnels, access_sec_doors, access_legal)
-	minimal_access = list(access_heads, access_hop, access_maint_tunnels, access_sec_doors, access_legal)
+	access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
+	minimal_access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
 	email_domain = "gov.nt"
 
 	minimum_character_age = 16
