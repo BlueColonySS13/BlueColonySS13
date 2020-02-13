@@ -7,7 +7,7 @@
 	anchored = 1
 	var/list/notices
 	var/base_icon_state = "nboard0"
-	var/const/max_notices = 5
+	var/const/max_notices = 35
 
 /obj/structure/noticeboard/initialize()
 	. = ..()
