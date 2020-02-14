@@ -76,6 +76,15 @@
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
+/datum/gear/uniform/pencil
+	display_name = "pencil skirt"
+	path = /obj/item/clothing/under/skirt/pencil
+
+/datum/gear/uniform/pencil/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+
 /datum/gear/uniform/pants
 	display_name = "pants selection"
 	path = /obj/item/clothing/under/pants/white

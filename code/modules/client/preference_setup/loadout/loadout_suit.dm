@@ -502,3 +502,25 @@
 /datum/gear/suit/synthleatherjacket/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/suit/poshblazer
+	display_name = "posh blazer"
+	path = /obj/item/clothing/suit/storage/poshblazer
+
+/datum/gear/suit/formalblazer
+	display_name = "formal blazer"
+	path = /obj/item/clothing/suit/storage/formalblazer
+
+/datum/gear/suit/formalblazer/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+
+/datum/gear/suit/peterpanblazer
+	display_name = "peter pan blazer"
+	path = /obj/item/clothing/suit/storage/peterpanblazer
+
+
+/datum/gear/suit/peterpanblazer/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
