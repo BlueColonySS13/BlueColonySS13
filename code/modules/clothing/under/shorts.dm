@@ -104,6 +104,7 @@
 	name = "pencil skirt"
 	desc = "For that formal flair."
 	icon_state = "pencilskirt"
+	index = 1
 
 /obj/item/clothing/under/skirt/khaki
 	name = "khaki skirt"

@@ -667,3 +667,8 @@
 /datum/gear/uniform/punk
 	display_name = "punk outfit"
 	path = /obj/item/clothing/under/punk
+
+
+/datum/gear/uniform/aristocrat
+	display_name = "aristocrat outfit"
+	path = /obj/item/clothing/under/aristocrat
