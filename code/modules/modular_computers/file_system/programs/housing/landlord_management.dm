@@ -16,6 +16,7 @@
 	var/page_msg
 	var/error_msg = " "
 	var/unique_id
+	var/email
 	var/full_name
 	var/acc_balance
 
@@ -35,11 +36,11 @@
 			acc_balance = bank.money
 
 
-	if(!I || !I.unique_ID || !get_account(I.associated_account_number))
+	if(!I || !I.unique_ID || !get_account(I.associated_account_number) || !get_email(I.associated_email_login["login"]))
 		index = 0
 
 	if(index == 0)
-		page_msg = "You are not authorized to use this system."
+		page_msg = "You are not authorized to use this system. Please ensure your ID is linked correctly to your citizen details."
 
 	else if(index == 1) // Main Portal Page
 		page_msg = "This is the Landlord Management Portal, [full_name].<br>\
@@ -52,7 +53,7 @@
 
 		if(!isemptylist(SSlots.get_lots_for_sale()))
 			for(var/datum/lot/L in SSlots.get_lots_for_sale())
-				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name] (Owned by [L.landlord_name ? L.landlord_name : "City Council"])<br>"
+				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name] (Owned by [L.get_landlord_name()])<br>"
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
 				page_msg += "<font color=\"yellow\"><b>Price:</b></font> [L.get_lot_price()]CR ([L.get_lot_tax_diff()]CR tax added)<br><br>"
@@ -71,24 +72,25 @@
 			for(var/datum/lot/L in SSlots.get_lots_by_owner_uid(unique_id))
 				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name]<br>"
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
-				page_msg += "<font color=\"yellow\"><b>Status:</b></font> [L.status]<br>"
+				page_msg += "<font color=\"yellow\"><b>Status:</b></font> [L.get_status()]<br>"
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
 				page_msg += "<font color=\"yellow\"><b>Price:</b></font> [L.get_lot_price()]CR (incl [L.get_lot_tax_diff()]CR tax)<br><br>"
 				page_msg += "<font color=\"yellow\"><b>Service Charges:</b></font> [L.landlord_balance] ([L.get_service_charge()]CR per month)<br>"
 
-				if(!(L.status == LOT_HELD))
+				if(!(L.get_status() == LOT_HELD))
 					page_msg += "<font color=\"yellow\"><a href='?src=\ref[src];choice=sell_lot;lot=\ref[L]'>Sell to City Council ([L.price]CR)</a> \
 					<a href='?src=\ref[src];choice=market_lot;lot=\ref[L]'>Sell on Market</a> "
 
-					if(L.status == RENTED)
-						page_msg += "<font color=\"yellow\"><b>Tenant:</b></font> [L.tenant_name]<br>"
-						page_msg += "<font color=\"yellow\"><b>Tenant's Rent Balance:</b></font> [L.tenant_balance] ([L.get_rent()] per month)<br>"
-						page_msg += "<font color=\"yellow\"><b>Last Payment:</b></font> [L.last_payment]<br>"
-						page_msg += "<a href='?src=\ref[src];choice=evict_tenant;lot=\ref[L]'>Evict Tenant ([L.tenant_name])</a> </font>"
+					if(L.get_status() == RENTED)
+						for(var/datum/tenant/tenant in L.get_tenants())
+						page_msg += "<font color=\"yellow\"><b>Tenant:</b></font> [tenant.name]<br>"
+						page_msg += "<font color=\"yellow\"><b>Tenant's Rent Balance:</b></font> [tenant.tenant_balance] ([L.get_rent()] per month)<br>"
+						page_msg += "<font color=\"yellow\"><b>Last Payment:</b></font> [tenant.last_payment]<br>"
+						page_msg += "<a href='?src=\ref[src];choice=evict_tenant;lot=\ref[L];tenant=\ref[tenant]'>Evict Tenant ([tenant.name])</a> </font>"
 						page_msg += "<a href='?src=\ref[src];choice=remove_rent_lot;lot=\ref[L]'>Remove Lot from Rent List</a> </font>"
 
 					else
-						if(L.status == FOR_RENT)
+						if(L.get_status() == FOR_RENT)
 							page_msg += "<a href='?src=\ref[src];choice=remove_rent_lot;lot=\ref[L]'>Remove Lot from Rent List</a>"
 						else
 							page_msg += "<a href='?src=\ref[src];choice=rent_lot;lot=\ref[L]'>Put up for Renting</a> </font>"
@@ -148,7 +150,7 @@
 			for(var/datum/lot/L in SSlots.get_lots_by_tenant_uid(unique_id))
 				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name]<br>"
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
-				page_msg += "<font color=\"yellow\"><b>Status:</b></font> \"[L.status]\"<br>"
+				page_msg += "<font color=\"yellow\"><b>Status:</b></font> \"[L.get_status()]\"<br>"
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
 				page_msg += "<font color=\"yellow\"><b>Rent:</b></font> [L.get_rent()]CR (includes [L.get_rent()]CR service charges)<br>"
 				page_msg += "<font color=\"yellow\"><b>Last Payment:</b></font> [L.last_payment_tnt]<br>"
@@ -224,7 +226,7 @@
 					error_msg = "This lot does not exist."
 					return
 
-				if(!(LOT.status == FOR_SALE))
+				if(!(LOT.get_status() == FOR_SALE))
 					error_msg = "This lot is not for sale."
 					return
 
@@ -305,7 +307,7 @@
 					return
 
 				LOT.price = lot_new_price
-				LOT.status = FOR_SALE
+				LOT.get_status() = FOR_SALE
 				clear_data()
 				index = 6
 
@@ -315,7 +317,7 @@
 
 				var/datum/lot/LOT = L
 
-				if(!(LOT.status == OWNED) && !(unique_id == LOT.landlord_uid) && LOT.status == RENTED)
+				if(!(LOT.get_status() == OWNED) && !(unique_id == LOT.landlord_uid) && LOT.get_status() == RENTED)
 					error_msg = "You are unable to put this lot for rent as it is either up for sale, already rented, or a lot you do not own."
 					return
 
@@ -335,7 +337,7 @@
 				LOT.required_deposit = deposit
 				LOT.rent = rent
 
-				LOT.status = FOR_RENT
+				LOT.get_status() = FOR_RENT
 				clear_data()
 				index = 8
 
@@ -346,7 +348,7 @@
 				var/obj/item/weapon/card/id/I = usr.GetIdCard()
 
 
-				if(!(LOT.status == FOR_RENT))
+				if(!(LOT.get_status() == FOR_RENT))
 					error_msg = "This lot is no longer available for rent."
 					return
 
@@ -397,9 +399,9 @@
 					return
 
 				if(LOT.landlord_uid)
-					LOT.status = OWNED
+					LOT.get_status() = OWNED
 				else
-					LOT.status = FOR_RENT
+					LOT.get_status() = FOR_RENT
 
 
 			if("remove_sale_lot") // you see a lot on the market and snab that mofo.
@@ -415,9 +417,9 @@
 					return
 
 				if(LOT.landlord_uid)
-					LOT.status = OWNED
+					LOT.get_status() = OWNED
 				else
-					LOT.status = FOR_SALE
+					LOT.get_status() = FOR_SALE
 
 				clear_data()
 				index = 3
@@ -425,8 +427,13 @@
 
 			if("evict_tenant") // get out bitch get out!
 				var/L = locate(href_list["lot"])
+				var/T = locate(href_list["tenant"])
 
 				var/datum/lot/LOT = L
+				var/datum/tenant/tenant = T
+
+				if(!LOT || !tenant)
+					return
 
 				if("No" == alert("Do you want to evict [LOT.tenant_name] from the property?", "Evict Tenant", "No", "Yes"))
 					return
@@ -435,18 +442,23 @@
 					error_msg = "You do not own this lot!"
 					return
 
-				if(!(LOT.status == RENTED))
+				if(!(LOT.get_status() == RENTED))
 					error_msg = "This lot is not rented out to anyone."
 					return
 
-				LOT.remove_tenant()
+				LOT.remove_tenant(tenant.uid)
 				clear_data()
 				index = 3
 
 			if("end_tenancy") // when you leave a tenancy
 				var/L = locate(href_list["lot"])
+				var/T = locate(href_list["tenant"])
 
 				var/datum/lot/LOT = L
+				var/datum/tenant/tenant = T
+
+				if(!LOT || !tenant)
+					return
 
 				if("No" == alert("Do you want end your tenancy with [LOT.tenant_name]? You will not get a refund of your deposit.", "End Tenancy", "No", "Yes"))
 					return
@@ -455,7 +467,7 @@
 					error_msg = "You are not a tenant of this lot"
 					return
 
-				if(!(LOT.status == RENTED))
+				if(!(LOT.get_status() == RENTED))
 					error_msg = "This lot is not rented out to anyone."
 					return
 

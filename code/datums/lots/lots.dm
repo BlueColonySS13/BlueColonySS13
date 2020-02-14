@@ -8,48 +8,26 @@
 	var/rent = 300
 
 	//owner related
-	var/landlord_name = ""
-	var/tenant_name
-	var/company_name	// if owned by a company. (not implemented)
+	var/datum/tenant/landlord
+	var/datum/tenant/list/tenants = list()
 
-	var/tenant_uid
-	var/landlord_uid
-	var/company_uid	// not in use yet
+//	var/company_name						// if owned by a company. (not implemented)
 
-	var/company_email	// if a company has an email for contact (not implemented)
-	var/landlord_email
-	var/tenant_email
-
-	var/last_payment			// date of last time the lots were charged, this is done monthly, goes from landlord
-	var/last_payment_tnt		// last time tenant paid their bills
-
-	var/service_charge_warning = 15000	// how much debt landlord is in before letters start arriving. (not implemented)
-	var/service_charge_possession = 20000  //how much debt landlord is in with service charges before NT come be a bitch. (not implemented)
-
-	var/landlord_balance = 0
-	var/tenant_balance = 0
+	var/service_charge_warning = 15000			// how much debt landlord is in before letters start arriving. (not implemented)
+	var/service_charge_possession = 20000  		//how much debt landlord is in with service charges before NT come be a bitch. (not implemented)
 
 	var/required_deposit = 200
 
-	//money related
-	var/landlord_bank	// account id of who gets charged monthly for this
-	var/tenant_bank	// account id of tenant who is the landlord bitch mon
-
-
-	/*
-	// possible descriptors (for now):
-	-	pest control
-	-	cleaning service
-	*/
-	var/list/landlord_does = list()
-
-	var/status = FOR_SALE
+	var/held = FALSE
+	var/tenants_wanted = FALSE
 
 	var/turf/top_left			//turf of top left
 	var/turf/bottom_right		//turf of bottom right
 	var/area/lot_area
 
 	var/path = "data/persistent/lots/"
+
+	var/reason_held
 
 
 /datum/lot/New()
@@ -58,106 +36,8 @@
 
 	..()
 
-/datum/lot/proc/get_lot_price()
-	if(HOUSING_TAX)
-		return get_tax_price(HOUSING_TAX, price)
-
-	return price
-
-/datum/lot/proc/get_lot_tax_diff()
-	return (HOUSING_TAX * price)
-
-/datum/lot/proc/get_lot_tax()
-	return HOUSING_TAX
 
 
-/datum/lot/proc/get_rent()
-	return rent
-
-/datum/lot/proc/get_service_charge()
-	var/service_charge = 0
-
-	// to be expanded
-
-	return service_charge
-
-
-/datum/lot/proc/set_new_ownership(uid, l_name, bank, email)
-	//transfer price of lot to old owner's bank account
-	if(landlord_bank)
-		charge_to_account(landlord_bank, "Landlord Management", "Payment for [name]", "Landlord Management Console", get_lot_price())
-		department_accounts["[station_name()] Funds"].money += get_lot_price()
-
-	// Buying a lot as a landlord anew.
-	landlord_uid = uid
-	landlord_name = l_name
-
-	if(bank)
-		landlord_bank = bank
-	else
-		var/datum/money_account/CC_acc = department_accounts["City Council"]
-		landlord_bank = CC_acc.account_number
-
-
-	if(email)
-		landlord_email = email
-	else
-		landlord_email = using_map.council_email
-
-	landlord_balance = 0
-
-	if(!tenant_uid)
-		status = OWNED
-
-
-/datum/lot/proc/make_tenant(uid, l_name, bank, email)
-	// Selling a property as a landlord, to a tenant
-	//transfer price of lot to old owner's bank account
-
-	// Buying a lot as a landlord anew.
-	tenant_uid = uid
-	tenant_name = l_name
-
-
-	if(bank)
-		tenant_bank = bank
-
-	if(email)
-		tenant_email = email
-	else
-		tenant_email = using_map.council_email
-
-	status = RENTED
-
-	return 1
-
-/datum/lot/proc/sell_to_council()
-	// Aka reset lot. Selling a property back to the bad boys
-	set_new_ownership()
-	status = FOR_SALE
-
-/datum/lot/proc/remove_tenant()
-
-	// removes a tenant from the lot
-	tenant_uid = null
-	tenant_name = null
-	tenant_bank = null
-	tenant_email = null
-	tenant_email = null
-
-	// Resets lot status
-	if(landlord_uid)
-		status = OWNED
-	else
-		status = FOR_SALE
-
-
-
-
-/datum/lot/proc/repossess_lot()
-	remove_tenant()
-	sell_to_council()
-	return 1
 
 /datum/lot/proc/get_coordinates()
 	for(var/obj/effect/landmark/lot_data/lot_data)
@@ -239,20 +119,6 @@
 	return 1
 
 
-/datum/controller/subsystem/lots/proc/monthly_payroll()
-	for(var/datum/lot/L in all_lots)
-		if(!(Days_Difference(L.last_payment , full_game_time() ) > 30 ) )
-			if(!L.status == FOR_SALE)
-				if(L.status == RENTED)
-					L.tenant_balance += L.rent
-			L.landlord_balance += L.get_service_charge()
-
-			L.last_payment = full_game_time()
-
-	return 1
-
-
-
 // Lot signs, if a lot is vacant, it'll spawn a for rent sign on round start. Else, it'll delete itself. It'll copy the pixel_x and pixel_y of itself to the for rent sign, too.
 
 /obj/effect/landmark/lotsign
@@ -274,28 +140,30 @@
 
 	var/datum/lot/lot = SSlots.get_lot_by_id(lot_id)
 
-	if(lot && !(lot.status == RENTED))
+	if(lot && !(lot.get_status() == RENTED))
 		var/obj/structure/sign/rent/R = new /obj/structure/sign/rent (src.loc)
 
-		if(lot.status == FOR_RENT)
+		if(lot.get_status() == FOR_RENT)
 			R.icon_state = "rent"
 
 			R.name = "[lot.name] - For Rent ([lot.rent]cr per month)"
 			R.desc = "This rent sign says <b>[lot.name] - For Rent ([lot.price]cr)</b><br>\
-			Underneath, the sign notes the housing is owned by <b>[lot.landlord_name ? lot.landlord_name : "City Council"]</b>. Contact them for more details or buy from the Landlord Management Program on the computers in the library."
+			Underneath, the sign notes the housing is owned by <b>[lot.get_landlord_name()]</b>. Contact them for more details or buy from the Landlord Management Program on the computers in the library."
 
-		if(lot.status == FOR_SALE)
+		if(lot.get_status() == FOR_SALE)
 			R.icon_state = "sale"
 
 			R.name = "[lot.name] - For Sale ([lot.price]cr)"
 			R.desc = "This rent sign says <b>[lot.name] - For Sale ([lot.price]cr)</b><br>\
-			Underneath, the sign notes the housing is owned by <b>[lot.landlord_name ? lot.landlord_name : "City Council"]</b>. Contact them for more details or buy from the Landlord Management Program on the computers in the library."
+			Underneath, the sign notes the housing is owned by <b>[lot.get_landlord_name()]</b>. Contact them for more details or buy from the Landlord Management Program on the computers in the library."
 
-		if(lot.status == LOT_HELD)
+		if(lot.get_status() == LOT_HELD)
 			R.icon_state = "held"
 
 			R.name = "[lot.name] - Held"
-			R.desc = "This lot has been seized by city council."
+			R.desc = "This lot has been seized by City Council."
+			if(lot.reason_held)
+				R.desc += " Reason: [lot.reason_held]"
 
 
 		//copy over mapping values.
