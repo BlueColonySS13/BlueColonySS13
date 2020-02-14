@@ -670,5 +670,5 @@
 
 
 /datum/gear/uniform/aristocrat
-	display_name = "aristocrat outfit"
+	display_name = "aristocrat formal wear"
 	path = /obj/item/clothing/under/aristocrat

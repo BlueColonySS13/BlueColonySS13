@@ -232,10 +232,12 @@
 /obj/item/clothing/accessory/wcoat/gwaistcost
 	name = "generic waistcoat"
 	icon_state = "color_vest"
+	index = 1
 
 /obj/item/clothing/accessory/wcoat/fancyvest
 	name = "fancy waistcoat"
 	icon_state = "fancyvest"
+	index = 1
 
 /obj/item/clothing/accessory/wcoat/swvest/blue
 	name = "blue sweatervest"
