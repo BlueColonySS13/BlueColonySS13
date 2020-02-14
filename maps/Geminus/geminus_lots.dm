@@ -58,3 +58,9 @@
 	id = "bizlot10"
 	price = 120000
 	rent = 300
+
+/datum/lot/business_eleven
+	name = "Business Lot 11"
+	id = "bizlot11"
+	price = 314050
+	rent = 600
