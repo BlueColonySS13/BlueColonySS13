@@ -4,6 +4,7 @@
 	desc = "yummy"
 	icon = 'icons/obj/food.dmi'
 	icon_state = null
+	price_tag = 6
 	var/bitesize = 1
 	var/bitecount = 0
 	var/trash = null
@@ -3021,7 +3022,7 @@
 	center_of_mass = list("x"=16, "y"=6)
 	nutriment_desc = list("salt" = 1, "fish" = 1)
 	nutriment_amt = 2
-	
+
 /obj/item/weapon/reagent_containers/food/snacks/caviar/get_item_cost()
 	return 120
 
