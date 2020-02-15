@@ -1933,3 +1933,61 @@
 					/obj/item/weapon/storage/mre/menu10 = 50
 					)
 
+//armory vending machines, many guns.
+/obj/machinery/vending/armory
+	name = "BlastTech Defense Solutions Vendor"
+	desc = "A standardized way to store and dispense all manners of weaponry and personal protective equipment. Made from reinforced diamond-infused plasteel with a built-in energy shield, lifetime warranty included."
+	product_slogans = "Keeping you safe since 2564!"
+	product_ads = "Don't let Sol get the upper hand! Use your nearest BlastTech vendor today!"
+	vend_delay = 10
+	icon_state = "gunrack"
+	icon_deny = "gunrack-deny"
+	vend_reply = "Thank you for using BlastTech's automated vending service, happy hunting."
+
+/obj/machinery/vending/armory/gcpd/ballistics
+	name = "BlastTech Defense Solutions Ballistics Vendor"
+	req_access = list(3)
+	products = list(/obj/item/weapon/gun/projectile/police = 6,
+					/obj/item/ammo_magazine/m45 = 12,
+					/obj/item/weapon/gun/projectile/shotgun/pump/combat = 4,
+					/obj/item/weapon/storage/box/beanbags = 2,
+					/obj/item/weapon/storage/box/shotgunammo = 2,
+					/obj/item/weapon/storage/box/shotgunshells = 2,
+					/obj/item/weapon/storage/box/stunshells = 2,
+					/obj/item/weapon/gun/projectile/automatic/sts35 = 2,
+					/obj/item/ammo_magazine/m545 = 4
+					)
+
+/obj/machinery/vending/armory/gcpd/energy
+	name = "BlastTech Defense Solutions Energy Vendor"
+	req_access = list(3)
+	products = list(/obj/item/weapon/gun/energy/gun = 4,
+					/obj/item/weapon/gun/energy/taser/carbine = 4,
+					/obj/item/weapon/gun/energy/laser = 2,
+					/obj/item/weapon/cell/device/weapon = 20
+					)
+
+/obj/machinery/vending/armory/gcpd/ppe
+	name = "BlastTech Defense Solution PPE Vendor"
+	req_access = list(3)
+	products = list(/obj/item/clothing/head/helmet/combat = 4,
+					/obj/item/clothing/suit/armor/combat = 4,
+					/obj/item/clothing/gloves/arm_guard/combat = 4,
+					/obj/item/clothing/shoes/leg_guard/combat = 4,
+					/obj/item/clothing/head/helmet/bulletproof = 2,
+					/obj/item/clothing/suit/armor/bulletproof/alt = 2,
+					/obj/item/clothing/gloves/arm_guard/bulletproof = 2,
+					/obj/item/clothing/shoes/leg_guard/bulletproof = 2,
+					/obj/item/clothing/head/helmet/laserproof = 2,
+					/obj/item/clothing/suit/armor/laserproof = 2,
+					/obj/item/clothing/gloves/arm_guard/laserproof = 2,
+					/obj/item/clothing/shoes/leg_guard/laserproof = 2,
+					/obj/item/clothing/head/helmet/riot = 4,
+					/obj/item/clothing/suit/armor/riot = 4,
+					/obj/item/clothing/gloves/arm_guard/riot = 4,
+					/obj/item/clothing/shoes/leg_guard/riot = 4,
+					/obj/item/weapon/shield/riot = 4,
+					/obj/item/weapon/melee/baton = 4,
+					/obj/item/clothing/glasses/sunglasses/sechud/tactical = 6,
+					/obj/item/clothing/mask/gas/half = 6
+					)
