@@ -820,7 +820,7 @@
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/ice = 10)
 	vending_sound = "machines/vending_coffee.ogg"
 
-	vendor_department = "Bar"
+	vendor_department = "Civilian"
 
 	auto_price = 1
 
@@ -837,7 +837,7 @@
 	contraband = list(/obj/item/weapon/reagent_containers/food/snacks/syndicake = 6,/obj/item/weapon/reagent_containers/food/snacks/unajerky = 6,)
 
 
-	vendor_department = "Bar"
+	vendor_department = "Civilian"
 	auto_price = 1
 
 /obj/machinery/vending/cola
@@ -853,7 +853,7 @@
 					/obj/item/weapon/reagent_containers/food/drinks/cans/gingerale = 10, /obj/item/weapon/reagent_containers/food/drinks/bottle/cola = 10)
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/weapon/reagent_containers/food/snacks/liquidfood = 6)
 
-	vendor_department = "Bar"
+	vendor_department = "Civilian"
 	auto_price = 1
 
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
