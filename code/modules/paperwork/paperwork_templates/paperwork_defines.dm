@@ -113,6 +113,12 @@
 	categories = list(PAPERWORK_COUNCIL)
 	file_source = 'code/modules/paperwork/paperwork_templates/council/ordinance.txt'
 
+/datum/paperwork_template/permit_form
+	name = "City Clerk: Weapon Permit Application"
+	title = "Weapon Permit Form"
+	categories = list(PAPERWORK_COUNCIL)
+	file_source = 'code/modules/paperwork/paperwork_templates/council/weaponpermit.txt'
+
 // MEDICAL
 
 /datum/paperwork_template/med_prescription
