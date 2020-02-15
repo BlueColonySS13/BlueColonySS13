@@ -157,7 +157,6 @@
 	desc = "The class on this poofy thing is almost unbearable."
 	icon_state = "cravat"
 
-
 /obj/item/clothing/accessory/stethoscope
 	name = "stethoscope"
 	desc = "An outdated medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
