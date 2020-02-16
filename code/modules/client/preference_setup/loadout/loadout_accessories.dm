@@ -259,6 +259,6 @@
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
-/datum/gear/accessory/poshblazer
-	display_name = "posh blazer"
+/datum/gear/accessory/poshblazerattach
+	display_name = "attachable posh blazer"
 	path = /obj/item/clothing/accessory/poshblazer
