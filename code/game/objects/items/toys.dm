@@ -895,6 +895,10 @@
 		return
 
 	if(opened)
+		if(stored_item)
+			to_chat(user, "There is already something in here.")
+			return
+	
 		if(!(I.w_class > w_class))
 			to_chat(user, "You place [I] inside [src].")
 			user.drop_from_inventory(I, src)
@@ -1013,6 +1017,10 @@
 		return
 
 	if( (!(I.w_class > w_class)) && opened)
+		if(stored_item)
+			to_chat(user, "There is already something in here.")
+			return
+
 		to_chat(user, "You place [I] inside [src].")
 		user.drop_from_inventory(I, src)
 		I.forceMove(src)
