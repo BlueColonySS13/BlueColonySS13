@@ -26,15 +26,19 @@ var/global/list/horse_names = list("Treasure", "Fleetlight", "Lord Kaine", "Joes
 
 
 /datum/gambling_bet/proc/add_better(name, betted, bet_amount = 0, bank_account_id, uid)
-	var/list/bet = list(list("name" = name, "betted" = betted, "bet_money" = bet_amount, "account" = bank_account_id, "unique_id" = uid))
+	var/datum/gamble_better/bet = new()
+	
+	bet.full_name = name
+	bet.unique_id = uid
+	bet.betted_for = betted
+	bet.bet_amount = bet_amount
+	bet.bank_id = bank_account_id
+
 	bets += bet
 
 /datum/gambling_bet/proc/get_bet_count()
-	var/list/bet_list = list()
-	for(var/list/V in bets)
-		bet_list[V[name]]++
-
-	return bet_list
+	var/no_bets = bets.len
+	return no_bets
 
 /datum/gambling_bet/proc/get_bet_status()
 	return active
@@ -43,14 +47,13 @@ var/global/list/horse_names = list("Treasure", "Fleetlight", "Lord Kaine", "Joes
 	return 0
 
 /datum/gambling_bet/proc/find_better(uid)
-	for(var/list/V in bets)
-		if(V["unique_id"] == uid)
-			return V
+	for(var/datum/gamble_better/bet in bets)
+		if(bet.unique_id == uid)
+			return bet
 
 /datum/gambling_bet/proc/award_better(uid)
-	var/list/better = find_better(uid)
-	charge_to_account(better["account"], "Betting Terminal", "[name]: Betting Win for [better["betted"]]", 777, better["bet_money"])
-
+	var/datum/gamble_better/bet = find_better(uid)
+	charge_to_account(bet.bank_id, "Betting Terminal", "[name]: Betting Win for [bet.betted_for]", "Terminal #777", bet.bet_amount)
 
 /proc/pay_betters(bet_id, winning_bet)
 	var/datum/gambling_bet/bet = get_bet_by_id(bet_id)
@@ -58,9 +61,9 @@ var/global/list/horse_names = list("Treasure", "Fleetlight", "Lord Kaine", "Joes
 	if(!bet.get_bet_status())
 		return
 
-	for(var/list/V in bet.bets)
-		if(V["betted"] == winning_bet)
-			bet.award_better(V["unique_id"])
+	for(var/datum/gamble_better/V in bet.bets)
+		if(V.betted_for == winning_bet)
+			bet.award_better(V.unique_id)
 	return
 
 /proc/finalise_bet(bet_id, winning_bet)
