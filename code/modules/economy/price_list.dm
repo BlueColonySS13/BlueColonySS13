@@ -87,7 +87,7 @@
 /datum/lot/proc/get_item_cost()
 	return price
 
-/datum/lot/proc/get_tax()
+/datum/lot/get_tax()
 	return HOUSING_TAX
 
 // Juices, soda and similar //

@@ -25,6 +25,9 @@ SUBSYSTEM_DEF(economy)
 		for(var/datum/data/record/R in data_core.general)
 			payroll(R)
 
+		for(var/datum/lot/L in SSlots.all_lots)
+			L.add_balances()
+
 /proc/payroll(var/datum/data/record/G)
 	var/bank_number = G.fields["bank_account"]
 	var/datum/job/job = job_master.GetJob(G.fields["real_rank"])

@@ -41,27 +41,28 @@ SUBSYSTEM_DEF(lots)
 /datum/controller/subsystem/lots/proc/get_lots_by_owner_uid(uid)
 	var/list/sale_lots = list()
 	for(var/datum/lot/L in all_lots)
-		if(L.landlord_uid == uid)
+		if(L.get_landlord_uid() == uid)
 			sale_lots += L
 	return sale_lots
 
 /datum/controller/subsystem/lots/proc/get_lots_by_tenant_uid(uid)
 	var/list/rent_lots = list()
 	for(var/datum/lot/L in all_lots)
-		if(L.tenant_uid == uid)
-			rent_lots += L
+		for(var/datum/tenant/T in L.get_tenants())
+			if(T.unique_id == uid)
+				rent_lots += L
 	return rent_lots
 
 /datum/controller/subsystem/lots/proc/get_lots_for_sale()
 	var/list/sale_lots = list()
 	for(var/datum/lot/L in all_lots)
-		if(L.status == FOR_SALE)
+		if(L.get_status() == FOR_SALE)
 			sale_lots += L
 	return sale_lots
 
 /datum/controller/subsystem/lots/proc/get_lots_for_rent()
 	var/list/rent_lots = list()
 	for(var/datum/lot/L in all_lots)
-		if(L.status == FOR_RENT)
+		if(L.get_status() == FOR_RENT)
 			rent_lots += L
 	return rent_lots

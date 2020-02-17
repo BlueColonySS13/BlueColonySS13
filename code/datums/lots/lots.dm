@@ -11,23 +11,31 @@
 	var/datum/tenant/landlord
 	var/datum/tenant/list/tenants = list()
 
+	var/datum/tenant/list/applied_tenants = list()	//people who have applied to become a tenant, for rejection or for approval
+
 //	var/company_name						// if owned by a company. (not implemented)
 
-	var/service_charge_warning = 15000			// how much debt landlord is in before letters start arriving. (not implemented)
-	var/service_charge_possession = 20000  		//how much debt landlord is in with service charges before NT come be a bitch. (not implemented)
+	var/service_light_warning = 5000
+	var/service_charge_warning = 15000			// how much debt landlord is in before letters start arriving.
+	var/service_charge_possession = 20000  		//how much debt landlord is in with service charges before council come be a bitch.
 
 	var/required_deposit = 200
 
+	var/list/landlord_checkbook = list()		//changes every payroll
+
 	var/held = FALSE
 	var/tenants_wanted = FALSE
+	var/for_sale = FALSE
 
-	var/turf/top_left			//turf of top left
-	var/turf/bottom_right		//turf of bottom right
-	var/area/lot_area
+	var/tmp/turf/top_left			//turf of top left
+	var/tmp/turf/bottom_right		//turf of bottom right
+	var/tmp/area/lot_area
 
 	var/path = "data/persistent/lots/"
 
 	var/reason_held
+
+	var/max_tenants = 3
 
 
 /datum/lot/New()
@@ -35,8 +43,6 @@
 	get_coordinates()
 
 	..()
-
-
 
 
 /datum/lot/proc/get_coordinates()
