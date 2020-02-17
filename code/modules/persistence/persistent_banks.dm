@@ -138,7 +138,30 @@
 
 	return acc_logs
 
+/proc/add_persistent_acc_logs(var/acc_no, transaction)
+	var/full_path = "data/persistent/banks/[acc_no].sav"
 
+	if(!full_path)			return 0
+	if(!fexists(full_path)) return 0
+
+	var/savefile/S = new /savefile(full_path)
+	if(!S)					return 0
+	S.cd = "/"
+
+	var/list/acc_logs
+	S["transaction_log"] >> acc_logs
+	S["max_transaction_logs"] >> max_logs
+	if(!max_logs)
+		max_logs = 50
+		
+	acc_logs += T
+	truncate_oldest(acc_logs, max_logs)
+	
+	S["transaction_log"] << acc_logs
+	
+	return 1
+	
+	
 /proc/persist_set_balance(var/acc_no, var/amount)
 	var/full_path = "data/persistent/banks/[acc_no].sav"
 
