@@ -9,7 +9,7 @@
 
 	//owner related
 	var/datum/tenant/landlord
-	var/datum/tenant/list/tenants = list()
+	var/list/tenants = list()
 
 	var/datum/tenant/list/applied_tenants = list()	//people who have applied to become a tenant, for rejection or for approval
 
