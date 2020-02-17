@@ -71,7 +71,7 @@
 	name = "Human Adolescent"
 	name_plural = "Humans Adolescents"
 	name = SPECIES_HUMAN_TEEN
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN
+	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_IS_WHITELISTED
 	blurb = "A young human which is currently too young to participate in civil powers such as voting or official positions but can legally work in many fields on a reduced wage."
 	metabolic_rate = 1.15 // You know, puberty. Hormones. Growing.
 	blood_volume = 480
@@ -101,7 +101,7 @@
 	name = "Human Child"
 	name_plural = "Human Children"
 	name = SPECIES_HUMAN_CHILD
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN
+	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_IS_WHITELISTED
 	metabolic_rate = 1.10
 	blurb = "A younger version of a human. Much weaker and smaller - cannot participate in paid job roles, but faster and more agile."
 	mob_size = MOB_SMALL

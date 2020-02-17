@@ -98,8 +98,8 @@ var/list/all_maps = list()
 	var/president_email = "president@nanotrasen.gov.nt"
 	var/vice_email = "vice-president@nanotrasen.gov.nt"
 	var/boss_email = "headoffice@nanotrasen.gov.nt"
-	var/rep_email = "nanotrasen@nanotrasen.gov.nt"
-	var/director_email = "director@nanotrasen.gov.nt"
+	var/rep_email = "centralgovernment@nanotrasen.gov.nt"
+	var/director_email = "governor@nanotrasen.gov.nt"
 	var/investigation_email = "pdsi@nanotrasen.gov.nt"
 
 	var/minister_defense_email = "defense@nanotrasen.gov.nt"
@@ -109,6 +109,7 @@ var/list/all_maps = list()
 	var/minister_information_email = "information@nanotrasen.gov.nt"
 
 	var/council_email = "city-council@nanotrasen.gov.nt"
+
 
 /datum/map/New()
 	..()

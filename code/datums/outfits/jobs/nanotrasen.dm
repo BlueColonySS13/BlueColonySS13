@@ -18,12 +18,57 @@
 			permit.set_name(H.real_name)
 
 /decl/hierarchy/outfit/job/nanotrasen/representative
-	name = "Nanotrasen Representative"
+	name = "Government Representative"
 	uniform = /obj/item/clothing/under/suit_jacket/charcoal
 	belt = /obj/item/weapon/gun/projectile/pistol
 	l_hand = /obj/item/weapon/paper
 	r_hand = /obj/item/weapon/clipboard
-	id_pda_assignment = "Nanotrasen Representative"
+	id_pda_assignment = "Government Representative"
+
+/decl/hierarchy/outfit/job/nanotrasen/electoral
+	name = "Electoral Assistant"
+	uniform = /obj/item/clothing/under/suit_jacket/charcoal
+	belt = /obj/item/weapon/gun/projectile/pistol
+	l_hand = /obj/item/weapon/paper
+	r_hand = /obj/item/weapon/clipboard
+	id_pda_assignment = "Electoral Assistant"
+
+/decl/hierarchy/outfit/job/nanotrasen/justice
+	name = "Supreme Justice"
+	uniform = /obj/item/clothing/under/suit_jacket/charcoal
+	belt = /obj/item/weapon/gun/projectile/pistol
+	l_hand = /obj/item/weapon/paper
+	r_hand = /obj/item/weapon/clipboard
+	id_pda_assignment = "Supreme Justice"
+
+/decl/hierarchy/outfit/job/nanotrasen/minister
+	name = "Minister"
+	uniform = /obj/item/clothing/under/suit_jacket/charcoal
+	belt = /obj/item/weapon/gun/projectile/pistol
+	l_hand = /obj/item/weapon/paper
+	r_hand = /obj/item/weapon/clipboard
+	id_pda_assignment = "Minister"
+
+/decl/hierarchy/outfit/job/nanotrasen/governor
+	name = "Governor"
+	uniform = /obj/item/clothing/under/suit_jacket/charcoal
+	belt = /obj/item/weapon/gun/projectile/pistol
+	l_hand = /obj/item/weapon/paper
+	r_hand = /obj/item/weapon/clipboard
+	id_pda_assignment = "Governor"
+
+/decl/hierarchy/outfit/job/heads/vpresident
+	name = OUTFIT_JOB_NAME("President")
+	glasses = /obj/item/clothing/glasses/sunglasses
+	uniform = /obj/item/clothing/under/rank/president
+	suit = /obj/item/clothing/suit/storage/toggle/presidential_jacket
+	l_ear = /obj/item/device/radio/headset/headset_com
+	shoes = /obj/item/clothing/shoes/leather
+	backpack = /obj/item/weapon/storage/backpack
+	satchel_one = /obj/item/weapon/storage/backpack/satchel
+	messenger_bag = /obj/item/weapon/storage/backpack/messenger/com
+	id_type = /obj/item/weapon/card/id/nanotrasen/president
+	pda_type = /obj/item/device/pda/captain
 
 
 /decl/hierarchy/outfit/job/nanotrasen/guard //Deployed to keep NT officials safe, like the city hall guard -- not death squad
@@ -62,14 +107,14 @@
 	id_type = /obj/item/weapon/card/id/nanotrasen/ceo
 
 /decl/hierarchy/outfit/job/nanotrasen/cbia
-	name = "Nanotrasen CBIA Agent"
-	head = /obj/item/clothing/head/beret/centcom/officer
-	uniform = /obj/item/clothing/under/rank/centcom
+	name = "Nanotrasen PDSI Agent"
+	uniform = /obj/item/clothing/under/suit_jacket/navy
+	gloves = null
 	shoes = /obj/item/clothing/shoes/laceup
-	gloves = /obj/item/clothing/gloves/white
-	glasses = /obj/item/clothing/glasses/sunglasses
-	belt = /obj/item/weapon/gun/energy
-	id_pda_assignment = "Nanotrasen CBIA Agent"
+	glasses = /obj/item/clothing/glasses/sunglasses/sechud
+	l_ear = /obj/item/device/radio/headset/government
+	belt = /obj/item/clothing/accessory/badge/holo/pdsi
+	id_pda_assignment = "PDSI Agent"
 	id_type = /obj/item/weapon/card/id/nanotrasen/cbia
 
 /decl/hierarchy/outfit/job/heads/president

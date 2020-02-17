@@ -127,6 +127,11 @@
 		if(instant || do_after(user, 50))
 			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
+						
+			var/msg = "[user.client.key] ([user]) has drawn [drawtype] (with [src]) at [x],[y],[z]."
+			message_admins(msg)
+			log_game(msg)
+			
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the crayon is drawn on.
 			if(uses)
 				uses--
@@ -310,9 +315,14 @@
 		playsound(loc, 'sound/effects/spraycan_shake.ogg', 5, 1, 5)
 		user << "You start drawing graffiti on the [target.name]."
 		if(instant || do_after(user, 50))
-			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
+			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)		
 			playsound(loc, 'sound/effects/spray.ogg', 5, 1, 5)
-			user << "You finish drawing."
+			to_chat(user, "You finish drawing.")
+			
+			var/msg = "[user.client.key] ([user]) has drawn [drawtype] (with [src]) at [x],[y],[z]."
+			message_admins(msg)
+			log_game(msg)
+		
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the crayon is drawn on.
 			if(uses)
 				uses--

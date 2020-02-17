@@ -14,10 +14,16 @@ SUBSYSTEM_DEF(economy)
 		next_payday = world.time + payday_interval
 
 		//Search general records, and process payroll for all those that have bank numbers.
-		for(var/datum/data/record/R in data_core.general)
-			payroll(R)
+		city_charges()
 		command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
 
+
+/datum/controller/subsystem/economy/proc/city_charges()
+	for(var/datum/expense/E in persistent_economy.city_expenses)
+		E.charge_department(E.cost_per_payroll)
+
+		for(var/datum/data/record/R in data_core.general)
+			payroll(R)
 
 /proc/payroll(var/datum/data/record/G)
 	var/bank_number = G.fields["bank_account"]
@@ -82,8 +88,7 @@ SUBSYSTEM_DEF(economy)
 	if(!unique_id) // shouldn't happen, but you know.
 		return
 
-
-	if(linked_person.client)
+	if(linked_person && linked_person.client)
 		var/client/linked_client = linked_person.client
 
 		if(linked_client.inactivity > 18000) // About 30 minutes inactivity.

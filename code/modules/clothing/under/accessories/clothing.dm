@@ -3,7 +3,12 @@
 	desc = "Slick black suit vest."
 	icon_state = "det_vest"
 
-/obj/item/clothing/accessory/jacket/
+/obj/item/clothing/accessory/poshblazer
+	name = "women's posh blazer"
+	desc = "This is a bit fancy, like the new recruit in a news office who is trying too hard to impress the managers."
+	icon_state = "poshblazer"
+
+/obj/item/clothing/accessory/jacket
 	name = "tan suit jacket"
 	desc = "Cozy suit jacket."
 	icon_state = "tan_jacket"
@@ -228,6 +233,16 @@
 	icon_state = "sweatervest"
 	item_state = "sweatervest"
 
+
+/obj/item/clothing/accessory/wcoat/gwaistcost
+	name = "generic waistcoat"
+	icon_state = "color_vest"
+	index = 1
+
+/obj/item/clothing/accessory/wcoat/fancyvest
+	name = "fancy waistcoat"
+	icon_state = "fancyvest"
+
 /obj/item/clothing/accessory/wcoat/swvest/blue
 	name = "blue sweatervest"
 	icon_state = "sweatervest_blue"
@@ -237,11 +252,6 @@
 	name = "red sweatervest"
 	icon_state = "sweatervest_red"
 	item_state = "sweatervest_red"
-
-/obj/item/clothing/accessory/wcoat/fancyvest
-	name = "fancy waistcoat"
-	icon_state = "fancyvest"
-	item_state = "fancyvest"
 
 //Sweaters.
 

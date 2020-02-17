@@ -102,6 +102,23 @@
 	else if(index == 6) // Voting Eligibility Page
 		page_msg = "Here, you can change the voting eligibility of groups in the colony. Beware, this can be quite controversial."
 
+	else if(index == 7) // Council Page
+		page_msg = "This is the city council management page. You can enable and disable certain features that affect the council."
+
+	else if(index == 8) // Council Page
+		page_msg = "You are now able to manage funds of the colony. You can transfer funds from a certain department to another.<hr><br><br>"
+
+		for(var/datum/money_account/M in department_acc_list)
+			if(!(M.department in public_departments + list("[station_name()] Funds", "Nanotrasen")))
+				continue
+			var/display_color = "green"
+			if(1500 > M.money)
+				display_color = "yellow"
+			if(100 > M.money)
+				display_color = "red"
+
+			page_msg += "<a href='?src=\ref[src];manage_transfer=1;transfer_funds=\ref[M]'>Transfer Money From</a> <b>[M.department]</b> (<font color=\"[display_color]\">[M.money]</font>CR)<br>"
+
 
 	if(index == -1)
 		page_msg = "This isn't a thing yet, sorry."
@@ -152,6 +169,7 @@
 	data["tobacco_tax"] = persistent_economy.tobacco_tax * 100
 	data["recreational_drug_tax"] = persistent_economy.recreational_drug_tax * 100
 	data["gambling_tax"] = persistent_economy.gambling_tax * 100
+	data["housing_tax"] = persistent_economy.housing_tax * 100
 
 	//legal statuses
 	data["voting_age"] = persistent_economy.voting_age
@@ -162,6 +180,11 @@
 	data["synth_vote"] = "[persistent_economy.synth_vote ? "Can Vote" : "Cannot Vote"]"
 	data["citizenship_vote"] = "[persistent_economy.citizenship_vote ? "Can Vote" : "Cannot Vote"]"
 	data["criminal_vote"] = "[persistent_economy.criminal_vote ? "Can Vote" : "Cannot Vote"]"
+
+	//manage council
+	data["city_services_enable"] = "[persistent_economy.city_council_control ? "Can Manage City Services" : "Cannot Manage City Services"]"
+
+	//manage funds
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -240,6 +263,24 @@
 		. = 1
 		index = 4
 
+	if(href_list["manage_council"])
+		. = 1
+		index = 7
+
+	if(href_list["manage_council_services"])
+		. = 1
+
+		var/available_powers = list("Allow City Council to use services", "Don't Allow City Council to use services")
+
+		var/power = input(usr, "What would you like to do?.", "City Council Services") as null|anything in available_powers
+		if(!power) return
+
+		switch(power)
+			if("Allow City Council to use services")
+				persistent_economy.city_council_control = TRUE
+			if("Don't Allow City Council to use services")
+				persistent_economy.city_council_control = FALSE
+
 	if(href_list["adjust_main_taxes"])
 		. = 1
 
@@ -287,6 +328,9 @@
 				persistent_economy.gambling_tax = new_tax
 				return
 
+			if("Housing Tax")
+				persistent_economy.housing_tax = new_tax
+				return
 
 	if(href_list["contraband_edit"])
 		. = 1
@@ -368,6 +412,40 @@
 
 		index = 5
 
+	if(href_list["manage_funds"])
+		. = 1
+
+		index = 8
+
+
+	if(href_list["manage_transfer"])
+		. = 1
+		var/datum/money_account/A = locate(href_list["transfer_funds"]) in department_acc_list
+
+		if(!(A.department in public_departments + list("[station_name()] Funds", "Nanotrasen")))
+			return
+
+
+		var/category = input(usr, "Select a department to transfer to.", "Departmental Transfer")  as null|anything in public_departments + list("[station_name()] Funds", "Cancel")
+		if(!category || !(category in public_departments) || (category == "Cancel"))
+			return
+
+		var/datum/money_account/account_recieving = department_accounts[category]
+
+		var/amount = input(usr, "How much would you like to transfer?.", "Transfer Amount")  as num
+
+		if(!amount || (0 > amount))
+			error_msg = "Please enter a valid amount."
+			return
+
+		if(amount > A.money)
+			error_msg = "Not enough funds in [A.department] to transfer to [category]."
+			return
+
+		charge_to_account(A.account_number, "Government Funds Transfer System", "Presidential Portal Transfer", "President Transfer", -amount)
+		charge_to_account(account_recieving.account_number, "Government Funds Transfer System", "Presidential Portal Transfer", "President Transfer", amount)
+
+		index = 8
 
 	if(href_list["resign_president"])
 		. = 1
@@ -385,6 +463,22 @@
 		. = 1
 
 		index = 6
+
+	if(href_list["voting_age"])
+		. = 1
+
+		var/age = input(usr, "Please select the minimum voting age. Min: 13. Max: 25.", "Voting Age") as num|null
+
+		if(!age)
+			error_msg = "You must enter an age."
+			return
+
+		if(!age_range(age))
+			error_msg = "This age is incorrect. You must enter a decimal between 13 and 25."
+			return
+
+		persistent_economy.voting_age = age
+
 
 	if(href_list["drinking_age"])
 		. = 1
@@ -429,26 +523,12 @@
 
 		persistent_economy.gambling_age = age
 
-	if(href_list["voting_age"])
-		. = 1
-
-		var/age = input(usr, "Please select the minimum voting age. Min: 13. Max: 25.", "Voting Age") as num|null
-		age = sanitize_integer(persistent_economy.voting_age, 0, 100, 25)
-		if(!age)
-			error_msg = "You must enter an age."
-			return
-
-		if(!age_range(age))
-			error_msg = "This age is incorrect. You must enter a decimal between 13 and 25."
-			return
-
-		persistent_economy.voting_age = age
 
 	if(href_list["sentencing_age"])
 		. = 1
 
 		var/age = input(usr, "Please select the minimum age for criminal sentencing. Min: 13. Max: 25.", "Criminal Sentencing Age") as num|null
-		age = sanitize_integer(persistent_economy.sentencing_age, 0, 100, 25)
+
 		if(!age)
 			error_msg = "You must enter an age."
 			return

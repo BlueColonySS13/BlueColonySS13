@@ -7,7 +7,7 @@
 
 	var/eventDept = "Security"			//Department name in announcement
 	var/list/areaName = list("Brig")	//Names of areas mentioned in AI and Engineering announcements
-	var/list/areaType = list(/area/security/prison, /area/security/brig, /area/planets/Geminus/indoor/prison, /area/planets/Geminus/indoor/police_station)//Area types to include.
+	var/list/areaType = list(/area/security/prison, /area/security/brig, /area/prison/cell_block, /area/security/security_processing)//Area types to include.
 	var/list/areaNotType = list()		//Area types to specifically exclude.
 
 // Don't see the point of these ones.
@@ -43,6 +43,12 @@
 
 
 /datum/event/prison_break/start()
+	if(persistent_economy && persistent_economy.antivirus)
+		command_announcement.Announce("[pick("Gr3y.T1d3 virus","Malignant trojan")] was detected in [station_name()] [(eventDept == "Security")? "imprisonment":"containment"] and was subsequently terminated.", "[eventDept] Alert")
+
+		kill()
+		return
+
 	for(var/area/A in world)
 		if(is_type_in_list(A,areaType) && !is_type_in_list(A,areaNotType))
 			areas += A
@@ -66,7 +72,7 @@
 			var/obj/machinery/power/apc/theAPC = null
 			for(var/area/A in areas)
 				theAPC = A.get_apc()
-				if(theAPC.operating)	//If the apc's off, it's a little hard to overload the lights.
+				if(theAPC && theAPC.operating)	//If the apc's off, it's a little hard to overload the lights.
 					for(var/obj/machinery/light/L in A)
 						L.flicker(10)
 

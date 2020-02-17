@@ -1,0 +1,19 @@
+[hr][center][logo][/center]
+[u][center]Prescription [/center][/u]
+[small]
+[b]Name of Patient:[/b] [field]
+
+[b]Medication name:[/b] [field]
+[b]Treatment period:[/b] [field] - [field]
+[b]Dose:[/b] [field]
+[b]Intake instructions:[/b] [field]
+
+Do not exceed prescribed dose.
+Do not cease treatment prematurely.
+Side effects may occur; consult physician if severe.
+
+[hr][b]Prescribing doctor[/b] [field]
+[b]Signature:[/b] [field]
+[b]Date:[/b] [field]
+[/small]
+[hr]

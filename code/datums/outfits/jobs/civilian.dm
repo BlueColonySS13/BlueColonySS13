@@ -6,7 +6,12 @@
 /decl/hierarchy/outfit/job/assistant/visitor
 	name = OUTFIT_JOB_NAME("Visitor")
 	id_pda_assignment = "Visitor"
-	uniform = /obj/item/clothing/under/assistantformal
+	uniform = /obj/item/clothing/under/suit_jacket/tan
+
+/decl/hierarchy/outfit/job/assistant/socialite
+	name = OUTFIT_JOB_NAME("Socialite")
+	id_pda_assignment = "Socialite"
+	uniform = /obj/item/clothing/under/aristocrat
 
 /decl/hierarchy/outfit/job/assistant/resident
 	name = OUTFIT_JOB_NAME("Resident")
@@ -22,11 +27,11 @@
 	uniform = /obj/item/clothing/under/rank/bartender
 	id_type = /obj/item/weapon/card/id/civilian/bartender
 	pda_type = /obj/item/device/pda/bar
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/bar = 1)
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three/bar = 1)
 
 /decl/hierarchy/outfit/job/service/bartender/post_equip(mob/living/carbon/human/H)
 	..()
-	for(var/obj/item/clothing/accessory/permit/gun/bar/permit in H.back.contents)
+	for(var/obj/item/clothing/accessory/permit/gun/tier_three/bar/permit in H.back.contents)
 		permit.set_name(H.real_name)
 
 /decl/hierarchy/outfit/job/service/bartender/barista

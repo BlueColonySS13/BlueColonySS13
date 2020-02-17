@@ -10,6 +10,7 @@
 	var/list/datum/money_account/eco_data
 	var/datum/money_account/treasury
 	var/list/bets = list()
+	var/datum/money_account/nt_account
 
 	//income tax rates
 	var/tax_rate_upper = 0.20
@@ -26,6 +27,7 @@
 	var/tobacco_tax = 0.10
 	var/recreational_drug_tax = 0.10
 	var/gambling_tax = 0.10
+	var/housing_tax = 0.10
 
 	//contraband // See law/contraband.dm for potential contraband types.
 	var/law_CANNABIS = PERMIT_POSSESSION
@@ -59,7 +61,25 @@
 	var/sentencing_age = 13
 	var/synth_vote = TRUE			// Are FBPs allowed to vote?
 	var/citizenship_vote = TRUE		// Are starsystem immigrants allowed to vote?
-	var/criminal_vote = TRUE		// Can people with criminal records vote? (unimplemented)
+	var/criminal_vote = TRUE			// Can people with criminal records vote? (unimplemented)
+
+	var/list/city_expenses = list()
+
+	// Persistent City Option Vars
+
+	var/NT_charge	= TRUE			// NT takes money from the city. Not intended to be controlled
+								// by any players but if an admin decides to switch it off this
+								// var is for that
+
+
+	//expense options: city council can toggle these on and off to enable services
+	//control options: president needs to enable control for city council - if toggled off council can't use or access these options
+
+	var/city_council_control	= TRUE	// If the president has allowed the city council to control the colony.
+
+	var/carp_control = FALSE			// If this is disabled, council cannot control carp infestations.
+	var/antivirus = FALSE			// Is the President a boomer?
+
 
 
 /datum/economy/bank_accounts/proc/set_economy()
@@ -67,6 +87,7 @@
 		return 0
 
 	treasury = station_account
+	nt_account = nanotrasen_account
 	eco_data = department_acc_list
 
 	for(var/M in department_acc_list)
@@ -83,6 +104,7 @@
 		department_accounts[D.department] = D
 
 	sanitize_economy()
+	init_expenses()
 
 	message_admins("Set economy.", 1)
 
@@ -113,6 +135,7 @@
 
 	S["eco_data"] << eco_data
 	S["treasury"] << treasury
+	S["nt_account"] << nt_account
 	S["tax_rate_upper"] << tax_rich
 	S["tax_rate_middle"] << tax_middle
 	S["tax_rate_lower"] << tax_poor
@@ -125,6 +148,8 @@
 	S["tobacco_tax"] << tobacco_tax
 	S["recreational_drug_tax"] << recreational_drug_tax
 	S["gambling_tax"] << gambling_tax
+	S["housing_tax"] << housing_tax
+
 	S["law_CANNABIS"] << law_CANNABIS
 	S["law_ALCOHOL"] << law_ALCOHOL
 	S["law_ECSTASY"] << law_ECSTASY
@@ -151,9 +176,15 @@
 	S["synth_vote"] << synth_vote
 	S["citizenship_vote "] << citizenship_vote
 	S["criminal_vote"] << criminal_vote
+  
+  if(SSbetting)
+    S["bets"] << SSbetting.gambling_bets
+    
+	S["NT_charge"] << NT_charge
+	S["city_council_control"] << city_council_control
+	S["carp_control"] << carp_control
+	S["antivirus"] << antivirus
 
-	if(SSbetting)
-		S["bets"] << SSbetting.gambling_bets
 
 	message_admins("Saved all department accounts.", 1)
 
@@ -170,6 +201,7 @@
 
 	S["eco_data"] >> eco_data
 	S["treasury"] >> treasury
+	S["nt_account"] >> nt_account
 	S["tax_rate_upper"] >> tax_rich
 	S["tax_rate_middle"] >> tax_middle
 	S["tax_rate_lower"] >> tax_poor
@@ -183,6 +215,8 @@
 	S["tobacco_tax"] >> tobacco_tax
 	S["recreational_drug_tax"] >> recreational_drug_tax
 	S["gambling_tax"] >> gambling_tax
+	S["housing_tax"] >> housing_tax
+
 	S["law_CANNABIS"] >> law_CANNABIS
 	S["law_ALCOHOL"] >> law_ALCOHOL
 	S["law_ECSTASY"] >> law_ECSTASY
@@ -213,6 +247,12 @@
 	if(SSbetting)
 		S["bets"] >> SSbetting.gambling_bets
 
+	S["NT_charge"] >> NT_charge
+	S["city_council_control"] >> city_council_control
+	S["carp_control"] >> carp_control
+	S["antivirus"] >> antivirus
+
+
 	sanitize_economy()
 
 	for (var/datum/money_account/T in all_money_accounts)
@@ -222,6 +262,7 @@
 	department_acc_list = eco_data
 
 	station_account = treasury
+	nanotrasen_account = nt_account
 
 	all_money_accounts.Add(department_acc_list)
 
@@ -238,3 +279,15 @@
 	link_economy_accounts()
 
 	message_admins("Loaded all department accounts.", 1)
+
+
+
+/datum/economy/bank_accounts/proc/init_expenses()
+	for(var/E in subtypesof(/datum/expense/nanotrasen) - list(/datum/expense/nanotrasen/pest_control,
+	 /datum/expense/nanotrasen/tech_support
+	 ))
+		var/datum/expense/new_expense = new E
+		city_expenses += new_expense
+
+		new_expense.do_effect()
+

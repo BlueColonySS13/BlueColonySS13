@@ -32,7 +32,9 @@ var/decl/observ/item_equipped/item_equipped_event = new()
 * Equipped Handling *
 ********************/
 
+/* moved to items.dm
 /obj/item/equipped(var/mob/user, var/slot)
 	. = ..()
 	mob_equipped_event.raise_event(user, src, slot)
 	item_equipped_event.raise_event(src, user, slot)
+*/

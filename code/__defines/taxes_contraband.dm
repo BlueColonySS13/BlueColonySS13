@@ -7,6 +7,7 @@
 #define TOBACCO_TAX persistent_economy.tobacco_tax
 #define DRUG_TAX persistent_economy.recreational_drug_tax
 #define GAMBLING_TAX persistent_economy.gambling_tax
+#define HOUSING_TAX persistent_economy.gambling_tax
 
 #define CONTRABAND_CANNABIS persistent_economy.law_CANNABIS
 #define CONTRABAND_ALCOHOL persistent_economy.law_ALCOHOL
@@ -35,7 +36,18 @@
 #define PROFESSIONAL_ONLY "Professional Use Only"
 #define PERMIT_SELLING "Selling permit needed"
 #define PERMIT_POSSESSION "Possession and creation permit needed"
+
 #define LEGAL "Legal"
+
+/proc/get_tax_price(tax, price)
+	var/tax_amt
+	tax_amt = tax * price
+	return price + tax_amt
+
+/proc/get_tax_amount(tax, price)
+	var/amt
+	amt = tax * price
+	return amt
 
 
 /proc/get_tax_rate(class)
@@ -52,6 +64,6 @@
 	switch(money)
 		if(0 to 9999)				return CLASS_WORKING
 		if(10000 to 79999)			return CLASS_MIDDLE
-		if(80,000 to INFINITY)		return CLASS_UPPER
+		if(80000 to INFINITY)		return CLASS_UPPER
 
 		else 					return CLASS_WORKING	// this accounts for balances that are negative

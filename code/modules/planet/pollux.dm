@@ -354,7 +354,6 @@ var/datum/planet/sif/planet_sif = null
 
 			L.water_act(2)
 //			to_chat(L, "<span class='warning'>Rain falls on you, drenching you in water.</span>")
-
 	handle_lightning()
 
 // This gets called to do lightning periodically.
@@ -515,6 +514,14 @@ var/datum/planet/sif/planet_sif = null
 /datum/weather/sif/carpfall/proc/handle_carps()
 	if(world.time < next_carpfall)
 		return // It's too soon to strike again.
+
+	if(persistent_economy && persistent_economy.carp_control)
+		var/datum/weather/W = pick(holder.allowed_weather_types)
+
+		holder.change_weather(W)
+		holder.build_forecast()
+		return	// city paid for these fucks to leave.
+
 	next_carpfall = world.time + rand(min_carpfall_cooldown, max_carpfall_cooldown)
 	for(var/mob/living/carbon/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -556,6 +563,14 @@ var/datum/planet/sif/planet_sif = null
 /datum/weather/sif/carpnado/proc/handle_carps()
 	if(world.time < next_carpfall)
 		return // It's too soon to strike again.
+
+	if(persistent_economy && persistent_economy.carp_control)
+		var/datum/weather/W = pick(holder.allowed_weather_types)
+
+		holder.change_weather(W)
+		holder.build_forecast()
+		return	// city paid for these fucks to leave.
+
 	next_carpfall = world.time + rand(min_carpfall_cooldown, max_carpfall_cooldown)
 	for(var/mob/living/carbon/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)

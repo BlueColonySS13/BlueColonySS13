@@ -85,6 +85,12 @@
 	Moved(origin)
 	return 1
 
+/atom/movable/forceMove(atom/destination)
+	var/old_loc = loc
+	. = ..()
+	if(. && !loc)
+		GLOB.moved_event.raise_event(src, old_loc, null)
+
 //called when src is thrown into hit_atom
 /atom/movable/proc/throw_impact(atom/hit_atom, var/speed)
 	if(istype(hit_atom,/mob/living))

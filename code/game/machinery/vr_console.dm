@@ -10,10 +10,22 @@
 	var/mob/living/carbon/human/avatar = null
 	var/datum/mind/vr_mind = null
 
+	var/force_removal = FALSE	// allow force removal (important for prison VR sets)
+
 	use_power = 1
 	idle_power_usage = 15
 	active_power_usage = 200
 	light_color = "#FF0000"
+
+/obj/machinery/vr_sleeper/examine(mob/user)
+	..()
+	if(avatar)
+		to_chat(user, "You see <b>[occupant]</b> inside. The game title above them says <b>[get_area(avatar)]</b>.")
+
+/obj/machinery/vr_sleeper/prison_vr
+	name = "prison virtual reality sleeper"
+	desc = "An inmate has to pass the time somehow. This is how."
+	force_removal = TRUE
 
 /obj/machinery/vr_sleeper/New()
 	..()
@@ -96,12 +108,18 @@
 	if(usr.incapacitated())
 		return
 
-	if(usr != occupant && avatar && alert(avatar, "Someone wants to remove you from virtual reality. Do you want to leave?", "Leave VR?", "Yes", "No") == "No")
+	if(!occupant)
 		return
 
+	if(avatar && !force_removal)
+		if(alert(avatar, "Someone wants to remove you from virtual reality. Do you want to leave?", "Leave VR?", "Yes", "No") == "No")
+			return
+
 	// The player in VR is fine with leaving, kick them out and reset avatar
-	avatar.exit_vr()
-	avatar = null
+	if(avatar)
+		avatar.exit_vr()
+		avatar = null
+
 	go_out()
 	add_fingerprint(usr)
 

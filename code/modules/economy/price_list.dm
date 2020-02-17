@@ -78,6 +78,18 @@
 /datum/medical_bill/proc/get_tax()
 	return MEDICAL_TAX
 
+///////////////////
+//---Lots--------//
+//***************//
+
+/datum/lot/var/price_tag = null
+
+/datum/lot/proc/get_item_cost()
+	return price
+
+/datum/lot/proc/get_tax()
+	return HOUSING_TAX
+
 // Juices, soda and similar //
 
 /datum/reagent/water

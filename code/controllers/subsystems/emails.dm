@@ -203,26 +203,29 @@ SUBSYSTEM_DEF(emails)
 
 
 /datum/controller/subsystem/emails/proc/change_persistent_email_address(var/address, var/new_address)
+	if(!new_address) return 0
+	if(!address) return 0
 	var/full_path = "data/persistent/emails/[address].sav"
-	if(!full_path)			return 0
+	var/new_path = "data/persistent/emails/[new_address].sav"
+	if(!full_path)	return 0
 	if(!fexists(full_path)) return 0
+	if(fexists(new_path)) return 0
 
 	var/savefile/S = new /savefile(full_path)
 	if(!S)					return 0
 	S.cd = "/"
 
-	if(!address)
-		return 0
+	var/savefile/P = new /savefile(new_path)
+	if(!P)					return 0
+	P.cd = "/"
 
-	var/adr
+	S >> P
 
-	S["login"] >> adr
+	P["login"] << new_address
 
-	adr = new_address
+	fdel(S)
 
-	S["login"] << adr
-
-	return adr
+	return new_address
 
 /datum/controller/subsystem/emails/proc/change_persistent_email_password(var/address, var/new_pass)
 	var/full_path = "data/persistent/emails/[address].sav"

@@ -52,6 +52,71 @@ var/warrant_uid = 0
 		ui.set_initial_data(data)
 		ui.open()
 
+/datum/computer_file/program/digitalwarrant/proc/print_warrant(mob/user)
+	var/datum/nano_module/program/digitalwarrant/word_pros = NM
+	var/datum/data/record/warrant/activewarrant = word_pros.activewarrant
+
+	if(!activewarrant)
+		to_chat(user, "No warrant found.")
+		return
+
+	if(!computer.nano_printer)
+		to_chat(user, "Missing Hardware: Your computer does not have the required hardware to complete this operation.")
+		return
+
+
+	var/output
+
+	if(activewarrant.fields["arrestsearch"] == "arrest")
+
+		output = {"
+		<HTML><HEAD><TITLE>[activewarrant.fields["namewarrant"]]</TITLE></HEAD>
+		<BODY bgcolor='#FFFFFF'><center><large><b>Geminus City Police Department Bureau</b></large></br>
+		in the jurisdiction of the Colonial Polluxian Government</br>
+		</br>
+		</br>
+		<b>ARREST WARRANT</b></center></br>
+		</br>
+		This document serves as authorization and notice for the arrest of _<u>[activewarrant.fields["namewarrant"]]</u>____ for the crime(s) of:</br>[activewarrant.fields["charges"]]</br>
+		</br>
+		Area of Warrant: _<u>Geminus City</u>____</br>
+		</br>_<u>[activewarrant.fields["auth"]]</u>____</br>
+		<small>Person authorizing arrest</small></br>
+		</BODY></HTML>
+		"}
+		
+	if(activewarrant.fields["arrestsearch"] == "search")
+		output= {"
+		<HTML><HEAD><TITLE>Search Warrant: [activewarrant.fields["namewarrant"]]</TITLE></HEAD>
+		<BODY bgcolor='#FFFFFF'><center>in the jurisdiction of the</br>
+		Colonial Polluxian Government</br>
+		</br>
+		<b>SEARCH WARRANT</b></center></br>
+		</br>
+		<small><i>The Police Officer(s) bearing this Warrant are hereby authorized by the Issuer </br>
+		to conduct a one time lawful search of the Suspect's person/belongings/premises and/or sector </br>
+		for any items and materials that could be connected to the suspected criminal act described below, </br>
+		pending an investigation in progress. The Police Officer(s) are obligated to remove any and all</br>
+		such items from the Suspects posession and/or sector and file it as evidence. The Suspect/Department </br>
+		staff is expected to offer full co-operation. In the event of the Suspect/Department staff attempting </br>
+		to resist/impede this search or flee, they must be taken into custody immediately! </br>
+		All confiscated items must be filed and taken to Evidence!</small></i></br>
+		</br>
+		<b>Suspect's/location name: </b>[activewarrant.fields["namewarrant"]]</br>
+		</br>
+		<b>For the following reasons: </b> [activewarrant.fields["charges"]]</br>
+		</br>
+		<b>Warrant issued by: </b> [activewarrant.fields["auth"]]</br>
+		</br>
+		Location: _<u>Geminus City</u>____</br>
+		</BODY></HTML>
+		"}
+
+	if(!computer.nano_printer.print_text(output, "Search Warrant: [activewarrant.fields["namewarrant"]]"))
+		to_chat(user, "Hardware error: Printer was unable to print the file. It may be out of paper.")
+		return 1
+
+
 /datum/nano_module/program/digitalwarrant/Topic(href, href_list)
 	if(..())
 		return 1
@@ -136,6 +201,13 @@ var/warrant_uid = 0
 		. = 1
 
 		activewarrant.fields["auth"] = "[I.registered_name] - [I.assignment ? I.assignment : "(Unknown)"]"
+		var/datum/computer_file/program/digitalwarrant/printprog = program
+		printprog.print_warrant(usr)
+
+	if(href_list["printwarrant"])
+		. = 1
+		var/datum/computer_file/program/digitalwarrant/printprog = program
+		printprog.print_warrant(usr)
 
 	if(href_list["back"])
 		. = 1

@@ -7,7 +7,7 @@
 	anchored = 1
 	var/list/notices
 	var/base_icon_state = "nboard0"
-	var/const/max_notices = 5
+	var/const/max_notices = 35
 
 /obj/structure/noticeboard/initialize()
 	. = ..()
@@ -81,7 +81,10 @@
 	dismantle()
 
 /obj/structure/noticeboard/update_icon()
-	icon_state = "[base_icon_state][LAZYLEN(notices)]"
+	if(LAZYLEN(notices) >= 5)
+		icon_state = "[base_icon_state]5"
+	else
+		icon_state = "[base_icon_state][LAZYLEN(notices)]"
 
 /obj/structure/noticeboard/attackby(var/obj/item/weapon/thing, var/mob/user)
 	if(thing.is_screwdriver())
