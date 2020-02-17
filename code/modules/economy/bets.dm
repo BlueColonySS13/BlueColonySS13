@@ -8,7 +8,7 @@
 
 	var/max_multiplier	// how many times the person can multiple the base bet amount/raise the stakes
 
-	var/bets = list()
+	var/list/bets = list()
 
 /datum/gambling_bet/New()
 	..()
@@ -57,3 +57,10 @@
 	max_multiplier = 20
 
 */
+
+/datum/gamble_better	// universally used to store info on betters.
+	var/full_name
+	var/unique_id
+	var/betted_for
+	var/bet_amount
+	var/bank_id
