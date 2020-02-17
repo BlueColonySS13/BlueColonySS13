@@ -134,7 +134,7 @@
 	landlord = null
 	price = get_default_price()
 	rent = get_default_rent()
-	applied_tenants = initial(applied_tenants)
+	applied_tenants = list()
 
 	department_accounts["City Council"].money -= price
 
