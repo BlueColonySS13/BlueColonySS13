@@ -29,6 +29,8 @@
 	S["remote_access_pin"] << remote_access_pin
 	S["expenses"] << expenses
 	S["suspended"] << suspended
+	S["max_transaction_logs"] << max_transaction_logs
+	S["transaction_logs"] << transaction_logs
 
 	S["security_level"] << security_level
 
@@ -58,6 +60,7 @@
 	S["transaction_log"] << transaction_logs
 	S["suspended"] << suspend
 	S["security_level"] << security_level
+	S["max_transaction_logs"] << max_transaction_logs
 
 	return acc_no
 
@@ -123,7 +126,14 @@
 	S.cd = "/"
 
 	var/list/acc_logs
+	var/max_logs
 
+	S["max_transaction_logs"] >> max_logs
+	if(!max_logs)
+		max_logs = 50
+		
+	truncate_oldest(acc_logs, max_logs)
+		
 	S["transaction_log"] >> acc_logs
 
 	return acc_logs
