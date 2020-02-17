@@ -40,7 +40,8 @@
 	return LOT_HELD
 
 /datum/lot/proc/tenancy_no_info()
-	return "([get_tenants().len]/[max_tenants])"
+	var/list/all_tnts = get_tenants()
+	return "([all_tnts.len]/[max_tenants])"
 
 /datum/lot/proc/get_approx_earnings() //returns approx earnings (before tax and all that jazz)
 	if(!has_tenants())
