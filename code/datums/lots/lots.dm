@@ -11,7 +11,7 @@
 	var/datum/tenant/landlord
 	var/list/tenants = list()
 
-	var/datum/tenant/list/applied_tenants = list()	//people who have applied to become a tenant, for rejection or for approval
+	var/list/applied_tenants = list()	//people who have applied to become a tenant, for rejection or for approval
 
 //	var/company_name						// if owned by a company. (not implemented)
 
