@@ -18,9 +18,9 @@
 	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
 
 	if(config.canonicity)
-		var/confirm = alert("Are you SURE you want to commit suicide? This is a canon round. WARNING: This will delete your \
-		character slot, you will never be able to play this character again, ALL of your persistent in-game money \
-		relating to money, businesses, your political status, and appearance will be lost forever. This is irreverseable!",\
+		var/confirm = alert("Are you SURE you want to commit suicide? This is a canon round. WARNING: This will delete your /
+		character slot, you will never be able to play this character again, ALL of your persistent in-game money /
+		relating to money, businesses, your political status, and appearance will be lost forever. This is irreverseable!",/
 		"Confirm Suicide", "Yes", "No")
 
 	if(confirm == "Yes")
