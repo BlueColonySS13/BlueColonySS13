@@ -4,25 +4,23 @@
 	set hidden = 1
 
 	if (stat == DEAD)
-		src << "You're already dead!"
+		to_chat(src, "You're already dead!")
 		return
 
 	if (!ticker)
-		src << "You can't commit suicide before the game starts!"
-		return
-
-	if(!player_is_antag(mind))
-		message_admins("[ckey] has tried to suicide, but they were not permitted due to not being antagonist as human.", 1)
-		src << "No. Adminhelp if there is a legitimate reason."
+		to_chat(src, "You can't commit suicide before the game starts!")
 		return
 
 	if (suiciding)
-		src << "You're already committing suicide! Be patient!"
+		to_chat(src, "You're already committing suicide! Be patient!")
 		return
 
 	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
 
 	if(confirm == "Yes")
+		if(job)
+			job_master.FreeRole(job)
+
 		if(!canmove || restrained())	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
 			src << "You can't commit suicide whilst restrained! ((You can type Ghost instead however.))"
 			return
