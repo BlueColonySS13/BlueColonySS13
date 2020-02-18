@@ -27,8 +27,8 @@
 
 	clean_record_required = TRUE
 
-/datum/job/hos/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
-	return using_map.council_email
+/datum/job/hos/get_job_email()
+	return using_map.police_email
 
 /datum/job/warden
 	title = "Prison Warden"
@@ -53,6 +53,9 @@
 
 	clean_record_required = TRUE
 
+/datum/job/warden/get_job_email()
+	return using_map.police_email
+
 /datum/job/detective
 	title = "Detective"
 	email_domain = "secure.plux.gov.nt"
@@ -75,6 +78,9 @@
 	alt_titles = list("Forensic Technician" = /decl/hierarchy/outfit/job/security/detective/forensic, "Investigator")
 
 	clean_record_required = TRUE
+
+/datum/job/detective/get_job_email()
+	return using_map.police_email
 
 /datum/job/officer
 	title = "Police Officer"
@@ -99,6 +105,9 @@
 
 	clean_record_required = TRUE
 
+/datum/job/officer/get_job_email()
+	return using_map.police_email
+
 /datum/job/prosecutor
 	title = "District Prosecutor"
 	email_domain = "prosecute.nt"
@@ -122,6 +131,9 @@
 	outfit_type = /decl/hierarchy/outfit/job/prosecution
 
 	clean_record_required = TRUE
+
+/datum/job/prosecutor/get_job_email()
+	return using_map.police_email
 
 /datum/job/bguard
 	title = "City Hall Guard"
