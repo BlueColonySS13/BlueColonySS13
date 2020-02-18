@@ -185,10 +185,10 @@
 		
 	if(SSelections && SSelections.current_president)
 		if(SSelections.current_president.unique_id == mind.prefs.unique_id)	// if they're pres, they ded
-			clear_president()
-		for(var/datum/president_candidate/C in political_candidates)	// if they're running, they not any more
+			SSelections.clear_president()
+		for(var/datum/president_candidate/C in SSelections.political_candidates)	// if they're running, they not any more
 			if(C.unique_id == mind.prefs.unique_id)
-			political_candidates -= C
+			SSelections.political_candidates -= C
 
-	mind.prefs.delete_preferences()
+	mind.prefs.delete_character()
 	return 1
