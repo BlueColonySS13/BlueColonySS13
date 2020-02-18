@@ -241,3 +241,24 @@
 /datum/gear/accessory/locket
 	display_name = "locket"
 	path = /obj/item/clothing/accessory/locket
+
+
+/datum/gear/accessory/gwaistcost
+	display_name = "colorable waistcoat"
+	path = /obj/item/clothing/accessory/wcoat/gwaistcost
+
+/datum/gear/accessory/gwaistcost/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/accessory/cravat
+	display_name = "cravat"
+	path = /obj/item/clothing/accessory/tie/cravat
+
+/datum/gear/accessory/cravat/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/accessory/poshblazerattach
+	display_name = "attachable posh blazer"
+	path = /obj/item/clothing/accessory/poshblazer

@@ -382,10 +382,10 @@
 "hr" = (/obj/structure/inflatable/door,/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
 "hs" = (/obj/machinery/light/small{dir = 4; pixel_y = 8},/obj/structure/table/steel,/obj/item/weapon/tape_roll,/obj/item/weapon/storage/box/beakers,/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
 "ht" = (/obj/machinery/door/airlock/glass_research{name = "Xenobiology Lab"; icon_state = "closed"; dir = 1; req_access = list(55)},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
-"hu" = (/obj/structure/toilet,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"hv" = (/obj/structure/bed/chair,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"hw" = (/obj/machinery/light/colored{tag = "icon-yellow1 (NORTH)"; icon_state = "yellow1"; dir = 1},/obj/structure/bed/roller,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"hx" = (/obj/structure/table/glass/white,/turf/simulated/floor/tiled/dark,/area/medical/virology)
+"hu" = (/obj/effect/decal/cleanable/dirt,/obj/item/trash/snack_bowl,/turf/simulated/floor/plating,/area/medical/virology)
+"hv" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/medical/virology)
+"hw" = (/obj/effect/decal/cleanable/dirt,/obj/random/trash,/turf/simulated/floor/plating,/area/medical/virology)
+"hx" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/medical/virology)
 "hy" = (/mob/living/bot/secbot/slime/slimesky,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "hz" = (/obj/structure/reagent_dispensers/watertank,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "hA" = (/obj/structure/bed/chair{dir = 4},/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
@@ -393,19 +393,19 @@
 "hC" = (/obj/structure/table/steel,/obj/item/weapon/storage/box/bodybags,/obj/item/weapon/storage/box/gloves,/obj/item/weapon/storage/box/masks,/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
 "hD" = (/obj/machinery/light/colored/green{dir = 8},/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
 "hE" = (/obj/machinery/shower,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
-"hF" = (/obj/structure/sink/kitchen{dir = 4; icon_state = "sink_alt"; pixel_x = -13},/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"hG" = (/obj/structure/disposalpipe/segment{dir = 4; icon_state = "pipe-c"},/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"hH" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/floor/tiled/dark,/area/medical/virology)
+"hF" = (/obj/structure/grille/broken,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/medical/virology)
+"hG" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/medical/virology)
+"hH" = (/obj/machinery/light/small{icon_state = "bulb1"; dir = 8},/obj/structure/inflatable,/turf/simulated/floor/plating,/area/medical/virologyaccess)
 "hI" = (/obj/structure/table/steel,/obj/random/medical/lite,/obj/random/medical/lite,/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
-"hJ" = (/obj/structure/disposaloutlet{icon_state = "outlet"; dir = 8},/obj/structure/disposalpipe/trunk{dir = 8},/turf/simulated/floor/tiled/dark,/area/medical/virology)
+"hJ" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/random/toolbox,/turf/simulated/floor/plating,/area/medical/virology)
 "hK" = (/obj/machinery/vending/wallmed1{dir = 4; name = "NanoTrasen-Provided Emergency Medical Dispenser"; pixel_x = -21; pixel_y = 0},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "hL" = (/obj/machinery/light/colored,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "hM" = (/obj/machinery/light/colored{tag = "icon-yellow1 (WEST)"; icon_state = "yellow1"; dir = 8},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "hN" = (/obj/machinery/door/airlock/maintenance,/obj/structure/barricade,/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
 "hO" = (/obj/effect/decal/cleanable/graffiti,/turf/simulated/wall,/area/planets/Geminus/indoor/sewer/central)
-"hP" = (/obj/machinery/door/window{dir = 1; icon_state = "left"; req_access = list(55)},/obj/machinery/door/window{req_access = list(55)},/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"hQ" = (/obj/effect/wallframe_spawn,/obj/structure/disposalpipe/segment,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"hR" = (/obj/effect/wallframe_spawn,/turf/simulated/floor/tiled/dark,/area/medical/virology)
+"hP" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/medical/virology)
+"hQ" = (/obj/structure/grille/broken,/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/item/weapon/ruinedvirusdish,/turf/simulated/floor/plating,/area/medical/virology)
+"hR" = (/obj/structure/inflatable,/turf/simulated/floor/plating,/area/medical/virologyaccess)
 "hS" = (/turf/simulated/wall/plastic/science{color = ""},/area/medical/virologyaccess)
 "hT" = (/obj/effect/floor_decal/industrial/danger{icon_state = "danger"; dir = 10},/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
 "hU" = (/obj/effect/floor_decal/industrial/danger,/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
@@ -413,12 +413,11 @@
 "hW" = (/obj/effect/floor_decal/industrial/danger,/obj/machinery/station_map{pixel_y = 32},/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
 "hX" = (/obj/effect/floor_decal/industrial/danger{dir = 6},/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
 "hY" = (/obj/machinery/door/airlock/glass_research{name = "Xenobiology Lab"; req_access = list(55)},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
-"hZ" = (/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"ia" = (/obj/machinery/disposal,/obj/structure/disposalpipe/trunk{dir = 1},/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"ib" = (/obj/machinery/computer/diseasesplicer,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"ic" = (/obj/structure/table/glass/white,/obj/item/weapon/virusdish/random,/obj/item/weapon/virusdish/random,/obj/item/weapon/virusdish/random,/obj/item/weapon/virusdish/random,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"id" = (/obj/machinery/smartfridge/secure/virology{req_access = list(55)},/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"ie" = (/obj/structure/closet/l3closet/virology,/obj/machinery/light/small{icon_state = "bulb1"; dir = 8},/turf/simulated/floor/tiled/dark,/area/medical/virologyaccess)
+"hZ" = (/obj/machinery/door/airlock/glass_research{dir = 8; icon_state = "closed"; locked = 1; name = "Virology"; req_access = list(55)},/obj/item/tape/engineering{icon_state = "police_h_0"},/turf/simulated/floor/plating,/area/medical/virologyaccess)
+"ia" = (/obj/effect/wallframe_spawn,/turf/simulated/floor/plating,/area/medical/virologyaccess)
+"ib" = (/obj/item/weapon/material/shard,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/plating,/area/medical/virology)
+"ic" = (/obj/machinery/door/airlock/glass_research{dir = 8; icon_state = "closed"; locked = 1; name = "Virology"; req_access = list(55)},/obj/item/tape/engineering{icon_state = "police_h_0"},/turf/simulated/floor/plating,/area/medical/virologyaccess)
+"id" = (/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/item/weapon/ruinedvirusdish,/turf/simulated/floor/plating,/area/medical/virology)
 "if" = (/obj/machinery/light/colored{tag = "icon-yellow1 (NORTH)"; icon_state = "yellow1"; dir = 1},/obj/structure/closet/crate/bin,/obj/effect/floor_decal/corner/purple{dir = 5},/obj/effect/floor_decal/corner/purple{dir = 9},/turf/simulated/floor/tiled/dark,/area/rnd/research)
 "ig" = (/turf/simulated/floor/tiled/dark,/area/rnd/research)
 "ih" = (/obj/structure/sign/xenobio{pixel_y = 32},/obj/effect/floor_decal/corner/purple{dir = 5},/obj/structure/closet/secure_closet/hydroponics,/turf/simulated/floor/tiled/dark,/area/rnd/research)
@@ -433,9 +432,6 @@
 "iq" = (/obj/machinery/status_display{density = 0; layer = 4; pixel_x = 0; pixel_y = 32},/obj/machinery/seed_extractor,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "ir" = (/obj/machinery/reagentgrinder,/obj/structure/table/glass,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "is" = (/obj/structure/table/glass,/obj/item/weapon/storage/box/beakers{pixel_x = 2; pixel_y = 2},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
-"it" = (/obj/machinery/button/crematorium{pixel_x = -32; req_access = list(55)},/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"iu" = (/obj/machinery/door/airlock/glass_research{dir = 8; icon_state = "closed"; name = "Virology"; req_access = list(55)},/turf/simulated/floor/tiled/dark,/area/medical/virologyaccess)
-"iv" = (/obj/machinery/shower{icon_state = "shower"; dir = 1},/turf/simulated/floor/tiled/dark,/area/medical/virologyaccess)
 "iw" = (/obj/machinery/hologram/holopad,/turf/simulated/floor/tiled/dark,/area/rnd/research)
 "ix" = (/turf/simulated/mineral/impassable,/area/planets/Geminus/indoor/sewer/central)
 "iy" = (/obj/effect/floor_decal/industrial/danger/corner{tag = "icon-dangercorner (EAST)"; icon_state = "dangercorner"; dir = 4},/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
@@ -724,7 +720,6 @@
 "nV" = (/obj/structure/bed/chair/sofa/purp/left,/turf/simulated/floor/carpet/purcarpet,/area/planets/Geminus/indoor/backroom)
 "nW" = (/obj/structure/bed/chair/sofa/right{icon_state = "sofaend_right"; dir = 4},/obj/effect/landmark/start{name = "Civilian"},/turf/simulated/floor/diamond,/area/crew_quarters/longue_area)
 "nX" = (/obj/structure/flora/pottedplant{icon_state = "plant-08"},/turf/simulated/floor/carpet/purcarpet,/area/crew_quarters/longue_area)
-"nY" = (/obj/structure/reagent_dispensers/virusfood{pixel_x = 32},/obj/structure/table/glass/white,/obj/item/weapon/storage/box/beakers,/obj/item/weapon/storage/box/syringes,/obj/item/weapon/reagent_containers/glass/beaker/radium,/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "nZ" = (/obj/structure/sign/double/city/gamecenter/left{pixel_y = 30},/turf/simulated/floor/carpet/turcarpet,/area/planets/Geminus/indoor/backroom)
 "oa" = (/obj/structure/sign/double/city/gamecenter/right{pixel_y = 30},/turf/simulated/floor/carpet/turcarpet,/area/planets/Geminus/indoor/backroom)
 "ob" = (/obj/machinery/computer/arcade,/turf/simulated/floor/diamond,/area/planets/Geminus/indoor/backroom)
@@ -943,10 +938,6 @@
 "sg" = (/mob/living/simple_animal/hostile/scarybat,/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
 "sh" = (/obj/item/weapon/wrench,/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
 "si" = (/obj/structure/loot_pile/surface/bones,/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/central)
-"sj" = (/obj/structure/morgue/crematorium,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"sk" = (/obj/machinery/hologram/holopad,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"sl" = (/obj/machinery/computer/centrifuge,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"sm" = (/obj/effect/wallframe_spawn,/turf/simulated/floor/tiled,/area/medical/virologyaccess)
 "sn" = (/obj/structure/window/reinforced{dir = 1; health = 1e+006},/obj/structure/catwalk,/turf/simulated/floor/tiled/dark,/area/medical/virologyaccess)
 "so" = (/obj/effect/floor_decal/corner/purple{dir = 9},/turf/simulated/floor/tiled/dark,/area/rnd/research)
 "sp" = (/obj/structure/window/reinforced{dir = 1; health = 1e+006},/obj/structure/window/reinforced{dir = 8; health = 1e+006},/turf/simulated/floor/water,/area/rnd/research)
@@ -956,23 +947,16 @@
 "st" = (/obj/effect/wallframe_spawn,/turf/simulated/floor/tiled,/area/rnd/xenobiology/xenoflora)
 "su" = (/obj/machinery/portable_atmospherics/hydroponics,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "sv" = (/obj/machinery/botany/editor,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
-"sw" = (/obj/machinery/disease2/isolator,/obj/machinery/light/colored{tag = "icon-yellow1 (EAST)"; icon_state = "yellow1"; dir = 4},/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"sx" = (/obj/machinery/disease2/diseaseanalyser,/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "sy" = (/obj/structure/window/reinforced{dir = 2; health = 1e+006},/obj/structure/catwalk,/turf/simulated/floor/tiled/dark,/area/medical/virologyaccess)
 "sz" = (/obj/structure/window/reinforced{dir = 2; health = 1e+006},/obj/structure/window/reinforced{dir = 8; health = 1e+006},/mob/living/simple_animal/fish/koi,/turf/simulated/floor/water,/area/rnd/research)
 "sA" = (/obj/structure/window/reinforced{dir = 2; health = 1e+006},/turf/simulated/floor/water,/area/rnd/research)
 "sB" = (/obj/structure/window/reinforced{dir = 2; health = 1e+006},/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/water,/area/rnd/research)
 "sC" = (/obj/machinery/hologram/holopad,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "sD" = (/obj/machinery/botany/extractor,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
-"sE" = (/obj/machinery/disease2/incubator,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"sF" = (/obj/structure/bed/chair/office/dark{dir = 8},/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"sG" = (/obj/structure/table/glass/white,/obj/item/weapon/paper_bin,/obj/item/weapon/pen,/obj/item/weapon/folder/white,/turf/simulated/floor/tiled/dark,/area/medical/virology)
 "sH" = (/obj/structure/sink{icon_state = "sink"; dir = 8; pixel_x = -12; pixel_y = 2},/obj/effect/floor_decal/corner/purple{dir = 9},/turf/simulated/floor/tiled/dark,/area/rnd/research)
 "sI" = (/obj/machinery/light/colored{tag = "icon-yellow1 (EAST)"; icon_state = "yellow1"; dir = 4},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "sJ" = (/obj/structure/table/glass,/obj/item/weapon/paper_bin{pixel_x = 1; pixel_y = 9},/obj/item/weapon/pen,/obj/machinery/newscaster{pixel_x = 28; pixel_y = 0},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
-"sK" = (/obj/structure/table/glass/white,/obj/item/weapon/storage/fancy/vials,/obj/item/weapon/storage/lockbox/vials,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"sM" = (/obj/structure/table/glass/white,/obj/item/weapon/storage/box/gloves,/obj/item/weapon/storage/box/masks,/obj/machinery/light/colored,/turf/simulated/floor/tiled/dark,/area/medical/virology)
-"sN" = (/obj/machinery/power/apc{dir = 2; name = "south bump"; pixel_y = -24},/turf/simulated/floor/tiled/dark,/area/medical/virology)
+"sL" = (/turf/simulated/wall,/area/security/evidence_storage)
 "sO" = (/obj/machinery/power/apc{dir = 2; name = "south bump"; pixel_y = -24},/obj/machinery/light/colored,/obj/effect/floor_decal/corner/purple{dir = 10},/obj/effect/floor_decal/corner/purple{dir = 9},/turf/simulated/floor/tiled/dark,/area/rnd/research)
 "sP" = (/obj/effect/floor_decal/corner/purple{dir = 10},/turf/simulated/floor/tiled/dark,/area/rnd/research)
 "sQ" = (/obj/structure/extinguisher_cabinet{pixel_x = 5; pixel_y = -32},/obj/effect/floor_decal/corner/purple{dir = 10},/turf/simulated/floor/tiled/dark,/area/rnd/research)
@@ -1016,6 +1000,38 @@
 "tC" = (/obj/structure/extinguisher_cabinet{pixel_y = -32},/turf/simulated/floor/holofloor/tiled/dark,/area/server)
 "tD" = (/turf/simulated/wall/plastic/science{color = ""},/area/planets/Geminus/indoor/sewer/east)
 "tE" = (/obj/structure/closet/l3closet/scientist/double,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
+"tF" = (/obj/structure/filingcabinet/chestdrawer{desc = "A large drawer filled with autopsy reports."; name = "Autopsy Reports"},/obj/machinery/camera/network/security,/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tG" = (/obj/structure/table/standard,/obj/item/weapon/autopsy_scanner,/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tH" = (/obj/machinery/optable,/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tI" = (/obj/structure/table/standard,/obj/item/weapon/storage/firstaid/surgery,/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tJ" = (/obj/structure/table/standard,/obj/item/weapon/storage/box/bodybags,/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tK" = (/obj/structure/noticeboard{pixel_x = -32},/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tL" = (/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tM" = (/obj/structure/closet/crate/freezer,/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tN" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tO" = (/obj/structure/bed/chair/office/light{dir = 4},/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tP" = (/obj/structure/table/standard,/obj/item/device/camera{name = "Autopsy Camera"; pixel_x = -2; pixel_y = 7},/obj/item/device/camera_film,/obj/item/device/camera_film,/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tQ" = (/obj/structure/closet/medical_wall{pixel_x = -32},/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/brute,/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/clotting,/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/brute,/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/clotting,/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tR" = (/obj/structure/table/standard,/obj/item/weapon/storage/box/gloves,/obj/item/weapon/storage/box/masks,/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tS" = (/obj/structure/table/standard,/obj/item/weapon/reagent_containers/spray/sterilizine,/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tT" = (/obj/effect/wallframe_spawn/reinforced,/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tU" = (/obj/machinery/door/airlock/glass_security{name = "Autopsy Suite"; req_access = list(4)},/turf/simulated/floor/tiled/white,/area/security/evidence_storage)
+"tV" = (/obj/structure/closet{name = "Evidence Closet"},/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"tW" = (/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"tX" = (/obj/structure/closet/crate/trashcart,/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"tY" = (/obj/structure/window/reinforced{dir = 8; health = 1e+006},/obj/structure/window/reinforced{dir = 1},/obj/structure/table/steel,/obj/item/weapon/storage/box/bodybags,/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"tZ" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/table/steel,/obj/item/weapon/reagent_containers/spray/cleaner,/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"ua" = (/obj/machinery/disposal/deliveryChute{icon_state = "intake"; dir = 4},/obj/structure/disposalpipe/trunk{icon_state = "pipe-t"; dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8; health = 1e+006},/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"ub" = (/obj/structure/disposalpipe/up{icon_state = "pipe-u"; dir = 8},/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"uc" = (/obj/structure/window/reinforced{dir = 8; health = 1e+006},/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"ud" = (/obj/machinery/power/apc{dir = 4; name = "east bump"; pixel_x = 24},/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"ue" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"uf" = (/obj/machinery/door/window/brigdoor/southleft{name = "detective access"; icon_state = "leftsecure"; dir = 8; req_access = list(4)},/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"ug" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"uh" = (/obj/structure/morgue{icon_state = "morgue1"; dir = 1},/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"ui" = (/obj/structure/window/reinforced{dir = 8; health = 1e+006},/obj/structure/ladder/up,/obj/machinery/camera/network/security{c_tag = "SEC - Cell 4"; dir = 10; icon_state = "camera"},/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"uj" = (/obj/machinery/shower{icon_state = "shower"; dir = 1},/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
+"uk" = (/obj/structure/closet/l3closet/security,/turf/simulated/floor/tiled/dark,/area/security/evidence_storage)
 
 (1,1,1) = {"
 aeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaecJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJcJ
@@ -1070,24 +1086,24 @@ aedibUbUbUbUbUbUbUbUbUbUdigBamamamamamamfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZ
 aedibUbUbUbUbUbUbUbUbUbUdigBamamamamamamfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZaibWgCgCgDbWbVbVbVbVbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbVgKbVbngKgKgMgNgKbnbVbVbpbVbVbVbVbpbpbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFaVblbqbqbybKcXebcXcXcXcXhjaVbTbTbTbTbTbTbTbcgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
 aedibUbUbUbUbUbUbUbUbUbUdigBamamamamamamfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZaibWgCgCgDbWbVbVbVbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbngKsggKbngKgKgKgKgObnbVbVbpsfbpbpbpbpsfbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFaVdVdPcXdQhkcXebhlhlhmhnhoawbTbTbTbTbTbTbTbcgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
 aedibUbUbUbUbUbUbUbUbUbUdigBamamamamamamfZfZfZfZfZfZfZfZfZfZfZfZamamamfZfZfZfZfZfZfZfZfZfZfZfZfZfZfZbnbWgCgCgDbWbWbVbWbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbngKshsibnbnrrrrrrbnbnbVbpbpbpbpbpbpbpbpbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFhphqhqhqhqhqhtawawawawawawawbVbVbVbVbVbVbVbcgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUdigBamamamamamamamfZfZfZfZfZfZfZfZfZfZamamamamamfZfZfZfZfZfZamamfZfZfZfZfZfZbnbWgCgCgDbWbWbVbWbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbVgKgKbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbVbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngPbpbpbpgFhphuhvhwhxhqcXtEhzawhEhEhEawbVbVbVbVbVbVbVbcgrbababaclbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUdigBamamamamamamamamamamamamamamamamamamamamamamamfZfZfZfZamamamamfZfZfZfZfZbnbWgCgCgDbWbWbWbWbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbVgKbpbpbpbpbpbpbpbpbpbpbpbpbpbpsfbpbVbnbnbnbnbnbnbngQgQgRgSgTbnbnbnbnbnbnbnbnbngEbpbpbpgUhphFhGhHhJhqhKhLcXhhcXcXhMawbVbVbVbVbVbVbVbcgfbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUdigBamamamamamamamamamamamamamamamamamamamamamamamamamamamamamamamamamambmbmbnbWgCgCgDbWbWbWbWbWbndwdwdwdwdwdwdwdwdwbnbnbnbnbnbnbnbngEbpbpbpgFbnbpbpbpsfbpbpbpbpbpbpsfbpbpbpbpbpbpbVbVbnbnbnbnbnbnbngVgKgKgKgWbnbnbnbnbnbnbnbnbngEbpbpbpgFhphPhQhRhRhqhShShSawhYhYawawcIcIcIcIcIcIcIcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUdidididididididididididididididididididididididiaiaiaiaiaiaiaiaiaiaiaiaibnbnbnbVgCgCgDdBbWbWbWgXdwdwdwdwdwdwdwdwdwgYbnbnbnbnbnbnbnbngEbpbpbpgFbnbpbpbpbpbpbpbpbpbpbpbpbpbpsfbpbpbpbVbVbngZhahbhchdhegKgKgKgKgKbnbnbnbnbnbnbnbnbngEbpbpbpgFhphZiaibicidhSiehSifigigihiicIikilioiqiriscIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVgCgCgDgDgDgDgDbWbndwdwdwdwdwdwdwdwdwbnbnbnbnbnbnbnbngEbpbpbpgFbnbVsfbpbpbpbpsfbpbpbpbpbpbpbpbpbpbpbpbVbngKgKgKgKgKhrgKgKgKgMhsbnbnbnbnbnbnbnbnbngEbpbpbpgFhpithZhZhZhZiuiviuigigiwigigiGiHiHiHiHiIiJcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVgCgCgCgCgCgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngPbpbpbpgFbnbVbpbpbpbpbpsfbpbpbpbpbpbpbpbpsfbVbVbVbnhAgKgKgKgMhBhCgKgKgKhDbnbnbnbnbnbnbnbnbngEbpbpbpgFhpsjhZskhZslsmsnsmsospsqsrssstsususuiHiHsvcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVgCgCgCgCgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbVbVbpbVbVbVbpbpbVbVbVbVbVbVbVbVbVbVbVbnhAgKgKgKgKbnhIgKgKgKgKbnbnbnbnbnbnbnbnbngEbpbpbpgFhpswhZhZhZsxsmsysmsoszsAsBssstsusususCiHsDcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbWbWbWdBgDgCgCgXbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnhNbnbnbnbnbnbnbnbnbnbnbnbnbnbnhObnbngEbpbpbpgFhpsEsFhZhZnYhSiehSsHigigigsscIsIiHiHiHiIsJcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbWbWbWbWgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbphThUhUhUhUhUhUhUhUhUhVhUhUhUhUhUhUhUhUhUhUhVhUhUhUhUhUhUhUhWhUhUhUhUhVhUhUhUhUhUhUhUhXbpbpbpgFhpsGsKsMsNhZiuiviusOsPsPsQigiGiHsRsSsTsUsVcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbWbWbWbWgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpijhphqhqhqhqhqhShShSimininimsWipininimimimimimgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbVbWbWbWgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpgFbnsXsYsZsZtasXsXsXtbtctctcigtctctdimteimtfimgmbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbVbVbVbVgDgCgCbWbVbVbVbVbVbVbVbVbVbVbVbVbVbVbVbVbVbngEbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpgFbnsXtgthtitjsXtksXsoigigigigigigigigigtligimgmbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbVbVbVbVgDgCgCbWbVbVbVbVbVbVbVbVbVbVixixixixixixixbniyiziAiziziziziziBiziziziziziziziziziziziBiziziCbpbpbpiDiziziBiziziziziziziziziziziziziziAiEiziziziziFbnsXtmtntotptqtptqtrsPtssPttsPsPtuimtrtvtuimgrbababaclbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbVbVbVbVgDgCgCbWbVbVbVbVbVbVbVbVbVbVixcncncncncnixbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbobpbpbpahbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnsXtwtxtptpsXtysXimimimimimimimimimimimimimbhbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbVbVbVbWgDgCgCbWbVbVbVbVbVbVbVbVbVbVixcnbGcNbGcnixbVixixixixixixixixbVbVbVbVdwbnbibidqbnbVdwdwdwbndwbpbpbpdwbnbVbVbVbVbWbWbWbVbVbVbVbVbVbVbVbVbVbVbVbnbnbnbnsXtztAtBtCtDbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbhbabababBbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbVbVbVbWgDgCgCbWbVbVbVbVbVbVbVbVbVbVixcncOdjiKcnixixixixcncncncncnixbVbVbVbVbnbnbndrbnbnbVdwdwdwbndwbpbpbpdwbnbVbWbWbWbWbWbWbWbWbVbVbVbVbVbWbVbVbVbVbnbnbnbnsXsXsXsXsXtDbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbCbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVbVbVbVdBgDgCgCdBbVbVbVbVbVbVbVbVbVbVixcniLdjeIcncncncncncniMcYcZcnixbVbVdvdwdwbibibidwbidwdwdwdwbndwbpbpbpdwbnbVbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbVbVbVbnbnbnbnbnbnbnbnbnbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbhbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
-aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbXbXbXbXbXbXbVbVbVbVbVbVbWbWbVbWgDgCgCbWbVbVixixixixixixixixixcncncUcncneNiNiObYcnddddcZcnixbVbVbndvbnbnbndrbnbnbVdwdwdwiPdwbpbpbpbpiPdwbWbWbWdxbWdwdwdwdwdwdwbWdybWbWbVbVbVbnbnbnbnbnbnbnbnbnbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbhbabababbbceueueueueueueueueueueueubcbcbcbcbcbcbcdN
+aedibUbUbUbUbUbUbUbUbUbUdigBamamamamamamamfZfZfZfZfZfZfZfZfZfZamamamamamfZfZfZfZfZfZamamfZfZfZfZfZfZbnbWgCgCgDbWbWbVbWbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbVgKgKbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbVbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngPbpbpbpgFhphuhvhwhvhqcXtEhzawhEhEhEawbVbVbVbVbVbVbVbcgrbababaclbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUdigBamamamamamamamamamamamamamamamamamamamamamamamfZfZfZfZamamamamfZfZfZfZfZbnbWgCgCgDbWbWbWbWbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbVgKbpbpbpbpbpbpbpbpbpbpbpbpbpbpsfbpbVbnbnbnbnbnbnbngQgQgRgSgTbnbnbnbnbnbnbnbnbngEbpbpbpgUhphvhxhxhxhqhKhLcXhhcXcXhMawbVbVbVbVbVbVbVbcgfbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUdigBamamamamamamamamamamamamamamamamamamamamamamamamamamamamamamamamamambmbmbnbWgCgCgDbWbWbWbWbWbndwdwdwdwdwdwdwdwdwbnbnbnbnbnbnbnbngEbpbpbpgFbnbpbpbpsfbpbpbpbpbpbpsfbpbpbpbpbpbpbVbVbnbnbnbnbnbnbngVgKgKgKgWbnbnbnbnbnbnbnbnbngEbpbpbpgFhphvhFhQhFhqhShShSawhYhYawawcIcIcIcIcIcIcIcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUdidididididididididididididididididididididididiaiaiaiaiaiaiaiaiaiaiaiaibnbnbnbVgCgCgDdBbWbWbWgXdwdwdwdwdwdwdwdwdwgYbnbnbnbnbnbnbnbngEbpbpbpgFbnbpbpbpbpbpbpbpbpbpbpbpbpbpsfbpbpbpbVbVbngZhahbhchdhegKgKgKgKgKbnbnbnbnbnbnbnbnbngEbpbpbpgFhphxhGhGhGhwhShHhSifigigihiicIikilioiqiriscIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVgCgCgDgDgDgDgDbWbndwdwdwdwdwdwdwdwdwbnbnbnbnbnbnbnbngEbpbpbpgFbnbVsfbpbpbpbpsfbpbpbpbpbpbpbpbpbpbpbpbVbngKgKgKgKgKhrgKgKgKgMhsbnbnbnbnbnbnbnbnbngEbpbpbpgFhphJhPhPhPhxhZhRicigigiwigigiGiHiHiHiHiIiJcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbVbVbVbVbVbVgCgCgCgCgCgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngPbpbpbpgFbnbVbpbpbpbpbpsfbpbpbpbpbpbpbpbpsfbVbVbVbnhAgKgKgKgMhBhCgKgKgKhDbnbnbnbnbnbnbnbnbngEbpbpbpgFhphxhPhPhPhxiasniasospsqsrssstsususuiHiHsvcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUsLsLsLsLsLsLsLgCgCgCgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbVbVbpbVbVbVbpbpbVbVbVbVbVbVbVbVbVbVbVbnhAgKgKgKgKbnhIgKgKgKgKbnbnbnbnbnbnbnbnbngEbpbpbpgFhphvhxhxidhxiasyiasoszsAsBssstsusususCiHsDcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUsLtFtGtHtItJsLbWbWdBgDgCgCgXbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpgFbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnhNbnbnbnbnbnbnbnbnbnbnbnbnbnbnhObnbngEbpbpbpgFhphvhxhxhxhxhShHhSsHigigigsscIsIiHiHiHiIsJcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUsLtKtLtLtLtMsLbWbWbWgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbphThUhUhUhUhUhUhUhUhUhVhUhUhUhUhUhUhUhUhUhUhVhUhUhUhUhUhUhUhWhUhUhUhUhVhUhUhUhUhUhUhUhXbpbpbpgFhpibhvhvhvhwichRicsOsPsPsQigiGiHsRsSsTsUsVcIgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUsLtNtLtLtOtPsLbWbWbWgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpijhphqhqhqhqhqhShShSimininimsWipininimimimimimgmbabababbbcbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbTbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUsLtQtLtLtRtSsLbWbWbWgDgCgCbWbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbngEbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpgFbnsXsYsZsZtasXsXsXtbtctctcigtctctdimteimtfimgmbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUsLtTtUtUtTtTsLsLsLsLgDgCgCbWbVbVbVbVbVbVbVbVbVbVbVbVbVbVbVbVbVbngEbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpbpgFbnsXtgthtitjsXtksXsoigigigigigigigigigtligimgmbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUsLtVtWtWtWtWtXtXtXsLgDgCgCbWbVbVbVbVbVbVbVbVbVbVixixixixixixixbniyiziAiziziziziziBiziziziziziziziziziziziBiziziCbpbpbpiDiziziBiziziziziziziziziziziziziziAiEiziziziziFbnsXtmtntotptqtptqtrsPtssPttsPsPtuimtrtvtuimgrbababaclbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUsLtVtWtWtWtYtZuaubsLgDgCgCbWbVbVbVbVbVbVbVbVbVbVixcncncncncnixbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbobpbpbpahbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnbnsXtwtxtptpsXtysXimimimimimimimimimimimimimbhbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUsLtVtWtWtWuctWtWudsLgDgCgCbWbVbVbVbVbVbVbVbVbVbVixcnbGcNbGcnixbVixixixixixixixixbVbVbVbVdwbnbibidqbnbVdwdwdwbndwbpbpbpdwbnbVbVbVbVbWbWbWbVbVbVbVbVbVbVbVbVbVbVbVbnbnbnbnsXtztAtBtCtDbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbhbabababBbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUsLuetWtWtWuftWtWugsLgDgCgCbWbVbVbVbVbVbVbVbVbVbVixcncOdjiKcnixixixixcncncncncnixbVbVbVbVbnbnbndrbnbnbVdwdwdwbndwbpbpbpdwbnbVbWbWbWbWbWbWbWbWbVbVbVbVbVbWbVbVbVbVbnbnbnbnsXsXsXsXsXtDbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbCbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUsLuhuhuhuhuiujukuksLgDgCgCdBbVbVbVbVbVbVbVbVbVbVixcniLdjeIcncncncncncniMcYcZcnixbVbVdvdwdwbibibidwbidwdwdwdwbndwbpbpbpdwbnbVbWbWbWbWbWbWbWbWbWbWbWbWbWbWbWbVbVbVbnbnbnbnbnbnbnbnbnbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbhbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN
+aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbXbXbXbXbXbXsLsLsLsLsLsLsLsLsLsLgDgCgCbWbVbVixixixixixixixixixcncncUcncneNiNiObYcnddddcZcnixbVbVbndvbnbnbndrbnbnbVdwdwdwiPdwbpbpbpbpiPdwbWbWbWdxbWdwdwdwdwdwdwbWdybWbWbVbVbVbnbnbnbnbnbnbnbnbnbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbhbabababbbceueueueueueueueueueueueubcbcbcbcbcbcbcdN
 aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbXbXbXbXbXbXbXbXbWbWbWbWbWbWbWbWbWbWgDgCgCbWbWbVixcncncncncncncncncncndjdjdjdodjdjdpcnddddaacnixbVbVdwdwdCbnbibidwbnbVdwdwdwbpbpbpbpbpbpbpdwdwdwdwdwdwdwdwdwdwdwdwdwdwdwbWbWbVbVbnbnbnbnbnbnbnbnbnbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdIbabababbeueueueueueueueueueueuiQeubcbcbcbcbcbcbcdN
 aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbWbWbWbWbWbWbWbWbWbWgDgCgCbWbWbWixcncRiRcncSiRcncTiRcniSececedececdjdcdddddecnixbVbVbVdLdObnbibidRbnbVdwdwbpbpbpbpbpbMbMbMbMbMbMbMbMbMbMbMbMbpbpbpdwdwdwbWbWbVbVbnbnbnbnbnbnbnbnbnbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbhbabababbbceueueueueueueueueueueueubcbcbcbcbcbcbcdN
 aedibUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbUbXbXbXbXbXbXbXbXbXbXbXbXbXbXbXbWbWbWbWbWbWbWbWbWbWgDgCgCbWbWbWixcncncVcncncVcncncVcniTeeeiejeieGdzcndldmdncnixbVbnbnbnbnbnbnbnbnbnbVdwbpbpbpbpbpbpbpbpbMbMbMbMbMbMbMbMbMbMbMbMbMbMbMbpbpbpbpdwbndwdwdwdwdwdwdwdweubcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbhbabababbbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcbcdN

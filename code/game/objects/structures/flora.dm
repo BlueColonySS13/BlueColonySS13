@@ -156,6 +156,8 @@
 	icon = 'icons/obj/plants.dmi'
 	icon_state = "plant-01"
 
+	plane = OBJ_PLANE
+
 	var/obj/item/stored_item
 
 /obj/structure/flora/pottedplant/on_persistence_load()

@@ -585,9 +585,9 @@
 	icon_state = "hos_formal_fem"
 	item_state_slots = list(slot_r_hand_str = "lawyer_red", slot_l_hand_str = "lawyer_red")
 
-/obj/item/clothing/under/assistantformal
-	name = "assistant's formal uniform"
-	desc = "An assistant's formal-wear. Why an assistant needs formal-wear is still unknown."
+/obj/item/clothing/under/aristocrat
+	name = "aristocrat's formal uniform"
+	desc = "An aristocrat's formal-wear."
 	icon_state = "assistant_formal"
 	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
 

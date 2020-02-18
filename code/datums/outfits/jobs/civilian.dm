@@ -6,7 +6,12 @@
 /decl/hierarchy/outfit/job/assistant/visitor
 	name = OUTFIT_JOB_NAME("Visitor")
 	id_pda_assignment = "Visitor"
-	uniform = /obj/item/clothing/under/assistantformal
+	uniform = /obj/item/clothing/under/suit_jacket/tan
+
+/decl/hierarchy/outfit/job/assistant/socialite
+	name = OUTFIT_JOB_NAME("Socialite")
+	id_pda_assignment = "Socialite"
+	uniform = /obj/item/clothing/under/aristocrat
 
 /decl/hierarchy/outfit/job/assistant/resident
 	name = OUTFIT_JOB_NAME("Resident")
