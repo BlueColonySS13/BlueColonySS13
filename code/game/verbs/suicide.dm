@@ -30,7 +30,7 @@
 			job_master.FreeRole(job)
 
 		if(!canmove || restrained())	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
-			src << "You can't commit suicide whilst restrained! ((You can type Ghost instead however.))"
+			to_chat(src, "You can't commit suicide whilst restrained! ((You can type Ghost instead however.))")
 			return
 		suiciding = 15
 		does_not_breathe = 0			//Prevents ling-suicide zombies, or something
@@ -98,15 +98,15 @@
 	set hidden = 1
 
 	if (stat == 2)
-		src << "You're already dead!"
+		to_chat(src, "You're already dead!")
 		return
 
 	if (!ticker)
-		src << "You can't commit suicide before the game starts!"
+		to_chat(src, "You can't commit suicide before the game starts!")
 		return
 
 	if (suiciding)
-		src << "You're already committing suicide! Be patient!"
+		to_chat(src, "You're already committing suicide! Be patient!")
 		return
 
 	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
@@ -171,10 +171,10 @@
 			M.show_message("<span class='notice'>[src] flashes a message across its screen, \"Wiping core files. Please acquire a new personality to continue using pAI device functions.\"</span>", 3, "<span class='notice'>[src] bleeps electronically.</span>", 2)
 		death(0)
 	else
-		src << "Aborting suicide attempt."
+		to_chat(src, "Aborting suicide attempt.")
 		
 /mob/living/carbon/human/handle_delete_character()
-	if(!mind ! !mind.prefs)
+	if(!mind || !mind.prefs)
 		return 0
 		
 	if(!(unique_id == mind.prefs.unique_id))	// make sure it's the same character
