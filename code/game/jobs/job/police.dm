@@ -122,8 +122,8 @@
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/prosecutor
 	wage = 100
-	access = list(access_prosecutor, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
-	minimal_access = list(access_prosecutor, access_sec_doors, access_heads, access_legal)
+	access = list(access_prosecutor, access_sec_doors, access_maint_tunnels, access_heads, access_legal, access_warrant)
+	minimal_access = list(access_prosecutor, access_sec_doors, access_heads, access_legal, access_warrant)
 //	minimal_player_age = 7 (need more prostitut-- prosecutors.)
 	minimum_character_age = 21
 	alt_titles = list("Prosecutor","Prosecuting Attorney","Prosecution Officer","Prosecuting Lawyer")
@@ -150,8 +150,8 @@
 	minimal_player_age = 5
 	wage = 90
 	minimum_character_age = 25
-	access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_sec_doors)
-	minimal_access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_sec_doors)
+	access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_legal)
+	minimal_access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_legal)
 
 	outfit_type = /decl/hierarchy/outfit/job/heads/secretary
 	alt_titles = list("Council Bodyguard", "City Hall Security", "Bailiff")
