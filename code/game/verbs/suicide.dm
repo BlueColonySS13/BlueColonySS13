@@ -17,7 +17,15 @@
 
 	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
 
+	if(config.canonicity)
+		var/confirm = alert("Are you SURE you want to commit suicide? This is a canon round. WARNING: This will delete your \
+		character slot, you will never be able to play this character again, ALL of your persistent in-game money \
+		relating to money, businesses, your political status, and appearance will be lost forever. This is irreverseable!",\
+		"Confirm Suicide", "Yes", "No")
+
 	if(confirm == "Yes")
+		if(config.canonicity)
+			handle_delete_character()
 		if(job)
 			job_master.FreeRole(job)
 
@@ -164,3 +172,23 @@
 		death(0)
 	else
 		src << "Aborting suicide attempt."
+		
+/mob/living/carbon/human/handle_delete_character()
+	if(!mind ! !mind.prefs)
+		return 0
+		
+	if(!(unique_id == mind.prefs.unique_id))	// make sure it's the same character
+		return 0
+		
+	if(!config.canonicity)
+		return 0
+		
+	if(SSelections && SSelections.current_president)
+		if(SSelections.current_president.unique_id == mind.prefs.unique_id)	// if they're pres, they ded
+			clear_president()
+		for(var/datum/president_candidate/C in political_candidates)	// if they're running, they not any more
+			if(C.unique_id == mind.prefs.unique_id)
+			political_candidates -= C
+
+	mind.prefs.delete_preferences()
+	return 1
