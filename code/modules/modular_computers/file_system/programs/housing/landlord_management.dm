@@ -569,7 +569,7 @@
 					error_msg = "You are not a tenant of this lot"
 					return
 
-				if(!has_tenants())
+				if(!LOT.has_tenants())
 					error_msg = "This lot is not rented out to anyone."
 					return
 
