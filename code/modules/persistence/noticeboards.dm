@@ -81,8 +81,8 @@
 	dismantle()
 
 /obj/structure/noticeboard/update_icon()
-	if(LAZYLEN(notices) >= 5)
-		icon_state = "[base_icon_state]5"
+	if(LAZYLEN(notices) >= 9)
+		icon_state = "[base_icon_state]9"
 	else
 		icon_state = "[base_icon_state][LAZYLEN(notices)]"
 

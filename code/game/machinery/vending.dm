@@ -1989,3 +1989,31 @@
 					/obj/item/clothing/glasses/sunglasses/sechud/tactical = 6,
 					/obj/item/clothing/mask/gas/half = 6
 					)
+
+
+/obj/machinery/vending/luxvend
+	name = "LuxVend"
+	desc = "LuxVend - For the Polluxian who has everything."
+	req_access = list(3)
+	products = list(/obj/item/clothing/head/helmet/combat = 4,
+					/obj/item/clothing/suit/armor/combat = 4,
+					/obj/item/clothing/gloves/arm_guard/combat = 4,
+					/obj/item/clothing/shoes/leg_guard/combat = 4,
+					/obj/item/clothing/head/helmet/bulletproof = 2,
+					/obj/item/clothing/suit/armor/bulletproof/alt = 2,
+					/obj/item/clothing/gloves/arm_guard/bulletproof = 2,
+					/obj/item/clothing/shoes/leg_guard/bulletproof = 2,
+					/obj/item/clothing/head/helmet/laserproof = 2,
+					/obj/item/clothing/suit/armor/laserproof = 2,
+					/obj/item/clothing/gloves/arm_guard/laserproof = 2,
+					/obj/item/clothing/shoes/leg_guard/laserproof = 2,
+					/obj/item/clothing/head/helmet/riot = 4,
+					/obj/item/clothing/suit/armor/riot = 4,
+					/obj/item/clothing/gloves/arm_guard/riot = 4,
+					/obj/item/clothing/shoes/leg_guard/riot = 4,
+					/obj/item/weapon/shield/riot = 4,
+					/obj/item/weapon/melee/baton = 4,
+					/obj/item/clothing/glasses/sunglasses/sechud/tactical = 6,
+					/obj/item/clothing/mask/gas/half = 6
+					)
+
