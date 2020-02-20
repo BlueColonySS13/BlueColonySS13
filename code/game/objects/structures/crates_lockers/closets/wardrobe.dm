@@ -637,7 +637,7 @@
 
 /obj/structure/closet/wardrobe/suit/New()
 	..()
-	new /obj/item/clothing/under/assistantformal(src)
+	new /obj/item/clothing/under/aristocrat(src)
 	new /obj/item/clothing/under/suit_jacket/charcoal(src)
 	new /obj/item/clothing/under/suit_jacket/charcoal/skirt(src)
 	new /obj/item/clothing/under/suit_jacket/navy(src)

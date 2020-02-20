@@ -1,0 +1,13 @@
+[center]Geminus City High Court
+[small][b]Court Injunction[/b][/center][br]
+[hr]
+Date: [field]
+Index: [field]
+
+This form permits the enforcement of the following orders by the employees of the Police Department, and other authorized peace officers, onto the concerned 'Citizen' who shall be legally obligated to abide by and fufill said order(s).
+
+Citizen(s) Concerned: [field]
+
+Order to be Enforced: [field]
+Additional Notes:[list][field][/list][hr]Judge's Signature: [field]
+[/small]

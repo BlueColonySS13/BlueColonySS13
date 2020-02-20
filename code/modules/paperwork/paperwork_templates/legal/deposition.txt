@@ -1,0 +1,17 @@
+[center]Geminus City
+High Court[small][br]
+[b]Witness Deposition[/b][/center]
+[hr]
+[center][b]Information[/b][/center]
+Witness Name: [field]
+Receiving Officer/Attorney: [field]
+Date: [date]
+[hr]
+[center][b]Testimony[/b][/center]
+[list]
+[field]
+[/list]
+[hr]
+[center][b]Affirmation[/b][/center]
+
+[i]I, [field], do affirm that the information above is true and correct to the best of my knowledge and transcribed to the best of my ability. By signing below, I hereby acknowledge that I may be held guilty of Obstruction of Justice under Pollux Criminal Code i223.[/small]
