@@ -15,8 +15,8 @@
 				landlord_checkbook += "[full_game_time()] - [tenant.name] for [name]: Unable to clear payment. Balance under rent charge."
 			else
 				if(landlord)
-					landlord.account_balance += get_rent()
-					landlord_checkbook += "[full_game_time()] - [tenant.name] for [name]: Payment of [get_rent()]CR successfully paid to landlord account."
+					landlord.account_balance += get_rent_after_tax()
+					landlord_checkbook += "[full_game_time()] - [tenant.name] for [name]: Payment of [get_rent_after_tax()]CR successfully paid to landlord account. (After [get_rent_tax_amount()]CR tax)"
 
 
 	if(landlord)

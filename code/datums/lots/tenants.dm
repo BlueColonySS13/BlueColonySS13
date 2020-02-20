@@ -5,7 +5,7 @@
 	var/email
 
 	var/account_balance = 0
-	var/last_payment
+	var/last_payment = "None"
 	var/tmp/recieved_email = 0
 
 	//applicant stuff

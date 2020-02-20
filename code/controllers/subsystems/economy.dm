@@ -22,11 +22,11 @@ SUBSYSTEM_DEF(economy)
 	for(var/datum/expense/E in persistent_economy.city_expenses)
 		E.charge_department(E.cost_per_payroll)
 
-		for(var/datum/data/record/R in data_core.general)
-			payroll(R)
+	for(var/datum/data/record/R in data_core.general)
+		payroll(R)
 
-		for(var/datum/lot/L in SSlots.all_lots)
-			L.add_balances()
+	for(var/datum/lot/L in SSlots.all_lots)
+		L.add_balances()
 
 /proc/payroll(var/datum/data/record/G)
 	var/bank_number = G.fields["bank_account"]

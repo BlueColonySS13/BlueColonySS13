@@ -25,7 +25,7 @@
 	if(held)
 		return LOT_HELD
 
-	if(!get_landlord() || (get_landlord() && for_sale))
+	if(!get_landlord() || (get_landlord() && for_sale && !tenants_wanted))
 		return FOR_SALE
 
 	if(get_landlord() && tenants_wanted)
@@ -76,6 +76,12 @@
 /datum/lot/proc/get_rent()
 	return rent
 
+/datum/lot/proc/get_rent_tax_amount()
+	return (get_rent() * get_tax())
+
+/datum/lot/proc/get_rent_after_tax()
+	return (get_rent() - get_rent_tax_amount())
+
 /datum/lot/proc/get_landlord_balance()
 	return landlord.get_balance()
 
@@ -106,6 +112,8 @@
 /datum/lot/proc/remove_tenant(uid)
 	var/datum/tenant/tenant = get_tenant_by_uid(uid)
 
+	charge_to_account(landlord.bank_id, "Remaining Balance", "[name] Lot Remaining Balance", "Landlord Management", tenant.account_balance)
+
 	tenants -= tenant
 	QDEL_NULL(tenant)
 
@@ -132,6 +140,8 @@
 	return TRUE
 
 /datum/lot/proc/sell_to_council()
+	charge_to_account(landlord.bank_id, "Housing Sell To Council", "[name] Lot Remaining Balance", "Landlord Management", landlord.account_balance)
+
 	landlord = null
 	price = get_default_price()
 	rent = get_default_rent()
@@ -171,6 +181,7 @@
 	var/datum/tenant/applicant = make_tenant(uid, t_name, bank_id, email)
 
 	applicant.agreed_deposit = offered_deposit
+
 	applied_tenants += applicant
 
 /datum/lot/proc/remove_applicant(applicant)
