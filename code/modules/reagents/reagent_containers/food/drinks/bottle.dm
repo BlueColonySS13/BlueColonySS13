@@ -329,6 +329,16 @@
 	..()
 	reagents.add_reagent("wine", 100)
 
+/obj/item/weapon/reagent_containers/food/drinks/bottle/whitewine
+	name = "Amontillado Viejo 1850"
+	desc = "An expensive wine sourced from a collection of casks found buried in Italy."
+	icon_state = "amontillado"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/wine/New()
+	..()
+	reagents.add_reagent("amontilladowine", 100)
+
 /obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe
 	name = "Jailbreaker Verte"
 	desc = "One sip of this and you just know you're gonna have a good time."
