@@ -1,0 +1,23 @@
+[center]Geminus City High Court
+[small][b]Court Ruling[/b][/center][br]
+[hr]
+[i]The following constitutes the legally binding decision of the Geminus High Court[/i]
+[hr]
+[center][b]Ruling in the Matter Of:
+[u]Geminus City v. [field][/u][/b][/center]
+
+On the following charges, the Defendant is hereby found:
+(NG - Not Guilty, G - Guilty)[br]
+[b][[field]][/b] [field]
+[b][[field]][/b] [field]
+[b][[field]][/b] [field][br]
+
+And shall be sentenced to:[list]
+
+[field][/list]
+
+[hr]
+[b]So orders the Court.[/b]
+
+[sign]
+Judge of the Geminus High Court

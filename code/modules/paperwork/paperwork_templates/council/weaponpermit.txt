@@ -1,0 +1,36 @@
+[small][center]Geminus City Hall
+Weapon Permit Application Form[/center][hr]
+[b]Applicant Information[/b]
+Name: [field]
+Age: [field]
+Occupation: [field]
+Currently Owned Permit Tier: [field]
+
+Reason for Permit Application:
+[field]
+
+[b]Permit Information[/b]
+*[i]Pursuant to the Permit Structuring Act, permits are purchased sequentially. To receieve a Tier 2 Permit, you must also purchase or already have a Tier 0 and Tier 1.[/i]
+Permit(s) Requested:
+[[field]] Tier 0
+[[field]] Tier 1
+[[field]] Tier 2
+[[field]] Tier 3
+[[field]] Tier 4
+
+[i]If requesting a Tier 2 to 4 Permit, please fill out the 'Additional Requirements' Section of this form.[/i]
+
+[b]Additional Requirements[/b]
+[i]Pursuant to the Permit Structuring Act, there are additional requirements for achieving a Tier 2, Tier 3 or Tier 4 Permit. For a Tier 2 Application, you must have at least a psychological assessment denoted and attached to this application. For a Tier 3 or 4 Permit, you must have both a psychological evaluation and the written permission of the Chief of Police.[/i]
+
+Attached Supporting Documents:[i] *Submitted documents must be signed and stamped by the issuing persons[/i]
+[[field]] Positive Psychological Assessment
+[[field]] Chief of Police Permission
+[[field]] Criminal Record Check
+[hr][center]FOR OFFICE USE ONLY[/center]Reviewing Authority: [field]
+Signature: [field]
+
+Application Decision:
+[[field]] Accepted
+[[field]] Denied
+[center]STAMP BELOW TO NOTARIZE[/center]

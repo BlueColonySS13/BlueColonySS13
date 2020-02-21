@@ -1,0 +1,25 @@
+[small][center][b]Geminus City High Court
+Civil Division[/b]
+GCHCF-C001[/center]
+[hr][b][/b]
+[center][field], Plaintiff(s)
+
+and
+
+[field], Defendant(s)
+
+[b]STATEMENT OF CLAIM[/b][/center]
+A legal proceeding has been intiated against you on the following grounds:
+[list]
+[field]
+[/list]
+If you wish to contest these claims in a civil process, please sign below and select the appropriate box. If you choose not to contest these claims, the presiding Judge or Magistrate will assume the claims written are true, and issue judgement as such.
+[hr]Defendant's Recieving Signature: [field]
+Date: [field]
+
+Do you wish to contest this statement of claim in court?:
+[[field]] Yes
+[[field]] No
+
+Defendant's Affirming Signature: [field]
+[hr][center]ALL RELEVANT STAMPS BELOW[/center]

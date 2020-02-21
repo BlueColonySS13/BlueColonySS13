@@ -10,6 +10,7 @@
 	amount_per_transfer_from_this = 5
 	volume = 50
 	var/shaken
+	price_tag = 5
 
 /obj/item/weapon/reagent_containers/food/drinks/on_reagent_change()
 	if (reagents.reagent_list.len > 0)

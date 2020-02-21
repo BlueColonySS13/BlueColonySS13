@@ -58,7 +58,7 @@ var/datum/antagonist/thug/thugs
 	switch(gang_gimmick)
 		if("skull_crew")
 			hat = /obj/item/clothing/mask/bandana/skull
-			uniform = /obj/item/clothing/under/assistantformal
+			uniform = /obj/item/clothing/under/aristocrat
 			suit = /obj/item/clothing/suit/storage/flannel
 			shoes = /obj/item/clothing/shoes/hitops/black
 			accessory = /obj/item/clothing/accessory/scarf/zebra
