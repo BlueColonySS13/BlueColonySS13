@@ -255,6 +255,11 @@
 	icon_state = "satchel-cap"
 	item_state_slots = list(slot_r_hand_str = "captainpack", slot_l_hand_str = "captainpack")
 
+/obj/item/weapon/storage/backpack/satchel/obsidienne
+	name = "obsidienne satchel"
+	desc = "An expensive handcrafted leather satchel with golden accents. The Obsidienne logo shines brightly on it."
+	icon_state = "satchel_obsidienne"
+
 //ERT backpacks.
 /obj/item/weapon/storage/backpack/ert
 	name = "emergency response team backpack"
@@ -358,7 +363,7 @@
 
 /obj/item/weapon/storage/backpack/purse/obsidienne
 	name = "obsidienne royale purse"
-	desc = "A luxury purse made with genuine  typically worn over the shoulder."
+	desc = "A luxury purse made with imported Italian leather and golden spider silk. The Obsidienne logo on it shines brightly."
 	icon_state = "purse_obsidienne_royal"
 	item_state_slots = list(slot_r_hand_str = "lgpurse", slot_l_hand_str = "lgpurse")
 	w_class = ITEMSIZE_LARGE

@@ -24,7 +24,7 @@
 
 /obj/item/weapon/storage/briefcase/clutch/obsidienne
 	name = "obsidienne clutch purse"
-	desc = "A luxury handheld bag typically used by women."
+	desc = "A luxury handheld bag typically used by women. The Obsidienne logo on it almost glows."
 	icon_state = "clutch_obsidienne"
 	item_state_slots = list(slot_r_hand_str = "smpurse", slot_l_hand_str = "smpurse")
 	force = 0

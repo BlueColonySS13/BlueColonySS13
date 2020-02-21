@@ -58,10 +58,10 @@
 /obj/item/weapon/storage/box/caviar/open(mob/user)
 	if(!opened)
 		to_chat(usr, "<span class='notice'>You peel back the lid of the tin.</span>")
-		opened = 1
 		update_icon()
 	. = ..()
 
 /obj/item/weapon/storage/box/caviar/update_icon()
-	if(opened)
+	if(!opened)
 		icon_state = "[icon_state]_open"
+		opened = 1

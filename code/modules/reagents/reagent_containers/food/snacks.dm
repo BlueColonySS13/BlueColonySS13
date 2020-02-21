@@ -2854,7 +2854,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule
 	name = "Pule cheese wheel"
 	desc = "A big wheel of expensive off-white pule cheese imported from Cascington. The hard rind is branded with a seal of authenticity."
-	icon_state = "pulsecheesewheel"
+	icon_state = "pulecheesewheel"
 	slice_path = /obj/item/weapon/reagent_containers/food/snacks/cheesewedge/pule
 	slices_num = 5
 	filling_color = "#F0F0F0"
@@ -2862,11 +2862,6 @@
 	nutriment_desc = list("aged cheese" = 10)
 	nutriment_amt = 10
 	price_tag = 30
-
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule/New()
-	..()
-	reagents.add_reagent("protein", 10)
-	bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/cheesewedge
 	name = "Cheese wedge"
