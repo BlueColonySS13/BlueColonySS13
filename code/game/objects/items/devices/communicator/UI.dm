@@ -291,13 +291,13 @@
 		if(text)
 			if (service == "1")
 				service_name = "police department"
-				global_announcer.autosay ("<FONT size=3>Emergency message from <B>[src]</B> <FONT size=2>([exonet.address])</FONT>: [text] </FONT>", "Emergency Hotline", "Security")
+				global_announcer.autosay ("<FONT size=3>Emergency message from <B>[src]</B> <FONT size=2>([exonet.address])</FONT>: [text] </FONT>", "Emergency Hotline", "Police")
 			if (service == "2")
 				service_name = "paramedics"
-				global_announcer.autosay ("<FONT size=3>Emergency message from <B>[src]</B> <FONT size=2>([exonet.address])</FONT>: [text] </FONT>", "Emergency Hotline", "Medical")
+				global_announcer.autosay ("<FONT size=3>Emergency message from <B>[src]</B> <FONT size=2>([exonet.address])</FONT>: [text] </FONT>", "Emergency Hotline", "Hospital")
 			if (service == "3")
 				service_name = "damage control"
-				global_announcer.autosay ("<FONT size=3>Emergency message from <B>[src]</B> <FONT size=2>([exonet.address])</FONT>: [text] </FONT>", "Emergency Hotline", "Engineering")
+				global_announcer.autosay ("<FONT size=3>Emergency message from <B>[src]</B> <FONT size=2>([exonet.address])</FONT>: [text] </FONT>", "Emergency Hotline", "Fire")
 
 			usr << "<span class='danger'>You sent over the message \"[text]\" over to the [service_name] hotline.</span>"
 			usr.visible_message("\icon[src] [usr] types something on [src]'s screen.") //snitches get stitches
