@@ -693,7 +693,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "rainbowzippo"
 
 /obj/item/weapon/flame/lighter/zippo/heartbreaker
-	name = "\improper hearbreaker Zippo lighter"
+	name = "\improper heartbreaker Zippo lighter"
 	icon_state = "heartzippo"
 
 /obj/item/weapon/flame/lighter/zippo/sol

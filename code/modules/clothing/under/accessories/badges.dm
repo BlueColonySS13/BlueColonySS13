@@ -242,3 +242,20 @@
 		new /obj/item/clothing/accessory/badge/holo/cord(src)
 		..()
 		return
+
+// For very rich people
+/obj/item/clothing/accessory/badge/rich
+	name = "\"I am very rich!\" badge"
+	desc = "Was it really worth it?"
+	icon_state = "rich"
+	item_state = "goldbadge"
+
+/obj/item/clothing/accessory/badge/rich/attack_self(mob/user as mob)
+	user.visible_message("[user] flaunts their \"I am very rich!\" badge.",\
+		"You flash the \"I am very rich!\" badge to everyone around you!")
+
+/obj/item/clothing/accessory/badge/rich/attack(mob/living/carbon/human/M, mob/living/user)
+	if(isliving(user))
+		user.visible_message("<span class='danger'>[user] invades [M]'s personal space, shoving the \"I am very rich!\" badge into their face!.</span>","<span class='danger'>You invade [M]'s personal space, thrusting the \"I am very rich!\" badge into their face insistently.</span>")
+		user.do_attack_animation(M)
+		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam

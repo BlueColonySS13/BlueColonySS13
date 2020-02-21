@@ -356,6 +356,16 @@
 	max_storage_space = ITEMSIZE_COST_NORMAL * 5
 	drop_sound = 'sound/items/drop/accessory.ogg'
 
+/obj/item/weapon/storage/backpack/purse/obsidienne
+	name = "obsidienne royale purse"
+	desc = "A luxury purse made with genuine  typically worn over the shoulder."
+	icon_state = "purse_obsidienne_royal"
+	item_state_slots = list(slot_r_hand_str = "lgpurse", slot_l_hand_str = "lgpurse")
+	w_class = ITEMSIZE_LARGE
+	max_w_class = ITEMSIZE_NORMAL
+	max_storage_space = ITEMSIZE_COST_NORMAL * 5
+	drop_sound = 'sound/items/drop/accessory.ogg'
+
 //Parachutes
 /obj/item/weapon/storage/backpack/parachute
 	name = "parachute"

@@ -1632,6 +1632,16 @@
 	glass_name = "vodka"
 	glass_desc = "The glass contain wodka. Xynta."
 
+/datum/reagent/ethanol/vodka/kora
+	name = "Kora Vodka"
+	id = "koravodka"
+	description = "The finest vodka ever distilled using secret Neo-Ruskiya techniques."
+	taste_description = "spicy alcohol, followed by the taste of finesse and a creamy finish"
+	price_tag = 1.6
+
+	glass_name = "kora vodka"
+	glass_desc = "The finest vodka ever distilled. Best served chilled in a diamond-studded silver shot cup."
+
 /datum/reagent/ethanol/vodka/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	M.apply_effect(max(M.radiation - 1 * removed, 0), IRRADIATE, check_protection = 0)
@@ -1650,7 +1660,7 @@
 /datum/reagent/ethanol/wine
 	name = "Wine"
 	id = "wine"
-	description = "An premium alchoholic beverage made from distilled grape juice."
+	description = "A premium alchoholic beverage made from distilled grape juice."
 	taste_description = "bitter sweetness"
 	color = "#7E4043" // rgb: 126, 64, 67
 	strength = 15
@@ -1668,7 +1678,15 @@
 	glass_name = "champagne"
 	glass_desc = "An even classier looking drink."
 
+/datum/reagent/ethanol/wine/amontillado
+	name = "Amontillado Wine"
+	id = "amontilladowine"
+	description = "A 700 year old wine from Italy."
+	taste_description = "a sweet and round wine, complimented by an oaky vanilla character"
+	price_tag = 2.2
 
+	glass_name = "amontillado wine"
+	glass_desc = "A 700 year old wine from Italy. Every sip is a taste of history."
 
 // Cocktails
 /datum/reagent/ethanol/acid_spit
@@ -2557,7 +2575,7 @@
 	glass_name = "Euphoria"
 	glass_desc = "Invented by a Eutopian marketing team, this is one of the most expensive cocktails in existence."
 
-	price_tag = 1.2
+	price_tag = 1.5
 
 /datum/reagent/ethanol/xanaducannon
 	name = "Xanadu Cannon"

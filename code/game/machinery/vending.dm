@@ -1994,26 +1994,40 @@
 /obj/machinery/vending/luxvend
 	name = "LuxVend"
 	desc = "LuxVend - For the Polluxian who has everything."
-	req_access = list(3)
-	products = list(/obj/item/clothing/head/helmet/combat = 4,
-					/obj/item/clothing/suit/armor/combat = 4,
-					/obj/item/clothing/gloves/arm_guard/combat = 4,
-					/obj/item/clothing/shoes/leg_guard/combat = 4,
-					/obj/item/clothing/head/helmet/bulletproof = 2,
-					/obj/item/clothing/suit/armor/bulletproof/alt = 2,
-					/obj/item/clothing/gloves/arm_guard/bulletproof = 2,
-					/obj/item/clothing/shoes/leg_guard/bulletproof = 2,
-					/obj/item/clothing/head/helmet/laserproof = 2,
-					/obj/item/clothing/suit/armor/laserproof = 2,
-					/obj/item/clothing/gloves/arm_guard/laserproof = 2,
-					/obj/item/clothing/shoes/leg_guard/laserproof = 2,
-					/obj/item/clothing/head/helmet/riot = 4,
-					/obj/item/clothing/suit/armor/riot = 4,
-					/obj/item/clothing/gloves/arm_guard/riot = 4,
-					/obj/item/clothing/shoes/leg_guard/riot = 4,
-					/obj/item/weapon/shield/riot = 4,
-					/obj/item/weapon/melee/baton = 4,
-					/obj/item/clothing/glasses/sunglasses/sechud/tactical = 6,
-					/obj/item/clothing/mask/gas/half = 6
+	icon_state = "luxvend"
+	icon_deny = "luxvend-deny"
+	vend_delay = 8
+	vend_reply = "Money talks - and yours just said, \"Goodbye!\" Thank you for choosing LuxVend. Enjoy!"
+	products = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 5,
+					/obj/item/weapon/storage/box/multigrain = 5,
+					/obj/item/weapon/storage/box/caviar = 7,
+					/obj/item/weapon/storage/box/caviar/red = 7,
+					/obj/item/weapon/storage/briefcase/clutch/obsidienne = 5,
+					/obj/item/weapon/storage/wallet/obsidienne = 5,
+					/obj/item/weapon/storage/backpack/purse/obsidienne = 5,
+					/obj/item/clothing/glasses/holovisor = 7,
+					/obj/item/toy/pet_rock/gold = 5,
+					/obj/item/weapon/flame/lighter/zippo/corgi = 5,
+					/obj/item/weapon/flame/lighter/zippo/capitalist = 5,
+					/obj/item/weapon/flame/lighter/zippo/royal = 5,
+					/obj/item/clothing/accessory/badge/rich = 3
 					)
-
+	prices = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 400,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora = 220,
+					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 50,
+					/obj/item/weapon/storage/box/multigrain = 20,
+					/obj/item/weapon/storage/box/caviar = 60,
+					/obj/item/weapon/storage/box/caviar/red = 40,
+					/obj/item/weapon/storage/briefcase/clutch/obsidienne = 100,
+					/obj/item/weapon/storage/wallet/obsidienne = 80,
+					/obj/item/weapon/storage/backpack/purse/obsidienne = 150,
+					/obj/item/clothing/glasses/holovisor = 50,
+					/obj/item/toy/pet_rock/gold = 45,
+					/obj/item/weapon/flame/lighter/zippo/corgi = 75,
+					/obj/item/weapon/flame/lighter/zippo/capitalist = 100,
+					/obj/item/weapon/flame/lighter/zippo/royal = 125,
+					/obj/item/clothing/accessory/badge/rich = 50000
+					)
+	vendor_department = "Civilian"
