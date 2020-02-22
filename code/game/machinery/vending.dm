@@ -995,6 +995,11 @@
 	charge_department = "Public Healthcare"
 	charge_free_to_department = TRUE
 
+/obj/machinery/vending/medical/hospital/gcch //geminus city central hospital variant to prevent that insert pin message during life or death situations.
+	charge_department = null
+	charge_free_to_department = null
+	vendor_department = "Public Healthcare"
+
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"
 	desc = "All the fine parts you need in one vending machine!"
@@ -1021,6 +1026,11 @@
 
 	charge_department = "Public Healthcare"
 	charge_free_to_department = TRUE
+
+/obj/machinery/vending/wallmed1/gcch //geminus city central hospital variant to prevent that insert pin message during life or death situations.
+	charge_department = null
+	charge_free_to_department = null
+	vendor_department = "Public Healthcare"
 
 /obj/machinery/vending/wallmed2
 	name = "NanoMed"
@@ -1054,6 +1064,13 @@
 
 	charge_department = "Police"
 	charge_free_to_department = TRUE
+
+/obj/machinery/vending/security/gcpd
+	name = "GCPD Equipment Vendotron"
+	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
+	charge_department = null
+	charge_free_to_department = null
+	vendor_department = "Police"
 
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"
