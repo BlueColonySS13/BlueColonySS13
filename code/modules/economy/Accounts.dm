@@ -159,5 +159,6 @@
 	else
 		T.source_terminal = "Terminal #[rand(111,999)]"
 		
+	
+	T = truncate_oldest(transaction_log, max_transaction_logs)
 	transaction_log.Add(T)
-	truncate_oldest(transaction_log, max_transaction_logs)
