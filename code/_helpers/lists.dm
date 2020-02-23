@@ -11,7 +11,7 @@
 
 // Truncates a list "L" to "max" size by deleting the oldest (from index 1) entries.
 // Will not affect lists that are under the max size.
-#define truncate_oldest(L, max) (L.len + 1 > max ? L.Cut(1, 1 + (L.len - max)) : null)
+/proc/truncate_oldest(L, max) (L.len + 1 > max ? L.Cut(1, 1 + (L.len - max)) : null)
 
 
 //Returns a list in plain english as a string
