@@ -93,7 +93,7 @@
 			D.money += amount
 			//create a transaction log entry
 			
-			add_transaction_log(source_name, purpose, amount, terminal_id)
+			D.add_transaction_log(source_name, purpose, amount, terminal_id)
 			return 1
 
 
