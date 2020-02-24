@@ -225,9 +225,8 @@
 	src.use(1)
 
 /******************************Sculpting*******************************/
-/obj/items/autochisel
+/obj/item/weapon/pickaxe/autochisel
 	name = "auto-chisel"
-	icon = 'icons/obj/tools.dmi'
 	icon_state = "jackhammer"
 	item_state = "jackhammer"
 	desc = "With an integrated AI chip and hair-trigger precision, this baby makes sculpting almost automatic!"
@@ -263,7 +262,7 @@
 		to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]anchor the [name].</span>")
 		anchored = !anchored
 
-	if (istype(C, /obj/items/autochisel))
+	if (istype(C, /obj/item/weapon/pickaxe/autochisel))
 		if(!sculpted)
 			if(last_struck)
 				return
