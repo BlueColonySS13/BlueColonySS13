@@ -23,6 +23,8 @@
 
 	var/list/landlord_checkbook = list()		//changes every payroll
 
+	var/list/licenses = list(LICENSE_LANDLORD_COMMERCIAL)
+
 	var/held = FALSE
 	var/tenants_wanted = FALSE
 	var/for_sale = FALSE
@@ -33,9 +35,11 @@
 
 	var/path = "data/persistent/lots/"
 
-	var/reason_held
+	var/reason_held = ""
 
 	var/max_tenants = 3
+
+	var/list/notes = list()
 
 
 /datum/lot/New()

@@ -1131,7 +1131,11 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Process Payroll"
 	set desc = "Pays everyone."
 
-	//Search general records, and process payroll for all those that have bank numbers.
-	for(var/datum/data/record/R in data_core.general)
-		payroll(R)
-		command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
+
+	if(!SSeconomy)
+		return
+
+	if(!check_rights(R_DEBUG|R_ADMIN))	return
+
+	SSeconomy.city_charges()
+	command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")

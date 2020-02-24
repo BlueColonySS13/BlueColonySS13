@@ -1393,6 +1393,12 @@ About the new airlock wires panel:
 		wires = new/datum/wires/airlock(src)
 
 /obj/machinery/door/airlock/initialize()
+	// One door per turf.
+	for(var/obj/machinery/door/T in loc)
+		if(T != src)
+			qdel(src)
+			return
+
 	if(src.closeOtherId != null)
 		for (var/obj/machinery/door/airlock/A in world)
 			if(A.closeOtherId == src.closeOtherId && A != src)

@@ -4,3 +4,6 @@
 #define RENTED "rented"
 #define OWNED "owned"
 #define LOT_HELD "held"
+
+#define LICENSE_LANDLORD_COMMERCIAL "Commercial Lot"
+#define LICENSE_LANDLORD_HOUSING "Housing Lot"

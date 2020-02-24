@@ -16,11 +16,13 @@
 			else
 				if(landlord)
 					landlord.account_balance += get_rent_after_tax()
+					department_accounts["City Council"].money += get_rent_tax_amount()
 					landlord_checkbook += "[full_game_time()] - [tenant.name] for [name]: Payment of [get_rent_after_tax()]CR successfully paid to landlord account. (After [get_rent_tax_amount()]CR tax)"
 
 
 	if(landlord)
 		landlord.pay_balance(-get_service_charge())
+		department_accounts["City Council"].money += get_service_charge()
 		landlord_checkbook += "[full_game_time()] - Landlord Payment for [name]: [get_rent()]CR successfully paid to City Council."
 
 

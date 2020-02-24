@@ -47,7 +47,7 @@
 	if(!has_tenants())
 		return 0
 
-	var/earnings = tenants.len * get_rent()
+	var/earnings = (tenants.len * get_rent()) - get_service_charge()
 
 	return earnings
 
@@ -66,7 +66,7 @@
 	return HOUSING_TAX
 
 /datum/lot/proc/get_tax_amount()
-	return (get_price() * get_tax())
+	return round((get_price() * get_tax()), 1)
 
 // Rent procs
 
@@ -106,6 +106,10 @@
 	return tenant
 
 /datum/lot/proc/set_new_ownership(uid, t_name, bank_id, email)
+	if(landlord)
+		charge_to_account(landlord.bank_id, "Housing Sell To [t_name]", "[name] Lot Purchase", "Landlord Management", (landlord.account_balance + price))
+	else
+
 	landlord = make_tenant(uid, t_name, bank_id, email)
 	return landlord
 
@@ -165,6 +169,9 @@
 
 
 /datum/lot/proc/get_service_charge()
+	if(!get_landlord())
+		return
+
 	var/full_charge = 0
 
 	if(persistent_economy)
@@ -195,3 +202,8 @@
 	for(var/datum/tenant/applicant in applied_tenants)
 		if(applicant.unique_id == uid)
 			return applicant
+
+// logging
+
+/datum/lot/proc/add_note(full_name, action, mob/user)
+	notes += "[action] - <b>[name]</b> ([full_game_time()])"

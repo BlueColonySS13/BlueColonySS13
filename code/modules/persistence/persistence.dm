@@ -113,6 +113,9 @@
 /mob
 	dont_save = TRUE
 
+/obj/item/weapon/card/id
+	dont_save = TRUE
+
 /obj/item/weapon/card/id/gold/captain/spare
 	dont_save = TRUE
 
@@ -122,5 +125,11 @@
 /obj/item/device/communicator
 	dont_save = TRUE
 
-/obj/item/weapon/card/id/gold/captain/spare
+/obj/singularity		// lmao just in case
 	dont_save = TRUE
+
+/obj/effect
+	dont_save = TRUE
+
+/obj/screen
+	dont_save = TRUE 	// what?
