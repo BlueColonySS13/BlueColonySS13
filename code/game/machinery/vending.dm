@@ -901,9 +901,7 @@
 	icon_state = "cart"
 	icon_deny = "cart-deny"
 	req_access = list(access_hop)
-	products = list(/obj/item/weapon/cartridge/medical = 10,/obj/item/weapon/cartridge/engineering = 10,/obj/item/weapon/cartridge/security = 10,
-					/obj/item/weapon/cartridge/janitor = 10,/obj/item/weapon/cartridge/signal/science = 10, /obj/item/device/pda/heads = 10,
-					/obj/item/weapon/cartridge/captain = 3,/obj/item/weapon/cartridge/quartermaster = 10)
+	products = list(/obj/item/device/communicator = 10,)
 	req_log_access = access_hop
 	has_logs = 1
 
@@ -997,6 +995,11 @@
 	charge_department = "Public Healthcare"
 	charge_free_to_department = TRUE
 
+/obj/machinery/vending/medical/hospital/gcch //geminus city central hospital variant to prevent that insert pin message during life or death situations.
+	charge_department = null
+	charge_free_to_department = null
+	vendor_department = "Public Healthcare"
+
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"
 	desc = "All the fine parts you need in one vending machine!"
@@ -1023,6 +1026,11 @@
 
 	charge_department = "Public Healthcare"
 	charge_free_to_department = TRUE
+
+/obj/machinery/vending/wallmed1/gcch //geminus city central hospital variant to prevent that insert pin message during life or death situations.
+	charge_department = null
+	charge_free_to_department = null
+	vendor_department = "Public Healthcare"
 
 /obj/machinery/vending/wallmed2
 	name = "NanoMed"
@@ -1056,6 +1064,13 @@
 
 	charge_department = "Police"
 	charge_free_to_department = TRUE
+
+/obj/machinery/vending/security/gcpd
+	name = "GCPD Equipment Vendotron"
+	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
+	charge_department = null
+	charge_free_to_department = null
+	vendor_department = "Police"
 
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"

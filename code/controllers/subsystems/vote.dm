@@ -1,64 +1,48 @@
-var/datum/controller/vote/vote = new()
+SUBSYSTEM_DEF(vote)
+	name = "Vote"
+	wait = 10
+	priority = FIRE_PRIORITY_VOTE
+	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
+	flags = SS_KEEP_TIMING | SS_NO_INIT
+	var/list/round_voters = list()
 
-var/global/list/round_voters = list() // Keeps track of the individuals voting for a given round, for use in forcedrafting.
-
-#define VOTE_RESTART "restart"
-#define VOTE_GAMEMODE "gamemode"
-#define VOTE_CREW_TRANSFER "crew_transfer"
-#define VOTE_ADD_ANTAGONIST "add_antagonist"
-#define VOTE_CUSTOM "custom"
-
-/datum/controller/vote
-	var/initiator = null // Key of the one who started the vote or "the server"
-	var/started_time = null
-	var/time_remaining = 0
-	var/mode = null
-	var/question = null
+	//Current vote
+	var/initiator
+	var/started_time
+	var/time_remaining
+	var/duration
+	var/mode
+	var/question
 	var/list/choices = list()
 	var/list/gamemode_names = list()
 	var/list/voted = list()
 	var/list/current_votes = list()
 	var/list/additional_text = list()
 
-/datum/controller/vote/New()
-	if(vote != src)
-		if(istype(vote))
-			Recover()
-			qdel(vote)
-		vote = src
-
-/datum/controller/vote/Destroy()
-	..()
-	// Tell qdel() to Del() this object.
-	return QDEL_HINT_HARDDEL_NOW
-
-/datum/controller/vote/process()	//called by master_controller
+/datum/controller/subsystem/vote/fire(resumed)
 	if(mode)
-		// No more change mode votes after the game has started.
+		time_remaining = round((started_time + duration - world.time)/10)
 		if(mode == VOTE_GAMEMODE && ticker.current_state >= GAME_STATE_SETTING_UP)
-			world << "<b>Voting aborted due to game start.</b>"
-			src.reset()
+			to_chat(world, "<b>Gamemode vote aborted: Game has already started.</b>")
+			reset()
 			return
-
-		// Calculate how much time is remaining by comparing current time, to time of vote start,
-		// plus vote duration
-		time_remaining = round((started_time + config.vote_period - world.time)/10)
-
-		if(time_remaining < 0)
+		if(time_remaining <= 0)
 			result()
 			reset()
 
-/datum/controller/vote/proc/autotransfer()
+/datum/controller/subsystem/vote/proc/autotransfer()
 	initiate_vote(VOTE_CREW_TRANSFER, "the server", 1)
-	log_debug("The server has called a crew transfer vote")
+	log_debug("The server has called a crew transfer vote.")
 
-/datum/controller/vote/proc/autogamemode()
+/datum/controller/subsystem/vote/proc/autogamemode()
 	initiate_vote(VOTE_GAMEMODE, "the server", 1)
-	log_debug("The server has called a gamemode vote")
+	log_debug("The server has called a gamemode vote.")
 
-/datum/controller/vote/proc/reset()
+/datum/controller/subsystem/vote/proc/reset()
 	initiator = null
-	time_remaining = 0
+	started_time = null
+	duration = null
+	time_remaining = null
 	mode = null
 	question = null
 	choices.Cut()
@@ -66,7 +50,7 @@ var/global/list/round_voters = list() // Keeps track of the individuals voting f
 	current_votes.Cut()
 	additional_text.Cut()
 
-/datum/controller/vote/proc/get_result() // Get the highest number of votes
+/datum/controller/subsystem/vote/proc/get_result() // Get the highest number of votes
 	var/greatest_votes = 0
 	var/total_votes = 0
 
@@ -111,7 +95,7 @@ var/global/list/round_voters = list() // Keeps track of the individuals voting f
 			if(choices[option] == greatest_votes)
 				. += option
 
-/datum/controller/vote/proc/announce_result()
+/datum/controller/subsystem/vote/proc/announce_result()
 	var/list/winners = get_result()
 	var/text
 	if(winners.len > 0)
@@ -135,9 +119,9 @@ var/global/list/round_voters = list() // Keeps track of the individuals voting f
 		if(mode == VOTE_ADD_ANTAGONIST)
 			antag_add_failed = 1
 	log_vote(text)
-	world << "<font color='purple'>[text]</font>"
+	to_chat(world, "<font color='purple'>[text]</font>")
 
-/datum/controller/vote/proc/result()
+/datum/controller/subsystem/vote/proc/result()
 	. = announce_result()
 	var/restart = 0
 	if(.)
@@ -175,7 +159,7 @@ var/global/list/round_voters = list() // Keeps track of the individuals voting f
 		log_game("Rebooting due to restart vote")
 		world.Reboot()
 
-/datum/controller/vote/proc/submit_vote(var/ckey, var/newVote)
+/datum/controller/subsystem/vote/proc/submit_vote(ckey, newVote)
 	if(mode)
 		if(config.vote_no_dead && usr.stat == DEAD && !usr.client.holder)
 			return
@@ -187,7 +171,7 @@ var/global/list/round_voters = list() // Keeps track of the individuals voting f
 		else
 			current_votes[ckey] = null
 
-/datum/controller/vote/proc/initiate_vote(var/vote_type, var/initiator_key, var/automatic = 0)
+/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, automatic = FALSE, time = config.vote_period)
 	if(!mode)
 		if(started_time != null && !(check_rights(R_ADMIN) || automatic))
 			var/next_allowed_time = (started_time + config.vote_delay)
@@ -243,6 +227,7 @@ var/global/list/round_voters = list() // Keeps track of the individuals voting f
 		mode = vote_type
 		initiator = initiator_key
 		started_time = world.time
+		duration = time
 		var/text = "[capitalize(mode)] vote started by [initiator]."
 		if(mode == VOTE_CUSTOM)
 			text += "\n[question]"
@@ -261,13 +246,13 @@ var/global/list/round_voters = list() // Keeps track of the individuals voting f
 		return 1
 	return 0
 
-/datum/controller/vote/proc/interface(var/client/C)
+/datum/controller/subsystem/vote/proc/interface(var/client/C)
 	if(!istype(C))
 		return
-	var/admin = 0
+	var/admin = FALSE
 	if(C.holder)
 		if(C.holder.rights & R_ADMIN)
-			admin = 1
+			admin = TRUE
 
 	. = "<html><head><title>Voting Panel</title></head><body>"
 	if(mode)
@@ -337,7 +322,7 @@ var/global/list/round_voters = list() // Keeps track of the individuals voting f
 
 	. += "<a href='?src=\ref[src];vote=close' style='position:absolute;right:50px'>Close</a></body></html>"
 
-/datum/controller/vote/Topic(href, href_list[])
+/datum/controller/subsystem/vote/Topic(href, href_list[])
 	if(!usr || !usr.client)
 		return
 	switch(href_list["vote"])
@@ -384,5 +369,5 @@ var/global/list/round_voters = list() // Keeps track of the individuals voting f
 	set category = "OOC"
 	set name = "Vote"
 
-	if(vote)
-		src << browse(vote.interface(src), "window=vote;size=500x[300 + vote.choices.len * 25]")
+	if(SSvote)
+		src << browse(SSvote.interface(src), "window=vote;size=500x[300 + SSvote.choices.len * 25]")
