@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(lots)
 	for(var/instance in subtypesof(/datum/lot))
 		new instance
 
-//	load_all_lots()
+	load_all_lots()
 
 	for(var/obj/effect/landmark/lotsign/ls in lotsigns)
 		ls.get_lot_data()
