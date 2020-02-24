@@ -43,7 +43,7 @@
 // Galactic common languages (systemwide accepted standards).
 /datum/language/trader
 	name = LANGUAGE_TRADEBAND
-	desc = "Spoken by the humans of the upper-class Cascington region, Tradeband was designed to be pleasing to be eloquent and pleasing to the senses."
+	desc = "Spoken by the humans of the upper-class Cascington region, Tradeband was designed to be both eloquent and pleasing to the senses. Use of the language has spread to various trading conglomerates in all of human space."
 	speech_verb = "enunciates"
 	colour = "say_quote"
 	key = "2"
