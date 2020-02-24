@@ -35,6 +35,16 @@
 	foldable = /obj/item/stack/material/cardboard
 	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/cracker/multigrain = 8)
 
+/obj/item/weapon/storage/box/sushi
+	icon = 'icons/obj/food.dmi'
+	icon_state = "bentobox"
+	name = "Sushi Surprise Bento Box"
+	desc = "A bento box filled with a random assortment of sushi."
+	max_storage_space = ITEMSIZE_COST_SMALL * 6
+	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/sushi)
+	foldable = /obj/item/stack/material/cardboard
+	starts_with = list(/obj/random/sushi = 6)
+
 /obj/item/weapon/storage/box/caviar
 	icon = 'icons/obj/food.dmi'
 	icon_state = "caviarbox"
