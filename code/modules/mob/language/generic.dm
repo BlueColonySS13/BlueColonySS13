@@ -56,13 +56,13 @@
 
 /datum/language/terminus
 	name = LANGUAGE_TERMINUS
-	desc = "A soft language spoken by the people of the sparsely populated, socially-conscious Terminus sector of Andromeda."
-	speech_verb = "mentions"
-	exclaim_verb = "insinuates"
+	desc = "A quickly spoken language adopted by the people of the industrial Terminus sector of Andromeda."
+	speech_verb = "rapidly says"
+	exclaim_verb = "quickly exclaims"
 	colour = "terminus"
 	key = "4"
 	flags = WHITELISTED
-	partial_understanding = list(LANGUAGE_SOL_COMMON = 20)
+	partial_understanding = list(LANGUAGE_SOL_COMMON = 30)
 	syllables = list (".a", "spa", "pan", "blaif", "stra", "!u", "!ei", "!am", "by", ".y", "gry", "zbly", "!y", "fl",
  	"sm", "rn", "cpi", "ku", "koi", "pr", "glau", "stu", "ved", "ki", "tsa", "xau", "jbu", "sny", "stro", "nu",
  	"uan", "ju", "!i", "ge", "luk", "an", "ar", "at", "es", "et", "bel", "ki", "jaa", "ch", "ki", "gh", "ll", "uu", "wat")
