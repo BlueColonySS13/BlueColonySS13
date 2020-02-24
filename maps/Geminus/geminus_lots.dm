@@ -64,3 +64,27 @@
 	id = "bizlot11"
 	price = 314050
 	rent = 600
+
+/datum/lot/business_twelve
+	name = "Business Lot 12"
+	id = "bizlot12"
+	price = 68000
+	rent = 250
+
+/datum/lot/business_thirteen
+	name = "Business Lot 13"
+	id = "bizlot13"
+	price = 65000
+	rent = 220
+
+/datum/lot/business_fourteen
+	name = "Business Lot 14"
+	id = "bizlot14"
+	price = 67000
+	rent = 235
+
+/datum/lot/business_fifteen
+	name = "Business Lot 15"
+	id = "bizlot15"
+	price = 66000
+	rent = 240

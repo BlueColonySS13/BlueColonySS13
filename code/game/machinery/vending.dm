@@ -1000,6 +1000,79 @@
 	charge_free_to_department = null
 	vendor_department = "Public Healthcare"
 
+/obj/machinery/vending/medical/hospital/gcchgms
+	name = "NanoMed General Medical Supplies Vendor"
+	desc = "A patent pending, branded, NanoMed machine which holds general medical supplies. You feel the healthcare costs rising while looking at this machine."
+	req_access = list(access_medical)
+	products = list (/obj/item/clothing/glasses/hud/health = 6,
+					 /obj/item/weapon/storage/belt/medical = 6,
+					 /obj/item/roller = 6,
+					 /obj/item/weapon/storage/firstaid/regular = 4,
+					 /obj/item/weapon/storage/firstaid/adv = 4,
+					 /obj/item/weapon/storage/firstaid/toxin = 3,
+					 /obj/item/weapon/storage/firstaid/o2 = 3,
+					 /obj/item/weapon/storage/firstaid/fire = 3,
+					 /obj/item/weapon/storage/box/gloves = 2,
+					 /obj/item/weapon/storage/box/masks = 2,
+					 /obj/item/weapon/storage/box/syringes = 2,
+					 /obj/item/weapon/storage/box/beakers = 2,
+					 /obj/item/weapon/storage/box/bodybags = 2)
+	charge_department = null
+	charge_free_to_department = null
+	vendor_department = "Public Healthcare"
+
+/obj/machinery/vending/medical/hospital/gcchsms
+	name = "NanoMed Specialized Medical Supplies Vendor"
+	desc = "A patent pending, branded, NanoMed vendor which holds specialized medical supplies. Much like the bloodpressure of the mayor, the prices on healthcare are increasing exponentially."
+	req_access = list(access_medical)
+	products = list (/obj/item/bodybag/cryobag = 6,
+					 /obj/item/weapon/reagent_containers/spray/sterilizine = 5,
+					 /obj/item/device/defib_kit/loaded = 3,
+					 /obj/item/weapon/cane = 3,
+					 /obj/item/weapon/cane/crutch = 3,
+					 /obj/item/weapon/cane/whitecane = 3,
+					 /obj/item/weapon/storage/firstaid/surgery = 2,
+					 /obj/item/weapon/storage/box/rxglasses = 2,
+					 /obj/item/weapon/storage/box/autoinjectors = 1,
+					 /obj/item/weapon/storage/box/cdeathalarm_kit = 1)
+	charge_department = null
+	charge_free_to_department = null
+	vendor_department = "Public Healthcare"
+
+/obj/machinery/vending/medical/hospital/cvcrb
+	name = "C.V.C Refridgerated Bloodbank"
+	desc = "A fully stocked bloodbank, equipped with advanced cooling technology which keeps your blood extra cold. One bloodbag ah ah ah, two bloodbag ah ah ah, three bloodbag ah ah ah."
+	icon_state = "smartfridge"
+	req_access = list(access_medical)
+	products = list (/obj/item/weapon/reagent_containers/blood/empty = 8,
+					 /obj/item/weapon/reagent_containers/blood/OMinus = 6,
+					 /obj/item/weapon/reagent_containers/blood/APlus = 4,
+					 /obj/item/weapon/reagent_containers/blood/AMinus = 4,
+					 /obj/item/weapon/reagent_containers/blood/BPlus = 4,
+					 /obj/item/weapon/reagent_containers/blood/BMinus = 4,
+					 /obj/item/weapon/reagent_containers/blood/OPlus =4)
+	charge_department = null
+	charge_free_to_department = null
+	vendor_department = "Public Healthcare"
+
+/obj/machinery/vending/medical/hospital/chem
+	name = "Johnny's Chems"
+	desc = "A fully stocked chemistry machine designed for hospital use. You look at it and are reminded of a familiar theme song."
+	req_access = list(33)
+	products = list (/obj/item/weapon/reagent_containers/glass/beaker/large = 4,
+					 /obj/item/clothing/glasses/science = 4,
+					 /obj/item/stack/material/phoron = 3,
+					 /obj/item/weapon/reagent_containers/dropper/industrial = 2,
+					 /obj/item/device/mass_spectrometer/adv = 2,
+					 /obj/item/weapon/storage/box/autoinjectors = 2,
+					 /obj/item/weapon/storage/bag/chemistry = 2,
+					 /obj/item/weapon/storage/box/pillbottles = 2,
+					 /obj/item/weapon/storage/fancy/vials = 2,
+					 /obj/item/weapon/storage/lockbox/vials = 1)
+	charge_department = null
+	charge_free_to_department = null
+	vendor_department = "Public Healthcare"
+
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"
 	desc = "All the fine parts you need in one vending machine!"
