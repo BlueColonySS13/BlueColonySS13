@@ -1073,6 +1073,21 @@
 	charge_free_to_department = null
 	vendor_department = "Public Healthcare"
 
+/obj/machinery/vending/medical/hospital/psych
+	name = "Mania Inc. Psychiatric Vendomat"
+	desc = "A vending machine which puts the man, back in mania. Stocks all manner of psychiatric supplies."
+	req_access = list(64)
+	products = list (/obj/item/weapon/storage/pill_bottle/citalopram = 2,
+					 /obj/item/weapon/reagent_containers/glass/bottle/stoxin = 2,
+					 /obj/item/weapon/reagent_containers/syringe = 2,
+					 /obj/item/clothing/suit/straight_jacket = 1,
+					 /obj/item/weapon/gun/launcher/syringe = 1,
+					 /obj/item/weapon/storage/box/syringegun = 1)
+	charge_department = null
+	charge_free_to_department = null
+	vendor_department = "Public Healthcare"
+
+
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"
 	desc = "All the fine parts you need in one vending machine!"

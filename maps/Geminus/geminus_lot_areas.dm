@@ -76,3 +76,8 @@
 	name = "Business Lot 15"
 	icon_state = "yellow"
 	lot_id = "bizlot15"
+
+/area/lots/business_lot_sixteen
+	name = "Business Lot 16"
+	icon_state = "yellow"
+	lot_id = "bizlot16"
