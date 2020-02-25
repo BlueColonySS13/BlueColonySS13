@@ -662,13 +662,6 @@
 /obj/item/weapon/gun/proc/handle_suicide(mob/living/user)
 	if(!ishuman(user))
 		return
-	
-	if(alert("Are you SURE you want to commit suicide? This is a canon round. WARNING: This will delete your \
-		character slot, you will never be able to play this character again, ALL of your persistent in-game money \
-		relating to money, businesses, your political status, and appearance will be lost forever. \
-		This is irreverseable!","Confirm Suicide", "Yes", "No") == "No")
-		return
-		
 	var/mob/living/carbon/human/M = user
 
 	mouthshoot = 1
@@ -694,7 +687,6 @@
 		if (in_chamber.damage_type != HALLOSS)
 			log_and_message_admins("[key_name(user)] commited suicide using \a [src]")
 			user.apply_damage(in_chamber.damage*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
-			M.handle_delete_character()
 			user.death()
 		else
 			user << "<span class = 'notice'>Ow...</span>"
