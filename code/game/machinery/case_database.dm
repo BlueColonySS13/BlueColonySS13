@@ -46,6 +46,15 @@
 
 	var/busy = FALSE
 
+/obj/machinery/case_database/update_icon()
+	overlays.Cut()
+	if(!current_evidence && !current_evidence.icon)
+		return
+
+	var/image/I =  image(current_evidence.icon)
+	overlays |= I		
+		
+
 
 /obj/machinery/case_database/proc/check_for_id(mob/user)
 	var/obj/item/weapon/card/id/I = user.GetIdCard()
@@ -584,6 +593,7 @@
 	current_evidence = initial(current_evidence)
 	current_recording = initial(current_recording)
 	search_type = initial(search_type)
+	update_icon()
 
 	return
 
@@ -822,6 +832,7 @@
 		current_case -= current_evidence
 		qdel(current_evidence)
 		current_evidence = null
+		update_icon()
 		page = 10
 
 
@@ -1067,6 +1078,7 @@
 			return
 
 		current_evidence = E
+		update_icon()
 
 		page = 11
 
