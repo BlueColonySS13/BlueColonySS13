@@ -229,6 +229,16 @@
 	..()
 	reagents.add_reagent("vodka", 100)
 
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora
+	name = "Kora Vodka"
+	desc = "The most expensive vodka ever distilled. It comes in a diamond-studded silver bottle."
+	icon_state = "korabottle"
+	center_of_mass = list("x"=17, "y"=3)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora/New()
+	..()
+	reagents.add_reagent("koravodka", 100)
+
 /obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla
 	name = "Caccavo Guaranteed Quality Tequilla"
 	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
@@ -328,6 +338,16 @@
 /obj/item/weapon/reagent_containers/food/drinks/bottle/wine/New()
 	..()
 	reagents.add_reagent("wine", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado
+	name = "Amontillado Viejo 1850"
+	desc = "An expensive wine sourced from a collection of casks found buried in Italy."
+	icon_state = "amontillado"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado/New()
+	..()
+	reagents.add_reagent("amontilladowine", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe
 	name = "Jailbreaker Verte"

@@ -2094,3 +2094,50 @@
 					/obj/item/clothing/glasses/sunglasses/sechud/tactical = 6,
 					/obj/item/clothing/mask/gas/half = 6
 					)
+
+
+/obj/machinery/vending/luxvend
+	name = "LuxVend"
+	desc = "LuxVend - For the Polluxian who has everything. This machine is sponsored by the fashion company, Obsidienne."
+	icon_state = "luxvend"
+	icon_deny = "luxvend-deny"
+	vend_delay = 8
+	vend_reply = "Money talks - and yours just said, \"Goodbye!\" Thank you for choosing LuxVend. Enjoy!"
+	products = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 5,
+					/obj/item/weapon/storage/box/multigrain = 5,
+					/obj/item/weapon/storage/box/caviar = 7,
+					/obj/item/weapon/storage/box/caviar/red = 7,
+					/obj/item/weapon/storage/briefcase/clutch/obsidienne = 5,
+					/obj/item/weapon/storage/wallet/obsidienne = 5,
+					/obj/item/weapon/storage/backpack/purse/obsidienne = 5,
+					/obj/item/weapon/storage/backpack/satchel/obsidienne = 5,
+					/obj/item/clothing/glasses/holovisor = 7,
+					/obj/item/toy/pet_rock/gold = 5,
+					/obj/item/weapon/flame/lighter/zippo/corgi = 5,
+					/obj/item/weapon/flame/lighter/zippo/capitalist = 5,
+					/obj/item/weapon/flame/lighter/zippo/royal = 5,
+					/obj/item/weapon/storage/fancy/cigarettes/professionals = 5,
+					/obj/item/clothing/accessory/badge/rich = 3
+					)
+	prices = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 600,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora = 550,
+					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 75,
+					/obj/item/weapon/storage/box/multigrain = 30,
+					/obj/item/weapon/storage/box/caviar = 90,
+					/obj/item/weapon/storage/box/caviar/red = 70,
+					/obj/item/weapon/storage/briefcase/clutch/obsidienne = 175,
+					/obj/item/weapon/storage/wallet/obsidienne = 150,
+					/obj/item/weapon/storage/backpack/purse/obsidienne = 185,
+					/obj/item/weapon/storage/backpack/satchel/obsidienne = 225,
+					/obj/item/clothing/glasses/holovisor = 100,
+					/obj/item/toy/pet_rock/gold = 250,
+					/obj/item/weapon/flame/lighter/zippo/corgi = 75,
+					/obj/item/weapon/flame/lighter/zippo/capitalist = 100,
+					/obj/item/weapon/flame/lighter/zippo/royal = 125,
+					/obj/item/weapon/storage/fancy/cigarettes/professionals = 25,
+					/obj/item/clothing/accessory/badge/rich = 75000
+					)
+	vendor_department = "Civilian"
+

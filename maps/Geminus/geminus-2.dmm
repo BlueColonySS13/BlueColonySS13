@@ -2937,7 +2937,7 @@
 "bey" = (/obj/structure/painting/random,/turf/simulated/floor/water/pool,/area/crew_quarters/fitness)
 "bez" = (/turf/simulated/floor/water/pool,/area/crew_quarters/fitness)
 "beA" = (/obj/machinery/light/colored/pink{tag = "icon-pink1 (EAST)"; icon_state = "pink1"; dir = 4},/obj/effect/floor_decal/corner/pink{tag = "icon-corner_white (NORTHWEST)"; icon_state = "corner_white"; dir = 9},/turf/simulated/floor/tiled/yellow,/area/planets/Geminus/indoor/shoppingarea)
-"beB" = (/obj/effect/floor_decal/corner/pink{tag = "icon-corner_white (SOUTHEAST)"; icon_state = "corner_white"; dir = 6},/turf/simulated/floor/tiled/yellow,/area/planets/Geminus/indoor/shoppingarea)
+"beB" = (/obj/effect/floor_decal/corner/pink{tag = "icon-corner_white (SOUTHEAST)"; icon_state = "corner_white"; dir = 6},/obj/machinery/vending/luxvend,/turf/simulated/floor/tiled/yellow,/area/planets/Geminus/indoor/shoppingarea)
 "beC" = (/obj/structure/table/marble,/obj/structure/flora/pottedplant/large{pixel_y = 15},/turf/simulated/floor/tiled/white,/area/lots/business_lot_five)
 "beD" = (/obj/structure/table/marble,/turf/simulated/floor/tiled/white,/area/lots/business_lot_five)
 "beE" = (/obj/structure/curtain/black,/turf/simulated/floor/wood/walnut,/area/lots/business_lot_four)
