@@ -19,9 +19,9 @@
 
 	if(!confirm)
 		return
-
+	var/confirm_canon
 	if(config.canonicity)
-		var/confirm_canon = alert("Are you SURE you want to commit suicide? This is a canon round. WARNING: This will delete your \
+		confirm_canon = alert("Are you SURE you want to commit suicide? This is a canon round. WARNING: This will delete your \
 		character slot, you will never be able to play this character again, ALL of your persistent in-game money \
 		relating to money, businesses, your political status, and appearance will be lost forever. \
 		This is irreverseable!","Confirm Suicide", "Yes", "No")
@@ -178,7 +178,7 @@
 	else
 		to_chat(src, "Aborting suicide attempt.")
 		
-/mob/living/carbon/human/handle_delete_character()
+/mob/living/carbon/human/proc/handle_delete_character()
 	if(!mind || !mind.prefs)
 		return 0
 		
@@ -193,7 +193,7 @@
 			SSelections.clear_president()
 		for(var/datum/president_candidate/C in SSelections.political_candidates)	// if they're running, they not any more
 			if(C.unique_id == mind.prefs.unique_id)
-			SSelections.political_candidates -= C
+				SSelections.political_candidates -= C
 
 	mind.prefs.delete_character()
 	return 1
