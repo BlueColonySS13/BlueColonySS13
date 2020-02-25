@@ -48,7 +48,7 @@
 
 /obj/machinery/case_database/update_icon()
 	overlays.Cut()
-	if(!current_evidence && !current_evidence.icon)
+	if(!current_evidence || !current_evidence.icon)
 		return
 
 	var/image/I =  image(current_evidence.icon)
