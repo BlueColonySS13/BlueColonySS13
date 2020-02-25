@@ -123,7 +123,7 @@
 	name = "Courtroom Rules"
 	title = "Courtroom Rulest"
 	categories = list(PAPERWORK_GOVERNMENT)
-	file_source = 'code/modules/paperwork/paperwork_templates/government/courtrules.txt'
+	file_source = 'code/modules/paperwork/paperwork_templates/council/courtrules.txt'
 
 // MEDICAL
 
