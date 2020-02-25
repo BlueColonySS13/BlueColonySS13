@@ -628,3 +628,20 @@
 				/obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/purple,
 				/obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/grey,
 				/obj/item/weapon/reagent_containers/food/condiment/small/packet/crayon/brown)
+
+/obj/random/sushi
+	name = "random sushi"
+	desc = "A random type of sushi."
+
+/obj/random/sushi/item_to_spawn()
+	return pick(/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_Ebi,
+				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_Ikura,
+				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_Sake,
+				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_SmokedSalmon,
+				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_Tamago,
+				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_Inari,
+				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_Masago,
+				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_Tobiko,
+				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_TobikoEgg,
+				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_Tai,
+				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_Unagi)

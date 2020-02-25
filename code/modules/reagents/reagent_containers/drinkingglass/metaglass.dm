@@ -298,6 +298,10 @@ Drinks Data
 	glass_icon_state = "wineglass"
 	glass_center_of_mass = list("x"=15, "y"=7)
 
+/datum/reagent/ethanol/wine/amontillado
+	glass_icon_state = "amontilladoglass"
+	glass_center_of_mass = list("x"=15, "y"=7)
+
 /datum/reagent/ethanol/acid_spit
 	glass_icon_state = "acidspitglass"
 	glass_center_of_mass = list("x"=16, "y"=7)
@@ -404,7 +408,7 @@ Drinks Data
 	glass_icon_state = "gintonicglass"
 
 /datum/reagent/ethanol/goldschlager
-	glass_icon_state = "ginvodkaglass"
+	glass_icon_state = "goldschlagerglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
 
 /datum/reagent/ethanol/hippies_delight
@@ -534,3 +538,18 @@ Drinks Data
 	glass_icon_state = "whiskeyglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
 
+/datum/reagent/ethanol/vodka/kora
+	glass_icon_state = "koraglass"
+	glass_center_of_mass =  list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/mojito
+	glass_icon_state = "mojito"
+
+/datum/reagent/ethanol/angelskiss
+	glass_icon_state = "angelskiss"
+
+/datum/reagent/ethanol/ichor_mead
+	glass_icon_state = "ichor_meadglass"
+
+/datum/reagent/ethanol/holymary
+	glass_icon_state = "holymaryglass"
