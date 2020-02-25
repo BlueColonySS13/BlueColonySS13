@@ -4,6 +4,7 @@
 	#include "geminus-2.dmm"
 	#include "geminus-3.dmm"
 	#include "geminus-VR.dmm"
+	#include "geminus-VR-psych.dmm"
 	#include "geminus_shuttles.dm"
 	#include "geminus_defines.dm"
 	#include "geminus_elevator.dm"
