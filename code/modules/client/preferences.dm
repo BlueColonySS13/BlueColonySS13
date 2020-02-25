@@ -18,6 +18,7 @@ datum/preferences
 	
 	var/list/ips_associated	= list()
 	var/list/cids_associated = list()
+	var/list/characters_created = list()
 	
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
