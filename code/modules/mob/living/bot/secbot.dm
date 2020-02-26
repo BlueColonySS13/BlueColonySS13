@@ -35,9 +35,13 @@
 	var/list/fighting_sounds = list('sound/voice/biamthelaw.ogg', 'sound/voice/bradio.ogg', 'sound/voice/bjustice.ogg')
 
 /mob/living/bot/secbot/beepsky
-	name = "Officer Beepsky"
-	desc = "It's Officer Beep O'sky! Powered by a potato and a shot of whiskey."
+	name = "Commander Beep O'sky"
+	desc = "It's Commander Beep O'sky! Officially the superior officer of all bots on station, Beepsky remains as humble and dedicated to the law as the day he was first fabricated."
 	will_patrol = 1
+	
+/mob/living/bot/secbot/beepsky/pipsqueak
+	name = "Officer Pipsqueak"
+	desc = "It's Commander Beep O'sky's smaller, just-as aggressive cousin, Pipsqueak."
 
 /mob/living/bot/secbot/slime
 	name = "Slime Securitron"
