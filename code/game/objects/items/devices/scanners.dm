@@ -33,8 +33,8 @@ HALOGEN COUNTER	- Radcount on mobs
 	..()
 
 /obj/item/device/healthanalyzer/do_surgery(mob/living/M, mob/living/user)
-	if(user.a_intent != I_HELP) //in case it is ever used as a surgery tool
-		return ..()
+//	if(user.a_intent != I_HELP) //in case it is ever used as a surgery tool
+//		return ..()
 	scan_mob(M, user) //default surgery behaviour is just to scan as usual
 	return 1
 
