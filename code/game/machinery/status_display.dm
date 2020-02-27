@@ -288,7 +288,7 @@
 	dept_name = "City Funds"
 	..()
 
-/obj/machinery/status_display/money_display/nanotrasen
+/obj/machinery/status_display/money_display/nanotrasen/initialize()
 	department = "Nanotrasen"
 	dept_name = "Nanotrasen"
 	..()
