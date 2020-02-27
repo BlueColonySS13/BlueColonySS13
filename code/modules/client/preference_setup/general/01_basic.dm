@@ -45,6 +45,8 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	S["unique_id"]				<< pref.unique_id
 
 /datum/category_item/player_setup_item/general/basic/delete_character()
+	if(pref.played)
+		pref.characters_created += pref.real_name
 	pref.real_name = null
 	pref.nickname = null
 //	pref.be_random_name = null
