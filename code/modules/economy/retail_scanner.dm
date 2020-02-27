@@ -299,24 +299,10 @@
 					linked_account.money += transaction_amount
 
 					// Create log entry in client's account
-					var/datum/transaction/T = new()
-					T.target_name = "[linked_account.owner_name]"
-					T.purpose = transaction_purpose
-					T.amount = "([transaction_amount])"
-					T.source_terminal = machine_id
-					T.date = current_date_string
-					T.time = stationtime2text()
-					D.transaction_log.Add(T)
+					D.add_transaction_log(linked_account.owner_name, transaction_purpose, "([transaction_amount])", machine_id)
 
 					// Create log entry in owner's account
-					T = new()
-					T.target_name = D.owner_name
-					T.purpose = transaction_purpose
-					T.amount = "[transaction_amount]"
-					T.source_terminal = machine_id
-					T.date = current_date_string
-					T.time = stationtime2text()
-					linked_account.transaction_log.Add(T)
+					linked_account.add_transaction_log(D.owner_name, transaction_purpose, "([transaction_amount])", machine_id)
 
 					// Save log
 					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", transaction_amount)

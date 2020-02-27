@@ -86,16 +86,7 @@
 	// Give the department their money.
 	department_accounts["[selected_department]"].money += item_cost
 
-	//create an entry for the payroll (for the payee).
-	var/datum/transaction/T = new()
-	T.target_name = department_accounts["[selected_department]"].owner_name
-	T.purpose = "[department_charged]: Invoiced Payment For [stored_item] ([item_cost]CR)"
-	T.amount = item_cost
-	T.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-	T.time = stationtime2text()
-	T.source_terminal = "[department_charged] Account"
-
-	department_accounts[selected_department].transaction_log.Add(T)
+	department_accounts[selected_department].add_transaction_log(department_accounts["[selected_department]"].owner_name, "[department_charged]: Invoiced Payment For [stored_item] ([item_cost]CR)", item_cost, src)
 
 	playsound(src, 'sound/machines/chime.ogg', 25)
 	src.visible_message("\icon[src] \icon[stored_item] <b>[src]</b> chimes, \"<span class='notice'>Transaction complete! [stored_item] sold for [item_cost]CR.</span>\"")
