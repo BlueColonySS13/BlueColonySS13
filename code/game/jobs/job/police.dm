@@ -118,14 +118,15 @@
 	total_positions = 2
 	spawn_positions = 2
 	req_admin_notify = 1
-	supervisors = "the chief of police and city clerk"
+	supervisors = "the chief of police."
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/prosecutor
 	wage = 100
 	access = list(access_prosecutor, access_sec_doors, access_maint_tunnels, access_heads, access_legal, access_warrant)
 	minimal_access = list(access_prosecutor, access_sec_doors, access_heads, access_legal, access_warrant)
 	minimal_player_age = 14
-	minimum_character_age = 21
+	minimum_character_age = 28
+
 	alt_titles = list("Prosecutor","Prosecuting Attorney","Prosecution Officer","Prosecuting Lawyer")
 
 	outfit_type = /decl/hierarchy/outfit/job/prosecution

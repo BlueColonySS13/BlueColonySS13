@@ -73,6 +73,21 @@
 	desc = "A gift card with a heart on the cover."
 	icon_state = "greetingcard_heart"
 
+/obj/item/weapon/paper/card/business
+	name = "business card"
+	desc = "Ah, the seasoned professional."
+	icon_state = "business_card"
+
+/obj/item/weapon/paper/card/invitation
+	name = "invitation card"
+	desc = "Only cool kids get one of these, today is that me?"
+	icon_state = "invitation_card"
+
+/obj/item/weapon/paper/card/poster
+	name = "poster card"
+	desc = "Kind of like an actual poster, but on an A2 card instead."
+	icon_state = "poster"
+
 /obj/item/weapon/paper/card/New()
 	..()
 	pixel_y = rand(-8, 8)

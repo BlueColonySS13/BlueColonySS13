@@ -49,21 +49,17 @@ var/global/datum/controller/gameticker/ticker
 		to_chat(world, "<B><FONT color='blue'>Welcome to the pregame lobby!</FONT></B>")
 		to_chat(world, "Please set up your character and select ready. The round will start in [pregame_timeleft] seconds.")
 		while(current_state == GAME_STATE_PREGAME)
-			for(var/i=0, i<10, i++)
-				sleep(1)
-				vote.process()
 			if(round_progressing)
 				pregame_timeleft--
 			if(pregame_timeleft == config.vote_autogamemode_timeleft)
-				if(!vote.time_remaining)
-					vote.autogamemode()	//Quit calling this over and over and over and over.
-					while(vote.time_remaining)
-						for(var/i=0, i<10, i++)
-							sleep(1)
-							vote.process()
+				if(!SSvote.time_remaining)
+					SSvote.autogamemode()	//Quit calling this over and over and over and over.
+					while(SSvote.time_remaining)
+						sleep(1)
 			if(pregame_timeleft <= 0)
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
+			sleep(10)
 	while (!setup())
 
 
@@ -393,7 +389,7 @@ var/global/datum/controller/gameticker/ticker
 				if(!round_end_announced) // Spam Prevention. Now it should announce only once.
 					to_chat(world, "<span class='danger'>The round has ended!</span>")
 					round_end_announced = 1
-				vote.autotransfer()
+				SSvote.autotransfer()
 
 		return 1
 
@@ -485,5 +481,29 @@ var/global/datum/controller/gameticker/ticker
 	log_game("Antagonists at round end were...")
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
+
+	var/clients = 0
+	var/surviving_humans = 0
+	var/surviving_total = 0
+	var/ghosts = 0
+	var/escaped_humans = 0
+	var/escaped_total = 0
+
+	for(var/mob/M in player_list)
+		if(M.client)
+			clients++
+			if(M.stat != DEAD)
+				surviving_total++
+				if(ishuman(M))
+					surviving_humans++
+				var/area/A = get_area(M)
+				if(A && is_type_in_list(A, using_map.admin_levels))
+					escaped_total++
+					if(ishuman(M))
+						escaped_humans++
+			else if(isobserver(M))
+				ghosts++
+		
+	SSwebhooks.send(WEBHOOK_ROUNDEND, list("survivors" = surviving_total, "escaped" = escaped_total, "ghosts" = ghosts))
 
 	return 1

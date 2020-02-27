@@ -39,6 +39,9 @@
 
 #define LEGAL "Legal"
 
+#define NORMAL_TRANSACTION_LIMIT 50
+#define DEPARTMENT_TRANSACTION_LIMIT 1000
+
 /proc/get_tax_price(tax, price)
 	var/tax_amt
 	tax_amt = tax * price
