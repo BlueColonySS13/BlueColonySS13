@@ -116,7 +116,7 @@
 		H.mind.store_memory(remembered_info)
 
 		H.mind.initial_account = M
-
+		H.mind.initial_bank_details = list("id" = M.account_number, "pin" = M.remote_access_pin)
 
 	H << "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>"
 

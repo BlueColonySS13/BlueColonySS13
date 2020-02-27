@@ -84,18 +84,19 @@ var/list/command_positions = list(
 
 
 var/list/engineering_positions = list(
-	"Fire Chief",
-	"Firefighter",
-	"Paramedic"
+	"Maintenance Director",
+	"Maintenance Worker",
+	"Sanitation Technician"
 )
 
 
 var/list/medical_positions = list(
-	"Chief Medical Officer",
-	"Doctor",
+	"Medical Director",
+	"Physician",
 	"Geneticist",
 	"Psychiatrist",
 	"Chemist",
+	"Paramedic",
 	"Medical Intern"
 )
 
@@ -122,7 +123,6 @@ var/list/civilian_positions = list(
 	"Bartender",
 	"Botanist",
 	"Chef",
-	"Sanitation Technician",
 	"Journalist",
 	"Defense Attorney",
 	"Chaplain",

@@ -94,3 +94,13 @@
 	cost = 15
 	containertype = /obj/structure/closet/crate
 	containername = "Camera Film Refills"
+
+/datum/supply_pack/misc/stoneblock
+	name = "Sculpting Kit"
+	contains = list (
+	/obj/structure/sculpting_block = 2,
+	/obj/item/weapon/pickaxe/autochisel = 1
+	)
+	cost = 80
+	containertype = /obj/structure/largecrate
+	containername = "Sculpting Kit"

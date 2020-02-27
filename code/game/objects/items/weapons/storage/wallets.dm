@@ -134,3 +134,8 @@
 	desc = "A stylish wallet, often used by women or especially effeminate men."
 	icon_state = "girl_wallet"
 	item_state_slots = list(slot_r_hand_str = "wowallet", slot_l_hand_str = "wowallet")
+
+/obj/item/weapon/storage/wallet/obsidienne
+	name = "obsidienne wallet"
+	desc = "A handcrafted luxury wallet made from real leather and accented with premium gold thread."
+	icon_state = "obsidienne_wallet"

@@ -110,4 +110,4 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	clean_record_required = TRUE
 
 /datum/job/judge/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
-	return using_map.council_email
+	return using_map.court_email

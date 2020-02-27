@@ -18,11 +18,11 @@
 	icon_state = "stamp-cap"
 
 /obj/item/weapon/stamp/hop
-	name = "head of personnel's rubber stamp"
+	name = "city clerk's rubber stamp"
 	icon_state = "stamp-hop"
 
 /obj/item/weapon/stamp/hos
-	name = "head of security's rubber stamp"
+	name = "chief of police's rubber stamp"
 	icon_state = "stamp-hos"
 
 /obj/item/weapon/stamp/ward
@@ -58,11 +58,11 @@
 	icon_state = "stamp-cent"
 
 /obj/item/weapon/stamp/qm
-	name = "quartermaster's rubber stamp"
+	name = "supply chief's rubber stamp"
 	icon_state = "stamp-qm"
 
 /obj/item/weapon/stamp/cargo
-	name = "cargo rubber stamp"
+	name = "factory rubber stamp"
 	icon_state = "stamp-cargo"
 
 /obj/item/weapon/stamp/solgov

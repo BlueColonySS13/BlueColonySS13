@@ -53,6 +53,8 @@ var/global/list/private_departments = list("Cargo", "Bar", "Botany")
 	link_economy_accounts()
 
 	if(!persistent_economy.nt_account || !persistent_economy.treasury)
+		// these accounts are super important. so here we are
+		create_city_accounts()
 		persistent_economy.nt_account = nanotrasen_account
 		persistent_economy.treasury = station_account
 
@@ -72,7 +74,7 @@ var/global/list/private_departments = list("Cargo", "Bar", "Botany")
 		station_account.department = "[station_name()] Funds"
 
 		department_acc_list.Add(station_account)
-
+		department_accounts["[station_name()] Funds"] = station_account
 
 	if(!nanotrasen_account)
 		next_account_number = rand(111111, 999999)
@@ -85,7 +87,7 @@ var/global/list/private_departments = list("Cargo", "Bar", "Botany")
 		nanotrasen_account.department = "Nanotrasen"
 
 		department_acc_list.Add(nanotrasen_account)
-
+		department_accounts["Nanotrasen"] = nanotrasen_account
 
 /proc/create_department_account(department)
 	next_account_number = rand(111111, 999999)

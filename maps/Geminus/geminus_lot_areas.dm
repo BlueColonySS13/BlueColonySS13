@@ -56,3 +56,28 @@
 	name = "Business Lot 11"
 	icon_state = "yellow"
 	lot_id = "bizlot11"
+
+/area/lots/business_lot_twelve
+	name = "Business Lot 12"
+	icon_state = "yellow"
+	lot_id = "bizlot12"
+
+/area/lots/business_lot_thirteen
+	name = "Business Lot 13"
+	icon_state = "yellow"
+	lot_id = "bizlot13"
+
+/area/lots/business_lot_fourteen
+	name = "Business Lot 14"
+	icon_state = "yellow"
+	lot_id = "bizlot14"
+
+/area/lots/business_lot_fifteen
+	name = "Business Lot 15"
+	icon_state = "yellow"
+	lot_id = "bizlot15"
+
+/area/lots/business_lot_sixteen
+	name = "Business Lot 16"
+	icon_state = "yellow"
+	lot_id = "bizlot16"

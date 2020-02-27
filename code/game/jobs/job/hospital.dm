@@ -1,5 +1,5 @@
 /datum/job/cmo
-	title = "Chief Medical Officer"
+	title = "Medical Director"
 	flag = CMO
 	head_position = 1
 	department_flag = MEDSCI
@@ -26,14 +26,14 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/cmo
 	alt_titles = list(
-		"Chief of Medicine", "Medical Director")
+		"Chief of Medicine", "Hospital Administrator")
 	clean_record_required = TRUE
 
 /datum/job/cmo/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email
 
 /datum/job/doctor
-	title = "Doctor"
+	title = "Physician"
 	email_domain = "med.gov.nt"
 	flag = DOCTOR
 	department_flag = MEDSCI
@@ -110,7 +110,7 @@
 	spawn_positions = 1
 	wage = 40
 	minimum_character_age = 25
-	supervisors = "the chief medical officer"
+	supervisors = "the medical director"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/psychiatrist
 	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
@@ -129,7 +129,7 @@
 	faction = "City"
 	total_positions = 5
 	spawn_positions = 3
-	supervisors = "the chief medical officer"
+	supervisors = "the medical director"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/intern
 	wage = 26
@@ -138,3 +138,21 @@
 	minimal_access = list(access_medical, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/medical/intern
 	clean_record_required = TRUE
+
+/datum/job/paramedic
+	title = "Paramedic"
+	email_domain = "cityworks.gov.nt"
+	flag = PARAMEDIC
+	department_flag = MEDSCI
+	department = "Emergency and Maintenance"
+	faction = "City"
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "the medical director"
+	selection_color = "#5B4D20"
+	idtype = /obj/item/weapon/card/id/medical/paramedic
+	wage = 80
+	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva)
+	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
+	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic
+	alt_titles = list("Emergency Medical Technician" = /decl/hierarchy/outfit/job/medical/paramedic/emt)
