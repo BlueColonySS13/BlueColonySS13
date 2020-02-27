@@ -112,9 +112,11 @@
 /datum/economy/bank_accounts/proc/sanitize_economy()
 	for(var/datum/money_account/D in department_acc_list)
 		D.money = Clamp(D.money, -999999, 999999)
+		D.max_transaction_logs = DEPARTMENT_TRANSACTION_LIMIT
 
 	for(var/datum/money_account/T in station_account)
 		T.money = Clamp(T.money, -999999, 999999)
+		T.max_transaction_logs = DEPARTMENT_TRANSACTION_LIMIT
 
 
 /datum/economy/bank_accounts/proc/save_economy()

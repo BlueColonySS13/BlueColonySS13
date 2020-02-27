@@ -4,10 +4,10 @@
 	var/account_number = 0
 	var/remote_access_pin = 0
 	var/money = 0
-	
+
 	var/list/transaction_log = list()
-	var/max_transaction_logs = 50
-	
+	var/max_transaction_logs = NORMAL_TRANSACTION_LIMIT
+
 	var/suspended = 0
 	var/security_level = 0	//0 - auto-identify from worn ID, require only account number
 							//1 - require manual login / account number and pin
@@ -92,14 +92,14 @@
 		if(D.account_number == attempt_account_number && !D.suspended || D.account_number == attempt_account_number && !D.suspended)
 			D.money += amount
 			//create a transaction log entry
-			
+
 			D.add_transaction_log(source_name, purpose, amount, terminal_id)
 			return 1
 
 
 	if(config.canonicity)
 		if(check_persistent_account(attempt_account_number) && !get_persistent_acc_suspension(attempt_account_number))
-			
+
 			//create a transaction log entry
 			var/datum/transaction/T = new()
 			T.target_name = source_name
@@ -111,9 +111,9 @@
 			T.date = current_date_string
 			T.time = stationtime2text()
 			T.source_terminal = terminal_id
-			
+
 			persist_adjust_balance(attempt_account_number, amount)
-			add_persistent_acc_logs(account_number, T)
+			add_persistent_acc_logs(attempt_account_number, T)
 
 			return 1
 
@@ -131,34 +131,35 @@
 	for(var/datum/money_account/D in all_money_accounts)
 		if(D.account_number == account_number)
 			return D
-			
+
 // why was this never made until now?
 /datum/money_account/proc/add_transaction_log(name, purpose, amount, terminal_id, date, time)
 	var/datum/transaction/T = new()
-	
-	T.name = name
+
+	T.target_name = name
 	T.purpose = purpose
-	
+
 	if(amount < 0)
 		T.amount = "(-[amount])"
 	else
 		T.amount = "[amount]"
-		
+
 	if(date)
 		T.date = date
 	else
 		T.date = current_date_string
-		
+
 	if(time)
 		T.time = time
 	else
 		T.time = stationtime2text()
-		
+
 	if(terminal_id)
 		T.source_terminal = terminal_id
 	else
 		T.source_terminal = "Terminal #[rand(111,999)]"
-		
-	
-	T = truncate_oldest(transaction_log, max_transaction_logs)
+
 	transaction_log.Add(T)
+	truncate_oldest(transaction_log, max_transaction_logs)
+
+	return T

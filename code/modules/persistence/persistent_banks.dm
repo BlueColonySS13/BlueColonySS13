@@ -30,7 +30,10 @@
 	S["expenses"] << expenses
 	S["suspended"] << suspended
 	S["max_transaction_logs"] << max_transaction_logs
-	S["transaction_logs"] << transaction_logs
+
+	truncate_oldest(transaction_log, max_transaction_logs)
+
+	S["transaction_logs"] << transaction_log
 
 	S["security_level"] << security_level
 
@@ -39,7 +42,7 @@
 /datum/money_account/proc/make_persistent() // for existing accounts
 	make_new_persistent_account(owner_name, money, remote_access_pin, expenses, transaction_log, suspended, security_level)
 
-/proc/make_new_persistent_account(var/owner, var/money, var/pin, var/expenses, var/transaction_logs, var/suspend, var/security_level)
+/proc/make_new_persistent_account(var/owner, var/money, var/pin, var/expenses, var/transaction_logs, var/suspend, var/security_level, trans_max)
 	var/acc_no = md5("[owner][current_date_string]")
 	var/full_path = "data/persistent/banks/[acc_no].sav"
 	if(!full_path)			return 0
@@ -60,8 +63,7 @@
 	S["transaction_log"] << transaction_logs
 	S["suspended"] << suspend
 	S["security_level"] << security_level
-	S["max_transaction_logs"] << max_transaction_logs
-
+	S["max_transaction_logs"] << trans_max
 	return acc_no
 
 /proc/del_persistent_account(var/account_id)
@@ -131,14 +133,14 @@
 	S["max_transaction_logs"] >> max_logs
 	if(!max_logs)
 		max_logs = 50
-		
+
 	truncate_oldest(acc_logs, max_logs)
-		
+
 	S["transaction_log"] >> acc_logs
 
 	return acc_logs
 
-/proc/add_persistent_acc_logs(var/acc_no, transaction)
+/proc/add_persistent_acc_logs(acc_no, transaction, max_logs)
 	var/full_path = "data/persistent/banks/[acc_no].sav"
 
 	if(!full_path)			return 0
@@ -150,18 +152,20 @@
 
 	var/list/acc_logs
 	S["transaction_log"] >> acc_logs
-	S["max_transaction_logs"] >> max_logs
+
 	if(!max_logs)
-		max_logs = 50
-		
-	acc_logs += T
+		S["max_transaction_logs"] >> max_logs
+		if(!max_logs)
+			max_logs = 50
+
+	acc_logs += transaction
 	truncate_oldest(acc_logs, max_logs)
-	
+
 	S["transaction_log"] << acc_logs
-	
+
 	return 1
-	
-	
+
+
 /proc/persist_set_balance(var/acc_no, var/amount)
 	var/full_path = "data/persistent/banks/[acc_no].sav"
 
