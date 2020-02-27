@@ -1314,6 +1314,36 @@
 	req_log_access = access_ce
 	has_logs = 1
 
+/obj/machinery/vending/engivend/circuits
+	name = "Vomisa Inc. Circuit Vendor"
+	desc = "A city-owned circuit vendor run by a company with only three laws."
+	products = list(/obj/item/weapon/circuitboard/med_data = 1,
+					/obj/item/weapon/circuitboard/rdserver = 1,
+					/obj/item/weapon/circuitboard/protolathe = 1,
+					/obj/item/weapon/circuitboard/destructive_analyzer = 1,
+					/obj/item/weapon/circuitboard/rdconsole = 1,
+					/obj/item/weapon/circuitboard/skills = 1,
+					/obj/item/weapon/circuitboard/security = 1,
+					/obj/item/weapon/circuitboard/secure_data = 1,
+					/obj/item/weapon/circuitboard/autolathe = 1,
+					/obj/item/weapon/circuitboard/security/mining = 1,
+					/obj/item/weapon/circuitboard/atmos_alert = 1,
+					/obj/item/weapon/circuitboard/security/engineering = 1,
+					/obj/item/weapon/circuitboard/stationalert_engineering = 1,
+					/obj/item/weapon/circuitboard/powermonitor = 1,
+					/obj/item/weapon/circuitboard/message_monitor = 1)
+
+/obj/machinery/vending/engivend/circuits/secure
+	name = "Vosima Inc. Secure Circuit Vendor"
+	desc = "A city-owned circuit vendor run by a company with only three laws, this model appears to be fitted with secure-locking mechanisms, reinforced glass, and what appears to be a small EMP device?"
+	products = list(/obj/item/weapon/circuitboard/aiupload = 1,
+					/obj/item/weapon/circuitboard/borgupload = 1,
+					/obj/item/weapon/circuitboard/communications = 1,
+					/obj/item/weapon/circuitboard/mecha_control = 1,
+					/obj/item/weapon/circuitboard/robotics = 1,
+					/obj/item/weapon/aiModule/reset = 1,
+					/obj/item/device/aicard = 1)
+
 /obj/machinery/vending/engineering
 	name = "Robco Tool Maker"
 	desc = "Everything you need for do-it-yourself station repair."
