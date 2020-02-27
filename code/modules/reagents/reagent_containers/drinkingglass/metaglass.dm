@@ -538,18 +538,40 @@ Drinks Data
 	glass_icon_state = "whiskeyglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
 
+/datum/reagent/ethanol/godka
+	glass_icon_state = "godkabottle"
+	glass_center_of_mass = list("x"=17, "y"=15)
+
+/datum/reagent/ethanol/holywine
+	glass_icon_state = "holywineglass"
+	glass_center_of_mass = list("x"=15, "y"=7)
+
+/datum/reagent/ethanol/holy_mary
+	glass_icon_state = "holymaryglass"
+
+/datum/reagent/ethanol/angelswrath
+	glass_icon_state = "angelswrath"
+	glass_center_of_mass = list("x"=16, "y"=2)
+
+/datum/reagent/ethanol/angelskiss
+	glass_icon_state = "angelskiss"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/ichor_mead
+	glass_icon_state = "ichor_meadglass"
+	glass_center_of_mass = list("x"=17, "y"=10)
+
+/datum/reagent/drink/eggnog
+	glass_icon_state = "eggnog"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/cider
+	glass_icon_state = "ciderglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
 /datum/reagent/ethanol/vodka/kora
 	glass_icon_state = "koraglass"
 	glass_center_of_mass =  list("x"=16, "y"=8)
 
 /datum/reagent/ethanol/mojito
 	glass_icon_state = "mojito"
-
-/datum/reagent/ethanol/angelskiss
-	glass_icon_state = "angelskiss"
-
-/datum/reagent/ethanol/ichor_mead
-	glass_icon_state = "ichor_meadglass"
-
-/datum/reagent/ethanol/holymary
-	glass_icon_state = "holymaryglass"

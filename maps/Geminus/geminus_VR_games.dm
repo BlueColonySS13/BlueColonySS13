@@ -3,7 +3,13 @@
 	name = "\improper VR Simulation"
 	icon_state = "yellow"
 	flags = AREA_FLAG_IS_NOT_PERSISTENT | RAD_SHIELDED
+	requires_power = 0
 
+/area/planets/Geminus/indoor/vr
+	name = "\improper VR Simulation"
+	icon_state = "yellow"
+	flags = AREA_FLAG_IS_NOT_PERSISTENT | RAD_SHIELDED
+	requires_power = 0
 
 /area/planets/Geminus/outdoor/vr/forest
 	name = "\improper VR Simulation: Forest"
