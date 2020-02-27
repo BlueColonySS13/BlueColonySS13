@@ -481,15 +481,15 @@ var/global/datum/controller/gameticker/ticker
 	log_game("Antagonists at round end were...")
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
-		
-		var/clients = 0
+
+	var/clients = 0
 	var/surviving_humans = 0
 	var/surviving_total = 0
 	var/ghosts = 0
 	var/escaped_humans = 0
 	var/escaped_total = 0
 
-	for(var/mob/M in GLOB.player_list)
+	for(var/mob/M in player_list)
 		if(M.client)
 			clients++
 			if(M.stat != DEAD)
