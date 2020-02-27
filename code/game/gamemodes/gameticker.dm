@@ -394,6 +394,7 @@ var/global/datum/controller/gameticker/ticker
 		return 1
 
 /datum/controller/gameticker/proc/declare_completion()
+	SSwebhooks.send(WEBHOOK_ROUNDEND, list("survivors" = surviving_total, "escaped" = escaped_total, "ghosts" = ghosts))
 	world << "<br><br><br><H1>A round of [mode.name] has ended!</H1>"
 
 	if(!config.canonicity) //if we're not canon in config or by gamemode, nothing will save.
