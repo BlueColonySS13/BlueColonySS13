@@ -86,7 +86,7 @@
 	// Give the department their money.
 	department_accounts["[selected_department]"].money += item_cost
 
-	department_accounts[selected_department].add_transaction_log(department_accounts["[selected_department]"].owner_name, "[department_charged]: Invoiced Payment For [stored_item] ([item_cost]CR)", item_cost)
+	department_accounts[selected_department].add_transaction_log(department_accounts["[selected_department]"].owner_name, "[department_charged]: Invoiced Payment For [stored_item] ([item_cost]CR)", item_cost, src)
 
 	playsound(src, 'sound/machines/chime.ogg', 25)
 	src.visible_message("\icon[src] \icon[stored_item] <b>[src]</b> chimes, \"<span class='notice'>Transaction complete! [stored_item] sold for [item_cost]CR.</span>\"")
