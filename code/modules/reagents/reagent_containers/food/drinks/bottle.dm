@@ -229,15 +229,15 @@
 	..()
 	reagents.add_reagent("vodka", 100)
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora
 	name = "Kora Vodka"
 	desc = "The most expensive vodka ever distilled. It comes in a diamond-studded silver bottle."
 	icon_state = "korabottle"
 	center_of_mass = list("x"=17, "y"=3)
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora/New()
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora/New()
 	..()
-	reagents.add_reagent("koravodka", 100)
+	reagents.add_reagent("vodkakora", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla
 	name = "Caccavo Guaranteed Quality Tequilla"

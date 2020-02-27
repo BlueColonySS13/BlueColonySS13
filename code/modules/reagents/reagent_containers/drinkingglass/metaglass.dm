@@ -538,7 +538,7 @@ Drinks Data
 	glass_icon_state = "whiskeyglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
 
-/datum/reagent/ethanol/vodka/kora
+/datum/reagent/ethanol/vodkakora
 	glass_icon_state = "koraglass"
 	glass_center_of_mass =  list("x"=16, "y"=8)
 
