@@ -571,3 +571,43 @@
 /obj/item/weapon/reagent_containers/food/drinks/bottle/champagne/New()
 	..()
 	reagents.add_reagent("champagne", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/peppermintschnapps
+	name = "Dr. Bone's Peppermint Schnapps"
+	desc = "A flavoured grain liqueur with a fresh, minty taste."
+	icon_state = "schnapps_pep"
+	center_of_mass = list("x"=16, "y"=3)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/peppermintschnapps/New()
+	. = ..()
+	reagents.add_reagent("schnapps_pep", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/peachschnapps
+	name = "Dr. Bone's Peach Schnapps"
+	desc = "A flavoured grain liqueur with a fruity peach taste."
+	icon_state = "schnapps_pea"
+	center_of_mass = list("x"=16, "y"=3)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/peachschnapps/New()
+	. = ..()
+	reagents.add_reagent("schnapps_pea", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/lemonadeschnapps
+	name = "Dr. Bone's Lemonade Schnapps"
+	desc = "A flavoured grain liqueur with a sweetish, lemon taste."
+	icon_state = "schnapps_lem"
+	center_of_mass = list("x"=16, "y"=3)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/lemonadeschnapps/New()
+	. = ..()
+	reagents.add_reagent("schnapps_lem", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/small/cider
+	name = "Crisp's Cider"
+	desc = "Fermented apples never tasted this good."
+	icon_state = "cider"
+	center_of_mass = list("x"=16, "y"=12)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/small/cider/New()
+	. = ..()
+	reagents.add_reagent("cider", 30)

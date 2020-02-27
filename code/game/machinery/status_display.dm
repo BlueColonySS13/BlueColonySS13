@@ -288,6 +288,11 @@
 	dept_name = "City Funds"
 	..()
 
+/obj/machinery/status_display/money_display/nanotrasen
+	department = "Nanotrasen"
+	dept_name = "Nanotrasen"
+	..()
+
 /obj/machinery/status_display/money_display/civilian
 	department = "Civilian"
 	dept_name = "Public Funds"
