@@ -3055,6 +3055,39 @@
 	glass_desc = "The second most Irish drink."
 	price_tag = 0.08
 
+/datum/reagent/ethanol/serpentspirit
+	name = "Serpent's Spirit"
+	id = "serpentspirit"
+	description = "A blue ginseng wine that unfortunately contains no snakes."
+	taste_description = "sharp ginseng and mellow grapes"
+	color = "#0048AD"
+	strength = 10
+
+	glass_name = "Serpent's Spirit"
+	glass_desc = "An expensive blue wine made from a secret blend of spices passed down from generation to generation."
+
+/datum/reagent/ethanol/goldfinger
+	name = "Goldfinger"
+	id = "goldfinger"
+	description = "A sweet liqueur with a delightful pineapple aftertaste."
+	taste_description = "sweet alcohol and a pineapple aftertaste"
+	color = "#F7D365"
+	strength = 10
+
+	glass_name = "Goldfinger"
+	glass_desc = "This is gold, Mr. Bond."
+
+/datum/reagent/ethanol/blackrose
+	name = "Black Rose"
+	id = "blackrose"
+	description = "An exquisite spirit made from rosa damascena petals."
+	taste_description = "sweetness with a floral note"
+	color = "#FFBF00"
+	strength = 10
+
+	glass_name = "Black Rose"
+	glass_desc = "Each taste imparts the flavor of flowers blooming in Spring. Exquisite."
+
 /datum/reagent/nutriment/coffee
 	name = "Coffee Powder"
 	id = "coffeepowder"
