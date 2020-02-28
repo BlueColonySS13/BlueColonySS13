@@ -52,8 +52,10 @@
 		return
 
 	var/image/I =  image(current_evidence.icon)
-	overlays |= I		
-		
+	I.pixel_x = 15
+	I.pixel_y = 5
+	overlays += I
+
 
 
 /obj/machinery/case_database/proc/check_for_id(mob/user)
@@ -365,7 +367,7 @@
 
 			dat += "Choose from the following:<br>"
 
-			var/total_cases = list()
+			var/list/total_cases = list()
 
 			switch(search_type)
 				if("All")
@@ -606,7 +608,7 @@
 	var/case_subject = input(user, "What kind of case do you wish to open?", "Edit Criminal Records") as null|anything in case_types
 	if(!case_subject) return
 
-	var/purpose = sanitize(input("Required: Enter purpose and description of the case.", "Purpose") as text)
+	var/purpose = sanitize(input("Required: Enter purpose and description of the case.", "Purpose") as message)
 	if(!purpose) return
 
 	var/wanted_outcome = sanitize(input("What outcome are you looking for?", "Outcome") as text)
@@ -832,8 +834,9 @@
 		current_case -= current_evidence
 		qdel(current_evidence)
 		current_evidence = null
-		update_icon()
 		page = 10
+		update_icon()
+
 
 
 	if(href_list["delete_case"])
@@ -979,7 +982,7 @@
 				return
 
 			if("Add Witness")
-				var/witness_name = sanitize(copytext(input(usr, "Enter the witness name.", "Add Witness")  as message,1,90))
+				var/witness_name = sanitize(copytext(input(usr, "Enter the witness name.", "Add Witness")  as text,1,90))
 
 				if(!current_case)
 					return

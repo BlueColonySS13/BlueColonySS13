@@ -232,7 +232,7 @@ var/global/court_cases = list()
 	return 1
 
 /proc/all_public_cases()
-	var/all_cases
+	var/list/all_cases
 	all_cases += get_public_open_cases()
 	all_cases += get_public_archived_cases()
 	return all_cases
