@@ -482,4 +482,28 @@ var/global/datum/controller/gameticker/ticker
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
 
+	var/clients = 0
+	var/surviving_humans = 0
+	var/surviving_total = 0
+	var/ghosts = 0
+	var/escaped_humans = 0
+	var/escaped_total = 0
+
+	for(var/mob/M in player_list)
+		if(M.client)
+			clients++
+			if(M.stat != DEAD)
+				surviving_total++
+				if(ishuman(M))
+					surviving_humans++
+				var/area/A = get_area(M)
+				if(A && is_type_in_list(A, using_map.admin_levels))
+					escaped_total++
+					if(ishuman(M))
+						escaped_humans++
+			else if(isobserver(M))
+				ghosts++
+		
+	SSwebhooks.send(WEBHOOK_ROUNDEND, list("survivors" = surviving_total, "escaped" = escaped_total, "ghosts" = ghosts))
+
 	return 1
