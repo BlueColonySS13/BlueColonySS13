@@ -9,7 +9,7 @@
 
 	if(H.internal_organs_by_name[O_BRAIN])
 		var/obj/item/organ/internal/brain/B = H.internal_organs_by_name[O_BRAIN]
-		if(B.robotic)
+		if(B.robotic > 1)
 			return "Has a Synthetic Brain"
 
 	if(!persistent_economy.citizenship_vote && H.home_system != using_map.starsys_name)

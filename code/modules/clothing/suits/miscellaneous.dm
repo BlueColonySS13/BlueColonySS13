@@ -1148,3 +1148,31 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	icon_state = "kaneda"
 	flags_inv = HIDEHOLSTER
 	body_parts_covered = UPPER_TORSO
+
+/obj/item/clothing/suit/storage/poshblazer
+	name = "women's posh blazer"
+	desc = "This is a bit fancy, like the new recruit in a news office who is trying too hard to impress the managers."
+	icon_state = "poshblazer"
+	body_parts_covered = UPPER_TORSO|ARMS
+	index = 1
+
+/obj/item/clothing/suit/storage/formalblazer
+	name = "women's formal blazer"
+	desc = "This is the one who got promoted."
+	icon_state = "formalblazer"
+	body_parts_covered = UPPER_TORSO|ARMS
+	index = 1
+
+/obj/item/clothing/suit/storage/loosesleeveblazer
+	name = "loose sleeve blazer"
+	desc = "One of those hippie-formal wannabe blazers."
+	icon_state = "loosesleeve"
+	body_parts_covered = UPPER_TORSO|ARMS
+	index = 1
+
+/obj/item/clothing/suit/storage/peterpanblazer
+	name = "peter pan blazer"
+	desc = "For those grown ups that didn't wanna."
+	icon_state = "peterpanblazer"
+	body_parts_covered = UPPER_TORSO
+	index = 1

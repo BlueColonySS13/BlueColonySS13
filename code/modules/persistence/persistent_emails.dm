@@ -65,6 +65,7 @@
 	if(isnull(deleted))
 		deleted = list()
 
-
+	if(isnull(max_messages))
+		max_messages = initial(max_messages)
 
 

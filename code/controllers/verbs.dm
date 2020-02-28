@@ -127,7 +127,7 @@
 			debug_variables(chemistryProcess)
 			feedback_add_details("admin_verb", "DChem")
 		if("Vote")
-			debug_variables(vote)
+			debug_variables(SSvote)
 			feedback_add_details("admin_verb", "DVote")
 		if("Planets")
 			debug_variables(SSplanets)
@@ -140,4 +140,3 @@
 			feedback_add_details("admin_verb", "DEmails")
 
 	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")
-	return

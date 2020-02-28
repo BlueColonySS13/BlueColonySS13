@@ -71,6 +71,18 @@ SUBSYSTEM_DEF(elections)
 		if(28)
 			return TRUE
 
+
+
+/datum/controller/subsystem/elections/proc/can_register()
+	if(snap_election && !is_election_day( get_game_day() ) )
+		return TRUE
+
+	if(SSelections.is_registration_days(get_game_day() ))
+		return TRUE
+
+	return FALSE
+
+
 /datum/controller/subsystem/elections/proc/get_next_election_month()
 	var/info
 
@@ -415,5 +427,4 @@ SUBSYSTEM_DEF(elections)
 
 	return 1
 */
-
 

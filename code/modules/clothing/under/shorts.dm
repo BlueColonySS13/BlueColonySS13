@@ -100,6 +100,12 @@
 	body_parts_covered = LOWER_TORSO
 	rolled_sleeves = -1
 
+/obj/item/clothing/under/skirt/pencil
+	name = "pencil skirt"
+	desc = "For that formal flair."
+	icon_state = "pencilskirt"
+	index = 1
+
 /obj/item/clothing/under/skirt/khaki
 	name = "khaki skirt"
 	desc = "A skirt that is a khaki color."

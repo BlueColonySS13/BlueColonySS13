@@ -107,8 +107,10 @@ var/list/all_maps = list()
 	var/minister_innovation_email = "innovation@nanotrasen.gov.nt"
 	var/minister_justice_email = "justice@nanotrasen.gov.nt"
 	var/minister_information_email = "information@nanotrasen.gov.nt"
+	var/court_email = "courts@nanotrasen.gov.nt"
 
 	var/council_email = "city-council@nanotrasen.gov.nt"
+	var/police_email = "police@nanotrasen.gov.nt"
 
 
 /datum/map/New()

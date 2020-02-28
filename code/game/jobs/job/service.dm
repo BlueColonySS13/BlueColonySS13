@@ -8,7 +8,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	email_domain = "foodstuffs.nt"
-	supervisors = "the city clerk"
+	supervisors = "the bar manager"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/bartender
 	access = list(access_hydroponics, access_bar, access_kitchen)
@@ -28,7 +28,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	email_domain = "foodstuffs.nt"
-	supervisors = "the city clerk"
+	supervisors = "the bar manager"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/chef
 	access = list(access_hydroponics, access_bar, access_kitchen)
@@ -46,7 +46,7 @@
 	department = "Bar"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the city clerk"
+	supervisors = "the bar manager"
 	email_domain = "foodstuffs.nt"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/botanist
@@ -77,24 +77,7 @@
 	alt_titles = list("Executive Chef", "Diner Manager", "Bar Supervisor")
 
 //Service
-/datum/job/janitor
-	title = "Sanitation Technician"
-	flag = JANITOR
-	faction = "City"
-	department_flag = CIVILIAN
-	department = "Civilian"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "the city clerk"
-	selection_color = "#515151"
-	email_domain = "sanitation.gminus.plux.gov.nt"
-	idtype = /obj/item/weapon/card/id/civilian/janitor
-	access = list(access_janitor, access_maint_tunnels)
-	minimal_access = list(access_janitor, access_maint_tunnels)
-	minimum_character_age = 16 //Not making it any younger because being a janitor requires a lot of labor, or maybe it just means I'm very lazy? Oh well
-	wage = 18
-	outfit_type = /decl/hierarchy/outfit/job/service/janitor
-	alt_titles = list("Recycling Technician", "Sanitation Engineer")
+
 
 //More or less assistants
 /datum/job/journalist
@@ -169,14 +152,14 @@
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/secretary
 	wage = 170
-	access = list(access_heads, access_hop, access_maint_tunnels)
-	minimal_access = list(access_heads, access_hop, access_maint_tunnels)
+	access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
+	minimal_access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
 	email_domain = "gov.nt"
 
 	minimum_character_age = 16
 	ideal_character_age = 20 //Really anyone can be this job, not just teens
 
-	alt_titles = list("Junior Clerk", "Assistant Notary", "Paralegal", "City Hall Worker")
+	alt_titles = list("Assistant Clerk", "Notary Public", "Paralegal", "Court Clerk")
 
 	outfit_type = /decl/hierarchy/outfit/job/civilian/secretary
 
@@ -191,7 +174,7 @@
 	faction = "City"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the mayor"
+	supervisors = "the factory owners"
 	email_domain = ".aoki.nt"
 	selection_color = "#7a4f33"
 	idtype = /obj/item/weapon/card/id/cargo/head

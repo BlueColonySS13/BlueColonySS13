@@ -1,0 +1,31 @@
+[small][center][b]Geminus City High Court[/b]
+GCHCF-H001[/center][hr][b][/b]
+[center][field], Plaintiff(s)
+
+and
+
+[field], Defendant(s)
+
+[b]COURT MOTION[/b][/center]
+Motioning Party: [field]
+Motion For:
+[[field]] Dismissal
+[[field]] Nolle Prosequi
+[[field]] To Compel
+[[field]] Directed Verdict
+[[field]] In Limine
+[[field]] Parole
+
+Reasoning for Motion:
+[list]
+[field]
+[/list]
+Motioning's Parties Signature: [field]
+Date: [field]
+[hr][center]FOR JUDICIAL USE ONLY[/center]
+Is this motion approved/accepted?:
+[[field]] Yes
+[[field]] No
+
+Adjudicator's Signature: [field]
+[hr][center]ALL RELEVANT STAMPS BELOW[/center]

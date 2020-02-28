@@ -860,6 +860,7 @@
 	..()
 
 /obj/structure/plushie/attack_hand(mob/user)
+	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(stored_item && !searching)
 		searching = TRUE
 		if(do_after(user, 10))
@@ -871,7 +872,6 @@
 		else
 			searching = FALSE
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if(user.a_intent == I_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
 	else if (user.a_intent == I_HURT)
@@ -895,6 +895,10 @@
 		return
 
 	if(opened)
+		if(stored_item)
+			to_chat(user, "There is already something in here.")
+			return
+
 		if(!(I.w_class > w_class))
 			to_chat(user, "You place [I] inside [src].")
 			user.drop_from_inventory(I, src)
@@ -1013,6 +1017,10 @@
 		return
 
 	if( (!(I.w_class > w_class)) && opened)
+		if(stored_item)
+			to_chat(user, "There is already something in here.")
+			return
+
 		to_chat(user, "You place [I] inside [src].")
 		user.drop_from_inventory(I, src)
 		I.forceMove(src)
@@ -1408,3 +1416,12 @@
 	name = "roxie"
 	desc = "Roxie, the bestest girl pet in the whole wide universe!"
 	icon_state = "roxie"
+
+/obj/item/toy/pet_rock/gold
+	name = "pet gold ore"
+	desc = "For the aspiring pet owner born with a silver spoon in their mouth."
+	icon_state = "gold"
+	attack_verb = list("luxuriously smashed", "rocked with finesse", "smashed with success", "bashed with opulence")
+
+/obj/item/toy/pet_rock/gold/attack_self(mob/user)
+	to_chat(user, "<span class='notice'>You caress \the [src] lovingly.</span>")

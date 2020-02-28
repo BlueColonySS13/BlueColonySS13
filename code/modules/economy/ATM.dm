@@ -350,14 +350,8 @@ log transactions
 						spawn_ewallet(amount,src.loc,usr)
 
 						//create an entry in the account transaction log
-						var/datum/transaction/T = new()
-						T.target_name = authenticated_account.owner_name
-						T.purpose = "Credit withdrawal"
-						T.amount = "([amount])"
-						T.source_terminal = machine_id
-						T.date = current_date_string
-						T.time = stationtime2text()
-						authenticated_account.transaction_log.Add(T)
+						authenticated_account.add_transaction_log(authenticated_account.owner_name, "Credit withdrawal", "([amount])", machine_id)
+
 						log_money(usr, "withdrew money from [src] (ewallet)", authenticated_account.account_number, authenticated_account.owner_name, amount)
 					else
 						usr << "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>"

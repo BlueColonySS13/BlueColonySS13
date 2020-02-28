@@ -186,6 +186,11 @@
 	desc = "A pair of dust beige khaki pants."
 	icon_state = "baggy_khaki"
 
+/obj/item/blothing/under/pants/leather
+	name = "leather pants"
+	desc = "A pair of tight black leather pants."
+	icon_state = "leatherpants"
+
 /obj/item/clothing/under/pants/baggy/camo
 	name = "baggy camo pants"
 	desc = "A pair of woodland camouflage pants. Probably not the best choice for a city."

@@ -25,8 +25,9 @@
 	var/ear_protection = 0
 	var/blood_sprite_state
 	drop_sound = 'sound/items/drop/clothing.ogg'
-
+	
 	var/index			//null by default, if set, will change which dmi it uses
+	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 
 /obj/item/clothing/New()
 	..()

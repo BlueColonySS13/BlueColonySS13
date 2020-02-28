@@ -128,7 +128,7 @@
 			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
 						
-			var/msg = "[user.client.key] ([user]) has drawn [drawtype] (with [src]) at [x],[y],[z]."
+			var/msg = "[user.client.key] ([user]) has drawn [drawtype] (with [src]) at [target.x],[target.y],[target.z]."
 			message_admins(msg)
 			log_game(msg)
 			
@@ -319,7 +319,7 @@
 			playsound(loc, 'sound/effects/spray.ogg', 5, 1, 5)
 			to_chat(user, "You finish drawing.")
 			
-			var/msg = "[user.client.key] ([user]) has drawn [drawtype] (with [src]) at [x],[y],[z]."
+			var/msg = "[user.client.key] ([user]) has drawn [drawtype] (with [src]) at [target.x],[target.y],[target.z]."
 			message_admins(msg)
 			log_game(msg)
 		

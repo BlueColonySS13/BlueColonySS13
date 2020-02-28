@@ -151,7 +151,7 @@
 	if(href_list["submit_register"])
 		. = 1
 
-		if(!SSelections.is_registration_days( get_game_day() ) || !SSelections.snap_election)
+		if(!SSelections.can_register())
 			reg_error = "It is not possible to register a new candidate account during non-registration days."
 			return
 
@@ -233,7 +233,7 @@
 
 	if(href_list["register_new"])
 		. = 1
-		if(!SSelections.is_registration_days( get_game_day() ) || !SSelections.snap_election)
+		if(!SSelections.can_register())
 			index = 7
 			return
 

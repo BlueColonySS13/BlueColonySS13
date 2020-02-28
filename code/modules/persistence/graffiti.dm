@@ -4,6 +4,7 @@
 	icon = 'icons/effects/writing.dmi'
 	desc = "It looks like someone has scratched something here."
 	gender = PLURAL
+	anchored = 1
 	blend_mode = BLEND_MULTIPLY
 	color = "#000000"
 	alpha = 120

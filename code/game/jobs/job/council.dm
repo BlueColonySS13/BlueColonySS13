@@ -60,6 +60,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
 
 	minimum_character_age = 25
+	alt_titles = list("City Manager")
 	ideal_character_age = 40
 
 	outfit_type = /decl/hierarchy/outfit/job/heads/hop
@@ -88,8 +89,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	head_position = 1
 	faction = "City"
 	department = "City Council"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	department_flag = CIVILIAN
 	req_admin_notify = 1
 	email_domain = "judges.gov.nt"
@@ -109,4 +110,4 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	clean_record_required = TRUE
 
 /datum/job/judge/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
-	return using_map.council_email
+	return using_map.court_email
