@@ -2140,7 +2140,7 @@
 	vend_delay = 8
 	vend_reply = "Money talks - and yours just said, \"Goodbye!\" Thank you for choosing LuxVend. Enjoy!"
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 3,
-					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora = 3,
 					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 5,
 					/obj/item/weapon/storage/box/multigrain = 5,
 					/obj/item/weapon/storage/box/caviar = 7,
@@ -2158,7 +2158,7 @@
 					/obj/item/clothing/accessory/badge/rich = 3
 					)
 	prices = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 600,
-					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora = 550,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora = 550,
 					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 75,
 					/obj/item/weapon/storage/box/multigrain = 30,
 					/obj/item/weapon/storage/box/caviar = 90,

@@ -1632,9 +1632,9 @@
 	glass_name = "vodka"
 	glass_desc = "The glass contain wodka. Xynta."
 
-/datum/reagent/ethanol/vodka/kora
+/datum/reagent/ethanol/vodkakora
 	name = "Kora Vodka"
-	id = "koravodka"
+	id = "vodkakora"
 	description = "The finest vodka ever distilled using secret Neo-Ruskiya techniques."
 	taste_description = "spicy alcohol, followed by the taste of finesse and a creamy finish"
 	price_tag = 1.6
