@@ -541,7 +541,7 @@ Drinks Data
 /datum/reagent/ethanol/vodkakora
 	glass_icon_state = "koraglass"
 	glass_center_of_mass =  list("x"=16, "y"=8)
-	
+
 /datum/reagent/ethanol/godka
 	glass_icon_state = "godkabottle"
 	glass_center_of_mass = list("x"=17, "y"=15)
@@ -579,3 +579,16 @@ Drinks Data
 
 /datum/reagent/ethanol/mojito
 	glass_icon_state = "mojito"
+
+/datum/reagent/ethanol/serpentspirit
+	glass_icon_state = "serpentdrink"
+
+/datum/reagent/ethanol/blackrose
+	glass_icon_state = "blackroseglass"
+
+/datum/reagent/ethanol/goldfinger
+	glass_icon_state = "goldfingerglass"
+
+/datum/reagent/drink/entdraught
+	glass_icon_state = "entdraught"
+

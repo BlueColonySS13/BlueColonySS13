@@ -2141,6 +2141,9 @@
 	vend_reply = "Money talks - and yours just said, \"Goodbye!\" Thank you for choosing LuxVend. Enjoy!"
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 3,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/goldfinger = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose = 3,
 					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 5,
 					/obj/item/weapon/storage/box/multigrain = 5,
 					/obj/item/weapon/storage/box/caviar = 7,
@@ -2159,6 +2162,9 @@
 					)
 	prices = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 600,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora = 550,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/goldfinger = 475,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit = 400,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose = 400,
 					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 75,
 					/obj/item/weapon/storage/box/multigrain = 30,
 					/obj/item/weapon/storage/box/caviar = 90,
