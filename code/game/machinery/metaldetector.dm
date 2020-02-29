@@ -27,11 +27,6 @@
 	RefreshParts()
 
 /obj/machinery/metal_detector/attackby(obj/item/W, mob/usr)
-/*	if(istype(W, /obj/item/weapon/card/id) || istype(W, /obj/item/device/pda))
-		if(!req_access_faction && W.GetFaction())
-			req_access_faction = W.GetFaction()
-			to_chat(usr, "<span class='notice'>\The [src] has been synced to your faction</span>")
-			return*/
 
 	if(default_deconstruction_screwdriver(usr, W))
 		return
