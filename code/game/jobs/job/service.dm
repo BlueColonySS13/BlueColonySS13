@@ -77,24 +77,7 @@
 	alt_titles = list("Executive Chef", "Diner Manager", "Bar Supervisor")
 
 //Service
-/datum/job/janitor
-	title = "Sanitation Technician"
-	flag = JANITOR
-	faction = "City"
-	department_flag = CIVILIAN
-	department = "Civilian"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "the city clerk"
-	selection_color = "#515151"
-	email_domain = "sanitation.gminus.plux.gov.nt"
-	idtype = /obj/item/weapon/card/id/civilian/janitor
-	access = list(access_janitor, access_maint_tunnels)
-	minimal_access = list(access_janitor, access_maint_tunnels)
-	minimum_character_age = 16 //Not making it any younger because being a janitor requires a lot of labor, or maybe it just means I'm very lazy? Oh well
-	wage = 18
-	outfit_type = /decl/hierarchy/outfit/job/service/janitor
-	alt_titles = list("Recycling Technician", "Sanitation Engineer")
+
 
 //More or less assistants
 /datum/job/journalist

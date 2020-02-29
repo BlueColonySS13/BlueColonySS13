@@ -5,7 +5,7 @@
 /datum/category_item/autolathe/general/cooler_bottle
 	name = "water-cooler bottle"
 	path =/obj/item/weapon/reagent_containers/glass/cooler_bottle
-	
+
 //TFF 24/12/19 - Let people print more spray bottles if needed.
 /datum/category_item/autolathe/general/spraybottle
 	name = "spray bottle"
@@ -50,6 +50,14 @@
 /datum/category_item/autolathe/general/drinkingglass_wine
 	name = "wine glass"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/wine
+
+/datum/category_item/autolathe/general/drinkingglass_carafe
+	name = "glass carafe"
+	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/carafe
+
+/datum/category_item/autolathe/general/drinkingglass_pitcher
+	name = "plastic pitcher"
+	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/pitcher
 
 /datum/category_item/autolathe/general/flashlight
 	name = "flashlight"

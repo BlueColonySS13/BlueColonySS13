@@ -898,7 +898,7 @@
 		if(stored_item)
 			to_chat(user, "There is already something in here.")
 			return
-	
+
 		if(!(I.w_class > w_class))
 			to_chat(user, "You place [I] inside [src].")
 			user.drop_from_inventory(I, src)
@@ -1416,3 +1416,12 @@
 	name = "roxie"
 	desc = "Roxie, the bestest girl pet in the whole wide universe!"
 	icon_state = "roxie"
+
+/obj/item/toy/pet_rock/gold
+	name = "pet gold ore"
+	desc = "For the aspiring pet owner born with a silver spoon in their mouth."
+	icon_state = "gold"
+	attack_verb = list("luxuriously smashed", "rocked with finesse", "smashed with success", "bashed with opulence")
+
+/obj/item/toy/pet_rock/gold/attack_self(mob/user)
+	to_chat(user, "<span class='notice'>You caress \the [src] lovingly.</span>")

@@ -119,6 +119,12 @@
 	categories = list(PAPERWORK_COUNCIL)
 	file_source = 'code/modules/paperwork/paperwork_templates/council/weaponpermit.txt'
 
+/datum/paperwork_template/courtrules
+	name = "Courtroom Rules"
+	title = "Courtroom Rulest"
+	categories = list(PAPERWORK_GOVERNMENT)
+	file_source = 'code/modules/paperwork/paperwork_templates/council/courtrules.txt'
+
 // MEDICAL
 
 /datum/paperwork_template/med_prescription
@@ -143,6 +149,12 @@
 	categories = list(PAPERWORK_POLICE)
 	file_source = 'code/modules/paperwork/paperwork_templates/police/arrestreport.txt'
 
+/datum/paperwork_template/criminal_complaint
+	name = "A091 Criminal Complaint"
+	title = "Criminal Complaint Form"
+	categories = list(PAPERWORK_POLICE)
+	file_source = 'code/modules/paperwork/paperwork_templates/police/criminalcomplaint.txt'
+
 // GOVERNMENT
 
 /datum/paperwork_template/pdsi_report
@@ -151,8 +163,3 @@
 	categories = list(PAPERWORK_GOVERNMENT)
 	file_source = 'code/modules/paperwork/paperwork_templates/government/pdsireport.txt'
 
-/datum/paperwork_template/courtrules
-	name = "Courtroom Rules"
-	title = "Courtroom Rulest"
-	categories = list(PAPERWORK_GOVERNMENT)
-	file_source = 'code/modules/paperwork/paperwork_templates/government/courtrules.txt'
