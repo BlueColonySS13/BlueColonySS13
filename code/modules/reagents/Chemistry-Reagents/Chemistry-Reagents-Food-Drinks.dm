@@ -1632,6 +1632,16 @@
 	glass_name = "vodka"
 	glass_desc = "The glass contain wodka. Xynta."
 
+/datum/reagent/ethanol/vodkakora
+	name = "Kora Vodka"
+	id = "vodkakora"
+	description = "The finest vodka ever distilled using secret Neo-Ruskiya techniques."
+	taste_description = "spicy alcohol, followed by the taste of finesse and a creamy finish"
+	price_tag = 1.6
+
+	glass_name = "kora vodka"
+	glass_desc = "The finest vodka ever distilled. Best served chilled in a diamond-studded silver shot cup."
+
 /datum/reagent/ethanol/vodka/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	M.apply_effect(max(M.radiation - 1 * removed, 0), IRRADIATE, check_protection = 0)
@@ -1650,7 +1660,7 @@
 /datum/reagent/ethanol/wine
 	name = "Wine"
 	id = "wine"
-	description = "An premium alchoholic beverage made from distilled grape juice."
+	description = "A premium alchoholic beverage made from distilled grape juice."
 	taste_description = "bitter sweetness"
 	color = "#7E4043" // rgb: 126, 64, 67
 	strength = 15
@@ -1668,7 +1678,15 @@
 	glass_name = "champagne"
 	glass_desc = "An even classier looking drink."
 
+/datum/reagent/ethanol/wine/amontillado
+	name = "Amontillado Wine"
+	id = "amontilladowine"
+	description = "A 700 year old wine from Italy."
+	taste_description = "a sweet and round wine, complimented by an oaky vanilla character"
+	price_tag = 2.2
 
+	glass_name = "amontillado wine"
+	glass_desc = "A 700 year old wine from Italy. Every sip is a taste of history."
 
 // Cocktails
 /datum/reagent/ethanol/acid_spit
@@ -2557,7 +2575,7 @@
 	glass_name = "Euphoria"
 	glass_desc = "Invented by a Eutopian marketing team, this is one of the most expensive cocktails in existence."
 
-	price_tag = 1.2
+	price_tag = 1.5
 
 /datum/reagent/ethanol/xanaducannon
 	name = "Xanadu Cannon"
@@ -2882,6 +2900,147 @@
 	glass_name = "Mint Julep"
 	glass_desc = "Minty and refreshing, perfect for a hot day."
 
+/datum/reagent/ethanol/godsake
+	name = "Gods Sake"
+	id = "godsake"
+	description = "Anime's favorite drink."
+	taste_description = "the power of god and anime"
+	color = "#DDDDDD"
+	strength = 25
+
+	glass_name = "God's Sake"
+	glass_desc = "A glass of sake."
+
+/datum/reagent/ethanol/godka
+	name = "Godka"
+	id = "godka"
+	description = "Number one drink AND fueling choice for Russians multiverse-wide."
+	taste_description = "russian steel and a hint of grain"
+	color = "#0064C8"
+	strength = 50
+
+	glass_name = "Godka"
+	glass_desc = "The glass is barely able to contain the wodka. Xynta."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/ethanol/godka/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	M.apply_effect(max(M.radiation - 5 * removed, 0), IRRADIATE, check_protection = 0)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.species.has_organ[O_LIVER])
+			var/obj/item/organ/L = H.internal_organs_by_name[O_LIVER]
+			if(!L)
+				return
+			var/adjust_liver = rand(-3, 2)
+			if(prob(L.damage))
+				to_chat(M, "<span class='cult'>You feel woozy...</span>")
+			L.damage = max(L.damage + (adjust_liver * removed), 0)
+	var/adjust_tox = rand(-4, 2)
+	M.adjustToxLoss(adjust_tox * removed)
+
+/datum/reagent/ethanol/holywine
+	name = "Angel Ichor"
+	id = "holywine"
+	description = "A premium alchoholic beverage made from distilled angel blood."
+	taste_description = "wings in a glass, and a hint of grape"
+	color = "#C4921E"
+	strength = 20
+
+	glass_name = "Angel Ichor"
+	glass_desc = "A very pious looking drink."
+	glass_icon = DRINK_ICON_NOISY
+
+/datum/reagent/ethanol/holy_mary
+	name = "Holy Mary"
+	id = "holymary"
+	description = "A strange yet pleasurable mixture made of vodka, angel's ichor and lime juice. Or at least you THINK the yellow stuff is angel's ichor."
+	taste_description = "grapes with a hint of lime"
+	color = "#DCAE12"
+	strength = 20
+
+	glass_name = "Holy Mary"
+	glass_desc = "Angel's Ichor, mixed with Vodka and a lil' bit of lime. Tastes like liquid ascension."
+
+/datum/reagent/ethanol/angelswrath
+	name = "Angels Wrath"
+	id = "angelswrath"
+	description = "This thing makes the hair on the back of your neck stand up."
+	taste_description = "sweet victory and sour iron"
+	taste_mult = 1.5
+	color = "#F3C906"
+	strength = 30
+
+	glass_name = "Angels' Wrath"
+	glass_desc = "Just looking at this thing makes you sweat."
+	glass_icon = DRINK_ICON_NOISY
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/ethanol/angelskiss
+	name = "Angels Kiss"
+	id = "angelskiss"
+	description = "Miracle time!"
+	taste_description = "sweet forgiveness and bitter iron"
+	color = "#AD772B"
+	strength = 25
+
+	glass_name = "Angel's Kiss"
+	glass_desc = "Miracle time!"
+
+/datum/reagent/ethanol/ichor_mead
+	name = "Ichor Mead"
+	id = "ichor_mead"
+	description = "A trip to Valhalla."
+	taste_description = "valhalla"
+	color = "#955B37"
+	strength = 30
+
+	glass_name = "Ichor Mead"
+	glass_desc = "A trip to Valhalla."
+
+/datum/reagent/ethanol/schnapps_pep
+	name = "Peppermint Schnapps"
+	id = "schnapps_pep"
+	description = "Achtung, pfefferminze."
+	taste_description = "minty alcohol"
+	color = "#8FC468"
+	strength = 25
+
+	glass_name = "peppermint schnapps"
+	glass_desc = "A glass of peppermint schnapps. It seems like it'd be better, mixed."
+
+/datum/reagent/ethanol/schnapps_pea
+	name = "Peach Schnapps"
+	id = "schnapps_pea"
+	description = "Achtung, fruchtig."
+	taste_description = "peaches"
+	color = "#d67d4d"
+	strength = 25
+
+	glass_name = "peach schnapps"
+	glass_desc = "A glass of peach schnapps. It seems like it'd be better, mixed."
+
+/datum/reagent/ethanol/schnapps_lem
+	name = "Lemonade Schnapps"
+	id = "schnapps_lem"
+	description = "Childhood memories are not included."
+	taste_description = "sweet, lemon-y alcohol"
+	color = "#FFFF00"
+	strength = 25
+
+	glass_name = "lemonade schnapps"
+	glass_desc = "A glass of lemonade schnapps. It seems like it'd be better, mixed."
+
+/datum/reagent/ethanol/fusionnaire
+	name = "Fusionnaire"
+	id = "fusionnaire"
+	description = "A drink for the brave."
+	taste_description = "a painfully alcoholic lemon soda with an undertone of mint"
+	color = "#6BB486"
+	strength = 9
+
+	glass_name = "fusionnaire"
+	glass_desc = "A relatively new cocktail, mostly served in the bars of NanoTrasen owned stations."
 
 /datum/reagent/ethanol/cider
 	name = "Cider"
@@ -2895,6 +3054,39 @@
 	glass_name = "cider"
 	glass_desc = "The second most Irish drink."
 	price_tag = 0.08
+
+/datum/reagent/ethanol/serpentspirit
+	name = "Serpent's Spirit"
+	id = "serpentspirit"
+	description = "A blue ginseng wine that unfortunately contains no snakes."
+	taste_description = "sharp ginseng and mellow grapes"
+	color = "#0048AD"
+	strength = 10
+
+	glass_name = "Serpent's Spirit"
+	glass_desc = "An expensive blue wine made from a secret blend of spices passed down from generation to generation."
+
+/datum/reagent/ethanol/goldfinger
+	name = "Goldfinger"
+	id = "goldfinger"
+	description = "A sweet liqueur with a delightful pineapple aftertaste."
+	taste_description = "sweet alcohol and a pineapple aftertaste"
+	color = "#F7D365"
+	strength = 10
+
+	glass_name = "Goldfinger"
+	glass_desc = "This is gold, Mr. Bond."
+
+/datum/reagent/ethanol/blackrose
+	name = "Black Rose"
+	id = "blackrose"
+	description = "An exquisite spirit made from rosa damascena petals."
+	taste_description = "sweetness with a floral note"
+	color = "#FFBF00"
+	strength = 10
+
+	glass_name = "Black Rose"
+	glass_desc = "Each taste imparts the flavor of flowers blooming in Spring. Exquisite."
 
 /datum/reagent/nutriment/coffee
 	name = "Coffee Powder"

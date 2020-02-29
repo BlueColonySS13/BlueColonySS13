@@ -66,6 +66,7 @@
 	var/datum/computer_file/data/email_account/initial_email
 
 	var/list/initial_email_login = list("login" = "", "password" = "")
+	var/list/initial_bank_details = list("id" = "", "pin" = null)
 
 	var/datum/preferences/prefs
 
