@@ -1,13 +1,11 @@
 /obj/machinery/metal_detector
-    name = "metal detector"
-    desc = "A advanced metal detector used to detect weapons."
-    icon = 'icons/obj/stationobjs.dmi'
-    icon_state = "metal_detector"
-    anchored = 1
-	plane = MOB_PLANE
-	layer = ABOVE_MOB_LAYER
-    req_one_access = list(access_security, access_judge, access_heads, access_bodyguard)
-    var/list/banned_objects=list(/obj/item/weapon/gun,
+	name = "metal detector"
+	desc = "A advanced metal detector used to detect weapons."
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "metal_detector"
+	anchored = 1
+	req_one_access = list(access_security, access_judge, access_heads, access_bodyguard)
+	var/list/banned_objects=list(/obj/item/weapon/gun,
 								/obj/item/weapon/material,
 								/obj/item/weapon/melee,
 								/obj/item/device/transfer_valve,
@@ -15,6 +13,8 @@
 								/obj/item/ammo_casing/,
 								/obj/item/ammo_magazine
 								)
+	plane = MOB_PLANE
+	layer = ABOVE_MOB_LAYER
 
 /obj/machinery/metal_detector/New()
 	..()
