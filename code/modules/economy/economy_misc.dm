@@ -163,4 +163,3 @@ var/global/list/private_departments = list("Cargo", "Bar", "Botany")
 	for(var/obj/machinery/cash_register/CR in transaction_devices)
 		if(CR.account_to_connect)
 			CR.linked_account = department_accounts[CR.account_to_connect]
-
