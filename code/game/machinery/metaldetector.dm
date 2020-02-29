@@ -39,7 +39,7 @@
 	if(default_deconstruction_crowbar(usr, W))
 		return
 
-/obj/machinery/metal_detector/Crossed(var/atom/A)
+/obj/machinery/metal_detector/Crossed(var/mob/living/M)
 	if(istype(A, /mob/living))
 		var/mob/living/M = A
 		if(allowed(M))
