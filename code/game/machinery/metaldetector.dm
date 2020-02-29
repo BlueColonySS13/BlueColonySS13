@@ -40,7 +40,8 @@
 		return
 
 /obj/machinery/metal_detector/Crossed(var/mob/living/M)
-	if(istype(A, /mob/living))
+	if(!istype(L))
+		return
 		var/mob/living/M = A
 	if(allowed(M))
 		return
