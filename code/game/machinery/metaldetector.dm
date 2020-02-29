@@ -43,7 +43,7 @@
 	if(istype(A, /mob/living))
 		var/mob/living/M = A
 	if(allowed(M))
-			return
+		return
 
 	var/list/checked_items = list()
 	checked_items += A
