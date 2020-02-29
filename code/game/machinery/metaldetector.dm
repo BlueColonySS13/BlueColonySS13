@@ -4,6 +4,8 @@
     icon = 'icons/obj/stationobjs.dmi'
     icon_state = "metal_detector"
     anchored = 1
+//	plane = ABOVE_HUMAN_PLANE
+	layer = ABOVE_MOB_LAYER
     req_one_access = list(access_security, access_judge, access_heads, access_bodyguard)
     var/list/banned_objects=list(/obj/item/weapon/gun,
 								/obj/item/weapon/material,
