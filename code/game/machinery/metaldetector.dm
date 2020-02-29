@@ -42,7 +42,7 @@
 /obj/machinery/metal_detector/Crossed(var/mob/living/M)
 	if(istype(A, /mob/living))
 		var/mob/living/M = A
-		if(allowed(M))
+	if(allowed(M))
 			return
 
 	var/list/checked_items = list()
