@@ -5,7 +5,7 @@
 	icon_state = "metal_detector"
 	anchored = 1
 	req_one_access = list(access_security, access_judge, access_heads, access_bodyguard)
-	var/list/banned_objects=list(/obj/item/weapon/gun,
+	var/static/list/banned_objects = list(/obj/item/weapon/gun,
 								/obj/item/weapon/material,
 								/obj/item/weapon/melee,
 								/obj/item/device/transfer_valve,
