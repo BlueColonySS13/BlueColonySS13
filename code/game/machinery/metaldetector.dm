@@ -16,7 +16,7 @@
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 
-/obj/machinery/metal_detector/New()
+/obj/machinery/metal_detector/Initialize()
 	..()
 	component_parts = list()
 	component_parts += new /obj/item/weapon/circuitboard/metal_detector(src)
