@@ -29,11 +29,12 @@
 
 // Claim machine ID
 /obj/item/device/retail_scanner/New()
-	machine_id = "[station_name()] RETAIL #[num_financial_terminals++]"
+	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
 	if(locate(/obj/structure/table) in loc)
 		pixel_y = 3
-	transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
-
+	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
+	if(SSeconomy)
+		linked_account = dept_acc_by_id(account_to_connect)
 
 // Always face the user when put on a table
 /obj/item/device/retail_scanner/afterattack(atom/movable/AM, mob/user, proximity)
@@ -499,38 +500,37 @@
 
 //--Premades--//
 
-/obj/item/device/retail_scanner/city/initialize()
-	account_to_connect = "[station_name()] Funds"
-	..()
+/obj/item/device/retail_scanner/city
+	account_to_connect = DEPT_COLONY
 
 /obj/item/device/retail_scanner/command
-	account_to_connect = "City Council"
+	account_to_connect = DEPT_COUNCIL
 
 /obj/item/device/retail_scanner/medical
-	account_to_connect = "Public Healthcare"
+	account_to_connect = DEPT_HEALTHCARE
 	menu_items = MED
 
 /obj/item/device/retail_scanner/engineering
-	account_to_connect = "Emergency and Maintenance"
+	account_to_connect = DEPT_MAINTENANCE
 
 /obj/item/device/retail_scanner/science
-	account_to_connect = "Research and Science"
+	account_to_connect = DEPT_RESEARCH
 
 /obj/item/device/retail_scanner/security
-	account_to_connect = "Police"
+	account_to_connect = DEPT_POLICE
 	menu_items = LAW
 
 /obj/item/device/retail_scanner/cargo
-	account_to_connect = "Cargo"
+	account_to_connect = DEPT_FACTORY
 
 /obj/item/device/retail_scanner/civilian
-	account_to_connect = "Civilian"
+	account_to_connect = DEPT_PUBLIC
 
 /obj/item/device/retail_scanner/bar
-	account_to_connect = "Bar"
+	account_to_connect = DEPT_BAR
 
-/obj/machinery/cash_register/botany
-	account_to_connect = "Botany"
+/obj/item/device/retail_scanner/botany
+	account_to_connect = DEPT_BOTANY
 
 #undef LAW
 #undef MED

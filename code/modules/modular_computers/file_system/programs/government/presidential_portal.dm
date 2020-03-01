@@ -108,16 +108,17 @@
 	else if(index == 8) // Council Page
 		page_msg = "You are now able to manage funds of the colony. You can transfer funds from a certain department to another.<hr><br><br>"
 
-		for(var/datum/money_account/M in department_acc_list)
-			if(!(M.department in public_departments + list("[station_name()] Funds", "Nanotrasen")))
+		for(var/datum/department/D in GLOB.public_departments)
+			if(!D.has_bank || !D.bank_account)
 				continue
+			var/datum/money_account/M = D.bank_account
 			var/display_color = "green"
 			if(1500 > M.money)
 				display_color = "yellow"
 			if(100 > M.money)
 				display_color = "red"
 
-			page_msg += "<a href='?src=\ref[src];manage_transfer=1;transfer_funds=\ref[M]'>Transfer Money From</a> <b>[M.department]</b> (<font color=\"[display_color]\">[M.money]</font>CR)<br>"
+			page_msg += "<a href='?src=\ref[src];manage_transfer=1;transfer_funds=\ref[M]'>Transfer Money From</a> <b>[D.name]</b> (<font color=\"[display_color]\">[M.money]</font>CR)<br>"
 
 
 	if(index == -1)
@@ -420,17 +421,27 @@
 
 	if(href_list["manage_transfer"])
 		. = 1
-		var/datum/money_account/A = locate(href_list["transfer_funds"]) in department_acc_list
+		var/datum/money_account/A = locate(href_list["transfer_funds"]) in GLOB.public_department_accounts
 
-		if(!(A.department in public_departments + list("[station_name()] Funds", "Nanotrasen")))
+		if(!(A in GLOB.public_department_accounts))
 			return
 
+		var/list/dept_list = list()
+		for(var/datum/department/D in GLOB.public_departments)
+			dept_list += D.name
 
-		var/category = input(usr, "Select a department to transfer to.", "Departmental Transfer")  as null|anything in public_departments + list("[station_name()] Funds", "Cancel")
-		if(!category || !(category in public_departments) || (category == "Cancel"))
+		var/category = input(usr, "Select a department to transfer to.", "Departmental Transfer")  as null|anything in dept_list + "Cancel"
+		if(!category || category == "Cancel")
 			return
 
-		var/datum/money_account/account_recieving = department_accounts[category]
+		var/datum/money_account/account_recieving
+
+		for(var/datum/department/D in GLOB.public_departments)
+			if(D.name == category)
+				account_recieving = D
+
+		if(!account_recieving)
+			return
 
 		var/amount = input(usr, "How much would you like to transfer?.", "Transfer Amount")  as num
 
@@ -439,7 +450,7 @@
 			return
 
 		if(amount > A.money)
-			error_msg = "Not enough funds in [A.department] to transfer to [category]."
+			error_msg = "Not enough funds in [A.owner_name] to transfer to [category]."
 			return
 
 		charge_to_account(A.account_number, "Government Funds Transfer System", "Presidential Portal Transfer", "President Transfer", -amount)

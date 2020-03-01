@@ -1,0 +1,41 @@
+/proc/cash2text(num, use_symbol = TRUE, use_suffix = TRUE, use_desc = TRUE)	//returns $800USD mil for example.
+	var/symbol
+	var/suffix
+	var/text_desc
+	var/multiplier = 1
+
+	var/final_num
+
+	if(using_map.currency_symbol && use_symbol)
+		symbol = using_map.currency_symbol
+
+	if(using_map.currency_suffix && use_suffix)
+		suffix = using_map.currency_suffix
+
+	if(use_desc)
+		switch(num)
+
+			if(1000000000000000000 to INFINITY)
+				text_desc = "quin"
+				multiplier = 1000000000000000000
+
+			if(1000000000000000 to 999999999999999999)
+				text_desc = "quad"
+				multiplier = 1000000000000000
+
+			if(1000000000000 to 999999999999999)
+				text_desc = "tril"
+				multiplier = 1000000000000
+
+			if(1000000000 to 999999999999)
+				text_desc = "bil"
+				multiplier = 1000000000
+
+			if(1000000 to 999999999)
+				text_desc = "mil"
+				multiplier = 1000000
+
+	final_num = round(num / multiplier)
+
+
+	return "[symbol][final_num][suffix][text_desc ? " [text_desc]" : ""]"

@@ -435,7 +435,7 @@ var/global/datum/controller/occupations/job_master
 		// If they're head, give them the account info for their department
 		if(H.mind && job.head_position)
 			var/remembered_info = ""
-			var/datum/money_account/department_account = department_accounts[job.department]
+			var/datum/money_account/department_account = dept_acc_by_id(job.department)
 
 			if(department_account)
 				remembered_info += "<b>Your sector's account id is:</b> #[department_account.account_number]<br>"

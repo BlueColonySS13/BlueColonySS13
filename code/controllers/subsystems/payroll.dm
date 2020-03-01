@@ -62,8 +62,10 @@ SUBSYSTEM_DEF(payroll)
 
 	department = job.department
 
-	if(!(department in station_departments))
-//		message_admins("ERROR: Could not find [department] in station departments.", 1)
+	var/datum/department/department_account = dept_by_id(department)
+
+	if(!department_account)
+//		message_admins("ERROR: No department account found for [job]'s department: [department].", 1)
 		return
 
 	if(bank_account.suspended)
@@ -81,7 +83,7 @@ SUBSYSTEM_DEF(payroll)
 		bank_account.transaction_log.Add(N)
 		return
 
-	if((!class)  ||  (class == "Unknown"))
+	if((!class) || (!(class in ECONOMIC_CLASS)) )
 		class = CLASS_WORKING
 //		message_admins("ERROR: Could not find class. Assigned working class.", 1)
 
@@ -115,49 +117,24 @@ SUBSYSTEM_DEF(payroll)
 		return
 
 
-	if(wage > department_accounts[department].money)
+	if(wage > department_account.get_balance())
 		// If there's no money in the department account, tough luck. Not getting paid.
-		var/datum/transaction/N = new()
-		N.target_name = bank_account.owner_name
-		N.purpose = "[department] Payroll: Failed (Inadequate Department Funds)"
-		N.amount = 0
-		N.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-		N.time = stationtime2text()
-		N.source_terminal = "[department] Funding Account"
-
-		//add the account
-		bank_account.transaction_log.Add(N)
-
-//		message_admins("ERROR: Not paid because not enough money in department account.", 1)
-		return
+		bank_account.add_transaction_log(bank_account.owner_name, "[department] Payroll: Failed (Inadequate Department Funds)", 0, "[department] Funding Account")
 
 	if(age > 17) // Do they pay tax?
 		calculated_tax = round(tax * wage, 1)
 
 	//Tax goes to the treasury. Mh-hm.
-	department_accounts["[station_name()] Funds"].money += calculated_tax
+	SSeconomy.charge_head_department(calculated_tax)
 
 	//Your wage comes from your department, yes.
-	department_accounts[department].money -= wage
+	department_account.adjust_funds(-wage)
 
 	wage -= calculated_tax
 
 	//You get paid.
 	bank_account.money += wage
-
-	//create an entry for the payroll (for the payee).
-	var/datum/transaction/T = new()
-	T.target_name = bank_account.owner_name
-	T.purpose = "[department] Payroll: [name] ([calculated_tax] credit tax)"
-	T.amount = wage
-	T.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-	T.time = stationtime2text()
-	T.source_terminal = "[department] Funding Account"
-
-	//add the account
-	bank_account.transaction_log.Add(T)
-
-
+	charge_to_account(bank_account.account_number, bank_account.owner_name, "[department] Payroll: [name] ([calculated_tax] credit tax)", "[department] Funding Account", wage)
 
 	//if you owe anything, let's deduct your ownings.
 	for(var/datum/expense/E in bank_account.expenses)

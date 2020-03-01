@@ -1,91 +1,141 @@
-#define DEPT_PUBLIC 1
-#define DEPT_PRIVATE 2
-#define DEPT_EXTERNAL 3
-
 /datum/department
 	var/name = "Department"
-	var/id = "department"
+	var/id
 	var/desc = "This is a generic department. Technically you shouldn't see this."
 
+	//money related
+	var/has_bank = TRUE
 	var/starting_money = 7500
-
-	var/dept_type = DEPT_PUBLIC
 	var/datum/money_account/department/bank_account
+
+	var/dept_type = PUBLIC_DEPARTMENT
+
+	var/list/blacklisted_employees = list()	// employees are added here by UID (unique id)
+
 
 /datum/money_account/department
 	var/datum/department/department
 	max_transaction_logs = DEPARTMENT_TRANSACTION_LIMIT
 
-// ## Presets ## //
+/datum/department/New()
+	..()
+	make_bank_account()
+	GLOB.department_accounts += src
 
-/datum/department/nanotrasen
-	name = "Nanotrasen"
-	id = "nanotrasen"
-	desc = "Nanotrasen's money account, this money account is owned by the Nanotrasen Board of Directors and should not be touched without express permission."
-	starting_money = 100000
+	switch(dept_type)
+		if(PUBLIC_DEPARTMENT)
+			GLOB.public_departments += src
+		if(PRIVATE_DEPARTMENT)
+			GLOB.private_departments += src
+		if(EXTERNAL_DEPARTMENT)
+			GLOB.external_departments += src
 
-	dept_type = DEPT_PRIVATE
+/datum/department/proc/sanitize_values()	// juuuust in case shittery happens.
+	if(!blacklisted_employees)
+		blacklisted_employees = list()
 
-/datum/department/colon
-	name = "Colony Funds"
-	id = "colony"
-	desc = "This is the colony's funding account. Taxes go here."
+	if(has_bank && !bank_account)
+		make_bank_account()
 
-	starting_money = 8000
+	return TRUE
 
-/datum/department/city_council
-	name = "City Council"
-	id = "city_council"
-	desc = "City Council are paid from this account. Money from lots and permit sales are also paid into this account."
-
-	starting_money = 5000
-
-/datum/department/law
-	name = "Legal"
-	id = "legal"
-	starting_money = 3000
-	desc = "The publicly funded legal department is paid from this account. Money that is spent on court cases go here and is withdrawn from here."
-
-/datum/department/maintenance
-	name = "Maintenance"
-	id = "maintenance"
-	starting_money = 3000
-
-	desc = "The maintenance department is paid from this budget. Any city works fees are also paid into this account."
-
-/datum/department/research
-	name = "Research and Science"
-	id = "research"
-	starting_money = 2000
-
-	desc = "Science and research employees are paid from this account. Any money made by Research is paid into this account."
+/proc/dept_name_by_id(id)
+	for(var/datum/department/D in GLOB.department_accounts)
+		if(id == D.id)
+			return D.name
 
 
-/datum/department/police
-	name = "Police"
-	id = "police"
-	starting_money = 3000
-	desc = "The police department is funded by this account. Money made from fines are paid into this account."
+/proc/dept_acc_by_id(id)
+	for(var/datum/department/D in GLOB.department_accounts)
+		if((id == D.id) && D.bank_account)
+			return D.bank_account
+
+/proc/dept_by_id(id)
+	for(var/datum/department/D in GLOB.department_accounts)
+		if(id == D.id)
+			return D
 
 
-/datum/department/healthcare
-	name = "Public Healthcare"
-	id = "healthcare"
-	starting_money = 3000
-	desc = "The hospital and its employees are paid from this account. Any publicly provided medical vendors, medications, treatments and surgeries are income for this department."
+/proc/dept_by_name(name)
+	for(var/datum/department/D in GLOB.department_accounts)
+		if(name == D.name)
+			return D
 
-/datum/department/public
-	name = "Public Funds"
-	id = "public"
-	starting_money = 300
-	desc = "The public funding account. This pays welfare to unemployed, disabled or providing vacation pay to off-duty coucil members, also may fund any jobs that are government supported."
+/proc/adjust_dept_funds(id, amount)
+	var/datum/money_account/M = dept_acc_by_id(id)
 
-// ## Private Presets
+	if(!M)
+		return FALSE
 
-/datum/department/solgov
-	name = "United Sol Government"
-	id = "solgov"
-	desc = "The official bank account of the United Sol Government"
-	starting_money = 100000
+	M.money += amount
+	return TRUE
 
-	dept_type = DEPT_PRIVATE
+/proc/dept_balance(id)
+	var/datum/money_account/M = dept_acc_by_id(id)
+	if(!M)
+		return FALSE
+
+	return M.money
+
+/datum/department/proc/make_bank_account()
+	if(!id)
+		return FALSE
+
+	if(!has_bank)
+		return FALSE
+
+	bank_account = create_account(name, starting_money, null, department = TRUE)
+	bank_account.department = src
+
+	switch(dept_type)
+		if(PUBLIC_DEPARTMENT)
+			GLOB.public_department_accounts += bank_account
+		if(PRIVATE_DEPARTMENT)
+			GLOB.private_department_accounts += bank_account
+		if(EXTERNAL_DEPARTMENT)
+			GLOB.external_department_accounts += bank_account
+
+	return bank_account
+
+/datum/department/proc/get_balance()
+	if(!bank_account)
+		return FALSE
+
+	return bank_account.money
+
+/datum/department/proc/get_text_balance()
+	return cash2text(get_balance())
+
+/datum/department/proc/get_account()
+	return bank_account
+
+/datum/department/proc/adjust_funds(amount)	//hard editing mostly. don't use in most circumstances. Use
+	if(!bank_account)
+		return FALSE
+
+	bank_account.money += amount
+
+	return bank_account.money
+
+/datum/department/proc/process_money(var/datum/money_account/M, amount, purpose, terminal)
+// adjusts funds, sends transaction logs to both ends. checks security access
+	if(!bank_account || !M)
+		return FALSE
+
+	if(!terminal)
+		terminal = "Department Funds Transfer"
+
+	if(bank_account.charge(amount, M, purpose, terminal))
+		return TRUE
+
+/datum/department/proc/direct_charge_money(acc_no, name, amount, purpose, terminal)
+// same as above, no transaction logs to department however - only recipient. does not check security access. more for things like payroll
+	if(!bank_account)
+		return FALSE
+
+	if(!terminal)
+		terminal = "Department Funds Transfer"
+
+	if(charge_to_account(acc_no, name, purpose, terminal, amount))
+		bank_account.money += amount
+		return TRUE

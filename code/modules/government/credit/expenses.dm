@@ -50,7 +50,7 @@
 	amount_left -= charge
 
 	if(department)
-		department_accounts[department].money += charge
+		adjust_dept_funds(department, charge)
 
 	return charge
 
@@ -64,7 +64,7 @@
 /datum/expense/proc/charge_department(num)
 	if(!charge_department) return
 
-	var/datum/money_account/bank_acc = department_accounts[charge_department]
+	var/datum/money_account/bank_acc = dept_acc_by_id(charge_department)
 
 	if(!bank_acc) return
 

@@ -41,7 +41,7 @@
 		"}
 
 /obj/machinery/account_database/New()
-	machine_id = "[station_name()] Acc. DB #[num_financial_terminals++]"
+	machine_id = "[station_name()] Acc. DB #[GLOB.num_financial_terminals++]"
 	..()
 
 /obj/machinery/account_database/attackby(obj/O, mob/user)
@@ -64,6 +64,8 @@
 /obj/machinery/account_database/ui_interact(mob/user, ui_key="main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
+	var/datum/money_account/city_funds = dept_acc_by_id(DEPT_COLONY)
+
 	var/data[0]
 	data["src"] = "\ref[src]"
 	data["id_inserted"] = !!held_card
@@ -72,7 +74,7 @@
 	data["machine_id"] = machine_id
 //	data["creating_new_account"] = creating_new_account
 	data["detailed_account_view"] = !!detailed_account_view
-	data["station_account_number"] = station_account.account_number
+	data["station_account_number"] = city_funds.account_number
 	data["transactions"] = null
 	data["accounts"] = null
 
@@ -96,8 +98,8 @@
 			data["transactions"] = trx
 
 	var/list/accounts[0]
-	for(var/i=1, i<=all_money_accounts.len, i++)
-		var/datum/money_account/D = all_money_accounts[i]
+	for(var/i=1, i<=GLOB.all_money_accounts.len, i++)
+		var/datum/money_account/D = GLOB.all_money_accounts[i]
 		accounts.Add(list(list(\
 			"account_number"=D.account_number,\
 			"owner_name"=D.owner_name,\
@@ -183,8 +185,8 @@
 
 			if("view_account_detail")
 				var/index = text2num(href_list["account_index"])
-				if(index && index <= all_money_accounts.len)
-					detailed_account_view = all_money_accounts[index]
+				if(index && index <= GLOB.all_money_accounts.len)
+					detailed_account_view = GLOB.all_money_accounts[index]
 
 			if("view_accounts_list")
 				detailed_account_view = null
@@ -260,8 +262,8 @@
 							<tbody>
 					"}
 
-					for(var/i=1, i<=all_money_accounts.len, i++)
-						var/datum/money_account/D = all_money_accounts[i]
+					for(var/i=1, i<=GLOB.all_money_accounts.len, i++)
+						var/datum/money_account/D = GLOB.all_money_accounts[i]
 						text += {"
 								<tr>
 									<td>#[D.account_number]</td>

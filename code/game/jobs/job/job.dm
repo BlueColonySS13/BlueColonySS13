@@ -83,7 +83,7 @@
 	var/datum/money_account/M
 	var/already_joined
 
-	for(var/datum/money_account/A in all_money_accounts)
+	for(var/datum/money_account/A in GLOB.all_money_accounts)
 		if(A.account_number == H.mind.prefs.bank_account)
 			M = A
 			already_joined = 1

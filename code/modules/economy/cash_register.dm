@@ -32,9 +32,11 @@
 
 // Claim machine ID
 /obj/machinery/cash_register/New()
-	machine_id = "[station_name()] RETAIL #[num_financial_terminals++]"
+	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
 	cash_stored = rand(10, 70)*10
-	transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
+	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
+	if(SSeconomy)
+		linked_account = dept_acc_by_id(account_to_connect)
 
 
 /obj/machinery/cash_register/examine(mob/user as mob)
@@ -558,7 +560,7 @@
 		for(var/item in tax_list)
 			total_tax += tax_list[item] * (item_list[item] * price_list[item])
 
-		department_accounts["[station_name()] Funds"].money += total_tax
+		adjust_dept_funds(DEPT_COLONY, total_tax)
 
 	/// Visible confirmation
 	playsound(src, 'sound/machines/chime.ogg', 25)
@@ -638,38 +640,37 @@
 
 //--Premades--//
 
-/obj/machinery/cash_register/city/initialize()
-	account_to_connect = "[station_name()] Funds"
-	..()
+/obj/machinery/cash_register/city
+	account_to_connect = DEPT_COLONY
 
 /obj/machinery/cash_register/command
-	account_to_connect = "City Council"
+	account_to_connect = DEPT_COUNCIL
 
 /obj/machinery/cash_register/medical
-	account_to_connect = "Public Healthcare"
+	account_to_connect = DEPT_HEALTHCARE
 	menu_items = MED
 
 /obj/machinery/cash_register/engineering
-	account_to_connect = "Emergency and Maintenance"
+	account_to_connect = DEPT_MAINTENANCE
 
 /obj/machinery/cash_register/science
-	account_to_connect = "Research and Science"
+	account_to_connect = DEPT_RESEARCH
 
 /obj/machinery/cash_register/security
-	account_to_connect = "Police"
+	account_to_connect = DEPT_POLICE
 	menu_items = LAW
 
 /obj/machinery/cash_register/cargo
-	account_to_connect = "Cargo"
+	account_to_connect = DEPT_FACTORY
 
 /obj/machinery/cash_register/civilian
-	account_to_connect = "Civilian"
+	account_to_connect = DEPT_PUBLIC
 
 /obj/machinery/cash_register/bar
-	account_to_connect = "Bar"
+	account_to_connect = DEPT_BAR
 
 /obj/machinery/cash_register/botany
-	account_to_connect = "Botany"
+	account_to_connect = DEPT_BOTANY
 
 #undef LAW
 #undef MED

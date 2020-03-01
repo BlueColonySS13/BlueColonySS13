@@ -192,7 +192,7 @@
 			index = 6
 			return
 
-		department_accounts["[station_name()] Funds"].money += 3500
+		SSeconomy.charge_head_department(3500)
 
 		var/datum/president_candidate/associated_candidacy
 

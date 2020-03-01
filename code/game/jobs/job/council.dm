@@ -3,7 +3,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/captain
 	title = "Mayor"
 	flag = CAPTAIN
-	department = "City Council"
+	department = DEPT_COUNCIL
 	head_position = 1
 	department_flag = ENGSEC
 	faction = "City"
@@ -44,7 +44,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/hop
 	title = "City Clerk"
 	flag = HOP
-	department = "City Council"
+	department = DEPT_COUNCIL
 	head_position = 1
 	department_flag = CIVILIAN
 	faction = "City"
@@ -88,7 +88,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	flag = JUDGE
 	head_position = 1
 	faction = "City"
-	department = "City Council"
+	department = DEPT_COUNCIL
 	total_positions = 2
 	spawn_positions = 2
 	department_flag = CIVILIAN
