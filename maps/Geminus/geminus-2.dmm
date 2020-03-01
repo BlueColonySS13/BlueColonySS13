@@ -3241,7 +3241,7 @@
 "bkq" = (/obj/structure/table/glass,/turf/simulated/floor/tiled/steel,/area/lots/business_lot_ten)
 "bkr" = (/obj/machinery/door/blast/gate{dir = 2; icon_state = "shutter1"; id = "cityhallsec"; name = "city hall thick gate"},/obj/effect/wallframe_spawn,/turf/simulated/floor/decor{tag = "icon-tiled4"; icon_state = "tiled4"},/area/planets/Geminus/indoor/city_hall)
 "bks" = (/obj/structure/table/standard,/obj/item/weapon/paper_bin,/obj/item/weapon/pen,/obj/item/weapon/pen,/obj/item/weapon/pen,/obj/item/weapon/pen,/obj/item/weapon/pen,/obj/item/weapon/pen,/obj/item/weapon/pen,/obj/machinery/power/apc{dir = 8; name = "west bump"; pixel_x = -24},/turf/simulated/floor/wood/ebony,/area/planets/Geminus/indoor/headmeetingroom)
-"bkt" = (/obj/loudspeaker,/obj/machinery/light/small{dir = 4},/turf/simulated/floor/wood/ebony,/area/planets/Geminus/indoor/headmeetingroom)
+"bkt" = (/obj/loudspeaker,/turf/simulated/floor/wood/ebony,/area/planets/Geminus/indoor/headmeetingroom)
 "bku" = (/obj/effect/wallframe_spawn/basic/blue/hospital,/obj/machinery/door/blast/gate/open{dir = 2; id = "city_hall_hallway"; name = "city hall passageway"},/turf/simulated/floor/decor{tag = "icon-tiled4"; icon_state = "tiled4"},/area/planets/Geminus/indoor/city_hall)
 "bkv" = (/obj/structure/table/woodentable,/obj/effect/floor_decal/corner/red{dir = 10},/obj/machinery/light/small{dir = 8},/obj/machinery/photocopier/faxmachine{department = "Council Bodyguard"},/turf/simulated/floor/tiled,/area/planets/Geminus/indoor/city_hall)
 "bkw" = (/obj/structure/table/standard,/obj/machinery/computer/skills,/obj/machinery/vending/wallmed2{dir = 4; pixel_x = -21},/turf/simulated/floor/wood/ebony,/area/planets/Geminus/indoor/headmeetingroom)
