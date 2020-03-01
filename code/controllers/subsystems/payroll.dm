@@ -1,15 +1,15 @@
-SUBSYSTEM_DEF(economy)
-	name = "Economy"
+SUBSYSTEM_DEF(payroll)
+	name = "Payroll"
 	init_order = INIT_ORDER_PAYROLL
 
 	wait = 1200 //Ticks once per 2 minutes
 	var/payday_interval = 1 HOUR
 	var/next_payday = 1 HOUR
 
-/datum/controller/subsystem/economy/Initialize()
+/datum/controller/subsystem/payroll/Initialize()
 	.=..()
 
-/datum/controller/subsystem/economy/fire()
+/datum/controller/subsystem/payroll/fire()
 	if (world.time >= next_payday)
 		next_payday = world.time + payday_interval
 
@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(economy)
 		command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
 
 
-/datum/controller/subsystem/economy/proc/city_charges()
+/datum/controller/subsystem/payroll/proc/city_charges()
 	for(var/datum/expense/E in persistent_economy.city_expenses)
 		E.charge_department(E.cost_per_payroll)
 
