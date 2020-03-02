@@ -83,6 +83,32 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/hop/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email
 
+
+/datum/job/secretary //Paperwork monkey
+	title = "City Hall Secretary"
+	flag = SECRETARY
+	department = "Civilian"
+	department_flag = CIVILIAN
+	faction = "City"
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "the Mayor and the City Council"
+	selection_color = "#515151"
+	idtype = /obj/item/weapon/card/id/civilian/secretary
+	wage = 170
+	access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
+	minimal_access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
+	email_domain = "gov.nt"
+
+	minimum_character_age = 16
+	ideal_character_age = 20 //Really anyone can be this job, not just teens
+
+	alt_titles = list("Assistant Clerk", "Notary Public", "Paralegal", "Court Clerk")
+
+	outfit_type = /decl/hierarchy/outfit/job/civilian/secretary
+
+	clean_record_required = TRUE
+
 /datum/job/judge
 	title = "Judge"
 	flag = JUDGE
