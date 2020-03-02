@@ -57,3 +57,4 @@
 	uniform = /obj/item/clothing/under/pcrc
 	suit = /obj/item/clothing/suit/storage/vest/pcrc
 	shoes = /obj/item/clothing/shoes/boots/jackboots
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1)
