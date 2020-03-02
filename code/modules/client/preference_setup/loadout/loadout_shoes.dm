@@ -199,7 +199,7 @@
 	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist")
 
 /datum/gear/shoes/boots/winter/command
-	display_name = "colony director's winter boots"
+	display_name = "mayor's winter boots"
 	path = /obj/item/clothing/shoes/boots/winter/command
 	allowed_roles = list("Mayor")
 
