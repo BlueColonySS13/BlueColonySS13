@@ -16,6 +16,8 @@
 
 
 /datum/category_item/player_setup_item/general/economy/sanitize_character()
+	if(!pref.money_balance)
+		pref.money_balance = 0
 
 	if(!pref.bank_pin)
 		pref.bank_pin = rand(1111,9999)

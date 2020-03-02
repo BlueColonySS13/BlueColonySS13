@@ -229,15 +229,15 @@
 	..()
 	reagents.add_reagent("vodka", 100)
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora
 	name = "Kora Vodka"
 	desc = "The most expensive vodka ever distilled. It comes in a diamond-studded silver bottle."
 	icon_state = "korabottle"
 	center_of_mass = list("x"=17, "y"=3)
 
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora/New()
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora/New()
 	..()
-	reagents.add_reagent("koravodka", 100)
+	reagents.add_reagent("vodkakora", 100)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/tequilla
 	name = "Caccavo Guaranteed Quality Tequilla"
@@ -611,3 +611,33 @@
 /obj/item/weapon/reagent_containers/food/drinks/bottle/small/cider/New()
 	. = ..()
 	reagents.add_reagent("cider", 30)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/goldfinger
+	name = "Goldfinger"
+	desc = "A sweet liqueur with a delightful pineapple aftertaste."
+	icon_state = "goldfinger"
+	center_of_mass = list("x"=16, "y"=12)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/goldfinger/New()
+	. = ..()
+	reagents.add_reagent("goldfinger", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit
+	name = "Serpent's Spirit"
+	desc = "A ginseng wine made with special herbs that impart a blue color to it."
+	icon_state = "serpentspirit"
+	center_of_mass = list("x"=16, "y"=12)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit/New()
+	. = ..()
+	reagents.add_reagent("serpentspirit", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose
+	name = "Black Rose Liqueur"
+	desc = "An exquisite spirit made from rosa damascena petals."
+	icon_state = "blackrose"
+	center_of_mass = list("x"=16, "y"=12)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose/New()
+	. = ..()
+	reagents.add_reagent("blackrose", 100)

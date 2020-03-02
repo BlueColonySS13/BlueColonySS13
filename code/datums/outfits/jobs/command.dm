@@ -58,7 +58,6 @@
 	shoes = /obj/item/clothing/shoes/brown
 	id_type = /obj/item/weapon/card/id/silver/secretary
 	pda_type = /obj/item/device/pda/heads/hop
-	r_hand = /obj/item/weapon/clipboard
 	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_four = 1)
 
 /decl/hierarchy/outfit/job/heads/secretary/pre_equip(mob/living/carbon/human/H)
