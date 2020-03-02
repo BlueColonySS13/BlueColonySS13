@@ -423,22 +423,31 @@
 		. = 1
 		var/datum/money_account/A = locate(href_list["transfer_funds"]) in GLOB.public_department_accounts
 
-		if(!(A in GLOB.public_department_accounts))
+		if(!A)
 			return
 
-		var/list/dept_list = list()
-		for(var/datum/department/D in GLOB.public_departments)
-			dept_list += D.name
+		var/list/dept_acc_names = list()
+		var/datum/department/target_department
 
-		var/category = input(usr, "Select a department to transfer to.", "Departmental Transfer")  as null|anything in dept_list + "Cancel"
+		for(var/datum/department/D in GLOB.public_departments)
+			if(!D.has_bank || !D.bank_account)
+				continue
+
+			dept_acc_names += D.name
+
+
+		var/category = input(usr, "Select a department to transfer to.", "Departmental Transfer")  as null|anything in dept_acc_names + "Cancel"
 		if(!category || category == "Cancel")
 			return
 
 		var/datum/money_account/account_recieving
 
-		for(var/datum/department/D in GLOB.public_departments)
-			if(D.name == category)
-				account_recieving = D
+		target_department = dept_by_name(category)
+
+		if(!target_department)
+			return
+
+		account_recieving = target_department.bank_account
 
 		if(!account_recieving)
 			return

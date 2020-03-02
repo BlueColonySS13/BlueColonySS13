@@ -1,5 +1,5 @@
 var/global/current_date_string
-var/global/datum/economy/bank_accounts/persistent_economy
+var/global/datum/economy/bank_accounts/persistent_economy = new()
 
 /datum/money_account/proc/charge(var/transaction_amount,var/datum/money_account/dest,var/transaction_purpose, var/terminal_name="", var/terminal_id=0, var/dest_name = "UNKNOWN")
 	if(transaction_amount <= money)

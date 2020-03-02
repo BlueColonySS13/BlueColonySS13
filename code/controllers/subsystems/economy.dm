@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(economy)
 	name = "Economy"
 	init_order = INIT_ORDER_ECONOMY
+	flags = SS_NO_FIRE
 
 /datum/controller/subsystem/economy/Initialize()
 	.=..()
@@ -32,10 +33,12 @@ SUBSYSTEM_DEF(economy)
 	if(head_account.adjust_funds(amount))
 		return TRUE
 
-/datum/controller/subsystem/economy/proc/get_all_dept_names(var/needs_bank = FALSE)
+/datum/controller/subsystem/economy/proc/get_all_dept_names(var/needs_bank = FALSE, var/type)
 	var/list/dept_names = list()
 	for(var/datum/department/D in GLOB.departments)
 		if(needs_bank && !D.has_bank)
+			continue
+		if(type && !(D.dept_type == type))
 			continue
 		dept_names += D.name
 
@@ -64,7 +67,7 @@ SUBSYSTEM_DEF(economy)
 		if(D.dept_type == EXTERNAL_DEPARTMENT)
 			sav_folder = "external_departments"
 
-		var/path = "data/persistent/[sav_folder]/[D.name].sav"
+		var/path = "data/persistent/departments/[sav_folder]/[D.name].sav"
 
 		var/savefile/S = new /savefile(path)
 		if(!fexists(path))
@@ -107,7 +110,7 @@ SUBSYSTEM_DEF(economy)
 			sav_folder = "external_departments"
 
 
-		var/path = "data/persistent/[sav_folder]/[D.name].sav"
+		var/path = "data/persistent/departments/[sav_folder]/[D.name].sav"
 
 		var/savefile/S = new /savefile(path)
 		if(!fexists(path))

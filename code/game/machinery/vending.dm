@@ -75,7 +75,7 @@
 
 	var/auto_price	= FALSE				//	select this if you want vending items to be autopriced based on actual cost so you don't have to use prices var
 
-	var/required_pass = /obj/item/weapon/card/foodstamp	//	if this needs a type of object instead of cash in order to access the items, this is it.
+	var/required_pass	//	if this needs a type of object instead of cash in order to access the items, this is it.
 
 /obj/machinery/vending/examine(mob/user)
 	..()
@@ -84,10 +84,10 @@
 		var/atom/tmp = required_pass
 		var/pass_name = initial(tmp.name)
 
-		to_chat(user, "<b>[src]</b> accepts [pass_name] to vend items.")
+		to_chat(user, "It accepts [pass_name] only as a vending currency.")
 
 	if(vendor_department)
-		to_chat(user, "<b>[src]</b> pays to the [dept_name_by_id(vendor_department)] account.")
+		to_chat(user, "It pays to the [dept_name_by_id(vendor_department)] account.")
 
 	if(charge_free_department)
 		to_chat(user, "It charges from the [dept_name_by_id(charge_free_department)] account for free items.")
@@ -195,7 +195,7 @@
 			paid = pay_with_pass(C)
 			handled = 1
 
-		else if(charge_paid_department || (charge_free_department && !currently_vending.price))
+		else if((charge_paid_department || (charge_free_department && !currently_vending.price)) && !required_pass)
 			paid = TRUE
 			handled = TRUE
 		else if(I) //for IDs and PDAs and wallets with IDs
@@ -320,7 +320,7 @@
 /obj/machinery/vending/proc/pay_with_pass(var/obj/ebt)
 	visible_message("<span class='info'>\The [usr] taps \the [ebt] against \the [src]'s scanner.</span>")
 
-	if(istype(required_pass, /obj/machinery/vending/foodstamp) && istype(ebt, /obj/machinery/vending/foodstamp))
+	if((required_pass == /obj/machinery/vending/foodstamp) && istype(ebt, /obj/machinery/vending/foodstamp))
 		var/obj/item/weapon/card/foodstamp/C = ebt
 		if(C.meals_remaining > 0)
 			C.meals_remaining = C.meals_remaining - 1
@@ -395,10 +395,11 @@
  *  Called after the money has already been taken from the customer.
  */
 /obj/machinery/vending/proc/credit_purchase(var/target as text)
-	var/datum/money_account/vendor_bank = dept_acc_by_id(vendor_department)
-	vendor_bank.money += currently_vending.price
-
-	vendor_bank.add_transaction_log(target, "Purchase of [currently_vending.item_name]", currently_vending.price, name)
+	if(vendor_department)
+		var/datum/money_account/vendor_bank = dept_acc_by_id(vendor_department)
+		if(!vendor_bank)
+			return
+		vendor_bank.add_transaction_log(target, "Purchase of [currently_vending.item_name]", currently_vending.price, name)
 
 /obj/machinery/vending/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -490,6 +491,8 @@
 				playsound(src.loc, 'sound/machines/deniedbeep.ogg', 50, 0)
 				return
 
+
+
 			var/key = text2num(href_list["vend"])
 			var/datum/stored_item/vending_product/R = product_records[key]
 
@@ -497,12 +500,15 @@
 			if(!(R.category & categories))
 				return
 
+			if((istype(usr,/mob/living/silicon)) && R.price) //If the item is not free, provide feedback if a synth is trying to buy something.
+				to_chat(usr, "<span class='danger'>Lawed unit recognized.  Lawed units cannot complete this transaction.  Purchase canceled.</span>")
+				return
+
 			if(charge_paid_department && R.price)
 				adjust_dept_funds(charge_paid_department, -R.price)
 				vend(R, usr)
 
-			if(charge_free_department && !R.price && R.item_default_price)
-				adjust_dept_funds(charge_free_department, -R.price)
+			if(charge_free_department && !R.price && !required_pass)
 				vend(R, usr)
 
 			if(vendor_department)
@@ -511,18 +517,15 @@
 			if(R.price <= 0 && !charge_free_department)
 				vend(R, usr)
 
-			else if(istype(usr,/mob/living/silicon)) //If the item is not free, provide feedback if a synth is trying to buy something.
-				to_chat(usr, "<span class='danger'>Lawed unit recognized.  Lawed units cannot complete this transaction.  Purchase canceled.</span>")
-				return
-			else
-				currently_vending = R
+			currently_vending = R
+			if(vendor_department)
 				var/datum/money_account/M = dept_acc_by_id(vendor_department)
 				if(!M || M.suspended)
 					status_message = "This machine is currently unable to process payments due to issues with the associated account."
 					status_error = 1
-				else
-					status_message = "Please swipe a card or insert cash to pay for the item."
-					status_error = 0
+
+			status_message = "Please swipe a card or insert cash to pay for the item."
+			status_error = 0
 
 		else if(href_list["cancelpurchase"])
 			currently_vending = null
@@ -571,13 +574,24 @@
 		flick(icon_vend,src)
 	playsound(src.loc, "sound/[vending_sound]", 100, 1)
 	spawn(vend_delay)
-		R.get_product(get_turf(src))
+		var/obj/I = R.get_product(get_turf(src))
 		if(has_logs)
 			do_logging(R, user, 1)
 		if(prob(1))
 			sleep(3)
 			if(R.get_product(get_turf(src)))
 				visible_message("<span class='notice'>\The [src] clunks as it vends an additional item.</span>")
+
+		if(charge_free_department && !R.price && I.get_item_cost())
+			adjust_dept_funds(charge_free_department, -I.get_item_cost())
+
+		if(I.post_tax_cost())
+			if(charge_free_department)
+				adjust_dept_funds(charge_free_department, -I.post_tax_cost())
+			else if(charge_paid_department)
+				adjust_dept_funds(charge_free_department, -I.post_tax_cost())
+
+			adjust_dept_funds(HEAD_DEPARTMENT, I.post_tax_cost())
 
 		status_message = ""
 		status_error = 0
@@ -2016,8 +2030,9 @@
 					/obj/item/weapon/storage/mre/menu10 = 5
 					)
 	contraband = list(/obj/item/weapon/storage/mre/menu12 = 5)
-
 	charge_free_department = DEPT_PUBLIC
+
+	required_pass = /obj/item/weapon/card/foodstamp
 
 /obj/machinery/vending/foodstamp/rations/psp
 	name = "Ration Dispenser"
@@ -2039,6 +2054,7 @@
 					/obj/item/weapon/storage/mre/menu10 = 5
 					)
 	contraband = list(/obj/item/weapon/storage/mre/menu12 = 5)
+	charge_free_department = DEPT_PUBLIC
 
 
 //armory vending machines, many guns.

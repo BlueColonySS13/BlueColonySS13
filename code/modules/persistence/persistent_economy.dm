@@ -76,6 +76,8 @@
 	var/carp_control = FALSE			// If this is disabled, council cannot control carp infestations.
 	var/antivirus = FALSE			// Is the President a boomer?
 
+	var/foodstamp_meals = 3
+
 
 /datum/economy/bank_accounts/proc/save_economy()
 //	message_admins("SAVE: Save all department accounts.", 1)

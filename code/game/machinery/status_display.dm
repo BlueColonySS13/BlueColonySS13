@@ -277,6 +277,9 @@
 	maptext_width = 62
 	font_color = "#84ff00"
 
+/obj/machinery/status_display/money_display/examine(mob/user)
+	to_chat(user, "<b>[message1]:</b> [cash2text(linked_department.get_balance(), FALSE, TRUE, TRUE )]")
+
 /obj/machinery/status_display/money_display/initialize()
 	..()
 	link_to_account()
@@ -289,7 +292,7 @@
 /obj/machinery/status_display/money_display/update()
 	update_display(message1, message2)
 	message1 = linked_department.name
-	message2 = cash2text( linked_department.get_balance() )
+	message2 = cash2text( linked_department.get_balance())
 
 /obj/machinery/status_display/money_display/city
 	department = DEPT_COLONY

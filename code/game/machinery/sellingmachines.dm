@@ -130,9 +130,9 @@
 		var/datum/job/has_job = job_master.GetJob(I.rank)
 		department = has_job.department
 
-		var/eligible_departments = SSeconomy.get_all_dept_names(needs_bank = TRUE)
+		var/eligible_department = dept_by_id(department)
 
-		if(!(department in eligible_departments))
+		if(!eligible_department)
 			noID = 1
 		else
 			if(!allow_select_department)

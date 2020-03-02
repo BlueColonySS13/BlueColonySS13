@@ -154,7 +154,7 @@
 				price_list[t_purpose] += t_amount
 
 				playsound(src, 'sound/machines/twobeep.ogg', 25)
-				src.visible_message("\icon[src][transaction_purpose]: [t_amount] credit\s.")
+				src.visible_message("\icon[src][transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("add_menu")
 				if(!Adjacent(usr)) return
@@ -195,7 +195,7 @@
 				transaction_amount += t_amount
 
 				playsound(src, 'sound/machines/twobeep.ogg', 25)
-				src.visible_message("\icon[src] <b>[item_desc]:</b> [transaction_purpose]: [t_amount] credit\s.")
+				src.visible_message("\icon[src] <b>[item_desc]:</b> [transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("set_amount")
 				var/item_name = locate(href_list["item"])
@@ -281,7 +281,7 @@
 		return 1
 	else
 		confirm_item = I
-		src.visible_message("\icon[src]<b>Total price:</b> [transaction_amount] credit\s. Swipe again to confirm.")
+		src.visible_message("\icon[src]<b>Total price:</b> [cash2text( transaction_amount, FALSE, TRUE, TRUE )] credit\s. Swipe again to confirm.")
 		playsound(src, 'sound/machines/twobeep.ogg', 25)
 		return 0
 
@@ -325,10 +325,10 @@
 					linked_account.money += transaction_amount
 
 					// Create log entry in client's account
-					D.add_transaction_log(linked_account.owner_name, transaction_purpose, "([transaction_amount])", machine_id)
+					D.add_transaction_log(linked_account.owner_name, transaction_purpose, "([cash2text( transaction_amount, FALSE, TRUE, TRUE )])", machine_id)
 
 					// Create log entry in owner's account
-					linked_account.add_transaction_log(D.owner_name, transaction_purpose, "([transaction_amount])", machine_id)
+					linked_account.add_transaction_log(D.owner_name, transaction_purpose, "([cash2text( transaction_amount, FALSE, TRUE, TRUE )])", machine_id)
 
 					// Save log
 					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", transaction_amount)
@@ -483,7 +483,7 @@
 		item_name = item_list[i]
 		dat += "<tr><td class=\"tx-name-r\">[item_list[item_name] ? "<a href='?src=\ref[src];choice=subtract;item=\ref[item_name]'>-</a> <a href='?src=\ref[src];choice=set_amount;item=\ref[item_name]'>Set</a> <a href='?src=\ref[src];choice=add;item=\ref[item_name]'>+</a> [item_list[item_name]] x " : ""][item_name][tax ? " ([tax * 100]% tax)" : ""] <a href='?src=\ref[src];choice=clear;item=\ref[item_name]'>Remove</a></td><td class=\"tx-data-r\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
 	dat += "</table><table width=300>"
-	dat += "<tr><td class=\"tx-name-r\"><a href='?src=\ref[src];choice=clear'>Clear Entry</a></td><td class=\"tx-name-r\" style='text-align: right'><b>Total Amount: [transaction_amount] &thorn</b></td></tr>"
+	dat += "<tr><td class=\"tx-name-r\"><a href='?src=\ref[src];choice=clear'>Clear Entry</a></td><td class=\"tx-name-r\" style='text-align: right'><b>Total Amount: [cash2text( transaction_amount, FALSE, TRUE, TRUE )] &thorn</b></td></tr>"
 	dat += "</table></html>"
 	return dat
 
@@ -511,7 +511,7 @@
 	for(var/i=1, i<=item_list.len, i++)
 		item_name = item_list[i]
 		dat += "<tr><td class=\"tx-name\">[item_list[item_name] ? "[item_list[item_name]] x " : ""][item_name][tax ? " ([tax * 100]% tax)" : ""]</td><td class=\"tx-data\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
-	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [transaction_amount] &thorn</b></td></tr>"
+	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [cash2text( transaction_amount, FALSE, TRUE, TRUE )] &thorn</b></td></tr>"
 	dat += "</table></html>"
 
 	transaction_logs += dat
@@ -539,7 +539,7 @@
 	for(var/i=1, i<=item_list.len, i++)
 		item_name = item_list[i]
 		dat += "<tr><td class=\"tx-name\">[item_list[item_name] ? "[item_list[item_name]] x " : ""][item_name][tax ? " ([tax * 100]% tax)" : ""]</td><td class=\"tx-data\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
-	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [transaction_amount] &thorn</b></td></tr>"
+	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [cash2text( transaction_amount, FALSE, TRUE, TRUE )] &thorn</b></td></tr>"
 	dat += "</table></html>"
 
 	return dat

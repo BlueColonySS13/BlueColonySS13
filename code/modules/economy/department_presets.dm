@@ -42,7 +42,7 @@
 	desc = "The police department is funded by this account. Money made from fines are paid into this account."
 
 /datum/department/healthcare
-	name = "Public Healthcare"
+	name = "Healthcare"
 	id = DEPT_HEALTHCARE
 	starting_money = 3000
 	desc = "The hospital and its employees are paid from this account. Any publicly provided medical vendors, medications, treatments and surgeries are income for this department."
@@ -62,23 +62,26 @@
 	id = DEPT_FACTORY
 	desc = "The factory and its employees are paid from this account."
 	starting_money = 500
+	dept_type = PRIVATE_DEPARTMENT
 
 /datum/department/botany
 	name = "Botany Funds"
 	id = DEPT_BOTANY
 	desc = "The factory and its employees are paid from this account."
 	starting_money = 500
+	dept_type = PRIVATE_DEPARTMENT
 
 /datum/department/bar
 	name = "Bar Funds"
 	id = DEPT_BAR
 	desc = "The factory and its employees are paid from this account."
 	starting_money = 500
+	dept_type = PRIVATE_DEPARTMENT
 
 // ## External Presets
 
 /datum/department/solgov
-	name = "United Sol Government"
+	name = "SolGov"
 	id = DEPT_SOLGOV
 	desc = "The official bank account of the United Sol Government"
 	starting_money = 1000000

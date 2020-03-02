@@ -4,7 +4,7 @@
 	persistent_economy.save_economy()
 
 	//saves all political data - TODO: Move this into law subsystem
-	persistent_economy.save_economy()
+	SSeconomy.save_economy()
 
 	//save politics related data
 	SSelections.save_data.save_candidates()

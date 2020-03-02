@@ -9,7 +9,8 @@
 	slot_flags = SLOT_ID | SLOT_EARS
 	var/assignment = null	//can be alt title or the actual job
 	var/mob/registered_user = null
-	var/meals_remaining = "\[UNSET\]"
+	var/authorising_user
+	var/meals_remaining = 3
 	var/age = "\[UNSET\]"
 	var/blood_type = "\[UNSET\]"
 	var/dna_hash = "\[UNSET\]"
@@ -17,6 +18,12 @@
 	var/sex = "\[UNSET\]"
 	var/icon/front
 	var/icon/side
+
+	var/locked = FALSE
+
+/obj/item/weapon/card/foodstamp/initialize()
+	..()
+	meals_remaining = FOODSTAMP_MEALS
 
 /obj/item/weapon/card/foodstamp/proc/update_name()
 	name = "[src.registered_name]'s social service card"
@@ -81,30 +88,30 @@
 	set category = "Object"
 	set src in usr
 
-	usr << "This card was validated by [registered_user]."
+	usr << "This card was validated by [authorising_user]."
 	usr << "This card is registered to [registered_name]."
 	usr << "There are [meals_remaining] remaining meals on the card."
 	return
 
 /obj/item/weapon/card/foodstamp/attack_self(mob/user as mob)
 	// We use the fact that registered_name is not unset should the owner be vaporized, to ensure the id doesn't magically become unlocked.
-	if(!registered_user && register_user(user))
-		to_chat(user, "<span class='notice'>The microscanner marks you as a registered social service provider, preventing others from editing its information.</span>")
-	if(registered_user == user)
-		switch(alert("Would you like edit the card, or show it?","Show or Edit?", "Edit","Show"))
-			if("Edit")
-				ui_interact(user)
-			if("Show")
-				user.visible_message("\The [user] shows you: \icon[src] [src.name].",\
-					"You flash your social service card: \icon[src] [src.name].")
+	if(locked)
+		if(!registered_user && register_user(user))
+			to_chat(user, "<span class='notice'>The microscanner marks you as a registered social service provider, preventing others from editing its information.</span>")
+			show(user)
+		else
+			user.visible_message("\The [user] shows you: \icon[src] [src.name]. It has [meals_remaining] meals remaining.","You flash your social service card: \icon[src] [src.name]. It has [meals_remaining] meals remaining.")
+			show(user)
 	else
-		..()
+		ui_interact(user)
+	..()
 
 /obj/item/weapon/card/foodstamp/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	var/entries[0]
+	entries[++entries.len] = list("name" = "Lock",	"value" = "Lock Card")
 	entries[++entries.len] = list("name" = "Meals Remaining",	"value" = meals_remaining)
-	entries[++entries.len] = list("name" = "Factory Reset",		"value" = "Use With Care")
+	entries[++entries.len] = list("name" = "Factory Reset",	"value" = "Use With Care")
 	data["entries"] = entries
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -140,6 +147,13 @@
 	var/user = usr
 	if(href_list["set"])
 		switch(href_list["set"])
+			if("Lock")
+				var/lock_status = alert(user,"Lock this card? This cannot be undone.", "Yes", "No")
+				if(lock_status == "Yes")
+					user << "<span class='notice'>This card has now been locked.</span>"
+					authorising_user = usr.name
+					locked = TRUE
+
 			if("Meals Remaining")
 				var/new_meals_remaining = input(user,"How many meals would you like to put on this card?","Remaining Meals", meals_remaining) as null|num
 				if(!isnull(new_meals_remaining) && CanUseTopic(user, state))
@@ -149,6 +163,7 @@
 						meals_remaining = new_meals_remaining
 					user << "<span class='notice'>Remaining meals has been set to '[meals_remaining]'.</span>"
 					. = 1
+
 			if("Factory Reset")
 				if(alert("This will factory reset the card, including access and owner. Continue?", "Factory Reset", "No", "Yes") == "Yes" && CanUseTopic(user, state))
 					age = initial(age)

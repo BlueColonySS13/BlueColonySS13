@@ -179,13 +179,13 @@ log transactions
 								dat += "<td>[T.time]</td>"
 								dat += "<td>[T.target_name]</td>"
 								dat += "<td>[T.purpose]</td>"
-								dat += "<td>$[T.amount]</td>"
+								dat += "<td>$[cash2text( T.amount, FALSE, TRUE, TRUE )]</td>"
 								dat += "<td>[T.source_terminal]</td>"
 								dat += "</tr>"
 							dat += "</table>"
 							dat += "<A href='?src=\ref[src];choice=print_transaction'>Print</a><br>"
 						if(TRANSFER_FUNDS)
-							dat += "<b>Account balance:</b> $[authenticated_account.money]<br>"
+							dat += "<b>Account balance:</b> [cash2text( authenticated_account.money, FALSE, TRUE, TRUE )]<br>"
 							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=0'>Back</a><br><br>"
 							dat += "<form name='transfer' action='?src=\ref[src]' method='get'>"
 							dat += "<input type='hidden' name='src' value='\ref[src]'>"
@@ -197,7 +197,7 @@ log transactions
 							dat += "</form>"
 						else
 							dat += "Welcome, <b>[authenticated_account.owner_name].</b><br/>"
-							dat += "<b>Account balance:</b> [authenticated_account.money]CR"
+							dat += "<b>Account balance:</b> [cash2text( authenticated_account.money, FALSE, TRUE, TRUE )]"
 
 							//show expenses
 							if(!isemptylist(authenticated_account.expenses))
@@ -388,7 +388,7 @@ log transactions
 					R.info = "<b>NT Automated Teller Account Statement</b><br><br>"
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
 					R.info += "<i>Account ID:</i> [authenticated_account.account_number]<br>"
-					R.info += "<i>Balance:</i> $[authenticated_account.money]<br>"
+					R.info += "<i>Balance:</i> [cash2text( authenticated_account.money, FALSE, TRUE, TRUE )]<br>"
 					R.info += "<i>Date and time:</i> [stationtime2text()], [current_date_string]<br><br>"
 					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 
@@ -429,7 +429,7 @@ log transactions
 						R.info += "<td>[T.time]</td>"
 						R.info += "<td>[T.target_name]</td>"
 						R.info += "<td>[T.purpose]</td>"
-						R.info += "<td>$[T.amount]</td>"
+						R.info += "<td>[cash2text( T.amount, FALSE, TRUE, TRUE )]</td>"
 						R.info += "<td>[T.source_terminal]</td>"
 						R.info += "</tr>"
 					R.info += "</table>"

@@ -6,6 +6,9 @@
 
 	var/final_num
 
+	if(!isnum(num))
+		num = text2num(num)
+
 	if(using_map.currency_symbol && use_symbol)
 		symbol = using_map.currency_symbol
 
