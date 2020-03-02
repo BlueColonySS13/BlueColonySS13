@@ -28,6 +28,7 @@ var/const/ROBOTICIST			=(1<<8)
 var/const/XENOBIOLOGIST			=(1<<9)
 var/const/MEDICALINTERN			=(1<<10)
 var/const/SCIENCEINTERN			=(1<<11)
+var/const/SCIGUARD				=(1<<12)
 
 var/const/CIVILIAN				=(1<<2)
 
