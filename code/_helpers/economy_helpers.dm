@@ -17,29 +17,42 @@
 		negative = TRUE
 		num = (-1 * (num))
 
+	var/quin = text2num("1000000000000000000")
+
+	var/quad = text2num("1000000000000000")
+	var/quad_end = text2num("999999999999999999")
+
+	var/tril = text2num("1000000000000")
+	var/tril_end = text2num("999999999999999")
+
+	var/bil = text2num("1000000000000")
+	var/bil_end = text2num("999999999999999")
+
+	var/mil = text2num("1000000")
+	var/mil_end = text2num("999999999")
 
 	if(use_desc)
 		switch(num)
 
-			if(1000000000000000000 to INFINITY)
+			if(quin to INFINITY)
 				text_desc = "quin"
-				multiplier = 1000000000000000000
+				multiplier = quin
 
-			if(1000000000000000 to 999999999999999999)
+			if(quad to quad_end)
 				text_desc = "quad"
-				multiplier = 1000000000000000
+				multiplier = quad
 
-			if(1000000000000 to 999999999999999)
+			if(tril to tril_end)
 				text_desc = "tril"
-				multiplier = 1000000000000
+				multiplier = tril
 
-			if(1000000000 to 999999999999)
+			if(bil to bil_end)
 				text_desc = "bil"
-				multiplier = 1000000000
+				multiplier = bil
 
-			if(1000000 to 999999999)
+			if(mil to mil_end)
 				text_desc = "mil"
-				multiplier = 1000000
+				multiplier = mil
 
 	final_num = round(num / multiplier)
 
