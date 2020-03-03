@@ -17,19 +17,19 @@
 		negative = TRUE
 		num = (-1 * (num))
 
-	var/const/quin = 1000000000000000000
+	var/quin = 1000000000000000000
 
-	var/const/quad = 1000000000000000
-	var/const/quad_end = 999999999999999999
+	var/quad = 1000000000000000
+	var/quad_end = 999999999999999999
 
-	var/const/tril = 1000000000000
-	var/const/tril_end = 999999999999999
+	var/tril = 1000000000000
+	var/tril_end = 999999999999999
 
-	var/const/bil = 1000000000000
-	var/const/bil_end = 999999999999999
+	var/bil = 1000000000000
+	var/bil_end = 999999999999999
 
-	var/const/mil = 1000000
-	var/const/mil_end = 999999999
+	var/mil = 1000000
+	var/mil_end = 999999999
 
 	if(use_desc)
 		switch(num)
@@ -61,3 +61,6 @@
 
 
 	return "[symbol][final_num][suffix][text_desc ? " [text_desc]" : ""]"
+	
+
+
