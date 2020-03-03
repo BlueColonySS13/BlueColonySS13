@@ -23,7 +23,7 @@
 				text_desc = "bil"
 				multiplier = 1000000000000
 
-			else if(1000000 to 999999999)
+			if(1000000 to 999999999)
 				text_desc = "mil"
 				multiplier = 1000000
 
