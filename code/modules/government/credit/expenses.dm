@@ -80,17 +80,7 @@
 	E.process_charge(num)
 	bank_account.money -= num
 
-	//create an entry for the charge.
-	var/datum/transaction/T = new()
-	T.target_name = bank_account.owner_name
-	T.purpose = "Debt Payment: [E.name]"
-	T.amount = num
-	T.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-	T.time = stationtime2text()
-	T.source_terminal = "[E.department] Funding Account"
-
-	//add the account
-	bank_account.transaction_log.Add(T)
+	bank_account.add_transaction_log(bank_account.owner_name, "Debt Payment: [E.name]", -num, "[E.department] Funding Account")
 
 	E.do_effect()
 

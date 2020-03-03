@@ -33,7 +33,6 @@
 // Claim machine ID
 /obj/machinery/cash_register/New()
 	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
-	cash_stored = rand(10, 70)*10
 	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 	if(SSeconomy)
 		linked_account = dept_acc_by_id(account_to_connect)
@@ -325,16 +324,16 @@
 					linked_account.money += transaction_amount
 
 					// Create log entry in client's account
-					D.add_transaction_log(linked_account.owner_name, transaction_purpose, "([cash2text( transaction_amount, FALSE, TRUE, TRUE )])", machine_id)
+					D.add_transaction_log(linked_account.owner_name, transaction_purpose, -transaction_amount, machine_id)
 
 					// Create log entry in owner's account
-					linked_account.add_transaction_log(D.owner_name, transaction_purpose, "([cash2text( transaction_amount, FALSE, TRUE, TRUE )])", machine_id)
+					linked_account.add_transaction_log(D.owner_name, transaction_purpose, transaction_amount, machine_id)
 
 					// Save log
-					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", transaction_amount)
+					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", -transaction_amount)
 
 					// Print reciept
-					var/receipt_data = get_receipt(I.registered_name ? I.registered_name : "n/A", "ID Card", transaction_amount)
+					var/receipt_data = get_receipt(I.registered_name ? I.registered_name : "n/A", "ID Card", -transaction_amount)
 
 					var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(loc)
 					P.name = "receipt - card payment #[transaction_logs.len+1]"
@@ -366,15 +365,7 @@
 			linked_account.money += transaction_amount
 
 			// Create log entry in owner's account
-			var/datum/transaction/T = new()
-			T.target_name = E.owner_name
-			T.purpose = transaction_purpose
-			T.amount = "[transaction_amount]"
-			T.source_terminal = machine_id
-			T.date = current_date_string
-			T.time = stationtime2text()
-			T.target_ckey = usr.client.ckey
-			linked_account.transaction_log.Add(T)
+			linked_account.add_transaction_log(E.owner_name, transaction_purpose, transaction_amount, machine_id)
 
 			// Save log
 			add_transaction_log(E.owner_name, "E-Wallet", transaction_amount)
@@ -409,7 +400,7 @@
 		cash_stored += transaction_amount
 
 		// Save log
-		add_transaction_log("N/A", "Cash", transaction_amount, usr.client.ckey)
+		add_transaction_log("N/A", "Cash", -transaction_amount, usr.client.ckey)
 
 		// Print reciept
 		var/receipt_data = get_receipt("N/A", "Cash", transaction_amount, usr.client.ckey)

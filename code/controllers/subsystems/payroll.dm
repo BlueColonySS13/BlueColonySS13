@@ -71,16 +71,8 @@ SUBSYSTEM_DEF(payroll)
 	if(bank_account.suspended)
 //		message_admins("ERROR: Bank account [bank_number] is suspended.", 1)
 		// If there's no money in the department account, tough luck. Not getting paid.
-		var/datum/transaction/N = new()
-		N.target_name = bank_account.owner_name
-		N.purpose = "[department] Payroll: Failed (Payment Bounced Due to Suspension)"
-		N.amount = 0
-		N.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-		N.time = stationtime2text()
-		N.source_terminal = "[department] Funding Account"
+		bank_account.add_transaction_log("Payroll Machine", "[department] Payroll: Failed (Payment Bounced Due to Suspension)", 0, "[department] Funding Account")
 
-		//add the account
-		bank_account.transaction_log.Add(N)
 		return
 
 	if((!class) || (!(class in ECONOMIC_CLASS)) )

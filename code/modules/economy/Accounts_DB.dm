@@ -12,7 +12,7 @@
 	var/obj/item/weapon/card/id/held_card
 	var/datum/money_account/detailed_account_view
 	var/creating_new_account = 0
-	var/const/fund_cap = 1000000
+//	var/const/fund_cap = 1000000
 
 	proc/get_access_level()
 		if (!held_card)
@@ -23,14 +23,7 @@
 			return 1
 
 	proc/create_transation(target, reason, amount)
-		var/datum/transaction/T = new()
-		T.target_name = target
-		T.purpose = reason
-		T.amount = amount
-		T.date = current_date_string
-		T.time = stationtime2text()
-		T.source_terminal = machine_id
-		return T
+		return create_transaction_log(target, reason, amount, machine_id)
 
 	proc/accounting_letterhead(report_name)
 		return {"
@@ -213,7 +206,7 @@
 					text = {"
 						[accounting_letterhead(title)]
 						<u>Holder:</u> [detailed_account_view.owner_name]<br>
-						<u>Balance:</u> $[detailed_account_view.money]<br>
+						<u>Balance:</u> [cash2text( detailed_account_view.money, FALSE, TRUE, TRUE )]<br>
 						<u>Status:</u> [detailed_account_view.suspended ? "Suspended" : "Active"]<br>
 						<u>Transactions:</u> ([detailed_account_view.transaction_log.len])<br>
 						<table>
@@ -235,7 +228,7 @@
 										<td>[T.date] [T.time]</td>
 										<td>[T.target_name]</td>
 										<td>[T.purpose]</td>
-										<td>[T.amount]</td>
+										<td>[cash2text(T.amount, FALSE, TRUE, TRUE )]</td>
 										<td>[T.source_terminal]</td>
 									</tr>
 							"}
@@ -268,7 +261,7 @@
 								<tr>
 									<td>#[D.account_number]</td>
 									<td>[D.owner_name]</td>
-									<td>$[D.money]</td>
+									<td>[cash2text( D.money, FALSE, TRUE, TRUE )]</td>
 									<td>[D.suspended ? "Suspended" : "Active"]</td>
 								</tr>
 						"}

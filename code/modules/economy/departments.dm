@@ -137,5 +137,8 @@
 		terminal = "Department Funds Transfer"
 
 	if(charge_to_account(acc_no, name, purpose, terminal, amount))
-		bank_account.money += amount
+		if(0 > amount)
+			bank_account.money += amount
+		else
+			bank_account.money -= amount
 		return TRUE

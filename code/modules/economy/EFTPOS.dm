@@ -134,14 +134,8 @@
 						linked_account.money += transaction_amount
 
 						//create entry in the EFTPOS linked account transaction log
-						var/datum/transaction/T = new()
-						T.target_name = E.owner_name //D.owner_name
-						T.purpose = (transaction_purpose ? transaction_purpose : "None supplied.")
-						T.amount = transaction_amount
-						T.source_terminal = machine_id
-						T.date = current_date_string
-						T.time = stationtime2text()
-						linked_account.transaction_log.Add(T)
+						// Create log entry in owner's account
+						linked_account.add_transaction_log(E.owner_name, (transaction_purpose ? transaction_purpose : "None supplied."), transaction_amount, machine_id)
 					else
 						usr << "\icon[src]<span class='warning'>\The [O] doesn't have that much money!</span>"
 			else
@@ -257,7 +251,7 @@
 								//create entries in the two account transaction logs
 
 								// Create log entry in client's account
-								D.add_transaction_log(linked_account.owner_name, transaction_purpose, "([transaction_amount])", machine_id)
+								D.add_transaction_log(linked_account.owner_name, transaction_purpose, -transaction_amount, machine_id)
 
 								// Create log entry in owner's account
 								linked_account.add_transaction_log(D.owner_name, transaction_purpose, "([transaction_amount])", machine_id)

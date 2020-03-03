@@ -11,15 +11,7 @@
 		if(!D.suspended)
 			D.money += winner_sum
 
-			var/datum/transaction/T = new()
-			T.target_name = "The [using_map.starsys_name] Times Grand Slam -Stellar- Lottery"
-			T.purpose = "Winner!"
-			T.amount = winner_sum
-			T.date = current_date_string
-			T.time = stationtime2text()
-			T.source_terminal = "Sif TCD Terminal #[rand(111,333)]"
-			D.transaction_log.Add(T)
-
+			D.add_transaction_log("The [using_map.starsys_name] Times Grand Slam -Stellar- Lottery", "Winner!", winner_sum, "Vetra TCD Terminal #[rand(111,333)]")
 			deposit_success = 1
 
 /datum/event/money_lotto/announce()

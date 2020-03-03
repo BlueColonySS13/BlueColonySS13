@@ -42,21 +42,16 @@
 	M.fingerprint = fingerprint
 
 	//create an entry in the account transaction log for when it was created
-	var/datum/transaction/T = new()
-	T.target_name = new_owner_name
-	T.purpose = "Account creation"
-	T.amount = starting_funds
+
+
+	var/source_terminal
+
 	if(!source_db)
-		//set a random date, time and location some time over the past few decades
-		T.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-		T.time = stationtime2text()
-		T.source_terminal = "NTGalaxyNet Terminal #[rand(111,1111)]"
+		source_terminal = "NTGalaxyNet Terminal #[rand(111,1111)]"
 
 		M.account_number = md5("[station_name()][current_date_string]")
 	else
-		T.date = current_date_string
-		T.time = stationtime2text()
-		T.source_terminal = source_db.machine_id
+		source_terminal = source_db.machine_id
 
 		M.account_number = GLOB.next_account_number
 		GLOB.next_account_number += rand(1,25)
@@ -86,7 +81,7 @@
 		R.stamps += "<HR><i>This paper has been stamped by the Accounts Database.</i>"
 
 	//add the account
-	M.transaction_log.Add(T)
+	M.add_transaction_log(new_owner_name, "Account creation", starting_funds, source_terminal)
 	GLOB.all_money_accounts.Add(M)
 
 	return M
@@ -98,7 +93,7 @@
 			D.money += amount
 			//create a transaction log entry
 
-			D.add_transaction_log(source_name, purpose, amount, terminal_id)
+			D.add_transaction_log(source_name, purpose, -amount, terminal_id)
 			return 1
 
 
@@ -128,31 +123,20 @@
 		if(D.account_number == account_number)
 			return D
 
-/proc/create_transaction_log(name, purpose, amount, terminal_id, date, time)
+/proc/create_transaction_log(name, purpose, amount = 0, terminal_id = "Terminal #[rand(111,999)]", date = GLOB.current_date_string, time = stationtime2text())
 	var/datum/transaction/T = new()
 
 	T.target_name = name
 	T.purpose = purpose
 
-	if(amount < 0)
-		T.amount = "(-[amount])"
-	else
-		T.amount = "[amount]"
+	if(!isnum(amount))
+		amount = text2num(amount)
 
-	if(date)
-		T.date = date
-	else
-		T.date = current_date_string
+	T.amount = cash2text( amount, FALSE, TRUE, TRUE )
 
-	if(time)
-		T.time = time
-	else
-		T.time = stationtime2text()
-
-	if(terminal_id)
-		T.source_terminal = terminal_id
-	else
-		T.source_terminal = "Terminal #[rand(111,999)]"
+	T.date = date
+	T.time = time
+	T.source_terminal = terminal_id
 
 	return T
 

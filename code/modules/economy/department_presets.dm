@@ -29,7 +29,7 @@
 	desc = "The maintenance department is paid from this budget. Any city works fees are also paid into this account."
 
 /datum/department/research
-	name = "Research and Science"
+	name = "Research"
 	id = DEPT_RESEARCH
 	starting_money = 2000
 

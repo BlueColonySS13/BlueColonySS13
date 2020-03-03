@@ -190,30 +190,8 @@
 	var/transaction_amount = total()
 	if(transaction_amount <= D.money)
 
-		//transfer the money
-		D.money -= transaction_amount
-		vendor_account.money += transaction_amount
-		//Transaction logs
-		var/datum/transaction/T = new()
-		T.target_name = "[vendor_account.owner_name] (via [src.name])"
-		T.purpose = "Purchase of Laptop"
-		if(transaction_amount > 0)
-			T.amount = "([transaction_amount])"
-		else
-			T.amount = "[transaction_amount]"
-		T.source_terminal = src.name
-		T.date = current_date_string
-		T.time = stationtime2text()
-		D.transaction_log.Add(T)
-		//
-		T = new()
-		T.target_name = D.owner_name
-		T.purpose = "Purchase of Laptop"
-		T.amount = "[transaction_amount]"
-		T.source_terminal = src.name
-		T.date = current_date_string
-		T.time = stationtime2text()
-		vendor_account.transaction_log.Add(T)
+		var/datum/department/researchdept = dept_acc_by_id(DEPT_RESEARCH)
+		researchdept.process_money(D, -transaction_amount, "Purchase of Laptop")
 
 		newlap = new /obj/machinery/computer3/laptop/vended(src.loc)
 
@@ -339,30 +317,8 @@
 /obj/machinery/lapvend/proc/transfer_and_reimburse(var/datum/money_account/D)
 	var/transaction_amount = total()
 	//transfer the money
-	D.money += transaction_amount
-	vendor_account.money -= transaction_amount
-
-	//Transaction logs
-	var/datum/transaction/T = new()
-	T.target_name = "[vendor_account.owner_name] (via [src.name])"
-	T.purpose = "Return purchase of Laptop"
-	if(transaction_amount > 0)
-		T.amount = "([transaction_amount])"
-	else
-		T.amount = "[transaction_amount]"
-	T.source_terminal = src.name
-	T.date = current_date_string
-	T.time = stationtime2text()
-	D.transaction_log.Add(T)
-	//
-	T = new()
-	T.target_name = D.owner_name
-	T.purpose = "Return purchase of Laptop"
-	T.amount = "[transaction_amount]"
-	T.source_terminal = src.name
-	T.date = current_date_string
-	T.time = stationtime2text()
-	vendor_account.transaction_log.Add(T)
+	var/datum/department/researchdept = dept_acc_by_id(DEPT_RESEARCH)
+	researchdept.process_money(D, transaction_amount, "Return purchase of Laptop")
 
 	qdel(relap)
 	vendmode = 0

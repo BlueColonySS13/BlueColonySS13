@@ -300,13 +300,13 @@
 					linked_account.money += transaction_amount
 
 					// Create log entry in client's account
-					D.add_transaction_log(linked_account.owner_name, transaction_purpose, "([cash2text( transaction_amount, FALSE, TRUE, TRUE )])", machine_id)
+					D.add_transaction_log(linked_account.owner_name, transaction_purpose, -transaction_amount, machine_id)
 
 					// Create log entry in owner's account
-					linked_account.add_transaction_log(D.owner_name, transaction_purpose, "([cash2text( transaction_amount, FALSE, TRUE, TRUE )])", machine_id)
+					linked_account.add_transaction_log(D.owner_name, transaction_purpose, transaction_amount, machine_id)
 
 					// Save log
-					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", transaction_amount)
+					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", -transaction_amount)
 
 					// Print reciept
 					var/receipt_data = get_receipt(I.registered_name ? I.registered_name : "n/A", "ID Card", transaction_amount)
@@ -336,17 +336,8 @@
 			E.worth -= transaction_amount
 			linked_account.money += transaction_amount
 
-			// Create log entry in owner's account
-			var/datum/transaction/T = new()
-			T.target_name = E.owner_name
-			T.purpose = transaction_purpose
-			T.amount = "[cash2text( transaction_amount, FALSE, TRUE, TRUE )]"
-			T.source_terminal = machine_id
-			T.date = current_date_string
-			T.time = stationtime2text()
-			linked_account.transaction_log.Add(T)
-
 			// Save log
+			linked_account.add_transaction_log(E.owner_name, (transaction_purpose ? transaction_purpose : "None supplied."), -transaction_amount, machine_id)
 			add_transaction_log(E.owner_name, "E-Wallet", transaction_amount)
 
 			// Print reciept

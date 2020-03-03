@@ -20,3 +20,5 @@ GLOBAL_LIST_EMPTY(external_department_accounts)
 GLOBAL_VAR_INIT(num_financial_terminals, 1)
 GLOBAL_VAR_INIT(next_account_number, 0)
 GLOBAL_VAR_INIT(economy_init, 0)
+
+GLOBAL_VAR_INIT(current_date_string, "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]")

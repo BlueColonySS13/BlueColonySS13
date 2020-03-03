@@ -273,6 +273,7 @@
 	var/department = "public"
 	var/datum/department/linked_department
 	icon = 'icons/obj/status_display_wide.dmi'
+	icon_state = "frame_gold"
 	maptext_height = 26
 	maptext_width = 62
 	font_color = "#84ff00"

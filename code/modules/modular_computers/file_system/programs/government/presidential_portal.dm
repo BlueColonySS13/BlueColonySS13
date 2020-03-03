@@ -421,12 +421,13 @@
 
 	if(href_list["manage_transfer"])
 		. = 1
-		var/datum/money_account/A = locate(href_list["transfer_funds"]) in GLOB.public_department_accounts
+		var/datum/money_account/department/A = locate(href_list["transfer_funds"]) in GLOB.public_department_accounts
 
 		if(!A)
 			return
 
 		var/list/dept_acc_names = list()
+		var/datum/department/our_department = A.department
 		var/datum/department/target_department
 
 		for(var/datum/department/D in GLOB.public_departments)
@@ -462,8 +463,8 @@
 			error_msg = "Not enough funds in [A.owner_name] to transfer to [category]."
 			return
 
-		charge_to_account(A.account_number, "Government Funds Transfer System", "Presidential Portal Transfer", "President Transfer", -amount)
-		charge_to_account(account_recieving.account_number, "Government Funds Transfer System", "Presidential Portal Transfer", "President Transfer", amount)
+		our_department.direct_charge_money(account_recieving.account_number, "Government Funds Transfer System", amount, "Presidential Portal Transfer")
+		A.add_transaction_log("Government Funds Transfer System", "Transferral of Funds to [target_department.name]", -amount, "Presidential Portal Transfer")
 
 		index = 8
 
