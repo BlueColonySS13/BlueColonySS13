@@ -354,7 +354,7 @@ log transactions
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
 					R.info += "<i>Account ID:</i> [authenticated_account.account_number]<br>"
 					R.info += "<i>Balance:</i> [cash2text( authenticated_account.money, FALSE, TRUE, TRUE )]<br>"
-					R.info += "<i>Date and time:</i> [stationtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
 					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 
 					//stamp the paper
@@ -377,7 +377,7 @@ log transactions
 					R.info = "<b>Transaction logs</b><br>"
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
 					R.info += "<i>Account ID:</i> [authenticated_account.account_number]<br>"
-					R.info += "<i>Date and time:</i> [stationtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
 					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 					R.info += "<table border=1 style='width:100%'>"
 					R.info += "<tr>"

@@ -129,16 +129,19 @@
 		return TRUE
 
 /datum/department/proc/direct_charge_money(acc_no, name, amount, purpose, terminal)
-// same as above, no transaction logs to department however - only recipient. does not check security access. more for things like payroll
+// same as above, you're charging an external bank acc for money here.
 	if(!bank_account)
+		return FALSE
+
+	var/datum/money_account/other_bank = get_account(acc_no)
+
+	if(!other_bank)
 		return FALSE
 
 	if(!terminal)
 		terminal = "Department Funds Transfer"
 
-	if(charge_to_account(acc_no, name, purpose, terminal, amount))
-		if(0 > amount)
-			bank_account.money += amount
-		else
-			bank_account.money -= amount
+	if(bank_account.charge(amount, other_bank, purpose, terminal))
 		return TRUE
+
+	return TRUE

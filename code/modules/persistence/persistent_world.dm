@@ -20,6 +20,16 @@
 
 	//saves all characters
 	for (var/mob/living/carbon/human/H in mob_list) //only humans, we don't really save AIs or robots.
+
+		if(H.mind)
+			// collects all the money on your person and puts it in your bank account for you. You're welcome.
+			var/money_on_person = 0
+			for(var/obj/item/weapon/spacecash/C in H.get_contents())
+				money_on_person += C.worth
+				qdel(C)
+
+			H.mind.initial_account.money += money_on_person
+
 		handle_jail(H)	// make sure the pesky criminals get what's coming to them.
 		H.save_mob_to_prefs()
 

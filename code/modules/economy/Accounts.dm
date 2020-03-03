@@ -49,7 +49,7 @@
 	if(!source_db)
 		source_terminal = "NTGalaxyNet Terminal #[rand(111,1111)]"
 
-		M.account_number = md5("[station_name()][current_date_string]")
+		M.account_number = md5("[station_name()][GLOB.current_date_string]")
 	else
 		source_terminal = source_db.machine_id
 

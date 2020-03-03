@@ -1,9 +1,9 @@
 
 /mob/living/carbon/human/proc/save_character_money()
-
-	mind.initial_account.money = Clamp(mind.initial_account.money, -999999, 999999)
-
-
+	if(!mind)
+		return 0
+// no need for limiting any more!
+//	mind.initial_account.money = Clamp(mind.initial_account.money, -999999, 999999)
 	mind.prefs.expenses = mind.initial_account.expenses
 
 	mind.prefs.money_balance = mind.initial_account.money
@@ -12,6 +12,7 @@
 	mind.initial_account.save_persistent_account()
 
 	return 1
+
 
 /datum/money_account/proc/save_persistent_account()
 	var/full_path = "data/persistent/banks/[account_number].sav"
@@ -43,7 +44,7 @@
 	make_new_persistent_account(owner_name, money, remote_access_pin, expenses, transaction_log, suspended, security_level)
 
 /proc/make_new_persistent_account(var/owner, var/money, var/pin, var/expenses, var/transaction_logs, var/suspend, var/security_level, trans_max)
-	var/acc_no = md5("[owner][current_date_string]")
+	var/acc_no = md5("[owner][GLOB.current_date_string]")
 	var/full_path = "data/persistent/banks/[acc_no].sav"
 	if(!full_path)			return 0
 	if(fexists(full_path)) return 0

@@ -494,6 +494,18 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/decorative.dmi'
 	icon_base = "tiles1"
 
+/decl/flooring/bluegeo
+	icon = 'icons/turf/flooring/decorative.dmi'
+	icon_base = "tiled4"
+
+/decl/flooring/bluegeo_light
+	icon = 'icons/turf/flooring/decorative.dmi'
+	icon_base = "tiles2"
+
+/decl/flooring/bluegeo_contrast
+	icon = 'icons/turf/flooring/decorative.dmi'
+	icon_base = "tiled5"
+
 /decl/flooring/discoedge
 	icon = 'icons/turf/flooring/decorative.dmi'
 	icon_base = "outertile"
@@ -502,4 +514,6 @@ var/list/flooring_types
 	icon = 'icons/turf/ramps.dmi'
 	icon_base = "ramptop"
 
-
+/decl/flooring/padded
+	icon = 'icons/turf/flooring/decorative.dmi'
+	icon_base = "padded"

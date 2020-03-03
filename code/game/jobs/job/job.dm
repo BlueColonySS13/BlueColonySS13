@@ -101,6 +101,9 @@
 	if(H.mind.prefs.expenses)
 		H.mind.prefs.expenses = M.expenses
 
+	if(get_persistent_acc_logs(M.account_number))
+		M.transaction_log = get_persistent_acc_logs(M.account_number)
+
 	if(!H.mind.prefs.played)
 		M.money += income
 
@@ -109,10 +112,6 @@
 		remembered_info += "<b>Your account ID is:</b> #[M.account_number]<br>"
 		remembered_info += "<b>Your account pin is:</b> [M.remote_access_pin]<br>"
 		remembered_info += "<b>Your account funds are:</b> $[M.money]<br>"
-		if(!already_joined)
-			if(M.transaction_log.len)
-				var/datum/transaction/T = M.transaction_log[1]
-				remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
 		H.mind.store_memory(remembered_info)
 
 		H.mind.initial_account = M

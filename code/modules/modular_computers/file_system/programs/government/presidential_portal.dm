@@ -427,7 +427,6 @@
 			return
 
 		var/list/dept_acc_names = list()
-		var/datum/department/our_department = A.department
 		var/datum/department/target_department
 
 		for(var/datum/department/D in GLOB.public_departments)
@@ -463,8 +462,7 @@
 			error_msg = "Not enough funds in [A.owner_name] to transfer to [category]."
 			return
 
-		our_department.direct_charge_money(account_recieving.account_number, "Government Funds Transfer System", amount, "Presidential Portal Transfer")
-		A.add_transaction_log("Government Funds Transfer System", "Transferral of Funds to [target_department.name]", -amount, "Presidential Portal Transfer")
+		A.charge(amount, account_recieving, "Presidential Portal Transfer from [A.owner_name]")
 
 		index = 8
 

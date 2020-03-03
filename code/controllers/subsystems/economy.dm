@@ -12,6 +12,8 @@ SUBSYSTEM_DEF(economy)
 	for(var/instance in subtypesof(/datum/department))
 		new instance
 
+	GLOB.current_date_string = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
+
 /datum/controller/subsystem/economy/proc/link_economy_accounts()
 	for(var/obj/item/device/retail_scanner/RS in GLOB.transaction_devices)
 		if(RS.account_to_connect)
@@ -44,8 +46,23 @@ SUBSYSTEM_DEF(economy)
 
 	return dept_names
 
+/datum/controller/subsystem/economy/proc/collect_all_earnings()
+	// collects money from all cash registers and puts 'em in their relavent accounts
+	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
+		if(CR.linked_account)
+			CR.linked_account.money += CR.cash_stored
+			CR.cash_stored = 0
+
+
+/datum/controller/subsystem/economy/proc/prepare_economy_save()
+	// put anything here that you want to run just before saving happens.
+	collect_all_earnings()
+
+	return TRUE
 
 /datum/controller/subsystem/economy/proc/save_economy()
+	prepare_economy_save()
+
 	if(isemptylist(GLOB.department_accounts))
 		message_admins("Economy Subsystem error: No department accounts found. Unable to save.", 1)
 		return FALSE

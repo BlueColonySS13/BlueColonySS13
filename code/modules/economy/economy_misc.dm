@@ -1,19 +1,26 @@
-var/global/current_date_string
 var/global/datum/economy/bank_accounts/persistent_economy = new()
 
-/datum/money_account/proc/charge(var/transaction_amount,var/datum/money_account/dest,var/transaction_purpose, var/terminal_name="", var/terminal_id=0, var/dest_name = "UNKNOWN")
+/datum/money_account/proc/charge(var/transaction_amount, var/datum/money_account/dest, var/purpose, var/terminal="")
 	if(transaction_amount <= money)
 		//transfer the money
-		money -= transaction_amount
-		if(dest)
-			dest.money += transaction_amount
 
-		//create entries in the two account transaction logs
+		if(0 > transaction_amount)
+			// if negative, takes money to this account and adds money from the other.
+			money += transaction_amount
+			add_transaction_log(owner_name, purpose, transaction_amount, terminal)
 
-		if(dest)
-			dest.add_transaction_log(owner_name, transaction_purpose, transaction_amount, terminal_name)
+			if(dest)
+				dest.money -= transaction_amount
+				dest.add_transaction_log(owner_name, purpose, -transaction_amount, terminal)
 
-		add_transaction_log(owner_name, transaction_purpose, transaction_amount, terminal_name)
+		else
+			// if positive, adds money to this account and subtracts money from the other.
+			money -= transaction_amount
+			add_transaction_log(owner_name, purpose, -transaction_amount, terminal)
+
+			if(dest)
+				dest.money += transaction_amount
+				dest.add_transaction_log(owner_name, purpose, transaction_amount, terminal)
 
 		return 1
 	else
