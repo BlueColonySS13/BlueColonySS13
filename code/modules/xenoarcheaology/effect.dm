@@ -122,11 +122,16 @@
 
 	var/protected = 0
 
-	//anomaly suits give best protection, but excavation suits are almost as good
+	//absolute exclusion harnesses provide complete protection, anomaly suits give great protection, and excavation suits are almost as good
 	if(istype(H.back,/obj/item/weapon/rig/hazmat))
 		var/obj/item/weapon/rig/hazmat/rig = H.back
 		if(rig.suit_is_deployed() && !rig.offline)
 			protected += 1
+
+	if(istype(H.wear_suit,/obj/item/clothing/suit/anomaly))
+		protected += 0.7
+	if(istype(H.wear_suit,/obj/item/clothing/head/anomaly))
+		protected += 0.4
 
 	if(istype(H.wear_suit,/obj/item/clothing/suit/bio_suit/anomaly))
 		protected += 0.6
@@ -138,7 +143,10 @@
 	else if(istype(H.head,/obj/item/clothing/head/helmet/space/anomaly))
 		protected += 0.2
 
-	//latex gloves and science goggles also give a bit of bonus protection
+	//latex gloves, xenoarch jumpsuits, and science goggles also give a bit of bonus protection
+	if(istype(H.w_uniform,/obj/item/clothing/under/rank/xenoarchaeologist))
+		protected += 0.1
+
 	if(istype(H.gloves,/obj/item/clothing/gloves/sterile))
 		protected += 0.1
 
