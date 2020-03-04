@@ -287,7 +287,7 @@
 	path = /obj/item/clothing/under/dress/dress_fire
 
 /datum/gear/uniform/uniform_captain
-	display_name = "uniform, colony director's dress"
+	display_name = "uniform, mayor's dress"
 	path = /obj/item/clothing/under/dress/dress_cap
 	allowed_roles = list("Mayor")
 
