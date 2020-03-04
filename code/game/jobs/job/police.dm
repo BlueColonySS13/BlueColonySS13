@@ -3,7 +3,7 @@
 	email_domain = "secure.plux.gov.nt"
 	flag = HOS
 	faction = "City"
-	department = "City Council"
+	department = DEPT_COUNCIL
 	department_flag = ENGSEC
 	head_position = 1
 	total_positions = 1
@@ -35,7 +35,7 @@
 	email_domain = "secure.plux.gov.nt"
 	flag = WARDEN
 	faction = "City"
-	department = "Police"
+	department = DEPT_POLICE
 	department_flag = ENGSEC
 	total_positions = 1
 	spawn_positions = 1
@@ -61,7 +61,7 @@
 	email_domain = "secure.plux.gov.nt"
 	flag = DETECTIVE
 	faction = "City"
-	department = "Police"
+	department = DEPT_POLICE
 	department_flag = ENGSEC
 	total_positions = 2
 	spawn_positions = 2
@@ -87,7 +87,7 @@
 	email_domain = "secure.plux.gov.nt"
 	flag = OFFICER
 	faction = "City"
-	department = "Police"
+	department = DEPT_POLICE
 	department_flag = ENGSEC
 	total_positions = 8
 	spawn_positions = 8
@@ -113,7 +113,7 @@
 	email_domain = "prosecute.nt"
 	flag = PROSECUTOR
 	faction = "City"
-	department = "Police"
+	department = DEPT_LEGAL
 	department_flag = ENGSEC
 	total_positions = 2
 	spawn_positions = 2
@@ -140,7 +140,7 @@
 	title = "City Hall Guard"
 	email_domain = "secure.plux.gov.nt"
 	flag = BRIDGE
-	department = "Police"
+	department = DEPT_COUNCIL
 	department_flag = ENGSEC
 	faction = "City"
 	total_positions = 2

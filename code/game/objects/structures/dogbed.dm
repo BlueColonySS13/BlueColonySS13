@@ -8,3 +8,9 @@
 	buckle_lying = 1
 	burn_state = 0 //Burnable
 	burntime = SHORT_BURN
+
+/obj/structure/dogbed/initialize()
+	..()
+	// if you map an animal on top of a dog bed, it should stay here and stop dirtying the office.
+	for(var/M in get_turf(src))
+		buckle_mob(M)

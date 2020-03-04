@@ -1,66 +1,3 @@
-/hook/startup/proc/start_laws()
-	instantiate_laws()
-
-	return 1
-
-/proc/instantiate_laws()
-	//This proc loads all laws, if they don't exist already.
-
-	for(var/instance in subtypesof(/datum/law) - list(/datum/law/misdemeanor, /datum/law/major, /datum/law/criminal, /datum/law/capital))
-		var/datum/law/I = new instance
-		presidential_laws += I
-
-	for(var/datum/law/misdemeanor/M in presidential_laws)
-		misdemeanor_laws += M
-
-	for(var/datum/law/criminal/C in presidential_laws)
-		criminal_laws += C
-
-	for(var/datum/law/major/P in presidential_laws)
-		major_laws += P
-
-	for(var/datum/law/capital/K in presidential_laws)
-		capital_laws += K
-
-	rebuild_law_ids()
-
-
-/proc/rebuild_law_ids() //rebuilds entire law list IDs.
-
-	var/n //misdemeanor number
-	var/d //criminal number
-	var/o //major number
-	var/x //capital number
-
-	for(var/datum/law/misdemeanor/M in presidential_laws)
-		n += 1
-		if(n < 10)
-			M.id = "i[M.prefix]0[n]"
-		else
-			M.id = "i[M.prefix][n]"
-
-
-	for(var/datum/law/criminal/C in presidential_laws)
-		d += 1
-		if(d < 10)
-			C.id = "i[C.prefix]0[d]"
-		else
-			C.id = "i[C.prefix][d]"
-
-	for(var/datum/law/major/P in presidential_laws)
-		o += 1
-		if(o < 10)
-			P.id = "i[P.prefix]0[o]"
-		else
-			P.id = "i[P.prefix][o]"
-
-	for(var/datum/law/capital/K in presidential_laws)
-		x += 1
-		if(x < 10)
-			K.id = "i[K.prefix]0[x]"
-		else
-			K.id = "i[K.prefix][x]"
-
 /proc/get_law_names()
 	var/list/law_list = list()
 
@@ -103,7 +40,7 @@
 
 		dat += "<td width='35%' align='center'>[L.description]</td>"
 
-		dat += "<td width='5%'  align='center'>[L.fine]</td>"
+		dat += "<td width='5%'  align='center'>[cash2text( L.fine, FALSE, TRUE, TRUE )]</td>"
 		dat += "<td width='5%'  align='center'>[L.cell_time]</td>"
 		dat += "<td width='35%'  align='center'>[L.notes]</td>"
 
@@ -134,7 +71,7 @@
 
 		dat += "<td width='35%' align='center'>[C.description]</td>"
 
-		dat += "<td width='5%'  align='center'>[C.fine]</td>"
+		dat += "<td width='5%'  align='center'>[cash2text( C.fine, FALSE, TRUE, TRUE )]</td>"
 		dat += "<td width='5%'  align='center'>[C.cell_time]</td>"
 		dat += "<td width='35%'  align='center'>[C.notes]</td>"
 
@@ -164,7 +101,7 @@
 
 		dat += "<td width='35%' align='center'>[M.description]</td>"
 
-		dat += "<td width='5%'  align='center'>[M.fine]</td>"
+		dat += "<td width='5%'  align='center'>[cash2text( M.fine, FALSE, TRUE, TRUE )]</td>"
 		dat += "<td width='5%'  align='center'>[M.cell_time]</td>"
 		dat += "<td width='35%'  align='center'>[M.notes]</td>"
 
@@ -237,11 +174,11 @@
 		dat += "<b>Krokodil:</b> [persistent_economy.law_KROKODIL]<br>"
 
 		dat += "<br>"
-    
-		dat += "<b>Guns:</b> [persistent_economy.law_GUNS]<br>"	
-		dat += "<b>Small Knives:</b> [persistent_economy.law_SMALLKNIVES]<br>"	
-		dat += "<b>Large Knives:</b> [persistent_economy.law_LARGEKNIVES]<br>"	
-		dat += "<b>Explosives and High-Detonating Devices:</b> [persistent_economy.law_EXPLOSIVES]<br>"	
+
+		dat += "<b>Guns:</b> [persistent_economy.law_GUNS]<br>"
+		dat += "<b>Small Knives:</b> [persistent_economy.law_SMALLKNIVES]<br>"
+		dat += "<b>Large Knives:</b> [persistent_economy.law_LARGEKNIVES]<br>"
+		dat += "<b>Explosives and High-Detonating Devices:</b> [persistent_economy.law_EXPLOSIVES]<br>"
 
 	dat += "</body></html>"
 

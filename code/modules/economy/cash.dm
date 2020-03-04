@@ -41,7 +41,7 @@
 			h_user.drop_from_inventory(src)
 			h_user.drop_from_inventory(bundle)
 			h_user.put_in_hands(bundle)
-		user << "<span class='notice'>You add [src.worth] credits worth of money to the bundles.<br>It holds [bundle.worth] credits now.</span>"
+		user << "<span class='notice'>You add [cash2text( worth, FALSE, TRUE, TRUE )] credits worth of money to the bundles.<br>It holds [cash2text( bundle.worth, FALSE, TRUE, TRUE )] credits now.</span>"
 		qdel(src)
 
 /obj/item/weapon/spacecash/bundle
@@ -76,7 +76,7 @@
 
 	add_overlay(ovr)
 	compile_overlays()	// The delay looks weird, so we force an update immediately.
-	src.desc = "They are worth [worth] credits."
+	src.desc = "They are worth [cash2text( worth, FALSE, TRUE, TRUE )] credits."
 
 /obj/item/weapon/spacecash/bundle/attack_self(mob/user as mob)
 	var/amount = input(user, "How many credits do you want to take? (0 to [src.worth])", "Take Money", 20) as num
@@ -144,7 +144,7 @@
 	icon_state = "50"
 	desc = "It's worth 50 credits."
 	worth = 50
-	
+
 /obj/item/weapon/spacecash/bundle/c100
 	name = "100 credit chip"
 	icon_state = "100"

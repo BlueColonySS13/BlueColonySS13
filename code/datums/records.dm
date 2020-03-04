@@ -27,6 +27,7 @@
 	details = r_details
 	game_id_created = game_id
 
+	ckey = added_ckey
 
 /proc/make_new_record(record_type, r_name, r_author, r_ckey, r_date_added, r_details, other_key)
 	var/datum/record/R = new record_type

@@ -3,7 +3,7 @@
 	title = "Bartender"
 	flag = BARTENDER
 	faction = "City"
-	department = "Bar"
+	department = DEPT_BAR
 	department_flag = CIVILIAN
 	total_positions = 2
 	spawn_positions = 2
@@ -23,7 +23,7 @@
 	title = "Chef"
 	flag = CHEF
 	faction = "City"
-	department = "Bar"
+	department = DEPT_BAR
 	department_flag = CIVILIAN
 	total_positions = 2
 	spawn_positions = 2
@@ -43,7 +43,7 @@
 	flag = BOTANIST
 	faction = "City"
 	department_flag = CIVILIAN
-	department = "Bar"
+	department = DEPT_BOTANY
 	total_positions = 2
 	spawn_positions = 1
 	supervisors = "the bar manager"
@@ -62,7 +62,7 @@
 	flag = MANAGER
 	faction = "City"
 	department_flag = CIVILIAN
-	department = "Bar"
+	department = DEPT_BAR
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the bar owner"
@@ -85,7 +85,7 @@
 	flag = JOURNALIST
 	faction = "City"
 	department_flag = CIVILIAN
-	department = "Civilian"
+	department = DEPT_PUBLIC
 	total_positions = 4
 	spawn_positions = 2
 	supervisors = "the city clerk"
@@ -103,7 +103,7 @@
 	flag = LAWYER
 	faction = "City"
 	department_flag = CIVILIAN
-	department = "Civilian"
+	department = DEPT_PUBLIC
 	total_positions = 4
 	spawn_positions = 1
 	supervisors = "the Judge"
@@ -127,7 +127,7 @@
 	flag = BARBER
 	faction = "City"
 	department_flag = CIVILIAN
-	department = "Civilian"
+	department = DEPT_PUBLIC
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the city clerk"
@@ -144,7 +144,7 @@
 /datum/job/qm
 	title = "Factory Manager"
 	flag = QUARTERMASTER
-	department = "Cargo"
+	department = DEPT_FACTORY
 	department_flag = CIVILIAN
 	faction = "City"
 	total_positions = 1
@@ -166,7 +166,7 @@
 	title = "Factory Worker"
 	flag = CARGOTECH
 	faction = "City"
-	department = "Cargo"
+	department = DEPT_FACTORY
 	department_flag = CIVILIAN
 	total_positions = 4
 	email_domain = "aoki.nt"
@@ -187,7 +187,7 @@
 	title = "Miner"
 	flag = MINER
 	faction = "City"
-	department = "Cargo"
+	department = DEPT_FACTORY
 	department_flag = CIVILIAN
 	total_positions = 3
 	spawn_positions = 3

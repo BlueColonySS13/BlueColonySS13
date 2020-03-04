@@ -4,7 +4,7 @@
 	faction = "City"
 	head_position = 1
 	department_flag = ENGSEC
-	department = "City Council"
+	department = DEPT_COUNCIL
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Mayor"
@@ -62,7 +62,7 @@
 	department_flag = ENGSEC
 	faction = "City"
 	email_domain = "cityworks.gov.nt"
-	department = "Emergency and Maintenance"
+	department = DEPT_MAINTENANCE
 	total_positions = 3
 	spawn_positions = 2
 	supervisors = "the maintenance director"
@@ -85,7 +85,7 @@
 	flag = JANITOR
 	faction = "City"
 	department_flag = ENGSEC
-	department = "City"
+	department = DEPT_MAINTENANCE
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the maintenance director"
