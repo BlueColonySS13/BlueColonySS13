@@ -104,3 +104,9 @@
 	name = "blue-edged labcoat"
 	desc = "A suit that protects against minor chemical spills. This one has blue trim."
 	icon_state = "blue_edge_labcoat"
+
+/obj/item/clothing/suit/storage/toggle/labcoat/rd
+	name = "research director labcoat"
+	desc = "A labcoat that protects against chemical spills. Anti-microbial silver fibers have been threaded into this one."
+	icon_state = "labcoat_rd_nt"
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 65, rad = 0)

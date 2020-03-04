@@ -61,3 +61,6 @@
 
 /mob/living/carbon/human/teen/New(var/new_loc)
 	..(new_loc, SPECIES_HUMAN_TEEN)
+
+/mob/living/carbon/human/precursor/New(var/new_loc)
+	..(new_loc, SPECIES_PRECURSOR)
