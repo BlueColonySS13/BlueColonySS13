@@ -326,14 +326,15 @@
 		status_error = 1
 		return 0
 
-	if((required_pass == /obj/machinery/vending/foodstamp) && istype(ebt, /obj/machinery/vending/foodstamp))
-		var/obj/item/weapon/card/foodstamp/C = ebt
-		if(C.meals_remaining > 0)
-			C.meals_remaining = C.meals_remaining - 1
-			return 1
+	else
+		if(istype(ebt, /obj/item/weapon/card/foodstamp))
+			var/obj/item/weapon/card/foodstamp/C = ebt
+			if(C.meals_remaining > 0)
+				C.meals_remaining = C.meals_remaining - 1
+				return 1
 
-	QDEL_NULL(ebt)
-	return 1
+		QDEL_NULL(ebt)
+		return 1
 
 
 
