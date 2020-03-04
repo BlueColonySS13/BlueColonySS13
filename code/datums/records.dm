@@ -8,7 +8,9 @@
 	//ooc info
 	var/author_ckey = "n/a"			// Ckey of the person who created this record.
 	var/game_id_created				// what game id this record was made on
-	var/expiration 				// If this record self_deletes at some point. (not yet implemented)
+	var/expiration
+
+	var/ckey			// If this record self_deletes at some point. (not yet implemented)
 
 /datum/record/proc/set_record(r_name, r_author, r_ckey, r_date_added, r_details)
 	name = r_name

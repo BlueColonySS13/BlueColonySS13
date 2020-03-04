@@ -102,7 +102,7 @@
 
 
 
-/datum/nano_module/program/crim_record/proc/remove_record(var/datum/record/record, mob/user)
+/datum/nano_module/program/crim_record/proc/remove_record(var/datum/record/selected_record, mob/user)
 	// Due to abuse, some checks have been added.
 	if(!ishuman(user))
 		return
@@ -115,11 +115,11 @@
 		return FALSE
 
 	// No you can't use another character to clear your record either
-	if(H.ckey == record.ckey)
+	if(H.ckey == selected_record.ckey)
 		to_chat(H, "<b>No. You can't use another character to clear your record.</b>")
 		return FALSE
 
-	current_record.fields["crim_record"] -= record
+	current_record.fields["crim_record"] -= selected_record
 
 	return TRUE
 
