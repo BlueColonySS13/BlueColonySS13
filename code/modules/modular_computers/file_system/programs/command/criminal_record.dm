@@ -147,4 +147,4 @@
 			if(H.unique_id == current_record.fields["unique_id"])
 				potential_ckey = H.ckey
 
-		current_record.fields["crim_record"] += make_new_record(/datum/record/police, crime, officer_name, user.ckey, full_game_time(), sec, own_key)
+		current_record.fields["crim_record"] += make_new_record(/datum/record/police, crime, officer_name, user.ckey, full_game_time(), sec, potential_ckey)
