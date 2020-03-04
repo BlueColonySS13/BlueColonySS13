@@ -10,7 +10,7 @@
 	var/game_id_created				// what game id this record was made on
 	var/expiration
 
-	var/ckey			// If this record self_deletes at some point. (not yet implemented)
+	var/own_key			// If this record has a ckey or not.
 
 /datum/record/proc/set_record(r_name, r_author, r_ckey, r_date_added, r_details)
 	name = r_name
