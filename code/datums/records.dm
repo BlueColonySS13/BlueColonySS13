@@ -8,14 +8,16 @@
 	//ooc info
 	var/author_ckey = "n/a"			// Ckey of the person who created this record.
 	var/game_id_created				// what game id this record was made on
-	var/expiration 				// If this record self_deletes at some point. (not yet implemented)
+	var/expiration
 
-	var/ckey						// Player's ckey of this record. For aboose tracking purposes.
+	var/own_key			// If this record has a ckey or not.
 
-/datum/record/proc/set_record(r_name, r_author, r_ckey, r_date_added, r_details, added_ckey)
+/datum/record/proc/set_record(r_name, r_author, r_ckey, r_date_added, r_details, otherkey)
 	name = r_name
 	author = r_author
 	author_ckey = r_ckey
+	
+	own_key = otherkey
 
 	if(!r_date_added)
 		date_added = full_game_time()
@@ -25,11 +27,11 @@
 	details = r_details
 	game_id_created = game_id
 
-	ckey = added_ckey
+	own_key = otherkey
 
-/proc/make_new_record(record_type, r_name, r_author, r_ckey, r_date_added, r_details, added_ckey)
+/proc/make_new_record(record_type, r_name, r_author, r_ckey, r_date_added, r_details, other_key)
 	var/datum/record/R = new record_type
-	R.set_record(r_name, r_author, r_ckey, r_date_added, r_details, added_ckey)
+	R.set_record(r_name, r_author, r_ckey, r_date_added, r_details, other_key)
 
 	return R
 
