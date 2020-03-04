@@ -49,7 +49,7 @@
 /datum/category_item/player_setup_item/general/economy/content(var/mob/user)
 	. = list()
 	. += "<h1>Income and Expenses:</h1><hr>"
-	. += "<b>Money:</b> [pref.money_balance] credits<br>"
+	. += "<b>Money:</b> [cash2text( pref.money_balance, FALSE, TRUE, TRUE )] credits<br>"
 
 	if(pref.bank_account)
 		. += "<b>Account ID:</b> [pref.bank_account]<br>"

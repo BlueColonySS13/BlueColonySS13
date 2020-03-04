@@ -85,7 +85,7 @@
 	//Charge money:
 	if(stored_money >= bet_cost) //If there's cash in the machine
 		stored_money -= bet_cost
-		department_accounts["[station_name()] Funds"].money += post_tax_cost()
+		SSeconomy.charge_head_department( post_tax_cost() )
 	else
 		return
 
