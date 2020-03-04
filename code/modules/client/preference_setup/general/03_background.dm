@@ -70,8 +70,8 @@
 	pref.social_class = sanitize_inlist(pref.social_class, ECONOMIC_CLASS, initial(pref.social_class))
 
 	for(var/datum/record/R in pref.crime_record)	// to ensure all records have ckey traces from now on.
-		if(!R.ckey)
-			R.ckey = pref.client_ckey
+		if(!R.own_key)
+			R.own_key = pref.client_ckey
 
 
 // Moved from /datum/preferences/proc/copy_to()
