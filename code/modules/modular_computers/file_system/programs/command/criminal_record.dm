@@ -115,7 +115,7 @@
 		return FALSE
 
 	// No you can't use another character to clear your record either
-	if(H.ckey == selected_record.ckey)
+	if(H.ckey == selected_record.own_key)
 		to_chat(H, "<b>No. You can't use another character to clear your record.</b>")
 		return FALSE
 
@@ -147,4 +147,4 @@
 			if(H.unique_id == current_record.fields["unique_id"])
 				potential_ckey = H.ckey
 
-		current_record.fields["crim_record"] += make_new_record(/datum/record/police, crime, officer_name, user.ckey, full_game_time(), sec, potential_ckey)
+		current_record.fields["crim_record"] += make_new_record(/datum/record/police, crime, officer_name, user.ckey, full_game_time(), sec, own_key)
