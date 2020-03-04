@@ -84,7 +84,7 @@
 		var/atom/tmp = required_pass
 		var/pass_name = initial(tmp.name)
 
-		to_chat(user, "It accepts [pass_name] only as a vending currency.")
+		to_chat(user, "It only accepts [pass_name]s as a vending currency.")
 
 	if(vendor_department)
 		to_chat(user, "It pays to the [dept_name_by_id(vendor_department)] account.")
@@ -195,20 +195,21 @@
 			paid = pay_with_pass(C)
 			handled = 1
 
-		else if((charge_paid_department || (charge_free_department && !currently_vending.price)) && !required_pass)
-			paid = TRUE
-			handled = TRUE
-		else if(I) //for IDs and PDAs and wallets with IDs
-			paid = pay_with_card(I,W)
-			handled = 1
-		else if(istype(W, /obj/item/weapon/spacecash/ewallet))
-			var/obj/item/weapon/spacecash/ewallet/C = W
-			paid = pay_with_ewallet(C)
-			handled = 1
-		else if(istype(W, /obj/item/weapon/spacecash))
-			var/obj/item/weapon/spacecash/C = W
-			paid = pay_with_cash(C, user)
-			handled = 1
+		if(!required_pass)
+			if((charge_paid_department || (charge_free_department && !currently_vending.price)))
+				paid = TRUE
+				handled = TRUE
+			else if(I) //for IDs and PDAs and wallets with IDs
+				paid = pay_with_card(I,W)
+				handled = 1
+			else if(istype(W, /obj/item/weapon/spacecash/ewallet))
+				var/obj/item/weapon/spacecash/ewallet/C = W
+				paid = pay_with_ewallet(C)
+				handled = 1
+			else if(istype(W, /obj/item/weapon/spacecash))
+				var/obj/item/weapon/spacecash/C = W
+				paid = pay_with_cash(C, user)
+				handled = 1
 
 		if(paid)
 			if(vendor_department)
@@ -320,19 +321,19 @@
 /obj/machinery/vending/proc/pay_with_pass(var/obj/ebt)
 	visible_message("<span class='info'>\The [usr] taps \the [ebt] against \the [src]'s scanner.</span>")
 
+	if(!(istype(ebt, required_pass)))
+		status_message = "Incorrect method of payment. Please try again."
+		status_error = 1
+		return 0
+
 	if((required_pass == /obj/machinery/vending/foodstamp) && istype(ebt, /obj/machinery/vending/foodstamp))
 		var/obj/item/weapon/card/foodstamp/C = ebt
 		if(C.meals_remaining > 0)
 			C.meals_remaining = C.meals_remaining - 1
 			return 1
 
-	if(!(istype(ebt, required_pass)))
-		status_message = "Incorrect method of payment. Please try again."
-		status_error = 1
-		return 0
-	else
-		QDEL_NULL(ebt)
-		return 1
+	QDEL_NULL(ebt)
+	return 1
 
 
 
@@ -431,6 +432,7 @@
 		data["message_err"] = 0
 		data["message"] = status_message
 		data["message_err"] = status_error
+		data["requires_pass"] = status_error
 	else
 		data["mode"] = 0
 		var/list/listed_products = list()
@@ -523,8 +525,13 @@
 				if(!M || M.suspended)
 					status_message = "This machine is currently unable to process payments due to issues with the associated account."
 					status_error = 1
+			if(!required_pass)
+				status_message = "Please swipe a card or insert cash to pay for the item."
+			else
+				var/atom/tmp = required_pass
+				var/pass_name = initial(tmp.name)
 
-			status_message = "Please swipe a card or insert cash to pay for the item."
+				status_message = "Please deposit a [pass_name] recieve this item."
 			status_error = 0
 
 		else if(href_list["cancelpurchase"])
@@ -591,7 +598,7 @@
 			else if(charge_paid_department)
 				adjust_dept_funds(charge_free_department, -I.post_tax_cost())
 
-			adjust_dept_funds(HEAD_DEPARTMENT, I.post_tax_cost())
+			SSeconomy.charge_main_department(I.post_tax_cost(), "[src] Tax Transfer: [I.name] ([I.post_tax_cost()])")
 
 		status_message = ""
 		status_error = 0

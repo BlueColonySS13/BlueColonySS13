@@ -18,7 +18,6 @@ GLOBAL_LIST_EMPTY(private_department_accounts)
 GLOBAL_LIST_EMPTY(external_department_accounts)
 
 GLOBAL_VAR_INIT(num_financial_terminals, 1)
-GLOBAL_VAR_INIT(next_account_number, 0)
 GLOBAL_VAR_INIT(economy_init, 0)
 
 GLOBAL_VAR(current_date_string)

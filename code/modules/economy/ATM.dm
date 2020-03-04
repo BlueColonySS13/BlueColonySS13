@@ -109,7 +109,7 @@ log transactions
 				playsound(loc, 'sound/items/polaroid2.ogg', 50, 1)
 
 			//create a transaction log entry
-			authenticated_account.add_transaction_log(authenticated_account.owner_name, "Credit deposit", -C.worth, machine_id)
+			authenticated_account.add_transaction_log(authenticated_account.owner_name, "Credit deposit", C.worth, machine_id)
 
 			to_chat(user, "<span class='info'>You insert [C] into [src].</span>")
 			src.attack_hand(user)

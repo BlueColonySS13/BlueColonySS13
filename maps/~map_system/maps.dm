@@ -118,6 +118,7 @@ var/list/all_maps = list()
 	var/currency_suffix = SHORT_CREDIT
 
 	var/head_department = DEPT_NANOTRASEN	// NOTE: Has to exist in-game as a department account. See: code\modules\economy\departments.dm and input id here.
+	var/main_department = DEPT_COLONY
 
 
 /datum/map/New()
@@ -139,6 +140,11 @@ var/list/all_maps = list()
 // Getting the department that "owns" the map.
 /datum/map/proc/get_head_department()
 	return dept_by_id(head_department)
+
+// Getting the department that "runs" the map.
+/datum/map/proc/get_main_department()
+	return dept_by_id(main_department)
+
 
 // Used to apply various post-compile procedural effects to the map.
 /datum/map/proc/refresh_mining_turfs()

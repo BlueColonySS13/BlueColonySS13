@@ -3,10 +3,16 @@ SUBSYSTEM_DEF(economy)
 	init_order = INIT_ORDER_ECONOMY
 	flags = SS_NO_FIRE
 
+	var/list/all_departments = list()
+
 /datum/controller/subsystem/economy/Initialize()
 	.=..()
 	setup_economy()
 	link_economy_accounts()
+
+	all_departments = GLOB.departments
+
+	load_economy()
 
 /datum/controller/subsystem/economy/proc/setup_economy()
 	for(var/instance in subtypesof(/datum/department))
@@ -26,13 +32,26 @@ SUBSYSTEM_DEF(economy)
 	for(var/obj/machinery/status_display/money_display/MD in GLOB.money_displays)
 		MD.link_to_account()
 
-/datum/controller/subsystem/economy/proc/charge_head_department(amount)
+/datum/controller/subsystem/economy/proc/charge_head_department(amount, purpose)
 	if(!using_map || !HEAD_DEPARTMENT) // shouldn't happen, but just in case
 		return
 
-	var/datum/department/head_account = HEAD_DEPARTMENT
+	var/datum/department/head_account = using_map.get_head_department()
 
 	if(head_account.adjust_funds(amount))
+		if(purpose)
+			head_account.bank_account.add_transaction_log(head_account.name, purpose, amount, "[head_account.name] Funding Account")
+		return TRUE
+
+/datum/controller/subsystem/economy/proc/charge_main_department(amount, purpose)
+	if(!using_map || !MAIN_DEPARTMENT) // shouldn't happen, but just in case
+		return
+
+	var/datum/department/main_account = using_map.get_main_department()
+
+	if(main_account.adjust_funds(amount))
+		if(purpose)
+			main_account.bank_account.add_transaction_log(main_account.name, purpose, amount, "[main_account.name] Funding Account")
 		return TRUE
 
 /datum/controller/subsystem/economy/proc/get_all_dept_names(var/needs_bank = FALSE, var/type)
@@ -94,6 +113,8 @@ SUBSYSTEM_DEF(economy)
 		S.cd = "/"
 
 		if(D.has_bank && D.bank_account)
+			D.bank_account.sanitize_values()
+
 			S["money"] << D.bank_account.money
 			S["account_number"] << D.bank_account.account_number
 			S["remote_access_pin"] << D.bank_account.remote_access_pin

@@ -551,7 +551,7 @@
 		for(var/item in tax_list)
 			total_tax += tax_list[item] * (item_list[item] * price_list[item])
 
-		adjust_dept_funds(DEPT_COLONY, total_tax)
+		SSeconomy.charge_main_department(total_tax, transaction_purpose)
 
 	/// Visible confirmation
 	playsound(src, 'sound/machines/chime.ogg', 25)

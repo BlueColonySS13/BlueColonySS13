@@ -31,6 +31,8 @@
 	var/hard_whitelisted = 0 			// jobs that are hard whitelisted need players to be added to hardjobwhitelist.txt with the format [ckey] - [job] in order to work.
 	var/clean_record_required = FALSE		// This job needs a clean record.
 
+	var/no_shuttle = FALSE
+
 /datum/job/proc/get_job_email()			// whatever this is set to will be the job's communal email. should be persistent.
 	return
 
@@ -91,18 +93,7 @@
 
 	if(!M)
 		M = create_account(H.real_name, money_amount, null)
-
-	if(H.mind.prefs.bank_pin)
-		H.mind.prefs.bank_pin = M.remote_access_pin
-
-	if(H.mind.prefs.bank_account)
-		M.account_number = H.mind.prefs.bank_account
-
-	if(H.mind.prefs.expenses)
-		H.mind.prefs.expenses = M.expenses
-
-	if(get_persistent_acc_logs(M.account_number))
-		M.transaction_log = get_persistent_acc_logs(M.account_number)
+		M.load_persistent_account(H)
 
 	if(!H.mind.prefs.played)
 		M.money += income
@@ -111,17 +102,16 @@
 		var/remembered_info = ""
 		remembered_info += "<b>Your account ID is:</b> #[M.account_number]<br>"
 		remembered_info += "<b>Your account pin is:</b> [M.remote_access_pin]<br>"
-		remembered_info += "<b>Your account funds are:</b> $[M.money]<br>"
+		remembered_info += "<b>Your account funds are:</b> [cash2text( M.money, FALSE, TRUE, TRUE )]<br>"
 		H.mind.store_memory(remembered_info)
 
 		H.mind.initial_account = M
 		H.mind.initial_bank_details = list("id" = M.account_number, "pin" = M.remote_access_pin)
 
-	H << "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>"
+	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
 
-	if(!already_joined)
-		if(income)
-			H << "<span class='notice'>You recieved <b>[income] credits</b> in inheritance. <b>Spend it wisely, you only get this once.</b></span>"
+	if(!already_joined && income)
+		to_chat(H, "<span class='notice'>You recieved <b>[income] credits</b> in inheritance. <b>Spend it wisely, you only get this once.</b></span>")
 
 
 // overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()

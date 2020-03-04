@@ -8,7 +8,7 @@
 	var/registered_name = "Unknown" // The name registered_name on the card
 	slot_flags = SLOT_ID | SLOT_EARS
 	var/assignment = null	//can be alt title or the actual job
-	var/mob/registered_user = null
+	var/registered_user = null
 	var/authorising_user
 	var/meals_remaining = 3
 	var/age = "\[UNSET\]"
@@ -26,7 +26,7 @@
 	meals_remaining = FOODSTAMP_MEALS
 
 /obj/item/weapon/card/foodstamp/proc/update_name()
-	name = "[src.registered_name]'s social service card"
+	name = "[registered_name]'s social service card"
 
 //Data for Examine is stored here
 /obj/item/weapon/card/foodstamp/proc/dat()
@@ -62,25 +62,6 @@
 	else
 		usr << "<span class='warning'>It is too far away.</span>"
 
-//Scan recipient's ID to transfer details to the SS Card
-/obj/item/weapon/card/foodstamp/afterattack(var/obj/item/weapon/O as obj, mob/user as mob, proximity)
-	if(!proximity) return
-	if(registered_user == user)
-		if(istype(O, /obj/item/weapon/card/id))
-			var/obj/item/weapon/card/id/I = O
-			src.age = I.age
-			src.sex = I.sex
-			src.blood_type = I.blood_type
-			src.fingerprint_hash = I.fingerprint_hash
-			src.dna_hash = I.dna_hash
-			src.registered_name = I.registered_name
-			src.assignment = I.assignment
-			src.front = I.front
-			src.side = I.side
-			to_chat(user, "<span class='notice'>The microscanner activates as you pass it over the ID, copying its details.</span>")
-			update_name()
-	else
-		..()
 
 //Read the SS Card's information
 /obj/item/weapon/card/foodstamp/verb/read_meal_card()
@@ -88,9 +69,12 @@
 	set category = "Object"
 	set src in usr
 
-	usr << "This card was validated by [authorising_user]."
-	usr << "This card is registered to [registered_name]."
-	usr << "There are [meals_remaining] remaining meals on the card."
+	if(registered_name)
+		to_chat(usr, "This card was validated by [authorising_user].")
+		to_chat(usr, "This card is registered to [registered_name].")
+		to_chat(usr, "There are [meals_remaining] remaining meals on the card.")
+	else
+		to_chat(usr, "The card is blank.")
 	return
 
 /obj/item/weapon/card/foodstamp/attack_self(mob/user as mob)
@@ -98,9 +82,6 @@
 	if(locked)
 		if(!registered_user && register_user(user))
 			to_chat(user, "<span class='notice'>The microscanner marks you as a registered social service provider, preventing others from editing its information.</span>")
-			show(user)
-		else
-			user.visible_message("\The [user] shows you: \icon[src] [src.name]. It has [meals_remaining] meals remaining.","You flash your social service card: \icon[src] [src.name]. It has [meals_remaining] meals remaining.")
 			show(user)
 	else
 		ui_interact(user)
@@ -121,22 +102,35 @@
 		ui.open()
 
 /obj/item/weapon/card/foodstamp/proc/register_user(var/mob/user)
-	if(!istype(user) || user == registered_user)
-		return FALSE
-	unset_registered_user()
-	registered_user = user
-	user.set_id_info(src)
-	user.register(OBSERVER_EVENT_DESTROY, src, /obj/item/weapon/card/foodstamp/proc/unset_registered_user)
+
+	var/obj/item/weapon/card/id/I = user.GetIdCard()
+	if(!I || !I.registered_name)
+		to_chat(user, "You need a valid ID in order to register this social services ID card.")
+		return
+
+	src.age = I.age
+	src.sex = I.sex
+	src.blood_type = I.blood_type
+	src.fingerprint_hash = I.fingerprint_hash
+	src.dna_hash = I.dna_hash
+	src.registered_name = I.registered_name
+	src.assignment = I.assignment
+	src.front = I.front
+	src.side = I.side
+	to_chat(user, "<span class='notice'>The microscanner activates as you pass it over the ID, copying its details.</span>")
+
+	registered_user = user.name
+
+	update_name()
 	return TRUE
 
 /obj/item/weapon/card/foodstamp/proc/unset_registered_user(var/mob/user)
 	if(!registered_user || (user && user != registered_user))
 		return
-	registered_user.unregister(OBSERVER_EVENT_DESTROY, src)
 	registered_user = null
 
 /obj/item/weapon/card/foodstamp/CanUseTopic(mob/user)
-	if(user != registered_user)
+	if(registered_user)
 		return STATUS_CLOSE
 	return ..()
 
@@ -144,13 +138,13 @@
 	if(..())
 		return 1
 
-	var/user = usr
+	var/mob/user = usr
 	if(href_list["set"])
 		switch(href_list["set"])
 			if("Lock")
-				var/lock_status = alert(user,"Lock this card? This cannot be undone.", "Yes", "No")
+				var/lock_status = alert("Lock this card? This cannot be undone.", "Lock Card", "Yes", "No")
 				if(lock_status == "Yes")
-					user << "<span class='notice'>This card has now been locked.</span>"
+					to_chat(user, "<span class='notice'>This card has now been locked.</span>")
 					authorising_user = usr.name
 					locked = TRUE
 

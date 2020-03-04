@@ -1,7 +1,7 @@
 
 /datum/money_account
 	var/owner_name = ""
-	var/account_number = 0
+	var/account_number = ""
 	var/remote_access_pin = 0
 	var/money = 0
 
@@ -40,22 +40,14 @@
 	M.money = starting_funds
 	M.security_level = 1
 	M.fingerprint = fingerprint
-
-	//create an entry in the account transaction log for when it was created
-
+	M.account_number = md5("[station_name()][GLOB.current_date_string]")
 
 	var/source_terminal
 
 	if(!source_db)
 		source_terminal = "NTGalaxyNet Terminal #[rand(111,1111)]"
-
-		M.account_number = md5("[station_name()][GLOB.current_date_string]")
 	else
 		source_terminal = source_db.machine_id
-
-		M.account_number = GLOB.next_account_number
-		GLOB.next_account_number += rand(1,25)
-
 		//create a sealed package containing the account details
 		var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(source_db.loc)
 
@@ -66,7 +58,7 @@
 		R.info += "<i>Account holder:</i> [M.owner_name]<br>"
 		R.info += "<i>Account number:</i> [M.account_number]<br>"
 		R.info += "<i>Account pin:</i> [M.remote_access_pin]<br>"
-		R.info += "<i>Starting balance:</i> $[M.money]<br>"
+		R.info += "<i>Starting balance:</i> [cash2text( M.money, FALSE, TRUE, TRUE )]<br>"
 		R.info += "<i>Date and time:</i> [stationtime2text()], [stationdate2text()]<br><br>"
 		R.info += "<i>Creation terminal ID:</i> [source_db.machine_id]<br>"
 		R.info += "<i>Authorised NT officer overseeing creation:</i> [source_db.held_card.registered_name]<br>"
@@ -83,7 +75,6 @@
 	//add the account
 	M.add_transaction_log(new_owner_name, "Account creation", starting_funds, source_terminal)
 	GLOB.all_money_accounts.Add(M)
-
 	return M
 
 /proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
@@ -93,7 +84,7 @@
 			D.money += amount
 			//create a transaction log entry
 
-			D.add_transaction_log(source_name, purpose, -amount, terminal_id)
+			D.add_transaction_log(source_name, purpose, amount, terminal_id)
 			return 1
 
 
@@ -145,6 +136,12 @@
 	var/T = create_transaction_log(name, purpose, amount, terminal_id, date, time)
 
 	transaction_log.Add(T)
-	truncate_oldest(transaction_log, max_transaction_logs)
+	sanitize_values()
 
 	return T
+
+/datum/money_account/proc/sanitize_values()
+	money = Clamp(money, -MAX_MONEY, MAX_MONEY)
+	if(!transaction_log)
+		transaction_log = list()
+	truncate_oldest(transaction_log, max_transaction_logs)

@@ -19,11 +19,7 @@
 
 	if(use_desc)
 		switch(num)
-			if(1000000000000 to INFINITY)
-				text_desc = "bil"
-				multiplier = 1000000000000
-
-			if(1000000 to 999999999)
+			if(1000000 to INFINITY)
 				text_desc = "mil"
 				multiplier = 1000000
 
@@ -32,8 +28,7 @@
 	if(negative)
 		final_num = "-[final_num]"
 
-
 	return "[symbol][final_num][suffix][text_desc ? " [text_desc]" : ""]"
-	
+
 
 

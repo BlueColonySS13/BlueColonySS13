@@ -1,7 +1,7 @@
 /datum/expense
   var/name = "Generic Expense"
   var/cost_per_payroll = 1          // per payroll
-  var/department = "Civilian"
+  var/department = DEPT_COUNCIL
   var/purpose = "Bill"
 
   var/charge_department			// if specified, this is the department that will be charged instead of an account.
@@ -96,7 +96,7 @@
 	cost_per_payroll = 30
 	var/datum/law/fine
 
-	department = "Police"
+	department = DEPT_POLICE
 
 	color = COLOR_RED_GRAY
 
@@ -106,7 +106,7 @@
 	cost_per_payroll = 30
 	var/datum/medical_bill
 
-	department = "Public Healthcare"
+	department = DEPT_HEALTHCARE
 
 	color = COLOR_BLUE_GRAY
 
@@ -115,7 +115,7 @@
 	name = "Court Injunction"
 	cost_per_payroll = 50
 
-	department = "Civilian"
+	department = DEPT_LEGAL
 
 	color = COLOR_OLIVE
 

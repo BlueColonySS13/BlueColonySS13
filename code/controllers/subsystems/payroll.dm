@@ -117,7 +117,7 @@ SUBSYSTEM_DEF(payroll)
 		calculated_tax = round(tax * wage, 1)
 
 	//Tax goes to the treasury. Mh-hm.
-	SSeconomy.charge_head_department(calculated_tax)
+	SSeconomy.charge_head_department(calculated_tax, "[department] Payroll Tax: [name] ([cash2text( calculated_tax, FALSE, TRUE, TRUE )])")
 
 	//Your wage comes from your department, yes.
 	department_account.adjust_funds(-wage)
@@ -126,7 +126,7 @@ SUBSYSTEM_DEF(payroll)
 
 	//You get paid.
 	bank_account.money += wage
-	charge_to_account(bank_account.account_number, bank_account.owner_name, "[department] Payroll: [name] ([calculated_tax] credit tax)", "[department] Funding Account", wage)
+	charge_to_account(bank_account.account_number, bank_account.owner_name, "[department_account.name] Payroll: [name] ([calculated_tax] credit tax)", "[department_account.name] Funding Account", wage)
 
 	//if you owe anything, let's deduct your ownings.
 	for(var/datum/expense/E in bank_account.expenses)

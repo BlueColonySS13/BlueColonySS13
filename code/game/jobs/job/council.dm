@@ -87,7 +87,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/secretary //Paperwork monkey
 	title = "City Hall Secretary"
 	flag = SECRETARY
-	department = "Civilian"
+	department = DEPT_PUBLIC
 	department_flag = CIVILIAN
 	faction = "City"
 	total_positions = 2
@@ -114,7 +114,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	flag = JUDGE
 	head_position = 1
 	faction = "City"
-	department = DEPT_COUNCIL
+	department = DEPT_LEGAL
 	total_positions = 2
 	spawn_positions = 2
 	department_flag = CIVILIAN

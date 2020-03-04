@@ -1,3 +1,5 @@
+#define MAX_MONEY 10000000
+
 #define CREDIT "credit"
 #define CREDITS "credits"
 #define SYMBOL_CREDIT "&cent;"
@@ -10,6 +12,7 @@
 
 // Getting the map's head departments
 #define HEAD_DEPARTMENT using_map.get_head_department()
+#define MAIN_DEPARTMENT using_map.get_main_department()
 
 // Public Departments
 #define DEPT_NANOTRASEN "nanotrasen"
