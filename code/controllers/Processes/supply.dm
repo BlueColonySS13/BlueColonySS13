@@ -96,7 +96,7 @@ var/datum/controller/supply/supply_controller = new()
 			var/obj/structure/closet/crate/CR = MA
 			callHook("sell_crate", list(CR, area_shuttle))
 
-			department_accounts["Cargo"].money += CR.points_per_crate
+			adjust_dept_funds(DEPT_FACTORY, CR.points_per_crate)
 
 			for(var/atom/A in CR)
 				EC.contents[++EC.contents.len] = list(
@@ -120,7 +120,7 @@ var/datum/controller/supply/supply_controller = new()
 				)
 
 		exported_crates += EC
-		department_accounts["Cargo"].money += EC.value
+		adjust_dept_funds(DEPT_FACTORY, EC.value)
 
 		// Duplicate the receipt for the admin-side log
 		var/datum/exported_crate/adm = new()
@@ -226,7 +226,7 @@ var/datum/controller/supply/supply_controller = new()
 // Will attempt to purchase the specified order, returning TRUE on success, FALSE on failure
 /datum/controller/supply/proc/approve_order(var/datum/supply_order/O, var/mob/user)
 	// Not enough points to purchase the crate
-	if(department_accounts["Cargo"].money <= O.object.cost)
+	if(dept_balance(DEPT_FACTORY) <= O.object.cost)
 		return FALSE
 
 	// Based on the current model, there shouldn't be any entries in order_history, requestlist, or shoppinglist, that aren't matched in adm_order_history
@@ -253,7 +253,8 @@ var/datum/controller/supply/supply_controller = new()
 	adm_order.approved_at = stationdate2text() + " - " + stationtime2text()
 
 	// Deduct cost
-	department_accounts["Cargo"].money -= O.object.cost
+	adjust_dept_funds(DEPT_FACTORY, -O.object.cost)
+
 	return TRUE
 
 // Will deny the specified order. Only useful if the order is currently requested, but available at any status

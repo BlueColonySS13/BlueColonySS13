@@ -4,7 +4,7 @@ var/list/grass_types = list(
 
 /turf/simulated/floor/outdoors/grass
 	name = "grass"
-	icon_state = "grass"
+	icon_state = "grass0"
 	edge_blending_priority = 4
 	can_build_onto = 1
 	initial_flooring = /decl/flooring/grass/outdoors

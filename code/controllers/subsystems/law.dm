@@ -8,6 +8,7 @@ SUBSYSTEM_DEF(law)
 	name = "Law"
 	init_order = INIT_ORDER_LAW
 	flags = SS_NO_FIRE
+	var/list/laws = list()
 
 /datum/controller/subsystem/law/Initialize(timeofday)
 	instantiate_laws()
@@ -34,6 +35,8 @@ SUBSYSTEM_DEF(law)
 		capital_laws += K
 
 	rebuild_law_ids()
+
+	laws = presidential_laws
 
 /datum/controller/subsystem/law/proc/rebuild_law_ids() //rebuilds entire law list IDs.
 

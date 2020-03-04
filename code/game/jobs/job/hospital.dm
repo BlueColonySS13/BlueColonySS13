@@ -3,7 +3,7 @@
 	flag = CMO
 	head_position = 1
 	department_flag = MEDSCI
-	department = "City Council"
+	department = DEPT_COUNCIL
 	faction = "City"
 	total_positions = 1
 	spawn_positions = 1
@@ -37,7 +37,7 @@
 	email_domain = "med.gov.nt"
 	flag = DOCTOR
 	department_flag = MEDSCI
-	department = "Public Healthcare"
+	department = DEPT_HEALTHCARE
 	faction = "City"
 	total_positions = 5
 	spawn_positions = 3
@@ -62,7 +62,7 @@
 	email_domain = "med.gov.nt"
 	title = "Chemist"
 	flag = CHEMIST
-	department = "Public Healthcare"
+	department = DEPT_HEALTHCARE
 	department_flag = MEDSCI
 	faction = "City"
 	total_positions = 2
@@ -85,7 +85,7 @@
 /datum/job/geneticist
 	title = "Geneticist"
 	flag = GENETICIST
-	department = "Civilian"
+	department = DEPT_HEALTHCARE
 	department_flag = MEDSCI
 //	faction = "City"
 	total_positions = 0
@@ -104,7 +104,7 @@
 	email_domain = "med.gov.nt"
 	flag = PSYCHIATRIST
 	department_flag = MEDSCI
-	department = "Public Healthcare"
+	department = DEPT_HEALTHCARE
 	faction = "City"
 	total_positions = 4
 	spawn_positions = 1
@@ -125,7 +125,7 @@
 	flag = MEDICALINTERN
 	department_flag = MEDSCI
 	email_domain = "med.gov.nt"
-	department = "Public Healthcare"
+	department = DEPT_HEALTHCARE
 	faction = "City"
 	total_positions = 5
 	spawn_positions = 3
@@ -144,7 +144,7 @@
 	email_domain = "cityworks.gov.nt"
 	flag = PARAMEDIC
 	department_flag = MEDSCI
-	department = "Emergency and Maintenance"
+	department = DEPT_HEALTHCARE
 	faction = "City"
 	total_positions = 2
 	spawn_positions = 2

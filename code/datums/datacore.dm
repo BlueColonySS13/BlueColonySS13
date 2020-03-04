@@ -407,3 +407,5 @@
 
 /proc/get_sec_record(var/mob/living/carbon/human/H)
 	return sec_record_by_uid(H.unique_id)
+
+
