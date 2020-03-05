@@ -166,6 +166,12 @@
 					t_purpose = med_charge.name
 					transaction_purpose = med_charge.name
 
+				if (istype(menuitem, /datum/court_fee))
+					var/datum/court_fee/court_charge = menuitem
+					t_amount = court_charge.get_item_cost()
+					t_purpose = court_charge.name
+					transaction_purpose = court_charge.name
+
 				item_list[t_purpose] += 1
 				price_list[t_purpose] = t_amount
 				transaction_amount += t_amount

@@ -46,6 +46,10 @@
 
 	return round(get_tax() * get_item_cost())
 
+/datum/court_fee/proc/post_tax_cost()
+	if(!get_tax())
+		return 0
+
 //***************//
 //---Beverages---//
 //***************//
@@ -77,6 +81,18 @@
 
 /datum/medical_bill/proc/get_tax()
 	return MEDICAL_TAX
+
+///////////////////
+//---Court---------//
+//***************//
+
+/datum/court_fee/var/price_tag = null
+
+/datum/court_fee/proc/get_item_cost()
+	return cost
+
+/datum/court_fee/proc/get_tax()
+	return
 
 ///////////////////
 //---Lots--------//

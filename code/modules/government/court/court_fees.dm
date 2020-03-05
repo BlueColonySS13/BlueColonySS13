@@ -25,11 +25,6 @@ var/global/list/court_fees = list()
 	description = "A fee to cover the cost incurred by the Court to hear an appeal on Misdemeanour or Criminal Offenses."
 	cost = 300
 
-/datum/court_fee/major_appeal
-	name = "Major Appeal Fee"
-	description = "A fee to cover the cost inccured by the Court to hear an appeal on Major or Capital Offenses."
-	cost = 600
-
 /datum/court_fee/mayoral_appeal
 	name = "Mayoral Appeal Fee"
 	description = "A fee to cover the cost of a member of the Mayoral Corps hearing an appeal for a Misdemeanour or Criminal Offense."
