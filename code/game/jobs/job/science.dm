@@ -119,7 +119,7 @@
 	title = "Research Security"
 	email_domain = "sciworks.nt"
 	flag = SCIGUARD
-	department = "Research and Science"
+	department = DEPT_RESEARCH
 	department_flag = MEDSCI
 	faction = "City"
 	total_positions = 1
