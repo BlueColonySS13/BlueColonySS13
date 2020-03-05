@@ -40,7 +40,7 @@
 	M.money = starting_funds
 	M.security_level = 1
 	M.fingerprint = fingerprint
-	M.account_number = md5("[station_name()][GLOB.current_date_string]")
+	M.account_number = md5("[M.owner_name][GLOB.current_date_string][get_game_time()]")
 
 	var/source_terminal
 
@@ -74,6 +74,7 @@
 
 	//add the account
 	M.add_transaction_log(new_owner_name, "Account creation", starting_funds, source_terminal)
+	M.sanitize_values()
 	GLOB.all_money_accounts.Add(M)
 	return M
 
@@ -141,6 +142,9 @@
 	return T
 
 /datum/money_account/proc/sanitize_values()
+	if(!account_number)
+		account_number = md5("[owner_name][GLOB.current_date_string][get_game_time()]")
+
 	money = Clamp(money, -MAX_MONEY, MAX_MONEY)
 	if(!transaction_log)
 		transaction_log = list()

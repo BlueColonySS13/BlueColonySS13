@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(payroll)
 		for(var/datum/data/record/R in data_core.general)
 			payroll(R)
 
-/proc/payroll(var/datum/data/record/G)
+/datum/controller/subsystem/payroll/proc/payroll(var/datum/data/record/G)
 	var/bank_number = G.fields["bank_account"]
 	var/datum/job/job = job_master.GetJob(G.fields["real_rank"])
 	var/department

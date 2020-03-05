@@ -202,14 +202,3 @@
 
 	message_admins("Loaded all department accounts.", 1)
 
-
-
-/datum/economy/bank_accounts/proc/init_expenses()
-	for(var/E in subtypesof(/datum/expense/nanotrasen) - list(/datum/expense/nanotrasen/pest_control,
-	 /datum/expense/nanotrasen/tech_support
-	 ))
-		var/datum/expense/new_expense = new E
-		city_expenses += new_expense
-
-		new_expense.do_effect()
-

@@ -1133,5 +1133,5 @@ var/list/admin_verbs_event_manager = list(
 
 	//Search general records, and process payroll for all those that have bank numbers.
 	for(var/datum/data/record/R in data_core.general)
-		payroll(R)
-		command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
+		SSpayroll.payroll(R)
+	command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
