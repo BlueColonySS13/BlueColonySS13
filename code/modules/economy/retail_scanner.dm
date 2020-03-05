@@ -99,6 +99,11 @@
 		for(var/datum/medical_bill/M in medical_bills)
 			if(M.cost)
 				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[M]'>[M.name]</a><br>"
+
+	if(menu_items == "court")
+		for(var/datum/court_fee/J in court_fees)
+			if(J.cost)
+				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[J]'>[J.name]</a><br>"
 	return dat
 
 

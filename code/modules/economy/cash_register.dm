@@ -1,5 +1,6 @@
 #define LAW "law"
 #define MED "medical"
+#define COR "court"
 
 /obj/machinery/cash_register
 	name = "cash register"
@@ -108,6 +109,11 @@
 		for(var/datum/medical_bill/M in medical_bills)
 			if(M.cost)
 				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[M]'>[M.name]</a><br>"
+
+	if(menu_items == "court")
+		for(var/datum/court_fee/J in court_fees)
+			if(J.cost)
+				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[J]'>[J.name]</a><br>"
 	return dat
 
 
@@ -181,6 +187,15 @@
 					transaction_purpose = med_charge.name
 					tax_cost = med_charge.post_tax_cost()
 					item_desc = "Medical Bill"
+
+				if (istype(menuitem, /datum/court_fee))
+					var/datum/court_fee/court_charge = menuitem
+					t_amount = court_charge.get_item_cost()
+					t_purpose = court_charge.name
+					tax_percent = court_charge.get_tax()
+					transaction_purpose = court_charge.name
+					tax_cost = court_charge.post_tax_cost()
+					item_desc = "Court Fee"
 
 				if(adds_tax)
 					t_amount += tax_cost
@@ -671,5 +686,9 @@
 /obj/machinery/cash_register/botany
 	account_to_connect = "Botany"
 
+/obj/machinery/cash_register/court
+	account_to_connect = "Legal"
+	menu_items = COR
 #undef LAW
 #undef MED
+#undef COR
