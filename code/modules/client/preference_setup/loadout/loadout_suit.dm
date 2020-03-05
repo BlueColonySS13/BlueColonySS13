@@ -241,7 +241,7 @@
 	allowed_roles = list("Factory Manager")
 
 /datum/gear/suit/roles/poncho/cloak/captain
-	display_name = "cloak, colony director"
+	display_name = "cloak, mayor"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/captain
 	allowed_roles = list("Mayor")
 
@@ -296,7 +296,7 @@
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat
 
 /datum/gear/suit/wintercoat/captain
-	display_name = "winter coat, colony director"
+	display_name = "winter coat, mayor"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/captain
 	allowed_roles = list("Mayor")
 

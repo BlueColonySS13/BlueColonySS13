@@ -3,7 +3,7 @@
 	email_domain = "sciworks.nt"
 	flag = RD
 	faction = "City"
-	department = "City Council"
+	department = DEPT_COUNCIL
 	department_flag = MEDSCI
 	head_position = 1
 	total_positions = 1
@@ -37,7 +37,7 @@
 	email_domain = "sciworks.nt"
 	flag = SCIENTIST
 	faction = "City"
-	department = "Research and Science"
+	department = DEPT_RESEARCH
 	department_flag = MEDSCI
 	total_positions = 5
 	spawn_positions = 3
@@ -58,7 +58,7 @@
 	email_domain = "sciworks.nt"
 	flag = XENOBIOLOGIST
 	faction = "City"
-	department = "Research and Science"
+	department = DEPT_RESEARCH
 	department_flag = MEDSCI
 	total_positions = 3
 	spawn_positions = 2
@@ -79,7 +79,7 @@
 	email_domain = "sciworks.nt"
 	flag = ROBOTICIST
 	faction = "City"
-	department = "Research and Science"
+	department = DEPT_RESEARCH
 	department_flag = MEDSCI
 	total_positions = 2
 	spawn_positions = 2
@@ -100,7 +100,7 @@
 	email_domain = "sciworks.nt"
 	flag = SCIENCEINTERN
 	faction = "City"
-	department = "Research and Science"
+	department = DEPT_RESEARCH
 	department_flag = MEDSCI
 	total_positions = 5
 	spawn_positions = 3

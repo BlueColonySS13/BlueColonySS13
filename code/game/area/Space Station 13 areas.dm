@@ -1780,9 +1780,42 @@ area/space/atmosalert()
 	music = 'sound/ambience/signal.ogg'
 
 /area/medical/psych
-	name = "\improper Psych Room"
+	name = "\improper Geminus City Asylum"
 	icon_state = "medbay3"
 	music = 'sound/ambience/signal.ogg'
+
+/area/medical/psych/psychroom1
+	name = "\improper Psych Room 1"
+	icon_state = "medbay"
+
+/area/medical/psych/psychroom2
+	name = "\improper Psych Room 2"
+	icon_state = "medbay2"
+
+/area/medical/psych/psychroom3
+	name = "\improper Psych Room 3"
+	icon_state = "medbay3"
+
+/area/medical/psych/psychroom4
+	name = "\improper Psych Room 4"
+	icon_state = "medbay4"
+
+/area/medical/psych/psychroom5
+	name = "\improper Psych Room 5"
+	icon_state = "medbay"
+
+/area/medical/psych/psychroom6
+	name = "\improper Psych Room 6"
+	icon_state = "medbay2"
+
+/area/medical/psych/recreationwing
+	name = "Psych Recreation"
+
+/area/medical/psych/psychstorage
+	name = "Psych Storage"
+
+/area/medical/psych/psychoffice
+	name = "Psychiatrists Office"
 
 /area/crew_quarters/medbreak
 	name = "\improper Break Room"

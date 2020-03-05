@@ -86,7 +86,7 @@
 	//transfer price of lot to old owner's bank account
 	if(landlord_bank)
 		charge_to_account(landlord_bank, "Landlord Management", "Payment for [name]", "Landlord Management Console", get_lot_price())
-		department_accounts["[station_name()] Funds"].money += get_lot_price()
+		SSeconomy.charge_head_department( get_lot_price() )
 
 	// Buying a lot as a landlord anew.
 	landlord_uid = uid
@@ -95,7 +95,7 @@
 	if(bank)
 		landlord_bank = bank
 	else
-		var/datum/money_account/CC_acc = department_accounts["City Council"]
+		var/datum/money_account/CC_acc = dept_acc_by_id(DEPT_COUNCIL)
 		landlord_bank = CC_acc.account_number
 
 
