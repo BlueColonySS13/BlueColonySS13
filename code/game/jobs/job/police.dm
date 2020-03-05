@@ -140,8 +140,8 @@
 	title = "City Hall Guard"
 	email_domain = "secure.plux.gov.nt"
 	flag = BRIDGE
-	department = "Civilian"
-	department_flag = CIVILIAN
+	department = DEPT_COUNCIL
+	department_flag = ENGSEC
 	faction = "City"
 	total_positions = 2
 	spawn_positions = 3
