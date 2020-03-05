@@ -14,12 +14,12 @@
 	plane = ABOVE_PLANE
 	layer = ABOVE_MOB_LAYER
 
-	var/selected_department = "Civilian"
+	var/selected_department = DEPT_PUBLIC
 	var/list/sale_log						// List of sale logs.
 
 	var/obj/item/stored_item				// What's in it, right now.
 
-	var/allow_select_department = 0			// If this is set to 0, it will pull your department from your ID instead.
+	var/allow_select_department = FALSE		// If this is set to 0, it will pull your department from your ID instead.
 
 	var/department_charged					// If we want this to charge a certain department. If left null, it will charge from city account.
 
@@ -79,14 +79,12 @@
 
 	// Charge either the city, or the department noted in "department_charged" var.
 	if(!department_charged)
-		department_charged = "[station_name()] Funds"
+		department_charged = using_map.head_department
 
-	department_accounts["[department_charged]"].money -= item_cost
+	adjust_dept_funds(department_charged, -item_cost)
 
 	// Give the department their money.
-	department_accounts["[selected_department]"].money += item_cost
-
-	department_accounts[selected_department].add_transaction_log(department_accounts["[selected_department]"].owner_name, "[department_charged]: Invoiced Payment For [stored_item] ([item_cost]CR)", item_cost, src)
+	adjust_dept_funds(selected_department, item_cost)
 
 	playsound(src, 'sound/machines/chime.ogg', 25)
 	src.visible_message("\icon[src] \icon[stored_item] <b>[src]</b> chimes, \"<span class='notice'>Transaction complete! [stored_item] sold for [item_cost]CR.</span>\"")
@@ -94,20 +92,22 @@
 	qdel(stored_item) // Deletes the item once sold. eh - maybe in future we'll have it send the item somewhere.
 	stored_item = null
 
-	return 1
+	return TRUE
 
 
 
 /obj/machinery/selling_machine/proc/change_department(mob/user as mob)
-	if(!station_departments)
-		return 0
-
-	var/S = input(user, "Please select a department to lock [src] onto.", "Select Department") as null|anything in station_departments
+	var/S = input(user, "Please select a department to lock [src] onto.", "Select Department") as null|anything in SSeconomy.get_all_dept_names(needs_bank = TRUE)
 	if(!S)
-		return 0
+		return FALSE
 
-	selected_department = S
-	return 1
+	var/datum/department/D = dept_by_name(S)
+	if(!D)
+		return FALSE
+
+	selected_department = D.id
+
+	return TRUE
 
 /obj/machinery/selling_machine/attack_hand(mob/user as mob)
 	add_fingerprint(usr)
@@ -130,12 +130,9 @@
 		var/datum/job/has_job = job_master.GetJob(I.rank)
 		department = has_job.department
 
-		var/eligible_departments
+		var/eligible_department = dept_by_id(department)
 
-		eligible_departments += station_departments
-		eligible_departments += "[station_name()] Funds"
-
-		if(!(department in eligible_departments))
+		if(!eligible_department)
 			noID = 1
 		else
 			if(!allow_select_department)
@@ -155,7 +152,7 @@
 			dat += "<b>We apologize, this [src] requires you to have an identification card confirming your employment status before \
 			you can sell goods.</b></br>"
 		else
-			dat += "<b>Current Department:</b> [selected_department]"
+			dat += "<b>Current Department:</b> [dept_name_by_id(selected_department)]"
 			if(allow_select_department)
 				dat += " <a href='?src=\ref[src];change_dept=1'>Change Department</a>"
 

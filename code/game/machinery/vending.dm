@@ -55,36 +55,45 @@
 	var/slogan_delay = 6000 //How long until we can pitch again?
 
 	// Things that can go wrong
-	emagged = 0 //Ignores if somebody doesn't have card access to that machine.
-	var/seconds_electrified = 0 //Shock customers like an airlock.
-	var/shoot_inventory = 0 //Fire items at customers! We're broken!
+	emagged = 0 						//Ignores if somebody doesn't have card access to that machine.
+	var/seconds_electrified = 0 			//Shock customers like an airlock.
+	var/shoot_inventory = 0 				//Fire items at customers! We're broken!
 
 	var/scan_id = 1
 	var/obj/item/weapon/coin/coin
 	var/datum/wires/vending/wires = null
 
 	var/list/log = list()
-	var/req_log_access = access_cargo //default access for checking logs is cargo
-	var/has_logs = 0 //defaults to 0, set to anything else for vendor to have logs
+	var/req_log_access = access_cargo 		//	default access for checking logs is cargo
+	var/has_logs = 0					//	defaults to 0, set to anything else for vendor to have logs
 
 	var/vending_sound = "machines/vending_drop.ogg"
 
-	var/vendor_department	//this is the department the vending machine gives money it acquires to.
-	var/charge_department	//"free items" get charged from this department account, or all paid items get charged, etcetera
+	var/vendor_department				//	this is the department the vending machine gives money it acquires to.
+	var/charge_free_department			//	free items get charged to dept account
+	var/charge_paid_department			//	if this is filled. stuff gets charged to this instead
 
-	var/charge_free_to_department			//free items get charged to dept account
-	var/charge_paid_to_department			//paid items get charged to dept instead of going through payment
+	var/auto_price	= FALSE				//	select this if you want vending items to be autopriced based on actual cost so you don't have to use prices var
 
-	var/auto_price			//select this if you want vending items to be autopriced based on actual cost so you don't have to use prices var
+	var/required_pass	//	if this needs a type of object instead of cash in order to access the items, this is it.
 
 /obj/machinery/vending/examine(mob/user)
 	..()
+
+	if(required_pass)
+		var/atom/tmp = required_pass
+		var/pass_name = initial(tmp.name)
+
+		to_chat(user, "It only accepts [pass_name]s as a vending currency.")
+
 	if(vendor_department)
-		to_chat(user, "<b>[src]</b> pays to the [vendor_department] account.")
-	if(charge_department && charge_free_to_department)
-		to_chat(user, "It charges from the [charge_department] account for free items.")
-	if(charge_department && charge_paid_to_department)
-		to_chat(user, "Paid items are supplied by the [charge_department] account.")
+		to_chat(user, "It pays to the [dept_name_by_id(vendor_department)] account.")
+
+	if(charge_free_department)
+		to_chat(user, "It charges from the [dept_name_by_id(charge_free_department)] account for free items.")
+
+	if(charge_paid_department)
+		to_chat(user, "Paid items are supplied by the [dept_name_by_id(charge_paid_department)] account.")
 
 /obj/machinery/vending/New()
 	..()
@@ -167,36 +176,44 @@
 
 /obj/machinery/vending/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
-		emagged = 1
+		emagged = TRUE
 		to_chat(user, "You short out \the [src]'s product lock.")
-		return 1
+		return TRUE
 
 /obj/machinery/vending/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 	var/obj/item/weapon/card/id/I = W.GetID()
 
-	if(currently_vending && vendor_account && !vendor_account.suspended)
-		var/paid = 0
-		var/handled = 0
 
-		if(I) //for IDs and PDAs and wallets with IDs
-			paid = pay_with_card(I,W)
+
+	if(currently_vending)
+		var/paid = FALSE
+		var/handled = FALSE
+
+		if(required_pass && (istype(W, required_pass)))
+			var/obj/C = W
+			paid = pay_with_pass(C)
 			handled = 1
-		else if(istype(W, /obj/item/weapon/spacecash/ewallet))
-			var/obj/item/weapon/spacecash/ewallet/C = W
-			paid = pay_with_ewallet(C)
-			handled = 1
-		else if(istype(W, /obj/item/weapon/spacecash))
-			var/obj/item/weapon/spacecash/C = W
-			paid = pay_with_cash(C, user)
-			handled = 1
-		else if(istype(W, /obj/item/weapon/card/foodstamp))
-			var/obj/item/weapon/card/foodstamp/C = W
-			paid = pay_with_foodstamp(C)
-			handled = 1
+
+		if(!required_pass)
+			if((charge_paid_department || (charge_free_department && !currently_vending.price)))
+				paid = TRUE
+				handled = TRUE
+			else if(I) //for IDs and PDAs and wallets with IDs
+				paid = pay_with_card(I,W)
+				handled = 1
+			else if(istype(W, /obj/item/weapon/spacecash/ewallet))
+				var/obj/item/weapon/spacecash/ewallet/C = W
+				paid = pay_with_ewallet(C)
+				handled = 1
+			else if(istype(W, /obj/item/weapon/spacecash))
+				var/obj/item/weapon/spacecash/C = W
+				paid = pay_with_cash(C, user)
+				handled = 1
+
 		if(paid)
 			if(vendor_department)
-				department_accounts["[vendor_department]"].money += currently_vending.price
+				adjust_dept_funds(vendor_department, currently_vending.price)
 
 			vend(currently_vending, usr)
 
@@ -208,6 +225,7 @@
 	if(I || istype(W, /obj/item/weapon/spacecash))
 		attack_hand(user)
 		return
+
 	else if(istype(W, /obj/item/weapon/screwdriver))
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
@@ -296,24 +314,29 @@
 		return 1
 
 /**
- * Scan food stamp card and dispense product.
+ * Scan any "pass object" and dispense product.
  *
  * Returns 1 if successful, 0 if failed
  */
-/obj/machinery/vending/proc/pay_with_foodstamp(var/obj/item/weapon/card/foodstamp/ebt)
+/obj/machinery/vending/proc/pay_with_pass(var/obj/ebt)
 	visible_message("<span class='info'>\The [usr] taps \the [ebt] against \the [src]'s scanner.</span>")
-	if(istype(src, /obj/machinery/vending/foodstamp))
-		if(ebt.meals_remaining > 0)
-			ebt.meals_remaining = ebt.meals_remaining - 1
-			return 1
-		else
-			status_message = "No meals remaining on social service card."
-			status_error = 1
-			return 0
-	else
-		status_message = "Social service cards cannot be used at this machine."
+
+	if(!(istype(ebt, required_pass)))
+		status_message = "Incorrect method of payment. Please try again."
 		status_error = 1
 		return 0
+
+	else
+		if(istype(ebt, /obj/item/weapon/card/foodstamp))
+			var/obj/item/weapon/card/foodstamp/C = ebt
+			if(C.meals_remaining > 0)
+				C.meals_remaining = C.meals_remaining - 1
+				return 1
+
+		QDEL_NULL(ebt)
+		return 1
+
+
 
 /**
  * Scan a card and attempt to transfer payment from associated account.
@@ -322,10 +345,12 @@
  * successful, 0 if failed
  */
 /obj/machinery/vending/proc/pay_with_card(var/obj/item/weapon/card/id/I, var/obj/item/ID_container)
+
 	if(I==ID_container || ID_container == null)
 		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
 	else
 		visible_message("<span class='info'>\The [usr] swipes \the [ID_container] through \the [src].</span>")
+
 	var/datum/money_account/customer_account = get_account(I.associated_account_number)
 	if(!customer_account)
 		status_message = "Error: Unable to access account. Please contact technical support if problem persists."
@@ -352,30 +377,19 @@
 		status_message = "Insufficient funds in account."
 		status_error = 1
 		return 0
-	else
-		// Okay to move the money at this point
 
-		// debit money from the purchaser's account
-		customer_account.money -= currently_vending.price
+	// Okay to move the money at this point
 
-		// create entry in the purchaser's account log
-		var/datum/transaction/T = new()
-		T.target_name = "[vendor_account.owner_name] (via [name])"
-		T.purpose = "Purchase of [currently_vending.item_name]"
-		if(currently_vending.price > 0)
-			T.amount = "([currently_vending.price])"
-		else
-			T.amount = "[currently_vending.price]"
-		T.source_terminal = name
-		T.date = current_date_string
-		T.time = stationtime2text()
-		customer_account.transaction_log.Add(T)
+	// debit money from the purchaser's account
+	customer_account.money -= currently_vending.price
 
-		// Give the vendor the money. We use the account owner name, which means
-		// that purchases made with stolen/borrowed card will look like the card
-		// owner made them
-		credit_purchase(customer_account.owner_name)
-		return 1
+	customer_account.add_transaction_log("[dept_name_by_id(vendor_department)] (via [name])", "Purchase of [currently_vending.item_name]", currently_vending.price, name)
+
+	// Give the vendor the money. We use the account owner name, which means
+	// that purchases made with stolen/borrowed card will look like the card
+	// owner made them
+	credit_purchase(customer_account.owner_name)
+	return 1
 
 /**
  *  Add money for current purchase to the vendor account.
@@ -383,16 +397,11 @@
  *  Called after the money has already been taken from the customer.
  */
 /obj/machinery/vending/proc/credit_purchase(var/target as text)
-	vendor_account.money += currently_vending.price
-
-	var/datum/transaction/T = new()
-	T.target_name = target
-	T.purpose = "Purchase of [currently_vending.item_name]"
-	T.amount = "[currently_vending.price]"
-	T.source_terminal = name
-	T.date = current_date_string
-	T.time = stationtime2text()
-	vendor_account.transaction_log.Add(T)
+	if(vendor_department)
+		var/datum/money_account/vendor_bank = dept_acc_by_id(vendor_department)
+		if(!vendor_bank)
+			return
+		vendor_bank.add_transaction_log(target, "Purchase of [currently_vending.item_name]", currently_vending.price, name)
 
 /obj/machinery/vending/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -424,6 +433,7 @@
 		data["message_err"] = 0
 		data["message"] = status_message
 		data["message_err"] = status_error
+		data["requires_pass"] = status_error
 	else
 		data["mode"] = 0
 		var/list/listed_products = list()
@@ -484,6 +494,8 @@
 				playsound(src.loc, 'sound/machines/deniedbeep.ogg', 50, 0)
 				return
 
+
+
 			var/key = text2num(href_list["vend"])
 			var/datum/stored_item/vending_product/R = product_records[key]
 
@@ -491,32 +503,37 @@
 			if(!(R.category & categories))
 				return
 
-			if(charge_department)
-				if(charge_paid_to_department && R.price)
-					department_accounts["[charge_department]"].money -= R.price
-					vend(R, usr)
-
-				if(charge_free_to_department && !R.price && R.item_default_price)
-					department_accounts["[charge_department]"].money -= R.item_default_price
-					vend(R, usr)
-
-				if(vendor_department)
-					department_accounts["[vendor_department]"].money += R.price
-
-			if(R.price <= 0 && !charge_free_to_department)
-				vend(R, usr)
-
-			else if(istype(usr,/mob/living/silicon)) //If the item is not free, provide feedback if a synth is trying to buy something.
+			if((istype(usr,/mob/living/silicon)) && R.price) //If the item is not free, provide feedback if a synth is trying to buy something.
 				to_chat(usr, "<span class='danger'>Lawed unit recognized.  Lawed units cannot complete this transaction.  Purchase canceled.</span>")
 				return
-			else
-				currently_vending = R
-				if(!vendor_account || vendor_account.suspended)
+
+			if(charge_paid_department && R.price)
+				adjust_dept_funds(charge_paid_department, -R.price)
+				vend(R, usr)
+
+			if(charge_free_department && !R.price && !required_pass)
+				vend(R, usr)
+
+			if(vendor_department)
+				adjust_dept_funds(vendor_department, R.price)
+
+			if(R.price <= 0 && !charge_free_department)
+				vend(R, usr)
+
+			currently_vending = R
+			if(vendor_department)
+				var/datum/money_account/M = dept_acc_by_id(vendor_department)
+				if(!M || M.suspended)
 					status_message = "This machine is currently unable to process payments due to issues with the associated account."
 					status_error = 1
-				else
-					status_message = "Please swipe a card or insert cash to pay for the item."
-					status_error = 0
+			if(!required_pass)
+				status_message = "Please swipe a card or insert cash to pay for the item."
+			else
+				var/atom/tmp = required_pass
+				var/pass_name = initial(tmp.name)
+
+				status_message = "Please deposit a [pass_name] recieve this item."
+			status_error = 0
 
 		else if(href_list["cancelpurchase"])
 			currently_vending = null
@@ -565,13 +582,24 @@
 		flick(icon_vend,src)
 	playsound(src.loc, "sound/[vending_sound]", 100, 1)
 	spawn(vend_delay)
-		R.get_product(get_turf(src))
+		var/obj/I = R.get_product(get_turf(src))
 		if(has_logs)
 			do_logging(R, user, 1)
 		if(prob(1))
 			sleep(3)
 			if(R.get_product(get_turf(src)))
 				visible_message("<span class='notice'>\The [src] clunks as it vends an additional item.</span>")
+
+		if(charge_free_department && !R.price && I.get_item_cost())
+			adjust_dept_funds(charge_free_department, -I.get_item_cost())
+
+		if(I.post_tax_cost())
+			if(charge_free_department)
+				adjust_dept_funds(charge_free_department, -I.post_tax_cost())
+			else if(charge_paid_department)
+				adjust_dept_funds(charge_free_department, -I.post_tax_cost())
+
+			SSeconomy.charge_main_department(I.post_tax_cost(), "[src] Tax Transfer: [I.name] ([I.post_tax_cost()])")
 
 		status_message = ""
 		status_error = 0
@@ -803,8 +831,7 @@
 	has_logs = 1
 	vending_sound = "machines/vending_cans.ogg"
 
-	charge_department = "Bar"
-	charge_free_to_department = TRUE
+	charge_free_department = DEPT_BAR
 
 
 /obj/machinery/vending/assist
@@ -826,9 +853,9 @@
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/ice = 10)
 	vending_sound = "machines/vending_coffee.ogg"
 
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
-	auto_price = 1
+	auto_price = TRUE
 
 
 /obj/machinery/vending/snack
@@ -843,8 +870,8 @@
 	contraband = list(/obj/item/weapon/reagent_containers/food/snacks/syndicake = 6,/obj/item/weapon/reagent_containers/food/snacks/unajerky = 6,)
 
 
-	vendor_department = "Civilian"
-	auto_price = 1
+	vendor_department = DEPT_PUBLIC
+	auto_price = TRUE
 
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
@@ -859,8 +886,8 @@
 					/obj/item/weapon/reagent_containers/food/drinks/cans/gingerale = 10, /obj/item/weapon/reagent_containers/food/drinks/bottle/cola = 10)
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/weapon/reagent_containers/food/snacks/liquidfood = 6)
 
-	vendor_department = "Civilian"
-	auto_price = 1
+	vendor_department = DEPT_PUBLIC
+	auto_price = TRUE
 
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	vending_sound = "machines/vending_cans.ogg"
@@ -897,7 +924,7 @@
 
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/steroid = 4)
 
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
 
 /obj/machinery/vending/cart
@@ -907,7 +934,7 @@
 	icon_state = "cart"
 	icon_deny = "cart-deny"
 	req_access = list(access_hop)
-	products = list(/obj/item/device/communicator = 10,)
+	products = list(/obj/item/device/communicator = 10)
 	req_log_access = access_hop
 	has_logs = 1
 
@@ -965,8 +992,8 @@
 					/obj/item/weapon/reagent_containers/ecig_cartridge/coffee = 15,
 					/obj/item/weapon/reagent_containers/ecig_cartridge/blanknico = 15)
 
-	vendor_department = "Civilian"
-	auto_price = 1
+	vendor_department = DEPT_PUBLIC
+	auto_price = TRUE
 
 /obj/machinery/vending/medical
 	name = "NanoMed Plus"
@@ -998,13 +1025,11 @@
 	req_log_access = access_cmo
 	has_logs = 1
 
-	charge_department = "Public Healthcare"
-	charge_free_to_department = TRUE
+	charge_free_department = DEPT_HEALTHCARE
 
-/obj/machinery/vending/medical/hospital/gcch //geminus city central hospital variant to prevent that insert pin message during life or death situations.
-	charge_department = null
-	charge_free_to_department = null
-	vendor_department = "Public Healthcare"
+/obj/machinery/vending/medical/hospital/gcch
+	charge_free_department = DEPT_HEALTHCARE
+
 
 /obj/machinery/vending/medical/hospital/gcchgms
 	name = "NanoMed General Medical Supplies Vendor"
@@ -1023,9 +1048,7 @@
 					 /obj/item/weapon/storage/box/syringes = 2,
 					 /obj/item/weapon/storage/box/beakers = 2,
 					 /obj/item/weapon/storage/box/bodybags = 2)
-	charge_department = null
-	charge_free_to_department = null
-	vendor_department = "Public Healthcare"
+	charge_free_department = DEPT_HEALTHCARE
 
 /obj/machinery/vending/medical/hospital/gcchsms
 	name = "NanoMed Specialized Medical Supplies Vendor"
@@ -1041,9 +1064,8 @@
 					 /obj/item/weapon/storage/box/rxglasses = 2,
 					 /obj/item/weapon/storage/box/autoinjectors = 1,
 					 /obj/item/weapon/storage/box/cdeathalarm_kit = 1)
-	charge_department = null
-	charge_free_to_department = null
-	vendor_department = "Public Healthcare"
+	charge_free_department = DEPT_HEALTHCARE
+
 
 /obj/machinery/vending/medical/hospital/cvcrb
 	name = "C.V.C Refridgerated Bloodbank"
@@ -1057,9 +1079,7 @@
 					 /obj/item/weapon/reagent_containers/blood/BPlus = 4,
 					 /obj/item/weapon/reagent_containers/blood/BMinus = 4,
 					 /obj/item/weapon/reagent_containers/blood/OPlus =4)
-	charge_department = null
-	charge_free_to_department = null
-	vendor_department = "Public Healthcare"
+	charge_free_department = DEPT_HEALTHCARE
 
 /obj/machinery/vending/medical/hospital/chem
 	name = "Johnny's Chems"
@@ -1075,9 +1095,7 @@
 					 /obj/item/weapon/storage/box/pillbottles = 2,
 					 /obj/item/weapon/storage/fancy/vials = 2,
 					 /obj/item/weapon/storage/lockbox/vials = 1)
-	charge_department = null
-	charge_free_to_department = null
-	vendor_department = "Public Healthcare"
+	charge_free_department = DEPT_HEALTHCARE
 
 /obj/machinery/vending/medical/hospital/psych
 	name = "Mania Inc. Psychiatric Vendomat"
@@ -1089,9 +1107,7 @@
 					 /obj/item/clothing/suit/straight_jacket = 1,
 					 /obj/item/weapon/gun/launcher/syringe = 1,
 					 /obj/item/weapon/storage/box/syringegun = 1)
-	charge_department = null
-	charge_free_to_department = null
-	vendor_department = "Public Healthcare"
+	charge_free_department = DEPT_HEALTHCARE
 
 
 /obj/machinery/vending/phoronresearch
@@ -1103,8 +1119,7 @@
 	req_log_access = access_rd
 	has_logs = 1
 
-	charge_department = "Research and Science"
-	charge_free_to_department = TRUE
+	charge_free_department = DEPT_RESEARCH
 
 /obj/machinery/vending/wallmed1
 	name = "NanoMed"
@@ -1118,13 +1133,10 @@
 	req_log_access = access_cmo
 	has_logs = 1
 
-	charge_department = "Public Healthcare"
-	charge_free_to_department = TRUE
+	charge_free_department = DEPT_HEALTHCARE
 
-/obj/machinery/vending/wallmed1/gcch //geminus city central hospital variant to prevent that insert pin message during life or death situations.
-	charge_department = null
-	charge_free_to_department = null
-	vendor_department = "Public Healthcare"
+/obj/machinery/vending/wallmed1/gcch
+	vendor_department = DEPT_HEALTHCARE
 
 /obj/machinery/vending/wallmed2
 	name = "NanoMed"
@@ -1141,7 +1153,7 @@
 	prices = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 15, /obj/item/weapon/reagent_containers/syringe/antitoxin = 10,/obj/item/stack/medical/bruise_pack = 15,
 					/obj/item/stack/medical/ointment = 15,/obj/item/device/healthanalyzer = 10)
 
-	vendor_department = "Public Healthcare"
+	vendor_department = DEPT_HEALTHCARE
 
 /obj/machinery/vending/security
 	name = "SecTech"
@@ -1156,15 +1168,12 @@
 	req_log_access = access_armory
 	has_logs = 1
 
-	charge_department = "Police"
-	charge_free_to_department = TRUE
+	charge_free_department = DEPT_POLICE
 
 /obj/machinery/vending/security/gcpd
 	name = "GCPD Equipment Vendotron"
 	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
-	charge_department = null
-	charge_free_to_department = null
-	vendor_department = "Police"
+	charge_free_department = DEPT_POLICE
 
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"
@@ -1196,8 +1205,7 @@
 					  /obj/item/seeds/chacruna = 2,/obj/item/seeds/caapi = 2, /obj/item/seeds/coca)
 	premium = list(/obj/item/toy/waterflower = 1)
 
-	charge_department = "Botany"
-	charge_free_to_department = TRUE
+	charge_free_department = DEPT_BOTANY
 
 /**
  *  Populate hydroseeds product_records
@@ -1263,8 +1271,7 @@
 	/obj/item/weapon/storage/toolbox/lunchbox/syndicate = 3)
 	contraband = list(/obj/item/weapon/material/knife/butch = 2)
 
-	charge_department = "Bar"
-	charge_free_to_department = TRUE
+	charge_free_department = DEPT_BAR
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"
@@ -1444,7 +1451,7 @@
 					/obj/item/toy/plushie/tabby_cat = 50,
 					/obj/item/device/threadneedle = 2)
 
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
 // Clothing dispensers
 
@@ -1640,7 +1647,7 @@
 						/obj/item/clothing/under/croptop/red = 30,
 						/obj/item/clothing/under/cuttop = 30,
 						/obj/item/clothing/under/cuttop/red = 30)
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
 /obj/machinery/vending/suitdispenser
 	name = "\improper Suitlord 9000"
@@ -1767,7 +1774,8 @@
 						 /obj/item/clothing/suit/storage/snowsuit = 40,
 						 /obj/item/clothing/suit/storage/hooded/wintercoat = 40)
 
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
+
 /obj/machinery/vending/shoedispenser
 	name = "\improper Shoe O Mat"
 	desc = "Wow, hatlord looked fancy, suitlord looked streamlined, and this is just normal. The guy who designed these must be an idiot."
@@ -1833,7 +1841,7 @@
 						/obj/item/clothing/shoes/heels = 30)
 
 	premium = list(/obj/item/clothing/shoes/rainbow = 1)
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
 /obj/machinery/vending/hatdispenser
 	name = "\improper Hatlord 9000"
@@ -1919,7 +1927,7 @@
 	contraband = list(/obj/item/clothing/head/bearpelt = 5)
 	premium = list(/obj/item/clothing/head/soft/rainbow = 1)
 
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
 /obj/machinery/vending/crittercare//Paradise port.
 	name = "\improper CritterCare"
@@ -1941,7 +1949,7 @@
 	contraband = list(/obj/item/fish_eggs/babycarp = 5)
 	premium = list(/obj/item/toy/pet_rock/fred = 1, /obj/item/toy/pet_rock/roxie = 1)
 
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
 
 /obj/machinery/vending/crittercare/free
@@ -2009,7 +2017,7 @@
 					)
 
 
-	vendor_department = "Public Healthcare"
+	vendor_department = DEPT_HEALTHCARE
 
 //ration vending machines
 /obj/machinery/vending/foodstamp/rations
@@ -2030,16 +2038,9 @@
 					/obj/item/weapon/storage/mre/menu10 = 5
 					)
 	contraband = list(/obj/item/weapon/storage/mre/menu12 = 5)
-	prices = list(/obj/item/weapon/storage/mre/menu2 = 50,
-					/obj/item/weapon/storage/mre/menu3 = 50,
-					/obj/item/weapon/storage/mre/menu4 = 50,
-					/obj/item/weapon/storage/mre/menu5 = 50,
-					/obj/item/weapon/storage/mre/menu6 = 50,
-					/obj/item/weapon/storage/mre/menu7 = 50,
-					/obj/item/weapon/storage/mre/menu8 = 50,
-					/obj/item/weapon/storage/mre/menu9 = 50,
-					/obj/item/weapon/storage/mre/menu10 = 50
-					)
+	charge_free_department = DEPT_PUBLIC
+
+	required_pass = /obj/item/weapon/card/foodstamp
 
 /obj/machinery/vending/foodstamp/rations/psp
 	name = "Ration Dispenser"
@@ -2061,16 +2062,8 @@
 					/obj/item/weapon/storage/mre/menu10 = 5
 					)
 	contraband = list(/obj/item/weapon/storage/mre/menu12 = 5)
-	prices = list(/obj/item/weapon/storage/mre/menu2 = 50,
-					/obj/item/weapon/storage/mre/menu3 = 50,
-					/obj/item/weapon/storage/mre/menu4 = 50,
-					/obj/item/weapon/storage/mre/menu5 = 50,
-					/obj/item/weapon/storage/mre/menu6 = 50,
-					/obj/item/weapon/storage/mre/menu7 = 50,
-					/obj/item/weapon/storage/mre/menu8 = 50,
-					/obj/item/weapon/storage/mre/menu9 = 50,
-					/obj/item/weapon/storage/mre/menu10 = 50
-					)
+	charge_free_department = DEPT_PUBLIC
+
 
 //armory vending machines, many guns.
 /obj/machinery/vending/armory
@@ -2140,7 +2133,10 @@
 	vend_delay = 8
 	vend_reply = "Money talks - and yours just said, \"Goodbye!\" Thank you for choosing LuxVend. Enjoy!"
 	products = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 3,
-					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/goldfinger = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose = 3,
 					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 5,
 					/obj/item/weapon/storage/box/multigrain = 5,
 					/obj/item/weapon/storage/box/caviar = 7,
@@ -2158,7 +2154,10 @@
 					/obj/item/clothing/accessory/badge/rich = 3
 					)
 	prices = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 600,
-					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kora = 550,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora = 550,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/goldfinger = 475,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit = 400,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose = 400,
 					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 75,
 					/obj/item/weapon/storage/box/multigrain = 30,
 					/obj/item/weapon/storage/box/caviar = 90,
@@ -2175,5 +2174,5 @@
 					/obj/item/weapon/storage/fancy/cigarettes/professionals = 25,
 					/obj/item/clothing/accessory/badge/rich = 75000
 					)
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 

@@ -1632,9 +1632,9 @@
 	glass_name = "vodka"
 	glass_desc = "The glass contain wodka. Xynta."
 
-/datum/reagent/ethanol/vodka/kora
+/datum/reagent/ethanol/vodkakora
 	name = "Kora Vodka"
-	id = "koravodka"
+	id = "vodkakora"
 	description = "The finest vodka ever distilled using secret Neo-Ruskiya techniques."
 	taste_description = "spicy alcohol, followed by the taste of finesse and a creamy finish"
 	price_tag = 1.6
@@ -3054,6 +3054,39 @@
 	glass_name = "cider"
 	glass_desc = "The second most Irish drink."
 	price_tag = 0.08
+
+/datum/reagent/ethanol/serpentspirit
+	name = "Serpent's Spirit"
+	id = "serpentspirit"
+	description = "A blue ginseng wine that unfortunately contains no snakes."
+	taste_description = "sharp ginseng and mellow grapes"
+	color = "#0048AD"
+	strength = 10
+
+	glass_name = "Serpent's Spirit"
+	glass_desc = "An expensive blue wine made from a secret blend of spices passed down from generation to generation."
+
+/datum/reagent/ethanol/goldfinger
+	name = "Goldfinger"
+	id = "goldfinger"
+	description = "A sweet liqueur with a delightful pineapple aftertaste."
+	taste_description = "sweet alcohol and a pineapple aftertaste"
+	color = "#F7D365"
+	strength = 10
+
+	glass_name = "Goldfinger"
+	glass_desc = "This is gold, Mr. Bond."
+
+/datum/reagent/ethanol/blackrose
+	name = "Black Rose"
+	id = "blackrose"
+	description = "An exquisite spirit made from rosa damascena petals."
+	taste_description = "sweetness with a floral note"
+	color = "#FFBF00"
+	strength = 10
+
+	glass_name = "Black Rose"
+	glass_desc = "Each taste imparts the flavor of flowers blooming in Spring. Exquisite."
 
 /datum/reagent/nutriment/coffee
 	name = "Coffee Powder"

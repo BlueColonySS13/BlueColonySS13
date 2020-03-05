@@ -52,6 +52,8 @@
 		page_msg = "<h2>[current_record.fields["name"]]</h2><br>This is [current_record.fields["name"]]'s criminal record.<br>"
 		var/list/criminal_record = current_record.fields["crim_record"]
 
+		page_msg += text("<BR><b>Current Criminal Status:</b> [current_record.fields["criminal"]]<br>")
+
 		page_msg += text("<BR>\n<a href='?src=\ref[src];choice=criminal_record_add'>Add Criminal Record</a><br>")
 
 		if(!isemptylist(criminal_record))
@@ -96,13 +98,30 @@
 			if(!current_record) return
 			var/datum/record/record = locate(href_list["criminal_record_r"])
 			if(!record) return
-			remove_record(record)
+			remove_record(record, usr)
 
 
 
-/datum/nano_module/program/crim_record/proc/remove_record(var/datum/record/record)
-	if(!(unique_id == current_record.fields["unique_id"]))
-		current_record.fields["crim_record"] -= record
+/datum/nano_module/program/crim_record/proc/remove_record(var/datum/record/selected_record, mob/user)
+	// Due to abuse, some checks have been added.
+	if(!ishuman(user))
+		return
+
+	var/mob/living/carbon/human/H = user
+
+	// You cannot clear your own records on the same character.
+	if(H.unique_id == current_record.fields["unique_id"])
+		to_chat(H, "<b>You cannot clear your own records on the same character.</b>")
+		return FALSE
+
+	// No you can't use another character to clear your record either
+	if(H.ckey == selected_record.own_key)
+		to_chat(H, "<b>No. You can't use another character to clear your record.</b>")
+		return FALSE
+
+	current_record.fields["crim_record"] -= selected_record
+
+	return TRUE
 
 
 /datum/nano_module/program/crim_record/proc/set_profile(var/datum/data/record/R)
@@ -122,4 +141,10 @@
 	if(!isnull(crime) && !jobban_isbanned(user, "Records"))
 		var/officer_name = user_name
 
-		current_record.fields["crim_record"] += make_new_record(/datum/record/police, crime, officer_name, user.ckey, "[get_game_day()]/[get_game_month()]/[get_game_year()]", sec)
+		var/potential_ckey = null
+		//let's find the relevent person.
+		for(var/mob/living/carbon/human/H in mob_list)
+			if(H.unique_id == current_record.fields["unique_id"])
+				potential_ckey = H.ckey
+
+		current_record.fields["crim_record"] += make_new_record(/datum/record/police, crime, officer_name, user.ckey, full_game_time(), sec, potential_ckey)

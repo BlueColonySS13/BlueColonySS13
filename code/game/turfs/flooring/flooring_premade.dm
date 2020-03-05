@@ -95,12 +95,6 @@
 	icon_state = "tiled"
 	initial_flooring = /decl/flooring/tiling
 
-/turf/simulated/floor/decor
-	name = "floor"
-	icon = 'icons/turf/flooring/decorative.dmi'
-	icon_state = "square"
-
-
 /turf/simulated/floor/tiled/techmaint
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
@@ -453,6 +447,31 @@
 	icon = 'icons/turf/flooring/decorative.dmi'
 	icon_state = "tiles1"
 	initial_flooring = /decl/flooring/diamond
+
+/turf/simulated/floor/bluegeo
+	name = "blue geometric floor"
+	icon = 'icons/turf/flooring/decorative.dmi'
+	icon_state = "tiled4"
+	initial_flooring = /decl/flooring/bluegeo
+
+/turf/simulated/floor/bluegeo_light
+	name = "light blue geometric floor"
+	icon = 'icons/turf/flooring/decorative.dmi'
+	icon_state = "tiles2"
+	initial_flooring = /decl/flooring/bluegeo_light
+
+/turf/simulated/floor/bluegeo_contrast
+	name = "contrast blue geometric floor"
+	icon = 'icons/turf/flooring/decorative.dmi'
+	icon_state = "tiled5"
+	initial_flooring = /decl/flooring/bluegeo_contrast
+
+/turf/simulated/floor/padded
+	name = "padded floor"
+	icon = 'icons/turf/flooring/decorative.dmi'
+	icon_state = "padded"
+	initial_flooring = /decl/flooring/padded
+
 
 /turf/simulated/floor/discoedge
 	name = "disco floor"

@@ -32,6 +32,8 @@
 #define CONTRABAND_KNIFELARGE persistent_economy.law_LARGEKNIVES
 #define CONTRABAND_EXPLOSIVES persistent_economy.law_EXPLOSIVES
 
+#define FOODSTAMP_MEALS persistent_economy.foodstamp_meals
+
 #define ILLEGAL "Illegal"
 #define PROFESSIONAL_ONLY "Professional Use Only"
 #define PERMIT_SELLING "Selling permit needed"

@@ -349,6 +349,7 @@ var/global/list/additional_antag_types = list()
 	else
 		text += "There were <b>no survivors</b> (<b>[ghosts] ghosts</b>)."
 	world << text
+	SSwebhooks.send(WEBHOOK_ROUNDEND, list("survivors" = surviving_total, "escaped" = escaped_total, "ghosts" = ghosts))
 
 
 	if(clients > 0)
