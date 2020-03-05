@@ -1,13 +1,3 @@
-GLOBAL_LIST_INIT(metal_detector_items, typecacheof(list(
-	/obj/item/weapon/gun,
-	/obj/item/weapon/material,
-	/obj/item/weapon/melee,
-	/obj/item/device/transfer_valve,
-	/obj/item/weapon/grenade/,
-	/obj/item/ammo_casing/,
-	/obj/item/ammo_magazine
-	)))
-
 /obj/machinery/metal_detector
 	name = "metal detector"
 	desc = "An advanced metal detector used to detect weapons."
@@ -20,8 +10,17 @@ GLOBAL_LIST_INIT(metal_detector_items, typecacheof(list(
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 
+	var/declare_radio = TRUE	// If this is set to true, this metal detector will announce breaches over the radio.
+	var/list/radio_departments = list("Command", "Police")	// The department(s) it announces to.
+
+	var/next_announcement_time	// so this doesn't get spammy.
+
+	var/alarm_delay = 2000
+
 /obj/machinery/metal_detector/New() //TODO: Convert all machinery to use Initialize. Christ.
 	..()
+	next_announcement_time = get_game_time() - alarm_delay
+
 	component_parts = list()
 	component_parts += new /obj/item/weapon/circuitboard/metal_detector(src)
 	component_parts += new /obj/item/weapon/stock_parts/scanning_module(src)
@@ -45,7 +44,7 @@ GLOBAL_LIST_INIT(metal_detector_items, typecacheof(list(
 
 	if(default_deconstruction_crowbar(usr, W))
 		return
-	
+
 	..()
 
 /obj/machinery/metal_detector/Crossed(var/mob/living/M)
@@ -60,13 +59,19 @@ GLOBAL_LIST_INIT(metal_detector_items, typecacheof(list(
 		return
 
 	var/list/items_to_check = M.GetAllContents()
-	for(var/A in items_to_check)
-		if(is_type_in_typecache(A, GLOB.metal_detector_items))
-			trigger_alarm()
+	for(var/obj/O in items_to_check)
+		if(O.is_contraband())
+			trigger_alarm(M)
 			break
 
-/obj/machinery/metal_detector/proc/trigger_alarm()
+/obj/machinery/metal_detector/proc/trigger_alarm(mob/M)
 	use_power(100)
 	flick("metal_detector_anim", src)
 	visible_message("<span class='danger'>\The [src] sends off an alarm!</span>")
 	playsound(src, 'sound/machines/alarm4.ogg', 60, 1)
+
+	if(declare_radio && !isemptylist(radio_departments))
+		if(get_game_time() > next_announcement_time)
+			for(var/V in radio_departments)
+				global_announcer.autosay("<b>[src]</b> alarm: Potentially unauthorized object found on <b>[M]</b> in <b>[get_area(src)]</b>.", "[src]", V)
+			next_announcement_time = get_game_time() + alarm_delay
