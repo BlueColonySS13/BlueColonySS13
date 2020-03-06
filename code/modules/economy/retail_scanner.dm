@@ -100,6 +100,11 @@
 		for(var/datum/medical_bill/M in medical_bills)
 			if(M.cost)
 				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[M]'>[M.name]</a><br>"
+
+	if(menu_items == "court")
+		for(var/datum/court_fee/J in court_fees)
+			if(J.cost)
+				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[J]'>[J.name]</a><br>"
 	return dat
 
 
@@ -161,6 +166,12 @@
 					t_amount = med_charge.get_item_cost()
 					t_purpose = med_charge.name
 					transaction_purpose = med_charge.name
+
+				if (istype(menuitem, /datum/court_fee))
+					var/datum/court_fee/court_charge = menuitem
+					t_amount = court_charge.get_item_cost()
+					t_purpose = court_charge.name
+					transaction_purpose = court_charge.name
 
 				item_list[t_purpose] += 1
 				price_list[t_purpose] = t_amount
