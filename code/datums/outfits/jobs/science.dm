@@ -50,3 +50,11 @@
 	name = OUTFIT_JOB_NAME("Science Intern")
 	id_type = /obj/item/weapon/card/id/science/intern
 	uniform = /obj/item/clothing/under/rank/orderly
+
+/decl/hierarchy/outfit/job/science/rguard
+	name = OUTFIT_JOB_NAME("Research Security")
+	id_type = /obj/item/weapon/card/id/science/rguard
+	uniform = /obj/item/clothing/under/pcrc
+	suit = /obj/item/clothing/suit/storage/vest/pcrc
+	shoes = /obj/item/clothing/shoes/boots/jackboots
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1)

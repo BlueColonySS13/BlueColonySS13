@@ -114,3 +114,26 @@
 	minimal_player_age = 0
 
 	outfit_type = /decl/hierarchy/outfit/job/science/intern
+
+/datum/job/rguard
+	title = "Research Security"
+	email_domain = "sciworks.nt"
+	flag = SCIGUARD
+	department = DEPT_RESEARCH
+	department_flag = MEDSCI
+	faction = "City"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the research director and other research staff"
+	selection_color = "#601C1C"
+	idtype = /obj/item/weapon/card/id/science/rguard
+	minimal_player_age = 5
+	wage = 60
+	minimum_character_age = 25
+	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch)
+	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch)
+
+	outfit_type = /decl/hierarchy/outfit/job/science/rguard
+	alt_titles = list("Containment Specialist")
+
+	clean_record_required = TRUE
