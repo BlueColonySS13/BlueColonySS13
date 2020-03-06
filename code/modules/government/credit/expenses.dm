@@ -62,13 +62,28 @@
 // If you want to charge a department.
 
 /datum/expense/proc/charge_department(num)
-	if(!charge_department) return
+	if(!charge_department || !department) return
 
+	var/negative = FALSE
+
+	if(0 > num)
+		negative = TRUE
+
+	//the department getting charged.
 	var/datum/money_account/bank_acc = dept_acc_by_id(charge_department)
+	// department recieving the money.
+	var/datum/money_account/dept_bank_acc = dept_acc_by_id(department)
 
-	if(!bank_acc) return
+	if(!bank_acc || !dept_bank_acc) return
 
-	charge_expense(src, bank_acc, num)
+	if(negative)
+		charge_expense(src, bank_acc, num)
+		charge_expense(src, dept_bank_acc, -num)
+	else
+		charge_expense(src, bank_acc, -num)
+		charge_expense(src, dept_bank_acc, num)
+
+	return TRUE
 
 
 //This if for if you have a expense, and a bank account.

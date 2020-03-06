@@ -20,7 +20,7 @@
 /datum/department/New()
 	..()
 	make_bank_account()
-	GLOB.department_accounts += src
+	GLOB.departments += src
 
 	switch(dept_type)
 		if(PUBLIC_DEPARTMENT)
@@ -40,24 +40,24 @@
 	return TRUE
 
 /proc/dept_name_by_id(id)
-	for(var/datum/department/D in GLOB.department_accounts)
+	for(var/datum/department/D in GLOB.departments)
 		if(id == D.id)
 			return D.name
 
 
 /proc/dept_acc_by_id(id)
-	for(var/datum/department/D in GLOB.department_accounts)
+	for(var/datum/department/D in GLOB.departments)
 		if((id == D.id) && D.bank_account)
 			return D.bank_account
 
 /proc/dept_by_id(id)
-	for(var/datum/department/D in GLOB.department_accounts)
+	for(var/datum/department/D in GLOB.departments)
 		if(id == D.id)
 			return D
 
 
 /proc/dept_by_name(name)
-	for(var/datum/department/D in GLOB.department_accounts)
+	for(var/datum/department/D in GLOB.departments)
 		if(name == D.name)
 			return D
 
@@ -86,6 +86,7 @@
 
 	bank_account = create_account(name, starting_money, null, department = TRUE)
 	bank_account.department = src
+	GLOB.department_accounts += bank_account
 
 	switch(dept_type)
 		if(PUBLIC_DEPARTMENT)

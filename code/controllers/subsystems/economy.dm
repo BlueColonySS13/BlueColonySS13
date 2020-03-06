@@ -13,12 +13,23 @@ SUBSYSTEM_DEF(economy)
 	all_departments = GLOB.departments
 
 	load_economy()
+	init_expenses()
 
 /datum/controller/subsystem/economy/proc/setup_economy()
 	for(var/instance in subtypesof(/datum/department))
 		new instance
 
 	GLOB.current_date_string = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
+
+
+/datum/controller/subsystem/economy/proc/init_expenses()
+	for(var/E in subtypesof(/datum/expense/nanotrasen) - list(/datum/expense/nanotrasen/pest_control,
+	 /datum/expense/nanotrasen/tech_support
+	 ))
+		var/datum/expense/new_expense = new E
+		persistent_economy.city_expenses += new_expense
+
+		new_expense.do_effect()
 
 /datum/controller/subsystem/economy/proc/link_economy_accounts()
 	for(var/obj/item/device/retail_scanner/RS in GLOB.transaction_devices)
@@ -82,12 +93,12 @@ SUBSYSTEM_DEF(economy)
 /datum/controller/subsystem/economy/proc/save_economy()
 	prepare_economy_save()
 
-	if(isemptylist(GLOB.department_accounts))
+	if(isemptylist(GLOB.departments))
 		message_admins("Economy Subsystem error: No department accounts found. Unable to save.", 1)
 		return FALSE
 
 	// save each department to a save file.
-	for(var/datum/department/D in GLOB.department_accounts)
+	for(var/datum/department/D in GLOB.departments)
 
 		D.sanitize_values()
 
@@ -126,12 +137,12 @@ SUBSYSTEM_DEF(economy)
 
 
 /datum/controller/subsystem/economy/proc/load_economy()
-	if(isemptylist(GLOB.department_accounts))
+	if(isemptylist(GLOB.departments))
 		message_admins("Economy Subsystem error: No department accounts found. Unable to load.", 1)
 		return FALSE
 
 	// save each department to a save file.
-	for(var/datum/department/D in GLOB.department_accounts)
+	for(var/datum/department/D in GLOB.departments)
 
 		D.sanitize_values()
 
