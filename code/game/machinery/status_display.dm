@@ -329,3 +329,9 @@
 
 /obj/machinery/status_display/money_display/botany
 	department = DEPT_BOTANY
+
+/obj/machinery/status_display/money_display/legal
+	department = DEPT_LEGAL
+
+/obj/machinery/status_display/money_display/botany
+	department = DEPT_BOTANY

@@ -131,3 +131,9 @@
 	force = 5
 	punch_force = 5
 	drop_sound = 'sound/items/drop/metalshield.ogg'
+
+	get_tax()
+		return WEAPONS_TAX
+
+	is_contraband()
+		return CONTRABAND_KNIFESMALL
