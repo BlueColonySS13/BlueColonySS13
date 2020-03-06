@@ -9,7 +9,7 @@
 	can_remove = FALSE
 	direct_debit = TRUE
 	department = DEPT_NANOTRASEN
-	charge_department = DEPT_COUNCIL
+	charge_department = DEPT_COLONY
 
 /datum/expense/nanotrasen/New()
 	..()
