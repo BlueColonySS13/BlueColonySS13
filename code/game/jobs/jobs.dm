@@ -108,7 +108,8 @@ var/list/science_positions = list(
 	"Geneticist",	//Part of both medical and science
 	"Roboticist",
 	"Xenobiologist",
-	"Research Assistant"
+	"Research Assistant",
+	"Research Security"
 )
 
 //BS12 EDIT
