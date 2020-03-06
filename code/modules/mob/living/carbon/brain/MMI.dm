@@ -73,7 +73,10 @@
 		brainobj.loc = src
 
 		name = "man-machine interface ([brainmob.real_name])"
-		icon_state = "mmi_full"
+		if(istype(B, /obj/item/organ/internal/brain/vatborn))
+			icon_state = "mmi_stack"
+		else
+			icon_state = "mmi_full"
 
 		locked = 1
 
