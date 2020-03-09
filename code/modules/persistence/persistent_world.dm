@@ -15,6 +15,8 @@
 	//save emails
 	SSemails.save_all_emails()
 
+	SSlaw.save_warrants()
+
 	//save all lots
 //	SSlots.save_all_lots()
 
