@@ -203,6 +203,8 @@
 #define O_EGG      "egg sac"
 #define O_RESIN    "resin spinner"
 #define O_ZOMBIE   "zombie vessel"
+#define O_FAKEBRAIN "brain"
+#define O_STACK "cortical stack"
 
 #define BP_L_FOOT "l_foot"
 #define BP_R_FOOT "r_foot"
@@ -247,7 +249,8 @@
 #define SPECIES_HUMAN			"Human"
 #define SPECIES_HUMAN_CHILD	"Human Child"
 #define SPECIES_HUMAN_TEEN		"Human Adolescent"
-#define SPECIES_HUMAN_VATBORN	"Vatborn"
+#define SPECIES_HUMAN_VATBORN	"Baseline Vatborn"
+#define SPECIES_HUMAN_VATBORN_MPL "Mass-Produced Vatborn"
 #define SPECIES_UNATHI			"Unathi"
 #define SPECIES_SKRELL			"Skrell"
 #define SPECIES_TESHARI			"Teshari"

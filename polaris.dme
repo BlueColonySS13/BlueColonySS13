@@ -2211,6 +2211,7 @@
 #include "code\modules\organs\subtypes\standard.dm"
 #include "code\modules\organs\subtypes\unathi.dm"
 #include "code\modules\organs\subtypes\unbreakable.dm"
+#include "code\modules\organs\subtypes\vatborn.dm"
 #include "code\modules\organs\subtypes\vox.dm"
 #include "code\modules\organs\subtypes\xenos.dm"
 #include "code\modules\overmap\_defines.dm"
