@@ -108,33 +108,7 @@
 /datum/job/officer/get_job_email()
 	return using_map.police_email
 
-/datum/job/prosecutor
-	title = "District Prosecutor"
-	email_domain = "prosecute.nt"
-	flag = PROSECUTOR
-	faction = "City"
-	department = DEPT_LEGAL
-	department_flag = ENGSEC
-	total_positions = 2
-	spawn_positions = 2
-	req_admin_notify = 1
-	supervisors = "the chief of police."
-	selection_color = "#601C1C"
-	idtype = /obj/item/weapon/card/id/security/prosecutor
-	wage = 100
-	access = list(access_prosecutor, access_sec_doors, access_maint_tunnels, access_heads, access_legal, access_warrant)
-	minimal_access = list(access_prosecutor, access_sec_doors, access_heads, access_legal, access_warrant)
-	minimal_player_age = 14
-	minimum_character_age = 28
 
-	alt_titles = list("Prosecutor","Prosecuting Attorney","Prosecution Officer","Prosecuting Lawyer")
-
-	outfit_type = /decl/hierarchy/outfit/job/prosecution
-
-	clean_record_required = TRUE
-
-/datum/job/prosecutor/get_job_email()
-	return using_map.police_email
 
 /datum/job/bguard
 	title = "City Hall Guard"

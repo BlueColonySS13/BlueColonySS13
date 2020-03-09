@@ -15,15 +15,18 @@ SUBSYSTEM_DEF(payroll)
 
 		//Search general records, and process payroll for all those that have bank numbers.
 		city_charges()
-		command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
+
 
 
 /datum/controller/subsystem/payroll/proc/city_charges()
 	for(var/datum/expense/E in persistent_economy.city_expenses)
 		E.charge_department(E.cost_per_payroll)
 
-		for(var/datum/data/record/R in data_core.general)
-			payroll(R)
+	for(var/datum/data/record/R in data_core.general)
+		payroll(R)
+
+	command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
+
 
 /datum/controller/subsystem/payroll/proc/payroll(var/datum/data/record/G)
 	var/bank_number = G.fields["bank_account"]
@@ -112,21 +115,18 @@ SUBSYSTEM_DEF(payroll)
 	if(wage > department_account.get_balance())
 		// If there's no money in the department account, tough luck. Not getting paid.
 		bank_account.add_transaction_log(bank_account.owner_name, "[department] Payroll: Failed (Inadequate Department Funds)", 0, "[department] Funding Account")
+		return
 
 	if(age > 17) // Do they pay tax?
 		calculated_tax = round(tax * wage, 1)
 
 	//Tax goes to the treasury. Mh-hm.
-	SSeconomy.charge_head_department(calculated_tax, "[department] Payroll Tax: [name] ([cash2text( calculated_tax, FALSE, TRUE, TRUE )])")
+	SSeconomy.charge_main_department(calculated_tax, "[department] Payroll Tax: [name] ([cash2text( calculated_tax, FALSE, TRUE, TRUE )])")
 
-	//Your wage comes from your department, yes.
-	department_account.adjust_funds(-wage)
+	var/final_amount = (wage - calculated_tax)
 
-	wage -= calculated_tax
-
-	//You get paid.
-	bank_account.money += wage
-	charge_to_account(bank_account.account_number, bank_account.owner_name, "[department_account.name] Payroll: [name] ([calculated_tax] credit tax)", "[department_account.name] Funding Account", wage)
+	//You get paid by your bank department's account.
+	department_account.direct_charge_money(bank_account.account_number, bank_account.owner_name, final_amount, "[department_account.name] Payroll: [name] ([calculated_tax] credit tax)", "[department_account.name] Funding Account")
 
 	//if you owe anything, let's deduct your ownings.
 	for(var/datum/expense/E in bank_account.expenses)

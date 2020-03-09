@@ -110,7 +110,7 @@
 /datum/department/proc/get_account()
 	return bank_account
 
-/datum/department/proc/adjust_funds(amount)	//hard editing mostly. don't use in most circumstances. Use
+/datum/department/proc/adjust_funds(amount)	//hard editing mostly. don't use in most circumstances. Use direct_charge_money() instead for trans logs
 	if(!bank_account)
 		return FALSE
 
@@ -118,31 +118,22 @@
 
 	return bank_account.money
 
-/datum/department/proc/process_money(var/datum/money_account/M, amount, purpose, terminal)
-// adjusts funds, sends transaction logs to both ends. checks security access
-	if(!bank_account || !M)
-		return FALSE
-
-	if(!terminal)
-		terminal = "Department Funds Transfer"
-
-	if(bank_account.charge(amount, M, purpose, terminal))
-		return TRUE
-
 /datum/department/proc/direct_charge_money(acc_no, name, amount, purpose, terminal)
 // same as above, you're charging an external bank acc for money here.
 	if(!bank_account)
 		return FALSE
 
-	var/datum/money_account/other_bank = get_account(acc_no)
-
-	if(!other_bank)
-		return FALSE
-
 	if(!terminal)
 		terminal = "Department Funds Transfer"
 
-	if(bank_account.charge(amount, other_bank, purpose, terminal))
+	if(charge_to_account(acc_no, name, purpose, terminal, amount))
+		//create an entry in the account transaction log
+		if(amount > 0)
+			bank_account.money -= amount
+			bank_account.add_transaction_log("Account #[acc_no]", purpose, -amount, terminal)
+		else
+			bank_account.money += amount
+			bank_account.add_transaction_log("Account #[acc_no]", purpose, amount, terminal)
 		return TRUE
 
-	return TRUE
+	return FALSE

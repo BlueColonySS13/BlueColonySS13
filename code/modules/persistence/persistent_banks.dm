@@ -52,7 +52,7 @@
 
 	truncate_oldest(transaction_log, max_transaction_logs)
 
-	S["transaction_logs"] << transaction_log
+	S["transaction_log"] << transaction_log
 
 	S["security_level"] << security_level
 

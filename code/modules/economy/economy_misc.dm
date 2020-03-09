@@ -13,6 +13,8 @@ var/global/datum/economy/bank_accounts/persistent_economy = new()
 				dest.money -= transaction_amount
 				dest.add_transaction_log(owner_name, purpose, -transaction_amount, terminal)
 
+			return 1
+
 		else
 			// if positive, adds money to this account and subtracts money from the other.
 			money -= transaction_amount
@@ -22,7 +24,7 @@ var/global/datum/economy/bank_accounts/persistent_economy = new()
 				dest.money += transaction_amount
 				dest.add_transaction_log(owner_name, purpose, transaction_amount, terminal)
 
-		return 1
+			return 1
 	else
 		to_chat(usr, "\icon[src]<span class='warning'>You don't have that much money!</span>")
 		return 0
