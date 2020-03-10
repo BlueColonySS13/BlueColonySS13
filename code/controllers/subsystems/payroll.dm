@@ -25,6 +25,9 @@ SUBSYSTEM_DEF(payroll)
 	for(var/datum/data/record/R in data_core.general)
 		payroll(R)
 
+	for(var/datum/lot/L in SSlots.all_lots)
+		L.add_balances()
+
 	command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
 
 
