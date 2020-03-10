@@ -3,8 +3,6 @@
 
 /datum/lot/proc/add_balances()
 
-	landlord_checkbook = list()
-
 	for(var/datum/tenant/tenant in get_tenants())
 
 		tenant.pay_balance(-get_rent())
@@ -12,18 +10,20 @@
 		if(landlord)
 				// if tenant's balance is below 0, landlord isn't being paid, obviously
 			if(get_rent() > tenant.account_balance)
-				landlord_checkbook += "[full_game_time()] - [tenant.name] for [name]: Unable to clear payment. Balance under rent charge."
+				landlord_checkbook += "[GLOB.current_date_string] - [tenant.name] for [name]: Unable to clear payment. Balance under rent charge."
 			else
 				if(landlord)
 					landlord.account_balance += get_rent_after_tax()
-					department_accounts["City Council"].money += get_rent_tax_amount()
-					landlord_checkbook += "[full_game_time()] - [tenant.name] for [name]: Payment of [get_rent_after_tax()]CR successfully paid to landlord account. (After [get_rent_tax_amount()]CR tax)"
+					SSeconomy.charge_main_department(get_rent_tax_amount(), "Taxes for [name]")
+					landlord_checkbook += "[GLOB.current_date_string] - [tenant.name] for [name]: Payment of [get_rent_after_tax()]CR successfully paid to landlord account. (After [get_rent_tax_amount()]CR tax)"
 
 
 	if(landlord)
 		landlord.pay_balance(-get_service_charge())
-		department_accounts["City Council"].money += get_service_charge()
-		landlord_checkbook += "[full_game_time()] - Landlord Payment for [name]: [get_rent()]CR successfully paid to City Council."
+		SSeconomy.charge_main_department(get_service_charge(), "Service Charge for [name]")
+		landlord_checkbook += "[GLOB.current_date_string] - Landlord Payment for [name]: [get_rent()]CR successfully paid to City Council."
+
+	truncate_oldest(landlord_checkbook, MAX_LANDLORD_LOGS)
 
 
 /datum/lot/proc/pay_landlord_balance(amount)	// for adding funds to the account

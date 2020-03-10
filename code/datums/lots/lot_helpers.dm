@@ -108,7 +108,6 @@
 /datum/lot/proc/set_new_ownership(uid, t_name, bank_id, email)
 	if(landlord)
 		charge_to_account(landlord.bank_id, "Housing Sell To [t_name]", "[name] Lot Purchase", "Landlord Management", (landlord.account_balance + price))
-	else
 
 	landlord = make_tenant(uid, t_name, bank_id, email)
 	return landlord
@@ -139,19 +138,21 @@
 		return FALSE
 
 	landlord = make_tenant(uid, t_name, bank_id, email)
-	department_accounts["City Council"].money += price
+	SSeconomy.charge_main_department(price, "[name] Lot Sell to [t_name]")
 
 	return TRUE
 
 /datum/lot/proc/sell_to_council()
 	charge_to_account(landlord.bank_id, "Housing Sell To Council", "[name] Lot Remaining Balance", "Landlord Management", landlord.account_balance)
 
+	SSeconomy.charge_main_department(-get_default_price(), "[name] Lot Bought from [landlord.name]")
+
 	landlord = null
 	price = get_default_price()
 	rent = get_default_rent()
 	applied_tenants = list()
 
-	department_accounts["City Council"].money -= price
+
 
 
 /datum/lot/proc/repossess_lot()
@@ -206,4 +207,6 @@
 // logging
 
 /datum/lot/proc/add_note(full_name, action, mob/user)
-	notes += "[action] - <b>[name]</b> ([full_game_time()])"
+	notes += "([GLOB.current_date_string]) [action] - <b>[full_name]</b>"
+
+	truncate_oldest(notes, MAX_LANDLORD_LOGS)

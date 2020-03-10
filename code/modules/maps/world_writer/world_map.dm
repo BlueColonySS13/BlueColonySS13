@@ -123,6 +123,8 @@
 	if(!full_map) return 0
 
 	for(var/datum/map_turf/MT in full_map)
+		if(!ispath(MT.turf_type))
+			continue
 		var/turf/newturf = locate(MT.x,MT.y,MT.z)
 
 		if(!newturf)
@@ -136,6 +138,8 @@
 
 
 		for(var/datum/map_object/MO in MT.objects)
+			if(!ispath(MO.savedtype))
+				continue
 			var/obj/O = new MO.savedtype (newturf.loc)
 			for(var/V in O.vars_to_save())
 				if(MO.object_vars[V])
@@ -146,6 +150,8 @@
 			O.vars["z"] = MO.object_vars["z"]
 
 		for(var/datum/map_mob/MM in MT.mobs)
+			if(!ispath(MM.savedtype))
+				continue
 			var/mob/M = new MM.savedtype (newturf.loc)
 			M.on_persistence_load()
 			for(var/V in M.vars_to_save())

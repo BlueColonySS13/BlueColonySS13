@@ -7,3 +7,5 @@
 
 #define LICENSE_LANDLORD_COMMERCIAL "Commercial Lot"
 #define LICENSE_LANDLORD_HOUSING "Housing Lot"
+
+#define MAX_LANDLORD_LOGS 80

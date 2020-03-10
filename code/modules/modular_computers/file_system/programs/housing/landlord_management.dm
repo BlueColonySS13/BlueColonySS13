@@ -288,10 +288,8 @@
 			page_msg += "<b>Tenants [L.tenancy_no_info()]:</b>:<br>"
 			for(var/datum/tenant/T in L.get_tenants())
 				page_msg += "<li>[T.name] | Account Balance: [T.get_balance()] (Last Payment: [T.last_payment])</li>"
-			page_msg += "<br><br>
-			if(held)
-				page_msg += "<b>Held Purpose</b>:<br> [L.reason_held]<br><br>"
-			else
+			page_msg += "<br><br>"
+			if(L.held)
 				page_msg += "<b>Held Purpose</b>:<br> [L.reason_held]<br><br>"
 
 	if(index == -1)
@@ -473,14 +471,11 @@
 				if(!charge_to_account(I.associated_account_number, "Housing Sell", "[LOT.name] Lot Sell", "Landlord Management", LOT.get_default_price()))
 					error_msg = "There was an error charging your bank account. Please contact your bank's administrator."
 					return
-				else
-					var/datum/money_account/M = get_account(I.associated_account_number)
-					if(M)
-						M.money += LOT.get_default_price()
-					LOT.sell_to_council()
-					LOT.tenants_wanted = FALSE
-					clear_data()
-					index = 5
+
+				LOT.sell_to_council()
+				LOT.tenants_wanted = FALSE
+				clear_data()
+				index = 5
 
 
 
@@ -600,7 +595,7 @@
 					error_msg = "This lot is not rented out to anyone."
 					return
 
-				add_note(full_name, "Evicted [tenant.name] as a tenant from [LOT.name]",usr)
+				LOT.add_note(full_name, "Evicted [tenant.name] as a tenant from [LOT.name]",usr)
 				LOT.remove_tenant(tenant.unique_id)
 				clear_data()
 				index = 3
@@ -630,7 +625,7 @@
 					error_msg = "You must clear all bills before ending your tenancy."
 					return
 
-				add_note(full_name, "Terminated own tenancy for [LOT.name]",usr)
+				LOT.add_note(full_name, "Terminated own tenancy for [LOT.name]",usr)
 				LOT.remove_tenant()
 				clear_data()
 				index = 10
@@ -746,7 +741,7 @@
 
 				LOT.remove_applicant(applicant)
 
-				add_note(full_name, "Rejected [LOT.name]'s tenancy application for [applicant.name]",usr)
+				LOT.add_note(full_name, "Rejected [LOT.name]'s tenancy application for [applicant.name]",usr)
 
 
 			if("accept_app") // yes you may be our slave good sir
@@ -789,7 +784,7 @@
 				if(tenant_count.len >= LOT.max_tenants)
 					LOT.tenants_wanted = FALSE
 
-				add_note(full_name, "Accepted [LOT.name]'s tenancy application for [applicant.name]",usr)
+				LOT.add_note(full_name, "Accepted [LOT.name]'s tenancy application for [applicant.name]",usr)
 
 			if("pay_rent") // paying the rent
 				var/L = locate(href_list["lot"])
@@ -897,7 +892,7 @@
 				LOT.send_arrears_letter(unique_id)
 
 				alert("An email has been sent, informing the resident to pay their balance promptly.")
-				add_note(full_name, "Sent warning notice to [resident.name] for [LOT.name] regarding their [resident.account_balance]CR arrears.",usr)
+				LOT.add_note(full_name, "Sent warning notice to [resident.name] for [LOT.name] regarding their [resident.account_balance]CR arrears.",usr)
 
 			if("withdraw_funds") // collect that delicious rent money
 				var/L = locate(href_list["lot"])
@@ -934,7 +929,7 @@
 				LOT.landlord.account_balance -= withdraw
 
 				alert("[withdraw]CR has been sent to your bank account.")
-				add_note(full_name, "Withdrew [withdraw]CR to their bank account.",usr)
+				LOT.add_note(full_name, "Withdrew [withdraw]CR to their bank account.",usr)
 
 			if("hold_lot") // collect that delicious rent money
 				var/L = locate(href_list["lot"])
@@ -952,12 +947,12 @@
 				var/datum/computer_file/data/email_message/message = new/datum/computer_file/data/email_message()
 				var/eml_cnt = "Dear [LOT.get_landlord_name()], \[br\]"
 				eml_cnt += "[LOT.name] has been frozen for the following reason:\[BR\]\[BR\]\
-				[reason_held]\[BR\]\[BR\] \
+				[LOT.reason_held]\[BR\]\[BR\] \
 				This can be contested in a court of law, please contact city council at [using_map.council_email] for more details."
 
 				message.stored_data = eml_cnt
 				message.title = "Property Held: [LOT.name] - City Council"
 				message.source = "noreply@nanotrasen.gov.nt"
 
-				council_email.send_mail(landlord.email, message)
-				add_note(full_name, "Held/Froze [LOT.name].",usr)
+				council_email.send_mail(LOT.landlord.email, message)
+				LOT.add_note(full_name, "Held/Froze [LOT.name].",usr)
