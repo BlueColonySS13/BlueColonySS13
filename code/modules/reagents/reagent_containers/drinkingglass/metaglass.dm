@@ -298,6 +298,10 @@ Drinks Data
 	glass_icon_state = "wineglass"
 	glass_center_of_mass = list("x"=15, "y"=7)
 
+/datum/reagent/ethanol/wine/amontillado
+	glass_icon_state = "amontilladoglass"
+	glass_center_of_mass = list("x"=15, "y"=7)
+
 /datum/reagent/ethanol/acid_spit
 	glass_icon_state = "acidspitglass"
 	glass_center_of_mass = list("x"=16, "y"=7)
@@ -404,7 +408,7 @@ Drinks Data
 	glass_icon_state = "gintonicglass"
 
 /datum/reagent/ethanol/goldschlager
-	glass_icon_state = "ginvodkaglass"
+	glass_icon_state = "goldschlagerglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
 
 /datum/reagent/ethanol/hippies_delight
@@ -533,4 +537,58 @@ Drinks Data
 /datum/reagent/ethanol/specialwhiskey
 	glass_icon_state = "whiskeyglass"
 	glass_center_of_mass = list("x"=16, "y"=12)
+
+/datum/reagent/ethanol/vodkakora
+	glass_icon_state = "koraglass"
+	glass_center_of_mass =  list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/godka
+	glass_icon_state = "godkabottle"
+	glass_center_of_mass = list("x"=17, "y"=15)
+
+/datum/reagent/ethanol/holywine
+	glass_icon_state = "holywineglass"
+	glass_center_of_mass = list("x"=15, "y"=7)
+
+/datum/reagent/ethanol/holy_mary
+	glass_icon_state = "holymaryglass"
+
+/datum/reagent/ethanol/angelswrath
+	glass_icon_state = "angelswrath"
+	glass_center_of_mass = list("x"=16, "y"=2)
+
+/datum/reagent/ethanol/angelskiss
+	glass_icon_state = "angelskiss"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/ichor_mead
+	glass_icon_state = "ichor_meadglass"
+	glass_center_of_mass = list("x"=17, "y"=10)
+
+/datum/reagent/drink/eggnog
+	glass_icon_state = "eggnog"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/drink/cider
+	glass_icon_state = "ciderglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/vodka/kora
+	glass_icon_state = "koraglass"
+	glass_center_of_mass =  list("x"=16, "y"=8)
+
+/datum/reagent/ethanol/mojito
+	glass_icon_state = "mojito"
+
+/datum/reagent/ethanol/serpentspirit
+	glass_icon_state = "serpentdrink"
+
+/datum/reagent/ethanol/blackrose
+	glass_icon_state = "blackroseglass"
+
+/datum/reagent/ethanol/goldfinger
+	glass_icon_state = "goldfingerglass"
+
+/datum/reagent/drink/entdraught
+	glass_icon_state = "entdraught"
 

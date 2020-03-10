@@ -2837,7 +2837,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel
 	name = "Cheese wheel"
-	desc = "A big wheel of delcious Cheddar."
+	desc = "A big wheel of delicious Cheddar."
 	icon_state = "cheesewheel"
 	slice_path = /obj/item/weapon/reagent_containers/food/snacks/cheesewedge
 	slices_num = 5
@@ -2851,6 +2851,18 @@
 	reagents.add_reagent("protein", 10)
 	bitesize = 2
 
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule
+	name = "Pule cheese wheel"
+	desc = "A big wheel of expensive off-white pule cheese imported from Cascington. The hard rind is branded with a seal of authenticity."
+	icon_state = "pulecheesewheel"
+	slice_path = /obj/item/weapon/reagent_containers/food/snacks/cheesewedge/pule
+	slices_num = 5
+	filling_color = "#F0F0F0"
+	center_of_mass = list("x"=16, "y"=10)
+	nutriment_desc = list("aged cheese" = 10)
+	nutriment_amt = 10
+	price_tag = 30
+
 /obj/item/weapon/reagent_containers/food/snacks/cheesewedge
 	name = "Cheese wedge"
 	desc = "A wedge of delicious Cheddar. The cheese wheel it was cut from can't have gone far."
@@ -2858,6 +2870,15 @@
 	filling_color = "#FFF700"
 	bitesize = 2
 	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/weapon/reagent_containers/food/snacks/cheesewedge/pule
+	name = "Pule cheese wedge"
+	desc = "A wedge of expensive off-white pule cheese. The cheese wheel it was cut from can't have gone far."
+	icon_state = "pulecheesewedge"
+	filling_color = "#F0F0F0"
+	bitesize = 2
+	center_of_mass = list("x"=16, "y"=10)
+	price_tag = 4
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/birthdaycake
 	name = "Birthday Cake"
@@ -3013,11 +3034,30 @@
 	nutriment_desc = list("salt" = 1, "cracker" = 2)
 	nutriment_amt = 1
 
+/obj/item/weapon/reagent_containers/food/snacks/cracker/multigrain
+	name = "Multigrain Cracker"
+	desc = "A delicious and healthy multigrain cracker."
+	icon_state = "graincracker"
+	filling_color = "#F5DEB8"
+	center_of_mass = list("x"=16, "y"=6)
+	nutriment_desc = list("grains" = 1, "cracker" = 2, "salt" = 1)
+	nutriment_amt = 1
+
 /obj/item/weapon/reagent_containers/food/snacks/caviar
 	name = "Caviar"
-	desc = "It's caviar, how classy!."
-	icon = 'icons/obj/fish_items.dmi'
+	desc = "It's caviar, how classy!"
+	icon = 'icons/obj/food.dmi'
 	icon_state = "caviar"
+	filling_color = "#F5DEB8"
+	center_of_mass = list("x"=16, "y"=6)
+	nutriment_desc = list("salt" = 1, "fish" = 1)
+	nutriment_amt = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/caviar/red
+	name = "Salmon Roe"
+	desc = "Delicious salmon eggs, also known as red caviar."
+	icon = 'icons/obj/food.dmi'
+	icon_state = "salmonroe"
 	filling_color = "#F5DEB8"
 	center_of_mass = list("x"=16, "y"=6)
 	nutriment_desc = list("salt" = 1, "fish" = 1)

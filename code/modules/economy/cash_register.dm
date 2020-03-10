@@ -1,5 +1,6 @@
 #define LAW "law"
 #define MED "medical"
+#define COR "court"
 
 /obj/machinery/cash_register
 	name = "cash register"
@@ -32,9 +33,10 @@
 
 // Claim machine ID
 /obj/machinery/cash_register/New()
-	machine_id = "[station_name()] RETAIL #[num_financial_terminals++]"
-	cash_stored = rand(10, 70)*10
-	transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
+	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
+	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
+	if(SSeconomy)
+		linked_account = dept_acc_by_id(account_to_connect)
 
 
 /obj/machinery/cash_register/examine(mob/user as mob)
@@ -108,6 +110,11 @@
 		for(var/datum/medical_bill/M in medical_bills)
 			if(M.cost)
 				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[M]'>[M.name]</a><br>"
+
+	if(menu_items == "court")
+		for(var/datum/court_fee/J in court_fees)
+			if(J.cost)
+				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[J]'>[J.name]</a><br>"
 	return dat
 
 
@@ -152,7 +159,7 @@
 				price_list[t_purpose] += t_amount
 
 				playsound(src, 'sound/machines/twobeep.ogg', 25)
-				src.visible_message("\icon[src][transaction_purpose]: [t_amount] credit\s.")
+				src.visible_message("\icon[src][transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("add_menu")
 				if(!Adjacent(usr)) return
@@ -182,6 +189,15 @@
 					tax_cost = med_charge.post_tax_cost()
 					item_desc = "Medical Bill"
 
+				if (istype(menuitem, /datum/court_fee))
+					var/datum/court_fee/court_charge = menuitem
+					t_amount = court_charge.get_item_cost()
+					t_purpose = court_charge.name
+					tax_percent = court_charge.get_tax()
+					transaction_purpose = court_charge.name
+					tax_cost = court_charge.post_tax_cost()
+					item_desc = "Court Fee"
+
 				if(adds_tax)
 					t_amount += tax_cost
 
@@ -193,7 +209,7 @@
 				transaction_amount += t_amount
 
 				playsound(src, 'sound/machines/twobeep.ogg', 25)
-				src.visible_message("\icon[src] <b>[item_desc]:</b> [transaction_purpose]: [t_amount] credit\s.")
+				src.visible_message("\icon[src] <b>[item_desc]:</b> [transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("set_amount")
 				var/item_name = locate(href_list["item"])
@@ -279,7 +295,7 @@
 		return 1
 	else
 		confirm_item = I
-		src.visible_message("\icon[src]<b>Total price:</b> [transaction_amount] credit\s. Swipe again to confirm.")
+		src.visible_message("\icon[src]<b>Total price:</b> [cash2text( transaction_amount, FALSE, TRUE, TRUE )] credit\s. Swipe again to confirm.")
 		playsound(src, 'sound/machines/twobeep.ogg', 25)
 		return 0
 
@@ -323,30 +339,16 @@
 					linked_account.money += transaction_amount
 
 					// Create log entry in client's account
-					var/datum/transaction/T = new()
-					T.target_name = "[linked_account.owner_name]"
-					T.purpose = transaction_purpose
-					T.amount = "([transaction_amount])"
-					T.source_terminal = machine_id
-					T.date = current_date_string
-					T.time = stationtime2text()
-					D.transaction_log.Add(T)
+					D.add_transaction_log(linked_account.owner_name, transaction_purpose, -transaction_amount, machine_id)
 
 					// Create log entry in owner's account
-					T = new()
-					T.target_name = D.owner_name
-					T.purpose = transaction_purpose
-					T.amount = "[transaction_amount]"
-					T.source_terminal = machine_id
-					T.date = current_date_string
-					T.time = stationtime2text()
-					linked_account.transaction_log.Add(T)
+					linked_account.add_transaction_log(D.owner_name, transaction_purpose, transaction_amount, machine_id)
 
 					// Save log
-					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", transaction_amount)
+					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", -transaction_amount)
 
 					// Print reciept
-					var/receipt_data = get_receipt(I.registered_name ? I.registered_name : "n/A", "ID Card", transaction_amount)
+					var/receipt_data = get_receipt(I.registered_name ? I.registered_name : "n/A", "ID Card", -transaction_amount)
 
 					var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(loc)
 					P.name = "receipt - card payment #[transaction_logs.len+1]"
@@ -378,15 +380,7 @@
 			linked_account.money += transaction_amount
 
 			// Create log entry in owner's account
-			var/datum/transaction/T = new()
-			T.target_name = E.owner_name
-			T.purpose = transaction_purpose
-			T.amount = "[transaction_amount]"
-			T.source_terminal = machine_id
-			T.date = current_date_string
-			T.time = stationtime2text()
-			T.target_ckey = usr.client.ckey
-			linked_account.transaction_log.Add(T)
+			linked_account.add_transaction_log(E.owner_name, transaction_purpose, transaction_amount, machine_id)
 
 			// Save log
 			add_transaction_log(E.owner_name, "E-Wallet", transaction_amount)
@@ -421,7 +415,7 @@
 		cash_stored += transaction_amount
 
 		// Save log
-		add_transaction_log("N/A", "Cash", transaction_amount, usr.client.ckey)
+		add_transaction_log("N/A", "Cash", -transaction_amount, usr.client.ckey)
 
 		// Print reciept
 		var/receipt_data = get_receipt("N/A", "Cash", transaction_amount, usr.client.ckey)
@@ -495,7 +489,7 @@
 		item_name = item_list[i]
 		dat += "<tr><td class=\"tx-name-r\">[item_list[item_name] ? "<a href='?src=\ref[src];choice=subtract;item=\ref[item_name]'>-</a> <a href='?src=\ref[src];choice=set_amount;item=\ref[item_name]'>Set</a> <a href='?src=\ref[src];choice=add;item=\ref[item_name]'>+</a> [item_list[item_name]] x " : ""][item_name][tax ? " ([tax * 100]% tax)" : ""] <a href='?src=\ref[src];choice=clear;item=\ref[item_name]'>Remove</a></td><td class=\"tx-data-r\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
 	dat += "</table><table width=300>"
-	dat += "<tr><td class=\"tx-name-r\"><a href='?src=\ref[src];choice=clear'>Clear Entry</a></td><td class=\"tx-name-r\" style='text-align: right'><b>Total Amount: [transaction_amount] &thorn</b></td></tr>"
+	dat += "<tr><td class=\"tx-name-r\"><a href='?src=\ref[src];choice=clear'>Clear Entry</a></td><td class=\"tx-name-r\" style='text-align: right'><b>Total Amount: [cash2text( transaction_amount, FALSE, TRUE, TRUE )] &thorn</b></td></tr>"
 	dat += "</table></html>"
 	return dat
 
@@ -523,7 +517,7 @@
 	for(var/i=1, i<=item_list.len, i++)
 		item_name = item_list[i]
 		dat += "<tr><td class=\"tx-name\">[item_list[item_name] ? "[item_list[item_name]] x " : ""][item_name][tax ? " ([tax * 100]% tax)" : ""]</td><td class=\"tx-data\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
-	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [transaction_amount] &thorn</b></td></tr>"
+	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [cash2text( transaction_amount, FALSE, TRUE, TRUE )] &thorn</b></td></tr>"
 	dat += "</table></html>"
 
 	transaction_logs += dat
@@ -551,7 +545,7 @@
 	for(var/i=1, i<=item_list.len, i++)
 		item_name = item_list[i]
 		dat += "<tr><td class=\"tx-name\">[item_list[item_name] ? "[item_list[item_name]] x " : ""][item_name][tax ? " ([tax * 100]% tax)" : ""]</td><td class=\"tx-data\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
-	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [transaction_amount] &thorn</b></td></tr>"
+	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [cash2text( transaction_amount, FALSE, TRUE, TRUE )] &thorn</b></td></tr>"
 	dat += "</table></html>"
 
 	return dat
@@ -572,7 +566,7 @@
 		for(var/item in tax_list)
 			total_tax += tax_list[item] * (item_list[item] * price_list[item])
 
-		department_accounts["[station_name()] Funds"].money += total_tax
+		SSeconomy.charge_main_department(total_tax, transaction_purpose)
 
 	/// Visible confirmation
 	playsound(src, 'sound/machines/chime.ogg', 25)
@@ -652,38 +646,41 @@
 
 //--Premades--//
 
-/obj/machinery/cash_register/city/initialize()
-	account_to_connect = "[station_name()] Funds"
-	..()
+/obj/machinery/cash_register/city
+	account_to_connect = DEPT_COLONY
 
 /obj/machinery/cash_register/command
-	account_to_connect = "City Council"
+	account_to_connect = DEPT_COUNCIL
 
 /obj/machinery/cash_register/medical
-	account_to_connect = "Public Healthcare"
+	account_to_connect = DEPT_HEALTHCARE
 	menu_items = MED
 
 /obj/machinery/cash_register/engineering
-	account_to_connect = "Emergency and Maintenance"
+	account_to_connect = DEPT_MAINTENANCE
 
 /obj/machinery/cash_register/science
-	account_to_connect = "Research and Science"
+	account_to_connect = DEPT_RESEARCH
 
 /obj/machinery/cash_register/security
-	account_to_connect = "Police"
+	account_to_connect = DEPT_POLICE
 	menu_items = LAW
 
 /obj/machinery/cash_register/cargo
-	account_to_connect = "Cargo"
+	account_to_connect = DEPT_FACTORY
 
 /obj/machinery/cash_register/civilian
-	account_to_connect = "Civilian"
+	account_to_connect = DEPT_PUBLIC
 
 /obj/machinery/cash_register/bar
-	account_to_connect = "Bar"
+	account_to_connect = DEPT_BAR
 
 /obj/machinery/cash_register/botany
-	account_to_connect = "Botany"
+	account_to_connect = DEPT_BOTANY
 
+/obj/machinery/cash_register/court
+	account_to_connect = "Legal"
+	menu_items = COR
 #undef LAW
 #undef MED
+#undef COR

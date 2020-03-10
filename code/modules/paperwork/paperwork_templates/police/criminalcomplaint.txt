@@ -1,0 +1,34 @@
+[small]AO91 (Rev. 22/22) Criminal Complaint[/small]
+[hr]
+[center][large] Pollux High Court [/large] [/center]
+[center] for the 
+
+District of Geminus City [/center]
+
+[center] People of Geminus  v. [field] [/center]
+
+[center][large][b]CRIMINAL COMPLAINT[/b][/large][/center]
+I, [field], the complainant in this case, state that the following is true to the best of my knowledge and belief. On or about the date(s) of 2564-[field]-[field] in the county of Pollux in the District of Geminus, the defendant(s) [field] violated:
+
+ Code section  -  Offense Description [hr]
+1. [field] - [field] [hr]
+2. [field] - [field] [hr]
+3. [field] - [field] [hr]
+4. [field] - [field] [hr]
+5. [field] - [field] [hr]
+[hr]
+
+The Criminal Complaint is based on these facts: [field]
+
+[hr]
+Complainant's signature: [field] [br]
+Defendant's Counsel (if applicable): [field] [br]
+
+Defendant's signature: [field] [br]
+Defendant's Counsel (if applicable): [field] [br]
+
+Sworn to before me and signed in my presence.
+
+Date: 2564-[field]-[field]
+Judge's signature: [field]
+Name: [field]

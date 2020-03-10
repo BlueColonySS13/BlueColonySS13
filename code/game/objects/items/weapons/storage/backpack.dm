@@ -93,7 +93,7 @@
 	icon_state = "securitypack"
 
 /obj/item/weapon/storage/backpack/captain
-	name = "colony director's backpack"
+	name = "mayor's backpack"
 	desc = "It's a special backpack made exclusively for officers."
 	icon_state = "captainpack"
 
@@ -155,7 +155,7 @@
 	icon_state = "duffle_syndieammo"
 
 /obj/item/weapon/storage/backpack/dufflebag/captain
-	name = "colony director's dufflebag"
+	name = "mayor's dufflebag"
 	desc = "A large dufflebag for holding extra captainly goods."
 	icon_state = "duffle_captain"
 
@@ -250,10 +250,15 @@
 	icon_state = "satchel_hyd"
 
 /obj/item/weapon/storage/backpack/satchel/cap
-	name = "colony director's satchel"
+	name = "mayor's satchel"
 	desc = "An exclusive satchel for officers."
 	icon_state = "satchel-cap"
 	item_state_slots = list(slot_r_hand_str = "captainpack", slot_l_hand_str = "captainpack")
+
+/obj/item/weapon/storage/backpack/satchel/obsidienne
+	name = "obsidienne satchel"
+	desc = "An expensive handcrafted leather satchel with golden accents. The Obsidienne logo shines brightly on it."
+	icon_state = "satchel_obsidienne"
 
 //ERT backpacks.
 /obj/item/weapon/storage/backpack/ert
@@ -350,6 +355,16 @@
 	name = "purse"
 	desc = "A small, fashionable bag typically worn over the shoulder."
 	icon_state = "purse"
+	item_state_slots = list(slot_r_hand_str = "lgpurse", slot_l_hand_str = "lgpurse")
+	w_class = ITEMSIZE_LARGE
+	max_w_class = ITEMSIZE_NORMAL
+	max_storage_space = ITEMSIZE_COST_NORMAL * 5
+	drop_sound = 'sound/items/drop/accessory.ogg'
+
+/obj/item/weapon/storage/backpack/purse/obsidienne
+	name = "obsidienne royale purse"
+	desc = "A luxury purse made with imported Italian leather and golden spider silk. The Obsidienne logo on it shines brightly."
+	icon_state = "purse_obsidienne_royal"
 	item_state_slots = list(slot_r_hand_str = "lgpurse", slot_l_hand_str = "lgpurse")
 	w_class = ITEMSIZE_LARGE
 	max_w_class = ITEMSIZE_NORMAL

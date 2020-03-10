@@ -69,7 +69,7 @@
 
 /datum/law/criminal/violation
 	name = "Violation of Privacy Laws"
-	description = "To invade a person’s privacy, share or access personal \
+	description = "To invade a person's privacy, share or access personal \
 	information protected by privacy laws without a proper reason."
 	fine = 715
 	cell_time = 15
@@ -188,16 +188,10 @@
 	actions or requests of law enforcement officers are all examples of what could qualify as obstruction of justice."
 
 
-/datum/law/criminal/parental
-	name = "Neglect of Parental Duties"
-	description = "To fail to uphold a reasonable standard of care for a child as that child’s legal guardian."
-	fine = 570
-
-
 /datum/law/criminal/reckless
 	name = "Reckless Endangerment"
 	description = "To act in a way that creates a risk of potential serious physical injury to another \
-	person while disregarding the foreseeable consequences of one’s actions."
+	person while disregarding the foreseeable consequences of one's actions."
 	fine = 715
 
 /datum/law/criminal/inciting
@@ -237,14 +231,14 @@
 
 	fine = 1570
 	cell_time = 30
-	
+
 /datum/law/criminal/impersonating_city
 	name = "Impersonating City Officials"
 	description = "To impersonate a member of city council, law enforcement, or health personnel."
 
 	fine = 1140
 	cell_time = 30
-	
+
 /datum/law/criminal/contempt
 	name = "Contempt of Court"
 	description = "To be disrespectful towards the Court of law, in the form of \

@@ -8,7 +8,8 @@
 	comments = "Nanotrasen will recieve an allowance from the city's earnings."
 	can_remove = FALSE
 	direct_debit = TRUE
-	charge_department = "Nanotrasen"
+	department = DEPT_NANOTRASEN
+	charge_department = DEPT_COLONY
 
 /datum/expense/nanotrasen/New()
 	..()

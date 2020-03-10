@@ -2,7 +2,7 @@
 	name = "stomach"
 	icon_state = "stomach"
 	organ_tag = O_STOMACH
-	parent_organ = BP_GROIN
+	parent_organ = BP_TORSO
 
 	unacidable = TRUE	// Don't melt when holding your acid, dangit.
 

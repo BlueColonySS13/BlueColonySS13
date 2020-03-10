@@ -12,7 +12,7 @@
 	var/list/chunk = list()
 	var/chunksize = 0
 	titles += "<center><h1>EPISODE [rand(1,1000)] - THE [pick("DOWNFALL OF","RISE OF","TROUBLE WITH","FINAL STAND OF","DARK SIDE OF")] [pick("CITY FOLK","THE CORRUPT METROPOLIS","THE CLASS WAR","COLONY LIFE","THE WAGE SLAVES","THE POLLUXIANS","[uppertext(using_map.station_name)]")]</h1></center>"
-	for(var/mob/living/carbon/human/H in mob_list)
+	for(var/mob/living/carbon/human/H in player_list)
 		if(!cast.len && !chunksize)
 			chunk += "CAST:"
 		chunk += "[H.species.get_random_name(H.gender)]\t\t\tas\t\t\t[uppertext(H.real_name)]"
@@ -25,7 +25,7 @@
 		cast += "<center>[jointext(chunk,"<br>")]</center>"
 	titles += cast
 	var/list/corpses = list()
-	for(var/mob/living/carbon/human/H in mob_list)
+	for(var/mob/living/carbon/human/H in player_list)
 		if(H.stat == 2)
 			if(H.real_name)
 				corpses += H.real_name
@@ -33,7 +33,7 @@
 		titles += "<center>BASED ON REAL EVENTS<br>In memory of [english_list(corpses)].</center>"
 
 	var/list/staff = list("PRODUCTION STAFF:")
-	var/list/staffjobs = list("Coffe Fetcher", "Cameraman", "Angry Yeller", "Chair Operator", "Choreographer", "Historical Consultant", "Costume Designer", "Chief Editor", "Executive Assistant")
+	var/list/staffjobs = list("Coffee Fetcher", "Cameraman", "Angry Yeller", "Chair Operator", "Choreographer", "Historical Consultant", "Costume Designer", "Chief Editor", "Executive Assistant")
 	var/list/goodboys = list()
 	for(var/client/C in admins)
 		if((C.holder.rights & R_MOD) && !(C.holder.rights & R_DEBUG|R_ADMIN))

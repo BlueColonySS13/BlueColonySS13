@@ -10,6 +10,11 @@
  */
 
 //Returns a list in plain english as a string
+
+// Truncates a list "L" to "max" size by deleting the oldest (from index 1) entries.
+// Will not affect lists that are under the max size.
+#define truncate_oldest(L, max) (L.len + 1 > max ? L.Cut(1, 1 + (L.len - max)) : null)
+
 /proc/english_list(var/list/input, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
 	switch(input.len)
 		if(0) return nothing_text
@@ -58,10 +63,7 @@ proc/isemptylist(list/list)
 //////////////////////////////////////////////////////
 
 //Checks for specific types in specifically structured (Assoc "type" = TRUE) lists ('typecaches')
-/proc/is_type_in_typecache(atom/A, list/L)
-	if(!LAZYLEN(L) || !A)
-		return FALSE
-	return L[A.type]
+#define is_type_in_typecache(A, L) (A && length(L) && L[(ispath(A) ? A : A:type)])
 
 //returns a new list with only atoms that are in typecache L
 /proc/typecache_filter_list(list/atoms, list/typecache)
@@ -764,3 +766,30 @@ proc/dd_sortedTextList(list/incoming)
 	if(L.len)
 		. = L[1]
 		L.Cut(1,2)
+
+
+/proc/group_by(var/list/group_list, var/key, var/value)
+	var/values = group_list[key]
+	if(!values)
+		values = list()
+		group_list[key] = values
+
+	values += value
+
+/proc/duplicates(var/list/L)
+	. = list()
+	var/list/checked = list()
+	for(var/value in L)
+		if(value in checked)
+			. |= value
+		else
+			checked += value
+
+/proc/assoc_by_proc(var/list/plain_list, var/get_initial_value)
+	. = list()
+	for(var/entry in plain_list)
+		.[call(get_initial_value)(entry)] = entry
+
+/proc/get_initial_name(var/atom/atom_type)
+	var/atom/A = atom_type
+	return initial(A.name)

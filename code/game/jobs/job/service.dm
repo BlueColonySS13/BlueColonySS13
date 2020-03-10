@@ -3,7 +3,7 @@
 	title = "Bartender"
 	flag = BARTENDER
 	faction = "City"
-	department = "Bar"
+	department = DEPT_BAR
 	department_flag = CIVILIAN
 	total_positions = 2
 	spawn_positions = 2
@@ -23,7 +23,7 @@
 	title = "Chef"
 	flag = CHEF
 	faction = "City"
-	department = "Bar"
+	department = DEPT_BAR
 	department_flag = CIVILIAN
 	total_positions = 2
 	spawn_positions = 2
@@ -43,7 +43,7 @@
 	flag = BOTANIST
 	faction = "City"
 	department_flag = CIVILIAN
-	department = "Bar"
+	department = DEPT_BOTANY
 	total_positions = 2
 	spawn_positions = 1
 	supervisors = "the bar manager"
@@ -62,7 +62,7 @@
 	flag = MANAGER
 	faction = "City"
 	department_flag = CIVILIAN
-	department = "Bar"
+	department = DEPT_BAR
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the bar owner"
@@ -77,24 +77,7 @@
 	alt_titles = list("Executive Chef", "Diner Manager", "Bar Supervisor")
 
 //Service
-/datum/job/janitor
-	title = "Sanitation Technician"
-	flag = JANITOR
-	faction = "City"
-	department_flag = CIVILIAN
-	department = "Civilian"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "the city clerk"
-	selection_color = "#515151"
-	email_domain = "sanitation.gminus.plux.gov.nt"
-	idtype = /obj/item/weapon/card/id/civilian/janitor
-	access = list(access_janitor, access_maint_tunnels)
-	minimal_access = list(access_janitor, access_maint_tunnels)
-	minimum_character_age = 16 //Not making it any younger because being a janitor requires a lot of labor, or maybe it just means I'm very lazy? Oh well
-	wage = 18
-	outfit_type = /decl/hierarchy/outfit/job/service/janitor
-	alt_titles = list("Recycling Technician", "Sanitation Engineer")
+
 
 //More or less assistants
 /datum/job/journalist
@@ -102,7 +85,7 @@
 	flag = JOURNALIST
 	faction = "City"
 	department_flag = CIVILIAN
-	department = "Civilian"
+	department = DEPT_PUBLIC
 	total_positions = 4
 	spawn_positions = 2
 	supervisors = "the city clerk"
@@ -120,7 +103,7 @@
 	flag = LAWYER
 	faction = "City"
 	department_flag = CIVILIAN
-	department = "Civilian"
+	department = DEPT_PUBLIC
 	total_positions = 4
 	spawn_positions = 1
 	supervisors = "the Judge"
@@ -144,7 +127,7 @@
 	flag = BARBER
 	faction = "City"
 	department_flag = CIVILIAN
-	department = "Civilian"
+	department = DEPT_PUBLIC
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the city clerk"
@@ -157,36 +140,11 @@
 	outfit_type = /decl/hierarchy/outfit/job/civilian/barber
 	alt_titles = list("Hairdresser", "Stylist", "Beautician")
 
-/datum/job/secretary //Paperwork monkey
-	title = "City Hall Secretary"
-	flag = SECRETARY
-	department = "Civilian"
-	department_flag = CIVILIAN
-	faction = "City"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "the Mayor and the City Council"
-	selection_color = "#515151"
-	idtype = /obj/item/weapon/card/id/civilian/secretary
-	wage = 170
-	access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
-	minimal_access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
-	email_domain = "gov.nt"
-
-	minimum_character_age = 16
-	ideal_character_age = 20 //Really anyone can be this job, not just teens
-
-	alt_titles = list("Assistant Clerk", "Notary Public", "Paralegal", "Court Clerk")
-
-	outfit_type = /decl/hierarchy/outfit/job/civilian/secretary
-
-	clean_record_required = TRUE
-
 //Cargo
 /datum/job/qm
 	title = "Factory Manager"
 	flag = QUARTERMASTER
-	department = "Cargo"
+	department = DEPT_FACTORY
 	department_flag = CIVILIAN
 	faction = "City"
 	total_positions = 1
@@ -208,7 +166,7 @@
 	title = "Factory Worker"
 	flag = CARGOTECH
 	faction = "City"
-	department = "Cargo"
+	department = DEPT_FACTORY
 	department_flag = CIVILIAN
 	total_positions = 4
 	email_domain = "aoki.nt"
@@ -229,7 +187,7 @@
 	title = "Miner"
 	flag = MINER
 	faction = "City"
-	department = "Cargo"
+	department = DEPT_FACTORY
 	department_flag = CIVILIAN
 	total_positions = 3
 	spawn_positions = 3

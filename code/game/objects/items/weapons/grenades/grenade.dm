@@ -17,6 +17,10 @@
 	get_tax()
 		return WEAPONS_TAX
 
+	is_contraband()
+		return CONTRABAND_EXPLOSIVES
+
+
 /obj/item/weapon/grenade/proc/clown_check(var/mob/living/user)
 	if((CLUMSY in user.mutations) && prob(50))
 		user << "<span class='warning'>Huh? How does this thing work?</span>"

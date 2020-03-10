@@ -65,6 +65,7 @@
 		if(recipient.receive_mail(message, relayed))
 			outbox.Add(message)
 			ntnet_global.add_log_with_ids_check("EMAIL LOG: [login] -> [recipient.login] title: [message.title].")
+
 			return 1
 
 	if(config.canonicity)

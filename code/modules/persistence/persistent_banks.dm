@@ -1,19 +1,38 @@
 
 /mob/living/carbon/human/proc/save_character_money()
-
-	mind.initial_account.money = Clamp(mind.initial_account.money, -999999, 999999)
+	if(!mind)
+		return 0
 
 
 	mind.prefs.expenses = mind.initial_account.expenses
-
 	mind.prefs.money_balance = mind.initial_account.money
 	mind.prefs.bank_pin = mind.initial_account.remote_access_pin
-
 	mind.initial_account.save_persistent_account()
+
 
 	return 1
 
+/datum/money_account/proc/load_persistent_account(var/mob/living/carbon/human/H)
+
+	if(H.mind.prefs.bank_pin)
+		H.mind.prefs.bank_pin = remote_access_pin
+
+	if(H.mind.prefs.bank_account)
+		account_number = H.mind.prefs.bank_account
+
+	if(H.mind.prefs.expenses)
+		H.mind.prefs.expenses = expenses
+
+	transaction_log = get_persistent_acc_logs(account_number)
+
+	if(H.get_full_print())
+		fingerprint = H.get_full_print()
+
+	sanitize_values()
+
 /datum/money_account/proc/save_persistent_account()
+	sanitize_values()
+
 	var/full_path = "data/persistent/banks/[account_number].sav"
 	if(!full_path)			return 0
 	if(!fexists(full_path)) return 0
@@ -29,6 +48,11 @@
 	S["remote_access_pin"] << remote_access_pin
 	S["expenses"] << expenses
 	S["suspended"] << suspended
+	S["max_transaction_logs"] << max_transaction_logs
+
+	truncate_oldest(transaction_log, max_transaction_logs)
+
+	S["transaction_log"] << transaction_log
 
 	S["security_level"] << security_level
 
@@ -37,8 +61,8 @@
 /datum/money_account/proc/make_persistent() // for existing accounts
 	make_new_persistent_account(owner_name, money, remote_access_pin, expenses, transaction_log, suspended, security_level)
 
-/proc/make_new_persistent_account(var/owner, var/money, var/pin, var/expenses, var/transaction_logs, var/suspend, var/security_level)
-	var/acc_no = md5("[owner][current_date_string]")
+/proc/make_new_persistent_account(var/owner, var/money, var/pin, var/expenses, var/transaction_logs, var/suspend, var/security_level, trans_max)
+	var/acc_no = md5("[owner][GLOB.current_date_string]")
 	var/full_path = "data/persistent/banks/[acc_no].sav"
 	if(!full_path)			return 0
 	if(fexists(full_path)) return 0
@@ -58,7 +82,7 @@
 	S["transaction_log"] << transaction_logs
 	S["suspended"] << suspend
 	S["security_level"] << security_level
-
+	S["max_transaction_logs"] << trans_max
 	return acc_no
 
 /proc/del_persistent_account(var/account_id)
@@ -122,11 +146,36 @@
 	if(!S)					return 0
 	S.cd = "/"
 
-	var/list/acc_logs
+	var/list/acc_logs = list()
 
 	S["transaction_log"] >> acc_logs
 
 	return acc_logs
+
+/proc/add_persistent_acc_logs(acc_no, transaction, max_logs)
+	var/full_path = "data/persistent/banks/[acc_no].sav"
+
+	if(!full_path)			return 0
+	if(!fexists(full_path)) return 0
+
+	var/savefile/S = new /savefile(full_path)
+	if(!S)					return 0
+	S.cd = "/"
+
+	var/list/acc_logs
+	S["transaction_log"] >> acc_logs
+
+	if(!max_logs)
+		S["max_transaction_logs"] >> max_logs
+		if(!max_logs)
+			max_logs = 50
+
+	acc_logs += transaction
+	truncate_oldest(acc_logs, max_logs)
+
+	S["transaction_log"] << acc_logs
+
+	return 1
 
 
 /proc/persist_set_balance(var/acc_no, var/amount)

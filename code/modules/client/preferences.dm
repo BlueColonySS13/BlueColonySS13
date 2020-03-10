@@ -15,10 +15,11 @@ datum/preferences
 	var/last_id
 	var/first_seen
 	var/last_seen
-	
+
 	var/list/ips_associated	= list()
 	var/list/cids_associated = list()
-	
+	var/list/characters_created = list()
+
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
 	var/ooccolor = "#010000"			//Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color
@@ -39,7 +40,7 @@ datum/preferences
 	var/birth_year						//year you were born
 	// There's no birth year, as that's automatically calculated by your age.
 
-	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
+	var/spawnpoint = "City Arrivals Airbus" //where this character will spawn (0-2).
 	var/b_type = "O+"					//blood type (not-chooseable)
 	var/backbag = 2					//backpack type
 	var/pdachoice = 1					//PDA type

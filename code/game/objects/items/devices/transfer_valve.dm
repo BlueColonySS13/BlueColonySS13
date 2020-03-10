@@ -11,6 +11,12 @@
 	var/toggle = 1
 	flags = PROXMOVE
 
+	get_tax()
+		return WEAPONS_TAX
+
+	is_contraband()
+		return CONTRABAND_EXPLOSIVES
+
 /obj/item/device/transfer_valve/proc/process_activation(var/obj/item/device/D)
 
 /obj/item/device/transfer_valve/IsAssemblyHolder()
