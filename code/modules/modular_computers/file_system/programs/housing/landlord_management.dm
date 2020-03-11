@@ -21,6 +21,7 @@
 	var/acc_balance
 
 	var/judge_access = FALSE
+	var/clerk_access = FALSE
 
 	var/datum/lot/current_lot
 
@@ -35,7 +36,10 @@
 		full_name = I.registered_name
 		unique_id = I.unique_ID
 
-		if(access_heads in I.access)
+		if(access_hop in I.access)
+			clerk_access = TRUE
+
+		if(access_judge in I.access)
 			judge_access = TRUE
 
 		var/datum/money_account/bank = get_account(I.associated_account_number)
@@ -65,14 +69,14 @@
 				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name] (Owned by [L.get_landlord_name()])<br>"
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
-				page_msg += "<font color=\"yellow\"><b>Price:</b></font> [L.get_lot_cost()]CR (incl [L.get_service_charge()]CR service charge per payroll)<br><br>"
-				page_msg += "Lot has [L.tenancy_no_info()] tenants. Profit: [L.get_approx_earnings()]CR per payroll.<br>"
+				page_msg += "<font color=\"yellow\"><b>Price:</b></font> [cash2text( L.get_price(), FALSE, TRUE, TRUE )] (incl [cash2text( L.get_service_charge(), FALSE, TRUE, TRUE )] service charge per payroll)<br><br>"
+				page_msg += "Lot has [L.tenancy_no_info()] tenants. Profit: [cash2text( L.get_approx_earnings(), FALSE, TRUE, TRUE )] per payroll.<br>"
 				page_msg += "<b>Licensed for:</b>"
 				for(var/V in L.licenses)
-					page_msg += "<br><li>[L]</li>"
+					page_msg += "<br><li>[V]</li>"
 
 				page_msg += "<br>"
-				page_msg += "<font color=\"yellow\"><a href='?src=\ref[src];choice=buy_lot;lot=\ref[L]'>Buy [L.name] for [L.get_lot_cost()] credits.</a></font><br><hr>"
+				page_msg += "<font color=\"yellow\"><a href='?src=\ref[src];choice=buy_lot;lot=\ref[L]'>Buy [L.name] for [cash2text( L.get_price(), FALSE, TRUE, TRUE )].</a></font><br><hr>"
 		else
 			page_msg += "No properties are currently available for sale. Check back later, or alternatively view properties available for rent."
 
@@ -92,19 +96,19 @@
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
 				page_msg += "<font color=\"yellow\"><b>Status:</b></font> [L.get_status()]<br>"
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
-				page_msg += "Lot has [L.tenancy_no_info()] tenants. Profit: [L.get_approx_earnings()]CR per payroll.<br>"
+				page_msg += "Lot has [L.tenancy_no_info()] tenants. Profit: [cash2text( L.get_approx_earnings(), FALSE, TRUE, TRUE )] per payroll.<br>"
 				page_msg += "<b>Licensed for:</b>"
 				for(var/V in L.licenses)
-					page_msg += "<br><li>[L]</li>"
+					page_msg += "<br><li>[V]</li>"
 
 				page_msg += "<br>"
-				page_msg += "<font color=\"yellow\"><b>Price:</b></font> [L.get_lot_cost()]CR (incl [L.get_service_charge()]CR service charge per payroll)<br><br>"
-				page_msg += "<font color=\"yellow\"><b>Service Charge Balance:</b></font> [L.get_landlord_balance()]CR ([L.get_service_charge()]CR per payroll)<br>"
+				page_msg += "<font color=\"yellow\"><b>Price:</b></font> [cash2text( L.get_price(), FALSE, TRUE, TRUE )] (incl [cash2text( L.get_service_charge(), FALSE, TRUE, TRUE )] service charge per payroll)<br><br>"
+				page_msg += "<font color=\"yellow\"><b>Service Charge Balance:</b></font> [cash2text( L.get_landlord_balance(), FALSE, TRUE, TRUE )] ([cash2text( L.get_service_charge(), FALSE, TRUE, TRUE )] per payroll)<br>"
 				page_msg += "<a href='?src=\ref[src];choice=view_checkbook;lot=\ref[L]'>View Checkbook (Payment Records)</a>"
 
 				var/labelpay = "Add Funds"
 				if(0 > your_landlord.account_balance)
-					labelpay = "Pay Charges ([your_landlord.account_balance]CR)"
+					labelpay = "Pay Charges ([cash2text( your_landlord.account_balance, FALSE, TRUE, TRUE )])"
 				page_msg += "<a href='?src=\ref[src];choice=pay_serv_charges;lot=\ref[L];landlord=\ref[your_landlord]'>[labelpay]</a>"
 				page_msg += "<a href='?src=\ref[src];choice=withdraw_funds;lot=\ref[L];landlord=\ref[your_landlord]'>Withdraw Funds</a>"
 
@@ -114,7 +118,7 @@
 					if(L.get_status() == FOR_SALE)
 						page_msg += "<a href='?src=\ref[src];choice=remove_sale_lot;lot=\ref[L]'>Remove Lot from Market</a>"
 					else
-						page_msg += "<a href='?src=\ref[src];choice=sell_lot;lot=\ref[L]'>Sell to City Council ([L.get_default_price()]CR)</a> \
+						page_msg += "<a href='?src=\ref[src];choice=sell_lot;lot=\ref[L]'>Sell to City Council ([cash2text( L.get_default_price(), FALSE, TRUE, TRUE )])</a> \
 					<a href='?src=\ref[src];choice=market_lot;lot=\ref[L]'>Sell on Market</a> "
 
 					if(L.get_status() == FOR_RENT)
@@ -124,12 +128,19 @@
 					else
 						page_msg += "<a href='?src=\ref[src];choice=rent_lot;lot=\ref[L]'>Put up for Renting</a> </font>"
 
+					page_msg += "<a href='?src=\ref[src];choice=set_rent;lot=\ref[L]'>Set Rent</a> </font>"
+					page_msg += "<a href='?src=\ref[src];choice=set_price;lot=\ref[L]'>Set Price</a> </font>"
+
+					page_msg += "<a href='?src=\ref[src];choice=rename_lot;lot=\ref[L]'>Rename Lot</a> </font>"
+					page_msg += "<a href='?src=\ref[src];choice=edit_description;lot=\ref[L]'>Change Description</a> </font>"
+
+
 					if(!isemptylist(L.get_tenants()))
 						page_msg += "<br><br><div style='background-color:black; font-size: 11px; color: white'>"
 						page_msg += "<h3>Tenants:</h4><br>"
 						for(var/datum/tenant/tenant in L.get_tenants())
 							page_msg += "<font color=\"yellow\"><b>Tenant:</b></font> [tenant.name]<br>"
-							page_msg += "<font color=\"yellow\"><b>Tenant's Rent Balance:</b></font> [tenant.get_balance()]CR ([L.get_rent()]CR per payroll)<br>"
+							page_msg += "<font color=\"yellow\"><b>Tenant's Rent Balance:</b></font> [cash2text( tenant.get_balance(), FALSE, TRUE, TRUE )] ([cash2text( L.get_rent(), FALSE, TRUE, TRUE )] per payroll)<br>"
 							page_msg += "<font color=\"yellow\"><b>Last Payment:</b></font> [tenant.last_payment]<br>"
 							page_msg += "<a href='?src=\ref[src];choice=evict_tenant;lot=\ref[L];tenant=\ref[tenant]'>Evict Tenant ([tenant.name])</a> </font><br>"
 							page_msg += "<a href='?src=\ref[src];choice=send_warning_notice;lot=\ref[L];tenant=\ref[tenant]'>Send Warning Email ([tenant.name])</a> </font><br>"
@@ -170,9 +181,9 @@
 				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name]<br>"
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
-				page_msg += "<font color=\"yellow\"><b>Rent:</b></font> [L.get_rent()]CR (per payroll)<br>"
+				page_msg += "<font color=\"yellow\"><b>Rent:</b></font> [cash2text( L.get_rent(), FALSE, TRUE, TRUE )] (per payroll)<br>"
 				page_msg += "Lot has [L.tenancy_no_info()] tenants.<br>"
-				page_msg += "<font color=\"yellow\"><b>Minimum Required Deposit:</b></font> [L.required_deposit]CR<br><br>"
+				page_msg += "<font color=\"yellow\"><b>Minimum Required Deposit:</b></font> [cash2text( L.required_deposit, FALSE, TRUE, TRUE )]<br><br>"
 
 
 				if(!(unique_id == L.get_landlord_uid() ))
@@ -204,17 +215,17 @@
 				page_msg += "<font color=\"yellow\"><b>Contact Email:</b></font> [L.landlord.email]<br><br>"
 				page_msg += "<b>Licensed for:</b>"
 				for(var/V in L.licenses)
-					page_msg += "<br><li>[L]</li>"
+					page_msg += "<br><li>[V]</li>"
 
 				page_msg += "<br>"
 
-				page_msg += "<font color=\"yellow\"><b>Rent:</b></font> [L.get_rent()]CR<br>"
+				page_msg += "<font color=\"yellow\"><b>Rent:</b></font> [cash2text( L.get_rent(), FALSE, TRUE, TRUE )]<br>"
 				page_msg += "<font color=\"yellow\"><b>Last Payment:</b></font> [your_tenant.last_payment]<br>"
-				page_msg += "<font color=\"yellow\"><b>Account Balance:</b></font> [your_tenant.get_balance()]CR<br>"
+				page_msg += "<font color=\"yellow\"><b>Account Balance:</b></font> [cash2text( your_tenant.get_balance(), FALSE, TRUE, TRUE )]<br>"
 
 				var/labelpay = "Add Funds"
 				if(!(your_tenant.account_balance > 0))
-					labelpay = "Pay Rent ([your_tenant.account_balance]CR)"
+					labelpay = "Pay Rent ([cash2text( your_tenant.account_balance, FALSE, TRUE, TRUE )])"
 				page_msg += "<a href='?src=\ref[src];choice=pay_rent;lot=\ref[L];tenant=\ref[your_tenant]'>[labelpay]</a>"
 				page_msg += "<a href='?src=\ref[src];choice=end_tenancy;lot=\ref[L];tenant=\ref[your_tenant]'>Cancel Tenancy</a>"
 
@@ -236,7 +247,7 @@
 				for(var/datum/tenant/A in L.applied_tenants)
 					page_msg += "<font color=\"yellow\"><b>Applicant Name:</b></font> [A.name]<br>"
 					page_msg += "<font color=\"yellow\"><b>Email:</b></font> [A.email]<br>"
-					page_msg += "<font color=\"yellow\"><b>Offered Deposit:</b></font> [A.agreed_deposit]CR<br>"
+					page_msg += "<font color=\"yellow\"><b>Offered Deposit:</b></font> [cash2text( A.agreed_deposit, FALSE, TRUE, TRUE )]<br>"
 
 					page_msg += "<a href='?src=\ref[src];choice=accept_app;lot=\ref[L];applicant=\ref[A]'>Accept</a> "
 					page_msg += "<a href='?src=\ref[src];choice=reject_app;lot=\ref[L];applicant=\ref[A]'>Reject</a>"
@@ -257,7 +268,7 @@
 
 			if(!isemptylist(L.landlord_checkbook))
 				for(var/A in L.landlord_checkbook)
-					page_msg += "<li>[A]</li>"
+					page_msg += "[A]<br>"
 			else
 				page_msg += "<i>No entries found.</i>"
 
@@ -267,10 +278,9 @@
 		page_msg = "This is a list of all lots available in [using_map.station_name].<br>"
 
 		for(var/datum/lot/L in SSlots.all_lots)
-			if(judge_access)
-				page_msg += "<a href='?src=\ref[src];choice=select_lot;lot=\ref[L]'>Select</a> "
+			page_msg += "<a href='?src=\ref[src];choice=select_lot;lot=\ref[L]'>Select</a> "
 
-			page_msg += "<b>[L.name]</b> | <b>STATUS:</b> [L.get_status()] | <b>Market Price:</b> [L.get_price()]CR | <b>No of Tenants:</b> [L.tenancy_no_info()]<br>"
+			page_msg += "<b>[L.name]</b> | <b>STATUS:</b> [L.get_status()] | <b>Market Price:</b> [cash2text( L.get_price(), FALSE, TRUE, TRUE )] | <b>No of Tenants:</b> [L.tenancy_no_info()]<br>"
 
 	else if(index == 14) // View a certain lot
 		if(!current_lot)
@@ -278,16 +288,28 @@
 		else
 			var/datum/lot/L = current_lot
 
+			if(judge_access)
+				page_msg += "<a href='?src=\ref[src];choice=repossess_lot;lot=\ref[L]'>Repossess Lot</a>"
 
+			if(clerk_access || judge_access)
+				if(!L.held)
+					page_msg += "<a href='?src=\ref[src];choice=hold_lot;lot=\ref[L]'>Freeze Lot</a>"
+				else
+					page_msg += "<a href='?src=\ref[src];choice=unhold_lot;lot=\ref[L]'>Unfreeze Lot</a>"
 
-			page_msg += "<h3>[L.name]</h3><b>"
+			page_msg = "<h3>[L.name]</h3>"
 			page_msg += "<b>ID</b>:<br> [L.id]<br><br>"
 			page_msg += "<b>Name</b>:<br> [L.name]<br><br>"
 			page_msg += "<b>Description</b>:<br> [L.desc]<br><br>"
 			page_msg += "<b>Status</b>:<br> [L.get_status()]<br><br>"
-			page_msg += "<b>Tenants [L.tenancy_no_info()]:</b>:<br>"
-			for(var/datum/tenant/T in L.get_tenants())
-				page_msg += "<li>[T.name] | Account Balance: [T.get_balance()] (Last Payment: [T.last_payment])</li>"
+
+			if(!isemptylist(L.get_tenants()))
+				page_msg += "<b>Tenants [L.tenancy_no_info()]:</b><br>"
+				for(var/datum/tenant/T in L.get_tenants())
+					page_msg += "<li>[T.name] | Account Balance: [cash2text( T.get_balance(), FALSE, TRUE, TRUE )] (Last Payment: [T.last_payment])</li>"
+
+
+
 			page_msg += "<br><br>"
 			if(L.held)
 				page_msg += "<b>Held Purpose</b>:<br> [L.reason_held]<br><br>"
@@ -387,10 +409,95 @@
 				var/L = locate(href_list["lot"])
 				current_lot = L
 
-				if(!current_lot || !judge_access)
+				if(!current_lot)
 					index = 1
 					return
 				index = 14
+
+
+			if("set_price")
+				var/L = locate(href_list["lot"])
+
+				var/datum/lot/LOT = L
+
+				if(!LOT)
+					return
+
+				var/lot_new_price = input("Current lot price is [LOT.get_price()]CR, input a new price for your lot.", "Set Price", LOT.price) as num|null
+
+				if(!lot_new_price || (0 > lot_new_price))
+					return
+
+				if("No" == alert("Set the price of [LOT.name] to [lot_new_price]CR?", "Price Lot", "No", "Yes"))
+					return
+
+				LOT.add_note(full_name, "Changed [LOT.name]'s price from [LOT.get_price()]CR to [lot_new_price]CR.",usr)
+
+				LOT.price = lot_new_price
+
+
+			if("set_rent")
+				var/L = locate(href_list["lot"])
+
+				var/datum/lot/LOT = L
+
+				if(!LOT)
+					return
+
+				var/lot_new_rent = input("Current lot price is [LOT.get_rent()]CR, input the new rent for your lot. Warning: You should probably let your tenants know before doing this.", "Set Price", LOT.get_rent()) as num|null
+
+				if(!lot_new_rent || (0 > lot_new_rent))
+					return
+
+				if("No" == alert("Set the rent of [LOT.name] to [lot_new_rent]CR?", "Rent Lot", "No", "Yes"))
+					return
+
+				LOT.add_note(full_name, "Changed [LOT.name]'s rent from [LOT.get_rent()]CR to [lot_new_rent]CR.",usr)
+
+				LOT.rent = lot_new_rent
+
+
+			if("rename_lot")
+				var/L = locate(href_list["lot"])
+
+				var/datum/lot/LOT = L
+
+				if(!LOT)
+					error_msg = "This lot does not exist."
+					return
+
+
+				var/new_name = sanitize(input("Current lot name is [LOT.name], enter a new name.", "Set Name", LOT.name) as text, MAX_NAME_LEN)
+
+				if("No" == alert("Rename [LOT.name] to [new_name]?", "Confirm Name", "No", "Yes"))
+					return
+
+				LOT.add_note(full_name, "Renamed [LOT.name] to [new_name].",usr)
+				LOT.name = capitalize(new_name)
+				LOT.lot_area.name = capitalize(new_name)
+
+
+
+			if("edit_description")
+				var/L = locate(href_list["lot"])
+
+				var/datum/lot/LOT = L
+
+				if(!LOT)
+					error_msg = "This lot does not exist."
+					return
+
+
+				var/new_desc = sanitize(input("Enter a new description for your lot. Clearing this will set the description back to default.", "Set Name", LOT.desc) as message, MAX_PAPER_MESSAGE_LEN)
+
+				if(!new_desc)
+					LOT.desc = initial(LOT.desc)
+					LOT.add_note(full_name, "Reset [LOT.name]'s description to default.",usr)
+					return
+
+				LOT.desc = new_desc
+				LOT.add_note(full_name, "Changed [LOT.name]'s description.",usr)
+
 
 			if("buy_lot")
 				var/L = locate(href_list["lot"])
@@ -438,10 +545,6 @@
 				if(!charge_to_account(I.associated_account_number, "Housing Purchase", "[LOT.name] Lot Purchase", "Landlord Management", -LOT.get_price() ))
 					error_msg = "There was an error charging your bank account. Please contact your bank's administrator."
 					return
-
-				if(LOT.get_landlord() && LOT.landlord.bank_id)
-					charge_to_account(I.associated_account_number, "Housing Purchase from [full_name]", "[LOT.name] Lot Purchase", "Landlord Management", LOT.get_price() )
-
 
 				LOT.set_new_ownership(unique_id, full_name, I.associated_account_number, landlord_email)
 				clear_data()
@@ -499,6 +602,8 @@
 				LOT.for_sale = TRUE
 				clear_data()
 				index = 6
+				LOT.add_note(full_name, "Added [LOT.name] to sale market.",usr)
+
 
 
 			if("rent_lot") // you put a lot on the market for people to rent.
@@ -532,6 +637,8 @@
 				LOT.tenants_wanted = TRUE
 				clear_data()
 				index = 8
+				LOT.add_note(full_name, "Added [LOT.name] to rent list.",usr)
+
 
 
 			if("remove_rent_lot") // you don't want to rent it out any more
@@ -551,7 +658,7 @@
 
 				LOT.tenants_wanted = FALSE
 				LOT.remove_all_applicants()
-
+				LOT.add_note(full_name, "Removed [LOT.name] from rent list.",usr)
 
 			if("remove_sale_lot") // remove the lot from sale
 				var/L = locate(href_list["lot"])
@@ -569,9 +676,94 @@
 					return
 
 				LOT.for_sale = FALSE
+				LOT.add_note(full_name, "Removed [LOT.name] from sale list.",usr)
 
 				clear_data()
 				index = 3
+
+
+			if("hold_lot") // get out bitch get out!
+				var/L = locate(href_list["lot"])
+
+				var/datum/lot/LOT = L
+
+				if(!LOT)
+					return
+				if(!clerk_access || !judge_access)
+					return
+				if(LOT.held)
+					error_msg = "This lot is already held."
+					return
+
+				// no you can't join as a city council member and hold the lot of your own landlord. nice try tho
+				if(LOT.get_tenant_by_uid(unique_id) || (unique_id == LOT.get_landlord_uid() ) )
+					error_msg = "Due to conflict of interest, as a council member you cannot handle lots that you are a tenant or landlord of."
+					alert("Due to conflict of interest, as a council member you cannot handle lots that you are a tenant or landlord of.")
+					return
+
+
+				if("No" == alert("Are you sure you want to put [LOT.name] on hold?", "Freeze Lot", "No", "Yes"))
+					return
+
+				LOT.held = TRUE
+
+				LOT.add_note(full_name, "Placed [LOT.name] on hold.",usr)
+				clear_data()
+
+
+
+			if("unhold_lot") // get out bitch get out!
+				var/L = locate(href_list["lot"])
+				var/datum/lot/LOT = L
+
+				if(!LOT)
+					return
+				if(!clerk_access || !judge_access)
+					return
+				if(!LOT.held)
+					error_msg = "This lot is not held."
+					return
+
+				// no you can't join as a city council member and hold the lot of your own landlord. nice try tho
+				if(LOT.get_tenant_by_uid(unique_id) || (unique_id == LOT.get_landlord_uid() ) )
+					error_msg = "Due to conflict of interest, as a council member you cannot handle lots that you are a tenant or landlord of."
+					alert("Due to conflict of interest, as a council member you cannot handle lots that you are a tenant or landlord of.")
+					return
+
+
+				if("No" == alert("Are you sure you want to take [LOT.name] off hold?", "Unfreeze Lot", "No", "Yes"))
+					return
+
+				LOT.held = FALSE
+
+				LOT.add_note(full_name, "Took [LOT.name] off hold.",usr)
+				clear_data()
+
+
+			if("repossess_lot") // this ours now!
+				var/L = locate(href_list["lot"])
+				var/datum/lot/LOT = L
+
+				if(!LOT || !LOT.landlord)
+					return
+
+				if(!judge_access)
+					return
+
+				if("No" == alert("Do you want to repossess [LOT.name]? [LOT.get_landlord_name()] will lose access to the property. Do not do this lightly!", "Repossess", "No", "Yes"))
+					return
+
+				// no you can't join as a city council member and hold the lot of your own landlord. nice try though.
+				if(LOT.get_tenant_by_uid(unique_id) || (unique_id == LOT.get_landlord_uid() ) )
+					error_msg = "Due to conflict of interest, as a council member you cannot handle lots that you are a tenant or landlord of."
+					alert("Due to conflict of interest, as a council member you cannot handle lots that you are a tenant or landlord of.")
+					return
+
+
+				LOT.add_note(full_name, "Repossessed [LOT.name] as a tenant from [LOT.name]",usr)
+				LOT.repossess_lot()
+
+				clear_data()
 
 
 			if("evict_tenant") // get out bitch get out!
@@ -765,7 +957,7 @@
 				var/eml_cnt = "Dear [applicant.name], \[br\]"
 				eml_cnt += "Congratulations, you been successful for your application for renting the property '[LOT.name]'. \
 				You will now be able to start using the lot commencing onwards. \[br\] \
-				Your rent will be [LOT.get_rent()]CR per payroll. Your landlord is [LOT.get_landlord_name()] may contact them on [LOT.landlord.email] \
+				Your rent will be [cash2text( LOT.get_rent(), FALSE, TRUE, TRUE )] per payroll. Your landlord is [LOT.get_landlord_name()] may contact them on [LOT.landlord.email] \
 				for any enquiries. Best wishes,\[br\] City Council \[br\] Do not reply: This is an automated email."
 
 				message.stored_data = eml_cnt
@@ -892,7 +1084,7 @@
 				LOT.send_arrears_letter(unique_id)
 
 				alert("An email has been sent, informing the resident to pay their balance promptly.")
-				LOT.add_note(full_name, "Sent warning notice to [resident.name] for [LOT.name] regarding their [resident.account_balance]CR arrears.",usr)
+				LOT.add_note(full_name, "Sent warning notice to [resident.name] for [LOT.name] regarding their [cash2text( resident.account_balance, FALSE, TRUE, TRUE )] arrears.",usr)
 
 			if("withdraw_funds") // collect that delicious rent money
 				var/L = locate(href_list["lot"])
@@ -919,7 +1111,7 @@
 					return
 
 				if(withdraw > LOT.get_landlord_balance())
-					error_msg = "You only have [LOT.get_landlord_balance()]CR in your landlord account. Please choose an amount no larger than this."
+					error_msg = "You only have [cash2text( LOT.get_landlord_balance(), FALSE, TRUE, TRUE )] in your landlord account. Please choose an amount no larger than this."
 					return
 
 				if(!charge_to_account(LOT.landlord.bank_id, "Landlord Management System", "Withdraw balance for [LOT.name]", "City Council DB #[rand(200,500)]", withdraw))

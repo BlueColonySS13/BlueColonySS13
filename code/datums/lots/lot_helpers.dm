@@ -56,17 +56,11 @@
 /datum/lot/proc/get_default_price()
 	return initial(price)
 
-/datum/lot/proc/get_lot_cost()
-	return (get_price() + get_tax_amount())
-
 /datum/lot/proc/get_price()
 	return price
 
 /datum/lot/proc/get_tax()
 	return HOUSING_TAX
-
-/datum/lot/proc/get_tax_amount()
-	return round((get_price() * get_tax()), 1)
 
 // Rent procs
 
@@ -106,10 +100,15 @@
 	return tenant
 
 /datum/lot/proc/set_new_ownership(uid, t_name, bank_id, email)
+	add_note(t_name, "Bought [name] from [get_landlord_name()]",usr)
 	if(landlord)
-		charge_to_account(landlord.bank_id, "Housing Sell To [t_name]", "[name] Lot Purchase", "Landlord Management", (landlord.account_balance + price))
+		charge_to_account(landlord.bank_id, "Lot [name] for [t_name]", "[name] Lot Purchase", "Landlord Management", (landlord.account_balance + price))
+	else
+		var/datum/department/council = dept_by_id(DEPT_COUNCIL)
+		council.adjust_funds(get_price(), "[name] Lot Sell to [t_name]")
 
 	landlord = make_tenant(uid, t_name, bank_id, email)
+
 	return landlord
 
 /datum/lot/proc/remove_tenant(uid)
@@ -123,6 +122,9 @@
 	return TRUE
 
 /datum/lot/proc/remove_all_tenants()
+	for(var/datum/tenant/T in get_tenants())
+		if(T.account_balance)
+			charge_to_account(T.bank_id, "Repossession Money", "[name] Tenant Remaining Balance", "Landlord Management", T.account_balance)
 	QDEL_NULL(tenants)
 	tenants = list()
 
@@ -130,34 +132,29 @@
 	QDEL_NULL(applied_tenants)
 	applied_tenants = list()
 
-/datum/lot/proc/buy_from_council(uid, t_name, bank_id, email)
-	if(!uid || !t_name || !bank_id || !email)
-		return FALSE
+/datum/lot/proc/sell_to_council(repossess=0)
+	if(landlord)
+		var/reason = "Housing Sell To Council"
+		if(repossess)
+			reason = "Lot Repossession to City Council"
+		charge_to_account(landlord.bank_id, reason, "[name] Lot Remaining Balance", "Landlord Management", landlord.account_balance)
 
-	if(!charge_to_account(bank_id, "Housing Sell", "[name] Lot Sell", "Landlord Management", get_price()))
-		return FALSE
-
-	landlord = make_tenant(uid, t_name, bank_id, email)
-	SSeconomy.charge_main_department(price, "[name] Lot Sell to [t_name]")
-
-	return TRUE
-
-/datum/lot/proc/sell_to_council()
-	charge_to_account(landlord.bank_id, "Housing Sell To Council", "[name] Lot Remaining Balance", "Landlord Management", landlord.account_balance)
-
-	SSeconomy.charge_main_department(-get_default_price(), "[name] Lot Bought from [landlord.name]")
+	if(!repossess)
+		var/datum/department/council = dept_by_id(DEPT_COUNCIL)
+		council.adjust_funds(-get_default_price(), "[name] Lot Bought from [landlord.name]")
+		add_note(get_landlord_name(), "Sold [name] to City Council",usr)
 
 	landlord = null
 	price = get_default_price()
 	rent = get_default_rent()
 	applied_tenants = list()
-
-
+	name = initial(name)
 
 
 /datum/lot/proc/repossess_lot()
+	remove_all_applicants()
 	remove_all_tenants()
-	sell_to_council()
+	sell_to_council(repossess=1)
 	return 1
 
 /datum/lot/proc/hold_lot(why, mob/user)
@@ -207,6 +204,7 @@
 // logging
 
 /datum/lot/proc/add_note(full_name, action, mob/user)
-	notes += "([GLOB.current_date_string]) [action] - <b>[full_name]</b>"
+	notes += "([GLOB.current_date_string] [full_game_time()]) [action] - <b>[full_name]</b>"
+	log_lots(user, action)
 
 	truncate_oldest(notes, MAX_LANDLORD_LOGS)

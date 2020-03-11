@@ -161,7 +161,7 @@
 	var/obj/item/stored_item
 
 /obj/structure/flora/pottedplant/on_persistence_load()
-	if(contents[1])
+	if(!isemptylist(contents))
 		stored_item = contents[1]
 	..()
 

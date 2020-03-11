@@ -86,7 +86,11 @@
 							for(var/atom/A in contents)
 								if(A.dont_save)
 									A -= MO.object_vars["contents"]
-
+						if(V == "reagents")
+							var/list/reagents = MO.object_vars["reagents"]
+							for(var/atom/A in reagents)
+								if(A.dont_save)
+									A -= MO.object_vars["reagents"]
 				MO.object_vars["x"] = O.vars["x"]
 				MO.object_vars["y"] = O.vars["y"]
 				MO.object_vars["z"] = O.vars["z"]
@@ -124,6 +128,7 @@
 
 	for(var/datum/map_turf/MT in full_map)
 		if(!ispath(MT.turf_type))
+			throw EXCEPTION("Undefined save type [MT.turf_type]")
 			continue
 		var/turf/newturf = locate(MT.x,MT.y,MT.z)
 
@@ -132,6 +137,8 @@
 
 		newturf.ChangeTurf(MT.turf_type, 0, 1)
 		newturf.on_persistence_load()
+		if(!newturf.on_persistence_load())
+			throw EXCEPTION("[newturf] failed persistence load.")
 		for(var/V in newturf.vars_to_save())
 			if(MT.turf_vars[V])
 				newturf.vars[V] = MT.turf_vars[V]
@@ -139,11 +146,14 @@
 
 		for(var/datum/map_object/MO in MT.objects)
 			if(!ispath(MO.savedtype))
+				throw EXCEPTION("Undefined save type [MO.savedtype]")
 				continue
 			var/obj/O = new MO.savedtype (newturf.loc)
 			for(var/V in O.vars_to_save())
 				if(MO.object_vars[V])
 					O.vars[V] = MO.object_vars[V]
+
+			// note: persistence load is handled in the lot code because items... load differently then turfs and mobs?
 
 			O.vars["x"] = MO.object_vars["x"]
 			O.vars["y"] = MO.object_vars["y"]
@@ -151,9 +161,11 @@
 
 		for(var/datum/map_mob/MM in MT.mobs)
 			if(!ispath(MM.savedtype))
+				throw EXCEPTION("Undefined save type [MM.savedtype]")
 				continue
 			var/mob/M = new MM.savedtype (newturf.loc)
-			M.on_persistence_load()
+			if(!M.on_persistence_load())
+				throw EXCEPTION("[M] failed persistence load.")
 			for(var/V in M.vars_to_save())
 				if(MM.mob_vars[V])
 					M.vars[V] = MM.mob_vars[V]

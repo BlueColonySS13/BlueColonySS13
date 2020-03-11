@@ -10,19 +10,22 @@
 		if(landlord)
 				// if tenant's balance is below 0, landlord isn't being paid, obviously
 			if(get_rent() > tenant.account_balance)
-				landlord_checkbook += "[GLOB.current_date_string] - [tenant.name] for [name]: Unable to clear payment. Balance under rent charge."
+				add_landlord_checkbook("[tenant.name] for [name]: Unable to clear payment. Balance under rent charge.")
 			else
 				if(landlord)
 					landlord.account_balance += get_rent_after_tax()
 					SSeconomy.charge_main_department(get_rent_tax_amount(), "Taxes for [name]")
-					landlord_checkbook += "[GLOB.current_date_string] - [tenant.name] for [name]: Payment of [get_rent_after_tax()]CR successfully paid to landlord account. (After [get_rent_tax_amount()]CR tax)"
+					add_landlord_checkbook("[tenant.name] for [name]: Payment of [cash2text( get_rent_after_tax(), FALSE, TRUE, TRUE )] successfully paid to landlord account. (After [cash2text( get_rent_tax_amount(), FALSE, TRUE, TRUE )] tax)")
 
 
 	if(landlord)
 		landlord.pay_balance(-get_service_charge())
 		SSeconomy.charge_main_department(get_service_charge(), "Service Charge for [name]")
-		landlord_checkbook += "[GLOB.current_date_string] - Landlord Payment for [name]: [get_rent()]CR successfully paid to City Council."
+		add_landlord_checkbook("Landlord Payment for [name]: [cash2text( get_service_charge(), FALSE, TRUE, TRUE )] successfully paid to City Council.")
 
+
+/datum/lot/proc/add_landlord_checkbook(info)	// for adding funds to the account
+	landlord_checkbook += "([GLOB.current_date_string] [full_game_time()]) [info]"
 	truncate_oldest(landlord_checkbook, MAX_LANDLORD_LOGS)
 
 
@@ -56,19 +59,19 @@
 
 	var/datum/computer_file/data/email_account/council_email = get_email(using_map.council_email)
 	var/datum/computer_file/data/email_message/message = new/datum/computer_file/data/email_message()
-	var/eml_cnt = "Dear [resident.name], \[br\]Your account balance is currently at [resident.get_balance()]CR (credits). Severity: [severity].\[br\]"
+	var/eml_cnt = "Dear [resident.name], \[br\]Your account balance is currently at [cash2text( resident.get_balance(), FALSE, TRUE, TRUE )]. Severity: [severity].\[br\]"
 
 
 	if(type == "LEASEHOLDER")
 		eml_cnt += "You must bring your bring your account into credit to prevent reposesstion of your lot. The council may \
-		repossess your lot if your balance reaches [service_charge_possession]CR in debt."
+		repossess your lot if your balance reaches [cash2text( service_charge_possession, FALSE, TRUE, TRUE )] in debt."
 
 	if(type == "TENANT")
 		eml_cnt += "You must bring your bring your account into credit to avoid risking eviction. Your landlord may evict you if your \
 		repossession your lot if you remain in debt."
 
 	message.stored_data = eml_cnt
-	message.title = "[severity]: [name] Balance Due: [resident.get_balance()]CR"
+	message.title = "[severity]: [name] Balance Due: [cash2text( resident.get_balance(), FALSE, TRUE, TRUE )]"
 	message.source = "noreply@nanotrasen.gov.nt"
 
 	resident.recieved_email = 1

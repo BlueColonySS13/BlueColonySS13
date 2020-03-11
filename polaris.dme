@@ -2260,6 +2260,7 @@
 #include "code\modules\persistence\persistent_characters.dm"
 #include "code\modules\persistence\persistent_economy.dm"
 #include "code\modules\persistence\persistent_emails.dm"
+#include "code\modules\persistence\persistent_lots.dm"
 #include "code\modules\persistence\persistent_news.dm"
 #include "code\modules\persistence\persistent_politics.dm"
 #include "code\modules\persistence\persistent_world.dm"

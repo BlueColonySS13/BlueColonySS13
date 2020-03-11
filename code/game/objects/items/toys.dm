@@ -855,7 +855,7 @@
 			to_chat(user, "<i>You can see something in there...</i>")
 
 /obj/structure/plushie/on_persistence_load()
-	if(contents[1])
+	if(!isemptylist(contents))
 		stored_item = contents[1]
 	..()
 
@@ -949,7 +949,7 @@
 	var/obj/item/stored_item	// Note: Stored items can't be bigger than the plushie itself.
 
 /obj/item/toy/plushie/on_persistence_load()
-	if(contents[1])
+	if(!isemptylist(contents))
 		stored_item = contents[1]
 	..()
 
