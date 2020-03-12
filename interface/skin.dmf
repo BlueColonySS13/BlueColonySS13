@@ -1145,7 +1145,7 @@ window "mainwindow"
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "World Server 13"
-		icon = 'icons\\ss13_64.png'
+		icon = 'icons\\ws_64.png'
 		macro = "macro"
 		menu = "menu"
 	elem "loocbutton"
@@ -1223,6 +1223,7 @@ window "mainwindow"
 		size = 672x417
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
@@ -1321,7 +1322,6 @@ window "popupwindow"
 		size = 120x120
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
