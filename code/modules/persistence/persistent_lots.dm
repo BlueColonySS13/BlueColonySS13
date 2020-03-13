@@ -90,7 +90,10 @@
 
 /datum/lot/proc/save_lot_data()
 	if(!top_left || !bottom_right)
-		return 0
+		return FALSE
+
+	if(!config.lot_saving || !allow_saving)
+		return FALSE
 
 	save_map(top_left, bottom_right, id, path, TRUE, FALSE)
 	save_metadata()
@@ -99,7 +102,10 @@
 
 /datum/lot/proc/load_lot()
 	if(!top_left || !bottom_right)
-		return 0
+		return FALSE
+
+	if(!config.lot_saving)
+		return FALSE
 
 	var/full_path = "[path][id].sav"
 	if(fexists(full_path))
@@ -110,12 +116,9 @@
 		for(var/obj/O in lot_area)
 			QDEL_NULL(O)
 
-		restore_map(id, path)
-		for(var/obj/O in lot_area)
-			if(!O.on_persistence_load())
-				throw EXCEPTION("[O] failed persistence load.")
-
-	load_metadata()
+		allow_saving = FALSE
+		if(restore_map(id, path) && load_metadata())
+			allow_saving = TRUE
 
 	return 1
 

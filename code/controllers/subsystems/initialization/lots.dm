@@ -5,18 +5,18 @@ SUBSYSTEM_DEF(lots)
 	var/list/datum/lot/all_lots = list()
 	var/list/obj/effect/landmark/lotsign/lotsigns = list()
 
-/datum/controller/subsystem/lots/Initialize()
-	. = ..()
+/datum/controller/subsystem/lots/Initialize(timeofday)
 	for(var/instance in subtypesof(/datum/lot))
 		new instance
 
-//	load_all_lots()
-// not yet!
+	if(config.lot_saving)
+		load_all_lots()
+
 	for(var/obj/effect/landmark/lotsign/ls in lotsigns)
 		ls.get_lot_data()
 		lotsigns = list()
 
-	return 1
+	. = ..()
 
 
 

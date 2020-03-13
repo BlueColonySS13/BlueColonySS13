@@ -49,11 +49,14 @@
 		email = I.associated_email_login["login"]
 
 
-	if(!I || !I.unique_ID || !get_account(I.associated_account_number) || !get_email(email))
+	if(!I || !I.unique_ID || !get_account(I.associated_account_number) || !get_email(email) || !config.lot_saving)
 		index = 0
 
 	if(index == 0)
-		page_msg = "You are not authorized to use this system. Please ensure your ID is linked correctly to your citizen details."
+		if(!config.lot_saving)
+			page_msg = "The landlord management program is currently unavailable. Sorry for the inconvienience."
+		else
+			page_msg = "You are not authorized to use this system. Please ensure your ID is linked correctly to your citizen details, bank, and email."
 
 	else if(index == 1) // Main Portal Page
 		page_msg = "This is the Landlord Management Portal, [full_name].<br>\

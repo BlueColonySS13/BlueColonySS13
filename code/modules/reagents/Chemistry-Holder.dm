@@ -4,7 +4,7 @@
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0
 	var/maximum_volume = 100
-	var/atom/my_atom = null
+	var/tmp/atom/my_atom = null
 
 /datum/reagents/New(var/max = 100, atom/A = null)
 	..()

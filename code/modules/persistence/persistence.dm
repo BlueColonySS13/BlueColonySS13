@@ -27,29 +27,75 @@
 	var/map_json_data
 	var/persistence_loaded = FALSE
 
+	var/save_contents = FALSE
+	var/save_reagents = FALSE
+
+	var/unique_save_vars = list()
+	var/dont_save = 0 // For atoms that are temporary by necessity - like lighting overlays
+
 /atom/proc/on_persistence_load()
 	persistence_loaded = FALSE	// turns this off.
-	return
+	return TRUE
 
 /atom/proc/on_persistence_save()
 	persistence_loaded = TRUE
-	return
+	return TRUE
+
+
+
+/obj/item/weapon/reagent_containers/proc/pack_persistence_data()
+	var/list/all_reagents = reagents.reagent_list
+	var/reagent_data_persistence = list("viruses", "species", "blood_DNA", "blood_type", "blood_colour", "resistances", "trace_chem", "antibodies")
+	var/list/reagents_to_save = list()
+
+	if(reagents)
+		for(var/datum/reagent/R in all_reagents)
+			var/reagent_data = list(
+			"id" = R.id,
+			"volume" = R.volume,
+			"data" = null)
+
+			if(R.data)
+
+
+				if(ismob(R.data) || isatom(R.data))
+					continue
+
+				if(islist(R.data))
+					var/list/metadata = list()
+					for(var/V in reagent_data_persistence)
+						metadata += V
+						reagent_data["data"] = metadata
+				else
+					reagent_data["data"] = R.data
+
+				reagents_to_save["data"] = reagent_data
+
+	return reagents_to_save
+
+/obj/item/weapon/reagent_containers/proc/unpack_persistence_data(var/list/saved_reagents)
+	if(isemptylist(saved_reagents))
+		return FALSE
+
+	reagents.reagent_list = list()
+
+	for(var/list/V in saved_reagents)
+		var/datum/reagent/new_reagent = reagents.add_reagent(V["id"], V["volume"])
+		if(V["data"])
+			new_reagent.data = V["data"]
+
+	return TRUE
 
 // This is so specific atoms can override these, and ignore certain ones
 /atom/proc/vars_to_save()
- 	return list("x","y","z","color","dir","name","pixel_x","pixel_y","contents")
+ 	return list("x","y","z","color","dir","name","pixel_x","pixel_y")+unique_save_vars
 
 /atom/proc/map_important_vars()
 	// A list of important things to save in the map editor
- 	return list("x","y","z","color","dir","icon","icon_state","layer","name","pixel_x","pixel_y")
+ 	return list("x","y","z","color","dir","layer","name","pixel_x","pixel_y")+unique_save_vars
 
-/area/map_important_vars()
-	// Keep the area default icons, to keep things nice and legible
-	return list("name")
-
-// No need to save any state of an area by default
-/area/vars_to_save()
-	return list("name")
+/area/
+	unique_save_vars = list("name", "decals")
 
 /atom/serialize()
 	var/list/data = ..()
@@ -89,24 +135,25 @@
 
 /obj/vars_to_save()
  	 return list("x","y","z","anchored","color","dir","icon_state","name","pixel_x","pixel_y","contents","fingerprints","fingerprintshidden","fingerprintslast",\
- 	 "suit_fibers"
- 	 )
+ 	 "suit_fibers")+unique_save_vars
 
-/obj/item/weapon/paper/vars_to_save()
- 	return list("x","y","z","color","dir","icon","icon_state","layer","name","pixel_x","pixel_y","fingerprints","fingerprintshidden","fingerprintslast","info")
+/obj/item/weapon/paper
+	unique_save_vars = list("info")
 
-/obj/structure/closet/vars_to_save()
-	return list("x","y","z","anchored","color","dir","icon","icon_state","layer","name","pixel_x","pixel_y","opened","welded","contents")
+/obj/structure/closet
+	unique_save_vars = list("opened","welded")
 
-/obj/structure/safe/vars_to_save()
- 	 return list("x","y","z","anchored","color","dir","icon_state","name","pixel_x","pixel_y","contents","fingerprints","fingerprintshidden","fingerprintslast",\
- 	 "suit_fibers","open","tumbler_1_pos","tumbler_1_open","tumbler_2_pos","tumbler_2_open","dial",
- 	 )
+/obj/item/weapon/clipboard
+	unique_save_vars = list("haspen","toppaper")
+
+/obj/structure/safe
+	unique_save_vars = list("open","tumbler_1_pos","tumbler_1_open","tumbler_2_pos","tumbler_2_open","dial")
+
+
 /obj/structure/on_persistence_load()
-	..()
 	update_connections()
 	update_icon()
-
+	return TRUE
 
 // Don't save list - Better to keep a track of things here.
 

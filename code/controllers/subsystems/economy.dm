@@ -5,8 +5,7 @@ SUBSYSTEM_DEF(economy)
 
 	var/list/all_departments = list()
 
-/datum/controller/subsystem/economy/Initialize()
-	.=..()
+/datum/controller/subsystem/economy/Initialize(timeofday)
 	setup_economy()
 	link_economy_accounts()
 
@@ -14,6 +13,7 @@ SUBSYSTEM_DEF(economy)
 
 	load_economy()
 	init_expenses()
+	. = ..()
 
 /datum/controller/subsystem/economy/proc/setup_economy()
 	for(var/instance in subtypesof(/datum/department))

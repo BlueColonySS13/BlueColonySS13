@@ -16,12 +16,6 @@
 	if(N)
 		amount_per_transfer_from_this = N
 
-/obj/item/weapon/reagent_containers/vars_to_save()
- 	return list("color","dir","name","pixel_x","pixel_y","reagents")
-
-/obj/item/weapon/reagent_containers/map_important_vars()
- 	return list("color","dir","layer","name","pixel_x","pixel_y","reagents")
-
 /obj/item/weapon/reagent_containers/New()
 	..()
 	if(!possible_transfer_amounts)
@@ -74,7 +68,7 @@
 	return 1
 
 /obj/item/weapon/reagent_containers/proc/self_feed_message(var/mob/user)
-	user << "<span class='notice'>You eat \the [src]</span>"
+	to_chat(user, "<span class='notice'>You eat \the [src]</span>")
 
 /obj/item/weapon/reagent_containers/proc/other_feed_message_start(var/mob/user, var/mob/target)
 	user.visible_message("<span class='warning'>[user] is trying to feed [target] \the [src]!</span>")

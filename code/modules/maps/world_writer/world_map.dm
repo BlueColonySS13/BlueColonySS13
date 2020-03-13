@@ -1,4 +1,4 @@
-// This will save things to a sav file, sadly can't be a map export. But I may make a convertor for that in-game to help out.
+// This will save things to a sav file, sadly can't be a map export. But I may make a converter for that in-game to help out. ~Cass
 
 /datum/map_turf
 	var/turf_type
@@ -6,12 +6,15 @@
 	var/y
 	var/z
 	var/turf_vars = list()
-	var/objects = list()
-	var/mobs = list()
+
+	var/list/map_objects = list()
 
 /datum/map_object
 	var/savedtype
 	var/object_vars = list()
+
+	var/contents = list()
+	var/reagent_data = list()
 
 /datum/map_mob
 	var/savedtype
@@ -30,8 +33,8 @@
 
 /proc/restore_map(var/id, var/path)
 	var/map_data = file_to_map(path, id)
-	get_map_data(map_data)
-	return 1
+	if(get_map_data(map_data))
+		return 1
 
 
 /proc/get_map_turfs(var/turf/t1 as turf, var/turf/t2 as turf)
@@ -49,8 +52,46 @@
 
 	return map_area
 
-/proc/map_write(var/list/CHUNK, var/save_obj, var/save_mob)
+/proc/get_object_data(obj/O)
+	var/datum/map_object/MO = new/datum/map_object
+	O.on_persistence_save()
+	MO.savedtype = O.type
+
+	for(var/V in O.vars_to_save() )
+		if(!(O.vars[V] == initial(O.vars[V])))
+			MO.object_vars[V] = O.vars[V]
+
+	if(istype(O, /obj/item/weapon/reagent_containers))
+		var/obj/item/weapon/reagent_containers/container = O
+		MO.reagent_data = container.pack_persistence_data()
+
+	MO.object_vars["x"] = O.vars["x"]
+	MO.object_vars["y"] = O.vars["y"]
+	MO.object_vars["z"] = O.vars["z"]
+
+	return MO
+
+/datum/map_object/proc/unpack_object_data(obj/O)
+	for(var/V in O.vars_to_save())
+		if(object_vars[V])
+			O.vars[V] = object_vars[V]
+
+	O.vars["x"] = object_vars["x"]
+	O.vars["y"] = object_vars["y"]
+	O.vars["z"] = object_vars["z"]
+
+	if(!isemptylist(reagent_data) && istype(O, /obj/item/weapon/reagent_containers))
+		var/obj/item/weapon/reagent_containers/container = O
+		container.unpack_persistence_data(reagent_data)
+
+	if(!O.on_persistence_load())
+		throw EXCEPTION("[O] failed persistence load.")
+
+	return TRUE
+
+/proc/map_write(var/list/CHUNK, var/save_obj)
 	var/list/full_map = list()
+	var/list/all_objs = list()
 
 	for(var/turf/T in CHUNK)
 		if(T.dont_save) continue
@@ -63,62 +104,49 @@
 		MT.x = T.x
 		MT.y = T.y
 		MT.z = T.z
+
 		for(var/V in T.vars_to_save() )
 			if(!(T.vars[V] == initial(T.vars[V])))
 				MT.turf_vars[V] = T.vars[V]
 
+		full_map += MT
 
 		if(save_obj)
-			for(var/obj/O in T.contents)
+				// get all objects in a area. I hate the method that's about to follow, but after finding exploits and potential shitcode that's in the game right now
+				// actually worried we'd get the bad reference juju happening (like syringes containing blood and that blood having the actual mob reference in its data
+				// which caused an infinite loop) - or items non-existing causing broken loading. because of this, the saving process has to be manually filtered for all the loops.
+			for(var/obj/O in T.loc)
 				if(O.dont_save) continue
+				if(O in all_objs) continue // to prevent multi-loc  duplicates. it's a thing.
 
-				O.on_persistence_save()
+				all_objs += O
 
-				var/datum/map_object/MO = new/datum/map_object
-				MO.savedtype = O.type
+				var/datum/map_object/saved_obj_1 = get_object_data(O)
+				full_map += saved_obj_1
 
-				for(var/V in O.vars_to_save() )
-					if(!(O.vars[V] == initial(O.vars[V])))
-						MO.object_vars[V] = O.vars[V]
+				//first loop, to get all objects inside closets
+				for(var/obj/A in O.contents)
+					if(A.dont_save) continue
 
-						if(V == "contents")
-							var/list/contents = MO.object_vars["contents"]
-							for(var/atom/A in contents)
-								if(A.dont_save)
-									A -= MO.object_vars["contents"]
-						if(V == "reagents")
-							var/list/reagents = MO.object_vars["reagents"]
-							for(var/atom/A in reagents)
-								if(A.dont_save)
-									A -= MO.object_vars["reagents"]
-				MO.object_vars["x"] = O.vars["x"]
-				MO.object_vars["y"] = O.vars["y"]
-				MO.object_vars["z"] = O.vars["z"]
+					var/datum/map_object/saved_obj_2 = get_object_data(A)
+					saved_obj_1.contents += saved_obj_2
 
-				MT.objects += MO
+					//second loop, let's say you had a backpack inside the closet with it's own things.
+					for(var/obj/B in A.contents)
+						if(B.dont_save) continue
 
-		if(save_mob)
-			for(var/mob/living/M in T.contents)
-				if(M.dont_save) continue
+						var/datum/map_object/saved_obj_3 = get_object_data(B)
+						saved_obj_2.contents += saved_obj_3
 
-				M.on_persistence_save()
+						//third and final loop. for getting things like cigarette packets inside backpacks. Honestly I don't think we'll need a fourth loop.
+						for(var/obj/C in B.contents)
+							if(C.dont_save) continue
 
-				var/datum/map_mob/MM = new/datum/map_mob
-				MM.savedtype = M.type
+							var/datum/map_object/saved_obj_4 = get_object_data(C)
+							saved_obj_3.contents += saved_obj_4
 
+				MT.map_objects += saved_obj_1
 
-				for(var/V in M.vars_to_save() )
-					if(!(M.vars[V] == initial(M.vars[V])))
-						MM.mob_vars[V] = M.vars[V]
-
-
-				MM.mob_vars["x"] = M.vars["x"]
-				MM.mob_vars["y"] = M.vars["y"]
-				MM.mob_vars["z"] = M.vars["z"]
-
-				MT.mobs += MM
-
-		full_map += MT
 
 	return full_map
 
@@ -144,35 +172,39 @@
 				newturf.vars[V] = MT.turf_vars[V]
 
 
-		for(var/datum/map_object/MO in MT.objects)
+		for(var/datum/map_object/MO in MT.map_objects)
 			if(!ispath(MO.savedtype))
 				throw EXCEPTION("Undefined save type [MO.savedtype]")
 				continue
-			var/obj/O = new MO.savedtype (newturf.loc)
-			for(var/V in O.vars_to_save())
-				if(MO.object_vars[V])
-					O.vars[V] = MO.object_vars[V]
 
-			// note: persistence load is handled in the lot code because items... load differently then turfs and mobs?
+			var/obj/O = new MO.savedtype ( newturf.loc )
 
-			O.vars["x"] = MO.object_vars["x"]
-			O.vars["y"] = MO.object_vars["y"]
-			O.vars["z"] = MO.object_vars["z"]
+			MO.unpack_object_data(O)
 
-		for(var/datum/map_mob/MM in MT.mobs)
-			if(!ispath(MM.savedtype))
-				throw EXCEPTION("Undefined save type [MM.savedtype]")
-				continue
-			var/mob/M = new MM.savedtype (newturf.loc)
-			if(!M.on_persistence_load())
-				throw EXCEPTION("[M] failed persistence load.")
-			for(var/V in M.vars_to_save())
-				if(MM.mob_vars[V])
-					M.vars[V] = MM.mob_vars[V]
+			// first loop
+			for(var/datum/map_object/MO_2 in MO.contents)
+				if(!ispath(MO_2.savedtype))
+					throw EXCEPTION("Undefined save type [MO_2.savedtype] (in [MO])")
+					continue
+				var/obj/A = new MO_2.savedtype (O.contents)
+				MO_2.unpack_object_data(A)
 
-			M.vars["x"] = MM.mob_vars["x"]
-			M.vars["y"] = MM.mob_vars["y"]
-			M.vars["z"] = MM.mob_vars["z"]
+				// second loop
+				for(var/datum/map_object/MO_3 in MO_2.contents)
+					if(!ispath(MO_3.savedtype))
+						throw EXCEPTION("Undefined save type [MO_3.savedtype] (in [MO_2])")
+						continue
+					var/obj/B = new MO_3.savedtype (A.contents)
+					MO_3.unpack_object_data(B)
+
+					// third and final loop
+					for(var/datum/map_object/MO_4 in MO_3.contents)
+						if(!ispath(MO_4.savedtype))
+							throw EXCEPTION("Undefined save type [MO_4.savedtype] (in [MO_3])")
+							continue
+						var/obj/C = new MO_4.savedtype (B.contents)
+						MO_4.unpack_object_data(C)
+
 
 	return 1
 

@@ -39,6 +39,8 @@
 
 	var/max_tenants = 3
 
+	var/allow_saving = TRUE
+
 	var/list/notes = list()
 
 

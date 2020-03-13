@@ -161,9 +161,12 @@
 	var/obj/item/stored_item
 
 /obj/structure/flora/pottedplant/on_persistence_load()
+	..()
 	if(!isemptylist(contents))
 		stored_item = contents[1]
-	..()
+
+	return TRUE
+
 
 /obj/structure/flora/pottedplant/examine(mob/user)
 	..()
@@ -176,7 +179,7 @@
 		return
 
 	if(I.w_class > ITEMSIZE_SMALL)
-		to_chat(user, "<span class='notice'>[I] is too big to fit inside [src].</span>")
+		to_chat(user, "<span class='notice'>[I] is too big to fit inside [src].</ span>")
 		return
 
 	if(do_after(user, 10))

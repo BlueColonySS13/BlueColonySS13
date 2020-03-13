@@ -23,6 +23,11 @@
 
 /obj/machinery/door/airlock/multi_tile/New()
 	..()
+	// One multidoor door per turf.
+	for(var/obj/machinery/door/T in locs)
+		if(T != src)
+			QDEL_NULL(src)
+			return
 	SetBounds()
 	if(opacity)
 		create_fillers()
