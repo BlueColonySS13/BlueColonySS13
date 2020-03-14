@@ -1,4 +1,4 @@
-
+var/datum/economy/bank_accounts/persistent_economy = new()
 
 // all the same, by default, but can be changed in-game.
 
@@ -137,6 +137,7 @@
 	S["city_council_control"] << city_council_control
 	S["carp_control"] << carp_control
 	S["antivirus"] << antivirus
+	return TRUE
 
 /datum/economy/bank_accounts/proc/load_accounts()
 //	message_admins("BEGIN: Loaded all department accounts.", 1)
@@ -201,4 +202,5 @@
 	tax_rate_upper = tax_rich
 
 	message_admins("Loaded all department accounts.", 1)
+	return TRUE
 
