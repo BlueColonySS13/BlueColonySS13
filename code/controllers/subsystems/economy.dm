@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(economy)
 
 	load_economy()
 	init_expenses()
-  persistent_economy.load_accounts()
+	persistent_economy.load_accounts()
 
 	. = ..()
 
