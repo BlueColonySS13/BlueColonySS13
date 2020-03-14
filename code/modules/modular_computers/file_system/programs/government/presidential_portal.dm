@@ -118,6 +118,7 @@
 			if(100 > M.money)
 				display_color = "red"
 
+			page_msg += "<a href='?src=\ref[src];send_money=1;transfer_funds=\ref[M]'>Send Money</a> "
 			page_msg += "<a href='?src=\ref[src];manage_transfer=1;transfer_funds=\ref[M]'>Transfer Money From</a> <b>[D.name]</b> (<font color=\"[display_color]\">[M.money]</font>CR)<br>"
 
 
@@ -419,6 +420,39 @@
 		index = 8
 
 
+	if(href_list["send_money"])
+		. = 1
+		var/datum/money_account/department/A = locate(href_list["transfer_funds"]) in GLOB.public_department_accounts
+		if(!A)
+			return
+
+
+		var/account_id = sanitize(copytext(input(usr, "Please enter the bank id of the account you are sending money to.", "Business Management Utility", null)  as text,1,70))
+
+		if(!account_id)
+			return
+
+		var/datum/money_account/account_to_send = get_account(account_id)
+
+		if(!account_to_send)
+			alert("This account does not appear to exist.")
+			return
+
+		var/amount = input(usr, "How much would you like to transfer?.", "Transfer Amount")  as num
+
+		if(!amount || (0 > amount))
+			alert("Please enter a valid amount.")
+			return
+
+		if(amount > A.money)
+			alert("Not enough funds in [A.owner_name] to transfer to this account.")
+			return
+
+		A.charge(amount, account_to_send, "Presidential Portal Transfer from [A.owner_name] Department")
+
+		alert("[cash2text( amount, FALSE, TRUE, TRUE )] successfully sent to account id #[account_id] ([account_to_send.owner_name])")
+
+
 	if(href_list["manage_transfer"])
 		. = 1
 		var/datum/money_account/department/A = locate(href_list["transfer_funds"]) in GLOB.public_department_accounts
@@ -435,20 +469,17 @@
 
 			dept_acc_names += D.name
 
-
 		var/category = input(usr, "Select a department to transfer to.", "Departmental Transfer")  as null|anything in dept_acc_names + "Cancel"
 		if(!category || category == "Cancel")
 			return
 
 		var/datum/money_account/account_recieving
-
 		target_department = dept_by_name(category)
 
 		if(!target_department)
 			return
 
 		account_recieving = target_department.bank_account
-
 		if(!account_recieving)
 			return
 
