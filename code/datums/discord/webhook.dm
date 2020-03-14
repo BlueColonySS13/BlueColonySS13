@@ -96,6 +96,12 @@ var/list/global_webhooks = list()
 			OutData["embeds"] = list(emb)
 		if (WEBHOOK_ROUNDEND)
 			var/emb = list(
+				"title" = "Incoming Email from **[data["sender"]]** to **[data["reciever"]]**",
+				"color" = HEX_COLOR_RED,
+				"description" = "**[data["email_title"]]:**\n [data["email_content"]]."
+			OutData["embeds"] = list(emb)
+		if (WEBHOOK_ROUNDEND)
+			var/emb = list(
 				"title" = "Round has ended",
 				"color" = HEX_COLOR_RED,
 				"description" = "A round of **[data["gamemode"]]** has ended! \[Game ID: [data["gameid"]]\]\n"
