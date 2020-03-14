@@ -1,6 +1,4 @@
-var/global/datum/economy/bank_accounts/persistent_economy = new()
-
-/datum/money_account/proc/charge(var/transaction_amount, var/datum/money_account/dest, var/purpose, var/terminal="")
+/datum/money_account/proc/charge(var/transaction_amount, var/datum/money_account/dest, var/purpose, var/terminal="NtNet Terminal")
 	if(transaction_amount <= money)
 		//transfer the money
 

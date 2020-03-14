@@ -14,6 +14,7 @@ SUBSYSTEM_DEF(economy)
 
 	load_economy()
 	init_expenses()
+	persistent_economy.load_accounts()
 
 /datum/controller/subsystem/economy/proc/setup_economy()
 	for(var/instance in subtypesof(/datum/department))
