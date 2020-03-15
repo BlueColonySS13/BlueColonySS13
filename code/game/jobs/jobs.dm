@@ -37,7 +37,7 @@ var/const/BARTENDER				=(1<<1)
 var/const/BOTANIST				=(1<<2)
 var/const/CHEF					=(1<<3)
 var/const/JANITOR				=(1<<4)
-var/const/JOURNALIST				=(1<<5)
+var/const/JOURNALIST			=(1<<5)
 var/const/QUARTERMASTER			=(1<<6)
 var/const/CARGOTECH				=(1<<7)
 var/const/MINER				=(1<<8)
@@ -51,7 +51,7 @@ var/const/BARBER				=(1<<14)
 var/const/SECRETARY				=(1<<15)
 var/const/JUDGE				=(1<<16)
 var/const/PRISONER				=(1<<17)
-var/const/MANAGER              =(1<<18)
+var/const/MANAGER     	          =(1<<18)
 
 var/const/GOVLAW				=(1<<3)
 
@@ -59,7 +59,8 @@ var/const/PRESIDENT				=(1<<0)
 var/const/NANOTRASEN			=(1<<1)
 var/const/CBIA					=(1<<2)
 var/const/CEO					=(1<<3)
-
+var/const/ADVISOR				=(1<<4)
+var/const/HIGHJUSTICE			=(1<<5)
 
 var/list/assistant_occupations = list(
 	"Civilian"
@@ -70,7 +71,8 @@ var/list/gov_positions = list(
 	"Governor",
 	"Government Representative",
 	"PDSI Agent",
-	"President"
+	"President",
+	"Adviser"
 )
 
 var/list/command_positions = list(

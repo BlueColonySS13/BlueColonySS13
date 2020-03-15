@@ -8,7 +8,6 @@
 	total_positions = 1
 	spawn_positions = 1
 	minimum_character_age = 18
-	email_domain = "faith.nt"
 	supervisors = "the city clerk"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/chaplain

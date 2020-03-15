@@ -2122,6 +2122,7 @@
 #include "code\modules\modular_computers\file_system\programs\generic\ntexplorer.dm"
 #include "code\modules\modular_computers\file_system\programs\generic\wordprocessor.dm"
 #include "code\modules\modular_computers\file_system\programs\government\candidate_registration.dm"
+#include "code\modules\modular_computers\file_system\programs\government\government_registration.dm"
 #include "code\modules\modular_computers\file_system\programs\government\party_manager.dm"
 #include "code\modules\modular_computers\file_system\programs\government\presidential_portal.dm"
 #include "code\modules\modular_computers\file_system\programs\housing\landlord_management.dm"

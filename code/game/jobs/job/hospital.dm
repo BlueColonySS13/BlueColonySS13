@@ -7,7 +7,6 @@
 	faction = "City"
 	total_positions = 1
 	spawn_positions = 1
-	email_domain = "med.gov.nt"
 	supervisors = "the Mayor"
 	selection_color = "#026865"
 	idtype = /obj/item/weapon/card/id/medical/head
@@ -34,7 +33,6 @@
 
 /datum/job/doctor
 	title = "Physician"
-	email_domain = "med.gov.nt"
 	flag = DOCTOR
 	department_flag = MEDSCI
 	department = DEPT_HEALTHCARE
@@ -59,7 +57,6 @@
 
 //Chemist is a medical job damnit	//YEAH FUCK YOU SCIENCE	-Pete	//Guys, behave -Erro // Chemistry does more actual science than RnD at this point. But I'm glad you took time to bicker about which file it should go in instead of properly organizing the parenting. - Nappist
 /datum/job/chemist
-	email_domain = "med.gov.nt"
 	title = "Chemist"
 	flag = CHEMIST
 	department = DEPT_HEALTHCARE
@@ -101,7 +98,6 @@
 
 /datum/job/psychiatrist
 	title = "Psychiatrist"
-	email_domain = "med.gov.nt"
 	flag = PSYCHIATRIST
 	department_flag = MEDSCI
 	department = DEPT_HEALTHCARE
@@ -124,7 +120,6 @@
 	title = "Medical Intern"
 	flag = MEDICALINTERN
 	department_flag = MEDSCI
-	email_domain = "med.gov.nt"
 	department = DEPT_HEALTHCARE
 	faction = "City"
 	total_positions = 5
@@ -141,7 +136,6 @@
 
 /datum/job/paramedic
 	title = "Paramedic"
-	email_domain = "cityworks.gov.nt"
 	flag = PARAMEDIC
 	department_flag = MEDSCI
 	department = DEPT_HEALTHCARE

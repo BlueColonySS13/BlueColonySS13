@@ -2,12 +2,11 @@
 // Handles initialization of political parties and assigning presidents on the server.
 //
 
-var/global/list/government_emails = list("president@nanotrasen.gov.nt", "vice-president@nanotrasen.gov.nt")
-
 SUBSYSTEM_DEF(elections)
 	name = "Elections"
 	init_order = INIT_ORDER_ELECTIONS
 	flags = SS_NO_FIRE
+
 
 /datum/controller/subsystem/elections/Initialize(timeofday)
 	SetupPolitics()
@@ -26,18 +25,21 @@ SUBSYSTEM_DEF(elections)
 	var/total_votes = 0
 	var/last_election_votes = 0
 
-	var/datum/president_candidate/current_president		// The head honcho
-	var/datum/president_candidate/vice_president		// His bitch
-
 	var/list/datum/president_candidate/former_presidents = list()
 	var/list/datum/president_candidate/former_candidates = list()
 
-	var/snap_election
+	var/list/government_applications = list()
 
+	var/snap_election = FALSE
 	var/last_election_date
 
-	var/president_email
+	var/path = "data/persistent/elections.sav"
 
+
+	var/datum/president_candidate/current_president		// The head honcho
+	var/datum/president_candidate/vice_president			// His bitch
+
+	var/list/presidential_advisors = list()
 
 /datum/president_candidate
 	var/name = "Anonymous Candidate"
@@ -48,8 +50,9 @@ SUBSYSTEM_DEF(elections)
 	var/pitch = "Make Pollux Great Again."
 	var/list/ckeys_voted = list()
 	var/list/no_confidence_votes = list()
-	var/party
 
+	// Advisor stuff only
+	var/title = "Advisor"
 
 /datum/controller/subsystem/elections/proc/is_registration_days(day)
 	switch(day)
@@ -395,6 +398,8 @@ SUBSYSTEM_DEF(elections)
 	news_data.save_main_news()
 
 	return 1
+
+
 
 //Testing only.
 /*

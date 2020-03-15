@@ -25,10 +25,7 @@
 	var/wage = 20					    // Per Hour
 	var/outfit_type
 
-	// Email addresses will be created under this domain name. Mostly for the looks.
-	var/email_domain = "freemail.nt"
-
-	var/hard_whitelisted = 0 			// jobs that are hard whitelisted need players to be added to hardjobwhitelist.txt with the format [ckey] - [job] in order to work.
+	var/hard_whitelisted = TRUE 			// jobs that are hard whitelisted need players to be added to hardjobwhitelist.txt with the format [ckey] - [job] in order to work.
 	var/clean_record_required = FALSE		// This job needs a clean record.
 
 	var/no_shuttle = FALSE

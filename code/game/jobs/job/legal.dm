@@ -8,7 +8,6 @@
 	spawn_positions = 2
 	department_flag = CIVILIAN
 	req_admin_notify = 1
-	email_domain = "judges.gov.nt"
 	supervisors = "government officials and the president"
 	selection_color = "#1D1D4F"
 	idtype = /obj/item/weapon/card/id/heads/judge
@@ -30,7 +29,6 @@
 
 /datum/job/prosecutor
 	title = "District Prosecutor"
-	email_domain = "prosecute.nt"
 	flag = PROSECUTOR
 	faction = "City"
 	department = DEPT_LEGAL
@@ -54,4 +52,58 @@
 	clean_record_required = TRUE
 
 /datum/job/prosecutor/get_job_email()
+	return using_map.court_email
+
+/datum/job/nanotrasen/highjustice
+	title = "High Justice"
+	flag = HIGHJUSTICE
+	head_position = 1
+	department_flag = GOVLAW
+	department = DEPT_LEGAL
+	faction = "City"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the Supreme Justice"
+	selection_color = "#1D1D4F"
+	idtype = /obj/item/weapon/card/id/nanotrasen/highjustice
+	req_admin_notify = 1
+	access = list() 			//See get_access()
+	minimal_access = list() 	//See get_access()
+	minimal_player_age = 14
+	wage = 7000
+	alt_titles = list()
+
+	minimum_character_age = 30
+	ideal_character_age = 50
+	outfit_type = /decl/hierarchy/outfit/job/heads/president
+
+
+/datum/job/nanotrasen/highjustice/get_job_email()
+	return using_map.court_email
+
+
+/datum/job/nanotrasen/supremejustice
+	title = "Supreme Justice"
+	flag = SUPREMEJUSTICE
+	head_position = 1
+	department_flag = GOVLAW
+	department = DEPT_LEGAL
+	faction = "City"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "NanoTrasen"
+	selection_color = "#1D1D4F"
+	idtype = /obj/item/weapon/card/id/nanotrasen/supremejustice
+	req_admin_notify = 1
+	access = list() 			//See get_access()
+	minimal_access = list() 	//See get_access()
+	minimal_player_age = 14
+	wage = 8900
+	alt_titles = list()
+
+	minimum_character_age = 40
+	ideal_character_age = 60
+	outfit_type = /decl/hierarchy/outfit/job/heads/president
+
+/datum/job/nanotrasen/highjustice/get_job_email()
 	return using_map.court_email

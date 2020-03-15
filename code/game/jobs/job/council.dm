@@ -9,7 +9,6 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	faction = "City"
 	total_positions = 1
 	spawn_positions = 1
-	email_domain = "mayor.gminus.plux.gov.nt"
 	supervisors = "government officials and the president"
 	selection_color = "#1D1D4F"
 	idtype = /obj/item/weapon/card/id/gold
@@ -50,7 +49,6 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	faction = "City"
 	total_positions = 1
 	spawn_positions = 1
-	email_domain = "clerk.gminus.plux.gov.nt"
 	supervisors = "the Mayor"
 	selection_color = "#1D1D4F"
 	idtype = /obj/item/weapon/card/id/silver/hop

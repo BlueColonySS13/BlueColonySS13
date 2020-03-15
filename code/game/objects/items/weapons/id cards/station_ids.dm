@@ -225,6 +225,26 @@
 	desc = "The head honcho themselves. This has access to anything that exists under the colonies."
 	job_access_type = /datum/job/nanotrasen/ceo
 
+/obj/item/weapon/card/id/nanotrasen/vicepresident
+	name = "\improper Vice President's ID"
+	desc = "That faceless person who follows the president. God knows what they do."
+	job_access_type = /datum/job/nanotrasen/vicepresident
+
+/obj/item/weapon/card/id/nanotrasen/advisor
+	name = "\improper Presidential Advisor's ID"
+	desc = "Ah this looks like one of the cards assigned to the president's ear whispering henchmen."
+	job_access_type = /datum/job/nanotrasen/advisor
+
+/obj/item/weapon/card/id/nanotrasen/highjustice
+	name = "\improper High Justice's ID"
+	desc = "There's something very regal about this ID."
+	job_access_type = /datum/job/nanotrasen/highjustice
+
+/obj/item/weapon/card/id/nanotrasen/supremejustice
+	name = "\improper Supreme Justice's ID"
+	desc = "The power almost singes your fingertips."
+	job_access_type = /datum/job/nanotrasen/supremejustice
+
 
 // Emergency response team IDs
 

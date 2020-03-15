@@ -1,6 +1,5 @@
 /datum/job/rd
 	title = "Research Director"
-	email_domain = "sciworks.nt"
 	flag = RD
 	faction = "City"
 	department = DEPT_COUNCIL
@@ -34,7 +33,6 @@
 
 /datum/job/scientist
 	title = "Scientist"
-	email_domain = "sciworks.nt"
 	flag = SCIENTIST
 	faction = "City"
 	department = DEPT_RESEARCH
@@ -55,7 +53,6 @@
 
 /datum/job/xenobiologist
 	title = "Xenobiologist"
-	email_domain = "sciworks.nt"
 	flag = XENOBIOLOGIST
 	faction = "City"
 	department = DEPT_RESEARCH
@@ -76,7 +73,6 @@
 
 /datum/job/roboticist
 	title = "Roboticist"
-	email_domain = "sciworks.nt"
 	flag = ROBOTICIST
 	faction = "City"
 	department = DEPT_RESEARCH
@@ -97,7 +93,6 @@
 
 /datum/job/scienceintern
 	title = "Research Assistant"
-	email_domain = "sciworks.nt"
 	flag = SCIENCEINTERN
 	faction = "City"
 	department = DEPT_RESEARCH
@@ -117,7 +112,6 @@
 
 /datum/job/rguard
 	title = "Research Security"
-	email_domain = "sciworks.nt"
 	flag = SCIGUARD
 	department = DEPT_RESEARCH
 	department_flag = MEDSCI
