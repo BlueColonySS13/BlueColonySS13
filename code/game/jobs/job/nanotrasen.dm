@@ -7,7 +7,7 @@
 	faction = "City"
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "the Governors and President."
+	supervisors = "the Governors and President"
 	selection_color = "#0F0F6F"
 	idtype = /obj/item/weapon/card/id/nanotrasen/ntrep
 	access = list() 			//See get_access()
@@ -16,7 +16,6 @@
 
 	alt_titles = list("Electoral Assistant" = /decl/hierarchy/outfit/job/nanotrasen/electoral,
                       "Nanotrasen Officer" = /decl/hierarchy/outfit/job/nanotrasen/officer)
-	email_domain = "nanotrasen.gov.nt"
 	wage = 1000
 	minimum_character_age = 25 // Pushing it I guess, but possible
 	ideal_character_age = 40
@@ -65,7 +64,6 @@
 	minimal_access = list() 	//See get_access()
 	alt_titles = list()
 
-	email_domain = "nanotrasen.gov.nt"
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/cbia
 
 	wage = 1000
@@ -91,7 +89,6 @@
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
 	minimal_player_age = 14
-	email_domain = "nanotrasen.gov.nt"
 	wage = 9000
 	alt_titles = list()
 
@@ -102,3 +99,27 @@
 
 /datum/job/nanotrasen/president/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.president_email
+
+/datum/job/nanotrasen/advisor
+	title = "Presidential Advisor"
+	flag = ADVISOR
+	head_position = 1
+	department_flag = GOVLAW
+	faction = "City"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the President"
+	selection_color = "#1D1D4F"
+	idtype = /obj/item/weapon/card/id/nanotrasen/advisor
+	req_admin_notify = 1
+	access = list() 			//See get_access()
+	minimal_access = list() 	//See get_access()
+	minimal_player_age = 14
+	wage = 6500
+	alt_titles = list()
+
+	minimum_character_age = 30
+	ideal_character_age = 50
+	outfit_type = /decl/hierarchy/outfit/job/heads/president
+
+
