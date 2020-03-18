@@ -41,6 +41,11 @@
 	base_name = "External Airlock"
 	airlock_type = "/external"
 
+/obj/structure/door_assembly/door_assembly_keyp
+ 	base_name = "Keypad Airlock"
+ 	glass = -1
+ 	airlock_type = "/keypad"
+
 /obj/structure/door_assembly/multi_tile
 	icon = 'icons/obj/doors/double/door.dmi'
 	fill_icon = 'icons/obj/doors/double/fill_steel.dmi'
