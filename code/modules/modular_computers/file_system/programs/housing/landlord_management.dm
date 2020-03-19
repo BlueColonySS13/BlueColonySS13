@@ -39,7 +39,7 @@
 	else
 		output += "<i>Lot has no tenants.</i>"
 
-	output += "<br>"
+	output += "<br><br>"
 
 	output += "<b>Lot Notes:</b> <br>"
 	if(LAZYLEN(LOT.notes))
