@@ -69,8 +69,8 @@
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/engineering/atmos
 	wage = 50
-	access = list(access_engine, access_engine_equip, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
-	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
+	access = list(access_engine, access_engine_equip, access_janitor, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
+	minimal_access = list(access_engine, access_engine_equip, access_janitor, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 
 	minimal_player_age = 3
 	minimum_character_age = 18
