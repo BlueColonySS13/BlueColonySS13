@@ -137,7 +137,9 @@
 				handle_reactions()
 			if(my_atom)
 				my_atom.on_reagent_change()
-			return 1
+
+			return current
+
 	var/datum/reagent/D = chemical_reagents_list[id]
 	if(D)
 		var/datum/reagent/R = new D.type()
@@ -150,7 +152,9 @@
 			handle_reactions()
 		if(my_atom)
 			my_atom.on_reagent_change()
-		return 1
+
+		return R
+
 	else
 		crash_with("[my_atom] attempted to add a reagent called '[id]' which doesn't exist. ([usr])")
 	return 0

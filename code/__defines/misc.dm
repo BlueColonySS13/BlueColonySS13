@@ -308,3 +308,4 @@ var/global/list/##LIST_NAME = list();\
 //
 
 #define MAX_WARRANTS 50
+#define MAX_FINGERPRINTS 20

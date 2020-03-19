@@ -43,6 +43,13 @@
 	var/list/all_tnts = get_tenants()
 	return "([all_tnts.len]/[max_tenants])"
 
+/datum/lot/proc/plain_tenant_list()
+	var/text
+	for(var/datum/tenant/T in get_tenants())
+		text += "<li>[T.name] (<b>Account Balance:</b> [cash2text( T.get_balance(), FALSE, TRUE, TRUE )])</li>"
+	return
+
+
 /datum/lot/proc/get_approx_earnings() //returns approx earnings (before tax and all that jazz)
 	if(!has_tenants())
 		return 0

@@ -27,11 +27,11 @@
 	var/map_json_data
 	var/persistence_loaded = FALSE
 
-	var/save_contents = FALSE
-	var/save_reagents = FALSE
+	var/save_contents = TRUE
+	var/save_reagents = TRUE
 
 	var/unique_save_vars = list()
-	var/dont_save = 0 // For atoms that are temporary by necessity - like lighting overlays
+	var/dont_save = FALSE // For atoms that are temporary by necessity - like lighting overlays
 
 /atom/proc/on_persistence_load()
 	persistence_loaded = FALSE	// turns this off.
@@ -41,35 +41,51 @@
 	persistence_loaded = TRUE
 	return TRUE
 
+/atom/proc/get_persistent_metadata()
+	return
 
+/atom/proc/load_persistent_metadata(metadata)
+	return
+
+/atom/proc/sanitize_for_saving()
+	return
+
+/obj/sanitize_for_saving()	// these things build up with time, so this gradually limits the amount so we don't have 5000 fingerprints or anything.
+	truncate_oldest(suit_fibers, MAX_FINGERPRINTS)
+	truncate_oldest(fingerprints, MAX_FINGERPRINTS)
+	truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
+
+	return
 
 /obj/item/weapon/reagent_containers/proc/pack_persistence_data()
 	var/list/all_reagents = reagents.reagent_list
-	var/reagent_data_persistence = list("viruses", "species", "blood_DNA", "blood_type", "blood_colour", "resistances", "trace_chem", "antibodies")
 	var/list/reagents_to_save = list()
 
 	if(reagents)
 		for(var/datum/reagent/R in all_reagents)
-			var/reagent_data = list(
-			"id" = R.id,
-			"volume" = R.volume,
-			"data" = null)
+			var/datum/map_reagent_data/reagent_holder = new()
 
-			if(R.data)
+			reagent_holder.id = R.id
+			reagent_holder.amount = R.volume
 
+			if(R.get_data())
+				var/list/datalist = R.get_data()
 
-				if(ismob(R.data) || isatom(R.data))
-					continue
-
-				if(islist(R.data))
+				if(islist(datalist))
 					var/list/metadata = list()
-					for(var/V in reagent_data_persistence)
-						metadata += V
-						reagent_data["data"] = metadata
-				else
-					reagent_data["data"] = R.data
+					for(var/V in datalist)
+						if(!istext(datalist[V]) && !isnum(datalist[V]))
+							continue
+						metadata[V] = datalist[V]
 
-				reagents_to_save["data"] = reagent_data
+					reagent_holder.data = metadata
+				else
+					if(!istext(R.get_data()) && !isnum(R.get_data()))
+						continue
+
+					reagent_holder.data = R.get_data()
+
+			reagents_to_save += reagent_holder
 
 	return reagents_to_save
 
@@ -77,12 +93,14 @@
 	if(isemptylist(saved_reagents))
 		return FALSE
 
-	reagents.reagent_list = list()
+	clearlist(reagents.reagent_list)
 
-	for(var/list/V in saved_reagents)
-		var/datum/reagent/new_reagent = reagents.add_reagent(V["id"], V["volume"])
-		if(V["data"])
-			new_reagent.data = V["data"]
+	for(var/datum/map_reagent_data/reagent_holder in saved_reagents)
+		var/datum/reagent/new_reagent = reagents.add_reagent(reagent_holder.id, reagent_holder.amount)
+		if(!new_reagent)
+			continue
+		if(reagent_holder.data)
+			new_reagent.data = reagent_holder.data
 
 	return TRUE
 
@@ -95,7 +113,10 @@
  	return list("x","y","z","color","dir","layer","name","pixel_x","pixel_y")+unique_save_vars
 
 /area/
-	unique_save_vars = list("name", "decals")
+	unique_save_vars = list("name")
+
+/turf/
+	unique_save_vars = list("decals")
 
 /atom/serialize()
 	var/list/data = ..()
@@ -134,7 +155,7 @@
 // Custom vars-to-save/persistence load list
 
 /obj/vars_to_save()
- 	 return list("x","y","z","anchored","color","dir","icon_state","name","pixel_x","pixel_y","contents","fingerprints","fingerprintshidden","fingerprintslast",\
+ 	 return list("x","y","z","anchored","color","dir","name","pixel_x","pixel_y","fingerprints","fingerprintshidden","fingerprintslast",\
  	 "suit_fibers")+unique_save_vars
 
 /obj/item/weapon/paper

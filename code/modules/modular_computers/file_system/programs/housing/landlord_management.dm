@@ -9,6 +9,58 @@
 
 	nanomodule_path = /datum/nano_module/landlord_management
 
+/datum/computer_file/program/landlord_management/proc/print_lot_data(mob/user, datum/lot/LOT)
+	if(!LOT)
+		to_chat(user, "ERROR: Missing lot data.")
+		return
+
+	if(!computer.nano_printer)
+		to_chat(user, "Missing Hardware: Your computer does not have the required hardware to complete this operation.")
+		return
+
+	var/output
+
+
+	output += "<h1>Lot Details: [LOT.name]</h1><br> \
+	<hr> \
+	<b>Lot Name:</b> [LOT.name]<br> \
+	<b>Owner:</b> [LOT.get_landlord_name()]<br> \
+	<b>Description:</b> [LOT.desc]<br> \
+	<b>Price:</b> [cash2text( LOT.get_price(), FALSE, TRUE, TRUE )] (Original Price: [cash2text( LOT.get_default_price(), FALSE, TRUE, TRUE )])<br> \
+	<b>Current Rent:</b> [cash2text( LOT.get_rent(), FALSE, TRUE, TRUE )] (Original Rent: [cash2text( LOT.get_default_rent(), FALSE, TRUE, TRUE )])<br><hr>"
+
+	if(LOT.landlord)
+		output += "<b>Landlord Balance:</b> [cash2text( LOT.get_landlord_balance(), FALSE, TRUE, TRUE )] ([cash2text( LOT.get_service_charge(), FALSE, TRUE, TRUE )] per payroll)<br>"
+
+	output += "<b>Tenants:</b><br>"
+
+	if(LAZYLEN(LOT.get_tenants()))
+		output += "[LOT.plain_tenant_list()]"
+	else
+		output += "<i>Lot has no tenants.</i>"
+
+	output += "<br>"
+
+	output += "<b>Lot Notes:</b> <br>"
+	if(LAZYLEN(LOT.notes))
+		for(var/V in LOT.notes)
+			output += "<li>[V]</li>"
+	else
+		output += "<i>No lot notes found.</i>"
+
+	output += "<br><br>"
+
+	output += "<b>Checkbook:</b><br>"
+	if(LAZYLEN(LOT.landlord_checkbook))
+		for(var/V in LOT.landlord_checkbook)
+			output += "<li>[V]</li>"
+	else
+		output += "<i>No checkbook/payment notes found.</i>"
+
+	if(!computer.nano_printer.print_text(output, "Lot Data: [LOT.name]"))
+		to_chat(user, "Hardware error: Printer was unable to print the file. It may be out of paper.")
+		return 1
+
 /datum/nano_module/landlord_management/
 	name = "Landlord Management"
 
@@ -38,9 +90,13 @@
 
 		if(access_hop in I.access)
 			clerk_access = TRUE
+		else
+			clerk_access = FALSE
 
 		if(access_judge in I.access)
 			judge_access = TRUE
+		else
+			judge_access = FALSE
 
 		var/datum/money_account/bank = get_account(I.associated_account_number)
 		if(bank)
@@ -108,15 +164,16 @@
 				page_msg += "<font color=\"yellow\"><b>Price:</b></font> [cash2text( L.get_price(), FALSE, TRUE, TRUE )] (incl [cash2text( L.get_service_charge(), FALSE, TRUE, TRUE )] service charge per payroll)<br><br>"
 				page_msg += "<font color=\"yellow\"><b>Service Charge Balance:</b></font> [cash2text( L.get_landlord_balance(), FALSE, TRUE, TRUE )] ([cash2text( L.get_service_charge(), FALSE, TRUE, TRUE )] per payroll)<br>"
 				page_msg += "<a href='?src=\ref[src];choice=view_checkbook;lot=\ref[L]'>View Checkbook (Payment Records)</a>"
+				page_msg += "<a href='?src=\ref[src];choice=print_lot_details;lot=\ref[L]'>Print Full Details</a>"
 
 				var/labelpay = "Add Funds"
 				if(0 > your_landlord.account_balance)
 					labelpay = "Pay Charges ([cash2text( your_landlord.account_balance, FALSE, TRUE, TRUE )])"
 				page_msg += "<a href='?src=\ref[src];choice=pay_serv_charges;lot=\ref[L];landlord=\ref[your_landlord]'>[labelpay]</a>"
-				page_msg += "<a href='?src=\ref[src];choice=withdraw_funds;lot=\ref[L];landlord=\ref[your_landlord]'>Withdraw Funds</a>"
 
 
 				if(!(L.get_status() == LOT_HELD))
+					page_msg += "<a href='?src=\ref[src];choice=withdraw_funds;lot=\ref[L];landlord=\ref[your_landlord]'>Withdraw Funds</a>"
 
 					if(L.get_status() == FOR_SALE)
 						page_msg += "<a href='?src=\ref[src];choice=remove_sale_lot;lot=\ref[L]'>Remove Lot from Market</a>"
@@ -291,27 +348,49 @@
 		else
 			var/datum/lot/L = current_lot
 
-			if(judge_access)
-				page_msg += "<a href='?src=\ref[src];choice=repossess_lot;lot=\ref[L]'>Repossess Lot</a>"
-
-			if(clerk_access || judge_access)
-				if(!L.held)
-					page_msg += "<a href='?src=\ref[src];choice=hold_lot;lot=\ref[L]'>Freeze Lot</a>"
-				else
-					page_msg += "<a href='?src=\ref[src];choice=unhold_lot;lot=\ref[L]'>Unfreeze Lot</a>"
-
 			page_msg = "<h3>[L.name]</h3>"
-			page_msg += "<b>ID</b>:<br> [L.id]<br><br>"
-			page_msg += "<b>Name</b>:<br> [L.name]<br><br>"
-			page_msg += "<b>Description</b>:<br> [L.desc]<br><br>"
-			page_msg += "<b>Status</b>:<br> [L.get_status()]<br><br>"
+			page_msg += "<b>ID</b>:<br> [L.id]<br>"
+			page_msg += "<b>Name</b>:<br> [L.name]<br>"
+			page_msg += "<b>Description</b>:<br> [L.desc]<br>"
+			page_msg += "<b>Status</b>:<br> [L.get_status()]<br>"
+			page_msg += "<b>Owner</b>:<br> [L.get_landlord_name()]<br>"
+
+			if(L.landlord)
+				page_msg += "<b>Contact Email:</b> [L.landlord.email]<br>"
 
 			if(!isemptylist(L.get_tenants()))
 				page_msg += "<b>Tenants [L.tenancy_no_info()]:</b><br>"
 				for(var/datum/tenant/T in L.get_tenants())
 					page_msg += "<li>[T.name] | Account Balance: [cash2text( T.get_balance(), FALSE, TRUE, TRUE )] (Last Payment: [T.last_payment])</li>"
 
+			page_msg += "<br>"
 
+			if(clerk_access || judge_access)
+				page_msg += "<b>Landlord Balance</b>: [cash2text( L.get_landlord_balance(), FALSE, TRUE, TRUE )]<br>"
+
+
+				if(judge_access && L.landlord)
+					page_msg += "<a href='?src=\ref[src];choice=repossess_lot;lot=\ref[L]'>Repossess Lot</a>"
+
+
+				if(!L.held)
+					page_msg += "<a href='?src=\ref[src];choice=hold_lot;lot=\ref[L]'>Freeze Lot</a>"
+				else
+					page_msg += "<a href='?src=\ref[src];choice=unhold_lot;lot=\ref[L]'>Unfreeze Lot</a>"
+
+				if(L.landlord && (0 > L.get_landlord_balance()))
+					page_msg += "<a href='?src=\ref[src];choice=send_warning_notice_landlord;lot=\ref[L]'>Send Arrears Email</a>"
+
+				page_msg += "<a href='?src=\ref[src];choice=print_lot_details;lot=\ref[L]'>Print Full Details</a>"
+
+				page_msg += "<div class='statusDisplay' style='overflow: auto;'>"
+				if(LAZYLEN(L.notes))
+					for(var/V in L.notes)
+						page_msg += "[V]<br>"
+				else
+					page_msg += "No notes found."
+
+				page_msg += "</div>"
 
 			page_msg += "<br><br>"
 			if(L.held)
@@ -331,7 +410,7 @@
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "landlord_management.tmpl", "Landlord Management Utility", 860, 450, state = state)
+		ui = new(user, src, ui_key, "landlord_management.tmpl", "Landlord Management Utility", 960, 450, state = state)
 		if(program.update_layout())
 			ui.auto_update_layout = 1
 		ui.set_auto_update(1)
@@ -684,6 +763,20 @@
 				clear_data()
 				index = 3
 
+			if("print_lot_details") // remove the lot from sale
+				var/L = locate(href_list["lot"])
+
+				var/datum/lot/LOT = L
+
+				if(!LOT)
+					return
+
+				if(!(unique_id == LOT.get_landlord_uid() ) && !clerk_access && !judge_access)
+					error_msg = "You cannot print details of a property that you have no rights to."
+					return
+				var/datum/computer_file/program/landlord_management/printprog = program
+				printprog.print_lot_data(usr, LOT)
+
 
 			if("hold_lot") // get out bitch get out!
 				var/L = locate(href_list["lot"])
@@ -692,8 +785,10 @@
 
 				if(!LOT)
 					return
-				if(!clerk_access || !judge_access)
+
+				if(!clerk_access && !judge_access)
 					return
+
 				if(LOT.held)
 					error_msg = "This lot is already held."
 					return
@@ -708,12 +803,29 @@
 				if("No" == alert("Are you sure you want to put [LOT.name] on hold?", "Freeze Lot", "No", "Yes"))
 					return
 
+				var/held_rsn = sanitize(input("Enter a hold reason, you must enter a detailed hold reason explaining why this lot is held or this will not go through. Max chars ([MAX_PAPER_MESSAGE_LEN])", "Set Name") as message, MAX_PAPER_MESSAGE_LEN)
+
+				if(!held_rsn)
+					return
+
 				LOT.held = TRUE
+				LOT.reason_held = held_rsn
 
-				LOT.add_note(full_name, "Placed [LOT.name] on hold.",usr)
-				clear_data()
+				if(LOT.landlord)
+					var/datum/computer_file/data/email_account/council_email = get_email(using_map.council_email)
+					var/datum/computer_file/data/email_message/message = new/datum/computer_file/data/email_message()
+					var/eml_cnt = "Dear [LOT.get_landlord_name()], \[br\]"
+					eml_cnt += "[LOT.name] has been frozen for the following reason:\[BR\]\[BR\]\
+					[LOT.reason_held]\[BR\]\[BR\] \
+					This can be contested in a court of law, please contact city council at [using_map.council_email] for more details."
 
+					message.stored_data = eml_cnt
+					message.title = "Property Held: [LOT.name] - City Council"
+					message.source = "noreply@nanotrasen.gov.nt"
 
+					council_email.send_mail(LOT.landlord.email, message)
+
+				LOT.add_note(full_name, "Held/Froze [LOT.name].",usr)
 
 			if("unhold_lot") // get out bitch get out!
 				var/L = locate(href_list["lot"])
@@ -721,8 +833,10 @@
 
 				if(!LOT)
 					return
-				if(!clerk_access || !judge_access)
+
+				if(!clerk_access && !judge_access)
 					return
+
 				if(!LOT.held)
 					error_msg = "This lot is not held."
 					return
@@ -740,18 +854,20 @@
 				LOT.held = FALSE
 
 				LOT.add_note(full_name, "Took [LOT.name] off hold.",usr)
-				clear_data()
 
 
 			if("repossess_lot") // this ours now!
 				var/L = locate(href_list["lot"])
 				var/datum/lot/LOT = L
 
-				if(!LOT || !LOT.landlord)
+				if(!LOT)
 					return
 
 				if(!judge_access)
 					return
+
+				if(!LOT.landlord)
+					alert("You cannot repossess lots that do not have a landlord!")
 
 				if("No" == alert("Do you want to repossess [LOT.name]? [LOT.get_landlord_name()] will lose access to the property. Do not do this lightly!", "Repossess", "No", "Yes"))
 					return
@@ -763,10 +879,8 @@
 					return
 
 
-				LOT.add_note(full_name, "Repossessed [LOT.name] as a tenant from [LOT.name]",usr)
+				LOT.add_note(full_name, "Repossessed [LOT.name] as a tenant from [LOT.name] - [cash2text( LOT.get_landlord_balance(), FALSE, TRUE, TRUE )] processed to landlord's account",usr)
 				LOT.repossess_lot()
-
-				clear_data()
 
 
 			if("evict_tenant") // get out bitch get out!
@@ -1089,6 +1203,27 @@
 				alert("An email has been sent, informing the resident to pay their balance promptly.")
 				LOT.add_note(full_name, "Sent warning notice to [resident.name] for [LOT.name] regarding their [cash2text( resident.account_balance, FALSE, TRUE, TRUE )] arrears.",usr)
 
+			if("send_warning_notice_landlord") // when the landlords say "don't try me" to the occupants
+				var/L = locate(href_list["lot"])
+				var/datum/lot/LOT = L
+
+				if(!LOT || !LOT.get_landlord())
+					return
+
+
+				if("No" == alert("Send warning email to [LOT.get_landlord_name()]?", "Warning Email", "No", "Yes"))
+					return
+
+				if(LOT.get_landlord_balance() > 0)
+					error_msg = "This landlord is not in debt."
+					return
+
+				LOT.send_arrears_letter(LOT.get_landlord_uid())
+
+				alert("An email has been sent, informing the landlord to pay their service charge balance promptly.")
+				LOT.add_note(full_name, "Sent warning notice to [LOT.get_landlord_name()] for [LOT.name] regarding their [cash2text( LOT.get_landlord_balance(), FALSE, TRUE, TRUE )] service charge arrears.",usr)
+
+
 			if("withdraw_funds") // collect that delicious rent money
 				var/L = locate(href_list["lot"])
 				var/datum/lot/LOT = L
@@ -1126,28 +1261,3 @@
 				alert("[withdraw]CR has been sent to your bank account.")
 				LOT.add_note(full_name, "Withdrew [withdraw]CR to their bank account.",usr)
 
-			if("hold_lot") // collect that delicious rent money
-				var/L = locate(href_list["lot"])
-				var/datum/lot/LOT = L
-
-				if(!LOT || !judge_access || !LOT.held)
-					return
-
-				if("No" == alert("Hold the lot [LOT.name]? This will mean that anything relating to this property will be frozen.", "Freeze Lot", "No", "Yes"))
-					return
-
-				LOT.held = TRUE
-
-				var/datum/computer_file/data/email_account/council_email = get_email(using_map.council_email)
-				var/datum/computer_file/data/email_message/message = new/datum/computer_file/data/email_message()
-				var/eml_cnt = "Dear [LOT.get_landlord_name()], \[br\]"
-				eml_cnt += "[LOT.name] has been frozen for the following reason:\[BR\]\[BR\]\
-				[LOT.reason_held]\[BR\]\[BR\] \
-				This can be contested in a court of law, please contact city council at [using_map.council_email] for more details."
-
-				message.stored_data = eml_cnt
-				message.title = "Property Held: [LOT.name] - City Council"
-				message.source = "noreply@nanotrasen.gov.nt"
-
-				council_email.send_mail(LOT.landlord.email, message)
-				LOT.add_note(full_name, "Held/Froze [LOT.name].",usr)

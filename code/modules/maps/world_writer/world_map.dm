@@ -6,25 +6,29 @@
 	var/y
 	var/z
 	var/turf_vars = list()
-
 	var/list/map_objects = list()
+	var/list/decals = list()
 
 /datum/map_object
 	var/savedtype
 	var/object_vars = list()
 
 	var/contents = list()
-	var/reagent_data = list()
+	var/list/reagent_data = list()
+	var/metadata
+	var/x
+	var/y
+	var/z
 
-/datum/map_mob
-	var/savedtype
-	var/mob_vars = list()
+/datum/map_reagent_data
+	var/id
+	var/amount
+	var/data
 
-
-/proc/save_map(var/turf/t1, var/turf/t2, var/id, var/path, var/save_obj = 1, var/save_mob = 0)
+/proc/save_map(var/turf/t1, var/turf/t2, var/id, var/path, var/save_obj = 1)
 	var/block = get_map_turfs(t1, t2)
 
-	var/full_map = map_write(block, save_obj, save_mob)
+	var/full_map = map_write(block, save_obj)
 	if(!full_map)
 		return 0
 
@@ -53,32 +57,51 @@
 	return map_area
 
 /proc/get_object_data(obj/O)
+	if(!O)
+		return FALSE
+
 	var/datum/map_object/MO = new/datum/map_object
 	O.on_persistence_save()
+	O.sanitize_for_saving()
 	MO.savedtype = O.type
 
 	for(var/V in O.vars_to_save() )
 		if(!(O.vars[V] == initial(O.vars[V])))
+			if(!istext(O.vars[V]) && !isnum(O.vars[V]))	// make sure all references to mobs/objs/turfs etc, are fully cut!
+				continue
 			MO.object_vars[V] = O.vars[V]
 
-	if(istype(O, /obj/item/weapon/reagent_containers))
-		var/obj/item/weapon/reagent_containers/container = O
-		MO.reagent_data = container.pack_persistence_data()
+	if(O.save_reagents)
+		if(istype(O, /obj/item/weapon/reagent_containers))
+			var/obj/item/weapon/reagent_containers/container = O
+			MO.reagent_data = container.pack_persistence_data()
 
-	MO.object_vars["x"] = O.vars["x"]
-	MO.object_vars["y"] = O.vars["y"]
-	MO.object_vars["z"] = O.vars["z"]
+	var/turf/obj_turf = get_turf(O)
+
+	MO.x = obj_turf.x
+	MO.y = obj_turf.y
+	MO.z = obj_turf.z
+
+	MO.metadata = O.get_persistent_metadata()
 
 	return MO
 
-/datum/map_object/proc/unpack_object_data(obj/O)
+/datum/map_object/proc/unpack_object_data(obj/O, obj/containing_obj)
+	O.x = x
+	O.y = y
+	O.z = z
+
+	if(containing_obj)
+		O.forceMove(containing_obj)
+
+	if(!O.initialized)
+		O.initialize()
+
+	clearlist(O.contents)
+
 	for(var/V in O.vars_to_save())
 		if(object_vars[V])
 			O.vars[V] = object_vars[V]
-
-	O.vars["x"] = object_vars["x"]
-	O.vars["y"] = object_vars["y"]
-	O.vars["z"] = object_vars["z"]
 
 	if(!isemptylist(reagent_data) && istype(O, /obj/item/weapon/reagent_containers))
 		var/obj/item/weapon/reagent_containers/container = O
@@ -86,6 +109,8 @@
 
 	if(!O.on_persistence_load())
 		throw EXCEPTION("[O] failed persistence load.")
+
+	O.load_persistent_metadata(metadata)
 
 	return TRUE
 
@@ -105,6 +130,8 @@
 		MT.y = T.y
 		MT.z = T.z
 
+		MT.decals = T.decals
+
 		for(var/V in T.vars_to_save() )
 			if(!(T.vars[V] == initial(T.vars[V])))
 				MT.turf_vars[V] = T.vars[V]
@@ -122,28 +149,58 @@
 				all_objs += O
 
 				var/datum/map_object/saved_obj_1 = get_object_data(O)
-				full_map += saved_obj_1
+				if(saved_obj_1)
+					full_map += saved_obj_1
+					CHECK_TICK
+
+				if(!O.save_contents)
+					continue
 
 				//first loop, to get all objects inside closets
 				for(var/obj/A in O.contents)
 					if(A.dont_save) continue
 
 					var/datum/map_object/saved_obj_2 = get_object_data(A)
-					saved_obj_1.contents += saved_obj_2
+					if(saved_obj_2)
+						saved_obj_1.contents += saved_obj_2
+						CHECK_TICK
+
+					if(!A.save_contents)
+						continue
 
 					//second loop, let's say you had a backpack inside the closet with it's own things.
 					for(var/obj/B in A.contents)
 						if(B.dont_save) continue
 
 						var/datum/map_object/saved_obj_3 = get_object_data(B)
-						saved_obj_2.contents += saved_obj_3
+						if(saved_obj_3)
+							saved_obj_2.contents += saved_obj_3
+							CHECK_TICK
 
-						//third and final loop. for getting things like cigarette packets inside backpacks. Honestly I don't think we'll need a fourth loop.
+						if(!B.save_contents)
+							continue
+
+						//third loop. for getting things like cigarette packets inside backpacks.
 						for(var/obj/C in B.contents)
 							if(C.dont_save) continue
 
 							var/datum/map_object/saved_obj_4 = get_object_data(C)
-							saved_obj_3.contents += saved_obj_4
+							if(saved_obj_4)
+								saved_obj_3.contents += saved_obj_4
+								CHECK_TICK
+
+							if(!C.save_contents)
+								continue
+
+
+							//fourth loop. let's say the cigarettes need saving inside these packets. Honestly I don't think we'll need a fourth loop.
+							for(var/obj/D in C.contents)
+								if(D.dont_save) continue
+
+								var/datum/map_object/saved_obj_5 = get_object_data(D)
+								if(saved_obj_5)
+									saved_obj_4.contents += saved_obj_5
+									CHECK_TICK
 
 				MT.map_objects += saved_obj_1
 
@@ -164,6 +221,9 @@
 			continue
 
 		newturf.ChangeTurf(MT.turf_type, 0, 1)
+
+		newturf.decals = MT.decals
+
 		newturf.on_persistence_load()
 		if(!newturf.on_persistence_load())
 			throw EXCEPTION("[newturf] failed persistence load.")
@@ -178,7 +238,7 @@
 				continue
 
 			var/obj/O = new MO.savedtype ( newturf.loc )
-
+			CHECK_TICK
 			MO.unpack_object_data(O)
 
 			// first loop
@@ -186,25 +246,36 @@
 				if(!ispath(MO_2.savedtype))
 					throw EXCEPTION("Undefined save type [MO_2.savedtype] (in [MO])")
 					continue
-				var/obj/A = new MO_2.savedtype (O.contents)
-				MO_2.unpack_object_data(A)
+				var/obj/A = new MO_2.savedtype (O)
+				CHECK_TICK
+				MO_2.unpack_object_data(A, O)
 
 				// second loop
 				for(var/datum/map_object/MO_3 in MO_2.contents)
 					if(!ispath(MO_3.savedtype))
 						throw EXCEPTION("Undefined save type [MO_3.savedtype] (in [MO_2])")
 						continue
-					var/obj/B = new MO_3.savedtype (A.contents)
-					MO_3.unpack_object_data(B)
+					var/obj/B = new MO_3.savedtype (A)
+					CHECK_TICK
+					MO_3.unpack_object_data(B, A)
 
-					// third and final loop
+					// third loop
 					for(var/datum/map_object/MO_4 in MO_3.contents)
 						if(!ispath(MO_4.savedtype))
 							throw EXCEPTION("Undefined save type [MO_4.savedtype] (in [MO_3])")
 							continue
-						var/obj/C = new MO_4.savedtype (B.contents)
-						MO_4.unpack_object_data(C)
+						var/obj/C = new MO_4.savedtype (B)
+						CHECK_TICK
+						MO_4.unpack_object_data(C, B)
 
+						// third loop
+						for(var/datum/map_object/MO_5 in MO_4.contents)
+							if(!ispath(MO_5.savedtype))
+								throw EXCEPTION("Undefined save type [MO_5.savedtype] (in [MO_4])")
+								continue
+							var/obj/D = new MO_5.savedtype (C)
+							CHECK_TICK
+							MO_5.unpack_object_data(D, C)
 
 	return 1
 

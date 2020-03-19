@@ -120,6 +120,9 @@
 		if(restore_map(id, path) && load_metadata())
 			allow_saving = TRUE
 
+		for(var/obj/O in lot_area)
+			O.on_persistence_load()
+
 	return 1
 
 
