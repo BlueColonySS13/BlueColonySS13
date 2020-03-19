@@ -40,6 +40,8 @@ atom/proc/add_fibers(mob/living/carbon/human/M)
 		if(prob(20*item_multiplier) && !(fibertext in suit_fibers))
 			suit_fibers += "Material from a pair of [M.gloves.name]."
 
+	truncate_oldest(suit_fibers, MAX_FINGERPRINTS)
+
 /datum/data/record/forensic
 	name = "forensic data"
 	var/uid

@@ -17,8 +17,8 @@
 
 	SSlaw.save_warrants()
 
-	//save all lots
-//	SSlots.save_all_lots()
+	if(config.lot_saving)
+		SSlots.save_all_lots()
 
 	//saves all characters
 	for (var/mob/living/carbon/human/H in mob_list) //only humans, we don't really save AIs or robots.

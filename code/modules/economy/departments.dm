@@ -110,11 +110,13 @@
 /datum/department/proc/get_account()
 	return bank_account
 
-/datum/department/proc/adjust_funds(amount)	//hard editing mostly. don't use in most circumstances. Use direct_charge_money() instead for trans logs
+/datum/department/proc/adjust_funds(amount, purpose)	//hard editing mostly. don't use in most circumstances. Use direct_charge_money() instead for trans logs
 	if(!bank_account)
 		return FALSE
 
 	bank_account.money += amount
+	if(purpose)
+		bank_account.add_transaction_log(name, purpose, amount, "Department Funds Transfer")
 
 	return bank_account.money
 

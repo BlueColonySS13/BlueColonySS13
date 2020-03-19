@@ -73,6 +73,7 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 
 	var/city_council_control	= TRUE	// If the president has allowed the city council to control the colony.
 
+	var/base_service_charge = 25		// Minimum the council will charge (per payroll) to lots. // control setting not yet implemented
 	var/carp_control = FALSE			// If this is disabled, council cannot control carp infestations.
 	var/antivirus = FALSE			// Is the President a boomer?
 
@@ -83,7 +84,6 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 //	message_admins("SAVE: Save all department accounts.", 1)
 	if(!path)				return 0
 	var/savefile/S = new /savefile(path)
-	if(!fexists(path))		return 0
 	if(!fexists(path))		return 0
 	if(!S)					return 0
 	S.cd = "/"

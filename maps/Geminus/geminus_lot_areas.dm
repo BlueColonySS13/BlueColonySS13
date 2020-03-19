@@ -1,6 +1,7 @@
 /area/lots
 	name = "Lots"
 	icon_state = "yellow"
+	flags = AREA_FLAG_IS_NOT_PERSISTENT | RAD_SHIELDED
 
 /area/lots/business_lot_one
 	name = "Business Lot 1"
