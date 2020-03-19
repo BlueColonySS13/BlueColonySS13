@@ -51,9 +51,12 @@
 	return
 
 /obj/sanitize_for_saving()	// these things build up with time, so this gradually limits the amount so we don't have 5000 fingerprints or anything.
-	truncate_oldest(suit_fibers, MAX_FINGERPRINTS)
-	truncate_oldest(fingerprints, MAX_FINGERPRINTS)
-	truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
+	if(LAZYLEN(suit_fibers))
+		truncate_oldest(suit_fibers, MAX_FINGERPRINTS)
+	if(LAZYLEN(fingerprints))
+		truncate_oldest(fingerprints, MAX_FINGERPRINTS)
+	if(LAZYLEN(fingerprintshidden))
+		truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 
 	return
 
