@@ -1178,6 +1178,13 @@
 					error_msg = "Unfortunately, your bank account cannot currently be charged at this time. Please check with an administrator."
 					return
 
+				if(0 > landlord.account_balance)
+					var/datum/department/council = dept_by_id(DEPT_COUNCIL)
+					if(paying > landlord.account_balance)
+						council.adjust_funds(landlord.account_balance, "Arrears cleared on [LOT.name]")
+					else
+						council.adjust_funds(paying, "Partial Balance Payment for [LOT.name]")
+
 				LOT.pay_landlord_balance(paying)
 
 

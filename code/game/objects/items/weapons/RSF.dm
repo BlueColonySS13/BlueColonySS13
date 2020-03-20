@@ -16,6 +16,8 @@ RSF
 	var/mode = 1
 	w_class = ITEMSIZE_NORMAL
 
+	unique_save_vars = list("stored_matter", "mode")
+
 /obj/item/weapon/rsf/examine(mob/user)
 	if(..(user, 0))
 		user << "It currently holds [stored_matter]/30 fabrication-units."

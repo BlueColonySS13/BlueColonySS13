@@ -136,8 +136,18 @@
 	containertype = /obj/structure/largecrate
 	containername = "Cargo Train Trolley Crate"
 
-/datum/supply_pack/supply/cardboard_sheets
+/datum/supply_pack/supply/sticky_notes
 	name = "Stationery - sticky notes (50)"
 	contains = list(/obj/item/sticky_pad/random)
 	cost = 10
 	containername = "\improper Sticky notes crate"
+
+/datum/supply_pack/supply/pens
+	name = "Assorted Pen Set"
+	contains = list(/obj/item/weapon/pen = 5,
+	/obj/item/weapon/pen/red = 5,
+	/obj/item/weapon/pen/blue = 5,
+	/obj/item/weapon/pen/fountain = 2)
+	cost = 10
+	containername = "\improper Assorted Pen Set"
+

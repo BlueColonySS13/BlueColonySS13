@@ -98,4 +98,20 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Pavement tiles crate"
 
+/datum/supply_pack/materials/sewingset
+	name = "Sewing Set"
+	contains = list(/obj/item/device/threadneedle = 2)
+	cost = 5
+	containertype = /obj/structure/closet/crate
+	containername = "Sewing Set"
+
+/datum/supply_pack/materials/tailor_materials
+	name = "Fine Tailoring Materials"
+	contains = list(/obj/fiftyspawner/silk = 3,
+	/obj/fiftyspawner/cotton = 3)
+	cost = 700
+	containertype = /obj/structure/closet/crate
+	containername = "Fine Tailoring Materials"
+
+
 

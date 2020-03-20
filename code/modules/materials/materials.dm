@@ -639,6 +639,15 @@ var/list/name_to_material
 	melting_point = T0C+300
 	protectiveness = 3 // 13%
 
+/material/silk
+	name = "silk"
+	icon_colour = "#ebe9df"
+	stack_origin_tech = list(TECH_MATERIAL = 2)
+	flags = MATERIAL_PADDING
+	ignition_point = T0C+232
+	melting_point = T0C+300
+	protectiveness = 0 // 0%
+
 /material/carpet
 	name = "carpet"
 	display_name = "comfy"

@@ -296,6 +296,8 @@
 	flags = CONDUCT
 	power_use = 0
 	on = 1
+	table_drag = TRUE
+	anchored = FALSE
 
 
 // green-shaded desk lamp

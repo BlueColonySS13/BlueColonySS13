@@ -21,6 +21,7 @@
 	var/fixture_type = "tube"
 	var/sheets_refunded = 2
 	var/obj/machinery/light/newlight = null
+	table_drag = TRUE
 
 /obj/machinery/light_construct/New()
 	..()
@@ -317,6 +318,7 @@
 	desc = "A floor lamp."
 	light_type = /obj/item/weapon/light/bulb
 	var/lamp_shade = 1
+	anchored = FALSE
 
 /obj/machinery/light/flamp/shadeless // for mapping
 	lamp_shade = 0

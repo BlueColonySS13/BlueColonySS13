@@ -30,6 +30,8 @@
 	rolled_sleeves = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	sprite_sheets = null	//To prevent alternate species sprite sheets from popping up
 	ispolychromic = 1
+
+	unique_save_vars = list("primary_color", "secondary_color", "tertiary_color")
 	/* Stuff from Cit
 	mutantrace_variation = NO_MUTANTRACE_VARIATION // because I'm too lazy to port these to digi-compatible and to prove a point from /tg/ whining - Pooj
 	suit_style = NORMAL_SUIT_STYLE
@@ -138,7 +140,7 @@
 
 /obj/item/clothing/under/polychromic/femtank
 	name = "polychromic feminine tank top"
-	desc = "Great for showing off your chest in style. Not recommended for males."
+	desc = "A tank top that is loose and breezy."
 	icon_state = "polyfemtankpantsu"
 	item_color = "polyfemtankpantsu"
 	item_state = "rainbow"
@@ -160,7 +162,7 @@
 
 /obj/item/clothing/under/polychromic/bottomless
 	name = "polychromic bottomless shirt"
-	desc = "Great for showing off your junk in dubious style."
+	desc = "Great with a pair of long johns."
 	icon_state = "polybottomless"
 	item_color = "polybottomless"
 	item_state = "rainbow"

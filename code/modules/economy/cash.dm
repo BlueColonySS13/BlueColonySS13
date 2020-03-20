@@ -11,12 +11,14 @@
 	throwforce = 1.0
 	throw_speed = 1
 	throw_range = 2
-	w_class = 2.0
+	w_class = ITEMSIZE_TINY
 	var/access = list()
 	access = access_crate_cash
 	var/worth = 0
 	drop_sound = 'sound/items/drop/paper.ogg'
 	var/list/possible_values = list(100,50,20,10,5,2,1)
+
+	unique_save_vars = list("worth")
 
 /obj/item/weapon/spacecash/get_item_cost()
 	return worth	// lol

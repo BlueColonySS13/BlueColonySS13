@@ -23,12 +23,6 @@
 	containertype = /obj/structure/closet/crate
 	containername = "cards crate"
 
-/datum/supply_pack/misc/eftpos
-	contains = list(/obj/item/device/eftpos)
-	name = "EFTPOS scanner"
-	cost = 10
-	containertype = /obj/structure/closet/crate
-	containername = "EFTPOS crate"
 
 /datum/supply_pack/misc/chaplaingear
 	name = "Chaplain equipment"
@@ -71,12 +65,6 @@
 	containertype = "/obj/structure/closet/crate"
 	containername = "Webbing crate"
 
-/datum/supply_pack/misc/holoplant
-	name = "Holoplant Pot"
-	contains = list(/obj/machinery/holoplant/shipped)
-	cost = 15
-	containertype = /obj/structure/closet/crate
-	containername = "Holoplant crate"
 
 /datum/supply_pack/misc/journalist
 	name = "Journalism Kit"

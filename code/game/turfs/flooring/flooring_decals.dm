@@ -9,8 +9,12 @@ var/list/floor_decals = list()
 	plane = DECAL_PLANE
 	var/supplied_dir
 
-/obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour)
+/obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour, var/newicon, var/new_state)
 	supplied_dir = newdir
+	if(newicon)
+		icon = newicon
+	if(new_state)
+		icon_state = new_state
 	if(newcolour) color = newcolour
 	..(newloc)
 
@@ -47,6 +51,9 @@ var/list/floor_decals = list()
 		T.update_icon()
 	initialized = TRUE
 	return INITIALIZE_HINT_QDEL
+
+/obj/effect/floor_decal/full
+	icon_state = "fulltile"
 
 /obj/effect/floor_decal/corner
 	icon_state = "corner_white"

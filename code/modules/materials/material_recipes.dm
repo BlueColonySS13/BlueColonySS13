@@ -187,3 +187,56 @@
 	recipes += new/datum/stack_recipe("alien wood floor tile", /obj/item/stack/tile/wood/sif, 1, 4, 20)
 	recipes -= new/datum/stack_recipe("wood floor tile", /obj/item/stack/tile/wood, 1, 4, 20)
 	recipes -= new/datum/stack_recipe("wooden chair", /obj/structure/bed/chair/wood, 3, time = 10, one_per_turf = 1, on_floor = 1)
+
+/material/leather/generate_recipes()
+	recipes = list()
+
+	// If is_brittle() returns true, these are only good for a single strike.
+	recipes += new/datum/stack_recipe("[display_name] jacket", /obj/item/clothing/suit/storage/toggle/leather_jacket, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] sleeveless jacket", /obj/item/clothing/suit/storage/toggle/leather_jacket/sleeveless, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] jacket vest", /obj/item/clothing/suit/storage/leather_jacket_alt, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] brown jacket", /obj/item/clothing/suit/storage/toggle/brown_jacket, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] gloves", /obj/item/clothing/gloves/brown, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] shoes", /obj/item/clothing/shoes/leather, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] pants", /obj/item/clothing/under/pants/leather, 10, time = 20, one_per_turf = 0, on_floor = 1)
+
+
+
+/material/cotton/generate_recipes()
+	recipes = list()
+
+	// If is_brittle() returns true, these are only good for a single strike.
+	recipes += new/datum/stack_recipe("[display_name] flip flops", /datum/gear/shoes/flipflops, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] athletic shoes", /datum/gear/shoes/athletic, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] skate shoes", /datum/gear/shoes/skater, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] flat shoes", /datum/gear/shoes/flats, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] high heels", /datum/gear/shoes/heels, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] long high heels", /obj/item/clothing/shoes/heels/long, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] regular coat", /obj/item/clothing/suit/storage/toggle/coat, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] cowboy duster", /obj/item/clothing/suit/storage/duster, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] peacoat", /obj/item/clothing/suit/storage/toggle/peacoat, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] cardigan", /obj/item/clothing/suit/storage/toggle/cardigan, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] skate shoes", /datum/gear/shoes/skater, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] pencil skirt", /obj/item/clothing/under/skirt/pencil, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] yoga pants", /obj/item/clothing/under/pants/yogapants, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] pleated skirt", /obj/item/clothing/under/skirt/pleated, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] evening gloves", /obj/item/clothing/gloves/evening, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] gloves", /obj/item/clothing/gloves, 10, time = 20, one_per_turf = 0, on_floor = 1)
+
+/material/silk/generate_recipes()
+	recipes = list()
+
+	// If is_brittle() returns true, these are only good for a single strike.
+	recipes += new/datum/stack_recipe("[display_name] kimono", /obj/item/clothing/suit/kimono, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] formal blazer", /obj/item/clothing/suit/storage/formalblazer, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] peter pan blazer", /obj/item/clothing/suit/storage/peterpanblazer, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] long dress", /obj/item/clothing/under/dress/white2, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] plain dress", /obj/item/clothing/under/dress/white3, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] long wide dress", /obj/item/clothing/under/dress/white4, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] evening grown", /obj/item/clothing/under/dress/redeveninggown, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] diva dress", /obj/item/clothing/under/dress/diva, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] coveter dress", /obj/item/clothing/under/dress/coveter, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] flowergirl dress", /obj/item/clothing/under/dress/arisflowergirl/colorable, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] club dress", /obj/item/clothing/under/dress/club, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] evening gloves", /obj/item/clothing/gloves/evening, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] gloves", /obj/item/clothing/gloves, 10, time = 20, one_per_turf = 0, on_floor = 1)

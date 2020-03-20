@@ -184,8 +184,8 @@
 		else
 			f_name += "oil-stained [name][infix]."
 
-	user << "\icon[src] That's [f_name] [suffix]"
-	user << desc
+	to_chat(user, "\icon[src] That's [f_name] [suffix]")
+	to_chat(user, desc)
 
 	return distance == -1 || (get_dist(src, user) <= distance)
 
@@ -220,6 +220,9 @@
 	if (density)
 		AM.throwing = 0
 	return
+
+/atom/proc/get_color()
+	return color
 
 /atom/proc/add_hiddenprint(mob/living/M as mob)
 	if(isnull(M)) return

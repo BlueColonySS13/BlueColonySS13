@@ -75,3 +75,11 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "crate of gifts"
+
+
+/datum/supply_pack/hospitality/jukebox
+	name = "Jukebox"
+	contains = list(/obj/machinery/media/jukebox)
+	cost = 2000
+	containertype = /obj/structure/largecrate
+	containername = "\improper Jukebox Crate"

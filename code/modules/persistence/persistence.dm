@@ -109,7 +109,7 @@
 
 // This is so specific atoms can override these, and ignore certain ones
 /atom/proc/vars_to_save()
- 	return list("x","y","z","color","dir","name","pixel_x","pixel_y")+unique_save_vars
+ 	return list("x","y","z","color","dir","name","pixel_x","pixel_y","tagged_price")+unique_save_vars
 
 /atom/proc/map_important_vars()
 	// A list of important things to save in the map editor
@@ -159,7 +159,7 @@
 
 /obj/vars_to_save()
  	 return list("x","y","z","anchored","color","dir","name","pixel_x","pixel_y","fingerprints","fingerprintshidden","fingerprintslast",\
- 	 "suit_fibers")+unique_save_vars
+ 	 "suit_fibers","tagged_price")+unique_save_vars
 
 /obj/item/weapon/paper
 	unique_save_vars = list("info")

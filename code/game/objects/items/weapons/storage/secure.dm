@@ -27,6 +27,8 @@
 	max_w_class = ITEMSIZE_SMALL
 	max_storage_space = ITEMSIZE_SMALL * 7
 
+	unique_save_vars = list("l_code", "locked", "emagged", "open")
+
 	examine(mob/user)
 		if(..(user, 1))
 			user << text("The service panel is [src.open ? "open" : "closed"].")

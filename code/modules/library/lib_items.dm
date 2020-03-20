@@ -163,6 +163,14 @@
 	var/obj/item/store	//What's in the book?
 	drop_sound = 'sound/items/drop/box.ogg'
 
+	unique_save_vars = list("dat", "author", "title", "unique", "carved")
+
+/obj/item/weapon/book/on_persistence_load()
+	if(contents[1])
+		store = contents[1]
+	..()
+	return TRUE
+
 /obj/item/weapon/book/attack_self(var/mob/user as mob)
 	if(carved)
 		if(store)

@@ -1,7 +1,8 @@
 /obj/item/clothing/gloves
-	desc = "you aren't supposed to see this."
-	name = "strange gloves"
+	desc = "These are cheap, easily accessible gloves."
+	name = "generic gloves"
 	drop_sound = 'sound/items/drop/gloves.ogg'
+	icon_state = "latex"
 
 /obj/item/clothing/gloves/yellow
 	desc = "These gloves will protect the wearer from electric shock."

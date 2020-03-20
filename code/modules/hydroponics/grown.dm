@@ -14,6 +14,8 @@
 
 	price_tag = 3
 
+	unique_save_vars = list("plantname", "potency")
+
 /obj/item/weapon/reagent_containers/food/snacks/grown/get_item_cost()
 	if(seed)
 		price_tag = seed.fruit_price

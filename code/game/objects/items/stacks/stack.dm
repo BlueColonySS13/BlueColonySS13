@@ -26,6 +26,8 @@
 	var/list/associated_reagents = list() // put reagent "id" here
 	var/reagents_per_unit = 2
 
+	unique_save_vars = list("amount")
+
 /obj/item/stack/proc/update_reagents()
 	return
 

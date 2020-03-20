@@ -11,6 +11,8 @@
 
 	var/making = 0
 
+	unique_save_vars = list("dye_color")
+
 /obj/machinery/dye_generator/initialize()
 	power_change()
 
@@ -110,6 +112,9 @@
 	force = 0
 	w_class = 1.0
 	var/dye_color = "#FFFFFF"
+
+	unique_save_vars = list("dye_color")
+
 
 /obj/item/hair_dye_bottle/New()
 	..()

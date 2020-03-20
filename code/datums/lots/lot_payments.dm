@@ -49,7 +49,7 @@
 
 	if(get_tenant_by_uid(uid))
 		resident = get_tenant_by_uid(uid)
-	else if(landlord.unique_id == uid)
+	if(landlord.unique_id == uid)
 		resident = landlord
 		type = "LEASEHOLDER"
 
@@ -70,7 +70,7 @@
 
 
 	if(type == "LEASEHOLDER")
-		eml_cnt += "You must bring your bring your account into credit to prevent reposesstion of your lot. The council may \
+		eml_cnt += "You must bring your bring your account into credit to prevent repossession of your lot. The council may \
 		repossess your lot if your balance reaches [cash2text( service_charge_possession, FALSE, TRUE, TRUE )] in debt."
 
 	if(type == "TENANT")

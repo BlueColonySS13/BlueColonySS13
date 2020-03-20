@@ -13,6 +13,8 @@
 	var/lip_type = "lipstick"
 	var/body_area = "lips"
 
+	unique_save_vars = list("colour","open")
+
 /obj/item/weapon/lipstick/red
 	name = "red lipstick"
 	colour = COLOR_RED

@@ -335,3 +335,10 @@
 	cost = 40
 	containertype = /obj/structure/closet/crate/medical
 	containername = "Defibrillator crate"
+
+/datum/supply_pack/med/biomass
+	name = "Biomass Crate"
+	contains = list(/obj/item/weapon/reagent_containers/glass/bottle/biomass = 10)
+	cost = 4000
+	containertype = /obj/structure/closet/crate/medical
+	containername = "Biomass Crate"

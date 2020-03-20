@@ -10,6 +10,8 @@
 	var/open = 0
 	var/brightness_on = 8		//can't remember what the maxed out value is
 
+	unique_save_vars = list("on", "open", "unlocked")
+
 /obj/machinery/floodlight/New()
 	cell = new(src)
 	..()

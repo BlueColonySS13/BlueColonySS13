@@ -130,7 +130,22 @@
 		MT.y = T.y
 		MT.z = T.z
 
-		MT.decals = T.decals
+		var/decal_count = 0
+		var/list/full_decal_list = list()
+
+		for(var/image/I in T.decals)
+			var/list/decal_list = list()
+			decal_count++
+
+			decal_list = list("icon" = I.icon,
+			"icon_state" = I.icon_state,
+			"dir" = I.dir,
+			"color" = I.color)
+
+			full_decal_list["[decal_count]"] = decal_list
+
+		MT.decals = full_decal_list
+
 
 		for(var/V in T.vars_to_save() )
 			if(!(T.vars[V] == initial(T.vars[V])))
@@ -223,6 +238,12 @@
 		newturf.ChangeTurf(MT.turf_type, 0, 1)
 
 		newturf.decals = MT.decals
+
+
+
+
+		for(var/list/decal_list in MT.decals)
+			new /obj/effect/floor_decal/New(newturf, decal_list["dir"], decal_list["color"], decal_list["icon"], decal_list["icon_state"])
 
 		newturf.on_persistence_load()
 		if(!newturf.on_persistence_load())

@@ -9,7 +9,9 @@
 	icon_state = "register_idle"
 	flags = NOBLUDGEON
 	req_access = list(access_heads)
-	anchored = 1
+	anchored = 0
+	table_drag = TRUE
+	table_shift = 0
 
 	var/locked = 1
 	var/cash_locked = 1
@@ -30,6 +32,19 @@
 
 	var/menu_items
 	var/adds_tax = TRUE
+
+	unique_save_vars = list("locked")
+
+/obj/machinery/cash_register/get_persistent_metadata()
+	if(!linked_account)
+		return FALSE
+
+	return linked_account.account_number
+
+/obj/machinery/cash_register/load_persistent_metadata(acc_no)
+	if(acc_no)
+		linked_account = get_account(acc_no)
+		return TRUE
 
 // Claim machine ID
 /obj/machinery/cash_register/New()

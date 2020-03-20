@@ -33,8 +33,6 @@
 			/obj/item/clothing/head/collectable/welding,
 			/obj/item/clothing/head/collectable/flatcap,
 			/obj/item/clothing/head/collectable/pirate,
-//			/obj/item/clothing/head/collectable/kitty,
-//			/obj/item/clothing/head/collectable/rabbitears,
 			/obj/item/clothing/head/collectable/wizard,
 			/obj/item/clothing/head/collectable/hardhat,
 			/obj/item/clothing/head/collectable/HoS,
@@ -146,9 +144,9 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/head/ushanka
 			)
 
-/datum/supply_pack/randomised/costumes/dresses
-	name = "Womens formal dress locker"
-	containername = "Pretty dress locker"
+/datum/supply_pack/randomised/costumes/wedding
+	name = "Womens Wedding Dress Collection"
+	containername = "Womens Wedding Dress Collection"
 	containertype = /obj/structure/closet
 	cost = 450
 	num_contained = 3
@@ -164,4 +162,99 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/dress/dress_orange,
 			/obj/item/clothing/under/dress/dress_yellow,
 			/obj/item/clothing/under/dress/dress_saloon
+			)
+
+/datum/supply_pack/randomised/costumes/jeans
+	name = "Jeans Collection"
+	containername = "Jeans Collection"
+	containertype = /obj/structure/closet
+	cost = 450
+	num_contained = 2
+	contains = list(
+			/obj/item/clothing/under/pants,
+			/obj/item/clothing/under/pants/black,
+			/obj/item/clothing/under/pants/camo,
+			/obj/item/clothing/under/pants/classicjeans,
+			/obj/item/clothing/under/pants/mustangjeans,
+			/obj/item/clothing/under/pants/greyjeans,
+			/obj/item/clothing/under/pants/khaki,
+			/obj/item/clothing/under/pants/leather,
+			/obj/item/clothing/under/pants/red,
+			/obj/item/clothing/under/pants/ripped,
+			/obj/item/clothing/under/pants/tan,
+			/obj/item/clothing/under/pants/white,
+			/obj/item/clothing/under/pants/youngfolksjeans
+			)
+
+
+/datum/supply_pack/randomised/costumes/jeans_ripped
+	name = "Ripped Jeans Collection"
+	containername = "Ripped Jeans Collection"
+	containertype = /obj/structure/closet
+	cost = 350
+	num_contained = 3
+	contains = list(
+			/obj/item/clothing/under/pants/ripped,
+			/obj/item/clothing/under/pants/blackjeans/ripped,
+			/obj/item/clothing/under/pants/classicjeans/ripped,
+			/obj/item/clothing/under/pants/mustangjeans/ripped,
+			/obj/item/clothing/under/pants/greyjeans/ripped
+			)
+
+/datum/supply_pack/randomised/costumes/baggy_pants
+	name = "Baggy Pants Collection"
+	containername = "Baggy Pants Collection"
+	containertype = /obj/structure/closet
+	cost = 380
+	num_contained = 3
+	contains = list(
+			/obj/item/clothing/under/pants/baggy/black,
+			/obj/item/clothing/under/pants/baggy/blackjeans,
+			/obj/item/clothing/under/pants/baggy/camo,
+			/obj/item/clothing/under/pants/baggy/classicjeans,
+			/obj/item/clothing/under/pants/baggy/greyjeans,
+			/obj/item/clothing/under/pants/baggy/khaki,
+			/obj/item/clothing/under/pants/baggy/mustangjeans,
+			/obj/item/clothing/under/pants/baggy/red,
+			/obj/item/clothing/under/pants/baggy/tan,
+			/obj/item/clothing/under/pants/baggy/track,
+			/obj/item/clothing/under/pants/baggy/white,
+			/obj/item/clothing/under/pants/baggy/youngfolksjeans
+			)
+
+
+/datum/supply_pack/randomised/costumes/track_pants
+	name = "Track Pants Collection"
+	containername = "Track Pants Collection"
+	containertype = /obj/structure/closet
+	cost = 180
+	num_contained = 3
+	contains = list(
+			/obj/item/clothing/under/pants/track,
+			/obj/item/clothing/under/pants/track/blue,
+			/obj/item/clothing/under/pants/track/green,
+			/obj/item/clothing/under/pants/track/red,
+			/obj/item/clothing/under/pants/track/white,
+			/obj/item/clothing/under/pants/baggy/khaki
+			)
+
+
+/datum/supply_pack/randomised/costumes/polychromatic
+	name = "Polychromatic Clothes Collection"
+	containername = "Polychromatic Clothes Collection"
+	containertype = /obj/structure/closet
+	cost = 600
+	num_contained = 1
+	contains = list(
+			/obj/item/clothing/under/polychromic/shimatank,
+			/obj/item/clothing/under/polychromic/bottomless,
+			/obj/item/clothing/under/polychromic/shortpants/pantsu,
+			/obj/item/clothing/under/polychromic/femtank,
+			/obj/item/clothing/under/polychromic/pleat,
+			/obj/item/clothing/under/polychromic/shortpants,
+			/obj/item/clothing/under/polychromic/jumpsuit,
+			/obj/item/clothing/under/polychromic/shorts,
+			/obj/item/clothing/under/polychromic/skirt,
+			/obj/item/clothing/under/polychromic/kilt,
+			/obj/item/clothing/under/polychromic/shirt
 			)

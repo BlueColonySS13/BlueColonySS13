@@ -388,6 +388,27 @@
 	no_variants = FALSE
 	burn_state = 0 //Burnable
 	burntime = 5
+	associated_reagents = list("protein")
+
+/obj/item/stack/material/silk
+	name = "silk"
+	desc = "Many lives were lost trying to wrangle the silk from giant spiders, but that was a risk they were willing to take."
+	icon_state = "sheet-cloth"
+	default_type = "silk"
+	no_variants = FALSE
+	burn_state = 0 //Burnable
+	burntime = 5
+	associated_reagents = list("protein")
+
+/obj/item/stack/material/cotton
+	name = "cotton"
+	desc = "Sheared from your finished sheep."
+	icon_state = "sheet-cloth"
+	default_type = "cotton"
+	no_variants = FALSE
+	burn_state = 0 //Burnable
+	burntime = 5
+	associated_reagents = list("protein")
 
 /obj/item/stack/material/glass
 	name = "glass"
