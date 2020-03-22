@@ -192,6 +192,12 @@
 	icon_opened = "trashcartopen"
 	icon_closed = "trashcart"
 
+/obj/structure/closet/crate/gold
+	name = "gold crate"
+	desc = "Literally made out of gold. Or gold plated. You can't tell."
+
+	color = COLOR_YELLOW
+
 /*these aren't needed anymore
 /obj/structure/closet/crate/hat
 	desc = "A crate filled with Valuable Collector's Hats!."

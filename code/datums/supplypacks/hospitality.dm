@@ -62,6 +62,60 @@
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "Pizza crate"
 
+/datum/supply_pack/hospitality/cascington_alcohol
+	name = "Cascington Alcoholic Imports"
+	contains = list(
+		/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 3,
+		/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora = 3,
+		/obj/item/weapon/reagent_containers/food/drinks/bottle/goldfinger = 3,
+		/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit = 3,
+		/obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose = 3
+		)
+	cost = 2000
+	containertype = /obj/structure/closet/crate/gold
+	containername = "Cascington Alcoholic Imports"
+
+/datum/supply_pack/hospitality/cascington_smoke
+	name = "Cascington Smoking Imports"
+	contains = list(
+		/obj/item/weapon/storage/fancy/cigar/havana = 3,
+		/obj/item/weapon/storage/fancy/cigar/cohiba = 3,
+		/obj/item/weapon/storage/box/tobacco_box = 3,
+		/obj/item/clothing/mask/smokable/pipe = 6
+		)
+	cost = 2000
+	containertype = /obj/structure/closet/crate/gold
+	containername = "Cascington Smoking Imports"
+
+/datum/supply_pack/hospitality/cascington_food
+	name = "Cascington Confectionaries"
+	contains = list(
+		/obj/item/weapon/storage/box/multigrain = 3,
+		/obj/item/weapon/storage/box/caviar/red = 1,
+		/obj/item/weapon/storage/box/caviar = 1,
+		/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 5
+		)
+	cost = 1000
+	containertype = /obj/structure/closet/crate/gold
+	containername = "Cascington Confectionaries"
+
+
+/datum/supply_pack/hospitality/sol_Food
+	name = "Sol Confectionaries"
+	contains = list(
+		/obj/item/weapon/storage/box/sushi = 1,
+		/obj/item/weapon/reagent_containers/food/snacks/beans = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/soysauce = 1,
+		/obj/item/weapon/reagent_containers/food/snacks/croissant = 2,
+		/obj/item/weapon/reagent_containers/food/snacks/fishandchips = 2,
+		/obj/item/weapon/reagent_containers/food/snacks/hotdog = 2,
+		/obj/item/weapon/reagent_containers/food/snacks/nachos = 2,
+		/obj/item/weapon/reagent_containers/food/snacks/baguette = 2
+		)
+	cost = 250
+	containertype = /obj/structure/closet/crate/gold
+	containername = "Sol Confectionaries"
+
 /datum/supply_pack/hospitality/gifts
 	name = "Gift crate"
 	contains = list(
@@ -83,3 +137,31 @@
 	cost = 2000
 	containertype = /obj/structure/largecrate
 	containername = "\improper Jukebox Crate"
+
+
+/datum/supply_pack/hospitality/zippo_collection
+	name = "Zippo Collection"
+	contains = list(
+		/obj/item/weapon/flame/lighter/zippo,
+		/obj/item/weapon/flame/lighter/zippo/black,
+		/obj/item/weapon/flame/lighter/zippo/blue,
+		/obj/item/weapon/flame/lighter/zippo/engraved,
+		/obj/item/weapon/flame/lighter/zippo/gold,
+		/obj/item/weapon/flame/lighter/zippo/moff,
+		/obj/item/weapon/flame/lighter/zippo/red,
+		/obj/item/weapon/flame/lighter/zippo/ironic,
+		/obj/item/weapon/flame/lighter/zippo/capitalist,
+		/obj/item/weapon/flame/lighter/zippo/communist,
+		/obj/item/weapon/flame/lighter/zippo/royal,
+		/obj/item/weapon/flame/lighter/zippo/gonzoo,
+		/obj/item/weapon/flame/lighter/zippo/rainbow,
+		/obj/item/weapon/flame/lighter/zippo/heartbreaker,
+		/obj/item/weapon/flame/lighter/zippo/sol,
+		/obj/item/weapon/flame/lighter/zippo/corgi,
+		/obj/item/weapon/flame/lighter/zippo/usa,
+		/obj/item/weapon/flame/lighter/zippo/clown,
+		/obj/item/weapon/flame/lighter/zippo/fox
+		)
+	cost = 300
+	containertype = /obj/structure/closet/crate/gold
+	containername = "Zippo Collection"

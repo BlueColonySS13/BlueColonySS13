@@ -222,6 +222,7 @@
 	recipes += new/datum/stack_recipe("[display_name] pleated skirt", /obj/item/clothing/under/skirt/pleated, 10, time = 20, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("[display_name] evening gloves", /obj/item/clothing/gloves/evening, 10, time = 20, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("[display_name] gloves", /obj/item/clothing/gloves, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] tie", /obj/item/clothing/accessory/tie, 10, time = 20, one_per_turf = 0, on_floor = 1)
 
 /material/silk/generate_recipes()
 	recipes = list()
@@ -240,3 +241,6 @@
 	recipes += new/datum/stack_recipe("[display_name] club dress", /obj/item/clothing/under/dress/club, 10, time = 20, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("[display_name] evening gloves", /obj/item/clothing/gloves/evening, 10, time = 20, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("[display_name] gloves", /obj/item/clothing/gloves, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] cravat", /obj/item/clothing/accessory/tie/cravat, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] tie", /obj/item/clothing/accessory/tie, 10, time = 20, one_per_turf = 0, on_floor = 1)
+

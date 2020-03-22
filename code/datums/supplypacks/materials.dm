@@ -10,28 +10,28 @@
 /datum/supply_pack/materials/metal50
 	name = "50 metal sheets"
 	contains = list(/obj/fiftyspawner/steel)
-	cost = 50
+	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "Metal sheets crate"
 
 /datum/supply_pack/materials/glass50
 	name = "50 glass sheets"
 	contains = list(/obj/fiftyspawner/glass)
-	cost = 50
+	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "Glass sheets crate"
 
 /datum/supply_pack/materials/plastic50
 	name = "50 plastic sheets"
 	contains = list(/obj/fiftyspawner/plastic)
-	cost = 60
+	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "Plastic sheets crate"
 
 /datum/supply_pack/materials/cardboard_sheets
 	contains = list(/obj/fiftyspawner/cardboard)
 	name = "50 cardboard sheets"
-	cost = 60
+	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "Cardboard sheets crate"
 
@@ -39,7 +39,7 @@
 	name = "Imported carpet"
 	containertype = /obj/structure/closet/crate
 	containername = "Imported carpet crate"
-	cost = 50
+	cost = 30
 	contains = list(
 					/obj/fiftyspawner/carpet,
 					/obj/fiftyspawner/tealcarpet
@@ -49,13 +49,13 @@
 /datum/supply_pack/materials/wood50
 	name = "50 wooden planks"
 	contains = list(/obj/item/stack/material/wood/fifty)
-	cost = 60
+	cost = 30
 	containername = "wooden planks crate"
 
 /datum/supply_pack/materials/mahogany25
 	name = "25 mahogany planks"
 	contains = list(/obj/item/stack/material/wood/mahogany/twentyfive)
-	cost = 30
+	cost = 50
 	containername = "wooden planks crate"
 
 /datum/supply_pack/materials/maple25
