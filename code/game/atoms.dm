@@ -236,21 +236,18 @@
 				src.fingerprintshidden += text("\[[time_stamp()]\] (Wearing gloves). Real name: [], Key: []",H.real_name, H.key)
 				src.fingerprintslast = H.key
 
-				truncate_oldest(src.fingerprintshidden, MAX_FINGERPRINTS)
 			return 0
 		if (!( src.fingerprints ))
 			if(src.fingerprintslast != H.key)
 				src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",H.real_name, H.key)
 				src.fingerprintslast = H.key
 
-				truncate_oldest(src.fingerprintshidden, MAX_FINGERPRINTS)
 			return 1
 	else
 		if(src.fingerprintslast != M.key)
 			src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",M.real_name, M.key)
 			src.fingerprintslast = M.key
 
-			truncate_oldest(src.fingerprintshidden, MAX_FINGERPRINTS)
 	return
 
 /atom/proc/add_fingerprint(mob/living/M as mob, ignoregloves = 0)

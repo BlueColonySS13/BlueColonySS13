@@ -145,7 +145,7 @@
 		if("edit_service_expenses")
 			. = 1
 
-			var/list/potential_services = list("Carp Control", "Gr3y.T1d3 Firewall") // this can be optimised
+			var/list/potential_services = list("Carp Control", "Gr3y.T1d3 Firewall","Meteor Prrofing") // this can be optimised
 
 			var/service = input(usr, "Please select which service you'd like to edit.", "Select Service") as null|anything in potential_services
 			if(!service) return
@@ -166,6 +166,8 @@
 					persistent_economy.carp_control = status_num
 				if("Gr3y.T1d3 Firewall")
 					persistent_economy.antivirus = status_num
+				if("Meteor Proofing"
+					persistent_economy.meteor_proof = status_num
 
 
 		if("announce")
