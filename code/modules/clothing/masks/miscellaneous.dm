@@ -208,14 +208,14 @@
 		eye.owner = null
 
 /obj/item/clothing/mask/bandana
-	name = "black bandana"
-	desc = "A fine black bandana with nanotech lining. Can be worn on the head or face."
+	name = "bandana"
+	desc = "A fine bandana with nanotech lining. Can be worn on the head or face."
 	w_class = ITEMSIZE_TINY
 	flags_inv = HIDEFACE
 	slot_flags = SLOT_MASK|SLOT_HEAD
 	body_parts_covered = FACE
-	icon_state = "bandblack"
-	item_state_slots = list(slot_r_hand_str = "bandblack", slot_l_hand_str = "bandblack")
+	icon_state = "bandana"
+	item_state_slots = list(slot_r_hand_str = "bandana", slot_l_hand_str = "bandana")
 
 /obj/item/clothing/mask/bandana/equipped(var/mob/user, var/slot)
 	switch(slot)
@@ -260,3 +260,9 @@
 	desc = "A fine black bandana with nanotech lining and a skull emblem. Can be worn on the head or face."
 	icon_state = "bandskull"
 	item_state_slots = list(slot_r_hand_str = "bandskull", slot_l_hand_str = "bandskull")
+
+/obj/item/clothing/mask/bandana/black
+	name = "black bandana"
+	desc = "A fine black bandana with nanotech lining. Can be worn on the head or face."
+	icon_state = "bandblack"
+	item_state_slots = list(slot_r_hand_str = "bandblack", slot_l_hand_str = "bandblack")

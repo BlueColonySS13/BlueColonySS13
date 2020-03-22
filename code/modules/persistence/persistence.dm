@@ -48,17 +48,24 @@
 	return
 
 /atom/proc/sanitize_for_saving()
-	return
+	return TRUE
 
 /obj/sanitize_for_saving()	// these things build up with time, so this gradually limits the amount so we don't have 5000 fingerprints or anything.
-	if(LAZYLEN(suit_fibers))
+	if(isnull(suit_fibers))
+		suit_fibers = list()
+	if(isnull(fingerprints))
+		fingerprints = list()
+	if(isnull(fingerprintshidden))
+		fingerprintshidden = list()
+
+	if(!isemptylist(suit_fibers))
 		truncate_oldest(suit_fibers, MAX_FINGERPRINTS)
-	if(LAZYLEN(fingerprints))
+	if(!isemptylist(fingerprints))
 		truncate_oldest(fingerprints, MAX_FINGERPRINTS)
-	if(LAZYLEN(fingerprintshidden))
+	if(!isemptylist(fingerprintshidden))
 		truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 
-	return
+	return TRUE
 
 /obj/item/weapon/reagent_containers/proc/pack_persistence_data()
 	var/list/all_reagents = reagents.reagent_list

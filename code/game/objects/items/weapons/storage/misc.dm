@@ -36,7 +36,7 @@
 	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/cracker/multigrain = 8)
 
 /obj/item/weapon/storage/box/tobacco_box
-	name = "Tobacco Box"
+	name = "tobacco box"
 	desc = "Storing all dried tobacco strains since 1990."
 	icon_state = "tobacco_box"
 	max_storage_space = ITEMSIZE_COST_SMALL * 4

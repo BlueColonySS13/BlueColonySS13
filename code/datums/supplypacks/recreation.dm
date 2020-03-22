@@ -9,7 +9,6 @@
 
 /datum/supply_pack/randomised/recreation
 	group = "Recreation"
-	access = access_security
 
 /datum/supply_pack/recreation/foam_weapons
 	name = "Foam Weapon Crate"
@@ -77,3 +76,4 @@
 	contains = list(
 			/obj/item/sticky_pad = 5
 			)
+

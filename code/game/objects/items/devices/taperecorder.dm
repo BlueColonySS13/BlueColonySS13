@@ -21,6 +21,12 @@
 
 	unique_save_vars = list("emagged")
 
+/obj/item/device/taperecorder/on_persistence_load()
+	if(!isemptylist(contents))
+		mytape = contents[1]
+
+	..()
+
 /obj/item/device/taperecorder/New()
 	..()
 	if(ispath(mytape))

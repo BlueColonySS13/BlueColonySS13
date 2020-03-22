@@ -5,10 +5,10 @@
 
 
 /datum/supply_pack/costumes
-	group = "Costumes"
+	group = "Clothing"
 
 /datum/supply_pack/randomised/costumes
-	group = "Costumes"
+	group = "Clothing"
 
 /datum/supply_pack/costumes/wizard
 	name = "Wizard costume"
@@ -144,12 +144,11 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/head/ushanka
 			)
 
-/datum/supply_pack/randomised/costumes/wedding
+datum/supply_pack/costumes/wedding
 	name = "Womens Wedding Dress Collection"
 	containername = "Womens Wedding Dress Collection"
 	containertype = /obj/structure/closet
 	cost = 450
-	num_contained = 3
 	contains = list(
 			/obj/item/clothing/under/wedding/bride_orange,
 			/obj/item/clothing/under/wedding/bride_purple,
@@ -164,12 +163,11 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/dress/dress_saloon
 			)
 
-/datum/supply_pack/randomised/costumes/jeans
+datum/supply_pack/costumes/jeans
 	name = "Jeans Collection"
 	containername = "Jeans Collection"
 	containertype = /obj/structure/closet
 	cost = 450
-	num_contained = 2
 	contains = list(
 			/obj/item/clothing/under/pants,
 			/obj/item/clothing/under/pants/black,
@@ -187,12 +185,11 @@ datum/supply_pack/costumes/witch
 			)
 
 
-/datum/supply_pack/randomised/costumes/jeans_ripped
+datum/supply_pack/costumes/jeans_ripped
 	name = "Ripped Jeans Collection"
 	containername = "Ripped Jeans Collection"
 	containertype = /obj/structure/closet
 	cost = 350
-	num_contained = 3
 	contains = list(
 			/obj/item/clothing/under/pants/ripped,
 			/obj/item/clothing/under/pants/blackjeans/ripped,
@@ -201,12 +198,11 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/pants/greyjeans/ripped
 			)
 
-/datum/supply_pack/randomised/costumes/baggy_pants
+datum/supply_pack/costumes/baggy_pants
 	name = "Baggy Pants Collection"
 	containername = "Baggy Pants Collection"
 	containertype = /obj/structure/closet
 	cost = 380
-	num_contained = 3
 	contains = list(
 			/obj/item/clothing/under/pants/baggy/black,
 			/obj/item/clothing/under/pants/baggy/blackjeans,
@@ -223,12 +219,11 @@ datum/supply_pack/costumes/witch
 			)
 
 
-/datum/supply_pack/randomised/costumes/track_pants
+datum/supply_pack/costumes/track_pants
 	name = "Track Pants Collection"
 	containername = "Track Pants Collection"
 	containertype = /obj/structure/closet
 	cost = 180
-	num_contained = 3
 	contains = list(
 			/obj/item/clothing/under/pants/track,
 			/obj/item/clothing/under/pants/track/blue,
@@ -239,12 +234,11 @@ datum/supply_pack/costumes/witch
 			)
 
 
-/datum/supply_pack/randomised/costumes/polychromatic
+datum/supply_pack/costumes/polychromatic
 	name = "Polychromatic Clothes Collection"
 	containername = "Polychromatic Clothes Collection"
 	containertype = /obj/structure/closet
 	cost = 600
-	num_contained = 1
 	contains = list(
 			/obj/item/clothing/under/polychromic/shimatank,
 			/obj/item/clothing/under/polychromic/bottomless,
@@ -258,3 +252,37 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/polychromic/kilt,
 			/obj/item/clothing/under/polychromic/shirt
 			)
+
+datum/supply_pack/costumes/castor_import_clothing
+	name = "Castor Imported Clothing"
+	containername = "Castor Imported Clothing"
+	containertype = /obj/structure/closet
+	cost = 3000
+	contains = list(
+			/obj/item/clothing/under/aristocrat = 5,
+			/obj/item/clothing/accessory/tie/cravat = 5,
+			/obj/item/clothing/under/arisgroom = 2,
+			/obj/item/clothing/under/arisbestman = 2,
+			/obj/item/clothing/suit/tailcoat = 3,
+			/obj/item/clothing/suit/tailcoat/ladies = 3,
+			/obj/item/clothing/suit/tailcoat/ladies/red = 3,
+			/obj/item/clothing/head/bowler = 3,
+			/obj/item/clothing/head/bowlerhat = 3,
+			/obj/item/clothing/head/collectable/tophat = 3
+			)
+
+datum/supply_pack/costumes/cascington_import_clothing
+	name = "Cascington Imported Clothing"
+	containername = "Cascington Imported Clothing"
+	containertype = /obj/structure/closet
+	cost = 1200
+	contains = list(
+			/obj/item/clothing/suit/storage/toggle/peacoat = 3,
+			/obj/item/clothing/suit/storage/toggle/dress = 3,
+			/obj/item/clothing/under/blazer = 2,
+			/obj/item/clothing/under/blazer/skirt = 2,
+			/obj/item/clothing/suit/storage/poshblazer = 3,
+			/obj/item/clothing/under/dress/vneck = 2
+			)
+
+

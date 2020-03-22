@@ -1,5 +1,5 @@
 /obj/item/weapon/scissors
-	name = "Scissors"
+	name = "scissors"
 	desc = "Those are scissors. Don't run with them!"
 	icon_state = "scissors"
 	item_state = "scissors"
@@ -11,11 +11,15 @@
 	attack_verb = list("slices", "cuts", "stabs", "jabs")
 
 /obj/item/weapon/scissors/barber
-	name = "Barber's Scissors"
+	name = "barber's Scissors"
 	desc = "A pair of scissors used by the barber."
 	icon_state = "bscissors"
 	item_state = "scissors"
 	attack_verb = list("beautifully slices", "artistically cuts", "smoothly stabs", "quickly jabs")
+
+/obj/item/weapon/scissors/barber/gold
+	name = "gold barber's scissors"
+	color = COLOR_YELLOW
 
 /obj/item/weapon/scissors/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(user.a_intent != "help")

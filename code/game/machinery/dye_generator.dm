@@ -62,6 +62,35 @@
 	if(default_unfasten_wrench(user, W, time = 60))
 		return
 
+	if(istype(W, /obj/item/hair_dye_bottle))
+		user.visible_message("<span class='notice'>[user] fills the [W] up with some dye.</span>","<span class='notice'>You fill the [W] up with some hair dye.</span>")
+		var/obj/item/hair_dye_bottle/HD = W
+
+
+		HD.dye_color = dye_color
+		HD.update_dye_overlay()
+		return
+
+	if(istype(W, /obj/item/stack))
+		var/obj/item/stack/S = W
+		if(!S.dyeable)
+			to_chat(S, "<span class='notice'>It doesn't look like the machine can accept this material.</span>")
+		else
+			user.visible_message("<span class='notice'>[user] inserts the [W] into [src].</span>","<span class='notice'>You insert [W] into the [src].</span>")
+			user.drop_from_inventory(S, src)
+			S.forceMove(src)
+			making = 1
+			playsound(loc, 'sound/effects/bubbles2.ogg', 5, 1, 5)
+			S.stack_color = dye_color
+			S.update_icon()
+			making = 1
+			spawn(70)
+				S.forceMove(loc)
+				making = 0
+
+			return
+
+
 	if(istype(W, /obj/item/stack/wax))
 		user.visible_message("<span class='notice'>[user] inserts [W] into the [src].</span>","<span class='notice'>You insert [W] into the [src].</span>")
 		var/obj/item/stack/wax/B = W
@@ -79,6 +108,7 @@
 		var/obj/item/clothing/C = W
 		if(!C.applies_material_color)
 			to_chat(user,"<span class='notice'>[src] cannot be dyed.</span>")
+			return
 		else
 			user.drop_from_inventory(C, src)
 			C.forceMove(src)
@@ -89,15 +119,9 @@
 				C.forceMove(loc)
 				making = 0
 
-		return
+			return
 
-	if(istype(W, /obj/item/hair_dye_bottle))
-		user.visible_message("<span class='notice'>[user] fills the [W] up with some dye.</span>","<span class='notice'>You fill the [W] up with some hair dye.</span>")
-		var/obj/item/hair_dye_bottle/HD = W
-		HD.dye_color = dye_color
-		HD.update_dye_overlay()
-	else
-		..()
+	..()
 
 //Hair Dye Bottle
 

@@ -18,6 +18,8 @@
 	w_class = ITEMSIZE_SMALL
 	force = 1
 
+	unique_save_vars = list("dry", "bitecount")
+
 /obj/item/weapon/reagent_containers/food/snacks/New()
 	..()
 	if(nutriment_amt)

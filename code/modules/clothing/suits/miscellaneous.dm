@@ -594,8 +594,8 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	item_state_slots = list(slot_r_hand_str = "denim_jacket", slot_l_hand_str = "denim_jacket")
 
 /obj/item/clothing/suit/storage/toggle/hoodie
-	name = "grey hoodie"
-	desc = "A warm, grey sweatshirt."
+	name = "hoodie"
+	desc = "A warm sweatshirt."
 	icon_state = "grey_hoodie"
 	item_state_slots = list(slot_r_hand_str = "suit_grey", slot_l_hand_str = "suit_grey")
 	min_cold_protection_temperature = T0C - 20

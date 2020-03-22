@@ -83,7 +83,7 @@
 		/obj/item/weapon/storage/box/tobacco_box = 3,
 		/obj/item/clothing/mask/smokable/pipe = 6
 		)
-	cost = 2000
+	cost = 400
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Cascington Smoking Imports"
 
@@ -91,11 +91,11 @@
 	name = "Cascington Confectionaries"
 	contains = list(
 		/obj/item/weapon/storage/box/multigrain = 3,
-		/obj/item/weapon/storage/box/caviar/red = 1,
-		/obj/item/weapon/storage/box/caviar = 1,
-		/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 5
+		/obj/item/weapon/storage/box/caviar/red = 3,
+		/obj/item/weapon/storage/box/caviar = 3,
+		/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 2
 		)
-	cost = 1000
+	cost = 1300
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Cascington Confectionaries"
 
