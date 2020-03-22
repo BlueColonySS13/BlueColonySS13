@@ -32,10 +32,10 @@
 	if(LOT.landlord)
 		output += "<b>Landlord Balance:</b> [cash2text( LOT.get_landlord_balance(), FALSE, TRUE, TRUE )] ([cash2text( LOT.get_service_charge(), FALSE, TRUE, TRUE )] per payroll)<br>"
 
-	output += "<b>Tenants:</b><br>"
-
-	if(LAZYLEN(LOT.get_tenants()))
-		output += "[LOT.plain_tenant_list()]"
+	if(!isemptylist(LOT.get_tenants()))
+		output += "<b>Tenants [LOT.tenancy_no_info()]:</b><br>"
+		for(var/datum/tenant/T in LOT.get_tenants())
+			output += "<li>[T.name] | Account Balance: [cash2text( T.get_balance(), FALSE, TRUE, TRUE )] (Last Payment: [T.last_payment])</li>"
 	else
 		output += "<i>Lot has no tenants.</i>"
 
@@ -358,14 +358,15 @@
 			if(L.landlord)
 				page_msg += "<b>Contact Email:</b> [L.landlord.email]<br>"
 
-			if(!isemptylist(L.get_tenants()))
-				page_msg += "<b>Tenants [L.tenancy_no_info()]:</b><br>"
-				for(var/datum/tenant/T in L.get_tenants())
-					page_msg += "<li>[T.name] | Account Balance: [cash2text( T.get_balance(), FALSE, TRUE, TRUE )] (Last Payment: [T.last_payment])</li>"
-
-			page_msg += "<br>"
-
 			if(clerk_access || judge_access)
+				if(!isemptylist(L.get_tenants()))
+					page_msg += "<b>Tenants [L.tenancy_no_info()]:</b><br>"
+					for(var/datum/tenant/T in L.get_tenants())
+						page_msg += "<li>[T.name] | Account Balance: [cash2text( T.get_balance(), FALSE, TRUE, TRUE )] (Last Payment: [T.last_payment])</li>"
+
+				page_msg += "<br>"
+
+
 				page_msg += "<b>Landlord Balance</b>: [cash2text( L.get_landlord_balance(), FALSE, TRUE, TRUE )]<br>"
 
 
@@ -919,6 +920,8 @@
 				if(!LOT || !tenant)
 					return
 
+
+
 				if("No" == alert("Do you want end your tenancy with [tenant.name]? You will not get a refund of your deposit.", "End Tenancy", "No", "Yes"))
 					return
 
@@ -930,7 +933,7 @@
 					error_msg = "This lot is not rented out to anyone."
 					return
 
-				if(tenant.account_balance)
+				if(0 > tenant.account_balance)
 					error_msg = "You must clear all bills before ending your tenancy."
 					return
 
@@ -959,6 +962,10 @@
 
 				if(LOT.get_applicant_by_uid(unique_id))
 					error_msg = "You already have applied for this lot."
+					return
+
+				if(LOT.get_tenant_by_uid(unique_id))
+					error_msg = "You are already a tenant."
 					return
 
 				var/offered_deposit = input(usr, "Enter your offered deposit. You can leave this as default, however a higher deposit might get you \
@@ -1181,7 +1188,8 @@
 				if(0 > landlord.account_balance)
 					var/datum/department/council = dept_by_id(DEPT_COUNCIL)
 					if(paying > landlord.account_balance)
-						council.adjust_funds(landlord.account_balance, "Arrears cleared on [LOT.name]")
+						var/add_amt = (landlord.account_balance * -1)
+						council.adjust_funds(add_amt, "Arrears cleared on [LOT.name]")
 					else
 						council.adjust_funds(paying, "Partial Balance Payment for [LOT.name]")
 

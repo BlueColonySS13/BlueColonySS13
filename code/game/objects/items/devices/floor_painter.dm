@@ -1,7 +1,7 @@
 /obj/item/device/floor_painter
 	name = "paint gun"
-	icon = 'icons/obj/bureaucracy.dmi'
-	icon_state = "labeler1"
+	icon = 'icons/obj/device.dmi'
+	icon_state = "floor_painter"
 
 	var/decal =        "remove all decals"
 	var/paint_dir =    "precise"
@@ -12,6 +12,7 @@
 	var/list/decals = list(
 		"full tile" =         list("path" = /obj/effect/floor_decal/full, "coloured" = 1),
 		"quarter-turf" =      list("path" = /obj/effect/floor_decal/corner, "precise" = 1, "coloured" = 1),
+		"diagonal tile" =     list("path" = /obj/effect/floor_decal/corner/diagonal, "coloured" = 1),
 		"hazard stripes" =    list("path" = /obj/effect/floor_decal/industrial/warning),
 		"corner, hazard" =    list("path" = /obj/effect/floor_decal/industrial/warning/corner),
 		"hatched marking" =   list("path" = /obj/effect/floor_decal/industrial/hatch, "coloured" = 1),

@@ -58,9 +58,9 @@
 	..(user)
 	if(cash_open)
 		if(cash_stored)
-			user << "It holds [cash_stored] credit\s of money."
+			to_chat(user, "It holds [cash_stored] credit\s of money.")
 		else
-			user << "It's completely empty."
+			to_chat(user, "It's completely empty.")
 
 
 /obj/machinery/cash_register/attack_hand(mob/user as mob)
@@ -173,7 +173,7 @@
 				item_list[t_purpose] += 1
 				price_list[t_purpose] += t_amount
 
-				playsound(src, 'sound/machines/twobeep.ogg', 25)
+				playsound(src, 'sound/effects/checkout.ogg', 25)
 				src.visible_message("\icon[src][transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("add_menu")
@@ -223,7 +223,7 @@
 
 				transaction_amount += t_amount
 
-				playsound(src, 'sound/machines/twobeep.ogg', 25)
+				playsound(src, 'sound/effects/checkout.ogg', 25)
 				src.visible_message("\icon[src] <b>[item_desc]:</b> [transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("set_amount")
@@ -479,7 +479,7 @@
 		tax_list[O.name] = tax
 		. = 1
 	// Animation and sound
-	playsound(src, 'sound/machines/twobeep.ogg', 25)
+	playsound(src, 'sound/effects/checkout.ogg', 25)
 	// Reset confirmation
 	confirm_item = null
 	updateDialog()

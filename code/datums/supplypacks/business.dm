@@ -17,20 +17,27 @@
 /datum/supply_pack/business/cash_register
 	contains = list(/obj/machinery/cash_register)
 	name = "Cash Register"
-	cost = 150
+	cost = 250
 	containertype = /obj/structure/closet/crate
 	containername = "Cash Register crate"
 
 /datum/supply_pack/business/retail_scanner
 	contains = list(/obj/item/device/retail_scanner)
 	name = "Retail Scanner"
-	cost = 60
+	cost = 160
 	containertype = /obj/structure/closet/crate
 	containername = "Retail Scanner crate"
 
 /datum/supply_pack/business/price_tagger
 	contains = list(/obj/item/device/price_tagger)
 	name = "Price Tagger"
-	cost = 20
+	cost = 70
 	containertype = /obj/structure/closet/crate
 	containername = "Price Tagger crate"
+
+/datum/supply_pack/business/price_scanner
+	contains = list(/obj/item/device/price_scanner)
+	name = "Price Scanner"
+	cost = 40
+	containertype = /obj/structure/closet/crate
+	containername = "Price Scanner"

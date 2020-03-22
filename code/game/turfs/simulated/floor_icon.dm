@@ -31,8 +31,16 @@ var/image/no_ceiling_image = null
 				icon_state = "[icon_state][rand(0,flooring.has_base_range)]"
 				flooring_override = icon_state
 
+		if(flooring.floor_color)
+			var/cache_key = "[icon_state]-[flooring.floor_color]"
+			if(isnull(flooring_cache[cache_key]))
+				var/image/I = image(flooring.icon, icon_state)
+				I.color = flooring.floor_color
+				flooring_cache[cache_key] = I
+			add_overlay(flooring_cache[cache_key])
 
-		if(flooring.floor_material)
+
+		if(flooring.floor_material && !flooring.floor_color)
 			material = get_material_by_name(flooring.floor_material)
 
 			if(material && flooring.applies_material_color)

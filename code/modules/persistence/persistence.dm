@@ -204,3 +204,6 @@
 
 /obj/screen
 	dont_save = TRUE 	// what?
+
+/obj/item/weapon/passport
+	dont_save = TRUE

@@ -1,12 +1,13 @@
 /obj/item/device/price_tagger
 	name = "price tagger"
-	icon = 'icons/obj/bureaucracy.dmi'
-	icon_state = "labeler1"
+	icon = 'icons/obj/device.dmi'
+	icon_state = "price_tagger"
 	desc = "Allows you to set a price on a specific item. You can toggle the setting on it to allow it to add or remove certain things."
 
 	var/set_price = 0		// Things are free, by default?
 
 	var/on = TRUE
+	var/scan_sound = 'sound/effects/checkout.ogg'
 
 	unique_save_vars = list("set_price", "on")
 
@@ -38,9 +39,9 @@
 
 	on = !on
 	if(on)
-		to_chat(usr, "<span class='notice'>You turn \the [src] on.</span>")
+		to_chat(user, "<span class='notice'>You turn \the [src] on.</span>")
 	else
-		to_chat(usr, "<span class='notice'>You turn \the [src] off.</span>")
+		to_chat(user, "<span class='notice'>You turn \the [src] off.</span>")
 
 /obj/item/device/price_tagger/proc/change_pricing(mob/user)
 
@@ -66,6 +67,9 @@
 
 
 /obj/item/device/price_tagger/afterattack(var/atom/A, var/mob/user, proximity, params)
+	if(!on)
+		return
+
 	if(!proximity)
 		return
 
@@ -76,6 +80,7 @@
 		return
 
 	var/obj/O = A
+
 
 	if(istype(A.loc, /mob/))
 		to_chat(usr, "You need to set [O] down before it can be labelled!")
@@ -88,4 +93,30 @@
 	else
 		to_chat(usr, "You remove the digital price tag on [O].")
 
-	playsound(src, 'sound/machines/twobeep.ogg', 25)
+	playsound(src, scan_sound, 25)
+
+/obj/item/device/price_scanner
+	name = "price scanner"
+	desc = "Using an up-to-date database of various costs and prices, this device estimates the market price of an item up to 0.001% accuracy."
+	icon_state = "price_scanner"
+	origin_tech = list(TECH_MATERIAL = 6)
+	var/scan_sound = 'sound/effects/checkout.ogg'
+	var/on = TRUE
+
+/obj/item/device/price_scanner/attack_self(mob/user)
+	if(user.incapacitated())
+		return
+
+	on = !on
+	if(on)
+		to_chat(user, "<span class='notice'>You turn \the [src] on.</span>")
+	else
+		to_chat(user, "<span class='notice'>You turn \the [src] off.</span>")
+
+
+/obj/item/device/price_scanner/afterattack(atom/movable/target, mob/user)
+	if(!on)
+		return
+
+	user.show_message("\The [target]: [cash2text( target.get_item_cost(), FALSE, TRUE, TRUE )]")
+	playsound(src, scan_sound, 25)

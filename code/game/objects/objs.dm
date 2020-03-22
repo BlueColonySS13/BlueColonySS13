@@ -32,6 +32,8 @@
 	..()
 	if(tagged_price)
 		to_chat(user, "There is a price tag marking [src] to be <b>[cash2text( tagged_price, FALSE, TRUE, TRUE )]</b>.")
+	if(dont_save)
+		to_chat(user, "<b>You have a feeling this item is important or belongs to someone...</b>")
 
 /obj/Topic(href, href_list, var/datum/topic_state/state = default_state)
 	if(usr && ..())
