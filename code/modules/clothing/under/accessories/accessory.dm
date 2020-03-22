@@ -93,8 +93,12 @@
 	..()
 
 /obj/item/clothing/accessory/tie
+	name = "tie"
+	icon_state = "whitetie"
+
+/obj/item/clothing/accessory/tie/blue
 	name = "blue tie"
-	icon_state = "bluetie"
+	icon_state = "whitetie"
 
 /obj/item/clothing/accessory/tie/president
 	name = "\the President's Tie"

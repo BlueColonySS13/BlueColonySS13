@@ -27,6 +27,17 @@
 
 	var/menu_items
 
+/obj/item/device/retail_scanner/get_persistent_metadata()
+	if(!linked_account)
+		return FALSE
+
+	return linked_account.account_number
+
+/obj/item/device/retail_scanner/load_persistent_metadata(acc_no)
+	if(acc_no)
+		linked_account = get_account(acc_no)
+		return TRUE
+
 // Claim machine ID
 /obj/item/device/retail_scanner/New()
 	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"

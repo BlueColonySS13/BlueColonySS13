@@ -94,5 +94,5 @@
 	color = "#e3a3a3"
 
 /obj/item/clothing/ears/earring/dangle/black_onyx
-	name = "black_onyx dangle earrings"
+	name = "black onyx dangle earrings"
 	color = "#3d3d3d"

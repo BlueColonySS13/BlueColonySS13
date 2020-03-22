@@ -35,6 +35,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	slot_flags = SLOT_EARS
 	attack_verb = list("burnt", "singed")
 	drop_sound = null
+	unique_save_vars = list("burnt","smoketime")
 
 /obj/item/weapon/flame/match/process()
 	if(isliving(loc))

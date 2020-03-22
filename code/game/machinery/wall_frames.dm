@@ -104,6 +104,14 @@
 /obj/item/frame/proc/isLightFrame()
 	return FALSE
 
+/obj/item/frame/wallsafe
+	name = "secure safe frame"
+	desc = "A starting frame for building a secure as can be safe."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "safe"
+	refund_amt = 3
+	build_machine_type = /obj/item/weapon/storage/secure/safe
+
 /obj/item/frame/light
 	name = "light fixture frame"
 	desc = "Used for building lights."
@@ -114,6 +122,12 @@
 
 /obj/item/frame/light/isLightFrame()
 	return TRUE
+
+/obj/item/frame/light/small
+	name = "small light fixture frame"
+	icon_state = "bulb-construct-item"
+	refund_amt = 1
+	build_machine_type = /obj/machinery/light_construct/small
 
 /obj/item/frame/light/small
 	name = "small light fixture frame"
@@ -150,6 +164,49 @@
 	name = "fire axe cabinet frame"
 	desc = "Used for building fire axe cabinets."
 	icon = 'icons/obj/closet.dmi'
-	icon_state = "fireaxe0101"
+	icon_state = "fireaxe1000"
 	refund_amt = 4
 	build_machine_type = /obj/structure/closet/fireaxecabinet
+
+/obj/item/frame/plastic
+	refund_type = /obj/item/stack/material/plastic
+
+/obj/item/frame/plastic/sink
+	name = "Sink Frame"
+	desc = "Used for building Sinks"
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "sink"
+	refund_amt = 2
+	build_machine_type = /obj/structure/sink
+
+/obj/item/frame/plastic/kitchensink
+	name = "Kitchen Sink Frame"
+	desc = "Used for building Kitchen Sinks"
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "sink_alt"
+	refund_amt = 2
+	build_machine_type = /obj/structure/sink/kitchen
+
+/obj/item/frame/plastic/toilet
+	name = "toilet Frame"
+	desc = "Used for making toilets."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "toilet00"
+	refund_amt = 2
+	build_machine_type = /obj/structure/sink/kitchen
+
+/obj/item/frame/plastic/urinal
+	name = "urinals Frame"
+	desc = "Used for making urinals."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "urinal"
+	refund_amt = 2
+	build_machine_type = /obj/structure/urinal
+
+/obj/item/frame/plastic/shower
+	name = "shower Frame"
+	desc = "Used for building showers"
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "shower"
+	refund_amt = 2
+	build_machine_type = /obj/machinery/shower

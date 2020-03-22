@@ -43,6 +43,16 @@
 	containername = "Exotic Seeds crate"
 	access = access_hydroponics
 
+/datum/supply_pack/sci/sciencecubes
+	name = "Compressed Living Lifeforms crate"
+	contains = list(
+			/obj/item/weapon/storage/box/monkeycubes/vatborncubes = 1,
+			/obj/item/weapon/storage/box/monkeycubes = 5
+			)
+	cost = 400
+	containertype = /obj/structure/closet/crate/science
+	containername = "Compressed Living Lifeforms crate"
+
 /datum/supply_pack/sci/integrated_circuit_printer
 	name = "Integrated circuit printer"
 	contains = list(/obj/item/device/integrated_circuit_printer = 2)

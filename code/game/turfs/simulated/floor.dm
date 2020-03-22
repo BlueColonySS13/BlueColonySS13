@@ -32,6 +32,8 @@
 	heat_capacity = 10000
 	var/lava = 0
 
+	unique_save_vars = list("broken", "burnt")
+
 /turf/simulated/floor/is_plating()
 	return !flooring
 
@@ -43,6 +45,15 @@
 		set_flooring(get_flooring_data(floortype))
 	else
 		footstep_sounds = base_footstep_sounds
+
+/turf/simulated/floor/get_persistent_metadata()
+	if(!flooring)
+		return
+	return flooring.type
+
+/turf/simulated/floor/load_persistent_metadata(floortype)
+	set_flooring(get_flooring_data(floortype))
+	return TRUE
 
 /turf/simulated/floor/proc/set_flooring(var/decl/flooring/newflooring)
 	make_plating(defer_icon_update = 1)
@@ -69,6 +80,7 @@
 	icon = base_icon
 	icon_state = base_icon_state
 	footstep_sounds = base_footstep_sounds
+	color = null
 
 	if(flooring)
 		if(flooring.build_type && place_product)

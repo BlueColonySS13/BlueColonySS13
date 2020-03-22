@@ -29,6 +29,8 @@
 	var/overlay_full_state = "cell-o2" // Overlay used when fully charged.
 	var/last_overlay_state = null // Used to optimize update_icon() calls.
 
+	unique_save_vars = list("charge", "rigged")
+
 /obj/item/weapon/cell/New()
 	..()
 	charge = maxcharge

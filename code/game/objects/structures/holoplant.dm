@@ -7,6 +7,7 @@
 	anchored = TRUE
 	idle_power_usage = 0
 	active_power_usage = 5
+	table_drag = TRUE
 	var/interference = FALSE
 	var/icon/plant = null
 	var/global/list/possible_plants = list(

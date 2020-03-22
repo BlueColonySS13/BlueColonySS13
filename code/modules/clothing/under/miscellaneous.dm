@@ -1044,13 +1044,13 @@
 	icon_state = "victorianredvest"
 
 /obj/item/clothing/under/arisgroom
-	name = "aristocratic groom tuxedo"
+	name = "aristocratic tuxedo"
 	desc = "You can almost smell the bank notes this was sewn from."
 	icon_state = "arisgroom"
 	index = 1
 
 /obj/item/clothing/under/arisbestman
-	name = "aristocratic best man tuxedo"
+	name = "aristocratic purple tuxedo"
 	desc = "You should have asked her out sooner. But at least you have this cool suit..."
 	icon_state = "arisbestman"
 	index = 1

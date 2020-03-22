@@ -48,17 +48,24 @@
 	return
 
 /atom/proc/sanitize_for_saving()
-	return
+	return TRUE
 
 /obj/sanitize_for_saving()	// these things build up with time, so this gradually limits the amount so we don't have 5000 fingerprints or anything.
-	if(LAZYLEN(suit_fibers))
+	if(isnull(suit_fibers))
+		suit_fibers = list()
+	if(isnull(fingerprints))
+		fingerprints = list()
+	if(isnull(fingerprintshidden))
+		fingerprintshidden = list()
+
+	if(!isemptylist(suit_fibers))
 		truncate_oldest(suit_fibers, MAX_FINGERPRINTS)
-	if(LAZYLEN(fingerprints))
+	if(!isemptylist(fingerprints))
 		truncate_oldest(fingerprints, MAX_FINGERPRINTS)
-	if(LAZYLEN(fingerprintshidden))
+	if(!isemptylist(fingerprintshidden))
 		truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 
-	return
+	return TRUE
 
 /obj/item/weapon/reagent_containers/proc/pack_persistence_data()
 	var/list/all_reagents = reagents.reagent_list
@@ -109,7 +116,7 @@
 
 // This is so specific atoms can override these, and ignore certain ones
 /atom/proc/vars_to_save()
- 	return list("x","y","z","color","dir","name","pixel_x","pixel_y")+unique_save_vars
+ 	return list("x","y","z","color","dir","name","pixel_x","pixel_y","tagged_price")+unique_save_vars
 
 /atom/proc/map_important_vars()
 	// A list of important things to save in the map editor
@@ -159,7 +166,7 @@
 
 /obj/vars_to_save()
  	 return list("x","y","z","anchored","color","dir","name","pixel_x","pixel_y","fingerprints","fingerprintshidden","fingerprintslast",\
- 	 "suit_fibers")+unique_save_vars
+ 	 "suit_fibers","tagged_price")+unique_save_vars
 
 /obj/item/weapon/paper
 	unique_save_vars = list("info")
@@ -204,3 +211,6 @@
 
 /obj/screen
 	dont_save = TRUE 	// what?
+
+/obj/item/weapon/passport
+	dont_save = TRUE

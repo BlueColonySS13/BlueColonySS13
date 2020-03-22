@@ -8,6 +8,8 @@
 	var/obj/item/stack/tile/T
 	var/list/mode = list("dismantle"=0,"laying"=0,"collect"=0)
 
+	unique_save_vars = list("on", "mode")
+
 /obj/machinery/floorlayer/New()
 	T = new/obj/item/stack/tile/floor(src)
 	..()

@@ -130,7 +130,16 @@
 		MT.y = T.y
 		MT.z = T.z
 
-		MT.decals = T.decals
+		var/list/decal_list = list()
+
+		for(var/image/I in T.decals)
+			var/icon/dcl_icon = getFlatIcon(I, defdir=I.dir)
+			var/image/new_decl = image(dcl_icon)
+
+			decal_list += new_decl
+
+		MT.decals = decal_list
+
 
 		for(var/V in T.vars_to_save() )
 			if(!(T.vars[V] == initial(T.vars[V])))
@@ -223,6 +232,7 @@
 		newturf.ChangeTurf(MT.turf_type, 0, 1)
 
 		newturf.decals = MT.decals
+		newturf.update_icon()
 
 		newturf.on_persistence_load()
 		if(!newturf.on_persistence_load())

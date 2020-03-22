@@ -35,10 +35,18 @@
 	foldable = /obj/item/stack/material/cardboard
 	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/cracker/multigrain = 8)
 
+/obj/item/weapon/storage/box/tobacco_box
+	name = "tobacco box"
+	desc = "Storing all dried tobacco strains since 1990."
+	icon_state = "tobacco_box"
+	max_storage_space = ITEMSIZE_COST_SMALL * 4
+	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/grown/tobacco)
+	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/grown/tobacco/dry = 6)
+
 /obj/item/weapon/storage/box/sushi
 	icon = 'icons/obj/food.dmi'
 	icon_state = "bentobox"
-	name = "Sushi Surprise Bento Box"
+	name = "New Japan Bento Box"
 	desc = "A bento box filled with a random assortment of sushi."
 	max_storage_space = ITEMSIZE_COST_SMALL * 6
 	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/sushi)

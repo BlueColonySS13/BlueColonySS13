@@ -597,15 +597,6 @@ var/list/name_to_material
 
 	worth = 0
 
-/material/cloth //todo
-	name = "cloth"
-	stack_origin_tech = list(TECH_MATERIAL = 2)
-	door_icon_base = "wood"
-	ignition_point = T0C+232
-	melting_point = T0C+300
-	protectiveness = 1 // 4%
-	flags = MATERIAL_PADDING
-
 /material/cult
 	name = "cult"
 	display_name = "disturbing stone"
@@ -639,6 +630,33 @@ var/list/name_to_material
 	melting_point = T0C+300
 	protectiveness = 3 // 13%
 
+/material/silk
+	name = "silk"
+	icon_colour = "#ebe9df"
+	stack_origin_tech = list(TECH_MATERIAL = 2)
+	flags = MATERIAL_PADDING
+	ignition_point = T0C+232
+	melting_point = T0C+300
+	protectiveness = 0 // 0%
+
+/material/wool
+	name = "wool"
+	icon_colour = "#ebe9df"
+	stack_origin_tech = list(TECH_MATERIAL = 2)
+	flags = MATERIAL_PADDING
+	ignition_point = T0C+232
+	melting_point = T0C+300
+	protectiveness = 0 // 0%
+
+/material/cotton
+	name = "cotton"
+	display_name ="cotton"
+	icon_colour = "#FFFFFF"
+	flags = MATERIAL_PADDING
+	ignition_point = T0C+232
+	melting_point = T0C+300
+	protectiveness = 1 // 4%
+
 /material/carpet
 	name = "carpet"
 	display_name = "comfy"
@@ -649,15 +667,6 @@ var/list/name_to_material
 	melting_point = T0C+300
 	sheet_singular_name = "tile"
 	sheet_plural_name = "tiles"
-	protectiveness = 1 // 4%
-
-/material/cotton
-	name = "cotton"
-	display_name ="cotton"
-	icon_colour = "#FFFFFF"
-	flags = MATERIAL_PADDING
-	ignition_point = T0C+232
-	melting_point = T0C+300
 	protectiveness = 1 // 4%
 
 // This all needs to be OOP'd and use inheritence if its ever used in the future.

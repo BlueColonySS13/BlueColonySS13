@@ -198,7 +198,7 @@
 	..()
 
 
-/obj/item/grown/bananapeel/clownfish
+/obj/item/weapon/bananapeel/clownfish
 	name = "clown fish"
 	desc = "Even underwater, you cannot escape HONKing."
 	icon = 'icons/obj/fish_items.dmi'

@@ -15,7 +15,7 @@ datum/track/New(var/title_name, var/audio)
 	icon = 'icons/obj/jukebox_new.dmi'
 	icon_state = "jukebox3-nopower"
 	var/state_base = "jukebox3"
-	anchored = 1
+	anchored = 0
 	density = 1
 	power_channel = EQUIP
 	use_power = 1
@@ -31,6 +31,8 @@ datum/track/New(var/title_name, var/audio)
 	var/datum/wires/jukebox/wires = null
 	var/hacked = 0 // Whether to show the hidden songs or not
 	var/freq = 0
+
+	table_drag = TRUE
 
 	var/datum/track/current_track
 	var/list/datum/track/tracks = list(

@@ -61,3 +61,9 @@
 
 /mob/living/carbon/human/teen/New(var/new_loc)
 	..(new_loc, SPECIES_HUMAN_TEEN)
+
+/mob/living/carbon/human/mpl_vatborn/New(var/new_loc)
+	..(new_loc, SPECIES_HUMAN_VATBORN_MPL)
+
+/mob/living/carbon/human/vatborn/New(var/new_loc)
+	..(new_loc, SPECIES_HUMAN_VATBORN)

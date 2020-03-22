@@ -57,6 +57,7 @@ var/list/available_paintings = list(
 //	sheets_refunded = 2
 //	autoignition_temperature = AUTOIGNITION_WOOD
 	var/paint = ""
+	unique_save_vars = list("paint")
 
 /obj/structure/painting/New()
 	..()
