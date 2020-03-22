@@ -243,7 +243,7 @@
 	recipes += new/datum/stack_recipe("[display_name] cowboy duster", /obj/item/clothing/suit/storage/duster, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] peacoat", /obj/item/clothing/suit/storage/toggle/peacoat, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] cardigan", /obj/item/clothing/suit/storage/toggle/cardigan, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] skate shoes", /datum/gear/shoes/skater, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] skate shoes", /obj/item/clothing/shoes/skater, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] pencil skirt", /obj/item/clothing/under/skirt/pencil, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] yoga pants", /obj/item/clothing/under/pants/yogapants, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] pleated skirt", /obj/item/clothing/under/skirt/pleated, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE)
