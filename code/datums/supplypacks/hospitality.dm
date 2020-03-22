@@ -153,7 +153,6 @@
 		/obj/item/weapon/flame/lighter/zippo/capitalist,
 		/obj/item/weapon/flame/lighter/zippo/communist,
 		/obj/item/weapon/flame/lighter/zippo/royal,
-		/obj/item/weapon/flame/lighter/zippo/gonzoo,
 		/obj/item/weapon/flame/lighter/zippo/rainbow,
 		/obj/item/weapon/flame/lighter/zippo/heartbreaker,
 		/obj/item/weapon/flame/lighter/zippo/sol,

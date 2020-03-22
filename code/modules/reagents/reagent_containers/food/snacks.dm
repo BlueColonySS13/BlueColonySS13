@@ -1799,7 +1799,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/proc/Expand()
 	src.visible_message("<span class='notice'>\The [src] expands!</span>")
-	var/newthing = new spawn_type(get_turf(src))
+	new spawn_type(get_turf(src))
 	if(ismob(loc))
 		var/mob/M = loc
 		M.unEquip(src)
