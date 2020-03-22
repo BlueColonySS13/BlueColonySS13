@@ -166,7 +166,7 @@
 					persistent_economy.carp_control = status_num
 				if("Gr3y.T1d3 Firewall")
 					persistent_economy.antivirus = status_num
-				if("Meteor Proofing"
+				if("Meteor Proofing")
 					persistent_economy.meteor_proof = status_num
 
 
