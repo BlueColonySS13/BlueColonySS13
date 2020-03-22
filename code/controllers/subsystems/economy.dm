@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(economy)
 
 /datum/controller/subsystem/economy/proc/init_expenses()
 	for(var/E in subtypesof(/datum/expense/nanotrasen) - list(/datum/expense/nanotrasen/pest_control,
-	 /datum/expense/nanotrasen/tech_support
+	 /datum/expense/nanotrasen/tech_support, /datum/expense/nanotrasen/external_defense
 	 ))
 		var/datum/expense/new_expense = new E
 		persistent_economy.city_expenses += new_expense

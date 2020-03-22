@@ -76,6 +76,7 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	var/base_service_charge = 25		// Minimum the council will charge (per payroll) to lots. // control setting not yet implemented
 	var/carp_control = FALSE			// If this is disabled, council cannot control carp infestations.
 	var/antivirus = FALSE			// Is the President a boomer?
+	var/meteor_proof = FALSE			// Is the city protected by meteors?
 
 	var/foodstamp_meals = 3
 
@@ -137,6 +138,7 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	S["city_council_control"] << city_council_control
 	S["carp_control"] << carp_control
 	S["antivirus"] << antivirus
+	S["meteor_proof"] << meteor_proof
 	return TRUE
 
 /datum/economy/bank_accounts/proc/load_accounts()
@@ -196,6 +198,7 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	S["city_council_control"] >> city_council_control
 	S["carp_control"] >> carp_control
 	S["antivirus"] >> antivirus
+	S["meteor_proof"] >> meteor_proof
 
 	tax_rate_lower = tax_poor
 	tax_rate_middle = tax_middle
