@@ -186,7 +186,7 @@
 	desc = "A pair of dust beige khaki pants."
 	icon_state = "baggy_khaki"
 
-/obj/item/blothing/under/pants/leather
+/obj/item/clothing/under/pants/leather
 	name = "leather pants"
 	desc = "A pair of tight black leather pants."
 	icon_state = "leatherpants"

@@ -26,6 +26,8 @@
 	blend_objects = list(/obj/machinery/door) // Objects which to blend with
 	noblend_objects = list(/obj/machinery/door/window)
 
+	unique_save_vars = list("health", "material_color", "on_frame")
+
 /obj/structure/window/examine(mob/user)
 	. = ..(user)
 
@@ -222,6 +224,9 @@
 
 /obj/structure/window/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W)) return//I really wish I did not need this
+
+	if(istype(W, /obj/item/device/floor_painter) && user.a_intent == I_HELP)
+		return // windows are paintable now, so no accidental damage should happen.
 
 	// Fixing.
 	if(istype(W, /obj/item/weapon/weldingtool) && user.a_intent == I_HELP)

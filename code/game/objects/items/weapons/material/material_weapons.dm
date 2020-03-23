@@ -27,6 +27,8 @@
 	var/material/material
 	var/drops_debris = 1
 
+	unique_save_vars = list("dulled")
+
 /obj/item/weapon/material/New(var/newloc, var/material_key)
 	..(newloc)
 	if(!material_key)

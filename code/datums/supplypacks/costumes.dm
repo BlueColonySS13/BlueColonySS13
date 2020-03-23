@@ -5,10 +5,10 @@
 
 
 /datum/supply_pack/costumes
-	group = "Costumes"
+	group = "Clothing"
 
 /datum/supply_pack/randomised/costumes
-	group = "Costumes"
+	group = "Clothing"
 
 /datum/supply_pack/costumes/wizard
 	name = "Wizard costume"
@@ -33,8 +33,6 @@
 			/obj/item/clothing/head/collectable/welding,
 			/obj/item/clothing/head/collectable/flatcap,
 			/obj/item/clothing/head/collectable/pirate,
-//			/obj/item/clothing/head/collectable/kitty,
-//			/obj/item/clothing/head/collectable/rabbitears,
 			/obj/item/clothing/head/collectable/wizard,
 			/obj/item/clothing/head/collectable/hardhat,
 			/obj/item/clothing/head/collectable/HoS,
@@ -146,12 +144,11 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/head/ushanka
 			)
 
-/datum/supply_pack/randomised/costumes/dresses
-	name = "Womens formal dress locker"
-	containername = "Pretty dress locker"
+datum/supply_pack/costumes/wedding
+	name = "Womens Wedding Dress Collection"
+	containername = "Womens Wedding Dress Collection"
 	containertype = /obj/structure/closet
 	cost = 450
-	num_contained = 3
 	contains = list(
 			/obj/item/clothing/under/wedding/bride_orange,
 			/obj/item/clothing/under/wedding/bride_purple,
@@ -165,3 +162,127 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/dress/dress_yellow,
 			/obj/item/clothing/under/dress/dress_saloon
 			)
+
+datum/supply_pack/costumes/jeans
+	name = "Jeans Collection"
+	containername = "Jeans Collection"
+	containertype = /obj/structure/closet
+	cost = 450
+	contains = list(
+			/obj/item/clothing/under/pants,
+			/obj/item/clothing/under/pants/black,
+			/obj/item/clothing/under/pants/camo,
+			/obj/item/clothing/under/pants/classicjeans,
+			/obj/item/clothing/under/pants/mustangjeans,
+			/obj/item/clothing/under/pants/greyjeans,
+			/obj/item/clothing/under/pants/khaki,
+			/obj/item/clothing/under/pants/leather,
+			/obj/item/clothing/under/pants/red,
+			/obj/item/clothing/under/pants/ripped,
+			/obj/item/clothing/under/pants/tan,
+			/obj/item/clothing/under/pants/white,
+			/obj/item/clothing/under/pants/youngfolksjeans
+			)
+
+
+datum/supply_pack/costumes/jeans_ripped
+	name = "Ripped Jeans Collection"
+	containername = "Ripped Jeans Collection"
+	containertype = /obj/structure/closet
+	cost = 350
+	contains = list(
+			/obj/item/clothing/under/pants/ripped,
+			/obj/item/clothing/under/pants/blackjeans/ripped,
+			/obj/item/clothing/under/pants/classicjeans/ripped,
+			/obj/item/clothing/under/pants/mustangjeans/ripped,
+			/obj/item/clothing/under/pants/greyjeans/ripped
+			)
+
+datum/supply_pack/costumes/baggy_pants
+	name = "Baggy Pants Collection"
+	containername = "Baggy Pants Collection"
+	containertype = /obj/structure/closet
+	cost = 380
+	contains = list(
+			/obj/item/clothing/under/pants/baggy/black,
+			/obj/item/clothing/under/pants/baggy/blackjeans,
+			/obj/item/clothing/under/pants/baggy/camo,
+			/obj/item/clothing/under/pants/baggy/classicjeans,
+			/obj/item/clothing/under/pants/baggy/greyjeans,
+			/obj/item/clothing/under/pants/baggy/khaki,
+			/obj/item/clothing/under/pants/baggy/mustangjeans,
+			/obj/item/clothing/under/pants/baggy/red,
+			/obj/item/clothing/under/pants/baggy/tan,
+			/obj/item/clothing/under/pants/baggy/track,
+			/obj/item/clothing/under/pants/baggy/white,
+			/obj/item/clothing/under/pants/baggy/youngfolksjeans
+			)
+
+
+datum/supply_pack/costumes/track_pants
+	name = "Track Pants Collection"
+	containername = "Track Pants Collection"
+	containertype = /obj/structure/closet
+	cost = 180
+	contains = list(
+			/obj/item/clothing/under/pants/track,
+			/obj/item/clothing/under/pants/track/blue,
+			/obj/item/clothing/under/pants/track/green,
+			/obj/item/clothing/under/pants/track/red,
+			/obj/item/clothing/under/pants/track/white,
+			/obj/item/clothing/under/pants/baggy/khaki
+			)
+
+
+datum/supply_pack/costumes/polychromatic
+	name = "Polychromatic Clothes Collection"
+	containername = "Polychromatic Clothes Collection"
+	containertype = /obj/structure/closet
+	cost = 600
+	contains = list(
+			/obj/item/clothing/under/polychromic/shimatank,
+			/obj/item/clothing/under/polychromic/bottomless,
+			/obj/item/clothing/under/polychromic/shortpants/pantsu,
+			/obj/item/clothing/under/polychromic/femtank,
+			/obj/item/clothing/under/polychromic/pleat,
+			/obj/item/clothing/under/polychromic/shortpants,
+			/obj/item/clothing/under/polychromic/jumpsuit,
+			/obj/item/clothing/under/polychromic/shorts,
+			/obj/item/clothing/under/polychromic/skirt,
+			/obj/item/clothing/under/polychromic/kilt,
+			/obj/item/clothing/under/polychromic/shirt
+			)
+
+datum/supply_pack/costumes/castor_import_clothing
+	name = "Castor Imported Clothing"
+	containername = "Castor Imported Clothing"
+	containertype = /obj/structure/closet
+	cost = 3000
+	contains = list(
+			/obj/item/clothing/under/aristocrat = 5,
+			/obj/item/clothing/accessory/tie/cravat = 5,
+			/obj/item/clothing/under/arisgroom = 2,
+			/obj/item/clothing/under/arisbestman = 2,
+			/obj/item/clothing/suit/tailcoat = 3,
+			/obj/item/clothing/suit/tailcoat/ladies = 3,
+			/obj/item/clothing/suit/tailcoat/ladies/red = 3,
+			/obj/item/clothing/head/bowler = 3,
+			/obj/item/clothing/head/bowlerhat = 3,
+			/obj/item/clothing/head/collectable/tophat = 3
+			)
+
+datum/supply_pack/costumes/cascington_import_clothing
+	name = "Cascington Imported Clothing"
+	containername = "Cascington Imported Clothing"
+	containertype = /obj/structure/closet
+	cost = 1200
+	contains = list(
+			/obj/item/clothing/suit/storage/toggle/peacoat = 3,
+			/obj/item/clothing/suit/storage/toggle/dress = 3,
+			/obj/item/clothing/under/blazer = 2,
+			/obj/item/clothing/under/blazer/skirt = 2,
+			/obj/item/clothing/suit/storage/poshblazer = 3,
+			/obj/item/clothing/under/dress/vneck = 2
+			)
+
+

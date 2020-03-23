@@ -581,6 +581,8 @@ var/datum/planet/sif/planet_sif = null
 						turfs_around += T
 					else
 						continue
+				if(isemptylist(turfs_around))
+					return
 				var/turf/X = pick(turfs_around)
 				if(X)
 					new /obj/effect/falling_effect/carpfall/carpnado(X)

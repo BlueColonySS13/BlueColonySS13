@@ -38,7 +38,8 @@
 	name = "Commander Beep O'sky"
 	desc = "It's Commander Beep O'sky! Officially the superior officer of all bots on station, Beepsky remains as humble and dedicated to the law as the day he was first fabricated."
 	will_patrol = 1
-	
+	dont_save = TRUE
+
 /mob/living/bot/secbot/beepsky/pipsqueak
 	name = "Officer Pipsqueak"
 	desc = "It's Commander Beep O'sky's smaller, just-as aggressive cousin, Pipsqueak."

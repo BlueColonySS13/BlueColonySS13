@@ -33,6 +33,36 @@
 
 	var/item_place = 1 //allows items to be placed on the table, but not on benches.
 
+	unique_save_vars = list("health", "carpeted")
+
+
+
+/obj/structure/table/get_persistent_metadata()
+	if(!material)
+		return FALSE
+
+	var/list/table_data = list()
+	table_data["material"] = material.name
+	if(reinforced)
+		table_data["reinforced"] = reinforced.name
+
+	return table_data
+
+/obj/structure/table/load_persistent_metadata(metadata)
+	var/list/table_data = metadata
+	if(!islist(table_data))
+		return
+	if(get_material_by_name(table_data["material"]))
+		material = get_material_by_name(table_data["material"])
+	if(get_material_by_name(table_data["reinforced"]))
+		reinforced = get_material_by_name(table_data["reinforced"])
+
+	update_icon()
+	update_desc()
+	update_material()
+
+	return TRUE
+
 
 /obj/structure/table/proc/update_material()
 	var/old_maxhealth = maxhealth
@@ -270,6 +300,11 @@
 		return ..()
 
 /obj/structure/table/MouseDrop_T(obj/O as obj, mob/user as mob)
+	if(O.table_drag && !O.anchored)	// you can place potted plants on tables by click dragging them.
+		O.forceMove(get_turf(src))
+		O.pixel_y = O.table_shift
+		return
+
 	if ((!( istype(O, /obj/item/weapon) ) ||  user.get_active_hand() != O))
 		return ..()
 	if(isrobot(usr))

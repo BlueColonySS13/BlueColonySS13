@@ -9,7 +9,9 @@
 	icon_state = "register_idle"
 	flags = NOBLUDGEON
 	req_access = list(access_heads)
-	anchored = 1
+	anchored = 0
+	table_drag = TRUE
+	table_shift = 0
 
 	var/locked = 1
 	var/cash_locked = 1
@@ -31,6 +33,19 @@
 	var/menu_items
 	var/adds_tax = TRUE
 
+	unique_save_vars = list("locked")
+
+/obj/machinery/cash_register/get_persistent_metadata()
+	if(!linked_account)
+		return FALSE
+
+	return linked_account.account_number
+
+/obj/machinery/cash_register/load_persistent_metadata(acc_no)
+	if(acc_no)
+		linked_account = get_account(acc_no)
+		return TRUE
+
 // Claim machine ID
 /obj/machinery/cash_register/New()
 	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
@@ -43,9 +58,9 @@
 	..(user)
 	if(cash_open)
 		if(cash_stored)
-			user << "It holds [cash_stored] credit\s of money."
+			to_chat(user, "It holds [cash_stored] credit\s of money.")
 		else
-			user << "It's completely empty."
+			to_chat(user, "It's completely empty.")
 
 
 /obj/machinery/cash_register/attack_hand(mob/user as mob)
@@ -158,7 +173,7 @@
 				item_list[t_purpose] += 1
 				price_list[t_purpose] += t_amount
 
-				playsound(src, 'sound/machines/twobeep.ogg', 25)
+				playsound(src, 'sound/effects/checkout.ogg', 25)
 				src.visible_message("\icon[src][transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("add_menu")
@@ -208,7 +223,7 @@
 
 				transaction_amount += t_amount
 
-				playsound(src, 'sound/machines/twobeep.ogg', 25)
+				playsound(src, 'sound/effects/checkout.ogg', 25)
 				src.visible_message("\icon[src] <b>[item_desc]:</b> [transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("set_amount")
@@ -464,7 +479,7 @@
 		tax_list[O.name] = tax
 		. = 1
 	// Animation and sound
-	playsound(src, 'sound/machines/twobeep.ogg', 25)
+	playsound(src, 'sound/effects/checkout.ogg', 25)
 	// Reset confirmation
 	confirm_item = null
 	updateDialog()

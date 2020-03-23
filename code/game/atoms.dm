@@ -14,7 +14,6 @@
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
-	var/dont_save = 0 // For atoms that are temporary by necessity - like lighting overlays
 	///Chemistry.
 	var/datum/reagents/reagents = null
 
@@ -185,8 +184,8 @@
 		else
 			f_name += "oil-stained [name][infix]."
 
-	user << "\icon[src] That's [f_name] [suffix]"
-	user << desc
+	to_chat(user, "\icon[src] That's [f_name] [suffix]")
+	to_chat(user, desc)
 
 	return distance == -1 || (get_dist(src, user) <= distance)
 
@@ -222,6 +221,9 @@
 		AM.throwing = 0
 	return
 
+/atom/proc/get_color()
+	return color
+
 /atom/proc/add_hiddenprint(mob/living/M as mob)
 	if(isnull(M)) return
 	if(isnull(M.key)) return
@@ -233,16 +235,19 @@
 			if(src.fingerprintslast != H.key)
 				src.fingerprintshidden += text("\[[time_stamp()]\] (Wearing gloves). Real name: [], Key: []",H.real_name, H.key)
 				src.fingerprintslast = H.key
+
 			return 0
 		if (!( src.fingerprints ))
 			if(src.fingerprintslast != H.key)
 				src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",H.real_name, H.key)
 				src.fingerprintslast = H.key
+
 			return 1
 	else
 		if(src.fingerprintslast != M.key)
 			src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",M.real_name, M.key)
 			src.fingerprintslast = M.key
+
 	return
 
 /atom/proc/add_fingerprint(mob/living/M as mob, ignoregloves = 0)
@@ -262,6 +267,9 @@
 			if(fingerprintslast != M.key)
 				fingerprintshidden += "(Has no fingerprints) Real name: [M.real_name], Key: [M.key]"
 				fingerprintslast = M.key
+
+				truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
+
 			return 0		//Now, lets get to the dirty work.
 		//First, make sure their DNA makes sense.
 		var/mob/living/carbon/human/H = M
@@ -276,6 +284,8 @@
 			if(fingerprintslast != H.key)
 				fingerprintshidden += text("\[[]\](Wearing gloves). Real name: [], Key: []",time_stamp(), H.real_name, H.key)
 				fingerprintslast = H.key
+
+				truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 			H.gloves.add_fingerprint(M)
 
 		//Deal with gloves the pass finger/palm prints.
@@ -290,6 +300,8 @@
 		if(fingerprintslast != H.key)
 			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), H.real_name, H.key)
 			fingerprintslast = H.key
+
+			truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 
 		//Make the list if it does not exist.
 		if(!fingerprints)
@@ -335,6 +347,7 @@
 
 		else
 			fingerprints[full_print] = stars(full_print, rand(0, 20))	//Initial touch, not leaving much evidence the first time.
+			truncate_oldest(fingerprints, MAX_FINGERPRINTS)
 
 
 		return 1
@@ -343,6 +356,7 @@
 		if(fingerprintslast != M.key)
 			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), M.real_name, M.key)
 			fingerprintslast = M.key
+			truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 
 	//Cleaning up shit.
 	if(fingerprints && !fingerprints.len)
@@ -368,6 +382,9 @@
 		A.fingerprints |= fingerprints.Copy()            //detective
 	if(A.fingerprintshidden && fingerprintshidden)
 		A.fingerprintshidden |= fingerprintshidden.Copy()    //admin	A.fingerprintslast = fingerprintslast
+
+	truncate_oldest(A.fingerprints, MAX_FINGERPRINTS)
+	truncate_oldest(A.fingerprintshidden, MAX_FINGERPRINTS)
 
 
 //returns 1 if made bloody, returns 0 otherwise

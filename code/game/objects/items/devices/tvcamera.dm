@@ -9,6 +9,8 @@
 	var/obj/machinery/camera/network/thunder/camera
 	var/obj/item/device/radio/radio
 
+	unique_save_vars = list("channel")
+
 /obj/item/device/tvcamera/New()
 	..()
 	listening_objects += src

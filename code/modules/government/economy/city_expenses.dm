@@ -59,6 +59,20 @@
 
 	return 1
 
+/datum/expense/nanotrasen/external_defense/meteor_proof
+	name = "Meteor Proofing"
+	cost_per_payroll = 350
+	comments = "This will protect the city from the Gr3y.T1d3 trojan that causes jailbreaks and other city chaos. \
+	 Covers upgrades that combats the latest versions of this exploit."
+
+/datum/expense/nanotrasen/external_defense/meteor_proof/do_effect()
+	if(!active)
+		persistent_economy.meteor_proof = FALSE
+	else
+		persistent_economy.meteor_proof = TRUE
+
+	return 1
+
 /*
 /datum/expense/nanotrasen/pest_control/spiders
 	name = "Pest Control Fund: Spiders"

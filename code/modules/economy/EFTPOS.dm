@@ -12,6 +12,17 @@
 	var/access_code = 0
 	var/datum/money_account/linked_account
 
+/obj/item/device/eftpos/get_persistent_metadata()
+	if(!linked_account)
+		return FALSE
+
+	return linked_account.account_number
+
+/obj/item/device/eftpos/load_persistent_metadata(acc_no)
+	if(acc_no)
+		linked_account = get_account(acc_no)
+		return TRUE
+
 /obj/item/device/eftpos/New()
 	..()
 	machine_id = "[station_name()] EFTPOS #[GLOB.num_financial_terminals++]"

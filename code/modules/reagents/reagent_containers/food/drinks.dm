@@ -12,6 +12,8 @@
 	var/shaken
 	price_tag = 5
 
+	unique_save_vars = list("shaken")
+
 /obj/item/weapon/reagent_containers/food/drinks/on_reagent_change()
 	if (reagents.reagent_list.len > 0)
 		var/datum/reagent/R = reagents.get_master_reagent()

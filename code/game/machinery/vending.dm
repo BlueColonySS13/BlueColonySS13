@@ -77,6 +77,11 @@
 
 	var/required_pass	//	if this needs a type of object instead of cash in order to access the items, this is it.
 
+	dont_save = TRUE
+
+	var/can_wrench = FALSE
+	var/can_hack = FALSE
+
 /obj/machinery/vending/examine(mob/user)
 	..()
 
@@ -237,9 +242,9 @@
 		SSnanoui.update_uis(src)  // Speaker switch is on the main UI, not wires UI
 		return
 	else if(istype(W, /obj/item/device/multitool)||istype(W, /obj/item/weapon/wirecutters))
-		if(panel_open)
+		if(can_hack && panel_open)
 			attack_hand(user)
-		return
+			return
 	else if(istype(W, /obj/item/weapon/coin) && premium.len > 0)
 		user.drop_item()
 		W.forceMove(src)
@@ -249,17 +254,18 @@
 		SSnanoui.update_uis(src)
 		return
 	else if(istype(W, /obj/item/weapon/wrench))
-		playsound(src, W.usesound, 100, 1)
-		if(anchored)
-			user.visible_message("[user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
-		else
-			user.visible_message("[user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
+		if(can_wrench)
+			playsound(src, W.usesound, 100, 1)
+			if(anchored)
+				user.visible_message("[user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
+			else
+				user.visible_message("[user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
 
-		if(do_after(user, 20 * W.toolspeed))
-			if(!src) return
-			to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
-			anchored = !anchored
-		return
+			if(do_after(user, 20 * W.toolspeed))
+				if(!src) return
+				to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
+				anchored = !anchored
+			return
 	else
 
 		for(var/datum/stored_item/vending_product/R in product_records)

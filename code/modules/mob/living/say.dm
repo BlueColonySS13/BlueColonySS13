@@ -218,7 +218,8 @@ proc/get_radio_key_from_channel(var/channel)
 	//Whisper vars
 	var/w_scramble_range = 5	//The range at which you get ***as*th**wi****
 	var/w_adverb				//An adverb prepended to the verb in whispers
-	var/w_not_heard				//The message for people in watching range
+	var/w_not_heard
+		//The message for people in watching range
 
 	//Handle language-specific verbs and adverb setup if necessary
 	if(!whispering) //Just doing normal 'say' (for now, may change below)
@@ -276,8 +277,11 @@ proc/get_radio_key_from_channel(var/channel)
 		for(var/mob/living/M in hearers(5, src))
 			if((M != src) && msg)
 				M.show_message(msg)
+
 			if (speech_sound)
 				sound_vol *= 0.5
+
+
 
 	//Set vars if we're still whispering by this point
 	if(whispering)

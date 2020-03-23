@@ -4,6 +4,8 @@
 	w_class = ITEMSIZE_TINY
 	var/list/evidence = list()
 
+	unique_save_vars = list("evidence")
+
 /obj/item/weapon/sample/New(var/newloc, var/atom/supplied)
 	..(newloc)
 	if(supplied)

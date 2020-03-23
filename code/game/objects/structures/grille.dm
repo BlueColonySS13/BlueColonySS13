@@ -17,6 +17,8 @@
 	var/electric = 0 //required if we have no engine.
 	var/no_states = 0
 
+	unique_save_vars = list("health", "destroyed")
+
 /obj/structure/grille/New()
 	. = ..()
 	update_connections(1)

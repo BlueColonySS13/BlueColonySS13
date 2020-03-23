@@ -5,8 +5,7 @@ SUBSYSTEM_DEF(economy)
 
 	var/list/all_departments = list()
 
-/datum/controller/subsystem/economy/Initialize()
-	.=..()
+/datum/controller/subsystem/economy/Initialize(timeofday)
 	setup_economy()
 	link_economy_accounts()
 
@@ -16,16 +15,17 @@ SUBSYSTEM_DEF(economy)
 	init_expenses()
 	persistent_economy.load_accounts()
 
+	. = ..()
+
 /datum/controller/subsystem/economy/proc/setup_economy()
 	for(var/instance in subtypesof(/datum/department))
 		new instance
 
 	GLOB.current_date_string = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
 
-
 /datum/controller/subsystem/economy/proc/init_expenses()
 	for(var/E in subtypesof(/datum/expense/nanotrasen) - list(/datum/expense/nanotrasen/pest_control,
-	 /datum/expense/nanotrasen/tech_support
+	 /datum/expense/nanotrasen/tech_support, /datum/expense/nanotrasen/external_defense
 	 ))
 		var/datum/expense/new_expense = new E
 		persistent_economy.city_expenses += new_expense

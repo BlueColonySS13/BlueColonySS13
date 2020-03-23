@@ -3,7 +3,7 @@
 	contains = list(
 			/obj/machinery/chemical_dispenser{anchored = 0}
 		)
-	cost = 25
+	cost = 525
 	containertype = /obj/structure/largecrate
 	containername = "reagent dispenser crate"
 	group = "Reagents"
@@ -13,7 +13,7 @@
 	contains = list(
 			/obj/machinery/chemical_dispenser/bar_alc{anchored = 0}
 		)
-	cost = 25
+	cost = 525
 	containertype = /obj/structure/largecrate
 	containername = "booze dispenser crate"
 	group = "Reagents"
@@ -23,9 +23,19 @@
 	contains = list(
 			/obj/machinery/chemical_dispenser/bar_soft{anchored = 0}
 		)
-	cost = 25
+	cost = 525
 	containertype = /obj/structure/largecrate
 	containername = "soda dispenser crate"
+	group = "Reagents"
+
+/datum/supply_pack/coffee_dispenser
+	name = "Coffee dispenser"
+	contains = list(
+			/obj/machinery/chemical_dispenser/bar_coffee{anchored = 0}
+		)
+	cost = 525
+	containertype = /obj/structure/largecrate
+	containername = "coffee dispenser crate"
 	group = "Reagents"
 
 /datum/supply_pack/reagents
@@ -77,7 +87,7 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/mead,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/bitters
 		)
-	cost = 50
+	cost = 300
 	containertype = /obj/structure/closet/crate/secure
 	containername = "alcoholic drinks crate"
 	access = list(access_bar)
@@ -105,7 +115,7 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/watermelon,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/lemon
 		)
-	cost = 50
+	cost = 350
 	containertype = /obj/structure/closet/crate
 	containername = "soft drinks crate"
 	group = "Reagents"
@@ -122,7 +132,7 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/tea,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ice
 		)
-	cost = 50
+	cost = 350
 	containertype = /obj/structure/closet/crate
 	containername = "coffee drinks crate"
 	group = "Reagents"
@@ -141,7 +151,7 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge
 		)
-	cost = 15
+	cost = 40
 	containertype = /obj/structure/closet/crate
 	containername = "dispenser cartridge crate"
 	group = "Reagents"

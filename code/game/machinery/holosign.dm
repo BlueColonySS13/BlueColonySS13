@@ -14,6 +14,8 @@
 	var/on_icon = "sign_on"
 	var/off_icon = "sign_off"
 
+	unique_save_vars = list("id", "lit")
+
 /obj/machinery/holosign/proc/toggle()
 	if(stat & (BROKEN|NOPOWER))
 		return

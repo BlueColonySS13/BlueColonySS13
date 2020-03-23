@@ -378,7 +378,7 @@
 	path = /obj/item/clothing/under/dress/sailordress
 
 /datum/gear/uniform/dresses/eveninggown
-	display_name = "red evening gown"
+	display_name = "evening gown"
 	path = /obj/item/clothing/under/dress/redeveninggown
 
 /datum/gear/uniform/dresses/eveninggown/New()

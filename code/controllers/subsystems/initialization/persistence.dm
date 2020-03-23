@@ -5,12 +5,12 @@ SUBSYSTEM_DEF(persistence)
 	var/list/tracking_values = list()
 	var/list/persistence_datums = list()
 
-/datum/controller/subsystem/persistence/Initialize()
-	. = ..()
+/datum/controller/subsystem/persistence/Initialize(timeofday)
 	for(var/thing in subtypesof(/datum/persistent))
 		var/datum/persistent/P = new thing
 		persistence_datums[thing] = P
 		P.Initialize()
+	. = ..()
 
 /datum/controller/subsystem/persistence/Shutdown()
 	for(var/thing in persistence_datums)

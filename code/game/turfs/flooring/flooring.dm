@@ -52,6 +52,7 @@ var/list/flooring_types
 	var/can_engrave = FALSE
 
 	var/floor_material
+	var/floor_color
 	var/applies_material_color = FALSE
 
 /decl/flooring/grass
@@ -319,6 +320,8 @@ var/list/flooring_types
 	has_damage_range = null
 	flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/yellow
+
+	floor_color = COLOR_BROWN
 
 /decl/flooring/tiling/dark
 	name = "floor"

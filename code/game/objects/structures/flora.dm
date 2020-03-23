@@ -159,11 +159,15 @@
 	plane = OBJ_PLANE
 
 	var/obj/item/stored_item
+	table_drag = TRUE
 
 /obj/structure/flora/pottedplant/on_persistence_load()
+	if(isemptylist(contents))
+		return TRUE
+
 	if(contents[1])
 		stored_item = contents[1]
-	..()
+		..()
 
 /obj/structure/flora/pottedplant/examine(mob/user)
 	..()

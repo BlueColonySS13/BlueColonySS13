@@ -4,7 +4,7 @@
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0
 	var/maximum_volume = 100
-	var/atom/my_atom = null
+	var/tmp/atom/my_atom = null
 
 /datum/reagents/New(var/max = 100, atom/A = null)
 	..()
@@ -137,7 +137,9 @@
 				handle_reactions()
 			if(my_atom)
 				my_atom.on_reagent_change()
-			return 1
+
+			return current
+
 	var/datum/reagent/D = chemical_reagents_list[id]
 	if(D)
 		var/datum/reagent/R = new D.type()
@@ -150,7 +152,9 @@
 			handle_reactions()
 		if(my_atom)
 			my_atom.on_reagent_change()
-		return 1
+
+		return R
+
 	else
 		crash_with("[my_atom] attempted to add a reagent called '[id]' which doesn't exist. ([usr])")
 	return 0

@@ -115,8 +115,12 @@
 	color_weight = 20
 
 /datum/reagent/paint/touch_turf(var/turf/T)
-	if(istype(T) && !istype(T, /turf/space))
-		T.color = color
+	if(istype(T, /turf/simulated/wall))
+		var/turf/simulated/wall/wall = T
+		wall.paint_color = color
+	else
+		if(istype(T) && !istype(T, /turf/space))
+			T.color = color
 
 /datum/reagent/paint/touch_obj(var/obj/O)
 	if(istype(O))
@@ -565,7 +569,7 @@
 	taste_description = "feces and urine"
 	reagent_state = LIQUID
 	color = "#757547"
-	
+
 /datum/reagent/nutriment/biomass
 	name = "Biomass"
 	id = "biomass"

@@ -3,10 +3,13 @@
 
 // The item price in credits. atom/movable so we can also assign a price to animals and other things.
 /atom/movable/var/price_tag = null
+/atom/movable/var/tagged_price = null
 /atom/movable/var/tax_type = null
 
 // The proc that is called when the price is being asked for. Use this to refer to another object if necessary.
 /atom/movable/proc/get_item_cost()
+	if(!isnull(tagged_price))
+		return round(tagged_price)
 	return round(price_tag)
 
 // TAXES
@@ -103,7 +106,7 @@
 /datum/lot/proc/get_item_cost()
 	return price
 
-/datum/lot/proc/get_tax()
+/datum/lot/get_tax()
 	return HOUSING_TAX
 
 // Juices, soda and similar //
@@ -164,6 +167,9 @@
 
 
 /obj/item/weapon/reagent_containers/get_item_cost()
+	if(!isnull(tagged_price))
+		return round(tagged_price)
+
 	var/total_price
 
 	if(reagents)
@@ -203,6 +209,9 @@
 ////////////////////
 
 /obj/item/stack/get_item_cost()
+	if(!isnull(tagged_price))
+		return round(tagged_price)
+
 	var/total_price
 
 	if(reagents)
