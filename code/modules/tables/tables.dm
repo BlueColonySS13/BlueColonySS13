@@ -300,10 +300,11 @@
 		return ..()
 
 /obj/structure/table/MouseDrop_T(obj/O as obj, mob/user as mob)
-	if(O.table_drag && !O.anchored)	// you can place potted plants on tables by click dragging them.
-		O.forceMove(get_turf(src))
-		O.pixel_y = O.table_shift
-		return
+	if(istype(O, /obj))
+		if(O.table_drag && !O.anchored)	// you can place potted plants on tables by click dragging them.
+			O.forceMove(get_turf(src))
+			O.pixel_y = O.table_shift
+			return
 
 	if ((!( istype(O, /obj/item/weapon) ) ||  user.get_active_hand() != O))
 		return ..()
@@ -394,7 +395,7 @@
 /obj/structure/table/proc/remove_material(obj/item/weapon/W, mob/user)
 	material = common_material_remove(user, material, 20 * W.toolspeed, "plating", "bolts", W.usesound)
 
-/obj/structure/table/proc/dismantle(obj/item/W, mob/user)
+/obj/structure/table/dismantle(obj/item/W, mob/user)
 	if(manipulating) return
 	manipulating = 1
 	user.visible_message("<span class='notice'>\The [user] begins dismantling \the [src].</span>",

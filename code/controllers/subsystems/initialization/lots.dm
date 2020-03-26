@@ -19,6 +19,13 @@ SUBSYSTEM_DEF(lots)
 	. = ..()
 
 
+/datum/controller/subsystem/lots/proc/backup_all_lots()
+	for(var/datum/lot/lots in all_lots)
+		lots.backup_lot()
+		CHECK_TICK
+
+	return 1
+
 
 /datum/controller/subsystem/lots/proc/save_all_lots()
 	for(var/datum/lot/lots in all_lots)

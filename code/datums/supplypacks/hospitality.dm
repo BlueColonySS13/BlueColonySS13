@@ -116,6 +116,45 @@
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Sol Confectionaries"
 
+/datum/supply_pack/hospitality/baking_supplies
+	name = "Baking Supplies"
+	contains = list(
+		/obj/item/weapon/reagent_containers/food/condiment/flour = 5,
+		/obj/item/weapon/reagent_containers/food/condiment/sugar = 5,
+		/obj/item/weapon/reagent_containers/food/condiment/cornoil = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/enzyme = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/hotsauce = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/soysauce = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/ketchup = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/small/peppermill = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/small/saltshaker = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/small/sugar = 1
+		)
+	cost = 150
+	containertype = /obj/structure/closet/crate
+	containername = "Baking Supplies"
+
+/datum/supply_pack/hospitality/beer_keg
+	name = "Beer Keg"
+	contains = list(
+		/obj/structure/reagent_dispensers/beerkeg = 1,
+		)
+	cost = 100
+	containertype = /obj/structure/closet/crate/large
+	containername = "Beer Keg"
+
+/datum/supply_pack/hospitality/animal_produce
+	name = "Animal Produce"
+	contains = list(
+		/obj/item/weapon/reagent_containers/food/snacks/meat = 10,
+		/obj/item/weapon/storage/fancy/egg_box = 2,
+		/obj/item/weapon/reagent_containers/food/drinks/milk = 8,
+		/obj/item/weapon/reagent_containers/food/drinks/soymilk = 8
+		)
+	cost = 50
+	containertype = /obj/structure/closet/crate
+	containername = "Animal Produce"
+
 /datum/supply_pack/hospitality/gifts
 	name = "Gift crate"
 	contains = list(

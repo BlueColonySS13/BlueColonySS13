@@ -46,6 +46,8 @@
 
 	var/default_layer = OBJ_LAYER
 
+	dont_save = TRUE // no free cars for you
+
 	buckle_delay = 5
 	unbuckle_delay = 5
 //-------------------------------------------

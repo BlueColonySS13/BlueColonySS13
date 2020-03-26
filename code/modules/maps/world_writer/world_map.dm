@@ -66,6 +66,8 @@
 	MO.savedtype = O.type
 
 	for(var/V in O.vars_to_save() )
+		if(!(V in O.vars))
+			continue
 		if(!(O.vars[V] == initial(O.vars[V])))
 			if(!istext(O.vars[V]) && !isnum(O.vars[V]))	// make sure all references to mobs/objs/turfs etc, are fully cut!
 				continue
@@ -106,11 +108,8 @@
 	if(!isemptylist(reagent_data) && istype(O, /obj/item/weapon/reagent_containers))
 		var/obj/item/weapon/reagent_containers/container = O
 		container.unpack_persistence_data(reagent_data)
-
-	if(!O.on_persistence_load())
-		throw EXCEPTION("[O] failed persistence load.")
-
 	O.load_persistent_metadata(metadata)
+	O.on_persistence_load()
 
 	return TRUE
 
@@ -142,6 +141,8 @@
 
 
 		for(var/V in T.vars_to_save() )
+			if(!(V in T.vars))
+				continue
 			if(!(T.vars[V] == initial(T.vars[V])))
 				MT.turf_vars[V] = T.vars[V]
 
@@ -221,22 +222,23 @@
 	if(!full_map) return 0
 
 	for(var/datum/map_turf/MT in full_map)
+		var/change_turf = TRUE
 		if(!ispath(MT.turf_type))
-			throw EXCEPTION("Undefined save type [MT.turf_type]")
-			continue
+			error("Undefined save type [MT.turf_type]")
+			change_turf = FALSE
+
 		var/turf/newturf = locate(MT.x,MT.y,MT.z)
 
 		if(!newturf)
 			continue
 
-		newturf.ChangeTurf(MT.turf_type, 0, 1)
+		if(change_turf)
+			newturf.ChangeTurf(MT.turf_type, 0, 1)
 
 		newturf.decals = MT.decals
 		newturf.update_icon()
 
 		newturf.on_persistence_load()
-		if(!newturf.on_persistence_load())
-			throw EXCEPTION("[newturf] failed persistence load.")
 		for(var/V in newturf.vars_to_save())
 			if(MT.turf_vars[V])
 				newturf.vars[V] = MT.turf_vars[V]
@@ -244,7 +246,7 @@
 
 		for(var/datum/map_object/MO in MT.map_objects)
 			if(!ispath(MO.savedtype))
-				throw EXCEPTION("Undefined save type [MO.savedtype]")
+				error("Undefined save type [MO.savedtype]")
 				continue
 
 			var/obj/O = new MO.savedtype ( newturf.loc )
@@ -254,7 +256,7 @@
 			// first loop
 			for(var/datum/map_object/MO_2 in MO.contents)
 				if(!ispath(MO_2.savedtype))
-					throw EXCEPTION("Undefined save type [MO_2.savedtype] (in [MO])")
+					error("Undefined save type [MO_2.savedtype] (in [MO])")
 					continue
 				var/obj/A = new MO_2.savedtype (O)
 				CHECK_TICK
@@ -263,7 +265,7 @@
 				// second loop
 				for(var/datum/map_object/MO_3 in MO_2.contents)
 					if(!ispath(MO_3.savedtype))
-						throw EXCEPTION("Undefined save type [MO_3.savedtype] (in [MO_2])")
+						error("Undefined save type [MO_3.savedtype] (in [MO_2])")
 						continue
 					var/obj/B = new MO_3.savedtype (A)
 					CHECK_TICK
@@ -272,7 +274,7 @@
 					// third loop
 					for(var/datum/map_object/MO_4 in MO_3.contents)
 						if(!ispath(MO_4.savedtype))
-							throw EXCEPTION("Undefined save type [MO_4.savedtype] (in [MO_3])")
+							error("Undefined save type [MO_4.savedtype] (in [MO_3])")
 							continue
 						var/obj/C = new MO_4.savedtype (B)
 						CHECK_TICK
@@ -281,7 +283,7 @@
 						// third loop
 						for(var/datum/map_object/MO_5 in MO_4.contents)
 							if(!ispath(MO_5.savedtype))
-								throw EXCEPTION("Undefined save type [MO_5.savedtype] (in [MO_4])")
+								error("Undefined save type [MO_5.savedtype] (in [MO_4])")
 								continue
 							var/obj/D = new MO_5.savedtype (C)
 							CHECK_TICK

@@ -12,10 +12,15 @@
 	var/list/blend_objects = newlist() // Objects which to blend with
 	var/list/noblend_objects = newlist() //Objects to avoid blending with (such as children of listed blend objects.
 
-/obj/structure/Destroy()
+/obj/structure/on_persistence_load()
+	update_connections(1)
+	update_icon()
+
+/obj/structure/proc/dismantle()
 	if(parts)
 		new parts(loc)
-	. = ..()
+	qdel(src)
+	return
 
 /obj/structure/proc/update_connections(propagate = 0)
 	var/list/dirs = list()
@@ -89,11 +94,11 @@
 /obj/structure/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			qdel(src)
+			dismantle()
 			return
 		if(2.0)
 			if(prob(50))
-				qdel(src)
+				dismantle()
 				return
 		if(3.0)
 			return
@@ -235,5 +240,5 @@
 		return 0
 	visible_message("<span class='danger'>[user] [attack_verb] the [src] apart!</span>")
 	user.do_attack_animation(src)
-	spawn(1) qdel(src)
+	spawn(1) dismantle()
 	return 1

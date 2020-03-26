@@ -10,6 +10,8 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 
+	unique_save_vars = list("id")
+
 /obj/machinery/button/attack_ai(mob/user as mob)
 	return attack_hand(user)
 

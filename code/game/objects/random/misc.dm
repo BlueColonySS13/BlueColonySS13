@@ -650,7 +650,7 @@
 	name = "random potted plant"
 	desc = "A random type of potted plant."
 
-/obj/random/plant/item_to_spawn()
+/obj/random/pottedplant/item_to_spawn()
 	return pick(/obj/structure/flora/pottedplant/large,
 				/obj/structure/flora/pottedplant/fern,
 				/obj/structure/flora/pottedplant/overgrown,

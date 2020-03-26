@@ -862,7 +862,7 @@
 
 	if(contents[1])
 		stored_item = contents[1]
-		..()
+
 
 /obj/structure/plushie/attack_hand(mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -961,7 +961,7 @@
 
 	if(contents[1])
 		stored_item = contents[1]
-		..()
+
 
 /obj/item/toy/plushie/examine(mob/user)
 	..()

@@ -18,7 +18,6 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/on_persistence_load()
 	update_plant_info(loc, plantname)
-	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/get_item_cost()
 	if(seed)

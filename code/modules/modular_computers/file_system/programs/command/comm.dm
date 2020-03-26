@@ -145,7 +145,7 @@
 		if("edit_service_expenses")
 			. = 1
 
-			var/list/potential_services = list("Carp Control", "Gr3y.T1d3 Firewall","Meteor Prrofing") // this can be optimised
+			var/list/potential_services = list("Carp Control", "Gr3y.T1d3 Firewall", "Meteor Proofing") // this can be optimised
 
 			var/service = input(usr, "Please select which service you'd like to edit.", "Select Service") as null|anything in potential_services
 			if(!service) return

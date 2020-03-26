@@ -39,50 +39,74 @@
 	name = "Imported carpet"
 	containertype = /obj/structure/closet/crate
 	containername = "Imported carpet crate"
-	cost = 30
+	cost = 50
 	contains = list(
 					/obj/fiftyspawner/carpet,
-					/obj/fiftyspawner/tealcarpet
+					/obj/fiftyspawner/tealcarpet,
+					/obj/fiftyspawner/blucarpet,
+					/obj/fiftyspawner/turcarpet,
+					/obj/fiftyspawner/sblucarpet,
+					/obj/fiftyspawner/gaycarpet,
+					/obj/fiftyspawner/purcarpet,
+					/obj/fiftyspawner/oracarpet
 					)
 
 //wood zone
-/datum/supply_pack/materials/wood50
+/datum/supply_pack/materials/wood
 	name = "50 wooden planks"
 	contains = list(/obj/item/stack/material/wood/fifty)
 	cost = 30
 	containername = "wooden planks crate"
 
-/datum/supply_pack/materials/mahogany25
-	name = "25 mahogany planks"
-	contains = list(/obj/item/stack/material/wood/mahogany/twentyfive)
+/datum/supply_pack/materials/mahogany
+	name = "50 mahogany planks"
+	contains = list(/obj/fiftyspawner/wood/mahogany)
 	cost = 50
 	containername = "wooden planks crate"
 
-/datum/supply_pack/materials/maple25
-	name = "25 maple planks"
-	contains = list(/obj/item/stack/material/wood/maple/twentyfive = 2)
+/datum/supply_pack/materials/maple
+	name = "50 maple planks"
+	contains = list(/obj/fiftyspawner/wood/maple)
 	cost = 50
-	containername = "wooden planks crate"
+	containername = "maple planks crate"
 
-/datum/supply_pack/materials/walnut25
-	name = "25 walnut planks"
-	contains = list(/obj/item/stack/material/wood/walnut/twentyfive)
+/datum/supply_pack/materials/walnut
+	name = "50 walnut planks"
+	contains = list(/obj/fiftyspawner/wood/walnut)
 	cost = 50
 	containername = "walnut planks crate"
 
-/datum/supply_pack/materials/ebony25
-	name = "25 ebony planks"
-	contains = list(/obj/item/stack/material/wood/ebony/twentyfive)
-	cost = 55 //luxury tax
+/datum/supply_pack/materials/ebony
+	name = "50 ebony planks"
+	contains = list(/obj/fiftyspawner/wood/ebony)
+	cost = 60 //luxury tax
 	containername = "ebony planks crate"
 
+/datum/supply_pack/materials/bamboo
+	name = "50 bamboo planks"
+	contains = list(/obj/fiftyspawner/wood/bamboo)
+	cost = 50
+	containername = "bamboo planks crate"
+
+/datum/supply_pack/materials/yew
+	name = "50 yew planks"
+	contains = list(/obj/fiftyspawner/wood/yew)
+	cost = 60 //luxury tax
+	containername = "bamboo planks crate"
 
 /datum/supply_pack/misc/linoleum
-	name = "Linoleum"
+	name = "linoleum"
 	containertype = /obj/structure/closet/crate
 	containername = "Linoleum crate"
 	cost = 15
 	contains = list(/obj/fiftyspawner/linoleum)
+
+/datum/supply_pack/misc/diamond_tiles
+	name = "diamond design tiles"
+	containertype = /obj/structure/closet/crate
+	containername = "diamond design tiles crate"
+	cost = 25
+	contains = list(/obj/fiftyspawner/diamond_tiles)
 
 /datum/supply_pack/materials/road50
 	name = "50 road tiles"
@@ -108,7 +132,8 @@
 /datum/supply_pack/materials/tailor_materials
 	name = "Fine Tailoring Materials"
 	contains = list(/obj/fiftyspawner/silk = 3,
-	/obj/fiftyspawner/cotton = 3)
+	/obj/fiftyspawner/cotton = 3,
+	/obj/fiftyspawner/leather = 2)
 	cost = 700
 	containertype = /obj/structure/closet/crate
 	containername = "Fine Tailoring Materials"

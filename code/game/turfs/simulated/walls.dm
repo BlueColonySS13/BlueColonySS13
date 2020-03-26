@@ -40,6 +40,39 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
+/turf/simulated/wall/on_persistence_load()
+	update_connections(1)
+	update_icon()
+
+/turf/simulated/wall/get_persistent_metadata()
+	if(!material)
+		return FALSE
+
+	var/list/wall_data = list()
+	wall_data["material"] = material.name
+	if(reinf_material)
+		wall_data["reinf_material"] = reinf_material.name
+	if(girder_material)
+		wall_data["girder_material"] = girder_material.name
+
+	return wall_data
+
+/turf/simulated/wall/load_persistent_metadata(metadata)
+	var/list/wall_data = metadata
+	if(!islist(wall_data))
+		return
+	if(get_material_by_name(wall_data["material"]))
+		material = get_material_by_name(wall_data["material"])
+	if(get_material_by_name(wall_data["reinforced"]))
+		reinf_material = get_material_by_name(wall_data["reinforced"])
+	if(get_material_by_name(wall_data["girder_material"]))
+		reinf_material = get_material_by_name(wall_data["girder_material"])
+	update_material()
+	update_icon()
+
+	return TRUE
+
+
 /turf/simulated/wall/New(var/newloc, var/materialtype, var/rmaterialtype, var/girdertype)
 	..(newloc)
 	icon_state = "blank"

@@ -11,6 +11,9 @@
 	var/list/frame_types_floor
 	var/list/frame_types_wall
 
+	var/is_floor_frame = TRUE
+	var/is_wall_frame = FALSE
+
 /obj/item/frame/proc/update_type_list()
 	if(!frame_types_floor)
 		frame_types_floor = construction_frame_floor
@@ -45,9 +48,38 @@
 		return
 
 	var/obj/machinery/M = new build_machine_type(get_turf(src.loc), ndir, 1, frame_type)
-	M.fingerprints = fingerprints
-	M.fingerprintshidden = fingerprintshidden
-	M.fingerprintslast = fingerprintslast
+
+	if(is_wall_frame)
+		// Automatically place it in the right direction/pixel it.
+		if(M.pixel_x == 0 && M.pixel_y == 0)
+
+			var/turf/here = get_turf(M)
+			var/placing = 0
+			for(var/checkdir in GLOB.cardinal)
+				var/turf/T = get_step(here, checkdir)
+				if(T.density)
+					placing = checkdir
+					break
+				for(var/thing in T)
+					var/atom/O = thing
+					if(O.simulated && !O.CanPass(src, T))
+						placing = checkdir
+						break
+			switch(placing)
+				if(NORTH)
+					M.pixel_x = 0
+					M.pixel_y = 30
+				if(SOUTH)
+					M.pixel_x = 0
+					M.pixel_y = -30
+				if(EAST)
+					M.pixel_x = 30
+					M.pixel_y = 0
+				if(WEST)
+					M.pixel_x = -30
+					M.pixel_y = 0
+
+	M.add_fingerprint(user)
 	if(istype(src.loc, /obj/item/weapon/gripper)) //Typical gripper shenanigans
 		user.drop_item()
 	qdel(src)
@@ -68,14 +100,20 @@
 		return
 
 	var/turf/loc = get_turf(user)
-	var/area/A = loc.loc
-	if(!istype(loc, /turf/simulated/floor))
-		to_chat(user, "<span class='danger'>\The frame cannot be placed on this spot.</span>")
-		return
 
-	if((A.requires_power == 0 || A.name == "Space")&& !isLightFrame())
-		to_chat(user, "<span class='danger'>\The [src] Alarm cannot be placed in this area.</span>")
-		return
+	if(is_floor_frame && !is_wall_frame)
+		if(!loc.is_floor())
+			to_chat(user, "<span class='danger'>\The frame cannot be placed on this spot.</span>")
+			return
+
+	if(is_wall_frame && !is_floor_frame)
+		if(!loc.is_wall())
+			to_chat(user, "<span class='danger'>\The frame cannot be placed on this spot.</span>")
+			return
+
+//	if((A.requires_power == 0 || A.is_space() )&& !isLightFrame())
+//		to_chat(user, "<span class='danger'>\The [src] Alarm cannot be placed in this area.</span>")
+//		return
 
 	if(gotwallitem(loc, ndir))
 		to_chat(user, "<span class='danger'>There's already an item on this wall!</span>")
@@ -94,9 +132,38 @@
 			new /obj/item/stack/material/steel(user.loc, (5 - frame_type.frame_size))
 
 	var/obj/machinery/M = new build_machine_type(loc, ndir, 1, frame_type)
-	M.fingerprints = fingerprints
-	M.fingerprintshidden = fingerprintshidden
-	M.fingerprintslast = fingerprintslast
+	M.add_fingerprint(user)
+
+	if(is_wall_frame)
+		// Automatically place it in the right direction/pixel it.
+		if(M.pixel_x == 0 && M.pixel_y == 0)
+
+			var/turf/here = get_turf(M)
+			var/placing = 0
+			for(var/checkdir in GLOB.cardinal)
+				var/turf/T = get_step(here, checkdir)
+				if(T.density)
+					placing = checkdir
+					break
+				for(var/thing in T)
+					var/atom/O = thing
+					if(O.simulated && !O.CanPass(src, T))
+						placing = checkdir
+						break
+			switch(placing)
+				if(NORTH)
+					M.pixel_x = 0
+					M.pixel_y = 30
+				if(SOUTH)
+					M.pixel_x = 0
+					M.pixel_y = -30
+				if(EAST)
+					M.pixel_x = 30
+					M.pixel_y = 0
+				if(WEST)
+					M.pixel_x = -30
+					M.pixel_y = 0
+
 	if(istype(src.loc, /obj/item/weapon/gripper)) //Typical gripper shenanigans
 		user.drop_item()
 	qdel(src)
@@ -111,6 +178,8 @@
 	icon_state = "safe"
 	refund_amt = 3
 	build_machine_type = /obj/item/weapon/storage/secure/safe
+	is_wall_frame = TRUE
+	is_floor_frame = FALSE
 
 /obj/item/frame/light
 	name = "light fixture frame"
@@ -118,6 +187,7 @@
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube-construct-item"
 	build_machine_type = /obj/machinery/light_construct
+	is_wall_frame = TRUE
 	reverse = 1
 
 /obj/item/frame/light/isLightFrame()
@@ -129,11 +199,13 @@
 	refund_amt = 1
 	build_machine_type = /obj/machinery/light_construct/small
 
-/obj/item/frame/light/small
-	name = "small light fixture frame"
+/obj/item/frame/light/floor
+	name = "small floor fixture frame"
 	icon_state = "bulb-construct-item"
 	refund_amt = 1
-	build_machine_type = /obj/machinery/light_construct/small
+	build_machine_type = /obj/machinery/light_construct/floor
+	is_wall_frame = TRUE
+	is_floor_frame = TRUE
 
 /obj/item/frame/extinguisher_cabinet
 	name = "extinguisher cabinet frame"
@@ -142,6 +214,39 @@
 	icon_state = "extinguisher_empty"
 	refund_amt = 4
 	build_machine_type = /obj/structure/extinguisher_cabinet
+	is_wall_frame = TRUE
+	is_floor_frame = FALSE
+
+/obj/item/frame/atm
+	name = "ATM frame"
+	desc = "Used for building ATMs."
+	icon = 'icons/obj/terminals.dmi'
+	icon_state = "atm"
+	refund_amt = 4
+	build_machine_type = /obj/machinery/atm
+	is_wall_frame = TRUE
+	is_floor_frame = FALSE
+
+/obj/item/frame/keypad_airlock
+	name = "Keypad Airlock"
+	desc = "Used for building keypad airlocks."
+	icon = 'icons/obj/doors/station/door.dmi'
+	icon_state = "closed"
+	refund_amt = 4
+	build_machine_type = /obj/machinery/door/airlock/keypad
+	is_wall_frame = FALSE
+	is_floor_frame = TRUE
+
+/obj/item/frame/keypad_windoor
+	name = "Keypad Window Door"
+	desc = "Used for building keypad window doors."
+	icon = 'icons/obj/doors/windoor.dmi'
+	icon_state = "left"
+	refund_amt = 4
+	build_machine_type = /obj/machinery/door/window/keypad
+	is_wall_frame = FALSE
+	is_floor_frame = TRUE
+
 
 /obj/item/frame/noticeboard
 	name = "noticeboard frame"
@@ -151,6 +256,8 @@
 	refund_amt = 4
 	refund_type = /obj/item/stack/material/wood
 	build_machine_type = /obj/structure/noticeboard
+	is_wall_frame = TRUE
+	is_floor_frame = FALSE
 
 /obj/item/frame/mirror
 	name = "mirror frame"
@@ -159,6 +266,8 @@
 	icon_state = "mirror_frame"
 	refund_amt = 1
 	build_machine_type = /obj/structure/mirror
+	is_wall_frame = TRUE
+	is_floor_frame = FALSE
 
 /obj/item/frame/fireaxe_cabinet
 	name = "fire axe cabinet frame"
@@ -167,46 +276,111 @@
 	icon_state = "fireaxe1000"
 	refund_amt = 4
 	build_machine_type = /obj/structure/closet/fireaxecabinet
+	is_wall_frame = TRUE
+	is_floor_frame = FALSE
+
+
+/obj/item/frame/display_case
+	name = "electronic display case frame"
+	desc = "Used for building display cases."
+	icon = 'icons/obj/display_case.dmi'
+	icon_state = "preview"
+	refund_amt = 4
+	build_machine_type = /obj/machinery/electronic_display_case
+	is_wall_frame = FALSE
+	is_floor_frame = TRUE
+
+
+/obj/item/frame/shutters
+	name = "blast shutters frame"
+	desc = "Used for building blast shutters."
+	icon = 'icons/obj/doors/rapid_pdoor.dmi'
+	icon_state = "shutter1"
+	refund_amt = 4
+	build_machine_type = /obj/machinery/door/blast/shutters
+	is_wall_frame = FALSE
+	is_floor_frame = TRUE
+
+
+/obj/item/frame/shutters/regular
+	name = "blast door frame"
+	desc = "Used for building blast doors."
+	icon = 'icons/obj/doors/rapid_pdoor.dmi'
+	icon_state = "pdoor1"
+	refund_amt = 4
+	build_machine_type = /obj/machinery/door/blast/regular
+	is_wall_frame = FALSE
+	is_floor_frame = TRUE
+
+/obj/item/frame/thick_gate
+	name = "thick gate frame"
+	desc = "Used for building thick gates."
+	icon = 'icons/obj/doors/city_shutters.dmi'
+	icon_state = "shutter1"
+	refund_amt = 4
+	build_machine_type = /obj/machinery/door/blast/gate
+	is_wall_frame = FALSE
+	is_floor_frame = TRUE
+
+/obj/item/frame/thin_gate
+	name = "thin gate frame"
+	desc = "Used for building thin gates."
+	icon = 'icons/obj/doors/city_shutters.dmi'
+	icon_state = "shutter2_1"
+	refund_amt = 4
+	build_machine_type = /obj/machinery/door/blast/gate/thin
+	is_wall_frame = FALSE
+	is_floor_frame = TRUE
 
 /obj/item/frame/plastic
 	refund_type = /obj/item/stack/material/plastic
 
 /obj/item/frame/plastic/sink
-	name = "Sink Frame"
+	name = "sink frame"
 	desc = "Used for building Sinks"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "sink"
 	refund_amt = 2
 	build_machine_type = /obj/structure/sink
+	is_wall_frame = TRUE
+	is_floor_frame = FALSE
 
 /obj/item/frame/plastic/kitchensink
-	name = "Kitchen Sink Frame"
+	name = "kitchen Sink frame"
 	desc = "Used for building Kitchen Sinks"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "sink_alt"
 	refund_amt = 2
 	build_machine_type = /obj/structure/sink/kitchen
+	is_wall_frame = TRUE
+	is_floor_frame = FALSE
 
 /obj/item/frame/plastic/toilet
-	name = "toilet Frame"
+	name = "toilet frame"
 	desc = "Used for making toilets."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "toilet00"
 	refund_amt = 2
 	build_machine_type = /obj/structure/sink/kitchen
+	is_wall_frame = TRUE
+	is_floor_frame = FALSE
 
 /obj/item/frame/plastic/urinal
-	name = "urinals Frame"
+	name = "urinals frame"
 	desc = "Used for making urinals."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "urinal"
 	refund_amt = 2
 	build_machine_type = /obj/structure/urinal
+	is_wall_frame = TRUE
+	is_floor_frame = FALSE
 
 /obj/item/frame/plastic/shower
-	name = "shower Frame"
+	name = "shower frame"
 	desc = "Used for building showers"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "shower"
 	refund_amt = 2
 	build_machine_type = /obj/machinery/shower
+	is_wall_frame = TRUE
+	is_floor_frame = TRUE

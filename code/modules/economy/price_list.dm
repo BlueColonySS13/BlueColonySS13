@@ -12,6 +12,9 @@
 		return round(tagged_price)
 	return round(price_tag)
 
+/atom/movable/proc/get_full_cost()	// with tax
+	return (get_item_cost() + post_tax_cost())
+
 // TAXES
 
 /atom/movable/proc/get_tax()

@@ -210,11 +210,29 @@
 
 
 /datum/supply_pack/misc/umbrella
-	name = "Umbrella"
-	containername = "Umbrella"
+	name = "Umbrella crate"
+	containername = "Umbrella crate"
 	containertype = "/obj/structure/closet/crate"
 	cost = 15
 	contains = list(
 				/obj/item/weapon/melee/umbrella/random = 5
 				)
 	containertype = "/obj/structure/closet/crate"
+
+
+/datum/supply_pack/misc/mre_rations
+	num_contained = 6
+	name = "Emergency - MREs"
+	contains = list(/obj/item/weapon/storage/mre,
+					/obj/item/weapon/storage/mre/menu2,
+					/obj/item/weapon/storage/mre/menu3,
+					/obj/item/weapon/storage/mre/menu4,
+					/obj/item/weapon/storage/mre/menu5,
+					/obj/item/weapon/storage/mre/menu6,
+					/obj/item/weapon/storage/mre/menu7,
+					/obj/item/weapon/storage/mre/menu8,
+					/obj/item/weapon/storage/mre/menu9,
+					/obj/item/weapon/storage/mre/menu10)
+	cost = 400
+	containertype = /obj/structure/closet/crate/freezer
+	containername = "ready to eat rations"

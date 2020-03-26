@@ -115,6 +115,14 @@
 		if(D.account_number == account_number)
 			return D
 
+/proc/check_account_exists(var/account_number)
+	for(var/datum/money_account/D in GLOB.all_money_accounts)
+		if(D.account_number == account_number)
+			return TRUE
+
+	if(check_persistent_account(account_number))
+		return TRUE
+
 /proc/create_transaction_log(name, purpose, amount = 0, terminal_id = "Terminal #[rand(111,999)]", date = GLOB.current_date_string, time = stationtime2text())
 	var/datum/transaction/T = new()
 

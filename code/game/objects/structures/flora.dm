@@ -167,7 +167,6 @@
 
 	if(contents[1])
 		stored_item = contents[1]
-		..()
 
 /obj/structure/flora/pottedplant/examine(mob/user)
 	..()

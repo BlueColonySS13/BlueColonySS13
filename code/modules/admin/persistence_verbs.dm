@@ -116,3 +116,20 @@
 		return 0
 
 	debug_variables(news_data)
+
+
+/client/proc/backup_all_lots()
+	set category = "Persistence"
+	set name = "Backup Lots"
+	set desc = "Makes backups of all lots in game."
+
+	if(!holder)
+		to_chat(usr,"<font color='red'>Only admins can use this command!</font>")
+		return 0
+
+	if(SSlots)
+		SSlots.backup_all_lots()
+		to_chat(usr,"<b>Lot data has been backed up!</b>")
+
+	else
+		to_chat(usr,"<b>Could not find lots controller, has it booted yet?</b>")

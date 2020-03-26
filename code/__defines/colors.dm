@@ -140,6 +140,7 @@
 #define WOOD_COLOR_PALE2       "#e6d2ba"
 #define WOOD_COLOR_BLACK       "#332521"
 #define WOOD_COLOR_CHOCOLATE   "#78523b"
+#define WOOD_COLOR_YELLOW      "#e3994e"
 
 #define CODEX_COLOR_ANTAG     "#e5a2a2"
 
