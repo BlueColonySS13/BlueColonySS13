@@ -15,10 +15,10 @@
 	var/dirt = 0
 
 /turf/simulated/vars_to_save()
- 	return list("color","dirt","name","thermite","wet")
+ 	return list("color","dirt","name","thermite","wet")+unique_save_vars
 /turf/simulated/map_important_vars()
 	// A list of important things to save in the map editor
- 	return list("color","dirt","name","thermite","wet")
+ 	return list("color","dirt","name","thermite","wet")+unique_save_vars
 
 // This is not great.
 /turf/simulated/proc/wet_floor(var/wet_val = 1)

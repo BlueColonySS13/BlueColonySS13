@@ -1206,9 +1206,9 @@
 					/obj/item/seeds/poppyseed = 3,/obj/item/seeds/sugarcaneseed = 3,/obj/item/seeds/cannabisseed = 3,/obj/item/seeds/peanutseed = 3,/obj/item/seeds/whitebeetseed = 3,/obj/item/seeds/watermelonseed = 3,/obj/item/seeds/lavenderseed = 3,/obj/item/seeds/limeseed = 3,
 					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2,
 					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3)
+
 	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
-					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,
-					  /obj/item/seeds/chacruna = 2,/obj/item/seeds/caapi = 2, /obj/item/seeds/coca)
+	/obj/item/seeds/nettleseed = 2, /obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2, /obj/item/seeds/chacruna = 2, /obj/item/seeds/caapi = 2, /obj/item/seeds/coca = 4)
 	premium = list(/obj/item/toy/waterflower = 1)
 
 	charge_free_department = DEPT_BOTANY
@@ -2047,29 +2047,6 @@
 	charge_free_department = DEPT_PUBLIC
 
 	required_pass = /obj/item/weapon/card/foodstamp
-
-/obj/machinery/vending/foodstamp/rations/psp
-	name = "Ration Dispenser"
-	desc = "A vending machine holding self-contained complete meals. This particular machine has the Planetary Security Party's emblem on it."
-	product_slogans = "Have you tried Menu #2? It's pizza time!; It's always Taco Tuesday with Menu #5!; Liberals leave you thirsting for freedom? Wash that despair down with an Instant Grape packet!; Want something to spice up your life? Try Menu #8: Hot Chili!"
-	product_ads = "Order. Unity. Conduct.; Remember the Pillars of civilized society and we shall be successful.; The True Citizen knows the true value of Charity.; Remember, it is great to be part of the Greater Good."
-	vend_delay = 15
-	vend_reply = "Enjoy your delicious ration pack! Remember: it is great to be part of the Greater Good!"
-	icon_state = "rations-psp"
-	shut_up = 0
-	products = list(/obj/item/weapon/storage/mre/menu2 = 5,
-					/obj/item/weapon/storage/mre/menu3 = 5,
-					/obj/item/weapon/storage/mre/menu4 = 5,
-					/obj/item/weapon/storage/mre/menu5 = 5,
-					/obj/item/weapon/storage/mre/menu6 = 5,
-					/obj/item/weapon/storage/mre/menu7 = 5,
-					/obj/item/weapon/storage/mre/menu8 = 5,
-					/obj/item/weapon/storage/mre/menu9 = 5,
-					/obj/item/weapon/storage/mre/menu10 = 5
-					)
-	contraband = list(/obj/item/weapon/storage/mre/menu12 = 5)
-	charge_free_department = DEPT_PUBLIC
-
 
 //armory vending machines, many guns.
 /obj/machinery/vending/armory

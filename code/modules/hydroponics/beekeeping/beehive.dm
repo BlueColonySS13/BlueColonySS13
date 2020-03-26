@@ -163,6 +163,7 @@
 
 	var/processing = 0
 	var/honey = 0
+	circuit = /obj/item/weapon/circuitboard/honey_extractor
 
 /obj/machinery/honey_extractor/attackby(var/obj/item/I, var/mob/user)
 	if(processing)

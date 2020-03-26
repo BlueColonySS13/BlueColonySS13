@@ -30,6 +30,21 @@
 // TODO: rewrite kitchen code to check a var on the meat item so we can remove
 // all these sybtypes.
 /obj/item/weapon/reagent_containers/food/snacks/meat/human
+/obj/item/weapon/reagent_containers/food/snacks/meat/chicken
+/obj/item/weapon/reagent_containers/food/snacks/meat/beef
+/obj/item/weapon/reagent_containers/food/snacks/meat/lamb
+
+/obj/item/weapon/reagent_containers/food/snacks/meat/fish
+	name = "Fish Meat"
+	icon_state = "fishfillet"
+
+/obj/item/weapon/reagent_containers/food/snacks/meat/fish/salmon
+/obj/item/weapon/reagent_containers/food/snacks/meat/fish/trout
+/obj/item/weapon/reagent_containers/food/snacks/meat/fish/bass
+/obj/item/weapon/reagent_containers/food/snacks/meat/fish/perch
+/obj/item/weapon/reagent_containers/food/snacks/meat/fish/pike
+/obj/item/weapon/reagent_containers/food/snacks/meat/fish/carp	// sigh
+
 /obj/item/weapon/reagent_containers/food/snacks/meat/monkey
 	//same as plain meat
 

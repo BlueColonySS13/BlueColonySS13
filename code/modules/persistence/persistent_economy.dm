@@ -134,6 +134,7 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	S["citizenship_vote "] << citizenship_vote
 	S["criminal_vote"] << criminal_vote
 
+	S["base_service_charge"] << base_service_charge
 	S["NT_charge"] << NT_charge
 	S["city_council_control"] << city_council_control
 	S["carp_control"] << carp_control
@@ -194,6 +195,7 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	S["citizenship_vote "] >> citizenship_vote
 	S["criminal_vote"] >> criminal_vote
 
+	S["base_service_charge"] >> base_service_charge
 	S["NT_charge"] >> NT_charge
 	S["city_council_control"] >> city_council_control
 	S["carp_control"] >> carp_control

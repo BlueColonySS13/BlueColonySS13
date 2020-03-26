@@ -8,7 +8,7 @@
 	idle_power_usage = 40
 	var/dye_color = "#FFFFFF"
 	clicksound = "button"
-
+	circuit = /obj/item/weapon/circuitboard/dye_generator
 	var/making = 0
 
 	unique_save_vars = list("dye_color")

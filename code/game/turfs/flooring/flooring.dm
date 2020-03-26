@@ -290,6 +290,7 @@ var/list/flooring_types
 	has_damage_range = null
 	flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/red
+	floor_color = COLOR_RED_GRAY
 
 /decl/flooring/tiling/steel
 	name = "floor"
@@ -371,12 +372,12 @@ var/list/flooring_types
 	icon_base = "tiledwood_check"
 	has_damage_range = 0
 	applies_material_color = FALSE
-	build_type = /obj/item/stack/tile/woodcheck
+	build_type = /obj/item/stack/tile/wood/woodcheck
 
 /decl/flooring/wood/tiledwood
 	icon_base = "tiledwood"
 	has_damage_range = 3
-	build_type = /obj/item/stack/tile/woodtile
+	build_type = /obj/item/stack/tile/wood/woodtile
 
 /decl/flooring/wood/sif
 	name = "alien wooden floor"
@@ -387,20 +388,27 @@ var/list/flooring_types
 
 /decl/flooring/wood/mahogany
 	floor_material = MATERIAL_MAHOGANY
-	build_type = /obj/item/stack/tile/mahogany
+	build_type = /obj/item/stack/tile/wood/mahogany
 
 /decl/flooring/wood/maple
 	floor_material = MATERIAL_MAPLE
-	build_type = /obj/item/stack/tile/maple
+	build_type = /obj/item/stack/tile/wood/maple
 
 /decl/flooring/wood/ebony
 	floor_material = MATERIAL_EBONY
-	build_type = /obj/item/stack/tile/ebony
+	build_type = /obj/item/stack/tile/wood/ebony
 
 /decl/flooring/wood/walnut
 	floor_material = MATERIAL_WALNUT
-	build_type = /obj/item/stack/tile/walnut
+	build_type = /obj/item/stack/tile/wood/walnut
 
+/decl/flooring/wood/bamboo
+	floor_material = MATERIAL_BAMBOO
+	build_type = /obj/item/stack/tile/wood/bamboo
+
+/decl/flooring/wood/yew
+	floor_material = MATERIAL_YEW
+	build_type = /obj/item/stack/tile/wood/yew
 
 /decl/flooring/reinforced
 	name = "reinforced floor"

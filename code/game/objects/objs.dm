@@ -29,7 +29,7 @@
 	return ..()
 
 /obj/examine(mob/user)
-	..()
+	. = ..()
 	if(tagged_price)
 		to_chat(user, "There is a price tag marking [src] to be <b>[cash2text( tagged_price, FALSE, TRUE, TRUE )]</b>.")
 	if(dont_save)

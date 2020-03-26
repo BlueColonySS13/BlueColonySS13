@@ -51,44 +51,63 @@
 	throw_range = 20
 	flags = 0
 	no_variants = FALSE
+	color = WOOD_COLOR_GENERIC
 
-/obj/item/stack/tile/woodcheck
-	name = "checkered tile"
+/obj/item/stack/tile/wood/woodcheck
+	name = "wood checkered tile"
 	icon_state = "tile-woodcheck"
 
-/obj/item/stack/tile/woodtile
+/obj/item/stack/tile/wood/woodtile
 	name = "tiled wood floor tile"
 	icon_state = "tile-woodtiled"
 
-/obj/item/stack/tile/mahogany
+/obj/item/stack/tile/wood/mahogany
 	name = "mahogany floor tile"
 	singular_name = "mahogany floor tile"
 	desc = "An easy to fit mahogany wood floor tile."
 	matter = list(MATERIAL_WOOD = 450)
+	icon_state = "tile-wood"
+	color = WOOD_COLOR_RICH
 
-/obj/item/stack/tile/maple
+/obj/item/stack/tile/wood/maple
 	name = "maple floor tile"
 	singular_name = "maple floor tile"
 	desc = "An easy to fit maple wood floor tile."
 	matter = list(MATERIAL_WOOD = 450)
+	icon_state = "tile-wood"
+	color = WOOD_COLOR_PALE
 
-/obj/item/stack/tile/ebony
+/obj/item/stack/tile/wood/ebony
 	name = "ebony floor tile"
 	singular_name = "ebony floor tile"
 	desc = "An easy to fit ebony floor tile."
 	matter = list(MATERIAL_WOOD = 450)
+	icon_state = "tile-wood"
+	color = WOOD_COLOR_BLACK
 
-/obj/item/stack/tile/walnut
+/obj/item/stack/tile/wood/walnut
 	name = "walnut floor tile"
 	singular_name = "walnut floor tile"
 	desc = "An easy to fit walnut wood floor tile."
 	matter = list(MATERIAL_WOOD = 450)
+	icon_state = "tile-wood"
+	color = WOOD_COLOR_CHOCOLATE
 
-/obj/item/stack/tile/bamboo
+/obj/item/stack/tile/wood/bamboo
 	name = "bamboo floor tile"
 	singular_name = "bamboo floor tile"
 	desc = "An easy to fit bamboo wood floor tile."
 	matter = list(MATERIAL_WOOD = 450)
+	icon_state = "tile-wood"
+	color = WOOD_COLOR_PALE2
+
+/obj/item/stack/tile/wood/yew
+	name = "yew floor tile"
+	singular_name = "yew floor tile"
+	desc = "An easy to fit yew wood floor tile."
+	matter = list(MATERIAL_WOOD = 450)
+	icon_state = "tile-wood"
+	color = WOOD_COLOR_YELLOW
 
 /obj/item/stack/tile/wood/sif
 	name = "alien wood tile"
@@ -281,4 +300,12 @@
 	singular_name = "street pavement tile"
 	desc = "A section of pavement tiling. It is the same size as a normal floor tile!"
 	icon_state = "tile-pavetiling"
+	no_variants = FALSE
+
+/obj/item/stack/tile/diamond
+	name = "black diamond design tile"
+	singular_name = "black diamond design tile"
+	desc = "A diamond shaped design is on this tile. It is the same size as a normal floor tile!"
+	icon_state = "tile-diamond"
+	origin_tech = list(TECH_BIO = 1)
 	no_variants = FALSE

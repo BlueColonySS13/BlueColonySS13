@@ -74,7 +74,7 @@
 		dismantle(user)
 
 
-/obj/structure/bonfire/proc/dismantle(mob/user)
+/obj/structure/bonfire/dismantle(mob/user)
 	if(!burning)
 		user.visible_message("[user] starts dismantling \the [src].", "You start dismantling \the [src].")
 		if(do_after(user, 5 SECONDS))

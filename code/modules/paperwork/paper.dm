@@ -40,6 +40,7 @@
 	var/const/crayonfont = "Comic Sans MS"
 
 	var/last_modified_ckey
+	var/scrap_state = "scrap"
 
 /obj/item/weapon/paper/card
 	name = "blank card"
@@ -192,13 +193,13 @@
 
 /obj/item/weapon/paper/attack_self(mob/living/user as mob)
 	if(user.a_intent == I_HURT)
-		if(icon_state == "scrap")
+		if(icon_state == scrap_state)
 			user.show_message("<span class='warning'>\The [src] is already crumpled.</span>")
 			return
 		//crumple dat paper
 		info = stars(info,85)
 		user.visible_message("\The [user] crumples \the [src] into a ball!")
-		icon_state = "scrap"
+		icon_state = scrap_state
 		return
 	user.examinate(src)
 	if(rigged && (Holiday == "April Fool's Day"))
@@ -554,7 +555,7 @@
 		B.update_icon()
 
 	else if(istype(P, /obj/item/weapon/pen))
-		if(icon_state == "scrap")
+		if(icon_state == scrap_state)
 			usr << "<span class='warning'>\The [src] is too crumpled to write on.</span>"
 			return
 

@@ -18,7 +18,6 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/csandwich/on_persistence_load()
 	ingredients = contents
-	..()
 
 /obj/item/weapon/reagent_containers/food/snacks/csandwich/attackby(obj/item/W as obj, mob/user as mob)
 

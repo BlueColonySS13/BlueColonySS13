@@ -35,11 +35,9 @@
 
 /atom/proc/on_persistence_load()
 	persistence_loaded = FALSE	// turns this off.
-	return TRUE
 
 /atom/proc/on_persistence_save()
 	persistence_loaded = TRUE
-	return TRUE
 
 /atom/proc/get_persistent_metadata()
 	return
@@ -51,18 +49,11 @@
 	return TRUE
 
 /obj/sanitize_for_saving()	// these things build up with time, so this gradually limits the amount so we don't have 5000 fingerprints or anything.
-	if(isnull(suit_fibers))
-		suit_fibers = list()
-	if(isnull(fingerprints))
-		fingerprints = list()
-	if(isnull(fingerprintshidden))
-		fingerprintshidden = list()
-
-	if(!isemptylist(suit_fibers))
+	if(islist(suit_fibers) && !isemptylist(suit_fibers))
 		truncate_oldest(suit_fibers, MAX_FINGERPRINTS)
-	if(!isemptylist(fingerprints))
+	if(islist(fingerprints) && !isemptylist(fingerprints))
 		truncate_oldest(fingerprints, MAX_FINGERPRINTS)
-	if(!isemptylist(fingerprintshidden))
+	if(islist(fingerprintshidden) && !isemptylist(fingerprintshidden))
 		truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 
 	return TRUE
@@ -100,6 +91,9 @@
 	return reagents_to_save
 
 /obj/item/weapon/reagent_containers/proc/unpack_persistence_data(var/list/saved_reagents)
+	if(!reagents)
+		return
+
 	if(isemptylist(saved_reagents))
 		return FALSE
 
@@ -124,9 +118,6 @@
 
 /area/
 	unique_save_vars = list("name")
-
-/turf/
-	unique_save_vars = list("decals")
 
 /atom/serialize()
 	var/list/data = ..()
@@ -184,7 +175,6 @@
 /obj/structure/on_persistence_load()
 	update_connections()
 	update_icon()
-	return TRUE
 
 // Don't save list - Better to keep a track of things here.
 

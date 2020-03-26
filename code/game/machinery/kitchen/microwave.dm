@@ -28,7 +28,6 @@
 		icon_state = "mwb"
 
 /obj/machinery/microwave/on_persistence_load()
-	..()
 	update_icon()
 
 // see code/modules/food/recipes_microwave.dm for recipes

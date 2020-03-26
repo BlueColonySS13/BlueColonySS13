@@ -21,6 +21,8 @@
 					"Migrant",
 					"Socialite",
 					"Job Seeker",
+					"Business Owner",
+					"Investor",
 					"Traveller",
 					"Unemployed",
 					"Homeless",

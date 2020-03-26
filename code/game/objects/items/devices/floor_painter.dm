@@ -84,6 +84,17 @@
 		to_chat(usr, "<span class='notice'>You set \the [src] to paint with <font color='[paint_colour]'>a new colour</font>.</span>")
 		return
 
+	var/obj/machinery/electronic_display_case/DC = A
+	if(istype(DC))
+		var/choice = input(user, "What do you wish to paint?") as null|anything in list("Glass", "Frame")
+		if(choice == "Glass")
+			DC.glass_color = paint_colour
+			DC.update_icon()
+		if(choice == "Frame")
+			DC.frame_color = paint_colour
+			DC.update_icon()
+		return
+
 	var/turf/simulated/wall/W = A
 	if(istype(W))
 		var/choice = input(user, "What do you wish to paint?") as null|anything in list("Wall","Stripe","Remove Stripe")

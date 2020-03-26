@@ -388,7 +388,7 @@
 
 /obj/item/stack/material/silk
 	name = "silk"
-	desc = "Many lives were lost trying to wrangle the silk from giant spiders, but that was a risk they were willing to take."
+	desc = "Many lives were lost trying to wrangle the silk from giant spiders, but it was a risk we were willing to take."
 	icon_state = "sheet-cloth"
 	default_type = "silk"
 	no_variants = FALSE

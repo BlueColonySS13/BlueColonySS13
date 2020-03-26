@@ -109,7 +109,7 @@
 		visible_message("<span class='danger'>\The [src] falls apart!</span>")
 		dismantle()
 
-/obj/structure/gravemarker/proc/dismantle()
+/obj/structure/gravemarker/dismantle()
 	material.place_dismantled_product(get_turf(src))
 	qdel(src)
 	return

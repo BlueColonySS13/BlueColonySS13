@@ -85,14 +85,14 @@
 	containername = "Office supplies crate"
 
 /datum/supply_pack/supply/spare_communicators
-	name = "Spare communicators"
+	name = "spare communicators"
 	cost = 10
 	containertype = /obj/structure/closet/crate
 	containername = "Spare communicator crate"
 	contains = list(/obj/item/device/communicator = 3)
 
 /datum/supply_pack/supply/minergear
-	name = "Shaft miner equipment"
+	name = "shaft miner equipment"
 	contains = list(
 			/obj/item/weapon/storage/backpack/industrial,
 			/obj/item/weapon/storage/backpack/satchel/eng,
@@ -112,38 +112,44 @@
 			)
 	cost = 10
 	containertype = "/obj/structure/closet/crate/secure"
-	containername = "Shaft miner equipment"
+	containername = "shaft miner equipment"
 	access = access_mining
 
 /datum/supply_pack/supply/mule
-	name = "Mulebot Crate"
+	name = "mulebot Crate"
 	contains = list()
 	cost = 20
 	containertype = /obj/structure/largecrate/animal/mulebot
-	containername = "Mulebot Crate"
+	containername = "mulebot Crate"
 
 /datum/supply_pack/supply/cargotrain
-	name = "Cargo Train Tug"
+	name = "cargo Train Tug"
 	contains = list(/obj/vehicle/train/engine)
 	cost = 35
 	containertype = /obj/structure/largecrate
-	containername = "Cargo Train Tug Crate"
+	containername = "cargo Train Tug Crate"
 
 /datum/supply_pack/supply/cargotrailer
-	name = "Cargo Train Trolley"
+	name = "cargo Train Trolley"
 	contains = list(/obj/vehicle/train/trolley)
 	cost = 15
 	containertype = /obj/structure/largecrate
-	containername = "Cargo Train Trolley Crate"
+	containername = "cargo Train Trolley Crate"
 
 /datum/supply_pack/supply/sticky_notes
-	name = "Stationery - sticky notes (50)"
+	name = "stationery - sticky notes (50)"
 	contains = list(/obj/item/sticky_pad/random)
 	cost = 10
-	containername = "\improper Sticky notes crate"
+	containername = "\improper sticky notes crate"
+
+/datum/supply_pack/supply/adhesive_posters
+	name = "adhesive Poster Set (50)"
+	contains = list(/obj/item/sticky_pad/poster/random)
+	cost = 30
+	containername = "\improper adhesive Poster crate"
 
 /datum/supply_pack/supply/pens
-	name = "Assorted Pen Set"
+	name = "assorted Pen Set"
 	contains = list(/obj/item/weapon/pen = 5,
 	/obj/item/weapon/pen/red = 5,
 	/obj/item/weapon/pen/blue = 5,

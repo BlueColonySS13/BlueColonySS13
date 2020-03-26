@@ -72,7 +72,7 @@
 "bt" = (/mob/living/simple_animal/fish/koi,/turf/simulated/floor/water,/area/planets/Geminus/indoor/vr/psychtreatment)
 "bu" = (/obj/structure/table/glass,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
 "bv" = (/obj/structure/bed/chair{dir = 8},/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
-"bw" = (/obj/machinery/vending/foodstamp/rations/psp,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bw" = (/obj/machinery/vending/foodstamp/rations,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
 "bx" = (/obj/structure/fitness/weightlifter,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
 "by" = (/obj/structure/table/glass,/obj/item/weapon/storage/fancy/markers,/obj/item/weapon/storage/fancy/crayons,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
 "bz" = (/obj/structure/bed/chair{icon_state = "chair_preview"; dir = 1},/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)

@@ -61,7 +61,7 @@
 	name = "wooden floor"
 	icon = 'icons/turf/flooring/wood.dmi'
 	icon_state = "wood"
-	color = "#8f5a25"
+	color = WOOD_COLOR_GENERIC
 	initial_flooring = /decl/flooring/wood
 
 /turf/simulated/floor/wood/sif
@@ -82,6 +82,14 @@
 /turf/simulated/floor/wood/walnut
 	color = WOOD_COLOR_CHOCOLATE
 	initial_flooring = /decl/flooring/wood/walnut
+
+/turf/simulated/floor/wood/bamboo
+	color = WOOD_COLOR_CHOCOLATE
+	initial_flooring = /decl/flooring/wood/bamboo
+
+/turf/simulated/floor/wood/yew
+	color = WOOD_COLOR_YELLOW
+	initial_flooring = /decl/flooring/wood/yew
 
 /turf/simulated/floor/grass
 	name = "grass patch"
@@ -305,6 +313,13 @@
 	name = "white floor"
 	icon_state = "white"
 	initial_flooring = /decl/flooring/tiling/white
+
+/turf/simulated/floor/tiled/yellow
+	name = "yellow floor"
+	color = COLOR_BROWN
+	icon_state = "white"
+	initial_flooring = /decl/flooring/tiling/yellow
+
 
 /turf/simulated/floor/tiled/yellow
 	name = "yellow floor"

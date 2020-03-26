@@ -1,5 +1,5 @@
 /obj/structure/dogbed
-	name = "dog bed"
+	name = "pet bed"
 	desc = "A bed made especially for dogs, or other similarly sized pets."
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "dogbed"

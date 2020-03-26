@@ -4,13 +4,13 @@
 */
 
 
-/datum/supply_pack/costumes
+/datum/supply_pack/clothing
 	group = "Clothing"
 
-/datum/supply_pack/randomised/costumes
+/datum/supply_pack/randomised/clothing
 	group = "Clothing"
 
-/datum/supply_pack/costumes/wizard
+/datum/supply_pack/clothing/wizard
 	name = "Wizard costume"
 	contains = list(
 			/obj/item/weapon/staff,
@@ -22,7 +22,7 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Wizard costume crate"
 
-/datum/supply_pack/randomised/costumes/hats
+/datum/supply_pack/randomised/clothing/hats
 	num_contained = 4
 	contains = list(
 			/obj/item/clothing/head/collectable/chef,
@@ -49,7 +49,7 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Collectable hats crate! Brought to you by Bass.inc!"
 
-/datum/supply_pack/randomised/costumes/costume
+/datum/supply_pack/randomised/clothing/costume
 	num_contained = 3
 	contains = list(
 			/obj/item/clothing/suit/pirate,
@@ -85,7 +85,7 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Actor Costumes"
 
-/datum/supply_pack/costumes/formal_wear
+/datum/supply_pack/clothing/formal_wear
 	contains = list(
 			/obj/item/clothing/head/bowler,
 			/obj/item/clothing/head/that,
@@ -107,7 +107,7 @@
 	containertype = /obj/structure/closet
 	containername = "Formalwear for the best occasions."
 
-datum/supply_pack/costumes/witch
+datum/supply_pack/clothing/witch
 	name = "Witch costume"
 	containername = "Witch costume"
 	containertype = /obj/structure/closet
@@ -119,7 +119,7 @@ datum/supply_pack/costumes/witch
 			/obj/item/weapon/staff/broom
 			)
 
-/datum/supply_pack/randomised/costumes/costume_hats
+/datum/supply_pack/randomised/clothing/costume_hats
 	name = "Costume hats"
 	containername = "Actor hats crate"
 	containertype = /obj/structure/closet/crate
@@ -144,7 +144,7 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/head/ushanka
 			)
 
-datum/supply_pack/costumes/wedding
+datum/supply_pack/clothing/wedding
 	name = "Womens Wedding Dress Collection"
 	containername = "Womens Wedding Dress Collection"
 	containertype = /obj/structure/closet
@@ -163,7 +163,7 @@ datum/supply_pack/costumes/wedding
 			/obj/item/clothing/under/dress/dress_saloon
 			)
 
-datum/supply_pack/costumes/jeans
+datum/supply_pack/clothing/jeans
 	name = "Jeans Collection"
 	containername = "Jeans Collection"
 	containertype = /obj/structure/closet
@@ -185,7 +185,7 @@ datum/supply_pack/costumes/jeans
 			)
 
 
-datum/supply_pack/costumes/jeans_ripped
+datum/supply_pack/clothing/jeans_ripped
 	name = "Ripped Jeans Collection"
 	containername = "Ripped Jeans Collection"
 	containertype = /obj/structure/closet
@@ -198,7 +198,7 @@ datum/supply_pack/costumes/jeans_ripped
 			/obj/item/clothing/under/pants/greyjeans/ripped
 			)
 
-datum/supply_pack/costumes/baggy_pants
+datum/supply_pack/clothing/baggy_pants
 	name = "Baggy Pants Collection"
 	containername = "Baggy Pants Collection"
 	containertype = /obj/structure/closet
@@ -219,7 +219,7 @@ datum/supply_pack/costumes/baggy_pants
 			)
 
 
-datum/supply_pack/costumes/track_pants
+datum/supply_pack/clothing/track_pants
 	name = "Track Pants Collection"
 	containername = "Track Pants Collection"
 	containertype = /obj/structure/closet
@@ -234,7 +234,7 @@ datum/supply_pack/costumes/track_pants
 			)
 
 
-datum/supply_pack/costumes/polychromatic
+datum/supply_pack/clothing/polychromatic
 	name = "Polychromatic Clothes Collection"
 	containername = "Polychromatic Clothes Collection"
 	containertype = /obj/structure/closet
@@ -253,7 +253,7 @@ datum/supply_pack/costumes/polychromatic
 			/obj/item/clothing/under/polychromic/shirt
 			)
 
-datum/supply_pack/costumes/castor_import_clothing
+datum/supply_pack/clothing/castor_import_clothing
 	name = "Castor Imported Clothing"
 	containername = "Castor Imported Clothing"
 	containertype = /obj/structure/closet
@@ -271,7 +271,7 @@ datum/supply_pack/costumes/castor_import_clothing
 			/obj/item/clothing/head/collectable/tophat = 3
 			)
 
-datum/supply_pack/costumes/cascington_import_clothing
+datum/supply_pack/clothing/cascington_import_clothing
 	name = "Cascington Imported Clothing"
 	containername = "Cascington Imported Clothing"
 	containertype = /obj/structure/closet

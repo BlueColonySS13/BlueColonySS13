@@ -34,6 +34,9 @@
 
 	var/begins_closed = TRUE
 
+
+	unique_save_vars = list("id")
+
 /obj/machinery/door/blast/initialize()
 	..()
 

@@ -29,6 +29,35 @@
 		on = area.lightswitch
 		updateicon()
 
+	if(pixel_x == 0 && pixel_y == 0)
+
+		var/turf/here = get_turf(src)
+		var/placing = 0
+		for(var/checkdir in GLOB.cardinal)
+			var/turf/T = get_step(here, checkdir)
+			if(T.density)
+				placing = checkdir
+				break
+			for(var/thing in T)
+				var/atom/A = thing
+				if(A.simulated && !A.CanPass(src, T))
+					placing = checkdir
+					break
+
+		switch(placing)
+			if(NORTH)
+				pixel_x = 0
+				pixel_y = 30
+			if(SOUTH)
+				pixel_x = 0
+				pixel_y = -30
+			if(EAST)
+				pixel_x = 30
+				pixel_y = 0
+			if(WEST)
+				pixel_x = -30
+				pixel_y = 0
+
 /obj/machinery/light_switch/proc/updateicon()
 	if(!overlay)
 		overlay = image(icon, "light1-overlay")
