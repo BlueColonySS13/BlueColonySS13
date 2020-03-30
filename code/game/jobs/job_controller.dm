@@ -452,6 +452,7 @@ var/global/datum/controller/occupations/job_master
 
 		H.job = rank
 
+		/*
 		// If they're head, give them the account info for their department
 		if(H.mind && job.head_position)
 			var/remembered_info = ""
@@ -463,7 +464,7 @@ var/global/datum/controller/occupations/job_master
 				remembered_info += "<b>Your sector's account funds are:</b> $[department_account.money]<br>"
 
 			H.mind.store_memory(remembered_info)
-
+		*/
 		var/alt_title = null
 		var/is_prisoner = FALSE
 

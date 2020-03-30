@@ -399,8 +399,11 @@ var/global/datum/controller/gameticker/ticker
 		world << "<H2>This round was not canon. It was all a dream.</H2>"
 		roll_titles()
 	else
+		to_chat(world, "<H2>This round was canon.</H2>")
+		to_chat(world, "<H3>Saving world...</H3>")
 		if(save_world())
-			world << "<H2>This round was canon.</H2>"
+			to_chat(world, "<H3>The world has been saved!</H3>")
+
 
 	for(var/mob/Player in player_list)
 		if(Player.mind && !isnewplayer(Player))

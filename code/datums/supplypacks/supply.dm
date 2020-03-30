@@ -6,20 +6,6 @@
 /datum/supply_pack/supply
 	group = "Supplies"
 
-/datum/supply_pack/supply/food
-	name = "Kitchen supply crate"
-	contains = list(
-			/obj/item/weapon/reagent_containers/food/condiment/flour = 6,
-			/obj/item/weapon/reagent_containers/food/drinks/milk = 3,
-			/obj/item/weapon/reagent_containers/food/drinks/soymilk = 2,
-			/obj/item/weapon/storage/fancy/egg_box = 2,
-			/obj/item/weapon/reagent_containers/food/snacks/tofu = 4,
-			/obj/item/weapon/reagent_containers/food/snacks/meat = 4,
-			/obj/item/weapon/reagent_containers/food/condiment/enzyme = 2
-			)
-	cost = 10
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Food crate"
 
 /datum/supply_pack/supply/toner
 	name = "Toner cartridges"
@@ -46,7 +32,7 @@
 			/obj/item/weapon/grenade/chem_grenade/cleaner = 3,
 			/obj/structure/mopbucket
 			)
-	cost = 10
+	cost = 70
 	containertype = /obj/structure/closet/crate
 	containername = "Janitorial supplies"
 
@@ -146,14 +132,30 @@
 	name = "adhesive Poster Set (50)"
 	contains = list(/obj/item/sticky_pad/poster/random)
 	cost = 30
-	containername = "\improper adhesive Poster crate"
+	containername = "\improper adhesive poster crate"
 
 /datum/supply_pack/supply/pens
-	name = "assorted Pen Set"
+	name = "assorted pen set"
 	contains = list(/obj/item/weapon/pen = 5,
 	/obj/item/weapon/pen/red = 5,
 	/obj/item/weapon/pen/blue = 5,
 	/obj/item/weapon/pen/fountain = 2)
 	cost = 10
 	containername = "\improper Assorted Pen Set"
+
+
+/datum/supply_pack/supply/lights
+	name = "light replacement set"
+	contains = list(/obj/item/weapon/storage/box/lights = 2)
+	cost = 25
+	containername = "\improper light replacement set"
+
+/datum/supply_pack/supply/dye_refills
+	name = "photochromatic dye refills"
+	contains = list(/obj/item/photochromatic_dye_refill = 5)
+	cost = 25
+	containername = "\improper photochromatic dye refills"
+
+
+
 

@@ -127,7 +127,7 @@
  * Carpets
  */
 /obj/item/stack/tile/carpet
-	name = "carpet"
+	name = "red carpet"
 	singular_name = "carpet"
 	desc = "A piece of carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-carpet"
@@ -138,28 +138,48 @@
 	flags = 0
 	no_variants = FALSE
 
+	stack_color = COLOR_RED
+
 /obj/item/stack/tile/carpet/teal
 	name = "teal carpet"
-	singular_name = "teal carpet"
-	desc = "A piece of teal carpet. It is the same size as a normal floor tile!"
-	icon_state = "tile-tealcarpet"
 	no_variants = FALSE
+	stack_color = COLOR_TEAL
 
 // TODO - Add descriptions to these
 /obj/item/stack/tile/carpet/bcarpet
+	name = "blue carpet"
 	icon_state = "tile-carpet"
+	stack_color = COLOR_TEAL
+
 /obj/item/stack/tile/carpet/blucarpet
+	name = "blue and gold carpet"
 	icon_state = "tile-carpet"
+	stack_color = COLOR_BLUE
+
 /obj/item/stack/tile/carpet/turcarpet
 	icon_state = "tile-carpet"
+	stack_color = COLOR_FOREST_GREEN
+	name = "forest green carpet"
+
 /obj/item/stack/tile/carpet/sblucarpet
 	icon_state = "tile-carpet"
+	stack_color = COLOR_CYAN
+	name = "light blue carpet"
+
 /obj/item/stack/tile/carpet/gaycarpet
 	icon_state = "tile-carpet"
+	stack_color = COLOR_PALE_RED_GRAY
+	name = "pink carpet"
+
 /obj/item/stack/tile/carpet/purcarpet
 	icon_state = "tile-carpet"
+	stack_color = COLOR_PURPLE
+	name = "purple carpet"
+
 /obj/item/stack/tile/carpet/oracarpet
 	icon_state = "tile-carpet"
+	stack_color = COLOR_ORANGE
+	name = "carpet carpet"
 
 /obj/item/stack/tile/floor
 	name = "floor tile"

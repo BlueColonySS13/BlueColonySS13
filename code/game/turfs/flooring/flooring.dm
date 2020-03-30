@@ -504,6 +504,7 @@ var/list/flooring_types
 /decl/flooring/diamond
 	icon = 'icons/turf/flooring/decorative.dmi'
 	icon_base = "tiles1"
+	build_type = /obj/item/stack/tile/diamond
 
 /decl/flooring/bluegeo
 	icon = 'icons/turf/flooring/decorative.dmi'

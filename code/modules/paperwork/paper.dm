@@ -79,10 +79,20 @@
 	desc = "Ah, the seasoned professional."
 	icon_state = "business_card"
 
+/obj/item/weapon/paper/card/business/random/New()
+	..()
+	color = pick(COLOR_WHITE, COLOR_GRAY, COLOR_RED, COLOR_DARK_ORANGE, COLOR_PURPLE_GRAY, COLOR_CYAN_BLUE, COLOR_PALE_RED_GRAY)
+
+
 /obj/item/weapon/paper/card/invitation
 	name = "invitation card"
 	desc = "Only cool kids get one of these, today is that me?"
 	icon_state = "invitation_card"
+
+/obj/item/weapon/paper/card/invitation/random/New()
+	..()
+	color = pick(COLOR_WHITE, COLOR_GRAY, COLOR_RED, COLOR_DARK_ORANGE, COLOR_PURPLE_GRAY, COLOR_CYAN_BLUE, COLOR_PALE_RED_GRAY)
+
 
 /obj/item/weapon/paper/card/poster
 	name = "poster card"

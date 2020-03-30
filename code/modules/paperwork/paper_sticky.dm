@@ -102,8 +102,8 @@
 
 /obj/item/weapon/paper/sticky/proc/reset_persistence_tracking()
 	SSpersistence.forget_value(src, /datum/persistent/paper/sticky)
-	pixel_x = 0
-	pixel_y = 0
+//	pixel_x = 0
+//	pixel_y = 0
 
 /obj/item/weapon/paper/sticky/Destroy()
 	reset_persistence_tracking()

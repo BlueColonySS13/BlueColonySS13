@@ -60,7 +60,7 @@
 	type_to_spawn = /obj/item/stack/tile/carpet/blucarpet
 
 /obj/fiftyspawner/turcarpet
-	name = "stack of turkish carpet"
+	name = "stack of forest green carpet"
 	type_to_spawn = /obj/item/stack/tile/carpet/turcarpet
 
 /obj/fiftyspawner/sblucarpet

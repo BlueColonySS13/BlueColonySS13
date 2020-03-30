@@ -17,6 +17,8 @@
 	var/ks1type = null
 	var/ks2type = null
 
+	dont_save = TRUE
+
 /obj/item/device/radio/headset/New()
 	..()
 	internal_channels.Cut()

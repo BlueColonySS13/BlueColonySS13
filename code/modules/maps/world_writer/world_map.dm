@@ -8,6 +8,7 @@
 	var/turf_vars = list()
 	var/list/map_objects = list()
 	var/list/decals = list()
+	var/metadata
 
 /datum/map_object
 	var/savedtype
@@ -108,6 +109,8 @@
 	if(!isemptylist(reagent_data) && istype(O, /obj/item/weapon/reagent_containers))
 		var/obj/item/weapon/reagent_containers/container = O
 		container.unpack_persistence_data(reagent_data)
+
+	CHECK_TICK
 	O.load_persistent_metadata(metadata)
 	O.on_persistence_load()
 
@@ -122,12 +125,15 @@
 
 		T.on_persistence_save()
 
+
 		var/datum/map_turf/MT = new/datum/map_turf()
 		MT.turf_type = T.type
 
 		MT.x = T.x
 		MT.y = T.y
 		MT.z = T.z
+
+		MT.metadata = T.get_persistent_metadata()
 
 		var/list/decal_list = list()
 
@@ -167,7 +173,7 @@
 					continue
 
 				//first loop, to get all objects inside closets
-				for(var/obj/A in O.contents)
+				for(var/obj/A in O.get_saveable_contents())
 					if(A.dont_save) continue
 
 					var/datum/map_object/saved_obj_2 = get_object_data(A)
@@ -179,7 +185,7 @@
 						continue
 
 					//second loop, let's say you had a backpack inside the closet with it's own things.
-					for(var/obj/B in A.contents)
+					for(var/obj/B in A.get_saveable_contents())
 						if(B.dont_save) continue
 
 						var/datum/map_object/saved_obj_3 = get_object_data(B)
@@ -191,7 +197,7 @@
 							continue
 
 						//third loop. for getting things like cigarette packets inside backpacks.
-						for(var/obj/C in B.contents)
+						for(var/obj/C in B.get_saveable_contents())
 							if(C.dont_save) continue
 
 							var/datum/map_object/saved_obj_4 = get_object_data(C)
@@ -204,7 +210,7 @@
 
 
 							//fourth loop. let's say the cigarettes need saving inside these packets. Honestly I don't think we'll need a fourth loop.
-							for(var/obj/D in C.contents)
+							for(var/obj/D in C.get_saveable_contents())
 								if(D.dont_save) continue
 
 								var/datum/map_object/saved_obj_5 = get_object_data(D)
@@ -237,8 +243,9 @@
 
 		newturf.decals = MT.decals
 		newturf.update_icon()
+		if(MT.metadata)
+			newturf.load_persistent_metadata(MT.metadata)
 
-		newturf.on_persistence_load()
 		for(var/V in newturf.vars_to_save())
 			if(MT.turf_vars[V])
 				newturf.vars[V] = MT.turf_vars[V]

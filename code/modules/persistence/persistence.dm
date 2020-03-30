@@ -48,6 +48,9 @@
 /atom/proc/sanitize_for_saving()
 	return TRUE
 
+/atom/proc/get_saveable_contents()
+	return contents
+
 /obj/sanitize_for_saving()	// these things build up with time, so this gradually limits the amount so we don't have 5000 fingerprints or anything.
 	if(islist(suit_fibers) && !isemptylist(suit_fibers))
 		truncate_oldest(suit_fibers, MAX_FINGERPRINTS)

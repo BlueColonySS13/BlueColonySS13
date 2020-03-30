@@ -112,7 +112,6 @@
 	var/obj/structure/wall_frame/WF = A
 	if(istype(WF))
 		WF.color = paint_colour
-		WF.update_icon()
 		return
 
 	var/obj/structure/window/WD = A

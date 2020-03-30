@@ -27,7 +27,7 @@
 	max_w_class = ITEMSIZE_SMALL
 	max_storage_space = ITEMSIZE_SMALL * 7
 
-	unique_save_vars = list("code","l_code", "locked", "emagged", "open")
+	unique_save_vars = list("code","l_code", "locked", "emagged", "open", "l_set", "l_setshort")
 
 	examine(mob/user)
 		if(..(user, 1))
@@ -155,7 +155,6 @@
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_LARGE
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
-	unique_save_vars = list("code","l_code", "locked", "emagged", "open")
 
 	attack_hand(mob/user as mob)
 		if ((src.loc == user) && (src.locked == 1))
@@ -203,7 +202,6 @@
 		/obj/item/weapon/paper,
 		/obj/item/weapon/pen
 	)
-	unique_save_vars = list("code","l_code", "locked", "emagged", "open")
 
 /obj/item/weapon/storage/secure/safe/initialize()
 	..()

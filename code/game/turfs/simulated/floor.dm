@@ -34,6 +34,14 @@
 
 	unique_save_vars = list("broken", "burnt")
 
+/turf/simulated/floor/get_persistent_metadata()
+	if(flooring)
+		return flooring.type
+
+/turf/simulated/floor/load_persistent_metadata(floortype)
+	if(floortype)
+		set_flooring(get_flooring_data(floortype))
+
 /turf/simulated/floor/is_plating()
 	return !flooring
 
@@ -45,15 +53,6 @@
 		set_flooring(get_flooring_data(floortype))
 	else
 		footstep_sounds = base_footstep_sounds
-
-/turf/simulated/floor/get_persistent_metadata()
-	if(!flooring)
-		return
-	return flooring.type
-
-/turf/simulated/floor/load_persistent_metadata(floortype)
-	set_flooring(get_flooring_data(floortype))
-	return TRUE
 
 /turf/simulated/floor/proc/set_flooring(var/decl/flooring/newflooring)
 	make_plating(defer_icon_update = 1)
