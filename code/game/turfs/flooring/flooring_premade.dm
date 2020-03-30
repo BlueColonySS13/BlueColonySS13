@@ -21,17 +21,17 @@
 	initial_flooring = /decl/flooring/carpet/blucarpet
 
 /turf/simulated/floor/carpet/turcarpet
-	name = "tur carpet"
+	name = "green carpet"
 	icon_state = "turcarpet"
 	initial_flooring = /decl/flooring/carpet/turcarpet
 
 /turf/simulated/floor/carpet/sblucarpet
-	name = "sblue carpet"
+	name = "light blue carpet"
 	icon_state = "sblucarpet"
 	initial_flooring = /decl/flooring/carpet/sblucarpet
 
 /turf/simulated/floor/carpet/gaycarpet
-	name = "clown carpet"
+	name = "pink carpet"
 	icon_state = "gaycarpet"
 	initial_flooring = /decl/flooring/carpet/gaycarpet
 
@@ -43,6 +43,11 @@
 /turf/simulated/floor/carpet/oracarpet
 	name = "orange carpet"
 	icon_state = "oracarpet"
+	initial_flooring = /decl/flooring/carpet/oracarpet
+
+/turf/simulated/floor/carpet/tealcarpet
+	name = "teal carpet"
+	icon_state = "tealcarpet"
 	initial_flooring = /decl/flooring/carpet/oracarpet
 
 /turf/simulated/floor/bluegrid

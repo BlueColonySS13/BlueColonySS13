@@ -1,5 +1,5 @@
 // GENERIC PRINTER - DO NOT USE THIS OBJECT.
-// Flesh and robot printers are defined below this object.
+// Flesh printers are defined below this object.
 
 /obj/machinery/organ_printer
 	name = "organ printer"

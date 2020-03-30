@@ -28,6 +28,9 @@
 
 	var/blood_type = null
 
+/obj/item/weapon/reagent_containers/blood/can_empty()
+	return TRUE
+
 /obj/item/weapon/reagent_containers/blood/New()
 	..()
 	base_name = name

@@ -80,8 +80,8 @@ SUBSYSTEM_DEF(economy)
 /datum/controller/subsystem/economy/proc/collect_all_earnings()
 	// collects money from all cash registers and puts 'em in their relavent accounts
 	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
-		if(CR.linked_account)
-			CR.linked_account.money += CR.cash_stored
+		if(CR.linked_account && CR.account_to_connect)
+			charge_to_account(CR.linked_account, "Money Collection", "Money Left in Till", CR.machine_id, CR.cash_stored)
 			CR.cash_stored = 0
 
 

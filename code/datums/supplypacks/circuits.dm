@@ -19,7 +19,8 @@
 	/obj/item/weapon/circuitboard/deepfryer,
 	/obj/item/weapon/circuitboard/gibber,
 	/obj/item/weapon/circuitboard/cereal,
-	/obj/item/weapon/circuitboard/icecream_vat)
+	/obj/item/weapon/circuitboard/icecream_vat,
+	/obj/item/weapon/circuitboard/grinder)
 	name = "Kitchen Circuit Set"
 	cost = 1000
 	containertype = /obj/structure/closet/crate
@@ -28,13 +29,39 @@
 
 /datum/supply_pack/circuits/entertainment_center
 	contains = list(/obj/item/weapon/circuitboard/jukebox,
-	/obj/machinery/computer/coin_machine,
+	/obj/item/weapon/circuitboard/coin_machine,
 	/obj/item/weapon/circuitboard/vr_sleeper,
 	)
 	name = "Entertainment Circuit Set"
 	cost = 200
 	containertype = /obj/structure/closet/crate
 	containername = "Entertainment Circuit Set"
+
+/datum/supply_pack/circuits/arcade_set
+	contains = list(/obj/item/weapon/circuitboard/arcade/battle,
+	/obj/item/weapon/circuitboard/arcade/orion_trail,
+	)
+	name = "Arcade Circuit Set"
+	cost = 60
+	containertype = /obj/structure/closet/crate
+	containername = "Arcade Circuit Set"
+
+/datum/supply_pack/circuits/recharge_set
+	contains = list(/obj/item/weapon/circuitboard/recharger,
+	/obj/item/weapon/circuitboard/recharger/wrecharger,
+	)
+	name = "Recharger Set"
+	cost = 60
+	containertype = /obj/structure/closet/crate
+	containername = "Recharger Set"
+
+/datum/supply_pack/circuits/washing_machine
+	contains = list(/obj/item/weapon/circuitboard/washing
+	)
+	name = "Washing Machine"
+	cost = 60
+	containertype = /obj/structure/closet/crate
+	containername = "Washing Machine"
 
 
 /datum/supply_pack/circuits/botany
@@ -57,7 +84,7 @@
 
 /datum/supply_pack/circuits/display_case
 	contains = list(/obj/item/weapon/circuitboard/display_case)
-	name = "Tailoring Circuit Set"
+	name = "Display Case Circuit"
 	cost = 1200
 	containertype = /obj/structure/closet/crate
-	containername = "Display Case Circuit)"
+	containername = "Display Case Circuit"

@@ -104,16 +104,33 @@
 
 //this returns the first account datum that matches the supplied accnum/pin combination, it returns null if the combination did not match any account
 /proc/attempt_account_access(var/attempt_account_number, var/attempt_pin_number, var/security_level_passed = 0)
-	for(var/datum/money_account/D in GLOB.all_money_accounts)
-		if(D.account_number == attempt_account_number)
-			if( D.security_level <= security_level_passed && (!D.security_level || D.remote_access_pin == attempt_pin_number) )
-				return D
-			break
+	var/datum/money_account/D = get_account(attempt_account_number)
+
+	var/sec_level
+	var/pin_no
+
+
+	if(D)
+		sec_level = D.security_level
+		pin_no = D.remote_access_pin
+
+	if( sec_level <= security_level_passed && (!sec_level || pin_no == attempt_pin_number) )
+		return D
+
+
+
 
 /proc/get_account(var/account_number)
 	for(var/datum/money_account/D in GLOB.all_money_accounts)
 		if(D.account_number == account_number)
 			return D
+
+/proc/get_account_name(var/account_number)
+	var/datum/money_account/M = get_account(account_number)
+	if(M)
+		return M.owner_name
+
+	return get_persistent_acc_name(account_number)
 
 /proc/check_account_exists(var/account_number)
 	for(var/datum/money_account/D in GLOB.all_money_accounts)
@@ -122,6 +139,20 @@
 
 	if(check_persistent_account(account_number))
 		return TRUE
+
+	return FALSE
+
+
+
+/proc/check_account_suspension(var/account_number)
+	var/datum/money_account/M = get_account(account_number)
+	if(M)
+		return M.suspended
+
+	if(get_persistent_acc_suspension(account_number))
+		return TRUE
+
+	return FALSE
 
 /proc/create_transaction_log(name, purpose, amount = 0, terminal_id = "Terminal #[rand(111,999)]", date = GLOB.current_date_string, time = stationtime2text())
 	var/datum/transaction/T = new()
@@ -152,6 +183,9 @@
 /datum/money_account/proc/sanitize_values()
 	if(!account_number)
 		account_number = md5("[owner_name][GLOB.current_date_string][get_game_time()]")
+
+	if(!remote_access_pin)
+		remote_access_pin = rand(1111,9999)
 
 	money = Clamp(money, -MAX_MONEY, MAX_MONEY)
 	if(!transaction_log)

@@ -24,6 +24,17 @@
 	containername = "cards crate"
 
 
+
+
+/datum/supply_pack/misc/business_cards
+	name = "business and invitation cards"
+	contains = list(/obj/item/weapon/paper/card/business = 5,
+	/obj/item/weapon/paper/card/business/random = 5,
+	/obj/item/weapon/paper/card/invitation = 5,
+	/obj/item/weapon/paper/card/invitation/random = 5)
+	cost = 25
+	containername = "Business and invitation cards"
+
 /datum/supply_pack/misc/chaplaingear
 	name = "Chaplain equipment"
 	contains = list(
@@ -132,7 +143,7 @@
 	name = "Cosmetics Set"
 	containername = "Cosmetics Set"
 	containertype = "/obj/structure/closet/crate"
-	cost = 100
+	cost = 50
 	contains = list(
 				/obj/item/weapon/lipstick/red,
 				/obj/item/weapon/lipstick/purple,
@@ -236,3 +247,11 @@
 	cost = 400
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "ready to eat rations"
+
+/datum/supply_pack/misc/calories_scanner
+	name = "calories scanners"
+	contains = list(/obj/item/device/calories_scanner = 5)
+
+	cost = 10
+	containertype = /obj/structure/closet/crate
+	containername = "calories scanners"

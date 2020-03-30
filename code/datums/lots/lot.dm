@@ -79,15 +79,15 @@
 		if(lot.get_status() == FOR_RENT)
 			R.icon_state = "rent"
 
-			R.name = "[lot.name] - For Rent ([lot.rent]cr per month)"
+			R.name = "[lot.name] - For Rent ([lot.get_rent()]cr per payroll)"
 			R.desc = "This rent sign says <b>[lot.name] - For Rent ([lot.price]cr)</b><br>\
 			Underneath, the sign notes the housing is owned by <b>[lot.get_landlord_name()]</b>. Contact them for more details or buy from the Landlord Management Program on the computers in the library."
 
 		if(lot.get_status() == FOR_SALE)
 			R.icon_state = "sale"
 
-			R.name = "[lot.name] - For Sale ([lot.price]cr)"
-			R.desc = "This rent sign says <b>[lot.name] - For Sale ([lot.price]cr)</b><br>\
+			R.name = "[lot.name] - For Sale ([lot.get_price()]cr)"
+			R.desc = "This rent sign says <b>[lot.name] - For Sale ([lot.get_price()]cr)</b><br>\
 			Underneath, the sign notes the housing is owned by <b>[lot.get_landlord_name()]</b>. Contact them for more details or buy from the Landlord Management Program on the computers in the library."
 
 		if(lot.get_status() == LOT_HELD)

@@ -13,6 +13,9 @@
 	volume = 5
 	drop_sound = 'sound/items/drop/glass.ogg'
 
+/obj/item/weapon/reagent_containers/dropper/can_empty()
+	return TRUE
+
 /obj/item/weapon/reagent_containers/dropper/examine(var/mob/user)
 	if(!..(user, 2))
 		return

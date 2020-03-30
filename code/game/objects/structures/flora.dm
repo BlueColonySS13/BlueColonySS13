@@ -33,6 +33,13 @@
 	icon_state = "firstbush_1"
 	anchored = 1
 
+
+/obj/structure/flora/ausbushes/attackby(obj/item/I as obj, mob/user as mob)
+	..()
+	if(is_sharp(I))
+		to_chat(user, "You slash away [src] with [I].")
+		qdel(src)
+
 /obj/structure/flora/ausbushes/New()
 	..()
 	icon_state = "firstbush_[rand(1, 4)]"

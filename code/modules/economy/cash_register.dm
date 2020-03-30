@@ -8,7 +8,6 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "register_idle"
 	flags = NOBLUDGEON
-	req_access = list(access_heads)
 	anchored = 0
 	table_drag = TRUE
 	table_shift = 0
@@ -27,31 +26,27 @@
 
 	var/cash_stored = 0
 	var/obj/item/confirm_item
-	var/datum/money_account/linked_account
+	var/linked_account
 	var/account_to_connect = null
 
 	var/menu_items
 	var/adds_tax = TRUE
 
-	unique_save_vars = list("locked")
-
-/obj/machinery/cash_register/get_persistent_metadata()
-	if(!linked_account)
-		return FALSE
-
-	return linked_account.account_number
-
-/obj/machinery/cash_register/load_persistent_metadata(acc_no)
-	if(acc_no)
-		linked_account = get_account(acc_no)
-		return TRUE
+	unique_save_vars = list("locked", "cash_stored", "linked_account")
 
 // Claim machine ID
 /obj/machinery/cash_register/New()
 	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
 	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
-	if(SSeconomy)
-		linked_account = dept_acc_by_id(account_to_connect)
+	if(SSeconomy && account_to_connect)
+		var/datum/money_account/M = dept_acc_by_id(account_to_connect)
+		if(!M)
+			return
+		linked_account = M.account_number
+
+/obj/machinery/cash_register/on_persistence_load()
+	if(!check_account_exists(linked_account))
+		linked_account = null
 
 
 /obj/machinery/cash_register/examine(mob/user as mob)
@@ -86,13 +81,15 @@
 
 /obj/machinery/cash_register/interact(mob/user as mob)
 	var/dat = "<h2>Cash Register<hr></h2>"
+	var/acc_name = get_account_name(linked_account)
 	if (locked)
 		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Unlock</a><br>"
-		dat += "Linked account: <b>[linked_account ? linked_account.owner_name : "None"]</b><br>"
+
+		dat += "Linked account: <b>[acc_name ? acc_name : "None"]</b><br>"
 		dat += "<b>[cash_locked? "Unlock" : "Lock"] Cash Box</b> | "
 	else
 		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Lock</a><br>"
-		dat += "Linked account: <a href='?src=\ref[src];choice=link_account'>[linked_account ? linked_account.owner_name : "None"]</a><br>"
+		dat += "Linked account: <a href='?src=\ref[src];choice=link_account'>[acc_name ? acc_name : "None"]</a><br>"
 		dat += "<a href='?src=\ref[src];choice=toggle_cash_lock'>[cash_locked? "Unlock" : "Lock"] Cash Box</a> | "
 	dat += "<a href='?src=\ref[src];choice=custom_order'>Custom Order</a><hr>"
 
@@ -152,13 +149,24 @@
 			if("link_account")
 				var/attempt_account_num = sanitize(input("Enter account id", "New account id") as text)
 				var/attempt_pin = input("Enter PIN", "Account PIN") as num
-				linked_account = attempt_account_access(attempt_account_num, attempt_pin, 1)
-				if(linked_account)
-					if(linked_account.suspended)
-						linked_account = null
-						src.visible_message("\icon[src]<span class='warning'>Account has been suspended.</span>")
-				else
-					usr << "\icon[src]<span class='warning'>Account not found.</span>"
+
+				var/okay_account = FALSE
+				if(attempt_account_access(attempt_account_num, attempt_pin, 1) && !check_account_suspension(linked_account))
+					okay_account = TRUE
+				else if((get_persistent_acc_pin(attempt_account_num) == attempt_pin) && !get_persistent_acc_suspension(attempt_account_num))
+					okay_account = TRUE
+
+				if(okay_account)
+					to_chat(usr, "Account connected.")
+					linked_account = attempt_account_num
+					return
+
+				if(check_account_suspension(linked_account))
+					linked_account = null
+					src.visible_message("\icon[src]<span class='warning'>Account has been suspended.</span>")
+					return
+
+				to_chat(usr, "\icon[src]<span class='warning'>Account not found.</span>")
 			if("custom_order")
 				var/t_purpose = sanitize(input("Enter purpose", "New purpose") as text)
 				if (!t_purpose || !Adjacent(usr)) return
@@ -334,6 +342,7 @@
 	// Access account for transaction
 	if(check_account())
 		var/datum/money_account/D = get_account(I.associated_account_number)
+
 		var/attempt_pin = ""
 		if(D && D.security_level)
 			attempt_pin = input("Enter PIN", "Transaction") as num
@@ -351,13 +360,10 @@
 				else
 					// Transfer the money
 					D.money -= transaction_amount
-					linked_account.money += transaction_amount
+					charge_to_account(linked_account, "[D.owner_name]", "[transaction_purpose]: #[transaction_logs.len+1]", machine_id, transaction_amount)
 
 					// Create log entry in client's account
-					D.add_transaction_log(linked_account.owner_name, transaction_purpose, -transaction_amount, machine_id)
-
-					// Create log entry in owner's account
-					linked_account.add_transaction_log(D.owner_name, transaction_purpose, transaction_amount, machine_id)
+					D.add_transaction_log(get_account_name(linked_account), transaction_purpose, -transaction_amount, machine_id)
 
 					// Save log
 					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", -transaction_amount)
@@ -392,13 +398,7 @@
 		else
 			// Transfer the money
 			E.worth -= transaction_amount
-			linked_account.money += transaction_amount
-
-			// Create log entry in owner's account
-			linked_account.add_transaction_log(E.owner_name, transaction_purpose, transaction_amount, machine_id)
-
-			// Save log
-			add_transaction_log(E.owner_name, "E-Wallet", transaction_amount)
+			charge_to_account(linked_account, "E-Wallet Purchase", "[transaction_purpose]: #[transaction_logs.len+1]", machine_id, transaction_amount)
 
 			// Confirm and reset
 			transaction_complete()
@@ -566,11 +566,11 @@
 	return dat
 
 /obj/machinery/cash_register/proc/check_account()
-	if (!linked_account)
+	if (!check_account_exists(linked_account))
 		usr.visible_message("\icon[src]<span class='warning'>Unable to connect to linked account.</span>")
 		return 0
 
-	if(linked_account.suspended)
+	if(check_account_suspension(linked_account))
 		src.visible_message("\icon[src]<span class='warning'>Connected account has been suspended.</span>")
 		return 0
 	return 1
@@ -663,39 +663,50 @@
 
 /obj/machinery/cash_register/city
 	account_to_connect = DEPT_COLONY
+	dont_save = TRUE
 
 /obj/machinery/cash_register/command
 	account_to_connect = DEPT_COUNCIL
+	dont_save = TRUE
 
 /obj/machinery/cash_register/medical
 	account_to_connect = DEPT_HEALTHCARE
 	menu_items = MED
+	dont_save = TRUE
 
 /obj/machinery/cash_register/engineering
 	account_to_connect = DEPT_MAINTENANCE
+	dont_save = TRUE
 
 /obj/machinery/cash_register/science
 	account_to_connect = DEPT_RESEARCH
+	dont_save = TRUE
 
 /obj/machinery/cash_register/security
 	account_to_connect = DEPT_POLICE
 	menu_items = LAW
+	dont_save = TRUE
 
 /obj/machinery/cash_register/cargo
 	account_to_connect = DEPT_FACTORY
+	dont_save = TRUE
 
 /obj/machinery/cash_register/civilian
 	account_to_connect = DEPT_PUBLIC
+	dont_save = TRUE
 
 /obj/machinery/cash_register/bar
 	account_to_connect = DEPT_BAR
+	dont_save = TRUE
 
 /obj/machinery/cash_register/botany
 	account_to_connect = DEPT_BOTANY
+	dont_save = TRUE
 
 /obj/machinery/cash_register/court
 	account_to_connect = "Legal"
 	menu_items = COR
+	dont_save = TRUE
 #undef LAW
 #undef MED
 #undef COR

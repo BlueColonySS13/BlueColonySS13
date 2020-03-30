@@ -288,13 +288,14 @@
 	return time2text(round(10 * D.time / speed), "mm:ss")
 
 /obj/machinery/pros_fabricator/proc/update_categories()
-	categories = list()
-	for(var/datum/design/D in files.known_designs)
-		if(!D.build_path || !(D.build_type & PROSFAB))
-			continue
-		categories |= D.category
-	if(!category || !(category in categories))
-		category = categories[1]
+	if(files)
+		categories = list()
+		for(var/datum/design/D in files.known_designs)
+			if(!D.build_path || !(D.build_type & PROSFAB))
+				continue
+			categories |= D.category
+		if(!category || !(category in categories))
+			category = categories[1]
 
 /obj/machinery/pros_fabricator/proc/get_materials()
 	. = list()

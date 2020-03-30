@@ -13,6 +13,7 @@
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	var/label_text = ""
 
+
 	New()
 		..()
 		src.pixel_x = rand(-10.0, 10) //Randomizes postion
@@ -78,6 +79,9 @@
 		else
 			src.name = "[src.base_name] ([src.label_text])"
 
+
+/obj/item/weapon/reagent_containers/drugs/can_empty()
+	return TRUE
 
 /obj/item/weapon/reagent_containers/drugs/baggie
 	name = "baggie"

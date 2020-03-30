@@ -35,6 +35,12 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Cardboard sheets crate"
 
+/datum/supply_pack/materials/marble
+	name = "50 marble slabs"
+	contains = list(/obj/fiftyspawner/marble)
+	cost = 60
+	containername = "marble slabs crate"
+
 /datum/supply_pack/materials/carpet
 	name = "Imported carpet"
 	containertype = /obj/structure/closet/crate

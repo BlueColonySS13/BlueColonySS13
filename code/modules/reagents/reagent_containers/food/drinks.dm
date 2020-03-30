@@ -160,6 +160,7 @@
 	icon_state = "mini-milk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
+
 /obj/item/weapon/reagent_containers/food/drinks/smallmilk/New()
 	..()
 	reagents.add_reagent("milk", 30)
@@ -202,6 +203,7 @@
 	desc = "Careful, cold ice, do not chew."
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
+
 /obj/item/weapon/reagent_containers/food/drinks/ice/New()
 	..()
 	reagents.add_reagent("ice", 30)

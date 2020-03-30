@@ -248,10 +248,6 @@
 	..()
 	recipes = wax_recipes
 
-var/global/list/datum/stack_recipe/wax_recipes = list( \
-	new/datum/stack_recipe("candle", /obj/item/weapon/flame/candle) \
-)
-
 /obj/item/bee_pack
 	name = "bee pack"
 	desc = "Contains a queen bee and some worker bees. Everything you'll need to start a hive!"
