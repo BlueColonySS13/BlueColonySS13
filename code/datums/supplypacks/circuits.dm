@@ -29,7 +29,7 @@
 
 /datum/supply_pack/circuits/entertainment_center
 	contains = list(/obj/item/weapon/circuitboard/jukebox,
-	/obj/machinery/computer/coin_machine,
+	/obj/item/weapon/circuitboard/coin_machine,
 	/obj/item/weapon/circuitboard/vr_sleeper/business,
 	)
 	name = "Entertainment Circuit Set"
