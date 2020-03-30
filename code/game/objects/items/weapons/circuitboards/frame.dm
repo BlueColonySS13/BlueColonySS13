@@ -203,6 +203,15 @@
 							/obj/item/weapon/stock_parts/scanning_module = 1,
 							/obj/item/stack/material/glass/reinforced = 2)
 
+/obj/item/weapon/circuitboard/vr_sleeper/business
+	name = T_BOARD("Commercial VR Sleeper")
+	build_path = /obj/machinery/vr_sleeper/business
+	board_type = new /datum/frame/frame_types/medical_pod
+	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
+	req_components = list(
+							/obj/item/weapon/stock_parts/scanning_module = 1,
+							/obj/item/stack/material/glass/reinforced = 2)
+
 /obj/item/weapon/circuitboard/dna_analyzer
 	name = T_BOARD("dna analyzer")
 	build_path = /obj/machinery/dnaforensics
