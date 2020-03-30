@@ -19,6 +19,9 @@
 	density = 1
 	table_drag = TRUE
 
+/obj/machinery/chemical_dispenser/on_persistence_load()
+	cartridges = contents
+
 /obj/machinery/chemical_dispenser/New()
 	..()
 

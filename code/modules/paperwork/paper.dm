@@ -42,6 +42,8 @@
 	var/last_modified_ckey
 	var/scrap_state = "scrap"
 
+	unique_save_vars = list("info", "info_links", "stamps", "fields")
+
 /obj/item/weapon/paper/card
 	name = "blank card"
 	desc = "A gift card with space to write on the cover."
