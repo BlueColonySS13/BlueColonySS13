@@ -481,33 +481,41 @@
 	overlays += I
 
 /obj/item/device/flashlight/lamp/lava/red
+	name = "red lava lamp"
 	desc = "A kitchy red decorative light."
 	light_color = COLOR_RED
 
 /obj/item/device/flashlight/lamp/lava/blue
+	name = "blue lava lamp"
 	desc = "A kitchy blue decorative light"
 	light_color = COLOR_BLUE
 
 /obj/item/device/flashlight/lamp/lava/cyan
+	name = "cyan lava lamp"
 	desc = "A kitchy cyan decorative light"
 	light_color = COLOR_CYAN
 
 /obj/item/device/flashlight/lamp/lava/green
+	name = "green lava lamp"
 	desc = "A kitchy green decorative light"
 	light_color = COLOR_GREEN
 
 /obj/item/device/flashlight/lamp/lava/orange
+	name = "orange lava lamp"
 	desc = "A kitchy orange decorative light"
 	light_color = COLOR_ORANGE
 
 /obj/item/device/flashlight/lamp/lava/purple
+	name = "purple lava lamp"
 	desc = "A kitchy purple decorative light"
 	light_color = COLOR_PURPLE
 /obj/item/device/flashlight/lamp/lava/pink
+	name = "pink lava lamp"
 	desc = "A kitchy pink decorative light"
 	light_color = COLOR_PINK
 
 /obj/item/device/flashlight/lamp/lava/yellow
+	name = "yellow lava lamp"
 	desc = "A kitchy yellow decorative light"
 	light_color = COLOR_YELLOW
 

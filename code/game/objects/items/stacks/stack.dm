@@ -29,7 +29,7 @@
 	var/stack_color = null // overrides apply_material_color if used
 	var/dyeable = FALSE
 
-	unique_save_vars = list("amount")
+	unique_save_vars = list("amount", "stack_color")
 
 /obj/item/stack/proc/update_reagents()
 	return
