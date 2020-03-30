@@ -231,7 +231,15 @@
 		new/datum/stack_recipe("white folder", /obj/item/weapon/folder/white), \
 		new/datum/stack_recipe("yellow folder", /obj/item/weapon/folder/yellow), \
 		))
-
+	recipes += new/datum/stack_recipe_list("paper cards",list( \
+		new/datum/stack_recipe("card", /obj/item/weapon/paper/card), \
+		new/datum/stack_recipe("smile card", /obj/item/weapon/paper/card/smile), \
+		new/datum/stack_recipe("heart card", /obj/item/weapon/paper/card/heart), \
+		new/datum/stack_recipe("cat card", /obj/item/weapon/paper/card/flower), \
+		new/datum/stack_recipe("business card", /obj/item/weapon/paper/card/business),
+		new/datum/stack_recipe("invitation card", /obj/item/weapon/paper/card/invitation), \
+		new/datum/stack_recipe("poster", /obj/item/weapon/paper/card/poster), \
+		))
 /material/snow/generate_recipes()
 	recipes = list()
 	recipes += new/datum/stack_recipe("snowball", /obj/item/weapon/material/snow/snowball, 1, time = 10)
