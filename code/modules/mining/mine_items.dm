@@ -338,6 +338,13 @@
 
 /obj/structure/sculpting_block/sculpted
 	sculpted = TRUE
+	anchored = FALSE
+	icon = 'icons/obj/statue.dmi'
+
+/obj/structure/sculpting_block/sculpted/bust
+	icon_state = "bust"
+	name = "greek bust"
+	desc = "A replica of a famous ancient art piece."
 
 
 /obj/structure/sculpting_block/sculpted/large

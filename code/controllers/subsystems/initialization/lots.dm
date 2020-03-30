@@ -28,7 +28,12 @@ SUBSYSTEM_DEF(lots)
 
 
 /datum/controller/subsystem/lots/proc/save_all_lots()
+	if(!config.lot_saving)
+		return FALSE
+
 	for(var/datum/lot/lots in all_lots)
+		if(!lots.allow_saving)
+			continue
 		lots.save_lot_data()
 		CHECK_TICK
 

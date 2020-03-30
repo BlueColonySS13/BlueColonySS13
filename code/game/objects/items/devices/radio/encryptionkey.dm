@@ -11,6 +11,8 @@
 	var/syndie = 0
 	var/list/channels = list()
 
+	dont_save = TRUE
+
 /obj/item/device/encryptionkey/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 /obj/item/device/encryptionkey/syndicate

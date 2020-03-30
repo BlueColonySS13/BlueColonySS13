@@ -6,6 +6,7 @@
 	volume = 120
 	possible_transfer_amounts = list(5,15,30)
 	matter = list("glass" = 50)
+	smash_when_thrown = FALSE
 
 /obj/item/weapon/reagent_containers/food/drinks/glass2/pitcher
 	name = "plastic pitcher"

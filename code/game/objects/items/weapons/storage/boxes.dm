@@ -516,3 +516,18 @@
 	icon_state = "candlebox"
 	slot_flags = SLOT_BELT
 	starts_with = list(/obj/item/weapon/flame/candle = 5)
+
+/obj/item/weapon/storage/box/candle_box/random
+	name = "assorted candle pack"
+	desc = "A pack of assorted candles."
+	starts_with = list(/obj/item/weapon/flame/candle/random = 5)
+
+/obj/item/weapon/storage/box/candle_box/candelabra
+	name = "candelabra pack"
+	desc = "A pack of red candelabras."
+	starts_with = list(/obj/item/weapon/flame/candle/candelabra = 5)
+
+/obj/item/weapon/storage/box/candle_box/candelabra/random
+	name = "assorted candelabra pack"
+	desc = "A pack of assorted candelabras."
+	starts_with = list(/obj/item/weapon/flame/candle/candelabra/random = 5)

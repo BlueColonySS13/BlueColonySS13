@@ -38,24 +38,38 @@
 	var/atmpt_maint_mode = FALSE
 
 	var/max_items = 30
+	var/can_buy = TRUE
 
-	unique_save_vars = list("anchored","glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "maint_mode", "atmpt_maint_mode")
+	unique_save_vars = list("anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid",\
+	"staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode", "can_buy")
 
 /obj/machinery/electronic_display_case/New()
-	. = ..()
-	update_icon()
+	..()
 	if(!staff_pin)
 		staff_pin = rand(1111,9999)
 
+
 /obj/machinery/electronic_display_case/on_persistence_load()
-	if(!isemptylist(contents))
-		stored_products = contents
+	stored_products = get_saveable_contents() - circuit
+	update_icon()
 
 /obj/machinery/electronic_display_case/examine(mob/user)
 	..()
 	if(owner_name)
 		to_chat(user, "[name] belongs to <b>[owner_name]</b>, report any issues with the machine to the owner.")
+	if(!can_buy)
+		to_chat(user, "<b>It is display-only.</b>")
+	else
+		to_chat(user, "<b>You can buy items from this unit.</b>")
 
+
+
+/obj/machinery/electronic_display_case/emag_act(var/remaining_charges, var/mob/user)
+	if(!emagged)
+		emagged = TRUE
+		visible_message("<span class='danger'>\The [src] makes a fizzling sound.</span>")
+		update_icon()
+		return 1
 
 /obj/machinery/electronic_display_case/update_icon()
 	overlays.Cut()
@@ -84,6 +98,90 @@
 	if(maint_mode && maint_icon)
 		var/image/M =  image(icon, maint_icon)
 		overlays |= M
+
+
+
+/obj/machinery/electronic_display_case/proc/choose_static_icon(mob/user)
+	var/static_icons_list = list("NONE","liberation station", "orange bubbles", "theater", "shamblers", "space up", "games", \
+	"snacks green", "snacks orange", "snacks teal", "coffee", "cigarettes", "medicine", "black cola", "soda red", "art", \
+	"clothes", "generic", "luxvend", "syndi", "laptop", "toiletries", "minerals", "soda fox", "snix", "uniforms", \
+	"weeb", "gold black", "shoes", "power game", "generic buy")
+
+	if(emagged)
+		static_icons_list += "syndi"
+
+
+	var/new_icon = input(usr, "Select a new appearance!", "Appearance Morph")  as null|anything in static_icons_list
+	if(!new_icon)
+		return
+
+	switch(new_icon)
+		if("NONE")
+			static_icon = null
+		if("liberation station")
+			static_icon = "liberationstation"
+		if("orange bubbles")
+			static_icon = "starkist"
+		if("theater")
+			static_icon = "theater"
+		if("shamblers")
+			static_icon = "shamblers_juice"
+		if("space up")
+			static_icon = "space_up"
+		if("games")
+			static_icon = "games"
+		if("snacks green")
+			static_icon = "snackgreen"
+		if("snacks orange")
+			static_icon = "snackorange"
+		if("snacks teal")
+			static_icon = "snackteal"
+		if("coffee")
+			static_icon = "coffee"
+		if("cigarettes")
+			static_icon = "cigs"
+		if("medicine")
+			static_icon = "med"
+		if("black cola")
+			static_icon = "cola_black"
+		if("soda red")
+			static_icon = "soda_red"
+		if("art")
+			static_icon = "artvend"
+		if("clothes")
+			static_icon = "clothes"
+		if("generic")
+			static_icon = "generic"
+		if("luxvend")
+			static_icon = "luxvend"
+		if("laptop")
+			static_icon = "laptop"
+		if("toiletries")
+			static_icon = "toiletries"
+		if("minerals")
+			static_icon = "minerals"
+		if("soda fox")
+			static_icon = "soda_fox"
+		if("snix")
+			static_icon = "snix"
+		if("uniforms")
+			static_icon = "uniforms"
+		if("weeb")
+			static_icon = "weeb"
+		if("gold black")
+			static_icon = "gold_black"
+		if("shoes")
+			static_icon = "shoes"
+		if("power game")
+			static_icon = "power_game"
+		if("generic buy")
+			static_icon = "generic_buy"
+		if("syndi")
+			static_icon = "syndi"
+
+	visible_message("<span class='info'>[src] morphs into a new appearance!</span>")
+	playsound(user, 'sound/machines/click.ogg', 20, 1)
+	update_icon()
 
 
 /obj/machinery/electronic_display_case/attack_hand(mob/user as mob)
@@ -157,8 +255,10 @@
 					dat += "No products found."
 				else
 					for(var/obj/O in stored_products)
+						if(can_buy)
+							dat += "<a href='?src=\ref[src];choice=buy;item=\ref[O]''>Buy &#127980;</a> "
 
-						dat += "<a href='?src=\ref[src];choice=buy;item=\ref[O]''>Buy &#127980;</a> <b>[O.name]</b> - [cash2text( O.get_full_cost(), FALSE, TRUE, TRUE )]"
+						dat += "<a href='?src=\ref[src];choice=examine_item;item=\ref[O]''>View &#128270;</a> <b>[O.name]</b> - [cash2text( O.get_full_cost(), FALSE, TRUE, TRUE )]"
 						if(O.post_tax_cost())
 							dat += " (Includes [cash2text( O.post_tax_cost(), FALSE, TRUE, TRUE )] tax)"
 						dat += "<br>"
@@ -178,7 +278,7 @@
 
 		dat += "<div class='statusDisplay'>"
 		for(var/obj/O in stored_products)
-			dat += "<a href='?src=\ref[src];choice=remove_item;item=\ref[O]'>Remove</a> <b>[O.name]</b> - [cash2text( O.get_item_cost(), FALSE, TRUE, TRUE )] \
+			dat += "<a href='?src=\ref[src];choice=remove_item;item=\ref[O]'>Remove</a> <a href='?src=\ref[src];choice=reprice_item;item=\ref[O]'>Change Price</a> <b>[O.name]</b> - [cash2text( O.get_item_cost(), FALSE, TRUE, TRUE )] \
 			(Adds [cash2text( O.post_tax_cost(), FALSE, TRUE, TRUE )] tax)"
 			dat += "<br>"
 		dat += "</div><br>"
@@ -187,6 +287,9 @@
 		dat += "<a href='?src=\ref[src];edit_owner_message=1'>Edit Owner Message</a> "
 		dat += "<a href='?src=\ref[src];edit_bank=1'>Update Bank Details</a> "
 		dat += "<a href='?src=\ref[src];toggle_anchor=1'>Toggle Anchors</a> "
+		dat += "<a href='?src=\ref[src];change_appearance=1'>Change Appearance</a> "
+		dat += "<a href='?src=\ref[src];toggle_buy=1'>Toggle Buy Mode</a> "
+		dat += "<a href='?src=\ref[src];reset_owner=1'>Reset Ownership</a> "
 		dat += "<a href='?src=\ref[src];exit_maint_mode=1'>Exit Maintenance Mode</a> "
 	return dat
 
@@ -213,6 +316,7 @@
 		 	 You can change this at any time.</span>")
 			maint_mode = TRUE
 			update_icon()
+			updateDialog()
 		return
 
 	if(currently_vending)
@@ -374,6 +478,27 @@
 		update_icon()
 
 
+/obj/machinery/electronic_display_case/proc/factory_settings()
+	static_icon = initial(static_icon)
+
+	glass_color = initial(glass_color)
+	frame_color = initial(frame_color)
+
+	owner_name = initial(owner_name)
+	owner_uid = initial(owner_uid)
+	staff_pin = initial(staff_pin)
+
+	bank_id = initial(bank_id)
+	owner_message = initial(owner_message)
+
+	maint_mode = FALSE
+	atmpt_maint_mode = FALSE
+
+	can_buy = initial(can_buy)
+
+	update_icon()
+
+
 /obj/machinery/electronic_display_case/Topic(href, href_list)
 	if(..())
 		return 1
@@ -444,6 +569,7 @@
 
 		if(!check_account_exists(new_bank))
 			alert("#[new_bank] does not appear to link to any bank ID in the database. Please try again.")
+			return
 
 		bank_id = new_bank
 		alert("New bank account ID set to #[new_bank].")
@@ -461,12 +587,41 @@
 			to_chat(usr, "<b>You toggle the anchors of the display case. It can now be moved.</b>")
 
 
+	if(href_list["change_appearance"])
+		if(!maint_mode)
+			return
+
+		choose_static_icon(usr)
+
+	if(href_list["toggle_buy"])
+		if(!maint_mode)
+			return
+
+		can_buy = !can_buy
+		to_chat(usr, "<b>The machine now [can_buy ? "accepts" : "does not accept"] purchases.</b>")
+
+	if(href_list["reset_owner"])
+		if(!maint_mode)
+			return
+
+		if(!isemptylist(stored_products))
+			alert("All items must be removed from the machine before this can take place.")
+			return
+
+
+		var/choice = alert(usr,"Reset the owner of this machine and set back to factory settings?","Reset [src]?","Yes","No")
+		if(choice == "Yes")
+			factory_settings()
+
 	if(href_list["choice"])
 		switch(href_list["choice"])
 
 			if("buy")
 				var/item = locate(href_list["item"])
 				if(!item || !(item in stored_products))
+					return
+
+				if(!can_buy)
 					return
 
 				var/obj/O = item
@@ -481,8 +636,38 @@
 				if(!(item in stored_products))
 					return
 
+				if(!maint_mode)
+					return
+
 				var/obj/O = item
 				remove_from_storage(O, usr)
+
+
+			if("reprice_item")
+				var/item = locate(href_list["item"])
+				if(!(item in stored_products))
+					return
+
+				if(!maint_mode)
+					return
+
+				var/obj/O = item
+
+				var/new_tag = input("Please enter the new price you want for this item. Enter 0 to make the item free.", "Set Bank", O.price_tag) as num
+
+				O.price_tag = new_tag
+
+			if("examine_item")
+				var/item = locate(href_list["item"])
+				if(!(item in stored_products))
+					return
+
+				var/obj/O = item
+				O.examine(usr)
+
+
+
+
 
 	updateDialog()
 

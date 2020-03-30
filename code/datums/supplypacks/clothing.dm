@@ -234,6 +234,18 @@ datum/supply_pack/clothing/track_pants
 			)
 
 
+datum/supply_pack/clothing/bag_collection
+	name = "Various Bags (Bulk)"
+	containername = "Various Bags (Bulk)"
+	containertype = /obj/structure/closet
+	cost = 100
+	contains = list(
+			/obj/item/weapon/storage/backpack/satchel = 5,
+			/obj/item/weapon/storage/backpack/dufflebag = 5,
+			/obj/item/weapon/storage/backpack/purse = 5,
+			/obj/item/weapon/storage/backpack/messenger = 5,
+			)
+
 datum/supply_pack/clothing/polychromatic
 	name = "Polychromatic Clothes Collection"
 	containername = "Polychromatic Clothes Collection"
@@ -282,7 +294,201 @@ datum/supply_pack/clothing/cascington_import_clothing
 			/obj/item/clothing/under/blazer = 2,
 			/obj/item/clothing/under/blazer/skirt = 2,
 			/obj/item/clothing/suit/storage/poshblazer = 3,
-			/obj/item/clothing/under/dress/vneck = 2
+			/obj/item/clothing/under/dress/vneck = 2,
+			/obj/item/clothing/under/dress/pinktutu = 2
+			)
+
+datum/supply_pack/clothing/cascington_import_bags
+	name = "Cascington Imported Bags"
+	containername = "Cascington Imported Bags"
+	containertype = /obj/structure/closet
+	cost = 800
+	contains = list(
+			/obj/item/weapon/storage/briefcase/clutch/obsidienne = 5,
+			/obj/item/weapon/storage/wallet/obsidienne = 5,
+			/obj/item/weapon/storage/backpack/purse/obsidienne = 5,
+			/obj/item/weapon/storage/backpack/satchel/obsidienne = 5,
 			)
 
 
+datum/supply_pack/clothing/dress_collection
+	name = "Dress Collection"
+	containername = "Dress Collection"
+	containertype = /obj/structure/closet
+	cost = 400
+	contains = list(
+	/obj/item/clothing/under/oldwoman,
+	/obj/item/clothing/under/dress/dress_orange,
+	/obj/item/clothing/under/dress/flamenco,
+	/obj/item/clothing/under/dress/westernbustle,
+	/obj/item/clothing/under/dress/flower_dress,
+	/obj/item/clothing/under/dress/red_swept_dress,
+	/obj/item/clothing/under/dress/dress_green,
+	/obj/item/clothing/under/dress/blacktango,
+	/obj/item/clothing/under/dress/blacktango/alt,
+	/obj/item/clothing/under/dress/redeveninggown,
+	/obj/item/clothing/under/dress/stripeddress,
+	/obj/item/clothing/under/dress/dress_saloon,
+	/obj/item/clothing/under/dress/dress_fire,
+	/obj/item/clothing/under/dress/dress_hr,
+	/obj/item/clothing/under/dress/dress_green,
+	/obj/item/clothing/under/dress/black_corset,
+	/obj/item/clothing/under/sundress,
+	/obj/item/clothing/under/sundress_white,
+	/obj/item/clothing/under/dress/polka,
+	/obj/item/clothing/under/dress/cropdress,
+	/obj/item/clothing/under/dress/darkred,
+	/obj/item/clothing/under/dress/bluedress,
+	/obj/item/clothing/under/dress/twistfront,
+	/obj/item/clothing/under/dress/wench,
+	/obj/item/clothing/under/dress/littleblackdress,
+	/obj/item/clothing/under/dress/festivedress
+	)
+
+datum/supply_pack/clothing/skirt_collection
+	name = "Skirt Collection"
+	containername = "Skirt Collection"
+	containertype = /obj/structure/closet
+	cost = 200
+	contains = list(
+	/obj/item/clothing/under/skirt,
+	/obj/item/clothing/under/skirt/khaki,
+	/obj/item/clothing/under/skirt/blue,
+	/obj/item/clothing/under/skirt/red,
+	/obj/item/clothing/under/skirt/swept,
+	/obj/item/clothing/under/skirt/denim,
+	/obj/item/clothing/under/skirt/pencil,
+	/obj/item/clothing/under/skirt/pleated,
+	/obj/item/clothing/under/skirt/outfit/plaid_blue,
+	/obj/item/clothing/under/skirt/outfit/plaid_purple,
+	/obj/item/clothing/under/skirt/outfit/plaid_red
+	)
+
+datum/supply_pack/clothing/swimsuits
+	name = "Swimsuits"
+	containername = "Swimsuits Collection"
+	containertype = /obj/structure/closet
+	cost = 20
+	contains = list(
+				/obj/item/clothing/under/swimsuit/black,
+				/obj/item/clothing/under/swimsuit/blue,
+				/obj/item/clothing/under/swimsuit/purple,
+				/obj/item/clothing/under/swimsuit/green,
+				/obj/item/clothing/under/swimsuit/red,
+				/obj/item/clothing/under/swimsuit/striped,
+				/obj/item/clothing/under/swimsuit/white,
+				/obj/item/clothing/under/swimsuit/earth
+				)
+
+
+datum/supply_pack/clothing/croptops
+	name = "Croptops Collection"
+	containername = "Croptops Collection"
+	containertype = /obj/structure/closet
+	cost = 30
+	contains = list(
+	/obj/item/clothing/under/croptop,
+	/obj/item/clothing/under/croptop/grey,
+	/obj/item/clothing/under/croptop/red,
+	/obj/item/clothing/under/cuttop,
+	/obj/item/clothing/under/cuttop/red)
+
+
+datum/supply_pack/clothing/hats
+	name = "Hat Collection"
+	containername = "Hat Collection"
+	containertype = /obj/structure/closet
+	cost = 130
+	contains = list(
+						/obj/item/clothing/head/beaverhat,
+						/obj/item/clothing/head/fedora,
+						/obj/item/clothing/head/fez,
+						/obj/item/clothing/head/feathertrilby,
+						/obj/item/clothing/head/flatcap,
+						/obj/item/clothing/head/hasturhood,
+						/obj/item/clothing/head/soft/blue,
+						/obj/item/clothing/head/soft/black,
+						/obj/item/clothing/head/soft/rainbow,
+						/obj/item/clothing/head/soft/mime,
+						/obj/item/clothing/head/bandana,
+						/obj/item/clothing/head/orangebandana,
+						/obj/item/clothing/head/greenbandana,
+						/obj/item/clothing/head/pin/butterfly,
+						/obj/item/clothing/head/pin/flower,
+						/obj/item/clothing/head/pin/flower/blue,
+						/obj/item/clothing/head/pin/flower/orange,
+						/obj/item/clothing/head/pin/flower/pink,
+						/obj/item/clothing/head/pin/flower/violet,
+						/obj/item/clothing/head/pin/flower/white,
+						/obj/item/clothing/head/pin/flower/yellow,
+						/obj/item/clothing/head/pin/pink,
+						/obj/item/clothing/head/beanie,
+						/obj/item/clothing/head/soft/green,
+						/obj/item/clothing/head/soft/grey,
+						/obj/item/clothing/head/soft/mime,
+						/obj/item/clothing/head/soft/purple,
+						/obj/item/clothing/head/soft/orange,
+						/obj/item/clothing/head/soft/purple,
+						/obj/item/clothing/head/soft/red,
+						/obj/item/clothing/head/soft/yellow,
+						/obj/item/clothing/head/lavender_crown,
+						/obj/item/clothing/head/poppy_crown,
+						/obj/item/clothing/head/sunflower_crown)
+
+datum/supply_pack/clothing/shoes
+	name = "Generic Shoes Collection"
+	containername = "Generic Shoes Collection"
+	containertype = /obj/structure/closet
+	cost = 130
+	contains = list(/obj/item/clothing/shoes/sandal,
+						/obj/item/clothing/shoes/black,
+						/obj/item/clothing/shoes/brown,
+						/obj/item/clothing/shoes/blue,
+						/obj/item/clothing/shoes/green,
+						/obj/item/clothing/shoes/yellow,
+						/obj/item/clothing/shoes/purple,
+						/obj/item/clothing/shoes/orange,
+						/obj/item/clothing/shoes/red,
+						/obj/item/clothing/shoes/white,
+						/obj/item/clothing/shoes/rainbow,
+						/obj/item/clothing/shoes/hitops,
+						/obj/item/clothing/shoes/hitops/black,
+						/obj/item/clothing/shoes/hitops/brown,
+						/obj/item/clothing/shoes/hitops/blue,
+						/obj/item/clothing/shoes/hitops/green,
+						/obj/item/clothing/shoes/hitops/yellow,
+						/obj/item/clothing/shoes/hitops/purple,
+						/obj/item/clothing/shoes/hitops/orange,
+						/obj/item/clothing/shoes/hitops/red,
+						/obj/item/clothing/shoes/swimmingfins,
+						/obj/item/clothing/shoes/leather,
+						/obj/item/clothing/shoes/dress,
+						/obj/item/clothing/shoes/dress/white,
+						/obj/item/clothing/shoes/boots/winter,
+						/obj/item/clothing/shoes/skater,
+						/obj/item/clothing/shoes/laceup,
+						/obj/item/clothing/shoes/slippers,
+
+						)
+
+
+
+datum/supply_pack/clothing/stylish_boots
+	name = "Stylish Boots Selection"
+	containername = "Generic Shoes Collection"
+	containertype = /obj/structure/closet
+	cost = 200
+	contains = list(/obj/item/clothing/shoes/boots/stylish = 2,
+				/obj/item/clothing/shoes/boots/stylish/red = 2,
+				/obj/item/clothing/shoes/boots/stylish/navy = 2,
+				/obj/item/clothing/shoes/boots/stylish/charcoal = 2,
+				/obj/item/clothing/shoes/boots/stylish/silver = 2)
+
+
+datum/supply_pack/clothing/heels
+	name = "Ladies Heels (Bulk)"
+	containername = "Ladies Heels (Bulk)"
+	containertype = /obj/structure/closet
+	cost = 130
+	contains = list(/obj/item/clothing/shoes/heels = 10,
+				/obj/item/clothing/shoes/heels/long = 10)

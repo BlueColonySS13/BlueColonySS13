@@ -20,6 +20,8 @@
 	blend_objects = list(/obj/structure/window/framed, /obj/machinery/door) // Objects which to blend with
 	noblend_objects = list(/obj/machinery/door/window, /obj/structure/window/framed)
 
+	unique_save_vars = list("stripe_color", "health")
+
 /obj/structure/wall_frame/New(var/new_loc)
 	..(new_loc)
 

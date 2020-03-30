@@ -93,9 +93,6 @@
 		message_admins("SAVE: [name] Issue with saving top left/bottom right coordinates. Top Left: [top_left] Bottom Right: [bottom_right]", 1)
 		return FALSE
 
-	if(!config.lot_saving || !allow_saving)
-		return FALSE
-
 	if(!save_metadata())
 		message_admins("SAVE: [name] Could not save lot metadata - ownership details and payments may not be saved! Continuing...", 1)
 
@@ -103,6 +100,8 @@
 	if(!save_map(top_left, bottom_right, id, path, TRUE, FALSE))
 		message_admins("SAVE: [name] Could not save map data. Call developers!", 1)
 		return FALSE
+
+	message_admins("Successfully saved lot ID: '[id]'", 1)
 
 	return TRUE
 
@@ -142,8 +141,12 @@
 			allow_saving = TRUE
 
 		for(var/obj/O in lot_area)
+			CHECK_TICK
 			O.on_persistence_load()
 
+		for(var/turf/T in lot_area)
+			CHECK_TICK
+			T.on_persistence_load()
 	return 1
 
 

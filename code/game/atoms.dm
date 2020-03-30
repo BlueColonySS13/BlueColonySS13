@@ -30,6 +30,7 @@
 	// Track if we are already had initialize() called to prevent double-initialization.
 	var/initialized = FALSE
 
+
 /atom/New(loc, ...)
 	// Don't call ..() unless /datum/New() ever exists
 
@@ -267,8 +268,8 @@
 			if(fingerprintslast != M.key)
 				fingerprintshidden += "(Has no fingerprints) Real name: [M.real_name], Key: [M.key]"
 				fingerprintslast = M.key
-
-				truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
+				if(islist(fingerprintshidden))
+					truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 
 			return 0		//Now, lets get to the dirty work.
 		//First, make sure their DNA makes sense.
@@ -284,8 +285,8 @@
 			if(fingerprintslast != H.key)
 				fingerprintshidden += text("\[[]\](Wearing gloves). Real name: [], Key: []",time_stamp(), H.real_name, H.key)
 				fingerprintslast = H.key
-
-				truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
+				if(islist(fingerprintshidden))
+					truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 			H.gloves.add_fingerprint(M)
 
 		//Deal with gloves the pass finger/palm prints.
@@ -301,7 +302,8 @@
 			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), H.real_name, H.key)
 			fingerprintslast = H.key
 
-			truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
+			if(islist(fingerprintshidden))
+				truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 
 		//Make the list if it does not exist.
 		if(!fingerprints)
@@ -347,7 +349,8 @@
 
 		else
 			fingerprints[full_print] = stars(full_print, rand(0, 20))	//Initial touch, not leaving much evidence the first time.
-			truncate_oldest(fingerprints, MAX_FINGERPRINTS)
+			if(islist(fingerprints))
+				truncate_oldest(fingerprints, MAX_FINGERPRINTS)
 
 
 		return 1
@@ -356,7 +359,8 @@
 		if(fingerprintslast != M.key)
 			fingerprintshidden += text("\[[]\]Real name: [], Key: []",time_stamp(), M.real_name, M.key)
 			fingerprintslast = M.key
-			truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
+			if(islist(fingerprintshidden))
+				truncate_oldest(fingerprintshidden, MAX_FINGERPRINTS)
 
 	//Cleaning up shit.
 	if(fingerprints && !fingerprints.len)

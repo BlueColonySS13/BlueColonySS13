@@ -18,3 +18,5 @@ maps/Geminus/backup/geminus-2.dmm
 config/admin_ranks.txt
 /config/*	
 !/config/*/*
+config/config.txt
+config/admins.txt

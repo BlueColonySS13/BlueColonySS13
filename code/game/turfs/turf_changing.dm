@@ -26,6 +26,7 @@
 	if (!N)
 		return
 
+
 	// This makes sure that turfs are not changed to space when one side is part of a zone
 	if(N == /turf/space)
 		var/turf/below = GetBelow(src)

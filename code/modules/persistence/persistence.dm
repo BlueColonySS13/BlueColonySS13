@@ -48,6 +48,9 @@
 /atom/proc/sanitize_for_saving()
 	return TRUE
 
+/atom/proc/get_saveable_contents()
+	return contents
+
 /obj/sanitize_for_saving()	// these things build up with time, so this gradually limits the amount so we don't have 5000 fingerprints or anything.
 	if(islist(suit_fibers) && !isemptylist(suit_fibers))
 		truncate_oldest(suit_fibers, MAX_FINGERPRINTS)
@@ -158,9 +161,6 @@
 /obj/vars_to_save()
  	 return list("x","y","z","anchored","color","dir","name","pixel_x","pixel_y","fingerprints","fingerprintshidden","fingerprintslast",\
  	 "suit_fibers","tagged_price")+unique_save_vars
-
-/obj/item/weapon/paper
-	unique_save_vars = list("info")
 
 /obj/structure/closet
 	unique_save_vars = list("opened","welded")

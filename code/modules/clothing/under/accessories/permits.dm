@@ -10,6 +10,10 @@
 	var/tiered = TRUE // If this is true, this will have different tiers
 	var/tier = 0	// different tiers allow different things
 
+//	dont_save = TRUE
+
+	unique_save_vars = list("owner", "tier")
+
 /obj/item/clothing/accessory/permit/New()
 	..()
 	update_icon()
@@ -82,7 +86,7 @@
 	name = "bar shotgun permit"
 	desc = "A card indicating that the owner is allowed to carry a shotgun in the bar."
 	tier = 3
-  
+
 /obj/item/clothing/accessory/permit/gun/planetside
 	name = "planetside gun permit"
 	desc = "A card indicating that the owner is allowed to carry a firearm while on the surface."

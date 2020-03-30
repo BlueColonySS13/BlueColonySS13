@@ -12,6 +12,9 @@
 	flags = 0
 	volume = 60
 
+/obj/item/weapon/reagent_containers/glass/bottle/can_empty()
+	return TRUE
+
 /obj/item/weapon/reagent_containers/glass/bottle/on_reagent_change()
 	update_icon()
 
@@ -201,7 +204,7 @@
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
 	prefill = list("frostoil" = 60)
-	
+
 /obj/item/weapon/reagent_containers/glass/bottle/biomass
 	name = "biomass bottle"
 	desc = "A bottle of raw biomass! Gross!"

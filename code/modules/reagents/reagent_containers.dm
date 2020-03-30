@@ -173,3 +173,25 @@
 				contraband_reagents += R
 
 		return contraband_reagents
+
+/obj/item/weapon/reagent_containers/verb/empty()
+	set name = "Empty Container"
+	set category = "Object"
+	set src in usr
+
+	if(!can_empty())
+		to_chat(usr,"<span class='notice'>You are unable to empty [src]...</span>")
+		return
+
+	if(isemptylist(reagentlist()))
+		to_chat(usr,"<span class='notice'>[src] is empty.</span>")
+		return
+
+	if (alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", "Yes", "No") != "Yes")
+		return
+	if(isturf(usr.loc))
+		to_chat(usr,"<span class='notice'>You empty \the [src] onto the floor.</span>")
+		reagents.splash(usr.loc, reagents.total_volume)
+
+/obj/item/weapon/reagent_containers/proc/can_empty()
+	return FALSE

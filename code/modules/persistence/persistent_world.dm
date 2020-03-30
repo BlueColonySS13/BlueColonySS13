@@ -18,7 +18,11 @@
 	SSlaw.save_warrants()
 
 	if(config.lot_saving)
-		SSlots.save_all_lots()
+		to_chat(world, "<h3>Saving all lots...</h3>")
+		if(SSlots.save_all_lots())
+			to_chat(world, "<h3>All lots saved. Success!</h3>")
+		else
+			to_chat(world, "<h3>There was an issue with saving lots or not all lots saved properly. Call Cassy!</h3>")
 
 	//saves all characters
 	for (var/mob/living/carbon/human/H in mob_list) //only humans, we don't really save AIs or robots.
