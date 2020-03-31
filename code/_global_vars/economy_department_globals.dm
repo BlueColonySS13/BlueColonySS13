@@ -21,3 +21,29 @@ GLOBAL_VAR_INIT(num_financial_terminals, 1)
 GLOBAL_VAR_INIT(economy_init, 0)
 
 GLOBAL_VAR(current_date_string)
+
+// businesses
+
+GLOBAL_LIST_EMPTY(all_businesses)
+GLOBAL_LIST_INIT(business_categories, list( // list of categories businesses can list themselves as
+	CAT_ADS,
+	CAT_FARM,
+	CAT_BANK,
+	CAT_LIBRARY,
+	CAT_BUILDING,
+	CAT_EDU,
+	CAT_EMPLOY,
+	CAT_ENTERTAINMENT,
+	CAT_FOOD,
+	CAT_HOSPITALITY,
+	CAT_LEGAL,
+	CAT_LEISURE,
+	CAT_MANUFACTURE,
+	CAT_MOTOR,
+	CAT_NEWS,
+	CAT_HEALTH,
+	CAT_RETAIL,
+	CAT_JANITOR,
+	CAT_SEC,
+	CAT_TECH
+))
