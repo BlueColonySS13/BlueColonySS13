@@ -30,7 +30,7 @@
 /datum/supply_pack/circuits/entertainment_center
 	contains = list(/obj/item/weapon/circuitboard/jukebox,
 	/obj/item/weapon/circuitboard/coin_machine,
-	/obj/item/weapon/circuitboard/vr_sleeper,
+	/obj/item/weapon/circuitboard/vr_sleeper/business,
 	)
 	name = "Entertainment Circuit Set"
 	cost = 200
