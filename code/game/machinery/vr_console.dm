@@ -251,10 +251,10 @@
 /obj/machinery/vr_sleeper/business
 	var/charge = 15
 	var/paid = FALSE
-	var/owner_name
-	var/datum/money_account/owner_account
-	var/owner_uid
-	unique_save_vars = list("owner_name", "owner_account", "owner_uid", "charge")
+	var/owner_name = ""
+	var/bank_id = ""
+	var/owner_uid = ""
+	unique_save_vars = list("owner_name", "bank_id", "owner_uid", "charge")
 
 /obj/machinery/vr_sleeper/business/proc/speak(var/message)
 	if(stat & NOPOWER)
@@ -291,7 +291,7 @@
 			if(!owner_name)
 				visible_message("<span class='notice'>[usr] swipes their ID card over \the [src].</span>")
 				owner_name = O.registered_name
-				owner_account = O.associated_account_number
+				bank_id = O.associated_account_number
 				owner_uid = O.unique_ID
 				return
 			else
@@ -414,7 +414,7 @@
 	// debit money from the purchaser's account
 	customer_account.money -= charge
 	customer_account.add_transaction_log("[owner_name] (via [name])", "VR Sleeper Charge", charge, name)
-	charge_to_account(owner_account, "VR Sleeper", "VR Sleeper Experience Purchase", "VR Sleeper", charge)
+	charge_to_account(bank_id, "VR Sleeper", "VR Sleeper Experience Purchase", "VR Sleeper", charge)
 
 	return TRUE
 
