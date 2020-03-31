@@ -14,7 +14,7 @@
 #define CAT_MANUFACTURE "Manufacturing"
 #define CAT_MOTOR "Motoring"
 #define CAT_NEWS "News/Media/Journalism"
-#define CAT_HEALTH "Private Healthcare""
+#define CAT_HEALTH "Private Healthcare"
 #define CAT_RETAIL "Retail/Shopping"
 #define CAT_JANITOR "Sanitation Services"
 #define CAT_SEC "Security Services"
