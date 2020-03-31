@@ -230,6 +230,13 @@
 	price = 400000
 	rent = 80
 
+/datum/lot/shopping_center_seven
+	name = "Shopping Center Lot 7"
+	id = "shoplot7"
+	desc = "A medium sized lot located on the bottom floor of the shopping center located on the bottom right."
+	price = 190000
+	rent = 40
+
 // No features for this yet, so it's not on sale.
 /*
 /datum/lot/cinema_1
