@@ -122,6 +122,10 @@
 	name = "Shopping Center Lot 6"
 	lot_id = "shoplot6"
 
+/area/lots/shopping_center_seven
+	name = "Shopping Center Lot 7"
+	lot_id = "shoplot7"
+
 // offices
 
 /area/lots/office_one
