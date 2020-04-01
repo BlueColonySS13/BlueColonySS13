@@ -61,22 +61,9 @@
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
-	var/income = 0
 
 
-	if(H.client)
-		switch(H.client.prefs.social_class)
-			if(CLASS_UPPER)
-				if(!H.mind.prefs.played)
-					income = 10000
 
-			if(CLASS_MIDDLE)
-				if(!H.mind.prefs.played)
-					income = 4000
-
-			if(CLASS_WORKING)
-				if(!H.mind.prefs.played)
-					income = 200
 
 
 	// To prevent abuse, no one recieves wages at roundstart and must play for at least an hour.
@@ -95,7 +82,20 @@
 		M = create_account(H.real_name, money_amount, null)
 		M.load_persistent_account(H)
 
+	if(check_persistent_account(H.mind.prefs.bank_account))
+		money_amount = get_persistent_acc_balance(H.mind.prefs.bank_account)	// so people can actually recieve money they made offline.
+	var/income = 0
 	if(!H.mind.prefs.played)
+		switch(H.mind.prefs.social_class)
+			if(CLASS_UPPER)
+				income = 10000
+
+			if(CLASS_MIDDLE)
+				income = 4000
+
+			if(CLASS_WORKING)
+				income = 200
+
 		M.money += income
 
 	if(H.mind)
