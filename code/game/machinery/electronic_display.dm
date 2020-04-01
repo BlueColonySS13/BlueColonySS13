@@ -402,7 +402,7 @@
 
 	// debit money from the purchaser's account
 	customer_account.money -= currently_vending.get_full_cost()
-	customer_account.add_transaction_log("[owner_name] (via [name])", "Purchase of [currently_vending.name]", currently_vending.get_full_cost(), name)
+	customer_account.add_transaction_log("[owner_name] (via [name])", "Purchase of [currently_vending.name]", -currently_vending.get_full_cost(), name)
 
 	return TRUE
 
