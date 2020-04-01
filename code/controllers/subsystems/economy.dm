@@ -39,7 +39,8 @@ SUBSYSTEM_DEF(economy)
 
 	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
 		if(CR.account_to_connect)
-			CR.linked_account = dept_acc_by_id(CR.account_to_connect)
+			var/datum/money_account/M = dept_acc_by_id(CR.account_to_connect)
+			CR.linked_account = M.account_number
 
 	for(var/obj/machinery/status_display/money_display/MD in GLOB.money_displays)
 		MD.link_to_account()

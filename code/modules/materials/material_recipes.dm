@@ -101,6 +101,7 @@
 	recipes += new/datum/stack_recipe("thick gate frame", /obj/item/frame/thick_gate, 25, time = 10)
 	recipes += new/datum/stack_recipe("thin gate frame", /obj/item/frame/thin_gate, 25, time = 10)
 	recipes += new/datum/stack_recipe("display case frame", /obj/item/frame/display_case, 25, time = 10)
+	recipes += new/datum/stack_recipe("metal book case", /obj/structure/bookcase/metal, 5, time = 15, one_per_turf = 1, on_floor = 1)
 
 	recipes += new/datum/stack_recipe_list("filing cabinets", list( \
 		new/datum/stack_recipe("filing cabinet", /obj/structure/filingcabinet, 4, time = 20, one_per_turf = 1, on_floor = 1), \
@@ -128,7 +129,9 @@
 /material/plastic/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("plastic crate", /obj/structure/closet/crate/plastic, 10, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("freezer crate", /obj/structure/closet/crate/freezer, 5, time = 20, on_floor = 1)
 	recipes += new/datum/stack_recipe("plastic bag", /obj/item/weapon/storage/bag/plasticbag, 3, on_floor = 1)
+	recipes += new/datum/stack_recipe("portable freezer", /obj/item/weapon/storage/box/freezer, 20, on_floor = 1)
 	recipes += new/datum/stack_recipe("blood pack", /obj/item/weapon/reagent_containers/blood/empty, 4, on_floor = 0)
 	recipes += new/datum/stack_recipe("baggie", /obj/item/weapon/reagent_containers/drugs/baggie, 1, on_floor = 0)
 	recipes += new/datum/stack_recipe("reagent dispenser cartridge (large)", /obj/item/weapon/reagent_containers/chem_disp_cartridge,        5, on_floor=0) // 500u
@@ -147,15 +150,29 @@
 	recipes += new/datum/stack_recipe("urinal", /obj/item/frame/plastic/urinal, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("tape", /obj/item/device/tape/random, 15, time = 20, on_floor = 1)
 	recipes += new/datum/stack_recipe("mop bucket", /obj/structure/mopbucket, 5, time = 20, on_floor = 1)
-
+	recipes += new/datum/stack_recipe("fridge", /obj/structure/closet/secure_closet/freezer/fridge, 5, time = 20, on_floor = 1)
+	recipes += new/datum/stack_recipe("freezer", /obj/structure/closet/secure_closet/freezer, 5, time = 20, on_floor = 1)
 
 /material/glass/generate_recipes()
 	..()
-	recipes += new/datum/stack_recipe("mirror", /obj/item/frame/mirror, 1, time = 1)
-	recipes += new/datum/stack_recipe("glass jar", /obj/item/glass_jar, 15, time = 20, on_floor = 1)
-	recipes += new/datum/stack_recipe("keypad windoor frame", /obj/item/frame/keypad_windoor, 15, time = 25, one_per_turf = 1, on_floor = 1)
-	recipes += new/datum/stack_recipe("windoor", /obj/item/frame/windoor, 15, time = 25, one_per_turf = 1, on_floor = 1)
+	if(!is_reinforced())
+		recipes += new/datum/stack_recipe("basic window", /obj/structure/window/basic, 1, time = 1, supplied_material = "[name]")
+		recipes += new/datum/stack_recipe("full window", /obj/structure/window/basic/full, 1, time = 1, supplied_material = "[name]")
+	else
+		recipes += new/datum/stack_recipe("reinforced basic window", /obj/structure/window/reinforced, 1, time = 1, supplied_material = "[name]")
+		recipes += new/datum/stack_recipe("reinforced full window", /obj/structure/window/reinforced/full, 1, time = 1, supplied_material = "[name]")
 
+	recipes += new/datum/stack_recipe("glass jar", /obj/item/glass_jar, 15, time = 20, on_floor = 1)
+	recipes += new/datum/stack_recipe("windoor", /obj/item/frame/windoor, 15, time = 25, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("keypad windoor frame", /obj/item/frame/keypad_windoor, 15, time = 25, one_per_turf = 1, on_floor = 1)
+
+/material/glass/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe("basic window", /obj/structure/window/basic, 1, time = 1, supplied_material = "[name]")
+	recipes += new/datum/stack_recipe("full window", /obj/structure/window/basic/full, 1, time = 1, supplied_material = "[name]")
+	recipes += new/datum/stack_recipe("glass jar", /obj/item/glass_jar, 15, time = 20, on_floor = 1)
+	recipes += new/datum/stack_recipe("windoor", /obj/item/frame/windoor, 15, time = 25, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("keypad windoor frame", /obj/item/frame/keypad_windoor, 15, time = 25, one_per_turf = 1, on_floor = 1)
 
 /material/wood/generate_recipes()
 	..()
