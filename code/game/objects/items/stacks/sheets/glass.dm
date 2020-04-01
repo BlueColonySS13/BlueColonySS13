@@ -17,6 +17,9 @@
 	var/is_reinforced = 0
 	default_type = "glass"
 
+/obj/item/stack/material/glass/attack_self(mob/user as mob)
+	list_recipes(user)
+
 /obj/item/stack/material/glass/attackby(obj/item/W, mob/user)
 	..()
 	if(!is_reinforced)
