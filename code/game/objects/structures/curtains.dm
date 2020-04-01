@@ -37,6 +37,7 @@
 		layer = SHOWER_OPEN_LAYER
 
 /obj/structure/curtain/attackby(obj/item/P, mob/user)
+
 	if(istype(P, /obj/item/weapon/wirecutters))
 		playsound(src, P.usesound, 50, 1)
 		user << "<span class='notice'>You start to cut \the [src].</span>"
@@ -47,9 +48,12 @@
 			A.stack_color = color
 			qdel(src)
 		return
-	else
-		src.attack_hand(user)
-	return
+
+	if(istype(P, /obj/item/weapon/screwdriver))
+		user.visible_message("<span class='warning'>[user] uses [P] on [src].</span>", "<span class='notice'>You use [P] on [src]</span>", "You hear rustling noises.")
+		if(do_after(user, 10))
+			anchored = !anchored
+			to_chat(user, "<span class='notice'>You [anchored ? "screw" : "unscrewed"] [src] to the floor.</span>")
 
 /obj/structure/curtain/black
 	name = "black curtain"

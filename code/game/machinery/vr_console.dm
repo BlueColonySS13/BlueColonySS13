@@ -20,7 +20,7 @@
 
 /obj/machinery/vr_sleeper/examine(mob/user)
 	..()
-	if(avatar)
+	if(occupant && avatar)
 		to_chat(user, "You see <b>[occupant]</b> inside. The game title above them says <b>[get_area(avatar)]</b>.")
 
 /obj/machinery/vr_sleeper/prison_vr
@@ -269,8 +269,6 @@
 
 /obj/machinery/vr_sleeper/business/examine(mob/user)
 	..()
-	if(avatar)
-		to_chat(user, "You see <b>[occupant]</b> inside. The game title above them says <b>[get_area(avatar)]</b>.")
 	if(charge)
 		to_chat(user, "The usage fee for this VR Sleeper is <b>[charge]</b> credits.")
 

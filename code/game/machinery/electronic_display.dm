@@ -383,7 +383,7 @@
 		return
 
 	if(customer_account.suspended)
-		visible_message("<span class='notice'>Unable to access account: account suspended.")
+		visible_message("<span class='notice'>Unable to access account: account suspended.</span>")
 		return
 
 	// Have the customer punch in the PIN before checking if there's enough money. Prevents people from figuring out acct is
@@ -402,7 +402,7 @@
 
 	// debit money from the purchaser's account
 	customer_account.money -= currently_vending.get_full_cost()
-	customer_account.add_transaction_log("[owner_name] (via [name])", "Purchase of [currently_vending.name]", currently_vending.get_full_cost(), name)
+	customer_account.add_transaction_log("[owner_name] (via [name])", "Purchase of [currently_vending.name]", -currently_vending.get_full_cost(), name)
 
 	return TRUE
 
@@ -655,7 +655,7 @@
 
 				var/new_tag = input("Please enter the new price you want for this item. Enter 0 to make the item free.", "Set Bank", O.price_tag) as num
 
-				O.price_tag = new_tag
+				O.tagged_price = new_tag
 
 			if("examine_item")
 				var/item = locate(href_list["item"])

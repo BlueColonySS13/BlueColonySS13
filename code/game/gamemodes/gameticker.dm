@@ -346,6 +346,9 @@ var/global/datum/controller/gameticker/ticker
 				if(blackbox)
 					blackbox.save_all_data_to_sql()
 
+				if(save_world())
+					to_chat(world, "<H3>The world has been saved!</H3>")
+
 				var/wait_for_tickets
 				var/delay_notified = 0
 				do
@@ -401,8 +404,7 @@ var/global/datum/controller/gameticker/ticker
 	else
 		to_chat(world, "<H2>This round was canon.</H2>")
 		to_chat(world, "<H3>Saving world...</H3>")
-		if(save_world())
-			to_chat(world, "<H3>The world has been saved!</H3>")
+
 
 
 	for(var/mob/Player in player_list)

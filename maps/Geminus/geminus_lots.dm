@@ -193,14 +193,14 @@
 	name = "Shopping Center Lot 1"
 	id = "shoplot1"
 	desc = "A decently sized lot located in the shopping center on the top right of the upper floor."
-	price = 340000
+	price = 250000
 	rent = 40
 
 /datum/lot/shopping_center_two
 	name = "Shopping Center Lot 2"
 	id = "shoplot2"
 	desc = "A moderate sized lot located in the shopping center on the bottom right of the upper floor."
-	price = 240000
+	price = 150000
 	rent = 40
 
 /datum/lot/shopping_center_three
@@ -214,20 +214,20 @@
 	name = "Shopping Center Lot 4"
 	id = "shoplot4"
 	desc = "A medium sized lot located on the bottom floor of the shopping center located on the bottom left."
-	price = 370000
+	price = 200000
 
 /datum/lot/shopping_center_five
 	name = "Shopping Center Lot 5"
 	id = "shoplot5"
 	desc = "A very large bottom floor located on the bottom floor of the shopping center located on the top left."
-	price = 290000
+	price = 220000
 	rent = 80
 
 /datum/lot/shopping_center_six
 	name = "Shopping Center Lot 6"
 	id = "shoplot6"
 	desc = "A huge bottom floor located on the bottom floor of the shopping center located in the middle."
-	price = 400000
+	price = 250000
 	rent = 80
 
 /datum/lot/shopping_center_seven
