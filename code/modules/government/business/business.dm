@@ -23,6 +23,8 @@
 
 	var/datum/department/department
 
+	var/list/business_jobs = list()
+
 
 //////////////////////////
 
@@ -61,5 +63,8 @@
 	var/datum/business_person/n_owner = new()
 
 	owner = n_owner
+	owner.unique_id = owner_uid
+	owner.name = owner_name
+	owner.email = owner_email
 
 	return B
