@@ -3,7 +3,7 @@
 	email_domain = "secure.plux.gov.nt"
 	flag = HOS
 	faction = "City"
-	department = "City Council"
+	department = DEPT_COUNCIL
 	department_flag = ENGSEC
 	head_position = 1
 	total_positions = 1
@@ -35,7 +35,7 @@
 	email_domain = "secure.plux.gov.nt"
 	flag = WARDEN
 	faction = "City"
-	department = "Police"
+	department = DEPT_POLICE
 	department_flag = ENGSEC
 	total_positions = 1
 	spawn_positions = 1
@@ -61,7 +61,7 @@
 	email_domain = "secure.plux.gov.nt"
 	flag = DETECTIVE
 	faction = "City"
-	department = "Police"
+	department = DEPT_POLICE
 	department_flag = ENGSEC
 	total_positions = 2
 	spawn_positions = 2
@@ -87,14 +87,14 @@
 	email_domain = "secure.plux.gov.nt"
 	flag = OFFICER
 	faction = "City"
-	department = "Police"
+	department = DEPT_POLICE
 	department_flag = ENGSEC
 	total_positions = 8
 	spawn_positions = 8
 	supervisors = "the chief of police"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/officer
-	wage = 40
+	wage = 60
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3
@@ -108,39 +108,13 @@
 /datum/job/officer/get_job_email()
 	return using_map.police_email
 
-/datum/job/prosecutor
-	title = "District Prosecutor"
-	email_domain = "prosecute.nt"
-	flag = PROSECUTOR
-	faction = "City"
-	department = "Police"
-	department_flag = ENGSEC
-	total_positions = 2
-	spawn_positions = 2
-	req_admin_notify = 1
-	supervisors = "the chief of police."
-	selection_color = "#601C1C"
-	idtype = /obj/item/weapon/card/id/security/prosecutor
-	wage = 100
-	access = list(access_prosecutor, access_sec_doors, access_maint_tunnels, access_heads, access_legal, access_warrant)
-	minimal_access = list(access_prosecutor, access_sec_doors, access_heads, access_legal, access_warrant)
-	minimal_player_age = 14
-	minimum_character_age = 28
 
-	alt_titles = list("Prosecutor","Prosecuting Attorney","Prosecution Officer","Prosecuting Lawyer")
-
-	outfit_type = /decl/hierarchy/outfit/job/prosecution
-
-	clean_record_required = TRUE
-
-/datum/job/prosecutor/get_job_email()
-	return using_map.police_email
 
 /datum/job/bguard
 	title = "City Hall Guard"
 	email_domain = "secure.plux.gov.nt"
 	flag = BRIDGE
-	department = "Police"
+	department = DEPT_COUNCIL
 	department_flag = ENGSEC
 	faction = "City"
 	total_positions = 2
@@ -149,7 +123,7 @@
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/silver/secretary
 	minimal_player_age = 5
-	wage = 90
+	wage = 40
 	minimum_character_age = 25
 	access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_legal)
 	minimal_access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_legal)

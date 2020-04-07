@@ -561,8 +561,8 @@
 	toysay = "Dude, I see colors..."
 
 /obj/item/toy/figure/captain
-	name = "Colony Director action figure"
-	desc = "A \"Space Life\" brand Colony Director action figure."
+	name = "Mayor action figure"
+	desc = "A \"Space Life\" brand Mayor action figure."
 	icon_state = "captain"
 	toysay = "How do I open this display case?"
 
@@ -847,6 +847,8 @@
 	var/searching = FALSE
 	var/phrase = "I don't want to exist anymore!"
 
+	unique_save_vars = list("opened")
+
 /obj/structure/plushie/examine(mob/user)
 	..()
 	if(opened)
@@ -855,13 +857,16 @@
 			to_chat(user, "<i>You can see something in there...</i>")
 
 /obj/structure/plushie/on_persistence_load()
+	if(isemptylist(contents))
+		return TRUE
+
 	if(contents[1])
 		stored_item = contents[1]
-	..()
+
 
 /obj/structure/plushie/attack_hand(mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if(stored_item && !searching)
+	if(stored_item && opened && !searching)
 		searching = TRUE
 		if(do_after(user, 10))
 			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")
@@ -948,10 +953,14 @@
 	var/opened = FALSE	// has this been slit open? this will allow you to store an object in a plushie.
 	var/obj/item/stored_item	// Note: Stored items can't be bigger than the plushie itself.
 
+	unique_save_vars = list("opened")
+
 /obj/item/toy/plushie/on_persistence_load()
+	if(isemptylist(contents))
+		return TRUE
+
 	if(contents[1])
 		stored_item = contents[1]
-	..()
 
 
 /obj/item/toy/plushie/examine(mob/user)
@@ -962,7 +971,7 @@
 			to_chat(user, "<i>You can see something in there...</i>")
 
 /obj/item/toy/plushie/attack_self(mob/user as mob)
-	if(stored_item && !searching)
+	if(stored_item && opened && !searching)
 		searching = TRUE
 		if(do_after(user, 10))
 			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")

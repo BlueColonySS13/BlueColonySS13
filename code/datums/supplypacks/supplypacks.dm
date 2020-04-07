@@ -7,13 +7,15 @@
 //NOTE NOTE: Hidden var is now deprecated, whoever removed support for it should've removed the var altogether
 
 //var/list/all_supply_groups = list("Operations","Security","Hospitality","Engineering","Atmospherics","Medical","Reagents","Reagent Cartridges","Science","Hydroponics", "Supply", "Miscellaneous")
-var/list/all_supply_groups = list("Costumes",
+var/list/all_supply_groups = list("Clothing",
 								  "Engineering",
 								  "Hospitality",
 								  "Hydroponics",
 								  "Materials",
 								  "Medical",
 								  "Miscellaneous",
+								  "Decoration",
+								  "Business",
 								  "Munitions",
 								  "Reagents",
 								  "Reagent Cartridges",
@@ -21,7 +23,8 @@ var/list/all_supply_groups = list("Costumes",
 								  "Robotics",
 								  "Science",
 								  "Security",
-								  "Supplies")
+								  "Supplies",
+								  "Circuits")
 
 /datum/supply_pack
 	var/name = null

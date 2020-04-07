@@ -163,6 +163,7 @@
 
 	var/processing = 0
 	var/honey = 0
+	circuit = /obj/item/weapon/circuitboard/honey_extractor
 
 /obj/machinery/honey_extractor/attackby(var/obj/item/I, var/mob/user)
 	if(processing)
@@ -246,10 +247,6 @@
 /obj/item/stack/wax/New()
 	..()
 	recipes = wax_recipes
-
-var/global/list/datum/stack_recipe/wax_recipes = list( \
-	new/datum/stack_recipe("candle", /obj/item/weapon/flame/candle) \
-)
 
 /obj/item/bee_pack
 	name = "bee pack"

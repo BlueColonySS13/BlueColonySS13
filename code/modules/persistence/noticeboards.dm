@@ -39,15 +39,15 @@
 		switch(placing)
 			if(NORTH)
 				pixel_x = 0
-				pixel_y = 32
+				pixel_y = 30
 			if(SOUTH)
 				pixel_x = 0
-				pixel_y = -32
+				pixel_y = -30
 			if(EAST)
-				pixel_x = 32
+				pixel_x = 30
 				pixel_y = 0
 			if(WEST)
-				pixel_x = -32
+				pixel_x = -30
 				pixel_y = 0
 
 	update_icon()
@@ -67,7 +67,7 @@
 		if(!skip_icon_update)
 			update_icon()
 
-/obj/structure/noticeboard/proc/dismantle()
+/obj/structure/noticeboard/dismantle()
 	for(var/thing in notices)
 		remove_paper(thing, skip_icon_update = TRUE)
 	new /obj/item/stack/material(get_turf(src), 10, MATERIAL_WOOD)
@@ -81,8 +81,8 @@
 	dismantle()
 
 /obj/structure/noticeboard/update_icon()
-	if(LAZYLEN(notices) >= 9)
-		icon_state = "[base_icon_state]9"
+	if(LAZYLEN(notices) >= 5)
+		icon_state = "[base_icon_state]5"
 	else
 		icon_state = "[base_icon_state][LAZYLEN(notices)]"
 

@@ -12,7 +12,7 @@
 	anchored = 1
 	flags = ON_BORDER
 	layer = STAIRS_LAYER
-	
+
 	var/allowed_directions = DOWN
 	var/obj/structure/ladder/target_up
 	var/obj/structure/ladder/target_down
@@ -29,6 +29,8 @@
 				L.target_up = src
 				return
 	update_icon()
+
+
 
 /obj/structure/ladder/Destroy()
 	if(target_down)
@@ -137,7 +139,7 @@
 	opacity = 0
 	anchored = 1
 	flags = ON_BORDER
-	
+
 /obj/structure/stairs/initialize()
 	. = ..()
 	for(var/turf/turf in locs)

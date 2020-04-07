@@ -155,8 +155,8 @@
 	new /obj/item/clothing/suit/holidaypriest(src)
 	new /obj/item/clothing/under/wedding/bride_white(src)
 	new /obj/item/weapon/storage/backpack/cultpack (src)
-	new /obj/item/weapon/storage/fancy/candle_box(src)
-	new /obj/item/weapon/storage/fancy/candle_box(src)
+	new /obj/item/weapon/storage/box/candle_box(src)
+	new /obj/item/weapon/storage/box/candle_box(src)
 	new /obj/item/weapon/deck/tarot(src)
 	return
 
@@ -663,7 +663,7 @@
 	return
 
 /obj/structure/closet/wardrobe/captain
-	name = "colony director's wardrobe"
+	name = "mayor's wardrobe"
 	icon_state = "cabinet_closed"
 	icon_closed = "cabinet_closed"
 	icon_opened = "cabinet_open"

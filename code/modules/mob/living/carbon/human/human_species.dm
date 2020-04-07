@@ -64,3 +64,10 @@
 
 /mob/living/carbon/human/precursor/New(var/new_loc)
 	..(new_loc, SPECIES_PRECURSOR)
+
+/mob/living/carbon/human/mpl_vatborn/New(var/new_loc)
+	..(new_loc, SPECIES_HUMAN_VATBORN_MPL)
+
+/mob/living/carbon/human/vatborn/New(var/new_loc)
+	..(new_loc, SPECIES_HUMAN_VATBORN)
+

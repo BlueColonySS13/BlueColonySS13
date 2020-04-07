@@ -3,7 +3,7 @@
 	desc = "A pad of densely packed sticky notes."
 	color = COLOR_YELLOW
 	icon = 'icons/obj/stickynotes.dmi'
-	icon_state = "pad_full"
+	icon_state = "pad"
 	item_state = "paper"
 	w_class = ITEMSIZE_SMALL
 
@@ -11,16 +11,25 @@
 	var/written_text
 	var/written_by
 	var/paper_type = /obj/item/weapon/paper/sticky
-
 	price_tag = 1
+
+/obj/item/sticky_pad/poster
+	name = "adhesive posters"
+	icon_state = "poster"
+	desc = "A pad of posters with a adhesive back to them."
+	paper_type = /obj/item/weapon/paper/sticky/poster
+
+/obj/item/sticky_pad/New()
+	..()
+	update_icon()
 
 /obj/item/sticky_pad/update_icon()
 	if(papers <= 15)
-		icon_state = "pad_empty"
+		icon_state = "[initial(icon_state)]_empty"
 	else if(papers <= 50)
-		icon_state = "pad_used"
+		icon_state = "[initial(icon_state)]_used"
 	else
-		icon_state = "pad_full"
+		icon_state = "[initial(icon_state)]_full"
 	if(written_text)
 		icon_state = "[icon_state]_writing"
 
@@ -73,13 +82,18 @@
 
 /obj/item/sticky_pad/random/initialize()
 	. = ..()
-	color = pick(COLOR_YELLOW, COLOR_LIME, COLOR_CYAN, COLOR_ORANGE, COLOR_PINK)
+	color = pick(COLOR_WHITE, COLOR_YELLOW, COLOR_LIME, COLOR_CYAN, COLOR_ORANGE, COLOR_PINK)
+
+/obj/item/sticky_pad/poster/random/initialize()
+	. = ..()
+	color = pick(COLOR_WHITE, COLOR_GRAY, COLOR_RED, COLOR_DARK_ORANGE, COLOR_PURPLE_GRAY, COLOR_CYAN_BLUE, COLOR_PALE_RED_GRAY)
 
 /obj/item/weapon/paper/sticky
 	name = "sticky note"
 	desc = "Note to self: buy more sticky notes."
 	icon = 'icons/obj/stickynotes.dmi'
 	color = COLOR_YELLOW
+	icon_state = "paper"
 	slot_flags = 0
 
 /obj/item/weapon/paper/sticky/initialize()
@@ -88,8 +102,8 @@
 
 /obj/item/weapon/paper/sticky/proc/reset_persistence_tracking()
 	SSpersistence.forget_value(src, /datum/persistent/paper/sticky)
-	pixel_x = 0
-	pixel_y = 0
+//	pixel_x = 0
+//	pixel_y = 0
 
 /obj/item/weapon/paper/sticky/Destroy()
 	reset_persistence_tracking()
@@ -97,8 +111,8 @@
 	. = ..()
 
 /obj/item/weapon/paper/sticky/update_icon()
-	if(icon_state != "scrap")
-		icon_state = info ? "paper_words" : "paper"
+	if(icon_state != scrap_state)
+		icon_state = info ? "[initial(icon_state)]_words" : "[initial(icon_state)]"
 
 // Copied from duct tape.
 /obj/item/weapon/paper/sticky/attack_hand()
@@ -108,7 +122,7 @@
 
 /obj/item/weapon/paper/sticky/afterattack(var/A, var/mob/user, var/flag, var/params)
 
-	if(!in_range(user, A) || istype(A, /obj/machinery/door) || istype(A, /obj/item/weapon/storage) || icon_state == "scrap")
+	if(!in_range(user, A) || istype(A, /obj/machinery/door) || istype(A, /obj/item/weapon/storage) || icon_state == scrap_state)
 		return
 
 	var/turf/target_turf = get_turf(A)
@@ -137,3 +151,12 @@
 					pixel_y += 32
 				else if(dir_offset & SOUTH)
 					pixel_y -= 32
+
+
+/obj/item/weapon/paper/sticky/poster
+	name = "adhesive poster"
+	desc = "Goodness, what is it saying now?"
+	icon = 'icons/obj/stickynotes.dmi'
+	icon_state = "poster"
+	color = COLOR_WHITE
+	scrap_state = "scrap_poster"

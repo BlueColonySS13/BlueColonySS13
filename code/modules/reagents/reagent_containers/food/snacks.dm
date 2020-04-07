@@ -18,6 +18,8 @@
 	w_class = ITEMSIZE_SMALL
 	force = 1
 
+	unique_save_vars = list("dry", "bitecount")
+
 /obj/item/weapon/reagent_containers/food/snacks/New()
 	..()
 	if(nutriment_amt)
@@ -1785,7 +1787,7 @@
 	center_of_mass = list("x"=16, "y"=14)
 
 	var/wrapped = 0
-	var/monkey_type = "Monkey"
+	var/spawn_type = /mob/living/carbon/human/monkey
 
 	price_tag = 2
 
@@ -1799,10 +1801,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/proc/Expand()
 	src.visible_message("<span class='notice'>\The [src] expands!</span>")
-	var/mob/living/carbon/human/H = new(get_turf(src))
-	H.set_species(monkey_type)
-	H.real_name = H.species.get_random_name()
-	H.name = H.real_name
+	new spawn_type(get_turf(src))
 	if(ismob(loc))
 		var/mob/M = loc
 		M.unEquip(src)
@@ -1837,27 +1836,35 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/farwacube
 	name = "farwa cube"
-	monkey_type = "Farwa"
+	spawn_type = /mob/living/carbon/human/farwa
 
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/farwacube
 	name = "farwa cube"
-	monkey_type = "Farwa"
+	spawn_type = /mob/living/carbon/human/farwa
 
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/stokcube
 	name = "stok cube"
-	monkey_type = "Stok"
+	spawn_type = /mob/living/carbon/human/stok
 
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/stokcube
 	name = "stok cube"
-	monkey_type = "Stok"
+	spawn_type = /mob/living/carbon/human/stok
 
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/neaeracube
 	name = "neaera cube"
-	monkey_type = "Neaera"
+	spawn_type = /mob/living/carbon/human/neaera
 
 /obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/neaeracube
 	name = "neaera cube"
-	monkey_type = "Neaera"
+	spawn_type = /mob/living/carbon/human/neaera
+
+/obj/item/weapon/reagent_containers/food/snacks/monkeycube/vatborncube
+	name = "vatborn cube"
+	spawn_type = /mob/living/carbon/human/mpl_vatborn
+
+/obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/vatborncube
+	name = "vatborn cube"
+	spawn_type = /mob/living/carbon/human/mpl_vatborn
 
 /obj/item/weapon/reagent_containers/food/snacks/spellburger
 	name = "Spell Burger"

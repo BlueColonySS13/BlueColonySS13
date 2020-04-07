@@ -3,7 +3,7 @@
 	flag = CMO
 	head_position = 1
 	department_flag = MEDSCI
-	department = "City Council"
+	department = DEPT_COUNCIL
 	faction = "City"
 	total_positions = 1
 	spawn_positions = 1
@@ -12,7 +12,7 @@
 	selection_color = "#026865"
 	idtype = /obj/item/weapon/card/id/medical/head
 	req_admin_notify = 1
-	wage = 540
+	wage = 340
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
@@ -37,7 +37,7 @@
 	email_domain = "med.gov.nt"
 	flag = DOCTOR
 	department_flag = MEDSCI
-	department = "Public Healthcare"
+	department = DEPT_HEALTHCARE
 	faction = "City"
 	total_positions = 5
 	spawn_positions = 3
@@ -62,7 +62,7 @@
 	email_domain = "med.gov.nt"
 	title = "Chemist"
 	flag = CHEMIST
-	department = "Public Healthcare"
+	department = DEPT_HEALTHCARE
 	department_flag = MEDSCI
 	faction = "City"
 	total_positions = 2
@@ -85,7 +85,7 @@
 /datum/job/geneticist
 	title = "Geneticist"
 	flag = GENETICIST
-	department = "Civilian"
+	department = DEPT_HEALTHCARE
 	department_flag = MEDSCI
 //	faction = "City"
 	total_positions = 0
@@ -104,7 +104,7 @@
 	email_domain = "med.gov.nt"
 	flag = PSYCHIATRIST
 	department_flag = MEDSCI
-	department = "Public Healthcare"
+	department = DEPT_HEALTHCARE
 	faction = "City"
 	total_positions = 4
 	spawn_positions = 1
@@ -125,14 +125,14 @@
 	flag = MEDICALINTERN
 	department_flag = MEDSCI
 	email_domain = "med.gov.nt"
-	department = "Public Healthcare"
+	department = DEPT_HEALTHCARE
 	faction = "City"
 	total_positions = 5
 	spawn_positions = 3
 	supervisors = "the medical director"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/intern
-	wage = 26
+	wage = 30
 	minimum_character_age = 18 //Excuse me electric, what.
 	access = list(access_medical)
 	minimal_access = list(access_medical, access_maint_tunnels)
@@ -144,7 +144,7 @@
 	email_domain = "cityworks.gov.nt"
 	flag = PARAMEDIC
 	department_flag = MEDSCI
-	department = "Emergency and Maintenance"
+	department = DEPT_HEALTHCARE
 	faction = "City"
 	total_positions = 2
 	spawn_positions = 2

@@ -1,5 +1,6 @@
 #define LAW "law"
 #define MED "medical"
+#define COR "court"
 
 /obj/machinery/cash_register
 	name = "cash register"
@@ -7,8 +8,9 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "register_idle"
 	flags = NOBLUDGEON
-	req_access = list(access_heads)
-	anchored = 1
+	anchored = 0
+	table_drag = TRUE
+	table_shift = 0
 
 	var/locked = 1
 	var/cash_locked = 1
@@ -24,26 +26,36 @@
 
 	var/cash_stored = 0
 	var/obj/item/confirm_item
-	var/datum/money_account/linked_account
+	var/linked_account
 	var/account_to_connect = null
 
 	var/menu_items
 	var/adds_tax = TRUE
 
+	unique_save_vars = list("locked", "cash_stored", "linked_account")
+
 // Claim machine ID
 /obj/machinery/cash_register/New()
-	machine_id = "[station_name()] RETAIL #[num_financial_terminals++]"
-	cash_stored = rand(10, 70)*10
-	transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
+	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
+	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
+	if(SSeconomy && account_to_connect)
+		var/datum/money_account/M = dept_acc_by_id(account_to_connect)
+		if(!M)
+			return
+		linked_account = M.account_number
+
+/obj/machinery/cash_register/on_persistence_load()
+	if(!check_account_exists(linked_account))
+		linked_account = null
 
 
 /obj/machinery/cash_register/examine(mob/user as mob)
 	..(user)
 	if(cash_open)
 		if(cash_stored)
-			user << "It holds [cash_stored] credit\s of money."
+			to_chat(user, "It holds [cash_stored] credit\s of money.")
 		else
-			user << "It's completely empty."
+			to_chat(user, "It's completely empty.")
 
 
 /obj/machinery/cash_register/attack_hand(mob/user as mob)
@@ -69,13 +81,15 @@
 
 /obj/machinery/cash_register/interact(mob/user as mob)
 	var/dat = "<h2>Cash Register<hr></h2>"
+	var/acc_name = get_account_name(linked_account)
 	if (locked)
 		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Unlock</a><br>"
-		dat += "Linked account: <b>[linked_account ? linked_account.owner_name : "None"]</b><br>"
+
+		dat += "Linked account: <b>[acc_name ? acc_name : "None"]</b><br>"
 		dat += "<b>[cash_locked? "Unlock" : "Lock"] Cash Box</b> | "
 	else
 		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Lock</a><br>"
-		dat += "Linked account: <a href='?src=\ref[src];choice=link_account'>[linked_account ? linked_account.owner_name : "None"]</a><br>"
+		dat += "Linked account: <a href='?src=\ref[src];choice=link_account'>[acc_name ? acc_name : "None"]</a><br>"
 		dat += "<a href='?src=\ref[src];choice=toggle_cash_lock'>[cash_locked? "Unlock" : "Lock"] Cash Box</a> | "
 	dat += "<a href='?src=\ref[src];choice=custom_order'>Custom Order</a><hr>"
 
@@ -108,6 +122,11 @@
 		for(var/datum/medical_bill/M in medical_bills)
 			if(M.cost)
 				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[M]'>[M.name]</a><br>"
+
+	if(menu_items == "court")
+		for(var/datum/court_fee/J in court_fees)
+			if(J.cost)
+				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[J]'>[J.name]</a><br>"
 	return dat
 
 
@@ -130,13 +149,24 @@
 			if("link_account")
 				var/attempt_account_num = sanitize(input("Enter account id", "New account id") as text)
 				var/attempt_pin = input("Enter PIN", "Account PIN") as num
-				linked_account = attempt_account_access(attempt_account_num, attempt_pin, 1)
-				if(linked_account)
-					if(linked_account.suspended)
-						linked_account = null
-						src.visible_message("\icon[src]<span class='warning'>Account has been suspended.</span>")
-				else
-					usr << "\icon[src]<span class='warning'>Account not found.</span>"
+
+				var/okay_account = FALSE
+				if(attempt_account_access(attempt_account_num, attempt_pin, 1) && !check_account_suspension(linked_account))
+					okay_account = TRUE
+				else if((get_persistent_acc_pin(attempt_account_num) == attempt_pin) && !get_persistent_acc_suspension(attempt_account_num))
+					okay_account = TRUE
+
+				if(okay_account)
+					to_chat(usr, "Account connected.")
+					linked_account = attempt_account_num
+					return
+
+				if(check_account_suspension(linked_account))
+					linked_account = null
+					src.visible_message("\icon[src]<span class='warning'>Account has been suspended.</span>")
+					return
+
+				to_chat(usr, "\icon[src]<span class='warning'>Account not found.</span>")
 			if("custom_order")
 				var/t_purpose = sanitize(input("Enter purpose", "New purpose") as text)
 				if (!t_purpose || !Adjacent(usr)) return
@@ -151,8 +181,8 @@
 				item_list[t_purpose] += 1
 				price_list[t_purpose] += t_amount
 
-				playsound(src, 'sound/machines/twobeep.ogg', 25)
-				src.visible_message("\icon[src][transaction_purpose]: [t_amount] credit\s.")
+				playsound(src, 'sound/effects/checkout.ogg', 25)
+				src.visible_message("\icon[src][transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("add_menu")
 				if(!Adjacent(usr)) return
@@ -182,6 +212,15 @@
 					tax_cost = med_charge.post_tax_cost()
 					item_desc = "Medical Bill"
 
+				if (istype(menuitem, /datum/court_fee))
+					var/datum/court_fee/court_charge = menuitem
+					t_amount = court_charge.get_item_cost()
+					t_purpose = court_charge.name
+					tax_percent = court_charge.get_tax()
+					transaction_purpose = court_charge.name
+					tax_cost = court_charge.post_tax_cost()
+					item_desc = "Court Fee"
+
 				if(adds_tax)
 					t_amount += tax_cost
 
@@ -192,8 +231,8 @@
 
 				transaction_amount += t_amount
 
-				playsound(src, 'sound/machines/twobeep.ogg', 25)
-				src.visible_message("\icon[src] <b>[item_desc]:</b> [transaction_purpose]: [t_amount] credit\s.")
+				playsound(src, 'sound/effects/checkout.ogg', 25)
+				src.visible_message("\icon[src] <b>[item_desc]:</b> [transaction_purpose]: [cash2text( t_amount, FALSE, TRUE, TRUE )].")
 
 			if("set_amount")
 				var/item_name = locate(href_list["item"])
@@ -279,7 +318,7 @@
 		return 1
 	else
 		confirm_item = I
-		src.visible_message("\icon[src]<b>Total price:</b> [transaction_amount] credit\s. Swipe again to confirm.")
+		src.visible_message("\icon[src]<b>Total price:</b> [cash2text( transaction_amount, FALSE, TRUE, TRUE )] credit\s. Swipe again to confirm.")
 		playsound(src, 'sound/machines/twobeep.ogg', 25)
 		return 0
 
@@ -303,6 +342,7 @@
 	// Access account for transaction
 	if(check_account())
 		var/datum/money_account/D = get_account(I.associated_account_number)
+
 		var/attempt_pin = ""
 		if(D && D.security_level)
 			attempt_pin = input("Enter PIN", "Transaction") as num
@@ -320,19 +360,16 @@
 				else
 					// Transfer the money
 					D.money -= transaction_amount
-					linked_account.money += transaction_amount
+					charge_to_account(linked_account, "[D.owner_name]", "[transaction_purpose]: #[transaction_logs.len+1]", machine_id, transaction_amount)
 
 					// Create log entry in client's account
-					D.add_transaction_log(linked_account.owner_name, transaction_purpose, "([transaction_amount])", machine_id)
-
-					// Create log entry in owner's account
-					linked_account.add_transaction_log(D.owner_name, transaction_purpose, "([transaction_amount])", machine_id)
+					D.add_transaction_log(get_account_name(linked_account), transaction_purpose, -transaction_amount, machine_id)
 
 					// Save log
-					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", transaction_amount)
+					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", -transaction_amount)
 
 					// Print reciept
-					var/receipt_data = get_receipt(I.registered_name ? I.registered_name : "n/A", "ID Card", transaction_amount)
+					var/receipt_data = get_receipt(I.registered_name ? I.registered_name : "n/A", "ID Card", -transaction_amount)
 
 					var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(loc)
 					P.name = "receipt - card payment #[transaction_logs.len+1]"
@@ -361,21 +398,7 @@
 		else
 			// Transfer the money
 			E.worth -= transaction_amount
-			linked_account.money += transaction_amount
-
-			// Create log entry in owner's account
-			var/datum/transaction/T = new()
-			T.target_name = E.owner_name
-			T.purpose = transaction_purpose
-			T.amount = "[transaction_amount]"
-			T.source_terminal = machine_id
-			T.date = current_date_string
-			T.time = stationtime2text()
-			T.target_ckey = usr.client.ckey
-			linked_account.transaction_log.Add(T)
-
-			// Save log
-			add_transaction_log(E.owner_name, "E-Wallet", transaction_amount)
+			charge_to_account(linked_account, "E-Wallet Purchase", "[transaction_purpose]: #[transaction_logs.len+1]", machine_id, transaction_amount)
 
 			// Confirm and reset
 			transaction_complete()
@@ -407,7 +430,7 @@
 		cash_stored += transaction_amount
 
 		// Save log
-		add_transaction_log("N/A", "Cash", transaction_amount, usr.client.ckey)
+		add_transaction_log("N/A", "Cash", -transaction_amount, usr.client.ckey)
 
 		// Print reciept
 		var/receipt_data = get_receipt("N/A", "Cash", transaction_amount, usr.client.ckey)
@@ -456,7 +479,7 @@
 		tax_list[O.name] = tax
 		. = 1
 	// Animation and sound
-	playsound(src, 'sound/machines/twobeep.ogg', 25)
+	playsound(src, 'sound/effects/checkout.ogg', 25)
 	// Reset confirmation
 	confirm_item = null
 	updateDialog()
@@ -481,7 +504,7 @@
 		item_name = item_list[i]
 		dat += "<tr><td class=\"tx-name-r\">[item_list[item_name] ? "<a href='?src=\ref[src];choice=subtract;item=\ref[item_name]'>-</a> <a href='?src=\ref[src];choice=set_amount;item=\ref[item_name]'>Set</a> <a href='?src=\ref[src];choice=add;item=\ref[item_name]'>+</a> [item_list[item_name]] x " : ""][item_name][tax ? " ([tax * 100]% tax)" : ""] <a href='?src=\ref[src];choice=clear;item=\ref[item_name]'>Remove</a></td><td class=\"tx-data-r\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
 	dat += "</table><table width=300>"
-	dat += "<tr><td class=\"tx-name-r\"><a href='?src=\ref[src];choice=clear'>Clear Entry</a></td><td class=\"tx-name-r\" style='text-align: right'><b>Total Amount: [transaction_amount] &thorn</b></td></tr>"
+	dat += "<tr><td class=\"tx-name-r\"><a href='?src=\ref[src];choice=clear'>Clear Entry</a></td><td class=\"tx-name-r\" style='text-align: right'><b>Total Amount: [cash2text( transaction_amount, FALSE, TRUE, TRUE )] &thorn</b></td></tr>"
 	dat += "</table></html>"
 	return dat
 
@@ -509,7 +532,7 @@
 	for(var/i=1, i<=item_list.len, i++)
 		item_name = item_list[i]
 		dat += "<tr><td class=\"tx-name\">[item_list[item_name] ? "[item_list[item_name]] x " : ""][item_name][tax ? " ([tax * 100]% tax)" : ""]</td><td class=\"tx-data\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
-	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [transaction_amount] &thorn</b></td></tr>"
+	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [cash2text( transaction_amount, FALSE, TRUE, TRUE )] &thorn</b></td></tr>"
 	dat += "</table></html>"
 
 	transaction_logs += dat
@@ -537,17 +560,17 @@
 	for(var/i=1, i<=item_list.len, i++)
 		item_name = item_list[i]
 		dat += "<tr><td class=\"tx-name\">[item_list[item_name] ? "[item_list[item_name]] x " : ""][item_name][tax ? " ([tax * 100]% tax)" : ""]</td><td class=\"tx-data\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
-	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [transaction_amount] &thorn</b></td></tr>"
+	dat += "<tr></tr><tr><td colspan=\"2\" class=\"tx-name\" style='text-align: right'><b>Total Amount: [cash2text( transaction_amount, FALSE, TRUE, TRUE )] &thorn</b></td></tr>"
 	dat += "</table></html>"
 
 	return dat
 
 /obj/machinery/cash_register/proc/check_account()
-	if (!linked_account)
+	if (!check_account_exists(linked_account))
 		usr.visible_message("\icon[src]<span class='warning'>Unable to connect to linked account.</span>")
 		return 0
 
-	if(linked_account.suspended)
+	if(check_account_suspension(linked_account))
 		src.visible_message("\icon[src]<span class='warning'>Connected account has been suspended.</span>")
 		return 0
 	return 1
@@ -558,7 +581,7 @@
 		for(var/item in tax_list)
 			total_tax += tax_list[item] * (item_list[item] * price_list[item])
 
-		department_accounts["[station_name()] Funds"].money += total_tax
+		SSeconomy.charge_main_department(total_tax, transaction_purpose)
 
 	/// Visible confirmation
 	playsound(src, 'sound/machines/chime.ogg', 25)
@@ -638,38 +661,52 @@
 
 //--Premades--//
 
-/obj/machinery/cash_register/city/initialize()
-	account_to_connect = "[station_name()] Funds"
-	..()
+/obj/machinery/cash_register/city
+	account_to_connect = DEPT_COLONY
+	dont_save = TRUE
 
 /obj/machinery/cash_register/command
-	account_to_connect = "City Council"
+	account_to_connect = DEPT_COUNCIL
+	dont_save = TRUE
 
 /obj/machinery/cash_register/medical
-	account_to_connect = "Public Healthcare"
+	account_to_connect = DEPT_HEALTHCARE
 	menu_items = MED
+	dont_save = TRUE
 
 /obj/machinery/cash_register/engineering
-	account_to_connect = "Emergency and Maintenance"
+	account_to_connect = DEPT_MAINTENANCE
+	dont_save = TRUE
 
 /obj/machinery/cash_register/science
-	account_to_connect = "Research and Science"
+	account_to_connect = DEPT_RESEARCH
+	dont_save = TRUE
 
 /obj/machinery/cash_register/security
-	account_to_connect = "Police"
+	account_to_connect = DEPT_POLICE
 	menu_items = LAW
+	dont_save = TRUE
 
 /obj/machinery/cash_register/cargo
-	account_to_connect = "Cargo"
+	account_to_connect = DEPT_FACTORY
+	dont_save = TRUE
 
 /obj/machinery/cash_register/civilian
-	account_to_connect = "Civilian"
+	account_to_connect = DEPT_PUBLIC
+	dont_save = TRUE
 
 /obj/machinery/cash_register/bar
-	account_to_connect = "Bar"
+	account_to_connect = DEPT_BAR
+	dont_save = TRUE
 
 /obj/machinery/cash_register/botany
-	account_to_connect = "Botany"
+	account_to_connect = DEPT_BOTANY
+	dont_save = TRUE
 
+/obj/machinery/cash_register/court
+	account_to_connect = "Legal"
+	menu_items = COR
+	dont_save = TRUE
 #undef LAW
 #undef MED
+#undef COR

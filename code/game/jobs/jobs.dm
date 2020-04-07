@@ -28,6 +28,7 @@ var/const/ROBOTICIST			=(1<<8)
 var/const/XENOBIOLOGIST			=(1<<9)
 var/const/MEDICALINTERN			=(1<<10)
 var/const/SCIENCEINTERN			=(1<<11)
+var/const/SCIGUARD				=(1<<12)
 
 var/const/CIVILIAN				=(1<<2)
 
@@ -76,10 +77,10 @@ var/list/command_positions = list(
 	"Mayor",
 	"City Clerk",
 	"Chief of Police",
-	"Fire Chief",
+	"Maintenance Director",
 	"Judge",
 	"Research Director",
-	"Chief Medical Officer"
+	"Medical Director"
 )
 
 
@@ -107,7 +108,8 @@ var/list/science_positions = list(
 	"Geneticist",	//Part of both medical and science
 	"Roboticist",
 	"Xenobiologist",
-	"Research Assistant"
+	"Research Assistant",
+	"Research Security"
 )
 
 //BS12 EDIT

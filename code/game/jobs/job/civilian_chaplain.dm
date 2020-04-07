@@ -3,7 +3,7 @@
 	title = "Chaplain"
 	flag = CHAPLAIN
 	faction = "City"
-	department = "Civilian"
+	department = DEPT_PUBLIC
 	department_flag = CIVILIAN
 	total_positions = 1
 	spawn_positions = 1

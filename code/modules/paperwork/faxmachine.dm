@@ -15,6 +15,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	idle_power_usage = 30
 	active_power_usage = 200
 	circuit = /obj/item/weapon/circuitboard/fax
+	table_drag = TRUE
 
 	var/obj/item/weapon/card/id/scan = null // identification
 	var/authenticated = 0

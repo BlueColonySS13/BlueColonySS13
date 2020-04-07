@@ -165,6 +165,7 @@
 	burntime = 5
 	drop_sound = 'sound/items/drop/boots.ogg'
 	associated_reagents = list("silicon")
+	dyeable = TRUE
 
 /obj/item/stack/material/gold
 	name = "gold"
@@ -354,12 +355,6 @@
 		return ..()
 
 
-/obj/item/stack/material/cloth
-	name = "cloth"
-	icon_state = "sheet-cloth"
-	default_type = "cloth"
-	no_variants = FALSE
-
 /obj/item/stack/material/cardboard
 	name = "cardboard"
 	icon_state = "sheet-card"
@@ -388,6 +383,71 @@
 	no_variants = FALSE
 	burn_state = 0 //Burnable
 	burntime = 5
+	associated_reagents = list("protein")
+	dyeable = TRUE
+
+/obj/item/stack/material/silk
+	name = "silk"
+	desc = "Many lives were lost trying to wrangle the silk from giant spiders, but it was a risk we were willing to take."
+	icon_state = "sheet-cloth"
+	default_type = "silk"
+	no_variants = FALSE
+	burn_state = 0 //Burnable
+	burntime = 5
+	associated_reagents = list("protein")
+	dyeable = TRUE
+
+/obj/item/stack/material/cotton
+	name = "cotton"
+	desc = "Picked from cotton plants."
+	icon_state = "sheet-cloth"
+	default_type = "cotton"
+	no_variants = FALSE
+	burn_state = 0 //Burnable
+	burntime = 5
+	associated_reagents = list("protein")
+	dyeable = TRUE
+
+/obj/item/stack/material/cotton/black
+	stack_color = COLOR_BLACK
+
+/obj/item/stack/material/cotton/red
+	stack_color = COLOR_BLACK
+
+/obj/item/stack/material/cotton/maroon
+	stack_color = COLOR_MAROON
+
+/obj/item/stack/material/cotton/forest
+	stack_color = COLOR_FOREST_GREEN
+
+/obj/item/stack/material/cotton/navy
+	stack_color = COLOR_NAVY
+
+/obj/item/stack/material/cotton/beige
+	stack_color = COLOR_BEIGE
+
+/obj/item/stack/material/cotton/gray
+	stack_color = COLOR_GRAY
+
+/obj/item/stack/material/cotton/green
+	stack_color = COLOR_GREEN
+
+/obj/item/stack/material/cotton/pink
+	stack_color = COLOR_PINK
+
+/obj/item/stack/material/cotton/pink
+	stack_color = COLOR_PINK
+
+/obj/item/stack/material/wool
+	name = "wool"
+	desc = "Sheared from your local sheep. A so-done sheep."
+	icon_state = "sheet-cloth"
+	default_type = "wool"
+	no_variants = FALSE
+	burn_state = 0 //Burnable
+	burntime = 5
+	associated_reagents = list("protein")
+	dyeable = TRUE
 
 /obj/item/stack/material/glass
 	name = "glass"

@@ -645,3 +645,36 @@
 				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_TobikoEgg,
 				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_Tai,
 				/obj/item/weapon/reagent_containers/food/snacks/sushi/sushi_Unagi)
+
+/obj/random/pottedplant
+	name = "random potted plant"
+	desc = "A random type of potted plant."
+
+/obj/random/pottedplant/item_to_spawn()
+	return pick(/obj/structure/flora/pottedplant/large,
+				/obj/structure/flora/pottedplant/fern,
+				/obj/structure/flora/pottedplant/overgrown,
+				/obj/structure/flora/pottedplant/bamboo,
+				/obj/structure/flora/pottedplant/largebush,
+				/obj/structure/flora/pottedplant/thinbush,
+				/obj/structure/flora/pottedplant/mysterious,
+				/obj/structure/flora/pottedplant/smalltree,
+				/obj/structure/flora/pottedplant/unusual,
+				/obj/structure/flora/pottedplant/orientaltree,
+				/obj/structure/flora/pottedplant/smallcactus,
+				/obj/structure/flora/pottedplant/tall,
+				/obj/structure/flora/pottedplant/sticky,
+				/obj/structure/flora/pottedplant/smelly,
+				/obj/structure/flora/pottedplant/small,
+				/obj/structure/flora/pottedplant/aquatic,
+				/obj/structure/flora/pottedplant/shoot,
+				/obj/structure/flora/pottedplant/flower,
+				/obj/structure/flora/pottedplant/crystal,
+				/obj/structure/flora/pottedplant/subterranean,
+				/obj/structure/flora/pottedplant/minitree,
+				/obj/structure/flora/pottedplant/stoutbush,
+				/obj/structure/flora/pottedplant/drooping,
+				/obj/structure/flora/pottedplant/tropical,
+				/obj/structure/flora/pottedplant/dead,
+				/obj/structure/flora/pottedplant/decorative,
+				/obj/structure/flora/pottedplant/xmas)

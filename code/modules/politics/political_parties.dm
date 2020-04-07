@@ -157,7 +157,7 @@ var/global/list/political_parties = list()
 	A.unique_ID = uid
 	A.message = msg
 	A.email = email
-	A.apply_date = current_date_string
+	A.apply_date = GLOB.current_date_string
 
 	party.applicants += A
 

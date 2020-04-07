@@ -288,7 +288,7 @@
 	icon_state = "reinforced"
 	reinforcing = 0
 
-/obj/structure/girder/proc/dismantle()
+/obj/structure/girder/dismantle()
 	girder_material.place_dismantled_product(get_turf(src))
 	qdel(src)
 

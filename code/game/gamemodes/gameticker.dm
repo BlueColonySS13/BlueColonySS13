@@ -119,7 +119,6 @@ var/global/datum/controller/gameticker/ticker
 
 	to_chat(world, "[get_president_info()]")
 
-	setup_economy()
 	current_state = GAME_STATE_PLAYING
 	create_characters() //Create player characters and transfer them.
 	collect_minds()
@@ -347,6 +346,9 @@ var/global/datum/controller/gameticker/ticker
 				if(blackbox)
 					blackbox.save_all_data_to_sql()
 
+				if(save_world())
+					to_chat(world, "<H3>The world has been saved!</H3>")
+
 				var/wait_for_tickets
 				var/delay_notified = 0
 				do
@@ -400,8 +402,10 @@ var/global/datum/controller/gameticker/ticker
 		world << "<H2>This round was not canon. It was all a dream.</H2>"
 		roll_titles()
 	else
-		if(save_world())
-			world << "<H2>This round was canon.</H2>"
+		to_chat(world, "<H2>This round was canon.</H2>")
+		to_chat(world, "<H3>Saving world...</H3>")
+
+
 
 	for(var/mob/Player in player_list)
 		if(Player.mind && !isnewplayer(Player))

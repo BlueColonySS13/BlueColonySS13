@@ -58,28 +58,25 @@
 	cost = 150
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Hydroponics crate"
-	access = access_hydroponics
 
 /datum/supply_pack/hydro/cow
 	name = "Cow crate"
 	cost = 70
 	containertype = /obj/structure/largecrate/animal/cow
 	containername = "Cow crate"
-	access = access_hydroponics
 
 /datum/supply_pack/hydro/goat
 	name = "Goat crate"
 	cost = 60
 	containertype = /obj/structure/largecrate/animal/goat
 	containername = "Goat crate"
-	access = access_hydroponics
 
 /datum/supply_pack/hydro/chicken
 	name = "Chicken crate"
 	cost = 25
 	containertype = /obj/structure/largecrate/animal/chick
 	containername = "Chicken crate"
-	access = access_hydroponics
+
 
 /datum/supply_pack/hydro/seeds
 	name = "Seeds crate"
@@ -105,7 +102,7 @@
 	cost = 100
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Seeds crate"
-	access = access_hydroponics
+
 
 /datum/supply_pack/hydro/weedcontrol
 	name = "Weed control crate"
@@ -119,7 +116,7 @@
 	cost = 45
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Weed control crate"
-	access = access_hydroponics
+
 
 /datum/supply_pack/hydro/watertank
 	name = "Water tank crate"
@@ -139,7 +136,6 @@
 	cost = 120
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Beekeeping crate"
-	access = access_hydroponics
 
 /datum/supply_pack/hydro/tray
 	name = "Empty hydroponics trays"
@@ -147,4 +143,16 @@
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Hydroponics tray crate"
 	contains = list(/obj/machinery/portable_atmospherics/hydroponics{anchored = 0} = 3)
-	access = access_hydroponics
+
+
+
+
+/datum/supply_pack/hydro/fish
+	name = "Fish Set"
+	cost = 150
+	containertype = /obj/structure/closet/crate/hydroponics
+	containername = "Fish Set"
+	contains = list(/obj/item/fishfood = 10, /obj/machinery/fishtank/bowl = 3, /obj/item/weapon/storage/firstaid/aquatic_kit/full =5, /obj/item/fish_eggs/goldfish = 5,
+					/obj/item/fish_eggs/clownfish = 5, /obj/item/fish_eggs/shark = 5, /obj/item/fish_eggs/feederfish = 10,
+					/obj/item/fish_eggs/salmon = 5, /obj/item/fish_eggs/catfish = 5, /obj/item/fish_eggs/glofish = 5,
+					/obj/item/fish_eggs/electric_eel = 5, /obj/item/fish_eggs/shrimp = 10, /obj/item/toy/pet_rock = 5)

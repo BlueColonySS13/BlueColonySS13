@@ -3,7 +3,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/captain
 	title = "Mayor"
 	flag = CAPTAIN
-	department = "City Council"
+	department = DEPT_COUNCIL
 	head_position = 1
 	department_flag = ENGSEC
 	faction = "City"
@@ -44,7 +44,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/hop
 	title = "City Clerk"
 	flag = HOP
-	department = "City Council"
+	department = DEPT_COUNCIL
 	head_position = 1
 	department_flag = CIVILIAN
 	faction = "City"
@@ -87,7 +87,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/secretary //Paperwork monkey
 	title = "City Hall Secretary"
 	flag = SECRETARY
-	department = "Civilian"
+	department = DEPT_PUBLIC
 	department_flag = CIVILIAN
 	faction = "City"
 	total_positions = 2
@@ -109,31 +109,3 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
 	clean_record_required = TRUE
 
-/datum/job/judge
-	title = "Judge"
-	flag = JUDGE
-	head_position = 1
-	faction = "City"
-	department = "City Council"
-	total_positions = 2
-	spawn_positions = 2
-	department_flag = CIVILIAN
-	req_admin_notify = 1
-	email_domain = "judges.gov.nt"
-	supervisors = "government officials and the President"
-	selection_color = "#1D1D4F"
-	idtype = /obj/item/weapon/card/id/heads/judge
-	wage = 350
-	access = list(access_judge, access_warrant, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
-	minimal_access = list(access_judge, access_warrant, access_sec_doors, access_heads, access_legal)
-	minimal_player_age = 14
-	minimum_character_age = 25
-	alt_titles = list("Magistrate")
-
-	outfit_type = /decl/hierarchy/outfit/job/heads/judge
-
-
-	clean_record_required = TRUE
-
-/datum/job/judge/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
-	return using_map.court_email

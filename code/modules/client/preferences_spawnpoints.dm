@@ -33,6 +33,7 @@ var/list/spawntypes = list()
 	..()
 	turfs = latejoin
 
+/*
 /datum/spawnpoint/gateway
 	display_name = "Gateway"
 	msg = "has completed translation from offsite gateway"
@@ -48,6 +49,7 @@ var/list/spawntypes = list()
 /datum/spawnpoint/elevator/New()
 	..()
 	turfs = latejoin_elevator
+*/
 
 /datum/spawnpoint/cryo
 	display_name = "Cryogenic Storage"

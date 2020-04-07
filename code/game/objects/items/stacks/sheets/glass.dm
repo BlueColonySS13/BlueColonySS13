@@ -18,7 +18,7 @@
 	default_type = "glass"
 
 /obj/item/stack/material/glass/attack_self(mob/user as mob)
-	construct_window(user)
+	list_recipes(user)
 
 /obj/item/stack/material/glass/attackby(obj/item/W, mob/user)
 	..()
@@ -28,11 +28,10 @@
 			if (get_amount() < 1 || CC.get_amount() < 5)
 				user << "<span class='warning'>You need five lengths of coil and one sheet of glass to make wired glass.</span>"
 				return
-
 			CC.use(5)
 			use(1)
 			user << "<span class='notice'>You attach wire to the [name].</span>"
-//			new /obj/item/stack/light_w(user.loc)
+//			new /obj/item/stack/material/glass/light_w(user.loc)
 		else if(istype(W, /obj/item/stack/rods))
 			var/obj/item/stack/rods/V  = W
 			if (V.get_amount() < 1 || get_amount() < 1)

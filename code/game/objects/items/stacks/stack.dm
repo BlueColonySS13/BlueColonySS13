@@ -26,6 +26,11 @@
 	var/list/associated_reagents = list() // put reagent "id" here
 	var/reagents_per_unit = 2
 
+	var/stack_color = null // overrides apply_material_color if used
+	var/dyeable = FALSE
+
+	unique_save_vars = list("amount", "stack_color")
+
 /obj/item/stack/proc/update_reagents()
 	return
 
@@ -35,6 +40,8 @@
 		stacktype = type
 	if (amount)
 		src.amount = amount
+	if(stack_color)
+		color = stack_color
 	create_reagents(max_amount * reagents_per_unit) // getting the max that any stack will have
 	update_reagents()
 	update_icon()
@@ -50,6 +57,9 @@
 	return ..()
 
 /obj/item/stack/update_icon()
+	if(stack_color)
+		color = stack_color
+
 	if(no_variants)
 		icon_state = initial(icon_state)
 	else
@@ -156,6 +166,14 @@
 			O = new recipe.result_type(user.loc, recipe.use_material)
 		else
 			O = new recipe.result_type(user.loc)
+
+		if(recipe.use_material_color)
+			if(!stack_color)
+				var/material/material_ref = get_material_by_name(recipe.use_material)
+				O.color = material_ref.icon_colour
+			else
+				O.color = stack_color
+
 		O.set_dir(user.dir)
 		O.add_fingerprint(user)
 
@@ -370,8 +388,9 @@
 	var/one_per_turf = 0
 	var/on_floor = 0
 	var/use_material
+	var/use_material_color = FALSE
 
-	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null)
+	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, apply_material_color = FALSE)
 		src.title = title
 		src.result_type = result_type
 		src.req_amount = req_amount
@@ -381,6 +400,7 @@
 		src.one_per_turf = one_per_turf
 		src.on_floor = on_floor
 		src.use_material = supplied_material
+		src.use_material_color = apply_material_color
 
 /*
  * Recipe list datum

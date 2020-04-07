@@ -73,7 +73,7 @@
 			<br>
 			<br>
 
-			<u>>Pest Control Services:</u><br>
+			<b>>Pest Control Services:</b><br>
 
 			{{if data.carp_control}}
 				<div class=item><b>Carp Control:</b> {{:data.carp_control}} - {{:data.carp_control_cost}}</div>
@@ -81,12 +81,18 @@
 
 			<br>
 
-			<u>Network Security Services:</u><br>
+			<b>Network Security Services:</b><br>
 
 			{{if data.antivirus}}
 				<div class=item><b>Network Anti-Virus - Gr3y.T1d3 Firewall:</b> {{:data.antivirus}} - {{:data.antivirus_cost}}</div>
 			{{/if}}	
 			
+			<b>External Defense Services:</b><br>
+
+			{{if data.meteor_proof}}
+				<div class=item><b>Meteor Proofing:</b> {{:data.meteor_proof}} - {{:data.meteor_proof_cost}}</div>
+			{{/if}}	
+
 		{{else}}
 
 			<i>The current president has disabled control of city services for council members.</i>	<br><br>

@@ -264,12 +264,18 @@
 	desc = "Something wrapped in silky spider web"
 	icon_state = "cocoon1"
 	health = 60
+	var/silk_amt = 3
 
 /obj/effect/spider/cocoon/New()
-		icon_state = pick("cocoon1","cocoon2","cocoon3")
+	icon_state = pick("cocoon1","cocoon2","cocoon3")
+	silk_amt = rand(3,5)
 
 /obj/effect/spider/cocoon/Destroy()
 	src.visible_message("<span class='warning'>\The [src] splits open.</span>")
+	var/obj/item/stack/material/silk/new_silk = new(src.loc)
+	new_silk.amount = silk_amt
+	new_silk.update_icon()
+
 	for(var/atom/movable/A in contents)
 		A.loc = src.loc
 	return ..()

@@ -14,6 +14,11 @@
 
 	price_tag = 3
 
+	unique_save_vars = list("plantname", "potency", "bitecount")
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/on_persistence_load()
+	update_plant_info(loc, plantname)
+
 /obj/item/weapon/reagent_containers/food/snacks/grown/get_item_cost()
 	if(seed)
 		price_tag = seed.fruit_price
@@ -21,8 +26,10 @@
 	return price_tag
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/New(newloc,planttype)
-
 	..()
+	update_plant_info(newloc,planttype)
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/proc/update_plant_info(newloc,planttype)
 	if(!dried_type)
 		dried_type = type
 	src.pixel_x = rand(-5.0, 5)
@@ -344,6 +351,12 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiavulgaris
 	plantname = "ambrosia"
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/tobacco
+	plantname = "tobacco"
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/tobacco/dry
+	dry = TRUE
 
 /obj/item/weapon/reagent_containers/food/snacks/fruit_slice
 	name = "fruit slice"

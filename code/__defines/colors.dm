@@ -3,9 +3,10 @@
 #define COLOR_WHITE             "#FFFFFF"
 #define COLOR_SILVER             "#C0C0C0"
 #define COLOR_GRAY             "#808080"
-#define COLOR_BLACK             "#000000"
+#define COLOR_BLACK           "#000000"
 #define COLOR_RED             "#FF0000"
-#define COLOR_MAROON             "#800000"
+#define COLOR_MAROON           "#800000"
+#define COLOR_FOREST_GREEN      "#204f13"
 #define COLOR_YELLOW             "#FFFF00"
 #define COLOR_OLIVE             "#808000"
 #define COLOR_LIME             "#00FF00"
@@ -139,6 +140,7 @@
 #define WOOD_COLOR_PALE2       "#e6d2ba"
 #define WOOD_COLOR_BLACK       "#332521"
 #define WOOD_COLOR_CHOCOLATE   "#78523b"
+#define WOOD_COLOR_YELLOW      "#e3994e"
 
 #define CODEX_COLOR_ANTAG     "#e5a2a2"
 

@@ -25,6 +25,8 @@
 	var/canRwall = 0
 	var/disabled = 0
 
+	unique_save_vars = list("stored_matter")
+
 /obj/item/weapon/rcd/attack()
 	return 0
 

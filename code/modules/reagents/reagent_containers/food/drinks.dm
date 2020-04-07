@@ -12,6 +12,8 @@
 	var/shaken
 	price_tag = 5
 
+	unique_save_vars = list("shaken")
+
 /obj/item/weapon/reagent_containers/food/drinks/on_reagent_change()
 	if (reagents.reagent_list.len > 0)
 		var/datum/reagent/R = reagents.get_master_reagent()
@@ -158,6 +160,7 @@
 	icon_state = "mini-milk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
+
 /obj/item/weapon/reagent_containers/food/drinks/smallmilk/New()
 	..()
 	reagents.add_reagent("milk", 30)
@@ -200,6 +203,7 @@
 	desc = "Careful, cold ice, do not chew."
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
+
 /obj/item/weapon/reagent_containers/food/drinks/ice/New()
 	..()
 	reagents.add_reagent("ice", 30)
@@ -286,8 +290,8 @@
 	..()
 
 /obj/item/weapon/reagent_containers/food/drinks/flask
-	name = "\improper Colony Director's flask"
-	desc = "A metal flask belonging to the Colony Director"
+	name = "\improper Mayor's flask"
+	desc = "A metal flask belonging to the Mayor"
 	icon_state = "flask"
 	volume = 60
 	center_of_mass = list("x"=17, "y"=7)

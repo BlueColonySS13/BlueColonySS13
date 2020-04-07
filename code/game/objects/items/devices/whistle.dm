@@ -11,6 +11,8 @@
 	var/spamcheck = 0
 	var/insults
 
+	unique_save_vars = list("use_message")
+
 /obj/item/device/hailer/verb/set_message()
 	set name = "Set Hailer Message"
 	set category = "Object"

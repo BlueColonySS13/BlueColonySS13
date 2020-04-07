@@ -33,6 +33,13 @@
 	icon_state = "firstbush_1"
 	anchored = 1
 
+
+/obj/structure/flora/ausbushes/attackby(obj/item/I as obj, mob/user as mob)
+	..()
+	if(is_sharp(I))
+		to_chat(user, "You slash away [src] with [I].")
+		qdel(src)
+
 /obj/structure/flora/ausbushes/New()
 	..()
 	icon_state = "firstbush_[rand(1, 4)]"
@@ -159,11 +166,14 @@
 	plane = OBJ_PLANE
 
 	var/obj/item/stored_item
+	table_drag = TRUE
 
 /obj/structure/flora/pottedplant/on_persistence_load()
+	if(isemptylist(contents))
+		return TRUE
+
 	if(contents[1])
 		stored_item = contents[1]
-	..()
 
 /obj/structure/flora/pottedplant/examine(mob/user)
 	..()

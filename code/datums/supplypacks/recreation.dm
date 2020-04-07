@@ -9,7 +9,6 @@
 
 /datum/supply_pack/randomised/recreation
 	group = "Recreation"
-	access = access_security
 
 /datum/supply_pack/recreation/foam_weapons
 	name = "Foam Weapon Crate"
@@ -67,13 +66,4 @@
 			/obj/item/device/pipe_painter = 2,
 			/obj/item/device/floor_painter = 2,
 			/obj/item/device/closet_painter = 2
-			)
-
-/datum/supply_pack/recreation/stickypads
-	name = "Sticky Pads"
-	cost = 5
-	containername = "sticky pads crate"
-	containertype = /obj/structure/closet/crate
-	contains = list(
-			/obj/item/sticky_pad = 5
 			)

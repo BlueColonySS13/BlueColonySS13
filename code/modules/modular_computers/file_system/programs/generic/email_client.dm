@@ -399,6 +399,14 @@
 			error = "Error sending email: this address doesn't exist or you or the recipient has reached the set message limit."
 			return 1
 		else
+			if(msg_recipient in SSemails.GetGovEmails())
+				SSwebhooks.send(WEBHOOK_EMAIL_GOV, list(
+				"sender" = current_account.login,
+				"reciever" = msg_recipient,
+				"email_title" = msg_title,
+				"email_content" = msg_body
+				))
+
 			error = "Email successfully sent."
 			clear_message()
 			return 1

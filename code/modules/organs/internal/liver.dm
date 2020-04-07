@@ -4,7 +4,7 @@
 	name = "liver"
 	icon_state = "liver"
 	organ_tag = "liver"
-	parent_organ = BP_GROIN
+	parent_organ = BP_TORSO
 
 /obj/item/organ/internal/liver/process()
 	..()

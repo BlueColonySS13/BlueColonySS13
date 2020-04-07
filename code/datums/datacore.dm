@@ -210,6 +210,7 @@
 		M.fields["b_dna"]		= H.dna.unique_enzymes
 		M.fields["unique_id"]	= H.mind.prefs.unique_id // this is persistent
 		M.fields["id_gender"]	= gender2text(H.identifying_gender)
+		M.fields["bank_account"]	= H.mind.initial_account.account_number
 		if(H.get_FBP_type())
 			M.fields["brain_type"] = H.get_FBP_type()
 		else
@@ -228,6 +229,7 @@
 		S.fields["unique_id"]	= H.mind.prefs.unique_id // this is persistent
 		S.fields["crim_record"] = H.mind.prefs.crime_record
 		S.fields["criminal"] = H.mind.prefs.criminal_status
+		S.fields["bank_account"]	= H.mind.initial_account.account_number
 
 		//Locked Record
 		var/datum/data/record/L = new()
@@ -407,3 +409,5 @@
 
 /proc/get_sec_record(var/mob/living/carbon/human/H)
 	return sec_record_by_uid(H.unique_id)
+
+

@@ -1,4 +1,4 @@
-
+var/datum/economy/bank_accounts/persistent_economy = new()
 
 // all the same, by default, but can be changed in-game.
 
@@ -7,9 +7,6 @@
 	var/tax_poor
 	var/tax_middle
 	var/tax_rich
-	var/list/datum/money_account/eco_data
-	var/datum/money_account/treasury
-	var/datum/money_account/nt_account
 
 	//income tax rates
 	var/tax_rate_upper = 0.20
@@ -76,47 +73,12 @@
 
 	var/city_council_control	= TRUE	// If the president has allowed the city council to control the colony.
 
+	var/base_service_charge = 25		// Minimum the council will charge (per payroll) to lots. // control setting not yet implemented
 	var/carp_control = FALSE			// If this is disabled, council cannot control carp infestations.
 	var/antivirus = FALSE			// Is the President a boomer?
+	var/meteor_proof = FALSE			// Is the city protected by meteors?
 
-
-/datum/economy/bank_accounts/proc/set_economy()
-	if(!department_acc_list)
-		return 0
-
-	treasury = station_account
-	nt_account = nanotrasen_account
-	eco_data = department_acc_list
-
-	for(var/M in department_acc_list)
-		all_money_accounts.Add(M)
-
-	for(var/T in station_account)
-		all_money_accounts.Add(T)
-
-	//rebuild department accounts
-
-	department_accounts.Cut()
-
-	for(var/datum/money_account/D in department_acc_list)
-		department_accounts[D.department] = D
-
-	sanitize_economy()
-	init_expenses()
-
-	message_admins("Set economy.", 1)
-
-	return 1
-
-
-/datum/economy/bank_accounts/proc/sanitize_economy()
-	for(var/datum/money_account/D in department_acc_list)
-		D.money = Clamp(D.money, -999999, 999999)
-		D.max_transaction_logs = DEPARTMENT_TRANSACTION_LIMIT
-
-	for(var/datum/money_account/T in station_account)
-		T.money = Clamp(T.money, -999999, 999999)
-		T.max_transaction_logs = DEPARTMENT_TRANSACTION_LIMIT
+	var/foodstamp_meals = 3
 
 
 /datum/economy/bank_accounts/proc/save_economy()
@@ -127,15 +89,10 @@
 	if(!S)					return 0
 	S.cd = "/"
 
-	sanitize_economy()
-
 	tax_poor = tax_rate_lower
 	tax_middle = tax_rate_middle
 	tax_rich = tax_rate_upper
 
-	S["eco_data"] << eco_data
-	S["treasury"] << treasury
-	S["nt_account"] << nt_account
 	S["tax_rate_upper"] << tax_rich
 	S["tax_rate_middle"] << tax_middle
 	S["tax_rate_lower"] << tax_poor
@@ -177,12 +134,13 @@
 	S["citizenship_vote "] << citizenship_vote
 	S["criminal_vote"] << criminal_vote
 
+	S["base_service_charge"] << base_service_charge
 	S["NT_charge"] << NT_charge
 	S["city_council_control"] << city_council_control
 	S["carp_control"] << carp_control
 	S["antivirus"] << antivirus
-
-	message_admins("Saved all department accounts.", 1)
+	S["meteor_proof"] << meteor_proof
+	return TRUE
 
 /datum/economy/bank_accounts/proc/load_accounts()
 //	message_admins("BEGIN: Loaded all department accounts.", 1)
@@ -195,9 +153,6 @@
 	S.cd = "/"
 
 
-	S["eco_data"] >> eco_data
-	S["treasury"] >> treasury
-	S["nt_account"] >> nt_account
 	S["tax_rate_upper"] >> tax_rich
 	S["tax_rate_middle"] >> tax_middle
 	S["tax_rate_lower"] >> tax_poor
@@ -240,46 +195,17 @@
 	S["citizenship_vote "] >> citizenship_vote
 	S["criminal_vote"] >> criminal_vote
 
+	S["base_service_charge"] >> base_service_charge
 	S["NT_charge"] >> NT_charge
 	S["city_council_control"] >> city_council_control
 	S["carp_control"] >> carp_control
 	S["antivirus"] >> antivirus
-
-	sanitize_economy()
-
-	for (var/datum/money_account/T in all_money_accounts)
-		if(T.department)
-			all_money_accounts -= T
-
-	department_acc_list = eco_data
-
-	station_account = treasury
-	nanotrasen_account = nt_account
-
-	all_money_accounts.Add(department_acc_list)
+	S["meteor_proof"] >> meteor_proof
 
 	tax_rate_lower = tax_poor
 	tax_rate_middle = tax_middle
 	tax_rate_upper = tax_rich
 
-	//rebuild department accounts
-	department_accounts.Cut()
-
-	for(var/datum/money_account/D in department_acc_list)
-		department_accounts[D.department] = D
-
-	link_economy_accounts()
-
 	message_admins("Loaded all department accounts.", 1)
-
-
-
-/datum/economy/bank_accounts/proc/init_expenses()
-	for(var/E in subtypesof(/datum/expense/nanotrasen) - list(/datum/expense/nanotrasen/pest_control,
-	 /datum/expense/nanotrasen/tech_support
-	 ))
-		var/datum/expense/new_expense = new E
-		city_expenses += new_expense
-
-		new_expense.do_effect()
+	return TRUE
 

@@ -17,6 +17,10 @@
 	idle_power_usage = 100
 	anchored = 1
 	density = 1
+	table_drag = TRUE
+
+/obj/machinery/chemical_dispenser/on_persistence_load()
+
 
 /obj/machinery/chemical_dispenser/New()
 	..()

@@ -51,8 +51,8 @@
 		)
 
 
-/obj/turbolift_map_holder/barcasino
-	name = "Bar and Casino Elevator"
+/obj/turbolift_map_holder/shoppingmall
+	name = "Shopping Mall Elevator"
 	depth = 2
 	lift_size_x = 3
 	lift_size_y = 3
@@ -62,6 +62,6 @@
 	floor_type = /turf/simulated/floor/tiled/dark
 
 	areas_to_use = list(
-		/area/turbolift/geminus_bar_ground,
-		/area/turbolift/geminus_bar_top
+		/area/turbolift/geminus_mall_ground,
+		/area/turbolift/geminus_mall_top
 		)

@@ -4,7 +4,7 @@
 	faction = "City"
 	head_position = 1
 	department_flag = ENGSEC
-	department = "City Council"
+	department = DEPT_COUNCIL
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Mayor"
@@ -47,7 +47,7 @@
 	supervisors = "the fire chief"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/engineering/engineer
-	wage = 5
+	wage = 60
 	access = list(access_engine, access_engine_equip, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 	alt_titles = list("Firefighter/EMT")
@@ -62,15 +62,15 @@
 	department_flag = ENGSEC
 	faction = "City"
 	email_domain = "cityworks.gov.nt"
-	department = "Emergency and Maintenance"
+	department = DEPT_MAINTENANCE
 	total_positions = 3
 	spawn_positions = 2
 	supervisors = "the maintenance director"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/engineering/atmos
-	wage = 50
-	access = list(access_engine, access_engine_equip, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
-	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
+	wage = 60
+	access = list(access_engine, access_engine_equip, access_janitor, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
+	minimal_access = list(access_engine, access_engine_equip, access_janitor, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 
 	minimal_player_age = 3
 	minimum_character_age = 18
@@ -85,7 +85,7 @@
 	flag = JANITOR
 	faction = "City"
 	department_flag = ENGSEC
-	department = "City"
+	department = DEPT_MAINTENANCE
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the maintenance director"
@@ -95,6 +95,6 @@
 	access = list(access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
 	minimum_character_age = 16 //Not making it any younger because being a janitor requires a lot of labor, or maybe it just means I'm very lazy? Oh well
-	wage = 18
+	wage = 20
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
 	alt_titles = list("Recycling Technician", "Sanitation Engineer")

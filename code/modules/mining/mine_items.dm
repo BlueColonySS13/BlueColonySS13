@@ -244,6 +244,8 @@
 	var/times_carved = 0
 	var/last_struck = 0
 
+//	unique_save_vars = list("sculpted")
+
 /obj/structure/sculpting_block/verb/rotate()
 	set name = "Rotate"
 	set category = "Object"
@@ -332,3 +334,36 @@
 				last_struck = 0
 		return
 
+
+
+/obj/structure/sculpting_block/sculpted
+	sculpted = TRUE
+	anchored = FALSE
+	icon = 'icons/obj/statue.dmi'
+
+/obj/structure/sculpting_block/sculpted/bust
+	icon_state = "bust"
+	name = "greek bust"
+	desc = "A replica of a famous ancient art piece."
+
+
+/obj/structure/sculpting_block/sculpted/large
+	icon = 'icons/obj/statuelarge.dmi'
+	icon_state = "pillar"
+	plane = ABOVE_PLANE
+	layer = ABOVE_MOB_LAYER
+
+/obj/structure/sculpting_block/sculpted/large/pillar
+	icon_state = "pillar"
+	name = "marble pillar"
+	desc = "A fine greek style pillar."
+
+/obj/structure/sculpting_block/sculpted/large/lion
+	icon_state = "lion"
+	name = "golden lion"
+	desc = "Looks like one of those chinese new year celebrations."
+
+/obj/structure/sculpting_block/sculpted/large/venus
+	icon_state = "venus"
+	name = "statue of venus"
+	desc = "The goddess takes form, where's her toolbox?"
