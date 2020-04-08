@@ -17,7 +17,7 @@
 
 	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
 
-	if(!confirm)
+	if(confirm == "No")
 		return
 	var/confirm_canon
 	if(config.canonicity)
@@ -26,7 +26,7 @@
 		relating to money, businesses, your political status, and appearance will be lost forever. \
 		This is irreverseable!","Confirm Suicide", "Yes", "No")
 
-	if(!confirm_canon)
+	if(confirm_canon == "No")
 		return
 
 	if(config.canonicity)
