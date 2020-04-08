@@ -48,14 +48,16 @@
 
 
 /obj/machinery/food_machine/update_icon()
+	icon_state = "[initial(icon_state)]_empty"
+
 	switch(product_left)
 		if(6 to INFINITY)
 			icon_state = "[initial(icon_state)]_3"
-		if(5 to 4)
+		if(4 to 6)
 			icon_state = "[initial(icon_state)]_2"
-		if(3 to 1)
+		if(1 to 3)
 			icon_state = "[initial(icon_state)]_1"
-		else
+		if(0)
 			icon_state = "[initial(icon_state)]_empty"
 
 /obj/machinery/food_machine/attack_hand(mob/user as mob)

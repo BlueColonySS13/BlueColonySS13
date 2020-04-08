@@ -13,6 +13,7 @@
 /obj/item/stack/tile
 	name = "tile"
 	singular_name = "tile"
+	icon = 'icons/obj/tiles.dmi'
 	desc = "A non-descript floor tile"
 	w_class = ITEMSIZE_NORMAL
 	max_amount = 60
@@ -113,7 +114,7 @@
 	name = "alien wood tile"
 	singular_name = "alien wood tile"
 	desc = "An easy to fit wooden floor tile. It's blue!"
-	icon_state = "tile-sifwood"
+	color = "#0099cc"
 
 /obj/item/stack/tile/wood/cyborg
 	name = "wood floor tile synthesizer"

@@ -978,6 +978,14 @@
 		name = "Angelique"
 		icon_state = "hair_angelique"
 
+	darcy
+		name = "Darcy"
+		icon_state = "hair_darcy"
+
+	antonio
+		name = "Antonio"
+		icon_state = "hair_antonio"
+
 /*
 ///////////////////////////////////
 /  =---------------------------=  /

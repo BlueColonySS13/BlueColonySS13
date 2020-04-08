@@ -4,46 +4,48 @@
 	name = "stack of grass"
 	type_to_spawn = /obj/item/stack/tile/grass
 
-//woods
-/obj/fiftyspawner/wood
-	name = "stack of wood"
+
+
+
+//wood tile
+/obj/fiftyspawner/tile/wood
+	name = "stack of wood tiles"
 	type_to_spawn = /obj/item/stack/tile/wood
 
-
-/obj/fiftyspawner/wood/sif
+/obj/fiftyspawner/tile/wood/sif
 	name = "stack of alien wood"
 	type_to_spawn = /obj/item/stack/tile/wood/sif
 
-/obj/fiftyspawner/woodcheck
+/obj/fiftyspawner/tile/wood/woodcheck
 	name = "stack of woodcheck tile"
 	type_to_spawn = /obj/item/stack/tile/wood/woodcheck
 
-/obj/fiftyspawner/woodtile
+/obj/fiftyspawner/tile/wood/woodtile
 	name = "stack of woodtile tile"
 	type_to_spawn = /obj/item/stack/tile/wood/woodtile
 
-/obj/fiftyspawner/wood/ebony
-	name = "stack of ebony wood"
+/obj/fiftyspawner/tile/wood/ebony
+	name = "stack of ebony wood tiles"
 	type_to_spawn = /obj/item/stack/tile/wood/ebony
 
-/obj/fiftyspawner/wood/maple
-	name = "stack of maple wood"
+/obj/fiftyspawner/tile/wood/maple
+	name = "stack of maple wood tiles"
 	type_to_spawn = /obj/item/stack/tile/wood/maple
 
-/obj/fiftyspawner/wood/walnut
-	name = "stack of walnut wood"
+/obj/fiftyspawner/tile/wood/walnut
+	name = "stack of walnut wood tiles"
 	type_to_spawn = /obj/item/stack/tile/wood/walnut
 
-/obj/fiftyspawner/wood/bamboo
-	name = "stack of bamboo wood"
+/obj/fiftyspawner/tile/wood/bamboo
+	name = "stack of bamboo wood tiles"
 	type_to_spawn = /obj/item/stack/tile/wood/bamboo
 
-/obj/fiftyspawner/wood/mahogany
-	name = "stack of mahogany wood"
+/obj/fiftyspawner/tile/wood/mahogany
+	name = "stack of mahogany wood tiles"
 	type_to_spawn = /obj/item/stack/tile/wood/mahogany
 
-/obj/fiftyspawner/wood/yew
-	name = "stack of yew wood"
+/obj/fiftyspawner/tile/wood/yew
+	name = "stack of yew wood tiles"
 	type_to_spawn = /obj/item/stack/tile/wood/yew
 
 //carpets

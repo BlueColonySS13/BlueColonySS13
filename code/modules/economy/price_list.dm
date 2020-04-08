@@ -189,9 +189,11 @@
 
 
 
-/obj/item/pizzabox
-	get_item_cost()
+/obj/item/pizzabox/get_item_cost()
+	if(pizza)
 		return get_item_cost(pizza)
+	else
+		return price_tag
 
 
 //***************//

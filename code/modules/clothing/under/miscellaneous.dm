@@ -442,6 +442,11 @@
 	icon_state = "lilacdress"
 	index = 1
 
+/obj/item/clothing/under/dress/lacygown
+	name = "lacy gown"
+	desc = "A beautiful lace gown that can be found in many different colors."
+	icon_state = "lacygown"
+
 /obj/item/clothing/under/dress/white
 	name = "white wedding dress"
 	desc = "A fancy white dress with a blue underdress."

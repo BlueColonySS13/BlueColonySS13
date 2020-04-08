@@ -32,3 +32,7 @@
 /obj/fiftyspawner/cotton
 	name = "stack of cotton"
 	type_to_spawn = /obj/item/stack/material/cotton
+
+/obj/fiftyspawner/denim
+	name = "stack of denim"
+	type_to_spawn = /obj/item/stack/material/denim

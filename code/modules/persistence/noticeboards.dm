@@ -9,6 +9,15 @@
 	var/base_icon_state = "nboard0"
 	var/const/max_notices = 35
 
+/obj/structure/noticeboard/get_saveable_contents()
+	return notices
+
+/obj/structure/noticeboard/on_persistence_load()
+	notices = contents
+	update_icon()
+	return TRUE
+
+
 /obj/structure/noticeboard/initialize()
 	. = ..()
 

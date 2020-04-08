@@ -199,7 +199,7 @@ var/list/flooring_types
 	build_type = /obj/item/stack/tile/carpet/sblucarpet
 
 /decl/flooring/carpet/gaycarpet
-	name = "clown carpet"
+	name = "pink carpet"
 	icon_base = "gaycarpet"
 	build_type = /obj/item/stack/tile/carpet/gaycarpet
 
@@ -323,6 +323,11 @@ var/list/flooring_types
 	build_type = /obj/item/stack/tile/floor/yellow
 
 	floor_color = COLOR_BROWN
+
+/decl/flooring/tiling/diamond
+	icon = 'icons/turf/flooring/decorative.dmi'
+	icon_base = "tiles1"
+	build_type = /obj/item/stack/tile/diamond
 
 /decl/flooring/tiling/dark
 	name = "floor"
@@ -501,10 +506,7 @@ var/list/flooring_types
 /decl/flooring/road/garage
 	icon_base = "garage"
 
-/decl/flooring/diamond
-	icon = 'icons/turf/flooring/decorative.dmi'
-	icon_base = "tiles1"
-	build_type = /obj/item/stack/tile/diamond
+
 
 /decl/flooring/bluegeo
 	icon = 'icons/turf/flooring/decorative.dmi'

@@ -13,6 +13,7 @@
 
 	S["name"] 				<<		name
 	S["price"] 				<< 		price
+	S["rent"] 				<< 		rent
 	S["landlord"] 				<<		landlord
 	S["tenants"] 				<<		tenants
 	S["applied_tenants"] 		<<		applied_tenants
@@ -37,6 +38,7 @@
 
 	S["name"] 				>>		name
 	S["price"] 				>> 		price
+	S["rent"] 				>> 		rent
 	S["landlord"] 				>>		landlord
 	S["tenants"] 				>>		tenants
 	S["applied_tenants"] 		>>		applied_tenants
