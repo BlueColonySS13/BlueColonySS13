@@ -35,6 +35,8 @@ SUBSYSTEM_DEF(vote)
 	log_debug("The server has called a crew transfer vote.")
 
 /datum/controller/subsystem/vote/proc/autogamemode()
+	if(!config.gamemode_vote)
+		return
 	initiate_vote(VOTE_GAMEMODE, "the server", 1)
 	log_debug("The server has called a gamemode vote.")
 
