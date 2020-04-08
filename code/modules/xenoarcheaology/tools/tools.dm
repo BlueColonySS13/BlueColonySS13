@@ -7,6 +7,11 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 100)
 	w_class = ITEMSIZE_SMALL
 
+/obj/item/device/measuring_tape/integrated
+	name = "integrated depth analyzer"
+	desc = "An analyzer that scans the dimensions of an excavation site."
+	icon_state = "measuring_integrated"
+
 /obj/item/weapon/storage/bag/fossils
 	name = "Fossil Satchel"
 	desc = "Transports delicate fossils in suspension so they don't break during transit."

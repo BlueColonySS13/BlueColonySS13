@@ -418,3 +418,21 @@
 /area/centcom/president_office_geminus/office
 	name = "\improper President's Office - Geminus" //Central Command Command totally isn't RAS Syndrome in action.
 	icon_state = "centcom_command"
+
+/area/redspace/outpost
+	name = "Parascience Outpost Exterior"
+
+/area/redspace/outpost/toilets
+	name = "Parascience Outpost - Toilets"
+
+/area/redspace/outpost/dorms
+	name = "Parascience Outpost - Dorms"
+
+/area/redspace/outpost/kitchen
+	name = "Parascience Outpost - Kitchen"
+
+/area/redspace/outpost/maintenance
+	name = "Parascience Outpost - Maintenance"
+
+/area/redspace/outpost/lab
+	name = "Parascience Outpost - Laboratory"
