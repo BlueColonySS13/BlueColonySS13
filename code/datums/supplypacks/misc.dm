@@ -19,11 +19,22 @@
 			/obj/item/weapon/deck/holder
 			)
 	name = "Trading Card Crate"
-	cost = 10
+	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "cards crate"
 
+/datum/supply_pack/misc/rpg_set
+	name = "Tabletop Game and Card Set"
+	contains = list(/obj/item/weapon/storage/box/characters,
+	/obj/item/weapon/storage/dicecup/loaded,
+	/obj/item/weapon/storage/pill_bottle/dice_nerd,
+	/obj/item/weapon/deck/cah,
+	/obj/item/weapon/deck/cah/black,
+	)
 
+	cost = 50
+	containertype = /obj/structure/closet/crate
+	containername = "Tabletop Game and Card Set"
 
 
 /datum/supply_pack/misc/business_cards
@@ -255,3 +266,6 @@
 	cost = 10
 	containertype = /obj/structure/closet/crate
 	containername = "calories scanners"
+
+
+

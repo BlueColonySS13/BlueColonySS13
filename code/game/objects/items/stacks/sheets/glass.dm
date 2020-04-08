@@ -17,6 +17,9 @@
 	var/is_reinforced = 0
 	default_type = "glass"
 
+	stack_color = GLASS_COLOR
+
+
 /obj/item/stack/material/glass/attack_self(mob/user as mob)
 	list_recipes(user)
 
@@ -49,7 +52,7 @@
 			if (!G && replace)
 				user.put_in_hands(RG)
 
-
+/*
 /obj/item/stack/material/glass/proc/construct_window(mob/user as mob)
 	if(!user || !src)	return 0
 	if(!istype(user.loc,/turf)) return 0
@@ -101,7 +104,7 @@
 			W.anchored = 0
 			src.use(2)
 	return 0
-
+*/
 /*
  * Reinforced glass sheets
  */
@@ -118,9 +121,10 @@
 /obj/item/stack/material/glass/phoronglass
 	name = "phoron glass"
 	singular_name = "phoron glass sheet"
-	icon_state = "sheet-phoronglass"
 	default_type = "phoron glass"
 	associated_reagents = list("phoron")
+
+	stack_color = COLOR_PHORON
 
 /obj/item/stack/material/glass/phoronglass/attackby(obj/item/W, mob/user)
 	..()
@@ -145,6 +149,8 @@
 /obj/item/stack/material/glass/phoronrglass
 	name = "reinforced phoron glass"
 	singular_name = "reinforced phoron glass sheet"
-	icon_state = "sheet-phoronrglass"
+	icon_state = "sheet-rglass"
 	default_type = "reinforced phoron glass"
 	is_reinforced = 1
+	associated_reagents = list("phoron")
+	stack_color = COLOR_PHORON

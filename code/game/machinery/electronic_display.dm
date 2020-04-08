@@ -37,7 +37,7 @@
 	var/maint_mode = FALSE
 	var/atmpt_maint_mode = FALSE
 
-	var/max_items = 30
+	var/max_items = 60
 	var/can_buy = TRUE
 
 	unique_save_vars = list("anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid",\
@@ -104,8 +104,8 @@
 /obj/machinery/electronic_display_case/proc/choose_static_icon(mob/user)
 	var/static_icons_list = list("NONE","liberation station", "orange bubbles", "theater", "shamblers", "space up", "games", \
 	"snacks green", "snacks orange", "snacks teal", "coffee", "cigarettes", "medicine", "black cola", "soda red", "art", \
-	"clothes", "generic", "luxvend", "syndi", "laptop", "toiletries", "minerals", "soda fox", "snix", "uniforms", \
-	"weeb", "gold black", "shoes", "power game", "generic buy")
+	"clothes", "generic", "luxvend", "laptop", "toiletries", "minerals", "soda fox", "snix", "uniforms", \
+	"weeb", "gold black", "shoes", "power game", "generic buy", "hot food", "fitness")
 
 	if(emagged)
 		static_icons_list += "syndi"
@@ -178,7 +178,10 @@
 			static_icon = "generic_buy"
 		if("syndi")
 			static_icon = "syndi"
-
+		if("hot food")
+			static_icon = "hot_food"
+		if("fitness")
+			static_icon = "fitness"
 	visible_message("<span class='info'>[src] morphs into a new appearance!</span>")
 	playsound(user, 'sound/machines/click.ogg', 20, 1)
 	update_icon()

@@ -466,7 +466,7 @@
 	name = "black diamond floor"
 	icon = 'icons/turf/flooring/decorative.dmi'
 	icon_state = "tiles1"
-	initial_flooring = /decl/flooring/diamond
+	initial_flooring = /decl/flooring/tiling/diamond
 
 /turf/simulated/floor/bluegeo
 	name = "blue geometric floor"

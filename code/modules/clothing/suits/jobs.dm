@@ -70,7 +70,7 @@
 //Chef
 /obj/item/clothing/suit/chef/classic
 	name = "classic chef's apron"
-	desc = "A basic, dull, white chef's apron."
+	desc = "A basic, dull chef's apron."
 	icon_state = "apronchef"
 	blood_overlay_type = "armor"
 	body_parts_covered = 0
