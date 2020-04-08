@@ -67,3 +67,13 @@
 			/obj/item/device/floor_painter = 2,
 			/obj/item/device/closet_painter = 2
 			)
+
+/datum/supply_pack/recreation/gym_equipment
+	name = "Gym Equipment"
+	cost = 1200
+	containername = "gym equipment crate"
+	containertype = /obj/structure/largecrate
+	contains = list(
+			/obj/item/frame/plastic/punchingbag = 2,
+			/obj/item/frame/weightlifter = 2
+			)

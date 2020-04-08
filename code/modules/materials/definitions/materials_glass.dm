@@ -3,7 +3,7 @@
 	name = "glass"
 	stack_type = /obj/item/stack/material/glass
 	flags = MATERIAL_BRITTLE
-	icon_colour = "#00E1FF"
+	icon_colour = COLOR_DEEP_SKY_BLUE
 	opacity = 0.3
 	integrity = 100
 	shard_type = SHARD_SHARD
@@ -95,7 +95,7 @@
 	display_name = "reinforced glass"
 	stack_type = /obj/item/stack/material/glass/reinforced
 	flags = MATERIAL_BRITTLE
-	icon_colour = "#00E1FF"
+	icon_colour = COLOR_DEEP_SKY_BLUE
 	opacity = 0.3
 	integrity = 100
 	shard_type = SHARD_SHARD

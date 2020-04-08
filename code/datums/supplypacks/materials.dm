@@ -8,37 +8,37 @@
 	group = "Materials"
 
 /datum/supply_pack/materials/metal50
-	name = "50 metal sheets"
-	contains = list(/obj/fiftyspawner/steel)
-	cost = 30
+	name = "150 metal sheets"
+	contains = list(/obj/fiftyspawner/steel = 3)
+	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "Metal sheets crate"
 
 /datum/supply_pack/materials/glass50
-	name = "50 glass sheets"
-	contains = list(/obj/fiftyspawner/glass)
-	cost = 30
+	name = "150 glass sheets"
+	contains = list(/obj/fiftyspawner/glass = 3)
+	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "Glass sheets crate"
 
 /datum/supply_pack/materials/plastic50
-	name = "50 plastic sheets"
-	contains = list(/obj/fiftyspawner/plastic)
-	cost = 30
+	name = "150 plastic sheets"
+	contains = list(/obj/fiftyspawner/plastic = 3)
+	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "Plastic sheets crate"
 
 /datum/supply_pack/materials/cardboard_sheets
-	contains = list(/obj/fiftyspawner/cardboard)
-	name = "50 cardboard sheets"
-	cost = 30
+	contains = list(/obj/fiftyspawner/cardboard = 3)
+	name = "150 cardboard sheets"
+	cost = 60
 	containertype = /obj/structure/closet/crate
 	containername = "Cardboard sheets crate"
 
 /datum/supply_pack/materials/marble
 	name = "50 marble slabs"
-	contains = list(/obj/fiftyspawner/marble)
-	cost = 60
+	contains = list(/obj/fiftyspawner/marble = 3)
+	cost = 120
 	containername = "marble slabs crate"
 
 /datum/supply_pack/materials/carpet
@@ -136,11 +136,12 @@
 	containername = "Sewing Set"
 
 /datum/supply_pack/materials/tailor_materials
-	name = "Fine Tailoring Materials"
-	contains = list(/obj/fiftyspawner/silk = 3,
+	name = "Tailoring Materials"
+	contains = list(/obj/fiftyspawner/silk = 2,
 	/obj/fiftyspawner/cotton = 3,
-	/obj/fiftyspawner/leather = 2)
-	cost = 700
+	/obj/fiftyspawner/leather = 3,
+	/obj/fiftyspawner/denim = 4)
+	cost = 800
 	containertype = /obj/structure/closet/crate
 	containername = "Fine Tailoring Materials"
 

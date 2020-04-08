@@ -570,7 +570,7 @@
 	new /obj/item/clothing/under/pants/mustangjeans(src)
 	new /obj/item/clothing/under/pants/blackjeans(src)
 	new /obj/item/clothing/under/pants/youngfolksjeans(src)
-	new /obj/item/clothing/under/pants/white(src)
+	new /obj/item/clothing/under/pants(src)
 	new /obj/item/clothing/under/pants/red(src)
 	new /obj/item/clothing/under/pants/black(src)
 	new /obj/item/clothing/under/pants/tan(src)

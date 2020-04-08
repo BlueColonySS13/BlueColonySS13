@@ -399,6 +399,12 @@ BLIND     // can't see anything
 	desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
 	icon_state = "aviator"
 
+/obj/item/clothing/glasses/fakesunglasses/big
+	name = "big stylish sunglasses"
+	desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
+	icon_state = "bigsunglasses"
+
+
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "\improper HUD sunglasses"
 	desc = "Sunglasses with a HUD."

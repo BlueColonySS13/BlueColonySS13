@@ -170,17 +170,34 @@
 		if(recipe.use_material_color)
 			if(!stack_color)
 				var/material/material_ref = get_material_by_name(recipe.use_material)
-				O.color = material_ref.icon_colour
+				if(material_ref)
+					if(recipe.color_var && O.vars[recipe.color_var])
+						O.vars[recipe.color_var] = material_ref.icon_colour
+					else
+						O.color = material_ref.icon_colour
 			else
 				O.color = stack_color
 
-		O.set_dir(user.dir)
+		if(stack_color && (recipe.color_var in O.vars))
+			O.vars[recipe.color_var] = stack_color
+
+		if(!recipe.ignore_dir)
+			O.set_dir(user.dir)
+
+		if(recipe.apply_prefix)
+			O.name = "[initial(name)] [O.name]"
+
+		if(recipe.apply_suffix)
+			O.name = "[O.name] [initial(name)]"
+
 		O.add_fingerprint(user)
 
 		if (istype(O, /obj/item/stack))
 			var/obj/item/stack/S = O
 			S.amount = produced
 			S.add_to_stacks(user)
+
+		O.update_icon()
 
 		if (istype(O, /obj/item/weapon/storage)) //BubbleWrap - so newly formed boxes are empty
 			for (var/obj/item/I in O)
@@ -389,8 +406,13 @@
 	var/on_floor = 0
 	var/use_material
 	var/use_material_color = FALSE
+	var/ignore_dir = FALSE
+	var/color_var	// if this is set, this is what will be colored instead of the regular "color" variable. It will check the object's variables for this.
+	var/apply_prefix
+	var/apply_suffix
 
-	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, apply_material_color = FALSE)
+	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, \
+	supplied_material = null, apply_material_color = FALSE, ignore_direction = FALSE, colour_var = null, prefix = FALSE, suffix = FALSE)
 		src.title = title
 		src.result_type = result_type
 		src.req_amount = req_amount
@@ -401,6 +423,10 @@
 		src.on_floor = on_floor
 		src.use_material = supplied_material
 		src.use_material_color = apply_material_color
+		src.ignore_dir = ignore_direction
+		src.color_var = colour_var
+		src.apply_prefix = prefix
+		src.apply_suffix = suffix
 
 /*
  * Recipe list datum

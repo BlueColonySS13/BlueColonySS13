@@ -243,6 +243,8 @@
 	icon_state = "wax"
 	burn_state = 0 //Burnable
 	burntime = 5
+	stack_color = COLOR_YELLOW
+	dyeable = TRUE
 
 /obj/item/stack/wax/New()
 	..()

@@ -73,7 +73,7 @@
 
 	var/datum/lot/lot = SSlots.get_lot_by_id(lot_id)
 
-	if(lot && !(lot.get_status() == RENTED))
+	if(lot && ((lot.get_status() != RENTED) || (lot.get_status() != OWNED)))
 		var/obj/structure/sign/rent/R = new /obj/structure/sign/rent (src.loc)
 
 		if(lot.get_status() == FOR_RENT)
@@ -97,7 +97,6 @@
 			R.desc = "This lot has been seized by City Council."
 			if(lot.reason_held)
 				R.desc += " Reason: [lot.reason_held]"
-
 
 		//copy over mapping values.
 		R.pixel_z = pixel_z
