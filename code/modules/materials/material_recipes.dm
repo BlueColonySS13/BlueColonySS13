@@ -382,6 +382,7 @@
 	recipes += new/datum/stack_recipe("[display_name] short shorts", /obj/item/clothing/under/shorts/white/female, 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] swept skirt", /obj/item/clothing/under/skirt/swept, 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] loose sleeve blazer", /obj/item/clothing/suit/storage/loosesleeveblazer, 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] flannel", /obj/item/clothing/suit/storage/flannel, 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 
 /material/silk/generate_recipes()
 	recipes = list()

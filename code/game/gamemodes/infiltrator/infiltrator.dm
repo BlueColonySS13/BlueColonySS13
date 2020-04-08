@@ -11,3 +11,4 @@
 	end_on_antag_death = 0
 	antag_scaling_coeff = 5
 	antag_tags = list(MODE_INFILTRATOR)
+	votable = 0
