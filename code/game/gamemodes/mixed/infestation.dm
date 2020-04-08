@@ -9,7 +9,7 @@
 	end_on_antag_death = 1
 	antag_tags = list(MODE_BORER, MODE_CHANGELING)
 	require_all_templates = 1
-	votable = 1
+	votable = 0
 
 /datum/game_mode/infestation/create_antagonists()
 	// Two of the three.

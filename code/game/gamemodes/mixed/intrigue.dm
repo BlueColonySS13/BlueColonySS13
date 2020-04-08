@@ -10,3 +10,4 @@
 	antag_tags = list(MODE_NINJA, MODE_AUTOTRAITOR)
 	round_autoantag = 1
 	require_all_templates = 1
+	votable = 0
