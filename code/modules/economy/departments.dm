@@ -61,13 +61,17 @@
 		if(name == D.name)
 			return D
 
-/proc/adjust_dept_funds(id, amount)
+/proc/adjust_dept_funds(id, amount, purpose)
 	var/datum/money_account/M = dept_acc_by_id(id)
 
 	if(!M)
 		return FALSE
 
 	M.money += amount
+
+	if(purpose)
+		M.add_transaction_log(M.owner_name, purpose, amount, "Department Funds Transfer")
+
 	return TRUE
 
 /proc/dept_balance(id)

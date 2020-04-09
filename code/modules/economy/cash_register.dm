@@ -38,7 +38,7 @@
 	unique_save_vars = list("locked", "cash_stored", "linked_account", "owner_uid", "owner_name")
 
 // Claim machine ID
-/obj/machinery/cash_register/New()
+/obj/machinery/cash_register/initialize(mapload)
 	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
 	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 	if(SSeconomy && account_to_connect)
