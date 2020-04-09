@@ -11,7 +11,8 @@
 /decl/hierarchy/outfit/job/science/rd
 	name = OUTFIT_JOB_NAME("Research Director")
 	l_ear = /obj/item/device/radio/headset/heads/rd
-	uniform = /obj/item/clothing/under/rank/research_director
+	//uniform = /obj/item/clothing/under/rank/research_director
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat/rd
 	shoes = /obj/item/clothing/shoes/brown
 	l_hand = /obj/item/weapon/clipboard
 	id_type = /obj/item/weapon/card/id/science/head
@@ -26,6 +27,12 @@
 /decl/hierarchy/outfit/job/science/scientist
 	name = OUTFIT_JOB_NAME("Scientist")
 	uniform = /obj/item/clothing/under/rank/scientist
+	id_type = /obj/item/weapon/card/id/science/scientist
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat/science
+
+/decl/hierarchy/outfit/job/science/xenoarchaeologist
+	name = OUTFIT_JOB_NAME("Xenoarchaeologist")
+	//uniform = /obj/item/clothing/under/rank/xenoarchaeologist
 	id_type = /obj/item/weapon/card/id/science/scientist
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/science
 

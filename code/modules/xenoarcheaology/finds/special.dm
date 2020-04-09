@@ -127,14 +127,24 @@
 		playsound(src.loc, pick('sound/hallucinations/wail.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/far_noise.ogg'), 50, 1, -3)
 		nearby_mobs.Add(M)
 
+		if(istype(M.wear_suit,/obj/item/clothing/suit/anomaly) && istype(M.wear_suit,/obj/item/clothing/head/anomaly))
+			to_chat(M, "<span_class='notice'>You feel wave pass through you as the reality anchors in your suit stabilize reality.</span>")
+
 		var/target = pick(M.organs_by_name)
-		M.apply_damage(rand(5, 10), BRUTE, target)
-		M << "<font color='red'>The skin on your [parse_zone(target)] feels like it's ripping apart, and a stream of blood flies out.</font>"
-		var/obj/effect/decal/cleanable/blood/splatter/animated/B = new(M.loc)
-		B.target_turf = pick(range(1, src))
-		B.blood_DNA = list()
-		B.blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
-		M.vessel.remove_reagent("blood",rand(25,50))
+
+		if(GetAnomalySusceptibility(M) < 0.5)
+			to_chat(M, "<font color='red'>The skin on your [parse_zone(target)] throbs uncomfortably and a bruise forms.</font>")
+			M.apply_damage(rand(1, 4), BRUTE, target)
+
+		else
+			M.apply_damage(rand(5, 10), BRUTE, target)
+			M << "<font color='red'>The skin on your [parse_zone(target)] feels like it's ripping apart, and a stream of blood flies out.</font>"
+			var/obj/effect/decal/cleanable/blood/splatter/animated/B = new(M.loc)
+			B.target_turf = pick(range(1, src))
+			B.blood_DNA = list()
+			B.blood_DNA[M.dna.unique_enzymes] = M.dna.b_type
+			M.vessel.remove_reagent("blood",rand(25,50))
+
 
 //animated blood 2 SPOOKY
 /obj/effect/decal/cleanable/blood/splatter/animated

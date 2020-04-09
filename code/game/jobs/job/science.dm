@@ -51,7 +51,7 @@
 //	minimal_player_age = 3
 
 	outfit_type = /decl/hierarchy/outfit/job/science/scientist
-	alt_titles = list("Xenoarchaeologist", "Anomalist", "Phoron Researcher")
+	alt_titles = list("Xenoarchaeologist" = /decl/hierarchy/outfit/job/science/xenoarchaeologist, "Anomalist", "Phoron Researcher")
 
 /datum/job/xenobiologist
 	title = "Xenobiologist"

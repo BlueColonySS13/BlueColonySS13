@@ -164,3 +164,10 @@
 /obj/effect/step_trigger/teleporter/planetary_fall/sif/initialize()
 	planet = planet_sif
 	. = ..()
+
+/turf/simulated/floor/redspace
+	icon = 'icons/turf/redspace.dmi'
+	icon_state = "basalt"
+	oxygen = MOLES_O2SIF
+	nitrogen = MOLES_N2SIF
+	temperature = 430
