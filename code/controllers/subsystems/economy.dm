@@ -7,14 +7,11 @@ SUBSYSTEM_DEF(economy)
 
 /datum/controller/subsystem/economy/Initialize(timeofday)
 	setup_economy()
-	link_economy_accounts()
-
 	all_departments = GLOB.departments
-
 	load_economy()
 	init_expenses()
 	persistent_economy.load_accounts()
-
+	link_economy_accounts()
 	. = ..()
 
 /datum/controller/subsystem/economy/proc/setup_economy()
