@@ -107,7 +107,7 @@
 	supervisors = "the research director"
 	selection_color = "#633D63"
 	idtype = /obj/item/weapon/card/id/science/intern
-	wage = 15
+	wage = 20
 	access = list(access_research, access_maint_tunnels)
 	minimal_access = list(access_research, access_maint_tunnels)
 	minimum_character_age = 16
