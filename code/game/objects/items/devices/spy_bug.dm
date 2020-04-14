@@ -223,6 +223,8 @@
 	item_state = "electronic"
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1, TECH_ILLEGAL = 3)
 
+	price_tag = 500
+
 /obj/item/device/bug_monitor/spy/examine(mob/user)
 	. = ..(user, 1)
 	if(.)

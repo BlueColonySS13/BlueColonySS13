@@ -38,6 +38,9 @@
 	if(occupant)
 		return
 
+	if(!ishuman(O))
+		return
+
 	if(O.incapacitated()) //aint no sleepy people getting in here
 		return
 

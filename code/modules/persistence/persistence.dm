@@ -162,9 +162,6 @@
  	 return list("x","y","z","anchored","color","dir","name","pixel_x","pixel_y","fingerprints","fingerprintshidden","fingerprintslast",\
  	 "suit_fibers","tagged_price")+unique_save_vars
 
-/obj/structure/closet
-	unique_save_vars = list("opened","welded")
-
 /obj/item/weapon/clipboard
 	unique_save_vars = list("haspen","toppaper")
 

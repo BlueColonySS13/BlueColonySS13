@@ -61,6 +61,7 @@
 	recipes += new/datum/stack_recipe("bench frame", /obj/structure/table/bench, 1, time = 10, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("rack", /obj/structure/table/rack, 1, time = 5, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("closet", /obj/structure/closet, 2, time = 15, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("personal closet", /obj/structure/closet/secure_closet/personal, 2, time = 15, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("canister", /obj/machinery/portable_atmospherics/canister, 10, time = 15, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("cannon frame", /obj/item/weapon/cannonframe, 10, time = 15, one_per_turf = 0, on_floor = 0)
 	recipes += new/datum/stack_recipe("regular floor tile", /obj/item/stack/tile/floor, 1, 4, 20)
@@ -112,6 +113,14 @@
 	recipes += new/datum/stack_recipe("display case frame", /obj/item/frame/display_case, 25, time = 10)
 	recipes += new/datum/stack_recipe("metal book case", /obj/structure/bookcase/metal, 5, time = 15, one_per_turf = 1, on_floor = 1)
 
+
+	recipes += new/datum/stack_recipe_list("fences", list( \
+		new/datum/stack_recipe("fence", /obj/structure/fence, 5, time = 10, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("fence corner", /obj/structure/fence/corner, 5, time = 10, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("fence post", /obj/structure/fence/post, 5, time = 10, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("fence end", /obj/structure/fence/end, 5, time = 10, one_per_turf = 1, on_floor = 1), \
+		))
+
 	recipes += new/datum/stack_recipe_list("filing cabinets", list( \
 		new/datum/stack_recipe("filing cabinet", /obj/structure/filingcabinet, 4, time = 20, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("tall filing cabinet", /obj/structure/filingcabinet/filingcabinet, 4, time = 20, one_per_turf = 1, on_floor = 1), \
@@ -161,6 +170,8 @@
 	recipes += new/datum/stack_recipe("fridge", /obj/structure/closet/secure_closet/freezer/fridge, 5, time = 20, on_floor = 1)
 	recipes += new/datum/stack_recipe("freezer", /obj/structure/closet/secure_closet/freezer, 5, time = 20, on_floor = 1)
 	recipes += new/datum/stack_recipe("umbrella", /obj/item/weapon/melee/umbrella, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
+	recipes += new/datum/stack_recipe("balloon", /obj/item/toy/balloon, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
+
 
 
 	recipes += new/datum/stack_recipe_list("Containers",list( \
@@ -335,6 +346,14 @@
 	recipes += new/datum/stack_recipe("[display_name] shoes", /obj/item/clothing/shoes/leather, 10, time = 20, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("[display_name] pants", /obj/item/clothing/under/pants/leather, 10, time = 20, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("[display_name] briefcase", /obj/item/weapon/storage/briefcase, 15, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("ore bag", /obj/item/weapon/storage/bag/ore, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("plant bag", /obj/item/weapon/storage/bag/plants, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("large plant bag", /obj/item/weapon/storage/bag/plants/large, 20, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("chemistry bag", /obj/item/weapon/storage/bag/chemistry, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("food bag", /obj/item/weapon/storage/bag/food, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("slime extracts bag", /obj/item/weapon/storage/bag/xenobio, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("sheet snatcher", /obj/item/weapon/storage/bag/sheetsnatcher, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("cigar case", /obj/item/weapon/storage/fancy/cigar/empty, 10, time = 20, one_per_turf = 0, on_floor = 1)
 
 /material/diamond/generate_recipes()
 	..()

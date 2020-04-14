@@ -15,6 +15,8 @@
 	var/build_eff = 1
 	var/eat_eff = 1
 
+	unique_save_vars = list("points")
+
 /obj/machinery/biogenerator/New()
 	..()
 	var/datum/reagents/R = new/datum/reagents(1000)

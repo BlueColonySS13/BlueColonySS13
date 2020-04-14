@@ -39,6 +39,7 @@
 	if(!material_name)
 		return
 	set_material(material_name)
+	update_icon()
 	return TRUE
 
 /obj/item/weapon/material/New(var/newloc, var/material_key)
