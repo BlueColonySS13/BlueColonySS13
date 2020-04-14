@@ -1583,7 +1583,6 @@
 #include "code\modules\economy\ATM.dm"
 #include "code\modules\economy\cash.dm"
 #include "code\modules\economy\cash_register.dm"
-#include "code\modules\economy\department_card.dm"
 #include "code\modules\economy\department_presets.dm"
 #include "code\modules\economy\departments.dm"
 #include "code\modules\economy\economy_misc.dm"
