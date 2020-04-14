@@ -134,27 +134,27 @@
 	cost = 30
 	containername = "\improper adhesive poster crate"
 
-/datum/supply_pack/supply/pens
+/datum/supply_pack/supply/pen_set
 	name = "assorted pen set"
 	contains = list(/obj/item/weapon/pen = 5,
 	/obj/item/weapon/pen/red = 5,
 	/obj/item/weapon/pen/blue = 5,
 	/obj/item/weapon/pen/fountain = 2)
 	cost = 10
-	containername = "\improper Assorted Pen Set"
+	containername = "assorted Pen Set"
 
 
 /datum/supply_pack/supply/lights
 	name = "light replacement set"
 	contains = list(/obj/item/weapon/storage/box/lights = 2)
 	cost = 25
-	containername = "\improper light replacement set"
+	containername = "light replacement set"
 
 /datum/supply_pack/supply/dye_refills
 	name = "photochromatic dye refills"
 	contains = list(/obj/item/photochromatic_dye_refill = 5)
 	cost = 25
-	containername = "\improper photochromatic dye refills"
+	containername = "photochromatic dye refills"
 
 
 

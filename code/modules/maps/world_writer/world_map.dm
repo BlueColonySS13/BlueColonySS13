@@ -150,19 +150,7 @@
 			if(new_wall.girder_material)
 				MT.girder_material = new_wall.girder_material.name
 
-		var/list/decal_list = list()
-
-		if(!T.decals)
-			T.decals = list()
-
-		for(var/image/I in T.decals)
-			var/icon/dcl_icon = getFlatIcon(I, defdir=I.dir)
-			var/image/new_decl = image(dcl_icon)
-
-			decal_list += new_decl
-
-		MT.decals = decal_list
-
+		MT.decals = T.decals
 
 		for(var/V in T.vars_to_save() )
 			if(!(V in T.vars))
@@ -267,6 +255,10 @@
 				new_wall.reinf_material = get_material_by_name(MT.reinforced_material)
 			if(MT.girder_material)
 				new_wall.girder_material = get_material_by_name(MT.girder_material)
+
+			new_wall.update_material()
+			new_wall.update_connections(1)
+			new_wall.update_icon()
 
 		newturf.decals = MT.decals
 		newturf.update_icon()

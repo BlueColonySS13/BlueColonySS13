@@ -92,8 +92,8 @@
 	name = "Journalism Kit"
 	contains = list(
 	/obj/item/device/camera,
-	/obj/item/device/camera_film = 2)
-	cost = 30
+	/obj/item/device/tvcamera = 1)
+	cost = 230
 	containertype = /obj/structure/closet/crate
 	containername = "Journalism Kit"
 

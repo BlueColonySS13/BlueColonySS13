@@ -130,7 +130,7 @@
 				for (var/mob/C in viewers(src))
 					C.show_message("<font color='red'>[GM.name] has been placed in the [src] by [user].</font>", 3)
 				qdel(G)
-				
+
 				add_attack_logs(user,GM,"Disposals dunked")
 		return
 
@@ -668,6 +668,9 @@
 	var/base_icon_state	// initial icon state on map
 	var/sortType = ""
 	var/subtype = 0
+
+	unique_save_vars = list("icon_state", "dir", "dpdir", "sortType", "subtype", "health", "level")
+
 	// new pipe, set the icon_state as on map
 	New()
 		..()
@@ -1139,6 +1142,8 @@
 	icon_state = "pipe-tagger"
 	var/sort_tag = ""
 	var/partial = 0
+
+	unique_save_vars = list("partial", "sort_tag", "icon_state", "dir", "dpdir", "sortType", "subtype", "health", "level")
 
 	proc/updatedesc()
 		desc = initial(desc)

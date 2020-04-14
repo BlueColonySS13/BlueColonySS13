@@ -31,6 +31,7 @@
 
 	var/bank_id = ""
 	var/owner_message = ""	// a message by the owner left behind for the customers
+	var/purchase = 1
 
 	//other
 	var/obj/currently_vending
@@ -38,29 +39,35 @@
 	var/atmpt_maint_mode = FALSE
 
 	var/max_items = 60
-	var/can_buy = TRUE
 
-	unique_save_vars = list("anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid",\
-	"staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode", "can_buy")
+
+	unique_save_vars = list("purchase", "anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode")
 
 /obj/machinery/electronic_display_case/New()
-	..()
 	if(!staff_pin)
 		staff_pin = rand(1111,9999)
+	..()
 
+/obj/machinery/electronic_display_case/get_saveable_contents()
+	return stored_products
 
 /obj/machinery/electronic_display_case/on_persistence_load()
-	stored_products = get_saveable_contents() - circuit
 	update_icon()
+	stored_products = contents
 
 /obj/machinery/electronic_display_case/examine(mob/user)
 	..()
 	if(owner_name)
 		to_chat(user, "[name] belongs to <b>[owner_name]</b>, report any issues with the machine to the owner.")
-	if(!can_buy)
+	if(!purchase)
 		to_chat(user, "<b>It is display-only.</b>")
 	else
 		to_chat(user, "<b>You can buy items from this unit.</b>")
+
+	if(!anchored)
+		to_chat(user, "<b>It is loose from the floor!</b>")
+	else
+		to_chat(user, "<b>It is firmly anchored to the floor.</b>")
 
 
 
@@ -258,7 +265,7 @@
 					dat += "No products found."
 				else
 					for(var/obj/O in stored_products)
-						if(can_buy)
+						if(purchase)
 							dat += "<a href='?src=\ref[src];choice=buy;item=\ref[O]''>Buy &#127980;</a> "
 
 						dat += "<a href='?src=\ref[src];choice=examine_item;item=\ref[O]''>View &#128270;</a> <b>[O.name]</b> - [cash2text( O.get_full_cost(), FALSE, TRUE, TRUE )]"
@@ -275,6 +282,8 @@
 	else
 		dat += "Welcome to Maintenance mode. You can add any item by entering it into the machine. Additionally, you can remove any \
 		item or change the staff's pin code. Remember to Exit Maintenance Mode when you are done, to lock and secure your machine.<br>"
+
+		dat += "<b>Staff pin:</b> [staff_pin]<br>"
 
 		if(!check_account_exists(bank_id))
 			dat += "<br><b>There is currently an issue with your bank details. Please update your linked bank account to enable the machine.</b>"
@@ -353,6 +362,7 @@
 			atmpt_maint_mode = FALSE
 			maint_mode = TRUE
 			update_icon()
+			updateDialog()
 		else
 			visible_message("<span class='notice'>Error: Unrecognised unique ID or authorization mismatch.</span>")
 			return TRUE
@@ -497,8 +507,6 @@
 	maint_mode = FALSE
 	atmpt_maint_mode = FALSE
 
-	can_buy = initial(can_buy)
-
 	update_icon()
 
 
@@ -600,8 +608,8 @@
 		if(!maint_mode)
 			return
 
-		can_buy = !can_buy
-		to_chat(usr, "<b>The machine now [can_buy ? "accepts" : "does not accept"] purchases.</b>")
+		purchase = !purchase
+		to_chat(usr, "<b>The machine now [purchase ? "accepts" : "does not accept"] purchases.</b>")
 
 	if(href_list["reset_owner"])
 		if(!maint_mode)
@@ -624,7 +632,7 @@
 				if(!item || !(item in stored_products))
 					return
 
-				if(!can_buy)
+				if(!purchase)
 					return
 
 				var/obj/O = item

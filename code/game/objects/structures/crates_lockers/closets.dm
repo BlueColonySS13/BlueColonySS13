@@ -23,6 +23,8 @@
 
 	var/list/will_contain
 
+	unique_save_vars = list("opened","welded", "health")
+
 /obj/structure/closet/initialize()
 	. = ..()
 	if(will_contain)

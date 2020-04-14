@@ -906,6 +906,10 @@
 		name = "Mia"
 		icon_state = "hair_mia"
 
+	mialong
+		name = "mia long"
+		icon_state = "hair_mialong"
+
 	longbraid
 		name = "Long Braid"
 		icon_state = "hair_longbraid"
@@ -986,6 +990,62 @@
 		name = "Antonio"
 		icon_state = "hair_antonio"
 
+
+	bigcurls
+		name = "big curls"
+		icon_state = "hair_bigcurls"
+
+	sweptfringe
+		name = "swept fringe"
+		icon_state = "hair_sweptfringe"
+
+	dreadslong
+		name = "mia long"
+		icon_state = "hair_dreadslong"
+
+	highponytail
+		name = "high ponytail"
+		icon_state = "hair_highponytail"
+
+	cornbun
+		name = "cornbun"
+		icon_state = "hair_cornbun"
+
+	jeanponytail
+		name = "jean ponytail"
+		icon_state = "hair_jeanponytail"
+
+	shouldersweep
+		name = "shoulder sweep"
+		icon_state = "hair_shouldersweep"
+
+	afropuffdouble
+		name = "afropuff double"
+		icon_state = "hair_afropuffdouble"
+
+	afropuffleft
+		name = "afropuff left"
+		icon_state = "hair_afropuffleft"
+
+	afropuffright
+		name = "afropuff right"
+		icon_state = "hair_afropuffright"
+
+	suave
+		name = "suave"
+		icon_state = "hair_suave"
+
+	suavetwo
+		name = "suave2"
+		icon_state = "hair_suave2"
+
+	jane
+		name = "jane"
+		icon_state = "hair_jane"
+
+	rockstarcurls
+		name = "rockstarcurls"
+		icon_state = "hair_rockstarcurls"
 /*
 ///////////////////////////////////
 /  =---------------------------=  /

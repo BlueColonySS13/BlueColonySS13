@@ -73,24 +73,33 @@
 
 	var/datum/lot/lot = SSlots.get_lot_by_id(lot_id)
 
-	if(lot && ((lot.get_status() != RENTED) || (lot.get_status() != OWNED)))
-		var/obj/structure/sign/rent/R = new /obj/structure/sign/rent (src.loc)
-
+	if(lot)
 		if(lot.get_status() == FOR_RENT)
+			var/obj/structure/sign/rent/R = new /obj/structure/sign/rent (src.loc)
 			R.icon_state = "rent"
 
 			R.name = "[lot.name] - For Rent ([lot.get_rent()]cr per payroll)"
 			R.desc = "This rent sign says <b>[lot.name] - For Rent ([lot.price]cr)</b><br>\
 			Underneath, the sign notes the housing is owned by <b>[lot.get_landlord_name()]</b>. Contact them for more details or buy from the Landlord Management Program on the computers in the library."
 
+			//copy over mapping values.
+			R.pixel_z = pixel_z
+			R.pixel_x = pixel_x
+			R.pixel_y = pixel_y
 		if(lot.get_status() == FOR_SALE)
+			var/obj/structure/sign/rent/R = new /obj/structure/sign/rent (src.loc)
 			R.icon_state = "sale"
 
 			R.name = "[lot.name] - For Sale ([lot.get_price()]cr)"
 			R.desc = "This rent sign says <b>[lot.name] - For Sale ([lot.get_price()]cr)</b><br>\
 			Underneath, the sign notes the housing is owned by <b>[lot.get_landlord_name()]</b>. Contact them for more details or buy from the Landlord Management Program on the computers in the library."
 
+			//copy over mapping values.
+			R.pixel_z = pixel_z
+			R.pixel_x = pixel_x
+			R.pixel_y = pixel_y
 		if(lot.get_status() == LOT_HELD)
+			var/obj/structure/sign/rent/R = new /obj/structure/sign/rent (src.loc)
 			R.icon_state = "held"
 
 			R.name = "[lot.name] - Held"
@@ -98,10 +107,10 @@
 			if(lot.reason_held)
 				R.desc += " Reason: [lot.reason_held]"
 
-		//copy over mapping values.
-		R.pixel_z = pixel_z
-		R.pixel_x = pixel_x
-		R.pixel_y = pixel_y
+			//copy over mapping values.
+			R.pixel_z = pixel_z
+			R.pixel_x = pixel_x
+			R.pixel_y = pixel_y
 
 	delete_me = 1
 	qdel(src)

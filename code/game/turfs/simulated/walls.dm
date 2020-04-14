@@ -64,12 +64,11 @@
 	if(get_material_by_name(wall_data["girder_material"]))
 		reinf_material = get_material_by_name(wall_data["girder_material"])
 
-	return TRUE
-
-/turf/simulated/wall/on_persistence_load()
 	update_material()
 	update_connections(1)
 	update_icon()
+
+	return TRUE
 
 /turf/simulated/wall/New(var/newloc, var/materialtype, var/rmaterialtype, var/girdertype)
 	..(newloc)
@@ -342,3 +341,11 @@
 
 /turf/simulated/wall/is_wall()
 	return TRUE
+
+/turf/simulated/wall/MouseDrop_T(obj/O as obj, mob/user as mob)
+	if(istype(O, /obj/machinery/modular_sign))
+		if(!O.anchored)
+			O.forceMove(get_turf(src))
+			return
+
+	..()

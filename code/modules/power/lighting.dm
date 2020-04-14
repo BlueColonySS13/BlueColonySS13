@@ -189,6 +189,12 @@
 	var/rigged = 0				// true if rigged to explode
 	var/on_wall = 1
 
+	unique_save_vars = list("status", "on", "rigged")
+
+/obj/machinery/light/on_persistence_load()
+	update(0)
+
+
 // coloured lighting because fabulous
 
 /obj/machinery/light/colored

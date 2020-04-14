@@ -22,6 +22,9 @@ var/global/list/plant_seed_sprites = list()
 
 	return price_tag
 
+/obj/item/seeds/on_persistence_load()
+	update_seed()
+
 /obj/item/seeds/initialize()
 	update_seed()
 	. = ..()

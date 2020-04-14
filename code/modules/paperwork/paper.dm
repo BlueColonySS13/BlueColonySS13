@@ -42,7 +42,7 @@
 	var/last_modified_ckey
 	var/scrap_state = "scrap"
 
-	unique_save_vars = list("info", "info_links", "stamps", "fields")
+	unique_save_vars = list("info", "info_links", "stamps", "fields", "ico", "stamped")
 
 /obj/item/weapon/paper/card
 	name = "blank card"

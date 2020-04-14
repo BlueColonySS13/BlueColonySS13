@@ -258,6 +258,7 @@ var/list/name_to_material
 	name = "gold"
 	stack_type = /obj/item/stack/material/gold
 	icon_colour = "#EDD12F"
+	icon_base = "solid"
 	weight = 24
 	hardness = 40
 	conductivity = 41
@@ -349,7 +350,6 @@ var/list/name_to_material
 	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	stack_type = /obj/item/stack/material/marble
 
-
 /material/steel
 	name = DEFAULT_WALL_MATERIAL
 	stack_type = /obj/item/stack/material/steel
@@ -360,7 +360,7 @@ var/list/name_to_material
 	icon_reinf = "reinf_over"
 	icon_colour = "#515151"
 
-/material/diona
+/material/biomass
 	name = "biomass"
 	icon_colour = null
 	stack_type = null
@@ -370,9 +370,6 @@ var/list/name_to_material
 
 /material/diona/place_dismantled_product()
 	return
-
-/material/diona/place_dismantled_girder(var/turf/target)
-	spawn_diona_nymph(target)
 
 /material/steel/holographic
 	name = "holo" + DEFAULT_WALL_MATERIAL
