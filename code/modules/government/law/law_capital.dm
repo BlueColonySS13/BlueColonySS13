@@ -20,7 +20,7 @@
 
 /datum/law/capital/hazardous
 	name = "Misuse of Hazardous Materials"
-	description = "Any unauthorized or negligent handling of items declared as Hazardous Materials. This includes theft of Hazardous Materials."
+	description = "Any unauthorized or negligent handling of items declared as Hazardous Materials."
 
 	death_penalty = 1
 	
