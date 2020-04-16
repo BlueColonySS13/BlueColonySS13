@@ -178,7 +178,7 @@
 	fine = 1085
 	cell_time = 28
 
-	notes = "This includes breaking a written contract."
+	notes = "This includes breaking a written contract and abusing government resources for private gain."
 
 /datum/law/criminal/justice
 	name = "Obstruction of Justice"
