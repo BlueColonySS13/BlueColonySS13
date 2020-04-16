@@ -79,8 +79,7 @@
 	personal items and property are protected by the Polluxian privacy laws. \
 	Spreading such information without your approval,neglecting to properly \
 	secure it falls under this charge as well as unauthorized searches of \
-	your personal property. In addition, so does spying on you through\ 
-	a non-governmental camera console.\
+	your personal property. In addition, so does spying on you through a non-governmental camera console. \
 	If a police officer is the offender, refer to Abuse of Police Powers."
 
 
