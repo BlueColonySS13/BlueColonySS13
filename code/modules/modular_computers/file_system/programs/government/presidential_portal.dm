@@ -86,6 +86,7 @@
 		page_msg += "<b>Permit Selling:</b> A permit is needed to sell. Possession and creation is acceptable. <br>"
 		page_msg += "<b>Professional Use:</b> Only public and authorized industries can use this in a professional setting needed by work. No personal use. <br>"
 		page_msg += "<b>Illegal:</b> Illegal for all institutions and individuals to use. <br>"
+		page_msg += "<b>Not for Private Sale:</b> Illegal to be sold by private businesses. <br>"
 
 
 	else if(index == 5) // Contraband Page
