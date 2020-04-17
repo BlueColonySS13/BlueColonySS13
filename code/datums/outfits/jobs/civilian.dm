@@ -166,3 +166,4 @@
 	id_pda_assignment = "Prisoner"
 	uniform = /obj/item/clothing/under/color/orange
 	shoes = /obj/item/clothing/shoes/orange
+	backpack_contents = list(/obj/item/weapon/storage/mre/menu13 = 2)

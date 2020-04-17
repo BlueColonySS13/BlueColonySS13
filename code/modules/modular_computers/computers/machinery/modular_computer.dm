@@ -35,6 +35,12 @@
 		var/obj/item/modular_computer/processor/the_cpu = cpu
 		computer_data["cpu"] = the_cpu.type
 
+		if(the_cpu.card_slot)
+			var/obj/the_card_slot = the_cpu.card_slot
+			computer_data["card_slot"] = the_card_slot.type
+		if(the_cpu.battery_module)
+			var/obj/the_battery_module = the_cpu.battery_module
+			computer_data["battery_module"] = the_battery_module.type
 		if(the_cpu.network_card)
 			var/obj/the_network = the_cpu.network_card
 			computer_data["network_card"] = the_network.type
@@ -81,6 +87,14 @@
 				for(var/restored_program in all_programs)
 					var/rest_prg = new restored_program(src)
 					cpu.hard_drive.stored_files += rest_prg
+
+		if(computer_data["card_slot"])
+			var/new_card_slot = computer_data["card_slot"]
+			cpu.card_slot = new new_card_slot(src)
+
+		if(computer_data["battery_module"])
+			var/new_battery_module = computer_data["battery_module"]
+			cpu.battery_module = new new_battery_module(src)
 
 		if(computer_data["nano_printer"])
 			var/new_nano_printer = computer_data["nano_printer"]

@@ -43,7 +43,7 @@
 
 	var/on_wall = 1
 
-	unique_save_vars = list("c_tag")
+	unique_save_vars = list("name", "c_tag")
 
 /obj/machinery/camera/New()
 	wires = new(src)
