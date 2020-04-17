@@ -64,6 +64,7 @@ var/global/list/tax_groups = list(
 var/global/list/contraband_classifications = list(
 	ILLEGAL,
 	PROFESSIONAL_ONLY,
+	PROFESSIONAL_SALE,
 	PERMIT_SELLING,
 	PERMIT_POSSESSION,
 	LEGAL
