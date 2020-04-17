@@ -16,6 +16,8 @@
 	var/list/datum/expense/expenses = list()		//list of debts and expenses
 	var/fingerprint
 
+	var/hidden = FALSE
+
 /datum/transaction
 	var/target_name = ""
 	var/purpose = ""
@@ -191,3 +193,12 @@
 	if(!transaction_log)
 		transaction_log = list()
 	truncate_oldest(transaction_log, max_transaction_logs)
+
+/proc/all_public_accounts(show_hidden = FALSE)
+	var/list/m_accounts = list()
+	for(var/datum/money_account/M in GLOB.all_money_accounts)
+		if(!show_hidden && M.hidden)
+			continue
+		m_accounts += M
+
+	return m_accounts

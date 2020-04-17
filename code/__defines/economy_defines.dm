@@ -9,14 +9,13 @@
 #define PUBLIC_DEPARTMENT 1
 #define PRIVATE_DEPARTMENT 2
 #define EXTERNAL_DEPARTMENT 3
+#define HIDDEN_DEPARTMENT 4 // for fat-tions
 
 // Getting the map's head departments
 #define HEAD_DEPARTMENT using_map.get_head_department()
 #define MAIN_DEPARTMENT using_map.get_main_department()
 
 // Public Departments
-#define DEPT_NANOTRASEN "nanotrasen"
-
 #define DEPT_COLONY "colony"
 #define DEPT_COUNCIL "council"
 #define DEPT_LEGAL "legal"
@@ -32,4 +31,12 @@
 #define DEPT_BAR "bar"
 
 // External Departments
+#define DEPT_NANOTRASEN "nanotrasen"
 #define DEPT_SOLGOV "solgov"
+
+// Hidden Departments
+#define DEPT_WORKERSUNION "workersunion"
+#define DEPT_BLUEMOONCARTEL "bluemooncartel"
+#define DEPT_TRUSTFUND "trustfund"
+#define DEPT_QUERCUSCOALITION "quercuscoalition"
+#define DEPT_HOUSEOFJOSHUA "houseofjoshua"

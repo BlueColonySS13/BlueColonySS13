@@ -31,6 +31,9 @@
 
 	unique_save_vars = list("amount", "stack_color")
 
+/obj/item/stack/on_persistence_load()
+	update_icon()
+
 /obj/item/stack/proc/update_reagents()
 	return
 

@@ -9,6 +9,7 @@ GLOBAL_LIST_EMPTY(departments)
 GLOBAL_LIST_EMPTY(public_departments)
 GLOBAL_LIST_EMPTY(private_departments)
 GLOBAL_LIST_EMPTY(external_departments)
+GLOBAL_LIST_EMPTY(hidden_departments)
 
 // the department's bank accounts
 GLOBAL_LIST_EMPTY(department_accounts)
@@ -16,6 +17,7 @@ GLOBAL_LIST_EMPTY(department_accounts)
 GLOBAL_LIST_EMPTY(public_department_accounts)
 GLOBAL_LIST_EMPTY(private_department_accounts)
 GLOBAL_LIST_EMPTY(external_department_accounts)
+GLOBAL_LIST_EMPTY(hidden_department_accounts)
 
 GLOBAL_VAR_INIT(num_financial_terminals, 1)
 GLOBAL_VAR_INIT(economy_init, 0)

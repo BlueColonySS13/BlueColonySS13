@@ -147,6 +147,9 @@
 	..()
 	update_dye_overlay()
 
+/obj/item/dye_bottle/on_persistence_load()
+	update_dye_overlay()
+
 /obj/item/dye_bottle/proc/update_dye_overlay()
 	overlays.Cut()
 

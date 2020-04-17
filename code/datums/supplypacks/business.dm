@@ -43,7 +43,7 @@
 	containername = "Price Scanner"
 
 /datum/supply_pack/business/business_sign
-	contains = list(/obj/item/device/price_scanner)
+	contains = list(/obj/machinery/modular_sign/business)
 	name = "Business Sign"
 	cost = 1500
 	containertype = /obj/structure/largecrate

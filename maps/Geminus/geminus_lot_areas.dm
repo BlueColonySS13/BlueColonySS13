@@ -140,3 +140,7 @@
 /area/lots/office_three
 	name = "Office Lot 3"
 	lot_id = "office 3"
+
+/area/lots/office_four
+	name = "Office Lot 4"
+	lot_id = "office4"

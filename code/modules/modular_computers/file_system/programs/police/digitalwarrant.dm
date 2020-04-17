@@ -18,6 +18,7 @@ var/warrant_uid = 0
 	required_access = access_warrant
 	usage_flags = PROGRAM_ALL
 	nanomodule_path = /datum/nano_module/program/digitalwarrant/
+	program_icon_state = "warrant"
 
 /datum/nano_module/program/digitalwarrant/
 	name = "Warrant Assistant"

@@ -95,3 +95,13 @@
 	cost = 200
 	containertype = /obj/structure/closet/crate
 	containername = "Popcorn Vendor Machine"
+
+/datum/supply_pack/circuits/smartfridge
+	contains = list(/obj/item/weapon/circuitboard/smartfridge)
+	name = "Smartfridge Circuit"
+	cost = 200
+	containertype = /obj/structure/closet/crate
+	containername = "Smartfridge Circuit"
+
+
+

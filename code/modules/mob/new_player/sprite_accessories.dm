@@ -907,7 +907,7 @@
 		icon_state = "hair_mia"
 
 	mialong
-		name = "mia long"
+		name = "Mia Long"
 		icon_state = "hair_mialong"
 
 	longbraid
@@ -990,62 +990,102 @@
 		name = "Antonio"
 		icon_state = "hair_antonio"
 
-
 	bigcurls
-		name = "big curls"
+		name = "Big Curls"
 		icon_state = "hair_bigcurls"
 
 	sweptfringe
-		name = "swept fringe"
+		name = "Swept fringe"
 		icon_state = "hair_sweptfringe"
 
 	dreadslong
-		name = "mia long"
+		name = "Dreads Long"
 		icon_state = "hair_dreadslong"
 
 	highponytail
-		name = "high ponytail"
+		name = "High Ponytail"
 		icon_state = "hair_highponytail"
 
 	cornbun
-		name = "cornbun"
+		name = "Cornbun"
 		icon_state = "hair_cornbun"
 
 	jeanponytail
-		name = "jean ponytail"
+		name = "Jean Ponytail"
 		icon_state = "hair_jeanponytail"
 
 	shouldersweep
-		name = "shoulder sweep"
+		name = "Shoulder Sweep"
 		icon_state = "hair_shouldersweep"
 
 	afropuffdouble
-		name = "afropuff double"
+		name = "Afropuff Double"
 		icon_state = "hair_afropuffdouble"
 
 	afropuffleft
-		name = "afropuff left"
+		name = "Afropuff Left"
 		icon_state = "hair_afropuffleft"
 
 	afropuffright
-		name = "afropuff right"
+		name = "Afropuff Right"
 		icon_state = "hair_afropuffright"
 
 	suave
-		name = "suave"
+		name = "Suave"
 		icon_state = "hair_suave"
 
 	suavetwo
-		name = "suave2"
+		name = "Suave 2"
 		icon_state = "hair_suave2"
 
 	jane
-		name = "jane"
+		name = "Jane"
 		icon_state = "hair_jane"
 
 	rockstarcurls
-		name = "rockstarcurls"
+		name = "Rockstar Curls"
 		icon_state = "hair_rockstarcurls"
+
+	band
+		name = "Band"
+		icon_state = "hair_band"
+
+	bieber
+		name = "Bieber"
+		icon_state = "hair_bieb"
+
+	fabio
+		name = "Fabio"
+		icon_state = "hair_fabio"
+
+	froofy_long
+		name = "Froofy Long"
+		icon_state = "hair_froofy_long"
+
+	glammetal
+		name = "Glam Metal Long"
+		icon_state = "hair_glammetal"
+
+	midb
+		name = "Mid-length bob"
+		icon_state = "hair_midb"
+
+	halfshaved
+		name = "Half shaved"
+		icon_state = "hair_halfshavedL"
+
+	longbraid
+		name = "Long braid"
+		icon_state = "hair_longbraid"
+
+	rockandroll
+		name = "Rock and roll"
+		icon_state = "hair_rockandroll"
+
+	shortflip
+		name = "Short flip"
+		icon_state = "hair_shortflip"
+
 /*
 ///////////////////////////////////
 /  =---------------------------=  /

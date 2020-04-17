@@ -173,7 +173,7 @@
 				reg_error = "You already are registered as a candidate!"
 				return
 
-		if(unique_id == SSelections.current_president.unique_id)
+		if(SSelections.uid_is_candidate(unique_id))
 			reg_error = "You already are registered as a candidate!"
 			return
 

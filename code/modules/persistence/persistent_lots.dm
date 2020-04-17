@@ -147,7 +147,9 @@
 		for(var/obj/O in lot_area)
 			O.on_persistence_load()
 			CHECK_TICK
-
+		for(var/turf/simulated/wall/T in lot_area)
+			T.on_persistence_load()
+			CHECK_TICK
 	return 1
 
 

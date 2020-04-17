@@ -29,6 +29,8 @@
 			GLOB.private_departments += src
 		if(EXTERNAL_DEPARTMENT)
 			GLOB.external_departments += src
+		if(HIDDEN_DEPARTMENT)
+			GLOB.hidden_departments += src
 
 /datum/department/proc/sanitize_values()	// juuuust in case shittery happens.
 	if(!blacklisted_employees)
@@ -99,6 +101,9 @@
 			GLOB.private_department_accounts += bank_account
 		if(EXTERNAL_DEPARTMENT)
 			GLOB.external_department_accounts += bank_account
+		if(HIDDEN_DEPARTMENT)
+			GLOB.hidden_department_accounts += bank_account
+			bank_account.hidden = TRUE
 
 	return bank_account
 

@@ -27,6 +27,9 @@
 	if(broken)
 		icon_state = "mwb"
 
+/obj/machinery/microwave/get_saveable_contents()
+	return (contents - circuit)
+
 /obj/machinery/microwave/on_persistence_load()
 	update_icon()
 

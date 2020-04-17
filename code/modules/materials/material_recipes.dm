@@ -245,6 +245,7 @@
 	recipes += new/datum/stack_recipe("tiled wood floor tile", /obj/item/stack/tile/wood/woodtile, 1, 4, 20)
 	recipes += new/datum/stack_recipe("checkered wood floor tile", /obj/item/stack/tile/wood/woodcheck, 1, 4, 20)
 	recipes += new/datum/stack_recipe("underwear wardrobe", /obj/structure/undies_wardrobe, 3, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("large crate", /obj/structure/largecrate, 3, one_per_turf = 1, on_floor = 1)
 
 	recipes += new/datum/stack_recipe_list("Tools",list( \
 		new/datum/stack_recipe("rolling pin", 		/obj/item/weapon/material/kitchen/rollingpin, 	2, time = 5),\

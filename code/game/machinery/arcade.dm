@@ -1,6 +1,5 @@
 /obj/machinery/food_machine
-	name = "popcorn machine"
-	desc = "A popcorn machine that dispenses popcorn to the masses. Uses dried corn for refills."
+	name = "food machine"
 	icon = 'icons/obj/arcade.dmi'
 	icon_state = "popcorn"
 
@@ -24,6 +23,13 @@
 	anchored = TRUE
 
 	unique_save_vars = list("anchored", "owner_name", "owner_uid", "bank_id", "price_per_vend", "product_left")
+
+/obj/machinery/food_machine/New()
+	..()
+	update_icon()
+
+/obj/machinery/food_machine/on_persistence_load()
+	update_icon()
 
 /obj/machinery/food_machine/popcorn
 	name = "popcorn machine"

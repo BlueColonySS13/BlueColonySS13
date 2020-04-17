@@ -23,7 +23,7 @@
 
 	var/list/landlord_checkbook = list()		//changes every payroll
 
-	var/list/licenses = list(LICENSE_LANDLORD_COMMERCIAL)
+	var/list/licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
 
 	var/held = FALSE
 	var/tenants_wanted = FALSE

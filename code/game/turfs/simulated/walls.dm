@@ -40,6 +40,11 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
+/turf/simulated/wall/on_persistence_load()
+	update_material()
+	update_connections(1)
+	update_icon()
+
 /turf/simulated/wall/get_persistent_metadata()
 	if(!material)
 		return FALSE
@@ -63,10 +68,6 @@
 		reinf_material = get_material_by_name(wall_data["reinforced"])
 	if(get_material_by_name(wall_data["girder_material"]))
 		reinf_material = get_material_by_name(wall_data["girder_material"])
-
-	update_material()
-	update_connections(1)
-	update_icon()
 
 	return TRUE
 

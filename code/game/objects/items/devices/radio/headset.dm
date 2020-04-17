@@ -339,6 +339,8 @@
 	var/radio_enabled = 1
 
 /obj/item/device/radio/headset/mmi_radio/receive_range(freq, level)
+	if(!src.loc)
+		return
 	if (!radio_enabled || istype(src.loc.loc, /mob/living/silicon) || istype(src.loc.loc, /obj/item/organ/internal))
 		return -1 //Transciever Disabled.
 	return ..(freq, level, 1)

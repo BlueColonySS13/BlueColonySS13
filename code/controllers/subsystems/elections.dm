@@ -170,6 +170,11 @@ SUBSYSTEM_DEF(elections)
 
 	return names
 
+/datum/controller/subsystem/elections/proc/uid_is_candidate(uid)
+	for(var/datum/president_candidate/C in political_candidates)
+		if(uid == C.unique_id)
+			return C
+
 /datum/controller/subsystem/elections/proc/getformernames()
 	var/list/names = list()
 	for(var/datum/president_candidate/C in former_candidates)

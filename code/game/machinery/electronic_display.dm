@@ -40,10 +40,9 @@
 
 	var/max_items = 60
 
-
 	unique_save_vars = list("purchase", "anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode")
 
-/obj/machinery/electronic_display_case/New()
+/obj/machinery/electronic_display_case/initialize()
 	if(!staff_pin)
 		staff_pin = rand(1111,9999)
 	..()
@@ -112,11 +111,11 @@
 	var/static_icons_list = list("NONE","liberation station", "orange bubbles", "theater", "shamblers", "space up", "games", \
 	"snacks green", "snacks orange", "snacks teal", "coffee", "cigarettes", "medicine", "black cola", "soda red", "art", \
 	"clothes", "generic", "luxvend", "laptop", "toiletries", "minerals", "soda fox", "snix", "uniforms", \
-	"weeb", "gold black", "shoes", "power game", "generic buy", "hot food", "fitness")
+	"weeb", "gold black", "shoes", "power game", "generic buy", "hot food", "fitness", "shirts", "shoes 2", "coats", \
+	"dress", "undersuits", "suits", "jeans", "boots", "dye", "cigars", "pills", "whiskey", "manhatten")
 
 	if(emagged)
 		static_icons_list += "syndi"
-
 
 	var/new_icon = input(usr, "Select a new appearance!", "Appearance Morph")  as null|anything in static_icons_list
 	if(!new_icon)
@@ -189,6 +188,33 @@
 			static_icon = "hot_food"
 		if("fitness")
 			static_icon = "fitness"
+		if("shirts")
+			static_icon = "shirts"
+		if("shoes 2")
+			static_icon = "shoes2"
+		if("coats")
+			static_icon = "coats"
+		if("dress")
+			static_icon = "dress"
+		if("undersuits")
+			static_icon = "undersuits"
+		if("suits")
+			static_icon = "suits"
+		if("jeans")
+			static_icon = "jeans"
+		if("boots")
+			static_icon = "boots"
+		if("dye")
+			static_icon = "dye"
+		if("cigars")
+			static_icon = "cigars"
+		if("pills")
+			static_icon = "pills"
+		if("whiskey")
+			static_icon = "whiskey"
+		if("manhatten")
+			static_icon = "manhatten"
+
 	visible_message("<span class='info'>[src] morphs into a new appearance!</span>")
 	playsound(user, 'sound/machines/click.ogg', 20, 1)
 	update_icon()
@@ -608,7 +634,11 @@
 		if(!maint_mode)
 			return
 
-		purchase = !purchase
+		if(!purchase)
+			purchase = 1
+		else
+			purchase = 0
+
 		to_chat(usr, "<b>The machine now [purchase ? "accepts" : "does not accept"] purchases.</b>")
 
 	if(href_list["reset_owner"])
