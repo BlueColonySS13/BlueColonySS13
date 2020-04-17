@@ -95,3 +95,46 @@
 	starting_money = 1000000
 
 	dept_type = EXTERNAL_DEPARTMENT
+
+
+// ## Faction Departments (hidden)
+
+/datum/department/workersunion
+	name = "Worker's Union"
+	id = DEPT_WORKERSUNION
+	desc = "The union that cares about YOU."
+	starting_money = 500
+
+	dept_type = HIDDEN_DEPARTMENT
+
+/datum/department/bluemooncartel
+	name = "Blue Moon Cartel"
+	id = DEPT_BLUEMOONCARTEL
+	desc = "The blue moon eclipses the red moon. The law is meaningless, money is absolute, the world is yours."
+	starting_money = 2000
+
+	dept_type = HIDDEN_DEPARTMENT
+
+/datum/department/trustfund
+	name = "Trust Fund"
+	id = DEPT_TRUSTFUND
+	desc = "The world was made for the manueurving of the chessboard. All things should be in place to maintain the social order of our benefactors."
+	starting_money = 2500
+
+	dept_type = HIDDEN_DEPARTMENT
+
+/datum/department/quercuscoalition
+	name = "Quercus Coalition"
+	id = DEPT_QUERCUSCOALITION
+	desc = "Freedom of information is a right."
+	starting_money = 2000
+
+	dept_type = HIDDEN_DEPARTMENT
+
+/datum/department/houseofjoshua
+	name = "House of Joshua"
+	id = DEPT_HOUSEOFJOSHUA
+	desc = "The tinfoil hat market will have its day."
+	starting_money = 900
+
+	dept_type = HIDDEN_DEPARTMENT

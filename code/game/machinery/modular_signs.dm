@@ -9,7 +9,8 @@
 	maptext_width = 53
 	maptext_x = 6
 	maptext_y = 4
-	density = TRUE
+	density = FALSE
+	plane = ABOVE_PLANE
 	bound_width = 64
 
 

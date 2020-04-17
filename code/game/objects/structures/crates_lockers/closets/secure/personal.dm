@@ -7,17 +7,6 @@
 
 	unique_save_vars = list("registered_name", "owner_uid")
 
-/obj/structure/closet/secure_closet/personal/New()
-	..()
-	spawn(2)
-		if(prob(50))
-			new /obj/item/weapon/storage/backpack(src)
-		else
-			new /obj/item/weapon/storage/backpack/satchel/norm(src)
-		new /obj/item/device/radio/headset( src )
-	return
-
-
 /obj/structure/closet/secure_closet/personal/patient
 	name = "patient's closet"
 

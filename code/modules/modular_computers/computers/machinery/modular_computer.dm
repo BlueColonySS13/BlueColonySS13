@@ -27,6 +27,72 @@
 
 	var/obj/item/modular_computer/processor/cpu = null				// CPU that handles most logic while this type only handles power and other specific things.
 
+
+
+/obj/machinery/modular_computer/get_persistent_metadata()
+	var/list/computer_data = list()
+	if(cpu)
+		var/obj/item/modular_computer/processor/the_cpu = cpu
+		computer_data["cpu"] = the_cpu.type
+
+		if(the_cpu.network_card)
+			var/obj/the_network = the_cpu.network_card
+			computer_data["network_card"] = the_network.type
+		if(the_cpu.hard_drive)
+			var/obj/item/weapon/computer_hardware/hard_drive/the_hard_drive = the_cpu.hard_drive
+			computer_data["hard_drive"] = the_hard_drive.type
+
+			var/list/all_prgms = list()
+			for(var/datum/computer_file/program/prg in the_hard_drive.stored_files)
+				all_prgms += prg.type
+
+			if(!isemptylist(all_prgms))
+				computer_data["programs"] = all_prgms
+
+		if(the_cpu.nano_printer)
+			var/obj/the_nano_printer = the_cpu.nano_printer
+			computer_data["nano_printer"] = the_nano_printer.type
+
+	if(tesla_link)
+		var/obj/the_tesla_link = tesla_link
+		computer_data["tesla_link"] = the_tesla_link.type
+
+	return computer_data
+
+/obj/machinery/modular_computer/load_persistent_metadata(computer_data)
+	if(!computer_data)
+		return FALSE
+
+	if(computer_data["cpu"])
+		var/new_cpu = computer_data["cpu"]
+		cpu = new new_cpu(src)
+
+		if(computer_data["network_card"])
+			var/new_net = computer_data["network_card"]
+			cpu.network_card = new new_net(src)
+		if(computer_data["hard_drive"])
+			var/new_hard_drive = computer_data["hard_drive"]
+			cpu.hard_drive = new new_hard_drive(src)
+
+			if(computer_data["programs"])
+				var/list/all_programs = computer_data["programs"]
+				cpu.hard_drive.stored_files = list()
+
+				for(var/restored_program in all_programs)
+					var/rest_prg = new restored_program(src)
+					cpu.hard_drive.stored_files += rest_prg
+
+		if(computer_data["nano_printer"])
+			var/new_nano_printer = computer_data["nano_printer"]
+			cpu.nano_printer = new new_nano_printer(src)
+
+
+	if(computer_data["tesla_link"])
+		var/new_tesla_link = computer_data["tesla_link"]
+		tesla_link = new new_tesla_link(src)
+	return TRUE
+
+
 /obj/machinery/modular_computer/emag_act(var/remaining_charges, var/mob/user)
 	return cpu ? cpu.emag_act(remaining_charges, user) : 0
 

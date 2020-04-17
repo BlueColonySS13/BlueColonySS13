@@ -1,3 +1,5 @@
+var/global/all_camera_bugs = list()
+
 /obj/item/device/camerabug
 	name = "mobile camera pod"
 	desc = "A camera pod used by tactical operators. Must be linked to a camera scanner unit."
@@ -18,10 +20,20 @@
 	var/obj/machinery/camera/bug/camera
 	var/camtype = /obj/machinery/camera/bug
 
+	var/id = null
+
+	unique_save_vars = list("id")
+
 /obj/item/device/camerabug/New()
 	..()
 //	radio = new(src)
 	camera = new camtype(src)
+	all_camera_bugs += src
+
+/obj/item/device/camerabug/Destroy()
+	QDEL_NULL(camera)
+	all_camera_bugs -= src
+	return ..()
 
 /obj/item/device/camerabug/attack_self(mob/user)
 	if(user.a_intent == I_HURT)
@@ -30,7 +42,7 @@
 		new brokentype(get_turf(src))
 		spawn(0)
 		qdel(src)
-/*	else
+/*
 		user.set_machine(radio)
 		radio.interact(user)
 */
@@ -90,6 +102,8 @@
 	. = ..(user, 0)
 	if(.)
 		to_chat(user, "It has a tiny camera inside. Needs to be both configured and brought in contact with monitor device to be fully functional.")
+		if(id)
+			to_chat(user, "The ID is [id].")
 
 /obj/item/device/camerabug/attackby(obj/item/W as obj, mob/living/user as mob)
 	if(istype(W, /obj/item/device/bug_monitor))
@@ -141,15 +155,29 @@
 	item_state = "electronic"
 	w_class  = ITEMSIZE_SMALL
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
+	var/id = null
 
 	var/operating = 0
 //	var/obj/item/device/radio/bug/radio
 	var/obj/machinery/camera/bug/selected_camera
 	var/list/obj/machinery/camera/bug/cameras = new()
-/*
+
+	unique_save_vars = list("id")
+
+/obj/item/device/bug_monitor/examine(mob/user)
+	..()
+	if(id)
+		to_chat(user, "The ID is [id].")
+
+/obj/item/device/bug_monitor/on_persistence_load()
+	for(var/obj/item/device/camerabug/C in all_camera_bugs)
+		if(C.id == id)
+			pair(C)
+
 /obj/item/device/bug_monitor/New()
-	radio = new(src)
-*/
+	if(!id)
+		id = "[game_id]-[rand(1,9999)]"
+
 /obj/item/device/bug_monitor/attack_self(mob/user)
 	if(operating)
 		return
@@ -166,9 +194,12 @@
 /obj/item/device/bug_monitor/proc/unpair(var/obj/item/device/camerabug/SB)
 	if(SB.camera in cameras)
 		cameras -= SB.camera
+		SB.id = null
 
 /obj/item/device/bug_monitor/proc/pair(var/obj/item/device/camerabug/SB)
 	cameras += SB.camera
+	SB.id = id
+
 
 /obj/item/device/bug_monitor/proc/view_cameras(mob/user)
 	if(!can_use_cam(user))
@@ -216,7 +247,7 @@
 	return radio.hear_talk(M, msg, speaking)
 */
 /obj/item/device/bug_monitor/spy
-	name = "\improper PDA"
+	name = "PDA"
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. Functionality determined by a preprogrammed ROM cartridge."
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"
@@ -250,7 +281,7 @@
 	name = "DV-136ZB #[rand(1000,9999)]"
 	c_tag = name
 
-/* //These were originally supposed to have radios in them. Doesn't work.
+/*
 /obj/item/device/radio/bug
 	listening = 0 //turn it on first
 	frequency = 1359 //sec comms
@@ -266,4 +297,4 @@
 	canhear_range = 1
 	name = "spy device"
 	icon_state = "syn_cypherkey"
-	*/
+*/

@@ -40,10 +40,9 @@
 
 	var/max_items = 60
 
-
 	unique_save_vars = list("purchase", "anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode")
 
-/obj/machinery/electronic_display_case/New()
+/obj/machinery/electronic_display_case/initialize()
 	if(!staff_pin)
 		staff_pin = rand(1111,9999)
 	..()

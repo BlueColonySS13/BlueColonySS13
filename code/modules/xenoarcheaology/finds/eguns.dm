@@ -21,5 +21,6 @@
 
 /obj/item/weapon/gun/energy/captain/xenoarch
 	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon_state = "gun4"
 	update_icon()
 		return

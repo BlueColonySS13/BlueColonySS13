@@ -123,6 +123,14 @@
 							/obj/item/stack/cable_coil = 5)
 
 
+/obj/item/weapon/circuitboard/cell_charger
+	name = T_BOARD("heavy-duty cell charger")
+	build_path = /obj/machinery/cell_charger
+	board_type = new /datum/frame/frame_types/cell_charger
+	req_components = list(
+							/obj/item/weapon/stock_parts/capacitor = 1,
+							/obj/item/stack/cable_coil = 5)
+
 /obj/item/weapon/circuitboard/recharger
 	name = T_BOARD("recharger")
 	build_path = /obj/machinery/recharger
@@ -244,3 +252,11 @@
 							/obj/item/weapon/stock_parts/console_screen = 1,
 							/obj/item/weapon/stock_parts/motor = 1,
 							/obj/item/weapon/stock_parts/capacitor = 1)
+
+/obj/item/weapon/circuitboard/smartfridge/seeds
+	name = T_BOARD("seeds smartfridge")
+	build_path = /obj/machinery/smartfridge/seeds
+
+/obj/item/weapon/circuitboard/smartfridge/drinks
+	name = T_BOARD("drinks smartfridge")
+	build_path = /obj/machinery/smartfridge/drinks

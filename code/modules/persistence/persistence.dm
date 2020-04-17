@@ -159,7 +159,7 @@
 // Custom vars-to-save/persistence load list
 
 /obj/vars_to_save()
- 	 return list("x","y","z","anchored","color","dir","name","pixel_x","pixel_y","fingerprints","fingerprintshidden","fingerprintslast",\
+ 	 return list("x","y","z","density","anchored","color","dir","name","pixel_x","pixel_y","fingerprints","fingerprintshidden","fingerprintslast",\
  	 "suit_fibers","tagged_price")+unique_save_vars
 
 /obj/item/weapon/clipboard

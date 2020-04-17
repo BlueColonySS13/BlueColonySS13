@@ -40,6 +40,9 @@
 	for(var/obj/O in src)
 		O.hide(1)
 
+/turf/simulated/wall/on_persistence_load()
+	update_icon()
+
 /turf/simulated/wall/get_persistent_metadata()
 	if(!material)
 		return FALSE

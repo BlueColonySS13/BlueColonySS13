@@ -7,7 +7,7 @@
 	. = ..()
 	var/desc = "**Incoming Email**"
 	if(data && data["reciever"])
-		desc += " From: [data["reciever"]]\n"
+		desc += " **To**: [data["reciever"]]\n"
 	if(data && data["sender"])
 		desc += " **Sender**: [data["sender"]]\n"
 	if(data && data["email_title"])

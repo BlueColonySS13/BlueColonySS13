@@ -25,7 +25,7 @@
 	var/open = 0
 	w_class = ITEMSIZE_NORMAL
 	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = ITEMSIZE_SMALL * 7
+	max_storage_space = ITEMSIZE_SMALL * 17
 
 	unique_save_vars = list("code","l_code", "locked", "emagged", "open", "l_set", "l_setshort")
 

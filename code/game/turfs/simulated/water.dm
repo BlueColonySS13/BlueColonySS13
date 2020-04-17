@@ -53,8 +53,8 @@
 	return return_air() // Otherwise their head is above the water, so get the air from the atmosphere instead.
 
 /turf/simulated/floor/water/Entered(atom/movable/AM, atom/oldloc)
-	if(istype(AM, /mob/living))
-		var/mob/living/L = AM
+	if(istype(AM, /mob/living/carbon/human))
+		var/mob/living/carbon/human/L = AM
 		L.update_water()
 		if(L.check_submerged() <= 0)
 			return
