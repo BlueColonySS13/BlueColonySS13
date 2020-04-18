@@ -102,7 +102,7 @@
 	affected.open = 1
 
 	affected.createwound(CUT, 1)
-	affected.clamp()
+	affected.surgical_clamp()
 	spread_germs_to_organ(affected, user)
 
 /datum/surgery_step/generic/cut_with_laser/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -147,7 +147,7 @@
 		affected.status |= ORGAN_BLEEDING
 
 	affected.createwound(CUT, 1)
-	affected.clamp()
+	affected.surgical_clamp()
 	affected.open = 2
 
 /datum/surgery_step/generic/incision_manager/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -187,7 +187,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='blue'>[user] clamps bleeders in [target]'s [affected.name] with \the [tool].</font>",	\
 	"<font color='blue'>You clamp bleeders in [target]'s [affected.name] with \the [tool].</font>")
-	affected.clamp()
+	affected.surgical_clamp()
 	spread_germs_to_organ(affected, user)
 
 /datum/surgery_step/generic/clamp_bleeders/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

@@ -18,6 +18,7 @@ var/warrant_uid = 0
 	required_access = access_warrant
 	usage_flags = PROGRAM_ALL
 	nanomodule_path = /datum/nano_module/program/digitalwarrant/
+	program_icon_state = "warrant"
 
 /datum/nano_module/program/digitalwarrant/
 	name = "Warrant Assistant"
@@ -84,7 +85,7 @@ var/warrant_uid = 0
 		<small>Person authorizing arrest</small></br>
 		</BODY></HTML>
 		"}
-		
+
 	if(activewarrant.fields["arrestsearch"] == "search")
 		output= {"
 		<HTML><HEAD><TITLE>Search Warrant: [activewarrant.fields["namewarrant"]]</TITLE></HEAD>
@@ -164,6 +165,8 @@ var/warrant_uid = 0
 		. = 1
 		data_core.warrants |= activewarrant
 		activewarrant = null
+
+		truncate_oldest(data_core.warrants, MAX_WARRANTS)
 
 	if(href_list["deletewarrant"])
 		. = 1

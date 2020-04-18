@@ -1,19 +1,25 @@
 /obj/item/device/floor_painter
-	name = "floor painter"
-	icon = 'icons/obj/bureaucracy.dmi'
-	icon_state = "labeler1"
+	name = "paint gun"
+	icon = 'icons/obj/device.dmi'
+	icon_state = "floor_painter"
 
 	var/decal =        "remove all decals"
 	var/paint_dir =    "precise"
 	var/paint_colour = "#FFFFFF"
 
+	var/color_picker = 0
+
 	var/list/decals = list(
+		"full tile" =         list("path" = /obj/effect/floor_decal/full, "coloured" = 1),
 		"quarter-turf" =      list("path" = /obj/effect/floor_decal/corner, "precise" = 1, "coloured" = 1),
+		"diagonal tile" =     list("path" = /obj/effect/floor_decal/corner/diagonal, "coloured" = 1),
 		"hazard stripes" =    list("path" = /obj/effect/floor_decal/industrial/warning),
 		"corner, hazard" =    list("path" = /obj/effect/floor_decal/industrial/warning/corner),
 		"hatched marking" =   list("path" = /obj/effect/floor_decal/industrial/hatch, "coloured" = 1),
 		"dotted outline" =    list("path" = /obj/effect/floor_decal/industrial/outline, "coloured" = 1),
 		"loading sign" =      list("path" = /obj/effect/floor_decal/industrial/loading),
+		"border floor" =      list("path" = /obj/effect/floor_decal/borderfloorwhite, "coloured" = 1),
+		"plaque" =            list("path" = /obj/effect/floor_decal/plaque),
 		"1" =                 list("path" = /obj/effect/floor_decal/sign),
 		"2" =                 list("path" = /obj/effect/floor_decal/sign/two),
 		"A" =                 list("path" = /obj/effect/floor_decal/sign/a),
@@ -45,27 +51,89 @@
 		"civvie green" =   	COLOR_CIVIE_GREEN,
 		"command blue" = 	COLOR_COMMAND_BLUE,
 		"cyan" =        	COLOR_CYAN,
-		"green" =      		COLOR_GREEN,
+		"green" =      	COLOR_GREEN,
 		"NT red" =   		COLOR_NT_RED,
-		"orange" = 			COLOR_ORANGE,
+		"orange" = 		COLOR_ORANGE,
 		"pale orange" =   	COLOR_PALE_ORANGE,
 		"red" = 			COLOR_RED,
-		"sky blue" =   		COLOR_DEEP_SKY_BLUE,
+		"sky blue" =   	COLOR_DEEP_SKY_BLUE,
 		"titanium" =     	COLOR_TITANIUM,
 		"hull blue" = 		COLOR_HULL,
-		"violet" = 			COLOR_VIOLET,
+		"violet" = 		COLOR_VIOLET,
 		"white" =        	COLOR_WHITE,
-		"yellow" =       	COLOR_AMBER
+		"black" =        	COLOR_BLACK,
+		"yellow" =       	COLOR_AMBER,
+		"wood" = 			WOOD_COLOR_GENERIC,
+		"rich wood" = 		WOOD_COLOR_RICH,
+		"pale wood" = 		WOOD_COLOR_PALE,
+		"paler wood" = 	WOOD_COLOR_PALE2,
+		"ebony wood" = 	WOOD_COLOR_BLACK,
+		"chocolate wood" = 	WOOD_COLOR_CHOCOLATE,
+		"wheat" = 		COLOR_WHEAT
 		)
+
 
 /obj/item/device/floor_painter/afterattack(var/atom/A, var/mob/user, proximity, params)
 	if(!proximity)
 		return
 
+	add_fingerprint(user)
+
+	if(color_picker)
+		paint_colour = A.get_color()
+		to_chat(usr, "<span class='notice'>You set \the [src] to paint with <font color='[paint_colour]'>a new colour</font>.</span>")
+		return
+
+	var/obj/machinery/electronic_display_case/DC = A
+	if(istype(DC))
+		var/choice = input(user, "What do you wish to paint?") as null|anything in list("Glass", "Frame")
+		if(choice == "Glass")
+			DC.glass_color = paint_colour
+			DC.update_icon()
+		if(choice == "Frame")
+			DC.frame_color = paint_colour
+			DC.update_icon()
+		return
+
+	var/turf/simulated/wall/W = A
+	if(istype(W))
+		var/choice = input(user, "What do you wish to paint?") as null|anything in list("Wall","Stripe","Remove Stripe")
+		if(choice == "Wall")
+			W.paint_color = paint_colour
+			W.update_icon()
+		if(choice == "Stripe")
+			W.stripe_color = paint_colour
+			W.update_icon()
+		if(choice == "Remove Stripe")
+			W.stripe_color = null
+			W.update_icon()
+		return
+
 	var/obj/structure/wall_frame/WF = A
 	if(istype(WF))
 		WF.color = paint_colour
-		WF.update_icon()
+		return
+
+	var/obj/machinery/door/blast/gate/G = A
+	if(istype(G))
+		G.color = paint_colour
+		return
+
+	var/obj/machinery/door/window/DW = A
+	if(istype(DW))
+		DW.color = paint_colour
+		return
+
+	var/obj/structure/window/WD = A
+	if(istype(WD))
+		WD.color = paint_colour
+		WD.material_color = paint_colour
+		WD.update_icon()
+		return
+
+	var/obj/structure/fence/FE = A
+	if(istype(FE))
+		FE.color = paint_colour
 		return
 
 	var/obj/machinery/door/airlock/D = A
@@ -89,12 +157,12 @@
 		return
 
 	var/turf/simulated/floor/F = A
-	if(!istype(F))
+	if(!istype(F) || !F.flooring)
 		to_chat(user, "<span class='warning'>\The [src] can only be used on floors, walls or certain airlocks.</span>")
 		return
 
 	if(!F.flooring || !F.flooring.can_paint || F.broken || F.burnt)
-		user << "<span class='warning'>\The [src] cannot paint broken or missing tiles.</span>"
+		to_chat(user, "<span class='warning'>\The [src] cannot paint \the [F.name].</span>")
 		return
 
 	var/list/decal_data = decals[decal]
@@ -108,11 +176,11 @@
 			config_error = 1
 
 	if(config_error)
-		user << "<span class='warning'>\The [src] flashes an error light. You might need to reconfigure it.</span>"
+		to_chat(user, "<span class='warning'>\The [src] flashes an error light. You might need to reconfigure it.</span>")
 		return
 
 	if(F.decals && F.decals.len > 5 && painting_decal != /obj/effect/floor_decal/reset)
-		user << "<span class='warning'>\The [F] has been painted too much; you need to clear it off.</span>"
+		to_chat(user, "<span class='warning'>\The [F] has been painted too much; you need to clear it off.</span>")
 		return
 
 	var/painting_dir = 0
@@ -143,6 +211,7 @@
 	if(decal_data["coloured"] && paint_colour)
 		painting_colour = paint_colour
 
+	playsound(get_turf(src), 'sound/effects/spray3.ogg', 30, 1, -6)
 	new painting_decal(F, painting_dir, painting_colour)
 
 /obj/item/device/floor_painter/attack_self(var/mob/user)
@@ -155,11 +224,12 @@
 		choose_colour()
 	else if(choice == "Preset Colour")
 		choose_preset_colour()
-
+	else if(choice == "Mode")
+		toggle_mode()
 
 /obj/item/device/floor_painter/examine(mob/user)
-	..(user)
-	user << "It is configured to produce the '[decal]' decal with a direction of '[paint_dir]' using [paint_colour] paint."
+	. = ..(user)
+	to_chat(user, "It is configured to produce the '[decal]' decal with a direction of '[paint_dir]' using [paint_colour] paint.")
 
 /obj/item/device/floor_painter/verb/choose_preset_colour()
 	set name = "Choose Preset Colour"
@@ -186,11 +256,11 @@
 	var/new_colour = input(usr, "Choose a colour.", "Floor painter", paint_colour) as color|null
 	if(new_colour && new_colour != paint_colour)
 		paint_colour = new_colour
-		usr << "<span class='notice'>You set \the [src] to paint with <font color='[paint_colour]'>a new colour</font>.</span>"
+		to_chat(usr, "<span class='notice'>You set \the [src] to paint with <font color='[paint_colour]'>a new colour</font>.</span>")
 
 /obj/item/device/floor_painter/verb/choose_decal()
 	set name = "Choose Decal"
-	set desc = "Choose a floor painter decal."
+	set desc = "Choose a paintgun decal."
 	set category = "Object"
 	set src in usr
 
@@ -200,11 +270,11 @@
 	var/new_decal = input("Select a decal.") as null|anything in decals
 	if(new_decal && !isnull(decals[new_decal]))
 		decal = new_decal
-		usr << "<span class='notice'>You set \the [src] decal to '[decal]'.</span>"
+		to_chat(usr, "<span class='notice'>You set \the [src] decal to '[decal]'.</span>")
 
 /obj/item/device/floor_painter/verb/choose_direction()
 	set name = "Choose Direction"
-	set desc = "Choose a floor painter direction."
+	set desc = "Choose a paintgun direction."
 	set category = "Object"
 	set src in usr
 
@@ -214,4 +284,19 @@
 	var/new_dir = input("Select a direction.") as null|anything in paint_dirs
 	if(new_dir && !isnull(paint_dirs[new_dir]))
 		paint_dir = new_dir
-		usr << "<span class='notice'>You set \the [src] direction to '[paint_dir]'.</span>"
+		to_chat(usr, "<span class='notice'>You set \the [src] direction to '[paint_dir]'.</span>")
+
+
+/obj/item/device/floor_painter/verb/toggle_mode()
+	set name = "Toggle Painter Mode"
+	set desc = "Choose a paintgun mode."
+	set category = "Object"
+	set src in usr
+
+	if(usr.incapacitated())
+		return
+	color_picker = !color_picker
+	if(color_picker)
+		to_chat(usr, "<span class='notice'>You set \the [src] to color picker mode, scanning colors off objects.</span>")
+	else
+		to_chat(usr, "<span class='notice'>You set \the [src] to painting mode.</span>")

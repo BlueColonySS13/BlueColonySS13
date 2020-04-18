@@ -3,7 +3,7 @@
 	email_domain = "sciworks.nt"
 	flag = RD
 	faction = "City"
-	department = "City Council"
+	department = DEPT_COUNCIL
 	department_flag = MEDSCI
 	head_position = 1
 	total_positions = 1
@@ -37,7 +37,7 @@
 	email_domain = "sciworks.nt"
 	flag = SCIENTIST
 	faction = "City"
-	department = "Research and Science"
+	department = DEPT_RESEARCH
 	department_flag = MEDSCI
 	total_positions = 5
 	spawn_positions = 3
@@ -51,14 +51,14 @@
 //	minimal_player_age = 3
 
 	outfit_type = /decl/hierarchy/outfit/job/science/scientist
-	alt_titles = list("Xenoarchaeologist", "Anomalist", "Phoron Researcher")
+	alt_titles = list("Xenoarchaeologist" = /decl/hierarchy/outfit/job/science/xenoarchaeologist, "Anomalist", "Phoron Researcher")
 
 /datum/job/xenobiologist
 	title = "Xenobiologist"
 	email_domain = "sciworks.nt"
 	flag = XENOBIOLOGIST
 	faction = "City"
-	department = "Research and Science"
+	department = DEPT_RESEARCH
 	department_flag = MEDSCI
 	total_positions = 3
 	spawn_positions = 2
@@ -79,7 +79,7 @@
 	email_domain = "sciworks.nt"
 	flag = ROBOTICIST
 	faction = "City"
-	department = "Research and Science"
+	department = DEPT_RESEARCH
 	department_flag = MEDSCI
 	total_positions = 2
 	spawn_positions = 2
@@ -100,17 +100,40 @@
 	email_domain = "sciworks.nt"
 	flag = SCIENCEINTERN
 	faction = "City"
-	department = "Research and Science"
+	department = DEPT_RESEARCH
 	department_flag = MEDSCI
 	total_positions = 5
 	spawn_positions = 3
 	supervisors = "the research director"
 	selection_color = "#633D63"
 	idtype = /obj/item/weapon/card/id/science/intern
-	wage = 15
+	wage = 20
 	access = list(access_research, access_maint_tunnels)
 	minimal_access = list(access_research, access_maint_tunnels)
 	minimum_character_age = 16
 	minimal_player_age = 0
 
 	outfit_type = /decl/hierarchy/outfit/job/science/intern
+
+/datum/job/rguard
+	title = "Research Security"
+	email_domain = "sciworks.nt"
+	flag = SCIGUARD
+	department = DEPT_RESEARCH
+	department_flag = MEDSCI
+	faction = "City"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the research director and other research staff"
+	selection_color = "#601C1C"
+	idtype = /obj/item/weapon/card/id/science/rguard
+	minimal_player_age = 5
+	wage = 60
+	minimum_character_age = 25
+	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch)
+	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch)
+
+	outfit_type = /decl/hierarchy/outfit/job/science/rguard
+	alt_titles = list("Containment Specialist")
+
+	clean_record_required = TRUE

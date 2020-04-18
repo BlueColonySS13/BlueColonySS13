@@ -54,20 +54,6 @@
 		)
 	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/egg = 12)
 
-/*
- * Candle Box
- */
-
-/obj/item/weapon/storage/fancy/candle_box
-	name = "candle pack"
-	desc = "A pack of red candles."
-	icon = 'icons/obj/candle.dmi'
-	icon_state = "candlebox5"
-	icon_type = "candle"
-	item_state = "candlebox5"
-	throwforce = 2
-	slot_flags = SLOT_BELT
-	starts_with = list(/obj/item/weapon/flame/candle = 5)
 
 /*
  * Crayon Box
@@ -316,6 +302,19 @@
 /obj/item/weapon/storage/fancy/cigar/update_icon()
 	icon_state = "[initial(icon_state)][contents.len]"
 	return
+
+
+/obj/item/weapon/storage/fancy/cigar/havana
+	name = "havana cigar case"
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/havana = 7)
+
+/obj/item/weapon/storage/fancy/cigar/cohiba
+	name = "cohiba cigar case"
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba = 7)
+
+/obj/item/weapon/storage/fancy/cigar/empty
+	name = "cigar case"
+	starts_with = null
 
 /obj/item/weapon/storage/fancy/cigar/remove_from_storage(obj/item/W as obj, atom/new_location)
 	var/obj/item/clothing/mask/smokable/cigarette/cigar/C = W

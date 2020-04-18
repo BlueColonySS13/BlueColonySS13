@@ -55,18 +55,18 @@
 	lift_announce_str = "Lift arriving at Geminus City Court Offices, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
-/area/turbolift/geminus_bar_top
-	name = "lift (bar)"
+/area/turbolift/geminus_mall_top
+	name = "lift (shopping mall)"
 	lift_floor_label = "Floor 2"
-	lift_floor_name = "Bar"
-	lift_announce_str = "Lift arriving at the bar, please stand clear of the doors."
+	lift_floor_name = "Shopping Mall"
+	lift_announce_str = "Lift arriving at the shopping mall, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
-/area/turbolift/geminus_bar_ground
-	name = "lift (nightclub and casino)"
+/area/turbolift/geminus_mall_ground
+	name = "lift (underground shopping mall)"
 	lift_floor_label = "Floor 1"
-	lift_floor_name = "Nightclub and Casino"
-	lift_announce_str = "Lift arriving at the casino and nightclub, please stand clear of the doors."
+	lift_floor_name = "Underground Shopping Mall"
+	lift_announce_str = "Lift arriving at the underground shopping mall, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 //shuttle areas
@@ -418,3 +418,21 @@
 /area/centcom/president_office_geminus/office
 	name = "\improper President's Office - Geminus" //Central Command Command totally isn't RAS Syndrome in action.
 	icon_state = "centcom_command"
+
+/area/redspace/outpost
+	name = "Parascience Outpost Exterior"
+
+/area/redspace/outpost/toilets
+	name = "Parascience Outpost - Toilets"
+
+/area/redspace/outpost/dorms
+	name = "Parascience Outpost - Dorms"
+
+/area/redspace/outpost/kitchen
+	name = "Parascience Outpost - Kitchen"
+
+/area/redspace/outpost/maintenance
+	name = "Parascience Outpost - Maintenance"
+
+/area/redspace/outpost/lab
+	name = "Parascience Outpost - Laboratory"

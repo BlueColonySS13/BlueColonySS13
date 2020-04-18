@@ -24,37 +24,37 @@ var/global/list/medical_bills = list()
 /datum/medical_bill/basic_treatment
 	name = "Damage (Oxyloss, Toxin, Burns, Brute) under 50 ticks"
 	description = "A basic treatment which usually involves items within any medical pack under 50 ticks."
-	cost = 60
+	cost = 00
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/basic_treatment_over
 	name = "Damage (Oxyloss, Toxin, Burns, Brute) over 50 ticks"
 	description = "A basic treatment which usually involves items within any medical pack over 50 ticks."
-	cost = 80
+	cost = 00
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/basic_treatment_vend
 	name = "NanoMed Vended Items"
 	description = "Items vended from NanoMed Plus."
-	cost = 150
+	cost = 20
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/basic_treatment_iv
 	name = "IV Drip"
 	description = "Use of IV drip to restore patient blood."
-	cost = 250
+	cost = 10
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/machinery
 	name = "Body Scan"
 	description = "Scan of patient vitals through body scanner."
-	cost = 50
+	cost = 10
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/machinery_sleep
 	name = "Sleeper"
 	description = "Use of sleeper."
-	cost = 300
+	cost = 10
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/machinery_cryo
@@ -66,19 +66,19 @@ var/global/list/medical_bills = list()
 /datum/medical_bill/bone_surgery
 	name = "Bone Repair Surgery"
 	description = "Surgery to mend and repair bones, per bone."
-	cost = 700
+	cost = 100
 	insurance_coverage = INSURANCE_INTERMEDIATE
 
 /datum/medical_bill/organ_repair
 	name = "Organ Repair Surgery"
 	description = "Surgery to mend injured or septic organs, per organ."
-	cost = 800
+	cost = 200
 	insurance_coverage = INSURANCE_INTERMEDIATE
 
 /datum/medical_bill/internal_bleeding
 	name = "Internal Bleeding"
 	description = "Fixing internal bleeding."
-	cost = 700
+	cost = 100
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/replacement_organs
@@ -102,13 +102,13 @@ var/global/list/medical_bills = list()
 /datum/medical_bill/miscellaneous_stasis
 	name = "Stasis Bag"
 	description = "Use of stasis bag to transport an individual."
-	cost = 150
+	cost = 5
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/defib
 	name = "Defibrillator"
 	description = "Use of Defibrillator to revive."
-	cost = 250
+	cost = 10
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/genetics_treatment

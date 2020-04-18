@@ -24,6 +24,10 @@
 /obj/random/proc/spawn_item()
 	var/build_path = item_to_spawn()
 
+	if(!ispath(build_path))
+		throw EXCEPTION("Undefined save type [build_path] - [src] at [x], [y], [z]")
+		return
+
 	var/atom/A = new build_path(src.loc)
 	if(pixel_x || pixel_y)
 		A.pixel_x = pixel_x

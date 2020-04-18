@@ -12,6 +12,8 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 18750)
 	var/deployed = 0
 
+	unique_save_vars = list("deployed")
+
 /obj/item/weapon/beartrap/suicide_act(mob/user)
 	var/datum/gender/T = gender_datums[user.get_visible_gender()]
 	viewers(user) << "<span class='danger'>[user] is putting the [src.name] on [T.his] head! It looks like [T.hes] trying to commit suicide.</span>"

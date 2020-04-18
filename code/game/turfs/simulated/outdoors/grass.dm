@@ -4,7 +4,7 @@ var/list/grass_types = list(
 
 /turf/simulated/floor/outdoors/grass
 	name = "grass"
-	icon_state = "grass"
+	icon_state = "grass0"
 	edge_blending_priority = 4
 	can_build_onto = 1
 	initial_flooring = /decl/flooring/grass/outdoors
@@ -37,9 +37,8 @@ var/list/grass_types = list(
 	. = ..()
 
 /turf/simulated/floor/outdoors/grass/initialize()
-	if(prob(50))
-		icon_state = "[initial(icon_state)]2"
-		//edge_blending_priority++
+	icon_state = "grass[pick("0","1","2","3")]"
+
 	if(tree_chance && prob(tree_chance))
 		new /obj/structure/flora/tree/jungle(src)
 	if(grass_chance && prob(grass_chance))

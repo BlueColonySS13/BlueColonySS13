@@ -167,8 +167,8 @@
 	item_state = "hoscloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/captain
-	name = "colony director's cloak"
-	desc = "An elaborate cloak meant to be worn by the colony director."
+	name = "mayor's cloak"
+	desc = "An elaborate cloak meant to be worn by the mayor."
 	icon_state = "capcloak"
 	item_state = "capcloak"
 
@@ -187,6 +187,7 @@
 
 /obj/item/clothing/accessory/hawaii/random
 	name = "flower-pattern shirt"
+	unique_save_vars = list("icon_state")
 
 /obj/item/clothing/accessory/hawaii/random/New()
 	if(prob(50))

@@ -51,7 +51,8 @@
 /datum/category_item/player_setup_item/general/background/sanitize_character()
 	if(!pref.home_system) pref.home_system = "Vetra"
 	if(!pref.citizenship) pref.citizenship = "Blue Colony"
-	pref.citizenship = sanitize_inlist(pref.citizenship, home_system_choices, initial(pref.citizenship))
+	pref.home_system = sanitize_inlist(pref.home_system, home_system_choices, initial(pref.home_system))
+	pref.citizenship = sanitize_inlist(pref.citizenship, citizenship_choices, initial(pref.citizenship))
 //	if(!pref.faction)     pref.faction =     "None"
 	if(!pref.religion)    pref.religion =    "None"
 	if(!pref.crime_record) pref.crime_record = list()
@@ -68,6 +69,10 @@
 		pref.social_class = pref.economic_status
 
 	pref.social_class = sanitize_inlist(pref.social_class, ECONOMIC_CLASS, initial(pref.social_class))
+
+	for(var/datum/record/R in pref.crime_record)	// to ensure all records have ckey traces from now on.
+		if(!R.own_key)
+			R.own_key = pref.client_ckey
 
 
 // Moved from /datum/preferences/proc/copy_to()
@@ -119,7 +124,7 @@
 
 
 		var/crime_data
-		var/record_count
+		var/record_count = 0
 		for(var/datum/record/C in pref.crime_record)
 			crime_data += "<BR>\n<b>[C.name]</b>: [C.details] - [C.author] <i>([C.date_added])</i>"
 			record_count++

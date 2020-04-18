@@ -3,7 +3,7 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mw"
 	density = 1
-	anchored = 1
+	anchored = 0
 	use_power = 1
 	idle_power_usage = 5
 	active_power_usage = 100
@@ -17,7 +17,21 @@
 	var/global/list/acceptable_reagents // List of the reagents you can put in
 	var/global/max_n_of_items = 0
 	clicksound = "button"
+	table_drag = TRUE
 
+	unique_save_vars = list("dirty", "broken")
+
+/obj/machinery/microwave/update_icon()
+	if(dirty)
+		icon_state = "mwbloody"
+	if(broken)
+		icon_state = "mwb"
+
+/obj/machinery/microwave/get_saveable_contents()
+	return (contents - circuit)
+
+/obj/machinery/microwave/on_persistence_load()
+	update_icon()
 
 // see code/modules/food/recipes_microwave.dm for recipes
 
@@ -55,6 +69,7 @@
 		acceptable_items |= /obj/item/weapon/reagent_containers/food/snacks/grown
 
 	RefreshParts()
+	update_icon()
 
 /*******************
 *   Item Adding

@@ -17,6 +17,8 @@
 	var/ks1type = null
 	var/ks2type = null
 
+	dont_save = TRUE
+
 /obj/item/device/radio/headset/New()
 	..()
 	internal_channels.Cut()
@@ -250,13 +252,13 @@
 
 /obj/item/device/radio/headset/heads/hop
 	name = "head of personnel's headset"
-	desc = "The headset of the guy who will one day be Colony Director."
+	desc = "The headset of the guy who will one day be Mayor."
 	icon_state = "com_headset"
 	ks2type = /obj/item/device/encryptionkey/heads/hop
 
 /obj/item/device/radio/headset/heads/hop/alt
 	name = "head of personnel's bowman headset"
-	desc = "The headset of the guy who will one day be Colony Director."
+	desc = "The headset of the guy who will one day be Mayor."
 	icon_state = "com_headset_alt"
 	ks2type = /obj/item/device/encryptionkey/heads/hop
 
@@ -337,6 +339,8 @@
 	var/radio_enabled = 1
 
 /obj/item/device/radio/headset/mmi_radio/receive_range(freq, level)
+	if(!src.loc)
+		return
 	if (!radio_enabled || istype(src.loc.loc, /mob/living/silicon) || istype(src.loc.loc, /obj/item/organ/internal))
 		return -1 //Transciever Disabled.
 	return ..(freq, level, 1)

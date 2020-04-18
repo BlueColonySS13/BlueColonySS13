@@ -15,11 +15,12 @@
 	if(!persistent_economy.citizenship_vote && H.home_system != using_map.starsys_name)
 		return "Is from [H.home_system] and not from [using_map.starsys_name]"
 
-	var/datum/data/record/police_record = get_sec_record(H)
-	if(police_record)
-		var/list/criminal_record = police_record.fields["crim_record"]
-		if(!isemptylist(criminal_record))
-			return "Has a criminal record"
+	if(!persistent_economy.criminal_vote)
+		var/datum/data/record/police_record = get_sec_record(H)
+		if(police_record)
+			var/list/criminal_record = police_record.fields["crim_record"]
+			if(!isemptylist(criminal_record))
+				return "Has a criminal record"
 
 	return 0
 
@@ -64,6 +65,7 @@ var/global/list/tax_groups = list(
 var/global/list/contraband_classifications = list(
 	ILLEGAL,
 	PROFESSIONAL_ONLY,
+	PROFESSIONAL_SALE,
 	PERMIT_SELLING,
 	PERMIT_POSSESSION,
 	LEGAL

@@ -1,4 +1,4 @@
-// This will save things to a sav file, sadly can't be a map export. But I may make a convertor for that in-game to help out.
+// This will save things to a sav file, sadly can't be a map export. But I may make a converter for that in-game to help out. ~Cass
 
 /datum/map_turf
 	var/turf_type
@@ -6,22 +6,36 @@
 	var/y
 	var/z
 	var/turf_vars = list()
-	var/objects = list()
-	var/mobs = list()
+	var/list/map_objects = list()
+	var/list/decals = list()
+
+	//for walls
+	var/material //material id goes here
+	var/reinforced_material
+	var/girder_material
+
+	var/metadata
 
 /datum/map_object
 	var/savedtype
 	var/object_vars = list()
 
-/datum/map_mob
-	var/savedtype
-	var/mob_vars = list()
+	var/contents = list()
+	var/list/reagent_data = list()
+	var/metadata
+	var/x
+	var/y
+	var/z
 
+/datum/map_reagent_data
+	var/id
+	var/amount
+	var/data
 
-/proc/save_map(var/turf/t1, var/turf/t2, var/id, var/path, var/save_obj = 1, var/save_mob = 0)
+/proc/save_map(var/turf/t1, var/turf/t2, var/id, var/path, var/save_obj = 1)
 	var/block = get_map_turfs(t1, t2)
 
-	var/full_map = map_write(block, save_obj, save_mob)
+	var/full_map = map_write(block, save_obj)
 	if(!full_map)
 		return 0
 
@@ -30,8 +44,8 @@
 
 /proc/restore_map(var/id, var/path)
 	var/map_data = file_to_map(path, id)
-	get_map_data(map_data)
-	return 1
+	if(get_map_data(map_data))
+		return 1
 
 
 /proc/get_map_turfs(var/turf/t1 as turf, var/turf/t2 as turf)
@@ -49,13 +63,74 @@
 
 	return map_area
 
-/proc/map_write(var/list/CHUNK, var/save_obj, var/save_mob)
+/proc/get_object_data(obj/O)
+	if(!O)
+		return FALSE
+
+	var/datum/map_object/MO = new/datum/map_object
+	O.on_persistence_save()
+	O.sanitize_for_saving()
+	MO.savedtype = O.type
+
+	for(var/V in O.vars_to_save() )
+		if(!(V in O.vars))
+			continue
+		if(!(O.vars[V] == initial(O.vars[V])))
+			if(!istext(O.vars[V]) && !isnum(O.vars[V]))	// make sure all references to mobs/objs/turfs etc, are fully cut!
+				continue
+			MO.object_vars[V] = O.vars[V]
+
+	if(O.save_reagents)
+		if(istype(O, /obj/item/weapon/reagent_containers))
+			var/obj/item/weapon/reagent_containers/container = O
+			MO.reagent_data = container.pack_persistence_data()
+
+	var/turf/obj_turf = get_turf(O)
+
+	MO.x = obj_turf.x
+	MO.y = obj_turf.y
+	MO.z = obj_turf.z
+
+	MO.metadata = O.get_persistent_metadata()
+
+	return MO
+
+/datum/map_object/proc/unpack_object_data(obj/O, obj/containing_obj)
+	O.x = x
+	O.y = y
+	O.z = z
+
+	if(containing_obj)
+		O.forceMove(containing_obj)
+
+	if(!O.initialized)
+		O.initialize()
+
+	clearlist(O.contents)
+
+	for(var/V in O.vars_to_save())
+		if(object_vars[V])
+			O.vars[V] = object_vars[V]
+
+	if(!isemptylist(reagent_data) && istype(O, /obj/item/weapon/reagent_containers))
+		var/obj/item/weapon/reagent_containers/container = O
+		container.unpack_persistence_data(reagent_data)
+
+	CHECK_TICK
+	O.load_persistent_metadata(metadata)
+	O.on_persistence_load()
+
+	return TRUE
+
+/proc/map_write(var/list/CHUNK, var/save_obj)
 	var/list/full_map = list()
+	var/list/all_objs = list()
 
 	for(var/turf/T in CHUNK)
 		if(T.dont_save) continue
 
 		T.on_persistence_save()
+
 
 		var/datum/map_turf/MT = new/datum/map_turf()
 		MT.turf_type = T.type
@@ -63,58 +138,94 @@
 		MT.x = T.x
 		MT.y = T.y
 		MT.z = T.z
+
+		MT.metadata = T.get_persistent_metadata()
+
+		if(istype(T, /turf/simulated/wall))
+			var/turf/simulated/wall/new_wall = T
+			if(new_wall.material)
+				MT.material = new_wall.material.name
+			if(new_wall.reinf_material)
+				MT.reinforced_material = new_wall.reinf_material.name
+			if(new_wall.girder_material)
+				MT.girder_material = new_wall.girder_material.name
+
+		MT.decals = T.decals
+
 		for(var/V in T.vars_to_save() )
+			if(!(V in T.vars))
+				continue
 			if(!(T.vars[V] == initial(T.vars[V])))
 				MT.turf_vars[V] = T.vars[V]
 
+		full_map += MT
 
 		if(save_obj)
-			for(var/obj/O in T.contents)
+				// get all objects in a area. I hate the method that's about to follow, but after finding exploits and potential shitcode that's in the game right now
+				// actually worried we'd get the bad reference juju happening (like syringes containing blood and that blood having the actual mob reference in its data
+				// which caused an infinite loop) - or items non-existing causing broken loading. because of this, the saving process has to be manually filtered for all the loops.
+			for(var/obj/O in T.loc)
 				if(O.dont_save) continue
+				if(O in all_objs) continue // to prevent multi-loc  duplicates. it's a thing.
 
-				O.on_persistence_save()
+				all_objs += O
 
-				var/datum/map_object/MO = new/datum/map_object
-				MO.savedtype = O.type
+				var/datum/map_object/saved_obj_1 = get_object_data(O)
+				if(saved_obj_1)
+					full_map += saved_obj_1
+					CHECK_TICK
 
-				for(var/V in O.vars_to_save() )
-					if(!(O.vars[V] == initial(O.vars[V])))
-						MO.object_vars[V] = O.vars[V]
+				if(!O.save_contents)
+					continue
 
-						if(V == "contents")
-							var/list/contents = MO.object_vars["contents"]
-							for(var/atom/A in contents)
-								if(A.dont_save)
-									A -= MO.object_vars["contents"]
+				//first loop, to get all objects inside closets
+				for(var/obj/A in O.get_saveable_contents())
+					if(A.dont_save) continue
 
-				MO.object_vars["x"] = O.vars["x"]
-				MO.object_vars["y"] = O.vars["y"]
-				MO.object_vars["z"] = O.vars["z"]
+					var/datum/map_object/saved_obj_2 = get_object_data(A)
+					if(saved_obj_2)
+						saved_obj_1.contents += saved_obj_2
+						CHECK_TICK
 
-				MT.objects += MO
+					if(!A.save_contents)
+						continue
 
-		if(save_mob)
-			for(var/mob/living/M in T.contents)
-				if(M.dont_save) continue
+					//second loop, let's say you had a backpack inside the closet with it's own things.
+					for(var/obj/B in A.get_saveable_contents())
+						if(B.dont_save) continue
 
-				M.on_persistence_save()
+						var/datum/map_object/saved_obj_3 = get_object_data(B)
+						if(saved_obj_3)
+							saved_obj_2.contents += saved_obj_3
+							CHECK_TICK
 
-				var/datum/map_mob/MM = new/datum/map_mob
-				MM.savedtype = M.type
+						if(!B.save_contents)
+							continue
+
+						//third loop. for getting things like cigarette packets inside backpacks.
+						for(var/obj/C in B.get_saveable_contents())
+							if(C.dont_save) continue
+
+							var/datum/map_object/saved_obj_4 = get_object_data(C)
+							if(saved_obj_4)
+								saved_obj_3.contents += saved_obj_4
+								CHECK_TICK
+
+							if(!C.save_contents)
+								continue
 
 
-				for(var/V in M.vars_to_save() )
-					if(!(M.vars[V] == initial(M.vars[V])))
-						MM.mob_vars[V] = M.vars[V]
+							//fourth loop. let's say the cigarettes need saving inside these packets. Honestly I don't think we'll need a fifth loop.
+							for(var/obj/D in C.get_saveable_contents())
+								if(D.dont_save) continue
 
+								var/datum/map_object/saved_obj_5 = get_object_data(D)
+								if(saved_obj_5)
+									saved_obj_4.contents += saved_obj_5
+									CHECK_TICK
 
-				MM.mob_vars["x"] = M.vars["x"]
-				MM.mob_vars["y"] = M.vars["y"]
-				MM.mob_vars["z"] = M.vars["z"]
+				MT.map_objects += saved_obj_1
 
-				MT.mobs += MM
-
-		full_map += MT
 
 	return full_map
 
@@ -123,38 +234,86 @@
 	if(!full_map) return 0
 
 	for(var/datum/map_turf/MT in full_map)
+		var/change_turf = TRUE
+		if(!ispath(MT.turf_type))
+			error("Undefined save type [MT.turf_type]")
+			change_turf = FALSE
+
 		var/turf/newturf = locate(MT.x,MT.y,MT.z)
 
 		if(!newturf)
 			continue
 
-		newturf.ChangeTurf(MT.turf_type, 0, 1)
-		newturf.on_persistence_load()
+		if(change_turf)
+			newturf.ChangeTurf(MT.turf_type)
+
+		if(istype(newturf, /turf/simulated/wall))
+			var/turf/simulated/wall/new_wall = newturf
+			if(MT.material)
+				new_wall.material = get_material_by_name(MT.material)
+			if(MT.reinforced_material)
+				new_wall.reinf_material = get_material_by_name(MT.reinforced_material)
+			if(MT.girder_material)
+				new_wall.girder_material = get_material_by_name(MT.girder_material)
+
+			new_wall.update_material()
+			new_wall.update_connections(1)
+			new_wall.update_icon()
+
+		newturf.decals = MT.decals
+		newturf.update_icon()
+		if(MT.metadata)
+			newturf.load_persistent_metadata(MT.metadata)
+
 		for(var/V in newturf.vars_to_save())
 			if(MT.turf_vars[V])
 				newturf.vars[V] = MT.turf_vars[V]
 
 
-		for(var/datum/map_object/MO in MT.objects)
-			var/obj/O = new MO.savedtype (newturf.loc)
-			for(var/V in O.vars_to_save())
-				if(MO.object_vars[V])
-					O.vars[V] = MO.object_vars[V]
+		for(var/datum/map_object/MO in MT.map_objects)
+			if(!ispath(MO.savedtype))
+				error("Undefined save type [MO.savedtype]")
+				continue
 
-			O.vars["x"] = MO.object_vars["x"]
-			O.vars["y"] = MO.object_vars["y"]
-			O.vars["z"] = MO.object_vars["z"]
+			var/obj/O = new MO.savedtype ( newturf.loc )
+			CHECK_TICK
+			MO.unpack_object_data(O)
 
-		for(var/datum/map_mob/MM in MT.mobs)
-			var/mob/M = new MM.savedtype (newturf.loc)
-			M.on_persistence_load()
-			for(var/V in M.vars_to_save())
-				if(MM.mob_vars[V])
-					M.vars[V] = MM.mob_vars[V]
+			// first loop
+			for(var/datum/map_object/MO_2 in MO.contents)
+				if(!ispath(MO_2.savedtype))
+					error("Undefined save type [MO_2.savedtype] (in [MO])")
+					continue
+				var/obj/A = new MO_2.savedtype (O)
+				CHECK_TICK
+				MO_2.unpack_object_data(A, O)
 
-			M.vars["x"] = MM.mob_vars["x"]
-			M.vars["y"] = MM.mob_vars["y"]
-			M.vars["z"] = MM.mob_vars["z"]
+				// second loop
+				for(var/datum/map_object/MO_3 in MO_2.contents)
+					if(!ispath(MO_3.savedtype))
+						error("Undefined save type [MO_3.savedtype] (in [MO_2])")
+						continue
+					var/obj/B = new MO_3.savedtype (A)
+					CHECK_TICK
+					MO_3.unpack_object_data(B, A)
+
+					// third loop
+					for(var/datum/map_object/MO_4 in MO_3.contents)
+						if(!ispath(MO_4.savedtype))
+							error("Undefined save type [MO_4.savedtype] (in [MO_3])")
+							continue
+						var/obj/C = new MO_4.savedtype (B)
+						CHECK_TICK
+						MO_4.unpack_object_data(C, B)
+
+						// third loop
+						for(var/datum/map_object/MO_5 in MO_4.contents)
+							if(!ispath(MO_5.savedtype))
+								error("Undefined save type [MO_5.savedtype] (in [MO_4])")
+								continue
+							var/obj/D = new MO_5.savedtype (C)
+							CHECK_TICK
+							MO_5.unpack_object_data(D, C)
 
 	return 1
 

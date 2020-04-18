@@ -29,6 +29,8 @@
 	var/leaking = FALSE			// 0 if not leaking, 1 if minor leak, 2 if major leak (not leaking by default)
 	var/shard_count = 0			// Number of glass shards to salvage when broken (1 less than the number of sheets to build the tank)
 
+	table_drag = TRUE
+
 /obj/machinery/fishtank/bowl
 	name = "fish bowl"
 	desc = "A small bowl capable of housing a single fish, commonly found on desks. This one has a tiny treasure chest in it!"

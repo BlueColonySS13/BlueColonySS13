@@ -6,10 +6,22 @@
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 40
-	var/dye_color = "#FFFFFF"
+	var/dye_color = "#000000"
 	clicksound = "button"
-
+	circuit = /obj/item/weapon/circuitboard/dye_generator
 	var/making = 0
+
+	var/dye_amount = 50
+	var/max_dye = 50
+
+	unique_save_vars = list("dye_color", "dye_amount")
+
+/obj/machinery/dye_generator/examine()
+	..()
+	if(!dye_amount)
+		to_chat(usr, "There is no dye left in the machine.")
+	else
+		to_chat(usr, "It is currently producing dye of a <font color='[dye_color]'>certain color</font>.")
 
 /obj/machinery/dye_generator/initialize()
 	power_change()
@@ -60,48 +72,59 @@
 	if(default_unfasten_wrench(user, W, time = 60))
 		return
 
+
+	if(istype(W, /obj/item/photochromatic_dye_refill))
+		var/obj/item/photochromatic_dye_refill/refill = W
+		dye_amount = max_dye
+		to_chat(user,"<span class='notice'>You refill the dye in [src] with [refill].</span>")
+		qdel(refill)
+		return
+
+
+	if(istype(W, /obj/item/dye_bottle))
+		if(dye_amount)
+			user.visible_message("<span class='notice'>[user] fills the [W] up with some dye.</span>","<span class='notice'>You fill the [W] up with some hair dye.</span>")
+			var/obj/item/dye_bottle/HD = W
+
+			dye_amount--
+			HD.dye_uses = 3
+			HD.dye_color = dye_color
+			HD.update_dye_overlay()
+			return
+		else
+			to_chat(user, "<span class='notice'>There's a lack of dye in the machine, you can't fill [W] up.</span>")
+			return
+
 	if(istype(W, /obj/item/stack/wax))
 		user.visible_message("<span class='notice'>[user] inserts [W] into the [src].</span>","<span class='notice'>You insert [W] into the [src].</span>")
 		var/obj/item/stack/wax/B = W
-		qdel(B)
 		playsound(loc, 'sound/effects/bubbles2.ogg', 5, 1, 5)
+		user.drop_from_inventory(B, src)
+		B.forceMove(src)
 		making = 1
 		spawn(70)
 			playsound(loc, 'sound/effects/pop.ogg', 5, 1, 5)
-			var/obj/item/weapon/lipstick/lipstick = new /obj/item/weapon/lipstick(loc)
-			lipstick.colour = dye_color
+			B.stack_color = dye_color
+			B.forceMove(loc)
 			making = 0
 		return
 
-	if(istype(W, /obj/item/clothing))
-		var/obj/item/clothing/C = W
-		if(!C.applies_material_color)
-			to_chat(user,"<span class='notice'>[src] cannot be dyed.</span>")
-		else
-			user.drop_from_inventory(C, src)
-			C.forceMove(src)
-			playsound(loc, 'sound/effects/bubbles2.ogg', 5, 1, 5)
-			W.color = dye_color
-			making = 1
-			spawn(70)
-				C.forceMove(loc)
-				making = 0
 
-		return
+	..()
 
-	if(istype(W, /obj/item/hair_dye_bottle))
-		user.visible_message("<span class='notice'>[user] fills the [W] up with some dye.</span>","<span class='notice'>You fill the [W] up with some hair dye.</span>")
-		var/obj/item/hair_dye_bottle/HD = W
-		HD.dye_color = dye_color
-		HD.update_dye_overlay()
-	else
-		..()
+
+/obj/item/photochromatic_dye_refill
+	name = "photochromatic dye refill"
+	desc = "A refillable bottle used for holding dyes of all sorts of colors."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "dye_refill"
+
 
 //Hair Dye Bottle
 
-/obj/item/hair_dye_bottle
+/obj/item/dye_bottle
 	name = "Hair Dye Bottle"
-	desc = "A refillable bottle used for holding hair dyes of all sorts of colors."
+	desc = "A refillable bottle used for holding dyes of all sorts of colors."
 	icon = 'icons/obj/cosmetics.dmi'
 	icon_state = "hairdyebottle"
 	throwforce = 0
@@ -111,17 +134,67 @@
 	w_class = 1.0
 	var/dye_color = "#FFFFFF"
 
-/obj/item/hair_dye_bottle/New()
+	var/dye_uses = 3
+	matter = list("glass" = 200)
+	unique_save_vars = list("dye_color", "dye_uses")
+
+/obj/item/dye_bottle/examine()
+	..()
+
+	to_chat(usr, "It has [dye_uses] uses left.")
+
+/obj/item/dye_bottle/New()
 	..()
 	update_dye_overlay()
 
-/obj/item/hair_dye_bottle/proc/update_dye_overlay()
-	overlays.Cut()
-	var/image/I = new('icons/obj/cosmetics.dmi', "hairdyebottle-overlay")
-	I.color = dye_color
-	overlays += I
+/obj/item/dye_bottle/on_persistence_load()
+	update_dye_overlay()
 
-/obj/item/hair_dye_bottle/attack(mob/living/carbon/M as mob, mob/user as mob)
+/obj/item/dye_bottle/proc/update_dye_overlay()
+	overlays.Cut()
+
+	if(dye_uses)
+		var/image/I = new('icons/obj/cosmetics.dmi', "hairdyebottle-overlay")
+		I.color = dye_color
+		overlays += I
+
+/obj/item/dye_bottle/proc/use_dye()
+	if(!dye_uses)
+		return
+
+	dye_uses--
+	update_dye_overlay()
+
+/obj/item/dye_bottle/afterattack(var/atom/A, var/mob/user)
+	add_fingerprint(user)
+
+	if(!dye_uses)
+		to_chat(user, "<span class='notice'>There's no dye left in the bottle!</span>")
+		return
+
+	var/obj/item/clothing/WD = A
+	if(istype(WD))
+		WD.color = dye_color
+		WD.update_icon()
+		use_dye()
+		return
+
+	var/obj/item/stack/S = A
+	if(istype(S))
+		if(!S.dyeable)
+			to_chat(S, "<span class='notice'>It doesn't look like the machine can accept this material.</span>")
+			return
+		S.stack_color = dye_color
+		S.update_icon()
+		use_dye()
+		return
+
+
+/obj/item/dye_bottle/attack(mob/living/carbon/M as mob, mob/user as mob)
+	if(!dye_uses)
+		to_chat(user, "<span class='notice'>There's no dye left in the bottle!</span>")
+		return
+
 	if(user.a_intent != "help")
 		..()
 		return
@@ -157,3 +230,4 @@
 
 
 		user.visible_message("<span class='notice'>[user] finishes dying [M]'s [what_to_dye]!</span>", "<span class='notice'>You finish dying [M]'s [what_to_dye]!</span>")
+		use_dye()

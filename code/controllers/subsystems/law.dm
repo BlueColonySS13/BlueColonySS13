@@ -8,9 +8,12 @@ SUBSYSTEM_DEF(law)
 	name = "Law"
 	init_order = INIT_ORDER_LAW
 	flags = SS_NO_FIRE
+	var/list/laws = list()
+	var/list/all_warrants = list()
 
 /datum/controller/subsystem/law/Initialize(timeofday)
 	instantiate_laws()
+	load_warrants()
 
 	return ..()
 
@@ -34,6 +37,8 @@ SUBSYSTEM_DEF(law)
 		capital_laws += K
 
 	rebuild_law_ids()
+
+	laws = presidential_laws
 
 /datum/controller/subsystem/law/proc/rebuild_law_ids() //rebuilds entire law list IDs.
 
@@ -70,3 +75,47 @@ SUBSYSTEM_DEF(law)
 			K.id = "i[K.prefix]0[x]"
 		else
 			K.id = "i[K.prefix][x]"
+
+
+/datum/controller/subsystem/law/proc/save_warrants()
+	var/list/warrant_list = list()
+
+	for(var/datum/data/record/warrant/W in data_core.warrants)
+		warrant_list += W
+
+	truncate_oldest(warrant_list, MAX_WARRANTS)
+
+	var/path = "data/persistent/law/warrants.sav"
+
+	var/savefile/S = new /savefile(path)
+	if(!fexists(path))
+		return 0
+	if(!S)
+		return 0
+	S.cd = "/"
+
+	S << warrant_list
+
+	return TRUE
+
+/datum/controller/subsystem/law/proc/load_warrants()
+	var/path = "data/persistent/law/warrants.sav"
+
+	var/savefile/S = new /savefile(path)
+	if(!fexists(path))
+		save_warrants()
+		return 0
+	if(!S)
+		return 0
+	S.cd = "/"
+
+	S >> data_core.warrants
+
+	if(!data_core.warrants)
+		data_core.warrants = list()
+
+	all_warrants = data_core.warrants
+
+	truncate_oldest(data_core.warrants, MAX_WARRANTS)
+
+	return TRUE

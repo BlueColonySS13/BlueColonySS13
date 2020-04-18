@@ -12,6 +12,7 @@
 	icon_state = "turntable"
 	var/playing = 0
 	anchored = 1
+	table_drag = TRUE
 
 /obj/machinery/party/mixer
 	name = "mixer"
@@ -19,6 +20,7 @@
 	icon = 'icons/effects/lasers2.dmi'
 	icon_state = "mixer"
 	anchored = 1
+	table_drag = TRUE
 
 
 /obj/machinery/party/turntable/New()
@@ -159,6 +161,7 @@
 	var/mirrored = 0
 	var/list/lasers = list()
 	var/on
+	table_drag = TRUE
 
 /obj/effects/laser
 	name = "laser"

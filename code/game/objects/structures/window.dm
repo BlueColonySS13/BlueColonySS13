@@ -26,6 +26,8 @@
 	blend_objects = list(/obj/machinery/door) // Objects which to blend with
 	noblend_objects = list(/obj/machinery/door/window)
 
+	unique_save_vars = list("health", "material_color", "on_frame")
+
 /obj/structure/window/examine(mob/user)
 	. = ..(user)
 
@@ -222,6 +224,9 @@
 
 /obj/structure/window/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W)) return//I really wish I did not need this
+
+	if(istype(W, /obj/item/device/floor_painter) && user.a_intent == I_HELP)
+		return // windows are paintable now, so no accidental damage should happen.
 
 	// Fixing.
 	if(istype(W, /obj/item/weapon/weldingtool) && user.a_intent == I_HELP)
@@ -491,9 +496,10 @@
 /obj/structure/window/phoronbasic
 	name = "phoron window"
 	desc = "A borosilicate alloy window. It seems to be quite strong."
-	basestate = "phoronwindow"
 	shardtype = /obj/item/weapon/material/shard/phoron
 	glasstype = /obj/item/stack/material/glass/phoronglass
+	icon_state = "window"
+	basestate = "window"
 	maximal_heat = T0C + 2000
 	damage_per_fire_tick = 1.0
 	maxhealth = 40.0
@@ -649,3 +655,33 @@
 		on_frame = TRUE
 	else
 		on_frame = FALSE
+
+/proc/place_window(mob/user, loc, dir_to_set, obj/item/stack/material/ST)
+	var/required_amount = (dir_to_set & (dir_to_set - 1)) ? 4 : 1
+	if (!ST.can_use(required_amount))
+		to_chat(user, "<span class='notice'>You do not have enough sheets.</span>")
+		return
+	for(var/obj/structure/window/WINDOW in loc)
+		if(WINDOW.dir == dir_to_set)
+			to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
+			return
+		if(WINDOW.is_fulltile() && (dir_to_set & (dir_to_set - 1))) //two fulltile windows
+			to_chat(user, "<span class='notice'>There is already a window there.</span>")
+			return
+	to_chat(user, "<span class='notice'>You start placing the window.</span>")
+	if(do_after(user,20))
+		for(var/obj/structure/window/WINDOW in loc)
+			if(WINDOW.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
+				to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
+				return
+			if(WINDOW.is_fulltile() && (dir_to_set & (dir_to_set - 1)))
+				to_chat(user, "<span class='notice'>There is already a window there.</span>")
+				return
+
+		if (ST.use(required_amount))
+			var/obj/structure/window/WD = new(loc, dir_to_set, FALSE, ST.material.name)
+			to_chat(user, "<span class='notice'>You place [WD].</span>")
+			WD.anchored = FALSE
+		else
+			to_chat(user, "<span class='notice'>You do not have enough sheets.</span>")
+			return

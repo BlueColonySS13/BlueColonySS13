@@ -93,6 +93,10 @@
 	..()
 
 /obj/item/clothing/accessory/tie
+	name = "tie"
+	icon_state = "whitetie"
+
+/obj/item/clothing/accessory/tie/blue
 	name = "blue tie"
 	icon_state = "bluetie"
 

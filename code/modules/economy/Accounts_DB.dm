@@ -3,7 +3,7 @@
 	name = "Accounts uplink terminal"
 	desc = "Access transaction logs, account data and all kinds of other financial records."
 	icon = 'icons/obj/computer.dmi'
-	icon_state = "aiupload"
+	icon_state = "acc_db"
 	density = 1
 	req_one_access = list(access_hop, access_captain, access_cent_captain)
 	anchored = 1
@@ -12,7 +12,7 @@
 	var/obj/item/weapon/card/id/held_card
 	var/datum/money_account/detailed_account_view
 	var/creating_new_account = 0
-	var/const/fund_cap = 1000000
+//	var/const/fund_cap = 1000000
 
 	proc/get_access_level()
 		if (!held_card)
@@ -23,14 +23,7 @@
 			return 1
 
 	proc/create_transation(target, reason, amount)
-		var/datum/transaction/T = new()
-		T.target_name = target
-		T.purpose = reason
-		T.amount = amount
-		T.date = current_date_string
-		T.time = stationtime2text()
-		T.source_terminal = machine_id
-		return T
+		return create_transaction_log(target, reason, amount, machine_id)
 
 	proc/accounting_letterhead(report_name)
 		return {"
@@ -41,7 +34,7 @@
 		"}
 
 /obj/machinery/account_database/New()
-	machine_id = "[station_name()] Acc. DB #[num_financial_terminals++]"
+	machine_id = "[station_name()] Acc. DB #[GLOB.num_financial_terminals++]"
 	..()
 
 /obj/machinery/account_database/attackby(obj/O, mob/user)
@@ -64,6 +57,8 @@
 /obj/machinery/account_database/ui_interact(mob/user, ui_key="main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
+	var/datum/money_account/city_funds = dept_acc_by_id(DEPT_COLONY)
+
 	var/data[0]
 	data["src"] = "\ref[src]"
 	data["id_inserted"] = !!held_card
@@ -72,7 +67,7 @@
 	data["machine_id"] = machine_id
 //	data["creating_new_account"] = creating_new_account
 	data["detailed_account_view"] = !!detailed_account_view
-	data["station_account_number"] = station_account.account_number
+	data["station_account_number"] = city_funds.account_number
 	data["transactions"] = null
 	data["accounts"] = null
 
@@ -96,8 +91,9 @@
 			data["transactions"] = trx
 
 	var/list/accounts[0]
-	for(var/i=1, i<=all_money_accounts.len, i++)
-		var/datum/money_account/D = all_money_accounts[i]
+	var/list/accs = all_public_accounts()
+	for(var/i=1, i<=accs.len, i++)
+		var/datum/money_account/D = accs[i]
 		accounts.Add(list(list(\
 			"account_number"=D.account_number,\
 			"owner_name"=D.owner_name,\
@@ -183,8 +179,9 @@
 
 			if("view_account_detail")
 				var/index = text2num(href_list["account_index"])
-				if(index && index <= all_money_accounts.len)
-					detailed_account_view = all_money_accounts[index]
+				var/list/accs = all_public_accounts()
+				if(index && index <= accs.len)
+					detailed_account_view = accs[index]
 
 			if("view_accounts_list")
 				detailed_account_view = null
@@ -211,7 +208,7 @@
 					text = {"
 						[accounting_letterhead(title)]
 						<u>Holder:</u> [detailed_account_view.owner_name]<br>
-						<u>Balance:</u> $[detailed_account_view.money]<br>
+						<u>Balance:</u> [cash2text( detailed_account_view.money, FALSE, TRUE, TRUE )]<br>
 						<u>Status:</u> [detailed_account_view.suspended ? "Suspended" : "Active"]<br>
 						<u>Transactions:</u> ([detailed_account_view.transaction_log.len])<br>
 						<table>
@@ -233,7 +230,7 @@
 										<td>[T.date] [T.time]</td>
 										<td>[T.target_name]</td>
 										<td>[T.purpose]</td>
-										<td>[T.amount]</td>
+										<td>[cash2text(T.amount, FALSE, TRUE, TRUE )]</td>
 										<td>[T.source_terminal]</td>
 									</tr>
 							"}
@@ -260,13 +257,14 @@
 							<tbody>
 					"}
 
-					for(var/i=1, i<=all_money_accounts.len, i++)
-						var/datum/money_account/D = all_money_accounts[i]
+					var/list/accs = all_public_accounts()
+					for(var/i=1, i<=accs.len, i++)
+						var/datum/money_account/D = accs[i]
 						text += {"
 								<tr>
 									<td>#[D.account_number]</td>
 									<td>[D.owner_name]</td>
-									<td>$[D.money]</td>
+									<td>[cash2text( D.money, FALSE, TRUE, TRUE )]</td>
 									<td>[D.suspended ? "Suspended" : "Active"]</td>
 								</tr>
 						"}

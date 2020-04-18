@@ -24,3 +24,15 @@
 /obj/fiftyspawner/rods
 	name = "stack of rods" //this needs to be defined for cargo
 	type_to_spawn = /obj/item/stack/rods
+
+/obj/fiftyspawner/silk
+	name = "stack of silk"
+	type_to_spawn = /obj/item/stack/material/silk
+
+/obj/fiftyspawner/cotton
+	name = "stack of cotton"
+	type_to_spawn = /obj/item/stack/material/cotton
+
+/obj/fiftyspawner/denim
+	name = "stack of denim"
+	type_to_spawn = /obj/item/stack/material/denim

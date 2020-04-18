@@ -7,8 +7,8 @@
 #define MOLES_O2SIF (MOLES_CELLSIF * O2SIF) // O2 value on Sif(18%)
 #define MOLES_N2SIF (MOLES_CELLSIF * N2SIF) // N2 value on Sif(82%)
 
-#define TEMPERATURE_SIF 243.15 // Roughly -30C / -22F
-#define TEMPERATURE_ALTSIF 225.15
+#define TEMPERATURE_SIF 180.15
+#define TEMPERATURE_ALTSIF 190.15
 
 /turf/simulated/floor/outdoors/mud/sif/planetuse
 	oxygen		= MOLES_O2SIF
@@ -164,3 +164,10 @@
 /obj/effect/step_trigger/teleporter/planetary_fall/sif/initialize()
 	planet = planet_sif
 	. = ..()
+
+/turf/simulated/floor/redspace
+	icon = 'icons/turf/redspace.dmi'
+	icon_state = "basalt"
+	oxygen = MOLES_O2SIF
+	nitrogen = MOLES_N2SIF
+	temperature = 430

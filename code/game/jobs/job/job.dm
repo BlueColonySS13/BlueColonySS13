@@ -31,6 +31,8 @@
 	var/hard_whitelisted = 0 			// jobs that are hard whitelisted need players to be added to hardjobwhitelist.txt with the format [ckey] - [job] in order to work.
 	var/clean_record_required = FALSE		// This job needs a clean record.
 
+	var/no_shuttle = FALSE
+
 /datum/job/proc/get_job_email()			// whatever this is set to will be the job's communal email. should be persistent.
 	return
 
@@ -59,22 +61,9 @@
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
-	var/income = 0
 
 
-	if(H.client)
-		switch(H.client.prefs.social_class)
-			if(CLASS_UPPER)
-				if(!H.mind.prefs.played)
-					income = 10000
 
-			if(CLASS_MIDDLE)
-				if(!H.mind.prefs.played)
-					income = 4000
-
-			if(CLASS_WORKING)
-				if(!H.mind.prefs.played)
-					income = 200
 
 
 	// To prevent abuse, no one recieves wages at roundstart and must play for at least an hour.
@@ -83,7 +72,7 @@
 	var/datum/money_account/M
 	var/already_joined
 
-	for(var/datum/money_account/A in all_money_accounts)
+	for(var/datum/money_account/A in GLOB.all_money_accounts)
 		if(A.account_number == H.mind.prefs.bank_account)
 			M = A
 			already_joined = 1
@@ -91,38 +80,38 @@
 
 	if(!M)
 		M = create_account(H.real_name, money_amount, null)
+		M.load_persistent_account(H)
 
-	if(H.mind.prefs.bank_pin)
-		H.mind.prefs.bank_pin = M.remote_access_pin
-
-	if(H.mind.prefs.bank_account)
-		M.account_number = H.mind.prefs.bank_account
-
-	if(H.mind.prefs.expenses)
-		H.mind.prefs.expenses = M.expenses
-
+	if(check_persistent_account(H.mind.prefs.bank_account))
+		money_amount = get_persistent_acc_balance(H.mind.prefs.bank_account)	// so people can actually recieve money they made offline.
+	var/income = 0
 	if(!H.mind.prefs.played)
+		switch(H.mind.prefs.social_class)
+			if(CLASS_UPPER)
+				income = 10000
+
+			if(CLASS_MIDDLE)
+				income = 4000
+
+			if(CLASS_WORKING)
+				income = 200
+
 		M.money += income
 
 	if(H.mind)
 		var/remembered_info = ""
 		remembered_info += "<b>Your account ID is:</b> #[M.account_number]<br>"
 		remembered_info += "<b>Your account pin is:</b> [M.remote_access_pin]<br>"
-		remembered_info += "<b>Your account funds are:</b> $[M.money]<br>"
-		if(!already_joined)
-			if(M.transaction_log.len)
-				var/datum/transaction/T = M.transaction_log[1]
-				remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
+		remembered_info += "<b>Your account funds are:</b> [cash2text( M.money, FALSE, TRUE, TRUE )]<br>"
 		H.mind.store_memory(remembered_info)
 
 		H.mind.initial_account = M
+		H.mind.initial_bank_details = list("id" = M.account_number, "pin" = M.remote_access_pin)
 
+	to_chat(H, "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>")
 
-	H << "<span class='notice'><b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b></span>"
-
-	if(!already_joined)
-		if(income)
-			H << "<span class='notice'>You recieved <b>[income] credits</b> in inheritance. <b>Spend it wisely, you only get this once.</b></span>"
+	if(!already_joined && income)
+		to_chat(H, "<span class='notice'>You recieved <b>[income] credits</b> in inheritance. <b>Spend it wisely, you only get this once.</b></span>")
 
 
 // overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()

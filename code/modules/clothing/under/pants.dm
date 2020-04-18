@@ -1,13 +1,36 @@
 //these need item states -S2-
 /obj/item/clothing/under/pants
-	name = "jeans"
-	desc = "A nondescript pair of tough blue jeans."
-	icon_state = "jeans"
+	name = "pants"
+	desc = "Plain pants. Boring."
+	icon_state = "whitepants"
 	gender = PLURAL
 	body_parts_covered = LOWER_TORSO|LEGS
 
-/obj/item/clothing/under/pants/ripped
+/obj/item/clothing/under/pants/jeans
+	name = "jeans"
+	desc = "You feel cooler already."
+	icon_state = "jeans"
+
+/obj/item/clothing/under/pants/jeans/ripped
 	name = "ripped jeans"
+	desc = "A nondescript pair of tough jeans with holes in them."
+	icon_state = "rippedjeans"
+
+/obj/item/clothing/under/pants/jeans/baggy
+	name = "baggy jeans"
+	desc = "A nondescript pair of tough baggy blue jeans."
+	icon_state = "baggyjeans"
+
+/obj/item/clothing/under/pants/jeans/musthang
+	name = "mustang jeans"
+	icon_state = "jeanmustang"
+
+/obj/item/clothing/under/pants/jeans/musthang/ripped
+	name = "ripped mustang jeans"
+	icon_state = "jeanmustangripped"
+
+/obj/item/clothing/under/pants/ripped
+	name = "ripped pants"
 	desc = "A nondescript pair of tough blue jeans with holes in them."
 	icon_state = "jeansripped"
 
@@ -24,7 +47,7 @@
 /obj/item/clothing/under/pants/mustangjeans
 	name = "must hang jeans"
 	desc = "Made in the finest space jeans factory this side of Alpha Centauri."
-	icon_state = "jeansmustang"
+	icon_state = "jeansmustang_blue"
 
 /obj/item/clothing/under/pants/mustangjeans/ripped
 	name = "ripped must hang jeans"
@@ -56,10 +79,10 @@
 	desc = "For those tired of boring old jeans. Relive the passion of your youth!"
 	icon_state = "jeansyoungfolks"
 
-/obj/item/clothing/under/pants/white
-	name = "white pants"
-	desc = "Plain white pants. Boring."
-	icon_state = "whitepants"
+/obj/item/clothing/under/pants/blue
+	name = "jeans"
+	desc = "A nondescript pair of tough blue jeans."
+	icon_state = "bluejeans"
 
 /obj/item/clothing/under/pants/red
 	name = "red pants"
@@ -129,7 +152,7 @@
 /obj/item/clothing/under/pants/baggy
 	name = "baggy jeans"
 	desc = "A nondescript pair of tough baggy blue jeans."
-	icon_state = "baggy_jeans"
+	icon_state = "blue_baggy_jeans"
 
 /obj/item/clothing/under/pants/baggy/classicjeans
 	name = "baggy classic jeans"
@@ -185,6 +208,11 @@
 	name = "baggy khaki pants"
 	desc = "A pair of dust beige khaki pants."
 	icon_state = "baggy_khaki"
+
+/obj/item/clothing/under/pants/leather
+	name = "leather pants"
+	desc = "A pair of tight black leather pants."
+	icon_state = "leatherpants"
 
 /obj/item/clothing/under/pants/baggy/camo
 	name = "baggy camo pants"

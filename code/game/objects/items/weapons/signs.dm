@@ -13,6 +13,8 @@
 	var/label = ""
 	var/last_wave = 0
 
+	unique_save_vars = list("label")
+
 /obj/item/weapon/picket_sign/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/pen) || istype(W, /obj/item/weapon/pen/crayon))
 		var/txt = sanitize(copytext(input(user, "Enter your picket message.", "Picket Message", null)  as text,1,40))

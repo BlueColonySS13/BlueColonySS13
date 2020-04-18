@@ -14,6 +14,8 @@
 	var/material/material = null
 	var/riding_datum_type = /datum/riding/boat/small
 
+	dont_save = FALSE
+
 /obj/vehicle/boat/sifwood/New(newloc, material_name)
 	..(newloc, MAT_SIFWOOD)
 

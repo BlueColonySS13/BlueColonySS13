@@ -9,6 +9,15 @@
 	var/base_icon_state = "nboard0"
 	var/const/max_notices = 35
 
+/obj/structure/noticeboard/get_saveable_contents()
+	return notices
+
+/obj/structure/noticeboard/on_persistence_load()
+	notices = contents
+	update_icon()
+	return TRUE
+
+
 /obj/structure/noticeboard/initialize()
 	. = ..()
 
@@ -39,15 +48,15 @@
 		switch(placing)
 			if(NORTH)
 				pixel_x = 0
-				pixel_y = 32
+				pixel_y = 30
 			if(SOUTH)
 				pixel_x = 0
-				pixel_y = -32
+				pixel_y = -30
 			if(EAST)
-				pixel_x = 32
+				pixel_x = 30
 				pixel_y = 0
 			if(WEST)
-				pixel_x = -32
+				pixel_x = -30
 				pixel_y = 0
 
 	update_icon()
@@ -67,7 +76,7 @@
 		if(!skip_icon_update)
 			update_icon()
 
-/obj/structure/noticeboard/proc/dismantle()
+/obj/structure/noticeboard/dismantle()
 	for(var/thing in notices)
 		remove_paper(thing, skip_icon_update = TRUE)
 	new /obj/item/stack/material(get_turf(src), 10, MATERIAL_WOOD)

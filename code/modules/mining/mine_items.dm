@@ -223,3 +223,147 @@
 	newflag.icon_state = "[newflag.base_state]_open"
 	newflag.visible_message("<b>[user]</b> plants [newflag] firmly in the ground.")
 	src.use(1)
+
+/******************************Sculpting*******************************/
+/obj/item/weapon/pickaxe/autochisel
+	name = "auto-chisel"
+	icon_state = "jackhammer"
+	item_state = "jackhammer"
+	desc = "With an integrated AI chip and hair-trigger precision, this baby makes sculpting almost automatic!"
+
+/obj/structure/sculpting_block
+	name = "sculpting block"
+	desc = "A finely chiselled sculpting block, it is ready to be your canvas."
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "sculpting_block"
+	density = 1
+	opacity = 1
+	anchored = 0
+	var/sculpted = 0
+	var/mob/living/T
+	var/times_carved = 0
+	var/last_struck = 0
+
+//	unique_save_vars = list("sculpted")
+
+/obj/structure/sculpting_block/verb/rotate()
+	set name = "Rotate"
+	set category = "Object"
+	set src in oview(1)
+
+	if (src.anchored || usr:stat)
+		to_chat(usr, "It is fastened to the floor!")
+		return 0
+	src.set_dir(turn(src.dir, 90))
+	return 1
+
+/obj/structure/sculpting_block/attackby(obj/item/C as obj, mob/user as mob)
+
+	if(istype(C, /obj/item/weapon/wrench))
+		playsound(src.loc, C.usesound, 100, 1)
+		to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]anchor the [name].</span>")
+		anchored = !anchored
+
+	if (istype(C, /obj/item/weapon/pickaxe/autochisel))
+		if(!sculpted)
+			if(last_struck)
+				return
+
+			if(!T)
+				var/list/choices = list()
+				for(var/mob/living/M in view(7,user))
+					choices += M
+				T = input(user,"Who do you wish to sculpt?") as null|anything in choices
+				user.visible_message("<span class='notice'>[user] begins sculpting.</span>",
+					"<span class='notice'>You begin sculpting.</span>")
+
+			var/sculpting_coefficient = get_dist(user,T)
+			if(sculpting_coefficient <= 0)
+				sculpting_coefficient = 1
+
+			if(sculpting_coefficient >= 7)
+				to_chat(user, "<span class='warning'>You hardly remember what [T] really looks like! Bah!</span>")
+				T = null
+
+			user.visible_message("<span class='notice'>[user] carves away at the sculpting block!</span>",
+				"<span class='notice'>You continue sculpting.</span>")
+
+			if(prob(25))
+				playsound(user, 'sound/items/Screwdriver.ogg', 20, 1)
+			else
+				playsound(user, "sound/weapons/drill[rand(1,2)].ogg", 20, 1)
+				spawn(3)
+					playsound(user, "sound/weapons/drill[rand(1,2)].ogg", 20, 1)
+					spawn(3)
+						playsound(user, "sound/weapons/drill[rand(1,2)].ogg", 20, 1)
+
+			last_struck = 1
+			if(do_after(user,(20)))
+				last_struck = 0
+				if(times_carved <= 9)
+					times_carved += 1
+					if(times_carved < 1)
+						to_chat(user, "<span class='notice'>You review your work and see there is more to do.</span>")
+					return
+				else
+					sculpted = 1
+					user.visible_message("<span class='notice'>[user] finishes sculpting their magnum opus!</span>",
+						"<span class='notice'>You finish sculpting a masterpiece.</span>")
+					src.appearance = T
+					src.color = list(
+					    0.35, 0.3, 0.25,
+					    0.35, 0.3, 0.25,
+					    0.35, 0.3, 0.25
+					)
+					src.pixel_y += 8
+					var/image/pedestal_underlay = image('icons/obj/mining.dmi', icon_state = "pedestal")
+					pedestal_underlay.appearance_flags = RESET_COLOR
+					pedestal_underlay.pixel_y -= 8
+					src.underlays += pedestal_underlay
+					var/title = sanitize(input(usr, "If you would like to name your art, do so here.", "Christen Your Sculpture", "") as text|null)
+					if(title)
+						name = title
+					else
+						name = "*[T.name]*"
+					var/legend = sanitize(input(usr, "If you would like to describe your art, do so here.", "Story Your Sculpture", "") as message|null)
+					if(legend)
+						desc = legend
+					else
+						desc = "This is a sculpture of [T.name]. All craftsmanship is of the highest quality. It is decorated with rock and more rock. It is covered with rock. On the item is an image of a rock. The rock is [T.name]."
+			else
+				last_struck = 0
+		return
+
+
+
+/obj/structure/sculpting_block/sculpted
+	sculpted = TRUE
+	anchored = FALSE
+	icon = 'icons/obj/statue.dmi'
+
+/obj/structure/sculpting_block/sculpted/bust
+	icon_state = "bust"
+	name = "greek bust"
+	desc = "A replica of a famous ancient art piece."
+
+
+/obj/structure/sculpting_block/sculpted/large
+	icon = 'icons/obj/statuelarge.dmi'
+	icon_state = "pillar"
+	plane = ABOVE_PLANE
+	layer = ABOVE_MOB_LAYER
+
+/obj/structure/sculpting_block/sculpted/large/pillar
+	icon_state = "pillar"
+	name = "marble pillar"
+	desc = "A fine greek style pillar."
+
+/obj/structure/sculpting_block/sculpted/large/lion
+	icon_state = "lion"
+	name = "golden lion"
+	desc = "Looks like one of those chinese new year celebrations."
+
+/obj/structure/sculpting_block/sculpted/large/venus
+	icon_state = "venus"
+	name = "statue of venus"
+	desc = "The goddess takes form, where's her toolbox?"

@@ -8,7 +8,7 @@ var/const/FINGERPRINT_COMPLETE = 6
 proc/is_complete_print(var/print)
 	return stringpercent(print) <= FINGERPRINT_COMPLETE
 
-atom/var/list/suit_fibers
+atom/var/list/suit_fibers = list()
 
 atom/proc/add_fibers(mob/living/carbon/human/M)
 	if(M.gloves && istype(M.gloves,/obj/item/clothing/gloves))
@@ -39,6 +39,8 @@ atom/proc/add_fibers(mob/living/carbon/human/M)
 		fibertext = "Material from a pair of [M.gloves.name]."
 		if(prob(20*item_multiplier) && !(fibertext in suit_fibers))
 			suit_fibers += "Material from a pair of [M.gloves.name]."
+
+	truncate_oldest(suit_fibers, MAX_FINGERPRINTS)
 
 /datum/data/record/forensic
 	name = "forensic data"

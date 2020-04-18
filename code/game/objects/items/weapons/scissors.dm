@@ -1,5 +1,5 @@
 /obj/item/weapon/scissors
-	name = "Scissors"
+	name = "scissors"
 	desc = "Those are scissors. Don't run with them!"
 	icon_state = "scissors"
 	item_state = "scissors"
@@ -11,7 +11,7 @@
 	attack_verb = list("slices", "cuts", "stabs", "jabs")
 
 /obj/item/weapon/scissors/barber
-	name = "Barber's Scissors"
+	name = "barber's Scissors"
 	desc = "A pair of scissors used by the barber."
 	icon_state = "bscissors"
 	item_state = "scissors"

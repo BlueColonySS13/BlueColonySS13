@@ -63,7 +63,10 @@ var/global/datum/controller/occupations/job_master
 				return 0
 			if(!is_hard_whitelisted(player, job))
 				return 0
-
+			if(job.clean_record_required && !isemptylist(player.client.prefs.crime_record) )
+				return 0
+			if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner")
+				return 0
 			var/position_limit = job.total_positions
 			if(!latejoin)
 				position_limit = job.spawn_positions
@@ -97,6 +100,12 @@ var/global/datum/controller/occupations/job_master
 			if(!job.player_old_enough(player.client))
 				Debug("FOC player not old enough, Player: [player]")
 				continue
+			if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner") //CASSJUMP
+				Debug("DO player is prisoner, Player: [player], Job:[job.title]")
+				continue
+			if(job.clean_record_required && !isemptylist(player.client.prefs.crime_record) )
+				Debug("DO player needs clean record, Player: [player], Job:[job.title]")
+				continue
 			if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 				Debug("FOC character not old enough, Player: [player]")
 				continue
@@ -127,9 +136,14 @@ var/global/datum/controller/occupations/job_master
 			if(jobban_isbanned(player, job.title))
 				Debug("GRJ isbanned failed, Player: [player], Job: [job.title]")
 				continue
-
+			if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner") //CASSJUMP
+				Debug("DO player is prisoner, Player: [player], Job:[job.title]")
+				continue
 			if(!job.player_old_enough(player.client))
 				Debug("GRJ player not old enough, Player: [player], Job: [job.title]")
+				continue
+			if(job.clean_record_required && !isemptylist(player.client.prefs.crime_record) )
+				Debug("DO player needs clean record, Player: [player], Job:[job.title]")
 				continue
 			if(!is_hard_whitelisted(player, job))
 				Debug("GRJ not hard whitelisted failed, Player: [player]")
@@ -281,6 +295,12 @@ var/global/datum/controller/occupations/job_master
 					if(!is_hard_whitelisted(player, job))
 						Debug("DO not hard whitelisted failed, Player: [player], Job:[job.title]")
 						continue
+					if(job.clean_record_required && !isemptylist(player.client.prefs.crime_record) )
+						Debug("DO player needs clean record, Player: [player], Job:[job.title]")
+						continue
+					if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner") //CASSJUMP
+						Debug("DO player is prisoner, Player: [player], Job:[job.title]")
+						continue
 					// If the player wants that job on this level, then try give it to him.
 					if(player.client.prefs.GetJobDepartment(job, level) & job.flag)
 
@@ -339,7 +359,7 @@ var/global/datum/controller/occupations/job_master
 		var/datum/job/job = GetJob(rank)
 		var/list/spawn_in_storage = list()
 
-		if(!joined_late)
+		if(!joined_late || job.no_shuttle)
 			var/obj/S = null
 			for(var/obj/effect/landmark/start/sloc in landmarks_list)
 				if(sloc.name != rank)	continue
@@ -365,7 +385,7 @@ var/global/datum/controller/occupations/job_master
 			//Equip custom gear loadout.
 			var/list/custom_equip_slots = list() //If more than one item takes the same slot, all after the first one spawn in storage.
 			var/list/custom_equip_leftovers = list()
-			if(H.client.prefs.gear && H.client.prefs.gear.len && job.title != "Cyborg" && job.title != "AI")
+			if(H.client.prefs.gear && H.client.prefs.gear.len && job.title != "Cyborg" && job.title != "AI" && job.title != "Prisoner")
 				for(var/thing in H.client.prefs.gear)
 					var/datum/gear/G = gear_datums[thing]
 					if(G)
@@ -432,10 +452,11 @@ var/global/datum/controller/occupations/job_master
 
 		H.job = rank
 
+		/*
 		// If they're head, give them the account info for their department
 		if(H.mind && job.head_position)
 			var/remembered_info = ""
-			var/datum/money_account/department_account = department_accounts[job.department]
+			var/datum/money_account/department_account = dept_acc_by_id(job.department)
 
 			if(department_account)
 				remembered_info += "<b>Your sector's account id is:</b> #[department_account.account_number]<br>"
@@ -443,8 +464,10 @@ var/global/datum/controller/occupations/job_master
 				remembered_info += "<b>Your sector's account funds are:</b> $[department_account.money]<br>"
 
 			H.mind.store_memory(remembered_info)
-
+		*/
 		var/alt_title = null
+		var/is_prisoner = FALSE
+
 		if(H.mind)
 			H.mind.assigned_role = rank
 			alt_title = H.mind.role_alt_title
@@ -461,21 +484,30 @@ var/global/datum/controller/occupations/job_master
 					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/fanfare_prez.ogg', volume=20)
 					captain_announcement.Announce("[alt_title ? alt_title : "President"] [H.real_name] is visiting the city!", new_sound=announce_sound)
 
-			//Deferred item spawning.
-			if(spawn_in_storage && spawn_in_storage.len)
-				var/obj/item/weapon/storage/B
-				for(var/obj/item/weapon/storage/S in H.contents)
-					B = S
-					break
 
-				if(!isnull(B))
-					for(var/thing in spawn_in_storage)
-						H << "<span class='notice'>Placing \the [thing] in your [B.name]!</span>"
-						var/datum/gear/G = gear_datums[thing]
-						var/metadata = H.client.prefs.gear[G.display_name]
-						G.spawn_item(B, metadata)
-				else
-					H << "<span class='danger'>Failed to locate a storage object on your mob, either you spawned with no arms and no backpack or this is a bug.</span>"
+				if("Prisoner")
+					is_prisoner = TRUE
+
+			if(!is_prisoner)
+				//Deferred item spawning.
+				if(spawn_in_storage && spawn_in_storage.len)
+					var/obj/item/weapon/storage/B
+					for(var/obj/item/weapon/storage/S in H.contents)
+						B = S
+						break
+
+					if(!isnull(B))
+						for(var/thing in spawn_in_storage)
+							H << "<span class='notice'>Placing \the [thing] in your [B.name]!</span>"
+							var/datum/gear/G = gear_datums[thing]
+							var/metadata = H.client.prefs.gear[G.display_name]
+							var/obj/new_item = G.spawn_item(B, metadata)
+
+							B.add_fingerprint(H)
+							new_item.add_fingerprint(H)
+
+					else
+						H << "<span class='danger'>Failed to locate a storage object on your mob, either you spawned with no arms and no backpack or this is a bug.</span>"
 
 		if(istype(H)) //give humans wheelchairs, if they need them.
 			var/obj/item/organ/external/l_foot = H.get_organ("l_foot")
@@ -573,6 +605,7 @@ var/global/datum/controller/occupations/job_master
 			var/equipped = H.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(H), slot_glasses)
 			if(equipped != 1)
 				var/obj/item/clothing/glasses/G = H.glasses
+				G.add_fingerprint(H)
 				G.prescription = 1
 
 		spawnId(H, rank, alt_title)

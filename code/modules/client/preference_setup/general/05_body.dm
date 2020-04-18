@@ -268,10 +268,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else
 		. += "[pref.disabilities & NEARSIGHTED ? "Yes" : "No"]<br>"
 	. += "<b>Limbs:</b> <br>"
-	if(!pref.existing_character)
-		. += "<br><a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
-		. += "<b>Internal Organs:</b> "
-		. += "<a href='?src=\ref[src];organs=1'>Adjust</a><br>"
+
+	. += "<br><a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
+	. += "<b>Internal Organs:</b> "
+	. += "<a href='?src=\ref[src];organs=1'>Adjust</a><br>"
 
 	//display limbs below
 	var/ind = 0
@@ -373,8 +373,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		else if(!organ_name)
 			. += "Normal Limbs"
 	if(!ind)
-		if(!pref.existing_character)
-			. += "\[...\]<br><br>"
+
+		. += "\[...\]<br><br>"
 	else
 		. += "<br><br>"
 

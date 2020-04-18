@@ -99,7 +99,6 @@ var/list/gamemode_cache = list()
 	var/middle_class_age = 7 			// How many days a player must be before they can make a middle class character
 	var/upper_class_age = 14 				// How many days a player must be before they can make a upper class character
 
-
 	var/usealienwhitelist = 0
 	var/limitalienplayers = 0
 	var/alien_to_human_ratio = 0.5
@@ -107,6 +106,7 @@ var/list/gamemode_cache = list()
 	var/guests_allowed = 1
 	var/debugparanoid = 0
 	var/panic_bunker = 0
+	var/gamemode_vote = 0
 
 	var/serverurl
 	var/server
@@ -244,6 +244,11 @@ var/list/gamemode_cache = list()
 
 	var/ssd_protect = 0
 
+	// can lots be saved? if this is set to false, this disables lots. it will auto-toggle if lot loading is borked in process to prevent data corruption.
+	var/lot_saving = FALSE
+
+
+
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for (var/T in L)
@@ -329,6 +334,9 @@ var/list/gamemode_cache = list()
 
 				if ("hard_saving")
 					config.hard_saving = 1
+
+				if ("lot_saving")
+					config.lot_saving = 1
 
 				if ("log_say")
 					config.log_say = 1
@@ -647,6 +655,9 @@ var/list/gamemode_cache = list()
 				if("continuous_rounds")
 					config.continous_rounds = 1
 
+				if("gamemode_vote")
+					config.gamemode_vote = 1
+
 				if("ghost_interaction")
 					config.ghost_interaction = 1
 
@@ -776,7 +787,7 @@ var/list/gamemode_cache = list()
 
 				if("radiation_lower_limit")
 					radiation_lower_limit = text2num(value)
-				
+
 				if("radiation_resistance_calc_divide")
 					radiation_resistance_calc_mode = RAD_RESIST_CALC_DIV
 

@@ -304,3 +304,8 @@ var/global/list/##LIST_NAME = list();\
 #define PAPERWORK_BUSINESS "Business"
 #define PAPERWORK_MEDICAL "Medical"
 #define PAPERWORK_GOVERNMENT "Government"
+
+//
+
+#define MAX_WARRANTS 50
+#define MAX_FINGERPRINTS 20

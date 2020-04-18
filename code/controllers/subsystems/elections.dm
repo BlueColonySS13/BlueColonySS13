@@ -173,6 +173,11 @@ SUBSYSTEM_DEF(elections)
 
 	return names
 
+/datum/controller/subsystem/elections/proc/uid_is_candidate(uid)
+	for(var/datum/president_candidate/C in political_candidates)
+		if(uid == C.unique_id)
+			return C
+
 /datum/controller/subsystem/elections/proc/getformernames()
 	var/list/names = list()
 	for(var/datum/president_candidate/C in former_candidates)
@@ -331,7 +336,6 @@ SUBSYSTEM_DEF(elections)
 	message.stored_data = eml_cnt
 	message.title = "Congratulations on Presidency: [current_president.name]"
 	message.source = "noreply@nanotrasen.gov.nt"
-	message.timestamp = stationtime2text()
 
 	prez_email.send_mail(prez_email.login, message)
 

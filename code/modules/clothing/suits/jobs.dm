@@ -15,15 +15,15 @@
 
 //Captain
 /obj/item/clothing/suit/captunic
-	name = "colony director's parade tunic"
-	desc = "Worn by a Colony Director to show their class."
+	name = "mayor's parade tunic"
+	desc = "Worn by a Mayor to show their class."
 	icon_state = "captunic"
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 
 /obj/item/clothing/suit/captunic/capjacket
-	name = "colony director's uniform jacket"
-	desc = "A less formal jacket for everyday Colony Director use."
+	name = "Mayor's uniform jacket"
+	desc = "A less formal jacket for everyday Mayoral use."
 	icon_state = "capjacket"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv = HIDEHOLSTER
@@ -70,7 +70,7 @@
 //Chef
 /obj/item/clothing/suit/chef/classic
 	name = "classic chef's apron"
-	desc = "A basic, dull, white chef's apron."
+	desc = "A basic, dull chef's apron."
 	icon_state = "apronchef"
 	blood_overlay_type = "armor"
 	body_parts_covered = 0

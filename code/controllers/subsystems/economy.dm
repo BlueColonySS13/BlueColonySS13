@@ -1,166 +1,185 @@
 SUBSYSTEM_DEF(economy)
 	name = "Economy"
-	init_order = INIT_ORDER_PAYROLL
+	init_order = INIT_ORDER_ECONOMY
+	flags = SS_NO_FIRE
 
-	wait = 1200 //Ticks once per 2 minutes
-	var/payday_interval = 1 HOUR
-	var/next_payday = 1 HOUR
+	var/list/all_departments = list()
 
-/datum/controller/subsystem/economy/Initialize()
-	.=..()
+/datum/controller/subsystem/economy/Initialize(timeofday)
+	setup_economy()
+	all_departments = GLOB.departments
+	load_economy()
+	init_expenses()
+	persistent_economy.load_accounts()
+	link_economy_accounts()
+	. = ..()
 
-/datum/controller/subsystem/economy/fire()
-	if (world.time >= next_payday)
-		next_payday = world.time + payday_interval
+/datum/controller/subsystem/economy/proc/setup_economy()
+	for(var/instance in subtypesof(/datum/department))
+		new instance
 
-		//Search general records, and process payroll for all those that have bank numbers.
-		city_charges()
-		command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
+	GLOB.current_date_string = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
 
+/datum/controller/subsystem/economy/proc/init_expenses()
+	for(var/E in subtypesof(/datum/expense/nanotrasen) - list(/datum/expense/nanotrasen/pest_control,
+	 /datum/expense/nanotrasen/tech_support, /datum/expense/nanotrasen/external_defense
+	 ))
+		var/datum/expense/new_expense = new E
+		persistent_economy.city_expenses += new_expense
 
-/datum/controller/subsystem/economy/proc/city_charges()
-	for(var/datum/expense/E in persistent_economy.city_expenses)
-		E.charge_department(E.cost_per_payroll)
+		new_expense.do_effect()
 
-		for(var/datum/data/record/R in data_core.general)
-			payroll(R)
+/datum/controller/subsystem/economy/proc/link_economy_accounts()
+	for(var/obj/item/device/retail_scanner/RS in GLOB.transaction_devices)
+		if(RS.account_to_connect)
+			RS.linked_account = dept_acc_by_id(RS.account_to_connect)
 
-/proc/payroll(var/datum/data/record/G)
-	var/bank_number = G.fields["bank_account"]
-	var/datum/job/job = job_master.GetJob(G.fields["real_rank"])
-	var/department
-	var/class = G.fields["economic_status"]
-	var/name = G.fields["name"]
-	var/age = G.fields["age"]
-	var/datum/money_account/bank_account
-	var/wage
-	var/calculated_tax
-	var/tax
+	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
+		if(CR.account_to_connect)
+			var/datum/money_account/M = dept_acc_by_id(CR.account_to_connect)
+			if(!M)
+				continue
+			CR.linked_account = M.account_number
 
-	var/unique_id = G.fields["unique_id"]
+	for(var/obj/machinery/status_display/money_display/MD in GLOB.money_displays)
+		MD.link_to_account()
 
-	var/mob/living/carbon/human/linked_person
-
-
-
-	//let's find the relevent person.
-	for(var/mob/living/carbon/human/H in mob_list)
-		if(unique_id == H.unique_id)
-			linked_person = H
-
-	if(!bank_number)
-//		message_admins("ERROR: No bank number found for field. Returned [bank_number].", 1)
+/datum/controller/subsystem/economy/proc/charge_head_department(amount, purpose)
+	if(!using_map || !HEAD_DEPARTMENT) // shouldn't happen, but just in case
 		return
 
+	var/datum/department/head_account = using_map.get_head_department()
 
-	bank_account = get_account(bank_number)
+	if(head_account.adjust_funds(amount))
+		if(purpose)
+			head_account.bank_account.add_transaction_log(head_account.name, purpose, amount, "[head_account.name] Funding Account")
+		return TRUE
 
-	if(!bank_account)
-//		message_admins("ERROR: Could not find a bank account for [bank_number].", 1)
+/datum/controller/subsystem/economy/proc/charge_main_department(amount, purpose)
+	if(!using_map || !MAIN_DEPARTMENT) // shouldn't happen, but just in case
 		return
 
+	var/datum/department/main_account = using_map.get_main_department()
 
-	department = job.department
+	if(main_account.adjust_funds(amount))
+		if(purpose)
+			main_account.bank_account.add_transaction_log(main_account.name, purpose, amount, "[main_account.name] Funding Account")
+		return TRUE
 
-	if(!(department in station_departments))
-//		message_admins("ERROR: Could not find [department] in station departments.", 1)
-		return
+/datum/controller/subsystem/economy/proc/get_all_dept_names(var/needs_bank = FALSE, var/type)
+	var/list/dept_names = list()
+	for(var/datum/department/D in GLOB.departments)
+		if(needs_bank && !D.has_bank)
+			continue
+		if(type && !(D.dept_type == type))
+			continue
+		dept_names += D.name
 
-	if(bank_account.suspended)
-//		message_admins("ERROR: Bank account [bank_number] is suspended.", 1)
-		// If there's no money in the department account, tough luck. Not getting paid.
-		var/datum/transaction/N = new()
-		N.target_name = bank_account.owner_name
-		N.purpose = "[department] Payroll: Failed (Payment Bounced Due to Suspension)"
-		N.amount = 0
-		N.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-		N.time = stationtime2text()
-		N.source_terminal = "[department] Funding Account"
+	return dept_names
 
-		//add the account
-		bank_account.transaction_log.Add(N)
-		return
-
-	if((!class)  ||  (class == "Unknown"))
-		class = CLASS_WORKING
-//		message_admins("ERROR: Could not find class. Assigned working class.", 1)
-
-	if(!unique_id) // shouldn't happen, but you know.
-		return
-
-	if(linked_person && linked_person.client)
-		var/client/linked_client = linked_person.client
-
-		if(linked_client.inactivity > 18000) // About 30 minutes inactivity.
-			return // inactive people don't get paid, sorry.
-	else
-//		message_admins("ERROR: Not paid due to inactivity.", 1)
-		return		// person's not in the round? welp.
-
-	switch(class)
-		if(CLASS_UPPER)
-			tax = persistent_economy.tax_rate_upper
-		if(CLASS_MIDDLE)
-			tax = persistent_economy.tax_rate_middle
-		if(CLASS_WORKING)
-			tax = persistent_economy.tax_rate_lower
+/datum/controller/subsystem/economy/proc/collect_all_earnings()
+	// collects money from all cash registers and puts 'em in their relavent accounts
+	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
+		if(CR.linked_account && CR.account_to_connect && CR.cash_stored)
+			charge_to_account(CR.linked_account, "Money Collection", "Money Left in Till", CR.machine_id, CR.cash_stored)
+			CR.cash_stored = 0
 
 
-	wage = job.wage
+/datum/controller/subsystem/economy/proc/prepare_economy_save()
+	// put anything here that you want to run just before saving happens.
+	collect_all_earnings()
 
-//	message_admins("Wage set to [job.wage].", 1)
+	return TRUE
 
-	if(!wage)
-//		message_admins("ERROR: Job does not have wage.", 1)
-		return
+/datum/controller/subsystem/economy/proc/save_economy()
+	prepare_economy_save()
 
+	if(isemptylist(GLOB.departments))
+		message_admins("Economy Subsystem error: No department accounts found. Unable to save.", 1)
+		return FALSE
 
-	if(wage > department_accounts[department].money)
-		// If there's no money in the department account, tough luck. Not getting paid.
-		var/datum/transaction/N = new()
-		N.target_name = bank_account.owner_name
-		N.purpose = "[department] Payroll: Failed (Inadequate Department Funds)"
-		N.amount = 0
-		N.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-		N.time = stationtime2text()
-		N.source_terminal = "[department] Funding Account"
+	// save each department to a save file.
+	for(var/datum/department/D in GLOB.departments)
 
-		//add the account
-		bank_account.transaction_log.Add(N)
+		D.sanitize_values()
 
-//		message_admins("ERROR: Not paid because not enough money in department account.", 1)
-		return
+		if(!D.name || !D.id || !D.bank_account)
+			continue
 
-	if(age > 17) // Do they pay tax?
-		calculated_tax = round(tax * wage, 1)
+		var/sav_folder = "public_departments"
 
-	//Tax goes to the treasury. Mh-hm.
-	department_accounts["[station_name()] Funds"].money += calculated_tax
+		if(D.dept_type == PUBLIC_DEPARTMENT)
+			sav_folder = "public_departments"
+		if(D.dept_type == PRIVATE_DEPARTMENT)
+			sav_folder = "private_departments"
+		if(D.dept_type == EXTERNAL_DEPARTMENT)
+			sav_folder = "external_departments"
 
-	//Your wage comes from your department, yes.
-	department_accounts[department].money -= wage
+		var/path = "data/persistent/departments/[sav_folder]/[D.name].sav"
 
-	wage -= calculated_tax
+		var/savefile/S = new /savefile(path)
+		if(!fexists(path))
+			return 0
+		if(!S)
+			return 0
+		S.cd = "/"
 
-	//You get paid.
-	bank_account.money += wage
+		if(D.has_bank && D.bank_account)
+			D.bank_account.sanitize_values()
 
-	//create an entry for the payroll (for the payee).
-	var/datum/transaction/T = new()
-	T.target_name = bank_account.owner_name
-	T.purpose = "[department] Payroll: [name] ([calculated_tax] credit tax)"
-	T.amount = wage
-	T.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-	T.time = stationtime2text()
-	T.source_terminal = "[department] Funding Account"
+			S["money"] << D.bank_account.money
+			S["account_number"] << D.bank_account.account_number
+			S["remote_access_pin"] << D.bank_account.remote_access_pin
+			S["transaction_log"] << D.bank_account.transaction_log
 
-	//add the account
-	bank_account.transaction_log.Add(T)
+		S["blacklisted_employees"] << D.blacklisted_employees
+
+	return TRUE
 
 
+/datum/controller/subsystem/economy/proc/load_economy()
+	if(isemptylist(GLOB.departments))
+		message_admins("Economy Subsystem error: No department accounts found. Unable to load.", 1)
+		return FALSE
 
-	//if you owe anything, let's deduct your ownings.
-	for(var/datum/expense/E in bank_account.expenses)
-		E.payroll_expense(bank_account)
+	// save each department to a save file.
+	for(var/datum/department/D in GLOB.departments)
 
-	//Complete
+		D.sanitize_values()
+
+		if(!D.name || !D.id || !D.bank_account)
+			continue
+
+		var/sav_folder = "public_departments"
+
+		if(D.dept_type == PUBLIC_DEPARTMENT)
+			sav_folder = "public_departments"
+		if(D.dept_type == PRIVATE_DEPARTMENT)
+			sav_folder = "private_departments"
+		if(D.dept_type == EXTERNAL_DEPARTMENT)
+			sav_folder = "external_departments"
+
+
+		var/path = "data/persistent/departments/[sav_folder]/[D.name].sav"
+
+		var/savefile/S = new /savefile(path)
+		if(!fexists(path))
+			save_economy()
+			return 0
+		if(!S)
+			return 0
+		S.cd = "/"
+
+		if(D.has_bank && D.bank_account)
+			S["money"] >> D.bank_account.money
+			S["account_number"] >> D.bank_account.account_number
+			S["remote_access_pin"] >> D.bank_account.remote_access_pin
+			S["transaction_log"] >> D.bank_account.transaction_log
+
+		S["blacklisted_employees"] >> D.blacklisted_employees
+
+	return TRUE
+
+
+
+

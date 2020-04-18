@@ -17,3 +17,4 @@
 	end_on_antag_death = 0
 	antag_scaling_coeff = 10
 	antag_tags = list(MODE_CHANGELING)
+	votable = 0

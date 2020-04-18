@@ -87,7 +87,7 @@
 
 /datum/gear/uniform/pants
 	display_name = "pants selection"
-	path = /obj/item/clothing/under/pants/white
+	path = /obj/item/clothing/under/pants
 
 /datum/gear/uniform/pants/New()
 	..()
@@ -287,7 +287,7 @@
 	path = /obj/item/clothing/under/dress/dress_fire
 
 /datum/gear/uniform/uniform_captain
-	display_name = "uniform, colony director's dress"
+	display_name = "uniform, mayor's dress"
 	path = /obj/item/clothing/under/dress/dress_cap
 	allowed_roles = list("Mayor")
 
@@ -378,7 +378,7 @@
 	path = /obj/item/clothing/under/dress/sailordress
 
 /datum/gear/uniform/dresses/eveninggown
-	display_name = "red evening gown"
+	display_name = "evening gown"
 	path = /obj/item/clothing/under/dress/redeveninggown
 
 /datum/gear/uniform/dresses/eveninggown/New()

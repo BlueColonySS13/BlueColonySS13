@@ -17,6 +17,12 @@
 	description = "To coerce or physically force a person to engage in a sexual act against their will."
 
 	death_penalty = 1
+
+/datum/law/capital/hazardous
+	name = "Misuse of Hazardous Materials"
+	description = "Any unauthorized or negligent handling of items declared as Hazardous Materials."
+
+	death_penalty = 1
 	
 /datum/law/capital/deviancy
 	name = "Synthetic Deviancy"

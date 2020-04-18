@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(webhooks)
 	flags = SS_NO_FIRE
 	var/list/webhook_decls = list()
 
-/datum/controller/subsystem/webhooks/Initialize()
+/datum/controller/subsystem/webhooks/Initialize(timeofday)
 
 	if(!fexists(HTTP_POST_DLL_LOCATION))
 		to_world_log("Unable to locate HTTP POST lib at [HTTP_POST_DLL_LOCATION], webhooks will not function on this run.")

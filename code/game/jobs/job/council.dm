@@ -3,7 +3,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/captain
 	title = "Mayor"
 	flag = CAPTAIN
-	department = "City Council"
+	department = DEPT_COUNCIL
 	head_position = 1
 	department_flag = ENGSEC
 	faction = "City"
@@ -44,7 +44,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/hop
 	title = "City Clerk"
 	flag = HOP
-	department = "City Council"
+	department = DEPT_COUNCIL
 	head_position = 1
 	department_flag = CIVILIAN
 	faction = "City"
@@ -83,31 +83,29 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 /datum/job/hop/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email
 
-/datum/job/judge
-	title = "Judge"
-	flag = JUDGE
-	head_position = 1
+
+/datum/job/secretary //Paperwork monkey
+	title = "City Hall Secretary"
+	flag = SECRETARY
+	department = DEPT_PUBLIC
+	department_flag = CIVILIAN
 	faction = "City"
-	department = "City Council"
 	total_positions = 2
 	spawn_positions = 2
-	department_flag = CIVILIAN
-	req_admin_notify = 1
-	email_domain = "judges.gov.nt"
-	supervisors = "government officials and the President"
-	selection_color = "#1D1D4F"
-	idtype = /obj/item/weapon/card/id/heads/judge
-	wage = 350
-	access = list(access_judge, access_warrant, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
-	minimal_access = list(access_judge, access_warrant, access_sec_doors, access_heads, access_legal)
-	minimal_player_age = 14
-	minimum_character_age = 25
-	alt_titles = list("Magistrate")
+	supervisors = "the Mayor and the City Council"
+	selection_color = "#515151"
+	idtype = /obj/item/weapon/card/id/civilian/secretary
+	wage = 170
+	access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
+	minimal_access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
+	email_domain = "gov.nt"
 
-	outfit_type = /decl/hierarchy/outfit/job/heads/judge
+	minimum_character_age = 16
+	ideal_character_age = 20 //Really anyone can be this job, not just teens
 
+	alt_titles = list("Assistant Clerk", "Notary Public", "Paralegal", "Court Clerk")
+
+	outfit_type = /decl/hierarchy/outfit/job/civilian/secretary
 
 	clean_record_required = TRUE
 
-/datum/job/judge/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
-	return using_map.council_email

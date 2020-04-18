@@ -21,6 +21,7 @@
 	var/fixture_type = "tube"
 	var/sheets_refunded = 2
 	var/obj/machinery/light/newlight = null
+	table_drag = TRUE
 
 /obj/machinery/light_construct/New()
 	..()
@@ -149,6 +150,17 @@
 	fixture_type = "flamp"
 	sheets_refunded = 2
 
+/obj/machinery/light_construct/floor
+	name = "small floor light frame"
+	desc = "A floor light fixture under construction."
+	icon = 'icons/obj/lighting.dmi'
+	icon_state = "floor0"
+	anchored = 1
+	plane = ABOVE_MOB_PLANE
+	stage = 1
+	fixture_type = "floor"
+	sheets_refunded = 1
+
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
@@ -176,6 +188,12 @@
 
 	var/rigged = 0				// true if rigged to explode
 	var/on_wall = 1
+
+	unique_save_vars = list("status", "on", "rigged")
+
+/obj/machinery/light/on_persistence_load()
+	update(0)
+
 
 // coloured lighting because fabulous
 
@@ -317,6 +335,7 @@
 	desc = "A floor lamp."
 	light_type = /obj/item/weapon/light/bulb
 	var/lamp_shade = 1
+	anchored = FALSE
 
 /obj/machinery/light/flamp/shadeless // for mapping
 	lamp_shade = 0

@@ -10,6 +10,7 @@
 	possible_transfer_amounts = list(5, 10, 15, 25)
 	rim_pos = null // no fruit slices
 	var/lid_color = "black"
+	smash_when_thrown = FALSE
 
 /obj/item/weapon/reagent_containers/food/drinks/glass2/fitnessflask/New()
 	..()

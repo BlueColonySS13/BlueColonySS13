@@ -4,7 +4,11 @@
 
 /datum/gear/cane/white
 	display_name = "white cane"
-	path = /obj/item/weapon/cane/whitecane
+	path = /obj/item/weapon/cane/white
+
+/datum/gear/cane/white/collapsible
+	display_name = "telescopic white cane"
+	path = /obj/item/weapon/cane/white/collapsible
 
 /datum/gear/crutch
 	display_name = "crutch"

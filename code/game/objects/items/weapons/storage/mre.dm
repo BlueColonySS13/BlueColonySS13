@@ -22,6 +22,11 @@ MRE Stuff
 	/obj/item/weapon/material/kitchen/utensil/spoon/plastic
 	)
 
+	price_tag = 30
+
+/obj/item/weapon/storage/mre/get_tax()
+	return GENERAL_TAX
+
 /obj/item/weapon/storage/mre/examine(mob/user)
 	. = ..()
 	to_chat(user, meal_desc)
@@ -194,6 +199,22 @@ MRE Stuff
 	/obj/random/mre/sauce/crayon
 	)
 
+
+/obj/item/weapon/storage/mre/menu13
+	name = "prison MRE"
+	meal_desc = "This one is menu 10, boiled rice."
+	icon_state = "vegmre"
+	starts_with = list(
+	/obj/item/weapon/storage/mrebag/menu11,
+	/obj/item/weapon/storage/mrebag/side,
+	/obj/item/weapon/storage/mrebag/dessert/menu9,
+	/obj/item/weapon/storage/fancy/crackers,
+	/obj/random/mre/spread/vegan,
+	/obj/random/mre/drink,
+	/obj/random/mre/sauce/vegan,
+	)
+
+
 /obj/item/weapon/storage/mre/random
 	meal_desc = "The menu label is faded out."
 	starts_with = list(
@@ -262,6 +283,9 @@ MRE Stuff
 
 /obj/item/weapon/storage/mrebag/menu10
 	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/meatcube)
+
+/obj/item/weapon/storage/mrebag/menu11
+	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/liquidfood)
 
 /obj/item/weapon/storage/mrebag/side
 	name = "side dish"

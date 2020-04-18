@@ -33,10 +33,43 @@
 	var/list/noblend_objects = list(/obj/machinery/door/window, /obj/structure/grille/smallfence) //Objects to avoid blending with (such as children of listed blend objects.
 
 
+	unique_save_vars = list("paint_color", "stripe_color", "damage", "can_open")
+
 // Walls always hide the stuff below them.
 /turf/simulated/wall/levelupdate()
 	for(var/obj/O in src)
 		O.hide(1)
+
+/turf/simulated/wall/on_persistence_load()
+	update_material()
+	update_connections(1)
+	update_icon()
+
+/turf/simulated/wall/get_persistent_metadata()
+	if(!material)
+		return FALSE
+
+	var/list/wall_data = list()
+	wall_data["material"] = material.name
+	if(reinf_material)
+		wall_data["reinf_material"] = reinf_material.name
+	if(girder_material)
+		wall_data["girder_material"] = girder_material.name
+
+	return wall_data
+
+/turf/simulated/wall/load_persistent_metadata(metadata)
+	var/list/wall_data = metadata
+	if(!islist(wall_data))
+		return
+	if(get_material_by_name(wall_data["material"]))
+		material = get_material_by_name(wall_data["material"])
+	if(get_material_by_name(wall_data["reinforced"]))
+		reinf_material = get_material_by_name(wall_data["reinforced"])
+	if(get_material_by_name(wall_data["girder_material"]))
+		reinf_material = get_material_by_name(wall_data["girder_material"])
+
+	return TRUE
 
 /turf/simulated/wall/New(var/newloc, var/materialtype, var/rmaterialtype, var/girdertype)
 	..(newloc)
@@ -144,7 +177,8 @@
 			to_chat(user, "<span class='warning'>It looks moderately damaged.</span>")
 		else
 			to_chat(user, "<span class='danger'>It looks heavily damaged.</span>")
-
+	if(paint_color)
+		to_chat(user, "<span class='notice'>It has a coat of paint applied.</span>")
 	if(locate(/obj/effect/overlay/wallrot) in src)
 		to_chat(user, "<span class='warning'>There is fungus growing on [src].</span>")
 
@@ -240,6 +274,9 @@
 		else
 			return
 
+/turf/simulated/wall/get_color()
+	return paint_color
+
 // Wall-rot effect, a nasty fungus that destroys walls.
 /turf/simulated/wall/proc/rot()
 	if(locate(/obj/effect/overlay/wallrot) in src)
@@ -305,3 +342,11 @@
 
 /turf/simulated/wall/is_wall()
 	return TRUE
+
+/turf/simulated/wall/MouseDrop_T(obj/O as obj, mob/user as mob)
+	if(istype(O, /obj/machinery/modular_sign))
+		if(!O.anchored)
+			O.forceMove(get_turf(src))
+			return
+
+	..()

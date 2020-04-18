@@ -40,6 +40,9 @@
 	var/const/crayonfont = "Comic Sans MS"
 
 	var/last_modified_ckey
+	var/scrap_state = "scrap"
+
+	unique_save_vars = list("info", "info_links", "stamps", "fields", "ico", "stamped")
 
 /obj/item/weapon/paper/card
 	name = "blank card"
@@ -72,6 +75,31 @@
 	name = "heart card"
 	desc = "A gift card with a heart on the cover."
 	icon_state = "greetingcard_heart"
+
+/obj/item/weapon/paper/card/business
+	name = "business card"
+	desc = "Ah, the seasoned professional."
+	icon_state = "business_card"
+
+/obj/item/weapon/paper/card/business/random/New()
+	..()
+	color = pick(COLOR_WHITE, COLOR_GRAY, COLOR_RED, COLOR_DARK_ORANGE, COLOR_PURPLE_GRAY, COLOR_CYAN_BLUE, COLOR_PALE_RED_GRAY)
+
+
+/obj/item/weapon/paper/card/invitation
+	name = "invitation card"
+	desc = "Only cool kids get one of these, today is that me?"
+	icon_state = "invitation_card"
+
+/obj/item/weapon/paper/card/invitation/random/New()
+	..()
+	color = pick(COLOR_WHITE, COLOR_GRAY, COLOR_RED, COLOR_DARK_ORANGE, COLOR_PURPLE_GRAY, COLOR_CYAN_BLUE, COLOR_PALE_RED_GRAY)
+
+
+/obj/item/weapon/paper/card/poster
+	name = "poster card"
+	desc = "Kind of like an actual poster, but on an A2 card instead."
+	icon_state = "poster"
 
 /obj/item/weapon/paper/card/New()
 	..()
@@ -177,13 +205,13 @@
 
 /obj/item/weapon/paper/attack_self(mob/living/user as mob)
 	if(user.a_intent == I_HURT)
-		if(icon_state == "scrap")
+		if(icon_state == scrap_state)
 			user.show_message("<span class='warning'>\The [src] is already crumpled.</span>")
 			return
 		//crumple dat paper
 		info = stars(info,85)
 		user.visible_message("\The [user] crumples \the [src] into a ball!")
-		icon_state = "scrap"
+		icon_state = scrap_state
 		return
 	user.examinate(src)
 	if(rigged && (Holiday == "April Fool's Day"))
@@ -539,7 +567,7 @@
 		B.update_icon()
 
 	else if(istype(P, /obj/item/weapon/pen))
-		if(icon_state == "scrap")
+		if(icon_state == scrap_state)
 			usr << "<span class='warning'>\The [src] is too crumpled to write on.</span>"
 			return
 

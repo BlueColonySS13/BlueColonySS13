@@ -9,6 +9,7 @@
 	var/chargelevelmax = 10
 	var/artifact_id = ""
 	var/effect_type = 0
+	var/omegalevel //How different from baseline reality is this object? 1 is baseline, 0 is completely unreal. No object will ever meet the extremes. 1 is suspiciously real and warrants investigation, 0 is reality-ending bad.
 
 /datum/artifact_effect/New(var/atom/location)
 	..()
@@ -18,7 +19,7 @@
 
 	//this will be replaced by the excavation code later, but it's here just in case
 	artifact_id = "[pick("kappa","sigma","antaeres","beta","omicron","iota","epsilon","omega","gamma","delta","tau","alpha")]-[rand(100,999)]"
-
+	omegalevel = rand(200, 999)/1000
 	//random charge time and distance
 	switch(pick(100;1, 50;2, 25;3))
 		if(1)
@@ -44,8 +45,10 @@
 		if(reveal_toggle && holder)
 			if(istype(holder, /obj/machinery/artifact))
 				var/obj/machinery/artifact/A = holder
-				A.icon_state = "ano[A.icon_num][activated]"
-			var/display_msg
+				if(!A.predefined)
+					A.icon_state = "ano[A.icon_num][activated]"
+
+			/*var/display_msg
 			if(activated)
 				display_msg = pick("momentarily glows brightly!","distorts slightly for a moment!","flickers slightly!","vibrates!","shimmers slightly for a moment!")
 			else
@@ -53,7 +56,7 @@
 			var/atom/toplevelholder = holder
 			while(!istype(toplevelholder.loc, /turf))
 				toplevelholder = toplevelholder.loc
-			toplevelholder.visible_message("<font color='red'>\icon[toplevelholder] [toplevelholder] [display_msg]</font>")
+			toplevelholder.visible_message("<font color='red'>\icon[toplevelholder] [toplevelholder] [display_msg]</font>")*/
 
 /datum/artifact_effect/proc/DoEffectTouch(var/mob/user)
 /datum/artifact_effect/proc/DoEffectAura(var/atom/holder)
@@ -71,27 +74,27 @@
 			chargelevel = 0
 			DoEffectPulse()
 
-/datum/artifact_effect/proc/getDescription()
+/datum/artifact_effect/proc/getAnomaly()
 	. = "<b>"
 	switch(effect_type)
 		if(EFFECT_ENERGY)
-			. += "Concentrated energy emissions"
+			. += "Concentrated energy emission"
 		if(EFFECT_PSIONIC)
 			. += "Intermittent psionic wavefront"
 		if(EFFECT_ELECTRO)
 			. += "Electromagnetic energy"
 		if(EFFECT_PARTICLE)
-			. += "High frequency particles"
+			. += "High frequency particle cluster"
 		if(EFFECT_ORGANIC)
-			. += "Organically reactive exotic particles"
+			. += "Organically reactive exotic particle cluster"
 		if(EFFECT_BLUESPACE)
-			. += "Interdimensional/bluespace? phasing"
+			. += "Interdimensional phasing"
 		if(EFFECT_SYNTH)
 			. += "Atomic synthesis"
 		else
-			. += "Low level energy emissions"
+			. += "Low level energy emission"
 
-	. += "</b> have been detected <b>"
+	. += "</b> has been detected <b>"
 
 	switch(effect)
 		if(EFFECT_TOUCH)
@@ -105,15 +108,61 @@
 
 	. += "</b>"
 
+/datum/artifact_effect/proc/getActivation()
+	. = ""
 	switch(trigger)
-		if(TRIGGER_TOUCH, TRIGGER_WATER, TRIGGER_ACID, TRIGGER_VOLATILE, TRIGGER_TOXIN)
-			. += " Activation index involves <b>physical interaction</b> with artifact surface."
-		if(TRIGGER_FORCE, TRIGGER_ENERGY, TRIGGER_HEAT, TRIGGER_COLD)
-			. += " Activation index involves <b>energetic interaction</b> with artifact surface."
+		if(TRIGGER_TOUCH)
+			. += " Increase in anomalous activity detected while interfacting with Xenoarch Sapience Emulator. \
+				Postulated activation index involves <b>physical interaction</b> with artifact surface."
+		if(TRIGGER_WATER)
+			. += " Increase in anomalous activity detected during water cycling. \
+				Postulated activation index involves <b>underwater immersion or water contact</b> with artifact surface."
+		if(TRIGGER_ACID)
+			. += " Increase in anomalous activity detected during pH cycling. \
+				Postulated activation index involves <b>immersion or acid contact</b> with artifact surface."
+		if(TRIGGER_VOLATILE)
+			. += " Increase in anomalous activity detected during volatile chemicals testing. \
+				Postulated activation index involves <b>volatile chemical exposure</b> to artifact surface."
+		if(TRIGGER_TOXIN)
+			. += " Increase in anomalous activity detected during toxic chemicals testing. \
+				Postulated activation index involves <b>toxic chemical exposure</b> to artifact surface."
+		if(TRIGGER_FORCE)
+			. += " Increase in anomalous activity detected during kinetic bombardment. \
+				Postulated activation index involves <b>high kinetic interaction</b> with artifact surface."
+		if(TRIGGER_ENERGY)
+			. += " Increase in anomalous activity detected during electrosweep. \
+				Postulated activation index involves <b>energetic interaction</b> with artifact surface."
+		if(TRIGGER_HEAT)
+			. += " Increase in anomalous activity detected under intense temperatures. \
+				Postulated activation index involves <b>precise temperature interaction</b> with artifact surface."
+		if(TRIGGER_COLD)
+			. += " Increase in anomalous activity detected in low-kinetic environment simulation. \
+				Postulated activation index involves <b>precise temperature interaction</b> with artifact surface."
 		if(TRIGGER_PHORON, TRIGGER_OXY, TRIGGER_CO2, TRIGGER_NITRO)
-			. += " Activation index involves <b>precise local atmospheric conditions</b>."
+			. += " Increase in anomalous activity detected during atmospheric simulation. \
+				Postulated activation index involves <b>precise local atmospheric conditions</b>."
 		else
 			. += " Unable to determine any data about activation trigger."
+
+/datum/artifact_effect/proc/getInternalScan()
+	. = ""
+	switch(effect_type)
+		if(EFFECT_ENERGY)
+			. += "Unknown energy fluctuations detected within internal structure of the object."
+		if(EFFECT_PSIONIC)
+			. += "Psionic fluctuations detected within internal structure of the object."
+		if(EFFECT_ELECTRO)
+			. += "Notable electromagnetic activity detected within internal structure of the object."
+		if(EFFECT_PARTICLE)
+			. += "High frequency particle emission detected within internal structure of the object."
+		if(EFFECT_ORGANIC)
+			. += "Organically reactive exotic particles detected permeating internal structure of the object."
+		if(EFFECT_BLUESPACE)
+			. += "Significant psi level deviation detected within internal structure of the object."
+		if(EFFECT_SYNTH)
+			. += "Fourth-dimensional restructuring matrix detected within internal structure of the object."
+		else
+			. += "Internal scan failure."
 
 //returns 0..1, with 1 being no protection and 0 being fully protected
 /proc/GetAnomalySusceptibility(var/mob/living/carbon/human/H)
@@ -122,11 +171,16 @@
 
 	var/protected = 0
 
-	//anomaly suits give best protection, but excavation suits are almost as good
+	//absolute exclusion harnesses provide complete protection, anomaly suits give great protection, and excavation suits are almost as good
 	if(istype(H.back,/obj/item/weapon/rig/hazmat))
 		var/obj/item/weapon/rig/hazmat/rig = H.back
 		if(rig.suit_is_deployed() && !rig.offline)
 			protected += 1
+
+	if(istype(H.wear_suit,/obj/item/clothing/suit/anomaly))
+		protected += 0.7
+	if(istype(H.wear_suit,/obj/item/clothing/head/anomaly))
+		protected += 0.4
 
 	if(istype(H.wear_suit,/obj/item/clothing/suit/bio_suit/anomaly))
 		protected += 0.6
@@ -138,7 +192,10 @@
 	else if(istype(H.head,/obj/item/clothing/head/helmet/space/anomaly))
 		protected += 0.2
 
-	//latex gloves and science goggles also give a bit of bonus protection
+	//latex gloves, xenoarch jumpsuits, and science goggles also give a bit of bonus protection
+	if(istype(H.w_uniform,/obj/item/clothing/under/rank/xenoarchaeologist))
+		protected += 0.1
+
 	if(istype(H.gloves,/obj/item/clothing/gloves/sterile))
 		protected += 0.1
 

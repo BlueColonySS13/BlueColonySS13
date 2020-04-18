@@ -1,4 +1,11 @@
 /obj/structure/closet/secure_closet/freezer
+	name = "freezer"
+	icon_state = "fridge1"
+	icon_closed = "fridge"
+	icon_locked = "fridge1"
+	icon_opened = "fridgeopen"
+	icon_broken = "fridgebroken"
+	icon_off = "fridge1"
 
 /obj/structure/closet/secure_closet/freezer/update_icon()
 	if(broken)
@@ -58,15 +65,15 @@
 	icon_off = "fridge1"
 
 
-	New()
-		..()
-		for(var/i = 1 to 6)
-			new /obj/item/weapon/reagent_containers/food/drinks/milk(src)
-		for(var/i = 1 to 4)
-			new /obj/item/weapon/reagent_containers/food/drinks/soymilk(src)
-		for(var/i = 1 to 4)
-			new /obj/item/weapon/storage/fancy/egg_box(src)
-		return
+/obj/structure/closet/secure_closet/freezer/fridge/stocked/New()
+	..()
+	for(var/i = 1 to 6)
+		new /obj/item/weapon/reagent_containers/food/drinks/milk(src)
+	for(var/i = 1 to 4)
+		new /obj/item/weapon/reagent_containers/food/drinks/soymilk(src)
+	for(var/i = 1 to 4)
+		new /obj/item/weapon/storage/fancy/egg_box(src)
+	return
 
 
 
@@ -78,15 +85,3 @@
 	icon_opened = "fridgeopen"
 	icon_broken = "fridgebroken"
 	icon_off = "fridge1"
-	req_access = list(access_heads_vault)
-
-
-	New()
-		..()
-		for(var/i = 1 to 3)
-			new /obj/item/weapon/spacecash/bundle/c10(src)
-		for(var/i = 1 to 4)
-			new /obj/item/weapon/spacecash/bundle/c50(src)
-		for(var/i = 1 to 5)
-			new /obj/item/weapon/spacecash/bundle/c100(src)
-		return

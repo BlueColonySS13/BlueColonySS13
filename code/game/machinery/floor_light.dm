@@ -19,6 +19,8 @@ var/list/floor_light_cache = list()
 	var/default_light_power = 2
 	var/default_light_colour = "#FFFFFF"
 
+	unique_save_vars = list("on", "damaged")
+
 /obj/machinery/floor_light/prebuilt
 	anchored = 1
 	on = 1

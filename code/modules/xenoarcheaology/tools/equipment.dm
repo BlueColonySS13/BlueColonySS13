@@ -27,3 +27,17 @@
 	icon_state = "cespace_helmet"
 	item_state = "cespace_helmet"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)
+
+/obj/item/clothing/suit/anomaly
+	name = "Absolute Exclusion Harness"
+	desc = "A sealed suit outfitted with pico-reality anchors that insulate against exotic alien energies and abnormal psi levels."
+	icon_state = "bio_anom"
+	item_state = "bio_anom"
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 100)
+
+/obj/item/clothing/head/anomaly
+	name = "Absolute Exclusion Hood"
+	desc = "A sealed hood outfitted with pico-reality anchors that insulate against exotic alien energies and abnormal psi levels."
+	icon_state = "bio_anom"
+	item_state = "bio_anom"
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 100)

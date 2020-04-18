@@ -1,7 +1,7 @@
 /datum/job/nanotrasen
 	title = "Government Representative"
 	flag = NANOTRASEN
-	department = "Nanotrasen"
+	department = DEPT_NANOTRASEN
 	head_position = 0
 	department_flag = GOVLAW
 	faction = "City"
@@ -12,7 +12,6 @@
 	idtype = /obj/item/weapon/card/id/nanotrasen/ntrep
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
-	department = "Nanotrasen"
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/representative
 
 	alt_titles = list("Electoral Assistant" = /decl/hierarchy/outfit/job/nanotrasen/electoral,
@@ -24,7 +23,8 @@
 	req_admin_notify = 1
 
 	hard_whitelisted = 1
-	clean_record_required = TRUE
+
+	no_shuttle = TRUE
 
 /datum/job/nanotrasen/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.rep_email
@@ -38,7 +38,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	flag = CEO
-	alt_titles = list("Minister" = /decl/hierarchy/outfit/job/nanotrasen/minister,
+	alt_titles = list("Advisor" = /decl/hierarchy/outfit/job/nanotrasen/minister,
 	 "Vice President" = /decl/hierarchy/outfit/job/heads/vpresident,
 	  "Supreme Justice" = /decl/hierarchy/outfit/job/nanotrasen/justice)
 	wage = 10000
@@ -51,7 +51,6 @@
 	flag = CBIA
 	alt_titles = list(
 		"PDSI Director", "PDSI Supervisory Agent", "PDSI Senior Agent")
-	department = "Nanotrasen"
 	head_position = 0
 	department_flag = GOVLAW
 	faction = "City"

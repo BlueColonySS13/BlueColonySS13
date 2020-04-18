@@ -422,3 +422,26 @@ RADIATION_MATERIAL_RESISTANCE_DIVISOR 16
 ## One and only one of the following options must be uncommented
 RADIATION_RESISTANCE_CALC_DIVIDE
 # RADIATION_RESISTANCE_CALC_SUBTRACT
+
+## Uncomment to enable simple Skype/Discord style markup over say, dsay, actions, and admin narrate.
+ALLOW_CHAT_MARKUP
+
+## Prevents people from making characters with no last names. Comment this out to allow snowflakes.
+HUMANS_NEED_SURNAMES
+
+## FPS ##
+#Set this to the default FPS (Can be customised in-game)
+FPS 60
+
+## Protecting people from attacking or looting from SSDs. Comment to disable.
+SSD_PROTECT
+
+## Allows you to hard save
+HARD_SAVING
+
+## Comment out to disable lot saving.
+LOT_SAVING
+
+## Gamemode voting
+# Comment this out to disable gamemode voting.
+# GAMEMODE_VOTE

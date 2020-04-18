@@ -90,16 +90,6 @@
 
 //Machine
 
-/obj/item/weapon/circuitboard/photocopier
-	name = T_BOARD("photocopier")
-	build_path = /obj/machinery/photocopier
-	board_type = new /datum/frame/frame_types/photocopier
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
-	req_components = list(
-							/obj/item/weapon/stock_parts/scanning_module = 1,
-							/obj/item/weapon/stock_parts/motor = 1,
-							/obj/item/weapon/stock_parts/micro_laser = 1,
-							/obj/item/weapon/stock_parts/matter_bin = 1)
 
 /obj/item/weapon/circuitboard/fax
 	name = T_BOARD("fax")
@@ -112,6 +102,17 @@
 							/obj/item/weapon/stock_parts/micro_laser = 1,
 							/obj/item/weapon/stock_parts/matter_bin = 1)
 
+/obj/item/weapon/circuitboard/photocopier
+	name = T_BOARD("photocopier")
+	build_path = /obj/machinery/photocopier/
+	board_type = "machine"
+	origin_tech = list(TECH_MATERIAL =1, TECH_DATA = 1)
+	req_components = list(
+							/obj/item/weapon/stock_parts/matter_bin = 2,
+							/obj/item/weapon/stock_parts/manipulator = 1,
+							/obj/item/weapon/stock_parts/console_screen = 1)
+
+
 /obj/item/weapon/circuitboard/conveyor
 	name = T_BOARD("conveyor")
 	build_path = /obj/machinery/conveyor
@@ -121,15 +122,14 @@
 							/obj/item/weapon/stock_parts/motor = 2,
 							/obj/item/stack/cable_coil = 5)
 
-/obj/item/weapon/circuitboard/microwave
-	name = T_BOARD("microwave")
-	build_path = /obj/machinery/microwave
-	board_type = new /datum/frame/frame_types/microwave
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+
+/obj/item/weapon/circuitboard/cell_charger
+	name = T_BOARD("heavy-duty cell charger")
+	build_path = /obj/machinery/cell_charger
+	board_type = new /datum/frame/frame_types/cell_charger
 	req_components = list(
-							/obj/item/weapon/stock_parts/console_screen = 1,
-							/obj/item/weapon/stock_parts/motor = 1,
-							/obj/item/weapon/stock_parts/capacitor = 1)
+							/obj/item/weapon/stock_parts/capacitor = 1,
+							/obj/item/stack/cable_coil = 5)
 
 /obj/item/weapon/circuitboard/recharger
 	name = T_BOARD("recharger")
@@ -211,6 +211,15 @@
 							/obj/item/weapon/stock_parts/scanning_module = 1,
 							/obj/item/stack/material/glass/reinforced = 2)
 
+/obj/item/weapon/circuitboard/vr_sleeper/business
+	name = T_BOARD("Commercial VR Sleeper")
+	build_path = /obj/machinery/vr_sleeper/business
+	board_type = new /datum/frame/frame_types/medical_pod
+	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
+	req_components = list(
+							/obj/item/weapon/stock_parts/scanning_module = 1,
+							/obj/item/stack/material/glass/reinforced = 2)
+
 /obj/item/weapon/circuitboard/dna_analyzer
 	name = T_BOARD("dna analyzer")
 	build_path = /obj/machinery/dnaforensics
@@ -231,3 +240,23 @@
 							/obj/item/weapon/stock_parts/capacitor = 1,
 							/obj/item/weapon/stock_parts/spring = 1,
 							/obj/item/stack/cable_coil = 5)
+
+
+
+/obj/item/weapon/circuitboard/smartfridge
+	name = T_BOARD("smartfridge")
+	build_path = /obj/machinery/smartfridge
+	board_type = new /datum/frame/frame_types/microwave
+	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+	req_components = list(
+							/obj/item/weapon/stock_parts/console_screen = 1,
+							/obj/item/weapon/stock_parts/motor = 1,
+							/obj/item/weapon/stock_parts/capacitor = 1)
+
+/obj/item/weapon/circuitboard/smartfridge/seeds
+	name = T_BOARD("seeds smartfridge")
+	build_path = /obj/machinery/smartfridge/seeds
+
+/obj/item/weapon/circuitboard/smartfridge/drinks
+	name = T_BOARD("drinks smartfridge")
+	build_path = /obj/machinery/smartfridge/drinks

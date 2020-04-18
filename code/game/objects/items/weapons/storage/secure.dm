@@ -25,7 +25,9 @@
 	var/open = 0
 	w_class = ITEMSIZE_NORMAL
 	max_w_class = ITEMSIZE_SMALL
-	max_storage_space = ITEMSIZE_SMALL * 7
+	max_storage_space = ITEMSIZE_SMALL * 17
+
+	unique_save_vars = list("code","l_code", "locked", "emagged", "open", "l_set", "l_setshort")
 
 	examine(mob/user)
 		if(..(user, 1))
@@ -193,13 +195,47 @@
 	force = 8.0
 	w_class = ITEMSIZE_NO_CONTAINER
 	max_w_class = ITEMSIZE_LARGE // This was 8 previously...
-	anchored = 1.0
+	anchored = TRUE
 	density = 0
 	cant_hold = list(/obj/item/weapon/storage/secure/briefcase)
 	starts_with = list(
 		/obj/item/weapon/paper,
 		/obj/item/weapon/pen
 	)
+
+/obj/item/weapon/storage/secure/safe/initialize()
+	..()
+
+	// Automatically place noticeboards that aren't mapped to specific positions.
+	if(pixel_x == 0 && pixel_y == 0)
+
+		var/turf/here = get_turf(src)
+		var/placing = 0
+		for(var/checkdir in GLOB.cardinal)
+			var/turf/T = get_step(here, checkdir)
+			if(T.density)
+				placing = checkdir
+				break
+			for(var/thing in T)
+				var/atom/A = thing
+				if(A.simulated && !A.CanPass(src, T))
+					placing = checkdir
+					break
+
+		switch(placing)
+			if(NORTH)
+				pixel_x = 0
+				pixel_y = 30
+			if(SOUTH)
+				pixel_x = 0
+				pixel_y = -30
+			if(EAST)
+				pixel_x = 30
+				pixel_y = 0
+			if(WEST)
+				pixel_x = -30
+				pixel_y = 0
+
 
 /obj/item/weapon/storage/secure/safe/attack_hand(mob/user as mob)
 	return attack_self(user)

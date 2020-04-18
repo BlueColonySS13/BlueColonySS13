@@ -52,6 +52,8 @@
 	var/font_color = "#09f"
 	var/font_style = "Arial Black"
 
+	pixel_y = 25
+
 /obj/machinery/status_display/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src,frequency)
@@ -270,60 +272,66 @@
 	ignore_friendc = 1
 	desc = "This displays the current funding of a particular institution or company."
 	name = "funding display"
-	var/department = "Civilian"
-	var/dept_name = "PUBLIC FUNDS"
+	var/department = "public"
+	var/datum/department/linked_department
 	icon = 'icons/obj/status_display_wide.dmi'
+	icon_state = "frame_gold"
 	maptext_height = 26
 	maptext_width = 62
 	font_color = "#84ff00"
 
+/obj/machinery/status_display/money_display/examine(mob/user)
+	to_chat(user, "<b>[message1]:</b> [cash2text(linked_department.get_balance(), FALSE, TRUE, TRUE )]")
+
+/obj/machinery/status_display/money_display/initialize()
+	..()
+	link_to_account()
+	GLOB.money_displays += src
+
+/obj/machinery/status_display/money_display/proc/link_to_account()
+	if(SSeconomy)
+		linked_department = dept_by_id(department)
+
 /obj/machinery/status_display/money_display/update()
 	update_display(message1, message2)
-	message1 = "[dept_name]:"
-	message2 = "[department_accounts[department].money]CR"
+	message1 = linked_department.name
+	message2 = cash2text( linked_department.get_balance())
 
+/obj/machinery/status_display/money_display/city
+	department = DEPT_COLONY
 
-/obj/machinery/status_display/money_display/city/initialize()
-	department = "[station_name()] Funds"
-	dept_name = "City Funds"
-	..()
+/obj/machinery/status_display/money_display/nanotrasen
+	department = DEPT_NANOTRASEN
 
 /obj/machinery/status_display/money_display/civilian
-	department = "Civilian"
-	dept_name = "Public Funds"
+	department = DEPT_PUBLIC
 
 /obj/machinery/status_display/money_display/police
-	department = "Police"
-	dept_name = "Police Funds"
+	department = DEPT_POLICE
 
-/obj/machinery/status_display/money_display/cargo
-	department = "Cargo"
-	dept_name = "Cargo Funds"
+/obj/machinery/status_display/money_display/factory
+	department = DEPT_FACTORY
 
 /obj/machinery/status_display/money_display/council
-	department = "City Council"
-	dept_name = "Council Funds"
-
+	department = DEPT_COUNCIL
 
 /obj/machinery/status_display/money_display/hospital
-	department = "Public Healthcare"
-	dept_name = "Health Funds"
+	department = DEPT_HEALTHCARE
 
 /obj/machinery/status_display/money_display/emt
-	department = "Emergency and Maintenance"
-	dept_name = "EMT Funds"
-
+	department = DEPT_MAINTENANCE
 
 /obj/machinery/status_display/money_display/rnd
-	department = "Research and Science"
-	dept_name = "R&D Funds"
-
+	department = DEPT_RESEARCH
 
 /obj/machinery/status_display/money_display/bar
-	department = "Bar"
-	dept_name = "Bar Funds"
-
+	department = DEPT_BAR
 
 /obj/machinery/status_display/money_display/botany
-	department = "Botany"
-	dept_name = "Botany Funds"
+	department = DEPT_BOTANY
+
+/obj/machinery/status_display/money_display/legal
+	department = DEPT_LEGAL
+
+/obj/machinery/status_display/money_display/botany
+	department = DEPT_BOTANY

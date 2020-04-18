@@ -25,9 +25,20 @@
 		coat = W
 		user.drop_from_inventory(coat, src)
 		update_icon()
+		return
 	else
-		user << "<span class='notice'>You cannot hang [W] on [src]</span>"
-		return ..()
+		if(istype(W, /obj/item/clothing))
+			user.drop_from_inventory(W, src)
+			W.forceMove(get_turf(src))
+			W.pixel_y = 0
+			W.pixel_x = -1
+			W.layer = ABOVE_MOB_LAYER
+			return
+		else
+			to_chat(user, "<span class='notice'>You cannot hang [W] on [src]</span>")
+			return
+
+	return ..()
 
 /obj/structure/coatrack/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	var/can_hang = 0

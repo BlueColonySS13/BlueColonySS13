@@ -5,9 +5,11 @@
 	item_state = "camcorder"
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BELT
-	var/channel = "Geminus City News"
+	var/channel = "Untitled Channel"
 	var/obj/machinery/camera/network/thunder/camera
 	var/obj/item/device/radio/radio
+
+	unique_save_vars = list("channel")
 
 /obj/item/device/tvcamera/New()
 	..()

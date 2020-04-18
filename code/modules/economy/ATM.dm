@@ -37,7 +37,7 @@ log transactions
 
 /obj/machinery/atm/New()
 	..()
-	machine_id = "[station_name()] RT #[num_financial_terminals++]"
+	machine_id = "[station_name()] RT #[GLOB.num_financial_terminals++]"
 	spark_system = new /datum/effect/effect/system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -62,7 +62,7 @@ log transactions
 		else
 			playsound(loc, 'sound/items/polaroid2.ogg', 50, 1)
 		break
-
+/*
 /obj/machinery/atm/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		return
@@ -78,7 +78,7 @@ log transactions
 	var/response = pick("Initiating withdraw. Have a nice day!", "CRITICAL ERROR: Activating cash chamber panic siphon.","PIN Code accepted! Emptying account balance.", "Jackpot!")
 	user << "<span class='warning'>\icon[src] The [src] beeps: \"[response]\"</span>"
 	return 1
-
+*/
 /obj/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
@@ -100,26 +100,20 @@ log transactions
 				authenticated_account = null
 	else if(authenticated_account)
 		if(istype(I,/obj/item/weapon/spacecash))
+			var/obj/item/weapon/spacecash/C = I
 			//consume the money
-			authenticated_account.money += I:worth
+			authenticated_account.money += C.worth
 			if(prob(50))
 				playsound(loc, 'sound/items/polaroid1.ogg', 50, 1)
 			else
 				playsound(loc, 'sound/items/polaroid2.ogg', 50, 1)
 
 			//create a transaction log entry
-			var/datum/transaction/T = new()
-			T.target_name = authenticated_account.owner_name
-			T.purpose = "Credit deposit"
-			T.amount = I:worth
-			T.source_terminal = machine_id
-			T.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-			T.time = stationtime2text()
-			authenticated_account.transaction_log.Add(T)
+			authenticated_account.add_transaction_log(authenticated_account.owner_name, "Credit deposit", C.worth, machine_id)
 
-			user << "<span class='info'>You insert [I] into [src].</span>"
+			to_chat(user, "<span class='info'>You insert [C] into [src].</span>")
 			src.attack_hand(user)
-			qdel(I)
+			qdel(C)
 	else
 		..()
 
@@ -179,13 +173,13 @@ log transactions
 								dat += "<td>[T.time]</td>"
 								dat += "<td>[T.target_name]</td>"
 								dat += "<td>[T.purpose]</td>"
-								dat += "<td>$[T.amount]</td>"
+								dat += "<td>[T.amount]</td>"
 								dat += "<td>[T.source_terminal]</td>"
 								dat += "</tr>"
 							dat += "</table>"
 							dat += "<A href='?src=\ref[src];choice=print_transaction'>Print</a><br>"
 						if(TRANSFER_FUNDS)
-							dat += "<b>Account balance:</b> $[authenticated_account.money]<br>"
+							dat += "<b>Account balance:</b> [cash2text( authenticated_account.money, FALSE, TRUE, TRUE )]<br>"
 							dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=0'>Back</a><br><br>"
 							dat += "<form name='transfer' action='?src=\ref[src]' method='get'>"
 							dat += "<input type='hidden' name='src' value='\ref[src]'>"
@@ -197,7 +191,7 @@ log transactions
 							dat += "</form>"
 						else
 							dat += "Welcome, <b>[authenticated_account.owner_name].</b><br/>"
-							dat += "<b>Account balance:</b> [authenticated_account.money]CR"
+							dat += "<b>Account balance:</b> [cash2text( authenticated_account.money, FALSE, TRUE, TRUE )]"
 
 							//show expenses
 							if(!isemptylist(authenticated_account.expenses))
@@ -256,14 +250,7 @@ log transactions
 							log_money(usr, "transferred money to [target_account_number] successfully", authenticated_account.account_number, authenticated_account.owner_name, transfer_amount)
 
 							//create an entry in the account transaction log
-							var/datum/transaction/T = new()
-							T.target_name = "Account #[target_account_number]"
-							T.purpose = transfer_purpose
-							T.source_terminal = machine_id
-							T.date = current_date_string
-							T.time = stationtime2text()
-							T.amount = "([transfer_amount])"
-							authenticated_account.transaction_log.Add(T)
+							authenticated_account.add_transaction_log("Account #[target_account_number]", transfer_purpose, -transfer_amount, machine_id)
 						else
 							usr << "\icon[src]<span class='warning'>Funds transfer failed.</span>"
 							log_money(usr, "failed to transfer money to [target_account_number] (unsuccesful)", authenticated_account.account_number, authenticated_account.owner_name, transfer_amount)
@@ -302,13 +289,7 @@ log transactions
 								//create an entry in the account transaction log
 								var/datum/money_account/failed_account = get_account(tried_account_num)
 								if(failed_account)
-									var/datum/transaction/T = new()
-									T.target_name = failed_account.owner_name
-									T.purpose = "Unauthorised login attempt"
-									T.source_terminal = machine_id
-									T.date = current_date_string
-									T.time = stationtime2text()
-									failed_account.transaction_log.Add(T)
+									failed_account.add_transaction_log("Login attempt", "Unauthorised login attempt", 0, machine_id)
 									log_money(usr, "unsuccessfully attempted to log in", tried_account_num, "(no success)", "n/a")
 							else
 								usr << "<font color='red'>\icon[src] Incorrect pin/account combination entered, [max_pin_attempts - number_incorrect_tries] attempts remaining.</font>"
@@ -321,16 +302,8 @@ log transactions
 						playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
 						ticks_left_timeout = 120
 						view_screen = NO_SCREEN
-/*
-						//create a transaction log entry
-						var/datum/transaction/T = new()
-						T.target_name = authenticated_account.owner_name
-						T.purpose = "Remote terminal access"
-						T.source_terminal = machine_id
-						T.date = current_date_string
-						T.time = stationtime2text()
-						authenticated_account.transaction_log.Add(T)
-*/
+
+						authenticated_account.add_transaction_log(authenticated_account.owner_name, "Remote terminal access", 0, machine_id)
 						usr << "<font color='blue'>\icon[src] Access granted. Welcome user '[authenticated_account.owner_name].</font>'"
 
 					previous_account_number = tried_account_num
@@ -350,14 +323,8 @@ log transactions
 						spawn_ewallet(amount,src.loc,usr)
 
 						//create an entry in the account transaction log
-						var/datum/transaction/T = new()
-						T.target_name = authenticated_account.owner_name
-						T.purpose = "Credit withdrawal"
-						T.amount = "([amount])"
-						T.source_terminal = machine_id
-						T.date = current_date_string
-						T.time = stationtime2text()
-						authenticated_account.transaction_log.Add(T)
+						authenticated_account.add_transaction_log(authenticated_account.owner_name, "Credit withdrawal", -amount, machine_id)
+
 						log_money(usr, "withdrew money from [src] (ewallet)", authenticated_account.account_number, authenticated_account.owner_name, amount)
 					else
 						usr << "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>"
@@ -375,15 +342,7 @@ log transactions
 
 						spawn_money(amount,src.loc,usr)
 
-						//create an entry in the account transaction log
-						var/datum/transaction/T = new()
-						T.target_name = authenticated_account.owner_name
-						T.purpose = "Credit withdrawal"
-						T.amount = "([amount])"
-						T.source_terminal = machine_id
-						T.date = current_date_string
-						T.time = stationtime2text()
-						authenticated_account.transaction_log.Add(T)
+						authenticated_account.add_transaction_log(authenticated_account.owner_name, "Credit withdrawal", -amount, machine_id)
 						log_money(usr, "withdrew money from [src] (cash)", authenticated_account.account_number, authenticated_account.owner_name, amount)
 					else
 						usr << "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>"
@@ -394,8 +353,8 @@ log transactions
 					R.info = "<b>NT Automated Teller Account Statement</b><br><br>"
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
 					R.info += "<i>Account ID:</i> [authenticated_account.account_number]<br>"
-					R.info += "<i>Balance:</i> $[authenticated_account.money]<br>"
-					R.info += "<i>Date and time:</i> [stationtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>Balance:</i> [cash2text( authenticated_account.money, FALSE, TRUE, TRUE )]<br>"
+					R.info += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
 					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 
 					//stamp the paper
@@ -418,7 +377,7 @@ log transactions
 					R.info = "<b>Transaction logs</b><br>"
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
 					R.info += "<i>Account ID:</i> [authenticated_account.account_number]<br>"
-					R.info += "<i>Date and time:</i> [stationtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
 					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 					R.info += "<table border=1 style='width:100%'>"
 					R.info += "<tr>"
@@ -435,7 +394,7 @@ log transactions
 						R.info += "<td>[T.time]</td>"
 						R.info += "<td>[T.target_name]</td>"
 						R.info += "<td>[T.purpose]</td>"
-						R.info += "<td>$[T.amount]</td>"
+						R.info += "<td>[T.amount]</td>"
 						R.info += "<td>[T.source_terminal]</td>"
 						R.info += "</tr>"
 					R.info += "</table>"
@@ -487,16 +446,9 @@ log transactions
 			if(I)
 				authenticated_account = attempt_account_access(I.associated_account_number)
 				if(authenticated_account)
-					human_user << "<font color='blue'>\icon[src] Access granted. Welcome user '[authenticated_account.owner_name].</font>'"
+					to_chat(human_user, "<font color='blue'>\icon[src] Access granted. Welcome user '[authenticated_account.owner_name].</font>'")
 
-					//create a transaction log entry
-					var/datum/transaction/T = new()
-					T.target_name = authenticated_account.owner_name
-					T.purpose = "Remote terminal access"
-					T.source_terminal = machine_id
-					T.date = current_date_string
-					T.time = stationtime2text()
-					authenticated_account.transaction_log.Add(T)
+					authenticated_account.add_transaction_log(authenticated_account.owner_name, "Remote terminal access", 0, machine_id)
 
 					view_screen = NO_SCREEN
 

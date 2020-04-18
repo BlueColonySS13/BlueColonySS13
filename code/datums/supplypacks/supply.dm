@@ -6,20 +6,6 @@
 /datum/supply_pack/supply
 	group = "Supplies"
 
-/datum/supply_pack/supply/food
-	name = "Kitchen supply crate"
-	contains = list(
-			/obj/item/weapon/reagent_containers/food/condiment/flour = 6,
-			/obj/item/weapon/reagent_containers/food/drinks/milk = 3,
-			/obj/item/weapon/reagent_containers/food/drinks/soymilk = 2,
-			/obj/item/weapon/storage/fancy/egg_box = 2,
-			/obj/item/weapon/reagent_containers/food/snacks/tofu = 4,
-			/obj/item/weapon/reagent_containers/food/snacks/meat = 4,
-			/obj/item/weapon/reagent_containers/food/condiment/enzyme = 2
-			)
-	cost = 10
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Food crate"
 
 /datum/supply_pack/supply/toner
 	name = "Toner cartridges"
@@ -46,7 +32,7 @@
 			/obj/item/weapon/grenade/chem_grenade/cleaner = 3,
 			/obj/structure/mopbucket
 			)
-	cost = 10
+	cost = 70
 	containertype = /obj/structure/closet/crate
 	containername = "Janitorial supplies"
 
@@ -85,14 +71,14 @@
 	containername = "Office supplies crate"
 
 /datum/supply_pack/supply/spare_communicators
-	name = "Spare communicators"
+	name = "spare communicators"
 	cost = 10
 	containertype = /obj/structure/closet/crate
 	containername = "Spare communicator crate"
 	contains = list(/obj/item/device/communicator = 3)
 
 /datum/supply_pack/supply/minergear
-	name = "Shaft miner equipment"
+	name = "shaft miner equipment"
 	contains = list(
 			/obj/item/weapon/storage/backpack/industrial,
 			/obj/item/weapon/storage/backpack/satchel/eng,
@@ -112,32 +98,64 @@
 			)
 	cost = 10
 	containertype = "/obj/structure/closet/crate/secure"
-	containername = "Shaft miner equipment"
+	containername = "shaft miner equipment"
 	access = access_mining
 
 /datum/supply_pack/supply/mule
-	name = "Mulebot Crate"
+	name = "mulebot Crate"
 	contains = list()
 	cost = 20
 	containertype = /obj/structure/largecrate/animal/mulebot
-	containername = "Mulebot Crate"
+	containername = "mulebot Crate"
 
 /datum/supply_pack/supply/cargotrain
-	name = "Cargo Train Tug"
+	name = "cargo Train Tug"
 	contains = list(/obj/vehicle/train/engine)
 	cost = 35
 	containertype = /obj/structure/largecrate
-	containername = "Cargo Train Tug Crate"
+	containername = "cargo Train Tug Crate"
 
 /datum/supply_pack/supply/cargotrailer
-	name = "Cargo Train Trolley"
+	name = "cargo Train Trolley"
 	contains = list(/obj/vehicle/train/trolley)
 	cost = 15
 	containertype = /obj/structure/largecrate
-	containername = "Cargo Train Trolley Crate"
+	containername = "cargo Train Trolley Crate"
 
-/datum/supply_pack/supply/cardboard_sheets
-	name = "Stationery - sticky notes (50)"
+/datum/supply_pack/supply/sticky_notes
+	name = "stationery - sticky notes (50)"
 	contains = list(/obj/item/sticky_pad/random)
 	cost = 10
-	containername = "\improper Sticky notes crate"
+	containername = "\improper sticky notes crate"
+
+/datum/supply_pack/supply/adhesive_posters
+	name = "adhesive Poster Set (50)"
+	contains = list(/obj/item/sticky_pad/poster/random)
+	cost = 30
+	containername = "\improper adhesive poster crate"
+
+/datum/supply_pack/supply/pen_set
+	name = "assorted pen set"
+	contains = list(/obj/item/weapon/pen = 5,
+	/obj/item/weapon/pen/red = 5,
+	/obj/item/weapon/pen/blue = 5,
+	/obj/item/weapon/pen/fountain = 2)
+	cost = 10
+	containername = "assorted Pen Set"
+
+
+/datum/supply_pack/supply/lights
+	name = "light replacement set"
+	contains = list(/obj/item/weapon/storage/box/lights = 2)
+	cost = 25
+	containername = "light replacement set"
+
+/datum/supply_pack/supply/dye_refills
+	name = "photochromatic dye refills"
+	contains = list(/obj/item/photochromatic_dye_refill = 5)
+	cost = 25
+	containername = "photochromatic dye refills"
+
+
+
+
