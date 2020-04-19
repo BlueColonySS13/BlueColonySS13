@@ -139,7 +139,6 @@
 	set category = "Object"
 	set src in view(1)
 
-	to_world("usr is [usr]")
 	display_data(usr)
 
 /obj/item/device/detective_scanner/proc/display_data(var/mob/user)

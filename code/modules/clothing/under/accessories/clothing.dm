@@ -187,6 +187,7 @@
 
 /obj/item/clothing/accessory/hawaii/random
 	name = "flower-pattern shirt"
+	unique_save_vars = list("icon_state")
 
 /obj/item/clothing/accessory/hawaii/random/New()
 	if(prob(50))

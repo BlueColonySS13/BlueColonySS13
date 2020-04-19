@@ -17,6 +17,11 @@
 	var/power_usage
 	var/power_use = 1
 
+	unique_save_vars = list("on")
+
+/obj/item/device/flashlight/on_persistence_load()
+	update_icon()
+
 /obj/item/device/flashlight/initialize()
 	. = ..()
 	update_icon()

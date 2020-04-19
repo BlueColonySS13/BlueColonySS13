@@ -32,10 +32,13 @@
 	var/menu_items
 	var/adds_tax = TRUE
 
-	unique_save_vars = list("locked", "cash_stored", "linked_account")
+	var/owner_uid = null
+	var/owner_name = null
+
+	unique_save_vars = list("locked", "cash_stored", "linked_account", "owner_uid", "owner_name")
 
 // Claim machine ID
-/obj/machinery/cash_register/New()
+/obj/machinery/cash_register/initialize(mapload)
 	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
 	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 	if(SSeconomy && account_to_connect)
@@ -45,7 +48,7 @@
 		linked_account = M.account_number
 
 /obj/machinery/cash_register/on_persistence_load()
-	if(!check_account_exists(linked_account))
+	if(!account_to_connect && !check_account_exists(linked_account))
 		linked_account = null
 
 
@@ -57,6 +60,8 @@
 		else
 			to_chat(user, "It's completely empty.")
 
+	if(owner_name)
+		to_chat(user, "This cash register is locked to [owner_name].")
 
 /obj/machinery/cash_register/attack_hand(mob/user as mob)
 	// Don't be accessible from the wrong side of the machine
@@ -80,7 +85,19 @@
 
 
 /obj/machinery/cash_register/interact(mob/user as mob)
+	var/dat = get_data_ui()
+
+	user << browse(dat, "window=cash_register;size=350x500")
+	onclose(user, "cash_register")
+
+
+/obj/machinery/cash_register/proc/get_data_ui()
 	var/dat = "<h2>Cash Register<hr></h2>"
+
+	if(!account_to_connect && !owner_uid)
+		dat += "Please swipe your ID card to claim this till.<br>"
+		return dat
+
 	var/acc_name = get_account_name(linked_account)
 	if (locked)
 		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Unlock</a><br>"
@@ -91,39 +108,43 @@
 		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Lock</a><br>"
 		dat += "Linked account: <a href='?src=\ref[src];choice=link_account'>[acc_name ? acc_name : "None"]</a><br>"
 		dat += "<a href='?src=\ref[src];choice=toggle_cash_lock'>[cash_locked? "Unlock" : "Lock"] Cash Box</a> | "
+		if(owner_uid)
+			dat += "<a href='?src=\ref[src];choice=reset_owner'>Reset Owner</a><br>"
+
 	dat += "<a href='?src=\ref[src];choice=custom_order'>Custom Order</a><hr>"
 
 	if(item_list.len)
 		dat += get_current_transaction()
 		dat += "<br>"
 
-	for(var/i=transaction_logs.len, i>=1, i--)
-		dat += "[transaction_logs[i]]<br>"
-
 	if(menu_items)
 		dat += get_custom_menu()
+
+	for(var/i=transaction_logs.len, i>=1, i--)
+		dat += "[transaction_logs[i]]<br>"
 
 	if(transaction_logs.len)
 		dat += locked ? "<br>" : "<a href='?src=\ref[src];choice=reset_log'>Reset Log</a><br>"
 		dat += "<br>"
+
 	dat += "<i>Device ID:</i> [machine_id]"
-	user << browse(dat, "window=cash_register;size=350x500")
-	onclose(user, "cash_register")
+
+	return dat
 
 
 /obj/machinery/cash_register/proc/get_custom_menu()
 	var/dat
-	if(menu_items == "law")
+	if(menu_items == LAW)
 		for(var/datum/law/L in presidential_laws)
 			if(L.fine)
 				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[L]'>([L.id]) [L.name]</a><br>"
 
-	if(menu_items == "medical")
+	if(menu_items == MED)
 		for(var/datum/medical_bill/M in medical_bills)
 			if(M.cost)
 				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[M]'>[M.name]</a><br>"
 
-	if(menu_items == "court")
+	if(menu_items == COR)
 		for(var/datum/court_fee/J in court_fees)
 			if(J.cost)
 				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[J]'>[J.name]</a><br>"
@@ -140,12 +161,23 @@
 	if(href_list["choice"])
 		switch(href_list["choice"])
 			if("toggle_lock")
+				if(owner_uid)
+					var/obj/item/weapon/card/id/I = usr.GetIdCard()
+					if(I && (I.unique_ID != owner_uid))
+						to_chat(usr, "\icon[src]<span class='warning'>Error: Lack of identification or card's unique ID does not match the owner's.</span>")
+						return
+					else
+						locked = !locked
+						updateDialog()
+						return
+
 				if(allowed(usr))
 					locked = !locked
 				else
-					usr << "\icon[src]<span class='warning'>Insufficient access.</span>"
+					to_chat(usr, "\icon[src]<span class='warning'>Insufficient access.</span>")
 			if("toggle_cash_lock")
-				cash_locked = !cash_locked
+				if(!locked)
+					cash_locked = !cash_locked
 			if("link_account")
 				var/attempt_account_num = sanitize(input("Enter account id", "New account id") as text)
 				var/attempt_pin = input("Enter PIN", "Account PIN") as num
@@ -273,7 +305,12 @@
 					tax_list.Cut()
 			if("reset_log")
 				transaction_logs.Cut()
-				usr << "\icon[src]<span class='notice'>Transaction log reset.</span>"
+				to_chat(usr, "\icon[src]<span class='notice'>Transaction log reset.</span>")
+			if("reset_owner")
+				var/choice = alert(usr,"Reset the owner of this machine and set back to factory settings?","Reset [src]?","Yes","No")
+				if(choice == "Yes")
+					owner_uid = null
+					owner_name = null
 	updateDialog()
 
 
@@ -281,6 +318,13 @@
 /obj/machinery/cash_register/attackby(obj/O as obj, user as mob)
 	// Check for a method of paying (ID, PDA, e-wallet, cash, ect.)
 	var/obj/item/weapon/card/id/I = O.GetID()
+	if(I && !account_to_connect && !owner_uid)
+		if(!I.unique_ID || !I.registered_name)
+			to_chat(usr, "\icon[src]<span class='notice'>Invalid card: Identification card lacks registered name and/or unique ID.</span>")
+			return
+		to_chat(usr, "\icon[src]<span class='notice'>New owner set to [I.registered_name].</span>")
+		owner_uid = I.unique_ID
+		owner_name = I.registered_name
 	if(I)
 		scan_card(I, O)
 	else if (istype(O, /obj/item/weapon/spacecash/ewallet))
@@ -289,7 +333,7 @@
 	else if (istype(O, /obj/item/weapon/spacecash))
 		var/obj/item/weapon/spacecash/SC = O
 		if(cash_open)
-			user << "You neatly sort the cash into the box."
+			to_chat(user, "You neatly sort the cash into the box.")
 			cash_stored += SC.worth
 			overlays |= "register_cash"
 			if(ishuman(user))
@@ -664,32 +708,39 @@
 /obj/machinery/cash_register/city
 	account_to_connect = DEPT_COLONY
 	dont_save = TRUE
+	req_access = list(access_president)
 
 /obj/machinery/cash_register/command
 	account_to_connect = DEPT_COUNCIL
 	dont_save = TRUE
+	req_access = list(access_captain)
 
 /obj/machinery/cash_register/medical
 	account_to_connect = DEPT_HEALTHCARE
 	menu_items = MED
 	dont_save = TRUE
+	req_access = list(access_cmo)
 
 /obj/machinery/cash_register/engineering
 	account_to_connect = DEPT_MAINTENANCE
 	dont_save = TRUE
+	req_access = list(access_ce)
 
 /obj/machinery/cash_register/science
 	account_to_connect = DEPT_RESEARCH
 	dont_save = TRUE
+	req_access = list(access_rd)
 
 /obj/machinery/cash_register/security
 	account_to_connect = DEPT_POLICE
 	menu_items = LAW
 	dont_save = TRUE
+	req_access = list(access_hos)
 
 /obj/machinery/cash_register/cargo
 	account_to_connect = DEPT_FACTORY
 	dont_save = TRUE
+	req_access = list(access_qm)
 
 /obj/machinery/cash_register/civilian
 	account_to_connect = DEPT_PUBLIC
@@ -704,7 +755,7 @@
 	dont_save = TRUE
 
 /obj/machinery/cash_register/court
-	account_to_connect = "Legal"
+	account_to_connect = DEPT_LEGAL
 	menu_items = COR
 	dont_save = TRUE
 #undef LAW

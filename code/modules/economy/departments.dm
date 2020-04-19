@@ -29,6 +29,8 @@
 			GLOB.private_departments += src
 		if(EXTERNAL_DEPARTMENT)
 			GLOB.external_departments += src
+		if(HIDDEN_DEPARTMENT)
+			GLOB.hidden_departments += src
 
 /datum/department/proc/sanitize_values()	// juuuust in case shittery happens.
 	if(!blacklisted_employees)
@@ -61,13 +63,17 @@
 		if(name == D.name)
 			return D
 
-/proc/adjust_dept_funds(id, amount)
+/proc/adjust_dept_funds(id, amount, purpose)
 	var/datum/money_account/M = dept_acc_by_id(id)
 
 	if(!M)
 		return FALSE
 
 	M.money += amount
+
+	if(purpose)
+		M.add_transaction_log(M.owner_name, purpose, amount, "Department Funds Transfer")
+
 	return TRUE
 
 /proc/dept_balance(id)
@@ -95,6 +101,9 @@
 			GLOB.private_department_accounts += bank_account
 		if(EXTERNAL_DEPARTMENT)
 			GLOB.external_department_accounts += bank_account
+		if(HIDDEN_DEPARTMENT)
+			GLOB.hidden_department_accounts += bank_account
+			bank_account.hidden = TRUE
 
 	return bank_account
 

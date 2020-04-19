@@ -7,14 +7,11 @@ SUBSYSTEM_DEF(economy)
 
 /datum/controller/subsystem/economy/Initialize(timeofday)
 	setup_economy()
-	link_economy_accounts()
-
 	all_departments = GLOB.departments
-
 	load_economy()
 	init_expenses()
 	persistent_economy.load_accounts()
-
+	link_economy_accounts()
 	. = ..()
 
 /datum/controller/subsystem/economy/proc/setup_economy()
@@ -39,7 +36,10 @@ SUBSYSTEM_DEF(economy)
 
 	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
 		if(CR.account_to_connect)
-			CR.linked_account = dept_acc_by_id(CR.account_to_connect)
+			var/datum/money_account/M = dept_acc_by_id(CR.account_to_connect)
+			if(!M)
+				continue
+			CR.linked_account = M.account_number
 
 	for(var/obj/machinery/status_display/money_display/MD in GLOB.money_displays)
 		MD.link_to_account()
@@ -80,7 +80,7 @@ SUBSYSTEM_DEF(economy)
 /datum/controller/subsystem/economy/proc/collect_all_earnings()
 	// collects money from all cash registers and puts 'em in their relavent accounts
 	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
-		if(CR.linked_account && CR.account_to_connect)
+		if(CR.linked_account && CR.account_to_connect && CR.cash_stored)
 			charge_to_account(CR.linked_account, "Money Collection", "Money Left in Till", CR.machine_id, CR.cash_stored)
 			CR.cash_stored = 0
 

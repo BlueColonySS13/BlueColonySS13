@@ -189,10 +189,13 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	desc = "A card that holds an amount of money."
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
+	unique_save_vars = list("owner_name", "worth")
+
 /obj/item/weapon/spacecash/ewallet/examine(mob/user)
 	..(user)
 	if (!(user in view(2)) && user!=src.loc) return
-	user << "<span class='notice'>Charge card's owner: [src.owner_name]. Credit chips remaining: [src.worth].</span>"
+	to_chat(user, "<span class='notice'>Charge card's owner: [src.owner_name]. </span>")
+	to_chat(user, "<span class='notice'>Credit chips remaining: [src.worth]. </span>")
 
 /obj/item/weapon/spacecash/ewallet/lotto
 	name = "space lottery card"
@@ -200,6 +203,8 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	worth = 0
 	var/scratches_remaining = 3
 	var/next_scratch = 0
+
+	unique_save_vars = list("owner_name", "worth", "scratches_remaining", "next_scratch")
 
 /obj/item/weapon/spacecash/ewallet/lotto/attack_self(mob/user)
 

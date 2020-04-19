@@ -656,3 +656,51 @@
 	H << "<span class='danger'>Your hardsuit returns to normal speed.</span>"
 
 	holder.slowdown = initial(holder.slowdown)
+
+/obj/item/rig_module/device/ano_scanner
+	name = "Alden-Saraspova module"
+	desc = "A module that aids in triangulation of exotic particles."
+	icon_state = "enet"
+	interface_name = "Alden-Saraspova scanner"
+	interface_desc = "An integrated scanner that detects exotic particles and relays the information to the onboard HUD."
+	suit_overlay_active = "enet"
+	suit_overlay_inactive = "enet"
+	use_power_cost = 0.5
+
+	device_type = /obj/item/device/ano_scanner
+
+/obj/item/rig_module/device/measure_scanner
+	name = "dimension analyzer module"
+	desc = "A module that allows one to determine the dimensions of an excavation site."
+	icon_state = "measuring"
+	interface_name = "integrated dimension analzyer"
+	interface_desc = "An integrated scanner that determines the dimensions of an excavation site and relays the information to the onboard HUd."
+	suit_overlay_active = "measuring"
+	suit_overlay_inactive = "measuring"
+	use_power_cost = 0.1
+
+	device_type = /obj/item/device/measuring_tape/integrated
+
+/obj/item/rig_module/device/depth_scanner
+	name = "depth analyzer module"
+	desc = "A module that allows one to examine the interior of rock outcroppings."
+	icon_state = "scanner"
+	interface_name = "integrated depth analyzer"
+	interface_desc = "An integrated scanner that detects objects within rock outcroppings."
+	suit_overlay_active = "scanner"
+	suit_overlay_inactive = "scanner"
+	use_power_cost = 0.1
+
+	device_type = /obj/item/device/depth_scanner
+
+/obj/item/rig_module/device/plasmacutter
+	name = "hardsuit plasma cutter"
+	desc = "A lethal-looking industrial cutter."
+	icon_state = "plasmacutter"
+	interface_name = "plasma cutter"
+	interface_desc = "A self-sustaining plasma arc capable of cutting through walls."
+	suit_overlay_active = "plasmacutter"
+	suit_overlay_inactive = "plasmacutter"
+	use_power_cost = 0.5
+
+	device_type = /obj/item/weapon/pickaxe/plasmacutter

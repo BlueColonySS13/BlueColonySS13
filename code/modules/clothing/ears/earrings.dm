@@ -7,7 +7,7 @@
 	icon = 'icons/obj/clothing/ears.dmi'
 
 /obj/item/clothing/ears/earring/stud
-	name = "pearl stud earrings"
+	name = "stud earrings"
 	desc = "A pair of small stud earrings."
 	icon_state = "ear_stud"
 	color = "#eae0c8"
@@ -55,6 +55,7 @@
 // Dangle earrings
 
 /obj/item/clothing/ears/earring/dangle
+	name = "dangle earrings"
 	icon_state = "ear_dangle"
 
 /obj/item/clothing/ears/earring/dangle/glass

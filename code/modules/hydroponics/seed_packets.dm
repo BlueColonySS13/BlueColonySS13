@@ -11,6 +11,8 @@ var/global/list/plant_seed_sprites = list()
 	var/datum/seed/seed
 	var/modified = 0
 
+	unique_save_vars = list("seed_type")
+
 /obj/item/seeds/get_item_cost()
 	var/half_cost
 	if(seed)
@@ -19,6 +21,9 @@ var/global/list/plant_seed_sprites = list()
 	price_tag = half_cost
 
 	return price_tag
+
+/obj/item/seeds/on_persistence_load()
+	update_seed()
 
 /obj/item/seeds/initialize()
 	update_seed()

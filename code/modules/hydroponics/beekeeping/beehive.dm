@@ -12,6 +12,8 @@
 	var/frames = 0
 	var/maxFrames = 5
 
+	unique_save_vars = list("closed", "bee_count", "smoked", "honeycombs", "frames", "maxFrames")
+
 /obj/machinery/beehive/update_icon()
 	overlays.Cut()
 	icon_state = "beehive"
@@ -243,6 +245,8 @@
 	icon_state = "wax"
 	burn_state = 0 //Burnable
 	burntime = 5
+	stack_color = COLOR_YELLOW
+	dyeable = TRUE
 
 /obj/item/stack/wax/New()
 	..()

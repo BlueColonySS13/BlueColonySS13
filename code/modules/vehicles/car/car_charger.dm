@@ -50,9 +50,9 @@
 /obj/item/weapon/car_charger/examine(mob/user)
 	..()
 	if(full)
-		user << "It will charge your car's battery to the full amount."
+		to_chat(user, "It will charge your car's battery to the full amount.")
 	else
-		user << "It adds <b>[charge_amt]mAh</b> to your car's battery."
+		to_chat(user, "It adds <b>[charge_amt]mAh</b> to your car's battery.")
 
 /obj/item/weapon/car_charger/advanced
 	name = "advanced porta-charger"

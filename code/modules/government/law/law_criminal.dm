@@ -77,10 +77,10 @@
 	notes = "Your personal records (security, medical and employment), confidential \
 	information passed toyour doctor or lawyer as well as your identification card, \
 	personal items and property are protected by the Polluxian privacy laws. \
-	Spreading suchinformation without your approval,neglecting to properly \
-	secure it fallsunder this charge as well as unauthorized searches of \
-	your personal property. If a police officer is theoffender, refer \
-	to Abuse of Police Powers."
+	Spreading such information without your approval,neglecting to properly \
+	secure it falls under this charge as well as unauthorized searches of \
+	your personal property. In addition, so does spying on you through a non-governmental camera console. \
+	If a police officer is the offender, refer to Abuse of Police Powers."
 
 
 /datum/law/criminal/injuction
@@ -176,6 +176,8 @@
 	description = "To use deliberate deception in order to take advantage of other person or organization."
 	fine = 1085
 	cell_time = 28
+
+	notes = "This includes breaking a written contract and abusing government resources for private gain."
 
 /datum/law/criminal/justice
 	name = "Obstruction of Justice"

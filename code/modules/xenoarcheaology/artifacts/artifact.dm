@@ -8,6 +8,9 @@
 	var/datum/artifact_effect/my_effect
 	var/datum/artifact_effect/secondary_effect
 	var/being_used = 0
+	var/predefined = 0
+	var/composition = ""
+
 
 /obj/machinery/artifact/New()
 	..()
@@ -22,6 +25,7 @@
 			secondary_effect.ToggleActivate(0)
 
 	icon_num = rand(0, 11)
+	composition = pick("an unknown alloy","a hyper-dense crystalline matrix","adamantium","ERROR - Material analysis failure","aluminium","a ferritic-alloy","electrum","duranium","vanadium","iridium")
 
 	icon_state = "ano[icon_num]0"
 	if(icon_num == 7 || icon_num == 8)
@@ -308,3 +312,12 @@
 		my_effect.UpdateMove()
 	if(secondary_effect)
 		secondary_effect.UpdateMove()
+
+/obj/machinery/artifact/proc/getOmegaLevel()
+	if(secondary_effect && my_effect)
+		if(secondary_effect.omegalevel < my_effect.omegalevel)
+			return secondary_effect.omegalevel
+		else
+			return my_effect.omegalevel
+	else
+		return my_effect.omegalevel

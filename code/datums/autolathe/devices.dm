@@ -30,3 +30,7 @@
 	name = "electropack"
 	path =/obj/item/device/radio/electropack
 	hidden = 1
+
+/datum/category_item/autolathe/devices/taperecorder
+	name = "tape recorder"
+	path =/obj/item/device/taperecorder/empty

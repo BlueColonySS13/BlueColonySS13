@@ -52,3 +52,6 @@
 							/obj/item/weapon/stock_parts/manipulator = 1,)
 
 
+
+
+

@@ -8,6 +8,12 @@
 	var/turf_vars = list()
 	var/list/map_objects = list()
 	var/list/decals = list()
+
+	//for walls
+	var/material //material id goes here
+	var/reinforced_material
+	var/girder_material
+
 	var/metadata
 
 /datum/map_object
@@ -135,16 +141,16 @@
 
 		MT.metadata = T.get_persistent_metadata()
 
-		var/list/decal_list = list()
+		if(istype(T, /turf/simulated/wall))
+			var/turf/simulated/wall/new_wall = T
+			if(new_wall.material)
+				MT.material = new_wall.material.name
+			if(new_wall.reinf_material)
+				MT.reinforced_material = new_wall.reinf_material.name
+			if(new_wall.girder_material)
+				MT.girder_material = new_wall.girder_material.name
 
-		for(var/image/I in T.decals)
-			var/icon/dcl_icon = getFlatIcon(I, defdir=I.dir)
-			var/image/new_decl = image(dcl_icon)
-
-			decal_list += new_decl
-
-		MT.decals = decal_list
-
+		MT.decals = T.decals
 
 		for(var/V in T.vars_to_save() )
 			if(!(V in T.vars))
@@ -209,7 +215,7 @@
 								continue
 
 
-							//fourth loop. let's say the cigarettes need saving inside these packets. Honestly I don't think we'll need a fourth loop.
+							//fourth loop. let's say the cigarettes need saving inside these packets. Honestly I don't think we'll need a fifth loop.
 							for(var/obj/D in C.get_saveable_contents())
 								if(D.dont_save) continue
 
@@ -239,7 +245,20 @@
 			continue
 
 		if(change_turf)
-			newturf.ChangeTurf(MT.turf_type, 0, 1)
+			newturf.ChangeTurf(MT.turf_type)
+
+		if(istype(newturf, /turf/simulated/wall))
+			var/turf/simulated/wall/new_wall = newturf
+			if(MT.material)
+				new_wall.material = get_material_by_name(MT.material)
+			if(MT.reinforced_material)
+				new_wall.reinf_material = get_material_by_name(MT.reinforced_material)
+			if(MT.girder_material)
+				new_wall.girder_material = get_material_by_name(MT.girder_material)
+
+			new_wall.update_material()
+			new_wall.update_connections(1)
+			new_wall.update_icon()
 
 		newturf.decals = MT.decals
 		newturf.update_icon()

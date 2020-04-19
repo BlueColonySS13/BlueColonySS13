@@ -186,6 +186,7 @@
 	desc = "Used for building lights."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube-construct-item"
+	refund_amt = 2	//TFF 17/1/20 - Oversight fix for infinite steel produciton.
 	build_machine_type = /obj/machinery/light_construct
 	is_wall_frame = TRUE
 	reverse = 1
@@ -321,6 +322,15 @@
 	is_wall_frame = FALSE
 	is_floor_frame = TRUE
 
+/obj/item/frame/weightlifter
+	name = "weight lifting assembly"
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "weightlifter"
+	density = TRUE
+	refund_amt = 3
+	build_machine_type = /obj/structure/fitness/weightlifter
+	is_wall_frame = FALSE
+	is_floor_frame = TRUE
 
 /obj/item/frame/shutters/regular
 	name = "blast door frame"
@@ -403,4 +413,14 @@
 	refund_amt = 2
 	build_machine_type = /obj/machinery/shower
 	is_wall_frame = TRUE
+	is_floor_frame = TRUE
+
+/obj/item/frame/plastic/punchingbag
+	name = "punching bag assembly"
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "punchingbag"
+	density = TRUE
+	refund_amt = 3
+	build_machine_type = /obj/structure/fitness/punchingbag
+	is_wall_frame = FALSE
 	is_floor_frame = TRUE

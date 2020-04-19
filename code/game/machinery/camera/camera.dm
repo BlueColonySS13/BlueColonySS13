@@ -43,13 +43,15 @@
 
 	var/on_wall = 1
 
+	unique_save_vars = list("name", "c_tag")
+
 /obj/machinery/camera/New()
 	wires = new(src)
 	assembly = new(src)
 	assembly.state = 4
 	client_huds |= global_hud.whitense
 	update_icon()
-	
+
 	/* // Use this to look for cameras that have the same c_tag.
 	for(var/obj/machinery/camera/C in cameranet.cameras)
 		var/list/tempnetwork = C.network&src.network

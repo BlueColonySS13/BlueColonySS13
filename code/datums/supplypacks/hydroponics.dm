@@ -13,28 +13,7 @@
 	cost = 80
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "Monkey crate"
-/*
-/datum/supply_pack/hydro/farwa
-	name = "Farwa crate"
-	contains = list (/obj/item/weapon/storage/box/monkeycubes/farwacubes)
-	cost = 20
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Farwa crate"
 
-/datum/supply_pack/hydro/neara
-	name = "Neaera crate"
-	contains = list (/obj/item/weapon/storage/box/monkeycubes/neaeracubes)
-	cost = 20
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Neaera crate"
-
-/datum/supply_pack/hydro/stok
-	name = "Stok crate"
-	contains = list (/obj/item/weapon/storage/box/monkeycubes/stokcubes)
-	cost = 20
-	containertype = /obj/structure/closet/crate/freezer
-	containername = "Stok crate"
-*/
 /datum/supply_pack/hydro/lisa
 	name = "Corgi Crate"
 	contains = list()
@@ -58,28 +37,25 @@
 	cost = 150
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Hydroponics crate"
-	access = access_hydroponics
 
 /datum/supply_pack/hydro/cow
 	name = "Cow crate"
 	cost = 70
 	containertype = /obj/structure/largecrate/animal/cow
 	containername = "Cow crate"
-	access = access_hydroponics
 
 /datum/supply_pack/hydro/goat
 	name = "Goat crate"
 	cost = 60
 	containertype = /obj/structure/largecrate/animal/goat
 	containername = "Goat crate"
-	access = access_hydroponics
 
 /datum/supply_pack/hydro/chicken
 	name = "Chicken crate"
 	cost = 25
 	containertype = /obj/structure/largecrate/animal/chick
 	containername = "Chicken crate"
-	access = access_hydroponics
+
 
 /datum/supply_pack/hydro/seeds
 	name = "Seeds crate"
@@ -105,7 +81,7 @@
 	cost = 100
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Seeds crate"
-	access = access_hydroponics
+
 
 /datum/supply_pack/hydro/weedcontrol
 	name = "Weed control crate"
@@ -119,7 +95,7 @@
 	cost = 45
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Weed control crate"
-	access = access_hydroponics
+
 
 /datum/supply_pack/hydro/watertank
 	name = "Water tank crate"
@@ -139,7 +115,6 @@
 	cost = 120
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Beekeeping crate"
-	access = access_hydroponics
 
 /datum/supply_pack/hydro/tray
 	name = "Empty hydroponics trays"
@@ -147,4 +122,64 @@
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Hydroponics tray crate"
 	contains = list(/obj/machinery/portable_atmospherics/hydroponics{anchored = 0} = 3)
-	access = access_hydroponics
+
+
+/datum/supply_pack/hydro/fish
+	name = "Fish Set"
+	cost = 150
+	containertype = /obj/structure/closet/crate/hydroponics
+	containername = "Fish Set"
+	contains = list(/obj/item/fishfood = 10, /obj/machinery/fishtank/bowl = 3, /obj/item/weapon/storage/firstaid/aquatic_kit/full =5, /obj/item/fish_eggs/goldfish = 5,
+					/obj/item/fish_eggs/clownfish = 5, /obj/item/fish_eggs/shark = 5, /obj/item/fish_eggs/feederfish = 10,
+					/obj/item/fish_eggs/salmon = 5, /obj/item/fish_eggs/catfish = 5, /obj/item/fish_eggs/glofish = 5,
+					/obj/item/fish_eggs/electric_eel = 5, /obj/item/fish_eggs/shrimp = 10, /obj/item/toy/pet_rock = 5)
+
+
+/datum/supply_pack/hydro/veg_seeds
+	name = "Vegetable Seed Crate (2 packets each)"
+	cost = 150
+	containertype = /obj/structure/closet/crate/hydroponics
+	containername = "Vegetable Seed Crate"
+	contains = list(/obj/item/seeds/chiliseed = 2,
+	/obj/item/seeds/cabbageseed = 2,
+	/obj/item/seeds/eggplantseed = 2,
+	/obj/item/seeds/cornseed = 2,
+	/obj/item/seeds/potatoseed = 2,
+	/obj/item/seeds/soyaseed = 2,
+	/obj/item/seeds/wheatseed = 2,
+	/obj/item/seeds/riceseed = 2,
+	/obj/item/seeds/carrotseed = 2,
+	/obj/item/seeds/chantermycelium = 2,
+	/obj/item/seeds/towermycelium = 2,
+	/obj/item/seeds/plumpmycelium = 2,
+	/obj/item/seeds/whitebeetseed = 2,
+	/obj/item/seeds/sugarcaneseed = 2,
+	/obj/item/seeds/pumpkinseed = 2,
+	/obj/item/seeds/onionseed = 2,
+	/obj/item/seeds/cocoapodseed = 2)
+
+/datum/supply_pack/hydro/fruit_seeds
+	name = "Fruit Seed Crate (2 packets each)"
+	cost = 50
+	containertype = /obj/structure/closet/crate/hydroponics
+	containername = "Fruit Seed Crate"
+	contains = list(/obj/item/seeds/grapeseed = 2,
+	/obj/item/seeds/berryseed = 2,
+	/obj/item/seeds/bananaseed = 2,
+	/obj/item/seeds/tomatoseed = 2,
+	/obj/item/seeds/appleseed = 2,
+	/obj/item/seeds/limeseed = 2,
+	/obj/item/seeds/lemonseed = 2,
+	/obj/item/seeds/orangeseed = 2,
+	/obj/item/seeds/cherryseed = 2)
+
+
+/datum/supply_pack/hydro/tobacco_seeds
+	name = "Tobacco Seed Crate (5 packets)"
+	cost = 70
+	containertype = /obj/structure/closet/crate/hydroponics
+	containername = "Tobacco Seed Crate"
+	contains = list(/obj/item/seeds/tobaccoseed = 5)
+
+
+

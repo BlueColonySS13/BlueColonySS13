@@ -114,11 +114,26 @@
 		WF.color = paint_colour
 		return
 
+	var/obj/machinery/door/blast/gate/G = A
+	if(istype(G))
+		G.color = paint_colour
+		return
+
+	var/obj/machinery/door/window/DW = A
+	if(istype(DW))
+		DW.color = paint_colour
+		return
+
 	var/obj/structure/window/WD = A
 	if(istype(WD))
 		WD.color = paint_colour
 		WD.material_color = paint_colour
 		WD.update_icon()
+		return
+
+	var/obj/structure/fence/FE = A
+	if(istype(FE))
+		FE.color = paint_colour
 		return
 
 	var/obj/machinery/door/airlock/D = A

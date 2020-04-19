@@ -350,7 +350,8 @@
 /obj/structure/sculpting_block/sculpted/large
 	icon = 'icons/obj/statuelarge.dmi'
 	icon_state = "pillar"
-
+	plane = ABOVE_PLANE
+	layer = ABOVE_MOB_LAYER
 
 /obj/structure/sculpting_block/sculpted/large/pillar
 	icon_state = "pillar"

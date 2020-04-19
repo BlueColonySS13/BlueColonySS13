@@ -12,7 +12,9 @@
 	sanitize_lot()
 
 	S["name"] 				<<		name
+	S["desc"] 				<<		desc
 	S["price"] 				<< 		price
+	S["rent"] 				<< 		rent
 	S["landlord"] 				<<		landlord
 	S["tenants"] 				<<		tenants
 	S["applied_tenants"] 		<<		applied_tenants
@@ -36,7 +38,9 @@
 	S.cd = "/"
 
 	S["name"] 				>>		name
+	S["desc"] 				>>		desc
 	S["price"] 				>> 		price
+	S["rent"] 				>> 		rent
 	S["landlord"] 				>>		landlord
 	S["tenants"] 				>>		tenants
 	S["applied_tenants"] 		>>		applied_tenants
@@ -98,10 +102,10 @@
 
 
 	if(!save_map(top_left, bottom_right, id, path, TRUE, FALSE))
-		message_admins("SAVE: [name] Could not save map data. Call developers!", 1)
+		to_chat(world, "<B>SAVE: [name] Could not save map data. Call developers!</B>")
 		return FALSE
 
-	message_admins("Successfully saved lot ID: '[id]'", 1)
+	to_chat(world, "<B>SAVE: Successfully saved lot ID: '[id]'</B>")
 
 	return TRUE
 
@@ -141,12 +145,11 @@
 			allow_saving = TRUE
 
 		for(var/obj/O in lot_area)
-			CHECK_TICK
 			O.on_persistence_load()
-
-		for(var/turf/T in lot_area)
 			CHECK_TICK
+		for(var/turf/simulated/wall/T in lot_area)
 			T.on_persistence_load()
+			CHECK_TICK
 	return 1
 
 
