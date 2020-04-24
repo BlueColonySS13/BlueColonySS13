@@ -42,31 +42,31 @@
 
 /obj/item/clothing/accessory/permit/gun
 	name = "tier 0 weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a firearm."
+	desc = "A card indicating that the owner is allowed to carry a flash."
 	tier = 0
 	price_tag = 200
 
 /obj/item/clothing/accessory/permit/gun/tier_one
 	name = "tier one weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a flash."
+	desc = "A card indicating that the owner is allowed to carry a flash and a pepperspray."
 	tier = 1
 	price_tag = 400
 
 /obj/item/clothing/accessory/permit/gun/tier_two
 	name = "tier two weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a flash and a pepperspray."
+	desc = "A card indicating that the owner is allowed to carry a flash, pepperspray, (.45)ballistic pistols for self-defense, small knives and energy weapons that only have a stun setting."
 	tier = 2
 	price_tag = 700
 
 /obj/item/clothing/accessory/permit/gun/tier_three
 	name = "tier three weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a ballistic pistols for self-defense and energy stun weaponry/energy weapons that only have a stun setting."
+	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, (.45)ballistic pistols, small knives, energy weapons that only have a stun setting and energy pistols. "
 	tier = 3
 	price_tag = 1000
 
 /obj/item/clothing/accessory/permit/gun/tier_four
 	name = "tier four weapon permit"
-	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, ballistic pistols, and both stun and lethal energy guns."
+	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, (.45) and (.9mm)ballistic pistols, small and large knives, energy weapons that only have a stun setting, energy pistols and civilian grade shotguns."
 	tier = 4
 	price_tag = 1500
 
