@@ -28,7 +28,7 @@
 		var/obj/item/clothing/uniform = H.w_uniform
 		if(uniform)
 			var/obj/item/clothing/accessory/medal/gold/captain/medal = new()
-			var/obj/item/clothing/accessory/tie/sash/sash = new()
+			var/obj/item/clothing/accessory/tie/sash/red/sash = new()
 			if(uniform.can_attach_accessory(medal))
 				uniform.attach_accessory(null, medal)
 			else

@@ -112,7 +112,8 @@
 	"snacks green", "snacks orange", "snacks teal", "coffee", "cigarettes", "medicine", "black cola", "soda red", "art", \
 	"clothes", "generic", "luxvend", "laptop", "toiletries", "minerals", "soda fox", "snix", "uniforms", \
 	"weeb", "gold black", "shoes", "power game", "generic buy", "hot food", "fitness", "shirts", "shoes 2", "coats", \
-	"dress", "undersuits", "suits", "jeans", "boots", "dye", "cigars", "pills", "whiskey", "manhatten")
+	"dress", "undersuits", "suits", "jeans", "boots", "dye", "cigars", "pills", "whiskey", "manhatten", "produce", \
+	"jewels", "paperwork", "decor", "cannabis", "smoke packet", "security", "burger", "coke", "fish")
 
 	if(emagged)
 		static_icons_list += "syndi"
@@ -214,6 +215,28 @@
 			static_icon = "whiskey"
 		if("manhatten")
 			static_icon = "manhatten"
+		if("produce")
+			static_icon = "produce"
+		if("jewels")
+			static_icon = "jewels"
+		if("paperwork")
+			static_icon = "paperwork"
+		if("upholstry")
+			static_icon = "upholstry"
+		if("decor")
+			static_icon = "decor"
+		if("cannabis")
+			static_icon = "cannabis"
+		if("smoke packet")
+			static_icon = "smoke_packet"
+		if("security")
+			static_icon = "security"
+		if("burger")
+			static_icon = "burger"
+		if("coke")
+			static_icon = "coke"
+		if("fish")
+			static_icon = "fish"
 
 	visible_message("<span class='info'>[src] morphs into a new appearance!</span>")
 	playsound(user, 'sound/machines/click.ogg', 20, 1)
@@ -304,7 +327,7 @@
 			dat += "<i>There appears to be an issue with the payment account of this vendor. Please contact the owner.</i>"
 
 
-		dat += "<a href='?src=\ref[src];maint_mode=1'>Enter Maintenance Mode</a>"
+		dat += "<br><br><a href='?src=\ref[src];maint_mode=1'>Enter Maintenance Mode</a>"
 	else
 		dat += "Welcome to Maintenance mode. You can add any item by entering it into the machine. Additionally, you can remove any \
 		item or change the staff's pin code. Remember to Exit Maintenance Mode when you are done, to lock and secure your machine.<br>"
@@ -507,7 +530,11 @@
 	return
 
 /obj/machinery/electronic_display_case/proc/try_staff_pin(mob/user)
-	var/attempt_pin = input("Enter staff pin code", "Vendor transaction") as num
+	var/attempt_pin = input("Enter staff pin code (max: 9999)", "Vendor transaction") as num
+
+	if(attempt_pin > 9999)
+		to_chat(user, "<span class='warning'>ERROR: Pins do not exceed 9999.</span>")
+		return
 
 	if((attempt_pin != staff_pin))
 		to_chat(user, "<span class='warning'>ERROR: Incorrect pin number.</span>")
@@ -547,7 +574,14 @@
 		update_icon()
 
 	if(href_list["maint_mode"])
-		atmpt_maint_mode = TRUE
+		var/mob/user = usr
+		var/obj/item/weapon/card/id/I = user.GetIdCard()
+
+		// owners don't need to swipe their ID every single time if they are wearing said ID
+		if(I && (I.unique_ID == owner_uid))
+			maint_mode = TRUE
+		else
+			atmpt_maint_mode = TRUE
 
 	if(href_list["exit_maint_mode"])
 		maint_mode = FALSE
@@ -563,8 +597,11 @@
 		if(!maint_mode)
 			return
 
-		var/new_pin = input("Enter new staff pin code", "Vendor transaction") as num
-		if(!new_pin)
+		var/new_pin = input("Enter new staff pin code (max 9999)", "Vendor transaction") as num
+		if(!new_pin || (0 > new_pin))
+			return
+		if(new_pin > 9999)
+			to_chat(usr, "<span class='warning'>ERROR: Pins do not exceed 9999.</span>")
 			return
 
 		staff_pin = new_pin
@@ -634,10 +671,7 @@
 		if(!maint_mode)
 			return
 
-		if(!purchase)
-			purchase = 1
-		else
-			purchase = 0
+		purchase = !purchase
 
 		to_chat(usr, "<b>The machine now [purchase ? "accepts" : "does not accept"] purchases.</b>")
 

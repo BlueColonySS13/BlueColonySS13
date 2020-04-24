@@ -7,6 +7,8 @@
 	center_of_mass = list("x"=16, "y"=14)
 	drop_sound = 'sound/items/drop/flesh.ogg'
 
+	var/cutlet_type = /obj/item/weapon/reagent_containers/food/snacks/rawcutlet
+
 /obj/item/weapon/reagent_containers/food/snacks/meat/New()
 	..()
 	reagents.add_reagent("protein", 9)
@@ -14,10 +16,10 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/weapon/material/knife))
-		new /obj/item/weapon/reagent_containers/food/snacks/rawcutlet(src)
-		new /obj/item/weapon/reagent_containers/food/snacks/rawcutlet(src)
-		new /obj/item/weapon/reagent_containers/food/snacks/rawcutlet(src)
-		user << "You cut the meat into thin strips."
+		new cutlet_type(src)
+		new cutlet_type(src)
+		new cutlet_type(src)
+		to_chat(user, "You cut the meat into thin strips.")
 		qdel(src)
 	else
 		..()
@@ -35,7 +37,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/meat/lamb
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/fish
-	name = "Fish Meat"
+	name = "fish meat"
 	icon_state = "fishfillet"
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/fish/salmon
@@ -43,11 +45,12 @@
 /obj/item/weapon/reagent_containers/food/snacks/meat/fish/bass
 /obj/item/weapon/reagent_containers/food/snacks/meat/fish/perch
 /obj/item/weapon/reagent_containers/food/snacks/meat/fish/pike
+/obj/item/weapon/reagent_containers/food/snacks/meat/fish/koi
 /obj/item/weapon/reagent_containers/food/snacks/meat/fish/carp	// sigh
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/monkey
 	//same as plain meat
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/corgi
-	name = "Corgi meat"
+	name = "corgi meat"
 	desc = "Tastes like... well, you know."
