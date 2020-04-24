@@ -9,7 +9,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 #define PHONTAB 2
 #define CONTTAB 3
 #define MESSTAB 4
-#define NEWSTAB 5
+// #define NEWSTAB 5
 #define NOTETAB 6
 #define WTHRTAB 7
 #define MANITAB 8
@@ -55,7 +55,6 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 							list("module" = "Phone", "icon" = "phone64", "number" = PHONTAB),
 							list("module" = "Contacts", "icon" = "person64", "number" = CONTTAB),
 							list("module" = "Messaging", "icon" = "comment64", "number" = MESSTAB),
-							list("module" = "News", "icon" = "note64", "number" = NEWSTAB), // Need a different icon,
 							list("module" = "Note", "icon" = "note64", "number" = NOTETAB),
 							list("module" = "Weather", "icon" = "sun64", "number" = WTHRTAB),
 							list("module" = "Crew Manifest", "icon" = "note64", "number" = MANITAB), // Need a different icon,
