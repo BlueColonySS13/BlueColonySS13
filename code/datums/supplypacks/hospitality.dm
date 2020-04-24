@@ -62,7 +62,7 @@
 			/obj/item/pizzabox/vegetable
 			)
 	name = "Surprise pack of five pizzas"
-	cost = 45
+	cost = 50
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "Pizza crate"
 
@@ -75,7 +75,7 @@
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit = 3,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose = 3
 		)
-	cost = 1000
+	cost = 900
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Cascington Alcoholic Imports"
 
@@ -87,7 +87,7 @@
 		/obj/item/weapon/storage/box/tobacco_box = 3,
 		/obj/item/clothing/mask/smokable/pipe = 6
 		)
-	cost = 400
+	cost = 300
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Cascington Smoking Imports"
 
@@ -99,7 +99,7 @@
 		/obj/item/weapon/storage/box/caviar = 3,
 		/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 2
 		)
-	cost = 1300
+	cost = 500
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Cascington Confectionaries"
 
@@ -116,7 +116,7 @@
 		/obj/item/weapon/reagent_containers/food/snacks/nachos = 2,
 		/obj/item/weapon/reagent_containers/food/snacks/baguette = 2
 		)
-	cost = 250
+	cost = 150
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Sol Confectionaries"
 
@@ -134,7 +134,7 @@
 		/obj/item/weapon/reagent_containers/food/condiment/small/saltshaker = 1,
 		/obj/item/weapon/reagent_containers/food/condiment/small/sugar = 1
 		)
-	cost = 150
+	cost = 50
 	containertype = /obj/structure/closet/crate
 	containername = "Baking Supplies"
 
@@ -262,7 +262,7 @@
 		/obj/item/weapon/flame/lighter/zippo/clown,
 		/obj/item/weapon/flame/lighter/zippo/fox
 		)
-	cost = 300
+	cost = 100
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Zippo Collection"
 
@@ -277,7 +277,7 @@
 		/obj/item/weapon/storage/fancy/cigarettes/jerichos = 5,
 		/obj/item/weapon/storage/fancy/cigarettes/menthols = 5,
 		)
-	cost = 300
+	cost = 250
 	containertype = /obj/structure/closet/crate
 	containername = "Standard Cigarettes (Bulk)"
 
@@ -297,6 +297,6 @@
 	contains = list(/obj/item/weapon/storage/fancy/cigar = 5,
 				/obj/item/weapon/storage/fancy/cigarettes/carcinomas = 5,
 				/obj/item/weapon/storage/fancy/cigarettes/professionals = 5)
-	cost = 400
+	cost = 300
 	containertype = /obj/structure/closet/crate
 	containername = "Deluxe Cigarettes set"

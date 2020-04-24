@@ -5,7 +5,7 @@
 
 /datum/supply_pack/supply
 	group = "Supplies"
-
+	containertype = /obj/structure/closet/crate
 
 /datum/supply_pack/supply/toner
 	name = "Toner cartridges"

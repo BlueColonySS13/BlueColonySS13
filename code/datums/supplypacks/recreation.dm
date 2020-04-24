@@ -32,7 +32,7 @@
 			)
 	containertype = /obj/structure/closet
 	containername = "Lasertag Closet"
-	cost = 10
+	cost = 40
 
 /datum/supply_pack/recreation/artscrafts
 	name = "Arts and Crafts supplies"
@@ -59,7 +59,7 @@
 
 /datum/supply_pack/recreation/painters
 	name = "Station Painting Supplies"
-	cost = 10
+	cost = 30
 	containername = "station painting supplies crate"
 	containertype = /obj/structure/closet/crate
 	contains = list(
