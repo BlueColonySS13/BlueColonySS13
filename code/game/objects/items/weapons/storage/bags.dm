@@ -356,6 +356,9 @@
 	w_class = ITEMSIZE_SMALL
 	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks,/obj/item/weapon/reagent_containers/food/condiment)
 
+/obj/item/weapon/storage/bag/food/easteregg
+	name = "easter egg bag"
+	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/easter)
 
 	// -----------------------------
 	//           Xenobio Bag

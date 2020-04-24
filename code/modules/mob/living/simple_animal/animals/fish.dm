@@ -4,7 +4,10 @@
 	desc = "Its a fishy.  No touchy fishy."
 	icon = 'icons/mob/fish.dmi'
 	icon_state = "trout-dead"
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+
+	icon_gib = "generic_gib"
+
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish
 	intelligence_level = SA_ANIMAL
 
 	// By defautl they can be in any water turf.  Subtypes might restrict to deep/shallow etc
@@ -43,33 +46,39 @@
 	icon_state = "bass-swim"
 	icon_living = "bass-swim"
 	icon_dead = "bass-dead"
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish/bass
 
 /mob/living/simple_animal/fish/trout
 	name = "trout"
 	icon_state = "trout-swim"
 	icon_living = "trout-swim"
 	icon_dead = "trout-dead"
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish/trout
 
 /mob/living/simple_animal/fish/salmon
 	name = "salmon"
 	icon_state = "salmon-swim"
 	icon_living = "salmon-swim"
 	icon_dead = "salmon-dead"
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish/salmon
 
 /mob/living/simple_animal/fish/perch
 	name = "perch"
 	icon_state = "perch-swim"
 	icon_living = "perch-swim"
 	icon_dead = "perch-dead"
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish/perch
 
 /mob/living/simple_animal/fish/pike
 	name = "pike"
 	icon_state = "pike-swim"
 	icon_living = "pike-swim"
 	icon_dead = "pike-dead"
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish/pike
 
 /mob/living/simple_animal/fish/koi
 	name = "koi"
 	icon_state = "koi-swim"
 	icon_living = "koi-swim"
 	icon_dead = "koi-dead"
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish/koi

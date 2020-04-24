@@ -34,6 +34,7 @@
 	recipes += new/datum/stack_recipe("[display_name] stud earrings", /obj/item/clothing/ears/earring/stud, 20, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] bracelet", /obj/item/clothing/accessory/bracelet/material, 15, on_floor = 1, supplied_material = "[name]")
 
+
 /material/steel/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe_list("office chairs",list( \
@@ -171,6 +172,7 @@
 	recipes += new/datum/stack_recipe("freezer", /obj/structure/closet/secure_closet/freezer, 5, time = 20, on_floor = 1)
 	recipes += new/datum/stack_recipe("umbrella", /obj/item/weapon/melee/umbrella, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("balloon", /obj/item/toy/balloon, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] friendship bracelet", /obj/item/clothing/accessory/bracelet/friendship, 2, on_floor = 1)
 
 
 
@@ -204,6 +206,7 @@
 	recipes += new/datum/stack_recipe("windoor", /obj/item/frame/windoor, 15, time = 25, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("keypad windoor frame", /obj/item/frame/keypad_windoor, 15, time = 25, one_per_turf = 1, on_floor = 1)
 
+	recipes += new/datum/stack_recipe("glass bottle", /obj/item/weapon/reagent_containers/glass/bottle, 1, time = 25, one_per_turf = 1, on_floor = 1)
 
 	recipes += new/datum/stack_recipe_list("Eyeglasses",list( \
 		recipes += new/datum/stack_recipe("regular glasses", /obj/item/clothing/glasses/regular, 5, time = 5, one_per_turf = 1, on_floor = 1),
@@ -248,7 +251,7 @@
 	recipes += new/datum/stack_recipe("large crate", /obj/structure/largecrate, 3, one_per_turf = 1, on_floor = 1)
 
 	recipes += new/datum/stack_recipe_list("Tools",list( \
-		new/datum/stack_recipe("rolling pin", 		/obj/item/weapon/material/kitchen/rollingpin, 	2, time = 5),\
+		new/datum/stack_recipe("rolling pin", 		/obj/item/weapon/material/kitchen/rollingpin, 	2, time = 5, supplied_material = "[name]"),\
 		new/datum/stack_recipe("gavel hammer", 		/obj/item/weapon/gavelhammer, 							2, time = 5),\
 		new/datum/stack_recipe("gavel block", 		/obj/item/weapon/gavelblock, 							2, time = 3),\
 		))
@@ -284,14 +287,24 @@
 /material/cardboard/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("box", /obj/item/weapon/storage/box)
+	recipes += new/datum/stack_recipe("large box", /obj/item/weapon/storage/box/large, 3)
+
 	recipes += new/datum/stack_recipe("donut box", /obj/item/weapon/storage/box/donut/empty)
 	recipes += new/datum/stack_recipe("egg box", /obj/item/weapon/storage/fancy/egg_box)
 	recipes += new/datum/stack_recipe("light tubes box", /obj/item/weapon/storage/box/lights/tubes)
 	recipes += new/datum/stack_recipe("light bulbs box", /obj/item/weapon/storage/box/lights/bulbs)
 	recipes += new/datum/stack_recipe("mouse traps box", /obj/item/weapon/storage/box/mousetraps)
+
+	recipes += new/datum/stack_recipe("meat box", /obj/item/weapon/storage/box/meat_box)
+	recipes += new/datum/stack_recipe("produce box", /obj/item/weapon/storage/box/produce_box)
+
 	recipes += new/datum/stack_recipe("cardborg suit", /obj/item/clothing/suit/cardborg, 3)
 	recipes += new/datum/stack_recipe("cardborg helmet", /obj/item/clothing/head/cardborg)
 	recipes += new/datum/stack_recipe("pizza box", /obj/item/pizzabox)
+	recipes += new/datum/stack_recipe("candle box", /obj/item/weapon/storage/box/candle_box/empty)
+
+
+
 	recipes += new/datum/stack_recipe("19px by 19px canvas", /obj/item/weapon/canvas/nineteenXnineteen, 3, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("23px by 19px canvas", /obj/item/weapon/canvas/twentythreeXnineteen, 3, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("23px by 23px canvas", /obj/item/weapon/canvas/twentythreeXtwentythree, 3, one_per_turf = 1, on_floor = 1)
@@ -339,7 +352,7 @@
 /material/leather/generate_recipes()
 	recipes = list()
 	recipes += new/datum/stack_recipe("[display_name] coat", /obj/item/clothing/suit/storage/toggle/coat, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] blue jacket", /obj/item/clothing/suit/storage/toggle/leather_jacket, 10, time = 20, one_per_turf = 0, on_floor = 1)
+	recipes += new/datum/stack_recipe("[display_name] black jacket", /obj/item/clothing/suit/storage/toggle/leather_jacket, 10, time = 20, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("[display_name] sleeveless jacket", /obj/item/clothing/suit/storage/toggle/leather_jacket/sleeveless, 10, time = 20, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("[display_name] jacket vest", /obj/item/clothing/suit/storage/leather_jacket_alt, 10, time = 20, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("[display_name] brown jacket", /obj/item/clothing/suit/storage/toggle/brown_jacket, 10, time = 20, one_per_turf = 0, on_floor = 1)
@@ -403,6 +416,9 @@
 	recipes += new/datum/stack_recipe("[display_name] swept skirt", /obj/item/clothing/under/skirt/swept, 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] loose sleeve blazer", /obj/item/clothing/suit/storage/loosesleeveblazer, 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] flannel", /obj/item/clothing/suit/storage/flannel, 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] waistcoat", /obj/item/clothing/accessory/wcoat/gwaistcost , 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] scarf", /obj/item/clothing/accessory/scarf , 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] neckerchief", /obj/item/clothing/accessory/tie/neckerchief, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 
 /material/silk/generate_recipes()
 	recipes = list()
@@ -421,20 +437,23 @@
 	recipes += new/datum/stack_recipe("[display_name] flowergirl dress", /obj/item/clothing/under/dress/arisflowergirl/colorable, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] club dress", /obj/item/clothing/under/dress/club, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] evening gloves", /obj/item/clothing/gloves/evening, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] gloves", /obj/item/clothing/gloves, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] cravat", /obj/item/clothing/accessory/tie/cravat, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] tie", /obj/item/clothing/accessory/tie, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] lacy gown", /obj/item/clothing/under/dress/lacygown, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] beanie", /obj/item/clothing/head/beanie, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] loose beanie", /obj/item/clothing/head/beanie_loose, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] beret", /obj/item/clothing/head/beretg, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] beanie", /obj/item/clothing/head/beanie, 2, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] loose beanie", /obj/item/clothing/head/beanie_loose, 3, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] beret", /obj/item/clothing/head/beretg, 2, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] peacoat", /obj/item/clothing/suit/storage/toggle/peacoat, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] evening gloves", /obj/item/clothing/gloves/evening, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
-	recipes += new/datum/stack_recipe("[display_name] gloves", /obj/item/clothing/gloves, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] gloves", /obj/item/clothing/gloves, 3, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] shorts", /obj/item/clothing/under/shorts/white, 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] short shorts", /obj/item/clothing/under/shorts/white/female, 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] swept skirt", /obj/item/clothing/under/skirt/swept, 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] loose sleeve blazer", /obj/item/clothing/suit/storage/loosesleeveblazer, 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] sash", /obj/item/clothing/accessory/tie/sash, 4, time = 15, one_per_turf = 1, on_floor = 0, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] waistcoat", /obj/item/clothing/accessory/wcoat/gwaistcost, 4, time = 15, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] scarf", /obj/item/clothing/accessory/scarf, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] neckerchief", /obj/item/clothing/accessory/tie/neckerchief, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 
 /material/denim/generate_recipes()
 	recipes = list()
@@ -447,6 +466,8 @@
 	recipes += new/datum/stack_recipe("[display_name] mustang ripped jeans", /obj/item/clothing/under/pants/jeans/musthang/ripped, 12, time = 10, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] jean shorts", /obj/item/clothing/under/shorts/jeanshorts, 8, time = 5, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] jean short shorts", /obj/item/clothing/under/shorts/jeanshorts/female, 6, time = 5, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] waistcoat", /obj/item/clothing/accessory/wcoat/gwaistcost , 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+
 
 
 
