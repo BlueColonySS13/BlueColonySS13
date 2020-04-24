@@ -228,7 +228,7 @@ var/global/list/plant_seed_sprites = list()
 	seed_type = "cannabis"
 
 /obj/item/seeds/cannabisdeusseed
-	seed_type = "cannabis"
+	seed_type = "cannabis deus"
 
 /obj/item/seeds/coca
 	seed_type = "coca"
@@ -275,6 +275,15 @@ var/global/list/plant_seed_sprites = list()
 /obj/item/seeds/tobaccoseed
 	seed_type = "tobacco"
 
+/obj/item/seeds/finetobaccoseed
+	seed_type = "finetobacco"
+
+/obj/item/seeds/puretobaccoseed
+	seed_type = "puretobacco"
+
+/obj/item/seeds/badtobaccoseed
+	seed_type = "badtobacco"
+
 /obj/item/seeds/kudzuseed
 	seed_type = "kudzu"
 
@@ -304,3 +313,12 @@ var/global/list/plant_seed_sprites = list()
 
 /obj/item/seeds/chacruna
 	seed_type = "chacruna"
+
+/obj/item/seeds/cotton
+	seed_type = "cotton"
+
+/obj/item/seeds/algae
+	seed_type = "algae"
+
+/obj/item/seeds/bamboo
+	seed_type = "bamboo"
