@@ -1095,10 +1095,7 @@
 
 				applicant.account_balance = applicant.agreed_deposit
 
-				var/list/tenant_count = LOT.get_tenants()
-
-				if(tenant_count.len >= LOT.max_tenants)
-					LOT.tenants_wanted = FALSE
+				LOT.tenants_wanted = FALSE
 
 				LOT.add_note(full_name, "Accepted [LOT.name]'s tenancy application for [applicant.name]",usr)
 

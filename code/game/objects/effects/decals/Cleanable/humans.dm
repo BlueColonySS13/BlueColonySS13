@@ -22,6 +22,11 @@ var/global/list/image/splatter_cache=list()
 	var/amount = 5
 	var/drytime
 
+	unique_save_vars = list("synthblood", "amount", "invisibility", "fluorescent")
+
+/obj/effect/decal/cleanable/blood/on_persistence_load()
+	update_icon()
+
 /obj/effect/decal/cleanable/blood/reveal_blood()
 	if(!fluorescent)
 		fluorescent = 1

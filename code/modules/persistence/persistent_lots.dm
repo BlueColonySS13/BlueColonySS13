@@ -149,6 +149,7 @@
 			CHECK_TICK
 		for(var/turf/simulated/wall/T in lot_area)
 			T.on_persistence_load()
+			T.update_material()
 			CHECK_TICK
 	return 1
 

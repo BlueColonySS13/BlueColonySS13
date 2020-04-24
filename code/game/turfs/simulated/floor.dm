@@ -72,7 +72,7 @@
 
 	if(islist(decals))
 		decals.Cut()
-		decals = null
+		decals = list()
 
 	name = base_name
 	desc = base_desc
