@@ -391,7 +391,7 @@
 	// debit money from the purchaser's account
 	customer_account.money -= currently_vending.price
 
-	customer_account.add_transaction_log("[dept_name_by_id(vendor_department)] (via [name])", "Purchase of [currently_vending.item_name]", currently_vending.price, name)
+	customer_account.add_transaction_log("[dept_name_by_id(vendor_department)] (via [name])", "Purchase of [currently_vending.item_name]", -currently_vending.price, name)
 
 	// Give the vendor the money. We use the account owner name, which means
 	// that purchases made with stolen/borrowed card will look like the card

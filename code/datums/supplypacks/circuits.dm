@@ -70,29 +70,23 @@
 	/obj/item/weapon/circuitboard/botany_editor,
 	/obj/item/weapon/circuitboard/seed_extractor,
 	/obj/item/weapon/circuitboard/honey_extractor)
-	name = "Kitchen Circuit Set"
-	cost = 400
+	name = "Botany Circuit Set"
+	cost = 700
 	containertype = /obj/structure/closet/crate
-	containername = "Kitchen Circuit Set"
+	containername = "Botany Circuit Set"
 
 /datum/supply_pack/circuits/tailoring
-	contains = list(/obj/item/weapon/circuitboard/dye_generator)
+	contains = list(/obj/item/weapon/circuitboard/dye_generator,
+	/obj/item/weapon/circuitboard/dye_generator/commercial)
 	name = "Tailoring Circuit Set"
-	cost = 20
+	cost = 100
 	containertype = /obj/structure/closet/crate
 	containername = "Tailoring Circuit Set"
-
-/datum/supply_pack/circuits/display_case
-	contains = list(/obj/item/weapon/circuitboard/display_case)
-	name = "Display Case Circuit"
-	cost = 1200
-	containertype = /obj/structure/closet/crate
-	containername = "Display Case Circuit"
 
 /datum/supply_pack/circuits/popcorn_machine
 	contains = list(/obj/item/weapon/circuitboard/popcorn_machine)
 	name = "Popcorn Vendor Machine"
-	cost = 200
+	cost = 100
 	containertype = /obj/structure/closet/crate
 	containername = "Popcorn Vendor Machine"
 
