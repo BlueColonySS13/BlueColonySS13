@@ -253,7 +253,8 @@
 	desc = "Used for building keypad window doors."
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "left"
-	refund_amt = 4
+	refund_amt = 15
+	refund_type = /obj/item/stack/material/glass
 	build_machine_type = /obj/machinery/door/window/keypad
 	is_wall_frame = FALSE
 	is_floor_frame = TRUE
@@ -263,7 +264,8 @@
 	desc = "Used for building window doors."
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "left"
-	refund_amt = 4
+	refund_amt = 15
+	refund_type = /obj/item/stack/material/glass
 	build_machine_type = /obj/machinery/door/window
 	is_wall_frame = FALSE
 	is_floor_frame = TRUE
