@@ -443,3 +443,9 @@ Class Procs:
 	M.deconstruct(src)
 	qdel(src)
 	return 1
+
+/datum/proc/apply_visual(mob/M)
+	return
+
+/datum/proc/remove_visual(mob/M)
+	return
