@@ -11,6 +11,7 @@
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	flags = 0
 	volume = 60
+	matter = list("glass" = 50)
 
 /obj/item/weapon/reagent_containers/glass/bottle/can_empty()
 	return TRUE

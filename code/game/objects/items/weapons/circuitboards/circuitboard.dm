@@ -17,6 +17,7 @@
 	throwforce = 5.0
 	throw_speed = 3
 	throw_range = 15
+	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
 	var/build_path = null
 	var/board_type = new /datum/frame/frame_types/computer
 	var/list/req_components = null
