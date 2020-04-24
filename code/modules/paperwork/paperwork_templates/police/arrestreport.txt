@@ -1,0 +1,79 @@
+[small]Police Report (Rev. 56/59, 2564-02-21)[/small]
+[hr][center]Geminus City Police Department
+Police Arrest Report[/center]
+[hr]
+[small][i]To be filled out by the Officer or Detective on duty responding to the incident. This report must be signed and submitted to the Warden, Chief of Police and to the District Prosecutor's Office within 15 minutes of processing being complete.[/i][/small]
+[hr]
+[h3]Arrestee(s) Information[/h3]
+
+[small][table][row][cell][b]Name[/b][cell][b]Occupation[/b][cell][b]Charge(s)[/b][cell][b]Contested Charges[/b]
+[row][cell][field][cell][field][cell][field][cell][field][row][cell][field][cell][field][cell][field][cell][field][row][cell][field][cell][field][cell][field][cell][field]
+[/table][/i]
+[b]Relevant Location(s):[/b] [field]
+[b]Time of Arrest:[/b] [field][/small]
+[hr]
+[h2]Booking Checklist[/h3] [small](REQUIRED to mark with an "X")[/small]
+
+[small][table][row][cell][b]Warrant Presented[/b] [small](Leave blank if 
+arresting officer is direct witness)[/small][cell][[field]]
+[row][cell][b]Checked For Wounds And Provided 
+Required Medical Treatment[/b][cell][[field]]
+[row][cell][b]Advised of Rights[/b][cell][[field]]
+[row][cell][b]Arrestee Searched[/b][cell][[field]]
+[row][cell][b]Location Searched[/b] [small](If applicable)[/small][cell][[field]]
+[row][cell][b]Transcript of Plea[/b][cell][[field]]
+[/table]
+[hr]
+[h3]Risk Assesstment Checklist[/h3] [small](Mark with an X ONLY if applicable)[/small]
+
+[small][table][row][cell][b]Combative                      [/b][cell][[field]]
+[row][cell][b]Escape Risk[/b][cell][[field]]
+[row][cell][b]Suicide Risk[/b][cell][[field]][/small][/table]
+
+
+[b]Booking Officer: [/b][field]
+
+[hr][h3]Personnel Involved in Incident[/h3]
+
+[small][b]Responding Officer:[/b] [field]
+[b]Assisting Officer(s):[/b]
+[list][*] [field]
+[*] [field][/list]
+[b]Other Personnel[/b]
+[small][i]Relation: V-Victim, S-Suspect, W-Witness, M-Missing, A-Arrested, RP-Reporting Person, D-Deceased[/i][/small]
+
+[table][row][cell][b]Name[/b][cell][b]Occupation[/b][/b][cell][b]Relation[/b]
+[row][cell][b][field][/b][cell][field][cell][field]
+[row][cell][b][field][/b][cell][field][cell][field]
+[row][cell][b][field][/b][cell][field][cell][field]
+[row][cell][b][field][/b][cell][field][cell][field]
+[/table]
+
+[hr]
+[h3][b]Description of Items/Property:[/b][/h3]
+
+[i](D-Damaged, E-Evidence, L-Lost, R-Recovered, S-Stolen)[/i]
+[list]
+[*] [field]
+[*] [field]
+[*] [field]
+[*] [field][/list]
+[hr]
+[h3]Narrative:[/h3]
+[small](Describe the events that occured before, during, and after the arrest)
+
+
+
+[field]
+[hr][/small][/small]
+
+Responding Officer's Name (Printed) :[field]
+
+[small][i]I, [field], do affirm that the information above is true and correct to the best of my knowledge and transcribed to the best of my ability. By signing below, I hereby acknowledge that I may be held guilty of Obstruction of Justice under Pollux Criminal Code i223, or Gross Negligence under Pollux Criminal Code i220.[/i]
+
+[b]Officer Signature:[/b][field]
+[b]Date[/b] [i][small](YYYY-MM-DD)[/small][/i]:   [field]
+
+
+ATTACH ALL RELEVANT DOCUMENTS TO THIS ARREST REPORT[/small]
+[hr]

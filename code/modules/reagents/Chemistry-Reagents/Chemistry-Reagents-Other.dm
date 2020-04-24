@@ -115,8 +115,12 @@
 	color_weight = 20
 
 /datum/reagent/paint/touch_turf(var/turf/T)
-	if(istype(T) && !istype(T, /turf/space))
-		T.color = color
+	if(istype(T, /turf/simulated/wall))
+		var/turf/simulated/wall/wall = T
+		wall.paint_color = color
+	else
+		if(istype(T) && !istype(T, /turf/space))
+			T.color = color
 
 /datum/reagent/paint/touch_obj(var/obj/O)
 	if(istype(O))
@@ -206,7 +210,7 @@
 	description = "Gold is a dense, soft, shiny metal and the most malleable and ductile metal known."
 	taste_description = "metal"
 	reagent_state = SOLID
-	color = "#F7C430"
+	color = COLOR_GOLD
 	price_tag = 3.2
 
 /datum/reagent/silver
@@ -215,8 +219,8 @@
 	description = "A soft, white, lustrous transition metal, it has the highest electrical conductivity of any element and the highest thermal conductivity of any metal."
 	taste_description = "metal"
 	reagent_state = SOLID
-	color = "#D0D0D0"
-	price_tag = 1.2
+	color = COLOR_SILVER
+	price_tag = 2.2
 
 /datum/reagent/uranium
 	name ="Uranium"
@@ -224,7 +228,7 @@
 	description = "A silvery-white metallic chemical element in the actinide series, weakly radioactive."
 	taste_description = "metal"
 	reagent_state = SOLID
-	color = "#B8B8C0"
+	color = COLOR_URANIUM
 	price_tag = 3.2
 
 /datum/reagent/platinum
@@ -233,8 +237,8 @@
 	description = "Platinum is a dense, malleable, ductile, highly unreactive, precious, gray-white transition metal.  It is very resistant to corrosion."
 	taste_description = "metal"
 	reagent_state = SOLID
-	color = "#777777"
-	price_tag = 2.9
+	color = COLOR_PLATINUM
+	price_tag = 3.9
 
 /datum/reagent/uranium/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	affect_ingest(M, alien, removed)
@@ -565,7 +569,7 @@
 	taste_description = "feces and urine"
 	reagent_state = LIQUID
 	color = "#757547"
-	
+
 /datum/reagent/nutriment/biomass
 	name = "Biomass"
 	id = "biomass"

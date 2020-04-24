@@ -71,6 +71,18 @@ SUBSYSTEM_DEF(elections)
 		if(28)
 			return TRUE
 
+
+
+/datum/controller/subsystem/elections/proc/can_register()
+	if(snap_election && !is_election_day( get_game_day() ) )
+		return TRUE
+
+	if(SSelections.is_registration_days(get_game_day() ))
+		return TRUE
+
+	return FALSE
+
+
 /datum/controller/subsystem/elections/proc/get_next_election_month()
 	var/info
 
@@ -157,6 +169,11 @@ SUBSYSTEM_DEF(elections)
 		names += C.name
 
 	return names
+
+/datum/controller/subsystem/elections/proc/uid_is_candidate(uid)
+	for(var/datum/president_candidate/C in political_candidates)
+		if(uid == C.unique_id)
+			return C
 
 /datum/controller/subsystem/elections/proc/getformernames()
 	var/list/names = list()
@@ -311,7 +328,6 @@ SUBSYSTEM_DEF(elections)
 	message.stored_data = eml_cnt
 	message.title = "Congratulations on Presidency: [current_president.name]"
 	message.source = "noreply@nanotrasen.gov.nt"
-	message.timestamp = stationtime2text()
 
 	prez_email.send_mail(prez_email.login, message)
 
@@ -415,5 +431,4 @@ SUBSYSTEM_DEF(elections)
 
 	return 1
 */
-
 

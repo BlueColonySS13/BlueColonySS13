@@ -33,6 +33,8 @@
 	var/list/noblend_objects = list(/obj/machinery/door/window, /obj/structure/grille/smallfence) //Objects to avoid blending with (such as children of listed blend objects.
 
 
+	unique_save_vars = list("paint_color", "stripe_color", "damage", "can_open")
+
 // Walls always hide the stuff below them.
 /turf/simulated/wall/levelupdate()
 	for(var/obj/O in src)
@@ -144,7 +146,8 @@
 			to_chat(user, "<span class='warning'>It looks moderately damaged.</span>")
 		else
 			to_chat(user, "<span class='danger'>It looks heavily damaged.</span>")
-
+	if(paint_color)
+		to_chat(user, "<span class='notice'>It has a coat of paint applied.</span>")
 	if(locate(/obj/effect/overlay/wallrot) in src)
 		to_chat(user, "<span class='warning'>There is fungus growing on [src].</span>")
 
@@ -240,6 +243,9 @@
 		else
 			return
 
+/turf/simulated/wall/get_color()
+	return paint_color
+
 // Wall-rot effect, a nasty fungus that destroys walls.
 /turf/simulated/wall/proc/rot()
 	if(locate(/obj/effect/overlay/wallrot) in src)
@@ -286,7 +292,7 @@
 	if(!total_radiation)
 		return
 
-	radiation_repository.radiate(src, total_radiation)
+	SSradiation.radiate(src, total_radiation)
 	return total_radiation
 
 /turf/simulated/wall/proc/burn(temperature)
@@ -305,3 +311,11 @@
 
 /turf/simulated/wall/is_wall()
 	return TRUE
+
+/turf/simulated/wall/MouseDrop_T(obj/O as obj, mob/user as mob)
+	if(istype(O, /obj/machinery/modular_sign))
+		if(!O.anchored)
+			O.forceMove(get_turf(src))
+			return
+
+	..()

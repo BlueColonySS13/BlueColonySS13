@@ -160,7 +160,7 @@
 	data["shuttle_auth"] = (authorization & SUP_SEND_SHUTTLE) // Whether this ui is permitted to control the supply shuttle
 	data["order_auth"] = (authorization & SUP_ACCEPT_ORDERS)   // Whether this ui is permitted to accept/deny requested orders
 	data["shuttle"] = shuttle_status
-	data["supply_points"] = department_accounts["Cargo"].money
+	data["supply_points"] = dept_balance(DEPT_FACTORY)
 	data["categories"] = all_supply_groups
 	data["active_category"] = active_category
 	data["supply_packs"] = pack_list
@@ -229,14 +229,35 @@
 				return
 
 			var/timeout = world.time + 600
-			var/reason = sanitize(input(user, "Reason:","Why do you require this item?","") as null|text)
+
+			var/obj/item/weapon/card/id/I = usr.GetIdCard()
+
+			if(!I || !I.unique_ID || !I.registered_name)
+				visible_message("<span class='warning'>Error. Please ensure your ID is linked correctly to your citizen details.</span>")
+				return
+
+			var/datum/money_account/M = get_account(I.associated_account_number)
+
+			if(!M)
+				visible_message("<span class='warning'>Error. Please check the bank account details linked to your ID.</span>")
+				return
+
+			if(M.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
+				var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
+				M = attempt_account_access(I.associated_account_number, attempt_pin, 2)
+
+				if(!M)
+					visible_message("<span class='warning'>Unable to access account: incorrect credentials.</span>")
+					return
+
+			var/reason = sanitize(input(user, "Please note: If this order is approved your bank details WILL be charged. If cancelled, you will recieve a refund. Why do you require this item? Leave blank to cancel.","Reason","") as null|message)
 			if(world.time > timeout)
 				to_chat(user, "<span class='warning'>Error. Request timed out.</span>")
 				return
 			if(!reason)
 				return
 
-			supply_controller.create_order(S, user, reason)
+			var/datum/supply_order/new_order = supply_controller.create_order(S, user, reason, I.associated_account_number)
 
 			var/idname = "*None Provided*"
 			var/idrank = "*None Provided*"
@@ -256,6 +277,8 @@
 			reqform.info += "RANK: [idrank]<br>"
 			reqform.info += "REASON: [reason]<br>"
 			reqform.info += "SUPPLY CRATE TYPE: [S.name]<br>"
+			reqform.info += "BANK ID: [S.name]<br>"
+			reqform.info += "COST: [cash2text( new_order.cost, FALSE, TRUE, TRUE )]<br>"
 			reqform.info += "ACCESS RESTRICTION: [get_access_desc(S.access)]<br>"
 			reqform.info += "CONTENTS:<br>"
 			reqform.info +=  S.get_html_manifest()

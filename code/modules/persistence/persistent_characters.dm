@@ -60,6 +60,8 @@
 	mind.prefs.lip_color = lip_color
 	mind.prefs.calories = calories
 	mind.prefs.weight = calories_to_weight(calories)
+	mind.prefs.nutrition = nutrition
+	mind.prefs.hydration = hydration
 
 	if(police_record)
 		mind.prefs.crime_record = police_record.fields["crim_record"]
@@ -86,6 +88,7 @@
 	// this proc determines if someone has escaped from prison or not.
 	var/datum/data/record/police_record = get_sec_record(H)
 	if(!police_record) return 0
+	if(H.is_dead())	return 0 // killing yourself won't get you out of jail :)
 
 	var/new_status = "None"
 	var/crim_statuses = list("*Arrest*","*Search*", "Incarcerated")

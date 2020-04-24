@@ -14,6 +14,8 @@
 	filedesc = "Business Management Utility"
 	extended_desc = "This program allows you to register a new business or manage an existing one."
 	requires_ntnet = 1
+	available_on_ntnet = 0
+
 	size = 8
 	nanomodule_path = /datum/nano_module/program/business_manager/
 

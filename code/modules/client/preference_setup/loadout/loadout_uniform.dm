@@ -76,9 +76,18 @@
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
+/datum/gear/uniform/pencil
+	display_name = "pencil skirt"
+	path = /obj/item/clothing/under/skirt/pencil
+
+/datum/gear/uniform/pencil/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+
 /datum/gear/uniform/pants
 	display_name = "pants selection"
-	path = /obj/item/clothing/under/pants/white
+	path = /obj/item/clothing/under/pants
 
 /datum/gear/uniform/pants/New()
 	..()
@@ -278,7 +287,7 @@
 	path = /obj/item/clothing/under/dress/dress_fire
 
 /datum/gear/uniform/uniform_captain
-	display_name = "uniform, colony director's dress"
+	display_name = "uniform, mayor's dress"
 	path = /obj/item/clothing/under/dress/dress_cap
 	allowed_roles = list("Mayor")
 
@@ -369,7 +378,7 @@
 	path = /obj/item/clothing/under/dress/sailordress
 
 /datum/gear/uniform/dresses/eveninggown
-	display_name = "red evening gown"
+	display_name = "evening gown"
 	path = /obj/item/clothing/under/dress/redeveninggown
 
 /datum/gear/uniform/dresses/eveninggown/New()
@@ -658,3 +667,8 @@
 /datum/gear/uniform/punk
 	display_name = "punk outfit"
 	path = /obj/item/clothing/under/punk
+
+
+/datum/gear/uniform/aristocrat
+	display_name = "aristocrat formal wear"
+	path = /obj/item/clothing/under/aristocrat

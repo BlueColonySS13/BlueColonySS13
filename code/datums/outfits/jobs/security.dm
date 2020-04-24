@@ -8,14 +8,14 @@
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel_one = /obj/item/weapon/storage/backpack/satchel/sec
 	backpack_contents = list(/obj/item/weapon/handcuffs = 1,
-	/obj/item/clothing/accessory/permit/gun = 1,
+	/obj/item/clothing/accessory/permit/gun/tier_four = 1,
 	/obj/item/device/holowarrant = 1)
 
 	messenger_bag = /obj/item/weapon/storage/backpack/messenger/sec
 
 /decl/hierarchy/outfit/job/security/post_equip(mob/living/carbon/human/H)
 	..()
-	for(var/obj/item/clothing/accessory/permit/gun/permit in H.back.contents)
+	for(var/obj/item/clothing/accessory/permit/gun/tier_four/permit in H.back.contents)
 		permit.set_name(H.real_name)
 
 /decl/hierarchy/outfit/job/security/hos

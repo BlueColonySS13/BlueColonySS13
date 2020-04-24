@@ -41,6 +41,31 @@
 /obj/structure/bed/get_material()
 	return material
 
+/obj/structure/bed/get_persistent_metadata()
+	if(!material)
+		return FALSE
+
+	var/list/table_data = list()
+	table_data["material"] = material.name
+	if(padding_material)
+		table_data["padding_material"] = padding_material.name
+
+	return table_data
+
+/obj/structure/bed/load_persistent_metadata(metadata)
+	var/list/table_data = metadata
+	if(!islist(table_data))
+		return
+	if(get_material_by_name(table_data["material"]))
+		material = get_material_by_name(table_data["material"])
+	if(get_material_by_name(table_data["padding_material"]))
+		padding_material = get_material_by_name(table_data["padding_material"])
+
+	update_icon()
+
+	return TRUE
+
+
 // Reuse the cache/code from stools, todo maybe unify.
 /obj/structure/bed/update_icon()
 	// Prep icon.
@@ -170,7 +195,7 @@
 	padding_material = get_material_by_name(padding_type)
 	update_icon()
 
-/obj/structure/bed/proc/dismantle()
+/obj/structure/bed/dismantle()
 	material.place_sheet(get_turf(src))
 	if(padding_material)
 		padding_material.place_sheet(get_turf(src))

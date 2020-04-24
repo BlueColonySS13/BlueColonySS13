@@ -28,6 +28,28 @@
 
 	matter = list("glass" = 60)
 	drop_sound = 'sound/items/drop/glass.ogg'
+	var/smash_when_thrown = TRUE
+
+//when thrown on impact, glasses smash and spill their contents
+/obj/item/weapon/reagent_containers/food/drinks/glass2/throw_impact(atom/hit_atom, var/speed)
+	..()
+	if(smash_when_thrown)
+		var/mob/M = thrower
+		if(istype(M) && M.a_intent == I_HURT)
+			M.drop_from_inventory(src)
+			playsound(src, "shatter", 70, 1)
+
+			if(reagents && !isemptylist(reagents.reagent_list))
+				hit_atom.visible_message("<span class='notice'>The contents of \the [src] splash all over [hit_atom]!</span>")
+				reagents.splash(hit_atom, reagents.total_volume)
+
+			if(ishuman(hit_atom))
+				var/mob/living/carbon/human/H = hit_atom
+				H.Paralyse(3)
+
+			var/obj/item/weapon/material/shard/newshard = new(get_turf(hit_atom)) // Create a glass shard at the target's location!
+			src.transfer_fingerprints_to(newshard)
+			qdel(src)
 
 /obj/item/weapon/reagent_containers/food/drinks/glass2/examine(mob/M as mob)
 	..()

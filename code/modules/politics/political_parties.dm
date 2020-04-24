@@ -157,7 +157,7 @@ var/global/list/political_parties = list()
 	A.unique_ID = uid
 	A.message = msg
 	A.email = email
-	A.apply_date = current_date_string
+	A.apply_date = GLOB.current_date_string
 
 	party.applicants += A
 
@@ -250,6 +250,6 @@ var/global/list/political_parties = list()
 
 	dat += "</center>"
 
-	var/datum/browser/popup = new(usr, "Parties", "Parties", 640, 600, src)
+	var/datum/browser/popup = new(usr, "Parties", "Parties", 640, 600)
 	popup.set_content(jointext(dat,null))
 	popup.open()

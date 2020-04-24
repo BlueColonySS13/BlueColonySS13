@@ -71,7 +71,7 @@ var/list/GPS_list = list()
  // Compiles all the data not available directly from the GPS
  // Like the positions and directions to all other GPS units
 /obj/item/device/gps/proc/display_list()
-	var/list/dat = list()
+	var/list/list/dat = list()
 
 	var/turf/curr = get_turf(src)
 	var/area/my_area = get_area(src)
@@ -133,7 +133,7 @@ var/list/GPS_list = list()
 	<a href='?src=\ref[src];range=1'>\[Toggle Scan Range\]</a> \
 	[can_hide_signal ? "<a href='?src=\ref[src];hide=1'>\[Toggle Signal Visibility\]</a>":""]"
 
-	if(gps_data["gps_list"].len)
+	if(length(gps_data["gps_list"]))
 		dat += "Detected signals;"
 		for(var/gps in gps_data["gps_list"])
 			if(istype(gps_data["ref"], /obj/item/device/gps/internal/poi))
@@ -249,10 +249,10 @@ var/list/GPS_list = list()
 	<a href='?src=\ref[src];range=1'>\[Toggle Scan Range\]</a> \
 	[can_hide_signal ? "<a href='?src=\ref[src];hide=1'>\[Toggle Signal Visibility\]</a>":""]"
 
-	if(gps_data["gps_list"].len)
+	if(length(gps_data["gps_list"]))
 		dat += "Detected signals;"
 		for(var/gps in gps_data["gps_list"])
-			dat += "     [gps["gps_tag"]]: [gps["area_name"]] ([gps["x"]], [gps["y"]], [gps["z_name"]]) [gps["local"] ? "Dist: [gps["distance"]]m Dir: [gps["degrees"]]° ([gps["direction"]])" :""]"
+			dat += "     [gps["gps_tag"]]: [gps["area_name"]] ([gps["x"]], [gps["y"]], [gps["z_name"]]) [gps["local"] ? "Dist: [gps["distance"]]m Dir: [gps["degrees"]]ï¿½ ([gps["direction"]])" :""]"
 	else
 		dat += "No other signals detected."
 

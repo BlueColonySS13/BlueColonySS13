@@ -13,6 +13,8 @@
 	toolspeed = 3 //You can use it in surgery. It's stupid, but you can.
 	var/apply_tape = FALSE
 
+	unique_save_vars = list("icon_state")
+
 /obj/item/taperoll/initialize()
 	. = ..()
 	if(apply_tape)

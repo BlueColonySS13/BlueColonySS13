@@ -86,6 +86,7 @@
 		page_msg += "<b>Permit Selling:</b> A permit is needed to sell. Possession and creation is acceptable. <br>"
 		page_msg += "<b>Professional Use:</b> Only public and authorized industries can use this in a professional setting needed by work. No personal use. <br>"
 		page_msg += "<b>Illegal:</b> Illegal for all institutions and individuals to use. <br>"
+		page_msg += "<b>Not for Private Sale:</b> Illegal to be sold by private businesses. <br>"
 
 
 	else if(index == 5) // Contraband Page
@@ -101,6 +102,25 @@
 
 	else if(index == 6) // Voting Eligibility Page
 		page_msg = "Here, you can change the voting eligibility of groups in the colony. Beware, this can be quite controversial."
+
+	else if(index == 7) // Council Page
+		page_msg = "This is the city council management page. You can enable and disable certain features that affect the council."
+
+	else if(index == 8) // Council Page
+		page_msg = "You are now able to manage funds of the colony. You can transfer funds from a certain department to another.<hr><br><br>"
+
+		for(var/datum/department/D in GLOB.public_departments)
+			if(!D.has_bank || !D.bank_account)
+				continue
+			var/datum/money_account/M = D.bank_account
+			var/display_color = "green"
+			if(1500 > M.money)
+				display_color = "yellow"
+			if(100 > M.money)
+				display_color = "red"
+
+			page_msg += "<a href='?src=\ref[src];send_money=1;transfer_funds=\ref[M]'>Send Money</a> "
+			page_msg += "<a href='?src=\ref[src];manage_transfer=1;transfer_funds=\ref[M]'>Transfer Money From</a> <b>[D.name]</b> (<font color=\"[display_color]\">[M.money]</font>CR)<br>"
 
 
 	if(index == -1)
@@ -152,6 +172,7 @@
 	data["tobacco_tax"] = persistent_economy.tobacco_tax * 100
 	data["recreational_drug_tax"] = persistent_economy.recreational_drug_tax * 100
 	data["gambling_tax"] = persistent_economy.gambling_tax * 100
+	data["housing_tax"] = persistent_economy.housing_tax * 100
 
 	//legal statuses
 	data["voting_age"] = persistent_economy.voting_age
@@ -162,6 +183,11 @@
 	data["synth_vote"] = "[persistent_economy.synth_vote ? "Can Vote" : "Cannot Vote"]"
 	data["citizenship_vote"] = "[persistent_economy.citizenship_vote ? "Can Vote" : "Cannot Vote"]"
 	data["criminal_vote"] = "[persistent_economy.criminal_vote ? "Can Vote" : "Cannot Vote"]"
+
+	//manage council
+	data["city_services_enable"] = "[persistent_economy.city_council_control ? "Can Manage City Services" : "Cannot Manage City Services"]"
+
+	//manage funds
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -240,6 +266,24 @@
 		. = 1
 		index = 4
 
+	if(href_list["manage_council"])
+		. = 1
+		index = 7
+
+	if(href_list["manage_council_services"])
+		. = 1
+
+		var/available_powers = list("Allow City Council to use services", "Don't Allow City Council to use services")
+
+		var/power = input(usr, "What would you like to do?.", "City Council Services") as null|anything in available_powers
+		if(!power) return
+
+		switch(power)
+			if("Allow City Council to use services")
+				persistent_economy.city_council_control = TRUE
+			if("Don't Allow City Council to use services")
+				persistent_economy.city_council_control = FALSE
+
 	if(href_list["adjust_main_taxes"])
 		. = 1
 
@@ -287,6 +331,9 @@
 				persistent_economy.gambling_tax = new_tax
 				return
 
+			if("Housing Tax")
+				persistent_economy.housing_tax = new_tax
+				return
 
 	if(href_list["contraband_edit"])
 		. = 1
@@ -368,6 +415,88 @@
 
 		index = 5
 
+	if(href_list["manage_funds"])
+		. = 1
+
+		index = 8
+
+
+	if(href_list["send_money"])
+		. = 1
+		var/datum/money_account/department/A = locate(href_list["transfer_funds"]) in GLOB.public_department_accounts
+		if(!A)
+			return
+
+
+		var/account_id = sanitize(copytext(input(usr, "Please enter the bank id of the account you are sending money to.", "Business Management Utility", null)  as text,1,70))
+
+		if(!account_id)
+			return
+
+		var/datum/money_account/account_to_send = get_account(account_id)
+
+		if(!account_to_send)
+			alert("This account does not appear to exist.")
+			return
+
+		var/amount = input(usr, "How much would you like to transfer?.", "Transfer Amount")  as num
+
+		if(!amount || (0 > amount))
+			alert("Please enter a valid amount.")
+			return
+
+		if(amount > A.money)
+			alert("Not enough funds in [A.owner_name] to transfer to this account.")
+			return
+
+		A.charge(amount, account_to_send, "Presidential Portal Transfer from [A.owner_name] Department")
+
+		alert("[cash2text( amount, FALSE, TRUE, TRUE )] successfully sent to account id #[account_id] ([account_to_send.owner_name])")
+
+
+	if(href_list["manage_transfer"])
+		. = 1
+		var/datum/money_account/department/A = locate(href_list["transfer_funds"]) in GLOB.public_department_accounts
+
+		if(!A)
+			return
+
+		var/list/dept_acc_names = list()
+		var/datum/department/target_department
+
+		for(var/datum/department/D in GLOB.public_departments)
+			if(!D.has_bank || !D.bank_account)
+				continue
+
+			dept_acc_names += D.name
+
+		var/category = input(usr, "Select a department to transfer to.", "Departmental Transfer")  as null|anything in dept_acc_names + "Cancel"
+		if(!category || category == "Cancel")
+			return
+
+		var/datum/money_account/account_recieving
+		target_department = dept_by_name(category)
+
+		if(!target_department)
+			return
+
+		account_recieving = target_department.bank_account
+		if(!account_recieving)
+			return
+
+		var/amount = input(usr, "How much would you like to transfer?.", "Transfer Amount")  as num
+
+		if(!amount || (0 > amount))
+			error_msg = "Please enter a valid amount."
+			return
+
+		if(amount > A.money)
+			error_msg = "Not enough funds in [A.owner_name] to transfer to [category]."
+			return
+
+		A.charge(amount, account_recieving, "Presidential Portal Transfer from [A.owner_name]")
+
+		index = 8
 
 	if(href_list["resign_president"])
 		. = 1
@@ -385,6 +514,22 @@
 		. = 1
 
 		index = 6
+
+	if(href_list["voting_age"])
+		. = 1
+
+		var/age = input(usr, "Please select the minimum voting age. Min: 13. Max: 25.", "Voting Age") as num|null
+
+		if(!age)
+			error_msg = "You must enter an age."
+			return
+
+		if(!age_range(age))
+			error_msg = "This age is incorrect. You must enter a decimal between 13 and 25."
+			return
+
+		persistent_economy.voting_age = age
+
 
 	if(href_list["drinking_age"])
 		. = 1
@@ -429,26 +574,12 @@
 
 		persistent_economy.gambling_age = age
 
-	if(href_list["voting_age"])
-		. = 1
-
-		var/age = input(usr, "Please select the minimum voting age. Min: 13. Max: 25.", "Voting Age") as num|null
-		age = sanitize_integer(persistent_economy.voting_age, 0, 100, 25)
-		if(!age)
-			error_msg = "You must enter an age."
-			return
-
-		if(!age_range(age))
-			error_msg = "This age is incorrect. You must enter a decimal between 13 and 25."
-			return
-
-		persistent_economy.voting_age = age
 
 	if(href_list["sentencing_age"])
 		. = 1
 
 		var/age = input(usr, "Please select the minimum age for criminal sentencing. Min: 13. Max: 25.", "Criminal Sentencing Age") as num|null
-		age = sanitize_integer(persistent_economy.sentencing_age, 0, 100, 25)
+
 		if(!age)
 			error_msg = "You must enter an age."
 			return

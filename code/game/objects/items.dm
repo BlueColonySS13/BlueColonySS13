@@ -101,13 +101,6 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 		else
 			embed_chance = max(5, round(force/(w_class*3)))
 
-/obj/item/equipped()
-	..()
-	var/mob/living/M = loc
-	if(!istype(M))
-		return
-	M.update_held_icons()
-
 /obj/item/Destroy()
 	if(ismob(loc))
 		var/mob/m = loc
@@ -311,7 +304,6 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 
 // apparently called whenever an item is removed from a slot, container, or anything else.
 /obj/item/proc/dropped(mob/user as mob)
-	..()
 	if(zoom)
 		zoom() //binoculars, scope, etc
 	appearance_flags &= ~NO_CLIENT_COLOR
@@ -340,9 +332,17 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 /obj/item/proc/equipped(var/mob/user, var/slot)
 	hud_layerise()
 	user.position_hud_item(src,slot)
+	if(isliving(user))
+		var/mob/living/L = user
+		L.update_held_icons()
 	if(user.client)	user.client.screen |= src
 	if(user.pulling == src) user.stop_pulling()
 	return
+
+/obj/item/equipped(var/mob/user, var/slot)
+	. = ..()
+	mob_equipped_event.raise_event(user, src, slot)
+	item_equipped_event.raise_event(src, user, slot)
 
 //Defines which slots correspond to which slot flags
 var/list/global/slot_flags_enumeration = list(
@@ -666,6 +666,8 @@ modules/mob/mob_movement.dm if you move you will be zoomed out
 modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 */
 //Looking through a scope or binoculars should /not/ improve your periphereal vision. Still, increase viewsize a tiny bit so that sniping isn't as restricted to NSEW
+/obj/item/var/ignore_visor_zoom_restriction = FALSE
+
 /obj/item/proc/zoom(var/tileoffset = 14,var/viewsize = 9) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 
 	var/devicename
@@ -677,49 +679,57 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 	var/cannotzoom
 
-	if(usr.stat || !(istype(usr,/mob/living/carbon/human)))
-		usr << "You are unable to focus through the [devicename]"
+	if((usr.stat && !zoom) || !(istype(usr,/mob/living/carbon/human)))
+		to_chat(usr, "You are unable to focus through the [devicename]")
 		cannotzoom = 1
 	else if(!zoom && (global_hud.darkMask[1] in usr.client.screen))
-		usr << "Your visor gets in the way of looking through the [devicename]"
+		to_chat(usr, "Your visor gets in the way of looking through the [devicename]")
 		cannotzoom = 1
 	else if(!zoom && usr.get_active_hand() != src)
-		usr << "You are too distracted to look through the [devicename], perhaps if it was in your active hand this might work better"
+		to_chat(usr, "You are too distracted to look through the [devicename], perhaps if it was in your active hand this might work better")
 		cannotzoom = 1
 
+	//We checked above if they are a human and returned already if they weren't.
+	var/mob/living/carbon/human/H = usr
+
 	if(!zoom && !cannotzoom)
-		if(usr.hud_used.hud_shown)
-			usr.toggle_zoom_hud()	// If the user has already limited their HUD this avoids them having a HUD when they zoom in
-		usr.client.view = viewsize
+		if(H.hud_used.hud_shown)
+			H.toggle_zoom_hud()	// If the user has already limited their HUD this avoids them having a HUD when they zoom in
+		H.set_viewsize(viewsize)
 		zoom = 1
 
 		var/tilesize = 32
 		var/viewoffset = tilesize * tileoffset
 
-		switch(usr.dir)
+		switch(H.dir)
 			if (NORTH)
-				usr.client.pixel_x = 0
-				usr.client.pixel_y = viewoffset
+				H.client.pixel_x = 0
+				H.client.pixel_y = viewoffset
 			if (SOUTH)
-				usr.client.pixel_x = 0
-				usr.client.pixel_y = -viewoffset
+				H.client.pixel_x = 0
+				H.client.pixel_y = -viewoffset
 			if (EAST)
-				usr.client.pixel_x = viewoffset
-				usr.client.pixel_y = 0
+				H.client.pixel_x = viewoffset
+				H.client.pixel_y = 0
 			if (WEST)
-				usr.client.pixel_x = -viewoffset
-				usr.client.pixel_y = 0
+				H.client.pixel_x = -viewoffset
+				H.client.pixel_y = 0
 
-		usr.visible_message("[usr] peers through the [zoomdevicename ? "[zoomdevicename] of the [src.name]" : "[src.name]"].")
+		H.visible_message("[usr] peers through the [zoomdevicename ? "[zoomdevicename] of the [src.name]" : "[src.name]"].")
+		if(!ignore_visor_zoom_restriction)
+			H.looking_elsewhere = TRUE
+		H.handle_vision()
 
 	else
-		usr.client.view = world.view
-		if(!usr.hud_used.hud_shown)
-			usr.toggle_zoom_hud()
+		H.set_viewsize() // Reset to default
+		if(!H.hud_used.hud_shown)
+			H.toggle_zoom_hud()
 		zoom = 0
 
-		usr.client.pixel_x = 0
-		usr.client.pixel_y = 0
+		H.client.pixel_x = 0
+		H.client.pixel_y = 0
+		H.looking_elsewhere = FALSE
+		H.handle_vision()
 
 		if(!cannotzoom)
 			usr.visible_message("[zoomdevicename ? "[usr] looks up from the [src.name]" : "[usr] lowers the [src.name]"].")

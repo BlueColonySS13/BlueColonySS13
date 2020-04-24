@@ -23,6 +23,7 @@
 	name = OUTFIT_JOB_NAME("City Engineer")
 	head = /obj/item/clothing/head/hardhat
 	uniform = /obj/item/clothing/under/rank/engineer
+	suit = /obj/item/clothing/suit/storage/toggle/hivisjacket
 	id_type = /obj/item/weapon/card/id/engineering/atmos
 	pda_type = /obj/item/device/pda/engineering
 

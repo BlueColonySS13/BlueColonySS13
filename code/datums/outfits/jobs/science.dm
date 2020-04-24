@@ -12,14 +12,27 @@
 	name = OUTFIT_JOB_NAME("Research Director")
 	l_ear = /obj/item/device/radio/headset/heads/rd
 	uniform = /obj/item/clothing/under/rank/research_director
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat/rd
 	shoes = /obj/item/clothing/shoes/brown
 	l_hand = /obj/item/weapon/clipboard
 	id_type = /obj/item/weapon/card/id/science/head
 	pda_type = /obj/item/device/pda/heads/rd
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun = 1)
+
+/decl/hierarchy/outfit/job/science/rd/post_equip(mob/living/carbon/human/H)
+	..()
+	for(var/obj/item/clothing/accessory/permit/gun/permit in H.back.contents)
+		permit.set_name(H.real_name)
 
 /decl/hierarchy/outfit/job/science/scientist
 	name = OUTFIT_JOB_NAME("Scientist")
 	uniform = /obj/item/clothing/under/rank/scientist
+	id_type = /obj/item/weapon/card/id/science/scientist
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat/science
+
+/decl/hierarchy/outfit/job/science/xenoarchaeologist
+	name = OUTFIT_JOB_NAME("Xenoarchaeologist")
+	uniform = /obj/item/clothing/under/rank/xenoarchaeologist
 	id_type = /obj/item/weapon/card/id/science/scientist
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/science
 
@@ -44,3 +57,11 @@
 	name = OUTFIT_JOB_NAME("Science Intern")
 	id_type = /obj/item/weapon/card/id/science/intern
 	uniform = /obj/item/clothing/under/rank/orderly
+
+/decl/hierarchy/outfit/job/science/rguard
+	name = OUTFIT_JOB_NAME("Research Security")
+	id_type = /obj/item/weapon/card/id/science/rguard
+	uniform = /obj/item/clothing/under/pcrc
+	suit = /obj/item/clothing/suit/storage/vest/pcrc
+	shoes = /obj/item/clothing/shoes/boots/jackboots
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1)

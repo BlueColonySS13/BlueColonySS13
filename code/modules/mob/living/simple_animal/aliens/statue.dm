@@ -7,9 +7,9 @@
 	desc = "An incredibly lifelike marble carving. Its eyes seems to follow you..." // same as an ordinary statue with the added "eye following you" description
 	icon = 'icons/obj/statue.dmi'
 	tt_desc = "angelum weepicus"
-	icon_state = "human_male"
-	icon_living = "human_male"
-	icon_dead = "human_male"
+	icon_state = "angel"
+	icon_living = "angel"
+	icon_dead = "angel"
 	intelligence_level = SA_HUMANOID
 	stop_automated_movement = 1
 	var/annoyance = 30 //stop staring you creep
@@ -275,7 +275,7 @@
 
 // Cannot talk
 
-/mob/living/simple_animal/hostile/statue/say()
+/mob/living/simple_animal/hostile/statue/say(message, whispering)
 	return 0
 
 // Turn to dust when gibbed

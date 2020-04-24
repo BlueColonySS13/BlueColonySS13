@@ -6,7 +6,12 @@
 /decl/hierarchy/outfit/job/assistant/visitor
 	name = OUTFIT_JOB_NAME("Visitor")
 	id_pda_assignment = "Visitor"
-	uniform = /obj/item/clothing/under/assistantformal
+	uniform = /obj/item/clothing/under/suit_jacket/tan
+
+/decl/hierarchy/outfit/job/assistant/socialite
+	name = OUTFIT_JOB_NAME("Socialite")
+	id_pda_assignment = "Socialite"
+	uniform = /obj/item/clothing/under/aristocrat
 
 /decl/hierarchy/outfit/job/assistant/resident
 	name = OUTFIT_JOB_NAME("Resident")
@@ -22,11 +27,11 @@
 	uniform = /obj/item/clothing/under/rank/bartender
 	id_type = /obj/item/weapon/card/id/civilian/bartender
 	pda_type = /obj/item/device/pda/bar
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/bar = 1)
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three/bar = 1)
 
 /decl/hierarchy/outfit/job/service/bartender/post_equip(mob/living/carbon/human/H)
 	..()
-	for(var/obj/item/clothing/accessory/permit/gun/bar/permit in H.back.contents)
+	for(var/obj/item/clothing/accessory/permit/gun/tier_three/bar/permit in H.back.contents)
 		permit.set_name(H.real_name)
 
 /decl/hierarchy/outfit/job/service/bartender/barista
@@ -59,6 +64,7 @@
 
 /decl/hierarchy/outfit/job/service/janitor
 	name = OUTFIT_JOB_NAME("Janitor")
+	suit = /obj/item/clothing/suit/storage/toggle/hivisjacket
 	uniform = /obj/item/clothing/under/rank/janitor
 	id_type = /obj/item/weapon/card/id/civilian/janitor
 	pda_type = /obj/item/device/pda/janitor
@@ -109,11 +115,11 @@
 	l_hand = /obj/item/weapon/clipboard
 	id_type = /obj/item/weapon/card/id/heads/judge
 	pda_type = /obj/item/device/pda/lawyer
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun = 1)
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1)
 
 /decl/hierarchy/outfit/job/heads/judge/post_equip(mob/living/carbon/human/H)
 	..()
-	for(var/obj/item/clothing/accessory/permit/gun/permit in H.back.contents)
+	for(var/obj/item/clothing/accessory/permit/gun/tier_three/permit in H.back.contents)
 		permit.set_name(H.real_name)
 
 /decl/hierarchy/outfit/job/civilian/defense/defense
@@ -160,3 +166,4 @@
 	id_pda_assignment = "Prisoner"
 	uniform = /obj/item/clothing/under/color/orange
 	shoes = /obj/item/clothing/shoes/orange
+	backpack_contents = list(/obj/item/weapon/storage/mre/menu13 = 2)

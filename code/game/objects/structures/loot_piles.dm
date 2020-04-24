@@ -194,7 +194,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/device/camera,
 		/obj/item/device/pda,
 		/obj/item/device/radio/headset,
-		/obj/item/device/paicard
+		/obj/item/device/paicard,
+		/obj/item/clothing/head/tinfoil
 	)
 
 	uncommon_loot = list(
@@ -205,13 +206,17 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/clothing/suit/storage/vest/press,
 		/obj/item/weapon/material/knife/tacknife,
 		/obj/item/weapon/material/butterfly/switchblade,
-		/obj/item/clothing/head/helmet/tinfoil
+		/obj/item/clothing/head/helmet/tinfoil,
+		/obj/item/clothing/suit/storage/redbiker
 	)
 
 	rare_loot = list(
 		/obj/item/clothing/suit/storage/vest/heavy/merc,
 		/obj/item/clothing/shoes/boots/combat,
-		/obj/item/weapon/gun/energy/poxball/street
+		/obj/item/weapon/gun/energy/poxball/street,
+		/obj/item/dnalockingchip,
+		/obj/item/slime_crystal
+
 	)
 
 // Contains mostly useless garbage.
@@ -289,7 +294,11 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/weapon/storage/box/syringes,
 		/obj/item/weapon/storage/box/survival,
 		/obj/item/weapon/storage/box/gloves,
-		/obj/item/weapon/storage/box/PDAs
+		/obj/item/weapon/storage/box/flare,
+		/obj/item/weapon/storage/box/glasses/meta,
+		/obj/item/weapon/storage/box/monkeycubes
+
+
 	)
 
 	uncommon_loot = list(
@@ -299,7 +308,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/weapon/storage/box/smokes,
 		/obj/item/weapon/storage/box/metalfoam,
 		/obj/item/weapon/storage/box/handcuffs,
-		/obj/item/weapon/storage/box/seccarts
+		/obj/item/weapon/storage/box/autoinjectors,
+		/obj/item/weapon/storage/box/candle_box/random
+
 	)
 
 	rare_loot = list(
@@ -307,7 +318,9 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/weapon/storage/box/empslite,
 		/obj/item/weapon/storage/box/flashshells,
 		/obj/item/weapon/storage/box/stunshells,
-		/obj/item/weapon/storage/box/teargas
+		/obj/item/weapon/storage/box/teargas,
+		/obj/item/weapon/storage/box/cdeathalarm_kit
+
 	)
 
 // One of the more useful maint piles, contains electrical components.

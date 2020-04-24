@@ -18,6 +18,9 @@
 	var/edible = 1 //so you can't eat a spraycan
 	price_tag = 1
 
+	unique_save_vars = list("uses", "shadeColour")
+
+
 /obj/item/weapon/pen/crayon/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	viewers(user) << "<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>"
@@ -127,6 +130,11 @@
 		if(instant || do_after(user, 50))
 			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
+
+			var/msg = "[user.client.key] ([user]) has drawn [drawtype] (with [src]) at [target.x],[target.y],[target.z]."
+			message_admins(msg)
+			log_game(msg)
+
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the crayon is drawn on.
 			if(uses)
 				uses--
@@ -247,6 +255,8 @@
 	edible = 0
 	validSurfaces = list(/turf/simulated/wall)
 
+	unique_save_vars = list("uses", "shadeColour","capped","drawtype")
+
 /obj/item/weapon/pen/crayon/spraycan/suicide_act(mob/user)
 	var/mob/living/carbon/human/H = user
 	if(capped)
@@ -312,7 +322,12 @@
 		if(instant || do_after(user, 50))
 			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
 			playsound(loc, 'sound/effects/spray.ogg', 5, 1, 5)
-			user << "You finish drawing."
+			to_chat(user, "You finish drawing.")
+
+			var/msg = "[user.client.key] ([user]) has drawn [drawtype] (with [src]) at [target.x],[target.y],[target.z]."
+			message_admins(msg)
+			log_game(msg)
+
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the crayon is drawn on.
 			if(uses)
 				uses--

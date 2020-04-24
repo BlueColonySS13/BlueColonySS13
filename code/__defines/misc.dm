@@ -4,6 +4,16 @@
 
 #define TRANSITIONEDGE 7 // Distance from edge to move to another z-level.
 
+// Radiation 'levels'. Used for the geiger counter, for visuals and sound. They are in different files so this goes here.
+#define RAD_LEVEL_LOW 0.5 // Around the level at which radiation starts to become harmful
+#define RAD_LEVEL_MODERATE 5
+#define RAD_LEVEL_HIGH 25
+#define RAD_LEVEL_VERY_HIGH 75
+
+// Calculation modes for effective radiation
+#define RAD_RESIST_CALC_DIV 0 // Each turf absorbs some fraction of the working radiation level
+#define RAD_RESIST_CALC_SUB 1 // Each turf absorbs a fixed amount of radiation
+
 // Invisibility constants.
 #define INVISIBILITY_LIGHTING             20
 #define INVISIBILITY_LEVEL_ONE            35
@@ -275,3 +285,27 @@ var/global/list/##LIST_NAME = list();\
 #ifndef HTTP_POST_DLL_LOCATION
 #define HTTP_POST_DLL_LOCATION (world.system_type == MS_WINDOWS ? WINDOWS_HTTP_POST_DLL_LOCATION : UNIX_HTTP_POST_DLL_LOCATION)
 #endif
+
+#define DMM_IGNORE_AREAS (1<<0)
+#define DMM_IGNORE_TURFS (1<<1)
+#define DMM_IGNORE_OBJS (1<<2)
+#define DMM_IGNORE_NPCS (1<<3)
+#define DMM_IGNORE_PLAYERS (1<<4)
+#define DMM_IGNORE_MOBS (1<<5)
+#define DMM_USE_JSON (1<<6)
+
+// Paperwork categories
+
+#define PAPERWORK_MISC "Miscellaneous"
+#define PAPERWORK_POLICE "Police"
+#define PAPERWORK_COUNCIL "Council"
+#define PAPERWORK_LEGAL "Legal"
+#define PAPERWORK_SCIENCE "Science"
+#define PAPERWORK_BUSINESS "Business"
+#define PAPERWORK_MEDICAL "Medical"
+#define PAPERWORK_GOVERNMENT "Government"
+
+//
+
+#define MAX_WARRANTS 50
+#define MAX_FINGERPRINTS 20

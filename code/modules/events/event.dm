@@ -1,7 +1,7 @@
 /datum/event_meta
 	var/name 		= ""
 	var/enabled 	= 1	// Whether or not the event is available for random selection at all
-	var/weight 		= 0 // The base weight of this event. A zero means it may never fire, but see get_weight()
+	var/weight 	= 0 // The base weight of this event. A zero means it may never fire, but see get_weight()
 	var/min_weight	= 0 // The minimum weight that this event will have. Only used if non-zero.
 	var/max_weight	= 0 // The maximum weight that this event will have. Only use if non-zero.
 	var/severity 	= 0 // The current severity of this event

@@ -26,6 +26,7 @@
 	if (!N)
 		return
 
+
 	// This makes sure that turfs are not changed to space when one side is part of a zone
 	if(N == /turf/space)
 		var/turf/below = GetBelow(src)
@@ -110,3 +111,10 @@
 
 	if(preserve_outdoors)
 		outdoors = old_outdoors
+
+/turf/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0, var/preserve_outdoors = FALSE)
+	var/old_density = density
+	var/old_opacity = opacity
+	. = ..()
+	if(.)
+		turf_changed_event.raise_event(src, old_density, density, old_opacity, opacity)

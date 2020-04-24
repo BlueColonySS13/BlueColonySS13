@@ -11,8 +11,18 @@
 	sharp = 1
 	edge = 0
 
+
+	get_tax()
+		return WEAPONS_TAX
+
+	is_contraband()
+		return CONTRABAND_KNIFELARGE
+
+
 /obj/item/weapon/arrow/proc/removed() //Helper for metal rods falling apart.
 	return
+
+
 
 /obj/item/weapon/spike
 	name = "alloy spike"
@@ -24,6 +34,13 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "metal-rod"
 	item_state = "bolt"
+
+	get_tax()
+		return WEAPONS_TAX
+
+	is_contraband()
+		return CONTRABAND_KNIFELARGE
+
 
 /obj/item/weapon/arrow/quill
 	name = "alien quill"
@@ -37,6 +54,13 @@
 	name = "metal rod"
 	desc = "Don't cry for me, Orithena."
 	icon_state = "metal-rod"
+
+	get_tax()
+		return WEAPONS_TAX
+
+	is_contraband()
+		return CONTRABAND_KNIFELARGE
+
 
 /obj/item/weapon/arrow/rod/removed(mob/user)
 	if(throwforce == 15) // The rod has been superheated - we don't want it to be useable when removed from the bow.
@@ -203,6 +227,13 @@
 	item_state = "crossbow-solid"
 
 	var/buildstate = 0
+
+	get_tax()
+		return WEAPONS_TAX
+
+	is_contraband()
+		return CONTRABAND_KNIFELARGE
+
 
 /obj/item/weapon/crossbowframe/update_icon()
 	icon_state = "crossbowframe[buildstate]"

@@ -2,7 +2,7 @@
 	var/hide_on_manifest = 1
 	title = "Civilian"
 	flag = ASSISTANT
-	department = "Civilian"
+	department = DEPT_PUBLIC
 	department_flag = CIVILIAN
 	faction = "City"
 	total_positions = -1
@@ -21,6 +21,8 @@
 					"Migrant",
 					"Socialite",
 					"Job Seeker",
+					"Business Owner",
+					"Investor",
 					"Traveller",
 					"Unemployed",
 					"Homeless",
@@ -37,7 +39,7 @@
 /datum/job/prisoner
 	title = "Prisoner"
 	flag = PRISONER
-	department = "Civilian"
+	department = DEPT_PUBLIC
 	department_flag = CIVILIAN
 	faction = "City"
 	total_positions = -1

@@ -10,6 +10,8 @@
 	var/mob/living/pulling = null
 	var/bloodiness
 
+	unique_save_vars = list("bloodiness")
+
 /obj/structure/bed/chair/wheelchair/update_icon()
 	return
 

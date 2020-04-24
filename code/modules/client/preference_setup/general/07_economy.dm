@@ -16,6 +16,8 @@
 
 
 /datum/category_item/player_setup_item/general/economy/sanitize_character()
+	if(!pref.money_balance)
+		pref.money_balance = 0
 
 	if(!pref.bank_pin)
 		pref.bank_pin = rand(1111,9999)
@@ -35,6 +37,9 @@
 	pref.money_balance		= sanitize_integer(pref.money_balance, 0, 999999, initial(pref.money_balance))
 	pref.bank_pin			= sanitize_integer(pref.bank_pin, 1111, 9999, initial(pref.bank_pin))
 
+	if(!pref.expenses)
+		pref.expenses = list()
+
 /datum/category_item/player_setup_item/general/economy/delete_character(var/savefile/S)
 	pref.money_balance		= 0
 	del_persistent_account(pref.bank_account)
@@ -44,7 +49,7 @@
 /datum/category_item/player_setup_item/general/economy/content(var/mob/user)
 	. = list()
 	. += "<h1>Income and Expenses:</h1><hr>"
-	. += "<b>Money:</b> [pref.money_balance] credits<br>"
+	. += "<b>Money:</b> [cash2text( pref.money_balance, FALSE, TRUE, TRUE )] credits<br>"
 
 	if(pref.bank_account)
 		. += "<b>Account ID:</b> [pref.bank_account]<br>"

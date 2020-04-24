@@ -20,6 +20,8 @@
 	blend_objects = list(/obj/structure/window/framed, /obj/machinery/door) // Objects which to blend with
 	noblend_objects = list(/obj/machinery/door/window, /obj/structure/window/framed)
 
+	unique_save_vars = list("stripe_color", "health")
+
 /obj/structure/wall_frame/New(var/new_loc)
 	..(new_loc)
 
@@ -29,8 +31,40 @@
 /obj/structure/wall_frame/initialize()
 	. = ..()
 
+
+/obj/structure/wall_frame/examine(mob/user)
+	. = ..()
+
+	if(health == maxhealth)
+		to_chat(user, "<span class='notice'>It seems to be in fine condition.</span>")
+	else
+		var/dam = health / maxhealth
+		if(dam <= 0.3)
+			to_chat(user, "<span class='notice'>It's got a few dents and scratches.</span>")
+		else if(dam <= 0.7)
+			to_chat(user, "<span class='warning'>A few pieces of panelling have fallen off.</span>")
+		else
+			to_chat(user, "<span class='danger'>It's nearly falling to pieces.</span>")
+	if(stripe_color)
+		to_chat(user, "<span class='notice'>It has a smooth coat of paint applied.</span>")
+
 /obj/structure/wall_frame/attackby(var/obj/item/weapon/W, var/mob/user)
 	src.add_fingerprint(user)
+
+	if(iswrench(W))
+		for(var/obj/structure/S in loc)
+			if(istype(S, /obj/structure/window))
+				to_chat(user, "<span class='notice'>There is still a window on the low wall!</span>")
+				return
+			else if(istype(S, /obj/structure/grille))
+				to_chat(user, "<span class='notice'>There is still a grille on the low wall!</span>")
+				return
+		playsound(src, W.usesound, 50, 1)
+		to_chat(user, "<span class='notice'>Now disassembling the low wall...</span>")
+		if(do_after(user, 40,src))
+			to_chat(user, "<span class='notice'>You dissasembled the low wall!</span>")
+			dismantle()
+
 
 	//grille placing begin
 	if(istype(W, /obj/item/stack/rods))
@@ -62,39 +96,21 @@
 		if(!ST.material.created_window)
 			return 0
 
-		var/dir_to_set = 1
-		if(loc == user.loc)
-			dir_to_set = user.dir
-		else
-			if( ( x == user.x ) || (y == user.y) ) //Only supposed to work for cardinal directions.
-				if( x == user.x )
-					if( y > user.y )
-						dir_to_set = 2
-					else
-						dir_to_set = 1
-				else if( y == user.y )
-					if( x > user.x )
-						dir_to_set = 8
-					else
-						dir_to_set = 4
-			else
-				to_chat(user, "<span class='notice'>You can't reach.</span>")
-				return //Only works for cardinal direcitons, diagonals aren't supposed to work like this.
 		for(var/obj/structure/window/WINDOW in loc)
-			if(WINDOW.dir == dir_to_set)
-				to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
-				return
+			to_chat(user, "<span class='notice'>There is already a window there.</span>")
+			return
+
 		to_chat(user, "<span class='notice'>You start placing the window.</span>")
 		if(do_after(user,20,src))
 			for(var/obj/structure/window/WINDOW in loc)
-				if(WINDOW.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
-					to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
-					return
+				to_chat(user, "<span class='notice'>There is already a window there.</span>")
+				return
 
 			var/wtype = ST.material.created_window
 			if (ST.use(1))
-				var/obj/structure/window/WD = new wtype(loc, dir_to_set, 1)
+				var/obj/structure/window/WD = new wtype(loc)
 				to_chat(user, "<span class='notice'>You place the [WD] on [src].</span>")
+				WD.anchored = TRUE
 				WD.update_icon()
 		return
 	//window placing end

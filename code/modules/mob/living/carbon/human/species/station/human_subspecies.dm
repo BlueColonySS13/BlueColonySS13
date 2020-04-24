@@ -36,7 +36,7 @@
 
 /datum/species/human/vatgrown
 	name = SPECIES_HUMAN_VATBORN
-	name_plural = "Vatborn"
+	name_plural = "Baseline Vatborn"
 	blurb = "With cloning on the forefront of human scientific advancement, cheap mass production \
 	of bodies is a very real and rather ethically grey industry. Vat-grown or Vatborn humans tend to be \
 	paler than baseline, with no appendix and fewer inherited genetic disabilities, but a more aggressive metabolism."
@@ -50,13 +50,36 @@
 		O_LIVER =    /obj/item/organ/internal/liver,
 		O_VOICE =    /obj/item/organ/internal/voicebox,
 		O_KIDNEYS =  /obj/item/organ/internal/kidneys,
-		O_BRAIN =    /obj/item/organ/internal/brain,
+		O_BRAIN = 	 /obj/item/organ/internal/brain,
 		O_SPLEEN =   /obj/item/organ/internal/spleen/minor,
 		O_EYES =     /obj/item/organ/internal/eyes,
 		O_STOMACH =	 /obj/item/organ/internal/stomach,
 		O_INTESTINE =/obj/item/organ/internal/intestine
 		)
 
+/datum/species/human/vatgrown/mpl
+	name = SPECIES_HUMAN_VATBORN_MPL
+	name_plural = "Mass-Produced Vatborn"
+	blurb = "Vat-grown or Vatborn humans tend to be paler than baseline, with no appendix and fewer inherited genetic \
+	disabilities, but a more aggressive metabolism. Mass-Produced Vatborn differ from other Vatborn in that they have \
+	a cortical stack implanted in the nape of their neck that serves to store the sum total of their experience and \
+	memories. Mass-Produced Vatborn tend to lack the full set of social skills that other Vatborn develop due to their existence \
+	as tools, rather than people. Their biological ages often differ from their actual age and it is common to see Mass-Produced Vatborn \
+	as young as 2 years old working in positions often relegated to humans with several years of experience."
+
+	has_organ = list(
+		O_HEART =    /obj/item/organ/internal/heart,
+		O_LUNGS =    /obj/item/organ/internal/lungs,
+		O_LIVER =    /obj/item/organ/internal/liver,
+		O_VOICE =    /obj/item/organ/internal/voicebox,
+		O_KIDNEYS =  /obj/item/organ/internal/kidneys,
+		O_FAKEBRAIN = /obj/item/organ/internal/fake_brain,
+		O_STACK =    /obj/item/organ/internal/brain/vatborn,
+		O_SPLEEN =   /obj/item/organ/internal/spleen/minor,
+		O_EYES =     /obj/item/organ/internal/eyes,
+		O_STOMACH =	 /obj/item/organ/internal/stomach,
+		O_INTESTINE =/obj/item/organ/internal/intestine
+		)
 /*
 // These guys are going to need full resprites of all the suits/etc so I'm going to
 // define them and commit the sprites, but leave the clothing for another day.
@@ -71,7 +94,7 @@
 	name = "Human Adolescent"
 	name_plural = "Humans Adolescents"
 	name = SPECIES_HUMAN_TEEN
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN
+	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_IS_WHITELISTED
 	blurb = "A young human which is currently too young to participate in civil powers such as voting or official positions but can legally work in many fields on a reduced wage."
 	metabolic_rate = 1.15 // You know, puberty. Hormones. Growing.
 	blood_volume = 480
@@ -101,7 +124,7 @@
 	name = "Human Child"
 	name_plural = "Human Children"
 	name = SPECIES_HUMAN_CHILD
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN
+	spawn_flags = SPECIES_IS_RESTRICTED | SPECIES_IS_WHITELISTED
 	metabolic_rate = 1.10
 	blurb = "A younger version of a human. Much weaker and smaller - cannot participate in paid job roles, but faster and more agile."
 	mob_size = MOB_SMALL

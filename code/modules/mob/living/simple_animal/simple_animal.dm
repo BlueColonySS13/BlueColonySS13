@@ -776,7 +776,7 @@
 	ai_log("SA_attackable([target_mob]): no",3)
 	return 0
 
-/mob/living/simple_animal/say(var/message,var/datum/language/language)
+/mob/living/simple_animal/say(var/message,var/datum/language/language, whispering)
 	var/verb = "says"
 	if(speak_emote.len)
 		verb = pick(speak_emote)
@@ -1101,7 +1101,7 @@
 /mob/living/simple_animal/proc/GetPath(var/turf/target,var/get_to = 1,var/max_distance = world.view*6)
 	ai_log("GetPath([target],[get_to],[max_distance])",2)
 	ForgetPath()
-	var/list/new_path = AStar(get_turf(loc), target, astar_adjacent_proc, /turf/proc/Distance, min_target_dist = get_to, max_node_depth = max_distance, id = myid, exclude = obstacles)
+	var/list/new_path = AStar(get_turf(loc), target, astar_adjacent_proc, /turf.proc/Distance, min_target_dist = get_to, max_node_depth = max_distance, id = myid, exclude = obstacles)
 
 	if(new_path && new_path.len)
 		walk_list = new_path
@@ -1114,7 +1114,7 @@
 	return walk_list.len
 
 //Walk along our A* path, target_thing allows us to stop early if we're nearby
-/mob/living/simple_animal/proc/WalkPath(var/atom/target_thing, var/target_dist = 1, var/proc/steps_callback = null, var/every_steps = 4)
+/mob/living/simple_animal/proc/WalkPath(var/atom/target_thing, var/target_dist = 1, var/steps_callback = null, var/every_steps = 4)
 	ai_log("WalkPath() (steps:[walk_list.len])",2)
 	if(!walk_list || !walk_list.len)
 		return

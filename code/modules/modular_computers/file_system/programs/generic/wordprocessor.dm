@@ -101,6 +101,44 @@
 		to_chat(usr, help)
 		return 1
 
+	if(href_list["PRG_templateprint"])
+
+		var/mob/user = usr
+		if(!istype(user))
+			return
+
+		var/obj/item/weapon/card/id/I = user.GetIdCard()
+
+		var/category = input(usr, "Select a template category.", "Form Template")  as null|anything in paperwork_categories
+		if(!category)
+			return
+
+		var/list/paperwork_pulled = get_paperwork_by_cat(category)
+		var/list/available_paperwork = list()
+
+		for(var/datum/paperwork_template/T in paperwork_pulled)
+			if(get_paperwork_access(T, I))
+				available_paperwork += T.name
+
+		if(isemptylist(available_paperwork))
+			to_chat(user, "No templates currently found under \"[category]\" - this may also be due to your access.")
+			return
+
+		var/selected_paperwork = input(usr, "Select a template to print.", "Print Paperwork")  as null|anything in available_paperwork
+
+		if(!selected_paperwork)
+			return
+
+		var/datum/paperwork_template/paper = get_paperwork_by_name(selected_paperwork)
+
+		if(!paper)
+			return
+
+		if(!computer.nano_printer.print_text(paper.get_content(), paper.title, paper.icon, paper.custom_icon_state))
+			computer.visible_message("Hardware error: Printer was unable to print the file. It may be out of paper.")
+
+		return 1
+
 	if(href_list["PRG_closebrowser"])
 		browsing = 0
 		return 1

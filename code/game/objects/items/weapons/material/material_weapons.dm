@@ -27,6 +27,21 @@
 	var/material/material
 	var/drops_debris = 1
 
+	unique_save_vars = list("dulled")
+
+/obj/item/weapon/material/get_persistent_metadata()
+	if(!material)
+		return
+
+	return material.name
+
+/obj/item/weapon/material/load_persistent_metadata(material_name)
+	if(!material_name)
+		return
+	set_material(material_name)
+	update_icon()
+	return TRUE
+
 /obj/item/weapon/material/New(var/newloc, var/material_key)
 	..(newloc)
 	if(!material_key)

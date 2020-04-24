@@ -155,7 +155,7 @@ proc/getsensorlevel(A)
 /proc/stars(n, pr)
 	if (pr == null)
 		pr = 25
-	if (pr <= 0)
+	if (pr < 0)
 		return null
 	else
 		if (pr >= 100)
@@ -181,8 +181,8 @@ proc/getsensorlevel(A)
 
 proc/slur(phrase)
 	phrase = html_decode(phrase)
-	var/leng=lentext(phrase)
-	var/counter=lentext(phrase)
+	var/leng=length(phrase)
+	var/counter=length(phrase)
 	var/newphrase=""
 	var/newletter=""
 	while(counter>=1)
@@ -615,6 +615,10 @@ var/list/global/organ_rel_size = list(
 
 //General HUD updates done regularly (health puppet things, etc)
 /mob/proc/handle_regular_hud_updates()
+	return
+
+//Handle eye things like the Byond SEE_TURFS, SEE_OBJS, etc.
+/mob/proc/handle_vision()
 	return
 
 //Icon is used to occlude things like huds from the faulty byond context menu.

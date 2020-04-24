@@ -3,11 +3,17 @@
 
 // The item price in credits. atom/movable so we can also assign a price to animals and other things.
 /atom/movable/var/price_tag = null
+/atom/movable/var/tagged_price = null
 /atom/movable/var/tax_type = null
 
 // The proc that is called when the price is being asked for. Use this to refer to another object if necessary.
 /atom/movable/proc/get_item_cost()
+	if(!isnull(tagged_price))
+		return round(tagged_price)
 	return round(price_tag)
+
+/atom/movable/proc/get_full_cost()	// with tax
+	return (get_item_cost() + post_tax_cost())
 
 // TAXES
 
@@ -46,6 +52,10 @@
 
 	return round(get_tax() * get_item_cost())
 
+/datum/court_fee/proc/post_tax_cost()
+	if(!get_tax())
+		return 0
+
 //***************//
 //---Beverages---//
 //***************//
@@ -77,6 +87,30 @@
 
 /datum/medical_bill/proc/get_tax()
 	return MEDICAL_TAX
+
+///////////////////
+//---Court---------//
+//***************//
+
+/datum/court_fee/var/price_tag = null
+
+/datum/court_fee/proc/get_item_cost()
+	return cost
+
+/datum/court_fee/proc/get_tax()
+	return
+
+///////////////////
+//---Lots--------//
+//***************//
+
+/datum/lot/var/price_tag = null
+
+/datum/lot/proc/get_item_cost()
+	return price
+
+/datum/lot/get_tax()
+	return HOUSING_TAX
 
 // Juices, soda and similar //
 
@@ -136,6 +170,9 @@
 
 
 /obj/item/weapon/reagent_containers/get_item_cost()
+	if(!isnull(tagged_price))
+		return round(tagged_price)
+
 	var/total_price
 
 	if(reagents)
@@ -152,9 +189,11 @@
 
 
 
-/obj/item/pizzabox
-	get_item_cost()
+/obj/item/pizzabox/get_item_cost()
+	if(pizza)
 		return get_item_cost(pizza)
+	else
+		return price_tag
 
 
 //***************//
@@ -175,11 +214,15 @@
 ////////////////////
 
 /obj/item/stack/get_item_cost()
-	var/total_price
+	if(!isnull(tagged_price))
+		return round(tagged_price)
 
-	if(reagents)
-		for(var/datum/reagent/R in reagents.reagent_list)
-			total_price += R.price_tag * R.volume
+	var/total_price
+	if(!isemptylist(associated_reagents))
+		var/divider = amount / associated_reagents.len
+		for(var/R in associated_reagents)
+			var/datum/reagent/rgnt = chemical_reagents_list[R]
+			total_price += (rgnt.price_tag * divider) * reagent_multiplier
 
 	return round(total_price)
 

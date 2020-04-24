@@ -155,8 +155,8 @@
 	new /obj/item/clothing/suit/holidaypriest(src)
 	new /obj/item/clothing/under/wedding/bride_white(src)
 	new /obj/item/weapon/storage/backpack/cultpack (src)
-	new /obj/item/weapon/storage/fancy/candle_box(src)
-	new /obj/item/weapon/storage/fancy/candle_box(src)
+	new /obj/item/weapon/storage/box/candle_box(src)
+	new /obj/item/weapon/storage/box/candle_box(src)
 	new /obj/item/weapon/deck/tarot(src)
 	return
 
@@ -570,7 +570,7 @@
 	new /obj/item/clothing/under/pants/mustangjeans(src)
 	new /obj/item/clothing/under/pants/blackjeans(src)
 	new /obj/item/clothing/under/pants/youngfolksjeans(src)
-	new /obj/item/clothing/under/pants/white(src)
+	new /obj/item/clothing/under/pants(src)
 	new /obj/item/clothing/under/pants/red(src)
 	new /obj/item/clothing/under/pants/black(src)
 	new /obj/item/clothing/under/pants/tan(src)
@@ -637,7 +637,7 @@
 
 /obj/structure/closet/wardrobe/suit/New()
 	..()
-	new /obj/item/clothing/under/assistantformal(src)
+	new /obj/item/clothing/under/aristocrat(src)
 	new /obj/item/clothing/under/suit_jacket/charcoal(src)
 	new /obj/item/clothing/under/suit_jacket/charcoal/skirt(src)
 	new /obj/item/clothing/under/suit_jacket/navy(src)
@@ -663,7 +663,7 @@
 	return
 
 /obj/structure/closet/wardrobe/captain
-	name = "colony director's wardrobe"
+	name = "mayor's wardrobe"
 	icon_state = "cabinet_closed"
 	icon_closed = "cabinet_closed"
 	icon_opened = "cabinet_open"

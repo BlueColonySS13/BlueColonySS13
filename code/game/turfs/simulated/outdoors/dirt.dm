@@ -28,8 +28,15 @@
 		//edge_blending_priority++
 
 	if(grass_chance && prob(grass_chance))
-		var/grass_type = pick(grass_types)
-		new grass_type(src)
+		var/has_grass = FALSE
+
+		for(var/obj/structure/flora/grass in src)
+			has_grass = TRUE
+			break
+
+		if(!has_grass)
+			var/grass_type = pick(grass_types)
+			new grass_type(src)
 	. = ..()
 
 /turf/simulated/floor/outdoors/dirt/indoors

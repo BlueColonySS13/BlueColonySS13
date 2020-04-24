@@ -35,6 +35,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	slot_flags = SLOT_EARS
 	attack_verb = list("burnt", "singed")
 	drop_sound = null
+	unique_save_vars = list("burnt","smoketime")
 
 /obj/item/weapon/flame/match/process()
 	if(isliving(loc))
@@ -229,7 +230,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(blocked)
 			to_chat(H, "<span class='warning'>\The [blocked] is in the way!</span>")
 			return 1
-		to_chat(H, "<span class='notice'>You take a drag on your [name].</span>")
+		user.visible_message("<span class='notice'>[user] takes a drag on their [name].</span>",\
+			"<span class='notice'>You take a drag on your [name].</span>")
 		playsound(H, 'sound/items/cigs_lighters/inhale.ogg', 50, 0, -1)
 		smoke(5)
 		return 1
@@ -279,7 +281,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 15
 	max_smoketime = 300
 	smoketime = 300
-	var/nicotine_amt = 20
+	var/nicotine_amt = 15
 	var/menthol_amt = 0
 	matchmes = "<span class='notice'>USER lights their NAME with their FLAME.</span>"
 	lightermes = "<span class='notice'>USER manages to light their NAME with FLAME.</span>"
@@ -299,6 +301,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/cigarette/New()
 	..()
+
 	if(nicotine_amt)
 		reagents.add_reagent("nicotine", nicotine_amt)
 	if(menthol_amt)
@@ -306,6 +309,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/cigarette/menthol
 	menthol_amt = 5
+	nicotine_amt = 10
 
 /obj/item/clothing/mask/smokable/cigarette/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
@@ -690,3 +694,31 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/weapon/flame/lighter/zippo/rainbow
 	name = "\improper rainbow Zippo lighter"
 	icon_state = "rainbowzippo"
+
+/obj/item/weapon/flame/lighter/zippo/heartbreaker
+	name = "\improper heartbreaker Zippo lighter"
+	icon_state = "heartzippo"
+
+/obj/item/weapon/flame/lighter/zippo/sol
+	name = "\improper Sol crest Zippo lighter"
+	icon_state = "solzippo"
+
+/obj/item/weapon/flame/lighter/zippo/corgi
+	name = "\improper corgi Zippo lighter"
+	desc = "Arf arf!"
+	icon_state = "ianzippo"
+
+/obj/item/weapon/flame/lighter/zippo/usa
+	name = "\improper USA Zippo lighter"
+	desc = "This patriotic lighter is fueled by FREEDOM!"
+	icon_state = "usazippo"
+
+/obj/item/weapon/flame/lighter/zippo/clown
+	name = "\improper clown Zippo lighter"
+	activation_sound = 'sound/items/bikehorn.ogg'
+	deactivation_sound = 'sound/items/bikehorn.ogg'
+	icon_state = "clownzippo"
+
+/obj/item/weapon/flame/lighter/zippo/fox
+	name = "\improper fox Zippo lighter"
+	icon_state = "foxzippo"

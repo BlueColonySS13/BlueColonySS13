@@ -1,0 +1,62 @@
+[logo]
+[large]Civil Representation Agreement[/large]
+Legal Representation Form
+
+[hr]
+
+[b][small]Date of Incident:[/small][/b]
+[small][u]Date:[/u] [field]     
+[u]Time:[/u] [field][/small]
+
+[b][small]Summary of Incident requiring representation:[/small][/b]
+[small](Please keep this factual and include important details only.)[/small]
+[table][row][cell][small][field][/small][/table]
+
+[b][small]Name of Individual/Institution to raise against:[/small][/b]
+[small](Required.)[/small]
+[table][row][cell][small][field][/small][/table]
+
+[b][small]Individuals involved with incident:[/small][/b]
+[small](Please list all individuals related to this incident. If any.)[/small]
+
+[i][small]Witnesses:[/small][/i]
+[small][*][field]
+[*][field]
+[*][field][/small]
+
+[i][small]Other Related Individuals:[/small][/i]
+[small][*][field]
+[*][field]
+[*][field][/small]
+
+[b][small]Preferable Outcome:[/small][/b]
+[small](Compensation/Restraining Order/Other - Please specify)[/small]
+[table][row][cell][small][field][/small][/table]
+
+[large]Payment Agreement
+[/large]
+[b][small]Payment Agreement Type:[/small][/b]
+[small](No-win-no-fee basis/Upfront Payment/Free/Other.)[/small]
+[table][row][cell][small][field][/small][/table]
+
+[b][small]Full Payment:[/small][/b]
+[small](Leave N/A for no payment.)[/small]
+[table][row][cell][b][small][field][/small][/b] credits[/table]
+[hr]
+Client Agreement:
+[small]By signing this form you agree and confirm that all information provided to your representative is correct and accurate to your own knowledge, intentionally withholding and falsifying information can lead to a termination of your representation contract and legal obligations further void. Please be aware that your representative reserves rights to retain money that has already been recieved if your contract is made void by breach of agreement.[/small] 
+
+Representative Arrangement (To be filled by Representative):
+[small][field][/small]
+[hr]
+[b][small]Client Full Name:[/small][/b]
+[field]
+
+[b][small]Client Signature:[/small][/b]
+[field]
+
+[b][small]Representative Full Name:[/small][/b]
+[field]
+
+[b][small]Respresentative Signature:[/small][/b]
+[field]

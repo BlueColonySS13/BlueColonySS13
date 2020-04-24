@@ -1,0 +1,34 @@
+[b][large]Marriage Registration Form[/large][/b]
+[hr]
+[small][b]Officiated By:[/b] [field]
+[b]Officiator's Signature:[/b] [field]
+[hr]
+[b]Ceremony? [/b](Check X in relevent box if a wedding ceromony is done)
+Yes [ [field] ]   
+No [ [field] ]
+
+[b]Processing Cost:[/b] [field] credit(s) (Leave blank for no cost)
+[b]Ceremony Cost:[/b] [field] credit(s) (Leave blank for no cost/ceremony)
+[/small]
+
+[small][b]Marriage date:[/b] [field]
+[b]Ceremony date:[/b] [field][/small]
+[hr]
+[large][b]Spouse 1:[/b][/large]
+[small]
+Full Name: [field]
+Age at Registration Date: [field]
+Citizenship: [field]
+
+Last Name Change: [field] (Leave Blank for no change)
+Signature: [field]
+
+[large][b]Spouse 2:[/b][/large]
+
+Full Name: [field]
+Age at Registration Date: [field]
+Citizenship: [field]
+
+Last Name Change: [field] (Leave Blank for no change)
+Signature: [field]
+[/small]

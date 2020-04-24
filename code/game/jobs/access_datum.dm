@@ -121,7 +121,7 @@
 /var/const/access_heads = 19
 /datum/access/heads
 	id = access_heads
-	desc = "Bridge"
+	desc = "Council"
 	region = ACCESS_REGION_COMMAND
 
 /var/const/access_captain = 20
@@ -236,7 +236,7 @@
 /datum/access/lawyer
 	id = access_lawyer
 	desc = "Defense Attorney"
-	region = ACCESS_REGION_COMMAND
+	region = ACCESS_REGION_GENERAL
 
 /var/const/access_virology = 39
 /datum/access/virology
@@ -410,6 +410,12 @@
 	desc = "City Hall Guard"
 	region = ACCESS_REGION_COMMAND
 
+/var/const/access_legal = 67
+/datum/access/legal
+	id = access_legal
+	desc = "Legal"
+	region = ACCESS_REGION_GENERAL
+
 
 
 /******************
@@ -473,13 +479,13 @@
 /datum/access/president
 	id = access_president
 	desc = "President"
-	region = ACCESS_TYPE_CENTCOM
-	
+	access_type = ACCESS_TYPE_CENTCOM
+
 /var/const/access_cbia = 111
 /datum/access/cbia
 	id = access_cbia
-	desc = "CBIA Agent"
-	region = ACCESS_TYPE_CENTCOM
+	desc = "PDSI Agent"
+	access_type = ACCESS_TYPE_CENTCOM
 
 /***************
 * Antag access *

@@ -18,9 +18,20 @@
 		var/obj/item/stack/M = new type_to_spawn(src.loc)
 		M.amount = M.max_amount //some stuff spawns with 60, we're still calling it fifty
 		M.update_icon() // Some stacks have different sprites depending on how full they are.
-		M.update_reagents()
 		qdel(src)
 
 /obj/fiftyspawner/rods
 	name = "stack of rods" //this needs to be defined for cargo
 	type_to_spawn = /obj/item/stack/rods
+
+/obj/fiftyspawner/silk
+	name = "stack of silk"
+	type_to_spawn = /obj/item/stack/material/silk
+
+/obj/fiftyspawner/cotton
+	name = "stack of cotton"
+	type_to_spawn = /obj/item/stack/material/cotton
+
+/obj/fiftyspawner/denim
+	name = "stack of denim"
+	type_to_spawn = /obj/item/stack/material/denim

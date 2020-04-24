@@ -58,6 +58,8 @@
 							NETWORK_INTERROGATION
 							)
 
+	council_email = "city-council@geminus.nt"
+
 // For making the 6-in-1 holomap, we calculate some offsets
 #define GEMINUS_MAP_SIZE 177 // Width and height of compiled in Southern Cross z levels.
 #define GEMINUS_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns

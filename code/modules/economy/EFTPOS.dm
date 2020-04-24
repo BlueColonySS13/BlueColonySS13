@@ -12,9 +12,20 @@
 	var/access_code = 0
 	var/datum/money_account/linked_account
 
+/obj/item/device/eftpos/get_persistent_metadata()
+	if(!linked_account)
+		return FALSE
+
+	return linked_account.account_number
+
+/obj/item/device/eftpos/load_persistent_metadata(acc_no)
+	if(acc_no)
+		linked_account = get_account(acc_no)
+		return TRUE
+
 /obj/item/device/eftpos/New()
 	..()
-	machine_id = "[station_name()] EFTPOS #[num_financial_terminals++]"
+	machine_id = "[station_name()] EFTPOS #[GLOB.num_financial_terminals++]"
 	access_code = rand(1111,111111)
 	spawn(0)
 		print_reference()
@@ -60,7 +71,7 @@
 
 	//by default, connect to the station account
 	//the user of the EFTPOS device can change the target account though, and no-one will be the wiser (except whoever's being charged)
-	linked_account = station_account
+	linked_account = dept_by_id(DEPT_COUNCIL)
 
 /obj/item/device/eftpos/proc/print_reference()
 	var/obj/item/weapon/paper/R = new(src.loc)
@@ -134,14 +145,8 @@
 						linked_account.money += transaction_amount
 
 						//create entry in the EFTPOS linked account transaction log
-						var/datum/transaction/T = new()
-						T.target_name = E.owner_name //D.owner_name
-						T.purpose = (transaction_purpose ? transaction_purpose : "None supplied.")
-						T.amount = transaction_amount
-						T.source_terminal = machine_id
-						T.date = current_date_string
-						T.time = stationtime2text()
-						linked_account.transaction_log.Add(T)
+						// Create log entry in owner's account
+						linked_account.add_transaction_log(E.owner_name, (transaction_purpose ? transaction_purpose : "None supplied."), transaction_amount, machine_id)
 					else
 						usr << "\icon[src]<span class='warning'>\The [O] doesn't have that much money!</span>"
 			else
@@ -167,7 +172,7 @@
 				else
 					usr << "\icon[src]<span class='warning'>Incorrect code entered.</span>"
 			if("change_id")
-				var/attempt_code = text2num(input("Re-enter the current EFTPOS access code", "Confirm EFTPOS code"))
+				var/attempt_code = input("Re-enter the current EFTPOS access code", "Confirm EFTPOS code")
 				if(attempt_code == access_code)
 					eftpos_name = sanitize(input("Enter a new terminal ID for this device", "Enter new EFTPOS ID"), MAX_NAME_LEN) + " EFTPOS scanner"
 					print_reference()
@@ -255,26 +260,14 @@
 								linked_account.money += transaction_amount
 
 								//create entries in the two account transaction logs
-								var/datum/transaction/T = new()
-								T.target_name = "[linked_account.owner_name] (via [eftpos_name])"
-								T.purpose = transaction_purpose
-								if(transaction_amount > 0)
-									T.amount = "([transaction_amount])"
-								else
-									T.amount = "[transaction_amount]"
-								T.source_terminal = machine_id
-								T.date = current_date_string
-								T.time = stationtime2text()
-								D.transaction_log.Add(T)
-								//
-								T = new()
-								T.target_name = D.owner_name
-								T.purpose = transaction_purpose
-								T.amount = "[transaction_amount]"
-								T.source_terminal = machine_id
-								T.date = current_date_string
-								T.time = stationtime2text()
-								linked_account.transaction_log.Add(T)
+
+								// Create log entry in client's account
+								D.add_transaction_log(linked_account.owner_name, transaction_purpose, -transaction_amount, machine_id)
+
+								// Create log entry in owner's account
+								linked_account.add_transaction_log(D.owner_name, transaction_purpose, "([transaction_amount])", machine_id)
+
+
 							else
 								usr << "\icon[src]<span class='warning'>You don't have that much money!</span>"
 						else

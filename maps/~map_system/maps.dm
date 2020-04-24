@@ -77,8 +77,9 @@ var/list/all_maps = list()
 	var/emergency_shuttle_recall_message
 
 	var/list/station_networks = list() 		// Camera networks that will show up on the console.
+	var/list/secondary_networks = list()	// Camera networks that exist, but don't show on regular camera monitors.
 
-	var/allowed_spawns = list("Arrivals Shuttle","Gateway", "Cryogenic Storage", "Cyborg Storage")
+	var/allowed_spawns = list("Arrivals Shuttle", "Cryogenic Storage", "Cyborg Storage")
 
 	var/lobby_icon = 'icons/misc/title.dmi' // The icon which contains the lobby image(s)
 	var/list/lobby_screens = list("mockingjay00")                 // The list of lobby screen to pick() from. If left unset the first icon state is always selected.
@@ -98,8 +99,8 @@ var/list/all_maps = list()
 	var/president_email = "president@nanotrasen.gov.nt"
 	var/vice_email = "vice-president@nanotrasen.gov.nt"
 	var/boss_email = "headoffice@nanotrasen.gov.nt"
-	var/rep_email = "nanotrasen@nanotrasen.gov.nt"
-	var/director_email = "director@nanotrasen.gov.nt"
+	var/rep_email = "centralgovernment@nanotrasen.gov.nt"
+	var/director_email = "governor@nanotrasen.gov.nt"
 	var/investigation_email = "pdsi@nanotrasen.gov.nt"
 
 	var/minister_defense_email = "defense@nanotrasen.gov.nt"
@@ -107,8 +108,19 @@ var/list/all_maps = list()
 	var/minister_innovation_email = "innovation@nanotrasen.gov.nt"
 	var/minister_justice_email = "justice@nanotrasen.gov.nt"
 	var/minister_information_email = "information@nanotrasen.gov.nt"
+	var/court_email = "courts@nanotrasen.gov.nt"
 
 	var/council_email = "city-council@nanotrasen.gov.nt"
+	var/police_email = "police@nanotrasen.gov.nt"
+
+	var/currency_name = CREDIT
+	var/currency_name_plural = CREDITS
+	var/currency_symbol = SYMBOL_CREDIT
+	var/currency_suffix = SHORT_CREDIT
+
+	var/head_department = DEPT_NANOTRASEN	// NOTE: Has to exist in-game as a department account. See: code\modules\economy\departments.dm and input id here.
+	var/main_department = DEPT_COLONY
+
 
 /datum/map/New()
 	..()
@@ -125,6 +137,15 @@ var/list/all_maps = list()
 
 /datum/map/proc/perform_map_generation()
 	return
+
+// Getting the department that "owns" the map.
+/datum/map/proc/get_head_department()
+	return dept_by_id(head_department)
+
+// Getting the department that "runs" the map.
+/datum/map/proc/get_main_department()
+	return dept_by_id(main_department)
+
 
 // Used to apply various post-compile procedural effects to the map.
 /datum/map/proc/refresh_mining_turfs()

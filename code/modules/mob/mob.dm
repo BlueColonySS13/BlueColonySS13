@@ -228,6 +228,12 @@
 	face_atom(A)
 	A.examine(src)
 
+//override examinate verb to update description holders when things are examined
+/mob/examinate(atom/A as mob|obj|turf in view())
+	if(..())
+		return TRUE
+	update_examine_panel(A)
+
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
 	set category = "Object"
@@ -323,7 +329,7 @@
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
 		var/msg = replacetext(flavor_text, "\n", " ")
-		if(lentext(msg) <= 40)
+		if(length(msg) <= 40)
 			return "<font color='blue'>[msg]</font>"
 		else
 			return "<font color='blue'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
@@ -1064,6 +1070,13 @@ mob/proc/yank_out_object()
 
 /mob/proc/setEarDamage()
 	return
+
+// Set client view distance (size of client's screen). Returns TRUE if anything changed.
+/mob/proc/set_viewsize(var/new_view = world.view)
+	if (client && new_view != client.view)
+		client.view = new_view
+		return TRUE
+	return FALSE
 
 //Throwing stuff
 

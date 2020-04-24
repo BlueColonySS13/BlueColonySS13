@@ -21,6 +21,8 @@
 	var/paper_type_carbon = /obj/item/weapon/paper/carbon
 	var/has_carbon_paper = 1		//Does this give you carbon copy paper?
 
+	unique_save_vars = list("amount")
+	table_drag = TRUE
 
 /obj/item/weapon/paper_bin/MouseDrop(mob/user as mob)
 	if((user == usr && (!( usr.restrained() ) && (!( usr.stat ) && (usr.contents.Find(src) || in_range(src, usr))))))

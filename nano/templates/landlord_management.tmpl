@@ -1,0 +1,50 @@
+ <style type="text/css">
+a, a:link, a:visited, a:active, .linkOn, .linkOff
+{ 
+	color: #ffffff; 
+	text-decoration: none;
+	background: #40628a;
+	border: 1px solid #161616;
+	padding: 1px 4px 1px 4px;
+	margin: 0 2px 0 0;
+	cursor:default;
+	white-space:nowrap;
+}
+</style>
+
+<h1>Landlord Management Program</h1><hr>
+
+{{if data.acc_balance}}<b>Current Balance:</b> {{:data.acc_balance}} credits<br>{{/if}}
+
+
+{{if data.index == 1}}
+
+<br><br>
+
+{{:helper.link("Rent Properties", null, {'rent_lots' : 1})}}
+{{:helper.link("Buy New Properties", null, {'buy_lots' : 1})}}
+{{:helper.link("Manage Properties", null, {'manage_lots' : 1})}}
+{{:helper.link("View Rented Lots", null, {'view_rent_lots' : 1})}}
+{{:helper.link("View All Lots", null, {'view_all_lots' : 1})}}
+<p><br>
+
+{{else}}
+
+{{:helper.link("Main Menu", null, {'main' : 1})}}
+{{if data.current_lot}}
+{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}	
+	<br>
+	<br>
+{{:data.error_msg}}<br>
+{{:data.page_msg}}<hr>
+
+{{/if}}
+
+
+
+
+<br>
+
+
+

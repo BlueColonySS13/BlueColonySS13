@@ -6,6 +6,7 @@
 	move_delay = 1.5
 	plane = -25
 
+	dont_save = FALSE
 
 /obj/vehicle/scooter/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/wrench))
@@ -35,6 +36,8 @@
 	riding_datum_type = /datum/riding/scooter/skateboard
 	density = 0
 	var/adjusted_speed = TRUE
+
+	dont_save = FALSE
 
 /obj/vehicle/scooter/skateboard/New()
 	. = ..()

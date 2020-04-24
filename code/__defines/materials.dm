@@ -14,6 +14,7 @@
 #define MATERIAL_IRON                    "iron"
 #define MATERIAL_PLATINUM                "platinum"
 #define MATERIAL_BRONZE                  "bronze"
+#define MATERIAL_BRASS         		 "#b99d71"
 #define MATERIAL_REINFORCED_GLASS        "rglass"
 #define MATERIAL_PHORON_GLASS            "phglass"
 #define MATERIAL_REINFORCED_PHORON_GLASS "rphglass"
@@ -46,7 +47,6 @@
 #define MATERIAL_BAUXITE                 "bauxite"
 #define MATERIAL_COPPER                  "copper"
 #define MATERIAL_CARDBOARD               "cardboard"
-#define MATERIAL_CLOTH                   "cloth"
 #define MATERIAL_CARPET                  "carpet"
 #define MATERIAL_ALUMINIUM               "aluminium"
 #define MATERIAL_NULLGLASS               "nullglass"
@@ -58,6 +58,7 @@
 #define MATERIAL_EBONY                   "ebony"
 #define MATERIAL_WALNUT                  "walnut"
 #define MATERIAL_BAMBOO                  "bamboo"
+#define MATERIAL_YEW				 "yew"
 
 #define DEFAULT_WALL_MATERIAL      MATERIAL_STEEL
 #define DEFAULT_FURNITURE_MATERIAL MATERIAL_ALUMINIUM

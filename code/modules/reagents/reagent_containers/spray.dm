@@ -83,17 +83,8 @@
 		user << "[round(reagents.total_volume)] units left."
 	return
 
-/obj/item/weapon/reagent_containers/spray/verb/empty()
-
-	set name = "Empty Spray Bottle"
-	set category = "Object"
-	set src in usr
-
-	if (alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", "Yes", "No") != "Yes")
-		return
-	if(isturf(usr.loc))
-		usr << "<span class='notice'>You empty \the [src] onto the floor.</span>"
-		reagents.splash(usr.loc, reagents.total_volume)
+/obj/item/weapon/reagent_containers/spray/can_empty()
+	return TRUE
 
 //space cleaner
 /obj/item/weapon/reagent_containers/spray/cleaner
@@ -202,3 +193,15 @@
 /obj/item/weapon/reagent_containers/spray/plantbgone/New()
 	..()
 	reagents.add_reagent("plantbgone", 100)
+
+
+
+/obj/item/weapon/reagent_containers/spray/cleaner/deodorant
+	name = "deodorant"
+	desc = "A can of Gold Standard spray deodorant - for when you're too lazy to shower."
+	gender = PLURAL
+	volume = 35
+	icon = 'icons/obj/cosmetics.dmi'
+	icon_state = "deodorant"
+	item_state = "deodorant"
+

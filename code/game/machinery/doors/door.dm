@@ -36,8 +36,15 @@
 	var/list/connections = list("0", "0", "0", "0")
 	var/list/blend_objects = list(/obj/structure/wall_frame, /obj/structure/window, /obj/structure/grille) // Objects which to blend with
 
+	unique_save_vars = list("code", "door_color", "stripe_color", "locked", "open", "panel_open", "l_hacking", "l_set", "l_code", "l_setshort")
+
 	// turf animation
 	var/atom/movable/overlay/c_animation = null
+
+/obj/machinery/door/on_persistence_load()
+	update_connections(1)
+	update_icon()
+
 
 /obj/machinery/door/attack_generic(var/mob/user, var/damage)
 	if(isanimal(user))
@@ -384,7 +391,7 @@
 		icon_state = "door1"
 	else
 		icon_state = "door0"
-	radiation_repository.resistance_cache.Remove(get_turf(src))
+	SSradiation.resistance_cache.Remove(get_turf(src))
 	return
 
 

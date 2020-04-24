@@ -27,9 +27,7 @@ var/activetype = null //Is this a search or arrest warrtant?
 
 //hit yourself with it
 /obj/item/device/holowarrant/attack_self(mob/living/user as mob)
-	sync()
-	if(!storedwarrant.len)
-		to_chat(user, "There seem to be no warrants stored in the device. Please sync with the station's database.")
+	if(!sync(user))
 		return
 	var/temp
 	temp = input(user, "Which warrant would you like to load?") as null|anything in storedwarrant
@@ -39,6 +37,9 @@ var/activetype = null //Is this a search or arrest warrtant?
 			activecharges = W.fields["charges"]
 			activeauth = W.fields ["auth"]
 			activetype = W.fields["arrestsearch"]
+
+	if(temp)
+		to_chat(user, "<span class='notice'>Warrant '[activename]' selected. Use <b>Object > Show Held Item</b> to display the warrant to nearby people.</span>")
 
 //hit other people with it
 /obj/item/device/holowarrant/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
@@ -51,9 +52,11 @@ var/activetype = null //Is this a search or arrest warrtant?
 	if(!isnull(data_core.general))
 		for(var/datum/data/record/warrant/W in data_core.warrants)
 			storedwarrant += W.fields["namewarrant"]
-		to_chat(usr, "<span class='notice'>The device hums faintly as it syncs with the city's warrant database.</span>")
+		to_chat(user, "<span class='notice'>The device hums faintly as it syncs with the city's warrant database.</span>")
+		return 1
 		if(storedwarrant.len == 0)
 			user.visible_message("<span class='notice'>There are no warrants available</span>")
+			return 0
 
 /obj/item/device/holowarrant/proc/show_content(mob/user, forceshow)
 	if(activetype == "arrest")
@@ -97,7 +100,7 @@ var/activetype = null //Is this a search or arrest warrtant?
 		</br>
 		<b>Warrant issued by: </b> [activeauth]</br>
 		</br>
-		Vessel or habitat: _<u>Geminus City</u>____</br>
+		Location: _<u>Geminus City</u>____</br>
 		</BODY></HTML>
 		"}
 		show_browser(user, output, "window=Search warrant for [activename]")

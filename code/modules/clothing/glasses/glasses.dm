@@ -399,6 +399,12 @@ BLIND     // can't see anything
 	desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
 	icon_state = "aviator"
 
+/obj/item/clothing/glasses/fakesunglasses/big
+	name = "big stylish sunglasses"
+	desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
+	icon_state = "bigsunglasses"
+
+
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "\improper HUD sunglasses"
 	desc = "Sunglasses with a HUD."
@@ -523,3 +529,28 @@ BLIND     // can't see anything
 	desc = "A set of implantable lenses designed to augment your vision"
 	icon_state = "thermalimplants"
 	item_state_slots = list(slot_r_hand_str = "sunglasses", slot_l_hand_str = "sunglasses")
+
+/obj/item/clothing/glasses/visor
+	name = "LED visor"
+	desc = "A reinforced glass visor with a multitude of micro-LEDs."
+	icon_state = "visor"
+
+/obj/item/clothing/glasses/visor/New()
+	..()
+	color = "#[get_random_colour()]"
+	update_icon()
+
+/obj/item/clothing/glasses/visor/attack_self(mob/user)
+	add_fingerprint(user)
+	var/new_color = input(usr, "Pick a new color", "Visor Color", color) as color|null
+
+	if(new_color && (new_color != color))
+		color = new_color
+
+/obj/item/clothing/glasses/holovisor
+	name = "holovisor"
+	desc = "A visor that generates a holographic lens. Not very practical, but very cool."
+	icon_state = "holovisor-on"
+	off_state = "holovisor"
+	toggleable = 1
+	action_button_name = "Toggle Holovisor"

@@ -3,17 +3,9 @@
 	desc = "It's a secure locker for personnel. The first card swiped gains control."
 	req_access = list(access_all_personal_lockers)
 	var/registered_name = null
+	var/owner_uid = null
 
-/obj/structure/closet/secure_closet/personal/New()
-	..()
-	spawn(2)
-		if(prob(50))
-			new /obj/item/weapon/storage/backpack(src)
-		else
-			new /obj/item/weapon/storage/backpack/satchel/norm(src)
-		new /obj/item/device/radio/headset( src )
-	return
-
+	unique_save_vars = list("registered_name", "owner_uid")
 
 /obj/structure/closet/secure_closet/personal/patient
 	name = "patient's closet"
@@ -73,15 +65,16 @@
 		if(src.broken)
 			user << "<span class='warning'>It appears to be broken.</span>"
 			return
-		if(!I || !I.registered_name)	return
-		if(src.allowed(user) || !src.registered_name || (istype(I) && (src.registered_name == I.registered_name)))
+		if(!I || !I.registered_name || !I.unique_ID)	return
+		if(src.allowed(user) || (!src.registered_name && !src.owner_uid) || (istype(I) && ((src.registered_name == I.registered_name) && (src.owner_uid == I.unique_ID)) ) )
 			//they can open all lockers, or nobody owns this, or they own this locker
 			src.locked = !( src.locked )
 			if(src.locked)	src.icon_state = src.icon_locked
 			else	src.icon_state = src.icon_closed
 
-			if(!src.registered_name)
+			if(!src.registered_name || !src.owner_uid)
 				src.registered_name = I.registered_name
+				src.owner_uid = I.unique_ID
 				src.desc = "Owned by [I.registered_name]."
 		else
 			user << "<span class='warning'>Access Denied</span>"

@@ -16,6 +16,9 @@
 
 	var/list/ingredients = list()
 
+/obj/item/weapon/reagent_containers/food/snacks/csandwich/on_persistence_load()
+	ingredients = contents
+
 /obj/item/weapon/reagent_containers/food/snacks/csandwich/attackby(obj/item/W as obj, mob/user as mob)
 
 	var/sandwich_limit = 4
@@ -72,7 +75,7 @@
 
 	name = lowertext("[fullname] sandwich")
 	if(length(name) > 80) name = "[pick(list("absurd","colossal","enormous","ridiculous"))] sandwich"
-	w_class = n_ceil(Clamp((ingredients.len/2),2,4))
+	w_class = ROUNDUP(Clamp((ingredients.len/2),2,4))
 
 /obj/item/weapon/reagent_containers/food/snacks/csandwich/Destroy()
 	for(var/obj/item/O in ingredients)

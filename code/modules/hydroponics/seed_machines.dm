@@ -94,10 +94,16 @@
 			user << "You load [W] into [src]."
 		return
 
+//TFF 3/6/19 - fix infinite frame creation, ported from Cit RP - also allow movement of hydroponic-related machines.
 	if(default_deconstruction_screwdriver(user, W))
 		return
-	if(default_deconstruction_crowbar(user, W))
+	if(W.is_wrench())
+		playsound(src, W.usesound, 100, 1)
+		to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
+		anchored = !anchored
 		return
+//	if(default_deconstruction_crowbar(user, W))	//No circuit boards to give.
+//		return
 	if(istype(W,/obj/item/weapon/disk/botany))
 		if(loaded_disk)
 			user << "There is already a data disk loaded."
@@ -129,6 +135,7 @@
 
 	var/datum/seed/genetics // Currently scanned seed genetic structure.
 	var/degradation = 0     // Increments with each scan, stops allowing gene mods after a certain point.
+	circuit = /obj/item/weapon/circuitboard/botany_extractor
 
 /obj/machinery/botany/extractor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
@@ -258,6 +265,7 @@
 	name = "bioballistic delivery system"
 	icon_state = "traitgun"
 	disk_needs_genes = 1
+	circuit = /obj/item/weapon/circuitboard/botany_editor
 
 /obj/machinery/botany/editor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 

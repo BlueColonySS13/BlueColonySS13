@@ -3,7 +3,12 @@
 	desc = "Slick black suit vest."
 	icon_state = "det_vest"
 
-/obj/item/clothing/accessory/jacket/
+/obj/item/clothing/accessory/poshblazer
+	name = "women's posh blazer"
+	desc = "This is a bit fancy, like the new recruit in a news office who is trying too hard to impress the managers."
+	icon_state = "poshblazer"
+
+/obj/item/clothing/accessory/jacket
 	name = "tan suit jacket"
 	desc = "Cozy suit jacket."
 	icon_state = "tan_jacket"
@@ -162,8 +167,8 @@
 	item_state = "hoscloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/captain
-	name = "colony director's cloak"
-	desc = "An elaborate cloak meant to be worn by the colony director."
+	name = "mayor's cloak"
+	desc = "An elaborate cloak meant to be worn by the mayor."
 	icon_state = "capcloak"
 	item_state = "capcloak"
 
@@ -182,6 +187,7 @@
 
 /obj/item/clothing/accessory/hawaii/random
 	name = "flower-pattern shirt"
+	unique_save_vars = list("icon_state")
 
 /obj/item/clothing/accessory/hawaii/random/New()
 	if(prob(50))
@@ -228,6 +234,14 @@
 	icon_state = "sweatervest"
 	item_state = "sweatervest"
 
+/obj/item/clothing/accessory/wcoat/gwaistcost
+	name = "generic waistcoat"
+	icon_state = "color_vest"
+
+/obj/item/clothing/accessory/wcoat/fancyvest
+	name = "fancy waistcoat"
+	icon_state = "fancyvest"
+
 /obj/item/clothing/accessory/wcoat/swvest/blue
 	name = "blue sweatervest"
 	icon_state = "sweatervest_blue"
@@ -237,11 +251,6 @@
 	name = "red sweatervest"
 	icon_state = "sweatervest_red"
 	item_state = "sweatervest_red"
-
-/obj/item/clothing/accessory/wcoat/fancyvest
-	name = "fancy waistcoat"
-	icon_state = "fancyvest"
-	item_state = "fancyvest"
 
 //Sweaters.
 

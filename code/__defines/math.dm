@@ -25,6 +25,9 @@
 
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
 
+//Floors the input then adds 1 to give the next integer up
+#define ROUNDUP(x) ( round((x)) + 1 )
+
 // round() acts like floor(x, 1) by default but can't handle other values
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
 

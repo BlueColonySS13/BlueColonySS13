@@ -13,6 +13,9 @@
 	get_tax()
 		return WEAPONS_TAX
 
+	is_contraband()
+		return CONTRABAND_EXPLOSIVES
+
 /obj/item/weapon/material/sword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 
 	if(default_parry_check(user, attacker, damage_source) && prob(50))

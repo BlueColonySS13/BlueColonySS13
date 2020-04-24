@@ -12,6 +12,7 @@
 	icon_state = "turntable"
 	var/playing = 0
 	anchored = 1
+	table_drag = TRUE
 
 /obj/machinery/party/mixer
 	name = "mixer"
@@ -19,6 +20,7 @@
 	icon = 'icons/effects/lasers2.dmi'
 	icon_state = "mixer"
 	anchored = 1
+	table_drag = TRUE
 
 
 /obj/machinery/party/turntable/New()
@@ -159,6 +161,7 @@
 	var/mirrored = 0
 	var/list/lasers = list()
 	var/on
+	table_drag = TRUE
 
 /obj/effects/laser
 	name = "laser"
@@ -168,6 +171,7 @@
 	anchored = 1
 	layer = OBJ_LAYER
 	plane = ABOVE_MOB_PLANE
+	mouse_opacity = 0
 
 /obj/machinery/party/lasermachine/New()
 	turnoff() 		//||so verbs are correctly set

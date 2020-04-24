@@ -66,6 +66,7 @@
 	var/datum/computer_file/data/email_account/initial_email
 
 	var/list/initial_email_login = list("login" = "", "password" = "")
+	var/list/initial_bank_details = list("id" = "", "pin" = null)
 
 	var/datum/preferences/prefs
 
@@ -244,8 +245,8 @@
 
 				var/mob/def_target = null
 				var/objective_list[] = list(/datum/objective/assassinate, /datum/objective/protect, /datum/objective/debrain)
-				if (objective&&(objective.type in objective_list) && objective:target)
-					def_target = objective:target.current
+				if (objective&&(objective.type in objective_list) && objective.target)
+					def_target = objective.target.current
 
 				var/new_target = input("Select target:", "Objective target", def_target) as null|anything in possible_targets
 				if (!new_target) return

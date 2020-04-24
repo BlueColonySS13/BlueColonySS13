@@ -241,7 +241,7 @@
 	allowed_roles = list("Factory Manager")
 
 /datum/gear/suit/roles/poncho/cloak/captain
-	display_name = "cloak, colony director"
+	display_name = "cloak, mayor"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/captain
 	allowed_roles = list("Mayor")
 
@@ -296,7 +296,7 @@
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat
 
 /datum/gear/suit/wintercoat/captain
-	display_name = "winter coat, colony director"
+	display_name = "winter coat, mayor"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/captain
 	allowed_roles = list("Mayor")
 
@@ -494,3 +494,33 @@
 /datum/gear/suit/hartcoat
 	display_name = "fur-lined greatcoat"
 	path = /obj/item/clothing/suit/storage/toggle/hartcoat
+
+/datum/gear/suit/synthleatherjacket
+	display_name = "synth-leather jacket"
+	path = /obj/item/clothing/suit/storage/toggle/synthleatherjacket
+
+/datum/gear/suit/synthleatherjacket/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/suit/poshblazer
+	display_name = "posh blazer"
+	path = /obj/item/clothing/suit/storage/poshblazer
+
+/datum/gear/suit/formalblazer
+	display_name = "formal blazer"
+	path = /obj/item/clothing/suit/storage/formalblazer
+
+/datum/gear/suit/formalblazer/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)
+
+
+/datum/gear/suit/peterpanblazer
+	display_name = "peter pan blazer"
+	path = /obj/item/clothing/suit/storage/peterpanblazer
+
+
+/datum/gear/suit/peterpanblazer/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)

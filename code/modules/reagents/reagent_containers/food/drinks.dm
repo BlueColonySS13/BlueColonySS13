@@ -10,6 +10,9 @@
 	amount_per_transfer_from_this = 5
 	volume = 50
 	var/shaken
+	price_tag = 5
+
+	unique_save_vars = list("shaken")
 
 /obj/item/weapon/reagent_containers/food/drinks/on_reagent_change()
 	if (reagents.reagent_list.len > 0)
@@ -105,10 +108,10 @@
 /// Drinks. END
 ////////////////////////////////////////////////////////////////////////////////
 
-/obj/item/weapon/reagent_containers/food/drinks/golden_cup
-	desc = "A golden cup"
-	name = "golden cup"
-	icon_state = "golden_cup"
+/obj/item/weapon/reagent_containers/food/drinks/trophy_cup
+	desc = "trophy cup"
+	name = "trophy cup"
+	icon_state = "trophy_cup"
 	item_state = "" //nope :(
 	w_class = ITEMSIZE_LARGE
 	force = 14
@@ -118,8 +121,31 @@
 	volume = 150
 	flags = CONDUCT | OPENCONTAINER
 
+	var/engraving = null
+
+	unique_save_vars = list("engraving")
+
+/obj/item/weapon/reagent_containers/food/drinks/trophy_cup/examine(mob/user)
+	..()
+	if(engraving)
+		to_chat(user, "\"[engraving]\"")
+
+
 /obj/item/weapon/reagent_containers/food/drinks/golden_cup/on_reagent_change()
 	..()
+
+
+/obj/item/weapon/reagent_containers/food/drinks/trophy_cup/gold
+	name = "golden trophy cup"
+	color = COLOR_GOLD
+
+/obj/item/weapon/reagent_containers/food/drinks/trophy_cup/silver
+	name = "silver trophy cup"
+	color = COLOR_SILVER
+
+/obj/item/weapon/reagent_containers/food/drinks/trophy_cup/bronze
+	name = "bronze trophy cup"
+	color = WOOD_COLOR_YELLOW
 
 ///////////////////////////////////////////////Drinks
 //Notes by Darem: Drinks are simply containers that start preloaded. Unlike condiments, the contents can be ingested directly
@@ -157,6 +183,7 @@
 	icon_state = "mini-milk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
+
 /obj/item/weapon/reagent_containers/food/drinks/smallmilk/New()
 	..()
 	reagents.add_reagent("milk", 30)
@@ -199,6 +226,7 @@
 	desc = "Careful, cold ice, do not chew."
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
+
 /obj/item/weapon/reagent_containers/food/drinks/ice/New()
 	..()
 	reagents.add_reagent("ice", 30)
@@ -285,8 +313,8 @@
 	..()
 
 /obj/item/weapon/reagent_containers/food/drinks/flask
-	name = "\improper Colony Director's flask"
-	desc = "A metal flask belonging to the Colony Director"
+	name = "\improper Mayor's flask"
+	desc = "A metal flask belonging to the Mayor"
 	icon_state = "flask"
 	volume = 60
 	center_of_mass = list("x"=17, "y"=7)

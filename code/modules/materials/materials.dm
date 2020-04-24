@@ -258,6 +258,7 @@ var/list/name_to_material
 	name = "gold"
 	stack_type = /obj/item/stack/material/gold
 	icon_colour = "#EDD12F"
+	icon_base = "solid"
 	weight = 24
 	hardness = 40
 	conductivity = 41
@@ -272,7 +273,7 @@ var/list/name_to_material
 /material/silver
 	name = "silver"
 	stack_type = /obj/item/stack/material/silver
-	icon_colour = "#D1E6E3"
+	icon_colour = COLOR_SILVER
 	weight = 22
 	hardness = 50
 	conductivity = 63
@@ -301,7 +302,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/phoron
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
 	icon_base = "stone"
-	icon_colour = "#FC2BC5"
+	icon_colour = COLOR_PHORON
 	shard_type = SHARD_SHARD
 	hardness = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_PHORON = 2)
@@ -343,12 +344,11 @@ var/list/name_to_material
 
 /material/stone/marble
 	name = "marble"
-	icon_colour = "#AAAAAA"
+	icon_colour = COLOR_MARBLE
 	weight = 26
 	hardness = 100
 	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	stack_type = /obj/item/stack/material/marble
-
 
 /material/steel
 	name = DEFAULT_WALL_MATERIAL
@@ -360,7 +360,7 @@ var/list/name_to_material
 	icon_reinf = "reinf_over"
 	icon_colour = "#515151"
 
-/material/diona
+/material/biomass
 	name = "biomass"
 	icon_colour = null
 	stack_type = null
@@ -370,9 +370,6 @@ var/list/name_to_material
 
 /material/diona/place_dismantled_product()
 	return
-
-/material/diona/place_dismantled_girder(var/turf/target)
-	spawn_diona_nymph(target)
 
 /material/steel/holographic
 	name = "holo" + DEFAULT_WALL_MATERIAL
@@ -454,7 +451,7 @@ var/list/name_to_material
 /material/tritium
 	name = "tritium"
 	stack_type = /obj/item/stack/material/tritium
-	icon_colour = "#777777"
+	icon_colour = COLOR_TRITIUM
 	stack_origin_tech = list(TECH_MATERIAL = 5)
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
@@ -480,7 +477,7 @@ var/list/name_to_material
 /material/platinum
 	name = "platinum"
 	stack_type = /obj/item/stack/material/platinum
-	icon_colour = "#9999FF"
+	icon_colour = COLOR_PLATINUM
 	weight = 27
 	conductivity = 9.43
 	stack_origin_tech = list(TECH_MATERIAL = 2)
@@ -499,7 +496,7 @@ var/list/name_to_material
 /material/lead
 	name = "lead"
 	stack_type = /obj/item/stack/material/lead
-	icon_colour = "#273956"
+	icon_colour = COLOR_LEAD
 	weight = 23 // Lead is a bit more dense than silver IRL, and silver has 22 ingame.
 	conductivity = 10
 	sheet_singular_name = "ingot"
@@ -565,7 +562,7 @@ var/list/name_to_material
 	flags = MATERIAL_BRITTLE
 	icon_base = "solid"
 	icon_reinf = "reinf_over"
-	icon_colour = "#FFFFFF"
+	icon_colour = COLOR_WHITE
 	integrity = 1
 	hardness = 1
 	weight = 1
@@ -597,15 +594,6 @@ var/list/name_to_material
 
 	worth = 0
 
-/material/cloth //todo
-	name = "cloth"
-	stack_origin_tech = list(TECH_MATERIAL = 2)
-	door_icon_base = "wood"
-	ignition_point = T0C+232
-	melting_point = T0C+300
-	protectiveness = 1 // 4%
-	flags = MATERIAL_PADDING
-
 /material/cult
 	name = "cult"
 	display_name = "disturbing stone"
@@ -632,12 +620,48 @@ var/list/name_to_material
 //TODO PLACEHOLDERS:
 /material/leather
 	name = "leather"
-	icon_colour = "#5C4831"
+	icon_colour = COLOR_LEATHER
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	flags = MATERIAL_PADDING
 	ignition_point = T0C+300
 	melting_point = T0C+300
 	protectiveness = 3 // 13%
+
+/material/denim
+	name = "denim"
+	icon_colour = COLOR_DENIM
+	stack_origin_tech = list(TECH_MATERIAL = 2)
+	flags = MATERIAL_PADDING
+	ignition_point = T0C+300
+	melting_point = T0C+300
+	protectiveness = 5
+
+/material/silk
+	name = "silk"
+	icon_colour = "#ebe9df"
+	stack_origin_tech = list(TECH_MATERIAL = 2)
+	flags = MATERIAL_PADDING
+	ignition_point = T0C+232
+	melting_point = T0C+300
+	protectiveness = 0 // 0%
+
+/material/wool
+	name = "wool"
+	icon_colour = "#ebe9df"
+	stack_origin_tech = list(TECH_MATERIAL = 2)
+	flags = MATERIAL_PADDING
+	ignition_point = T0C+232
+	melting_point = T0C+300
+	protectiveness = 0 // 0%
+
+/material/cotton
+	name = "cotton"
+	display_name ="cotton"
+	icon_colour = "#FFFFFF"
+	flags = MATERIAL_PADDING
+	ignition_point = T0C+232
+	melting_point = T0C+300
+	protectiveness = 1 // 4%
 
 /material/carpet
 	name = "carpet"
@@ -649,15 +673,6 @@ var/list/name_to_material
 	melting_point = T0C+300
 	sheet_singular_name = "tile"
 	sheet_plural_name = "tiles"
-	protectiveness = 1 // 4%
-
-/material/cotton
-	name = "cotton"
-	display_name ="cotton"
-	icon_colour = "#FFFFFF"
-	flags = MATERIAL_PADDING
-	ignition_point = T0C+232
-	melting_point = T0C+300
 	protectiveness = 1 // 4%
 
 // This all needs to be OOP'd and use inheritence if its ever used in the future.

@@ -2,7 +2,7 @@
 /material/wood
 	name = MAT_WOOD
 	stack_type = /obj/item/stack/material/wood
-	icon_colour = "#8f5a25"
+	icon_colour = WOOD_COLOR_GENERIC
 	integrity = 50
 	icon_base = "wood"
 	explosion_resistance = 2
@@ -106,3 +106,16 @@
 	icon_colour = WOOD_COLOR_CHOCOLATE
 	weight = 20
 //	sale_price = 2
+
+/material/wood/yew
+	name = MATERIAL_YEW
+	icon_colour = WOOD_COLOR_YELLOW
+//	lore_text = "Although favoured in days past for the construction of bows, yew has a multitude of uses, including medicine. The yew \
+				tree can live for nearly a thousand years thanks to its natural disease resistance."
+//	adjective_name = MATERIAL_YEW
+
+/material/wood/bamboo
+	name = MATERIAL_BAMBOO
+//	lore_text = "Bamboo is a fast-growing grass which can be used similar to wood after processing. Due to its swift growth \
+				and high strength, various species of bamboo area common building materials in developing societies."
+	icon_colour = WOOD_COLOR_PALE2

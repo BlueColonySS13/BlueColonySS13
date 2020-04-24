@@ -148,6 +148,12 @@
 /proc/log_election(mob/user, votee)
 	vote_log << "\[[time_stamp()]]VOTE: [user.client.simple_info_line()] voted for [votee] [log_end]"
 
+/proc/log_lots(mob/user, text)
+	lot_log << "\[[time_stamp()]] \[[game_id]] LOTS: [user.client.simple_info_line()] -  [text] [log_end]"
+
+/proc/log_money(mob/user, didwhat, account_number, account_id, amount)
+	money_log << "\[[time_stamp()]]MONEY: [user.client.simple_info_line()] [didwhat] - [amount]CR from [account_number]/[account_id]."
+
 /proc/log_error(text)
 	world.log << text
 	error_log << "\[[time_stamp()]]RUNTIME: [text][log_end]"

@@ -302,7 +302,7 @@
 			else			adverb = " a very lengthy message"
 		message = "<B>[speaker]</B> [verb][adverb]."
 
-	src.show_message(message)
+	show_message(message, type = 1) // Type 1 is visual message
 
 /mob/proc/hear_sleep(var/message)
 	var/heard = ""
@@ -314,7 +314,7 @@
 		if(copytext(heardword,1, 1) in punctuation)
 			heardword = copytext(heardword,2)
 		if(copytext(heardword,-1) in punctuation)
-			heardword = copytext(heardword,1,lentext(heardword))
+			heardword = copytext(heardword,1,length(heardword))
 		heard = "<span class = 'game_say'>...You hear something about...[heardword]</span>"
 
 	else

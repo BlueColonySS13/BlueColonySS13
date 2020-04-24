@@ -10,6 +10,8 @@
 	var/prefix = "sharpened"
 	var/requires_sharpness = 1
 
+	unique_save_vars = list("used")
+
 
 /obj/item/weapon/whetstone/attackby(obj/item/I, mob/user, params)
 	if(used)

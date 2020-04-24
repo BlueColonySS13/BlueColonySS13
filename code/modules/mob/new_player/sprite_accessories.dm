@@ -898,6 +898,193 @@
 		name = "Vivi"
 		icon_state = "hair_vivi"
 
+	judge
+		name = "Judge"
+		icon_state = "hair_judge"
+
+	mia
+		name = "Mia"
+		icon_state = "hair_mia"
+
+	mialong
+		name = "Mia Long"
+		icon_state = "hair_mialong"
+
+	longbraid
+		name = "Long Braid"
+		icon_state = "hair_longbraid"
+
+	longbraidalt
+		name = "Long Braid Alt"
+		icon_state = "hair_braidalt"
+
+	longundercut
+		name = "Long Undercut"
+		icon_state = "hair_undercutlong"
+
+	emoright
+		name = "Medium Emo Cut"
+		icon_state = "hair_emoright"
+
+	aradia
+		name = "Aradia"
+		icon_state = "hair_aradia"
+
+	dirk
+		name = "Dirk"
+		icon_state = "hair_dirk"
+
+	equius
+		name = "Equius"
+		icon_state = "hair_equius"
+
+	feferi
+		name = "Feferi"
+		icon_state = "hair_feferi"
+
+	gamzee
+		name = "Gamzee"
+		icon_state = "hair_gamzee"
+
+	kanaya
+		name = "Kanaya"
+		icon_state = "hair_kanaya"
+
+	nepeta
+		name = "Nepeta"
+		icon_state = "hair_nepeta"
+
+	rose
+		name = "Rose"
+		icon_state = "hair_rose"
+
+	roxy
+		name = "Roxy"
+		icon_state = "hair_roxy"
+
+	terezi
+		name = "Terezi"
+		icon_state = "hair_terezi"
+
+	vriska
+		name = "Vriska"
+		icon_state = "hair_vriska"
+
+	elize
+		name = "Elize"
+		icon_state = "hair_elize"
+
+	flipped
+		name = "Flipped"
+		icon_state = "hair_flipped"
+
+	angelique
+		name = "Angelique"
+		icon_state = "hair_angelique"
+
+	darcy
+		name = "Darcy"
+		icon_state = "hair_darcy"
+
+	antonio
+		name = "Antonio"
+		icon_state = "hair_antonio"
+
+	bigcurls
+		name = "Big Curls"
+		icon_state = "hair_bigcurls"
+
+	sweptfringe
+		name = "Swept fringe"
+		icon_state = "hair_sweptfringe"
+
+	dreadslong
+		name = "Dreads Long"
+		icon_state = "hair_dreadslong"
+
+	highponytail
+		name = "High Ponytail"
+		icon_state = "hair_highponytail"
+
+	cornbun
+		name = "Cornbun"
+		icon_state = "hair_cornbun"
+
+	jeanponytail
+		name = "Jean Ponytail"
+		icon_state = "hair_jeanponytail"
+
+	shouldersweep
+		name = "Shoulder Sweep"
+		icon_state = "hair_shouldersweep"
+
+	afropuffdouble
+		name = "Afropuff Double"
+		icon_state = "hair_afropuffdouble"
+
+	afropuffleft
+		name = "Afropuff Left"
+		icon_state = "hair_afropuffleft"
+
+	afropuffright
+		name = "Afropuff Right"
+		icon_state = "hair_afropuffright"
+
+	suave
+		name = "Suave"
+		icon_state = "hair_suave"
+
+	suavetwo
+		name = "Suave 2"
+		icon_state = "hair_suave2"
+
+	jane
+		name = "Jane"
+		icon_state = "hair_jane"
+
+	rockstarcurls
+		name = "Rockstar Curls"
+		icon_state = "hair_rockstarcurls"
+
+	band
+		name = "Band"
+		icon_state = "hair_band"
+
+	bieber
+		name = "Bieber"
+		icon_state = "hair_bieb"
+
+	fabio
+		name = "Fabio"
+		icon_state = "hair_fabio"
+
+	froofy_long
+		name = "Froofy Long"
+		icon_state = "hair_froofy_long"
+
+	glammetal
+		name = "Glam Metal Long"
+		icon_state = "hair_glammetal"
+
+	midb
+		name = "Mid-length bob"
+		icon_state = "hair_midb"
+
+	halfshaved
+		name = "Half shaved"
+		icon_state = "hair_halfshavedL"
+
+	longbraid
+		name = "Long braid"
+		icon_state = "hair_longbraid"
+
+	rockandroll
+		name = "Rock and roll"
+		icon_state = "hair_rockandroll"
+
+	shortflip
+		name = "Short flip"
+		icon_state = "hair_shortflip"
 
 /*
 ///////////////////////////////////
@@ -958,7 +1145,6 @@
 	elvis
 		name = "Elvis Sideburns"
 		icon_state = "facial_elvis"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
 
 	abe
 		name = "Abraham Lincoln Beard"

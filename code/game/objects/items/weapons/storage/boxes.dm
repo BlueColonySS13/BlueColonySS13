@@ -59,6 +59,11 @@
 	new foldable(get_turf(src))
 	qdel(src)
 
+/obj/item/weapon/storage/box/large
+	name = "large box"
+	icon_state = "largebox"
+	max_storage_space = 48
+
 /obj/item/weapon/storage/box/survival
 	name = "emergency supply box"
 	desc = "A survival box issued to crew members for use in emergency situations."
@@ -362,6 +367,11 @@
 	desc = "Drymate brand neaera cubes, shipped from Jargon 4. Just add water!"
 	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/neaeracube = 4)
 
+/obj/item/weapon/storage/box/monkeycubes/vatborncubes
+	name = "vatborn cube box"
+	desc = "Drymate brand neaera cubes, shipped from Ocral Spax. Just add water!"
+	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/vatborncube = 4)
+
 /obj/item/weapon/storage/box/ids
 	name = "box of spare IDs"
 	desc = "Has so many empty IDs."
@@ -499,3 +509,48 @@
 	name = "box of press badges"
 	desc = "A box that holds press badges."
 	starts_with = list(/obj/item/clothing/accessory/badge/press = 7)
+
+/obj/item/weapon/storage/box/produce_box
+	name = "produce box"
+	icon_state = "producebox"
+	desc = "A box that is made for holding grown produce."
+	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/grown)
+	starts_with = null
+	max_storage_space = 24
+
+/obj/item/weapon/storage/box/meat_box
+	name = "box of meat"
+	icon_state = "meatbox"
+	desc = "A box that is made for holding meat."
+	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/meat)
+	starts_with = null
+	max_storage_space = 24
+/*
+ * Candle Box
+ */
+
+/obj/item/weapon/storage/box/candle_box
+	name = "candle pack"
+	desc = "A pack of candles."
+	icon = 'icons/obj/candle.dmi'
+	icon_state = "candlebox"
+	slot_flags = SLOT_BELT
+	starts_with = list(/obj/item/weapon/flame/candle = 5)
+
+/obj/item/weapon/storage/box/candle_box/empty
+	starts_with = null
+
+/obj/item/weapon/storage/box/candle_box/random
+	name = "assorted candle pack"
+	desc = "A pack of assorted candles."
+	starts_with = list(/obj/item/weapon/flame/candle/random = 5)
+
+/obj/item/weapon/storage/box/candle_box/candelabra
+	name = "candelabra pack"
+	desc = "A pack of red candelabras."
+	starts_with = list(/obj/item/weapon/flame/candle/candelabra = 5)
+
+/obj/item/weapon/storage/box/candle_box/candelabra/random
+	name = "assorted candelabra pack"
+	desc = "A pack of assorted candelabras."
+	starts_with = list(/obj/item/weapon/flame/candle/candelabra/random = 5)

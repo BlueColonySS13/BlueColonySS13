@@ -56,6 +56,9 @@
 	else if(!state && (plane in my_mob.planes_visible))
 		LAZYREMOVE(my_mob.planes_visible, plane)
 
+/*
+as far as i can tell, this is unused.
+
 /datum/plane_holder/proc/set_desired_alpha(var/which = null, var/new_alpha)
 	ASSERT(which)
 	var/obj/screen/plane_master/PM = plane_masters[which]
@@ -66,6 +69,7 @@
 		var/list/subplanes = PM.sub_planes
 		for(var/SP in subplanes)
 			set_vis(which = SP, new_alpha = new_alpha)
+*/
 
 /datum/plane_holder/proc/alter_values(var/which = null, var/list/values = null)
 	ASSERT(which)

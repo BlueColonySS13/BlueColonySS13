@@ -68,7 +68,8 @@
 	var/emagged //Emagging removes Sec check.
 
 /obj/item/clothing/accessory/badge/holo/verb/Reset()
-	if(access_security in usr.GetIdCard().access || emagged)
+	var/obj/item/weapon/card/id/id_card = usr.GetIdCard()
+	if(istype(id_card) && ((access_security in id_card.access) || emagged))
 		if(!stored_name)
 			usr << "There is no information stored on the badge."
 		else
@@ -150,6 +151,13 @@
 	icon_state = "marshalbadge"
 	slot_flags = SLOT_TIE | SLOT_BELT
 
+/obj/item/clothing/accessory/badge/holo/pdsi
+	name = "agent's holobadge"
+	desc = "An immaculately polished gold badge on leather. Labeled 'PDSI Agent.'"
+	icon_state = "marshalbadge"
+	badge_string = "Pollux Division of Special Investigation"
+	slot_flags = SLOT_TIE | SLOT_BELT
+
 /obj/item/clothing/accessory/badge/press
 	name = "press badge"
 	desc = "A leather-backed plastic badge displaying that the owner is certified press personnel."
@@ -158,7 +166,8 @@
 	var/emagged //for the stealthy antag
 
 /obj/item/clothing/accessory/badge/press/verb/Reset()
-	if(access_library in usr.GetIdCard().access || emagged)
+	var/obj/item/weapon/card/id/id_card = usr.GetIdCard()
+	if(istype(id_card) && ((access_library in id_card.access) || emagged))
 		if(!stored_name)
 			usr << "There is no information stored on the badge."
 		else
@@ -233,3 +242,20 @@
 		new /obj/item/clothing/accessory/badge/holo/cord(src)
 		..()
 		return
+
+// For very rich people
+/obj/item/clothing/accessory/badge/rich
+	name = "\"I am very rich!\" badge"
+	desc = "Was it really worth it?"
+	icon_state = "rich"
+	item_state = "goldbadge"
+
+/obj/item/clothing/accessory/badge/rich/attack_self(mob/user as mob)
+	user.visible_message("[user] flaunts their \"I am very rich!\" badge.",\
+		"You flash the \"I am very rich!\" badge to everyone around you!")
+
+/obj/item/clothing/accessory/badge/rich/attack(mob/living/carbon/human/M, mob/living/user)
+	if(isliving(user))
+		user.visible_message("<span class='danger'>[user] invades [M]'s personal space, shoving the \"I am very rich!\" badge into their face!.</span>","<span class='danger'>You invade [M]'s personal space, thrusting the \"I am very rich!\" badge into their face insistently.</span>")
+		user.do_attack_animation(M)
+		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam

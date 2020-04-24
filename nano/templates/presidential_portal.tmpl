@@ -1,3 +1,17 @@
+ <style type="text/css">
+a, a:link, a:visited, a:active, .linkOn, .linkOff
+{ 
+	color: #ffffff; 
+	text-decoration: none;
+	background: #40628a;
+	border: 1px solid #161616;
+	padding: 1px 4px 1px 4px;
+	margin: 0 2px 0 0;
+	cursor:default;
+	white-space:nowrap;
+}
+</style>
+
 <h1>Presidential Portal</h1><hr>
 
 {{:data.page_msg}}<hr>
@@ -14,27 +28,29 @@
 
 {{if data.index == 1}}
 
-<div class="itemLabel"><b>Government:</div> <br>
-{{:helper.link("Manage Council", null, {'notyet' : 1})}}
+<div class="itemLabel"><b>Government:</b></div> <br>
+{{:helper.link("Manage Council", null, {'manage_council' : 1})}}
 {{:helper.link("Resign as President", null, {'resign' : 1})}}
 {{:helper.link("Assign Vice President", null, {'notyet' : 1})}}
+{{:helper.link("Assign Cabinet", null, {'notyet' : 1})}}
 <p><p><br>
 
-<div class="itemLabel"><b>Law and Order:</div> <br>
+<div class="itemLabel"><b>Law and Order:</b></div> <br>
 {{:helper.link("Make New Bill", null, {'notyet' : 1})}}
 {{:helper.link("Edit Colony Laws", null, {'notyet' : 1})}}
 {{:helper.link("Set Contraband", null, {'contraband' : 1})}}
 {{:helper.link("Citizen Rights", null, {'rights_panel' : 1})}}
 <p><p><br>
 
-<div class="itemLabel"><b>Economy:</div> <br>
+<div class="itemLabel"><b>Economy:</b></div> <br>
 {{:helper.link("Economy Information", null, {'notyet' : 1})}}
+{{:helper.link("Manage Funds", null, {'manage_funds' : 1})}}
 {{:helper.link("Modify Public Jobs", null, {'notyet' : 1})}}
 {{:helper.link("Income Tax Rates", null, {'taxes' : 1})}}
 {{:helper.link("Item Tax", null, {'item_tax' : 1})}}
 <p><p><br>
 
-<div class="itemLabel">Communications:</div> <br>
+<div class="itemLabel"><b>Communications:</b></div> <br>
 {{:helper.link("Public News Announcement", null, {'notyet' : 1})}}
 {{:helper.link("Public Emails", null, {'notyet' : 1})}}
 {{:helper.link("Fax NanoTrasen", null, {'notyet' : 1})}}
@@ -240,10 +256,27 @@
 
 	<div class="itemLabel">
 		Sentencing Age:
-	</div> {{:data.sentencing_age}}  {{:helper.link("Change", null, {'sentencing_age' : 1})}}<br>
-	<br>
-<br><br>
-{{:helper.link("Back", null, {'back' : 1})}}
+	</div> {{:data.sentencing_age}}  {{:helper.link("Change", null, {'sentencing_age' : 1})}}
+	<br><br>
+	{{:helper.link("Back", null, {'back' : 1})}}
 {{/if}}
 
+
+{{if data.index == 7}}
+
+	{{:helper.link("Modify City Service Ability", null, {'manage_council_services' : 1})}}
+
+	<br>
+	<br>
+	<b>Council Services Allowance:</b> {{:data.city_services_enable}}
+
+
+	<br><br>
+	{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
+
+{{if data.index == 8}}
+
+	{{:helper.link("Back", null, {'back' : 1})}}
+{{/if}}
 

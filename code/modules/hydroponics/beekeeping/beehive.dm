@@ -12,6 +12,8 @@
 	var/frames = 0
 	var/maxFrames = 5
 
+	unique_save_vars = list("closed", "bee_count", "smoked", "honeycombs", "frames", "maxFrames")
+
 /obj/machinery/beehive/update_icon()
 	overlays.Cut()
 	icon_state = "beehive"
@@ -163,6 +165,7 @@
 
 	var/processing = 0
 	var/honey = 0
+	circuit = /obj/item/weapon/circuitboard/honey_extractor
 
 /obj/machinery/honey_extractor/attackby(var/obj/item/I, var/mob/user)
 	if(processing)
@@ -242,14 +245,12 @@
 	icon_state = "wax"
 	burn_state = 0 //Burnable
 	burntime = 5
+	stack_color = COLOR_YELLOW
+	dyeable = TRUE
 
 /obj/item/stack/wax/New()
 	..()
 	recipes = wax_recipes
-
-var/global/list/datum/stack_recipe/wax_recipes = list( \
-	new/datum/stack_recipe("candle", /obj/item/weapon/flame/candle) \
-)
 
 /obj/item/bee_pack
 	name = "bee pack"

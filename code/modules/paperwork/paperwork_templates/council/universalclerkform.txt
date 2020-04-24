@@ -1,0 +1,51 @@
+[center][logo]
+[large]Geminus City - City Clerks Office[/large]
+[h1]Universal Identification Card Form[/h1]
+All City Hall Required Purposes
+[i][small]Please note that all Communicators Have a Pen In Them[/small][/i][/center]
+
+[b]Basic Information:[/b]
+[small]Applicant Signature: [field]
+Applicant Account Number: [field]
+
+[b]Current ID Occuption:[/b]
+(Shown On Your Current ID)[/small]
+[field]
+[hr]
+
+[large][b]Requests: [/b][/large]
+(Check X in Box)
+
+[b]Occupation Transfer?: {[field]}[/b]
+[small]Requires Relevant Head of Department Stamp/Signature[/small]
+
+[b]Demotion?: {[field]}[/b]
+[small]Requires Relevant Head of Department Stamp/Signature[/small]
+
+[b]Additional Access?: {[field]}[/b]
+[small]Requires Relevant Head of Department Stamp/Signature[/small]
+
+[b]New ID?: {[field]}[/b]
+
+[b]ID Occupation Change?:{[field]}[/b]
+[small]For Civilian/Misc Only[/small]
+[hr]
+
+[b]Signatures, Stamps, Explainations:[/b]
+[small]Explain your request, here:[/small]
+[field]
+
+[hr]
+[b]City Clerk/Secretary Signature:[/b]
+[small]If Signature Needed: [field]
+If Signature Needed: [field]
+If Signature Needed: [field][/small]
+
+[hr]
+
+[hr]
+
+Please Fax Back Stamped / Signed Copy to City Clerks Office
+[hr]
+
+[hr]

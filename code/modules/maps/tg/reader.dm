@@ -467,7 +467,8 @@ var/global/use_preloader = FALSE
 		var/value = attributes[attribute]
 		if(islist(value))
 			value = deepCopyList(value)
-		what.vars[attribute] = value
+		if(hasvar(what, attribute))
+			what.vars[attribute] = value
 	use_preloader = FALSE
 
 /area/template_noop

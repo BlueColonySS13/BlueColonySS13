@@ -3,7 +3,7 @@
 	name = "glass"
 	stack_type = /obj/item/stack/material/glass
 	flags = MATERIAL_BRITTLE
-	icon_colour = "#00E1FF"
+	icon_colour = COLOR_DEEP_SKY_BLUE
 	opacity = 0.3
 	integrity = 100
 	shard_type = SHARD_SHARD
@@ -15,7 +15,7 @@
 	door_icon_base = "stone"
 	destruction_desc = "shatters"
 	window_options = list("One Direction" = 1, "Full Window" = 4, "Windoor" = 2)
-	created_window = /obj/structure/window/basic
+	created_window = /obj/structure/window/basic/full
 	rod_product = /obj/item/stack/material/glass/reinforced
 
 /material/glass/build_windows(var/mob/living/user, var/obj/item/stack/used_stack)
@@ -95,7 +95,7 @@
 	display_name = "reinforced glass"
 	stack_type = /obj/item/stack/material/glass/reinforced
 	flags = MATERIAL_BRITTLE
-	icon_colour = "#00E1FF"
+	icon_colour = COLOR_DEEP_SKY_BLUE
 	opacity = 0.3
 	integrity = 100
 	shard_type = SHARD_SHARD
@@ -105,7 +105,7 @@
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 2, "glass" = SHEET_MATERIAL_AMOUNT)
 	window_options = list("One Direction" = 1, "Full Window" = 4, "Windoor" = 2)
-	created_window = /obj/structure/window/reinforced
+	created_window = /obj/structure/window/reinforced/full
 	wire_product = null
 	rod_product = null
 
@@ -118,7 +118,7 @@
 	icon_colour = "#FC2BC5"
 	stack_origin_tech = list(TECH_MATERIAL = 4)
 	window_options = list("One Direction" = 1, "Full Window" = 4)
-	created_window = /obj/structure/window/phoronbasic
+	created_window = /obj/structure/window/phoronbasic/full
 	wire_product = null
 	rod_product = /obj/item/stack/material/glass/phoronrglass
 
@@ -129,7 +129,7 @@
 	stack_origin_tech = list(TECH_MATERIAL = 5)
 	composite_material = list() //todo
 	window_options = list("One Direction" = 1, "Full Window" = 4)
-	created_window = /obj/structure/window/phoronreinforced
+	created_window = /obj/structure/window/phoronreinforced/full
 	hardness = 40
 	weight = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2)

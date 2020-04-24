@@ -19,6 +19,8 @@
 	var/obj/item/weapon/cell/bcell = null
 	var/hitcost = 240
 
+	unique_save_vars = list("status")
+
 /obj/item/weapon/melee/baton/get_cell()
 	return bcell
 

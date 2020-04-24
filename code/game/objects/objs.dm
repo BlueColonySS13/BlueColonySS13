@@ -21,9 +21,19 @@
 	var/can_speak = 0 //For MMIs and admin trickery. If an object has a brainmob in its contents, set this to 1 to allow it to speak.
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 
+	var/table_drag = FALSE // Can this be click dragged onto a table?
+	var/table_shift = 14	// If dragged onto a table, what's the pixel y of this?
+
 /obj/Destroy()
 	processing_objects -= src
 	return ..()
+
+/obj/examine(mob/user)
+	. = ..()
+	if(tagged_price)
+		to_chat(user, "There is a price tag marking [src] to be <b>[cash2text( tagged_price, FALSE, TRUE, TRUE )]</b>.")
+	if(dont_save)
+		to_chat(user, "<b>You have a feeling this item is important or belongs to someone...</b>")
 
 /obj/Topic(href, href_list, var/datum/topic_state/state = default_state)
 	if(usr && ..())

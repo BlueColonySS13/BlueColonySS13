@@ -119,31 +119,31 @@
 	desc = "Used in cooking various dishes."
 	icon_state = "enzyme"
 
-/obj/item/weapon/reagent_containers/food/condiment/enzyme/initialize()
-	..()
+/obj/item/weapon/reagent_containers/food/condiment/enzyme/New()
+	. = ..()
 	reagents.add_reagent("enzyme", 50)
 
-/obj/item/weapon/reagent_containers/food/condiment/sugar/initialize()
-	..()
+/obj/item/weapon/reagent_containers/food/condiment/sugar/New()
+	. = ..()
 	reagents.add_reagent("sugar", 50)
 
-/obj/item/weapon/reagent_containers/food/condiment/ketchup/initialize()
+/obj/item/weapon/reagent_containers/food/condiment/ketchup/New()
 	. = ..()
 	reagents.add_reagent("ketchup", 50)
 
-/obj/item/weapon/reagent_containers/food/condiment/hotsauce/initialize()
+/obj/item/weapon/reagent_containers/food/condiment/hotsauce/New()
 	. = ..()
 	reagents.add_reagent("capsaicin", 50)
 
-/obj/item/weapon/reagent_containers/food/condiment/cornoil/initialize()
+/obj/item/weapon/reagent_containers/food/condiment/cornoil/New()
 	. = ..()
 	reagents.add_reagent("cornoil", 50)
 
-/obj/item/weapon/reagent_containers/food/condiment/coldsauce/initialize()
+/obj/item/weapon/reagent_containers/food/condiment/coldsauce/New()
 	. = ..()
 	reagents.add_reagent("frostoil", 50)
 
-/obj/item/weapon/reagent_containers/food/condiment/soysauce/initialize()
+/obj/item/weapon/reagent_containers/food/condiment/soysauce/New()
 	. = ..()
 	reagents.add_reagent("soysauce", 50)
 

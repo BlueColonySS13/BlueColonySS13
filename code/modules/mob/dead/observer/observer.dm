@@ -156,6 +156,7 @@ Works together with spawning an observer, noted above.
 	if(!client) return 0
 
 	handle_regular_hud_updates()
+	handle_vision()
 
 /mob/proc/ghostize(var/can_reenter_corpse = 1)
 	if(key)
@@ -473,7 +474,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/turf/t = get_turf(src)
 	if(t)
-		var/rads = radiation_repository.get_rads_at_turf(t)
+		var/rads = SSradiation.get_rads_at_turf(t)
 		to_chat(src, "<span class='notice'>Radiation level: [rads ? rads : "0"] Bq.</span>")
 
 

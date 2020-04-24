@@ -7,6 +7,8 @@
 	var/timestamp = ""
 	var/datum/computer_file/attachment = null
 
+	var/read = FALSE
+
 /datum/computer_file/data/email_message/clone()
 	var/datum/computer_file/data/email_message/temp = ..()
 	temp.title = title
@@ -14,6 +16,7 @@
 	temp.spam = spam
 	temp.timestamp = timestamp
 	temp.attachment = attachment.clone()
+	temp.read = read
 	return temp
 
 
@@ -27,4 +30,4 @@
 	return dat
 
 /datum/computer_file/data/email_message/proc/set_timestamp()
-	timestamp = stationtime2text()
+	timestamp = "[stationtime2text()] - [full_game_time()]"

@@ -1155,6 +1155,38 @@ area/space/atmosalert()
 	name = "\improper Research Server Room"
 	icon_state = "server"
 
+/area/pdsi_entrance
+	name = "\improper PDSI Entrance"
+	icon_state = "bridge"
+
+/area/pdsi_main
+	name = "\improper PDSI Main"
+	icon_state = "bridge"
+
+/area/pdsi_armory
+	name = "\improper PDSI Armory"
+	icon_state = "bridge"
+
+/area/pdsi_interrogationa
+	name = "\improper PDSI Interrogation A"
+	icon_state = "bridge"
+
+/area/pdsi_interrogationb
+	name = "\improper PDSI Interrogation B"
+	icon_state = "bridge"
+
+/area/pdsi_offices
+	name = "\improper PDSI Offices"
+	icon_state = "bridge"
+
+/area/pdsi_sao
+	name = "\improper PDSI Supervisory Agent Office"
+	icon_state = "bridge"
+
+/area/pdsi_forensics
+	name = "\improper PDSI Forensic Services"
+	icon_state = "bridge"
+
 //Crew
 
 /area/crew_quarters
@@ -1748,9 +1780,42 @@ area/space/atmosalert()
 	music = 'sound/ambience/signal.ogg'
 
 /area/medical/psych
-	name = "\improper Psych Room"
+	name = "\improper Geminus City Asylum"
 	icon_state = "medbay3"
 	music = 'sound/ambience/signal.ogg'
+
+/area/medical/psych/psychroom1
+	name = "\improper Psych Room 1"
+	icon_state = "medbay"
+
+/area/medical/psych/psychroom2
+	name = "\improper Psych Room 2"
+	icon_state = "medbay2"
+
+/area/medical/psych/psychroom3
+	name = "\improper Psych Room 3"
+	icon_state = "medbay3"
+
+/area/medical/psych/psychroom4
+	name = "\improper Psych Room 4"
+	icon_state = "medbay4"
+
+/area/medical/psych/psychroom5
+	name = "\improper Psych Room 5"
+	icon_state = "medbay"
+
+/area/medical/psych/psychroom6
+	name = "\improper Psych Room 6"
+	icon_state = "medbay2"
+
+/area/medical/psych/recreationwing
+	name = "Psych Recreation"
+
+/area/medical/psych/psychstorage
+	name = "Psych Storage"
+
+/area/medical/psych/psychoffice
+	name = "Psychiatrists Office"
 
 /area/crew_quarters/medbreak
 	name = "\improper Break Room"
@@ -2106,6 +2171,10 @@ area/space/atmosalert()
 
 /area/rnd/research_restroom
 	name = "\improper Research Restroom"
+	icon_state = "research_restroom"
+
+/area/rnd/research_breakroom
+	name = "\improper Research Breakroom"
 	icon_state = "research_restroom"
 
 /area/rnd/research_storage

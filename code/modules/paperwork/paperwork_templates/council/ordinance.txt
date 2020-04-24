@@ -1,0 +1,21 @@
+[small][center][logo]
+Geminus City Council[/center]
+
+[b]City Ordinance[/b]
+DTG: [date], [time]
+
+Title: [field]
+Body:
+
+[field]
+
+[hr]
+Mayor's Signature
+[field]
+City Clerk's Signature:
+[field]
+
+[i]In the absence of the City Clerk or the Mayor, other Council members may sign.[/i]
+
+[center]Issuing Stamp[/center]
+[hr]

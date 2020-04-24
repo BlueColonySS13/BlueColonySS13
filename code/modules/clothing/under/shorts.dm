@@ -5,6 +5,17 @@
 	gender = PLURAL
 	body_parts_covered = LOWER_TORSO
 
+/obj/item/clothing/under/shorts/jeanshorts
+	name = "jean shorts"
+	desc = "Jeans that seem super short."
+	icon_state = "jeanshorts"
+
+/obj/item/clothing/under/shorts/jeanshorts/female
+	name = "jean short shorts"
+	desc = "Jeans that seem super short. Just in shorter form!"
+	icon_state = "jeanshortshorts"
+
+
 /obj/item/clothing/under/shorts/red
 	name = "red athletic shorts"
 	icon_state = "redshorts"
@@ -26,11 +37,11 @@
 	icon_state = "greyshorts"
 
 /obj/item/clothing/under/shorts/white
-	name = "white shorts"
+	name = "shorts"
 	icon_state = "whiteshorts"
 
 /obj/item/clothing/under/shorts/white/female
-	name = "white short shorts"
+	name = "short shorts"
 	icon_state = "whiteshorts_f"
 
 /obj/item/clothing/under/shorts/jeans
@@ -100,6 +111,12 @@
 	body_parts_covered = LOWER_TORSO
 	rolled_sleeves = -1
 
+/obj/item/clothing/under/skirt/pencil
+	name = "pencil skirt"
+	desc = "For that formal flair."
+	icon_state = "pencilskirt"
+	index = 1
+
 /obj/item/clothing/under/skirt/khaki
 	name = "khaki skirt"
 	desc = "A skirt that is a khaki color."
@@ -119,6 +136,11 @@
 	name = "short denim skirt"
 	desc = "A skirt that is made of denim."
 	icon_state = "skirt_short_denim"
+
+/obj/item/clothing/under/skirt/jeanskirt
+	name = "short jean skirt"
+	desc = "A skirt that is made of denim."
+	icon_state = "jeanskirt"
 
 /obj/item/clothing/under/skirt/swept
 	name = "swept skirt"

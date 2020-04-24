@@ -63,7 +63,9 @@
 		usr.client.debug_variables(antag)
 		message_admins("Admin [key_name_admin(usr)] is debugging the [antag.role_text] template.")
 
-/client/proc/debug_controller(controller in list("Master","Ticker","Ticker Process","Air","Jobs","Sun","Emails","Radio","Supply","Shuttles","Emergency Shuttle","Configuration","pAI", "Cameras", "Transfer Controller", "Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets"))
+
+/client/proc/debug_controller(controller in list("Master","Ticker","Ticker Process","Air","Jobs","Sun","Economy","Payroll","Laws","Emails","Lots","Radio","Supply","Shuttles","Emergency Shuttle","Configuration","pAI", "Cameras", "Transfer Controller", "Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets"))
+
 	set category = "Debug"
 	set name = "Debug Controller"
 	set desc = "Debug the various periodic loop controllers for the game (be careful!)"
@@ -85,9 +87,6 @@
 		if("Jobs")
 			debug_variables(job_master)
 			feedback_add_details("admin_verb","DJobs")
-		if("Sun")
-			debug_variables(sun)
-			feedback_add_details("admin_verb","DSun")
 		if("Radio")
 			debug_variables(radio_controller)
 			feedback_add_details("admin_verb","DRadio")
@@ -128,13 +127,25 @@
 			debug_variables(chemistryProcess)
 			feedback_add_details("admin_verb", "DChem")
 		if("Vote")
-			debug_variables(vote)
+			debug_variables(SSvote)
 			feedback_add_details("admin_verb", "DVote")
 		if("Planets")
 			debug_variables(SSplanets)
 			feedback_add_details("admin_verb", "DPlanets")
+		if("Lots")
+			debug_variables(SSlots)
+			feedback_add_details("admin_verb", "DLots")
 		if("Emails")
 			debug_variables(SSemails)
 			feedback_add_details("admin_verb", "DEmails")
+		if("Laws")
+			debug_variables(SSlaw)
+			feedback_add_details("admin_verb", "DLaw")
+		if("Economy")
+			debug_variables(SSeconomy)
+			feedback_add_details("admin_verb", "DEconomy")
+		if("Payroll")
+			debug_variables(SSpayroll)
+			feedback_add_details("admin_verb", "DPayroll")
+
 	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")
-	return

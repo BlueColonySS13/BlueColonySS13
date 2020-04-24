@@ -1,5 +1,5 @@
 /obj/machinery/transportpod
-	name = "Ballistic Transportation Pod"
+	name = "ballistic transportation pod"
 	desc = "A fast transit ballistic pod used to get from one place to the next. Batteries not included!"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "borg_pod_opened"
@@ -11,28 +11,12 @@
 	var/in_transit = 0
 	var/mob/occupant = null
 
-	var/xc = list(137, 209, 163, 110, 95, 60, 129, 201) // List of x values on the map to go to.
-	var/yc = list(134, 99, 169, 120, 96, 122, 189, 219) // List of y values on the map to go to.
+	var/id = null	// if an id is set, this will travel to any instance of /obj/effect/landmark/transport_location with the same id. See landmarks.dm
 
-	var/limit_x = 3
-	var/limit_y = 3
+/obj/machinery/transportpod/president
+	name = "president's ballistic transportation pod"
+	req_access = list(access_president)
 
-/obj/machinery/transportpod/process()
-	if(occupant)
-		if(in_transit)
-			var/locNum = rand(0, 7) //pick a random location
-			var/turf/L = locate(xc[locNum], yc[locNum], 1) // Pairs the X and Y to get an actual location.
-			limit_x = xc[locNum]+1
-			limit_y = yc[locNum]+1
-			build()
-			sleep(20) //Give explosion time so the pod itself doesn't go boom
-			src.forceMove(L)
-			playsound(src, pick('sound/effects/Explosion1.ogg', 'sound/effects/Explosion2.ogg', 'sound/effects/Explosion3.ogg', 'sound/effects/Explosion4.ogg'))
-			in_transit = 0
-			sleep(2)
-			go_out()
-			sleep(2)
-			del(src)
 
 /obj/machinery/transportpod/relaymove(mob/user as mob)
 	if(user.stat)
@@ -54,6 +38,9 @@
 	if(occupant)
 		return
 
+	if(!ishuman(O))
+		return
+
 	if(O.incapacitated()) //aint no sleepy people getting in here
 		return
 
@@ -62,11 +49,44 @@
 	O.forceMove(src)
 	occupant = O
 	update_icon()
-	if(alert(O, "Are you sure you're ready to launch?", , "Yes", "No") == "Yes")
+	var/obj/effect/landmark/transport_location/teleport_to
+
+	if(alert(O, "Do you wish to travel to a location?", , "Yes", "No") == "Yes")
+		var/list/all_transports = list()
+		for(var/obj/effect/landmark/transport_location/T in transports_list)
+			all_transports += T.name
+
+		var/destination = input(usr, "Where would you like to go?.", "Transport Pod") as null|anything in all_transports
+		if(!destination)
+			go_out()
+			return
+		for(var/obj/effect/landmark/transport_location/B in transports_list)
+			if(destination == B.name)
+				teleport_to = B
+
+		if(!teleport_to)
+			go_out()
+			return
+
+		if(!allowed(O))
+			to_chat(O, "<b>You lack the access needed to ride this pod!</b>")
+			go_out()
+			return
+
+		var/turf/T = get_turf(teleport_to)
+		if(!T)
+			go_out()
+			return
+
 		in_transit = 1
 		playsound(src, HYPERSPACE_WARMUP)
-	else
-		go_out()
+
+		sleep(45)
+		if(occupant)
+			src.forceMove(T)
+		sleep(10)
+
+	go_out()
 	return 1
 
 /obj/machinery/transportpod/proc/go_out()
@@ -100,11 +120,3 @@
 
 	go_in(usr)
 
-/obj/machinery/transportpod/proc/build()
-	for(var/x = limit_x-2, x <= limit_x, x++)
-		for(var/y = limit_y-2, y <= limit_y, y++)
-			var/current_cell = locate(x, y, 1)
-			var/turf/T = get_turf(current_cell)
-			if(!current_cell)
-				continue
-			T.ChangeTurf(/turf/unsimulated/floor/shuttle_ceiling)
