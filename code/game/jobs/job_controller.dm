@@ -590,12 +590,26 @@ var/global/datum/controller/occupations/job_master
 		H.mind.initial_email = EA
 
 
+
+
 		if(job_email)
 			to_chat(H, "Your workplace's email address is <b>[job_email.login]</b> and the password is <b>[job_email.password]</b>.")
 		to_chat(H, "Your personal email address is <b>[EA.login]</b> and the password is <b>[EA.password]</b>. This information has also been placed into your notes.")
 		H.mind.store_memory("Your email account address is [EA.login] and the password is [EA.password].")
 		if(job_email)
 			H.mind.store_memory("Your workplace account address is [job_email.login] and the password is [job_email.password].")
+
+		var/new_msgs = 0
+
+		for(var/datum/computer_file/data/email_message/EM in EA.inbox)
+			if(EM.read)
+				continue
+			new_msgs++
+
+		if(new_msgs)
+			to_chat(H, "<font size=3><span class='notice'>You have <b>[new_msgs]</b> unread email(s).</span></font>")
+			to_chat(H, "Check your email inbox from one of the computers or your communicator to access them..")
+
 
 		// END EMAIL GENERATION
 

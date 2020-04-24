@@ -13,7 +13,7 @@
 	if(data && data["email_title"])
 		desc += " **Title**: [data["email_title"]]\n"
 	if(data && data["email_content"])
-		desc += " **Content**: \n[data["email_content"]]"
+		desc += " **Content**: \n [pencode2webhook(data["email_content"])]"
 	desc += "."
 
 	.["embeds"] = list(list(
