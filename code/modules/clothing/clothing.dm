@@ -437,7 +437,8 @@
 		cut_overlay(helmet_light)
 		helmet_light = null
 
-	user.update_inv_head() //Will redraw the helmet with the light on the mob
+	if(user)
+		user.update_inv_head() //Will redraw the helmet with the light on the mob
 
 /obj/item/clothing/head/update_clothing_icon()
 	if (ismob(src.loc))
