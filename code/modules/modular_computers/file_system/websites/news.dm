@@ -1,63 +1,74 @@
 
 /datum/website/news
 	var/datum/feed_channel/news_source
-	var/current_news_page
 
 /datum/website/news/geminus_standard
 	title = "Geminus Standard"
 	name = "geminus-standard.nt"
 
+/datum/website/news/geminus_standard/New()
+	..()
 
-/datum/website/news/New()
 	if(!news_source && news_data)
 		news_source = news_data.city_newspaper
 
-	if(news_source)
-		title = "[news_source.channel_name]"
+/datum/website/news/get_website_title()
+	if(!news_source)
+		return title
 
-	if(!current_news_page)
-		if(news_source.messages)
-			current_news_page = news_source.messages.len
+	return "[news_source.channel_name]"
 
-	if(!current_news_page || !news_source.messages)
-		content += "No current available news."
+/datum/website/news/get_website_content(mob/user)
+	var/dat = ""
+	var/datum/nano_module/nt_explorer/nm = get_browser_window(user)
+
+	if(!nm)
+		return dat
+
+	var/page_metadata = nm.page_metadata
+
+	if(!page_metadata)
+		page_metadata = 1
+
+	if(!news_source || isemptylist(news_source.messages))
+		dat += "No current available news."
+		return dat
+
+	if(page_metadata)
+		dat += get_news_page(news_source, news_source.messages[page_metadata], page_metadata)
+		if(page_metadata > news_source.messages.len || (news_source.messages.len > 1) && !(page_metadata == 1))
+			var/prev = page_metadata - 1
+			dat += "<a href='?src=\ref[src];choice=switch_page;page=[prev]'>Previous Issue</a>  "
+
+		if(news_source.messages.len > page_metadata)
+			var/next = page_metadata + 1
+			dat += "<a href='?src=\ref[src];choice=switch_page;page=[next]'>Next Issue</a>"
+
+		dat += "  (Page <b>[page_metadata]</b> out of <b>[news_source.messages.len]</b>)"
 	else
-		content += get_news_page(news_source, news_source.messages[current_news_page], current_news_page)
-		if(current_news_page > news_source.messages.len || (news_source.messages.len > 1) && !(current_news_page == 1))
-			content += "<a href='?src=\ref[src];previous_news=1;prevpage=\ref[news_source]'>Previous Issue</a>  "
-		if(news_source.messages.len > current_news_page)
-			content += "<a href='?src=\ref[src];next_news=1;nextpage=\ref[news_source]'>Next Issue</a>"
+		dat += "Error loading newspaper page, please contact an administrator."
+		return dat
 
-		content += "  (Page <b>[current_news_page]</b> out of <b>[news_source.messages.len]</b>)"
+	return dat
 
-/datum/website/news/Topic(href, href_list[])
-	..()
 
-	if(href_list["next_news"])
-		var/datum/feed_channel/next_page = locate(href_list["nextpage"])
-		if(!next_page)
-			return
-		if(!current_news_page)
-			return
-		if(!next_page.messages)
-			return
+/datum/website/news/Topic(var/href, var/href_list)
+	if(..())
+		return 1
 
-		if(current_news_page == next_page.messages.len)
-			return
-		else
-			current_news_page++
+	var/datum/nano_module/nt_explorer/nm = get_browser_window(usr)
 
-	if(href_list["previous_news"])
-		var/datum/feed_channel/prev_page = locate(href_list["prevpage"])
-		if(!prev_page)
-			return
-		if(!current_news_page)
-			return
-		if(!prev_page.messages)
-			return
-		if(1 >= current_news_page)
-			return
-		else
-			current_news_page--
+	if(href_list["choice"])
+		switch(href_list["choice"])
+			if("switch_page")
+				var/E = text2num(href_list["page"])
+				var/meta_num = E
+				nm.page_metadata = meta_num
+
+
+
+	nm.refresh(usr)
+
+
 
 

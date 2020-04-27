@@ -24,5 +24,5 @@
 		. = 1
 
 		var/datum/nano_module/nt_explorer/nm = get_browser_window(usr)
-		nm.search()
+		nm.search(usr)
 		return
