@@ -35,6 +35,9 @@
 
 	unique_save_vars = list("paint_color", "stripe_color", "damage", "can_open")
 
+/turf/simulated/wall/on_persistence_load()
+	update_material()
+
 // Walls always hide the stuff below them.
 /turf/simulated/wall/levelupdate()
 	for(var/obj/O in src)

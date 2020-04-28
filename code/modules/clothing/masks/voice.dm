@@ -4,6 +4,8 @@
 	var/voice //If set and item is present in mask/suit, this name will be used for the wearer's speech.
 	var/active
 
+	unique_save_vars = list("voice", "active")
+
 /obj/item/clothing/mask/gas/voice
 	name = "gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. It seems to house some odd electronics."
@@ -29,3 +31,8 @@
 /obj/item/clothing/mask/gas/voice/New()
 	..()
 	changer = new(src)
+
+/obj/item/clothing/mask/gas/voice/on_persistence_load()
+	for(var/obj/item/voice_changer/VC in contents)
+		changer = VC
+		break

@@ -253,6 +253,8 @@
 
 				MT.map_objects += saved_obj_1
 
+		T.on_persistence_load()
+		T.update_icon()
 
 	return full_map
 

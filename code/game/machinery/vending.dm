@@ -938,18 +938,6 @@
 
 	vendor_department = DEPT_PUBLIC
 
-
-/obj/machinery/vending/cart
-	name = "PTech"
-	desc = "Cartridges for PDAs."
-	product_slogans = "Carts to go!"
-	icon_state = "cart"
-	icon_deny = "cart-deny"
-	req_access = list(access_hop)
-	products = list(/obj/item/device/communicator = 10)
-	req_log_access = access_hop
-	has_logs = 1
-
 /obj/machinery/vending/cigarette
 	name = "cigarette machine"
 	desc = "If you want to get cancer, might as well do it in style!"
@@ -1344,6 +1332,7 @@
 	product_records = list()
 	req_log_access = access_ce
 	has_logs = 1
+	block_persistence = TRUE
 
 /obj/machinery/vending/engivend/circuits
 	name = "Vomisa Inc. Circuit Vendor"
@@ -1392,6 +1381,7 @@
 	// The original products list wasn't finished.  The ones without given quantities became quantity 5.  -Sayu
 	req_log_access = access_ce
 	has_logs = 1
+	block_persistence = TRUE
 
 /obj/machinery/vending/robotics
 	name = "Robotech Deluxe"
@@ -1406,6 +1396,7 @@
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 	req_log_access = access_rd
 	has_logs = 1
+	block_persistence = TRUE
 
 /obj/machinery/vending/giftvendor
 	name = "AlliCo Baubles and Confectionaries"
@@ -2076,6 +2067,7 @@
 	icon_state = "gunrack"
 	icon_deny = "gunrack-deny"
 	vend_reply = "Thank you for using BlastTech's automated vending service, happy hunting."
+	block_persistence = TRUE
 
 /obj/machinery/vending/armory/gcpd/ballistics
 	name = "BlastTech Defense Solutions Ballistics Vendor"
