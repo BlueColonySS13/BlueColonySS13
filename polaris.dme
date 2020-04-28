@@ -906,7 +906,6 @@
 #include "code\game\objects\items\crayons.dm"
 #include "code\game\objects\items\glassjar.dm"
 #include "code\game\objects\items\gunbox.dm"
-#include "code\game\objects\items\keypads.dm"
 #include "code\game\objects\items\latexballoon.dm"
 #include "code\game\objects\items\paintings.dm"
 #include "code\game\objects\items\paintkit.dm"
