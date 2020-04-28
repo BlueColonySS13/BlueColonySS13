@@ -6,6 +6,7 @@
 
 /datum/supply_pack/med
 	group = "Medical"
+	spend_type = SPEND_MEDICAL
 
 /datum/supply_pack/med/medical
 	name = "Medical crate"

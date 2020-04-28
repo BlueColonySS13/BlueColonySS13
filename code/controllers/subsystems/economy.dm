@@ -114,6 +114,8 @@ SUBSYSTEM_DEF(economy)
 			sav_folder = "private_departments"
 		if(D.dept_type == EXTERNAL_DEPARTMENT)
 			sav_folder = "external_departments"
+		if(D.dept_type == HIDDEN_DEPARTMENT)
+			sav_folder = "hidden_departments"
 
 		var/path = "data/persistent/departments/[sav_folder]/[D.name].sav"
 
@@ -158,6 +160,8 @@ SUBSYSTEM_DEF(economy)
 			sav_folder = "private_departments"
 		if(D.dept_type == EXTERNAL_DEPARTMENT)
 			sav_folder = "external_departments"
+		if(D.dept_type == HIDDEN_DEPARTMENT)
+			sav_folder = "hidden_departments"
 
 
 		var/path = "data/persistent/departments/[sav_folder]/[D.name].sav"

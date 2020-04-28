@@ -6,9 +6,11 @@
 
 /datum/supply_pack/clothing
 	group = "Clothing"
+	spend_type = SPEND_GROOMING
 
 /datum/supply_pack/randomised/clothing
 	group = "Clothing"
+	spend_type = SPEND_GROOMING
 
 /datum/supply_pack/clothing/wizard
 	name = "Wizard costume"

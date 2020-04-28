@@ -6,10 +6,12 @@
 
 /datum/supply_pack/robotics
 	group = "Robotics"
+	spend_type = SPEND_ROBOTICS
 
 /datum/supply_pack/randomised/robotics
 	group = "Robotics"
 	access = access_robotics
+	spend_type = SPEND_ROBOTICS
 
 /datum/supply_pack/robotics/robotics_assembly
 	name = "Robotics assembly crate"
@@ -173,7 +175,15 @@
 	contains = list(
 			/obj/item/device/defib_kit/jumper_kit = 2
 			)
-	cost = 30
+	cost = 100
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Jumper kit crate"
 	access = access_robotics
+
+
+/datum/supply_pack/robotics/hoverpod
+	name = "Hoverpod Shipment"
+	contains = list()
+	cost = 2500
+	containertype = /obj/structure/largecrate/hoverpod
+	containername = "Hoverpod Crate"

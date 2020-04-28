@@ -4,9 +4,9 @@
 */
 
 /datum/supply_pack/circuits
-	group = "Circuits"
+	group = "Business Circuits"
 	containertype = /obj/structure/closet/crate
-
+	spend_type = SPEND_BUSINESS
 
 
 
@@ -97,5 +97,13 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Smartfridge Circuit"
 
-
+/datum/supply_pack/circuits/forensics
+	contains = list(
+	/obj/item/weapon/circuitboard/dna_analyzer,
+	/obj/item/weapon/circuitboard/microscope,
+	)
+	name = "Forensics Circuits"
+	cost = 500
+	containertype = /obj/structure/closet/crate
+	containername = "Forensics Circuits"
 

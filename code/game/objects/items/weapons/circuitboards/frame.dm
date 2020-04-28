@@ -220,6 +220,16 @@
 							/obj/item/weapon/stock_parts/scanning_module = 1,
 							/obj/item/stack/material/glass/reinforced = 2)
 
+/obj/item/weapon/circuitboard/microscope
+	name = T_BOARD("microscope")
+	build_path = /obj/machinery/microscope
+	board_type = new /datum/frame/frame_types/microscope
+	origin_tech = list(TECH_MAGNET = 4, TECH_BIO = 2, TECH_DATA = 2)
+	req_components = list(
+							/obj/item/weapon/stock_parts/scanning_module = 2,
+							/obj/item/weapon/stock_parts/micro_laser = 1,
+							/obj/item/weapon/stock_parts/console_screen = 1)
+
 /obj/item/weapon/circuitboard/dna_analyzer
 	name = T_BOARD("dna analyzer")
 	build_path = /obj/machinery/dnaforensics
@@ -229,6 +239,7 @@
 							/obj/item/weapon/stock_parts/scanning_module = 2,
 							/obj/item/weapon/stock_parts/micro_laser = 1,
 							/obj/item/weapon/stock_parts/console_screen = 1)
+
 
 /obj/item/weapon/circuitboard/mass_driver
 	name = T_BOARD("mass driver")
