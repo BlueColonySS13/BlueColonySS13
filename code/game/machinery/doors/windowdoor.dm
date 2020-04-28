@@ -155,7 +155,7 @@
 
 /obj/machinery/door/window/attack_hand(mob/user as mob)
 
-	if(keypad)
+	if(keypad && !p_open)
 		if(!istype(user, /mob/living/silicon))
 			user.set_machine(src)
 			var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
@@ -170,12 +170,15 @@
 			if(!src.locked)
 				message = "*****"
 			dat += text("<HR>\n>[]<BR>\n<A href='?src=\ref[];type=1'>1</A>-<A href='?src=\ref[];type=2'>2</A>-<A href='?src=\ref[];type=3'>3</A><BR>\n<A href='?src=\ref[];type=4'>4</A>-<A href='?src=\ref[];type=5'>5</A>-<A href='?src=\ref[];type=6'>6</A><BR>\n<A href='?src=\ref[];type=7'>7</A>-<A href='?src=\ref[];type=8'>8</A>-<A href='?src=\ref[];type=9'>9</A><BR>\n<A href='?src=\ref[];type=R'>R</A>-<A href='?src=\ref[];type=0'>0</A>-<A href='?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
+			if(!locked)
+				dat += "<BR>\n<A href='?src=\ref[src];keypad_toggleopen=1'>Toggle Open/Close</A> <A href='?src=\ref[src];keypad_lock=1'>Lock</A>"
 
 			var/datum/browser/popup = new(user, "keypad_door", "[src]", 300, 280, src)
 			popup.set_content(jointext(dat,null))
 			popup.open()
 
 			onclose(user, "keypad_door")
+			return
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
@@ -376,9 +379,25 @@
 	if((usr.stat || usr.restrained()) || (get_dist(src, usr) > 1))
 		return
 
-	if(keypad)
+	if(keypad && !src.p_open)
 		if((usr.stat || usr.restrained()) || (get_dist(src, usr) > 1))
 			return
+
+		src.add_fingerprint(usr)
+
+		if(href_list["keypad_toggleopen"])
+			if (src.allowed(usr))
+				if (src.density)
+					open()
+				else
+					close()
+
+
+		if(href_list["keypad_lock"])
+			if(locked)
+				return
+
+			locked = TRUE
 
 		if(href_list["type"])
 			playsound(src.loc, 'sound/effects/click.ogg', 100, 1)
@@ -389,23 +408,21 @@
 				else if((src.code == src.l_code) && (src.emagged == 0) && (src.l_set == 1))
 					src.locked = 0
 					update_icon()
-					src.overlays = null
-					src.code = null
 				else
 					src.code = "ERROR"
 			else
 				if((href_list["type"] == "R") && (src.emagged == 0) && (!src.l_setshort))
 					src.locked = 1
-					src.overlays = null
 					update_icon()
 					src.code = null
-					if(!density)
+					if(open)
 						src.close(usr)
 				else
 					src.code += text("[]", href_list["type"])
 					if(length(src.code) > 5)
 						src.code = "ERROR"
-			src.add_fingerprint(usr)
+					return
+
 			for(var/mob/M in viewers(1, src.loc))
 				if((M.client && M.machine == src))
 					src.attack_hand(M)
