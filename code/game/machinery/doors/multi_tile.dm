@@ -30,6 +30,7 @@
 
 /obj/machinery/door/airlock/multi_tile/on_persistence_load()
 	SetBounds()
+	update_icon()
 
 /obj/machinery/door/airlock/multi_tile/proc/SetBounds()
 	if(dir in list(NORTH, SOUTH))
@@ -44,9 +45,9 @@
 	..()
 	if(connections in list(NORTH, SOUTH, NORTH|SOUTH))
 		if(connections in list(WEST, EAST, EAST|WEST))
-			set_dir(SOUTH)
-		else
 			set_dir(WEST)
+		else
+			set_dir(SOUTH)
 	else
 		set_dir(SOUTH)
 

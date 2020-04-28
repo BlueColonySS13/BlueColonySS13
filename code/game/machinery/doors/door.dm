@@ -36,7 +36,18 @@
 	var/list/connections = list("0", "0", "0", "0")
 	var/list/blend_objects = list(/obj/structure/wall_frame, /obj/structure/window, /obj/structure/grille) // Objects which to blend with
 
-	unique_save_vars = list("code", "door_color", "stripe_color", "locked", "open", "panel_open", "l_hacking", "l_set", "l_code", "l_setshort")
+	//keypad stuff
+	var/locked
+	var/keypad = FALSE
+
+	var/code = ""
+	var/l_code = null
+	var/l_set = 0
+	var/l_setshort = 0
+	var/l_hacking = 0
+	var/open = 0
+
+	unique_save_vars = list("code", "door_color", "stripe_color", "locked", "open", "panel_open", "l_hacking", "l_set", "l_code", "l_setshort", "keypad")
 
 	// turf animation
 	var/atom/movable/overlay/c_animation = null
@@ -110,6 +121,10 @@
 /obj/machinery/door/Bumped(atom/AM)
 	if(p_open || operating)
 		return
+
+	if(locked)
+		return
+
 	if(ismob(AM))
 		var/mob/M = AM
 		if(world.time - M.last_bumped <= 10)
@@ -207,11 +222,35 @@
 	return src.attack_hand(user)
 
 /obj/machinery/door/attack_hand(mob/user as mob)
+	if(keypad)
+		if(!istype(user, /mob/living/silicon))
+			user.set_machine(src)
+			var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
+			var/message = "Code"
+			if((src.l_set == 0) && (!src.emagged) && (!src.l_setshort))
+				dat += text("<p>\n<b>5-DIGIT PASSCODE NOT SET.<br>ENTER NEW DOOR PASSCODE.</b>")
+			if(src.emagged)
+				dat += text("<p>\n<font color=red><b>LOCKING SYSTE	M ERROR - 1701</b></font>")
+			if(src.l_setshort)
+				dat += text("<p>\n<font color=red><b>ALERT: MEMORY SYSTEM ERROR - 6040 201</b></font>")
+			message = text("[]", src.code)
+			if(!src.locked)
+				message = "*****"
+			dat += text("<HR>\n>[]<BR>\n<A href='?src=\ref[];type=1'>1</A>-<A href='?src=\ref[];type=2'>2</A>-<A href='?src=\ref[];type=3'>3</A><BR>\n<A href='?src=\ref[];type=4'>4</A>-<A href='?src=\ref[];type=5'>5</A>-<A href='?src=\ref[];type=6'>6</A><BR>\n<A href='?src=\ref[];type=7'>7</A>-<A href='?src=\ref[];type=8'>8</A>-<A href='?src=\ref[];type=9'>9</A><BR>\n<A href='?src=\ref[];type=R'>R</A>-<A href='?src=\ref[];type=0'>0</A>-<A href='?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
+			show_browser(user, dat, "window=caselock;size=300x280")
+
+			var/datum/browser/popup = new(user, "doorkeypad", "[src]", 300, 280, src)
+			popup.set_content(jointext(dat,null))
+			popup.open()
+
+			onclose(user, "doorkeypad")
+
 	return src.attackby(user, user)
 
 /obj/machinery/door/attack_tk(mob/user as mob)
 	if(requiresID() && !allowed(null))
 		return
+
 	..()
 
 /obj/machinery/door/attackby(obj/item/I as obj, mob/user as mob)
@@ -538,3 +577,4 @@
 		if(success)
 			dirs |= direction
 	connections = dirs
+

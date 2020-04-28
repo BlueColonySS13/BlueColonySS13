@@ -70,8 +70,6 @@
 	recipes += new/datum/stack_recipe("metal rod", /obj/item/stack/rods, 1, 2, 60)
 	recipes += new/datum/stack_recipe("scooter frame", /obj/item/scooter_frame, 15, time = 15, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("frame", /obj/item/frame, 5, time = 25, one_per_turf = 1, on_floor = 1)
-	recipes += new/datum/stack_recipe("keypad airlock", /obj/item/frame/keypad_airlock, 10, time = 25, one_per_turf = 1, on_floor = 1)
-	recipes += new/datum/stack_recipe("airlock", /obj/item/frame/airlock, 10, time = 25, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("low wall frame", /obj/structure/wall_frame, 2, time = 50, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("mirror frame", /obj/item/frame/mirror, 1, time = 5, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("fire extinguisher cabinet frame", /obj/item/frame/extinguisher_cabinet, 4, time = 5, one_per_turf = 0, on_floor = 1)
@@ -144,6 +142,9 @@
 /material/stone/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("planting bed", /obj/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("eyeshadow", /obj/item/weapon/lipstick/eyeshadow, time = 2, colour_var = "colour")
+	recipes += new/datum/stack_recipe("blusher", /obj/item/weapon/lipstick/blusher, time = 2, colour_var = "colour")
+
 
 /material/plastic/generate_recipes()
 	..()
@@ -200,11 +201,14 @@
 		recipes += new/datum/stack_recipe("reinforced basic window", /obj/structure/window/reinforced, 1, time = 1, supplied_material = "[name]")
 		recipes += new/datum/stack_recipe("reinforced full window", /obj/structure/window/reinforced/full, 1, time = 1, supplied_material = "[name]", ignore_direction = TRUE)
 
+	recipes += new/datum/stack_recipe_list("windoor assemblies", list( \
+		new/datum/stack_recipe("standard windoor assembly", /obj/structure/windoor_assembly, 4, time = 50, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("secure windoor assembly", /obj/structure/windoor_assembly/secure, 4, time = 50, one_per_turf = 1, on_floor = 1), \
+
+		))
+
 	recipes += new/datum/stack_recipe("glass jar", /obj/item/glass_jar, 15, time = 20, on_floor = 1)
 	recipes += new/datum/stack_recipe("dye bottle", /obj/item/dye_bottle, 1, time = 5, one_per_turf = 1, on_floor = 1)
-
-	recipes += new/datum/stack_recipe("windoor", /obj/item/frame/windoor, 15, time = 25, one_per_turf = 1, on_floor = 1)
-	recipes += new/datum/stack_recipe("keypad windoor frame", /obj/item/frame/keypad_windoor, 15, time = 25, one_per_turf = 1, on_floor = 1)
 
 	recipes += new/datum/stack_recipe("glass bottle", /obj/item/weapon/reagent_containers/glass/bottle, 1, time = 25, one_per_turf = 1, on_floor = 1)
 
@@ -419,6 +423,9 @@
 	recipes += new/datum/stack_recipe("[display_name] waistcoat", /obj/item/clothing/accessory/wcoat/gwaistcost , 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] scarf", /obj/item/clothing/accessory/scarf , 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] neckerchief", /obj/item/clothing/accessory/tie/neckerchief, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] armband", /obj/item/clothing/accessory/armband, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+
+
 
 /material/silk/generate_recipes()
 	recipes = list()
@@ -454,6 +461,7 @@
 	recipes += new/datum/stack_recipe("[display_name] waistcoat", /obj/item/clothing/accessory/wcoat/gwaistcost, 4, time = 15, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] scarf", /obj/item/clothing/accessory/scarf, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] neckerchief", /obj/item/clothing/accessory/tie/neckerchief, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] armband", /obj/item/clothing/accessory/armband, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 
 /material/denim/generate_recipes()
 	recipes = list()
