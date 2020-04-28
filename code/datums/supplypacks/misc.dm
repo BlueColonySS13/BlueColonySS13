@@ -64,13 +64,6 @@
 	containertype = "/obj/structure/closet/crate"
 	containername = "Chaplain equipment crate"
 
-/datum/supply_pack/misc/hoverpod
-	name = "Hoverpod Shipment"
-	contains = list()
-	cost = 800
-	containertype = /obj/structure/largecrate/hoverpod
-	containername = "Hoverpod Crate"
-
 /datum/supply_pack/randomised/misc/webbing
 	name = "Webbing crate"
 	num_contained = 4
@@ -86,7 +79,7 @@
 	cost = 30
 	containertype = "/obj/structure/closet/crate"
 	containername = "Webbing crate"
-
+	spend_type = SPEND_WEAPONS
 
 /datum/supply_pack/misc/journalist
 	name = "Journalism Kit"
@@ -96,6 +89,7 @@
 	cost = 230
 	containertype = /obj/structure/closet/crate
 	containername = "Journalism Kit"
+	spend_type = SPEND_OFFICE
 
 /datum/supply_pack/misc/camera_film
 	name = "Camera Film Refills"
@@ -104,6 +98,7 @@
 	cost = 15
 	containertype = /obj/structure/closet/crate
 	containername = "Camera Film Refills"
+	spend_type = SPEND_OFFICE
 
 /datum/supply_pack/misc/stoneblock
 	name = "Sculpting Kit"

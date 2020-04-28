@@ -20,6 +20,7 @@
 	var/approved_at						// Date and time the order was approved at
 	var/status							// [Requested, Accepted, Denied, Shipped]
 	var/bank_id							// bank id of the person ordering.
+	var/dept_uid							// unique id of department card - if card is still around, it will deduct from its spending balance if approved
 
 /datum/exported_crate
 	var/name
@@ -226,9 +227,15 @@ var/datum/controller/supply/supply_controller = new()
 
 // Will attempt to purchase the specified order, returning TRUE on success, FALSE on failure
 /datum/controller/supply/proc/approve_order(var/datum/supply_order/O, var/mob/user)
-	// Not enough points to purchase the crate
-	if(dept_balance(DEPT_FACTORY) <= O.object.cost)
-		return FALSE
+
+	var/obj/item/weapon/card/department/DC
+
+	if(O.dept_uid)
+		DC = get_deptcard_by_id(O.dept_uid)
+
+		if(!DC || O.object.cost > DC.spending_limit)
+			to_chat(user, "<span class='warning'>ERROR: Issue with associated department card, either does not exist or lacks funds for this purchase.</span>")
+			return FALSE
 
 	var/datum/money_account/M = get_account(O.bank_id)
 
@@ -244,7 +251,7 @@ var/datum/controller/supply/supply_controller = new()
 		to_chat(user, "<span class='warning'>ERROR: Associated order bank account is suspended. Payment can not continue.</span>")
 		return FALSE
 
-	if(!charge_to_account(O.bank_id, "Supply Systems", "[O.object.name]", "Factory Computer" , -O.object.cost))
+	if(!charge_to_account(O.bank_id, "Supply Systems[DC ? " (via [DC])" : ""]", "[O.object.name]", "Factory Computer" , -O.object.cost))
 		to_chat(user, "<span class='warning'>ERROR: Unable to charge bank account associated with provided order bank details.</span>")
 		return FALSE
 
@@ -274,6 +281,7 @@ var/datum/controller/supply/supply_controller = new()
 
 	// Deduct cost
 	adjust_dept_funds(DEPT_FACTORY, O.object.cost, "[O.ordernum]: [O.object.name] | Ordered by: [O.ordered_by] | Approved by: [O.approved_by]")
+	DC.spending_limit -= O.object.cost
 
 	return TRUE
 
@@ -319,7 +327,7 @@ var/datum/controller/supply/supply_controller = new()
 	return
 
 // Will generate a new, requested order, for the given supply pack type
-/datum/controller/supply/proc/create_order(var/datum/supply_pack/S, var/mob/user, var/reason, var/bank_id)
+/datum/controller/supply/proc/create_order(var/datum/supply_pack/S, var/mob/user, var/reason, var/bank_id, var/dept_card_uid)
 	var/datum/supply_order/new_order = new()
 	var/datum/supply_order/adm_order = new() // Admin-recorded order must be a separate copy in memory, or user-made edits will corrupt it
 
@@ -329,6 +337,8 @@ var/datum/controller/supply/supply_controller = new()
 		idname = H.get_authentification_name()
 	else if(issilicon(user))
 		idname = user.real_name
+
+
 
 	new_order.ordernum = ++ordernum // Ordernum is used to track the order between the playerside list of orders and the adminside list
 	new_order.index = new_order.ordernum // Index can be fabricated, or falsified. Ordernum is a permanent marker used to track the order
@@ -351,6 +361,10 @@ var/datum/controller/supply/supply_controller = new()
 	adm_order.ordered_at = new_order.ordered_at
 	adm_order.status = new_order.status
 	adm_order.status = new_order.bank_id
+
+	if(dept_card_uid)
+		new_order.dept_uid = dept_card_uid
+		adm_order.dept_uid = dept_card_uid
 
 	order_history += new_order
 	adm_order_history += adm_order

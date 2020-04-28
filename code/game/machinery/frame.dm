@@ -64,6 +64,10 @@
 	name = "DNA Analyzer"
 	frame_class = FRAME_CLASS_MACHINE
 
+/datum/frame/frame_types/microscope
+	name = "Microscope"
+	frame_class = FRAME_CLASS_MACHINE
+
 /datum/frame/frame_types/mass_driver
 	name = "Mass Driver"
 	frame_class = FRAME_CLASS_MACHINE

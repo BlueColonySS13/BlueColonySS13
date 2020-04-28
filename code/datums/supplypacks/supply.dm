@@ -6,6 +6,7 @@
 /datum/supply_pack/supply
 	group = "Supplies"
 	containertype = /obj/structure/closet/crate
+	spend_type = SPEND_OFFICE
 
 /datum/supply_pack/supply/toner
 	name = "Toner cartridges"
@@ -35,6 +36,7 @@
 	cost = 70
 	containertype = /obj/structure/closet/crate
 	containername = "Janitorial supplies"
+	spend_type = SPEND_CLEANING
 
 /datum/supply_pack/supply/shipping
 	name = "Shipping supplies"
@@ -100,6 +102,7 @@
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "shaft miner equipment"
 	access = access_mining
+	spend_type = SPEND_MININGSUPPLIES
 
 /datum/supply_pack/supply/mule
 	name = "mulebot Crate"
@@ -155,7 +158,7 @@
 	contains = list(/obj/item/photochromatic_dye_refill = 5)
 	cost = 25
 	containername = "photochromatic dye refills"
-
+	spend_type = SPEND_GROOMING
 
 
 

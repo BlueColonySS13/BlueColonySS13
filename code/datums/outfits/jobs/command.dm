@@ -10,7 +10,9 @@
 	messenger_bag = /obj/item/weapon/storage/backpack/messenger/com
 	id_type = /obj/item/weapon/card/id/gold/captain
 	pda_type = /obj/item/device/pda/captain
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1)
+	backpack_contents = list(
+	/obj/item/clothing/accessory/permit/gun/tier_three = 1,
+	/obj/item/weapon/card/department/council = 1)
 
 /decl/hierarchy/outfit/job/heads/captain/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -44,7 +46,8 @@
 	shoes = /obj/item/clothing/shoes/brown
 	id_type = /obj/item/weapon/card/id/silver/hop
 	pda_type = /obj/item/device/pda/heads/hop
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1)
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1,
+	/obj/item/weapon/card/department/council = 1)
 
 /decl/hierarchy/outfit/job/heads/hop/post_equip(mob/living/carbon/human/H)
 	..()

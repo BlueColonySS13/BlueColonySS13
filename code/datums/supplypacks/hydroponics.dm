@@ -6,6 +6,7 @@
 
 /datum/supply_pack/hydro
 	group = "Hydroponics"
+	spend_type = SPEND_HYDROPONICS
 
 /datum/supply_pack/hydro/monkey
 	name = "Monkey crate"

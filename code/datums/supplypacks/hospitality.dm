@@ -6,6 +6,7 @@
 
 /datum/supply_pack/hospitality
 	group = "Hospitality"
+	spend_type = SPEND_FOODDRINK
 
 /datum/supply_pack/hospitality/party
 	name = "Party equipment"
@@ -18,6 +19,7 @@
 	cost = 100
 	containertype = /obj/structure/closet/crate
 	containername = "Party equipment"
+	spend_type = SPEND_HOSPITALITY
 
 /datum/supply_pack/hospitality/standard_cutlery
 	name = "Standard Cutlery"
@@ -29,6 +31,7 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "Standard Cutlery"
+	spend_type = SPEND_HOSPITALITY
 
 /datum/supply_pack/hospitality/barsupplies
 	name = "Bar supplies"
@@ -49,9 +52,12 @@
 	cost = 100
 	containertype = /obj/structure/closet/crate
 	containername = "crate of bar supplies"
+	spend_type = SPEND_HOSPITALITY
+
 
 /datum/supply_pack/randomised/hospitality/
 	group = "Hospitality"
+	spend_type = SPEND_FOODDRINK
 
 /datum/supply_pack/randomised/hospitality/pizza
 	num_contained = 5
@@ -78,6 +84,7 @@
 	cost = 900
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Cascington Alcoholic Imports"
+	spend_type = SPEND_ALCOHOL
 
 /datum/supply_pack/hospitality/cascington_smoke
 	name = "Cascington Smoking Imports"
@@ -90,6 +97,8 @@
 	cost = 300
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Cascington Smoking Imports"
+	spend_type = SPEND_TOBACCO
+
 
 /datum/supply_pack/hospitality/cascington_food
 	name = "Cascington Confectionaries"
@@ -146,7 +155,7 @@
 	cost = 100
 	containertype = /obj/structure/closet/crate/large
 	containername = "Beer Keg"
-
+	spend_type = SPEND_ALCOHOL
 
 /datum/supply_pack/hospitality/alcohol_set
 	name = "Standard Alcohol Set"
@@ -180,6 +189,7 @@
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/goldschlager
 					)
 
+	spend_type = SPEND_ALCOHOL
 
 /datum/supply_pack/hospitality/soft_drinks
 	name = "Soft Drinks Set"
@@ -217,27 +227,27 @@
 	containername = "Vegan Produce"
 
 
-/datum/supply_pack/hospitality/gifts
-	name = "Gift crate"
+/datum/supply_pack/hospitality/bouquet
+	name = "Bouquets Crate"
 	contains = list(
 		/obj/item/toy/bouquet = 3,
-		/obj/item/weapon/storage/fancy/heartbox = 2,
-		/obj/item/weapon/paper/card/smile,
-		/obj/item/weapon/paper/card/heart,
-		/obj/item/weapon/paper/card/cat,
-		/obj/item/weapon/paper/card/flower,
-		/obj/item/weapon/storage/trinketbox
+		/obj/item/toy/bouquet/fake = 3,
+
 		)
 	cost = 20
 	containertype = /obj/structure/closet/crate
-	containername = "crate of gifts"
+	containername = "crate of bouquets"
+	spend_type = SPEND_HOSPITALITY
 
-/datum/supply_pack/hospitality/jukebox
-	name = "Jukebox"
-	contains = list(/obj/machinery/media/jukebox)
-	cost = 2000
-	containertype = /obj/structure/largecrate
-	containername = "\improper Jukebox Crate"
+
+/datum/supply_pack/hospitality/heartbox
+	name = "Boxes of Chocolates"
+	contains = list(
+		/obj/item/weapon/storage/fancy/heartbox = 5,
+		)
+	cost = 40
+	containertype = /obj/structure/closet/crate
+	containername = "crate of chocolates"
 
 
 /datum/supply_pack/hospitality/zippo_collection
@@ -265,6 +275,7 @@
 	cost = 100
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Zippo Collection"
+	spend_type = SPEND_HOSPITALITY
 
 
 /datum/supply_pack/hospitality/cigarette_bulk
@@ -280,6 +291,7 @@
 	cost = 250
 	containertype = /obj/structure/closet/crate
 	containername = "Standard Cigarettes (Bulk)"
+	spend_type = SPEND_TOBACCO
 
 /datum/supply_pack/hospitality/tobacco_paraphernalia
 	name = "Tobacco Paraphernalia Set"
@@ -291,6 +303,7 @@
 	cost = 2
 	containertype = /obj/structure/closet/crate
 	containername = "Tobacco Paraphernalia Set"
+	spend_type = SPEND_HOSPITALITY
 
 /datum/supply_pack/hospitality/deluxe_cigarettes
 	name = "Deluxe Cigarettes (Bulk)"
@@ -300,3 +313,4 @@
 	cost = 300
 	containertype = /obj/structure/closet/crate
 	containername = "Deluxe Cigarettes set"
+	spend_type = SPEND_TOBACCO
