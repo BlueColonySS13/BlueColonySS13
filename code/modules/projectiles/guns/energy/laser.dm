@@ -85,6 +85,7 @@
 	charge_cost = 480	//to compensate a bit for self-recharging
 	cell_type = /obj/item/weapon/cell/device/weapon/recharge/captain
 	battery_lock = 1
+	dont_save = TRUE
 
 /obj/item/weapon/gun/energy/lasercannon
 	name = "laser cannon"

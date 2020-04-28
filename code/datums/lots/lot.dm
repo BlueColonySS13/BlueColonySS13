@@ -79,7 +79,7 @@
 			R.icon_state = "rent"
 
 			R.name = "[lot.name] - For Rent ([lot.get_rent()]cr per payroll)"
-			R.desc = "This rent sign says <b>[lot.name] - For Rent ([lot.price]cr)</b><br>\
+			R.desc = "This rent sign says <b>[lot.name] - For Rent ([lot.get_rent()]cr per payroll)</b><br>\
 			Underneath, the sign notes the housing is owned by <b>[lot.get_landlord_name()]</b>. Contact them for more details or buy from the Landlord Management Program on the computers in the library."
 
 			//copy over mapping values.

@@ -15,6 +15,9 @@
 
 	unique_save_vars = list("colour","open")
 
+/obj/item/weapon/lipstick/on_persistence_load()
+	update_icon()
+
 /obj/item/weapon/lipstick/red
 	name = "red lipstick"
 	colour = COLOR_RED

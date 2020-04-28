@@ -44,12 +44,6 @@ SUBSYSTEM_DEF(lots)
 		lots.load_lot()
 		CHECK_TICK
 
-	for(var/datum/lot/lots2 in all_lots)
-		for(var/turf/T in lots2.lot_area)
-			T.on_persistence_load()
-			T.update_icon()
-			CHECK_TICK
-
 	return 1
 
 /datum/controller/subsystem/lots/proc/get_lot_by_id(id)

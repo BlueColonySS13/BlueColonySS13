@@ -112,6 +112,7 @@
 	no_variants = FALSE
 	associated_reagents = list("silicon")
 	stack_color = COLOR_SANDSTONE
+	dyeable = TRUE
 
 /obj/item/stack/material/marble
 	name = "marble brick"
