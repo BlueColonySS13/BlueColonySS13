@@ -27,12 +27,12 @@
 
 	var/page_metadata = nm.page_metadata
 
-	if(!page_metadata)
-		page_metadata = 1
-
 	if(!news_source || isemptylist(news_source.messages))
 		dat += "No current available news."
 		return dat
+
+	if(!page_metadata)
+		page_metadata = news_source.messages.len
 
 	if(page_metadata)
 		dat += get_news_page(news_source, news_source.messages[page_metadata], page_metadata)

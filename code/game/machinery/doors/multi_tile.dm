@@ -20,6 +20,8 @@
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/multi_tile
 
+	adjust_dir = FALSE
+
 /obj/machinery/door/airlock/multi_tile/New()
 	..()
 	SetBounds()
@@ -40,16 +42,6 @@
 		bound_width = world.icon_size
 		bound_height = width * world.icon_size
 
-
-/obj/machinery/door/airlock/multi_tile/update_icon(state=0, override=0)
-	..()
-	if(connections in list(NORTH, SOUTH, NORTH|SOUTH))
-		if(connections in list(WEST, EAST, EAST|WEST))
-			set_dir(WEST)
-		else
-			set_dir(SOUTH)
-	else
-		set_dir(SOUTH)
 
 /obj/machinery/door/airlock/multi_tile/update_connections(var/propagate = 0)
 	var/dirs = 0

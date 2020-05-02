@@ -175,7 +175,7 @@
 	price = 9000
 	rent = 15
 	licenses = list(LICENSE_LANDLORD_OFFICE)
-
+/*
 /datum/lot/office_three
 	name = "Office Lot 3"
 	id = "office 3"
@@ -183,7 +183,7 @@
 	price = 150000
 	rent = 15
 	licenses = list(LICENSE_LANDLORD_OFFICE)
-
+*/
 /datum/lot/office_four
 	name = "Office Lot 4"
 	id = "office4"

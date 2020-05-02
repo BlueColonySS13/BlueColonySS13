@@ -1,4 +1,4 @@
-#define BOLTS_FINE 0
+ #define BOLTS_FINE 0
 #define BOLTS_EXPOSED 1
 #define BOLTS_CUT 2
 
@@ -79,6 +79,8 @@ var/list/airlock_overlays = list()
 	var/sparks_broken_file = 'icons/obj/doors/station/sparks_broken.dmi'
 	var/welded_file = 'icons/obj/doors/station/welded.dmi'
 	var/emag_file = 'icons/obj/doors/station/emag.dmi'
+
+	var/adjust_dir = TRUE
 
 
 
@@ -706,13 +708,14 @@ About the new airlock wires panel:
 
 
 /obj/machinery/door/airlock/update_icon(state=0, override=0)
-	if(connections in list(NORTH, SOUTH, NORTH|SOUTH))
-		if(connections in list(WEST, EAST, EAST|WEST))
-			set_dir(SOUTH)
+	if(adjust_dir)
+		if(connections in list(NORTH, SOUTH, NORTH|SOUTH))
+			if(connections in list(WEST, EAST, EAST|WEST))
+				set_dir(SOUTH)
+			else
+				set_dir(EAST)
 		else
-			set_dir(EAST)
-	else
-		set_dir(SOUTH)
+			set_dir(SOUTH)
 
 	switch(state)
 		if(0)

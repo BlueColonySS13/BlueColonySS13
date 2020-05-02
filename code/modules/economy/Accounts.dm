@@ -176,7 +176,7 @@
 // why was this never made until now?
 /datum/money_account/proc/add_transaction_log(name, purpose, amount, terminal_id, date, time)
 	var/T = create_transaction_log(name, purpose, amount, terminal_id, date, time)
-	if(!T)
+	if(!T || !transaction_log)
 		return
 	transaction_log.Add(T)
 	sanitize_values()
