@@ -28,6 +28,8 @@
 	var/y
 	var/z
 
+	var/name = ""
+
 /datum/map_reagent_data
 	var/id
 	var/amount
@@ -74,6 +76,8 @@
 	O.on_persistence_save()
 	O.sanitize_for_saving()
 	MO.savedtype = O.type
+
+	MO.name = O.name
 
 	for(var/V in O.vars_to_save() )
 		if(!(V in O.vars))
