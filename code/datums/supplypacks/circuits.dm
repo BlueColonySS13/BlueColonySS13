@@ -20,7 +20,8 @@
 	/obj/item/weapon/circuitboard/gibber,
 	/obj/item/weapon/circuitboard/cereal,
 	/obj/item/weapon/circuitboard/icecream_vat,
-	/obj/item/weapon/circuitboard/grinder)
+	/obj/item/weapon/circuitboard/grinder,
+	/obj/item/weapon/circuitboard/condimaster)
 	name = "Kitchen Circuit Set"
 	cost = 1000
 	containertype = /obj/structure/closet/crate

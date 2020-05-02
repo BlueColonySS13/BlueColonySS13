@@ -134,6 +134,10 @@
 	O.load_persistent_metadata(metadata)
 	O.on_persistence_load()
 
+	var/turf/turfmoveto = locate(x,y,z)	// this should fix display sign issues
+	if(turfmoveto && (turfmoveto != get_turf(O)) )
+		O.forceMove(turfmoveto)
+
 	return TRUE
 
 /proc/map_write(var/list/CHUNK, var/save_obj)
