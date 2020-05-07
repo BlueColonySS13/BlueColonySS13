@@ -524,3 +524,13 @@
 /datum/gear/suit/peterpanblazer/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
+
+
+/datum/gear/suit/colorsuit
+	display_name = "colorable suit"
+	path = /obj/item/clothing/suit/storage/toggle/lawyer/whitejacket
+
+
+/datum/gear/suit/colorsuit/New()
+	..()
+	gear_tweaks = list(gear_tweak_free_color_choice)

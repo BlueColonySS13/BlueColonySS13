@@ -25,7 +25,7 @@
 
 	var/storage_type = "crewmembers"
 	var/storage_name = "Cryogenic Oversight Control"
-	var/allow_items = 1
+	var/allow_items = 0
 
 /obj/machinery/computer/cryopod/update_icon()
 	..()

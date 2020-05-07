@@ -33,6 +33,7 @@
 	recipes += new/datum/stack_recipe("[display_name] dangle earrings", /obj/item/clothing/ears/earring/dangle, 20, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] stud earrings", /obj/item/clothing/ears/earring/stud, 20, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] bracelet", /obj/item/clothing/accessory/bracelet/material, 15, on_floor = 1, supplied_material = "[name]")
+	recipes += new/datum/stack_recipe("[display_name] necklace", /obj/item/clothing/accessory/necklace, 15, on_floor = 1, supplied_material = "[name]")
 
 
 /material/steel/generate_recipes()
@@ -225,6 +226,7 @@
 
 		))
 
+	recipes += new/datum/stack_recipe("[display_name] bottle necklace", /obj/item/clothing/accessory/necklace/bottle, 15, on_floor = 1)
 
 
 

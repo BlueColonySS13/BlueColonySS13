@@ -197,6 +197,7 @@
 /obj/structure/frame
 	anchored = FALSE
 	name = "frame"
+	desc = "To start building, wrench the frame into place, add the circuit, screw the circuit into place, add cable, the add the needed parts. Use screwdriver to complete."
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "machine_0"
 	var/state = FRAME_PLACED
