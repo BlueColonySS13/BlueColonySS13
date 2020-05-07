@@ -9,7 +9,7 @@
 	faction = "parascience"
 	maxHealth = 100
 	health = 100
-	speed = 4
+	speed = 8
 
 	run_at_them = 0
 	cooperative = 1
@@ -72,7 +72,7 @@
 
 /mob/living/simple_animal/hostile/parascience/legless
 	name = "Gerald Gear"
-	desc = "No one should have to suffer like this."
+	desc = "No one should have to suffer like this. His ID identifies him as Gerald Gear."
 	icon_state = "legless"
 	icon_living = "legless"
 	icon_dead = "legless"
@@ -81,7 +81,7 @@
 	attacktext = list("tries to hit", "flails at", "weakly taps")
 
 	status_flags = null
-	speed = 13
+	speed = 40
 	cooperative = 0
 	investigates = 0
 
@@ -103,3 +103,49 @@
 	say_maybe_target = list("Is that a recovery t-team...?","Is someone there?","Is that...?","I heard something...")
 	say_got_target = list("Please, please be human...","Kill me, please!","I won't become one of those things! I'll kill every last one of you demons!")
 	reactions = list("Hey guys, you ready?" = "Please... I just want to go home.")
+
+/mob/living/simple_animal/hostile/parascience/skeleton
+	name = "hostile entity"
+	desc = "A hostile entity utilizing a highly advanced anomaly suit. Despite its appearance, you're unsure if it's even human... A bare skull can be seen behind its helmet."
+	icon_state = "parascience_anomaly"
+	icon_living = "parascience_anomaly"
+	icon_dead = "parascience_anomaly_dead"
+
+	response_help = "thinks twice about touching"
+	attacktext = "thinks twice about touching"
+
+	status_flags = null
+	speed = 20
+
+	faction = "cult"
+
+	min_oxy = 0
+	max_oxy = 0
+	min_tox = 0
+	max_tox = 0
+	min_co2 = 0
+	max_co2 = 0
+	min_n2 = 0
+	max_n2 = 0
+	minbodytemp = 0
+	maxbodytemp = 1000
+
+	attacktext = list("slammed","bashed","smashed", "whacked", "rifle-butted", "throttled")
+	attack_sound = 'sound/weapons/bite.ogg'
+
+	supernatural = 1
+
+	speak_chance = 1
+	speak = list("Hey! Who turned out the lights?")
+	emote_hear = list("rattles","cries","groans")
+	emote_see = list("looks around", "twitches violently")
+	say_understood = list()
+	say_cannot = list()
+	say_maybe_target = list("What's that?","Is someone there?","Is that...?","Hmm?")
+	say_got_target = list("Hey! Who turned out the lights?","Save me...","Engaging!","Civilian in the AO!")
+	reactions = list("Hey guys, you ready?" = "Let's do this!")
+
+/mob/living/simple_animal/hostile/parascience/skeleton/death()
+	..()
+	visible_message("<b>[src]</b> collapses to the ground, their helmet shattering. A slurry of rotted flesh erupts from their suit.")
+	new /obj/effect/gibspawner/human(src.loc)

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/retaliate/diyaab
 	name = "diyaab"
-	desc = "A small pack animal. Although omnivorous, it will hunt meat on occasion."
+	desc = "A small pack animal. Although largely herbivorous, it will hunt meat on occasion."
 	faction = "diyaab"
 	icon_state = "diyaab"
 	icon_living = "diyaab"
@@ -14,6 +14,9 @@
 	health = 25
 	speed = 1
 	move_to_delay = 1
+
+	response_help = "pets"
+	response_disarm = "shoves"
 
 	melee_damage_lower = 4
 	melee_damage_upper = 12

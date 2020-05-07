@@ -91,10 +91,10 @@
 
 /datum/supply_pack/circuits/popcorn_machine
 	contains = list(/obj/item/weapon/circuitboard/popcorn_machine)
-	name = "Popcorn Vendor Machine"
+	name = "Popcorn Vendor Circuit"
 	cost = 200
 	containertype = /obj/structure/closet/crate
-	containername = "Popcorn Vendor Machine"
+	containername = "Popcorn Vendor Circuit"
 
 /datum/supply_pack/circuits/smartfridge
 	contains = list(/obj/item/weapon/circuitboard/smartfridge)
@@ -103,5 +103,10 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Smartfridge Circuit"
 
-
+/datum/supply_pack/circuits/popcorn_machine
+	contains = list(/obj/item/weapon/circuitboard/token_machine)
+	name = "Token Dispenser Circuit"
+	cost = 200
+	containertype = /obj/structure/closet/crate
+	containername = "Token Dispenser Circuit"
 
