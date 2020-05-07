@@ -337,6 +337,8 @@
 	var/lamp_shade = 1
 	anchored = FALSE
 
+	unique_save_vars = list("lamp_shade")
+
 /obj/machinery/light/flamp/shadeless // for mapping
 	lamp_shade = 0
 

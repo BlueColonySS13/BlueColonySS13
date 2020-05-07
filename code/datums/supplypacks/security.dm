@@ -7,10 +7,24 @@
 /datum/supply_pack/security
 	group = "Security"
 	access = access_security
+	spend_type = SPEND_SECURITYSUPPLIES
 
 /datum/supply_pack/randomised/security
 	group = "Security"
 	access = access_security
+	spend_type = SPEND_SECURITYSUPPLIES
+
+/datum/supply_pack/security/forensics
+	name = "Forensics - Forensics Kit"
+	contains = list(
+			/obj/item/weapon/storage/box/evidence = 2,
+			/obj/item/clothing/gloves/forensic = 2,
+			/obj/item/weapon/storage/briefcase/crimekit = 2
+			)
+	cost = 340
+	containertype = /obj/structure/closet/crate/secure/gear
+	containername = "Forensics - Forensics Kit"
+	access = null
 
 /datum/supply_pack/randomised/security/armor
 	name = "Armor - Security armor"
@@ -187,7 +201,7 @@
 			/obj/item/device/flashlight/maglight,
 			/obj/item/weapon/storage/briefcase/crimekit
 			)
-	cost = 120
+	cost = 420
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Forensic equipment"
 	access = access_forensics_lockers
@@ -239,10 +253,11 @@
 			/obj/item/weapon/gun/energy/taser,
 			/obj/item/device/flashlight/maglight
 			)
-	cost = 120
+	cost = 420
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Officer equipment"
 	access = access_brig
+	spend_type = SPEND_WEAPONS
 
 /datum/supply_pack/security/wardengear
 	name = "Gear - Warden equipment"
@@ -267,10 +282,11 @@
 			/obj/item/clothing/head/beret/sec/corporate/warden,
 			/obj/item/device/flashlight/maglight
 			)
-	cost = 120
+	cost = 420
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Warden equipment"
 	access = access_armory
+	spend_type = SPEND_WEAPONS
 
 /datum/supply_pack/security/headofsecgear
 	name = "Gear - Head of security equipment"
@@ -293,10 +309,11 @@
 			/obj/item/clothing/head/beret/sec/corporate/hos,
 			/obj/item/device/flashlight/maglight
 			)
-	cost = 150
+	cost = 450
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Head of security equipment"
 	access = access_hos
+	spend_type = SPEND_WEAPONS
 
 /datum/supply_pack/security/securityclothing
 	name = "Misc - Security uniform red"
@@ -369,7 +386,7 @@
 			/obj/item/clothing/gloves/sterile/latex,
 			/obj/item/weapon/storage/box/gloves
 			)
-	cost = 125
+	cost = 225
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Security biohazard gear"
 	access = access_security

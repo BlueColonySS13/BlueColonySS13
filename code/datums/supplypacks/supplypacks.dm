@@ -24,19 +24,21 @@ var/list/all_supply_groups = list("Clothing",
 								  "Science",
 								  "Security",
 								  "Supplies",
-								  "Circuits")
+								  "Business Circuits")
 
 /datum/supply_pack
 	var/name = null
 	var/list/contains = list() // Typepaths, used to actually spawn the contents
 	var/list/manifest = list() // Object names, used to compile manifests
 	var/cost = null
-	var/containertype = null
+	var/containertype = /obj/structure/closet/crate
 	var/containername = null
 	var/access = null
 	var/contraband = 0
 	var/num_contained = 0		//number of items picked to be contained in a /randomised crate
 	var/group = "Miscellaneous"
+
+	var/spend_type = null	// see economy_defines.dm, departments.dm department_cards.dm for department spending types that can be used.
 
 /datum/supply_pack/New()
 	for(var/path in contains)

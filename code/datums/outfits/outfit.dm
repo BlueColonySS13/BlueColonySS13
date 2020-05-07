@@ -77,6 +77,13 @@ var/list/outfits_decls_by_type_
 			else back = null
 
 /decl/hierarchy/outfit/proc/post_equip(mob/living/carbon/human/H)
+	for(var/obj/item/O in H.GetAllContents())
+		O.dont_save = TRUE
+
+		if(istype(O, /obj/item/weapon/card/department))
+			var/obj/item/weapon/card/department/D = O
+			D.owner_name = H.real_name
+
 	if(flags & OUTFIT_HAS_JETPACK)
 		var/obj/item/weapon/tank/jetpack/J = locate(/obj/item/weapon/tank/jetpack) in H
 		if(!J)

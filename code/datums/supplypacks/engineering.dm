@@ -6,6 +6,8 @@
 
 /datum/supply_pack/eng
 	group = "Engineering"
+	spend_type = SPEND_ENGINEERING
+
 
 /datum/supply_pack/eng/lightbulbs
 	name = "Replacement lights"

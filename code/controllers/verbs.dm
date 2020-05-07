@@ -64,7 +64,9 @@
 		message_admins("Admin [key_name_admin(usr)] is debugging the [antag.role_text] template.")
 
 
-/client/proc/debug_controller(controller in list("Master","Ticker","Ticker Process","Air","Jobs","Sun","Economy","Payroll","Laws","Emails","Lots","Radio","Supply","Shuttles","Emergency Shuttle","Configuration","pAI", "Cameras", "Transfer Controller", "Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets"))
+/client/proc/debug_controller(controller in list("Master","Ticker","Ticker Process","Air","Jobs","Sun","Economy","Payroll", \
+	"Laws","Emails","Lots","Radio","Supply","Shuttles","Emergency Shuttle","Configuration","pAI", "Cameras", "Transfer Controller", \
+	"Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets", "Websites"))
 
 	set category = "Debug"
 	set name = "Debug Controller"
@@ -147,5 +149,8 @@
 		if("Payroll")
 			debug_variables(SSpayroll)
 			feedback_add_details("admin_verb", "DPayroll")
+		if("Websites")
+			debug_variables(SSwebsites)
+			feedback_add_details("admin_verb", "DWebsites")
 
 	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")

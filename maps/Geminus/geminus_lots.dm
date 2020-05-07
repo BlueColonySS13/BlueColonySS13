@@ -126,8 +126,36 @@
 /datum/lot/business_eighteen
 	name = "Business Lot 18"
 	id = "bizlot18"
-	desc = "A very large lot located on the main street through the city opposite the shopping center."
+	desc = "A very large lot located on the main street through the city opposite the shopping center. (1st from arrivals)"
 	price = 150000
+	rent = 15
+
+/datum/lot/business_nineteen
+	name = "Business Lot 19"
+	id = "bizlot19"
+	desc = "A very large lot located on the main street through the city opposite the shopping center. (2nd from arrivals)"
+	price = 250000
+	rent = 15
+
+/datum/lot/business_twenty
+	name = "Business Lot 20"
+	id = "bizlot20"
+	desc = "A very large lot located on the main street through the city opposite the shopping center. (3rd from arrivals)"
+	price = 220000
+	rent = 15
+
+/datum/lot/business_twentyone
+	name = "Business Lot 21"
+	id = "bizlot21"
+	desc = "A narrow, medium sized lot near the hospital (east)."
+	price = 120000
+	rent = 15
+
+/datum/lot/business_twentytwo
+	name = "Business Lot 22"
+	id = "bizlot22"
+	desc = "A narrow, medium sized lot near the hospital (west)."
+	price = 120000
 	rent = 15
 
 // office
@@ -147,7 +175,7 @@
 	price = 9000
 	rent = 15
 	licenses = list(LICENSE_LANDLORD_OFFICE)
-
+/*
 /datum/lot/office_three
 	name = "Office Lot 3"
 	id = "office 3"
@@ -155,7 +183,7 @@
 	price = 150000
 	rent = 15
 	licenses = list(LICENSE_LANDLORD_OFFICE)
-
+*/
 /datum/lot/office_four
 	name = "Office Lot 4"
 	id = "office4"
@@ -190,7 +218,7 @@
 	desc = "A tiny stall located in the middle of the shopping center. This is the top one."
 	price = 800
 	rent = 5
-	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_STALL)
+	licenses = list(LICENSE_LANDLORD_STALL)
 
 /datum/lot/stall_2
 	name = "Shopping Mall Stall 2"
@@ -198,7 +226,8 @@
 	desc = "A tiny stall located in the middle of the shopping center. This is the bottom one."
 	price = 800
 	rent = 5
-	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_STALL)
+	licenses = list(LICENSE_LANDLORD_STALL)
+
 // shopping mall
 
 /datum/lot/shopping_center_one

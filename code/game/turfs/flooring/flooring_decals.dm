@@ -37,6 +37,7 @@ var/list/floor_decals = list()
 			I.color = color
 			I.alpha = alpha
 			floor_decals[cache_key] = I
+			I.metadata = type
 		LAZYADD(T.decals, I) // Add to its decals list (so it remembers to re-apply after it cuts overlays)
 		T.add_overlay(I) // Add to its current overlays too.
 		return T

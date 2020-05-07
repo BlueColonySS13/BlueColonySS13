@@ -43,8 +43,6 @@
 		return 1
 
 
-
-
 /obj/machinery/computer/supplycomp/ui_interact(mob/user, ui_key = "supply_records", var/datum/nanoui/ui = null, var/force_open = 1, var/key_state = null)
 	var/data[0]
 	var/shuttle_status[0]	// Supply shuttle status
@@ -229,42 +227,106 @@
 				return
 
 			var/timeout = world.time + 600
+			var/bank_acc
+			var/using_department_card
+			var/dept_uid
+			var/full_name
+			var/assignment
 
-			var/obj/item/weapon/card/id/I = usr.GetIdCard()
 
-			if(!I || !I.unique_ID || !I.registered_name)
-				visible_message("<span class='warning'>Error. Please ensure your ID is linked correctly to your citizen details.</span>")
-				return
+			// Handle department spending
+			var/obj/item/held = usr.get_active_hand()
+			if(held && istype(held, /obj/item/weapon/card/department))
+				var/obj/item/weapon/card/department/D = held
+				var/can_spend = D.can_spend(S.cost, S.spend_type)
 
-			var/datum/money_account/M = get_account(I.associated_account_number)
+				visible_message("<span class='notice'>[usr] scans [D] across [src]'s sensor.</span>")
 
-			if(!M)
-				visible_message("<span class='warning'>Error. Please check the bank account details linked to your ID.</span>")
-				return
-
-			if(M.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
-				var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
-				M = attempt_account_access(I.associated_account_number, attempt_pin, 2)
-
-				if(!M)
-					visible_message("<span class='warning'>Unable to access account: incorrect credentials.</span>")
+				if(!D.card_uid)
+					visible_message("<span class='warning'>Error. This department appears to be faulty or not linked to any department.</span>")
 					return
 
+				if(isnull(can_spend))
+					visible_message("<span class='warning'>Error. There is a problem with your department card or department account, please contact an admin.</span>")
+					return
+
+				if(!can_spend)
+					visible_message("<span class='warning'>Error. This department lacks the funds for this purchase.</span>")
+					return
+
+				if(can_spend == -1)
+					visible_message("<span class='warning'>Error. Department bank account appears to be suspended.</span>")
+					return
+
+				if(can_spend == -2)
+					visible_message("<span class='warning'>Error. This department cannot purchase this type of crate.</span>")
+					return
+
+				bank_acc = D.get_bank_id()
+				using_department_card = D.name
+				dept_uid = D.card_uid
+
+				var/datum/department/DEPT = D.get_department()
+
+				if(!DEPT)
+					visible_message("<span class='warning'>Error. Issue finding department.</span>")
+					return
+
+				if(DEPT.dept_type == HIDDEN_DEPARTMENT)
+					full_name = "Unknown"
+					assignment = "Error"
+				else
+					full_name = D.owner_name
+					assignment = "[DEPT.name] Employee"
+
+
+
+			else
+
+				//or just do card spending
+				var/obj/item/weapon/card/id/I = usr.GetIdCard()
+
+
+				if(!I || !I.unique_ID || !I.registered_name)
+					visible_message("<span class='warning'>Error. Please ensure your ID is linked correctly to your citizen details.</span>")
+					return
+				visible_message("<span class='notice'>[usr] scans [I] across [src]'s sensor.</span>")
+				var/datum/money_account/M = get_account(I.associated_account_number)
+
+				if(!M)
+					visible_message("<span class='warning'>Error. Please check the bank account details linked to your ID.</span>")
+					return
+
+				if(M.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
+					var/attempt_pin = input("Enter pin code", "Vendor transaction") as num
+					M = attempt_account_access(I.associated_account_number, attempt_pin, 2)
+
+					if(!M)
+						visible_message("<span class='warning'>Unable to access account: incorrect credentials.</span>")
+						return
+
+				full_name = I.registered_name
+				bank_acc = I.associated_account_number
+
 			var/reason = sanitize(input(user, "Please note: If this order is approved your bank details WILL be charged. If cancelled, you will recieve a refund. Why do you require this item? Leave blank to cancel.","Reason","") as null|message)
-			if(world.time > timeout)
-				to_chat(user, "<span class='warning'>Error. Request timed out.</span>")
-				return
+
 			if(!reason)
 				return
 
-			var/datum/supply_order/new_order = supply_controller.create_order(S, user, reason, I.associated_account_number)
+			if(world.time > timeout)
+				to_chat(user, "<span class='warning'>Error. Request timed out.</span>")
+				return
+
+			var/datum/supply_order/new_order = supply_controller.create_order(S, user, "[using_department_card ? "[using_department_card]: " : ""][reason]", bank_acc, dept_uid)
 
 			var/idname = "*None Provided*"
 			var/idrank = "*None Provided*"
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
-				idname = H.get_authentification_name()
-				idrank = H.get_assignment()
+				if(!assignment)
+					assignment = H.get_assignment()
+				idname = full_name
+				idrank = assignment
 			else if(issilicon(user))
 				idname = user.real_name
 				idrank = "Stationbound synthetic"

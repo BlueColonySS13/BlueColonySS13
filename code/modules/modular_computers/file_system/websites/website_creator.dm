@@ -7,7 +7,7 @@
 	var/max_html_limit = 500 //Change this as you see fit. This is to stop Rshoe from uploading 40 websites with 20,000 lines of POGCHAMP.jpg.
 
 /datum/website/creator/on_access(user)
-	if(websites.len >= max_websites)
+	if(GLOB.websites.len >= max_websites)
 		to_chat(user, "Your company has exceeded their allotted NT free server hosting space, please contact central comand to consider upgrading to the PRO package.")
 		return
 	var/toname = input("Welcome to the NT approved site creator! Please enter a domain for your site.", "NT site creator", null, null) as text
@@ -18,7 +18,7 @@
 	if(length(toname) >= name_length_limit)
 		to_chat(user, "You cannot make a site with a name longer than [name_length_limit] characters.")
 		return FALSE
-	for(var/X in websites)
+	for(var/X in GLOB.websites)
 		var/datum/website/check = X
 		if(check.name == toname)
 			to_chat(user, "This site [toname] has already been registered!")
@@ -26,6 +26,9 @@
 	var/new_content = input("Please write the HTML for your site here. (NB. All external links will be removed but any valid HTML will work here)", "Write", null, null) as message
 	if(!new_content)
 		return
+	var/new_title = input("Please enter a title.", "NT site creator", null, null) as text
+	new_title = sanitize(toname) //let's try to not link your admins to pornhub everytime someone makes a site.
+
 	if(length(new_content) >= max_html_limit) //piss off RSHOE
 		to_chat(user, "You are limited to [max_html_limit] lines of HTML per website on your company's plan. Please try again.")
 		return
@@ -34,11 +37,10 @@
 	new_content = replacetext(new_content, "www.", "{LINK EXPUNGED}")
 	new_content = replacetext(new_content, "http://", "{LINK EXPUNGED}")
 	new_content = replacetext(new_content, "href", "{HREF REMOVED}") //HREF exploits are a pain in the ass.
-	var/datum/website/godaddy = new /datum/website
-	godaddy.name = toname
-	godaddy.content = new_content
-	var/datum/browser/popup = new(user, "[godaddy.name]", "NToogle search engine")
-	popup.set_content(godaddy.content)
-	popup.open()
+	var/datum/website/godaddy = create_website(toname, toname, new_title, new_content, is_deepweb = FALSE, is_searchable = TRUE)
+
+	var/datum/nano_module/nt_explorer/nm = get_browser_window(usr)
+	nm.browse_url(godaddy.name, user)
+
 	log_game("[user] published website: [toname]. With content: [new_content]")
 	message_admins("[user] just published a website: [toname]. Check the logs for its HTML code.")

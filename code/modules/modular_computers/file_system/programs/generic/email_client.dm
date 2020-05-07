@@ -434,6 +434,7 @@
 		var/datum/computer_file/data/email_message/M = find_message_by_fuid(href_list["view"])
 		if(istype(M))
 			current_message = M
+			M.read = TRUE
 		return 1
 
 	if(href_list["changepassword"])

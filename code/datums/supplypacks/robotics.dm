@@ -6,10 +6,12 @@
 
 /datum/supply_pack/robotics
 	group = "Robotics"
+	spend_type = SPEND_ROBOTICS
 
 /datum/supply_pack/randomised/robotics
 	group = "Robotics"
 	access = access_robotics
+	spend_type = SPEND_ROBOTICS
 
 /datum/supply_pack/robotics/robotics_assembly
 	name = "Robotics assembly crate"
@@ -123,7 +125,7 @@
 			/obj/item/weapon/circuitboard/mecha/ripley/main,
 			/obj/item/weapon/circuitboard/mecha/ripley/peripherals
 			)
-	cost = 25
+	cost = 3500
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "APLU \"Ripley\" Circuit Crate"
 	access = access_robotics
@@ -134,7 +136,7 @@
 			/obj/item/weapon/circuitboard/mecha/odysseus/peripherals,
 			/obj/item/weapon/circuitboard/mecha/odysseus/main
 			)
-	cost = 25
+	cost = 3000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "\"Odysseus\" Circuit Crate"
 	access = access_robotics
@@ -173,7 +175,15 @@
 	contains = list(
 			/obj/item/device/defib_kit/jumper_kit = 2
 			)
-	cost = 30
+	cost = 100
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Jumper kit crate"
 	access = access_robotics
+
+
+/datum/supply_pack/robotics/hoverpod
+	name = "Hoverpod Shipment"
+	contains = list()
+	cost = 2500
+	containertype = /obj/structure/largecrate/hoverpod
+	containername = "Hoverpod Crate"

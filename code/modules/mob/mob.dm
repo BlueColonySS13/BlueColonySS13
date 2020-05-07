@@ -890,10 +890,10 @@
 	return
 
 /mob/proc/AdjustLosebreath(amount)
-	losebreath = Clamp(0, losebreath + amount, 25)
+	losebreath = CLAMP(losebreath + amount, 0, 25)
 
 /mob/proc/SetLosebreath(amount)
-	losebreath = Clamp(0, amount, 25)
+	losebreath = CLAMP(amount, 0, 25)
 
 /mob/proc/get_species()
 	return ""
@@ -1070,6 +1070,13 @@ mob/proc/yank_out_object()
 
 /mob/proc/setEarDamage()
 	return
+
+// Set client view distance (size of client's screen). Returns TRUE if anything changed.
+/mob/proc/set_viewsize(var/new_view = world.view)
+	if (client && new_view != client.view)
+		client.view = new_view
+		return TRUE
+	return FALSE
 
 //Throwing stuff
 

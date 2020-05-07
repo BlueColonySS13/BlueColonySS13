@@ -4,9 +4,9 @@
 */
 
 /datum/supply_pack/circuits
-	group = "Circuits"
+	group = "Business Circuits"
 	containertype = /obj/structure/closet/crate
-
+	spend_type = SPEND_BUSINESS
 
 
 
@@ -20,7 +20,8 @@
 	/obj/item/weapon/circuitboard/gibber,
 	/obj/item/weapon/circuitboard/cereal,
 	/obj/item/weapon/circuitboard/icecream_vat,
-	/obj/item/weapon/circuitboard/grinder)
+	/obj/item/weapon/circuitboard/grinder,
+	/obj/item/weapon/circuitboard/condimaster)
 	name = "Kitchen Circuit Set"
 	cost = 1000
 	containertype = /obj/structure/closet/crate
@@ -70,24 +71,18 @@
 	/obj/item/weapon/circuitboard/botany_editor,
 	/obj/item/weapon/circuitboard/seed_extractor,
 	/obj/item/weapon/circuitboard/honey_extractor)
-	name = "Kitchen Circuit Set"
-	cost = 400
+	name = "Botany Circuit Set"
+	cost = 700
 	containertype = /obj/structure/closet/crate
-	containername = "Kitchen Circuit Set"
+	containername = "Botany Circuit Set"
 
 /datum/supply_pack/circuits/tailoring
-	contains = list(/obj/item/weapon/circuitboard/dye_generator)
+	contains = list(/obj/item/weapon/circuitboard/dye_generator,
+	/obj/item/weapon/circuitboard/dye_generator/commercial)
 	name = "Tailoring Circuit Set"
-	cost = 20
+	cost = 100
 	containertype = /obj/structure/closet/crate
 	containername = "Tailoring Circuit Set"
-
-/datum/supply_pack/circuits/display_case
-	contains = list(/obj/item/weapon/circuitboard/display_case)
-	name = "Display Case Circuit"
-	cost = 1200
-	containertype = /obj/structure/closet/crate
-	containername = "Display Case Circuit"
 
 /datum/supply_pack/circuits/popcorn_machine
 	contains = list(/obj/item/weapon/circuitboard/popcorn_machine)
@@ -103,10 +98,21 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Smartfridge Circuit"
 
-/datum/supply_pack/circuits/popcorn_machine
+/datum/supply_pack/circuits/token_machine
 	contains = list(/obj/item/weapon/circuitboard/token_machine)
 	name = "Token Dispenser Circuit"
 	cost = 200
 	containertype = /obj/structure/closet/crate
 	containername = "Token Dispenser Circuit"
+
+/datum/supply_pack/circuits/forensics
+	contains = list(
+	/obj/item/weapon/circuitboard/dna_analyzer,
+	/obj/item/weapon/circuitboard/microscope,
+	)
+	name = "Forensics Circuits"
+	cost = 500
+	containertype = /obj/structure/closet/crate
+	containername = "Forensics Circuits"
+
 

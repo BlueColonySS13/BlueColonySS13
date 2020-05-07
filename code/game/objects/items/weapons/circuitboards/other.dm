@@ -9,6 +9,13 @@
 	origin_tech = list(TECH_DATA = 4, TECH_BIO = 2)
 	board_type = "other"
 
+/obj/item/weapon/circuitboard/condimaster
+	name = T_BOARD("CondiMaster 3000")
+	build_path = /obj/machinery/chem_master/condimaster
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_DATA = 3, TECH_MAGNET = 2)
+	req_components = list()
+
 /obj/item/weapon/circuitboard/chem_master
 	name = T_BOARD("ChemMaster 3000")
 	build_path = /obj/machinery/chem_master
@@ -22,6 +29,10 @@
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_DATA = 2)
 	req_components = list()
+
+/obj/item/weapon/circuitboard/dye_generator/commercial
+	name = T_BOARD("Commercial Dye Generator")
+	build_path = /obj/machinery/dye_generator/commercial
 
 /obj/item/weapon/circuitboard/display_case
 	name = T_BOARD("Electronic Display Case")

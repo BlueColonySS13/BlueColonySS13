@@ -20,6 +20,7 @@
 		return
 
 /obj/item/weapon/gun/energy/captain/xenoarch
+	dont_save = FALSE
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "gun4"
 	update_icon()

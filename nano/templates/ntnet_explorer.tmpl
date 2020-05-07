@@ -22,8 +22,6 @@
 </style>
 
 
-	{{if data.interactive_website == 0}}
-
 <p><strong>{{:data.website_title}}</strong> - NTNet Explorer</p>
 <hr>
 <table style="width: 100%; margin-right: calc(0%);">
@@ -35,7 +33,7 @@
 </table>
 <p>
 
-{{:helper.link("Refresh", null, {'Refresh' : 1})}} </p>
+{{:helper.link("Refresh", null, {'Refresh' : 1})}}  {{:helper.link("Home", null, {'go_homepage' : 1})}}  {{:helper.link("Set Home Page", null, {'set_homepage' : 1})}}</p>
 <p><br></p>
 
 
@@ -48,5 +46,3 @@
 
 </div>
 
-
-	{{/if}}

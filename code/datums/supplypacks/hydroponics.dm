@@ -6,6 +6,7 @@
 
 /datum/supply_pack/hydro
 	group = "Hydroponics"
+	spend_type = SPEND_HYDROPONICS
 
 /datum/supply_pack/hydro/monkey
 	name = "Monkey crate"
@@ -55,32 +56,6 @@
 	cost = 25
 	containertype = /obj/structure/largecrate/animal/chick
 	containername = "Chicken crate"
-
-
-/datum/supply_pack/hydro/seeds
-	name = "Seeds crate"
-	contains = list(
-			/obj/item/seeds/chiliseed,
-			/obj/item/seeds/berryseed,
-			/obj/item/seeds/cornseed,
-			/obj/item/seeds/eggplantseed,
-			/obj/item/seeds/tomatoseed,
-			/obj/item/seeds/appleseed,
-			/obj/item/seeds/soyaseed,
-			/obj/item/seeds/wheatseed,
-			/obj/item/seeds/carrotseed,
-			/obj/item/seeds/harebell,
-			/obj/item/seeds/lemonseed,
-			/obj/item/seeds/orangeseed,
-			/obj/item/seeds/grassseed,
-			/obj/item/seeds/sunflowerseed,
-			/obj/item/seeds/chantermycelium,
-			/obj/item/seeds/potatoseed,
-			/obj/item/seeds/sugarcaneseed
-			)
-	cost = 100
-	containertype = /obj/structure/closet/crate/hydroponics
-	containername = "Seeds crate"
 
 
 /datum/supply_pack/hydro/weedcontrol
@@ -137,7 +112,7 @@
 
 /datum/supply_pack/hydro/veg_seeds
 	name = "Vegetable Seed Crate (2 packets each)"
-	cost = 150
+	cost = 250
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Vegetable Seed Crate"
 	contains = list(/obj/item/seeds/chiliseed = 2,
@@ -160,7 +135,7 @@
 
 /datum/supply_pack/hydro/fruit_seeds
 	name = "Fruit Seed Crate (2 packets each)"
-	cost = 50
+	cost = 250
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Fruit Seed Crate"
 	contains = list(/obj/item/seeds/grapeseed = 2,
@@ -173,13 +148,42 @@
 	/obj/item/seeds/orangeseed = 2,
 	/obj/item/seeds/cherryseed = 2)
 
+/datum/supply_pack/hydro/mushroom_spores
+	name = "Various Mushroom Spores (2 packets each)"
+	cost = 250
+	containertype = /obj/structure/closet/crate/hydroponics
+	containername = "Mushroom Seed Crate"
+	contains = list(/obj/item/seeds/chantermycelium = 2,
+	/obj/item/seeds/reishimycelium = 2,
+	/obj/item/seeds/amanitamycelium = 2,
+	/obj/item/seeds/angelmycelium = 2,
+	/obj/item/seeds/libertymycelium = 2,
+	/obj/item/seeds/chantermycelium = 2,
+	/obj/item/seeds/towermycelium = 2,
+	/obj/item/seeds/glowshroom = 2,
+	/obj/item/seeds/plumpmycelium = 2,
+	/datum/seed/mushroom/plastic = 2)
+
 
 /datum/supply_pack/hydro/tobacco_seeds
 	name = "Tobacco Seed Crate (5 packets)"
 	cost = 70
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Tobacco Seed Crate"
-	contains = list(/obj/item/seeds/tobaccoseed = 5)
+	contains = list(/obj/item/seeds/tobaccoseed = 3)
 
+/datum/supply_pack/hydro/fine_tobacco_seeds
+	name = "Fine Tobacco Seed Crate (5 packets)"
+	cost = 240
+	containertype = /obj/structure/closet/crate/hydroponics
+	containername = "Fine Tobacco Seed Crate"
+	contains = list(/obj/item/seeds/finetobaccoseed = 3)
+
+/datum/supply_pack/hydro/pure_tobacco_seeds
+	name = "Pure Tobacco Seed Crate (5 packets)"
+	cost = 490
+	containertype = /obj/structure/closet/crate/hydroponics
+	containername = "Pure Tobacco Seed Crate"
+	contains = list(/obj/item/seeds/puretobaccoseed = 3)
 
 
