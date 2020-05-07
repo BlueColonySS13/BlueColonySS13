@@ -93,8 +93,8 @@
 	var/last_shot = 0			//records the last shot fired
 	drop_sound = 'sound/items/drop/gun.ogg'
 
-	get_tax()
-		return WEAPONS_TAX
+/obj/item/weapon/gun/get_tax()
+	return WEAPONS_TAX
 
 /obj/item/weapon/gun/is_contraband()
 	return CONTRABAND_GUN

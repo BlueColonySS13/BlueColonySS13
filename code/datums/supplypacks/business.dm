@@ -48,3 +48,11 @@
 	cost = 1500
 	containertype = /obj/structure/largecrate
 	containername = "Business Sign"
+
+/datum/supply_pack/business/inventory_box
+	contains = list(/obj/item/weapon/circuitboard/inventory_box)
+	name = "Inventory box"
+	cost = 6000
+	containertype = /obj/structure/closet/crate
+	containername = "Inventory Box"
+
