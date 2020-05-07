@@ -3,7 +3,7 @@
 	name = "Accounts uplink terminal"
 	desc = "Access transaction logs, account data and all kinds of other financial records."
 	icon = 'icons/obj/computer.dmi'
-	icon_state = "aiupload"
+	icon_state = "acc_db"
 	density = 1
 	req_one_access = list(access_hop, access_captain, access_cent_captain)
 	anchored = 1
@@ -91,8 +91,9 @@
 			data["transactions"] = trx
 
 	var/list/accounts[0]
-	for(var/i=1, i<=GLOB.all_money_accounts.len, i++)
-		var/datum/money_account/D = GLOB.all_money_accounts[i]
+	var/list/accs = all_public_accounts()
+	for(var/i=1, i<=accs.len, i++)
+		var/datum/money_account/D = accs[i]
 		accounts.Add(list(list(\
 			"account_number"=D.account_number,\
 			"owner_name"=D.owner_name,\
@@ -178,8 +179,9 @@
 
 			if("view_account_detail")
 				var/index = text2num(href_list["account_index"])
-				if(index && index <= GLOB.all_money_accounts.len)
-					detailed_account_view = GLOB.all_money_accounts[index]
+				var/list/accs = all_public_accounts()
+				if(index && index <= accs.len)
+					detailed_account_view = accs[index]
 
 			if("view_accounts_list")
 				detailed_account_view = null
@@ -255,8 +257,9 @@
 							<tbody>
 					"}
 
-					for(var/i=1, i<=GLOB.all_money_accounts.len, i++)
-						var/datum/money_account/D = GLOB.all_money_accounts[i]
+					var/list/accs = all_public_accounts()
+					for(var/i=1, i<=accs.len, i++)
+						var/datum/money_account/D = accs[i]
 						text += {"
 								<tr>
 									<td>#[D.account_number]</td>

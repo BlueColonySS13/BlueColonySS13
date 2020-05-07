@@ -9,7 +9,6 @@
 	stripe_file = 'icons/obj/doors/double/stripe.dmi'
 	stripe_fill_file = 'icons/obj/doors/double/fill_stripe.dmi'
 	glass_file = 'icons/obj/doors/double/fill_glass.dmi'
-
 	bolts_file = 'icons/obj/doors/double/lights_bolts.dmi'
 	deny_file = 'icons/obj/doors/double/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/double/lights_green.dmi'
@@ -18,48 +17,22 @@
 	emag_file = 'icons/obj/doors/double/emag.dmi'
 	width = 2
 	appearance_flags = 0
-	var/obj/machinery/filler_object/filler1
-	var/obj/machinery/filler_object/filler2
+	opacity = 1
+	assembly_type = /obj/structure/door_assembly/multi_tile
+
+	adjust_dir = FALSE
 
 /obj/machinery/door/airlock/multi_tile/New()
 	..()
-	// One multidoor door per turf.
-	for(var/obj/machinery/door/T in locs)
-		if(T != src)
-			QDEL_NULL(src)
-			return
 	SetBounds()
-	if(opacity)
-		create_fillers()
-
-/obj/machinery/door/airlock/multi_tile/Destroy()
-	QDEL_NULL(filler1)
-	QDEL_NULL(filler2)
-	return ..()
 
 /obj/machinery/door/airlock/multi_tile/Move()
 	. = ..()
 	SetBounds()
 
-/obj/machinery/door/airlock/multi_tile/open()
-	. = ..()
-
-	if(filler1)
-		filler1.set_opacity(opacity)
-		if(filler2)
-			filler2.set_opacity(opacity)
-
-	return .
-
-/obj/machinery/door/airlock/multi_tile/close()
-	. = ..()
-
-	if(filler1)
-		filler1.set_opacity(opacity)
-		if(filler2)
-			filler2.set_opacity(opacity)
-
-	return .
+/obj/machinery/door/airlock/multi_tile/on_persistence_load()
+	SetBounds()
+	update_icon()
 
 /obj/machinery/door/airlock/multi_tile/proc/SetBounds()
 	if(dir in list(NORTH, SOUTH))
@@ -69,32 +42,11 @@
 		bound_width = world.icon_size
 		bound_height = width * world.icon_size
 
-/obj/machinery/door/airlock/multi_tile/proc/create_fillers()
-	if(src.dir > 3)
-		filler1 = new/obj/machinery/filler_object (src.loc)
-		filler2 = new/obj/machinery/filler_object (get_step(src,EAST))
-	else
-		filler1 = new/obj/machinery/filler_object (src.loc)
-		filler2 = new/obj/machinery/filler_object (get_step(src,NORTH))
-	filler1.density = 0
-	filler2.density = 0
-	filler1.set_opacity(opacity)
-	filler2.set_opacity(opacity)
-
-/obj/machinery/door/airlock/multi_tile/update_icon(state=0, override=0)
-	..()
-	if(connections in list(NORTH, SOUTH, NORTH|SOUTH))
-		if(connections in list(WEST, EAST, EAST|WEST))
-			set_dir(SOUTH)
-		else
-			set_dir(WEST)
-	else
-		set_dir(SOUTH)
 
 /obj/machinery/door/airlock/multi_tile/update_connections(var/propagate = 0)
 	var/dirs = 0
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
 		var/success = 0
 

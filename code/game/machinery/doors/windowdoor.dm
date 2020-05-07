@@ -66,19 +66,21 @@
 	if (!( ismob(AM) ))
 		var/mob/living/bot/bot = AM
 		if(istype(bot))
-			if(density && src.check_access(bot.botcard))
+			if(density && src.check_access(bot.botcard) && !locked)
 				open()
 				sleep(50)
 				close()
 		else if(istype(AM, /obj/mecha))
 			var/obj/mecha/mecha = AM
 			if(density)
-				if(mecha.occupant && src.allowed(mecha.occupant))
+				if(mecha.occupant && src.allowed(mecha.occupant) && !locked)
 					open()
 					sleep(50)
 					close()
 		return
 	if (!( ticker ))
+		return
+	if (src.locked)
 		return
 	if (src.operating)
 		return
@@ -154,6 +156,31 @@
 	return src.attack_hand(user)
 
 /obj/machinery/door/window/attack_hand(mob/user as mob)
+
+	if(keypad && !p_open)
+		if(!istype(user, /mob/living/silicon))
+			user.set_machine(src)
+			var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
+			var/message = "Code"
+			if((src.l_set == 0) && (!src.emagged) && (!src.l_setshort))
+				dat += text("<p>\n<b>5-DIGIT PASSCODE NOT SET.<br>ENTER NEW DOOR PASSCODE.</b>")
+			if(src.emagged)
+				dat += text("<p>\n<font color=red><b>LOCKING SYSTE	M ERROR - 1701</b></font>")
+			if(src.l_setshort)
+				dat += text("<p>\n<font color=red><b>ALERT: MEMORY SYSTEM ERROR - 6040 201</b></font>")
+			message = text("[]", src.code)
+			if(!src.locked)
+				message = "*****"
+			dat += text("<HR>\n>[]<BR>\n<A href='?src=\ref[];type=1'>1</A>-<A href='?src=\ref[];type=2'>2</A>-<A href='?src=\ref[];type=3'>3</A><BR>\n<A href='?src=\ref[];type=4'>4</A>-<A href='?src=\ref[];type=5'>5</A>-<A href='?src=\ref[];type=6'>6</A><BR>\n<A href='?src=\ref[];type=7'>7</A>-<A href='?src=\ref[];type=8'>8</A>-<A href='?src=\ref[];type=9'>9</A><BR>\n<A href='?src=\ref[];type=R'>R</A>-<A href='?src=\ref[];type=0'>0</A>-<A href='?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
+			if(!locked)
+				dat += "<BR>\n<A href='?src=\ref[src];keypad_toggleopen=1'>Toggle Open/Close</A> <A href='?src=\ref[src];keypad_lock=1'>Lock</A>"
+
+			var/datum/browser/popup = new(user, "keypad_door", "[src]", 300, 280, src)
+			popup.set_content(jointext(dat,null))
+			popup.open()
+
+			onclose(user, "keypad_door")
+			return
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
@@ -255,15 +282,15 @@
 		return
 
 
-	src.add_fingerprint(user)
+	add_fingerprint(user)
 
-	if (src.allowed(user))
-		if (src.density)
+	if (allowed(user) && !locked)
+		if (density)
 			open()
 		else
 			close()
 
-	else if (src.density)
+	else if (density)
 		flick(text("[]deny", src.base_state), src)
 
 	return
@@ -348,3 +375,57 @@
 	dir = SOUTH
 	icon_state = "rightsecure"
 	base_state = "rightsecure"
+
+/obj/machinery/door/window/Topic(href, href_list)
+	..()
+	if((usr.stat || usr.restrained()) || (get_dist(src, usr) > 1))
+		return
+
+	if(keypad && !src.p_open)
+		if((usr.stat || usr.restrained()) || (get_dist(src, usr) > 1))
+			return
+
+		src.add_fingerprint(usr)
+
+		if(href_list["keypad_toggleopen"])
+			if (src.allowed(usr))
+				if (src.density)
+					open()
+				else
+					close()
+
+
+		if(href_list["keypad_lock"])
+			if(locked)
+				return
+
+			locked = TRUE
+
+		if(href_list["type"])
+			playsound(src.loc, 'sound/effects/click.ogg', 100, 1)
+			if(href_list["type"] == "E")
+				if((src.l_set == 0) && (length(src.code) == 5) && (!src.l_setshort) && (src.code != "ERROR"))
+					src.l_code = src.code
+					src.l_set = 1
+				else if((src.code == src.l_code) && (src.emagged == 0) && (src.l_set == 1))
+					src.locked = 0
+					update_icon()
+				else
+					src.code = "ERROR"
+			else
+				if((href_list["type"] == "R") && (src.emagged == 0) && (!src.l_setshort))
+					src.locked = 1
+					update_icon()
+					src.code = null
+					if(open)
+						src.close(usr)
+				else
+					src.code += text("[]", href_list["type"])
+					if(length(src.code) > 5)
+						src.code = "ERROR"
+					return
+
+			for(var/mob/M in viewers(1, src.loc))
+				if((M.client && M.machine == src))
+					src.attack_hand(M)
+				return

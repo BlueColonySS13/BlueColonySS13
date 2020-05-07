@@ -60,9 +60,11 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	pref.metadata = null
 	pref.existing_character = null
 	pref.played = null
+	delete_persistent_inventory(pref.unique_id)
 	pref.unique_id = null
 	if(fdel("data/persistent/emails/[pref.email].sav"))
 		pref.email = null
+
 
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
@@ -179,11 +181,11 @@ F
 		var/raw_name = input(user, "Choose your character's name:", "Character Name")  as text|null
 		if (!isnull(raw_name) && CanUseTopic(user))
 			var/new_name = sanitize_name(raw_name, pref.species, is_FBP())
-			
+
 			if(new_name in pref.characters_created)
 				user << "<span class='warning'>You cannot play this character again. Ahelp if this is in error.</span>"
 				return TOPIC_NOACTION
-			
+
 			if(new_name)
 				pref.real_name = new_name
 				return TOPIC_REFRESH
@@ -307,7 +309,7 @@ F
 		return TOPIC_REFRESH
 
 	else if(href_list["metadata"])
-		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , pref.metadata) as message|null) 
+		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , pref.metadata) as message|null)
 		if(new_metadata && CanUseTopic(user))
 			pref.metadata = new_metadata
 			return TOPIC_REFRESH

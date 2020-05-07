@@ -428,3 +428,8 @@
 	name = "flamethrower"
 	path =/obj/item/weapon/flamethrower/full
 	hidden = 1
+
+/datum/category_item/autolathe/arms/synthdisabler
+	name = "synth disabler"
+	path = /obj/item/device/flash/synthdisabler
+

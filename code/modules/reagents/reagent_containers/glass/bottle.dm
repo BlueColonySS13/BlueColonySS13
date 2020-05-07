@@ -11,6 +11,11 @@
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	flags = 0
 	volume = 60
+	matter = list("glass" = 50)
+
+/obj/item/weapon/reagent_containers/glass/bottle/open
+	flags = OPENCONTAINER
+
 
 /obj/item/weapon/reagent_containers/glass/bottle/can_empty()
 	return TRUE
@@ -144,7 +149,7 @@
 
 
 /obj/item/weapon/reagent_containers/glass/bottle/eznutrient
-	name = "\improper EZ NUtrient bottle"
+	name = "EZ NUtrient bottle"
 	desc = "A small bottle."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
@@ -152,7 +157,7 @@
 
 
 /obj/item/weapon/reagent_containers/glass/bottle/left4zed
-	name = "\improper Left-4-Zed bottle"
+	name = "Left-4-Zed bottle"
 	desc = "A small bottle."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"
@@ -160,7 +165,7 @@
 
 
 /obj/item/weapon/reagent_containers/glass/bottle/robustharvest
-	name = "\improper Robust Harvest"
+	name = "Robust Harvest"
 	desc = "A small bottle."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "bottle-4"

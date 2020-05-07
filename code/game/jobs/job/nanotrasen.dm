@@ -23,7 +23,6 @@
 	req_admin_notify = 1
 
 	hard_whitelisted = 1
-	clean_record_required = TRUE
 
 	no_shuttle = TRUE
 

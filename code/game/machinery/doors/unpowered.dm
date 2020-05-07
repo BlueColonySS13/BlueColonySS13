@@ -1,6 +1,6 @@
 /obj/machinery/door/unpowered
 	autoclose = 0
-	var/locked = 0
+	locked = 0
 
 /obj/machinery/door/unpowered/Bumped(atom/AM)
 	if(src.locked)

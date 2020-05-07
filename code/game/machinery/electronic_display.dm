@@ -31,36 +31,42 @@
 
 	var/bank_id = ""
 	var/owner_message = ""	// a message by the owner left behind for the customers
+	var/purchase = 1
 
 	//other
 	var/obj/currently_vending
 	var/maint_mode = FALSE
 	var/atmpt_maint_mode = FALSE
 
-	var/max_items = 30
-	var/can_buy = TRUE
+	var/max_items = 60
 
-	unique_save_vars = list("anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid",\
-	"staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode", "can_buy")
+	unique_save_vars = list("purchase", "anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode")
 
-/obj/machinery/electronic_display_case/New()
-	..()
+/obj/machinery/electronic_display_case/initialize()
 	if(!staff_pin)
 		staff_pin = rand(1111,9999)
+	..()
 
+/obj/machinery/electronic_display_case/get_saveable_contents()
+	return stored_products
 
 /obj/machinery/electronic_display_case/on_persistence_load()
-	stored_products = get_saveable_contents() - circuit
 	update_icon()
+	stored_products = contents
 
 /obj/machinery/electronic_display_case/examine(mob/user)
 	..()
 	if(owner_name)
 		to_chat(user, "[name] belongs to <b>[owner_name]</b>, report any issues with the machine to the owner.")
-	if(!can_buy)
+	if(!purchase)
 		to_chat(user, "<b>It is display-only.</b>")
 	else
 		to_chat(user, "<b>You can buy items from this unit.</b>")
+
+	if(!anchored)
+		to_chat(user, "<b>It is loose from the floor!</b>")
+	else
+		to_chat(user, "<b>It is firmly anchored to the floor.</b>")
 
 
 
@@ -104,12 +110,13 @@
 /obj/machinery/electronic_display_case/proc/choose_static_icon(mob/user)
 	var/static_icons_list = list("NONE","liberation station", "orange bubbles", "theater", "shamblers", "space up", "games", \
 	"snacks green", "snacks orange", "snacks teal", "coffee", "cigarettes", "medicine", "black cola", "soda red", "art", \
-	"clothes", "generic", "luxvend", "syndi", "laptop", "toiletries", "minerals", "soda fox", "snix", "uniforms", \
-	"weeb", "gold black", "shoes", "power game", "generic buy")
+	"clothes", "generic", "luxvend", "laptop", "toiletries", "minerals", "soda fox", "snix", "uniforms", \
+	"weeb", "gold black", "shoes", "power game", "generic buy", "hot food", "fitness", "shirts", "shoes 2", "coats", \
+	"dress", "undersuits", "suits", "jeans", "boots", "dye", "cigars", "pills", "whiskey", "manhatten", "produce", \
+	"jewels", "paperwork", "decor", "cannabis", "smoke packet", "security", "burger", "coke", "fish")
 
 	if(emagged)
 		static_icons_list += "syndi"
-
 
 	var/new_icon = input(usr, "Select a new appearance!", "Appearance Morph")  as null|anything in static_icons_list
 	if(!new_icon)
@@ -178,6 +185,58 @@
 			static_icon = "generic_buy"
 		if("syndi")
 			static_icon = "syndi"
+		if("hot food")
+			static_icon = "hot_food"
+		if("fitness")
+			static_icon = "fitness"
+		if("shirts")
+			static_icon = "shirts"
+		if("shoes 2")
+			static_icon = "shoes2"
+		if("coats")
+			static_icon = "coats"
+		if("dress")
+			static_icon = "dress"
+		if("undersuits")
+			static_icon = "undersuits"
+		if("suits")
+			static_icon = "suits"
+		if("jeans")
+			static_icon = "jeans"
+		if("boots")
+			static_icon = "boots"
+		if("dye")
+			static_icon = "dye"
+		if("cigars")
+			static_icon = "cigars"
+		if("pills")
+			static_icon = "pills"
+		if("whiskey")
+			static_icon = "whiskey"
+		if("manhatten")
+			static_icon = "manhatten"
+		if("produce")
+			static_icon = "produce"
+		if("jewels")
+			static_icon = "jewels"
+		if("paperwork")
+			static_icon = "paperwork"
+		if("upholstry")
+			static_icon = "upholstry"
+		if("decor")
+			static_icon = "decor"
+		if("cannabis")
+			static_icon = "cannabis"
+		if("smoke packet")
+			static_icon = "smoke_packet"
+		if("security")
+			static_icon = "security"
+		if("burger")
+			static_icon = "burger"
+		if("coke")
+			static_icon = "coke"
+		if("fish")
+			static_icon = "fish"
 
 	visible_message("<span class='info'>[src] morphs into a new appearance!</span>")
 	playsound(user, 'sound/machines/click.ogg', 20, 1)
@@ -255,7 +314,7 @@
 					dat += "No products found."
 				else
 					for(var/obj/O in stored_products)
-						if(can_buy)
+						if(purchase)
 							dat += "<a href='?src=\ref[src];choice=buy;item=\ref[O]''>Buy &#127980;</a> "
 
 						dat += "<a href='?src=\ref[src];choice=examine_item;item=\ref[O]''>View &#128270;</a> <b>[O.name]</b> - [cash2text( O.get_full_cost(), FALSE, TRUE, TRUE )]"
@@ -268,10 +327,12 @@
 			dat += "<i>There appears to be an issue with the payment account of this vendor. Please contact the owner.</i>"
 
 
-		dat += "<a href='?src=\ref[src];maint_mode=1'>Enter Maintenance Mode</a>"
+		dat += "<br><br><a href='?src=\ref[src];maint_mode=1'>Enter Maintenance Mode</a>"
 	else
 		dat += "Welcome to Maintenance mode. You can add any item by entering it into the machine. Additionally, you can remove any \
 		item or change the staff's pin code. Remember to Exit Maintenance Mode when you are done, to lock and secure your machine.<br>"
+
+		dat += "<b>Staff pin:</b> [staff_pin]<br>"
 
 		if(!check_account_exists(bank_id))
 			dat += "<br><b>There is currently an issue with your bank details. Please update your linked bank account to enable the machine.</b>"
@@ -350,6 +411,7 @@
 			atmpt_maint_mode = FALSE
 			maint_mode = TRUE
 			update_icon()
+			updateDialog()
 		else
 			visible_message("<span class='notice'>Error: Unrecognised unique ID or authorization mismatch.</span>")
 			return TRUE
@@ -468,7 +530,11 @@
 	return
 
 /obj/machinery/electronic_display_case/proc/try_staff_pin(mob/user)
-	var/attempt_pin = input("Enter staff pin code", "Vendor transaction") as num
+	var/attempt_pin = input("Enter staff pin code (max: 9999)", "Vendor transaction") as num
+
+	if(attempt_pin > 9999)
+		to_chat(user, "<span class='warning'>ERROR: Pins do not exceed 9999.</span>")
+		return
 
 	if((attempt_pin != staff_pin))
 		to_chat(user, "<span class='warning'>ERROR: Incorrect pin number.</span>")
@@ -494,8 +560,6 @@
 	maint_mode = FALSE
 	atmpt_maint_mode = FALSE
 
-	can_buy = initial(can_buy)
-
 	update_icon()
 
 
@@ -510,7 +574,14 @@
 		update_icon()
 
 	if(href_list["maint_mode"])
-		atmpt_maint_mode = TRUE
+		var/mob/user = usr
+		var/obj/item/weapon/card/id/I = user.GetIdCard()
+
+		// owners don't need to swipe their ID every single time if they are wearing said ID
+		if(I && (I.unique_ID == owner_uid))
+			maint_mode = TRUE
+		else
+			atmpt_maint_mode = TRUE
 
 	if(href_list["exit_maint_mode"])
 		maint_mode = FALSE
@@ -526,8 +597,11 @@
 		if(!maint_mode)
 			return
 
-		var/new_pin = input("Enter new staff pin code", "Vendor transaction") as num
-		if(!new_pin)
+		var/new_pin = input("Enter new staff pin code (max 9999)", "Vendor transaction") as num
+		if(!new_pin || (0 > new_pin))
+			return
+		if(new_pin > 9999)
+			to_chat(usr, "<span class='warning'>ERROR: Pins do not exceed 9999.</span>")
 			return
 
 		staff_pin = new_pin
@@ -597,8 +671,9 @@
 		if(!maint_mode)
 			return
 
-		can_buy = !can_buy
-		to_chat(usr, "<b>The machine now [can_buy ? "accepts" : "does not accept"] purchases.</b>")
+		purchase = !purchase
+
+		to_chat(usr, "<b>The machine now [purchase ? "accepts" : "does not accept"] purchases.</b>")
 
 	if(href_list["reset_owner"])
 		if(!maint_mode)
@@ -621,7 +696,7 @@
 				if(!item || !(item in stored_products))
 					return
 
-				if(!can_buy)
+				if(!purchase)
 					return
 
 				var/obj/O = item

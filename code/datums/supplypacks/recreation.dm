@@ -32,7 +32,7 @@
 			)
 	containertype = /obj/structure/closet
 	containername = "Lasertag Closet"
-	cost = 10
+	cost = 40
 
 /datum/supply_pack/recreation/artscrafts
 	name = "Arts and Crafts supplies"
@@ -59,11 +59,21 @@
 
 /datum/supply_pack/recreation/painters
 	name = "Station Painting Supplies"
-	cost = 10
+	cost = 30
 	containername = "station painting supplies crate"
 	containertype = /obj/structure/closet/crate
 	contains = list(
 			/obj/item/device/pipe_painter = 2,
 			/obj/item/device/floor_painter = 2,
 			/obj/item/device/closet_painter = 2
+			)
+
+/datum/supply_pack/recreation/gym_equipment
+	name = "Gym Equipment"
+	cost = 1200
+	containername = "gym equipment crate"
+	containertype = /obj/structure/largecrate
+	contains = list(
+			/obj/item/frame/plastic/punchingbag = 2,
+			/obj/item/frame/weightlifter = 2
 			)

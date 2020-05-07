@@ -17,6 +17,11 @@
 	var/power_usage
 	var/power_use = 1
 
+	unique_save_vars = list("on")
+
+/obj/item/device/flashlight/on_persistence_load()
+	update_icon()
+
 /obj/item/device/flashlight/initialize()
 	. = ..()
 	update_icon()
@@ -469,6 +474,7 @@
 	desc = "A kitchy throwback decorative light. Noir Edition."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "lavalamp"
+	w_class = ITEMSIZE_SMALL
 	on = 0
 	action_button_name = "Toggle lamp"
 	matter = list(DEFAULT_WALL_MATERIAL = 200,"glass" = 50)

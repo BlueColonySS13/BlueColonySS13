@@ -144,4 +144,19 @@
 	machine_understands = 0
 	flags = RESTRICTED | NO_STUTTER| NONVERBAL | HIVEMIND
 
-
+/datum/language/precursor
+	name = LANGUAGE_PRECURSOR
+	desc = "A language spoken by a poorly understood precursor race."
+	speech_verb = "voices"
+	ask_verb = "inquires"
+	exclaim_verb = "bellows"
+	colour = COLOR_SEDONA
+	key = "x"
+	flags = WHITELISTED | NO_STUTTER
+	machine_understands = 0
+	space_chance = 50
+	syllables = list(
+			"aw", "ew", "ow", "li", "mi", "ma", "ta", "sha", "scha", "a", "ruk", "re", "stru", "ron", "pyu", "luk",
+			"ng", "ey", "oe", "ka", "me", "te", "le", "she", "sche", "e", "rok", "san", "sen", "ren", "pyo", "lok",
+			"sil", "ri", "quo", "xa", "mo", "ti", "ri", "shi", "schi", "i", "rak", "son", "sey", "ton", "pa", "lek"
+		)

@@ -76,8 +76,8 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_ELECTIONS		-26
 #define INIT_ORDER_LAW			-27
 #define INIT_ORDER_LOTS			-28
-#define INIT_ORDER_BUSINESS		-29
-
+#define INIT_ORDER_WEBSITES		-29
+#define INIT_ORDER_BUSINESS		-30
 
 
 // Subsystem fire priority, from lowest to highest priority

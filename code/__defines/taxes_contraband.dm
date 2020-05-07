@@ -38,6 +38,7 @@
 #define PROFESSIONAL_ONLY "Professional Use Only"
 #define PERMIT_SELLING "Selling permit needed"
 #define PERMIT_POSSESSION "Possession and creation permit needed"
+#define PROFESSIONAL_SALE "Possession permit needed. Illegal to sell privately."
 
 #define LEGAL "Legal"
 

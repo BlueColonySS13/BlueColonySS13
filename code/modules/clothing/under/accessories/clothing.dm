@@ -187,6 +187,7 @@
 
 /obj/item/clothing/accessory/hawaii/random
 	name = "flower-pattern shirt"
+	unique_save_vars = list("icon_state")
 
 /obj/item/clothing/accessory/hawaii/random/New()
 	if(prob(50))
@@ -233,11 +234,9 @@
 	icon_state = "sweatervest"
 	item_state = "sweatervest"
 
-
 /obj/item/clothing/accessory/wcoat/gwaistcost
 	name = "generic waistcoat"
 	icon_state = "color_vest"
-	index = 1
 
 /obj/item/clothing/accessory/wcoat/fancyvest
 	name = "fancy waistcoat"

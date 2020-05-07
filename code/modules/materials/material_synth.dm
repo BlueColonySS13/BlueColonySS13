@@ -30,12 +30,15 @@
 /obj/item/stack/material/cyborg/wood
 	icon_state = "sheet-wood"
 	default_type = "wood"
+	stack_color = COLOR_DEEP_SKY_BLUE
 
 /obj/item/stack/material/cyborg/glass
 	icon_state = "sheet-glass"
 	default_type = "glass"
+	stack_color = GLASS_COLOR
 
 /obj/item/stack/material/cyborg/glass/reinforced
 	icon_state = "sheet-rglass"
 	default_type = "rglass"
 	charge_costs = list(500, 1000)
+	stack_color = GLASS_COLOR

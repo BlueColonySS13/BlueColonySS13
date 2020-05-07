@@ -51,7 +51,8 @@
 /datum/category_item/player_setup_item/general/background/sanitize_character()
 	if(!pref.home_system) pref.home_system = "Vetra"
 	if(!pref.citizenship) pref.citizenship = "Blue Colony"
-	pref.citizenship = sanitize_inlist(pref.citizenship, home_system_choices, initial(pref.citizenship))
+	pref.home_system = sanitize_inlist(pref.home_system, home_system_choices, initial(pref.home_system))
+	pref.citizenship = sanitize_inlist(pref.citizenship, citizenship_choices, initial(pref.citizenship))
 //	if(!pref.faction)     pref.faction =     "None"
 	if(!pref.religion)    pref.religion =    "None"
 	if(!pref.crime_record) pref.crime_record = list()

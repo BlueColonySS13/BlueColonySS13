@@ -106,6 +106,7 @@ var/list/gamemode_cache = list()
 	var/guests_allowed = 1
 	var/debugparanoid = 0
 	var/panic_bunker = 0
+	var/gamemode_vote = 0
 
 	var/serverurl
 	var/server
@@ -656,6 +657,9 @@ var/list/gamemode_cache = list()
 
 				if("continuous_rounds")
 					config.continous_rounds = 1
+
+				if("gamemode_vote")
+					config.gamemode_vote = 1
 
 				if("ghost_interaction")
 					config.ghost_interaction = 1

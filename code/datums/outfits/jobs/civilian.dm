@@ -115,7 +115,8 @@
 	l_hand = /obj/item/weapon/clipboard
 	id_type = /obj/item/weapon/card/id/heads/judge
 	pda_type = /obj/item/device/pda/lawyer
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1)
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1,
+	/obj/item/weapon/card/department/law = 1)
 
 /decl/hierarchy/outfit/job/heads/judge/post_equip(mob/living/carbon/human/H)
 	..()
@@ -166,3 +167,4 @@
 	id_pda_assignment = "Prisoner"
 	uniform = /obj/item/clothing/under/color/orange
 	shoes = /obj/item/clothing/shoes/orange
+	backpack_contents = list(/obj/item/weapon/storage/mre/menu13 = 2)

@@ -2,7 +2,7 @@
 
 # The-World-Server-Redux
 
-[Forums](http://ss13worldserver.com/forums/index.php) - [Wiki](http://ss13worldserver.com/wiki/index.php?title=Main_Page) - [Discord](https://discord.gg/4KUpvnJ)
+[Forums](http://geminus.city/forums/index.php) - [Wiki](http://geminus.city/wiki) - [Discord](https://discord.gg/G6eVck2)
 
 World Server is a fork of the Polaris code branch for the game Spacestation13.
 

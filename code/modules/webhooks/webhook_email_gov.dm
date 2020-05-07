@@ -5,11 +5,19 @@
 // Data expects a "text" field containing the new custom event text.
 /decl/webhook/email_gov/get_message(var/list/data)
 	. = ..()
+	var/desc = "**Incoming Email**"
+	if(data && data["reciever"])
+		desc += " **To**: [data["reciever"]]\n"
+	if(data && data["sender"])
+		desc += " **Sender**: [data["sender"]]\n"
+	if(data && data["email_title"])
+		desc += " **Title**: [data["email_title"]]\n"
+	if(data && data["email_content"])
+		desc += " **Content**: \n [pencode2webhook(data["email_content"])]"
+	desc += "."
+
 	.["embeds"] = list(list(
 		"title" = "Incoming Email",
-		"sender" = "unknown@invalid.nt",
-		"reciever" = "you@something.nt",
-		"email_title" = "Email Title",
-		"email_content" = (data && data["text"]) || "undefined",
+		"description" = desc,
 		"color" = COLOR_WEBHOOK_DEFAULT
 	))

@@ -647,7 +647,7 @@ What a mess.*/
 
 
 /obj/machinery/computer/secure_data/detective_computer
-	icon_state = "messyfiles"
+	name = "Detective's Computer"
 
 /obj/machinery/computer/secure_data/laptop
 	name = "Records Database Laptop"

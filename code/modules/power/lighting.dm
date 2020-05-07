@@ -189,6 +189,12 @@
 	var/rigged = 0				// true if rigged to explode
 	var/on_wall = 1
 
+	unique_save_vars = list("status", "on", "rigged")
+
+/obj/machinery/light/on_persistence_load()
+	update(0)
+
+
 // coloured lighting because fabulous
 
 /obj/machinery/light/colored
@@ -314,7 +320,7 @@
 	fitting = "bulb"
 	brightness_range = 3
 	brightness_power = 10
-	brightness_color = "#f7f1b9"
+	brightness_color = "#FFCE99"
 	desc = "A small lighting fixture."
 	light_type = /obj/item/weapon/light/bulb
 
@@ -325,11 +331,13 @@
 	brightness_range = 5
 	brightness_power = 2
 	layer = OBJ_LAYER
-	brightness_color = "#FFF4E5"
+	brightness_color = "#FFE6CC"
 	desc = "A floor lamp."
 	light_type = /obj/item/weapon/light/bulb
 	var/lamp_shade = 1
 	anchored = FALSE
+
+	unique_save_vars = list("lamp_shade")
 
 /obj/machinery/light/flamp/shadeless // for mapping
 	lamp_shade = 0
@@ -914,7 +922,7 @@
 	matter = list("glass" = 100)
 	brightness_range = 5
 	brightness_power = 2
-	brightness_color = "#a0a080"
+	brightness_color = "#FFCE99"
 
 /obj/item/weapon/light/throw_impact(atom/hit_atom)
 	..()

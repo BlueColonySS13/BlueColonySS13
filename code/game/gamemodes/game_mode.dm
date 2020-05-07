@@ -6,7 +6,7 @@ var/global/list/additional_antag_types = list()
 	var/round_description = "How did you even vote this in?"
 	var/extended_round_description = "This roundtype should not be spawned, let alone votable. Someone contact a developer and tell them the game's broken again."
 	var/config_tag = null
-	var/votable = 1
+	var/votable = 0
 	var/probability = 0
 	var/canon = 0 							 // Is this gamemode canon? If 1, characters and money wills save.
 
@@ -44,7 +44,7 @@ var/global/list/additional_antag_types = list()
 	..()
 
 /datum/game_mode/Topic(href, href_list[])
-	if(..())
+	if(!check_rights(R_ADMIN, FALSE))
 		return
 	if(href_list["toggle"])
 		switch(href_list["toggle"])

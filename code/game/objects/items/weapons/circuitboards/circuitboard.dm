@@ -17,10 +17,16 @@
 	throwforce = 5.0
 	throw_speed = 3
 	throw_range = 15
+	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
 	var/build_path = null
-	var/board_type = new /datum/frame/frame_types/computer
+	var/datum/frame/frame_types/board_type = new /datum/frame/frame_types/computer
 	var/list/req_components = null
 	var/contain_parts = 1
+
+/obj/item/weapon/circuitboard/examine(mob/user)
+	..()
+	if(board_type)
+		to_chat(user, "It is compatible with a <b>\"[board_type.name]\"</b> frame.")
 
 //Called when the circuitboard is used to contruct a new machine.
 /obj/item/weapon/circuitboard/proc/construct(var/obj/machinery/M)

@@ -131,6 +131,10 @@ var/const/SEC_I_FREQ = 1475
 // nanotrasen & gov channels
 var/const/GOV_FREQ = 1295
 
+//special channels
+var/const/NUM_FREQ = 1487
+var/const/ATC_FREQ = 1483
+
 var/list/radiochannels = list(
 	"Common"		= PUB_FREQ,
 	"Science"		= SCI_FREQ,
@@ -150,7 +154,9 @@ var/list/radiochannels = list(
 	"AI Private"	= AI_FREQ,
 	"Entertainment" = ENT_FREQ,
 	"Hospital(I)"	= MED_I_FREQ,
-	"Police(I)"	= SEC_I_FREQ
+	"Police(I)"	= SEC_I_FREQ,
+	"Unknown Broadcast Station" = NUM_FREQ,
+	"Air Traffic" = ATC_FREQ
 )
 
 // central command channels, i.e deathsquid & response teams

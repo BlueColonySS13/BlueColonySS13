@@ -43,13 +43,33 @@
 
 	var/on_wall = 1
 
+	unique_save_vars = list("name", "c_tag")
+
+/obj/machinery/camera/apply_visual(mob/living/carbon/human/M)
+	if(!M.client)
+		return
+	M.overlay_fullscreen("fishbed",/obj/screen/fullscreen/fishbed)
+	M.overlay_fullscreen("scanlines",/obj/screen/fullscreen/scanline)
+	M.overlay_fullscreen("whitenoise",/obj/screen/fullscreen/noise)
+	M.machine_visual = src
+	return 1
+
+/obj/machinery/camera/remove_visual(mob/living/carbon/human/M)
+	if(!M.client)
+		return
+	M.clear_fullscreen("fishbed",0)
+	M.clear_fullscreen("scanlines")
+	M.clear_fullscreen("whitenoise")
+	M.machine_visual = null
+	return 1
+
 /obj/machinery/camera/New()
 	wires = new(src)
 	assembly = new(src)
 	assembly.state = 4
 	client_huds |= global_hud.whitense
 	update_icon()
-	
+
 	/* // Use this to look for cameras that have the same c_tag.
 	for(var/obj/machinery/camera/C in cameranet.cameras)
 		var/list/tempnetwork = C.network&src.network

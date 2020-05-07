@@ -11,6 +11,7 @@
 
 obj/structure/windoor_assembly
 	name = "windoor assembly"
+	desc = "To assemble, set the window in the direction you wish for it to face. Wrench it in place. Add cables. Add airlocks electronics. Optionally, add a keypad. Then use a crowbar."
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "l_windoor_assembly01"
 	anchored = 0
@@ -26,6 +27,8 @@ obj/structure/windoor_assembly
 	var/secure = ""		//Whether or not this creates a secure windoor
 	var/state = "01"	//How far the door assembly has progressed in terms of sprites
 	var/step = null		//How far the door assembly has progressed in terms of steps
+
+	var/keypad = FALSE
 
 obj/structure/windoor_assembly/secure
 	name = "secure windoor assembly"
@@ -173,8 +176,30 @@ obj/structure/windoor_assembly/Destroy()
 				else
 					W.loc = src.loc
 
-			//Screwdriver to remove airlock electronics. Step 6 undone.
+			//adding a keypad to the assembly
+			else if(istype(W, /obj/item/keypad))
+				playsound(src.loc, 'sound/items/Screwdriver.ogg', 100, 1)
+				to_chat(user, "<span class='notice'>Adding a keypad to the assembly...</span>")
+
+				if(do_after(user, 40,src))
+					if(!src) return
+					to_chat(user, "<span class='notice'>You add a keypad to the assembly!</span>")
+					keypad = TRUE
+					qdel(W)
+				return
+
+			//Screwdriver to remove airlock electronics or keypad. Step 6 undone.
 			else if(istype(W, /obj/item/weapon/screwdriver) && src.electronics)
+				if(keypad)
+					to_chat(user, "<span class='notice'>Removing the keypad from the assembly...</span>")
+					if(do_after(user, 40,src))
+						if(!src) return
+						playsound(src.loc, 'sound/items/Crowbar.ogg', 100, 1)
+						to_chat(user, "<span class='notice'>You removed the keypad!</span>")
+						keypad = FALSE
+						new/obj/item/keypad(src.loc)
+					return
+
 				playsound(src, W.usesound, 100, 1)
 				user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to uninstall electronics from the airlock assembly.")
 
@@ -207,6 +232,8 @@ obj/structure/windoor_assembly/Destroy()
 
 					if(secure)
 						var/obj/machinery/door/window/brigdoor/windoor = new /obj/machinery/door/window/brigdoor(src.loc)
+						if(keypad)
+							windoor.keypad = TRUE
 						if(src.facing == "l")
 							windoor.icon_state = "leftsecureopen"
 							windoor.base_state = "leftsecure"
@@ -229,6 +256,8 @@ obj/structure/windoor_assembly/Destroy()
 						src.electronics.loc = windoor
 					else
 						var/obj/machinery/door/window/windoor = new /obj/machinery/door/window(src.loc)
+						if(keypad)
+							windoor.keypad = TRUE
 						if(src.facing == "l")
 							windoor.icon_state = "leftopen"
 							windoor.base_state = "left"

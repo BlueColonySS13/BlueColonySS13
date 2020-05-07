@@ -6,6 +6,7 @@
 	volume = 30
 	center_of_mass = list("x"=16, "y"=16)
 	drop_sound = 'sound/items/drop/glass.ogg'
+	matter = list("glass" = 50)
 
 /obj/item/weapon/reagent_containers/food/drinks/cup/on_reagent_change()
 	..()

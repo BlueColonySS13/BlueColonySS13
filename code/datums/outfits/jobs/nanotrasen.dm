@@ -9,7 +9,8 @@
 	id_type = /obj/item/weapon/card/id/nanotrasen/ntrep	//station
 	pda_slot = slot_r_store
 	pda_type = /obj/item/device/pda/heads
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_five = 1)
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_five = 1,
+	/obj/item/weapon/card/department/nanotrasen = 1)
 
 /decl/hierarchy/outfit/job/nanotrasen/post_equip(mob/living/carbon/human/H)
 	..()

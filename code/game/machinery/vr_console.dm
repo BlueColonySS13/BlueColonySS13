@@ -17,6 +17,8 @@
 	active_power_usage = 200
 	light_color = "#FF0000"
 
+	dont_save = TRUE
+
 
 /obj/machinery/vr_sleeper/examine(mob/user)
 	..()
@@ -256,6 +258,8 @@
 	var/owner_uid = ""
 	unique_save_vars = list("owner_name", "bank_id", "owner_uid", "charge")
 
+	dont_save = FALSE
+
 /obj/machinery/vr_sleeper/business/proc/speak(var/message)
 	if(stat & NOPOWER)
 		return
@@ -270,7 +274,7 @@
 /obj/machinery/vr_sleeper/business/examine(mob/user)
 	..()
 	if(charge)
-		to_chat(user, "The usage fee for this VR Sleeper is <b>[charge]</b> credits.")
+		to_chat(user, "The usage fee for this VR Sleeper is <b>[cash2text( charge, FALSE, TRUE, TRUE )]</b>.")
 
 /obj/machinery/vr_sleeper/business/attackby(var/obj/item/I, var/mob/user)
 	add_fingerprint(user)
@@ -411,8 +415,8 @@
 
 	// debit money from the purchaser's account
 	customer_account.money -= charge
-	customer_account.add_transaction_log("[owner_name] (via [name])", "VR Sleeper Charge", charge, name)
-	charge_to_account(bank_id, "VR Sleeper", "VR Sleeper Experience Purchase", "VR Sleeper", charge)
+	customer_account.add_transaction_log("[owner_name] (via [name])", "VR Sleeper Charge", -charge, name)
+	charge_to_account(bank_id, "VR Sleeper", "VR Sleeper Experience Purchase ([owner_name] (via [name]))", "VR Sleeper", charge)
 
 	return TRUE
 
@@ -428,6 +432,7 @@
 
 		visible_message("<span class='info'>\The [usr] inserts some cash into \the [src].</span>")
 		cashmoney.worth -= charge
+		charge_to_account(bank_id, "VR Sleeper", "VR Sleeper Experience Purchase", "VR Sleeper", charge)
 
 		if(cashmoney.worth <= 0)
 			usr.drop_from_inventory(cashmoney)
@@ -444,4 +449,5 @@
 		return 0
 	else
 		wallet.worth -= charge
+		charge_to_account(bank_id, "VR Sleeper", "VR Sleeper Experience Purchase", "VR Sleeper", charge)
 		return TRUE

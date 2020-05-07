@@ -36,7 +36,18 @@
 	var/list/connections = list("0", "0", "0", "0")
 	var/list/blend_objects = list(/obj/structure/wall_frame, /obj/structure/window, /obj/structure/grille) // Objects which to blend with
 
-	unique_save_vars = list("code", "door_color", "stripe_color", "locked", "open", "panel_open", "l_hacking", "l_set", "l_code", "l_setshort")
+	//keypad stuff
+	var/locked
+	var/keypad = FALSE
+
+	var/code = ""
+	var/l_code = null
+	var/l_set = 0
+	var/l_setshort = 0
+	var/l_hacking = 0
+	var/open = 0
+
+	unique_save_vars = list("code", "door_color", "stripe_color", "locked", "open", "panel_open", "l_hacking", "l_set", "l_code", "l_setshort", "keypad")
 
 	// turf animation
 	var/atom/movable/overlay/c_animation = null
@@ -110,6 +121,10 @@
 /obj/machinery/door/Bumped(atom/AM)
 	if(p_open || operating)
 		return
+
+	if(locked)
+		return
+
 	if(ismob(AM))
 		var/mob/M = AM
 		if(world.time - M.last_bumped <= 10)
@@ -212,6 +227,7 @@
 /obj/machinery/door/attack_tk(mob/user as mob)
 	if(requiresID() && !allowed(null))
 		return
+
 	..()
 
 /obj/machinery/door/attackby(obj/item/I as obj, mob/user as mob)
@@ -538,3 +554,4 @@
 		if(success)
 			dirs |= direction
 	connections = dirs
+

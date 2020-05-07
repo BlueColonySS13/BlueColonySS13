@@ -408,7 +408,7 @@
 	nutriment_desc = list("chocolate" = 3, "undying devotion" = 3)
 
 /obj/item/weapon/reagent_containers/food/snacks/chocolateegg
-	name = "Chocolate Egg"
+	name = "chocolate egg"
 	desc = "Such sweet, fattening food."
 	icon_state = "chocolateegg"
 	filling_color = "#7D5F46"
@@ -421,6 +421,33 @@
 	reagents.add_reagent("sugar", 2)
 	reagents.add_reagent("coco", 2)
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/easter
+	name = "easter chocolate egg"
+
+/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/easter/blue
+	icon_state = "egg-blue"
+
+/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/easter/green
+	icon_state = "egg-green"
+
+/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/easter/mime
+	icon_state = "egg-mime"
+
+/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/easter/orange
+	icon_state = "egg-orange"
+
+/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/easter/purple
+	icon_state = "egg-purple"
+
+/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/easter/rainbow
+	icon_state = "egg-rainbow"
+
+/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/easter/red
+	icon_state = "egg-red"
+
+/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/easter/yellow
+	icon_state = "egg-yellow"
 
 /obj/item/weapon/reagent_containers/food/snacks/donut
 	name = "donut"

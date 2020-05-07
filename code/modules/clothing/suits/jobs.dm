@@ -70,7 +70,7 @@
 //Chef
 /obj/item/clothing/suit/chef/classic
 	name = "classic chef's apron"
-	desc = "A basic, dull, white chef's apron."
+	desc = "A basic, dull chef's apron."
 	icon_state = "apronchef"
 	blood_overlay_type = "armor"
 	body_parts_covered = 0
@@ -180,6 +180,14 @@
 	icon_state = "hazard_w"
 
 //Lawyer
+/obj/item/clothing/suit/storage/toggle/lawyer/whitejacket
+	name = "suit jacket"
+	desc = "A snappy dress jacket."
+	icon_state = "suitjacket_white"
+	item_state_slots = list(slot_r_hand_str = "suit_white", slot_l_hand_str = "suit_white")
+	blood_overlay_type = "coat"
+	body_parts_covered = UPPER_TORSO|ARMS
+
 /obj/item/clothing/suit/storage/toggle/lawyer/bluejacket
 	name = "blue suit jacket"
 	desc = "A snappy dress jacket."

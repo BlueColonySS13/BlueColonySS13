@@ -62,7 +62,7 @@ log transactions
 		else
 			playsound(loc, 'sound/items/polaroid2.ogg', 50, 1)
 		break
-
+/*
 /obj/machinery/atm/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		return
@@ -78,7 +78,7 @@ log transactions
 	var/response = pick("Initiating withdraw. Have a nice day!", "CRITICAL ERROR: Activating cash chamber panic siphon.","PIN Code accepted! Emptying account balance.", "Jackpot!")
 	user << "<span class='warning'>\icon[src] The [src] beeps: \"[response]\"</span>"
 	return 1
-
+*/
 /obj/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
@@ -249,8 +249,10 @@ log transactions
 							authenticated_account.money -= transfer_amount
 							log_money(usr, "transferred money to [target_account_number] successfully", authenticated_account.account_number, authenticated_account.owner_name, transfer_amount)
 
-							//create an entry in the account transaction log
-							authenticated_account.add_transaction_log("Account #[target_account_number]", transfer_purpose, -transfer_amount, machine_id)
+							var/datum/money_account/TM = get_account(target_account_number)
+							if(!TM.hidden)
+								//create an entry in the account transaction log
+								authenticated_account.add_transaction_log("Account #[target_account_number]", transfer_purpose, -transfer_amount, machine_id)
 						else
 							usr << "\icon[src]<span class='warning'>Funds transfer failed.</span>"
 							log_money(usr, "failed to transfer money to [target_account_number] (unsuccesful)", authenticated_account.account_number, authenticated_account.owner_name, transfer_amount)

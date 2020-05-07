@@ -189,9 +189,11 @@
 
 
 
-/obj/item/pizzabox
-	get_item_cost()
+/obj/item/pizzabox/get_item_cost()
+	if(pizza)
 		return get_item_cost(pizza)
+	else
+		return price_tag
 
 
 //***************//
@@ -216,10 +218,11 @@
 		return round(tagged_price)
 
 	var/total_price
-
-	if(reagents)
-		for(var/datum/reagent/R in reagents.reagent_list)
-			total_price += R.price_tag * R.volume
+	if(!isemptylist(associated_reagents))
+		var/divider = amount / associated_reagents.len
+		for(var/R in associated_reagents)
+			var/datum/reagent/rgnt = chemical_reagents_list[R]
+			total_price += (rgnt.price_tag * divider) * reagent_multiplier
 
 	return round(total_price)
 

@@ -19,11 +19,22 @@
 			/obj/item/weapon/deck/holder
 			)
 	name = "Trading Card Crate"
-	cost = 10
+	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "cards crate"
 
+/datum/supply_pack/misc/rpg_set
+	name = "Tabletop Game and Card Set"
+	contains = list(/obj/item/weapon/storage/box/characters,
+	/obj/item/weapon/storage/dicecup/loaded,
+	/obj/item/weapon/storage/pill_bottle/dice_nerd,
+	/obj/item/weapon/deck/cah,
+	/obj/item/weapon/deck/cah/black,
+	)
 
+	cost = 50
+	containertype = /obj/structure/closet/crate
+	containername = "Tabletop Game and Card Set"
 
 
 /datum/supply_pack/misc/business_cards
@@ -53,13 +64,6 @@
 	containertype = "/obj/structure/closet/crate"
 	containername = "Chaplain equipment crate"
 
-/datum/supply_pack/misc/hoverpod
-	name = "Hoverpod Shipment"
-	contains = list()
-	cost = 800
-	containertype = /obj/structure/largecrate/hoverpod
-	containername = "Hoverpod Crate"
-
 /datum/supply_pack/randomised/misc/webbing
 	name = "Webbing crate"
 	num_contained = 4
@@ -75,16 +79,17 @@
 	cost = 30
 	containertype = "/obj/structure/closet/crate"
 	containername = "Webbing crate"
-
+	spend_type = SPEND_WEAPONS
 
 /datum/supply_pack/misc/journalist
 	name = "Journalism Kit"
 	contains = list(
 	/obj/item/device/camera,
-	/obj/item/device/camera_film = 2)
-	cost = 30
+	/obj/item/device/tvcamera = 1)
+	cost = 230
 	containertype = /obj/structure/closet/crate
 	containername = "Journalism Kit"
+	spend_type = SPEND_OFFICE
 
 /datum/supply_pack/misc/camera_film
 	name = "Camera Film Refills"
@@ -93,6 +98,7 @@
 	cost = 15
 	containertype = /obj/structure/closet/crate
 	containername = "Camera Film Refills"
+	spend_type = SPEND_OFFICE
 
 /datum/supply_pack/misc/stoneblock
 	name = "Sculpting Kit"
@@ -255,3 +261,6 @@
 	cost = 10
 	containertype = /obj/structure/closet/crate
 	containername = "calories scanners"
+
+
+

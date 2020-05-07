@@ -3,6 +3,7 @@
 	#include "geminus-1.dmm"
 	#include "geminus-2.dmm"
 	#include "geminus-3.dmm"
+	#include "geminus-redspace-1.dmm"
 	#include "geminus-VR.dmm"
 	#include "geminus-VR-psych.dmm"
 	#include "geminus_shuttles.dm"

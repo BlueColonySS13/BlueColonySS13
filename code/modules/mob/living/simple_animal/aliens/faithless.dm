@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/faithless
-	name = "Faithless"
+	name = "creature"
 	desc = "The Wish Granter's faith in humanity, incarnate"
 	icon_state = "faithless"
 	icon_living = "faithless"

@@ -186,6 +186,7 @@
 	desc = "Used for building lights."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube-construct-item"
+	refund_amt = 2	//TFF 17/1/20 - Oversight fix for infinite steel produciton.
 	build_machine_type = /obj/machinery/light_construct
 	is_wall_frame = TRUE
 	reverse = 1
@@ -226,46 +227,6 @@
 	build_machine_type = /obj/machinery/atm
 	is_wall_frame = TRUE
 	is_floor_frame = FALSE
-
-/obj/item/frame/airlock
-	name = "Airlock"
-	desc = "Used for building airlocks."
-	icon = 'icons/obj/doors/station/door.dmi'
-	icon_state = "closed"
-	refund_amt = 4
-	build_machine_type = /obj/machinery/door/airlock
-	is_wall_frame = FALSE
-	is_floor_frame = TRUE
-
-/obj/item/frame/keypad_airlock
-	name = "Keypad Airlock"
-	desc = "Used for building keypad airlocks."
-	icon = 'icons/obj/doors/station/door.dmi'
-	icon_state = "closed"
-	refund_amt = 4
-	build_machine_type = /obj/machinery/door/airlock/keypad
-	is_wall_frame = FALSE
-	is_floor_frame = TRUE
-
-/obj/item/frame/keypad_windoor
-	name = "Keypad Window Door"
-	desc = "Used for building keypad window doors."
-	icon = 'icons/obj/doors/windoor.dmi'
-	icon_state = "left"
-	refund_amt = 4
-	build_machine_type = /obj/machinery/door/window/keypad
-	is_wall_frame = FALSE
-	is_floor_frame = TRUE
-
-/obj/item/frame/windoor
-	name = "Window Door"
-	desc = "Used for building window doors."
-	icon = 'icons/obj/doors/windoor.dmi'
-	icon_state = "left"
-	refund_amt = 4
-	build_machine_type = /obj/machinery/door/window
-	is_wall_frame = FALSE
-	is_floor_frame = TRUE
 
 /obj/item/frame/noticeboard
 	name = "noticeboard frame"
@@ -321,6 +282,15 @@
 	is_wall_frame = FALSE
 	is_floor_frame = TRUE
 
+/obj/item/frame/weightlifter
+	name = "weight lifting assembly"
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "weightlifter"
+	density = TRUE
+	refund_amt = 3
+	build_machine_type = /obj/structure/fitness/weightlifter
+	is_wall_frame = FALSE
+	is_floor_frame = TRUE
 
 /obj/item/frame/shutters/regular
 	name = "blast door frame"
@@ -403,4 +373,14 @@
 	refund_amt = 2
 	build_machine_type = /obj/machinery/shower
 	is_wall_frame = TRUE
+	is_floor_frame = TRUE
+
+/obj/item/frame/plastic/punchingbag
+	name = "punching bag assembly"
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "punchingbag"
+	density = TRUE
+	refund_amt = 3
+	build_machine_type = /obj/structure/fitness/punchingbag
+	is_wall_frame = FALSE
 	is_floor_frame = TRUE

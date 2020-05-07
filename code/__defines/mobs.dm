@@ -191,7 +191,7 @@
 #define O_STOMACH  "stomach"
 #define O_INTESTINE "intestine"
 
-#define O_PLASMA   "plasma vessel"
+#define O_PLASMA   "phoron vessel"
 #define O_HIVE     "hive node"
 #define O_NUTRIENT "nutrient vessel"
 #define O_STRATA   "neural strata"
@@ -247,7 +247,7 @@
 
 // 'Regular' species.
 #define SPECIES_HUMAN			"Human"
-#define SPECIES_HUMAN_CHILD	"Human Child"
+#define SPECIES_HUMAN_CHILD		"Human Child"
 #define SPECIES_HUMAN_TEEN		"Human Adolescent"
 #define SPECIES_HUMAN_VATBORN	"Baseline Vatborn"
 #define SPECIES_HUMAN_VATBORN_MPL "Mass-Produced Vatborn"
@@ -258,6 +258,7 @@
 #define SPECIES_PROMETHEAN		"Promethean"
 #define SPECIES_DIONA			"Diona"
 #define SPECIES_VOX				"Vox"
+#define SPECIES_PRECURSOR		"Precursor"
 
 // Monkey and alien monkeys.
 #define SPECIES_MONKEY			"Monkey"

@@ -26,6 +26,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	var/cciaa_present = 0
 	var/cciaa_afk = 0
 
+	unique_save_vars = list("department")
+
 /obj/machinery/photocopier/faxmachine/New()
 	allfaxes += src
 	if(!destination) destination = "[using_map.boss_name]"

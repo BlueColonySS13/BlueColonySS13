@@ -1,6 +1,6 @@
 /area/lots
 	name = "Lots"
-	icon_state = "yellow"
+	icon_state = "lot"
 	flags = AREA_FLAG_IS_NOT_PERSISTENT | RAD_SHIELDED
 
 /area/lots/business_lot_one
@@ -75,7 +75,21 @@
 	name = "Business Lot 18"
 	lot_id = "bizlot18"
 
+/area/lots/business_lot_nineteen
+	name = "Business Lot 19"
+	lot_id = "bizlot19"
 
+/area/lots/business_lot_twenty
+	name = "Business Lot 20"
+	lot_id = "bizlot20"
+
+/area/lots/business_lot_twentyone
+	name = "Business Lot 21"
+	lot_id = "bizlot21"
+
+/area/lots/business_lot_twentytwo
+	name = "Business Lot 22"
+	lot_id = "bizlot22"
 // farm lots
 
 /area/lots/farm_lot_1
@@ -136,7 +150,11 @@
 /area/lots/office_two
 	name = "Office Lot 2"
 	lot_id = "office2"
-
+/*
 /area/lots/office_three
 	name = "Office Lot 3"
 	lot_id = "office 3"
+*/
+/area/lots/office_four
+	name = "Office Lot 4"
+	lot_id = "office4"

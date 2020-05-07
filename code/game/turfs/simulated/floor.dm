@@ -37,10 +37,15 @@
 /turf/simulated/floor/get_persistent_metadata()
 	if(flooring)
 		return flooring.type
+	else
+		return "no floor"
 
 /turf/simulated/floor/load_persistent_metadata(floortype)
 	if(floortype)
-		set_flooring(get_flooring_data(floortype))
+		if(floortype != "no floor")
+			set_flooring(get_flooring_data(floortype))
+		else
+			make_plating()
 
 /turf/simulated/floor/is_plating()
 	return !flooring
@@ -72,7 +77,7 @@
 
 	if(islist(decals))
 		decals.Cut()
-		decals = null
+		decals = list()
 
 	name = base_name
 	desc = base_desc

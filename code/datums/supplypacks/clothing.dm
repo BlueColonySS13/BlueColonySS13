@@ -6,9 +6,11 @@
 
 /datum/supply_pack/clothing
 	group = "Clothing"
+	spend_type = SPEND_GROOMING
 
 /datum/supply_pack/randomised/clothing
 	group = "Clothing"
+	spend_type = SPEND_GROOMING
 
 /datum/supply_pack/clothing/wizard
 	name = "Wizard costume"
@@ -180,7 +182,7 @@ datum/supply_pack/clothing/jeans
 			/obj/item/clothing/under/pants/red,
 			/obj/item/clothing/under/pants/ripped,
 			/obj/item/clothing/under/pants/tan,
-			/obj/item/clothing/under/pants/white,
+			/obj/item/clothing/under/pants/blue,
 			/obj/item/clothing/under/pants/youngfolksjeans
 			)
 

@@ -312,6 +312,9 @@
 	name = "cohiba cigar case"
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba = 7)
 
+/obj/item/weapon/storage/fancy/cigar/empty
+	name = "cigar case"
+	starts_with = null
 
 /obj/item/weapon/storage/fancy/cigar/remove_from_storage(obj/item/W as obj, atom/new_location)
 	var/obj/item/clothing/mask/smokable/cigarette/cigar/C = W

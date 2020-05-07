@@ -281,7 +281,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 15
 	max_smoketime = 300
 	smoketime = 300
-	var/nicotine_amt = 20
+	var/nicotine_amt = 15
 	var/menthol_amt = 0
 	matchmes = "<span class='notice'>USER lights their NAME with their FLAME.</span>"
 	lightermes = "<span class='notice'>USER manages to light their NAME with FLAME.</span>"
@@ -301,6 +301,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/cigarette/New()
 	..()
+
 	if(nicotine_amt)
 		reagents.add_reagent("nicotine", nicotine_amt)
 	if(menthol_amt)
@@ -308,6 +309,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/cigarette/menthol
 	menthol_amt = 5
+	nicotine_amt = 10
 
 /obj/item/clothing/mask/smokable/cigarette/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()

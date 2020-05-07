@@ -82,6 +82,8 @@
 	var/can_wrench = FALSE
 	var/can_hack = FALSE
 
+	var/block_persistence = FALSE
+
 /obj/machinery/vending/examine(mob/user)
 	..()
 
@@ -389,7 +391,7 @@
 	// debit money from the purchaser's account
 	customer_account.money -= currently_vending.price
 
-	customer_account.add_transaction_log("[dept_name_by_id(vendor_department)] (via [name])", "Purchase of [currently_vending.item_name]", currently_vending.price, name)
+	customer_account.add_transaction_log("[dept_name_by_id(vendor_department)] (via [name])", "Purchase of [currently_vending.item_name]", -currently_vending.price, name)
 
 	// Give the vendor the money. We use the account owner name, which means
 	// that purchases made with stolen/borrowed card will look like the card
@@ -589,6 +591,8 @@
 	playsound(src.loc, "sound/[vending_sound]", 100, 1)
 	spawn(vend_delay)
 		var/obj/I = R.get_product(get_turf(src))
+		if(block_persistence)
+			I.dont_save = TRUE
 		if(has_logs)
 			do_logging(R, user, 1)
 		if(prob(1))
@@ -839,6 +843,8 @@
 
 	charge_free_department = DEPT_BAR
 
+	block_persistence = TRUE
+
 
 /obj/machinery/vending/assist
 	products = list(	/obj/item/device/assembly/prox_sensor = 5,/obj/item/device/assembly/igniter = 3,/obj/item/device/assembly/signaler = 4,
@@ -932,18 +938,6 @@
 
 	vendor_department = DEPT_PUBLIC
 
-
-/obj/machinery/vending/cart
-	name = "PTech"
-	desc = "Cartridges for PDAs."
-	product_slogans = "Carts to go!"
-	icon_state = "cart"
-	icon_deny = "cart-deny"
-	req_access = list(access_hop)
-	products = list(/obj/item/device/communicator = 10)
-	req_log_access = access_hop
-	has_logs = 1
-
 /obj/machinery/vending/cigarette
 	name = "cigarette machine"
 	desc = "If you want to get cancer, might as well do it in style!"
@@ -1033,6 +1027,8 @@
 
 	charge_free_department = DEPT_HEALTHCARE
 
+	block_persistence = TRUE
+
 /obj/machinery/vending/medical/hospital/gcch
 	charge_free_department = DEPT_HEALTHCARE
 
@@ -1055,6 +1051,7 @@
 					 /obj/item/weapon/storage/box/beakers = 2,
 					 /obj/item/weapon/storage/box/bodybags = 2)
 	charge_free_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
 
 /obj/machinery/vending/medical/hospital/gcchsms
 	name = "NanoMed Specialized Medical Supplies Vendor"
@@ -1065,13 +1062,14 @@
 					 /obj/item/device/defib_kit/loaded = 3,
 					 /obj/item/weapon/cane = 3,
 					 /obj/item/weapon/cane/crutch = 3,
-					 /obj/item/weapon/cane/whitecane = 3,
+					 /obj/item/weapon/cane/white = 3,
+					 /obj/item/weapon/cane/white/collapsible = 5,
 					 /obj/item/weapon/storage/firstaid/surgery = 2,
 					 /obj/item/weapon/storage/box/rxglasses = 2,
 					 /obj/item/weapon/storage/box/autoinjectors = 1,
 					 /obj/item/weapon/storage/box/cdeathalarm_kit = 1)
 	charge_free_department = DEPT_HEALTHCARE
-
+	block_persistence = TRUE
 
 /obj/machinery/vending/medical/hospital/cvcrb
 	name = "C.V.C Refridgerated Bloodbank"
@@ -1086,6 +1084,7 @@
 					 /obj/item/weapon/reagent_containers/blood/BMinus = 4,
 					 /obj/item/weapon/reagent_containers/blood/OPlus =4)
 	charge_free_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
 
 /obj/machinery/vending/medical/hospital/chem
 	name = "Johnny's Chems"
@@ -1102,6 +1101,7 @@
 					 /obj/item/weapon/storage/fancy/vials = 2,
 					 /obj/item/weapon/storage/lockbox/vials = 1)
 	charge_free_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
 
 /obj/machinery/vending/medical/hospital/psych
 	name = "Mania Inc. Psychiatric Vendomat"
@@ -1114,7 +1114,7 @@
 					 /obj/item/weapon/gun/launcher/syringe = 1,
 					 /obj/item/weapon/storage/box/syringegun = 1)
 	charge_free_department = DEPT_HEALTHCARE
-
+	block_persistence = TRUE
 
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"
@@ -1126,6 +1126,7 @@
 	has_logs = 1
 
 	charge_free_department = DEPT_RESEARCH
+	block_persistence = TRUE
 
 /obj/machinery/vending/wallmed1
 	name = "NanoMed"
@@ -1140,6 +1141,7 @@
 	has_logs = 1
 
 	charge_free_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
 
 /obj/machinery/vending/wallmed1/gcch
 	vendor_department = DEPT_HEALTHCARE
@@ -1160,6 +1162,7 @@
 					/obj/item/stack/medical/ointment = 15,/obj/item/device/healthanalyzer = 10)
 
 	vendor_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
 
 /obj/machinery/vending/security
 	name = "SecTech"
@@ -1175,11 +1178,13 @@
 	has_logs = 1
 
 	charge_free_department = DEPT_POLICE
+	block_persistence = TRUE
 
 /obj/machinery/vending/security/gcpd
 	name = "GCPD Equipment Vendotron"
 	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
 	charge_free_department = DEPT_POLICE
+	block_persistence = TRUE
 
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"
@@ -1192,6 +1197,7 @@
 					/obj/item/weapon/reagent_containers/syringe = 5,/obj/item/weapon/storage/bag/plants = 5)
 	premium = list(/obj/item/weapon/reagent_containers/glass/bottle/ammonia = 10,/obj/item/weapon/reagent_containers/glass/bottle/diethylamine = 5)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
+	block_persistence = TRUE
 
 /obj/machinery/vending/hydroseeds
 	name = "MegaSeed Servitor"
@@ -1212,7 +1218,7 @@
 	premium = list(/obj/item/toy/waterflower = 1)
 
 	charge_free_department = DEPT_BOTANY
-
+	block_persistence = TRUE
 /**
  *  Populate hydroseeds product_records
  *
@@ -1326,6 +1332,7 @@
 	product_records = list()
 	req_log_access = access_ce
 	has_logs = 1
+	block_persistence = TRUE
 
 /obj/machinery/vending/engivend/circuits
 	name = "Vomisa Inc. Circuit Vendor"
@@ -1374,6 +1381,7 @@
 	// The original products list wasn't finished.  The ones without given quantities became quantity 5.  -Sayu
 	req_log_access = access_ce
 	has_logs = 1
+	block_persistence = TRUE
 
 /obj/machinery/vending/robotics
 	name = "Robotech Deluxe"
@@ -1388,6 +1396,7 @@
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 	req_log_access = access_rd
 	has_logs = 1
+	block_persistence = TRUE
 
 /obj/machinery/vending/giftvendor
 	name = "AlliCo Baubles and Confectionaries"
@@ -2058,6 +2067,7 @@
 	icon_state = "gunrack"
 	icon_deny = "gunrack-deny"
 	vend_reply = "Thank you for using BlastTech's automated vending service, happy hunting."
+	block_persistence = TRUE
 
 /obj/machinery/vending/armory/gcpd/ballistics
 	name = "BlastTech Defense Solutions Ballistics Vendor"

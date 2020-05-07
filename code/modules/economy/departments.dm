@@ -10,7 +10,14 @@
 
 	var/dept_type = PUBLIC_DEPARTMENT
 
+	var/dept_color = COLOR_WHITE
+
 	var/list/blacklisted_employees = list()	// employees are added here by UID (unique id)
+
+	// paths of items types of what their department cards can buy (for heads)
+
+	var/allowed_buy_types = list()
+	var/card_spending_limit = 1500 // max you can spend from this card
 
 
 /datum/money_account/department
@@ -29,6 +36,8 @@
 			GLOB.private_departments += src
 		if(EXTERNAL_DEPARTMENT)
 			GLOB.external_departments += src
+		if(HIDDEN_DEPARTMENT)
+			GLOB.hidden_departments += src
 
 /datum/department/proc/sanitize_values()	// juuuust in case shittery happens.
 	if(!blacklisted_employees)
@@ -61,13 +70,17 @@
 		if(name == D.name)
 			return D
 
-/proc/adjust_dept_funds(id, amount)
+/proc/adjust_dept_funds(id, amount, purpose)
 	var/datum/money_account/M = dept_acc_by_id(id)
 
 	if(!M)
 		return FALSE
 
 	M.money += amount
+
+	if(purpose)
+		M.add_transaction_log(M.owner_name, purpose, amount, "Department Funds Transfer")
+
 	return TRUE
 
 /proc/dept_balance(id)
@@ -95,6 +108,9 @@
 			GLOB.private_department_accounts += bank_account
 		if(EXTERNAL_DEPARTMENT)
 			GLOB.external_department_accounts += bank_account
+		if(HIDDEN_DEPARTMENT)
+			GLOB.hidden_department_accounts += bank_account
+			bank_account.hidden = TRUE
 
 	return bank_account
 
@@ -103,6 +119,12 @@
 		return FALSE
 
 	return bank_account.money
+
+/datum/department/proc/get_bank_id()
+	if(!bank_account)
+		return FALSE
+
+	return bank_account.account_number
 
 /datum/department/proc/get_text_balance()
 	return cash2text(get_balance())

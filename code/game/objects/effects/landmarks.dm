@@ -123,6 +123,31 @@
 	invisibility = 101
 	return 1
 
+var/global/list/transports_list = list()
+/obj/effect/landmark/transport_location
+	name = "transport location marker"
+	icon = 'icons/mob/screen1.dmi'
+	icon_state = "x"
+	anchored = 1.0
+
+	var/id = null	// if an id is set, a transport pod with the same ID will have this as a teleport marker. Leave blank for universal teleport locations.
+
+/obj/effect/landmark/transport_location/New()
+	..()
+	invisibility = 101
+	transports_list += src
+	var/noomber = null
+	var/area/area_for_name = get_area(src)
+	for(var/obj/effect/landmark/transport_location/T in area_for_name)
+		if(T != src)
+			noomber++
+
+	if(noomber)
+		noomber++
+
+	var/new_name = area_for_name.name
+	name = "[new_name][noomber ? " - [noomber]" : ""]"
+	return 1
 //Costume spawner landmarks
 /obj/effect/landmark/costume/New() //costume spawner, selects a random subclass and disappears
 
