@@ -30,6 +30,8 @@
 
 	unique_save_vars = list("owner_name", "bank_id", "owner_uid", "charge", "staff_pin", "awaiting_payment", "maint_mode", "atmpt_maint_mode", "disabled")
 
+	circuit = /obj/item/weapon/circuitboard/inventory_box
+
 
 /obj/machinery/inventory_machine/New()
 	..()
@@ -76,6 +78,14 @@
 		to_chat(user, "It costs <b>[cash2text( charge, FALSE, TRUE, TRUE )]</b> to open an inventory account here.")
 	if(owner_name)
 		to_chat(user, "It belongs to [owner_name], contact them for any issues.")
+	if(!anchored)
+		to_chat(user, "<b>It is loose from the floor!</b>")
+	else
+		to_chat(user, "<b>It is firmly anchored to the floor.</b>")
+	if(!disabled)
+		to_chat(user, "<b>It is ready for use.</b>")
+	else
+		to_chat(user, "<b>It is disabled.</b>")
 
 /obj/machinery/inventory_machine/attack_hand(mob/user as mob)
 	src.add_fingerprint(user)
@@ -139,6 +149,8 @@
 		dat += "<a href='?src=\ref[src];change_pin=1'>Change Staff Pin</a> "
 		dat += "<a href='?src=\ref[src];disable_machine_toggle=1'>Disable Machine</a> "
 		dat += "<a href='?src=\ref[src];change_pricing=1'>Change Pricing</a> "
+		dat += "<a href='?src=\ref[src];toggle_anchor=1'>Toggle Anchors</a> "
+		dat += "<a href='?src=\ref[src];edit_bank=1'>Update Bank Details</a> "
 
 		dat += "<br><br><a href='?src=\ref[src];exit_maint_mode=1'>Exit Maint Mode</a>"
 
@@ -157,9 +169,9 @@
 		dat += "<a href='?src=\ref[src];access_inv=1'>Access Inventory</a>"
 		dat += "<br><br><a href='?src=\ref[src];attempt_maint=1'>Access Maintenance Mode</a>"
 	else
-		dat += "Welcome [current_inventory.owner_name].<br> You can withdraw or deposit items here. To deposit items, please place them into the bottom flap of the machine.<br>"
+		dat += "Welcome <b>[current_inventory.owner_name]</b>,<br><br> You can withdraw or deposit items here. To deposit items, please place them into the bottom flap of the machine.<br>"
 
-		dat += "[length(current_inventory.stored_items) ? "[length(current_inventory.stored_items)]" : "0"]/[current_inventory.max_possible_items] inventory slots<br><br>"
+		dat += "<b>[length(current_inventory.stored_items) ? "[length(current_inventory.stored_items)]" : "0"]/[current_inventory.max_possible_items]</b> inventory slots<br><br>"
 
 		dat += "<div class='statusDisplay'>"
 
@@ -228,11 +240,16 @@
 			return
 
 		if(!emagged)
-			var/contraband_status = I.is_contraband()
-			if(!(!contraband_status || contraband_status == LEGAL) )
-				visible_message("<b>[src]</b> beeps, \"<span class='danger'>I can't take this item as it is a government controlled item, I'm sorry!</span>\" ")
-				flick("inv-tri_warn",src)
-				return
+			var/list/contents_to_search = list()
+			contents_to_search += I.get_saveable_contents()
+			contents_to_search += I
+
+			for(var/obj/P in contents_to_search)
+				var/contraband_status = P.is_contraband()
+				if(!(!contraband_status || contraband_status == LEGAL) )
+					visible_message("<b>[src]</b> beeps, \"<span class='danger'>I can't take this item as it is a government controlled item, I'm sorry!</span>\" ")
+					flick("inv-tri_warn",src)
+					return
 		current_inventory.add_item(I, user)
 		updateDialog()
 		update_icon()
@@ -449,15 +466,43 @@
 		if(!maint_mode)
 			return
 
-		var/new_charge = input(usr,"Set a fee for using the inventory box.","Inventory Fee", charge) as null|num
+		var/min_charge = 800
 
-		if(!isnull(new_charge))
-			if(new_charge < 0)
-				charge = initial(charge)
-			else
-				charge = new_charge
-				to_chat(usr, "\The [src] will now charge [charge] credits per usage.")
+		var/new_charge = input(usr,"Set a fee for using the inventory box. (Min [min_charge])","Inventory Fee", charge) as null|num
 
+		if(min_charge > new_charge)
+			new_charge = min_charge
+
+		charge = new_charge
+		to_chat(usr, "\The [src] will now charge [charge] credits per usage.")
+
+	if(href_list["toggle_anchor"])
+		if(!maint_mode)
+			return
+
+		anchored = !anchored
+		playsound(src, 'sound/items/drill_use.ogg', 25)
+
+		if(anchored)
+			to_chat(usr, "<b>The anchors tether themselves back into the floor. It is now secured.</b>")
+		else
+			to_chat(usr, "<b>You toggle the anchors of the display case. It can now be moved.</b>")
+
+	if(href_list["edit_bank"])
+		if(!maint_mode)
+			return
+
+		var/new_bank = sanitize(input("Please enter the bank id you wish to replace the former. Leave blank to cancel.", "Set Bank", bank_id) as text, 100)
+
+		if(!new_bank)
+			return
+
+		if(!check_account_exists(new_bank))
+			alert("#[new_bank] does not appear to link to any bank ID in the database. Please try again.")
+			return
+
+		bank_id = new_bank
+		alert("New bank account ID set to #[new_bank].")
 
 	if(href_list["choice"])
 		switch(href_list["choice"])
@@ -465,7 +510,7 @@
 			if("withdraw_item")
 				var/item = locate(href_list["item"])
 
-				if(!current_inventory || !item || !(item in current_inventory.stored_items) )
+				if(withdrawing || !current_inventory || !item || !(item in current_inventory.stored_items) )
 					return
 
 				var/datum/map_object/MO = item
@@ -477,7 +522,7 @@
 				if(!withdraw_item)
 					withdrawing = FALSE
 					return
-				withdraw_item.forceMove(get_turf(src))
+
 				playsound(src, 'sound/machines/chime.ogg', 25)
 				flick("inv-tri_accept",src)
 
@@ -485,6 +530,7 @@
 
 				current_inventory.stored_items -= MO
 				qdel(MO)
+				listclearnulls(current_inventory.stored_items)
 				withdrawing = FALSE
 
 
@@ -529,7 +575,7 @@
 	if(disallowed_items.len && is_type_in_list(O, disallowed_items))
 		return FALSE
 
-	var/datum/map_object/MO = get_object_data(O)
+	var/datum/map_object/MO = full_item_save(O)
 
 	stored_items += MO
 	if(user)
@@ -575,9 +621,20 @@
 	if(!unique_id)
 		unique_id = init_uid
 
+	listclearnulls(stored_items)
+
 	return 1
 
 
+/proc/delete_persistent_inventory(unique_id)
+	var/full_path = "data/persistent/inventories/[unique_id].sav"
+	if(!full_path)			return 0
+
+	if(!fexists(full_path)) return 0
+
+	fdel(full_path)
+
+	return 1
 
 
 

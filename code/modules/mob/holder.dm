@@ -21,6 +21,8 @@ var/list/holder_mob_icon_cache = list()
 	pixel_y = 8
 	var/mob/living/held_mob
 
+	dont_save = TRUE
+
 /obj/item/weapon/holder/New()
 	..()
 	processing_objects.Add(src)

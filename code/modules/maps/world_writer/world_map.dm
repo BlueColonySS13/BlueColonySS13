@@ -109,28 +109,34 @@
 
 /proc/full_item_save(obj/O)
 	if(O.dont_save) return
-
 	var/datum/map_object/MO = get_object_data(O)
 	if(!MO) return
 
+
 	for(var/obj/A in O.get_saveable_contents())
-		if(A.dont_save) return
+		if(!O.save_contents)
+			continue
+		if(A.dont_save)
+			continue
 		var/datum/map_object/MO_2 = get_object_data(A)
-		if(!MO_2) return
+		if(!MO_2)
+			continue
 
 		MO.contents += MO_2
 
 		for(var/obj/B in A.get_saveable_contents())
-			if(B.dont_save) return
+			if(!A.save_contents) continue
+			if(B.dont_save) continue
 			var/datum/map_object/MO_3 = get_object_data(B)
-			if(!MO_3) return
+			if(!MO_3) continue
 
 			MO_2.contents += MO_3
 
 			for(var/obj/C in B.get_saveable_contents())
-				if(C.dont_save) return
+				if(!B.save_contents) continue
+				if(C.dont_save) continue
 				var/datum/map_object/MO_4 = get_object_data(C)
-				if(!MO_4) return
+				if(!MO_4) continue
 
 				MO_3.contents += MO_4
 
@@ -143,6 +149,7 @@
 	var/obj/O = new MO.savedtype (loc)
 	CHECK_TICK
 	MO.unpack_object_data(O)
+	O.forceMove(loc)
 
 	for(var/datum/map_object/MD in MO.contents)
 		if(!ispath(MD.savedtype))
@@ -152,6 +159,7 @@
 		var/obj/A = new MD.savedtype (loc)
 		CHECK_TICK
 		MD.unpack_object_data(A)
+		A.forceMove(O)
 
 		for(var/datum/map_object/MF in MD.contents)
 			if(!ispath(MF.savedtype))
@@ -161,6 +169,7 @@
 			var/obj/B = new MF.savedtype (loc)
 			CHECK_TICK
 			MF.unpack_object_data(B)
+			B.forceMove(A)
 
 			for(var/datum/map_object/MG in MF.contents)
 				if(!ispath(MG.savedtype))
@@ -169,7 +178,8 @@
 
 				var/obj/C = new MG.savedtype (loc)
 				CHECK_TICK
-				MF.unpack_object_data(C)
+				MG.unpack_object_data(C)
+				C.forceMove(B)
 
 	return O
 
