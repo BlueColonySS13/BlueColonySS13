@@ -46,21 +46,6 @@
 	return 1
 
 
-
-/obj/item/stack/material/update_reagents()
-	if(reagents)
-		reagents.reagent_list.Cut()
-		reagents.reagent_list = list()
-
-	if(!associated_reagents.len)
-		return
-	if(islist(associated_reagents))
-		var/divided = (reagents_per_unit / associated_reagents.len) * amount
-		for(var/R in associated_reagents)
-			reagents.add_reagent(R, divided)
-
-	return 1
-
 /obj/item/stack/material/get_material()
 	return material
 
@@ -127,6 +112,7 @@
 	no_variants = FALSE
 	associated_reagents = list("silicon")
 	stack_color = COLOR_SANDSTONE
+	dyeable = TRUE
 
 /obj/item/stack/material/marble
 	name = "marble brick"
@@ -266,6 +252,7 @@
 	burntime = MEDIUM_BURN
 	associated_reagents = list("woodpulp")
 	stack_color = WOOD_COLOR_GENERIC
+	no_variants = FALSE
 
 /obj/item/stack/material/wood/ten
 	amount = 10
@@ -525,3 +512,4 @@
 	icon_state = "sheet-phoronrglass"
 	default_type = "reinforced borosilicate glass"
 	no_variants = FALSE
+

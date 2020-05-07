@@ -38,6 +38,7 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define NETWORK_CRESCENT "Spaceport"
 // #define NETWORK_CAFE_DOCK "Cafe Dock"
 #define NETWORK_CARGO "Cargo"
+#define NETWORK_CIRCUITS "Circuits"
 #define NETWORK_CIVILIAN "Civilian"
 // #define NETWORK_CIVILIAN_EAST "Civilian East"
 // #define NETWORK_CIVILIAN_WEST "Civilian West"
@@ -45,7 +46,7 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define NETWORK_ENGINE "Engine"
 #define NETWORK_ENGINEERING "Engineering"
 #define NETWORK_ENGINEERING_OUTPOST "Engineering Outpost"
-#define NETWORK_ERT "Emergency Response Team"
+#define NETWORK_ERT "ZeEmergencyResponseTeam"
 #define NETWORK_DEFAULT "Station"
 #define NETWORK_MEDICAL "Medical"
 #define NETWORK_MERCENARY "MercurialNet"
@@ -60,6 +61,9 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define NETWORK_TELECOM "Tcomms"
 #define NETWORK_THUNDER "Thunderdome"
 #define NETWORK_COMMUNICATORS "Communicators"
+#define NETWORK_ALARM_ATMOS "Atmosphere Alarms"
+#define NETWORK_ALARM_POWER "Power Alarms"
+#define NETWORK_ALARM_FIRE "Fire Alarms"
 
 // Those networks can only be accessed by pre-existing terminals. AIs and new terminals can't use them.
 var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret", NETWORK_COMMUNICATORS)

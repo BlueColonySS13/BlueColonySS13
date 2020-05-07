@@ -59,6 +59,11 @@
 	new foldable(get_turf(src))
 	qdel(src)
 
+/obj/item/weapon/storage/box/large
+	name = "large box"
+	icon_state = "largebox"
+	max_storage_space = 48
+
 /obj/item/weapon/storage/box/survival
 	name = "emergency supply box"
 	desc = "A survival box issued to crew members for use in emergency situations."
@@ -505,17 +510,35 @@
 	desc = "A box that holds press badges."
 	starts_with = list(/obj/item/clothing/accessory/badge/press = 7)
 
+/obj/item/weapon/storage/box/produce_box
+	name = "produce box"
+	icon_state = "producebox"
+	desc = "A box that is made for holding grown produce."
+	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/grown)
+	starts_with = null
+	max_storage_space = 24
+
+/obj/item/weapon/storage/box/meat_box
+	name = "box of meat"
+	icon_state = "meatbox"
+	desc = "A box that is made for holding meat."
+	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/meat)
+	starts_with = null
+	max_storage_space = 24
 /*
  * Candle Box
  */
 
 /obj/item/weapon/storage/box/candle_box
 	name = "candle pack"
-	desc = "A pack of red candles."
+	desc = "A pack of candles."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candlebox"
 	slot_flags = SLOT_BELT
 	starts_with = list(/obj/item/weapon/flame/candle = 5)
+
+/obj/item/weapon/storage/box/candle_box/empty
+	starts_with = null
 
 /obj/item/weapon/storage/box/candle_box/random
 	name = "assorted candle pack"

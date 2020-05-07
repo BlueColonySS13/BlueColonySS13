@@ -10,7 +10,9 @@
 	messenger_bag = /obj/item/weapon/storage/backpack/messenger/com
 	id_type = /obj/item/weapon/card/id/gold/captain
 	pda_type = /obj/item/device/pda/captain
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1)
+	backpack_contents = list(
+	/obj/item/clothing/accessory/permit/gun/tier_three = 1,
+	/obj/item/weapon/card/department/council = 1)
 
 /decl/hierarchy/outfit/job/heads/captain/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -28,7 +30,7 @@
 		var/obj/item/clothing/uniform = H.w_uniform
 		if(uniform)
 			var/obj/item/clothing/accessory/medal/gold/captain/medal = new()
-			var/obj/item/clothing/accessory/tie/sash/sash = new()
+			var/obj/item/clothing/accessory/tie/sash/red/sash = new()
 			if(uniform.can_attach_accessory(medal))
 				uniform.attach_accessory(null, medal)
 			else
@@ -44,7 +46,8 @@
 	shoes = /obj/item/clothing/shoes/brown
 	id_type = /obj/item/weapon/card/id/silver/hop
 	pda_type = /obj/item/device/pda/heads/hop
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1)
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1,
+	/obj/item/weapon/card/department/council = 1)
 
 /decl/hierarchy/outfit/job/heads/hop/post_equip(mob/living/carbon/human/H)
 	..()

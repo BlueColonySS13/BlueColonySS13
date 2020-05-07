@@ -114,10 +114,6 @@
 	name = "kitchen knife"
 	path =/obj/item/weapon/material/knife
 
-/datum/category_item/autolathe/general/taperecorder
-	name = "tape recorder"
-	path =/obj/item/device/taperecorder
-
 /datum/category_item/autolathe/general/tube
 	name = "light tube"
 	path =/obj/item/weapon/light/tube
@@ -147,5 +143,8 @@
 	name = "ecigarette cartridge"
 	path = /obj/item/weapon/reagent_containers/ecig_cartridge/blank
 
+/datum/category_item/autolathe/general/keypad
+	name = "door keypad"
+	path = /obj/item/keypad
 
 

@@ -29,8 +29,10 @@
 
 	var/save_contents = TRUE
 	var/save_reagents = TRUE
+	var/save_forensics = FALSE
 
 	var/unique_save_vars = list()
+
 	var/dont_save = FALSE // For atoms that are temporary by necessity - like lighting overlays
 
 /atom/proc/on_persistence_load()
@@ -52,6 +54,15 @@
 	return contents
 
 /obj/sanitize_for_saving()	// these things build up with time, so this gradually limits the amount so we don't have 5000 fingerprints or anything.
+	if(!suit_fibers)
+		suit_fibers = list()
+
+	if(!fingerprints)
+		fingerprints = list()
+
+	if(!fingerprintshidden)
+		fingerprintshidden = list()
+
 	if(islist(suit_fibers) && !isemptylist(suit_fibers))
 		truncate_oldest(suit_fibers, MAX_FINGERPRINTS)
 	if(islist(fingerprints) && !isemptylist(fingerprints))
@@ -61,7 +72,7 @@
 
 	return TRUE
 
-/obj/item/weapon/reagent_containers/proc/pack_persistence_data()
+/atom/proc/pack_persistence_data()
 	var/list/all_reagents = reagents.reagent_list
 	var/list/reagents_to_save = list()
 
@@ -93,7 +104,7 @@
 
 	return reagents_to_save
 
-/obj/item/weapon/reagent_containers/proc/unpack_persistence_data(var/list/saved_reagents)
+/obj/proc/unpack_persistence_data(var/list/saved_reagents)
 	if(!reagents)
 		return
 
@@ -158,9 +169,11 @@
 
 // Custom vars-to-save/persistence load list
 
+/obj
+	save_forensics = TRUE
+
 /obj/vars_to_save()
- 	 return list("x","y","z","density","anchored","color","dir","name","pixel_x","pixel_y","fingerprints","fingerprintshidden","fingerprintslast",\
- 	 "suit_fibers","tagged_price")+unique_save_vars
+ 	 return list("x","y","z","density","anchored","color","dir","name","pixel_x","pixel_y","suit_fibers","tagged_price", "fingerprintslast")+unique_save_vars
 
 /obj/item/weapon/clipboard
 	unique_save_vars = list("haspen","toppaper")

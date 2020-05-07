@@ -6,6 +6,8 @@
 
 /datum/supply_pack/materials
 	group = "Materials"
+	containertype = /obj/structure/closet/crate
+	spend_type = SPEND_MATERIALS
 
 /datum/supply_pack/materials/metal50
 	name = "150 metal sheets"

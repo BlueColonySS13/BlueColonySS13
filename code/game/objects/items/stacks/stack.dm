@@ -24,7 +24,7 @@
 	var/list/datum/matter_synth/synths = null
 	var/no_variants = TRUE // Determines whether the item should update it's sprites based on amount.
 	var/list/associated_reagents = list() // put reagent "id" here
-	var/reagents_per_unit = 2
+	var/reagent_multiplier = 3 // Reagent unit times by this number will be produced per amount unit in the stack. 3 will produce 150 units for a 50 stack.
 
 	var/stack_color = null // overrides apply_material_color if used
 	var/dyeable = FALSE
@@ -34,9 +34,6 @@
 /obj/item/stack/on_persistence_load()
 	update_icon()
 
-/obj/item/stack/proc/update_reagents()
-	return
-
 /obj/item/stack/New(var/loc, var/amount=null)
 	..()
 	if (!stacktype)
@@ -45,8 +42,6 @@
 		src.amount = amount
 	if(stack_color)
 		color = stack_color
-	create_reagents(max_amount * reagents_per_unit) // getting the max that any stack will have
-	update_reagents()
 	update_icon()
 	return
 
@@ -253,7 +248,6 @@
 				usr.remove_from_mob(src)
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
-		update_reagents()
 		return 1
 	else
 		if(get_amount() < used)
@@ -261,7 +255,6 @@
 		for(var/i = 1 to uses_charge)
 			var/datum/matter_synth/S = synths[i]
 			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
-		update_reagents()
 		return 1
 	return 0
 
@@ -271,7 +264,6 @@
 			return 0
 		else
 			amount += extra
-		update_reagents()
 		update_icon()
 		return 1
 	else if(!synths || synths.len < uses_charge)
@@ -325,7 +317,6 @@
 			transfer_fingerprints_to(newstack)
 			if(blood_DNA)
 				newstack.blood_DNA |= blood_DNA
-		update_reagents()
 		return newstack
 	return null
 
@@ -362,7 +353,6 @@
 		var/transfer = src.transfer_to(item)
 		if (transfer)
 			user << "<span class='notice'>You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.</span>"
-			update_reagents()
 		if(!amount)
 			break
 

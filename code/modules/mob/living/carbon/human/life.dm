@@ -1081,7 +1081,7 @@
 			adjustHalLoss(-1)
 
 		if (drowsyness)
-			drowsyness--
+			drowsyness = max(0, drowsyness - 1)
 			eye_blurry = max(2, eye_blurry)
 			if (prob(5))
 				sleeping += 1
@@ -1382,9 +1382,10 @@
 
 		if(machine)
 			var/viewflags = machine.check_eye(src)
+			machine.apply_visual(src)
 			if(viewflags < 0)
 				reset_view(null, 0)
-			else if(viewflags)
+			else if(viewflags && !looking_elsewhere)
 				sight |= viewflags
 		else if(eyeobj)
 			if(eyeobj.owner != src)
@@ -1399,6 +1400,11 @@
 				remoteview_target = null
 				reset_view(null, 0)
 	return 1
+
+/mob/living/carbon/human/reset_view(atom/A)
+	..()
+	if(machine_visual && machine_visual != A)
+		machine_visual.remove_visual(src)
 
 /mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
 	if(G && G.active)
@@ -1594,14 +1600,14 @@
 				to_chat(src, span("warning", "Your hunger pangs are excruciating as the stomach acid sears in your stomach... you feel weak."))
 			else
 				to_chat(src, span("warning", "Your internal battery makes a silent beep. It is time to recharge."))
-				
+
 		return
 
 	if (hydration <= 0)
 		if (prob(1.5))
 			if(!isSynthetic())
 				to_chat(src, span("warning", "You feel dizzy and disorientated as your lack of hydration becomes impossible to ignore."))
-				
+
 		return
 
 

@@ -152,14 +152,25 @@
 
 
 /obj/item/clothing/accessory/tie/sash
-	name = "red sash"
-	desc = "A red banner that may or may not have some kind of meaning. Who knows?"
+	name = "sash"
+	desc = "A banner that may or may not have some kind of meaning. Who knows?"
 	icon_state = "sash"
+
+/obj/item/clothing/accessory/tie/sash/red
+	color = COLOR_RED
+
+/obj/item/clothing/accessory/tie/sash/gold
+	color = COLOR_YELLOW
 
 /obj/item/clothing/accessory/tie/cravat
 	name = "cravat"
 	desc = "The class on this poofy thing is almost unbearable."
 	icon_state = "cravat"
+
+/obj/item/clothing/accessory/tie/neckerchief
+	name = "neckerchief"
+	desc = "It's tempting to tie it just a liiiittle tighter."
+	icon_state = "neckerchief"
 
 /obj/item/clothing/accessory/stethoscope
 	name = "stethoscope"
@@ -277,8 +288,12 @@
 //Scarves
 
 /obj/item/clothing/accessory/scarf
-	name = "green scarf"
+	name = "scarf"
 	desc = "A stylish scarf. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their necks."
+	icon_state = "whitescarf"
+
+/obj/item/clothing/accessory/scarf/green
+	name = "green scarf"
 	icon_state = "greenscarf"
 
 /obj/item/clothing/accessory/scarf/red

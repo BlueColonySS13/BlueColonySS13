@@ -19,7 +19,7 @@
 			/obj/item/device/closet_painter = 2
 			)
 
-
+	spend_type = SPEND_MAINTENANCE
 
 /datum/supply_pack/decoration/spraycans
 	name = "Spraycan Set"

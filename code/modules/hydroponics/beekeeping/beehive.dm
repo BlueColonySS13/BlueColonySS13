@@ -244,6 +244,7 @@
 	icon = 'icons/obj/beekeeping.dmi'
 	icon_state = "wax"
 	burn_state = 0 //Burnable
+	max_amount = 60
 	burntime = 5
 	stack_color = COLOR_YELLOW
 	dyeable = TRUE

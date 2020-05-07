@@ -5,9 +5,11 @@
 
 /datum/supply_pack/munitions
 	group = "Munitions"
+	spend_type = SPEND_WEAPONS
 
 /datum/supply_pack/randomised/munitions
 	group = "Munitions"
+	spend_type = SPEND_WEAPONS
 
 /datum/supply_pack/munitions/weapons
 	name = "Weapons - Security basic equipment"

@@ -474,6 +474,7 @@
 	desc = "A kitchy throwback decorative light. Noir Edition."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "lavalamp"
+	w_class = ITEMSIZE_SMALL
 	on = 0
 	action_button_name = "Toggle lamp"
 	matter = list(DEFAULT_WALL_MATERIAL = 200,"glass" = 50)

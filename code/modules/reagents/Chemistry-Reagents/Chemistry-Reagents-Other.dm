@@ -220,7 +220,7 @@
 	taste_description = "metal"
 	reagent_state = SOLID
 	color = COLOR_SILVER
-	price_tag = 1.2
+	price_tag = 2.2
 
 /datum/reagent/uranium
 	name ="Uranium"
@@ -238,7 +238,7 @@
 	taste_description = "metal"
 	reagent_state = SOLID
 	color = COLOR_PLATINUM
-	price_tag = 2.9
+	price_tag = 3.9
 
 /datum/reagent/uranium/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	affect_ingest(M, alien, removed)

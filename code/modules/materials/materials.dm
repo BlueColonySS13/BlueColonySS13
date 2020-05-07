@@ -228,6 +228,9 @@ var/list/name_to_material
 /material/proc/combustion_effect(var/turf/T, var/temperature)
 	return
 
+/material/proc/get_wall_texture()
+	return
+
 // Datum definitions follow.
 /material/uranium
 	name = "uranium"
