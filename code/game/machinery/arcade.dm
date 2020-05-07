@@ -291,7 +291,7 @@
 	if(anchored)
 		to_chat(usr, "<b>The anchors tether themselves back into the floor. It is now secured.</b>")
 	else
-		to_chat(usr, "<b>You toggle the anchors of the display case. It can now be moved.</b>")
+		to_chat(usr, "<b>You toggle the anchors of the food machine. It can now be moved.</b>")
 
 /*********************
 	Token Machine
@@ -332,7 +332,7 @@
 	if(anchored)
 		to_chat(usr, "<b>The anchors tether themselves back into the floor. It is now secured.</b>")
 	else
-		to_chat(usr, "<b>You toggle the anchors of the display case. It can now be moved.</b>")
+		to_chat(usr, "<b>You toggle the anchors of the token machine. It can now be moved.</b>")
 
 /obj/machinery/token_machine/examine(mob/user)
 	..()
