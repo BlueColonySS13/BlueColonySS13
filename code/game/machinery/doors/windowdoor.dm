@@ -282,15 +282,15 @@
 		return
 
 
-	src.add_fingerprint(user)
+	add_fingerprint(user)
 
-	if (src.allowed(user))
-		if (src.density)
+	if (allowed(user) && !locked)
+		if (density)
 			open()
 		else
 			close()
 
-	else if (src.density)
+	else if (density)
 		flick(text("[]deny", src.base_state), src)
 
 	return

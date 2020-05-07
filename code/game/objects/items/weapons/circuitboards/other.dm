@@ -62,6 +62,7 @@
 							/obj/item/weapon/stock_parts/capacitor = 1,
 							/obj/item/weapon/stock_parts/manipulator = 1)
 
+
 /obj/item/weapon/circuitboard/token_machine
 	name = T_BOARD("Token Dispenser")
 	build_path = /obj/machinery/token_machine
@@ -71,5 +72,16 @@
 							/obj/item/weapon/stock_parts/matter_bin = 1,
 							/obj/item/weapon/stock_parts/capacitor = 1,
 							/obj/item/weapon/stock_parts/manipulator = 1)
+
+
+/obj/item/weapon/circuitboard/inventory_box
+	name = T_BOARD("Inventory Box")
+	build_path = /obj/machinery/inventory_machine
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_DATA = 2)
+	req_components = list(
+							/obj/item/weapon/stock_parts/capacitor = 1,
+							/obj/item/weapon/stock_parts/console_screen = 1,
+							/obj/item/weapon/stock_parts/matter_bin = 1)
 
 

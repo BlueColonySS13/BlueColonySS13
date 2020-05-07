@@ -174,6 +174,10 @@
 
 		return contraband_reagents
 
+/obj/item/weapon/reagent_containers/is_contraband()
+	for(var/V in get_contraband_types())
+		return V
+
 /obj/item/weapon/reagent_containers/verb/empty()
 	set name = "Empty Container"
 	set category = "Object"
