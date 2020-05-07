@@ -17,6 +17,8 @@
 	active_power_usage = 200
 	light_color = "#FF0000"
 
+	dont_save = TRUE
+
 
 /obj/machinery/vr_sleeper/examine(mob/user)
 	..()
@@ -255,6 +257,8 @@
 	var/bank_id = ""
 	var/owner_uid = ""
 	unique_save_vars = list("owner_name", "bank_id", "owner_uid", "charge")
+
+	dont_save = FALSE
 
 /obj/machinery/vr_sleeper/business/proc/speak(var/message)
 	if(stat & NOPOWER)

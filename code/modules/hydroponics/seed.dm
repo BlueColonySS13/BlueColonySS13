@@ -507,7 +507,7 @@
 //Mutates the plant overall (randomly).
 /datum/seed/proc/mutate(var/degree,var/turf/source_turf)
 
-	if(!degree || get_trait(TRAIT_IMMUTABLE) > 0) return
+	if(!source_turf || !degree || get_trait(TRAIT_IMMUTABLE) > 0) return
 
 	source_turf.visible_message("<span class='notice'>\The [display_name] quivers!</span>")
 

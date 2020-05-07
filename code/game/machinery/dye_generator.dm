@@ -272,7 +272,7 @@
 	// debit money from the purchaser's account
 	customer_account.money -= charge
 	customer_account.add_transaction_log("[owner_name] (via [name])", "Dye Machine Bottle Purchase", -charge, "Dye Vendor")
-	charge_to_account(bank_id, "Dye Machine ([owner_name] (via [name]))", "Dye Machine Bottle Purchase", "Dye Vendor", charge)
+	charge_to_account(bank_id, "Dye Machine ([customer_account.owner_name] (via [name]))", "Dye Machine Bottle Purchase", "Dye Vendor", charge)
 
 	return TRUE
 
