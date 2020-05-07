@@ -31,5 +31,8 @@ var/datum/lore/numbers_station/numbers = new/datum/lore/numbers_station
 	var/list/numbers = list("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen")
 	var/list/special = list("Red", "Town", "City", "Earth", "Space", "Preceed", "Lines", "Maker", "Bull", "Mother", "Father", "Child", "Ocean", "Mist", "Devil", "Angel", "Cuba", "Melon", "Dwarf")
 
-	msg("[pick(letters)], [pick(numbers)], [pick(special)]")
+	msg(pick("[pick(special)] [pick(numbers)], [pick(letters)], [pick(numbers)], [pick(special)]",
+			 "[pick(numbers)], [pick(numbers)], [pick(numbers)], [pick(numbers)], [pick(numbers)], [pick(numbers)], [pick(numbers)]",
+			 "[pick(letters)], [pick(letters)], [pick(letters)], [pick(letters)], [pick(letters)], [pick(letters)], [pick(letters)]",
+			 "[pick(special)], [pick(special)], [pick(special)], [pick(special)], [pick(special)], [pick(special)], [pick(special)]"))
 	return
