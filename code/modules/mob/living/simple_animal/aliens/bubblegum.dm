@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/flesh_golem
-	name = "flesh golem"
+	name = "creature"
 	desc = "A massive creature with exposed musculature and sinew."
 	icon = 'icons/mob/96x96megafauna.dmi'
 	icon_state = "bubblegum"
@@ -8,9 +8,9 @@
 
 	faction = "cult"
 	intelligence_level = SA_ANIMAL
-	maxHealth = 400
-	health = 400
-	speed = 6
+	maxHealth = 800
+	health = 800
+	speed = 10
 
 	harm_intent_damage = 9
 
@@ -45,5 +45,5 @@
 /mob/living/simple_animal/hostile/flesh_golem/death()
 	..()
 	visible_message("<b>[src]</b> explodes in spectacular fashion!")
-	new /obj/effect/decal/cleanable/blood/gibs(src.loc)
+	new /obj/effect/gibspawner/human(src.loc)
 	qdel(src)
