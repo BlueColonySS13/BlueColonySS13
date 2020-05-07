@@ -115,4 +115,10 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Forensics Circuits"
 
+/datum/supply_pack/circuits/inventory_box
+	contains = list(/obj/item/weapon/circuitboard/inventory_box)
+	name = "Inventory box Circuit"
+	cost = 6000
+	containertype = /obj/structure/closet/crate
+	containername = "Inventory Box Circuit"
 
