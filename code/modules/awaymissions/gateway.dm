@@ -140,7 +140,7 @@ obj/machinery/gateway/centerstation/process()
 			to_chat(user, "<span class='warning'>The Gateway whines and flashes red before returning to its normal state.</span>")
 			R.active = 0
 			R.update_icon()
-			awaygate = locate(/obj/machinery/gateway/centeraway)
+			awaygate = locate(/obj/machinery/gateway/centeraway/redspace)
 		else
 			to_chat(user, "<span class='notice'>Nothing happens.</span>")
 		return

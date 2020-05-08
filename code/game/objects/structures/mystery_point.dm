@@ -9,17 +9,13 @@
 	var/active = 1
 	var/mystery_type = 1
 
-/obj/structure/mystery_point/process()
-	var/turf/current_location = get_turf(src)
-	for(var/A in current_location)
-		if(active)
-			if(istype(A, /mob/living/carbon/human))
-				illuminate(A)
-				active = 0
-				sleep(45 MINUTES)
-				visible_message("<span class='alien'>Something has changed near you.</span>")
-				active = 1
-
+/obj/structure/mystery_point/Crossed(var/mob/living/carbon/human/L)
+	illuminate(L)
+	active = 0
+	sleep(45 MINUTES)
+	visible_message("<span class='alien'>Something has changed near you.</span>")
+	active = 1
+	..()
 
 /obj/structure/mystery_point/proc/illuminate(var/mob/living/carbon/human/A)
 	var/mob/living/carbon/human/O = A
@@ -28,14 +24,12 @@
 		mystery_type = rand(1,3)
 
 		switch(mystery_type)
-
 			if(1) //The rain dance
 				to_chat(O, "<span class='alien'>Dance. Bring the rain.</span>")
 				var/choice = alert("Do you want to dance?", "Rain Dance", "Yes", "No")
 				switch(choice)
 					if("Yes")
-						O.forcesay("!dances furiously, looking up to the sky in anticipation.")
-						sleep(30 SECONDS)
+						visible_message("<B>[O]</B> dances furiously, looking up to the sky in anticipation.")
 						var/datum/planet/planet = /datum/planet/sif
 						planet.weather_holder.change_weather(WEATHER_RAIN)
 						for(var/mob/living/L in living_mob_list)
