@@ -1338,7 +1338,7 @@
 "azL" = (/obj/structure/loot_pile/surface/bones,/turf/simulated/floor/plating,/area/maintenance/research)
 "azM" = (/obj/random/contraband,/turf/simulated/floor/water{color = "#049660"; name = "green toxic waste"},/area/maintenance/research)
 "azN" = (/turf/simulated/floor/water{color = "#049660"; name = "green toxic waste"},/area/maintenance/research)
-"azO" = (/obj/effect/decal/cleanable/greenglow,/obj/machinery/light/small{dir = 1},/turf/simulated/floor/water{color = "#049660"; name = "green toxic waste"},/area/maintenance/research)
+"azO" = (/obj/effect/decal/cleanable/greenglow,/obj/machinery/light/small{dir = 1},/obj/structure/mystery_point,/turf/simulated/floor/water{color = "#049660"; name = "green toxic waste"},/area/maintenance/research)
 "azP" = (/obj/item/stack/material/uranium,/turf/simulated/floor/water{color = "#049660"; name = "green toxic waste"},/area/maintenance/research)
 "azQ" = (/turf/simulated/wall/plastic/science,/area/outpost/research/anomaly)
 "azR" = (/obj/machinery/door/airlock/glass_research{name = "Xenoosteology Lab"; req_access = list(65)},/obj/structure/disposalpipe/segment,/turf/simulated/floor/wood/ebony,/area/outpost/research/anomaly)

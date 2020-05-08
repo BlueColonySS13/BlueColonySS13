@@ -78,7 +78,8 @@ var/datum/lore/numbers_station/numbers = new/datum/lore/numbers_station
 				     "I still hear the beating beneath the floorboards. Skittering all the damn time.",
 				     "You have to do some digging. Dig deep in its belly and pull it out. Ah, there you go. Just like that.",
 				     "!flaps its wings and squeaks.",
-				     "!skitters and sloshes. It echoes as if in a cavern."))
+				     "!skitters and sloshes. It echoes as if in a cavern.",
+				     "Uranium fever got you down? Rave!"))
 		if(5)//emotions
 			msg(pick("!makes a sound but it is obscured by heavy static.",
 					 "!emits a heavy droning noise.",

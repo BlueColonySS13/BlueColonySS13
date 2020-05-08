@@ -442,6 +442,8 @@
 			var/new_type = pick(alien_stuff)
 			new_item = new new_type(src.loc)
 			item_type = new_item.name
+		if(37)
+			new_item = new /obj/item/device/redspace_key(src.loc)
 
 	var/decorations = ""
 	if(apply_material_decorations)
