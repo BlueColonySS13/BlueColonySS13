@@ -18,7 +18,6 @@
 			var/lang = locate(/datum/language/precursor) in C.languages
 
 			if(lang)
-				to_chat(C, pick("<span class ='warning'it works</span>"))
 				C.adjustBrainLoss(0.25 * weakness)
 			else
 				C.add_language("Precursor")
