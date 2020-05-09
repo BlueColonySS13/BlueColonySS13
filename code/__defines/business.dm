@@ -10,7 +10,7 @@
 #define CAT_FOOD "Food and Drink"
 #define CAT_HOSPITALITY "Hospitality"
 #define CAT_LEGAL "Legal"
-#define CAT_LEISURE "Leisure"
+#define CAT_LEISURE "Leisure/Fitness"
 #define CAT_MANUFACTURE "Manufacturing"
 #define CAT_MOTOR "Motoring"
 #define CAT_NEWS "News/Media/Journalism"

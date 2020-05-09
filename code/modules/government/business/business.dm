@@ -2,7 +2,7 @@
 	var/name = "Unnamed Business"
 	var/description = "Generic description."
 
-	var/category = list()
+	var/categories = list()	// max 3 categories per business
 
 	var/creation_date
 
@@ -24,6 +24,7 @@
 	var/datum/department/department
 
 	var/list/business_jobs = list()
+	var/list/business_accesses = list()
 
 
 //////////////////////////
@@ -32,7 +33,7 @@
 	name = title
 	description = desc
 	access_password = pass
-	category += cat
+	categories += cat
 
 	sanitize_business()
 
@@ -62,9 +63,33 @@
 
 	var/datum/business_person/n_owner = new()
 
-	owner = n_owner
-	owner.unique_id = owner_uid
-	owner.name = owner_name
-	owner.email = owner_email
+	B.owner = n_owner
+	n_owner.unique_id = owner_uid
+	n_owner.name = owner_name
+	n_owner.email = owner_email
+
+
 
 	return B
+
+/proc/get_business_by_name(name) //Compares a business 'B' to the master list and returns the business if found.
+	for(var/datum/business/B in GLOB.all_businesses)
+		if(B.name == name)
+			return B
+
+/proc/get_business_by_biz_uid(uid)
+	for(var/datum/business/B in GLOB.all_businesses)
+		if(B.business_uid == uid)
+			return B
+
+/proc/get_business_by_owner_uid(uid)
+	for(var/datum/business/B in GLOB.all_businesses)
+		if(!B.owner)
+			continue
+		if(B.owner.unique_id == uid)
+			return B
+
+/datum/business/proc/try_auth_business(pass)
+	if(access_password == pass)
+		return 1
+	return 0

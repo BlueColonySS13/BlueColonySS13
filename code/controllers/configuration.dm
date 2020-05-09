@@ -247,7 +247,7 @@ var/list/gamemode_cache = list()
 	// can lots be saved? if this is set to false, this disables lots. it will auto-toggle if lot loading is borked in process to prevent data corruption.
 	var/lot_saving = FALSE
 
-	// allow businesses to exist?
+	// allow businesses to be made?
 	var/allow_businesses = FALSE
 
 
