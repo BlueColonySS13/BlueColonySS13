@@ -426,6 +426,7 @@
 	recipes += new/datum/stack_recipe("[display_name] scarf", /obj/item/clothing/accessory/scarf , 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] neckerchief", /obj/item/clothing/accessory/tie/neckerchief, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] armband", /obj/item/clothing/accessory/armband, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] jacket", /obj/item/clothing/suit/storage/toggle/lawyer/whitejacket, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 
 
 
@@ -464,6 +465,9 @@
 	recipes += new/datum/stack_recipe("[display_name] scarf", /obj/item/clothing/accessory/scarf, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] neckerchief", /obj/item/clothing/accessory/tie/neckerchief, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] armband", /obj/item/clothing/accessory/armband, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] jacket", /obj/item/clothing/suit/storage/toggle/lawyer/whitejacket, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+
+
 
 /material/denim/generate_recipes()
 	recipes = list()
@@ -477,6 +481,7 @@
 	recipes += new/datum/stack_recipe("[display_name] jean shorts", /obj/item/clothing/under/shorts/jeanshorts, 8, time = 5, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] jean short shorts", /obj/item/clothing/under/shorts/jeanshorts/female, 6, time = 5, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] waistcoat", /obj/item/clothing/accessory/wcoat/gwaistcost , 4, time = 15, one_per_turf = 1, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("[display_name] jacket", /obj/item/clothing/suit/storage/toggle/lawyer/whitejacket, 4, time = 15, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 
 
 

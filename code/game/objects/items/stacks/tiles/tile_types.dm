@@ -141,6 +141,11 @@
 
 	stack_color = COLOR_RED
 
+/obj/item/stack/tile/carpet/browcarpet
+	name = "brown carpet"
+	icon_state = "tile-carpet"
+	stack_color = COLOR_BROWN
+
 /obj/item/stack/tile/carpet/teal
 	name = "teal carpet"
 	no_variants = FALSE
