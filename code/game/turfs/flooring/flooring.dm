@@ -178,6 +178,11 @@ var/list/flooring_types
 		'sound/effects/footstep/carpet4.ogg',
 		'sound/effects/footstep/carpet5.ogg'))
 
+/decl/flooring/carpet/browcarpet
+	name = "brown carpet"
+	icon_base = "browncarpet"
+	build_type = /obj/item/stack/tile/carpet/browcarpet
+
 /decl/flooring/carpet/bcarpet
 	name = "black carpet"
 	icon_base = "bcarpet"
