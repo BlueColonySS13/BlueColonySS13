@@ -204,7 +204,7 @@
 "dV" = (/obj/machinery/gateway{dir = 1; icon_state = "off"},/turf/simulated/floor/tiled/steel,/area/redspace/outpost)
 "dW" = (/obj/machinery/gateway{dir = 5; icon_state = "off"},/turf/simulated/floor/tiled/steel,/area/redspace/outpost)
 "dX" = (/obj/machinery/gateway{dir = 8; icon_state = "off"},/turf/simulated/floor/tiled/steel,/area/redspace/outpost)
-"dY" = (/obj/machinery/gateway/centeraway,/turf/simulated/floor/tiled/steel,/area/redspace/outpost)
+"dY" = (/obj/machinery/gateway/centeraway/redspace,/turf/simulated/floor/tiled/steel,/area/redspace/outpost)
 "dZ" = (/obj/machinery/gateway{dir = 4; icon_state = "off"},/turf/simulated/floor/tiled/steel,/area/redspace/outpost)
 "ea" = (/obj/machinery/gateway{dir = 10; icon_state = "off"},/turf/simulated/floor/tiled/steel,/area/redspace/outpost)
 "eb" = (/obj/machinery/gateway,/turf/simulated/floor/tiled/steel,/area/redspace/outpost)

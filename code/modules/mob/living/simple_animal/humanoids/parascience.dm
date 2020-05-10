@@ -68,8 +68,6 @@
 //	casingtype = /obj/item/ammo_casing/spent	//Makes infinite stacks of bullets when put in PoIs.
 	projectilesound = 'sound/weapons/gunshot/gunshot2.ogg'
 
-	loot_list = list(/obj/item/weapon/gun/projectile/automatic/sts35 = 100)
-
 /mob/living/simple_animal/hostile/parascience/legless
 	name = "Gerald Gear"
 	desc = "No one should have to suffer like this. His ID identifies him as Gerald Gear."
