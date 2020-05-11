@@ -134,7 +134,7 @@
 /datum/supply_pack/robotics/robolimbs/veymed
 	name = "Veymed robolimb blueprints"
 	contains = list(/obj/item/weapon/disk/limb/veymed)
-	cost = 75000
+	cost = 250000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Veymed)"
 
