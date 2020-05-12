@@ -25,6 +25,9 @@
 	var/category = null
 	var/manufacturer = null
 	var/sync_message = ""
+	var/independent = 0 //Prevent businesses from using Research servers
+
+	unique_save_vars = list("speed", "mat_efficiency", "res_max_amount")
 
 /obj/machinery/pros_fabricator/New()
 	..()
@@ -169,7 +172,6 @@
 				var/datum/robolimb/R = all_robolimbs[D.company]
 				R.unavailable_to_build = 0
 				user << "<span class='notice'>Installed [D.company] blueprints!</span>"
-				qdel(I)
 		return
 
 	if(istype(I,/obj/item/stack/material))
@@ -323,6 +325,24 @@
 /obj/machinery/pros_fabricator/proc/sync()
 	sync_message = "Error: no console found."
 	for(var/obj/machinery/computer/rdconsole/RDC in get_area_all_atoms(get_area(src)))
+		if(!RDC.sync)
+			continue
+		for(var/datum/tech/T in RDC.files.known_tech)
+			files.AddTech2Known(T)
+		for(var/datum/design/D in RDC.files.known_designs)
+			files.AddDesign2Known(D)
+		files.RefreshResearch()
+		sync_message = "Sync complete."
+	update_categories()
+
+/obj/machinery/pros_fabricator/business
+	req_access = null
+	circuit = /obj/item/weapon/circuitboard/prosthetics/business
+	independent = 1
+
+/obj/machinery/pros_fabricator/business/sync()
+	sync_message = "Error: no console found."
+	for(var/obj/machinery/computer/rdconsole/business/RDC in get_area_all_atoms(get_area(src)))
 		if(!RDC.sync)
 			continue
 		for(var/datum/tech/T in RDC.files.known_tech)

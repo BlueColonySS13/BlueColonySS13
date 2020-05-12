@@ -77,6 +77,8 @@
 	// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
 
+	unique_save_vars = list("model")
+
 /obj/item/organ/external/Destroy()
 
 	if(parent && parent.children)
