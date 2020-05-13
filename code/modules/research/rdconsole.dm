@@ -44,6 +44,8 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	var/screen = 1.0	//Which screen is currently showing.
 	var/id = 0			//ID of the computer (for server restrictions).
 	var/sync = 1		//If sync = 0, it doesn't show up on Server Control Console
+	var/independent = 0 // For business R&D consoles. They can no longer steal tech from Research.
+	var/owner_uid = "" //shitcode but necessary for businesses. Remember to optimize this some day.
 
 	req_access = list(access_research)	//Data and setting manipulation requires scientist access.
 
@@ -280,24 +282,34 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			griefProtection() //Putting this here because I dont trust the sync process
 			spawn(30)
 				if(src)
-					for(var/obj/machinery/r_n_d/server/S in machines)
-						var/server_processed = 0
-						if((id in S.id_with_upload) || istype(S, /obj/machinery/r_n_d/server/centcom))
-							for(var/datum/tech/T in files.known_tech)
-								S.files.AddTech2Known(T)
-							for(var/datum/design/D in files.known_designs)
-								S.files.AddDesign2Known(D)
-							S.files.RefreshResearch()
-							server_processed = 1
-						if((id in S.id_with_download) && !istype(S, /obj/machinery/r_n_d/server/centcom))
-							for(var/datum/tech/T in S.files.known_tech)
-								files.AddTech2Known(T)
-							for(var/datum/design/D in S.files.known_designs)
-								files.AddDesign2Known(D)
-							files.RefreshResearch()
-							server_processed = 1
-						if(!istype(S, /obj/machinery/r_n_d/server/centcom) && server_processed)
-							S.produce_heat()
+					if(independent)
+						for(var/obj/machinery/r_n_d/server/business/S in machines)
+							if(owner_uid == S.owner_uid)
+								if((id in S.id_with_download) && !istype(S, /obj/machinery/r_n_d/server/centcom))
+									for(var/datum/tech/T in S.files.known_tech)
+										files.AddTech2Known(T)
+									for(var/datum/design/D in S.files.known_designs)
+										files.AddDesign2Known(D)
+									files.RefreshResearch()
+					else
+						for(var/obj/machinery/r_n_d/server/S in machines)
+							var/server_processed = 0
+							if((id in S.id_with_upload) || istype(S, /obj/machinery/r_n_d/server/centcom))
+								for(var/datum/tech/T in files.known_tech)
+									S.files.AddTech2Known(T)
+								for(var/datum/design/D in files.known_designs)
+									S.files.AddDesign2Known(D)
+								S.files.RefreshResearch()
+								server_processed = 1
+							if((id in S.id_with_download) && !istype(S, /obj/machinery/r_n_d/server/centcom))
+								for(var/datum/tech/T in S.files.known_tech)
+									files.AddTech2Known(T)
+								for(var/datum/design/D in S.files.known_designs)
+									files.AddDesign2Known(D)
+								files.RefreshResearch()
+								server_processed = 1
+							if(!istype(S, /obj/machinery/r_n_d/server/centcom) && server_processed)
+								S.produce_heat()
 					screen = 1.6
 					updateUsrDialog()
 
@@ -786,3 +798,63 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 /obj/machinery/computer/rdconsole/core
 	name = "Core R&D Console"
 	id = 1
+
+/obj/machinery/computer/rdconsole/business
+	name = "Independent R&D Console"
+	req_access = null
+	id = 3
+	circuit = /obj/item/weapon/circuitboard/rdconsole/business
+	independent = 1
+	var/owner_name = ""
+	unique_save_vars = list("owner_uid", "owner_name")
+
+/obj/machinery/computer/rdconsole/business/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	var/obj/item/weapon/card/id/I = O.GetID()
+	if(!owner_uid && I)
+		if(!I.unique_ID || !I.registered_name || !I.associated_account_number || !check_account_exists(I.associated_account_number))
+			visible_message("<span class='notice'>There is an issue with setting your ownership on this message, it could be due to a lack of details on the card like \
+			a unique id, name, or valid bank details. Please contact a technician for more details.</span>")
+			return
+		else
+			set_new_owner(I)
+		return
+
+	if(!owner_uid)
+		to_chat(user, "<span class='notice'>Please swipe your ID to claim ownership of this server!</span>")
+		return
+
+	//Loading a disk into it.
+	if(istype(O, /obj/item/weapon/disk))
+		if(t_disk || d_disk)
+			user << "A disk is already loaded into the machine."
+			return
+
+		if(istype(O, /obj/item/weapon/disk/tech_disk))
+			t_disk = O
+		else if (istype(O, /obj/item/weapon/disk/design_disk))
+			d_disk = O
+		else
+			user << "<span class='notice'>Machine cannot accept disks in that format.</span>"
+			return
+		user.drop_item()
+		O.loc = src
+		to_chat(usr, "<span class='notice'>You add \the [O] to the machine.</span>")
+	else
+		//The construction/deconstruction of the console code.
+		..()
+
+	src.updateUsrDialog()
+	return
+
+
+
+/obj/machinery/computer/rdconsole/business/proc/set_new_owner(obj/item/weapon/card/id/I)
+	owner_name = I.registered_name
+	owner_uid = I.unique_ID
+	visible_message("<span class='info'>New owner set to '[I.registered_name]'.</span>")
+	playsound(src, 'sound/machines/chime.ogg', 25)
+
+/obj/machinery/computer/rdconsole/business/examine(mob/user)
+	..()
+	if(owner_name)
+		to_chat(user, "[name] belongs to <b>[owner_name]</b>, report any issues with the server to LogiSoft Co.")

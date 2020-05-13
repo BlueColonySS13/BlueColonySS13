@@ -76,6 +76,10 @@ obj/item/weapon/circuitboard/rdserver/attackby(obj/item/I as obj, mob/user as mo
 							/obj/item/weapon/stock_parts/micro_laser = 1,
 							/obj/item/weapon/stock_parts/console_screen = 1)
 
+/obj/item/weapon/circuitboard/mechfab/business
+	name = "Circuit board (Exosuit Fabricator - Business)"
+	build_path = /obj/machinery/mecha_part_fabricator/business
+
 /obj/item/weapon/circuitboard/prosthetics
 	name = "Circuit board (Prosthetics Fabricator)"
 	build_path = /obj/machinery/pros_fabricator
@@ -87,10 +91,13 @@ obj/item/weapon/circuitboard/rdserver/attackby(obj/item/I as obj, mob/user as mo
 							/obj/item/weapon/stock_parts/micro_laser = 1,
 							/obj/item/weapon/stock_parts/console_screen = 1)
 
+/obj/item/weapon/circuitboard/prosthetics/business
+	name = "Circuit board (Prosthetics Fabricator - Business)"
+	build_path = /obj/machinery/pros_fabricator/business
+
 /obj/item/weapon/circuitboard/ntnet_relay
 	name = "Circuit board (NTNet Quantum Relay)"
 	build_path = "/obj/machinery/ntnet_relay"
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_DATA = 4)
-	req_components = list(
-							"/obj/item/stack/cable_coil" = 15)
+	req_components = list("/obj/item/stack/cable_coil" = 15)

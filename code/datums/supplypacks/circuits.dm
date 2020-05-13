@@ -122,3 +122,13 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Inventory Box Circuit"
 
+/datum/supply_pack/circuits/science
+	contains = list(/obj/item/weapon/circuitboard/prosthetics/business,
+					/obj/item/weapon/circuitboard/mechfab/business,
+					/obj/item/weapon/circuitboard/rdconsole/business,
+					/obj/item/weapon/circuitboard/rdserver/business)
+
+	name = "Research Circuits"
+	cost = 1200
+	containertype = /obj/structure/closet/crate/secure/science
+	containername = "Research Circuits"

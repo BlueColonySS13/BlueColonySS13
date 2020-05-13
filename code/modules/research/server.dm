@@ -12,7 +12,7 @@
 	var/produces_heat = 1
 	idle_power_usage = 800
 	var/delay = 10
-	req_access = list(access_rd) //Only the R&D can change server settings.
+	req_access = list(access_rd) //Only the RD can change server settings.
 	circuit = /obj/item/weapon/circuitboard/rdserver
 
 /obj/machinery/r_n_d/server/New()
@@ -310,3 +310,74 @@
 	id_with_upload_string = "1"
 	id_with_download_string = "1"
 	server_id = 1
+
+/obj/machinery/r_n_d/server/business
+	name = "Independent R&D Server"
+	server_id = 3
+	id_with_upload_string = "1;3"
+	id_with_download_string = "1;3"
+	req_access = null
+	circuit = /obj/item/weapon/circuitboard/rdserver/business
+
+	var/owner_uid
+	var/owner_name = ""
+
+	unique_save_vars = list("owner_uid", "owner_name", "anchored")
+
+/obj/machinery/r_n_d/server/business/verb/set_anchors()
+	set name = "Set Anchors"
+	set desc = "Set the anchors of the machine."
+	set category = "Object"
+	set src in oview(1)
+
+	var/obj/item/weapon/card/id/I = usr.GetIdCard()
+
+	if(!I || !I.unique_ID)
+		to_chat(usr, "<span class='notice'>You require an ID card with a unique id set on it to do this!</span>")
+		return
+
+	if(I.unique_ID != owner_uid)
+		to_chat(usr, "<span class='notice'>Your ID's unique id does not match this unit!</span>")
+		return
+
+	anchored = !anchored
+	playsound(src, 'sound/items/drill_use.ogg', 25)
+
+	if(anchored)
+		to_chat(usr, "<b>The anchors tether themselves back into the floor. It is now secured.</b>")
+	else
+		to_chat(usr, "<b>You toggle the anchors of the token machine. It can now be moved.</b>")
+
+/obj/machinery/r_n_d/server/business/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(default_deconstruction_screwdriver(user, O))
+		return
+	if(default_deconstruction_crowbar(user, O))
+		return
+	if(default_part_replacement(user, O))
+		return
+
+	var/obj/item/weapon/card/id/I = O.GetID()
+	if(!owner_uid && I)
+		if(!I.unique_ID || !I.registered_name || !I.associated_account_number || !check_account_exists(I.associated_account_number))
+			visible_message("<span class='notice'>There is an issue with setting your ownership on this message, it could be due to a lack of details on the card like \
+			a unique id, name, or valid bank details. Please contact a technician for more details.</span>")
+			return
+		else
+			set_new_owner(I)
+		return
+
+
+	if(!owner_uid)
+		to_chat(user, "<span class='notice'>Please swipe your ID to claim ownership of this server!</span>")
+		return
+
+/obj/machinery/r_n_d/server/business/proc/set_new_owner(obj/item/weapon/card/id/I)
+	owner_name = I.registered_name
+	owner_uid = I.unique_ID
+	visible_message("<span class='info'>New owner set to '[I.registered_name]'.</span>")
+	playsound(src, 'sound/machines/chime.ogg', 25)
+
+/obj/machinery/r_n_d/server/business/examine(mob/user)
+	..()
+	if(owner_name)
+		to_chat(user, "[name] belongs to <b>[owner_name]</b>, report any issues with the server to LogiSoft Co.")
