@@ -5,7 +5,7 @@
 
 	//money related
 	var/has_bank = TRUE
-	var/starting_money = 7500
+	var/starting_money = 0
 	var/datum/money_account/department/bank_account
 
 	var/dept_type = PUBLIC_DEPARTMENT
@@ -24,8 +24,21 @@
 	var/datum/department/department
 	max_transaction_logs = DEPARTMENT_TRANSACTION_LIMIT
 
-/datum/department/New()
+/datum/department/New(d_name, d_type, d_id, d_desc, d_hasbank = TRUE, d_starting_money)
 	..()
+	if(d_name)
+		name = d_name
+	if(d_type)
+		dept_type = d_type
+	if(d_id)
+		id = d_id
+	if(d_desc)
+		desc = d_desc
+	if(d_hasbank)
+		has_bank = d_hasbank
+	if(d_starting_money)
+		starting_money = d_starting_money
+
 	make_bank_account()
 	GLOB.departments += src
 
@@ -38,6 +51,8 @@
 			GLOB.external_departments += src
 		if(HIDDEN_DEPARTMENT)
 			GLOB.hidden_departments += src
+		if(BUSINESS_DEPARTMENT)
+			GLOB.business_departments += src
 
 /datum/department/proc/sanitize_values()	// juuuust in case shittery happens.
 	if(!blacklisted_employees)
@@ -161,3 +176,12 @@
 		return TRUE
 
 	return FALSE
+
+/datum/department/proc/get_all_jobs()
+	var/list/dept_jobs = list()
+	for(var/datum/job/J in SSjobs.occupations)
+		if(J.department == id)
+			dept_jobs += J
+
+	return dept_jobs
+

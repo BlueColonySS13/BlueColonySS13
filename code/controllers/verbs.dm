@@ -66,7 +66,7 @@
 
 /client/proc/debug_controller(controller in list("Master","Ticker","Ticker Process","Air","Jobs","Sun","Economy","Payroll", \
 	"Laws","Emails","Lots","Radio","Supply","Shuttles","Emergency Shuttle","Configuration","pAI", "Cameras", "Transfer Controller", \
-	"Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets", "Websites"))
+	"Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets", "Websites", "Businesses"))
 
 	set category = "Debug"
 	set name = "Debug Controller"
@@ -87,7 +87,7 @@
 			debug_variables(air_master)
 			feedback_add_details("admin_verb","DAir")
 		if("Jobs")
-			debug_variables(job_master)
+			debug_variables(SSjobs)
 			feedback_add_details("admin_verb","DJobs")
 		if("Radio")
 			debug_variables(radio_controller)
@@ -152,5 +152,8 @@
 		if("Websites")
 			debug_variables(SSwebsites)
 			feedback_add_details("admin_verb", "DWebsites")
+		if("Businesses")
+			debug_variables(SSbusiness)
+			feedback_add_details("admin_verb", "DBusinesses")
 
 	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")

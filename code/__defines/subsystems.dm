@@ -66,7 +66,8 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_PLANETS		-4
 #define INIT_ORDER_HOLOMAPS		-5
 #define INIT_ORDER_OVERLAY		-6
-#define INIT_ORDER_ECONOMY		-19
+#define INIT_ORDER_ECONOMY		-18
+#define INIT_ORDER_JOBS            -19
 #define INIT_ORDER_XENOARCH		-20
 #define INIT_ORDER_CIRCUIT		-21
 #define INIT_ORDER_EMAILS		-22
@@ -77,6 +78,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_LAW			-27
 #define INIT_ORDER_LOTS			-28
 #define INIT_ORDER_WEBSITES		-29
+#define INIT_ORDER_BUSINESS		-30
 
 
 // Subsystem fire priority, from lowest to highest priority

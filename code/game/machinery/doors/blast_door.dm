@@ -35,7 +35,10 @@
 	var/begins_closed = TRUE
 
 
-	unique_save_vars = list("id")
+	unique_save_vars = list("id", "density")
+
+/obj/machinery/door/blast/on_persistence_load()
+	update_icon()
 
 /obj/machinery/door/blast/initialize()
 	..()

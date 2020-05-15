@@ -117,12 +117,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/datum/nano_module/program/business_manager/proc/reset_fields()
-	b_name = initial(b_name)
-	b_desc = initial(b_desc)
-	b_slogan = initial(b_slogan)
-	b_category = initial(b_category)
-	business_pass = initial(business_pass)
+
 
 /datum/nano_module/program/business_manager/Topic(href, href_list)
 	if(..()) return 1

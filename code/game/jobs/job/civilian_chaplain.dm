@@ -8,7 +8,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	minimum_character_age = 18
-	email_domain = "faith.nt"
+
 	supervisors = "the city clerk"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/chaplain
@@ -19,6 +19,13 @@
 	alt_titles = list("Counselor", "Priest", "Preacher")
 
 	outfit_type = /decl/hierarchy/outfit/job/civilian/chaplain
+
+
+	description = "As a chaplain you are expected to provide spiritual or counselling services for the city. \
+	You can also provide marriage ceromonies or host private events in the chapel."
+
+	duties = list("Light candles", "Attempt to convert people to your religion", "Get ignored")
+
 
 /datum/job/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
 	. = ..()

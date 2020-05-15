@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(payroll)
 
 /datum/controller/subsystem/payroll/proc/payroll(var/datum/data/record/G)
 	var/bank_number = G.fields["bank_account"]
-	var/datum/job/job = job_master.GetJob(G.fields["real_rank"])
+	var/datum/job/job = SSjobs.GetJob(G.fields["real_rank"])
 	var/department
 	var/class = G.fields["economic_status"]
 	var/name = G.fields["name"]

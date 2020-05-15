@@ -336,6 +336,8 @@
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
 /client/proc/send_resources()
 
+	send_job_resources()
+
 	getFiles(
 		'html/search.js',
 		'html/panels.css',
@@ -418,3 +420,10 @@ client/verb/character_setup()
 	if(check_rights(R_ADMIN, 0, mob))
 		return 1
 	return 0
+
+/client/proc/send_job_resources()
+	for(var/datum/job/job in SSjobs.occupations)
+		var/mob/living/carbon/human/dummy/mannequin/mannequin = job.get_job_mannequin()
+		var/icon/job_icon = getFlatIcon(mannequin, SOUTH)
+		job_icon.Scale(job_icon.Width() * 2.5, job_icon.Height() * 2.5)
+		send_rsc(mob, job_icon, "job_icon_[job.title].png")

@@ -13,6 +13,8 @@
 	plane = PLATING_PLANE
 	layer = WIRES_LAYER+0.01
 
+	dont_save = TRUE
+
 
 /obj/machinery/power/terminal/New()
 	..()

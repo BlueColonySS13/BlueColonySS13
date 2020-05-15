@@ -44,6 +44,9 @@ SUBSYSTEM_DEF(economy)
 	for(var/obj/machinery/status_display/money_display/MD in GLOB.money_displays)
 		MD.link_to_account()
 
+	for(var/obj/machinery/inventory_machine/nanotrasen/NTBOX in GLOB.inventory_boxes)
+		NTBOX.link_nt_account()
+
 /datum/controller/subsystem/economy/proc/charge_head_department(amount, purpose)
 	if(!using_map || !HEAD_DEPARTMENT) // shouldn't happen, but just in case
 		return
