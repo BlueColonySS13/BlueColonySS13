@@ -19,13 +19,21 @@
 
 	allowed_buy_types = list(SPEND_OFFICE)
 
+/datum/department/public
+	name = "Public Funds"
+	id = DEPT_PUBLIC
+	starting_money = 300
+	desc = "The public funding account. This pays welfare to unemployed, disabled or providing vacation pay to off-duty coucil members, also may fund any jobs that are government supported."
+	allowed_buy_types = list(SPEND_OFFICE, SPEND_HOSPITALITY, SPEND_FOODDRINK, SPEND_ALCOHOL, SPEND_TOBACCO, SPEND_GROOMING)
+	dept_color = "#468047"
+
 /datum/department/law
 	name = "Legal"
 	id = DEPT_LEGAL
 	starting_money = 3000
 	desc = "The publicly funded legal department is paid from this account. Money that is spent on court cases go here and is withdrawn from here."
 	allowed_buy_types = list(SPEND_OFFICE)
-	dept_color = "#1D1D4F"
+	dept_color = "#78164f"
 
 /datum/department/maintenance
 	name = "Maintenance"
@@ -34,7 +42,7 @@
 
 	desc = "The maintenance department is paid from this budget. Any city works fees are also paid into this account."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_MAINTENANCE, SPEND_ENGINEERING, SPEND_CLEANING, SPEND_MATERIALS)
-	dept_color = "#5B4D20"
+	dept_color = "#9c6c2d"
 
 /datum/department/research
 	name = "Research"
@@ -51,7 +59,7 @@
 	starting_money = 3000
 	desc = "The police department is funded by this account. Money made from fines are paid into this account."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_SECURITYSUPPLIES, SPEND_WEAPONS)
-	dept_color = "#633D63"
+	dept_color = "#7a2a2a"
 
 /datum/department/healthcare
 	name = "Healthcare"
@@ -59,15 +67,7 @@
 	starting_money = 3000
 	desc = "The hospital and its employees are paid from this account. Any publicly provided medical vendors, medications, treatments and surgeries are income for this department."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_MEDICAL, SPEND_CHEMISTRY)
-	dept_color = "#013D3B"
-
-/datum/department/public
-	name = "Public Funds"
-	id = DEPT_PUBLIC
-	starting_money = 300
-	desc = "The public funding account. This pays welfare to unemployed, disabled or providing vacation pay to off-duty coucil members, also may fund any jobs that are government supported."
-	allowed_buy_types = list(SPEND_OFFICE, SPEND_HOSPITALITY, SPEND_FOODDRINK, SPEND_ALCOHOL, SPEND_TOBACCO, SPEND_GROOMING)
-	dept_color = "#515151"
+	dept_color = "#457c7d"
 
 /datum/department/pdf
 	name = "Pollux Defense Force"
@@ -125,7 +125,7 @@
 	starting_money = 1000000
 
 	dept_type = EXTERNAL_DEPARTMENT
-	dept_color = "#7F6E2C"
+	dept_color = "#787654"
 
 
 

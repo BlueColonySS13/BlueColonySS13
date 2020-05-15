@@ -91,10 +91,10 @@ var/global/datum/controller/gameticker/ticker
 		to_chat(world, "<span class='danger'>Serious error in mode setup!</span> Reverting to pregame lobby.") //Uses setup instead of set up due to computational context.
 		return 0
 
-	job_master.ResetOccupations()
+	SSjobs.ResetOccupations()
 	src.mode.create_antagonists()
 	src.mode.pre_setup()
-	job_master.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
+	SSjobs.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
 
 	if(!src.mode.can_start())
 		world << "<B>Unable to start [mode.name].</B> Not enough players readied, [mode.required_players] players needed. Reverting to pregame lobby."
@@ -102,7 +102,7 @@ var/global/datum/controller/gameticker/ticker
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		mode.fail_setup()
 		mode = null
-		job_master.ResetOccupations()
+		SSjobs.ResetOccupations()
 		return 0
 
 	if(hide_mode)
@@ -294,7 +294,7 @@ var/global/datum/controller/gameticker/ticker
 				if(player.mind.assigned_role == "Mayor")
 					captainless=0
 				if(!player_is_antag(player.mind, only_offstation_roles = 1))
-					job_master.EquipRank(player, player.mind.assigned_role, 0)
+					SSjobs.EquipRank(player, player.mind.assigned_role, 0)
 					UpdateFactionList(player)
 					equip_custom_items(player)
 					player.apply_traits()

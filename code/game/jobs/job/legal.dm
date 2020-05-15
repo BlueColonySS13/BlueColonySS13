@@ -8,7 +8,7 @@
 	spawn_positions = 2
 	department_flag = CIVILIAN
 	req_admin_notify = 1
-	email_domain = "judges.gov.nt"
+
 	supervisors = "government officials and the president"
 	selection_color = "#1D1D4F"
 	idtype = /obj/item/weapon/card/id/heads/judge
@@ -30,7 +30,7 @@
 
 /datum/job/prosecutor
 	title = "District Prosecutor"
-	email_domain = "prosecute.nt"
+
 	flag = PROSECUTOR
 	faction = "City"
 	department = DEPT_LEGAL

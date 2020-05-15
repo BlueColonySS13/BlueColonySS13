@@ -8,10 +8,11 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Mayor"
+	subordinates = "the maintenance department"
 	selection_color = "#7F6E2C"
 	idtype = /obj/item/weapon/card/id/engineering/head
 	req_admin_notify = 1
-	email_domain = "cityworks.gov.nt"
+
 	wage = 330
 
 	minimum_character_age = 25
@@ -57,11 +58,11 @@
 */
 /datum/job/atmos
 	title = "Maintenance Worker"
-	email_domain = "cityworks.gov.nt"
+
 	flag = ATMOSTECH
 	department_flag = ENGSEC
 	faction = "City"
-	email_domain = "cityworks.gov.nt"
+
 	department = DEPT_MAINTENANCE
 	total_positions = 3
 	spawn_positions = 2
@@ -90,7 +91,7 @@
 	spawn_positions = 2
 	supervisors = "the maintenance director"
 	selection_color = "#515151"
-	email_domain = "sanitation.gminus.plux.gov.nt"
+
 	idtype = /obj/item/weapon/card/id/civilian/janitor
 	access = list(access_engine, access_engine_equip, access_external_airlocks, access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)

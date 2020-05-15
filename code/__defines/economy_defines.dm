@@ -9,7 +9,8 @@
 #define PUBLIC_DEPARTMENT 1
 #define PRIVATE_DEPARTMENT 2
 #define EXTERNAL_DEPARTMENT 3
-#define HIDDEN_DEPARTMENT 4 // for fat-tions
+#define HIDDEN_DEPARTMENT 4 // for factions
+#define BUSINESS_DEPARTMENT 5 // business type departments
 
 // Getting the map's head departments
 #define HEAD_DEPARTMENT using_map.get_head_department()

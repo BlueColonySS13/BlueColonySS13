@@ -5,13 +5,14 @@
 	//Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
 	var/list/minimal_access = list()      // Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population)
 	var/list/access = list()              // Useful for servers which either have fewer players, so each person needs to fill more than one role, or servers which like to give more access, so players can't hide forever in their super secure departments (I'm looking at you, chemistry!)
-	var/flag = 0 	                      // Bitflags for the job
+	var/flag = 0 	                       // Bitflags for the job
 	var/department_flag = 0
-	var/faction = "None"	              // Players will be allowed to spawn in as jobs that are set to "City"
+	var/faction = "None"	             // Players will be allowed to spawn in as jobs that are set to "City"
 	var/total_positions = 0               // How many players can be this job
 	var/spawn_positions = 0               // How many players can spawn in as this job
 	var/current_positions = 0             // How many players have this job
 	var/supervisors = null                // Supervisors, who this person answers to directly
+	var/subordinates = null			   // If you are a supervisor, who do you command?
 	var/selection_color = "#ffffff"       // Selection screen color
 	var/idtype = /obj/item/weapon/card/id // The type of the ID the player will have
 	var/list/alt_titles                   // List of alternate titles, if any
@@ -25,17 +26,20 @@
 	var/wage = 20					    // Per Hour
 	var/outfit_type
 
-	// Email addresses will be created under this domain name. Mostly for the looks.
-	var/email_domain = "freemail.nt"
-
 	var/hard_whitelisted = 0 			// jobs that are hard whitelisted need players to be added to hardjobwhitelist.txt with the format [ckey] - [job] in order to work.
 	var/clean_record_required = FALSE		// This job needs a clean record.
 
 	var/no_shuttle = FALSE
 
+	var/description = "This is a job, you work and earn a wage."
+	var/list/duties = list()
+	var/enabled = TRUE
+
 /datum/job/proc/get_job_email()			// whatever this is set to will be the job's communal email. should be persistent.
 	return
 
+/datum/job/proc/get_department()
+	return dept_by_id(department)
 
 /datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
 	var/decl/hierarchy/outfit/outfit = get_outfit(H, alt_title)
@@ -60,12 +64,6 @@
 /datum/job/proc/setup_account(var/mob/living/carbon/human/H)
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
-
-
-
-
-
-
 	// To prevent abuse, no one recieves wages at roundstart and must play for at least an hour.
 	// We'll see how this goes.
 	var/money_amount = H.mind.prefs.money_balance
@@ -115,7 +113,7 @@
 
 
 // overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()
-/datum/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title)
+/datum/job/proc/equip_preview(mob/living/carbon/human/H, var/alt_title, var/additional_skips)
 	var/decl/hierarchy/outfit/outfit = get_outfit(H, alt_title)
 	if(!outfit)
 		return FALSE
@@ -154,3 +152,48 @@
 
 /datum/job/proc/has_alt_title(var/mob/H, var/supplied_title, var/desired_title)
 	return (supplied_title == desired_title) || (H.mind && H.mind.role_alt_title == desired_title)
+
+//	Creates mannequin with equipment for current job and stores it for future reference
+//	used for preview
+//	You can use getflaticon(mannequin) to get icon out of it
+/datum/job/proc/get_job_mannequin()
+	if(!SSjobs.job_mannequins[title])
+		var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin("#job_icon_[title]")
+		dress_mannequin(mannequin)
+
+
+		SSjobs.job_mannequins[title] = mannequin
+	return SSjobs.job_mannequins[title]
+
+/datum/job/proc/dress_mannequin(var/mob/living/carbon/human/dummy/mannequin/mannequin)
+	mannequin.delete_inventory(TRUE)
+	equip_preview(mannequin)
+
+
+/datum/job/proc/get_full_description()
+	var/dat = "[description]<br><br>"
+
+	if(!isemptylist(duties))
+		for(var/V in duties)
+			dat += "     - [V].<br>"
+	else
+		dat += "     - None.<br>"
+
+	if(wage)
+		dat += "<br><br><b>Wage:</b> [cash2text( wage, FALSE, TRUE, TRUE )] PH (per hour)"
+	if(head_position && subordinates)
+		dat += "<br><br>You are in charge of <b>[subordinates].</b>"
+	if(supervisors)
+		dat += "<br><br>You follow the orders of <b>[supervisors].</b>"
+	if(clean_record_required)
+		dat += "<br>You need a <b>clean criminal record</b> to work in this job.</b>"
+	return dat
+
+/datum/job/proc/get_active()
+	var/active = 0
+
+	for(var/mob/M in player_list)
+		if(M.mind && M.client && M.mind.assigned_role == title && M.client.inactivity <= 10 * 60 * 10)
+			active++
+
+	return active

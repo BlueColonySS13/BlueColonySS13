@@ -37,6 +37,17 @@
 	..()
 	GLOB.inventory_boxes += src
 
+/obj/machinery/inventory_machine/nanotrasen/New()
+	..()
+	var/datum/department/nt_dep = dept_acc_by_id(DEPT_NANOTRASEN)
+
+	owner_name = "Nanotrasen"
+	bank_id = nt_dep.bank_account.account_number
+	owner_uid = "Nanotrasen"
+	charge = 3000
+	staff_pin = 10000	// you can't enter a pin over 9999, so this is unhackable.
+
+
 /obj/machinery/inventory_machine/update_icon()
 	if(disabled)
 		icon_state = "inv-tri_off"

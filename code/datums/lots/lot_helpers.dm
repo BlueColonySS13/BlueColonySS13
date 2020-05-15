@@ -184,7 +184,7 @@
 
 	// to be expanded. services could be added here in future.
 
-	return full_charge
+	return round(full_charge)
 
 
 // Application helps

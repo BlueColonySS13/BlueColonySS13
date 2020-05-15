@@ -127,7 +127,7 @@
 	var/obj/item/weapon/card/id/I = user.GetIdCard()
 
 	if(I && I.rank)
-		var/datum/job/has_job = job_master.GetJob(I.rank)
+		var/datum/job/has_job = SSjobs.GetJob(I.rank)
 		department = has_job.department
 
 		var/eligible_department = dept_by_id(department)

@@ -7,7 +7,7 @@
 	department_flag = CIVILIAN
 	total_positions = 2
 	spawn_positions = 2
-	email_domain = "foodstuffs.nt"
+
 	supervisors = "the bar manager"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/bartender
@@ -27,7 +27,7 @@
 	department_flag = CIVILIAN
 	total_positions = 2
 	spawn_positions = 2
-	email_domain = "foodstuffs.nt"
+
 	supervisors = "the bar manager"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/chef
@@ -47,7 +47,7 @@
 	total_positions = 2
 	spawn_positions = 1
 	supervisors = "the bar manager"
-	email_domain = "foodstuffs.nt"
+
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/botanist
 	access = list(access_hydroponics, access_bar, access_kitchen)
@@ -66,7 +66,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the bar owner"
-	email_domain = "foodstuffs.nt"
+	subordinates = "the bar employees"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/bartender
 	access = list(access_hydroponics, access_bar, access_kitchen)
@@ -110,7 +110,7 @@
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/defense
 	wage = 140
-	email_domain = "legal.nt"
+
 	req_admin_notify = 1
 	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
 	minimal_access = list(access_lawyer, access_sec_doors, access_heads, access_legal)
@@ -150,7 +150,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the factory owners"
-	email_domain = ".aoki.nt"
+	subordinates = "the factory workers"
 	selection_color = "#7a4f33"
 	idtype = /obj/item/weapon/card/id/cargo/head
 	wage = 150
@@ -169,7 +169,7 @@
 	department = DEPT_FACTORY
 	department_flag = CIVILIAN
 	total_positions = 4
-	email_domain = "aoki.nt"
+
 	spawn_positions = 4
 	supervisors = "the factory manager"
 	selection_color = "#9b633e"
@@ -192,7 +192,7 @@
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the factory manager"
-	email_domain = "aoki.nt"
+
 	selection_color = "#9b633e"
 	idtype = /obj/item/weapon/card/id/cargo/mining
 	wage = 40

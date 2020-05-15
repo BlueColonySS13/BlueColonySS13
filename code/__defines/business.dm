@@ -1,4 +1,6 @@
 
+//business categories
+
 #define CAT_ADS "Advertising/PR"
 #define CAT_FARM "Agriculture/Farming"
 #define CAT_BANK "Bank/Financial"
@@ -19,3 +21,8 @@
 #define CAT_JANITOR "Sanitation Services"
 #define CAT_SEC "Security Services"
 #define CAT_TECH "Technology"
+
+// business statuses
+
+#define BUSINESS_ACTIVE "Active"
+#define BUSINESS_SUSPENDED "Suspended"

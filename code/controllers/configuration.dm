@@ -341,6 +341,9 @@ var/list/gamemode_cache = list()
 				if ("lot_saving")
 					config.lot_saving = 1
 
+				if("allow_businesses")
+					config.allow_businesses = 1
+
 				if ("log_say")
 					config.log_say = 1
 

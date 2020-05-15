@@ -9,6 +9,7 @@ GLOBAL_LIST_EMPTY(departments)
 
 GLOBAL_LIST_EMPTY(public_departments)
 GLOBAL_LIST_EMPTY(private_departments)
+GLOBAL_LIST_EMPTY(business_departments)
 GLOBAL_LIST_EMPTY(external_departments)
 GLOBAL_LIST_EMPTY(hidden_departments)
 

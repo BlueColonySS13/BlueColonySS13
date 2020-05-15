@@ -442,6 +442,9 @@ HARD_SAVING
 ## Comment out to disable lot saving.
 LOT_SAVING
 
+## Comment out to disable businesses.
+ALLOW_BUSINESSES
+
 ## Gamemode voting
 # Comment this out to disable gamemode voting.
 # GAMEMODE_VOTE

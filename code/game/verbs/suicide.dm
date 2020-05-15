@@ -32,7 +32,7 @@
 	if(config.canonicity)
 		handle_delete_character()
 	if(job)
-		job_master.FreeRole(job)
+		SSjobs.FreeRole(job)
 
 	if(!canmove || restrained())	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
 		to_chat(src, "You can't commit suicide whilst restrained! ((You can type Ghost instead however.))")
@@ -84,9 +84,9 @@
 			return
 
 		log_and_message_admins("[key_name(src)] commited suicide")
-		
+
 		var/datum/gender/T = gender_datums[get_visible_gender()]
-		
+
 		var/suicidemsg
 		suicidemsg = pick("<span class='danger'>[src] is attempting to bite [T.his] tongue off! It looks like [T.he] [T.is] trying to commit suicide.</span>", \
 		                     "<span class='danger'>[src] is jamming [T.his] thumbs into [T.his] eye sockets! It looks like [T.he] [T.is] trying to commit suicide.</span>", \
@@ -177,17 +177,17 @@
 		death(0)
 	else
 		to_chat(src, "Aborting suicide attempt.")
-		
+
 /mob/living/carbon/human/proc/handle_delete_character()
 	if(!mind || !mind.prefs)
 		return 0
-		
+
 	if(!(unique_id == mind.prefs.unique_id))	// make sure it's the same character
 		return 0
-		
+
 	if(!config.canonicity)
 		return 0
-		
+
 	if(SSelections && SSelections.current_president)
 		if(SSelections.current_president.unique_id == mind.prefs.unique_id)	// if they're pres, they ded
 			SSelections.clear_president()

@@ -15,15 +15,15 @@ a, a:link, a:visited, a:active, .linkOn, .linkOff
 <h1>Business Management Program</h1><hr>
 
 {{if data.index == 1}}
+		{{:data.page_msg}}<br><br>
 
-<br><br>
-
-<p><br>
+		{{:helper.link('Manage Business', null, {'action' : 'sw_menu', 'target' : 2})}}
+		{{:helper.link('Register New Business', null, {'action' : 'sw_menu', 'target' : 3})}}
 
 {{else}}
 
-{{:helper.link("Main Menu", null, {'main' : 1})}}
-{{if data.current_lot}}
+{{:helper.link("Main Menu", null, {'main_menu' : 1})}}
+{{if data.current_business}}
 {{:helper.link("Back", null, {'back' : 1})}}
 {{/if}}	
 	<br>

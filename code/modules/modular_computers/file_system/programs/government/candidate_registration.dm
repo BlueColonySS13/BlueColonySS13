@@ -74,7 +74,7 @@
 	if(index == 8)
 		page_msg = "According to the current law, you are not eligible to register as a candidate, you must be of the minimum age and have the same criteria of the general voting rights to become a president. See law book for details."
 
-		var/datum/job/presjob = job_master.GetJob("President")
+		var/datum/job/presjob = SSjobs.GetJob("President")
 
 		page_msg += "<br><br><b><u>Current Critera:</u></b>"
 		page_msg += "<br><b>Minimum President age:</b> [presjob.minimum_character_age]"
@@ -247,7 +247,7 @@
 		var/old_enough = 0
 		if(ishuman(usr))
 			var/mob/living/carbon/human/H = usr
-			var/datum/job/presjob = job_master.GetJob("President")
+			var/datum/job/presjob = SSjobs.GetJob("President")
 			if(H.age > presjob.minimum_character_age - 1)
 				old_enough = 1
 		if(is_voting_ineligible(usr) || !old_enough)
