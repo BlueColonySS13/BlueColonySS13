@@ -21,11 +21,18 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	wage = 420
 
 	minimum_character_age = 30
-	ideal_character_age = 50 // Old geezer captains ftw // Get your MILF/DILF fetish out of here //OwO What's this? // what the fuck - myo
+	ideal_character_age = 50
 
 	outfit_type = /decl/hierarchy/outfit/job/heads/captain
 
 	clean_record_required = TRUE
+
+	description = "Mayors are expected to keep the city council in line - you don't really get to call all the shots, but you can call most of them. \
+	Usually if you're a good mayor you'll let council members do their jobs and only step in when needed. \
+	Alternatively, you can just disable carp control and thin the herd."
+
+	duties = list("Fire council members for incompetence", "Smoke cigars", "Get arrested for corruption")
+
 
 /datum/job/captain/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email

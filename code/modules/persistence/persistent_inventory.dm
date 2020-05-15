@@ -39,10 +39,13 @@
 
 /obj/machinery/inventory_machine/nanotrasen/New()
 	..()
-	var/datum/department/nt_dep = dept_acc_by_id(DEPT_NANOTRASEN)
+	link_nt_account()
+
+/obj/machinery/inventory_machine/nanotrasen/proc/link_nt_account()
+	var/datum/money_account/nt_dep = dept_acc_by_id(DEPT_NANOTRASEN)
 
 	owner_name = "Nanotrasen"
-	bank_id = nt_dep.bank_account.account_number
+	bank_id = nt_dep.account_number
 	owner_uid = "Nanotrasen"
 	charge = 3000
 	staff_pin = 10000	// you can't enter a pin over 9999, so this is unhackable.

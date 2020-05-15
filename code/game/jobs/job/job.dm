@@ -31,7 +31,7 @@
 
 	var/no_shuttle = FALSE
 
-	var/description = "This is a job, you work and earn a wage."
+	var/description = ""
 	var/list/duties = list()
 	var/enabled = TRUE
 
@@ -171,14 +171,14 @@
 
 
 /datum/job/proc/get_full_description()
-	var/dat = "[description]<br><br>"
+	var/dat
+
+	if(description)
+		dat += "[description]<br><br>"
 
 	if(!isemptylist(duties))
 		for(var/V in duties)
 			dat += "     - [V].<br>"
-	else
-		dat += "     - None.<br>"
-
 	if(wage)
 		dat += "<br><br><b>Wage:</b> [cash2text( wage, FALSE, TRUE, TRUE )] PH (per hour)"
 	if(head_position && subordinates)

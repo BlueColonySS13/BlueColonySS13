@@ -20,6 +20,13 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/civilian/chaplain
 
+
+	description = "As a chaplain you are expected to provide spiritual or counselling services for the city. \
+	You can also provide marriage ceromonies or host private events in the chapel."
+
+	duties = list("Light candles", "Attempt to convert people to your religion", "Get ignored")
+
+
 /datum/job/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
 	. = ..()
 	if(!.)
