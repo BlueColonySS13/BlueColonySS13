@@ -186,6 +186,7 @@
 
 		selected_job = select_job
 		LateChoices()
+		return
 
 	if(href_list["SelectDeptType"])	//pre- SelectedJob usage for new menu
 		var/E = href_list["SelectDeptType"]
@@ -193,6 +194,7 @@
 
 		job_select_mode = new_dept
 		LateChoices()
+		return
 
 	if(href_list["SelectedJob"])
 		//Prevents people rejoining as same character.
