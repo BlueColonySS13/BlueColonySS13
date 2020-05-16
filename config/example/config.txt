@@ -448,3 +448,10 @@ ALLOW_BUSINESSES
 ## Gamemode voting
 # Comment this out to disable gamemode voting.
 # GAMEMODE_VOTE
+
+## BYOND Age ##
+#Set this to the byond age people need to be to join this server.
+MIN_BYOND_AGE 0
+
+#People under this byond age will be automatically given the anti-grief var
+BYOND_ANTIGRIEF_AGE 14
