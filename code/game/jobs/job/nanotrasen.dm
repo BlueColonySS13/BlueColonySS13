@@ -63,6 +63,9 @@
 	duties = list("Drain colony funds", "Pretend to be important", "Go home and roll in your money")
 
 
+/datum/job/nanotrasen/ceo/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
+	return using_map.director_email
+
 /datum/job/nanotrasen/cbia
 	title = "PDSI Agent"
 	flag = CBIA
