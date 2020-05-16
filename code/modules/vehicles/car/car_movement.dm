@@ -46,6 +46,12 @@
 			A.Move(T)	//bump things away when hit
 
 	if(istype(A, /mob/living))
+		if(istype(buckled_mobs[1], /mob/living/carbon/human))
+			var/mob/D = buckled_mobs[1]
+
+			if(D.IsAntiGrief())
+				return
+
 		var/mob/living/M = A
 		visible_message("<span class='danger'>[src] knocks over [M]!</span>")
 		playsound(src.loc, 'sound/vehicles/car_hit.ogg', 80, 0, 10)
@@ -78,50 +84,18 @@
 				add_attack_logs(D,M,"Ran over [M] with [src] driving as ([D]/[D.ckey]) in [src.loc] (emagged)")
 			healthcheck()
 			return
-	/*
-	//Eh, i'll figure this out. - Cass
-		if(istype(A, /obj/structure))
-			if(emagged)
-				if(istype(A, /obj/structure/barricade))
-					var/obj/structure/barricade/B = A
-					playsound(src.loc, 'sound/effects/woodcrash.ogg', 80, 0, 11025)
-					B.dismantle()
-					return
-				else if(istype(A, /obj/structure/table))
-					var/obj/structure/table/T = A
-					playsound(src.loc, 'sound/effects/woodcrash.ogg', 80, 0, 11025)
-					T.break_to_parts()
-					return
-				else if(istype(A, /obj/structure/grille))
-					var/obj/structure/grille/G = A
-					playsound(src.loc, 'sound/effects/grillehit.ogg', 80, 1)
-					G.health = 0
-					G.healthcheck()
-					return
-				else if(istype(A, /obj/structure/table/rack))
-					var/obj/structure/table/rack/R = A
-					playsound(src.loc, 'sound/effects/grillehit.ogg', 80, 1)
-					R.break_to_parts()
-					return
-				else if(istype(A, /obj/machinery/door/window/))
-					var/obj/machinery/door/window/W = A
-					W.shatter(1)
-					for(var/mob/living/C in buckled_mobs)
-						shake_camera(C, 3, 1)
-					return
-				else if(istype(A, /obj/structure/window/))
-					var/obj/structure/window/W = A
-					W.hit(10)
-					for(var/mob/living/C in buckled_mobs)
-						shake_camera(C, 3, 1)
-					return
-			else
-				return
-	*/
+
 	..()
 
 /obj/vehicle/car/RunOver(var/mob/living/carbon/human/H)
 	..()
+	if(istype(buckled_mobs[1], /mob/living/carbon/human))
+		var/mob/D = buckled_mobs[1]
+
+		if(D.IsAntiGrief())
+			return
+
+
 	visible_message("<span class='danger'>[src] run over [H]!</span>")
 	playsound(src.loc, 'sound/vehicles/car_hit.ogg', 80, 0, 10)
 	var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)

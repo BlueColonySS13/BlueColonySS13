@@ -127,7 +127,16 @@
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
+
+	if (W.is_hot() && user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>Yikes, that might be a bad idea.</span>")
+		return 0
+
 	if (istype(W,/obj/item/weapon/wrench))
+		if(user.IsAntiGrief())
+			to_chat(user, "<span class='danger'>You don't want to unwrench the faucet...</span>")
+			return 0
+
 		user.visible_message("[user] wrenches [src]'s faucet [modded ? "closed" : "open"].", \
 			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
 		modded = modded ? 0 : 1
@@ -140,6 +149,12 @@
 		if (rig)
 			user << "<span class='warning'>There is another device in the way.</span>"
 			return ..()
+
+
+		if(user && user.IsAntiGrief())
+			to_chat(user, "<span class='danger'>You don't feel like rigging the fueltank.</span>")
+			return 0
+
 		user.visible_message("[user] begins rigging [W] to \the [src].", "You begin rigging [W] to \the [src]")
 		if(do_after(user, 20))
 			user.visible_message("<span class='notice'>[user] rigs [W] to \the [src].</span>", "<span class='notice'>You rig [W] to \the [src]</span>")
@@ -162,6 +177,16 @@
 
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(var/obj/item/projectile/Proj)
+	//lot protection
+	var/area/this_area = get_area(src)
+	if(this_area.lot_id)
+		return
+
+	// grief protection
+	var/mob/fueltank_shooter = Proj.firer
+	if(fueltank_shooter.IsAntiGrief() )
+		return
+
 	if(Proj.get_structure_damage())
 		if(istype(Proj.firer))
 			message_admins("[key_name_admin(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")

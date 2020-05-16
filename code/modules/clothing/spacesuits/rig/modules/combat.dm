@@ -74,6 +74,10 @@
 		H << "<span class='danger'>You have not selected a grenade type.</span>"
 		return 0
 
+	if(H.IsAntiGrief())
+		to_chat(H, "<span class='danger'>You can't bring yourself to do this.</span>")
+		return 0
+
 	var/datum/rig_charge/charge = charges[charge_selected]
 
 	if(!charge)
