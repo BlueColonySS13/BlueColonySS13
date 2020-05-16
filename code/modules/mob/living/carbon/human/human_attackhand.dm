@@ -134,6 +134,11 @@
 
 		if(I_HURT)
 
+			if(H.IsAntiGrief())
+				to_chat(H, "<span class='danger'>You wish to do no harm.</span>")
+				return 0
+
+
 			if(M.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/weapon/grenade))
 				var/obj/item/weapon/grenade/G = wear_mask
 				if(!G.active)
@@ -146,6 +151,9 @@
 
 			if(!istype(H))
 				attack_generic(H,rand(1,3),"punched")
+				return
+
+			if(H == src) // no more punching yourself to death
 				return
 
 			var/rand_damage = rand(1, 5)
@@ -235,7 +243,7 @@
 				H.visible_message("<span class='danger'>[attack_message]</span>")
 
 			playsound(loc, ((miss_type) ? (miss_type == 1 ? attack.miss_sound : 'sound/weapons/thudswoosh.ogg') : attack.attack_sound), 25, 1, -1)
-			
+
 			add_attack_logs(H,src,"Melee attacked with fists (miss/block)")
 
 			if(miss_type)
@@ -359,6 +367,10 @@
 		return 0
 	var/obj/item/organ/external/organ = get_organ(check_zone(target_zone))
 	if(!organ || organ.dislocated > 0 || organ.dislocated == -1) //don't use is_dislocated() here, that checks parent
+		return 0
+
+	if(user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>Actually, that might be painful - I'll stop.</span>")
 		return 0
 
 	user.visible_message("<span class='warning'>[user] begins to dislocate [src]'s [organ.joint]!</span>")

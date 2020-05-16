@@ -34,6 +34,11 @@
 	if (!istype(M))
 		return
 
+	if(user && user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>You feel you're not qualified to use this.</span>")
+		return
+
+
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		var/obj/item/organ/external/affected = H.get_organ(user.zone_sel.selecting)

@@ -135,6 +135,11 @@
 
 	add_ip_cid_list(address, computer_id)
 
+	if(!byond_join_date)
+		byond_join_date = findJoinDate()
+
+	prefs.byond_join_date = byond_join_date
+
 	. = ..()	//calls mob.Login()
 	prefs.sanitize_preferences()
 
@@ -162,6 +167,30 @@
 			sleep(2) // wait a bit more, possibly fixes hardware mode not re-activating right
 			winset(src, null, "command=\".configure graphics-hwmode on\"")
 	log_client_to_db()
+
+	if(config.byond_antigrief_age)
+		var/player_age = get_byond_age()
+
+		if(config.byond_antigrief_age > player_age)
+			antigrief = TRUE
+
+	if(config.min_byond_age)
+		var/player_age = get_byond_age()
+		if(config.min_byond_age > player_age)
+			log_adminwarn("Failed Login: [key] - New account registered on [byond_join_date] (Age: [player_age] days) - Minimum: [config.min_byond_age] days.")
+			message_admins("<span class='adminnotice'>Failed Login: [key] -  New account registered on [byond_join_date] (Age: [player_age] days) - Minimum: [config.min_byond_age] days.</span>")
+			to_chat(src, "Apologies, this server is not accepting newly registered byond accounts right now. Please try again later.")
+			qdel(src)
+			return 0
+
+	//Panic bunker code
+	if (isnum(player_age) && player_age == 0) //first connection
+		if (config.panic_bunker && !holder && !deadmin_holder)
+			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
+			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
+			to_chat(src, "Sorry but the server is currently not accepting connections from never before seen players.")
+			qdel(src)
+			return 0
 
 	send_resources()
 	SSnanoui.send_resources(src)
@@ -225,6 +254,7 @@
 	else
 		return -1
 
+
 /proc/hard_save_player_age(mob/M)
 	if(!M || !M.client || !M.client.prefs)
 		return 0
@@ -234,6 +264,10 @@
 	age = text2num(Days_Difference(M.client.prefs.first_seen, M.client.prefs.last_seen))
 
 	return age
+
+/client/proc/get_byond_age()
+	return text2num(Days_Difference(byond_join_date, full_real_time() ))
+
 
 /client/proc/log_client_to_db()
 	if ( IsGuestKey(src.key) )
@@ -286,15 +320,6 @@
 	var/sql_computerid = sql_sanitize_text(src.computer_id)
 	var/sql_admin_rank = sql_sanitize_text(admin_rank)
 
-	//Panic bunker code
-	if (isnum(player_age) && player_age == 0) //first connection
-		if (config.panic_bunker && !holder && !deadmin_holder)
-			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
-			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
-			to_chat(src, "Sorry but the server is currently not accepting connections from never before seen players.")
-			qdel(src)
-			return 0
-
 	if(sql_id)
 		//Player already identified previously, we need to just update the 'lastseen', 'ip' and 'computer_id' variables
 		var/DBQuery/query_update = dbcon.NewQuery("UPDATE erro_player SET lastseen = Now(), ip = '[sql_ip]', computerid = '[sql_computerid]', lastadminrank = '[sql_admin_rank]' WHERE id = [sql_id]")
@@ -317,6 +342,27 @@
 /client/proc/is_afk(duration=3000)
 	if(inactivity > duration)	return inactivity
 	return 0
+
+//gets byond age
+/client/proc/findJoinDate()
+	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
+	if(!http)
+		log_world("Failed to connect to byond member page to age check [ckey]")
+		return
+	var/F = file2text(http["CONTENT"])
+	if(F)
+		var/regex/R = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
+		if(R.Find(F))
+			var/new_date = R.group[1]
+
+			//get year
+			var/year = "[copytext(new_date, 1,5)]"
+			var/month = "[copytext(new_date, 6,8)]"
+			var/day = "[copytext(new_date, 9)]"
+
+			return "[day]/[month]/[year]"
+		else
+			CRASH("Age check regex failed for [src.ckey]")
 
 // Byond seemingly calls stat, each tick.
 // Calling things each tick can get expensive real quick.
@@ -391,15 +437,18 @@
 		)
 
 
-mob/proc/MayRespawn()
+/mob/proc/MayRespawn()
 	return 0
 
-client/proc/MayRespawn()
+
+/client/proc/MayRespawn()
 	if(mob)
 		return mob.MayRespawn()
 
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
 	return 0
+
+
 /*
 client/verb/character_setup()
 	set name = "Character Setup"
@@ -420,6 +469,20 @@ client/verb/character_setup()
 	if(check_rights(R_ADMIN, 0, mob))
 		return 1
 	return 0
+
+
+/client/proc/IsAntiGrief()
+	if(!config.byond_antigrief_age)
+		return FALSE
+
+	return antigrief
+
+/mob/proc/IsAntiGrief()
+	if(!client)
+		return FALSE
+
+	return client.IsAntiGrief()
+
 
 /client/proc/send_job_resources()
 	for(var/datum/job/job in SSjobs.occupations)

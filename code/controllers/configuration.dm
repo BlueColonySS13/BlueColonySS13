@@ -106,6 +106,14 @@ var/list/gamemode_cache = list()
 	var/guests_allowed = 1
 	var/debugparanoid = 0
 	var/panic_bunker = 0
+
+	var/min_byond_age = 0				//This denies anyone under this byond age from joining.
+
+	var/byond_antigrief_age = 0
+	//A softer option. Clients under this age will be marked with "antigrief" which prevents certain items
+	//from being used such as weapons, explosives, atmos, etc. until they reach a certain age
+
+
 	var/gamemode_vote = 0
 
 	var/serverurl
@@ -734,6 +742,12 @@ var/list/gamemode_cache = list()
 				if("player_levels")
 					using_map.player_levels = text2numlist(value, ";")
 */
+
+				if ("min_byond_age")
+					min_byond_age = text2num(value)
+
+				if ("byond_antigrief_age")
+					byond_antigrief_age = text2num(value)
 
 				if("ssd_protect")
 					config.ssd_protect = text2num(value)

@@ -164,6 +164,10 @@
 	if(isrobot(target))
 		return ..()
 
+	if(user.IsAntiGrief())
+		target.visible_message("<span class='warning'>[user] tries to use [src] but fails!</span>")
+		return
+
 	var/agony = agonyforce
 	var/stun = stunforce
 	var/obj/item/organ/external/affecting = null

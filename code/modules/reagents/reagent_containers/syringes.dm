@@ -252,6 +252,11 @@
 		overlays += filling
 
 /obj/item/weapon/reagent_containers/syringe/proc/syringestab(mob/living/carbon/target as mob, mob/living/carbon/user as mob)
+
+	if(user && user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>You don't want to stab them with a syringe, that would be rude...</span>")
+		return 0
+
 	if(istype(target, /mob/living/carbon/human))
 
 		var/mob/living/carbon/human/H = target
