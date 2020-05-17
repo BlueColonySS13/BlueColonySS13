@@ -455,3 +455,6 @@ MIN_BYOND_AGE 0
 
 #People under this byond age will be automatically given the anti-grief var
 BYOND_ANTIGRIEF_AGE 14
+
+#People under this player age will be automatically given the anti-grief var
+PLAYER_ANTIGRIEF_AGE 5
