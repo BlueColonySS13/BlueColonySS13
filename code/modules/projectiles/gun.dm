@@ -154,6 +154,10 @@
 		if(!S.IsHumanoidToolUser(src))
 			return 0
 
+	if(user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>Fear sets in and you realise you're too scared to pull the trigger.</span>")
+		return 0
+
 	var/mob/living/M = user
 	if(dna_lock && attached_lock.stored_dna)
 		if(!authorized_user(user))

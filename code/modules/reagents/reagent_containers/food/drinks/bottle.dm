@@ -29,8 +29,11 @@
 //when thrown on impact, bottles smash and spill their contents
 /obj/item/weapon/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, var/speed)
 	..()
-
 	var/mob/M = thrower
+
+	if(M.IsAntiGrief())
+		return
+
 	if(isGlass && istype(M) && M.a_intent == I_HURT)
 		var/throw_dist = get_dist(throw_source, loc)
 		if(speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
@@ -145,6 +148,10 @@
 
 	if(user.a_intent != I_HURT)
 		return
+
+	if(user.IsAntiGrief())
+		return
+
 	if(!smash_check(1))
 		return //won't always break on the first hit
 

@@ -25,7 +25,7 @@ var/datum/lore/numbers_station/numbers = new/datum/lore/numbers_station
 
 /datum/lore/numbers_station/proc/msg(var/message,var/sender)
 	ASSERT(message)
-	global_announcer.autosay("[message]", "unknown", "Unknown Broadcast Station")
+	global_announcer.autosay(emoji_parse("[message]", "unknown", "Unknown Broadcast Station"))
 
 /datum/lore/numbers_station/proc/random_convo()
 	var/list/letters = list("Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee","Zulu")
@@ -80,7 +80,7 @@ var/datum/lore/numbers_station/numbers = new/datum/lore/numbers_station
 				     "!flaps its wings and squeaks.",
 				     "!skitters and sloshes. It echoes as if in a cavern.",
 				     "Uranium fever got you down? Rave!"))
-		if(5)//emotions
+/*		if(5)//emotions
 			msg(pick("!makes a sound but it is obscured by heavy static.",
 					 "!emits a heavy droning noise.",
 					 "!weeps.",
@@ -91,5 +91,5 @@ var/datum/lore/numbers_station/numbers = new/datum/lore/numbers_station
 					 "!coughs violently and retches. You hear thick, wet thuds on the ground.",
 					 "!laughs. You hear the sound of snapping bones.",
 					 "!broadcasts the sound of heavy thudding footsteps. Heavy wind can be heard in the background."))
-
+*/
 	return

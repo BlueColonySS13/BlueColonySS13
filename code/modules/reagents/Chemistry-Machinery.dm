@@ -217,7 +217,7 @@
 
 			if (href_list["createpill_multiple"])
 				count = input("Select the number of pills to make.", "Max [max_pill_count]", pillamount) as num
-				count = Clamp(count, 1, max_pill_count)
+				count = CLAMP(round(count), 1, max_pill_count) // Fix decimals input and clamp to reasonable amounts
 
 			if(reagents.total_volume/count < 1) //Sanity checking.
 				return
@@ -229,7 +229,7 @@
 
 			if(reagents.total_volume/count < 1) //Sanity checking.
 				return
-			while (count--)
+			while(count-- > 0) // Will definitely eventually stop.
 				var/obj/item/weapon/reagent_containers/pill/P = new/obj/item/weapon/reagent_containers/pill(src.loc)
 				if(!name) name = reagents.get_master_reagent_name()
 				P.name = "[name] pill"

@@ -72,10 +72,17 @@ Code:
 /obj/item/device/assembly/signaler/Topic(href, href_list, state = deep_inventory_state)
 	if(..()) return 1
 
+
 	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
 		usr << browse(null, "window=radio")
 		onclose(usr, "radio")
 		return
+
+	var/mob/user = usr
+	if(user && user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>You can't bring yourself to do this.</span>")
+		return 0
+
 
 	if (href_list["freq"])
 		var/new_frequency = (frequency + text2num(href_list["freq"]))
@@ -90,6 +97,7 @@ Code:
 		src.code = max(1, src.code)
 
 	if(href_list["send"])
+
 		spawn( 0 )
 			signal()
 

@@ -78,7 +78,13 @@
 		return
 
 	playsound(src.loc, 'sound/weapons/flash.ogg', 100, 1)
+
+
 	var/flashfail = 0
+
+
+	if(user.IsAntiGrief())
+		flashfail = 1
 
 	if(iscarbon(M))
 		if(!synthetic_only)
