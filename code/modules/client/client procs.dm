@@ -171,8 +171,8 @@
 	var/player_byond_age = get_byond_age()
 
 	if(config.byond_antigrief_age && config.byond_antigrief_age > player_byond_age)
-			log_adminwarn("Player [ckey] has joined with a newly registered byond account ([player_byond_age] days). Antigrief has been applied.")
-			antigrief = TRUE
+		log_adminwarn("Player [ckey] has joined with a newly registered byond account ([player_byond_age] days). Antigrief has been applied.")
+		antigrief = TRUE
 
 	if(config.player_antigrief_age)
 		if(isnum(player_age) && (config.player_antigrief_age > player_age))
