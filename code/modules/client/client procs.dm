@@ -168,17 +168,21 @@
 			winset(src, null, "command=\".configure graphics-hwmode on\"")
 	log_client_to_db()
 
-	if(config.byond_antigrief_age)
-		var/player_age = get_byond_age()
+	var/player_byond_age = get_byond_age()
 
-		if(config.byond_antigrief_age > player_age)
+	if(config.byond_antigrief_age && config.byond_antigrief_age > player_byond_age)
+		log_adminwarn("Player [ckey] has joined with a newly registered byond account ([player_byond_age] days). Antigrief has been applied.")
+		antigrief = TRUE
+
+	if(config.player_antigrief_age)
+		if(isnum(player_age) && (config.player_antigrief_age > player_age))
+			log_adminwarn("Player [ckey] is new to the server ([player_age] days). Antigrief has been applied.")
 			antigrief = TRUE
 
 	if(config.min_byond_age)
-		var/player_age = get_byond_age()
-		if(config.min_byond_age > player_age)
-			log_adminwarn("Failed Login: [key] - New account registered on [byond_join_date] (Age: [player_age] days) - Minimum: [config.min_byond_age] days.")
-			message_admins("<span class='adminnotice'>Failed Login: [key] -  New account registered on [byond_join_date] (Age: [player_age] days) - Minimum: [config.min_byond_age] days.</span>")
+		if(config.min_byond_age > player_byond_age)
+			log_adminwarn("Failed Login: [key] - New account registered on [byond_join_date] (Age: [player_byond_age] days) - Minimum: [config.min_byond_age] days.")
+			message_admins("<span class='adminnotice'>Failed Login: [key] -  New account registered on [byond_join_date] (Age: [player_byond_age] days) - Minimum: [config.min_byond_age] days.</span>")
 			to_chat(src, "Apologies, this server is not accepting newly registered byond accounts right now. Please try again later.")
 			qdel(src)
 			return 0
