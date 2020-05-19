@@ -62,7 +62,6 @@
 	cost = 200
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Morpheus)"
-	access = access_robotics
 
 /datum/supply_pack/robotics/robolimbs/cybersolutions
 	name = "Cyber Solutions robolimb blueprints"
@@ -72,7 +71,6 @@
 	cost = 600
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Cyber Solutions)"
-	access = access_robotics
 
 /datum/supply_pack/robotics/robolimbs/xion
 	name = "Xion robolimb blueprints"
@@ -84,7 +82,6 @@
 	cost = 800
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Xion)"
-	access = access_robotics
 
 /datum/supply_pack/robotics/robolimbs/grayson
 	name = "Grayson robolimb blueprints"
