@@ -25,7 +25,7 @@ var/datum/lore/numbers_station/numbers = new/datum/lore/numbers_station
 
 /datum/lore/numbers_station/proc/msg(var/message,var/sender)
 	ASSERT(message)
-	global_announcer.autosay(emoji_parse("[message]", "unknown", "Unknown Broadcast Station"))
+	global_announcer.autosay("[message]", "unknown", "Unknown Broadcast Station")
 
 /datum/lore/numbers_station/proc/random_convo()
 	var/list/letters = list("Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee","Zulu")
@@ -48,12 +48,12 @@ var/datum/lore/numbers_station/numbers = new/datum/lore/numbers_station
 					 "Whiskey Alpha Lima Lima",
 					 "Sierra Tango Alpha November Delta"))
 		if(2)//strange songs
-			msg(pick("<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Your web is strung and I'll take the bait....<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>",
-				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Your trap is sprung now, so don't you hesitate.<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>",
-				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Your cruelty festoons my fetid feelings...<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>",
-				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Otherwise, why leave you here to die?<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>",
-				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Everything that's born must die! And it isn't I, who made the world that way...<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>",
-				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Don't let it grab you! It's in the cracks! Don't let it take you! It thinks you taste like snacks!<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>"))
+			msg(pick("<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>Your web is strung and I'll take the bait....<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>",
+				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>Your trap is sprung now, so don't you hesitate.<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>",
+				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>Your cruelty festoons my fetid feelings...<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>",
+				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>Otherwise, why leave you here to die?<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>",
+				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>Everything that's born must die! And it isn't I, who made the world that way...<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>",
+				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>Don't let it grab you! It's in the cracks! Don't let it take you! It thinks you taste like snacks!<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music_radio'>"))
 		if(3)//messages from nowhere and neverweres
 			msg(pick("Heightened tensions in Europia today as the Norfington guard approach.",
 					 "Always use Coronal Displacement when lubricating. Not CD will leave you squeaky.",
