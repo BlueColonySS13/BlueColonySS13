@@ -48,12 +48,12 @@ var/datum/lore/numbers_station/numbers = new/datum/lore/numbers_station
 					 "Whiskey Alpha Lima Lima",
 					 "Sierra Tango Alpha November Delta"))
 		if(2)//strange songs
-			msg(pick(":music:Your web is strung and I'll take the bait....:music:",
-				     ":music:Your trap is sprung now, so don't you hesitate.:music:",
-				     ":music:Your cruelty festoons my fetid feelings...:music:",
-				     ":music:Otherwise, why leave you here to die?:music:",
-				     ":music:Everything that's born must die! And it isn't I, who made the world that way...:music:",
-				     ":music:Don't let it grab you! It's in the cracks! Don't let it take you! It thinks you taste like snacks!:music:"))
+			msg(pick("<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Your web is strung and I'll take the bait....<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>",
+				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Your trap is sprung now, so don't you hesitate.<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>",
+				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Your cruelty festoons my fetid feelings...<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>",
+				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Otherwise, why leave you here to die?<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>",
+				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Everything that's born must die! And it isn't I, who made the world that way...<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>",
+				     "<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>Don't let it grab you! It's in the cracks! Don't let it take you! It thinks you taste like snacks!<img class=icon src=\ref['icons/emoji.dmi'] iconstate='music'>"))
 		if(3)//messages from nowhere and neverweres
 			msg(pick("Heightened tensions in Europia today as the Norfington guard approach.",
 					 "Always use Coronal Displacement when lubricating. Not CD will leave you squeaky.",
