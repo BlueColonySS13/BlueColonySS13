@@ -171,7 +171,7 @@
 		. = TOPIC_HANDLED
 
 	if(href_list["remove"])
-		if(user.IsAntiGrief())
+		if(usr.IsAntiGrief())
 			to_chat(user, "<span class='notice'>You don't want to remove this paper.</span>")
 			return
 		remove_paper(locate(href_list["remove"]))
