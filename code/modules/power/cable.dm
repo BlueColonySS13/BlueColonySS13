@@ -161,6 +161,10 @@ var/list/possible_cable_coil_colours = list(
 		return
 
 	if(istype(W, /obj/item/weapon/wirecutters))
+		if(user.IsAntiGrief())
+			to_chat(user, "<span class='notice'>You feel uneasy with cutting cables, should I do that?</span>")
+			return
+
 		if(d1 == UP || d2 == UP)
 			to_chat(user, "<span class='warning'>You must cut this cable from above.</span>")
 			return

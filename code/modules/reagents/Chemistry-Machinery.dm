@@ -73,6 +73,10 @@
 /obj/machinery/chem_master/attack_hand(mob/user as mob)
 	if(stat & BROKEN)
 		return
+	if(user.IsAntiGrief())
+		to_chat(user, "<span class='notice'>You don't feel like messing around with chemistry right now.</span>")
+		return
+
 	user.set_machine(src)
 	ui_interact(user)
 

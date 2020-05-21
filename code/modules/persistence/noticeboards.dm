@@ -171,6 +171,9 @@
 		. = TOPIC_HANDLED
 
 	if(href_list["remove"])
+		if(user.IsAntiGrief())
+			to_chat(user, "<span class='notice'>You don't want to remove this paper.</span>")
+			return
 		remove_paper(locate(href_list["remove"]))
 		add_fingerprint(user)
 		. = TOPIC_REFRESH

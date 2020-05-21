@@ -458,3 +458,17 @@ BYOND_ANTIGRIEF_AGE 14
 
 #People under this player age will be automatically given the anti-grief var
 PLAYER_ANTIGRIEF_AGE 5
+
+## Panic Bunker - Comment out to disable the panic bunker.
+# PANIC_BUNKER
+
+## Allow repeat OOC messages in a row - comment out to disable
+ALLOW_REPEAT_OOC_MESSAGES
+
+## OOC/LOOC control ##
+# Uncomment to allow links of the following kinds. #
+
+# ALLOW_BYOND_LINKS
+# ALLOW_DISCORD_LINKS
+ALLOW_URL_LINKS
+

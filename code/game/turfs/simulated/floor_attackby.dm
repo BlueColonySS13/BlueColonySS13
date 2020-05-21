@@ -118,6 +118,10 @@
 						to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 
 /turf/simulated/floor/proc/try_deconstruct_tile(obj/item/weapon/W as obj, mob/user as mob)
+	if(user.IsAntiGrief())
+		to_chat(user, "<span class='notice'>You don't want to mess with the flooring...</span>")
+		return
+
 	if(istype(W, /obj/item/weapon/crowbar))
 		if(broken || burnt)
 			to_chat(user, "<span class='notice'>You remove the broken [flooring.descriptor].</span>")
