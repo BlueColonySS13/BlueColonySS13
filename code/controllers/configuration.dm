@@ -97,7 +97,7 @@ var/list/gamemode_cache = list()
 	var/uneducated_mice = 0 				//Set to 1 to prevent newly-spawned mice from understanding human speech
 
 	var/middle_class_age = 7 			// How many days a player must be before they can make a middle class character
-	var/upper_class_age = 14 				// How many days a player must be before they can make a upper class character
+	var/upper_class_age = 14 			// How many days a player must be before they can make a upper class character
 
 	var/usealienwhitelist = 0
 	var/limitalienplayers = 0
@@ -114,6 +114,11 @@ var/list/gamemode_cache = list()
 	//A softer option. Clients under this age will be marked with "antigrief" which prevents certain items
 	//from being used such as weapons, explosives, atmos, etc. until they reach a certain age
 
+	var/allow_byond_links = 0
+	var/allow_discord_links = 0
+	var/allow_url_links = 0					// honestly if I were you i'd leave this one off, only use in dire situations
+
+	var/allow_repeat_ooc_messages = 0			 // if set to true, you can't send same message in OOC twice in a row.
 
 	var/gamemode_vote = 0
 
@@ -358,6 +363,9 @@ var/list/gamemode_cache = list()
 
 				if ("debug_paranoid")
 					config.debugparanoid = 1
+
+				if("panic_bunker")
+					config.panic_bunker = 1
 
 				if ("log_admin")
 					config.log_admin = 1
@@ -745,13 +753,25 @@ var/list/gamemode_cache = list()
 */
 
 				if ("min_byond_age")
-					min_byond_age = text2num(value)
+					config.min_byond_age = text2num(value)
 
 				if ("byond_antigrief_age")
-					byond_antigrief_age = text2num(value)
+					config.byond_antigrief_age = text2num(value)
 
 				if ("player_antigrief_age")
-					player_antigrief_age = text2num(value)
+					config.player_antigrief_age = text2num(value)
+
+				if ("allow_byond_links")
+					config.allow_byond_links = 1
+
+				if ("allow_discord_links")
+					config.allow_discord_links = 1
+
+				if ("allow_url_links")
+					config.allow_url_links = 1
+
+				if ("allow_repeat_ooc_messages")
+					config.allow_repeat_ooc_messages = 1
 
 				if("ssd_protect")
 					config.ssd_protect = text2num(value)

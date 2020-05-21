@@ -228,6 +228,10 @@
 	if(istype(W, /obj/item/device/floor_painter) && user.a_intent == I_HELP)
 		return // windows are paintable now, so no accidental damage should happen.
 
+	if(user.IsAntiGrief() && (user.a_intent != I_HELP || W))
+		to_chat(user, "<span class='notice'>You don't feel like messing with windows.</span>")
+		return
+
 	// Fixing.
 	if(istype(W, /obj/item/weapon/weldingtool) && user.a_intent == I_HELP)
 		var/obj/item/weapon/weldingtool/WT = W

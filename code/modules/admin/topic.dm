@@ -825,7 +825,12 @@
 				var/reason = sanitize(input(usr,"Reason?","reason","Griefer") as text|null)
 				if(!reason)
 					return
+
+				if(!M.ckey && M.client && M.client.ckey)	// patch for if they ghost during ban
+					M.ckey = M.client.ckey
+
 				AddBan(M.ckey, M.computer_id, reason, usr.ckey, 1, mins)
+
 				ban_unban_log_save("[usr.client.ckey] has banned [M.ckey]. - Reason: [reason] - This will be removed in [mins] minutes.")
 				notes_add(M.ckey,"[usr.client.ckey] has banned [M.ckey]. - Reason: [reason] - This will be removed in [mins] minutes.",usr)
 				M << "<font color='red'><BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG></font>"
@@ -1036,6 +1041,21 @@
 
 		log_admin("[key_name(usr)] has [onoff] SSD Guard for [key_name(M)].")
 		message_admins("[key_name_admin(usr)] has [onoff] SSD Guard for [key_name(M)]")
+
+	else if(href_list["toggleantigrief"])
+		var/mob/M = locate(href_list["toggleantigrief"])
+
+		if(!check_rights(R_ADMIN))
+			return
+
+		if(!M.client)
+			to_chat(usr, "<span class='warning'>[M] doesn't have an attached client.</span>")
+			return
+
+		M.client.antigrief = !M.client.antigrief
+
+		log_admin("[key_name(usr)] has [M.client.antigrief ? "Enabled" : "Disabled"] SSD Guard for [key_name(M)].")
+		message_admins("[key_name_admin(usr)] has [M.client.antigrief ? "Enabled" : "Disabled"] SSD Guard for [key_name(M)]")
 
 	else if(href_list["tdome1"])
 		if(!check_rights(R_FUN))	return
