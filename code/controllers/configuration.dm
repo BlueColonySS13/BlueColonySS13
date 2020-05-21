@@ -118,6 +118,8 @@ var/list/gamemode_cache = list()
 	var/allow_discord_links = 0
 	var/allow_url_links = 0					// honestly if I were you i'd leave this one off, only use in dire situations
 
+	var/allow_repeat_ooc_messages = 0			 // if set to true, you can't send same message in OOC twice in a row.
+
 	var/gamemode_vote = 0
 
 	var/serverurl
