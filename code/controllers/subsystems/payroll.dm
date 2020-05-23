@@ -119,7 +119,7 @@ SUBSYSTEM_DEF(payroll)
 
 	if(wage > department_account.get_balance())
 		// If there's no money in the department account, tough luck. Not getting paid.
-		bank_account.add_transaction_log(bank_account.owner_name, "[department.name] Payroll: Failed (Inadequate Department Funds)", 0, "[department] Funding Account")
+		bank_account.add_transaction_log(bank_account.owner_name, "[department_account.owner_name] Payroll: Failed (Inadequate Department Funds)", 0, "[department] Funding Account")
 		return
 
 	if(age > 17) // Do they pay tax?
