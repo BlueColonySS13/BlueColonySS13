@@ -966,7 +966,7 @@
 				var/F = locate(href_list["title"])
 				var/alt_title = F
 
-				if(!alt_title in job.alt_titles)
+				if(!(alt_title in job.alt_titles))
 					return
 
 				job.alt_titles -= alt_title
