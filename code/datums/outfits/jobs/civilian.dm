@@ -18,7 +18,19 @@
 	id_pda_assignment = "Resident"
 	uniform = /obj/item/clothing/under/scratch
 
+/decl/hierarchy/outfit/job/assistant/mailman
+	name = OUTFIT_JOB_NAME("Mailman")
+	uniform = /obj/item/clothing/under/rank/mailman
+
+/decl/hierarchy/outfit/job/assistant/formal
+	name = OUTFIT_COSTUME("Formal")
+	uniform = /obj/item/clothing/under/suit_jacket{ starting_accessories=list(/obj/item/clothing/accessory/wcoat) }
+	shoes = /obj/item/clothing/shoes/black
+	gloves = /obj/item/clothing/gloves/black
+	shoes = /obj/item/clothing/shoes/dress
+
 /decl/hierarchy/outfit/job/service
+	name = OUTFIT_JOB_NAME("Service")
 	l_ear = /obj/item/device/radio/headset/headset_service
 	hierarchy_type = /decl/hierarchy/outfit/job/service
 
@@ -36,7 +48,11 @@
 
 /decl/hierarchy/outfit/job/service/bartender/barista
 	name = OUTFIT_JOB_NAME("Barista")
-	id_pda_assignment = "Barista"
+	backpack_contents = null
+
+/decl/hierarchy/outfit/job/service/bartender/waiter
+	name = OUTFIT_JOB_NAME("Waiter")
+	uniform = /obj/item/clothing/under/waiter
 	backpack_contents = null
 
 /decl/hierarchy/outfit/job/service/chef
@@ -49,7 +65,6 @@
 
 /decl/hierarchy/outfit/job/service/chef/cook
 	name = OUTFIT_JOB_NAME("Cook")
-	id_pda_assignment = "Cook"
 
 /decl/hierarchy/outfit/job/service/gardener
 	name = OUTFIT_JOB_NAME("Gardener")

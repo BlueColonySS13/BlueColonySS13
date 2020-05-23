@@ -23,7 +23,7 @@
 
 	var/list/business_jobs = list()
 	var/list/business_accesses = list()
-
+	var/path = "data/persistent/businesses/"
 
 //////////////////////////
 
@@ -39,7 +39,7 @@
 
 	..()
 
-/datum/business/proc/sanitize_business()
+/datum/business/proc/sanitize_business(given_dept_id)
 	if(!name)
 		name = initial(name)
 	if(!business_uid)
@@ -48,9 +48,30 @@
 		creation_date = full_game_time()
 	if(!access_password)
 		access_password = GenerateKey()
+
+	department = dept_by_id(given_dept_id)
+
 	if(!department)
 		var/datum/department/new_dept = new /datum/department(name, BUSINESS_DEPARTMENT, business_uid, description, d_hasbank = TRUE)
 		department = new_dept.id
+
+	if(!blacklisted_employees)
+		blacklisted_employees = list()
+	if(!blacklisted_ckeys)
+		blacklisted_ckeys = list()
+	if(!business_jobs)
+		business_jobs = list()
+	if(!business_accesses)
+		business_accesses = list()
+	if(!categories)
+		categories = list()
+
+	if(isemptylist(categories))
+		categories += CAT_RETAIL
+
+	for(var/datum/access/A in business_accesses)
+		GLOB.all_business_accesses |= A
+
 
 
 

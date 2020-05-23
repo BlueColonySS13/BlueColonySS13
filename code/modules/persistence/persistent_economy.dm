@@ -80,7 +80,7 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	var/meteor_proof = FALSE			// Is the city protected by meteors?
 
 	var/foodstamp_meals = 3
-
+	var/minimum_wage = 15			// Minimum wage for jobs.
 
 /datum/economy/bank_accounts/proc/save_economy()
 //	message_admins("SAVE: Save all department accounts.", 1)
@@ -141,6 +141,9 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	S["carp_control"] << carp_control
 	S["antivirus"] << antivirus
 	S["meteor_proof"] << meteor_proof
+
+
+	S["minimum_wage"] << minimum_wage
 	return TRUE
 
 /datum/economy/bank_accounts/proc/load_accounts()
@@ -202,6 +205,8 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	S["carp_control"] >> carp_control
 	S["antivirus"] >> antivirus
 	S["meteor_proof"] >> meteor_proof
+
+	S["minimum_wage"] >> minimum_wage
 
 	tax_rate_lower = tax_poor
 	tax_rate_middle = tax_middle

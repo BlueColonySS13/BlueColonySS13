@@ -34,6 +34,23 @@
 	var/description = ""
 	var/list/duties = list()
 	var/enabled = TRUE
+	var/business						// if this is linked to a business, business ID is here.
+	var/list/exclusive_employees = list()	// if this job has uids in it, only people of these UIDs can become employees.
+
+/datum/job/proc/sanitize_job()
+	if(!exclusive_employees)
+		exclusive_employees = list()
+	if(!duties)
+		duties = list()
+	if(!idtype)
+		idtype = initial(idtype)
+	if(!access)
+		access = list()
+	if(!minimal_access)
+		minimal_access = list()
+
+	return
+
 
 /datum/job/proc/get_job_email()			// whatever this is set to will be the job's communal email. should be persistent.
 	return
@@ -159,6 +176,12 @@
 /datum/job/proc/get_job_mannequin()
 	if(!SSjobs.job_mannequins[title])
 		var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin("#job_icon_[title]")
+		mannequin.gender = pick(MALE,FEMALE)
+		mannequin.s_tone = random_skin_tone()
+		mannequin.h_style = random_hair_style(mannequin.gender, "Human")
+		if(mannequin.gender != FEMALE)
+			mannequin.f_style = random_facial_hair_style(mannequin.gender, "Human")
+
 		dress_mannequin(mannequin)
 
 

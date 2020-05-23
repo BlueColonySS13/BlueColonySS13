@@ -3,6 +3,7 @@
 	var/desc = ""
 	var/region = ACCESS_REGION_NONE
 	var/access_type = ACCESS_TYPE_STATION
+	var/department_tag			// mostly for businesses, if this is something it'll appear next to it
 
 /datum/access/dd_SortValue()
 	return "[access_type][desc]"

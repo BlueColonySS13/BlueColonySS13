@@ -1,8 +1,9 @@
+
 //Food
 /datum/job/bartender
 	title = "Bartender"
 	flag = BARTENDER
-	faction = "City"
+//	faction = "City"
 	department = DEPT_BAR
 	department_flag = CIVILIAN
 	total_positions = 2
@@ -22,7 +23,7 @@
 /datum/job/chef
 	title = "Chef"
 	flag = CHEF
-	faction = "City"
+//	faction = "City"
 	department = DEPT_BAR
 	department_flag = CIVILIAN
 	total_positions = 2
@@ -41,7 +42,7 @@
 /datum/job/hydro
 	title = "Botanist"
 	flag = BOTANIST
-	faction = "City"
+//	faction = "City"
 	department_flag = CIVILIAN
 	department = DEPT_BOTANY
 	total_positions = 2
@@ -60,7 +61,7 @@
 /datum/job/bargm
 	title = "Bar Manager"
 	flag = MANAGER
-	faction = "City"
+//	faction = "City"
 	department_flag = CIVILIAN
 	department = DEPT_BAR
 	total_positions = 1
@@ -83,7 +84,7 @@
 /datum/job/journalist
 	title = "Journalist"
 	flag = JOURNALIST
-	faction = "City"
+//	faction = "City"
 	department_flag = CIVILIAN
 	department = DEPT_PUBLIC
 	total_positions = 4
@@ -125,7 +126,7 @@
 /datum/job/barber
 	title = "Barber"
 	flag = BARBER
-	faction = "City"
+//	faction = "City"
 	department_flag = CIVILIAN
 	department = DEPT_PUBLIC
 	total_positions = 2

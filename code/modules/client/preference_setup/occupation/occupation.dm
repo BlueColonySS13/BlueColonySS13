@@ -74,7 +74,8 @@
 	var/datum/job/lastJob
 	if (!SSjobs)		return
 	for(var/datum/job/job in SSjobs.occupations)
-
+		if(job.business)
+			continue
 		if((++index >= limit) || (job.title in splitJobs))
 /*******
 			if((index < limit) && (lastJob != null))

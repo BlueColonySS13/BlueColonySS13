@@ -10,7 +10,7 @@
 
 	var/dept_type = PUBLIC_DEPARTMENT
 
-	var/dept_color = COLOR_WHITE
+	var/dept_color = COLOR_GRAY
 
 	var/list/blacklisted_employees = list()	// employees are added here by UID (unique id)
 

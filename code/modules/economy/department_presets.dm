@@ -89,24 +89,6 @@
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_MATERIALS, SPEND_MININGSUPPLIES)
 	dept_color = "#7a4f33"
 
-/datum/department/botany
-	name = "Botany Funds"
-	id = DEPT_BOTANY
-	desc = "The factory and its employees are paid from this account."
-	starting_money = 500
-	dept_type = PRIVATE_DEPARTMENT
-	allowed_buy_types = list(SPEND_OFFICE, SPEND_HYDROPONICS)
-	dept_color = "#515151"
-
-/datum/department/bar
-	name = "Bar Funds"
-	id = DEPT_BAR
-	desc = "The factory and its employees are paid from this account."
-	starting_money = 500
-	dept_type = PRIVATE_DEPARTMENT
-	allowed_buy_types = list(SPEND_OFFICE, SPEND_HOSPITALITY, SPEND_FOODDRINK, SPEND_ALCOHOL, SPEND_TOBACCO)
-	dept_color = "#515151"
-
 // ## External Presets
 
 /datum/department/solgov
