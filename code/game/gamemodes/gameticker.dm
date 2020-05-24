@@ -157,6 +157,7 @@ var/global/datum/controller/gameticker/ticker
 
 	processScheduler.start()
 	Master.SetRunLevel(RUNLEVEL_GAME)
+	SSlots.refresh_all_lot_turfs()
 
 	if(config.sql_enabled)
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE

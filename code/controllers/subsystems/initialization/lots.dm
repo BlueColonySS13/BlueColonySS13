@@ -46,6 +46,11 @@ SUBSYSTEM_DEF(lots)
 
 	return 1
 
+/datum/controller/subsystem/lots/proc/refresh_all_lot_turfs()
+	for(var/datum/lot/lots in all_lots)
+		for(var/turf/simulated/wall/T in lots.make_chunk())
+			T.update_icon()
+
 /datum/controller/subsystem/lots/proc/get_lot_by_id(id)
 	for(var/datum/lot/lot in all_lots)
 		if(lot.id == id)

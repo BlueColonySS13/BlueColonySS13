@@ -169,7 +169,7 @@
 	return e_map
 
 /datum/lot/proc/make_chunk()
-	var/map_turfs = get_map_turfs(top_left, bottom_right)
+	var/list/map_turfs = get_map_turfs(top_left, bottom_right)
 
 	return map_turfs
 
