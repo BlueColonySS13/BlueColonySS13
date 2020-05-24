@@ -80,11 +80,29 @@
 	MO.name = O.name
 
 	for(var/V in O.vars_to_save() )
+		var/save_var = TRUE
 		if(!(V in O.vars))
+			save_var = FALSE
 			continue
 		if(!(O.vars[V] == initial(O.vars[V])))
-			if(!istext(O.vars[V]) && !isnum(O.vars[V]))	// make sure all references to mobs/objs/turfs etc, are fully cut!
-				continue
+			if(islist(O.vars[V]))
+				var/list/M = O.vars[V]
+				for(var/P in M)
+					var/asso_var = M[P]
+					if(!istext(P) && !isnum(P))
+						save_var = FALSE
+						continue
+
+					if(asso_var && (!istext(asso_var) && !isnum(asso_var)) )
+						save_var = FALSE
+						continue
+
+			else
+				if(!istext(O.vars[V]) && !isnum(O.vars[V]))	// make sure all references to mobs/objs/turfs etc, are fully cut!
+					save_var = FALSE
+					continue
+
+		if(save_var)
 			MO.object_vars[V] = O.vars[V]
 
 
@@ -108,6 +126,10 @@
 	return MO
 
 /proc/full_item_save(obj/O)
+// get all objects in a area. I hate the method that's about to follow, but after finding exploits and potential shitcode that's in the game right now
+// actually worried we'd get the bad reference juju happening (like syringes containing blood and that blood having the actual mob reference in its data
+// which caused an infinite loop) - or items non-existing causing broken loading. because of this, the saving process has to be manually filtered for all the loops.
+
 	if(O.dont_save) return
 	var/datum/map_object/MO = get_object_data(O)
 	if(!MO) return
@@ -242,8 +264,11 @@
 
 		MT.metadata = T.get_persistent_metadata()
 
+		var/is_wall = FALSE
+
 		if(istype(T, /turf/simulated/wall))
 			var/turf/simulated/wall/new_wall = T
+			is_wall = TRUE
 			if(new_wall.material)
 				MT.material = new_wall.material.name
 			if(new_wall.reinf_material)
@@ -268,75 +293,24 @@
 		for(var/V in T.vars_to_save() )
 			if(!(V in T.vars))
 				continue
-			if(!(T.vars[V] == initial(T.vars[V])))
+
+			if(is_wall && (T.type in subtypesof(/turf/simulated/wall)) )	// reason why is because admin spawned walls actually have an /issue/ when being spawned anew + saving
+				MT.turf_vars[V] = initial(T.vars[V])
+
+			if(!(T.vars[V] == initial(T.vars[V])))	// transfer save values over
 				MT.turf_vars[V] = T.vars[V]
 
 
 		full_map += MT
 
 		if(save_obj)
-				// get all objects in a area. I hate the method that's about to follow, but after finding exploits and potential shitcode that's in the game right now
-				// actually worried we'd get the bad reference juju happening (like syringes containing blood and that blood having the actual mob reference in its data
-				// which caused an infinite loop) - or items non-existing causing broken loading. because of this, the saving process has to be manually filtered for all the loops.
 			for(var/obj/O in T.loc)
 				if(O.dont_save) continue
 				if(O in all_objs) continue // to prevent multi-loc  duplicates. it's a thing.
 
 				all_objs += O
 
-				var/datum/map_object/saved_obj_1 = get_object_data(O)
-				if(saved_obj_1)
-					full_map += saved_obj_1
-					CHECK_TICK
-
-				if(!O.save_contents)
-					continue
-
-				//first loop, to get all objects inside closets
-				for(var/obj/A in O.get_saveable_contents())
-					if(A.dont_save) continue
-
-					var/datum/map_object/saved_obj_2 = get_object_data(A)
-					if(saved_obj_2)
-						saved_obj_1.contents += saved_obj_2
-						CHECK_TICK
-
-					if(!A.save_contents)
-						continue
-
-					//second loop, let's say you had a backpack inside the closet with it's own things.
-					for(var/obj/B in A.get_saveable_contents())
-						if(B.dont_save) continue
-
-						var/datum/map_object/saved_obj_3 = get_object_data(B)
-						if(saved_obj_3)
-							saved_obj_2.contents += saved_obj_3
-							CHECK_TICK
-
-						if(!B.save_contents)
-							continue
-
-						//third loop. for getting things like cigarette packets inside backpacks.
-						for(var/obj/C in B.get_saveable_contents())
-							if(C.dont_save) continue
-
-							var/datum/map_object/saved_obj_4 = get_object_data(C)
-							if(saved_obj_4)
-								saved_obj_3.contents += saved_obj_4
-								CHECK_TICK
-
-							if(!C.save_contents)
-								continue
-
-
-							//fourth loop. let's say the cigarettes need saving inside these packets. Honestly I don't think we'll need a fifth loop.
-							for(var/obj/D in C.get_saveable_contents())
-								if(D.dont_save) continue
-
-								var/datum/map_object/saved_obj_5 = get_object_data(D)
-								if(saved_obj_5)
-									saved_obj_4.contents += saved_obj_5
-									CHECK_TICK
+				var/datum/map_object/saved_obj_1 = full_item_save(O)
 
 				MT.map_objects += saved_obj_1
 
@@ -361,12 +335,10 @@
 			continue
 
 		if(change_turf)
-			newturf.Destroy()
-			newturf.ChangeTurf(MT.turf_type)
-
-		if(istype(newturf, /turf/simulated/wall))
-			var/turf/simulated/wall/new_wall = newturf
-			new_wall.set_material(get_material_by_name(MT.material), get_material_by_name(MT.reinforced_material), get_material_by_name(MT.girder_material))
+			if(ispath(MT.turf_type,/turf/simulated/wall))
+				newturf.ChangeTurf(/turf/simulated/wall)
+			else
+				newturf.ChangeTurf(MT.turf_type)
 
 		for(var/V in newturf.vars_to_save())
 			if(MT.turf_vars[V])
@@ -375,6 +347,9 @@
 		if(MT.metadata)
 			newturf.load_persistent_metadata(MT.metadata)
 
+		if(istype(newturf, /turf/simulated/wall))
+			var/turf/simulated/wall/new_wall = newturf
+			new_wall.set_material(get_material_by_name(MT.material), get_material_by_name(MT.reinforced_material), get_material_by_name(MT.girder_material))
 
 		if(istype(newturf, /turf/simulated/floor))
 			if(MT.decals)
@@ -388,8 +363,6 @@
 					if(!decal_type || !ispath(decal_type))
 						continue
 					new decal_type(newturf, L["dir"], L["color"])
-
-		newturf.update_icon()
 
 		for(var/datum/map_object/MO in MT.map_objects)
 			if(!ispath(MO.savedtype))
@@ -435,8 +408,9 @@
 							var/obj/D = new MO_5.savedtype (C)
 							CHECK_TICK
 							MO_5.unpack_object_data(D, C)
-
 	return 1
+
+
 
 
 
