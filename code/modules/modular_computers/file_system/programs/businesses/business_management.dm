@@ -419,7 +419,7 @@
 		if(!current_business)
 			return
 
-		var/new_job = sanitizeSafe(copytext(input(usr, "Enter a new job title. (Max 40 letters)", "Business Management Utility", b_pass)  as text,1,40))
+		var/new_job = sanitize_name(copytext(input(usr, "Enter a new job title. (Max 40 letters)", "Business Management Utility", b_pass)  as text,1,40))
 
 		if(!(LAZYLEN(current_business.business_jobs) >= MAX_BUSINESS_JOBS))
 			current_business.create_new_job(new_job)
@@ -492,7 +492,7 @@
 	if(href_list["rename_business"])
 		if(!current_business)
 			return
-		var/biz_name = sanitizeSafe(copytext(input(usr, "Enter your business name (40 chars max)", "Business Management Utility", b_name)  as text,1,40))
+		var/biz_name = sanitize_name(copytext(input(usr, "Enter your business name (40 chars max)", "Business Management Utility", b_name)  as text,1,40), encode = 0)
 		if(!biz_name)
 			return
 		if(length(biz_name) > 40)
@@ -583,7 +583,7 @@
 
 	if(href_list["set_business_name"])
 		. = 1
-		var/biz_name = sanitizeSafe(copytext(input(usr, "Enter your business name (40 chars max)", "Business Management Utility", b_name)  as text,1,40))
+		var/biz_name = sanitize(copytext(input(usr, "Enter your business name (40 chars max)", "Business Management Utility", b_name)  as text,1,40))
 		if(!biz_name)
 			return
 		if(length(biz_name) > 40)
@@ -1015,7 +1015,10 @@
 
 						return
 
-				var/job_title = sanitizeSafe(copytext(input(usr, "Enter a job title. (140 chars max)", "Business Management Utility", job.title)  as message,1,140))
+				var/job_title = sanitize_name(copytext(input(usr, "Enter a job title. (140 chars max)", "Business Management Utility", job.title)  as message,1,140))
+
+				job_title = replacetext(lowertext(name), "'", "")
+
 				if(!job_title || !current_business || !job)
 					return
 

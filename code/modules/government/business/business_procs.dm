@@ -69,6 +69,7 @@
 	for(var/datum/access/access in business_accesses)
 		GLOB.all_business_accesses |= access
 
+
 /datum/business/proc/create_new_job(job_name)
 	var/datum/job/job = new()
 

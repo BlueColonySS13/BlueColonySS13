@@ -56,7 +56,7 @@ var/global/list/business_outfits = list(
 	return BUSINESS_ACTIVE
 
 /datum/business/proc/get_department()
-	return dept_by_id(department)
+	return department
 
 /proc/businesses_by_category(cat)
 	var/list/biz = list()
@@ -75,4 +75,3 @@ var/global/list/business_outfits = list(
 	for(var/datum/access/A in GLOB.all_business_accesses)
 		if(A.id == id)
 			return "[A.desc]"
-
