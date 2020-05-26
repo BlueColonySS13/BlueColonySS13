@@ -492,7 +492,7 @@
 	if(href_list["rename_business"])
 		if(!current_business)
 			return
-		var/biz_name = sanitize_name(copytext(input(usr, "Enter your business name (40 chars max)", "Business Management Utility", b_name)  as text,1,40), encode = 0)
+		var/biz_name = sanitize_name(copytext(input(usr, "Enter your business name (40 chars max)", "Business Management Utility", b_name)  as text,1,40))
 		if(!biz_name)
 			return
 		if(length(biz_name) > 40)
