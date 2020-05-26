@@ -56,7 +56,7 @@ var/global/list/business_outfits = list(
 	return BUSINESS_ACTIVE
 
 /datum/business/proc/get_department()
-	return department
+	return dept_by_id(department)
 
 /proc/businesses_by_category(cat)
 	var/list/biz = list()
