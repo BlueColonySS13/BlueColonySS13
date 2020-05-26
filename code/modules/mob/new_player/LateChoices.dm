@@ -111,13 +111,13 @@
 
 	switch(job_select_mode)
 		if("PUBLIC")
-			job_departments += (GLOB.public_departments + GLOB.private_departments + GLOB.external_departments)
+			job_departments += SSeconomy.get_all_nonbusiness_departments()
 			label = "Public Sector"
 			switch_type = "PRIVATE"
 			dat += "<BR>Public Sector Jobs | <a href='byond://?src=\ref[src];SelectDeptType=[switch_type]'>Private Sector Jobs</a>"
 			dat += "<BR>Public jobs are jobs funded by the government or aren't associated with any private business."
 		if("PRIVATE")
-			job_departments += (GLOB.business_departments)
+			job_departments += SSeconomy.get_all_business_departments()
 			label = "Private Sector"
 			switch_type = "PUBLIC"
 			dat += "<BR><a href='byond://?src=\ref[src];SelectDeptType=[switch_type]'>Public Sector Jobs</a> | Private Sector Jobs"

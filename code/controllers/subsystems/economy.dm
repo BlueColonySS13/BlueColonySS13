@@ -15,6 +15,24 @@ SUBSYSTEM_DEF(economy)
 	link_economy_accounts()
 	. = ..()
 
+/datum/controller/subsystem/economy/proc/get_all_nonbusiness_departments()
+	var/list/depts = list()
+	for(var/datum/department/D in all_departments)
+		if(D.dept_type == BUSINESS_DEPARTMENT)
+			continue
+		depts |= D
+
+	return depts
+
+/datum/controller/subsystem/economy/proc/get_all_business_departments()
+	var/list/depts = list()
+	for(var/datum/department/D in all_departments)
+		if(D.dept_type != BUSINESS_DEPARTMENT)
+			continue
+		depts |= D
+
+	return depts
+
 /datum/controller/subsystem/economy/proc/setup_economy()
 	for(var/instance in subtypesof(/datum/department))
 		new instance
