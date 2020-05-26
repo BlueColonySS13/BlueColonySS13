@@ -52,9 +52,9 @@
 		access_password = GenerateKey()
 
 	if(given_dept_id)
-		department = dept_by_id(given_dept_id)
+		department = given_dept_id
 
-	if(!department)
+	if(!dept_by_id(department))
 		var/datum/department/new_dept = new /datum/department(name, BUSINESS_DEPARTMENT, business_uid, description, d_hasbank = TRUE)
 		department = new_dept.id
 
