@@ -8,7 +8,7 @@
 
 	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 50)
 
-	req_access = list(access_engine)
+	req_access = list()
 
 	var/secure = 0 //if set, then wires will be randomized and bolts will drop if the door is broken
 	var/list/conf_access = null
@@ -36,7 +36,7 @@
 			t1 += conf_access == null ? "<font color=red>All</font><br>" : "<a href='?src=\ref[src];access=all'>All</a><br>"
 
 			t1 += "<br>"
-
+			t1 += "<b>City Accesses:</b><br>"
 			var/list/accesses = get_all_station_access()
 			for (var/acc in accesses)
 				var/aname = get_access_desc(acc)
@@ -47,6 +47,18 @@
 					t1 += "<a style='color: green' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
 				else
 					t1 += "<a style='color: red' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
+
+			t1 += "<br><b>Business Accesses:</b><br>"
+			var/list/baccesses = SSbusiness.business_access_list
+			for (var/datum/access/accb in baccesses)
+				var/bname = get_biz_access_name_id(accb.id)
+
+				if (!conf_access || !conf_access.len || !(accb.id in conf_access))
+					t1 += "<a href='?src=\ref[src];access=[accb.id]'>[bname]</a><br>"
+				else if(one_access)
+					t1 += "<a style='color: green' href='?src=\ref[src];access=[accb.id]'>[bname]</a><br>"
+				else
+					t1 += "<a style='color: red' href='?src=\ref[src];access=[accb.id]'>[bname]</a><br>"
 
 		t1 += text("<p><a href='?src=\ref[];close=1'>Close</a></p>\n", src)
 
@@ -94,6 +106,9 @@
 				conf_access = null
 			else
 				var/req = text2num(acc)
+
+				if(!req)
+					req = acc
 
 				if (conf_access == null)
 					conf_access = list()

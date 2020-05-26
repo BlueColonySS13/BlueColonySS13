@@ -1,6 +1,8 @@
 
 /mob/new_player/proc/LateChoices()
 
+	if(!SSjobs || !SSeconomy)
+		return
 
 	var/dat = "<center>"
 	if(emergency_shuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
@@ -48,7 +50,7 @@
 			<tr>
 				<td style="width: 10%;"><img src="job_icon_[job.title].png" width="220" height="220" class="fr-fil fr-dii"></td>
 				<td style="width: 74.7797%; background-color: rgb(0, 0, 0); padding: 15px; border: 1px solid #515151;">
-					<div style="text-align: center; border: 1px solid [job_department.dept_color]; padding: 5px;"><strong><span>[job.title]</span></strong></div>
+					<div style="text-align: center; border: 1px solid [job_department.dept_color ? job_department.dept_color : ""]; padding: 5px;"><strong><span>[job.title]</span></strong></div>
 
 					<center>[job_no_label ? "<br>[job_no_label]" : ""]</center>
 
@@ -58,31 +60,44 @@
 
 	dat += "<br><br><div style=\"text-align: center;\">"
 
+	var/alt_title = client.prefs.GetPlayerAltTitle(job)
+
 	if(IsJobAvailable(job.title))
-		dat += "<a href='byond://?src=\ref[src];SelectedJob=[job.title]'>Join As [job.title]</a>"
+		dat += "<a href='byond://?src=\ref[src];SelectedJob=[job.title]'>Join As [alt_title ? alt_title : job.title]</a>"
 	else
-		dat += "<a style=\"background: #515151;\" href='#'>Join As [job.title]</a>"
+		dat += "<a style=\"background: #515151;\" href='#'>Join As [alt_title ? alt_title : job.title]</a>"
 		dat += "<br>"
 		if(!is_hard_whitelisted(src, job))
-			dat += "This job requires whitelisting, or is obtained IC'ly through in-game events.<br>"
+			dat += "This job requires whitelisting, or is obtained IC'ly through in-game events."
+		else if(!job.enabled)
+			dat += "This job is currently on hold by the employer."
 		else if(jobban_isbanned(src,job.title))
-			dat += "You are banned from playing this role.<br>"
+			dat += "You are banned from playing this role."
 		else if(!job.player_old_enough(client))
-			dat += "You need to be playing for at least [job.minimal_player_age] days.<br>"
+			dat += "You need to be playing for at least [job.minimal_player_age] days."
 		else if(job.minimum_character_age && client && (client.prefs.age < job.minimum_character_age))
-			dat += "Your character needs to be at least [job.minimum_character_age].<br>"
+			dat += "Your character needs to be at least [job.minimum_character_age]."
 		else if(!isemptylist(client.prefs.crime_record) && job.clean_record_required)
-			dat += "Your criminal record prevents you from working in this role.<br>"
+			dat += "Your criminal record prevents you from working in this role."
 		else if(job.title == "Prisoner" && client.prefs.criminal_status != "Incarcerated")
-			dat += "Only incarcerated individuals can play this role.<br>"
+			dat += "Only incarcerated individuals can play this role."
 		else if(job.title != "Prisoner" && client.prefs.criminal_status == "Incarcerated")
-			dat += "You are currently in prison and are unable to work. Play as a prisoner.<br>"
+			dat += "You are currently in prison and are unable to work. Play as a prisoner."
 		else if(!job.is_position_available())
-			dat += "This role is fully filled. Try again later.<br>"
+			dat += "This role is fully filled. Try again later."
+		else if(!isemptylist(job.exclusive_employees) && !(client.prefs.unique_id in job.exclusive_employees))
+			dat += "This job requires you to apply in-person and be accepted by the employer."
+		else if(job.business)
+			var/datum/business/biz = get_business_by_biz_uid(job.business)
+			if(biz && biz.suspended)
+				dat += "The business of this job is currently suspended."
 		else
-			dat += "This job is unavailable.<br>"
+			dat += "This job is unavailable."
 
-	dat+= "</div></td></tr></tbody></table>"
+		dat += "<br>"
+
+	dat += " <a href='byond://?src=\ref[src];set_alt_title=1;job=\ref[job]'>Set Alt Title</a>"
+	dat+= "<br></div></td></tr></tbody></table>"
 
 
 
@@ -96,13 +111,13 @@
 
 	switch(job_select_mode)
 		if("PUBLIC")
-			job_departments += (GLOB.public_departments + GLOB.private_departments + GLOB.external_departments)
+			job_departments += SSeconomy.get_all_nonbusiness_departments()
 			label = "Public Sector"
 			switch_type = "PRIVATE"
 			dat += "<BR>Public Sector Jobs | <a href='byond://?src=\ref[src];SelectDeptType=[switch_type]'>Private Sector Jobs</a>"
 			dat += "<BR>Public jobs are jobs funded by the government or aren't associated with any private business."
 		if("PRIVATE")
-			job_departments += (GLOB.business_departments)
+			job_departments += SSeconomy.get_all_business_departments()
 			label = "Private Sector"
 			switch_type = "PUBLIC"
 			dat += "<BR><a href='byond://?src=\ref[src];SelectDeptType=[switch_type]'>Public Sector Jobs</a> | Private Sector Jobs"

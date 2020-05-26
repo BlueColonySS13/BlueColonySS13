@@ -1,4 +1,6 @@
 #define MAX_MONEY 10000000
+#define MAX_BUSINESS_JOBS 5
+#define MAX_BUSINESS_ACCESSES 15
 
 #define CREDIT "credit"
 #define CREDITS "credits"

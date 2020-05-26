@@ -7,7 +7,7 @@
 #define CAT_LIBRARY "Books/Library/Archives"
 #define CAT_BUILDING "Building/Construction"
 #define CAT_EDU "Education"
-#define CAT_EMPLOY "Employment Agency"
+#define CAT_EMPLOY "Recruitment/Employment Agency"
 #define CAT_ENTERTAINMENT "Entertainment/Music"
 #define CAT_FOOD "Food and Drink"
 #define CAT_HOSPITALITY "Hospitality"

@@ -614,6 +614,7 @@ SUBSYSTEM_DEF(jobs)
 	BITSET(H.hud_updateflag, ID_HUD)
 	BITSET(H.hud_updateflag, IMPLOYAL_HUD)
 	BITSET(H.hud_updateflag, SPECIALROLE_HUD)
+
 	return H
 
 
@@ -621,22 +622,29 @@ SUBSYSTEM_DEF(jobs)
 
 
 /datum/controller/subsystem/jobs/proc/spawnId(var/mob/living/carbon/human/H, rank, title)
-	if(!H)	return 0
+	if(!H)
+		return 0
+
 	var/obj/item/weapon/card/id/C = H.get_equipped_item(slot_wear_id)
-	if(istype(C))  return 0
 
 	var/datum/job/job = null
 	for(var/datum/job/J in occupations)
 		if(J.title == rank)
 			job = J
 			break
-
 	if(job)
 		if(job.title == "Cyborg")
 			return
 		else
 			C = new job.idtype(H)
-			C.access = job.get_access()
+			C.access += job.get_access()
+
+		//business access compatibility? why. don't ask me.
+		if(job.business)
+			var/obj/item/weapon/card/id/ID = locate(/obj/item/weapon/card/id/, H.GetAllContents())
+			if(ID)
+				ID.access |= job.access
+
 	else
 		C = new /obj/item/weapon/card/id(H)
 	if(C)
@@ -651,14 +659,6 @@ SUBSYSTEM_DEF(jobs)
 				C.associated_pin_number = H.mind.initial_account.remote_access_pin
 
 		H.equip_to_slot_or_del(C, slot_wear_id)
-
-//		H.equip_to_slot_or_del(new /obj/item/device/pda(H), slot_belt)
-	if(locate(/obj/item/device/pda,H))
-		var/obj/item/device/pda/pda = locate(/obj/item/device/pda,H)
-		pda.owner = H.real_name
-		pda.ownjob = C.assignment
-		pda.ownrank = C.rank
-		pda.name = "PDA-[H.real_name] ([pda.ownjob])"
 
 	return 1
 

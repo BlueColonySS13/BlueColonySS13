@@ -21,7 +21,7 @@
 	l_ear = /obj/item/device/radio/headset/headset_mine
 
 /decl/hierarchy/outfit/job/cargo/mining
-	name = OUTFIT_JOB_NAME("Shaft miner")
+	name = OUTFIT_JOB_NAME("Miner")
 	uniform = /obj/item/clothing/under/rank/miner
 	l_ear = /obj/item/device/radio/headset/headset_mine
 	backpack = /obj/item/weapon/storage/backpack/industrial

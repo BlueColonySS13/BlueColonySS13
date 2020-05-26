@@ -1,3 +1,17 @@
+var/global/list/business_outfits = list(
+	"Formal" = list("path" = /decl/hierarchy/outfit/job/business/formal),
+	"Bartender" = list("path" = /decl/hierarchy/outfit/job/business/bartender),
+	"Chef" = list("path" = /decl/hierarchy/outfit/job/business/chef),
+	"Gardener" = list("path" = /decl/hierarchy/outfit/job/business/gardener),
+	"Janitor" = list("path" = /decl/hierarchy/outfit/job/business/janitor),
+	"Journalist" = list("path" = /decl/hierarchy/outfit/job/business/journalist),
+	"Chaplain" = list("path" = /decl/hierarchy/outfit/job/business/priest),
+	"Explorer" = list("path" = /decl/hierarchy/outfit/job/business/explorer),
+	"Barber" = list("path" = /decl/hierarchy/outfit/job/business/barber),
+	"Mailman" = list("path" = /decl/hierarchy/outfit/job/business/mailman)
+
+)
+
 /proc/get_business_by_name(name) //Compares a business 'B' to the master list and returns the business if found.
 	for(var/datum/business/B in GLOB.all_businesses)
 		if(B.name == name)
@@ -42,7 +56,7 @@
 	return BUSINESS_ACTIVE
 
 /datum/business/proc/get_department()
-	return dept_by_id(department)
+	return department
 
 /proc/businesses_by_category(cat)
 	var/list/biz = list()
@@ -51,3 +65,13 @@
 			biz += B
 
 	return biz
+
+/proc/get_biz_access_by_id(id)
+	for(var/datum/access/A in GLOB.all_business_accesses)
+		if(A.id == id)
+			return A
+
+/proc/get_biz_access_name_id(id)
+	for(var/datum/access/A in GLOB.all_business_accesses)
+		if(A.id == id)
+			return "[A.desc]"

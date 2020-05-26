@@ -597,7 +597,7 @@
 		if(!maint_mode)
 			return
 
-		var/new_pin = input("Enter new staff pin code (max 9999)", "Vendor transaction") as num
+		var/new_pin = input("Enter new staff pin code (max 9999)", "Pin Change") as num
 		if(!new_pin || (0 > new_pin))
 			return
 		if(new_pin > 9999)

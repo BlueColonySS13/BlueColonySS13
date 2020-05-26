@@ -28,6 +28,9 @@ GLOBAL_VAR(current_date_string)
 // businesses
 
 GLOBAL_LIST_EMPTY(all_businesses)
+GLOBAL_LIST_EMPTY(all_business_accesses)
+GLOBAL_LIST_EMPTY(business_ids)
+
 GLOBAL_LIST_INIT(business_categories, list( // list of categories businesses can list themselves as
 	CAT_ADS,
 	CAT_FARM,

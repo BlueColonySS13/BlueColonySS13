@@ -68,18 +68,17 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_OVERLAY		-6
 #define INIT_ORDER_ECONOMY		-18
 #define INIT_ORDER_JOBS            -19
-#define INIT_ORDER_XENOARCH		-20
-#define INIT_ORDER_CIRCUIT		-21
-#define INIT_ORDER_EMAILS		-22
-#define INIT_ORDER_AI			-23
-#define INIT_ORDER_PERSISTENCE	-24
-#define INIT_ORDER_PAYROLL		-25
-#define INIT_ORDER_ELECTIONS		-26
-#define INIT_ORDER_LAW			-27
-#define INIT_ORDER_LOTS			-28
-#define INIT_ORDER_WEBSITES		-29
-#define INIT_ORDER_BUSINESS		-30
-
+#define INIT_ORDER_BUSINESS		-20
+#define INIT_ORDER_XENOARCH		-21
+#define INIT_ORDER_CIRCUIT		-22
+#define INIT_ORDER_EMAILS		-23
+#define INIT_ORDER_AI			-24
+#define INIT_ORDER_PERSISTENCE	-25
+#define INIT_ORDER_PAYROLL		-26
+#define INIT_ORDER_ELECTIONS		-27
+#define INIT_ORDER_LAW			-28
+#define INIT_ORDER_LOTS			-29
+#define INIT_ORDER_WEBSITES		-30
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)

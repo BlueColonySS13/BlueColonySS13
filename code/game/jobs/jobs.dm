@@ -51,7 +51,7 @@ var/const/BARBER				=(1<<14)
 var/const/SECRETARY				=(1<<15)
 var/const/JUDGE				=(1<<16)
 var/const/PRISONER				=(1<<17)
-var/const/MANAGER              =(1<<18)
+var/const/MANAGER         	     =(1<<18)
 
 var/const/GOVLAW				=(1<<3)
 

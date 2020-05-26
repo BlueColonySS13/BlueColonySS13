@@ -179,6 +179,27 @@
 	if(href_list["manifest"])
 		ViewManifest()
 
+
+	if(href_list["set_alt_title"])
+		var/E = locate(href_list["job"])
+
+		var/datum/job/job = E
+
+		if(!client || !client.prefs || !job)
+			return
+
+		var/choices = list(job.title) + job.alt_titles
+		var/new_title = input("Choose a title for [job.title].", "Choose Title", client.prefs.GetPlayerAltTitle(job)) as anything in choices|null
+
+		// remove existing entry
+		client.prefs.player_alt_titles -= job.title
+
+		if(job.title != new_title)
+			client.prefs.player_alt_titles[job.title] = new_title
+
+		LateChoices()
+		return
+
 	if(href_list["SelectJob"])	//pre- SelectedJob usage for new menu
 		var/E = href_list["SelectJob"]
 
@@ -348,6 +369,7 @@
 /mob/new_player/proc/IsJobAvailable(rank)
 	var/datum/job/job = SSjobs.GetJob(rank)
 	if(!job)	return 0
+	if(!job.enabled) return 0
 	if(!job.is_position_available()) return 0
 	if(jobban_isbanned(src,rank))	return 0
 	if(!is_hard_whitelisted(src, job)) return 0
@@ -355,10 +377,11 @@
 	if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age)) return 0
 	if(job.title == "Prisoner" && client.prefs.criminal_status != "Incarcerated")	return 0
 	if(job.title != "Prisoner" && client.prefs.criminal_status == "Incarcerated")	return 0
-
-	if(job.clean_record_required)
-		var/list/criminal_record = client.prefs.crime_record
-		if(!isemptylist(criminal_record)) return 0
+	if(job.clean_record_required && client.prefs.crime_record && !isemptylist(client.prefs.crime_record)) return 0
+	if(!isemptylist(job.exclusive_employees) && !(client.prefs.unique_id in job.exclusive_employees)) return 0
+	if(job.business)
+		var/datum/business/biz = get_business_by_biz_uid(job.business)
+		if(biz && biz.suspended) return 0
 
 	return 1
 
@@ -450,6 +473,8 @@
 		AnnounceArrival(character, rank, join_message)
 	else
 		AnnounceCyborg(character, rank, join_message)
+
+
 
 	qdel(src)
 

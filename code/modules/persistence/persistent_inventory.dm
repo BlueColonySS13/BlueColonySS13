@@ -44,6 +44,9 @@
 /obj/machinery/inventory_machine/nanotrasen/proc/link_nt_account()
 	var/datum/money_account/nt_dep = dept_acc_by_id(DEPT_NANOTRASEN)
 
+	if(!nt_dep)
+		return
+
 	owner_name = "Nanotrasen"
 	bank_id = nt_dep.account_number
 	owner_uid = "Nanotrasen"

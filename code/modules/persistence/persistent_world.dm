@@ -3,8 +3,11 @@
 	//saves all political data - TODO: Move this into law subsystem
 	persistent_economy.save_economy()
 
-	//saves all political data - TODO: Move this into law subsystem
+	//save economy and department money
 	SSeconomy.save_economy()
+
+	//save business data
+	SSbusiness.save_all_businesses()
 
 	//save politics related data
 	SSelections.save_data.save_candidates()
@@ -42,5 +45,7 @@
 
 	for(var/datum/persistent_inventory/PI in GLOB.persistent_inventories)
 		PI.save_inventory()
+
+
 
 	return 1

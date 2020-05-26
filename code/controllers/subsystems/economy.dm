@@ -9,10 +9,29 @@ SUBSYSTEM_DEF(economy)
 	setup_economy()
 	all_departments = GLOB.departments
 	load_economy()
+	load_business_departments()
 	init_expenses()
 	persistent_economy.load_accounts()
 	link_economy_accounts()
 	. = ..()
+
+/datum/controller/subsystem/economy/proc/get_all_nonbusiness_departments()
+	var/list/depts = list()
+	for(var/datum/department/D in all_departments)
+		if(D.dept_type == BUSINESS_DEPARTMENT)
+			continue
+		depts |= D
+
+	return depts
+
+/datum/controller/subsystem/economy/proc/get_all_business_departments()
+	var/list/depts = list()
+	for(var/datum/department/D in all_departments)
+		if(D.dept_type != BUSINESS_DEPARTMENT)
+			continue
+		depts |= D
+
+	return depts
 
 /datum/controller/subsystem/economy/proc/setup_economy()
 	for(var/instance in subtypesof(/datum/department))
@@ -94,6 +113,45 @@ SUBSYSTEM_DEF(economy)
 
 	return TRUE
 
+/datum/controller/subsystem/economy/proc/save_business_departments()
+	var/path = "data/persistent/departments/business_departments.sav"
+
+	var/savefile/S = new /savefile(path)
+	if(!fexists(path))
+		return 0
+	if(!S)
+		return 0
+	S.cd = "/"
+
+	for(var/datum/department/D in GLOB.business_departments)
+		D.sanitize_values()
+
+	S << GLOB.business_departments
+
+	return 1
+
+/datum/controller/subsystem/economy/proc/load_business_departments()
+	var/path = "data/persistent/departments/business_departments.sav"
+
+	var/savefile/S = new /savefile(path)
+	if(!fexists(path))
+		save_economy()
+		return 0
+	if(!S)
+		return 0
+	S.cd = "/"
+
+	S >> GLOB.business_departments
+
+	if(!S || !GLOB.business_departments)
+		GLOB.business_departments = list()
+		return
+
+	for(var/datum/department/D in GLOB.business_departments)
+		D.sanitize_values()
+
+	return 1
+
 /datum/controller/subsystem/economy/proc/save_economy()
 	prepare_economy_save()
 
@@ -104,10 +162,13 @@ SUBSYSTEM_DEF(economy)
 	// save each department to a save file.
 	for(var/datum/department/D in GLOB.departments)
 
-		D.sanitize_values()
-
 		if(!D.name || !D.id || !D.bank_account)
 			continue
+
+		if(D.dept_type == BUSINESS_DEPARTMENT)
+			continue
+
+		D.sanitize_values()
 
 		var/sav_folder = "public_departments"
 
@@ -120,7 +181,7 @@ SUBSYSTEM_DEF(economy)
 		if(D.dept_type == HIDDEN_DEPARTMENT)
 			sav_folder = "hidden_departments"
 
-		var/path = "data/persistent/departments/[sav_folder]/[D.name].sav"
+		var/path = "data/persistent/departments/[sav_folder]/[D.id].sav"
 
 		var/savefile/S = new /savefile(path)
 		if(!fexists(path))
@@ -137,7 +198,7 @@ SUBSYSTEM_DEF(economy)
 			S["remote_access_pin"] << D.bank_account.remote_access_pin
 			S["transaction_log"] << D.bank_account.transaction_log
 
-		S["blacklisted_employees"] << D.blacklisted_employees
+	save_business_departments()	// saved separately, for reasons
 
 	return TRUE
 
@@ -167,12 +228,13 @@ SUBSYSTEM_DEF(economy)
 			sav_folder = "hidden_departments"
 
 
-		var/path = "data/persistent/departments/[sav_folder]/[D.name].sav"
+		var/path = "data/persistent/departments/[sav_folder]/[D.id].sav"
 
 		var/savefile/S = new /savefile(path)
 		if(!fexists(path))
-			save_economy()
-			return 0
+			var/new_path = "data/persistent/departments/[sav_folder]/[D.name].sav" //legacy loading
+			if(!fexists(new_path))
+				return 0
 		if(!S)
 			return 0
 		S.cd = "/"
@@ -182,8 +244,6 @@ SUBSYSTEM_DEF(economy)
 			S["account_number"] >> D.bank_account.account_number
 			S["remote_access_pin"] >> D.bank_account.remote_access_pin
 			S["transaction_log"] >> D.bank_account.transaction_log
-
-		S["blacklisted_employees"] >> D.blacklisted_employees
 
 	return TRUE
 

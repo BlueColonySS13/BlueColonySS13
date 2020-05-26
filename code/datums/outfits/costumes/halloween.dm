@@ -19,7 +19,6 @@
 	shoes = /obj/item/clothing/shoes/black
 	gloves = /obj/item/clothing/gloves/black
 	glasses = /obj/item/clothing/glasses/fakesunglasses
-	l_pocket = /obj/item/toy/sword
 
 /decl/hierarchy/outfit/costume/professional/post_equip(var/mob/living/carbon/human/H)
 	var/obj/item/weapon/storage/briefcase/new_briefcase = new(H)

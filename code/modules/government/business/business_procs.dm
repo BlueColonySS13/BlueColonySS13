@@ -35,6 +35,9 @@
 
 	var/datum/department/dept = get_department()
 
+	for(var/datum/access/B in business_accesses)
+		B.department_tag = name
+
 	if(dept)
 		dept.name = new_name
 		if(dept.bank_account)
@@ -58,3 +61,43 @@
 
 	return dept.get_all_jobs()
 
+
+/datum/business/proc/refresh_business_support_list()
+	for(var/datum/job/job in business_jobs)
+		SSjobs.occupations |= job
+
+	for(var/datum/access/access in business_accesses)
+		GLOB.all_business_accesses |= access
+
+
+/datum/business/proc/create_new_job(job_name)
+	var/datum/job/job = new()
+
+	//jobs started with a business start deactivated. Owner has to activate them.
+	job.enabled = FALSE
+	job.title = job_name
+	job.department = department
+	job.department_flag = CIVILIAN
+	job.faction = "City"
+	job.business = business_uid
+	if(owner)
+		job.supervisors = "[owner.name]"
+
+	job.total_positions = 3
+	business_jobs += job
+	refresh_business_support_list()
+
+/datum/business/proc/create_new_access(access_name)
+	var/datum/access/access = new()
+
+	access.desc = access_name
+	access.id = "[business_uid][rand(1,999)][pick("A","B","C","X","Z")]"
+	access.access_type = ACCESS_TYPE_BUSINESS
+	access.department_tag = name
+
+	for(var/datum/access/B in business_accesses)
+		if(B.id == access.id)
+			access.id = "[access.id][rand(39,100)][game_id]"
+
+	business_accesses += access
+	refresh_business_support_list()
