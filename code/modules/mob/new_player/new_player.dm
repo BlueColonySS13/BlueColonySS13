@@ -474,6 +474,8 @@
 	else
 		AnnounceCyborg(character, rank, join_message)
 
+
+
 	qdel(src)
 
 /mob/new_player/proc/AnnounceCyborg(var/mob/living/character, var/rank, var/join_message)

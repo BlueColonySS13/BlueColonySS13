@@ -81,11 +81,13 @@
 	desc = "A card indicating that the owner is allowed to any type of weapon provided by the police department as long as they remain on the police force."
 	tier = 5
 	price_tag = 7000
+	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/gun/tier_three/bar
 	name = "bar shotgun permit"
 	desc = "A card indicating that the owner is allowed to carry a shotgun in the bar."
 	tier = 3
+	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/gun/planetside
 	name = "planetside gun permit"

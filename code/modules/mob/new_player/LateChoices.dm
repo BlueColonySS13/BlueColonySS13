@@ -1,6 +1,8 @@
 
 /mob/new_player/proc/LateChoices()
 
+	if(!SSjobs || !SSeconomy)
+		return
 
 	var/dat = "<center>"
 	if(emergency_shuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
@@ -48,7 +50,7 @@
 			<tr>
 				<td style="width: 10%;"><img src="job_icon_[job.title].png" width="220" height="220" class="fr-fil fr-dii"></td>
 				<td style="width: 74.7797%; background-color: rgb(0, 0, 0); padding: 15px; border: 1px solid #515151;">
-					<div style="text-align: center; border: 1px solid [job_department.dept_color]; padding: 5px;"><strong><span>[job.title]</span></strong></div>
+					<div style="text-align: center; border: 1px solid [job_department.dept_color ? job_department.dept_color : ""]; padding: 5px;"><strong><span>[job.title]</span></strong></div>
 
 					<center>[job_no_label ? "<br>[job_no_label]" : ""]</center>
 

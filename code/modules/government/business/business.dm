@@ -27,14 +27,16 @@
 
 //////////////////////////
 
-/datum/business/New(title, var/desc, var/pass, var/cat, var/owner_uid, var/owner_name, var/owner_email) // Makes a new business
+/datum/business/New(title, var/desc, var/pass, var/cat, var/owner_uid, var/owner_name, var/owner_email, var/dept) // Makes a new business
 	name = title
 	description = desc
 	access_password = pass
 	categories += cat
 
-	sanitize_business()
+	if(dept)
+		department = dept
 
+	sanitize_business()
 	GLOB.all_businesses += src
 
 	..()
@@ -49,7 +51,8 @@
 	if(!access_password)
 		access_password = GenerateKey()
 
-	department = dept_by_id(given_dept_id)
+	if(given_dept_id)
+		department = dept_by_id(given_dept_id)
 
 	if(!department)
 		var/datum/department/new_dept = new /datum/department(name, BUSINESS_DEPARTMENT, business_uid, description, d_hasbank = TRUE)
@@ -69,9 +72,7 @@
 	if(isemptylist(categories))
 		categories += CAT_RETAIL
 
-	for(var/datum/access/A in business_accesses)
-		GLOB.all_business_accesses |= A
-
+	refresh_business_support_list()
 
 
 

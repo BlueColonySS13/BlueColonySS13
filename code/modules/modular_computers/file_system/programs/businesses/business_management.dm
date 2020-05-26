@@ -905,6 +905,9 @@
 
 				job.access -= job_access
 
+				if(job_access in job.minimal_access)
+					job.minimal_access -= job_access
+
 			if("add_access_to_job")
 				var/E = locate(href_list["job"])
 				var/datum/job/job = E
@@ -933,7 +936,8 @@
 
 				for(var/datum/access/A in current_business.business_accesses)
 					if(A.desc == new_access)
-						job.access += A.id
+						job.access |= A.id
+						job.minimal_access |= A.id
 						break
 
 			if("add_alt_title")

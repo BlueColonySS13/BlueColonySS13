@@ -16,8 +16,8 @@
 	minimal_access = list(access_bar)
 	minimum_character_age = 18
 	wage = 45
-	outfit_type = /decl/hierarchy/outfit/job/service/bartender
-	alt_titles = list("Waiting Staff","Barkeep","Mixologist","Barista" = /decl/hierarchy/outfit/job/service/bartender/barista)
+//	outfit_type = /decl/hierarchy/outfit/job/service/bartender
+	alt_titles = list("Waiting Staff","Barkeep","Mixologist","Barista")
 
 
 /datum/job/chef
@@ -36,7 +36,7 @@
 	minimal_access = list(access_kitchen)
 	minimum_character_age = 15 //Those kids better serve some good burgers or I'll ask for the manager
 	wage = 45
-	outfit_type = /decl/hierarchy/outfit/job/service/chef
+//	outfit_type = /decl/hierarchy/outfit/job/service/chef
 	alt_titles = list("Restaurant Cashier","Cook","Restaurant Host")
 
 /datum/job/hydro
@@ -55,7 +55,7 @@
 	minimal_access = list(access_hydroponics)
 	minimum_character_age = 16 //Eh, I can see it happening
 	wage = 29
-	outfit_type = /decl/hierarchy/outfit/job/service/gardener
+//	outfit_type = /decl/hierarchy/outfit/job/service/gardener
 	alt_titles = list("Hydroponicist", "Gardener","Farmer")
 
 /datum/job/bargm
@@ -96,7 +96,7 @@
 	minimal_access = list(access_library)
 	minimum_character_age = 16
 	wage = 36
-	outfit_type = /decl/hierarchy/outfit/job/civilian/journalist
+//	outfit_type = /decl/hierarchy/outfit/job/civilian/journalist
 	alt_titles = list("Archivist", "Librarian", "Radio Host")
 
 /datum/job/defense
@@ -138,7 +138,7 @@
 	access = list(access_barber, access_maint_tunnels)
 	minimal_access = list(access_barber)
 	wage = 47
-	outfit_type = /decl/hierarchy/outfit/job/civilian/barber
+//	outfit_type = /decl/hierarchy/outfit/job/civilian/barber
 	alt_titles = list("Hairdresser", "Stylist", "Beautician")
 
 //Cargo

@@ -9,10 +9,9 @@
 
 /datum/controller/subsystem/business/proc/load_all_businesses()
 	load_bizlist()
-	SSjobs.load_job_list_private()
 
 	for(var/V in GLOB.business_ids)
-		var/datum/business/B = new /datum/business()
+		var/datum/business/B = new /datum/business(department = V)
 		B.business_uid = V
 		B.load_business()
 

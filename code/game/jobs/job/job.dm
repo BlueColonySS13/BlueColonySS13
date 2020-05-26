@@ -10,7 +10,7 @@
 	var/faction = "None"	             // Players will be allowed to spawn in as jobs that are set to "City"
 	var/total_positions = 0               // How many players can be this job
 	var/spawn_positions = 0               // How many players can spawn in as this job
-	var/current_positions = 0             // How many players have this job
+	var/tmp/current_positions = 0         // How many players have this job
 	var/supervisors = null                // Supervisors, who this person answers to directly
 	var/subordinates = null			   // If you are a supervisor, who do you command?
 	var/selection_color = "#ffffff"       // Selection screen color

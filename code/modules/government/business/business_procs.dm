@@ -61,10 +61,13 @@
 
 	return dept.get_all_jobs()
 
-/datum/business/proc/refresh_job_list()
+
+/datum/business/proc/refresh_business_support_list()
 	for(var/datum/job/job in business_jobs)
-		if(!(job in SSjobs.occupations))
-			SSjobs.occupations += job
+		SSjobs.occupations |= job
+
+	for(var/datum/access/access in business_accesses)
+		GLOB.all_business_accesses |= access
 
 /datum/business/proc/create_new_job(job_name)
 	var/datum/job/job = new()
@@ -81,7 +84,7 @@
 
 	job.total_positions = 3
 	business_jobs += job
-	refresh_job_list()
+	refresh_business_support_list()
 
 /datum/business/proc/create_new_access(access_name)
 	var/datum/access/access = new()
@@ -96,4 +99,4 @@
 			access.id = "[access.id][rand(39,100)][game_id]"
 
 	business_accesses += access
-	GLOB.all_business_accesses += access
+	refresh_business_support_list()
