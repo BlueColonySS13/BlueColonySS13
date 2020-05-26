@@ -11,7 +11,7 @@
 	load_bizlist()
 
 	for(var/V in GLOB.business_ids)
-		var/datum/business/B = new /datum/business(department = V)
+		var/datum/business/B = new /datum/business(department = "[V]")
 		B.business_uid = V
 		B.load_business()
 

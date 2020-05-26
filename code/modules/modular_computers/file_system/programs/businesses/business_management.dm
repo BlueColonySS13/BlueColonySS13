@@ -257,7 +257,6 @@
 				page_msg += "<br><strong>Outfit:</strong> [outfit ? outfit.name : "None"] "
 
 				page_msg += "<a href='?src=\ref[src];choice=change_outfit;job=\ref[job]'>Change Outfit</a><br>"
-				page_msg += "<a href='?src=\ref[src];choice=toggle_job_status;job=\ref[job]'>[job.enabled ? "Enabled" : "Disabled"]</a><br>"
 
 				page_msg += "<br><strong>Alternative Titles:</strong><br>"
 				for(var/F in job.alt_titles)
@@ -265,6 +264,7 @@
 
 				page_msg += "<br><br><a href='?src=\ref[src];choice=add_alt_title;job=\ref[job]'>Add Alternate Title</a><br>"
 
+				page_msg += "<br><a href='?src=\ref[src];choice=toggle_job_status;job=\ref[job]'>[job.enabled ? "Enabled" : "Disabled"]</a><br>"
 
 				page_msg += "* HR Note: An exploitable job is a job that may provide access to weaponry, dangerous chemicals or has high abuse potential. \
 				Toggling this will stricten the hiring standards."
@@ -419,7 +419,7 @@
 		if(!current_business)
 			return
 
-		var/new_job = sanitize(copytext(input(usr, "Enter a new job title. (Max 40 letters)", "Business Management Utility", b_pass)  as text,1,40))
+		var/new_job = sanitizeSafe(copytext(input(usr, "Enter a new job title. (Max 40 letters)", "Business Management Utility", b_pass)  as text,1,40))
 
 		if(!(LAZYLEN(current_business.business_jobs) >= MAX_BUSINESS_JOBS))
 			current_business.create_new_job(new_job)
@@ -1015,7 +1015,7 @@
 
 						return
 
-				var/job_title = sanitize(copytext(input(usr, "Enter a job title. (140 chars max)", "Business Management Utility", job.title)  as message,1,140))
+				var/job_title = sanitizeSafe(copytext(input(usr, "Enter a job title. (140 chars max)", "Business Management Utility", job.title)  as message,1,140))
 				if(!job_title || !current_business || !job)
 					return
 
