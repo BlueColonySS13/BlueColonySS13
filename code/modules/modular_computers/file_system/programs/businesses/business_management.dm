@@ -93,6 +93,7 @@
 				page_msg += "<b>Bank ID:</b> [biz_dept.bank_account.account_number]<br>"
 				page_msg += "<a href='?src=\ref[src];withdraw_balance=1'>Withdraw Balance</a>"
 				page_msg += "<a href='?src=\ref[src];transfer_money=1'>Transfer Money</a>"
+				page_msg += "<a href='?src=\ref[src];add_funds=1'>Add Funds</a>"
 
 			page_msg += "<br><br><b>Business:</b> [current_business.name]<br>"
 			page_msg += "<b>Creation Date:</b> [current_business.creation_date]<br>"
@@ -542,6 +543,41 @@
 
 
 
+	if(href_list["add_funds"])
+		if(!current_business)
+			return
+
+		if(!current_business.owner || !current_business.owner.bank_id)
+			return
+
+		var/datum/department/dept = dept_by_id(current_business.department)
+		var/datum/money_account/department/business_account = dept_acc_by_id(current_business.department)
+
+		if(!dept || !business_account)
+			return
+
+		var/paying = input(usr, "Please input funding amount to add to your account balance.", "Pay Balance") as num|null
+
+		var/datum/money_account/D = get_account(current_business.owner.bank_id)
+		var/attempt_pin = ""
+		if(D && D.security_level)
+			attempt_pin = input("Enter PIN", "Transaction") as num
+
+
+		if(!attempt_account_access(current_business.owner.bank_id, attempt_pin, 2) )
+			error_msg = "There was an error with authenticating your bank account. Please contact your bank's administrator."
+			return
+
+		if(paying > D.money)
+			error_msg = "You have insufficient funds."
+			return
+
+		if(!charge_to_account(current_business.owner.bank_id, "Business Management System", "Funds Transfers [current_business.name]", "City Council DB #[rand(200,500)]", -paying))
+			error_msg = "Unfortunately, your bank account cannot currently be charged at this time. Please check with an administrator."
+			return
+
+		dept.adjust_funds(paying, "Funds Transfer via Business Portal")
+
 	if(href_list["withdraw_balance"])
 		if(!current_business)
 			return
@@ -699,7 +735,8 @@
 			reg_error = "There was an error creating your business. Please hold onto your transactional reciepts and contact an administrator."
 			return
 
-
+		var/datum/department/council = dept_by_id(DEPT_COUNCIL)
+		council.adjust_funds(persistent_economy.business_registration, "Business Registration for [new_biz.name]")
 		show_custom_page("Success, your business - [new_biz.name] has been created. An email has been sent with the full details.")
 
 
@@ -1015,9 +1052,7 @@
 
 						return
 
-				var/job_title = sanitize_name(copytext(input(usr, "Enter a job title. (140 chars max)", "Business Management Utility", job.title)  as message,1,140))
-
-				job_title = replacetext(lowertext(name), "'", "")
+				var/job_title = sanitize_name(copytext(input(usr, "Enter a new job title. (Max 40 letters)", "Business Management Utility", job.title)  as text,1,40))
 
 				if(!job_title || !current_business || !job)
 					return

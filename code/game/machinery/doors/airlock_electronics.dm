@@ -10,6 +10,8 @@
 
 	req_access = list()
 
+	unique_save_vars = list("req_access", "conf_access", "one_access", "last_configurator", "locked")
+
 	var/secure = 0 //if set, then wires will be randomized and bolts will drop if the door is broken
 	var/list/conf_access = null
 	var/one_access = 0 //if set to 1, door would receive req_one_access instead of req_access

@@ -88,14 +88,14 @@
 			if(islist(O.vars[V]))
 				var/list/M = O.vars[V]
 				for(var/P in M)
-					var/asso_var = M[P]
 					if(!istext(P) && !isnum(P))
 						save_var = FALSE
 						continue
-
-					if(asso_var && (!istext(asso_var) && !isnum(asso_var)) )
-						save_var = FALSE
-						continue
+					if(listgetindex(M,P))
+						var/asso_var = listgetindex(M,P)
+						if(asso_var && (!istext(asso_var) && !isnum(asso_var)) )
+							save_var = FALSE
+							continue
 
 			else
 				if(!istext(O.vars[V]) && !isnum(O.vars[V]))	// make sure all references to mobs/objs/turfs etc, are fully cut!
