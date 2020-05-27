@@ -193,8 +193,49 @@
 			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
 			to_chat(src, "Sorry but the server is currently not accepting connections from never before seen players.")
+			prefs.first_seen = null
 			qdel(src)
 			return 0
+
+
+	// IP Reputation Check
+	if(config.ip_reputation)
+		if(config.ipr_allow_existing && player_age >= config.ipr_minimum_age)
+			log_admin("Skipping IP reputation check on [key] with [address] because of player age")
+		else if(update_ip_reputation()) //It is set now
+			if(ip_reputation >= config.ipr_bad_score) //It's bad
+
+
+				message_admins("[key] at [address] has bad IP reputation: [ip_reputation]. Will be kicked if enabled in config.")
+				log_admin("[key] at [address] has bad IP reputation: [ip_reputation]. Will be kicked if enabled in config.")
+
+				//Take action if required
+				if(config.ipr_block_bad_ips && config.ipr_allow_existing) //We allow players of an age, but you don't meet it
+					to_chat(src,"Sorry, we only allow VPN/Proxy/Tor usage for players who have spent at least [config.ipr_minimum_age] days on the server. If you are unable to use the internet without your VPN/Proxy/Tor, please contact an admin out-of-game to let them know so we can accomidate this.")
+					qdel(src)
+					return 0
+				else if(config.ipr_block_bad_ips) //We don't allow players of any particular age
+					to_chat(src,"Sorry, we do not accept connections from users via VPN/Proxy/Tor connections.")
+					qdel(src)
+					return 0
+		else
+			log_admin("Couldn't perform IP check on [key] with [address]")
+
+
+	//VOREStation Code
+
+	var/alert = FALSE //VOREStation Edit start.
+	if(isnum(player_age) && player_age == 0)
+		message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")
+		alert = TRUE
+	if(isnum(player_byond_age) && player_byond_age <= 2)
+		message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([player_byond_age] days).")
+		alert = TRUE
+	if(alert)
+		for(var/client/X in admins)
+			if(X.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
+				X << 'sound/voice/bcriminal.ogg'
+
 
 	send_resources()
 	SSnanoui.send_resources(src)
@@ -494,3 +535,63 @@ client/verb/character_setup()
 		var/icon/job_icon = getFlatIcon(mannequin, SOUTH)
 		job_icon.Scale(job_icon.Width() * 2.5, job_icon.Height() * 2.5)
 		send_rsc(mob, job_icon, "job_icon_[job.title].png")
+
+//This is for getipintel.net.
+//You're welcome to replace this proc with your own that does your own cool stuff.
+//Just set the client's ip_reputation var and make sure it makes sense with your config settings (higher numbers are worse results)
+/client/proc/update_ip_reputation()
+	var/request = "http://check.getipintel.net/check.php?ip=[address]&contact=[config.ipr_email]"
+	var/http[] = world.Export(request)
+
+	/* Debug
+	world.log << "Requested this: [request]"
+	for(var/entry in http)
+		world.log << "[entry] : [http[entry]]"
+	*/
+
+	if(!http || !islist(http)) //If we couldn't check, the service might be down, fail-safe.
+		log_admin("Couldn't connect to getipintel.net to check [address] for [key]")
+		return FALSE
+
+	//429 is rate limit exceeded
+	if(text2num(http["STATUS"]) == 429)
+		log_adminwarn("getipintel.net reports HTTP status 429. IP reputation checking is now disabled. If you see this, let a developer know.")
+		config.ip_reputation = FALSE
+		return FALSE
+
+	var/content = file2text(http["CONTENT"]) //world.Export actually returns a file object in CONTENT
+	var/score = text2num(content)
+	if(isnull(score))
+		return FALSE
+
+	//Error handling
+	if(score < 0)
+		var/fatal = TRUE
+		var/ipr_error = "getipintel.net IP reputation check error while checking [address] for [key]: "
+		switch(score)
+			if(-1)
+				ipr_error += "No input provided"
+			if(-2)
+				fatal = FALSE
+				ipr_error += "Invalid IP provided"
+			if(-3)
+				fatal = FALSE
+				ipr_error += "Unroutable/private IP (spoofing?)"
+			if(-4)
+				fatal = FALSE
+				ipr_error += "Unable to reach database"
+			if(-5)
+				ipr_error += "Our IP is banned or otherwise forbidden"
+			if(-6)
+				ipr_error += "Missing contact info"
+
+		log_adminwarn(ipr_error)
+		if(fatal)
+			config.ip_reputation = FALSE
+			log_adminwarn("With this error, IP reputation checking is disabled for this shift. Let a developer know.")
+		return FALSE
+
+	//Went fine
+	else
+		ip_reputation = score
+		return TRUE
