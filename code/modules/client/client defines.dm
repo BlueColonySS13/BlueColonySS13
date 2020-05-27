@@ -62,3 +62,4 @@
 
 	var/last_ooc_message = ""
 
+	var/ip_reputation = 0 //Do we think they're using a proxy/vpn? Only if IP Reputation checking is enabled in config.
