@@ -9,9 +9,9 @@ GLOBAL_LIST_INIT(floating_chat_colors, list())
 	set waitfor = FALSE
 
 	var/style	//additional style params for the message
-	var/fontsize = 6
+	var/fontsize = 5
 	if(small)
-		fontsize = 5
+		fontsize = 4
 	var/limit = 50
 	if(copytext(message, length(message) - 1) == "!!")
 		fontsize = 8
