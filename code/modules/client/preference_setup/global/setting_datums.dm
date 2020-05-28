@@ -193,6 +193,11 @@ var/list/_client_preferences_by_type
 	enabled_description = "Audible"
 	disabled_description = "Silent"
 
+/datum/client_preference/floating_messages
+	description ="Floating chat messages"
+	key = "FLOATING_CHAT"
+	enabled_description = "Show"
+	disabled_description = "Hide"
 
 /********************
 * Staff Preferences *
