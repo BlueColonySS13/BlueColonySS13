@@ -322,7 +322,7 @@ proc/get_radio_key_from_channel(var/channel)
 		var/list/hear = hear(message_range, T)
 
 		for(var/mob/M in mob_list)
-			if(M.locs.len && M.locs[1] in hear)
+			if(M.locs.len && (M.locs[1] in hear))
 				listening |= M
 			else if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))
 				listening |= M
@@ -331,7 +331,7 @@ proc/get_radio_key_from_channel(var/channel)
 		var/list/hearing_objs = results["objs"]
 
 		for(var/obj/O in hearing_objs)
-			if(O.locs.len && O.locs[1] in hear)
+			if(O.locs.len && (O.locs[1] in hear))
 				listening_obj |= O
 
 	var/speech_bubble_test = say_test(message)
