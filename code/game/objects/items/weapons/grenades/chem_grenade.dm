@@ -25,6 +25,10 @@
 		return ..()
 
 	attack_self(mob/user as mob)
+		if(user.IsAntiGrief())
+			to_chat(user, "<span class='danger'>How do these things work again?</span>")
+			return 0
+
 		if(!stage || stage==1)
 			if(detonator)
 //				detonator.loc=src.loc
