@@ -24,6 +24,20 @@
 		if(holder.rights & R_ADMIN)
 			ooc_style = "admin"
 
+
+	//The linkify span classes and linkify=TRUE below make ooc text get clickable chat href links if you pass in something resembling a url
+	//YOG START - Yog OOC
+	var/regex/ping = regex("@(\\w+)","g")//Now lets check if they pinged anyone
+	if(ping.Find(msg))
+		if((world.time - last_ping_time) < 30)
+			to_chat(src,"<span class='danger'>You are pinging too much! Please wait before pinging again.</span>")
+			return
+		last_ping_time = world.time
+	var/list/pinged = ping.group
+	for(var/x in pinged)
+		x = ckey(x)
+	//YOGS END
+
 	for(var/client/target in GLOB.clients)
 		if(target.is_preference_enabled(/datum/client_preference/show_ooc))
 			if(target.is_key_ignored(key)) // If we're ignored by this person, then do nothing.
@@ -39,6 +53,13 @@
 				to_chat(target, "<font color='[src.prefs.ooccolor]'><span class='ooc'>" + create_text_tag("ooc", "OOC:", target) + " <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 			else
 				to_chat(target, "<span class='ooc'><span class='[ooc_style]'>" + create_text_tag("ooc", "OOC:", target) + " <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></span>")
+
+			if(ckey(target.key) in pinged)
+				var/sound/pingsound = sound('sound/items/bikehorn.ogg')
+				pingsound.volume = 50
+				pingsound.pan = 80
+				SEND_SOUND(target,pingsound)
+
 
 /client/verb/looc(msg as text)
 	set name = "LOOC"

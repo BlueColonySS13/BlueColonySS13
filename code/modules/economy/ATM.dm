@@ -35,6 +35,8 @@ log transactions
 	var/view_screen = NO_SCREEN
 	var/datum/effect/effect/system/spark_spread/spark_system
 
+	var/is_printing = FALSE
+
 /obj/machinery/atm/New()
 	..()
 	machine_id = "[station_name()] RT #[GLOB.num_financial_terminals++]"
@@ -349,6 +351,14 @@ log transactions
 					else
 						usr << "\icon[src]<span class='warning'>You don't have enough funds to do that!</span>"
 			if("balance_statement")
+				if(is_printing)
+					to_chat(usr, "The ATM is still printing, be patient!")
+					return
+
+				to_chat(usr, "Printing account balance statement...")
+				is_printing = TRUE
+				sleep(15)
+
 				if(authenticated_account)
 					var/obj/item/weapon/paper/R = new(src.loc)
 					R.name = "Account balance: [authenticated_account.owner_name]"
@@ -372,7 +382,18 @@ log transactions
 					playsound(loc, 'sound/items/polaroid1.ogg', 50, 1)
 				else
 					playsound(loc, 'sound/items/polaroid2.ogg', 50, 1)
+
+				is_printing = FALSE
+
 			if ("print_transaction")
+				if(is_printing)
+					to_chat(usr, "The ATM is still printing, be patient!")
+					return
+
+				to_chat(usr, "Printing transaction balance...")
+				is_printing = TRUE
+				sleep(15)
+
 				if(authenticated_account)
 					var/obj/item/weapon/paper/R = new(src.loc)
 					R.name = "Transaction logs: [authenticated_account.owner_name]"
@@ -414,6 +435,8 @@ log transactions
 					playsound(loc, 'sound/items/polaroid1.ogg', 50, 1)
 				else
 					playsound(loc, 'sound/items/polaroid2.ogg', 50, 1)
+
+				is_printing = FALSE
 
 			if("insert_card")
 				if(!held_card)
