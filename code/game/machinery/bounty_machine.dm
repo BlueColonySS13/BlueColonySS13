@@ -96,7 +96,6 @@
 
 		return dat
 
-	var/is_employee = FALSE
 	var/datum/business/current_business = current_department.get_business()
 	var/department_money
 
@@ -120,10 +119,6 @@
 			return dat
 	else
 		dat += "<br>It appears this department does not have a bank account attached, please contact an administrator for details."
-		return dat
-
-	if(current_business && !is_employee)
-		dat += "<br>Apologies, only employees of this business can complete or take bounties."
 		return dat
 
 	dat += "<br><b>Current Department:</b> [current_department.name]<br>"
