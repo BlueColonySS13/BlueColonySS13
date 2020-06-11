@@ -80,14 +80,14 @@
 	GLOB.all_money_accounts.Add(M)
 	return M
 
-/proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
+/proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount, var/leave_log = TRUE)
 
 	for(var/datum/money_account/D in GLOB.all_money_accounts)
 		if(D.account_number == attempt_account_number && !D.suspended || D.account_number == attempt_account_number && !D.suspended)
 			D.money += amount
 			//create a transaction log entry
-
-			D.add_transaction_log(source_name, purpose, amount, terminal_id)
+			if(leave_log)
+				D.add_transaction_log(source_name, purpose, amount, terminal_id)
 			return 1
 
 
@@ -98,7 +98,8 @@
 			var/datum/transaction/T = create_transaction_log(source_name, purpose, amount, terminal_id)
 
 			persist_adjust_balance(attempt_account_number, amount)
-			add_persistent_acc_logs(attempt_account_number, T)
+			if(leave_log)
+				add_persistent_acc_logs(attempt_account_number, T)
 
 			return 1
 

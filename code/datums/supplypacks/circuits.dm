@@ -105,6 +105,13 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Token Dispenser Circuit"
 
+/datum/supply_pack/circuits/bounty_machine
+	contains = list(/obj/item/weapon/circuitboard/bounty_machine)
+	name = "bounty-T Circuit"
+	cost = 5000
+	containertype = /obj/structure/closet/crate
+	containername = "Bounty Machine Circuit"
+
 /datum/supply_pack/circuits/forensics
 	contains = list(
 	/obj/item/weapon/circuitboard/dna_analyzer,

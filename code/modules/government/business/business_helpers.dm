@@ -75,3 +75,21 @@ var/global/list/business_outfits = list(
 	for(var/datum/access/A in GLOB.all_business_accesses)
 		if(A.id == id)
 			return "[A.desc]"
+
+/datum/business/proc/is_department_employee(uid, mob/living/carbon/human/H)
+	for(var/datum/job/J in get_jobs())
+		if(uid in J.exclusive_employees)
+			return TRUE
+
+	if(H)
+		var/datum/data/record/record
+		for(var/datum/data/record/R in data_core.general)
+			if(H.unique_id == R.fields["unique_id"])
+				record = R
+		if(record)
+			var/datum/job/J = SSjobs.GetJob(record.fields["real_rank"])
+			if(J && (J in business_jobs))
+				return TRUE
+
+	return FALSE
+

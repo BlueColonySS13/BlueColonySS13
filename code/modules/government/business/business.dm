@@ -10,8 +10,6 @@
 	var/suspended = FALSE
 	var/suspended_reason = ""
 
-	var/gets_business_tax = TRUE                // no one is safe.
-
 	var/list/blacklisted_employees = list()     // by unique id
 	var/list/blacklisted_ckeys = list()		// uses ckeys
 
@@ -69,10 +67,11 @@
 	if(!categories)
 		categories = list()
 
-	if(isemptylist(categories))
+	if(!LAZYLEN(categories))
 		categories += CAT_RETAIL
 
+	for(var/V in categories) // remove anything that's not meant to be there
+		if(!(V in GLOB.business_categories))
+			categories -= V
+
 	refresh_business_support_list()
-
-
-
