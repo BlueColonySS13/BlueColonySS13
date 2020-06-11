@@ -16,12 +16,28 @@
 #define CAT_MANUFACTURE "Manufacturing"
 #define CAT_MOTOR "Motoring"
 #define CAT_NEWS "News/Media/Journalism"
-#define CAT_HEALTH "Private Healthcare"
+#define CAT_HEALTH "Healthcare/Pharma"
 #define CAT_RETAIL "Retail/Shopping"
-#define CAT_JANITOR "Sanitation Services"
+#define CAT_JANITOR "Sanitation Services/Recycling"
 #define CAT_SEC "Security Services"
-#define CAT_TECH "Technology"
+#define CAT_TECH "Research/Technology"
+#define CAT_XENOBIO "Xeno Biology/Archeology/Flora"
+#define CAT_SOCIAL "Community/Social"
+#define CAT_MINING "Mining"
+#define CAT_GUNS "Guns and Ammunition"
 
+//black market categories
+#define CAT_DRUGS "Recreational Drugs"
+#define CAT_BLACKMARKET "Black Market"
+#define CAT_PIRACY "Piracy/Warez"
+#define CAT_INFOLEAKS "Information Leaks"
+#define CAT_POLITICALTRAD "Traditional Politics"
+#define CAT_POLITICALREVO "Revolutionary Politics"
+#define CAT_POLITICALCONSPIRACY "Conspiracy Politics"
+
+//state categories
+#define CAT_POLITICSSTATE "State Politics"
+#define CAT_POLITICSSOL "Sol Politics"
 // business statuses
 
 #define BUSINESS_ACTIVE "Active"

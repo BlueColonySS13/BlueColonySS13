@@ -3,6 +3,7 @@
 
 
 /obj/item/trash
+	name = "trash"
 	var/age = 0
 
 /obj/item/trash/New(var/newloc, var/_age)

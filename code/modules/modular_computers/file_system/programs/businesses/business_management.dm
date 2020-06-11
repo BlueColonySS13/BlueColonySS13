@@ -91,6 +91,7 @@
 			if(biz_dept && biz_dept.has_bank)
 				page_msg += "<b>Business Account Balance:</b> [cash2text( biz_dept.get_balance(), FALSE, TRUE, TRUE )]<br>"
 				page_msg += "<b>Bank ID:</b> [biz_dept.bank_account.account_number]<br>"
+				page_msg += "<b>Taxed:</b> [biz_dept.business_taxed ? "Yes" : "No"]<br>"
 				page_msg += "<a href='?src=\ref[src];withdraw_balance=1'>Withdraw Balance</a>"
 				page_msg += "<a href='?src=\ref[src];transfer_money=1'>Transfer Money</a>"
 				page_msg += "<a href='?src=\ref[src];add_funds=1'>Add Funds</a>"
@@ -98,7 +99,6 @@
 			page_msg += "<br><br><b>Business:</b> [current_business.name]<br>"
 			page_msg += "<b>Creation Date:</b> [current_business.creation_date]<br>"
 			page_msg += "<b>Unique Identifier:</b> [current_business.business_uid]<br>"
-			page_msg += "<b>Taxed:</b> [current_business.gets_business_tax ? "Yes" : "No"]<br>"
 			page_msg += "<b>Owner:</b> [current_business.get_owner_name()]<br>"
 			page_msg += "<b>Employee Password:</b> [current_business.access_password]<br>"
 			page_msg += "<b>Status:</b> [current_business.get_status()]<br>"

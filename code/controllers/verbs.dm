@@ -66,7 +66,7 @@
 
 /client/proc/debug_controller(controller in list("Master","Ticker","Ticker Process","Air","Jobs","Sun","Economy","Payroll", \
 	"Laws","Emails","Lots","Radio","Supply","Shuttles","Emergency Shuttle","Configuration","pAI", "Cameras", "Transfer Controller", \
-	"Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets", "Websites", "Businesses"))
+	"Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets", "Websites", "Businesses", "Bounties"))
 
 	set category = "Debug"
 	set name = "Debug Controller"
@@ -155,5 +155,8 @@
 		if("Businesses")
 			debug_variables(SSbusiness)
 			feedback_add_details("admin_verb", "DBusinesses")
+		if("Bounties")
+			debug_variables(SSbounties)
+			feedback_add_details("admin_verb", "DBounties")
 
 	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")

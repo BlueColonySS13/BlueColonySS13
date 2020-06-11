@@ -7,6 +7,7 @@
 	var/has_bank = TRUE
 	var/starting_money = 0
 	var/datum/money_account/department/bank_account
+	var/business_taxed = FALSE                // no one is safe.
 
 	var/dept_type = PUBLIC_DEPARTMENT
 
@@ -19,6 +20,21 @@
 	var/allowed_buy_types = list()
 	var/card_spending_limit = 1500 // max you can spend from this card
 
+	var/max_bounties = 6
+
+	var/list/bounties = list()
+
+	var/allow_bounties = TRUE
+
+	var/list/categories = list()
+
+/datum/department/proc/get_categories()
+	var/datum/business/B = get_business()
+
+	if(!B)
+		return categories
+
+	return B.categories
 
 /datum/money_account/department
 	var/datum/department/department
@@ -53,6 +69,7 @@
 			GLOB.hidden_departments += src
 		if(BUSINESS_DEPARTMENT)
 			GLOB.business_departments += src
+			business_taxed = TRUE
 
 /datum/department/proc/sanitize_values()	// juuuust in case shittery happens.
 	if(!blacklisted_employees)
@@ -60,6 +77,15 @@
 
 	if(has_bank && !bank_account)
 		make_bank_account()
+
+	if(bank_account)
+		bank_account.sanitize_values()
+
+	if(!categories)
+		categories = list()
+
+	if(!bounties)
+		bounties = list()
 
 	return TRUE
 
@@ -185,3 +211,7 @@
 
 	return dept_jobs
 
+/datum/department/proc/get_business()
+	for(var/datum/business/B in GLOB.all_businesses)
+		if(B.business_uid == id)
+			return B

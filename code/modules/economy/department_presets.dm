@@ -1,4 +1,3 @@
-
 // ## Public Presets ## //
 
 /datum/department/colony
@@ -8,6 +7,7 @@
 
 	starting_money = 8000
 	dept_color = "#1D1D4F"
+	categories = list(CAT_POLITICSSTATE)
 
 /datum/department/city_council
 	name = "City Council"
@@ -34,6 +34,7 @@
 	desc = "The publicly funded legal department is paid from this account. Money that is spent on court cases go here and is withdrawn from here."
 	allowed_buy_types = list(SPEND_OFFICE)
 	dept_color = "#78164f"
+	categories = list(CAT_LEGAL)
 
 /datum/department/maintenance
 	name = "Maintenance"
@@ -43,6 +44,7 @@
 	desc = "The maintenance department is paid from this budget. Any city works fees are also paid into this account."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_MAINTENANCE, SPEND_ENGINEERING, SPEND_CLEANING, SPEND_MATERIALS)
 	dept_color = "#9c6c2d"
+	categories = list(CAT_JANITOR, CAT_MANUFACTURE, CAT_BUILDING)
 
 /datum/department/research
 	name = "Research"
@@ -52,6 +54,7 @@
 	desc = "Science and research employees are paid from this account. Any money made by Research is paid into this account."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_SCIENCE, SPEND_ROBOTICS, SPEND_MATERIALS)
 	dept_color = "#633D63"
+	categories = list(CAT_MANUFACTURE, CAT_TECH, CAT_MOTOR, CAT_XENOBIO)
 
 /datum/department/police
 	name = "Police"
@@ -60,6 +63,7 @@
 	desc = "The police department is funded by this account. Money made from fines are paid into this account."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_SECURITYSUPPLIES, SPEND_WEAPONS)
 	dept_color = "#7a2a2a"
+	categories = list(CAT_SEC)
 
 /datum/department/healthcare
 	name = "Healthcare"
@@ -68,6 +72,7 @@
 	desc = "The hospital and its employees are paid from this account. Any publicly provided medical vendors, medications, treatments and surgeries are income for this department."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_MEDICAL, SPEND_CHEMISTRY)
 	dept_color = "#457c7d"
+	categories = list(CAT_HEALTH)
 
 /datum/department/pdf
 	name = "Pollux Defense Force"
@@ -78,8 +83,6 @@
 
 // ## Private Presets ## //
 
-// These are to be removed to be honest. But we'll keep 'em here until they are.
-
 /datum/department/factory
 	name = "Factory Funds"
 	id = DEPT_FACTORY
@@ -88,6 +91,7 @@
 	dept_type = PRIVATE_DEPARTMENT
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_MATERIALS, SPEND_MININGSUPPLIES)
 	dept_color = "#7a4f33"
+	categories = list(CAT_MANUFACTURE, CAT_MINING)
 
 // ## External Presets
 
@@ -108,7 +112,7 @@
 
 	dept_type = EXTERNAL_DEPARTMENT
 	dept_color = "#787654"
-
+	categories = list(CAT_POLITICSSTATE)
 
 
 // ## Faction Departments (hidden)
@@ -120,6 +124,7 @@
 	starting_money = 500
 
 	dept_type = HIDDEN_DEPARTMENT
+	categories = list(CAT_POLITICALREVO)
 
 /datum/department/bluemooncartel
 	name = "Blue Moon Cartel"
@@ -128,6 +133,7 @@
 	starting_money = 500
 
 	dept_type = HIDDEN_DEPARTMENT
+	categories = list(CAT_DRUGS, CAT_GUNS, CAT_BLACKMARKET)
 
 /datum/department/trustfund
 	name = "Trust Fund"
@@ -136,6 +142,7 @@
 	starting_money = 500
 
 	dept_type = HIDDEN_DEPARTMENT
+	categories = list(CAT_POLITICALTRAD)
 
 /datum/department/quercuscoalition
 	name = "Quercus Coalition"
@@ -144,6 +151,7 @@
 	starting_money = 500
 
 	dept_type = HIDDEN_DEPARTMENT
+	categories = list(CAT_INFOLEAKS, CAT_PIRACY)
 
 /datum/department/houseofjoshua
 	name = "House of Joshua"
@@ -152,3 +160,4 @@
 	starting_money = 500
 
 	dept_type = HIDDEN_DEPARTMENT
+	categories = list(CAT_POLITICALCONSPIRACY)

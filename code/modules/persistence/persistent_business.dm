@@ -11,6 +11,8 @@
 	load_bizlist()
 
 	for(var/V in GLOB.business_ids)
+		if(!V || isnull(V))
+			continue
 		var/datum/business/B = new /datum/business(dept = "[V]")
 		B.business_uid = V
 		B.load_business()
@@ -26,6 +28,8 @@
 	if(!full_path) return 0
 	var/savefile/S = new /savefile(full_path)
 	if(!fexists(full_path)) return 0
+
+	listclearnulls(GLOB.business_ids)
 
 	S << GLOB.business_ids
 
@@ -44,6 +48,8 @@
 
 	if(!GLOB.business_ids)
 		GLOB.business_ids = list()
+
+	listclearnulls(GLOB.business_ids)
 
 	return 1
 
@@ -67,7 +73,6 @@
 	S["business_uid"] 			<<		business_uid
 	S["suspended"] 			<<		suspended
 	S["suspended_reason"] 		<<		suspended_reason
-	S["gets_business_tax"] 		<<		gets_business_tax
 	S["blacklisted_employees"] 	<<		blacklisted_employees
 	S["blacklisted_ckeys"] 		<<		blacklisted_ckeys
 	S["owner"] 				<<		owner
@@ -94,7 +99,6 @@
 	S["business_uid"] 			>>		business_uid
 	S["suspended"] 			>>		suspended
 	S["suspended_reason"] 		>>		suspended_reason
-	S["gets_business_tax"] 		>>		gets_business_tax
 	S["blacklisted_employees"] 	>>		blacklisted_employees
 	S["blacklisted_ckeys"] 		>>		blacklisted_ckeys
 	S["owner"] 				>>		owner
