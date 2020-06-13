@@ -79,7 +79,7 @@
 	“something to do at home” subscription video service. It uses random everyday objects as weapons. Works wonders. \
 	This upcoming episode is going to feature toolboxes, so get me fresh ones."
 
-	items_wanted = list(/obj/item/weapon/storage/toolbox = 10)
+	items_wanted = list(/obj/item/weapon/storage/toolbox/mechanical = 5)
 
 	department_reward = 30
 	individual_reward = 5

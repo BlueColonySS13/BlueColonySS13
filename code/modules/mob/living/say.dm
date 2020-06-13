@@ -138,7 +138,7 @@ proc/get_radio_key_from_channel(var/channel)
 
 
 /mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
-	var/spoken_emote = FALSE
+//	var/spoken_emote = FALSE
 	//If you're muted for IC chat
 	if(client)
 		if(message)
@@ -163,7 +163,7 @@ proc/get_radio_key_from_channel(var/channel)
 	switch(copytext(message,1,2))
 		if("*") return emote(copytext(message,2))
 		if("^") return custom_emote(1, copytext(message,2))
-		if("!") spoken_emote = TRUE
+//		if("!") spoken_emote = TRUE
 
 	//If there's no punctuation, add punctuation.
 	var/p_ending = copytext(message, length(message))
@@ -358,8 +358,8 @@ proc/get_radio_key_from_channel(var/channel)
 					M.show_message("<span class='game say'><span class='name'>[src.name]</span> [w_not_heard].</span>", 2)
 
 	animate_speechbubble(speech_bubble, speech_bubble_recipients, 30)
-	if(!spoken_emote)
-		animate_chat(message, speaking, italics, speech_bubble_recipients, 40)
+//	if(!spoken_emote)
+//		animate_chat(message, speaking, italics, speech_bubble_recipients, 40)
 
 	for(var/obj/O in listening_obj)
 		spawn(0)

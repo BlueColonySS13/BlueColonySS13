@@ -456,19 +456,29 @@
 	for(var/A in items_wanted)
 		if(!items_given[A])
 			items_given[A] = 0
+		if(!items_wanted[A])
+			items_wanted[A] = 1
 
 	for(var/B in stacks_wanted)
 		if(!stacks_given[B])
 			stacks_given[B] = 0
+		if(!stacks_wanted[B])
+			stacks_wanted[B] = 1
 
 	for(var/C in reagents_wanted)
 		if(!reagents_given[C])
 			reagents_given[C] = 0
+		if(!reagents_wanted[C])
+			reagents_wanted[C] = 1
 
 	for(var/D in seeds_wanted)
 		if(!seeds_given[D])
 			seeds_given[D] = 0
+		if(!seeds_wanted[D])
+			seeds_wanted[D] = 1
 
 	for(var/E in grown_wanted)
 		if(!grown_given[E])
 			grown_given[E] = 0
+		if(!grown_wanted[E])
+			grown_wanted[E] = 1
