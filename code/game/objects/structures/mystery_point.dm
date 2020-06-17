@@ -72,9 +72,7 @@
 				switch(choice)
 					if("Money")
 						to_chat(O, "<span class='alien'>You look at the ground under you and find a crisp 10 credit bill. Lucky!</span>")
-						var/obj/item/weapon/spacecash/S = new /obj/item/weapon/spacecash(loc)
-						S.worth = 10
-						S.name = "10 credits"
+						var/obj/item/weapon/spacecash/bundle/c10/S = new /obj/item/weapon/spacecash/bundle/c10(loc)
 					if("Power")
 						to_chat(O, "<span class='alien'>Re-evaluate your pathetic life.</span>")
 						lightning_strike(get_turf(usr), "Yes (Cosmetic)")

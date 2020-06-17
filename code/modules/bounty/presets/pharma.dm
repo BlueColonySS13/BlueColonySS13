@@ -25,8 +25,8 @@
 
 	reagents_wanted = list("chloralhydrate" = 300)
 
-	department_reward = 2000
-	individual_reward = 400
+	department_reward = 1000
+	individual_reward = 250
 
 	days_until_expiry = 1
 
@@ -44,3 +44,42 @@
 	individual_reward = 40
 
 	days_until_expiry = 1
+
+/datum/bounty/health_pharma/frosthome_ammonia
+	name = "EZ-Nutrient This Ain't"
+	author = "Frosthome Enclave"
+	description = "Out of season blizzards have disrupted the Courier Network providing us an ample supply of EZ-Nutrient for our \
+	crops. We need to stock up fast before the next storm hits us in approximately 48 hours. We need as much fertilizer as you can spare."
+
+	reagents_wanted = list("ammonia" = 480)
+
+	department_reward = 500
+	individual_reward = 125
+
+	days_until_expiry = 1
+
+/datum/bounty/health_pharma/supermatter_failure
+	name = "URGENT: Supermatter Delamination!"
+	author = "NSS Experience"
+	description = "This is an urgent request from the NSS Experience! Our Supermatter Engine has delaminated and a vast majority of our crew \
+	is suffering from radiation poisoning. Our Medbay was destroyed by the blast and we are under strict quarantine orders! Please send us \
+	Arithrazine A.S.A.P! We aren't going to make it without your help!"
+
+	reagents_wanted = list("arithrazine" = 300)
+
+	department_reward = 1000	//Reagent is hard to accumulate in vast quantities such as this. High reward.
+	individual_reward = 250
+
+	days_until_expiry = 1
+
+/datum/bounty/health_pharma/vampire
+	name = "All Donations Velcome"
+	author = "Vladislav Vanburg"
+	description = "Our... hospital is low on BLOOD. Donate to our cause. Stick your neck out for BLOOD hungry people in need."
+
+	reagents_wanted = list("blood" = 500)
+
+	department_reward = 2000   //Reagent is hard to accumulate in vast quantities such as this. High reward.
+	individual_reward = 500
+
+	days_until_expiry = 3

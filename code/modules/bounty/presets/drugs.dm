@@ -13,7 +13,7 @@
 	department_reward = 3000
 	individual_reward = 500
 
-	days_until_expiry = 1
+	days_until_expiry = 2
 
 /datum/bounty/drugs/yes_talc
 	name = "You Know, Talc"
@@ -37,7 +37,34 @@
 
 	grown_wanted = list("cannabis" = 50)
 
-	department_reward = 460
+	department_reward = 420
 	individual_reward = 120
 
 	days_until_expiry = 1
+
+/datum/bounty/drugs/businessmans_trip
+	name = "Businessman's Trip"
+	author = "Mr. Johnson"
+
+	description = "Hello there, I need some DMT for a business meeting I'm hosting with my partners. We hear it acts fast and will let \
+	us commune with the clockwork elves that hold our reality together. We believe they may find our business proposal very lucrative!"
+
+	reagents_wanted = list("DMT" = 150)
+
+	department_reward = 600
+	individual_reward = 175
+
+	days_until_expiry = 2
+
+/datum/bounty/drugs/speedster
+	name = "SPEEDSTER"
+	author = "GOTTAGOFAST"
+
+	description = "notimetowastereallyneedstimmneedtogofastgottagofastgottagofast!!!!"
+
+	reagents_wanted = list("stimm" = 500)
+
+	department_reward = 1300
+	individual_reward = 225
+
+	days_until_expiry = 2
