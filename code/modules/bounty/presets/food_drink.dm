@@ -157,7 +157,7 @@
 	description = "The boys and I are heading down to the lake for some good times and a couple of drinks. We need a very large pitcher of Mint Julep. \
 	Honestly, you could just toss it all into a bucket and send it our way. Thanks in advance."
 
-	regeants_wanted = list("mintjulep" = 120)
+	reagents_wanted = list("mintjulep" = 120)
 
 	department_reward = 30
 	individual_reward = 15
@@ -170,7 +170,7 @@
 	description = "I've finally completed all of my exams! It's time to get wasted before graduation! I'm hosting a massive pre-grad party and I need something \
 	new and delicious. I was looking through the DoorSprint catalogue and saw something called a Clover Club. Let's try that!"
 
-	regeants_wanted = list("cloverclub" = 240)
+	reagents_wanted = list("cloverclub" = 240)
 
 	department_reward = 60
 	individual_reward = 30
@@ -183,7 +183,7 @@
 	description = "My dad really used to like drinking Euphorias before he uh... went away. I never understood why he liked these things so much but it's the only \
 	way I can still feel like he's here... The most expensive cocktail in the universe but it can't cure my nostalgia for the past."
 
-	regeants_wanted = list("euphoria" = 30)
+	reagents_wanted = list("euphoria" = 30)
 
 	department_reward = 65
 	individual_reward = 32
@@ -196,7 +196,7 @@
 	description = "Look at that subtle off-white colouring. The tasteful thickness of it. Oh my God, it even has salt on the rim. You can't tell through the text \
 	but I'm sweating. I need one. Now!"
 
-	regeants_wanted = list("margarita" = 30)
+	reagents_wanted = list("margarita" = 30)
 
 	department_reward = 30
 	individual_reward = 15
