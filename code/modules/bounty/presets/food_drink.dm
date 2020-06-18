@@ -202,3 +202,79 @@
 	individual_reward = 15
 
 	days_until_expiry = 1
+
+/datum/bounty/food/doorsprint_11
+	name = "DoorSprint Order: All for One"
+	author = "Enya Magoria"
+	description = "Imagine tossing whiskey, cigarettes, razor blades, space carp teeth, and broken glass into a pint glass and serving it. That's how a rotgut fever \
+	dream feels like going down. You'd feel much better suffering from the plague, believe you me. Anyway, one rotgut fever dream, please."
+
+	reagents_wanted = list("rotgut" = 40)
+
+	department_reward = 30
+	individual_reward = 15
+
+	days_until_expiry = 1
+
+/datum/bounty/food/doorsprint_12
+	name = "DoorSprint Order: Longing for Home"
+	author = "Asuna Takahashi"
+	description = "A couple of friends and I are having a little get-together to remember what it was like to live on the Andromeda. Living planetside is cool and all, \
+	but it's just so cold all the time. We really miss Terminus. Things were much more efficient and it was warm... This is a great recipe we first tried in a bar \
+	in the Cassiopeia sector. Send us some of this."
+
+	reagents_wanted = list("tokyorose" = 120)
+
+	department_reward = 120
+	individual_reward = 60
+
+	days_until_expiry = 1
+
+/datum/bounty/food/doorsprint_13
+	name = "DoorSprint Order: Xanadu?"
+	author = "Jelmer van Oet"
+	description = "I have no clue what this is but the name sounds awesome! \"Xanadu Cannon?\" Don't mind if I Xana-Do! Haha, get it? Xanadu, Xana-do? Yeah, I got tomatoes \
+	thrown at me the last time I did stand-up comedy..."
+
+	reagents_wanted = list("xanaducannon" = 30)
+
+	department_reward = 30
+	individual_reward = 15
+
+	days_until_expiry = 1
+
+/datum/bounty/food/doorsprint_14
+	name = "DoorSprint Order: A Haiku for You"
+	author = "Jaimegonzalez32"
+	description = "Delicious bev'rage | Chrysanthemum, my good friend | I drink, I drink, gone."
+
+	reagents_wanted = list("chrysanthemum" = 30)
+
+	department_reward = 30
+	individual_reward = 15
+
+	days_until_expiry = 1
+
+/datum/bounty/food/doorsprint_15
+	name = "DoorSprint Order: Love Potion No. 9"
+	author = "Rebecca Sauer"
+	description = "A love potion is exactly what I need right now. I'm going to pop the question and ask her to marry me! I hope she says yes!."
+
+	reagents_wanted = list("lovepotion" = 60)
+
+	department_reward = 60
+	individual_reward = 30
+
+	days_until_expiry = 1
+
+/datum/bounty/food/doorsprint_16 //love letter to the vox - this doesn't mean they are canon
+	name = "DoorSprint Order: %ERROR%%UNKNOWN%"
+	author "%ERROR%%USER_OUT_OF_BOUNDS%%PARTIAL_TRANSLATION/BESTGUESSLANGUAGE_LATIN:VOICE%"
+	description = "%ERROR%silence dust breather %UNIVERSAL_TRANSLATION_FAILURE%kikiki me want drink%LANGUAGE_UNKNOWN%skrek!"
+
+	reagents_wanted = list("voxdelight" = 30)
+
+	department_reward = 100
+	individual_reward = 50
+
+	days_until_expiry = 1
