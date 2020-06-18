@@ -258,7 +258,7 @@
 /datum/bounty/food/doorsprint_15
 	name = "DoorSprint Order: Love Potion No. 9"
 	author = "Rebecca Sauer"
-	description = "A love potion is exactly what I need right now. I'm going to pop the question and ask her to marry me! I hope she says yes!"
+	description = "A love potion is exactly what I need right now. I'm going to pop the question and ask her to marry me! I hope she says yes!."
 
 	reagents_wanted = list("lovepotion" = 60)
 
@@ -268,9 +268,9 @@
 	days_until_expiry = 1
 
 /datum/bounty/food/doorsprint_16 //love letter to the vox - this doesn't mean they are canon
-	name = "DoorSprint Order: ERRORUNKNOWN"
-	author "ERROR: USER_OUT_OF_BOUNDS...PARTIAL_TRANSLATION...BESTGUESSLANGUAGE_LATIN_VOICE"
-	description = "ERROR:silence dust breatherUNIVERSAL_TRANSLATION_FAILUREkikiki me want drinkLANGUAGE_UNKNOWNskrek!"
+	name = "DoorSprint Order: %ERROR%%UNKNOWN%"
+	author = "%ERROR%%USER_OUT_OF_BOUNDS%%PARTIAL_TRANSLATION/BESTGUESSLANGUAGE_LATIN:VOICE%"
+	description = "%ERROR%silence dust breather %UNIVERSAL_TRANSLATION_FAILURE%kikiki me want drink%LANGUAGE_UNKNOWN%skrek!"
 
 	reagents_wanted = list("voxdelight" = 30)
 
