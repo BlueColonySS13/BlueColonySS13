@@ -41,7 +41,7 @@
 	reagents_wanted = list("bicaridine" = 120)
 
 	department_reward = 300
-	individual_reward = 40
+	individual_reward = 60
 
 	days_until_expiry = 1
 
@@ -54,7 +54,7 @@
 	reagents_wanted = list("ammonia" = 480)
 
 	department_reward = 500
-	individual_reward = 125
+	individual_reward = 100
 
 	days_until_expiry = 1
 
@@ -67,8 +67,8 @@
 
 	reagents_wanted = list("arithrazine" = 300)
 
-	department_reward = 1000	//Reagent is hard to accumulate in vast quantities such as this. High reward.
-	individual_reward = 250
+	department_reward = 300
+	individual_reward = 60
 
 	days_until_expiry = 1
 
@@ -79,7 +79,34 @@
 
 	reagents_wanted = list("blood" = 500)
 
-	department_reward = 2000   //Reagent is hard to accumulate in vast quantities such as this. High reward.
-	individual_reward = 500
+	department_reward = 1000   //Reagent is hard to accumulate in vast quantities such as this. High reward.
+	individual_reward = 250
 
 	days_until_expiry = 3
+
+/datum/bounty/health_pharma/pain_pain_go_away
+	name = "Pain, Pain, Go Away"
+	author = "Parker Peterson"
+	description = "Even the best spider hunter gets hurt in the call of duty. Spider venom really burns when it's flowing through your body and \
+	turning your blood into jelly. Tramadol is the cure to what ails me. Please send me some before I pass out."
+
+	reagents_wanted = list("tramadol" = 60)
+
+	department_reward = 200
+	individual_reward = 50
+
+	days_until_expiry = 2
+
+/datum/bounty/health_pharma/side_effects_shmide_effects
+	name = "Side Effects, Shmide Effects"
+	author = "Parker Peterson"
+	description = "Little known side effect of Synaptizine. In VERY large doses, it functions as a pretty powerful blood thinner - enough to combat \
+	Western Spider venom! With enough charcoal, it keep bring even the most jellied victims out of the cold, bony hands of the grim reaper. Obviously, \
+	I don't plan on using it that way, otherwise you wouldn't send me the synaptizine. Heh. Please send - this venom burns."
+
+	reagents_wanted = list("synaptizine" = 100)
+
+	department_reward = 100
+	individual_reward = 20
+
+	days_until_expiry = 1
