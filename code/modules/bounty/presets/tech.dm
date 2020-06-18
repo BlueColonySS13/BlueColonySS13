@@ -114,3 +114,14 @@
 
 	department_reward = 500
 	individual_reward = 85
+
+/datum/bounty/tech/plants_vs_diyaabs
+	name = "Plants vs Diyaabs"
+	author = "Holden MacDonald"
+	description = "I need one of those newfangled radio guns that mutate plants. A herd of wild diyaabs have been making short \
+	work of this year's harvest and I'm getting sick of it! I need my crops to mutate into diyaab-eating carnivorous plant beasts!"
+
+	items_wanted = list(/obj/item/weapon/gun/energy/floragun = 1)
+
+	department_reward = 400
+	individual_reward = 100
