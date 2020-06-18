@@ -269,7 +269,7 @@
 
 /datum/bounty/food/doorsprint_16 //love letter to the vox - this doesn't mean they are canon
 	name = "DoorSprint Order: ERRORUNKNOWN"
-	author "ERROR: USER_OUT_OF_BOUNDS...PARTIAL_TRANSLATION...BESTGUESSLANGUAGE_LATIN:VOICE"
+	author "ERROR: USER_OUT_OF_BOUNDS...PARTIAL_TRANSLATION...BESTGUESSLANGUAGE_LATIN_VOICE"
 	description = "ERROR:silence dust breatherUNIVERSAL_TRANSLATION_FAILUREkikiki me want drinkLANGUAGE_UNKNOWNskrek!"
 
 	reagents_wanted = list("voxdelight" = 30)
