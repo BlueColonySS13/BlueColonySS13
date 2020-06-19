@@ -117,9 +117,13 @@
 	if(!cpu || !cpu.enabled)
 		return
 	if(cpu.active_program)
-		overlays.Add(cpu.active_program.program_icon_state ? cpu.active_program.program_icon_state : screen_icon_state_menu)
+		var/image/I = image(cpu.active_program.program_icon_state ? cpu.active_program.program_icon_state : screen_icon_state_menu)
+		I.plane = PLANE_LIGHTING_ABOVE
+		overlays.Add(I)
 	else
-		overlays.Add(screen_icon_state_menu)
+		var/image/I = image(screen_icon_state_menu)
+		I.plane = PLANE_LIGHTING_ABOVE
+		overlays.Add(I)
 
 // Eject ID card from computer, if it has ID slot with card inside.
 /obj/machinery/modular_computer/verb/eject_id()
