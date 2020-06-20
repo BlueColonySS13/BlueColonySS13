@@ -88,7 +88,7 @@
 	wheat before I tear this whole bloody kitchen apart. I can't believe it. Next they'll tell me the ice is frozen too? End speech transcription. \
 	You! Over there, come here! Where's the lamb saaaaauce!? What the... is this thing still recording?"
 
-	items_wanted = list("wheat" = 42)
+	grown_wanted = list("wheat" = 42)
 
 	department_reward = 255
 	individual_reward = 50
@@ -101,7 +101,7 @@
 	description = "Howdy, pardner! We’re fixin’ to celebrate the Gran Fiesta down here in a few days but we’ve been sufferin’ from some \
 	sort o’ fungus that’s killin’ our beans. Send us some soybeans so we can start cookin’ Meemaw’s Bowl o’ Red in time fer the festival!"
 
-	items_wanted = list("soybean" = 80)
+	grown_wanted = list("soybean" = 80)
 
 	department_reward = 400
 	individual_reward = 90
@@ -114,7 +114,7 @@
 	description = "We're expecting an increase in Soykaf sales over in Glace Grace. Those scientists sure love their coffee. Anyway, \
 	we need alot more soybeans than our usual supplier can provide. Send some our way and we'll be more than amicable with our payment."
 
-	items_wanted = list("soybean" = 50)
+	grown_wanted = list("soybean" = 50)
 
 	department_reward = 250
 	individual_reward = 65
@@ -125,7 +125,7 @@
 	description = "Greetings. Nikola is researching a new biofuel made entirely from glycerol. We need corn to manufacture a prototype. \
 	Imagine it. An antique gas guzzler that smells like popcorn!"
 
-	items_wanted = list("corn" = 40)
+	grown_wanted = list("corn" = 40)
 
 	department_reward = 300
 	individual_reward = 75
