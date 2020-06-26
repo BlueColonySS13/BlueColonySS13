@@ -35,7 +35,7 @@
 	if(!M.mind)	return 0
 	var/job = M.mind.assigned_role
 	if(job != "Detective" && job != "Police Officer" && job != "Prison Warden" && job != "Chief of Police")
-		M << "<span class='notice'>You don't feel cool enough to name this gun, chump.</span>"
+		to_chat(M, "<span class='notice'>You don't feel cool enough to name this gun, chump.</span>")
 		return 0
 
 	var/input = sanitizeSafe(input("What do you want to name the gun?", ,""), MAX_NAME_LEN)
