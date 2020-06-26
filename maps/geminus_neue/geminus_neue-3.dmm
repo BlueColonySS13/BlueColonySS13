@@ -1,4 +1,4 @@
-"a" = (/turf/simulated/open,/area/space)
+"a" = (/turf/simulated/floor/plating,/area/space)
 "b" = (/turf/simulated/wall/disco,/area/space)
 "c" = (/turf/simulated/wall/iron,/area/space)
 "d" = (/turf/simulated/floor/tiled/steel_ridged,/area/space)
