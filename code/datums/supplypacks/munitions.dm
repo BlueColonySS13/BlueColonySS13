@@ -70,11 +70,25 @@
 	contains = list(
 			/obj/item/weapon/storage/box/shotgunammo = 2,
 			/obj/item/weapon/storage/box/shotgunshells = 2,
+			/obj/item/weapon/gun/projectile/shotgun/doublebarrel = 5,
+			/obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn = 5,
 			/obj/item/weapon/gun/projectile/shotgun/pump/combat = 5
 			)
-	cost = 2215
+	cost = 4215
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Shotgun crate"
+	access = access_armory
+
+/datum/supply_pack/munitions/fourtyfive
+	name = "Weapons - 45 crate"
+	contains = list(
+			/obj/item/weapon/gun/projectile/pirate/thug = 2,
+			/obj/item/weapon/gun/projectile/pirate = 2,
+			/obj/item/weapon/gun/projectile/shotgun/pump/combat = 5
+			)
+	cost = 2200
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "45 crate"
 	access = access_armory
 
 /datum/supply_pack/munitions/erifle
