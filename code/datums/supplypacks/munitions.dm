@@ -82,11 +82,12 @@
 /datum/supply_pack/munitions/fourtyfive
 	name = "Weapons - 45 crate"
 	contains = list(
-			/obj/item/weapon/gun/projectile/pirate/thug = 2,
-			/obj/item/weapon/gun/projectile/pirate = 2,
-			/obj/item/weapon/gun/projectile/shotgun/pump/combat = 5
+			/obj/item/weapon/gun/projectile/colt = 5,
+			/obj/item/weapon/gun/projectile/sec = 5,
+			/obj/item/weapon/gun/projectile/sec/wood = 5,
+			/obj/item/weapon/gun/projectile/sec/flash = 5,
 			)
-	cost = 2200
+	cost = 4200
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "45 crate"
 	access = access_armory
