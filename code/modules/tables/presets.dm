@@ -23,6 +23,14 @@
 	material = get_material_by_name("marble")
 	..()
 
+/obj/structure/table/gold
+	icon_state = "plain_preview"
+	color = COLOR_GOLD
+
+/obj/structure/table/gold/New()
+	material = get_material_by_name("gold")
+	..()
+
 /obj/structure/table/reinforced
 	icon_state = "reinf_preview"
 	color = "#EEEEEE"

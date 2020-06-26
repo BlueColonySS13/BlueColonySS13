@@ -34,7 +34,7 @@
 	transit_chance = 50
 	base_turf = /turf/simulated/open
 
-/datum/planet/sif
+/datum/planet/pollux
 	expected_z_levels = list(
 		Z_LEVEL_FIRST_PLANE,
 		Z_LEVEL_SECOND_PLANE

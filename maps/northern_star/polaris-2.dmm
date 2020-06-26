@@ -471,7 +471,7 @@
 "jc" = (/obj/machinery/vending/assist{contraband = null; name = "Old Vending Machine"; products = list(/obj/item/device/assembly/prox_sensor = 5, /obj/item/device/assembly/signaler = 4, /obj/item/device/assembly/infra = 4, /obj/item/device/assembly/prox_sensor = 4, /obj/item/weapon/handcuffs = 8, /obj/item/device/flash = 4, /obj/item/weapon/cartridge/signal = 4, /obj/item/clothing/glasses/sunglasses = 4)},/turf/simulated/shuttle/floor/black,/area/shuttle/trade/centcom)
 "jd" = (/obj/structure/closet{name = "custodial"},/obj/item/weapon/reagent_containers/spray/cleaner,/obj/item/weapon/reagent_containers/glass/bucket,/obj/item/weapon/mop,/turf/simulated/shuttle/floor/black,/area/shuttle/trade/centcom)
 "je" = (/obj/machinery/vending/sovietsoda,/turf/simulated/shuttle/floor/black,/area/shuttle/trade/centcom)
-"jf" = (/obj/machinery/light,/obj/structure/table/standard,/obj/item/weapon/soap,/obj/item/weapon/towel{color = "#0000FF"},/turf/simulated/shuttle/floor/black,/area/shuttle/trade/centcom)
+"jf" = (/obj/machinery/light,/obj/structure/table/standard,/obj/item/weapon/soap,/turf/simulated/shuttle/floor/black,/area/shuttle/trade/centcom)
 "jg" = (/obj/structure/sign/poster{pixel_y = -32},/turf/simulated/shuttle/floor/black,/area/shuttle/trade/centcom)
 "jh" = (/obj/machinery/door/airlock/multi_tile/glass{dir = 2; req_access = list(160)},/turf/simulated/shuttle/floor/black,/area/shuttle/trade/centcom)
 "ji" = (/obj/machinery/door/window/westleft{name = "Storefront"; req_access = list(160)},/turf/simulated/shuttle/floor/black,/area/shuttle/trade/centcom)

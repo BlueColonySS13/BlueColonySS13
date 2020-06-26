@@ -1171,9 +1171,21 @@
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(access_security)
-	products = list(/obj/item/weapon/handcuffs = 8,/obj/item/weapon/grenade/flashbang = 4,/obj/item/device/flash = 5,
-					/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,/obj/item/weapon/storage/box/evidence = 6)
-	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/weapon/storage/box/donut = 2)
+	products = list(
+	/obj/item/weapon/handcuffs = 8,
+	/obj/item/weapon/grenade/flashbang = 4,
+	/obj/item/device/flash = 5,
+	/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,
+	/obj/item/weapon/storage/box/evidence = 6,
+
+	)
+
+
+
+	contraband = list(,/obj/item/weapon/storage/box/donut = 2,
+	/obj/item/weapon/reagent_containers/spray/pepper = 5,
+
+	)
 	req_log_access = access_armory
 	has_logs = 1
 
@@ -1183,8 +1195,19 @@
 /obj/machinery/vending/security/gcpd
 	name = "GCPD Equipment Vendotron"
 	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
+	icon_state = "secequip"
+	icon_deny = "secequip-deny"
 	charge_free_department = DEPT_POLICE
 	block_persistence = TRUE
+	products = list(/obj/item/weapon/handcuffs = 8,
+	/obj/item/weapon/grenade/flashbang = 4,
+	/obj/item/device/flash = 5,
+	/obj/item/weapon/storage/belt/security = 5,
+	/obj/item/clothing/glasses/sunglasses/sechud = 5,
+	/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,
+	/obj/item/weapon/storage/box/evidence = 6,
+	/obj/item/clothing/glasses/sunglasses = 2,
+					)
 
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"

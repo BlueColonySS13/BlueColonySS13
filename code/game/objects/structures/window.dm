@@ -562,6 +562,11 @@
 	opacity = 1
 	color = GLASS_COLOR_TINTED
 
+/obj/structure/window/reinforced/tinted/full
+	dir = SOUTHWEST
+	icon_state = "rwindow_full"
+	maxhealth = 80
+
 /obj/structure/window/reinforced/tinted/frosted
 	name = "frosted window"
 	desc = "It looks rather strong and frosted over. Looks like it might take a few less hits than a normal reinforced window."

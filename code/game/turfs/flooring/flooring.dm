@@ -329,6 +329,24 @@ var/list/flooring_types
 
 	floor_color = COLOR_BROWN
 
+/decl/flooring/tiling/paleblue
+	name = "floor"
+	icon_base = "white"
+	has_damage_range = null
+	flags = TURF_REMOVE_CROWBAR
+	build_type = /obj/item/stack/tile/floor/paleblue
+
+	floor_color = COLOR_PALE_BLUE_GRAY
+
+/decl/flooring/tiling/lime
+	name = "floor"
+	icon_base = "white"
+	has_damage_range = null
+	flags = TURF_REMOVE_CROWBAR
+	build_type = /obj/item/stack/tile/floor/lime
+
+	floor_color = COLOR_PALE_GREEN_GRAY
+
 /decl/flooring/tiling/diamond
 	icon = 'icons/turf/flooring/decorative.dmi'
 	icon_base = "tiles1"

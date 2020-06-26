@@ -71,6 +71,12 @@
 	if(!notes)
 		notes = list()
 
+	for(var/datum/tenant/T in tenants)
+		T.account_balance = round(T.account_balance)
+
+	if(landlord)
+		landlord.account_balance = round(landlord.account_balance)
+
 	lot_area.name = name
 
 	truncate_oldest(landlord_checkbook, MAX_LANDLORD_LOGS)

@@ -36,10 +36,6 @@ var/list/mining_overlay_cache = list()
 	var/datum/artifact_find/artifact_find
 	var/ignore_mapgen = 1
 
-	var/ore_chance = 10
-	var/ore_rarity
-
-
 	var/ore_types = list(
 		"hematite" = /obj/item/weapon/ore/iron,
 		"uranium" = /obj/item/weapon/ore/uranium,
@@ -108,10 +104,6 @@ var/list/mining_overlay_cache = list()
 	if(prob(20))
 		overlay_detail = "asteroid[rand(0,9)]"
 	update_icon(1)
-	if(density)
-		if(prob(ore_chance))
-			var/ore_rarity_chance = rand(1,2)
-			make_ore(ore_rarity_chance)
 	if(density && mineral)
 		. = INITIALIZE_HINT_LATELOAD
 
@@ -254,7 +246,7 @@ var/list/mining_overlay_cache = list()
 	name = "impassable rock"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "rock-dark"
-	ore_chance = 0
+	ignore_mapgen = 1
 	density = 1
 
 /turf/simulated/mineral/impassable/attackby(obj/item/weapon/W as obj, mob/user as mob)

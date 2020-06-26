@@ -64,6 +64,21 @@
 	qdel(src)
 
 
+/obj/structure/reagent_dispensers/vat
+	name = "vat"
+	desc = "A vat that can hold a lot of fluid. Usually found in reservoirs."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "vat"
+	amount_per_transfer_from_this = 10
+	anchored = TRUE
+
+/obj/structure/reagent_dispensers/vat/water
+	name = "water vat"
+
+/obj/structure/reagent_dispensers/vat/water/New()
+	..()
+	reagents.add_reagent("water", 1000)
+
 
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
@@ -378,6 +393,18 @@
 		I = image(icon, "water_cooler_cups")
 		overlays += I
 	return
+
+
+/obj/structure/reagent_dispensers/barrel
+	name = "barrel"
+	desc = "A wooden barrel that is used to hold a high quantity of fluid for transport."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "barrel"
+	amount_per_transfer_from_this = 10
+
+/obj/structure/reagent_dispensers/barrel/wine/New()
+	..()
+	reagents.add_reagent("wine",1000)
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"

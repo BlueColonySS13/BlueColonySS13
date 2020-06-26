@@ -1,27 +1,27 @@
-var/datum/planet/sif/planet_sif = null
+var/datum/planet/pollux/planet_pollux = null
 
-/datum/planet/sif
+/datum/planet/pollux
 	name = "Pollux"
 
-/datum/planet/sif
+/datum/planet/pollux
 	name = "Pollux"
 	desc = "Pollux is a terrestrial planet in the Vir system. It is somewhat earth-like, in that it has oceans, a \
 	breathable atmosphere, a magnetic field, weather, and similar gravity to Earth. It is currently the capital planet of Vetra. \
 	Its center of government is the equatorial city and site of first settlement, Geminus Cit." // Ripped straight from the wiki.
-	current_time = new /datum/time/sif() // 32 hour clocks are nice.
+	current_time = new /datum/time/pollux() // 32 hour clocks are nice.
 //	expected_z_levels = list(1) // To be changed when real map is finished.
-	planetary_wall_type = /turf/unsimulated/wall/planetary/sif
+	planetary_wall_type = /turf/unsimulated/wall/planetary/pollux
 
 	sun_name = "Vetra"
 	moon_name = "Castor"
 
-/datum/planet/sif/New()
+/datum/planet/pollux/New()
 	..()
-	planet_sif = src
-	weather_holder = new /datum/weather_holder/sif(src) // Cold weather is also nice.
+	planet_pollux = src
+	weather_holder = new /datum/weather_holder/pollux(src) // Cold weather is also nice.
 
 // This code is horrible.
-/datum/planet/sif/update_sun()
+/datum/planet/pollux/update_sun()
 	..()
 	var/datum/time/time = current_time
 	var/length_of_day = time.seconds_in_day / 10 / 60 / 60 // 32
@@ -100,32 +100,36 @@ var/datum/planet/sif/planet_sif = null
 	spawn(1)
 		update_sun_deferred(2, new_brightness, new_color)
 
-// We're gonna pretend there are 32 hours in a Sif day instead of 32.64 for the purposes of not losing sanity.  We lose 38m 24s but the alternative is a path to madness.
-/datum/time/sif
+// We're gonna pretend there are 32 hours in a pollux day instead of 32.64 for the purposes of not losing sanity.  We lose 38m 24s but the alternative is a path to madness.
+/datum/time/pollux
 	seconds_in_day = 60 * 60 * 32 * 10 // 115,200 seconds.  If we did 32.64 hours/day it would be around 117,504 seconds instead.
 
-// Returns the time datum of Sif.
-/proc/get_sif_time()
-	if(planet_sif)
-		return planet_sif.current_time
+// Returns the time datum of pollux.
+/proc/get_pollux_time()
+	if(planet_pollux)
+		return planet_pollux.current_time
 
 //Weather definitions
-/datum/weather_holder/sif
+/datum/weather_holder/pollux
 	temperature = T0C
 	allowed_weather_types = list(
-		WEATHER_CLEAR		= new /datum/weather/sif/clear(),
-		WEATHER_OVERCAST	= new /datum/weather/sif/overcast(),
-		WEATHER_LIGHT_SNOW	= new /datum/weather/sif/light_snow(),
-		WEATHER_SNOW		= new /datum/weather/sif/snow(),
-		WEATHER_BLIZZARD	= new /datum/weather/sif/blizzard(),
-		WEATHER_RAIN		= new /datum/weather/sif/rain(),
-		WEATHER_STORM		= new /datum/weather/sif/storm(),
-		WEATHER_HAIL		= new /datum/weather/sif/hail(),
-		WEATHER_BLOOD_MOON	= new /datum/weather/sif/blood_moon(),
-		WEATHER_ACID_RAIN	= new /datum/weather/sif/acid_rain(),
-		WEATHER_RADSTORM	= new /datum/weather/sif/rad_storm(),
-		WEATHER_CARPFALL 	= new /datum/weather/sif/carpfall(),
-		WEATHER_CARPNADO 	= new /datum/weather/sif/carpnado()
+		WEATHER_CLEAR		= new /datum/weather/pollux/clear(),
+		WEATHER_OVERCAST	= new /datum/weather/pollux/overcast(),
+		WEATHER_LIGHT_SNOW	= new /datum/weather/pollux/light_snow(),
+		WEATHER_SNOW		= new /datum/weather/pollux/snow(),
+		WEATHER_BLIZZARD	= new /datum/weather/pollux/blizzard(),
+		WEATHER_RAIN		= new /datum/weather/pollux/rain(),
+		WEATHER_STORM		= new /datum/weather/pollux/storm(),
+		WEATHER_HAIL		= new /datum/weather/pollux/hail(),
+		WEATHER_BLOOD_MOON	= new /datum/weather/pollux/blood_moon(),
+		WEATHER_ACID_RAIN	= new /datum/weather/pollux/acid_rain(),
+		WEATHER_RADSTORM	= new /datum/weather/pollux/rad_storm(),
+		WEATHER_CARPFALL 	= new /datum/weather/pollux/carpfall(),
+		WEATHER_CARPNADO 	= new /datum/weather/pollux/carpnado(),
+		WEATHER_BLOOD_MOON	= new /datum/weather/pollux/blood_moon(),
+		WEATHER_EMBERFALL	= new /datum/weather/pollux/emberfall(),
+		WEATHER_ASH_STORM	= new /datum/weather/pollux/ash_storm(),
+		WEATHER_FALLOUT	= new /datum/weather/pollux/fallout()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_CLEAR		= 30,
@@ -138,12 +142,12 @@ var/datum/planet/sif/planet_sif = null
 		WEATHER_HAIL		= 2.5
 		)
 
-/datum/weather/sif
-	name = "sif base"
+/datum/weather/pollux
+	name = "pollux base"
 	temp_high = 283.15	// 10c
 	temp_low = 263.15	// -10c
 
-/datum/weather/sif/clear
+/datum/weather/pollux/clear
 	name = "clear"
 	transition_chances = list(
 		WEATHER_CLEAR = 60,
@@ -157,7 +161,7 @@ var/datum/planet/sif/planet_sif = null
 	sky_visible = TRUE
 	observed_message = "The sky is clear."
 
-/datum/weather/sif/overcast
+/datum/weather/pollux/overcast
 	name = "overcast"
 	light_modifier = 0.8
 	transition_chances = list(
@@ -175,7 +179,7 @@ var/datum/planet/sif/planet_sif = null
 		"It's very cloudy."
 		)
 
-/datum/weather/sif/light_snow
+/datum/weather/pollux/light_snow
 	name = "light snow"
 	icon_state = "snowfall_light"
 	temp_high = T0C		// 0c
@@ -193,7 +197,7 @@ var/datum/planet/sif/planet_sif = null
 		"It begins to snow lightly.",
 		)
 
-/datum/weather/sif/snow
+/datum/weather/pollux/snow
 	name = "moderate snow"
 	icon_state = "snowfall_med"
 	temp_high = T0C		// 0c
@@ -215,7 +219,10 @@ var/datum/planet/sif/planet_sif = null
 		"The air feels much colder as snowflakes fall from above."
 	)
 
-/datum/weather/sif/snow/process_effects()
+//	outdoor_sounds_type = /datum/looping_sound/weather/outside_snow
+//	indoor_sounds_type = /datum/looping_sound/weather/inside_snow
+
+/datum/weather/pollux/snow/process_effects()
 	..()
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
@@ -225,7 +232,7 @@ var/datum/planet/sif/planet_sif = null
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(33))
 						T.chill()
 
-/datum/weather/sif/blizzard
+/datum/weather/pollux/blizzard
 	name = "blizzard"
 	icon_state = "snowfall_heavy"
 	temp_high = 243.15 // -30c
@@ -246,7 +253,10 @@ var/datum/planet/sif/planet_sif = null
 		"It starts snowing heavily, and it feels extremly cold now."
 	)
 
-/datum/weather/sif/blizzard/process_effects()
+//	outdoor_sounds_type = /datum/looping_sound/weather/outside_blizzard
+//	indoor_sounds_type = /datum/looping_sound/weather/inside_blizzard
+
+/datum/weather/pollux/blizzard/process_effects()
 	..()
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
@@ -256,7 +266,7 @@ var/datum/planet/sif/planet_sif = null
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))
 						T.chill()
 
-/datum/weather/sif/rain
+/datum/weather/pollux/rain
 	name = "rain"
 	icon_state = "rain"
 	light_modifier = 0.5
@@ -275,7 +285,10 @@ var/datum/planet/sif/planet_sif = null
 		"The sky is dark, and rain falls down upon you."
 	)
 
-/datum/weather/sif/rain/process_effects()
+//	outdoor_sounds_type = /datum/looping_sound/weather/rain
+//	indoor_sounds_type = /datum/looping_sound/weather/rain/indoors
+
+/datum/weather/pollux/rain/process_effects()
 	..()
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -301,7 +314,7 @@ var/datum/planet/sif/planet_sif = null
 			if(show_message)
 				to_chat(L, effect_message)
 
-/datum/weather/sif/storm
+/datum/weather/pollux/storm
 	name = "storm"
 	icon_state = "storm"
 	temp_high = 243.15 // -30c
@@ -328,7 +341,7 @@ var/datum/planet/sif/planet_sif = null
 		WEATHER_OVERCAST = 5
 		)
 
-/datum/weather/sif/storm/process_effects()
+/datum/weather/pollux/storm/process_effects()
 	..()
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -358,14 +371,14 @@ var/datum/planet/sif/planet_sif = null
 
 // This gets called to do lightning periodically.
 // There is a seperate function to do the actual lightning strike, so that badmins can play with it.
-/datum/weather/sif/storm/proc/handle_lightning()
+/datum/weather/pollux/storm/proc/handle_lightning()
 	if(world.time < next_lightning_strike)
 		return // It's too soon to strike again.
 	next_lightning_strike = world.time + rand(min_lightning_cooldown, max_lightning_cooldown)
 	var/turf/T = pick(holder.our_planet.planet_floors) // This has the chance to 'strike' the sky, but that might be a good thing, to scare reckless pilots.
 	lightning_strike(T)
 
-/datum/weather/sif/hail
+/datum/weather/pollux/hail
 	name = "hail"
 	icon_state = "hail"
 	temp_high = T0C		// 0c
@@ -389,7 +402,7 @@ var/datum/planet/sif/planet_sif = null
 		"An intense chill is felt, and chunks of ice start to fall from the sky, towards you."
 	)
 
-/datum/weather/sif/hail/process_effects()
+/datum/weather/pollux/hail/process_effects()
 	..()
 	for(var/mob/living/carbon/human/H in living_mob_list)
 		if(H.z in holder.our_planet.expected_z_levels)
@@ -412,7 +425,7 @@ var/datum/planet/sif/planet_sif = null
 						to_chat(H, "<span class='notice'>Hail patters gently onto your umbrella.</span>")
 					continue
 */
-/datum/weather/sif/blood_moon
+/datum/weather/pollux/blood_moon
 	name = "blood moon"
 	light_modifier = 0.5
 	light_color = "#FF0000"
@@ -425,7 +438,112 @@ var/datum/planet/sif/planet_sif = null
 		"The sky turns blood red!"
 	)
 
-/datum/weather/sif/acid_rain
+//	outdoor_sounds_type = /datum/looping_sound/weather/wind
+//	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
+
+// Ash and embers fall forever, such as from a volcano or something.
+/datum/weather/pollux/emberfall
+	name = "emberfall"
+	icon_state = "ashfall_light"
+	light_modifier = 0.7
+	light_color = "#880000"
+	temp_high = 293.15	// 20c
+	temp_low = 283.15	// 10c
+	flight_failure_modifier = 20
+	transition_chances = list(
+		WEATHER_EMBERFALL = 100
+		)
+	observed_message = "Soot, ash, and embers float down from above."
+	transition_messages = list(
+		"Gentle embers waft down around you like grotesque snow."
+	)
+//	outdoor_sounds_type = /datum/looping_sound/weather/wind
+//	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
+
+// Like the above but a lot more harmful.
+/datum/weather/pollux/ash_storm
+	name = "ash storm"
+	icon_state = "ashfall_heavy"
+	light_modifier = 0.1
+	light_color = "#FF0000"
+	temp_high = 323.15	// 50c
+	temp_low = 313.15	// 40c
+	flight_failure_modifier = 50
+	transition_chances = list(
+		WEATHER_ASH_STORM = 100
+		)
+	observed_message = "All that can be seen is black smoldering ash."
+	transition_messages = list(
+		"Smoldering clouds of scorching ash billow down around you!"
+	)
+	// Lets recycle.
+//	outdoor_sounds_type = /datum/looping_sound/weather/outside_blizzard
+//	indoor_sounds_type = /datum/looping_sound/weather/inside_blizzard
+
+/datum/weather/pollux/ash_storm/process_effects()
+	..()
+	for(var/thing in living_mob_list)
+		var/mob/living/L = thing
+		if(L.z in holder.our_planet.expected_z_levels)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // They're indoors, so no need to burn them with ash.
+
+			L.inflict_heat_damage(rand(1, 3))
+
+
+// Totally radical.
+/datum/weather/pollux/fallout
+	name = "fallout"
+	icon_state = "fallout"
+	light_modifier = 0.7
+	light_color = "#CCFFCC"
+	flight_failure_modifier = 30
+	transition_chances = list(
+		WEATHER_FALLOUT = 100
+	)
+
+	observed_message = "Radioactive soot and ash rains down from the heavens."
+
+	transition_messages = list(
+		"Radioactive soot and ash start to float down around you, contaminating whatever they touch."
+	)
+//	outdoor_sounds_type = /datum/looping_sound/weather/wind
+//	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
+
+	// How much radiation a mob gets while on an outside tile.
+	var/direct_rad_low = 0.5
+	var/direct_rad_high = 5
+
+	// How much radiation is bursted onto a random tile near a mob.
+	var/fallout_rad_low = 25
+	var/fallout_rad_high = 75
+
+/datum/weather/pollux/fallout/process_effects()
+	..()
+	for(var/thing in living_mob_list)
+		var/mob/living/L = thing
+		if(L.z in holder.our_planet.expected_z_levels)
+			irradiate_nearby_turf(L)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // They're indoors, so no need to irradiate them with fallout.
+
+			L.rad_act(rand(direct_rad_low, direct_rad_high))
+
+// This makes random tiles near people radioactive for awhile.
+// Tiles far away from people are left alone, for performance.
+/datum/weather/pollux/fallout/proc/irradiate_nearby_turf(mob/living/L)
+	if(!istype(L))
+		return
+	var/list/turfs = RANGE_TURFS(world.view, L)
+	var/turf/T = pick(turfs) // We get one try per tick.
+	if(!istype(T))
+		return
+	if(T.outdoors)
+		SSradiation.radiate(T, rand(fallout_rad_low, fallout_rad_high))
+
+/datum/weather/pollux/acid_rain
 	name = "acid rain"
 	icon_state = "acid_rain"
 	light_modifier = 0.5
@@ -444,7 +562,7 @@ var/datum/planet/sif/planet_sif = null
 	)
 
 
-/datum/weather/sif/acid_rain/process_effects()
+/datum/weather/pollux/acid_rain/process_effects()
 	..()
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -470,7 +588,7 @@ var/datum/planet/sif/planet_sif = null
 			if(show_message)
 				to_chat(L, effect_message)
 
-/datum/weather/sif/rad_storm
+/datum/weather/pollux/rad_storm
 	name = "radiation storm"
 	icon_state = "rad_storm"
 	light_modifier = 0.3
@@ -487,7 +605,7 @@ var/datum/planet/sif/planet_sif = null
 		"The clouds begin to turn green, something seems terribly wrong."
 	)
 
-/datum/weather/sif/carpfall
+/datum/weather/pollux/carpfall
 	name = "carpfall"
 
 	var/next_carpfall = 0 // world.time when carps fall.
@@ -506,12 +624,12 @@ var/datum/planet/sif/planet_sif = null
 		"The smell of sea salt and sushi fills the air, something seems terribly wrong."
 	)
 
-/datum/weather/sif/carpfall/process_effects()
+/datum/weather/pollux/carpfall/process_effects()
 	..()
 	handle_carps()
 
 
-/datum/weather/sif/carpfall/proc/handle_carps()
+/datum/weather/pollux/carpfall/proc/handle_carps()
 	if(world.time < next_carpfall)
 		return // It's too soon to strike again.
 
@@ -537,7 +655,7 @@ var/datum/planet/sif/planet_sif = null
 					new /obj/effect/falling_effect/carpfall(X)
 
 
-/datum/weather/sif/carpnado
+/datum/weather/pollux/carpnado
 	name = "carpnado"
 
 	var/next_carpfall = 0 // world.time when carps fall.
@@ -555,12 +673,12 @@ var/datum/planet/sif/planet_sif = null
 		"The smell of natural disaster and seaweed fills the air."
 	)
 
-/datum/weather/sif/carpnado/process_effects()
+/datum/weather/pollux/carpnado/process_effects()
 	..()
 	handle_carps()
 
 
-/datum/weather/sif/carpnado/proc/handle_carps()
+/datum/weather/pollux/carpnado/proc/handle_carps()
 	if(world.time < next_carpfall)
 		return // It's too soon to strike again.
 

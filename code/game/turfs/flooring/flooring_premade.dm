@@ -330,6 +330,17 @@
 	icon_state = "white"
 	initial_flooring = /decl/flooring/tiling/yellow
 
+/turf/simulated/floor/tiled/paleblue
+	name = "pale blue floor"
+	color = COLOR_PALE_BLUE_GRAY
+	icon_state = "white"
+	initial_flooring = /decl/flooring/tiling/paleblue
+
+/turf/simulated/floor/tiled/lime
+	name = "lime floor"
+	color = COLOR_PALE_GREEN_GRAY
+	icon_state = "white"
+	initial_flooring = /decl/flooring/tiling/lime
 
 /turf/simulated/floor/tiled/yellow
 	name = "yellow floor"

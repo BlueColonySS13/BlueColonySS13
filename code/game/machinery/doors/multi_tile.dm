@@ -81,7 +81,8 @@
 	door_color = COLOR_COMMAND_BLUE
 
 /obj/machinery/door/airlock/multi_tile/security
-	door_color = COLOR_NT_RED
+	door_color = COLOR_COMMAND_BLUE
+	stripe_color = COLOR_SKY_BLUE
 
 /obj/machinery/door/airlock/multi_tile/engineering
 	name = "Maintenance Hatch"
@@ -136,8 +137,8 @@
 	stripe_color = COLOR_SKY_BLUE
 
 /obj/machinery/door/airlock/multi_tile/glass/security
-	door_color = COLOR_NT_RED
-	stripe_color = COLOR_ORANGE
+	door_color = COLOR_COMMAND_BLUE
+	stripe_color = COLOR_SKY_BLUE
 
 /obj/machinery/door/airlock/multi_tile/glass/engineering
 	door_color = COLOR_AMBER

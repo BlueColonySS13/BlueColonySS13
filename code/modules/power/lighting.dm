@@ -215,12 +215,12 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/colored/orange
 	base_state = "orange"		// base description and icon_state
 	icon_state = "orange1"
-	light_color = "#f9b1f1"
+	light_color = "#ffcc66"
 
 /obj/machinery/light/colored/purple
 	base_state = "purple"		// base description and icon_state
 	icon_state = "purple1"
-	light_color = "#f9b1f1"
+	light_color = "#cc66ff"
 
 /obj/machinery/light/colored/red
 	base_state = "red"		// base description and icon_state
@@ -230,17 +230,17 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/colored/pink
 	base_state = "pink"		// base description and icon_state
 	icon_state = "pink1"
-	light_color = "#f9b1d6"
+	light_color = "#ff6699"
 
 /obj/machinery/light/colored/blue
 	base_state = "blue"		// base description and icon_state
 	icon_state = "blue1"
-	light_color = "#b1edf9"
+	light_color = "#99ccff"
 
 /obj/machinery/light/colored/green
 	base_state = "green"		// base description and icon_state
 	icon_state = "green1"
-	light_color = "#d8f9b1"
+	light_color = "#ccff66"
 
 
 //colored bulbs

@@ -1,8 +1,9 @@
-#define Z_LEVEL_FIRST_GEMINUS					1
+#define Z_LEVEL_FIRST_GEMINUS						1
 #define Z_LEVEL_SECOND_GEMINUS					2
-#define Z_LEVEL_SKY_GEMINUS						3
+#define Z_LEVEL_THIRD_GEMINUS						3
+#define Z_LEVEL_FOURTH_GEMINUS					4
 
-/datum/map/geminus
+/datum/map/geminus_neue
 	name = "Geminus"
 	full_name = "Geminus City"
 	path = "geminus"
@@ -10,11 +11,7 @@
 	lobby_icon = 'icons/misc/title.dmi'
 	lobby_screens = list("pollux")
 
-	holomap_smoosh = list(list(
-		Z_LEVEL_FIRST_GEMINUS,
-		Z_LEVEL_SECOND_GEMINUS))
-
-	zlevel_datum_type = /datum/map_z_level/geminus
+	zlevel_datum_type = /datum/map_z_level/geminus_neue
 
 	station_name  = "Geminus City"
 	station_short = "Geminus"
@@ -36,7 +33,7 @@
 
 	allowed_spawns = list("City Arrivals Airbus", "Cryogenic Storage", "Prison")
 
-	planet_datums_to_make = list(/datum/planet/pollux)
+//	planet_datums_to_make = list(/datum/planet/pollux)
 
 	usable_email_tlds = list("freemail.net", "ntmail.nt", "interpollux.org", "solnet.org", "vetralife.nt", "andromedian.org")
 	default_law_type = /datum/ai_laws/pollux
@@ -51,7 +48,6 @@
 							NETWORK_DEFAULT,
 							NETWORK_MEDICAL,
 							NETWORK_MINE,
-							NETWORK_NORTHERN_STAR,
 							NETWORK_RESEARCH,
 							NETWORK_RESEARCH_OUTPOST,
 							NETWORK_ROBOTS,
@@ -63,55 +59,62 @@
 	council_email = "city-council@geminus.nt"
 
 // For making the 6-in-1 holomap, we calculate some offsets
-#define GEMINUS_MAP_SIZE 177 // Width and height of compiled in Southern Cross z levels.
+#define GEMINUS_MAP_SIZE 332 // Width and height of compiled in Southern Cross z levels.
 #define GEMINUS_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
 #define GEMINUS_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*GEMINUS_MAP_SIZE) - GEMINUS_HOLOMAP_CENTER_GUTTER) / 2) // 100
 #define GEMINUS_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*GEMINUS_MAP_SIZE)) / 2) // 60
 
 
-/datum/map/geminus/perform_map_generation()
+/datum/map/geminus_neue/perform_map_generation()
 //	new /datum/random_map/automata/cave_system(null, 1, 1, Z_LEVEL_FIRST_GEMINUS	, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_FIRST_GEMINUS	, 64, 64)         // Create the mining ore distribution map.
-
-//	new /datum/random_map/automata/cave_system(null, 1, 1, Z_LEVEL_SECOND_GEMINUS, world.maxx, world.maxy) // Create the mining Z-level.
+//	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_FIRST_GEMINUS	, 64, 64)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system(null, 1, 1, Z_LEVEL_FIRST_GEMINUS, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SECOND_GEMINUS, 64, 64)         // Create the mining ore distribution map.
 
 	return 1
 
-/datum/map_z_level/geminus/first
+/datum/map_z_level/geminus_neue/first
 	z = Z_LEVEL_FIRST_GEMINUS
 	name = "Underground Sewers"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	transit_chance = 50
 	base_turf = /turf/simulated/floor/plating
-	holomap_legend_x = 220
-	holomap_legend_y = 200
+//	holomap_legend_x = 220
+//	holomap_legend_y = 200
 
-/datum/map_z_level/geminus/second
+/datum/map_z_level/geminus_neue/second
 	z = Z_LEVEL_SECOND_GEMINUS
 	name = "Geminus City"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	transit_chance = 50
 	base_turf = /turf/simulated/floor/outdoors/dirt
-	holomap_offset_x = 220
-	holomap_offset_y = GEMINUS_HOLOMAP_MARGIN_Y + GEMINUS_MAP_SIZE*1
+//	holomap_offset_x = 220
+//	holomap_offset_y = GEMINUS_HOLOMAP_MARGIN_Y + GEMINUS_MAP_SIZE*1
 
-/datum/map_z_level/geminus/sky
-	z = Z_LEVEL_SKY_GEMINUS
+
+/datum/map_z_level/geminus_neue/third
+	z = Z_LEVEL_THIRD_GEMINUS
 	name = "Sky"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	transit_chance = 50
 	base_turf = /turf/simulated/floor/outdoors/dirt
 //	holomap_offset_x = GEMINUS_HOLOMAP_MARGIN_X - 40
 //	holomap_offset_y = GEMINUS_HOLOMAP_MARGIN_Y + GEMINUS_MAP_SIZE*0
 
+/datum/map_z_level/geminus_neue/fourth
+	z = Z_LEVEL_FOURTH_GEMINUS
+	name = "Geminus Residenial Area"
+	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_SEALED
+	transit_chance = 50
+	base_turf = /turf/simulated/floor/outdoors/dirt
+
 /datum/planet/pollux
 	expected_z_levels = list(
-		Z_LEVEL_SKY_GEMINUS,
-		Z_LEVEL_SECOND_GEMINUS
+		Z_LEVEL_SECOND_GEMINUS,
+		Z_LEVEL_FOURTH_GEMINUS,
 	)
 
-/datum/map/geminus/get_map_info()
+/datum/map/geminus_neue/get_map_info()
 	. = list()
 	. +=  "[full_name] is a very well-known metropolitan city in Blue Colony located on the planet Pollux.<br>"
 	. +=  "Pollux exists in the Vetra star system which is entirely monopolized by NanoTrasen acting as a quasi-corporate government."

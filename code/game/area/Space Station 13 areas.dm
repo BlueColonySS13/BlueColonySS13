@@ -727,7 +727,7 @@ area/space/atmosalert()
 	icon_state = "fpmaint"
 
 /area/maintenance/fpmaint
-	name = "Fore Port Maintenance - 1"
+	name = "North Maintenance"
 	icon_state = "fpmaint"
 
 /area/maintenance/fpmaint2
@@ -743,7 +743,7 @@ area/space/atmosalert()
 	icon_state = "fsmaint"
 
 /area/maintenance/asmaint
-	name = "Aft Starboard Maintenance"
+	name = "South Maintenance"
 	icon_state = "asmaint"
 
 /area/maintenance/engi_shuttle
@@ -1383,7 +1383,7 @@ area/space/atmosalert()
 	sound_env = SMALL_ENCLOSED
 
 /area/crew_quarters/fitness
-	name = "\improper Fitness Room"
+	name = "\improper Gym"
 	icon_state = "fitness"
 
 /area/crew_quarters/longue_area
@@ -1996,7 +1996,7 @@ area/space/atmosalert()
 	icon_state = "evidence_storage"
 
 /area/security/interrogation
-	name = "\improper Police Station - Interrogation"
+	name = "\improper Police Station - Visitation Room"
 	icon_state = "interrogation"
 
 /area/security/riot_control
@@ -2748,6 +2748,12 @@ area/space/atmosalert()
 	name = "\improper Listening Post"
 	icon_state = "away"
 	requires_power = 0
+
+/area/lots
+	name = "Lots"
+	icon_state = "lot"
+	flags = AREA_FLAG_IS_NOT_PERSISTENT | RAD_SHIELDED
+
 
 /area/awaymission/beach
 	name = "Beach"

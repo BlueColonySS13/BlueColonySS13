@@ -62,10 +62,21 @@
 /obj/machinery/smartfridge/food
 	name = "Food Storage Unit"
 	desc = "A refrigerated storage unit for storing food."
+	icon_state = "foodomat"
+	icon_on = "foodomat"
+	icon_off = "foodomat-off"
+	icon_panel = "foodomat-panel"
+
+/obj/machinery/smartfridge/food/research
+	name = "Grown Produce Storage Unit"
 	req_access = list(access_research)
+	icon_state = "grownfridge"
+	icon_on = "grownfridge"
+	icon_off = "grownfridge-off"
+	icon_panel = "grownfridge-panel"
 
 /obj/machinery/smartfridge/food/accept_check(var/obj/item/O as obj)
-	if(istype(O,/obj/item/weapon/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/))
+	if(istype(O,/obj/item/weapon/reagent_containers/food) || istype(O,/obj/item/seeds/) || istype(O,/obj/item/weapon/storage/fancy/egg_box))
 		return 1
 	return 0
 
