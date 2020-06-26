@@ -3,6 +3,8 @@
 
 /datum/lot/proc/add_balances()
 
+	var/service_charge = round(get_service_charge())
+
 	for(var/datum/tenant/tenant in get_tenants())
 
 		tenant.pay_balance(-get_rent())
@@ -13,22 +15,22 @@
 				add_landlord_checkbook("[tenant.name] for [name]: Unable to clear payment. Balance under rent charge.")
 			else
 				if(landlord)
-					landlord.account_balance += get_rent_after_tax()
+					landlord.account_balance += round(get_rent_after_tax())
 					var/datum/department/council = dept_by_id(DEPT_COUNCIL)
 					council.adjust_funds(get_rent_tax_amount(), "Taxes for [name]")
 					add_landlord_checkbook("[tenant.name] for [name]: Payment of [cash2text( get_rent_after_tax(), FALSE, TRUE, TRUE )] successfully paid to landlord account. (After [cash2text( get_rent_tax_amount(), FALSE, TRUE, TRUE )] tax)")
 
 
 	if(landlord)
-		if(get_service_charge() > get_landlord_balance())
+		if(service_charge > get_landlord_balance())
 			add_landlord_checkbook("[landlord.name] for [name]: Unable to clear payment. Balance under service charge amount.")
-			landlord.account_balance -= get_service_charge()
+			landlord.account_balance -= service_charge
 		else
 
 			var/datum/department/council = dept_by_id(DEPT_COUNCIL)
-			council.adjust_funds(get_service_charge(), "Service Charge for [name]")
-			landlord.pay_balance(-get_service_charge())
-			add_landlord_checkbook("Landlord Payment for [name]: [cash2text( get_service_charge(), FALSE, TRUE, TRUE )] successfully paid to City Council.")
+			council.adjust_funds(service_charge, "Service Charge for [name]")
+			landlord.pay_balance(-service_charge)
+			add_landlord_checkbook("Landlord Payment for [name]: [cash2text( service_charge, FALSE, TRUE, TRUE )] successfully paid to City Council.")
 
 
 /datum/lot/proc/add_landlord_checkbook(info)	// for adding funds to the account
