@@ -37,8 +37,4 @@
 	department_reward = 200
 	individual_reward = 75
 
-/datum/bounty/recycling/boneman/meets_standards(var/obj/O) // additional custom checks
-	if(istype(O, /obj/item/weapon/bone))
-		return TRUE
-
-	return FALSE
+	allow_subtypes = TRUE

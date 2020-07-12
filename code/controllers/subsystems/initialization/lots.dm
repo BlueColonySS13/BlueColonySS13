@@ -28,6 +28,8 @@ SUBSYSTEM_DEF(lots)
 
 
 /datum/controller/subsystem/lots/proc/save_all_lots()
+	set background = 1
+
 	if(!config.lot_saving)
 		return FALSE
 

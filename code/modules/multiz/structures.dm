@@ -19,6 +19,8 @@
 
 	var/const/climb_time = 2 SECONDS
 
+	dont_save = TRUE
+
 /obj/structure/ladder/initialize()
 	. = ..()
 	// the upper will connect to the lower

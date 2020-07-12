@@ -178,6 +178,7 @@
 	var/last_helpask_time = 0		// When did we last call for help?
 	var/follow_until_time = 0		// Give up following when we reach this time (0 = never)
 	var/annoyed = 0					// Do people keep distract-kiting us?
+
 	////// ////// //////
 
 /mob/living/simple_animal/New()
@@ -222,6 +223,9 @@
 	walk_list.Cut()
 	languages.Cut()
 	return ..()
+
+/mob/living/simple_animal/proc/can_destroy_structures()
+	return TRUE
 
 //Client attached
 /mob/living/simple_animal/Login()

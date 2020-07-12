@@ -12,7 +12,7 @@
 	selection_color = "#026865"
 	idtype = /obj/item/weapon/card/id/medical/head
 	req_admin_notify = 1
-	wage = 340
+	wage = 300
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
@@ -44,7 +44,7 @@
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/doctor
-	wage = 80
+	wage = 120
 	minimum_character_age = 25
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
@@ -71,7 +71,7 @@
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/chemist
-	wage = 60
+	wage = 80
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology)
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
 	alt_titles = list("Pharmacist")
@@ -108,7 +108,7 @@
 	faction = "City"
 	total_positions = 4
 	spawn_positions = 1
-	wage = 40
+	wage = 70
 	minimum_character_age = 25
 	supervisors = "the medical director"
 	selection_color = "#013D3B"
@@ -132,7 +132,7 @@
 	supervisors = "the medical director"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/intern
-	wage = 30
+	wage = 60
 	minimum_character_age = 18 //Excuse me electric, what.
 	access = list(access_medical)
 	minimal_access = list(access_medical, access_maint_tunnels)
@@ -151,7 +151,7 @@
 	supervisors = "the medical director"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/medical/paramedic
-	wage = 80
+	wage = 90
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
 	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic

@@ -61,7 +61,7 @@
 
 /decl/hierarchy/outfit/job/science/rguard
 	name = OUTFIT_JOB_NAME("Research Security")
-	id_type = /obj/item/weapon/card/id/science/rguard
+//	id_type = /obj/item/weapon/card/id/science/rguard
 	uniform = /obj/item/clothing/under/pcrc
 	suit = /obj/item/clothing/suit/storage/vest/pcrc
 	shoes = /obj/item/clothing/shoes/boots/jackboots

@@ -41,7 +41,7 @@
 	supervisors = "the judge"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/prosecutor
-	wage = 100
+	wage = 200
 	access = list(access_prosecutor, access_sec_doors, access_maint_tunnels, access_heads, access_legal, access_warrant)
 	minimal_access = list(access_prosecutor, access_sec_doors, access_heads, access_legal, access_warrant)
 	minimal_player_age = 14

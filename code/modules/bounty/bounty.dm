@@ -71,6 +71,8 @@
 
 	var/delete_upon_completion = TRUE
 
+	var/allow_subtypes = FALSE // does this bounty search for strict types, or are subtypes allowed also? Only applies to item bounties.
+
 /datum/bounty/New(new_name, new_author, new_desc, new_author_department, new_items_wanted, \
 	new_stacks_wanted, new_reagents_wanted, new_grown_wanted, new_seeds_wanted, new_cash_wanted, add_active_bounty_list = TRUE)
 
@@ -257,7 +259,7 @@
 			var/payment_owed = round(inv_money * division_number)
 
 			if(payment_owed)
-				charge_to_account(V, "Boun-T", "Bounty Completion Contribution: [name]/[D.name]", "BouNT Finances", payment_owed, leave_log = hidden)
+				charge_to_account(V, "Boun-T", "Bounty Completion Contribution: [name]/[D.name]", "BouNT Finances", payment_owed, leave_log = !hidden)
 
 	if(item_spawn_location && isturf(item_spawn_location))
 		for(var/A in item_rewards)
@@ -407,7 +409,17 @@
 
 	if(LAZYLEN(items_wanted))
 		var/obj/O = the_thing
-		if(O.type in items_wanted)
+
+		var/is_wanted_item = FALSE
+
+		if(allow_subtypes)
+			if(is_type_in_list(O.type , items_wanted))
+				is_wanted_item = TRUE
+		else
+			if(O.type in items_wanted)
+				is_wanted_item = TRUE
+
+		if(is_wanted_item)
 			if(!items_given[O.type])
 				items_given[O.type] = 1
 				qdel(O)

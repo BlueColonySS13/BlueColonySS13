@@ -35,10 +35,18 @@
 	var/amount
 	var/data
 
-/proc/save_map(var/turf/t1, var/turf/t2, var/id, var/path, var/save_obj = 1)
-	var/block = get_map_turfs(t1, t2)
+/proc/save_map(var/id, var/path, var/save_obj = 1)
+	var/area/map_area
 
-	var/full_map = map_write(block, save_obj)
+	for(var/area/A in return_sorted_areas())
+		if(A.lot_id == id)
+			map_area = A
+			break
+
+	if(!map_area)
+		return
+
+	var/full_map = map_write(map_area, save_obj)
 	if(!full_map)
 		return 0
 
@@ -50,21 +58,6 @@
 	if(get_map_data(map_data))
 		return 1
 
-
-/proc/get_map_turfs(var/turf/t1 as turf, var/turf/t2 as turf)
-	//Check for valid turfs.
-	if(!isturf(t1) || !isturf(t2))
-		CRASH("Invalid arguments supplied to proc map_write, arguments were not turfs.")
-
-	var/turf/ne = locate(max(t1.x,t2.x),max(t1.y,t2.y),max(t1.z,t2.z)) // Outer corner
-	var/turf/sw = locate(min(t1.x,t2.x),min(t1.y,t2.y),min(t1.z,t2.z)) // Inner corner
-
-	var/list/map_area = list()
-
-	for(var/turf/T in block(ne, sw) )
-		map_area += T
-
-	return map_area
 
 /proc/get_object_data(obj/O)
 	if(!O)
@@ -245,11 +238,13 @@
 
 	return TRUE
 
-/proc/map_write(var/list/CHUNK, var/save_obj)
+/proc/map_write(var/area/map_area, var/save_obj)
 	var/list/full_map = list()
+
+	var/list/all_turfs = get_area_turfs(map_area)
 	var/list/all_objs = list()
 
-	for(var/turf/T in CHUNK)
+	for(var/turf/T in all_turfs)
 		if(T.dont_save) continue
 
 		T.on_persistence_save()
@@ -304,18 +299,18 @@
 		full_map += MT
 
 		if(save_obj)
-			for(var/obj/O in T.loc)
-				if(O.dont_save) continue
-				if(O in all_objs) continue // to prevent multi-loc  duplicates. it's a thing.
+			for(var/obj/O in T)
+				if(O.dont_save)
+					continue
 
-				all_objs += O
+				if(O in all_objs)
+					continue
 
 				var/datum/map_object/saved_obj_1 = full_item_save(O)
 
 				MT.map_objects += saved_obj_1
 
-		T.on_persistence_load()
-		T.update_icon()
+				all_objs += O
 
 	return full_map
 

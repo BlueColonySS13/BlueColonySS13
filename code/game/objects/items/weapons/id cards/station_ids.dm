@@ -371,11 +371,6 @@
 	rank = "Research Assistant"
 	job_access_type = /datum/job/scienceintern
 
-/obj/item/weapon/card/id/science/rguard
-	assignment = "Research Security"
-	rank = "Research Security"
-	job_access_type = /datum/job/rguard
-
 /obj/item/weapon/card/id/science/head
 	name = "identification card"
 	desc = "A card which represents knowledge and reasoning."

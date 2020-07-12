@@ -45,10 +45,6 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	if(!ismob(user))
 		return 0
 
-	if(user.IsAntiGrief())
-		to_chat(user, "<span class='danger'>You wish to do no harm.</span>")
-		return 0
-
 	if(can_operate(src) && I.do_surgery(src,user))
 		if(I.can_do_surgery(src,user))
 			return 1

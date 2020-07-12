@@ -216,7 +216,8 @@
 	icon_state = "casino"
 	light_color = "#ffff99"
 	light_range = 6
-	light_power = 4
+	light_power = 8
+	plane = 25
 
 /obj/structure/sign/neon/big/inn
 	name = "inn sign"

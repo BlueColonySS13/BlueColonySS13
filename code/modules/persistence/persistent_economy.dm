@@ -73,7 +73,7 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 
 	var/city_council_control	= TRUE	// If the president has allowed the city council to control the colony.
 
-	var/base_service_charge = 25		// Minimum the council will charge (per payroll) to lots. // control setting not yet implemented
+	var/base_service_charge = 0.05		// Minimum the council will charge (per payroll) to lots. // control setting not yet implemented
 	var/business_registration = 3500	// Fee for starting new businesses. // control setting not yet implemented
 	var/carp_control = FALSE			// If this is disabled, council cannot control carp infestations.
 	var/antivirus = FALSE			// Is the President a boomer?

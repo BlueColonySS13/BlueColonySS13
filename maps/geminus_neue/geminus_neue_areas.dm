@@ -1,12 +1,12 @@
 // Elevator areas.
-/area/turbolift/geminus_top
+/area/turbolift/geminus_subway_top
 	name = "lift (geminus city)"
 	lift_floor_label = "Floor 2"
 	lift_floor_name = "Geminus City Metro"
 	lift_announce_str = "Lift arriving at Geminus City Metro Station, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
-/area/turbolift/geminus_ground
+/area/turbolift/geminus_subway_ground
 	name = "lift (sewers)"
 	lift_floor_label = "Floor 1"
 	lift_floor_name = "Geminus Underground Sewers"
@@ -41,55 +41,83 @@
 	lift_announce_str = "Lift arriving at Geminus City - Science Lab Underground, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
-/area/turbolift/geminus_top_hospital
-	name = "lift (city hospital)"
-	lift_floor_label = "Floor 2"
-	lift_floor_name = "Geminus City - Upper Hospital"
-	lift_announce_str = "Lift arriving at Geminus City - Hospital Upper, please stand clear of the doors."
+/area/turbolift/geminus_overground_hospital
+	name = "lift (hospital overground - asylum)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "Geminus City Hospital - Asylum"
+	lift_announce_str = "Lift arriving at Geminus City - Asylum, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_ground_hospital
-	name = "lift (hospital underground)"
-	lift_floor_label = "Floor 1"
-	lift_floor_name = "Geminus City - Underground Hospital"
-	lift_announce_str = "Lift arriving at Geminus City - Hospital Underground, please stand clear of the doors."
+	name = "lift (city hospital)"
+	lift_floor_label = "Ground Floor"
+	lift_floor_name = "Geminus City Hospital - Hospital"
+	lift_announce_str = "Lift arriving at Geminus City - Hospital, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
+
+/area/turbolift/geminus_underground_hospital
+	name = "lift (hospital underground - Asylum)"
+	lift_floor_label = "Lower Ground (LG) Floor"
+	lift_floor_name = "Geminus City Hospital - Asylum"
+	lift_announce_str = "Lift arriving at Geminus City - Asylum, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/tiled/steel_ridged
+
 
 /area/turbolift/geminus_court_top
-	name = "lift (main courtroom)"
+	name = "lift (court offices)"
 	lift_floor_label = "Floor 2"
-	lift_floor_name = "Geminus City Courtroom"
-	lift_announce_str = "Lift arriving at Geminus City Courtroom, please stand clear of the doors."
-	base_turf = /turf/simulated/floor/tiled/steel_ridged
-
-/area/turbolift/geminus_court_ground
-	name = "lift (court underground)"
-	lift_floor_label = "Floor 1"
 	lift_floor_name = "Geminus City Court Offices"
 	lift_announce_str = "Lift arriving at Geminus City Court Offices, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
+/area/turbolift/geminus_court_ground
+	name = "lift (courtroom)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "Geminus City Courtroom"
+	lift_announce_str = "Lift arriving at Geminus City Courtroom, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/tiled/steel_ridged
+
 /area/turbolift/geminus_mall_top
-	name = "lift (shopping mall)"
-	lift_floor_label = "Floor 2"
+	name = "lift (upper shopping mall)"
+	lift_floor_label = "Floor 1"
+	lift_floor_name = "Upper Shopping Mall"
+	lift_announce_str = "Lift arriving at the upper shopping mall, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/tiled/steel_ridged
+
+/area/turbolift/geminus_mall_ground
+	name = "lift (ground shopping mall)"
+	lift_floor_label = "Ground Floor"
 	lift_floor_name = "Shopping Mall"
 	lift_announce_str = "Lift arriving at the shopping mall, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
-/area/turbolift/geminus_mall_ground
-	name = "lift (underground shopping mall)"
+/area/turbolift/police_top
+	name = "lift (upper police station)"
+	lift_floor_label = "Floor 2"
+	lift_floor_name = "Upper Police Station"
+	lift_announce_str = "Lift arriving at the upper police station, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/tiled/steel_ridged
+
+/area/turbolift/police_ground
+	name = "lift (police station main)"
 	lift_floor_label = "Floor 1"
-	lift_floor_name = "Underground Shopping Mall"
-	lift_announce_str = "Lift arriving at the underground shopping mall, please stand clear of the doors."
+	lift_floor_name = "Lower Police Station"
+	lift_announce_str = "Lift arriving at the lower police station, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 //shuttle areas
 /area/shuttle
 	dynamic_lighting = 1 //OH BOY
 
+/area/shuttle/trade/station
+	dynamic_lighting = 1 //OH BOY
+
 /area/shuttle/arrival/pre_game
 	icon_state = "shuttle2"
 	base_turf = /turf/simulated/sky
+
+/area/syndicate_station/
+	dynamic_lighting = 1
 
 //city areas
 
@@ -178,35 +206,13 @@
 	icon_state = "red"
 	sound_env = CONCERT_HALL
 
-/area/planets/Geminus/indoor/backroom
-	name = "\improper Nightclub Backroom"
-	icon_state = "green"
-	sound_env = ALLEY
-
-/area/planets/Geminus/indoor/bar
-	name = "\improper Bar"
-	icon_state = "bar"
-
-/area/planets/Geminus/indoor/kitchen
-	name = "\improper Bar"
-	icon_state = "kitchen"
-
-/area/planets/Geminus/indoor/stage
-	name = "\improper Stage"
-	icon_state = "theatre"
-	sound_env = AUDITORIUM
-
-/area/planets/Geminus/indoor/shoppingarea
-	name = "\improper Clothes Store"
-	icon_state = "red"
-
-/area/planets/Geminus/indoor/barber
-	name = "\improper Salon and Barber Shop"
-	icon_state = "yellow"
-
 /area/planets/Geminus/indoor/shoppingarea
 	name = "\improper Shopping Area"
 	icon_state = "green"
+
+/area/planets/Geminus/indoor/shoppingarea/upper
+	name = "\improper Upper Shopping Area"
+	icon_state = "yellow"
 
 /area/planets/Geminus/indoor/hotel
 	name = "\improper Hotel"
@@ -279,8 +285,9 @@
 	icon_state = "blue"
 	requires_power = 0
 	dynamic_lighting = 1
-//	luminosity = 0
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
+	sound_env = TUNNEL_ENCLOSED
+	turf_initializer = new /datum/turf_initializer/mines()
 
 /area/planets/Geminus/indoor/sewer/north
 	name = "\improper Underground Sewers - North"
@@ -301,6 +308,11 @@
 /area/planets/Geminus/indoor/sewer/south
 	name = "\improper Underground Sewers - South"
 	icon_state = "yellow"
+
+/area/planets/Geminus/indoor/sewer/rooms
+	name = "\improper Underground Sewers - Rooms"
+	icon_state = "purple"
+	turf_initializer = new /datum/turf_initializer/maintenance/sewer()
 
 /area/planets/Geminus/indoor/science
 	name = "\improper Research and Development Labs"
@@ -358,6 +370,9 @@
 	name = "\improper Geminus City - Park"
 	icon_state = "yellow"
 
+/area/planets/Geminus/outdoor/sky
+	name = "\improper Geminus City - The Sky"
+	icon_state = "blue"
 
 //Residential Area
 

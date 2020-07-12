@@ -47,7 +47,7 @@
 	var/l_hacking = 0
 	var/open = 0
 
-	unique_save_vars = list("code", "door_color", "stripe_color", "locked", "open", "panel_open", "l_hacking", "l_set", "l_code", "l_setshort", "keypad")
+	unique_save_vars = list("code", "door_color", "stripe_color", "locked", "open", "panel_open", "l_hacking", "l_set", "l_code", "l_setshort", "keypad", "req_access", "req_one_access")
 
 	// turf animation
 	var/atom/movable/overlay/c_animation = null
@@ -59,14 +59,23 @@
 
 /obj/machinery/door/attack_generic(var/mob/user, var/damage)
 	if(isanimal(user))
-		var/mob/living/simple_animal/S = user
+		var/mob/living/simple_animal/A = user
+
+		if(!A.can_destroy_structures())
+			damage = 0
 		if(damage >= 10)
 			visible_message("<span class='danger'>\The [user] smashes into the [src]!</span>")
-			playsound(src, S.attack_sound, 75, 1)
+
 			take_damage(damage)
 		else
-			visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
-	user.do_attack_animation(src)
+
+			if(A.can_destroy_structures())
+				visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
+
+		playsound(src, A.attack_sound, 75, 1)
+		user.do_attack_animation(src)
+
+
 
 /obj/machinery/door/New()
 	. = ..()

@@ -47,49 +47,6 @@
 	name = "Business Lot 11"
 	lot_id = "bizlot11"
 
-/area/lots/business_lot_twelve
-	name = "Business Lot 12"
-	lot_id = "bizlot12"
-
-/area/lots/business_lot_thirteen
-	name = "Business Lot 13"
-	lot_id = "bizlot13"
-
-/area/lots/business_lot_fourteen
-	name = "Business Lot 14"
-	lot_id = "bizlot14"
-
-/area/lots/business_lot_fifteen
-	name = "Business Lot 15"
-	lot_id = "bizlot15"
-
-/area/lots/business_lot_sixteen
-	name = "Business Lot 16"
-	lot_id = "bizlot16"
-
-/area/lots/business_lot_seventeen
-	name = "Business Lot 17"
-	lot_id = "bizlot17"
-
-/area/lots/business_lot_eighteen
-	name = "Business Lot 18"
-	lot_id = "bizlot18"
-
-/area/lots/business_lot_nineteen
-	name = "Business Lot 19"
-	lot_id = "bizlot19"
-
-/area/lots/business_lot_twenty
-	name = "Business Lot 20"
-	lot_id = "bizlot20"
-
-/area/lots/business_lot_twentyone
-	name = "Business Lot 21"
-	lot_id = "bizlot21"
-
-/area/lots/business_lot_twentytwo
-	name = "Business Lot 22"
-	lot_id = "bizlot22"
 // farm lots
 
 /area/lots/farm_lot_1

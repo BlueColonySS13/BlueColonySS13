@@ -14,7 +14,7 @@
 	idtype = /obj/item/weapon/card/id/security/head
 	req_admin_notify = 1
 	wage = 400
-	access = list(access_security, access_warrant, access_bodyguard, access_eva, access_sec_doors, access_brig, access_armory,
+	access = list(access_security, access_medical, access_warrant, access_bodyguard, access_eva, access_sec_doors, access_brig, access_armory,
 			            access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
 			            access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway, access_external_airlocks)
 	minimal_access = list(access_security, access_warrant, access_eva, access_sec_doors, access_brig, access_armory,
@@ -44,7 +44,7 @@
 	supervisors = "the chief of police"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/warden
-	wage = 95
+	wage = 295
 	access = list(access_security, access_bodyguard, access_warrant, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_morgue, access_external_airlocks)
 	minimal_access = list(access_security, access_warrant, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 5
@@ -70,9 +70,9 @@
 	supervisors = "the chief of police"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/detective
-	access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks, access_medical)
+	access = list(access_security, access_sec_doors, access_forensics_lockers, access_medical, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks, access_medical)
 	minimal_access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
-	wage = 85
+	wage = 285
 	minimal_player_age = 3
 	minimum_character_age = 25
 
@@ -104,7 +104,7 @@
 	supervisors = "the chief of police"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/officer
-	wage = 60
+	wage = 200
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3

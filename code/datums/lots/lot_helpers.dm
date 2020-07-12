@@ -173,14 +173,14 @@
 
 
 
-/datum/lot/proc/get_service_charge()
-	if(!get_landlord())
-		return
+/datum/lot/proc/get_service_charge() // Base service charge is calculated by the government's fee times by number of tiles in the lot.
+	if(!get_landlord() || !tile_count)
+		return 0
 
 	var/full_charge = 0
 
-	if(persistent_economy)
-		full_charge += persistent_economy.base_service_charge
+	if(persistent_economy && persistent_economy.base_service_charge)
+		full_charge = persistent_economy.base_service_charge * tile_count
 
 	// to be expanded. services could be added here in future.
 

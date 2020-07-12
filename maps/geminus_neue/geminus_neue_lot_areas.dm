@@ -55,6 +55,22 @@
 	name = "Shopping Lot 2"
 	lot_id = "shoplot2"
 
+/area/lots/shopping/shopping_lot_three
+	name = "Shopping Lot 3"
+	lot_id = "shoplot3"
+
+/area/lots/shopping/shopping_lot_four
+	name = "Shopping Lot 4"
+	lot_id = "shoplot4"
+
+/area/lots/shopping/shopping_lot_five
+	name = "Shopping Lot 5"
+	lot_id = "shoplot5"
+
+/area/lots/shopping/shopping_lot_six
+	name = "Shopping Lot 6"
+	lot_id = "shoplot6"
+
 // Office Lot
 
 /area/lots/office/multi/office_complex_one

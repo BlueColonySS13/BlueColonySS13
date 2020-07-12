@@ -18,6 +18,7 @@
 	melee_damage_upper = 25
 	melee_miss_chance = 0
 	gender = NEUTER
+	attack_sound = 'sound/effects/slime_squish.ogg'
 
 	// Atmos stuff.
 	minbodytemp = T0C-30
@@ -110,6 +111,9 @@
 	if(hat)
 		drop_hat()
 	return ..()
+
+/mob/living/simple_animal/slime/can_destroy_structures()
+	return rabid
 
 /mob/living/simple_animal/slime/proc/make_adult()
 	if(is_adult)

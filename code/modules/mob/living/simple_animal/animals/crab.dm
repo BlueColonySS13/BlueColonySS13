@@ -48,6 +48,11 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "stomps"
 
+/mob/living/simple_animal/crab/green
+	name = "mutant crab"
+	desc = "This crab has an oddly green color, you usually find these in sewers."
+	color = COLOR_GREEN
+
 //Sif Crabs
 /mob/living/simple_animal/giant_crab
 	name = "giant crab"

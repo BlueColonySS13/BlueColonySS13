@@ -45,3 +45,6 @@
 /turf/simulated/wall/iron/blue
 	stripe_color = COLOR_BLUE_GRAY
 //	stripes_glow = TRUE
+
+/turf/simulated/wall/iron/silver_paint
+	paint_color = "#C0C0C0"

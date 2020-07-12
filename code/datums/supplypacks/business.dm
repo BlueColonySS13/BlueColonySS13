@@ -49,3 +49,23 @@
 	containertype = /obj/structure/largecrate
 	containername = "Business Sign"
 
+
+/datum/supply_pack/business/mining_starter
+	contains = list(
+	/obj/item/weapon/storage/backpack/industrial,
+	/obj/item/weapon/storage/backpack/satchel/eng,
+	/obj/item/device/radio/headset/headset_mine,
+	/obj/item/device/analyzer,
+	/obj/item/weapon/storage/bag/ore = 2,
+	/obj/item/device/flashlight/lantern = 2,
+	/obj/item/weapon/shovel = 2,
+	/obj/item/weapon/pickaxe = 2,
+	/obj/item/clothing/glasses/material = 2,
+	/obj/item/stack/marker_beacon/thirty
+	)
+	name = "Mining Starter Kit"
+	cost = 200
+	containertype = /obj/structure/closet/crate
+	containername = "Mining Starter Kit"
+
+

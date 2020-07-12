@@ -259,6 +259,30 @@ var/list/flooring_types
 	flags = TURF_CAN_BREAK | TURF_CAN_BURN | TURF_IS_FRAGILE
 	build_type = null
 
+/decl/flooring/tiling/new_tile/beige
+	floor_color = "#385e60"
+
+/decl/flooring/tiling/new_tile/blue
+	floor_color = "#8ba7ad"
+
+/decl/flooring/tiling/new_tile/green
+	floor_color = "#46725c"
+
+/decl/flooring/tiling/new_tile/purple
+	floor_color = "#906987"
+
+/decl/flooring/tiling/new_tile/red
+	floor_color = "#964e51"
+
+/decl/flooring/tiling/new_tile/white
+	floor_color = "#d9d9d9"
+
+/decl/flooring/tiling/new_tile/yellow
+	floor_color = "#8c6d46"
+
+/decl/flooring/tiling/new_tile/gray
+	floor_color = "#687172"
+
 /decl/flooring/tiling/new_tile/cargo_one
 	icon_base = "cargo_one_full"
 

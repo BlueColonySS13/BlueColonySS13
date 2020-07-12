@@ -192,7 +192,7 @@ var/global/list/light_type_cache = list()
 	var/on_wall = 1
 	var/auto_flicker = FALSE // If true, will constantly flicker, so long as someone is around to see it (otherwise its a waste of CPU).
 
-	unique_save_vars = list("status", "on", "rigged")
+	unique_save_vars = list("status", "switchcount", "on", "rigged")
 
 /obj/machinery/light/on_persistence_load()
 	update(0)
@@ -582,9 +582,6 @@ var/global/list/light_type_cache = list()
 	// attempt to insert light
 	if(istype(W, /obj/item/weapon/light))
 		if(status != LIGHT_EMPTY)
-			to_chat(user, "There is a [get_fitting_name()] already inserted.")
-			return
-		else
 			to_chat(user, "There is a [get_fitting_name()] already inserted.")
 			return
 		if(!istype(W, light_type))

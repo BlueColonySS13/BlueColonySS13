@@ -7,7 +7,7 @@
 
 */
 
-#define STATION_Z 1
+#define STATION_Z 2
 #define TELECOMM_Z 3
 
 /obj/machinery/telecomms

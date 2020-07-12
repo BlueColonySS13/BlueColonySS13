@@ -97,6 +97,11 @@
 	name = "\improper Biological Sample Storage"
 	desc = "A refrigerated storage unit for xenobiological samples."
 	req_access = list(access_research)
+	icon_state = "grownfridge"
+	icon_on = "grownfridge"
+	icon_off = "grownfridge-off"
+	icon_panel = "grownfridge-panel"
+
 
 /obj/machinery/smartfridge/secure/extract/accept_check(var/obj/item/O as obj)
 	if(istype(O, /obj/item/slime_extract))
@@ -104,6 +109,8 @@
 	if(istype(O, /obj/item/slimepotion))
 		return TRUE
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/monkeycube))
+		return TRUE
+	if(istype(O, /obj/item/weapon/storage/box/monkeycubes))
 		return TRUE
 	return FALSE
 
