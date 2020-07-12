@@ -1054,8 +1054,8 @@
 
 		M.client.antigrief = !M.client.antigrief
 
-		log_admin("[key_name(usr)] has [M.client.antigrief ? "Enabled" : "Disabled"] SSD Guard for [key_name(M)].")
-		message_admins("[key_name_admin(usr)] has [M.client.antigrief ? "Enabled" : "Disabled"] SSD Guard for [key_name(M)]")
+		log_admin("[key_name(usr)] has [M.client.antigrief ? "Enabled" : "Disabled"] antigrief for [key_name(M)].")
+		message_admins("[key_name_admin(usr)] has [M.client.antigrief ? "Enabled" : "Disabled"] antigrief for [key_name(M)]")
 
 	else if(href_list["tdome1"])
 		if(!check_rights(R_FUN))	return
