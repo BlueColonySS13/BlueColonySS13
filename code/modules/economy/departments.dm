@@ -20,7 +20,7 @@
 	var/allowed_buy_types = list()
 	var/card_spending_limit = 1500 // max you can spend from this card
 
-	var/max_bounties = 6
+	var/max_bounties = 15
 
 	var/list/bounties = list()
 

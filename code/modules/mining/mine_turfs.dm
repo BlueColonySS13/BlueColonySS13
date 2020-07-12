@@ -51,6 +51,8 @@ var/list/mining_overlay_cache = list()
 
 	has_resources = 1
 
+	var/mineral_chance = 10
+
 /turf/simulated/mineral/ignore_mapgen
 	ignore_mapgen = 1
 
@@ -103,6 +105,8 @@ var/list/mining_overlay_cache = list()
 	. = ..()
 	if(prob(20))
 		overlay_detail = "asteroid[rand(0,9)]"
+	if(density && has_resources && prob(mineral_chance))
+		make_ore()
 	update_icon(1)
 	if(density && mineral)
 		. = INITIALIZE_HINT_LATELOAD
@@ -111,6 +115,7 @@ var/list/mining_overlay_cache = list()
 
 	if(density && mineral)
 		MineralSpread()
+
 
 /turf/simulated/mineral/update_icon(var/update_neighbors)
 
@@ -248,6 +253,7 @@ var/list/mining_overlay_cache = list()
 	icon_state = "rock-dark"
 	ignore_mapgen = 1
 	density = 1
+	has_resources = FALSE
 
 /turf/simulated/mineral/impassable/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	to_chat(user, "<span class='warning'>The rock here seems a bit too hard to break...</span>")
