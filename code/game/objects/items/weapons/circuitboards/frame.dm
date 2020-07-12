@@ -271,3 +271,7 @@
 /obj/item/weapon/circuitboard/smartfridge/drinks
 	name = T_BOARD("drinks smartfridge")
 	build_path = /obj/machinery/smartfridge/drinks
+
+/obj/item/weapon/circuitboard/smartfridge/food
+	name = T_BOARD("food smartfridge")
+	build_path = /obj/machinery/smartfridge/food

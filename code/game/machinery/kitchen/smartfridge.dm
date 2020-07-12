@@ -27,6 +27,8 @@
 
 	unique_save_vars = list("locked")
 
+	circuit = /datum/supply_pack/circuits/smartfridge
+
 /obj/machinery/smartfridge/on_persistence_load()
 	for(var/obj/item/O in contents)
 		stock(O)
@@ -62,10 +64,23 @@
 /obj/machinery/smartfridge/food
 	name = "Food Storage Unit"
 	desc = "A refrigerated storage unit for storing food."
+	icon_state = "foodomat"
+	icon_on = "foodomat"
+	icon_off = "foodomat-off"
+	icon_panel = "foodomat-panel"
+
+	circuit = /datum/supply_pack/circuits/smartfridge/food
+
+/obj/machinery/smartfridge/food/research
+	name = "Grown Produce Storage Unit"
 	req_access = list(access_research)
+	icon_state = "grownfridge"
+	icon_on = "grownfridge"
+	icon_off = "grownfridge-off"
+	icon_panel = "grownfridge-panel"
 
 /obj/machinery/smartfridge/food/accept_check(var/obj/item/O as obj)
-	if(istype(O,/obj/item/weapon/reagent_containers/food/snacks/grown/) || istype(O,/obj/item/seeds/))
+	if(istype(O,/obj/item/weapon/reagent_containers/food) || istype(O,/obj/item/seeds/) || istype(O,/obj/item/weapon/storage/fancy/egg_box))
 		return 1
 	return 0
 
@@ -86,6 +101,11 @@
 	name = "\improper Biological Sample Storage"
 	desc = "A refrigerated storage unit for xenobiological samples."
 	req_access = list(access_research)
+	icon_state = "grownfridge"
+	icon_on = "grownfridge"
+	icon_off = "grownfridge-off"
+	icon_panel = "grownfridge-panel"
+
 
 /obj/machinery/smartfridge/secure/extract/accept_check(var/obj/item/O as obj)
 	if(istype(O, /obj/item/slime_extract))
@@ -93,6 +113,8 @@
 	if(istype(O, /obj/item/slimepotion))
 		return TRUE
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/monkeycube))
+		return TRUE
+	if(istype(O, /obj/item/weapon/storage/box/monkeycubes))
 		return TRUE
 	return FALSE
 

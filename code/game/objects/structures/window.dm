@@ -212,13 +212,25 @@
 	user.setClickCooldown(user.get_attack_speed())
 	if(!damage)
 		return
+
+	var/harmless = 0
+
+	if(isanimal(user))
+		var/mob/living/simple_animal/A = user
+		playsound(src, A.attack_sound, 75, 1)
+		if(!A.can_destroy_structures())
+			damage = 0
+			harmless = TRUE
 	if(damage >= 10)
 		visible_message("<span class='danger'>[user] smashes into [src]!</span>")
 		if(reinf)
 			damage = damage / 2
 		take_damage(damage)
 	else
-		visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
+		if(!harmless)
+			visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
+
+
 	user.do_attack_animation(src)
 	return 1
 
@@ -561,6 +573,11 @@
 	icon_state = "window"
 	opacity = 1
 	color = GLASS_COLOR_TINTED
+
+/obj/structure/window/reinforced/tinted/full
+	dir = SOUTHWEST
+	icon_state = "rwindow_full"
+	maxhealth = 80
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "frosted window"

@@ -92,7 +92,7 @@
 			var/obj/item/dye_bottle/HD = W
 
 			dye_amount--
-			HD.dye_uses = 3
+			HD.dye_uses = HD.max_dye_uses
 			HD.dye_color = dye_color
 			HD.update_dye_overlay()
 			return
@@ -314,6 +314,7 @@
 
 	var/obj/item/dye_bottle/dye = new(loc)
 	dye.dye_color = dye_color
+	dye.dye_uses = dye.max_dye_uses
 	dye.update_dye_overlay()
 	dye_amount--
 
@@ -364,9 +365,12 @@
 	w_class = 1.0
 	var/dye_color = "#FFFFFF"
 
-	var/dye_uses = 3
+	var/dye_uses = 0
+	var/max_dye_uses = 5
 	matter = list("glass" = 20)
 	unique_save_vars = list("dye_color", "dye_uses")
+
+	price_tag = 5
 
 /obj/item/dye_bottle/examine()
 	..()

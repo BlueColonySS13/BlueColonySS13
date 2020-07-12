@@ -248,7 +248,7 @@
 /var/const/access_cmo = 40
 /datum/access/cmo
 	id = access_cmo
-	desc = "Chief Medical Officer"
+	desc = "Medical Director"
 	region = ACCESS_REGION_COMMAND
 
 /var/const/access_qm = 41
@@ -308,7 +308,7 @@
 /var/const/access_mailsorting = 50
 /datum/access/mailsorting
 	id = access_mailsorting
-	desc = "Cargo Office"
+	desc = "Factory Office"
 	region = ACCESS_REGION_SUPPLY
 
 /var/const/access_warrant = 51
@@ -341,7 +341,7 @@
 /var/const/access_ce = 56
 /datum/access/ce
 	id = access_ce
-	desc = "Chief Engineer"
+	desc = "Maintenance Director"
 	region = ACCESS_REGION_ENGINEERING
 
 /var/const/access_hop = 57

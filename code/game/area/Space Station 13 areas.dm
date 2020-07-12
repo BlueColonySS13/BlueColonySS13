@@ -727,7 +727,7 @@ area/space/atmosalert()
 	icon_state = "fpmaint"
 
 /area/maintenance/fpmaint
-	name = "Fore Port Maintenance - 1"
+	name = "North Maintenance"
 	icon_state = "fpmaint"
 
 /area/maintenance/fpmaint2
@@ -743,7 +743,7 @@ area/space/atmosalert()
 	icon_state = "fsmaint"
 
 /area/maintenance/asmaint
-	name = "Aft Starboard Maintenance"
+	name = "South Maintenance"
 	icon_state = "asmaint"
 
 /area/maintenance/engi_shuttle
@@ -1116,7 +1116,7 @@ area/space/atmosalert()
 	holomap_color = HOLOMAP_AREACOLOR_ENGINEERING
 
 /area/crew_quarters/heads/hos
-	name = "\improper Security - Chief of Police' Office"
+	name = "\improper Police Station - Chief of Police' Office"
 	icon_state = "head_quarters"
 	holomap_color = HOLOMAP_AREACOLOR_SECURITY
 
@@ -1141,6 +1141,22 @@ area/space/atmosalert()
 
 /area/crew_quarters/courtroom/prosecution
 	name = "\improper Courtroom - Prosecutor's Office"
+	icon_state = "courtroom"
+
+/area/crew_quarters/courtroom/witness_area
+	name = "\improper Courtroom - Witness Area"
+	icon_state = "courtroom"
+
+/area/crew_quarters/courtroom/civil
+	name = "\improper Courtroom - Civil Court"
+	icon_state = "courtroom"
+
+/area/crew_quarters/courtroom/hallway
+	name = "\improper Courtroom - Upper Floor Hallway"
+	icon_state = "courtroom"
+
+/area/crew_quarters/courtroom/evidence_storage
+	name = "\improper Courtroom - Evidence Storage"
 	icon_state = "courtroom"
 
 /area/mint
@@ -1383,7 +1399,7 @@ area/space/atmosalert()
 	sound_env = SMALL_ENCLOSED
 
 /area/crew_quarters/fitness
-	name = "\improper Fitness Room"
+	name = "\improper Gym"
 	icon_state = "fitness"
 
 /area/crew_quarters/longue_area
@@ -1996,7 +2012,7 @@ area/space/atmosalert()
 	icon_state = "evidence_storage"
 
 /area/security/interrogation
-	name = "\improper Police Station - Interrogation"
+	name = "\improper Police Station - Visitation Room"
 	icon_state = "interrogation"
 
 /area/security/riot_control
@@ -2004,9 +2020,17 @@ area/space/atmosalert()
 	icon_state = "riot_control"
 
 /area/security/detectives_office
-	name = "\improper Police Station - Forensic Office"
+	name = "\improper Police Station - Detective"
 	icon_state = "detective"
 	sound_env = MEDIUM_SOFTFLOOR
+
+/area/security/forensic_lab
+	name = "\improper Police Station - Forensic Lab"
+	icon_state = "detective"
+
+/area/security/car_park
+	name = "\improper Police Station - Car Park"
+	icon_state = "firingrange"
 
 /area/security/range
 	name = "\improper Police Station - Firing Range"
@@ -2086,6 +2110,24 @@ area/space/atmosalert()
 /area/security/checkpoint/science
 	name = "Police Station Post - Science"
 	icon_state = "checkpoint1"
+
+
+/area/security/processing_one
+	name = "\improper Police Station - Processing Room 1"
+	icon_state = "security"
+
+
+/area/security/processing_two
+	name = "\improper Police Station - Processing Room 2"
+	icon_state = "security"
+
+/area/security/holding
+	name = "\improper Police Station - Holding Cell"
+	icon_state = "security"
+
+/area/security/holding
+	name = "\improper Police Station - Prison Courtyard"
+	icon_state = "security"
 
 /area/security/vacantoffice
 	name = "\improper Police Station - Car Park"
@@ -2748,6 +2790,12 @@ area/space/atmosalert()
 	name = "\improper Listening Post"
 	icon_state = "away"
 	requires_power = 0
+
+/area/lots
+	name = "Lots"
+	icon_state = "lot"
+	flags = AREA_FLAG_IS_NOT_PERSISTENT | RAD_SHIELDED
+	sound_env = LARGE_ENCLOSED
 
 /area/awaymission/beach
 	name = "Beach"

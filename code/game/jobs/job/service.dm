@@ -175,7 +175,7 @@
 	supervisors = "the factory manager"
 	selection_color = "#9b633e"
 	idtype = /obj/item/weapon/card/id/cargo/cargo_tech
-	wage = 40
+	wage = 70
 
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
@@ -187,7 +187,7 @@
 /datum/job/mining
 	title = "Miner"
 	flag = MINER
-	faction = "City"
+//	faction = "City"
 	department = DEPT_FACTORY
 	department_flag = CIVILIAN
 	total_positions = 3

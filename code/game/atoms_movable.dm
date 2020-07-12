@@ -146,12 +146,12 @@
 		if(HULK in usr.mutations)
 			src.throwing = 2 // really strong throw!
 
-	if(usr.IsAntiGrief())
-		src.throwing = 0
-		src.thrower = null
-		src.throw_source = null
-		fall()
-		return
+		if(usr.IsAntiGrief())
+			src.throwing = 0
+			src.thrower = null
+			src.throw_source = null
+			fall()
+			return
 
 	var/dist_travelled = 0
 	var/dist_since_sleep = 0

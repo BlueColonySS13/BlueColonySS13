@@ -17,7 +17,7 @@
 	alt_titles = list("Electoral Assistant" = /decl/hierarchy/outfit/job/nanotrasen/electoral,
                       "Nanotrasen Officer" = /decl/hierarchy/outfit/job/nanotrasen/officer)
 
-	wage = 1000
+	wage = 900
 	minimum_character_age = 25 // Pushing it I guess, but possible
 	ideal_character_age = 40
 	req_admin_notify = 1
@@ -52,7 +52,7 @@
 	alt_titles = list("Advisor" = /decl/hierarchy/outfit/job/nanotrasen/minister,
 	 "Vice President" = /decl/hierarchy/outfit/job/heads/vpresident,
 	  "Supreme Justice" = /decl/hierarchy/outfit/job/nanotrasen/justice)
-	wage = 10000
+	wage = 6500
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/governor
 	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
 	minimum_character_age = 30
@@ -87,7 +87,7 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/cbia
 
-	wage = 1000
+	wage = 2000
 	minimum_character_age = 25 // Pushing it I guess, but possible
 	ideal_character_age = 37
 	req_admin_notify = 1

@@ -1250,14 +1250,9 @@
 				if("No" == alert("Would you like to withdraw lot funds into your bank account?", "Withdraw Lot Money", "No", "Yes"))
 					return
 
-
-
 				var/withdraw = input(usr, "Please enter how much you would like to withdraw.", "Withdraw Balance", LOT.get_landlord_balance()) as num|null
 
-				if(!withdraw)
-					return
-
-				if(0 > withdraw)
+				if(0 >= withdraw)
 					return
 
 				if(withdraw > LOT.get_landlord_balance())

@@ -1173,3 +1173,25 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/grass_edge/corner
 	name = "grass edge"
 	icon_state = "grass_edge_corner"
+
+// pavement decals
+
+/obj/effect/floor_decal/pavement_grit
+	name = "pavement grit"
+	icon_state = "pavement_grit1"
+
+/obj/effect/floor_decal/pavement_grit/centered
+	name = "edged pavement grit"
+	icon_state = "pavement_grit1"
+
+/obj/effect/floor_decal/pavement_grit/edged
+	name = "edged pavement grit"
+	icon_state = "pavement_grit2"
+
+/obj/effect/floor_decal/pavement_grit/rough
+	name = "rough pavement grit"
+	icon_state = "pavement_grit3"
+
+/obj/effect/floor_decal/pavement_grit/rough_edged
+	name = "rough edged pavement grit"
+	icon_state = "pavement_grit4"

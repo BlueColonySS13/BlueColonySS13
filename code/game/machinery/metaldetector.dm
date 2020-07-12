@@ -75,3 +75,8 @@
 			for(var/V in radio_departments)
 				global_announcer.autosay("<b>[src]</b> alarm: Potentially unauthorized object found on <b>[M]</b> in <b>[get_area(src)]</b>.", "[src]", V)
 			next_announcement_time = get_game_time() + alarm_delay
+
+/obj/machinery/metal_detector/medical
+	req_one_access = list(access_medical, access_security)
+
+

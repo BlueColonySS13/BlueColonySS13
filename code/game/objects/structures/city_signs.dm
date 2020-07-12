@@ -13,7 +13,7 @@
 /obj/structure/sign/neon
 	desc = "A glowing sign."
 	icon = 'icons/obj/signs.dmi'
-	plane = -25
+	plane = ABOVE_PLANE
 	light_range = 4
 	light_power = 2
 
@@ -70,7 +70,7 @@
 /obj/structure/sign/neon/diner
 	name = "diner"
 	icon_state = "diner"
-	light_color = "#59FF9B" //teal
+	light_color = "#39FFA4" //teal
 
 /obj/structure/sign/neon/bar_alt
 	name = "bar"
@@ -81,11 +81,6 @@
 	name = "casino"
 	icon_state = "casino"
 	light_color = "#6CE08A" //teal
-
-/obj/structure/sign/neon/cupcake
-	name = "casino"
-	icon_state = "casino"
-	light_color = "#F4A9D8" //pink!
 
 /obj/structure/sign/neon/peace
 	name = "peace"
@@ -126,21 +121,29 @@
 	icon_state = "armory"
 	light_color = "#7FEA6A" //lime green
 
-/obj/structure/sign/neon/pizza
-	name = "pizza"
-	icon_state = "pizza"
-	light_color = "#33CC00" //green
+/obj/structure/sign/neon/barber
+	name = "\improper barber shop sign"
+	desc = "A spinning sign indicating a barbershop is near."
+	icon_state = "barber"
+	light_color = "#6EB6FF" //sky blue
 
-/obj/structure/sign/neon/clothes
-	name = "clothes"
-	icon_state = "clothes"
-	light_color = "#FF9326" //orange
-
-/obj/structure/sign/neon/bar
-	name = "bar sign"
-	desc = "The sign says 'Bar' on it."
-	icon_state = "bar"
+/obj/structure/sign/neon/cocktails
+	name = "cocktails sign"
+	desc = "The sign has has a cocktail symbol on it."
+	icon_state = "cocktails"
 	light_color = "#63C4D6" //light blue
+
+/obj/structure/sign/neon/bathrooms
+	name = "bathroom sign"
+	desc = "A sign that indicates a unisex bathroom is here."
+	icon_state = "bathroom_unisex"
+	light_color = "#63C4D6" //light blue
+
+/obj/structure/sign/neon/cryo
+	name = "cryo area sign"
+	desc = "A sign that indicates a cryogenic storage area is nearby."
+	icon_state = "cryo"
+	light_color = "#6CE08A" //teal
 
 /obj/structure/sign/neon/heath
 	name = "hospital sign"
@@ -151,6 +154,116 @@
 /obj/structure/sign/neon/heath/red
 	icon_state = "medicalred_on"
 	light_color = "#da0205" //red
+
+/obj/structure/sign/neon/airbus
+	name = "airbus sign"
+	desc = "A neon yellow airbus sign that indicates this is an airbus area."
+	icon_state = "bus"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/cubed
+	name = "cubed"
+	desc = "That's the official emblem of the science labs run by NT."
+	icon_state = "cubed"
+	light_color = COLOR_LIGHTING_PURPLE_BRIGHT
+
+/obj/structure/sign/neon/vip
+	name = "vip sign"
+	desc = "A sign showing this is the way to the VIP room."
+	icon_state = "vip"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/mayoroffice
+	name = "mayor office sign"
+	desc = "A sign for the city hall."
+	icon_state = "mayoroffice"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/cityhall
+	name = "city hall sign"
+	desc = "A sign for the city hall."
+	icon_state = "cityhall"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/courts
+	name = "courts"
+	desc = "A sign for the courts."
+	icon_state = "courts"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/meetingroom
+	name = "meetingroom"
+	desc = "A sign for the meeting room."
+	icon_state = "meetingroom"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/carpark
+	name = "meetingroom"
+	desc = "A sign for the car park."
+	icon_state = "carpark"
+	light_color = COLOR_YELLOW
+
+/*|	                                             */
+/*| Big Neon Signs
+   ----------------------------------------------*/
+
+/obj/structure/sign/neon/big
+	icon = 'icons/obj/signs_large.dmi'
+
+/obj/structure/sign/neon/big/casino
+	name = "casino sign"
+	desc = "A neon yellow airbus sign that says CASINO in big letters."
+	icon_state = "casino"
+	light_color = "#ffff99"
+	light_range = 6
+	light_power = 8
+	plane = 25
+
+/obj/structure/sign/neon/big/inn
+	name = "inn sign"
+	desc = "A neon yellow airbus sign that says INN in big letters."
+	icon_state = "inn"
+	light_color = COLOR_YELLOW
+
+
+/obj/structure/sign/neon/big/labs
+	name = "laboratory sign"
+	desc = "A neony purple sign with the word laboratory on it."
+	icon_state = "labs"
+	light_color = "#F070FF"  //deeper hot pink
+
+/obj/structure/sign/neon/big/gym
+	name = "yeka gym sign"
+	desc = "A sign that represents the yekarina institute of wellness first erected by president Katya Petrovna."
+	icon_state = "gym"
+	light_color = "#63C4D6" //light blue
+
+/obj/structure/sign/neon/big/police_dept
+	name = "police department sign"
+	desc = "A sign for the police department of Geminus City. It glows blue."
+	icon_state = "police_dept"
+	light_color = "#63C4D6" //light blue
+
+
+/obj/structure/sign/neon/big/mall
+	name = "shopping mallsign"
+	desc = "A sign for the local city shopping mall."
+	icon_state = "mall"
+	light_color = COLOR_YELLOW
+
+/obj/structure/sign/neon/big/court
+	name = "court sign"
+	desc = "A sign for the courtroom."
+	icon_state = "court"
+	light_color = "#63C4D6" //light blue
+
+/obj/structure/sign/neon/big/city_hall
+	name = "city hall sign"
+	desc = "A sign for the city hall."
+	icon_state = "city_hall"
+	light_color = "#63C4D6" //light blue
+
+
 
 /*|	                                             */
 /*| Double Signs
@@ -207,10 +320,6 @@
 /obj/structure/sign/double/museum/right
 	icon_state = "museum2"
 
-/obj/structure/sign/double/city/police/left
-	icon_state = "police1"
-/obj/structure/sign/double/city/police/right
-	icon_state = "police2"
 
 /obj/structure/sign/double/city/warden/left
 	icon_state = "warden1"
@@ -247,42 +356,13 @@
 /obj/structure/sign/double/city/training/right
 	icon_state = "train2"
 
-/obj/structure/sign/double/city/cityhall/left
-	icon_state = "cityhall1"
-/obj/structure/sign/double/city/cityhall/right
-	icon_state = "cityhall2"
-
-/obj/structure/sign/double/city/mayor/left
-	icon_state = "mayor1"
-/obj/structure/sign/double/city/mayor/right
-	icon_state = "mayor2"
-
-/obj/structure/sign/city/directional/left
-	icon_state = "cityhalldir1"
-	pixel_y = 32
-/obj/structure/sign/city/directional/right
-	icon_state = "cityhalldir2"
-	pixel_y = 32
-
-/obj/structure/sign/double/city/challcar/left
-	icon_state = "challcar1"
-/obj/structure/sign/double/city/challcar/right
-	icon_state = "challcar2"
-
-/obj/structure/sign/double/city/meetingroom/left
-	icon_state = "meetingroom1"
-/obj/structure/sign/double/city/meetingroom/right
-	icon_state = "meetingroom2"
 
 /obj/structure/sign/double/city/hospital/left
 	icon_state = "hospital1"
 /obj/structure/sign/double/city/hospital/right
 	icon_state = "hospital2"
 
-/obj/structure/sign/double/city/court/left
-	icon_state = "court1"
-/obj/structure/sign/double/city/court/right
-	icon_state = "court2"
+
 
 
 

@@ -36,6 +36,8 @@
 	unique_save_vars = list("health", "carpeted")
 
 
+/obj/structure/table/vars_to_save()
+	 return list("x","y","z","density","anchored","dir","name","pixel_x","pixel_y","suit_fibers","tagged_price", "fingerprintslast")+unique_save_vars
 
 /obj/structure/table/get_persistent_metadata()
 	if(!material)

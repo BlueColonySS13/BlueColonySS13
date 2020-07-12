@@ -33,6 +33,7 @@ datum/track/New(var/title_name, var/audio)
 	var/freq = 0
 
 	table_drag = TRUE
+	plane = MOB_PLANE
 
 	var/datum/track/current_track
 	var/list/datum/track/tracks = list(

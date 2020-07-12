@@ -134,7 +134,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/silver/secretary
 	minimal_player_age = 5
-	wage = 40
+	wage = 70
 	minimum_character_age = 25
 	access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_legal)
 	minimal_access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_legal)

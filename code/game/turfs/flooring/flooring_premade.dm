@@ -156,23 +156,38 @@
 	name = "floor"
 	icon_state = "tile_full"
 	initial_flooring = /decl/flooring/tiling/new_tile
+
 /turf/simulated/floor/tiled/old_tile/white
 	color = "#d9d9d9"
+	initial_flooring = /decl/flooring/tiling/new_tile/white
+
 /turf/simulated/floor/tiled/old_tile/blue
 	color = "#8ba7ad"
+	initial_flooring = /decl/flooring/tiling/new_tile/blue
+
 /turf/simulated/floor/tiled/old_tile/yellow
 	color = "#8c6d46"
+	initial_flooring = /decl/flooring/tiling/new_tile/yellow
+
 /turf/simulated/floor/tiled/old_tile/gray
 	color = "#687172"
+	initial_flooring = /decl/flooring/tiling/new_tile/gray
+
 /turf/simulated/floor/tiled/old_tile/beige
 	color = "#385e60"
+	initial_flooring = /decl/flooring/tiling/new_tile/beige
+
 /turf/simulated/floor/tiled/old_tile/red
 	color = "#964e51"
+	initial_flooring = /decl/flooring/tiling/new_tile/red
+
 /turf/simulated/floor/tiled/old_tile/purple
 	color = "#906987"
+	initial_flooring = /decl/flooring/tiling/new_tile/purple
+
 /turf/simulated/floor/tiled/old_tile/green
 	color = "#46725c"
-
+	initial_flooring = /decl/flooring/tiling/new_tile/green
 
 
 /turf/simulated/floor/tiled/old_cargo
@@ -330,6 +345,17 @@
 	icon_state = "white"
 	initial_flooring = /decl/flooring/tiling/yellow
 
+/turf/simulated/floor/tiled/paleblue
+	name = "pale blue floor"
+	color = COLOR_PALE_BLUE_GRAY
+	icon_state = "white"
+	initial_flooring = /decl/flooring/tiling/paleblue
+
+/turf/simulated/floor/tiled/lime
+	name = "lime floor"
+	color = COLOR_PALE_GREEN_GRAY
+	icon_state = "white"
+	initial_flooring = /decl/flooring/tiling/lime
 
 /turf/simulated/floor/tiled/yellow
 	name = "yellow floor"

@@ -29,6 +29,8 @@
 	var/index			//null by default, if set, will change which dmi it uses
 	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 
+	price_tag = 30
+
 /obj/item/clothing/New()
 	..()
 	set_clothing_index()

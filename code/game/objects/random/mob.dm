@@ -84,6 +84,25 @@
 				prob(33);/mob/living/simple_animal/hostile/giant_spider/frost,
 				prob(45);/mob/living/simple_animal/hostile/shantak)
 
+
+/obj/random/mob/sewer
+	name = "Random Sewer Animal"
+	desc = "This is a random sewer animal."
+	icon_state = "mouse_gray"
+
+	mob_returns_home = 1
+	mob_wander_distance = 10
+
+
+/obj/random/mob/sewer/item_to_spawn()
+	return pick(
+				prob(15);/mob/living/simple_animal/crab/green,
+				prob(15);/mob/living/simple_animal/hostile/scarybat,
+				prob(60);/mob/living/simple_animal/mouse,
+				prob(5);/mob/living/simple_animal/giant_crab,
+				prob(5);/mob/living/simple_animal/hostile/giant_spider/hunter
+				)
+
 /obj/random/mob/spider
 	name = "Random Spider" //Spiders should patrol where they spawn.
 	desc = "This is a random boring spider."

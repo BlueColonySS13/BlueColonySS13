@@ -147,7 +147,8 @@ var/list/airlock_overlays = list()
 	door_color = COLOR_COMMAND_BLUE
 
 /obj/machinery/door/airlock/security
-	door_color = COLOR_NT_RED
+	door_color = COLOR_COMMAND_BLUE
+	stripe_color = COLOR_SKY_BLUE
 
 /obj/machinery/door/airlock/engineering
 	name = "Maintenance Hatch"
@@ -284,8 +285,8 @@ var/list/airlock_overlays = list()
 
 /obj/machinery/door/airlock/glass_security
 	name = "Maintenance Hatch"
-	door_color = COLOR_NT_RED
-	stripe_color = COLOR_ORANGE
+	door_color = COLOR_COMMAND_BLUE
+	stripe_color = COLOR_SKY_BLUE
 	hitsound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5

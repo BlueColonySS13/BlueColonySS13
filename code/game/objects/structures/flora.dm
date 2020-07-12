@@ -13,6 +13,7 @@
 	icon = 'icons/obj/flora/snowflora.dmi'
 	icon_state = "snowbush1"
 	anchored = 1
+	plane = MOB_PLANE
 
 /obj/structure/flora/bush/New()
 	..()
@@ -32,7 +33,7 @@
 	icon = 'icons/obj/flora/ausflora.dmi'
 	icon_state = "firstbush_1"
 	anchored = 1
-
+	plane = MOB_PLANE
 
 /obj/structure/flora/ausbushes/attackby(obj/item/I as obj, mob/user as mob)
 	..()

@@ -121,6 +121,27 @@ emp_act
 				total += weight
 	return (soakval/max(total, 1))
 
+// Similar to above but is for the mob's overall protection, being the average of all slots.
+/mob/living/carbon/human/proc/get_siemens_coefficient_average()
+	var/siemens_value = 0
+	var/total = 0
+	for(var/organ_name in organs_by_name)
+		if(organ_name in organ_rel_size)
+			var/obj/item/organ/external/organ = organs_by_name[organ_name]
+			if(organ)
+				var/weight = organ_rel_size[organ_name]
+				siemens_value += get_siemens_coefficient_organ(organ) * weight
+				total += weight
+
+	if(fire_stacks < 0) // Water makes you more conductive.
+		siemens_value *= 1.5
+
+	return (siemens_value/max(total, 1))
+
+// Returns a number between 0 to 1, with 1 being total protection.
+/mob/living/carbon/human/get_shock_protection()
+	return between(0, 1-get_siemens_coefficient_average(), 1)
+
 //this proc returns the Siemens coefficient of electrical resistivity for a particular external organ.
 /mob/living/carbon/human/proc/get_siemens_coefficient_organ(var/obj/item/organ/external/def_zone)
 	if (!def_zone)

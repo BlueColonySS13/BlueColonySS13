@@ -42,6 +42,8 @@
 	var/list/camera_computers_using_this = list()
 
 	var/on_wall = 1
+	var/autoname = FALSE
+	var/number = 0
 
 	unique_save_vars = list("name", "c_tag")
 
@@ -83,6 +85,27 @@
 			error("[src.name] in [get_area(src)]has errored. [src.network?"Empty network list":"Null network list"]")
 		ASSERT(src.network)
 		ASSERT(src.network.len > 0)
+
+	if(autoname && (c_tag == initial(c_tag)))
+		var/area/area_for_name = get_area(src)
+
+		if(area_for_name)
+			number = 0
+
+			for(var/obj/machinery/camera/C in area_for_name)
+				if(C != src)
+					number++
+
+			if(number)
+				number++
+
+			var/new_name = area_for_name.name
+
+			c_tag = "[new_name][number ? " #[number]" : " #1"]"
+
+
+		invalidateCameraCache()
+
 	..()
 
 /obj/machinery/camera/Destroy()

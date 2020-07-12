@@ -377,6 +377,9 @@ var/list/teleportlocs = list()
 	for(var/area/AR in world)
 		if(istype(AR, /area/shuttle) || istype(AR, /area/syndicate_station) || istype(AR, /area/wizard_station)) continue
 		if(teleportlocs.Find(AR.name)) continue
+		if(!LAZYLEN(get_area_turfs(AR.type)))
+			error("[AR] has no turfs, why?")
+
 		var/turf/picked = pick(get_area_turfs(AR.type))
 		if (picked.z in using_map.station_levels)
 			teleportlocs += AR.name

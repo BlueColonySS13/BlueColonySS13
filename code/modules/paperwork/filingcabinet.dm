@@ -17,6 +17,8 @@
 	density = 1
 	anchored = 1
 
+	var/max_items = 30
+
 /obj/structure/filingcabinet/chestdrawer
 	name = "chest drawer"
 	icon_state = "chestdrawer"
@@ -33,34 +35,38 @@
 
 /obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
 	if(istype(P, /obj/item/weapon/paper) || istype(P, /obj/item/weapon/folder) || istype(P, /obj/item/weapon/photo) || istype(P, /obj/item/weapon/paper_bundle))
-		user << "<span class='notice'>You put [P] in [src].</span>"
-		user.drop_item()
-		P.loc = src
-		icon_state = "[initial(icon_state)]-open"
-		sleep(5)
-		icon_state = initial(icon_state)
-		updateUsrDialog()
+		if(!(max_items >= LAZYLEN(contents)))
+			to_chat(user,"<span class='notice'>You put [P] in [src].</span>")
+			user.drop_item()
+			P.loc = src
+			icon_state = "[initial(icon_state)]-open"
+			sleep(5)
+			icon_state = initial(icon_state)
+			updateUsrDialog()
+		else
+			to_chat(user,"<span class='notice'>You can't fit more than 30 items in here.</span>")
+			return
 	else if(istype(P, /obj/item/weapon/wrench))
 		playsound(loc, P.usesound, 50, 1)
 		anchored = !anchored
-		user << "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>"
+		to_chat(user,"<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 	else if(istype(P, /obj/item/weapon/screwdriver))
-		user << "<span class='notice'>You begin taking the [name] apart.</span>"
+		to_chat(user,"<span class='notice'>You begin taking the [name] apart.</span>")
 		playsound(src, P.usesound, 50, 1)
 		if(do_after(user, 10 * P.toolspeed))
 			playsound(loc, P.usesound, 50, 1)
-			user << "<span class='notice'>You take the [name] apart.</span>"
+			to_chat(user,"<span class='notice'>You take the [name] apart.</span>")
 			new /obj/item/stack/material/steel( src.loc, 4 )
 			for(var/obj/item/I in contents)
 				I.forceMove(loc)
 			qdel(src)
 		return
 	else
-		user << "<span class='notice'>You can't put [P] in [src]!</span>"
+		to_chat(user,"<span class='notice'>You can't put [P] in [src]!</span>")
 
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)
 	if(contents.len <= 0)
-		user << "<span class='notice'>\The [src] is empty.</span>"
+		to_chat(user,"<span class='notice'>\The [src] is empty.</span>")
 		return
 
 	user.set_machine(src)

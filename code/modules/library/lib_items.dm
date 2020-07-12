@@ -22,6 +22,7 @@
 	burntime = LONG_BURN
 
 /obj/structure/bookcase/metal
+	opacity = 0
 	icon_state = "metalshelf-0"
 
 /obj/structure/bookcase/metal/update_icon()

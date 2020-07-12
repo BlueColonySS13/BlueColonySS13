@@ -18,6 +18,9 @@
 	throw_speed = 3
 	throw_range = 15
 	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+
+	price_tag = 30
+
 	var/build_path = null
 	var/datum/frame/frame_types/board_type = new /datum/frame/frame_types/computer
 	var/list/req_components = null

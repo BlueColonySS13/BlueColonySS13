@@ -134,10 +134,6 @@
 
 		if(I_HURT)
 
-			if(H.IsAntiGrief())
-				to_chat(H, "<span class='danger'>You wish to do no harm.</span>")
-				return 0
-
 
 			if(M.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/weapon/grenade))
 				var/obj/item/weapon/grenade/G = wear_mask
@@ -152,6 +148,10 @@
 			if(!istype(H))
 				attack_generic(H,rand(1,3),"punched")
 				return
+
+			if(H.IsAntiGrief())
+				to_chat(H, "<span class='danger'>You wish to do no harm.</span>")
+				return 0
 
 			if(H == src) // no more punching yourself to death
 				return

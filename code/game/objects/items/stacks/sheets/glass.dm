@@ -19,7 +19,6 @@
 
 	stack_color = GLASS_COLOR
 
-
 /obj/item/stack/material/glass/attack_self(mob/user as mob)
 	list_recipes(user)
 

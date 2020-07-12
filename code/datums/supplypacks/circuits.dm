@@ -98,6 +98,14 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Smartfridge Circuit"
 
+/datum/supply_pack/circuits/smartfridge/food
+	contains = list(/obj/item/weapon/circuitboard/smartfridge/food)
+	name = "Food Smartfridge Circuit"
+	cost = 200
+	containertype = /obj/structure/closet/crate
+	containername = "Food Smartfridge Circuit"
+
+
 /datum/supply_pack/circuits/token_machine
 	contains = list(/obj/item/weapon/circuitboard/token_machine)
 	name = "Token Dispenser Circuit"

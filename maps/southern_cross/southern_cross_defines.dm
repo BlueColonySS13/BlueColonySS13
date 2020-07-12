@@ -235,7 +235,7 @@
 	teleport_z = src.z
 
 
-/datum/planet/sif
+/datum/planet/pollux
 	expected_z_levels = list(
 		Z_LEVEL_SURFACE,
 		Z_LEVEL_SURFACE_MINE,

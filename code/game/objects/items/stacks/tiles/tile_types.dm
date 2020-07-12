@@ -247,6 +247,27 @@
 	icon_state = "tile_white"
 	no_variants = FALSE
 
+/obj/item/stack/tile/floor/lime
+	name = "lime floor tile"
+	singular_name = "lime floor tile"
+	color = COLOR_PALE_GREEN_GRAY
+	icon_state = "tile_white"
+	no_variants = FALSE
+
+/obj/item/stack/tile/floor/paleblue
+	name = "pale blue floor tile"
+	singular_name = "pale blue floor tile"
+	color = COLOR_PALE_BLUE_GRAY
+	icon_state = "tile_white"
+	no_variants = FALSE
+
+/obj/item/stack/tile/floor/blue
+	name = "blue floor tile"
+	singular_name = "blue floor tile"
+	color = COLOR_BLUE_GRAY
+	icon_state = "tile_white"
+	no_variants = FALSE
+
 /obj/item/stack/tile/floor/dark
 	name = "dark floor tile"
 	singular_name = "dark floor tile"

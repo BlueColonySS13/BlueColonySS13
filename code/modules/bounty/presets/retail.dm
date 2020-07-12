@@ -79,13 +79,14 @@
 	“something to do at home” subscription video service. It uses random everyday objects as weapons. Works wonders. \
 	This upcoming episode is going to feature toolboxes, so get me fresh ones."
 
-	items_wanted = list(/obj/item/weapon/storage/toolbox/mechanical = 5)
+	items_wanted = list(/obj/item/weapon/storage/toolbox = 5)
 
 	department_reward = 30
 	individual_reward = 5
 
 	days_until_expiry = 2
 
+	allow_subtypes = TRUE
 
 /datum/bounty/retail/diva_dresses
 	name = "Sassy Dresses Needed!"
@@ -139,3 +140,43 @@
 	individual_reward = 30
 
 	days_until_expiry = 1
+
+
+/datum/bounty/retail/ashtray_coof
+	name = "It's Getting Ashy In Here"
+	author = "Thomas Couf"
+	description = "Yeah, so I invited some friends over. We all like to smoke... now my sofa's ruined. Can't find an ashtray anywhere in my \
+	area, if you can send two for us it would be great."
+
+	items_wanted = list(/obj/item/weapon/material/ashtray = 2)
+
+	department_reward = 70
+	individual_reward = 30
+
+	days_until_expiry = 1
+
+/datum/bounty/retail/beanies
+	name = "High End Beanies"
+	author = "Ginger Polluos"
+	description = "Right, it says here on the magazine that customers want silk beanies. So that's what we want. Any color, doesn't matter - they are \
+	into that avant garde stuff anyway. It has to be made out silk, you hear me?"
+
+	items_wanted = list(/obj/item/clothing/head/beanie = 10)
+
+	department_reward = 600
+	individual_reward = 170
+
+	days_until_expiry = 1
+
+/datum/bounty/retail/beanies/meets_standards(var/obj/O) // additional custom checks
+	if(istype(O, /obj/item/clothing/head/beanie))
+		if(O.name_unlabel) // to prevent hand labeller cheating
+			if(findtext(O.name_unlabel, "silk"))
+				return TRUE
+			else
+				return FALSE
+
+		if(findtext(O.name, "silk"))
+			return TRUE
+
+	return FALSE

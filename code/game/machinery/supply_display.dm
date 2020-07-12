@@ -2,15 +2,15 @@
 	ignore_friendc = 1
 
 /obj/machinery/status_display/supply_display/update()
-	if(!..() && mode == STATUS_DISPLAY_CUSTOM)
-		message1 = "CARGO"
-		message2 = ""
+	message1 = "Supply"
+	message2 = ""
 
+	if(supply_controller)
 		var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
 		if(!shuttle)
 			message2 = "Error"
 		else if(shuttle.has_arrive_time())
-			message2 = shuttle.eta_minutes()
+			message2 = "[shuttle.eta_minutes()] min"
 			if(length(message2) > CHARS_PER_LINE)
 				message2 = "Error"
 		else if(shuttle.is_launching())
@@ -23,9 +23,9 @@
 				message2 = "Docked"
 			else
 				message1 = ""
-		update_display(message1, message2)
-		return 1
-	return 0
+
+
+	update_display(message1, message2)
 
 /obj/machinery/status_display/supply_display/receive_signal/(datum/signal/signal)
 	if(signal.data["command"] == "supply")

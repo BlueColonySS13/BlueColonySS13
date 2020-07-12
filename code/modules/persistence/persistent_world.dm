@@ -37,11 +37,7 @@
 
 	if(config.lot_saving)
 		to_chat(world, "<h3>Saving all lots...</h3>")
-		if(SSlots.save_all_lots())
-			to_chat(world, "<h3>All lots saved. Success!</h3>")
-		else
-			to_chat(world, "<h3>There was an issue with saving lots or not all lots saved properly. Call Cassy!</h3>")
-
+		SSlots.save_all_lots()
 
 	for(var/datum/persistent_inventory/PI in GLOB.persistent_inventories)
 		PI.save_inventory()

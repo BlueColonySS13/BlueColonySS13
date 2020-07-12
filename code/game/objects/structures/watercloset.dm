@@ -138,6 +138,7 @@
 	var/is_washing = 0
 	var/list/temperature_settings = list("normal" = 310, "boiling" = T0C+100, "freezing" = T0C)
 //	var/datum/looping_sound/showering/soundloop
+	var/id
 
 /obj/machinery/shower/initialize()
 	create_reagents(50)
@@ -160,6 +161,9 @@
 	mouse_opacity = 0
 
 /obj/machinery/shower/attack_hand(mob/M as mob)
+	toggle_wash(M)
+
+/obj/machinery/shower/proc/toggle_wash(mob/M as mob)
 	on = !on
 	update_icon()
 	if(on)

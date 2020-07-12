@@ -1,8 +1,8 @@
 #define WEATHER_CLEAR				"clear"
-#define WEATHER_OVERCAST			"overcast"
+#define WEATHER_OVERCAST				"overcast"
 #define WEATHER_LIGHT_SNOW			"light snow"
 #define WEATHER_SNOW				"snow"
-#define WEATHER_BLIZZARD			"blizzard"
+#define WEATHER_BLIZZARD				"blizzard"
 #define WEATHER_RAIN				"rain"
 #define WEATHER_STORM				"storm"
 #define WEATHER_HAIL				"hail"
@@ -10,9 +10,12 @@
 #define WEATHER_HOT					"hot"
 #define WEATHER_BLOOD_MOON			"blood moon" // For admin fun or cult later on.
 #define WEATHER_ACID_RAIN			"acid rain"
-#define WEATHER_RADSTORM			"radiation storm"
-#define WEATHER_CARPFALL			"carpfall"
-#define WEATHER_CARPNADO			"carpnado"
+#define WEATHER_RADSTORM				"radiation storm"
+#define WEATHER_CARPFALL				"carpfall"
+#define WEATHER_CARPNADO				"carpnado"
+#define WEATHER_EMBERFALL			"emberfall" // More adminbuse, from TG. Harmless.
+#define WEATHER_ASH_STORM			"ash storm" // Ripped from TG, like the above. Less harmless.
+#define WEATHER_FALLOUT				"fallout" // Modified emberfall, actually harmful. Admin only.
 
 #define MOON_PHASE_NEW_MOON			"new moon"
 #define MOON_PHASE_WAXING_CRESCENT	"waxing crescent"
