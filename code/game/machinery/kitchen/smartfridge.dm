@@ -27,6 +27,8 @@
 
 	unique_save_vars = list("locked")
 
+	circuit = /datum/supply_pack/circuits/smartfridge
+
 /obj/machinery/smartfridge/on_persistence_load()
 	for(var/obj/item/O in contents)
 		stock(O)
@@ -66,6 +68,8 @@
 	icon_on = "foodomat"
 	icon_off = "foodomat-off"
 	icon_panel = "foodomat-panel"
+
+	circuit = /datum/supply_pack/circuits/smartfridge/food
 
 /obj/machinery/smartfridge/food/research
 	name = "Grown Produce Storage Unit"
