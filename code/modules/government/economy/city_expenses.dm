@@ -4,7 +4,7 @@
 
 /datum/expense/nanotrasen
 	name = "NanoTrasen Income"	// nanotrasen's base expense cannot be removed. sorry!
-	cost_per_payroll = 500
+	cost_per_payroll = 9000
 	comments = "Nanotrasen will recieve an allowance from the city's earnings."
 	can_remove = FALSE
 	direct_debit = TRUE

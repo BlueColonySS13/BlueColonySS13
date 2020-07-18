@@ -21,7 +21,7 @@
 
 /datum/category_item/autolathe/tools/screwdriver
 	name = "screwdriver"
-	path =/obj/item/weapon/screwdriver
+	path = /obj/item/weapon/screwdriver
 
 /datum/category_item/autolathe/tools/wirecutters
 	name = "wirecutters"
@@ -42,3 +42,7 @@
 /datum/category_item/autolathe/tools/welder_industrial
 	name = "industrial welding tool"
 	path =/obj/item/weapon/weldingtool/largetank
+
+/datum/category_item/autolathe/tools/hand_labeller
+	name = "hand labeller"
+	path = /obj/item/weapon/hand_labeler

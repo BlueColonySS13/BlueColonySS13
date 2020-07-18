@@ -27,7 +27,7 @@
 
 	unique_save_vars = list("starting_department")
 
-	var/restrict_bounty_for_business = TRUE
+	var/restrict_bounty_for_business = FALSE
 
 
 /obj/machinery/bounty_machine/attackby(obj/item/I, mob/user, params)

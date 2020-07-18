@@ -289,6 +289,8 @@
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = new /datum/turf_initializer/mines()
 
+	flags = AREA_FLAG_IS_NOT_PERSISTENT | RAD_SHIELDED
+
 /area/planets/Geminus/indoor/sewer/north
 	name = "\improper Underground Sewers - North"
 	icon_state = "blue"

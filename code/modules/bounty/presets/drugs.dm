@@ -22,7 +22,7 @@
 	description = "Afternoon, right so - this is obviously not about talc. We need crack - not the one in the cellar walls \
 	over here, the actual shit. Send some over and you'll be compensated nicely."
 
-	items_wanted = list("crack" = 500)
+	reagents_wanted = list("crack" = 500)
 
 	department_reward = 1900
 	individual_reward = 300
@@ -37,6 +37,8 @@
 
 	grown_wanted = list("cannabis" = 50)
 
+	item_rewards = list(/obj/item/seeds/coca)
+
 	department_reward = 420
 	individual_reward = 120
 
@@ -49,7 +51,7 @@
 	description = "Hello there, I need some DMT for a business meeting I'm hosting with my partners. We hear it acts fast and will let \
 	us commune with the clockwork elves that hold our reality together. We believe they may find our business proposal very lucrative!"
 
-	reagents_wanted = list("DMT" = 150)
+	reagents_wanted = list("dimethyltryptamine" = 150)
 
 	department_reward = 600
 	individual_reward = 175
@@ -63,6 +65,21 @@
 	description = "notimetowastereallyneedstimmneedtogofastgottagofastgottagofast!!!!"
 
 	reagents_wanted = list("stimm" = 500)
+
+	department_reward = 1300
+	individual_reward = 225
+
+	days_until_expiry = 2
+
+
+/datum/bounty/drugs/ruski_krokodil
+	name = "Suicidal Clients"
+	author = "Ruski TopShop"
+
+	description = "Clients asking for top-up of krokodil, you can do, da? We do six shipments. Stop asking if clients are \
+	suicidal comrade, their life choices - not us"
+
+	reagents_wanted = list("krokodil" = 60)
 
 	department_reward = 1300
 	individual_reward = 225

@@ -127,6 +127,9 @@
 	for(var/datum/money_account/D in GLOB.all_money_accounts)
 		if(D.account_number == account_number)
 			return D
+	for(var/datum/money_account/D in GLOB.department_accounts)
+		if(D.account_number == account_number)
+			return D
 
 /proc/get_account_name(var/account_number)
 	var/datum/money_account/M = get_account(account_number)

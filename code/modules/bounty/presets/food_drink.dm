@@ -10,8 +10,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/cheeseburger = 5)
 
-	department_reward = 40
-	individual_reward = 20
+	department_reward = 170
+	individual_reward = 80
 
 	days_until_expiry = 1
 
@@ -24,9 +24,9 @@
 	memos have passed my desk. Please send us 30 slime sandwiches and make it snappy. \
 	I fear our scientists are going to retaliate over my student’s cuisine soon with mechs and other sciencey devices"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/slime = 15)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/slime = 5)
 
-	department_reward = 800
+	department_reward = 350
 	individual_reward = 200
 
 	days_until_expiry = 5
@@ -37,9 +37,9 @@
 	description = "Our meatbread supply is low. We are THE space sandwich shop and our Suez Meat Sub is our number one product! \
 	If we have no meatbread, we cannot sell our Suez subs to the masses. You get bread, we get money, deal?"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/meatbread = 16)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/meatbread = 1)
 
-	department_reward = 100
+	department_reward = 50
 	individual_reward = 50
 
 	days_until_expiry = 2
@@ -65,7 +65,7 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger = 1)
 
-	department_reward = 30
+	department_reward = 40
 	individual_reward = 15
 
 	days_until_expiry = 1
@@ -120,7 +120,7 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/omelette = 2)
 
-	department_reward = 35
+	department_reward = 55
 	individual_reward = 18
 
 	days_until_expiry = 1
@@ -131,10 +131,10 @@
 	description = "I made this new song and I need some unsliced pizzas to go along with it. Would you like to hear a sample? It goes like this... \
 	Pizza mozzarella... Rella rella... Pizza mozza... Mozza... Rella, rella, rella. Rella!"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita = 3)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita = 1)
 
 	department_reward = 60
-	individual_reward = 30
+	individual_reward = 15
 
 	days_until_expiry = 1
 
@@ -144,10 +144,10 @@
 	description = "My father always told me that a man who has never had a pork bun is not a whole man. I want to surprise him with a whole bunch of \
 	delicious meat buns."
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/meatbun = 12)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/meatbun = 1)
 
-	department_reward = 120
-	individual_reward = 60
+	department_reward = 30
+	individual_reward = 15
 
 	days_until_expiry = 1
 
@@ -157,7 +157,7 @@
 	description = "The boys and I are heading down to the lake for some good times and a couple of drinks. We need a very large pitcher of Mint Julep. \
 	Honestly, you could just toss it all into a bucket and send it our way. Thanks in advance."
 
-	reagents_wanted = list("mintjulep" = 120)
+	reagents_wanted = list("mintjulep" = 30)
 
 	department_reward = 30
 	individual_reward = 15
@@ -170,10 +170,10 @@
 	description = "I've finally completed all of my exams! It's time to get wasted before graduation! I'm hosting a massive pre-grad party and I need something \
 	new and delicious. I was looking through the DoorSprint catalogue and saw something called a Clover Club. Let's try that!"
 
-	reagents_wanted = list("cloverclub" = 240)
+	reagents_wanted = list("cloverclub" = 30)
 
-	department_reward = 60
-	individual_reward = 30
+	department_reward = 20
+	individual_reward = 15
 
 	days_until_expiry = 1
 
@@ -223,7 +223,7 @@
 	but it's just so cold all the time. We really miss Terminus. Things were much more efficient and it was warm... This is a great recipe we first tried in a bar \
 	in the Cassiopeia sector. Send us some of this."
 
-	reagents_wanted = list("tokyorose" = 120)
+	reagents_wanted = list("tokyorose" = 30)
 
 	department_reward = 120
 	individual_reward = 60
@@ -270,11 +270,11 @@
 /datum/bounty/food/doorsprint_16 //love letter to the vox - this doesn't mean they are canon
 	name = "DoorSprint Order: %ERROR%%UNKNOWN%"
 	author = "%ERROR%%USER_OUT_OF_BOUNDS%%PARTIAL_TRANSLATION/BESTGUESSLANGUAGE_LATIN:VOICE%"
-	description = "%ERROR%silence dust breather %UNIVERSAL_TRANSLATION_FAILURE%kikiki me want drink%LANGUAGE_UNKNOWN%skrek!"
+	description = "%ERROR%silence dust breather %UNIVERSAL_TRANSLATION_FAILURE%need iced coffee...%LANGUAGE_UNKNOWN%"
 
-	reagents_wanted = list("voxdelight" = 30)
+	reagents_wanted = list("icecoffee" = 30)
 
-	department_reward = 100
-	individual_reward = 50
+	department_reward = 30
+	individual_reward = 10
 
 	days_until_expiry = 1

@@ -80,28 +80,28 @@
 	contains = list(/obj/item/weapon/circuitboard/dye_generator,
 	/obj/item/weapon/circuitboard/dye_generator/commercial)
 	name = "Tailoring Circuit Set"
-	cost = 100
+	cost = 200
 	containertype = /obj/structure/closet/crate
 	containername = "Tailoring Circuit Set"
 
 /datum/supply_pack/circuits/popcorn_machine
 	contains = list(/obj/item/weapon/circuitboard/popcorn_machine)
 	name = "Popcorn Vendor Circuit"
-	cost = 200
+	cost = 500
 	containertype = /obj/structure/closet/crate
 	containername = "Popcorn Vendor Circuit"
 
 /datum/supply_pack/circuits/smartfridge
 	contains = list(/obj/item/weapon/circuitboard/smartfridge)
 	name = "Smartfridge Circuit"
-	cost = 200
+	cost = 500
 	containertype = /obj/structure/closet/crate
 	containername = "Smartfridge Circuit"
 
 /datum/supply_pack/circuits/smartfridge/food
 	contains = list(/obj/item/weapon/circuitboard/smartfridge/food)
 	name = "Food Smartfridge Circuit"
-	cost = 200
+	cost = 500
 	containertype = /obj/structure/closet/crate
 	containername = "Food Smartfridge Circuit"
 
@@ -116,7 +116,7 @@
 /datum/supply_pack/circuits/bounty_machine
 	contains = list(/obj/item/weapon/circuitboard/bounty_machine)
 	name = "bounty-T Circuit"
-	cost = 5000
+	cost = 8000
 	containertype = /obj/structure/closet/crate
 	containername = "Bounty Machine Circuit"
 
@@ -126,7 +126,7 @@
 	/obj/item/weapon/circuitboard/microscope,
 	)
 	name = "Forensics Circuits"
-	cost = 500
+	cost = 800
 	containertype = /obj/structure/closet/crate
 	containername = "Forensics Circuits"
 
@@ -144,6 +144,6 @@
 					/obj/item/weapon/circuitboard/rdserver/business)
 
 	name = "Research Circuits"
-	cost = 1200
+	cost = 5200	// a huge profit maker, so should be expensive.
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Research Circuits"

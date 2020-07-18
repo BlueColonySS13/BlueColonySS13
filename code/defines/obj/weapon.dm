@@ -24,32 +24,6 @@
 	var/mode = 1
 	w_class = ITEMSIZE_NORMAL
 
-/obj/item/weapon/soap
-	name = "soap"
-	desc = "A cheap bar of soap. Doesn't smell."
-	gender = PLURAL
-	icon = 'icons/obj/items.dmi'
-	icon_state = "soap"
-	w_class = ITEMSIZE_SMALL
-	slot_flags = SLOT_HOLSTER
-	throwforce = 0
-	throw_speed = 4
-	throw_range = 20
-
-/obj/item/weapon/soap/nanotrasen
-	desc = "A NanoTrasen-brand bar of soap. Smells of phoron."
-	icon_state = "soapnt"
-
-/obj/item/weapon/soap/deluxe
-	icon_state = "soapdeluxe"
-
-/obj/item/weapon/soap/deluxe/New()
-	desc = "A deluxe Waffle Co. brand bar of soap. Smells of [pick("lavender", "vanilla", "strawberry", "chocolate" ,"space")]."
-	..()
-
-/obj/item/weapon/soap/syndie
-	desc = "An untrustworthy bar of soap. Smells of fear."
-	icon_state = "soapsyndie"
 
 /obj/item/weapon/bikehorn
 	name = "bike horn"

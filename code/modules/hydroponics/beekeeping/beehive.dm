@@ -248,6 +248,7 @@
 	burntime = 5
 	stack_color = COLOR_YELLOW
 	dyeable = TRUE
+	associated_reagents = list("wax")
 
 /obj/item/stack/wax/New()
 	..()

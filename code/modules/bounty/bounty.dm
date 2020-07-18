@@ -413,7 +413,7 @@
 		var/is_wanted_item = FALSE
 
 		if(allow_subtypes)
-			if(is_type_in_list(O.type , items_wanted))
+			if(is_type_in_list(O.type, items_wanted))
 				is_wanted_item = TRUE
 		else
 			if(O.type in items_wanted)
@@ -444,7 +444,9 @@
 	if(!creation_date)
 		creation_date = full_real_time()
 
-	if(!expiry_days())
+	var/days_expiry = expiry_days()
+
+	if(0 >= days_expiry)
 		expire_bounty()
 
 	if(!isnum(cash_wanted))
