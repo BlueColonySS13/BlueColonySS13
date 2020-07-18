@@ -10,7 +10,7 @@
 	throw_speed = 4
 	throw_range = 20
 
-	var/uses = 100
+	var/uses = 80
 
 /obj/item/weapon/soap/nanotrasen
 	desc = "A NanoTrasen-brand bar of soap. Smells of phoron."
