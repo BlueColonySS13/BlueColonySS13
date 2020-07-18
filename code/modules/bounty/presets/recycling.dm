@@ -26,6 +26,17 @@
 	department_reward = 150
 	individual_reward = 50
 
+/datum/bounty/recycling/dont_box
+	name = "Don't Put Me In A Box"
+	author = "Sarah Fardeep"
+	description = "As we struggle with the highly capitalistic and materialistic reality of our world I will be making an art exhibit to liberate \
+	the minds of people in Cascington. Boxes, that is all this one needs."
+
+	items_wanted = list(/obj/item/weapon/storage/box = 8)
+
+	department_reward = 70
+	individual_reward = 50
+
 /datum/bounty/recycling/boneman
 	name = "Spooky Scary Skeletons"
 	author = "Adam Skellington III"

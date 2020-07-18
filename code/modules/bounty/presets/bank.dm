@@ -13,8 +13,23 @@
 
 	days_until_expiry = 2
 
-	department_reward = 400
+	department_reward = 450
 	individual_reward = 10
+
+/datum/bounty/bank/another_transfer
+	name = "International Transfer from "
+	author = "Thomas Bookworth"
+
+	description = "I am studying to become a scientist at Cascington's Pennington University. I have a high GPA and my parents say I am a good boy. \
+	Where is my loan?"
+
+	cash_wanted = 6000
+
+	days_until_expiry = 2
+
+	department_reward = 7000
+	individual_reward = 100
+
 
 
 /datum/bounty/bank/minorloan
@@ -28,5 +43,36 @@
 
 	days_until_expiry = 2
 
-	department_reward = 5050
+	department_reward = 5250
 	individual_reward = 20
+
+/datum/bounty/bank/a_car
+	name = "A Car"
+	author = "Christina Angelera"
+
+	description = "It would appear an ex-fan of mine has decided to egg my car after that controversial new single. I'll pay %CASHWANTED for a \
+	loan until my agent gets my international bank sorted. Pierre will handle the transaction."
+
+	cash_wanted = 18000
+
+	days_until_expiry = 4
+
+	department_reward = 20000
+	individual_reward = 100
+
+
+/datum/bounty/bank/uni_funding
+	name = "University Fund"
+	author = "Thomas Bookworth"
+
+	description = "I am studying to become a scientist at Cascington's Pennington University. I have a high GPA and my parents say I am a good boy. \
+	Where is my loan?"
+
+	cash_wanted = 6000
+
+	days_until_expiry = 2
+
+	department_reward = 7000
+	individual_reward = 100
+
+

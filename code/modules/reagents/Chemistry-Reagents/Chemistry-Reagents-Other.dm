@@ -562,6 +562,14 @@
 	get_tax()
 		return DRUG_TAX
 
+/datum/reagent/wax
+	name = "Wax"
+	id = "wax"
+	description = "An ester solid substance used for a variety of purposes."
+	taste_description = "wax"
+	reagent_state = LIQUID
+	color = COLOR_PLATINUM
+
 /datum/reagent/toiletwater
 	name = "Toilet Water"
 	id = "toiletwater"
@@ -577,3 +585,4 @@
 	taste_description = "salty meat"
 	reagent_state = LIQUID
 	color = "#DF9FBF"
+

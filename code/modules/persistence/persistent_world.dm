@@ -23,7 +23,7 @@
 	//saves all characters
 
 	for (var/mob/living/carbon/human/H in mob_list) //only humans, we don't really save AIs or robots.
-		if(H.mind)
+		if(H.mind && H.mind.initial_account)
 			// collects all the money on your person and puts it in your bank account for you. You're welcome.
 			var/money_on_person = 0
 			for(var/obj/item/weapon/spacecash/C in H.get_contents())

@@ -275,7 +275,7 @@
 	return
 
 /mob/living/bot/proc/makeStep(var/list/path)
-	if(!path.len)
+	if(!path || !path.len)
 		return 0
 	var/turf/T = path[1]
 	if(get_turf(src) == T)

@@ -1435,6 +1435,7 @@
 #include "code\modules\bounty\presets\drugs.dm"
 #include "code\modules\bounty\presets\food_drink.dm"
 #include "code\modules\bounty\presets\gun.dm"
+#include "code\modules\bounty\presets\leisure.dm"
 #include "code\modules\bounty\presets\mining.dm"
 #include "code\modules\bounty\presets\news.dm"
 #include "code\modules\bounty\presets\pharma.dm"

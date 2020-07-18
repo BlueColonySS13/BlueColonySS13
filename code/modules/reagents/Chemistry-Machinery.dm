@@ -500,20 +500,13 @@
 			if(!isemptylist(stack.associated_reagents))
 				var/to_use = 0
 
-				if((stack.amount * stack.reagent_multiplier) > remaining_volume)
-					to_use += remaining_volume
-				else
-					to_use += stack.amount
-
-				stack.use(to_use)
-
-				if(QDELETED(stack))
-					holdingitems -= stack
-
 				var/divided_amount = (to_use / stack.associated_reagents.len) * stack.reagent_multiplier
 
 				for(var/G in stack.associated_reagents)
 					beaker.reagents.add_reagent(G, divided_amount)
+
+				qdel(stack)
+				holdingitems -= stack
 
 			if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 				break

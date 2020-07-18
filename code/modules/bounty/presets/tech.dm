@@ -26,7 +26,7 @@
 	/obj/item/weapon/circuitboard/mecha/durand/main = 2
 	)
 
-	department_reward = 1200
+	department_reward = 600
 	individual_reward = 225
 
 	days_until_expiry = 3
@@ -40,8 +40,8 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/manipulator/nano = 20)
 
-	department_reward = 1200
-	individual_reward = 275
+	department_reward = 300
+	individual_reward = 185
 
 	days_until_expiry = 2
 
@@ -55,7 +55,7 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/micro_laser/high = 16)
 
-	department_reward = 650
+	department_reward = 350
 	individual_reward = 155
 
 /datum/bounty/tech/poxball_parts
@@ -77,7 +77,7 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/matter_bin/adv = 10)
 
-	department_reward = 500
+	department_reward = 300
 	individual_reward = 85
 
 /datum/bounty/tech/unlawful_search
@@ -89,7 +89,7 @@
 
 	items_wanted = list(/obj/item/weapon/surgical/scalpel/laser2 = 1)
 
-	department_reward = 300
+	department_reward = 200
 	individual_reward = 60
 
 /datum/bounty/tech/freq1487
@@ -99,7 +99,7 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/subspace/sub_filter = 5)
 
-	department_reward = 575
+	department_reward = 275
 	individual_reward = 150
 
 /datum/bounty/tech/scanning_module
@@ -112,7 +112,7 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/scanning_module/adv = 10)
 
-	department_reward = 500
+	department_reward = 280
 	individual_reward = 85
 
 /datum/bounty/tech/plants_vs_diyaabs
@@ -123,5 +123,5 @@
 
 	items_wanted = list(/obj/item/weapon/gun/energy/floragun = 1)
 
-	department_reward = 400
+	department_reward = 300
 	individual_reward = 100
