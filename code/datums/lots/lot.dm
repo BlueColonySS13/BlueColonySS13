@@ -49,8 +49,6 @@
 		qdel(src)
 		return
 
-	tile_count = LAZYLEN(get_area_turfs(lot_area))
-
 	SSlots.all_lots += src
 
 	for(var/area/A in return_sorted_areas())
@@ -62,8 +60,12 @@
 		allow_saving = FALSE
 		message_admins("SAVE: [name] Could not find lot area - Potential mapping issue or area lot ID configuration issue.", 1)
 
-
+	tile_count = get_tile_count()
 	..()
+
+
+/datum/lot/proc/get_tile_count()
+	return LAZYLEN(get_area_turfs(lot_area))
 
 // Lot signs, if a lot is vacant, it'll spawn a for rent sign on round start. Else, it'll delete itself. It'll copy the pixel_x and pixel_y of itself to the for rent sign, too.
 
