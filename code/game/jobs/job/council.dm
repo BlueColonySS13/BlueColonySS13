@@ -69,7 +69,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	wage = 300
 
 
-	minimum_character_age = 25
+	minimum_character_age = 26
 	alt_titles = list("City Manager")
 	ideal_character_age = 40
 
@@ -110,8 +110,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	minimal_access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
 
 
-	minimum_character_age = 16
-	ideal_character_age = 20 //Really anyone can be this job, not just teens
+	minimum_character_age = 20
 
 	alt_titles = list("Assistant Clerk", "Notary Public", "Paralegal", "Court Clerk")
 

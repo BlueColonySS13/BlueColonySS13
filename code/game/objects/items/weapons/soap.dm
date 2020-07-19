@@ -61,19 +61,19 @@
 		to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
 		target.clean_blood()
 
-		use_soap(1)
+		use_soap(1, user)
 		return	//Blood is a cleanable decal, therefore needs to be accounted for before all cleanable decals.
 	else if(istype(target,/obj/effect/decal/cleanable))
 		to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
 		qdel(target)
 
-		use_soap(1)
+		use_soap(1, user)
 	else if(istype(target,/turf))
 		to_chat(user, "<span class='notice'>You scrub \the [target.name] clean.</span>")
 		var/turf/T = target
 		T.clean(src, user)
 
-		use_soap(1)
+		use_soap(1, user)
 	else if(istype(target,/obj/structure/sink))
 		to_chat(user, "<span class='notice'>You wet \the [src] in the sink.</span>")
 		wet()

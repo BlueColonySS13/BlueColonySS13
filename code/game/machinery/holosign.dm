@@ -16,6 +16,9 @@
 
 	unique_save_vars = list("id", "lit")
 
+/obj/machinery/holosign/on_persistence_load()
+	update_icon()
+
 /obj/machinery/holosign/proc/toggle()
 	if(stat & (BROKEN|NOPOWER))
 		return

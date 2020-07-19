@@ -308,7 +308,7 @@
 	recipes += new/datum/stack_recipe("cardborg helmet", /obj/item/clothing/head/cardborg)
 	recipes += new/datum/stack_recipe("pizza box", /obj/item/pizzabox)
 	recipes += new/datum/stack_recipe("candle box", /obj/item/weapon/storage/box/candle_box/empty)
-
+	recipes += new/datum/stack_recipe("picket sign", /obj/item/weapon/picket_sign)
 
 
 	recipes += new/datum/stack_recipe("19px by 19px canvas", /obj/item/weapon/canvas/nineteenXnineteen, 3, one_per_turf = 1, on_floor = 1)
