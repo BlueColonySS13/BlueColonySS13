@@ -15,6 +15,8 @@
 	idle_power_usage = 2
 	flags = PROXMOVE
 
+	unique_save_vars = list("id")
+
 /obj/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
 	name = "portable flasher"
 	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."

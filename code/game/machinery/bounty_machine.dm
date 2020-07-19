@@ -160,6 +160,9 @@
 
 		dat += "<span style=\"color:yellow\"><strong>Required:</strong></span>"
 
+		if(current_bounty.custom_requirement)
+			dat += "<br>[current_bounty.custom_requirement]<br> "
+
 		if(LAZYLEN(current_bounty.items_wanted))
 			dat += "<br><strong>Item(s) wanted:</strong><br>"
 			for(var/V in current_bounty.items_wanted)

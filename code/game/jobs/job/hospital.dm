@@ -133,7 +133,7 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/intern
 	wage = 60
-	minimum_character_age = 18 //Excuse me electric, what.
+	minimum_character_age = 20
 	access = list(access_medical)
 	minimal_access = list(access_medical, access_maint_tunnels)
 	outfit_type = /decl/hierarchy/outfit/job/medical/intern
@@ -152,6 +152,8 @@
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/medical/paramedic
 	wage = 90
+	minimum_character_age = 20
+
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
 	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic

@@ -61,3 +61,42 @@
 	days_until_expiry = 1
 
 
+/datum/bounty/retail/lord_bucket
+	name = "Need A New Face"
+	author = "Lord Buckethead"
+	description = "It appears I faced a terrifying humiliation at the palace today. I require a new face before going to confront them again."
+
+	items_wanted = list(/obj/item/weapon/reagent_containers/glass/bucket = 1)
+
+	department_reward = 10
+	individual_reward = 5
+
+	days_until_expiry = 1
+
+/datum/bounty/retail/fireman
+	name = "Fire Man"
+	author = "Man On Fire"
+	description = "AAAAAAAAAAAAAAAAAAAAH AHHHHHHHHHHHH AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH!"
+
+	items_wanted = list(/obj/item/weapon/extinguisher = 1)
+
+	department_reward = 15
+	individual_reward = 8
+
+	days_until_expiry = 1
+
+
+/datum/bounty/retail/rightful_protest
+	name = "Rightfully Timed Protest"
+	author = "Anonymous Protestor"
+	description = "It's time to stick it up to the government again, there's five of us so make sure none of our hands are empty. We will be heard! \
+	Justice will be served!"
+
+	items_wanted = list(/obj/item/weapon/picket_sign = 5)
+
+	department_reward = 45
+	individual_reward = 25
+
+	days_until_expiry = 1
+
+

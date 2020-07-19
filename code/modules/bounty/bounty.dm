@@ -36,6 +36,8 @@
 	var/days_until_expiry = 1		// difference between today and creation date, past this, it will expire.
 
 	//bounty item stuff
+	var/custom_requirement = ""		// actually does nothing, is just there to give players direction, usually paired with a custom completion method.
+
 	var/list/items_wanted = list()
 	var/list/seeds_wanted = list()	// just uses seed id and then amount
 	var/list/grown_wanted = list()
