@@ -96,3 +96,20 @@
 	individual_reward = 750
 
 	days_until_expiry = 3
+
+/datum/bounty/black_market/detective_work
+	name = "A Little Detective Work"
+	author = "William Bjork"
+	description = "We're cleaning up a little 'scene' over here, but we're not sure if we got everything. We just need one of those \
+	universal detective scanners to check if the fingerprints and fibers are around. If you send us one we'll pass you our leftover sterilizine \
+	and one of our UV lights."
+
+	items_wanted = list(/obj/item/device/detective_scanner = 1)
+
+	item_rewards = list(/obj/item/weapon/reagent_containers/spray/sterilizine = 1,
+	/obj/item/device/uv_light = 1)
+
+	department_reward = 200
+	individual_reward = 90
+
+	days_until_expiry = 3

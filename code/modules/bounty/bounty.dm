@@ -373,11 +373,12 @@
 							if(reagents_wanted[R.id] > reagents_given[R.id]) //
 								var/to_add = reagents_wanted[R.id] - reagents_given[R.id]
 								reagents_given[R.id] += to_add
-								qdel(container)
+
+								container.reagents.remove_reagent(reagents_wanted[R.id], to_add)
 								return TRUE
 						else
 							reagents_given[R.id] += R.volume
-							qdel(container)
+							container.reagents.remove_reagent(reagents_wanted[R.id], R.volume)
 							return TRUE
 
 
