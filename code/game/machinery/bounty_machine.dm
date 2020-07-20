@@ -235,7 +235,7 @@
 			for(var/V in current_bounty.item_rewards)
 				var/atom/tmp = V
 
-				dat += " - [initial(tmp.name)]\n"
+				dat += " - [initial(tmp.name)]<br>"
 
 		dat += "<br><br><center><a href='?src=\ref[src];choice=complete_bounty;bounty=\ref[current_bounty]'>Confirm Completion</a></center><br>"
 
