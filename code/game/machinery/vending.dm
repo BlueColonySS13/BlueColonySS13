@@ -1266,7 +1266,7 @@
 	/obj/item/weapon/storage/box/fingerprints = 6,
 	/obj/item/clothing/accessory/badge/holo/detective = 2,
 	/obj/item/weapon/gun/projectile/revolver/deckard/rubber = 2,
-	/obj/item/ammo_magazine/s38/rubber = 6
+	/obj/item/ammo_magazine/s38/rubber = 6,
 	/obj/item/weapon/storage/belt/detective = 2,
 	/obj/item/clothing/glasses/sunglasses/sechud = 2,
 	/obj/item/clothing/glasses/sunglasses = 2,
