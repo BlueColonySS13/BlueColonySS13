@@ -61,7 +61,7 @@
 	name = "Pucker Up"
 	author = "Weeland-Yunati Cosmetics Division"
 	description = "We need ten lipsticks urgently for an Avant-Garde and revolutionary photoshoot. \
-	Hurry! Angelo’s foundation is melting! Our designer told us the perfect photo-finish hex color is \
+	Hurry! Angelo's foundation is melting! Our designer told us the perfect photo-finish hex color is \
 	%MAKEUPCOLOR, no other colors will be accepted."
 
 	items_wanted = list(/obj/item/weapon/lipstick = 8)
@@ -101,7 +101,7 @@
 
 	items_wanted = list(/obj/item/weapon/lipstick/eyeshadow = 8)
 
-	department_reward = 150
+	department_reward = 120
 	individual_reward = 25
 
 	days_until_expiry = 1
@@ -115,7 +115,26 @@
 
 	items_wanted = list(/obj/item/weapon/lipstick/blusher = 8)
 
-	department_reward = 150
+	department_reward = 120
+	individual_reward = 25
+
+	days_until_expiry = 1
+
+/datum/bounty/leisure/jackening
+	name = "The Jackening"
+	author = "OlasVo Fashion Company"
+	description = "Hm, yes. We'll take an order #73. We're advertising coats and jackets, thankfully it sells all year because Blue Colony is a cold, cold place. \
+	Need it ASAP."
+
+	random_items_wanted = list(
+	/obj/item/clothing/suit/storage/toggle/coat,
+	/obj/item/clothing/suit/storage/toggle/leather_jacket,
+	/obj/item/clothing/suit/storage/toggle/leather_jacket/sleeveless,
+	/obj/item/clothing/suit/storage/leather_jacket_alt,
+	/obj/item/clothing/suit/storage/toggle/brown_jacket,
+	)
+
+	department_reward = 120
 	individual_reward = 25
 
 	days_until_expiry = 1

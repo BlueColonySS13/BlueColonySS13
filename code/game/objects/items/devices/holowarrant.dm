@@ -9,6 +9,8 @@
 	throw_range = 10
 	flags = CONDUCT
 
+	price_tag = 300
+
 var/list/storedwarrant = list() //All the warrants currently stored
 var/activename = null
 var/activecharges = null

@@ -57,7 +57,7 @@
 	icon_state = "sosjerky"
 
 /obj/item/trash/unajerky
-	name = "Moghes Imported Sissalik Jerky"
+	name = "Sol Imported Lizard Jerky"
 	icon_state = "unathitinred"
 
 /obj/item/trash/syndi_cakes

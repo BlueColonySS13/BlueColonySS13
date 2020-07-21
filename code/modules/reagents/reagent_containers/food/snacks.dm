@@ -3707,21 +3707,21 @@
 /obj/item/weapon/reagent_containers/food/snacks/skrellsnacks/New()
 	..()
 	bitesize = 6
-
+*/
 /obj/item/weapon/reagent_containers/food/snacks/unajerky
-	name = "Moghes Imported Sissalik Jerky"
+	name = "Sol Imported Lizard Jerky"
 	icon_state = "unathitinred"
-	desc = "An incredibly well made jerky, shipped in all the way from Moghes."
+	desc = "An incredibly well made jerky, shipped in all the way from Sol."
 	trash = /obj/item/trash/unajerky
 	filling_color = "#631212"
 	center_of_mass = list("x"=15, "y"=9)
 
 /obj/item/weapon/reagent_containers/food/snacks/unajerky/New()
-		..()
-		reagents.add_reagent("protein", 8)
-		reagents.add_reagent("capsaicin", 2)
-		bitesize = 2
-*/
+	..()
+	reagents.add_reagent("protein", 8)
+	reagents.add_reagent("capsaicin", 2)
+	bitesize = 2
+
 /obj/item/weapon/reagent_containers/food/snacks/croissant
 	name = "croissant"
 	desc = "True French cuisine."

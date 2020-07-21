@@ -25,7 +25,7 @@
 
 	reagents_wanted = list("chloralhydrate" = 300)
 
-	department_reward = 1000
+	department_reward = 800
 	individual_reward = 250
 
 	days_until_expiry = 1
@@ -53,8 +53,8 @@
 
 	reagents_wanted = list("ammonia" = 480)
 
-	department_reward = 500
-	individual_reward = 100
+	department_reward = 200	//ammonia is easy to make. reducing this a bit
+	individual_reward = 80
 
 	days_until_expiry = 1
 
@@ -79,8 +79,8 @@
 
 	reagents_wanted = list("blood" = 500)
 
-	department_reward = 1000   //Reagent is hard to accumulate in vast quantities such as this. High reward.
-	individual_reward = 250
+	department_reward = 650   //Reagent is hard to accumulate in vast quantities such as this. High reward. // Vatborn cubes can offset blood accumilation.
+	individual_reward = 150
 
 	days_until_expiry = 3
 

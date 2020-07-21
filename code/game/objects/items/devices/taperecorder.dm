@@ -382,6 +382,8 @@
 	var/list/timestamp = new/list()
 	var/ruined = 0
 
+	price_tag = 5
+
 	unique_save_vars = list("storedinfo", "timestamp", "ruined")
 
 

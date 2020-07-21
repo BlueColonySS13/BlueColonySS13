@@ -129,3 +129,15 @@
 
 	department_reward = 300
 	individual_reward = 75
+
+/datum/bounty/agriculture/cabbages
+	name = "Not The Cabbages"
+	author = "Cabbage Man"
+	description = "Every single time! Those kids from Sol are up to no good, constantly ruining my stock of cabbages! This time I need \
+	the stock pronto, can you help a farmer out?"
+
+	grown_wanted = list("cabbage" = 30)
+
+	department_reward = 250
+	individual_reward = 75
+

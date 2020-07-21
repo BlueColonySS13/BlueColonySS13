@@ -21,6 +21,8 @@
 
 	unique_save_vars = list("status")
 
+	price_tag = 200
+
 /obj/item/weapon/melee/baton/get_cell()
 	return bcell
 

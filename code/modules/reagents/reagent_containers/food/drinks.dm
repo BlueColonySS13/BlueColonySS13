@@ -295,6 +295,7 @@
 	volume = 120
 	center_of_mass = list("x"=17, "y"=10)
 	drop_sound = 'sound/items/drop/bottle.ogg'
+	matter = list(DEFAULT_WALL_MATERIAL = 1750)
 
 /obj/item/weapon/reagent_containers/food/drinks/shaker/on_reagent_change()
 	..()
@@ -319,6 +320,7 @@
 	volume = 60
 	center_of_mass = list("x"=17, "y"=7)
 	drop_sound = 'sound/items/drop/bottle.ogg'
+	matter = list(DEFAULT_WALL_MATERIAL = 2750)
 
 /obj/item/weapon/reagent_containers/food/drinks/flask/on_reagent_change()
 	..()
@@ -353,6 +355,7 @@
 	icon_state = "vacuumflask"
 	volume = 60
 	center_of_mass = list("x"=15, "y"=4)
+	matter = list(DEFAULT_WALL_MATERIAL = 2750)
 
 /obj/item/weapon/reagent_containers/food/drinks/britcup
 	name = "cup"

@@ -93,6 +93,8 @@
 	var/last_shot = 0			//records the last shot fired
 	drop_sound = 'sound/items/drop/gun.ogg'
 
+	price_tag = 3500	// at a BASE, it should cost at least this.
+
 /obj/item/weapon/gun/get_tax()
 	return WEAPONS_TAX
 

@@ -16,17 +16,7 @@
 
 	days_until_expiry = 2
 
-/datum/bounty/black_market/do_androids_dream
-	name = "Do Synths Dream of Electric Diyaabs?"
-	author = "0R4CL3"
 
-	description = "Howzit, chummer? Our bitjockeys over in Atlus need to get their hands on some NewTek. Unsurprisingly, the research \
-	facilities over there are locked up tighter than You know what? Nevermind. Get us 3 Robotic Intelligence Circuits and you’ll get some scratch."
-
-	items_wanted = list(/obj/item/device/mmi/digital/robot = 3)
-
-	department_reward = 2550
-	individual_reward = 1000
 
 /datum/bounty/black_market/dont_taze_me_bro
 	name = "Don't Taze Me Bro!"
@@ -40,48 +30,6 @@
 	department_reward = 2200
 	individual_reward = 850
 
-/datum/bounty/black_market/corporate_espionage
-	name = "You Wouldn't Download a Gun"
-	author = "Daydream"
-
-	description = "We’ve been monitoring the Sayoko Sakakihara Institute of Science’s servers for any good paydata and we think we’ve hit the \
-	jackpot. Download some high-level tech data from their server and send it our way. Some of it might be useful for future runs. Make sure it's \
-	atleast Level 6 tech. You’ll get your creds upon successful delivery of the data disk."
-
-	items_wanted = list(/obj/item/weapon/disk/tech_disk = 1)
-
-	department_reward = 4000
-	individual_reward = 2000
-
-/datum/bounty/black_market/corporate_espionage/meets_standards(var/obj/O) // additional custom checks
-	if(istype(O, /obj/item/weapon/disk/tech_disk))
-		var/obj/item/weapon/disk/tech_disk/tekdisk = O
-
-		if(tekdisk.stored.level >= 6)
-			return TRUE
-
-	return FALSE
-
-/datum/bounty/black_market/radio_pirate
-	name = "Pirate Radio"
-	author = "First Mate John Swallow"
-
-	description = "Ahoy, chum. We be needing a specific tech from ye today! Our crew is planning a heist on a facility with a Class VI onboard AI \
-	and we need access to its binary channel. Send us a design disk with the plans for a Binary Encryption Key. Ye'll be rewarded handsomely!"
-
-	items_wanted = list(/obj/item/weapon/disk/design_disk = 1)
-
-	department_reward = 3000
-	individual_reward = 1750
-
-/datum/bounty/black_market/radio_pirate/meets_standards(var/obj/O) // additional custom checks
-	if(istype(O, /obj/item/weapon/disk/design_disk))
-		var/obj/item/weapon/disk/design_disk/D = O
-
-		if(D.blueprint == /datum/design/item/binaryencrypt)
-			return TRUE
-
-	return FALSE
 
 /datum/bounty/black_market/vampire
 	name = "The Most Dangerous Game"
@@ -90,10 +38,10 @@
 	so much through proper channels. Please, send us 750u of blood. We will compensate you most generously. We only ask that you \
 	ask no questions."
 
-	reagents_wanted = list("blood" = 750)
+	reagents_wanted = list("blood" = 500)
 
-	department_reward = 2500
-	individual_reward = 750
+	department_reward = 1200	// blood isn't that hard to get - vatborn cubes and hospital break ins can usually prove this
+	individual_reward = 450
 
 	days_until_expiry = 3
 
@@ -111,5 +59,33 @@
 
 	department_reward = 200
 	individual_reward = 90
+
+	days_until_expiry = 3
+
+/datum/bounty/black_market/organs_organist
+	name = "Organs For An Organist"
+	author = "Heinrich Gravae"
+	description = "In the middle of an over-enthusiastic church session it would appear that our organist has suffered a... lively accident. It's not over yet, \
+	we're willing to pay to help replace what he lost during that very emotionally church scene."
+
+	random_items_wanted = list(
+		/obj/item/organ/internal/heart,
+		/obj/item/organ/internal/lungs,
+		/obj/item/organ/internal/kidneys,
+		/obj/item/organ/internal/eyes,
+		/obj/item/organ/internal/liver,
+		/obj/item/organ/internal/spleen,
+		/obj/item/organ/external/arm,
+		/obj/item/organ/external/arm/right,
+		/obj/item/organ/external/leg,
+		/obj/item/organ/external/leg/right,
+		/obj/item/organ/external/foot,
+		/obj/item/organ/external/foot/right,
+		/obj/item/organ/external/hand,
+		/obj/item/organ/external/hand/right
+		)
+
+	department_reward = 800
+	individual_reward = 350
 
 	days_until_expiry = 3

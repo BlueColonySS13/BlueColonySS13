@@ -29,10 +29,10 @@
 	/obj/item/weapon/reagent_containers/food/snacks/monkeycube = 5
 	)
 
-	department_reward = 500
+	department_reward = 150	// monkey cubes aren't scarce
 	individual_reward = 60
 
-	days_until_expiry = 2
+	days_until_expiry = 1
 
 /datum/bounty/xenobio/default_extract
 	name = "Extracts Wanted"
@@ -93,10 +93,10 @@
 	how they manage to produce phoron! Phoron mining may be a thing of the past if we can find a way to reproduce this biological function in other animals! \
 	Phoron milk? Phoron spider silk? The possibilities are endless!"
 
-	items_wanted = list(/obj/item/slime_extract/dark_purple = 10)
+	items_wanted = list(/obj/item/slime_extract/dark_purple = 3) // this is a rare slime
 
-	department_reward = 700
-	individual_reward = 510
+	department_reward = 400
+	individual_reward = 210
 
 	days_until_expiry = 2
 
@@ -107,10 +107,10 @@
 	exposed to phoron and it may be useful in various industries where extreme cold is required. A new line of slime powered air conditioners also isn't out of the \
 	question. We don't think they'd sell well on this planet, however."
 
-	items_wanted = list(/obj/item/slime_extract/dark_blue = 10)
+	items_wanted = list(/obj/item/slime_extract/dark_blue = 3)	// an uncommon slime
 
-	department_reward = 500
-	individual_reward = 310
+	department_reward = 350
+	individual_reward = 180
 
 	days_until_expiry = 2
 
@@ -120,10 +120,10 @@
 	description = "Eureka! We've figured it out! Red slime extracts result in a 12% increase in genetic mutation in slimes! Send us some red slime extracts A.S.A.P. \
 	We can finally get our slime breeding program off the ground!"
 
-	items_wanted = list(/obj/item/slime_extract/red = 10)
+	items_wanted = list(/obj/item/slime_extract/red = 3)
 
-	department_reward = 500
-	individual_reward = 310
+	department_reward = 300
+	individual_reward = 110
 
 	days_until_expiry = 2
 
@@ -187,9 +187,24 @@
 	Our researchers have been looking at the slime genome and when the blue color gene is slightly modified, other genes in the slime genome unravel! We think we could fit in genes \
 	from other species into the gaps!"
 
-	items_wanted = list(/obj/item/slime_extract/sapphire = 1)
+	items_wanted = list(/obj/item/slime_extract/sapphire = 2)
 
 	department_reward = 2000
+	individual_reward = 1000
+
+	days_until_expiry = 3
+
+
+/datum/bounty/xenobio/docility_potion
+	name = "Friendly Slimes"
+	author = "PetCorp"
+	description = "At PetCorp we're looking for well-behaved slimes to sell to kind and loving owners. Emphasis on well-behaved, since the media scandal of 2560 \
+	regarding a slime that tried to eat an owner and his two kids we've had to extensively work on our PR. We believe slimes can re-enter the market but they must \
+	be docile. Send up one of the docility potions so we can start with our first proje- pet!"
+
+	items_wanted = list(/obj/item/slimepotion/docility = 1)
+
+	department_reward = 1500
 	individual_reward = 1000
 
 	days_until_expiry = 3
