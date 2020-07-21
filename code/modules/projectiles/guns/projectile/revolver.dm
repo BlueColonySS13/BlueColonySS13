@@ -131,6 +131,8 @@ obj/item/weapon/gun/projectile/revolver/detective45/verb/rename_gun()
 /obj/item/weapon/gun/projectile/revolver/deckard/emp
 	ammo_type = /obj/item/ammo_casing/a38/emp
 
+/obj/item/weapon/gun/projectile/revolver/deckard/rubber
+	ammo_type = /obj/item/ammo_casing/a38r
 
 /obj/item/weapon/gun/projectile/revolver/deckard/update_icon()
 	..()

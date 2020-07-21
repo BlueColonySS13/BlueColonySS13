@@ -240,6 +240,7 @@
 	surgery_odds = 75
 	var/bedtype = /obj/structure/bed/roller
 	var/rollertype = /obj/item/roller
+	matter = list(DEFAULT_WALL_MATERIAL = 3875)
 
 /obj/structure/bed/roller/adv
 	name = "advanced roller bed"

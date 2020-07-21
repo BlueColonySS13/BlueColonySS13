@@ -33,6 +33,8 @@
 	*/
 	var/list/products	= list() // For each, use the following pattern:
 	var/list/contraband	= list() // list(/type/path = amount,/type/path2 = amount2)
+	var/list/code_blue_items = list()	// Items only available on code blue.
+	var/list/code_red_items = list()
 	var/list/premium 	= list() // No specified amount = only one in stock
 	var/list/prices     = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
 
@@ -1196,24 +1198,26 @@
 	icon_deny = "sec-deny"
 	req_access = list(access_security)
 	products = list(
+	/obj/item/weapon/gun/energy/taser = 8,
+	/obj/item/weapon/reagent_containers/spray/pepper = 8,
 	/obj/item/weapon/handcuffs = 8,
 	/obj/item/weapon/grenade/flashbang = 4,
 	/obj/item/device/flash = 5,
 	/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,
 	/obj/item/weapon/storage/box/evidence = 6,
+	/obj/item/weapon/melee/classic_baton = 6,
 	/obj/item/weapon/melee/baton/loaded = 6,
 	/obj/item/taperoll/police = 6,
 	/obj/item/device/flashlight/flare = 6,
-
-
+	/obj/item/device/camera = 6,
+	/obj/item/device/camera_film = 6,
+	/obj/item/device/taperecorder = 6,
+	/obj/item/device/tape = 4,
+	/obj/item/device/hailer = 6,
+	/obj/item/device/holowarrant = 8
 	)
 
 
-
-	contraband = list(,/obj/item/weapon/storage/box/donut = 2,
-	/obj/item/weapon/reagent_containers/spray/pepper = 5,
-
-	)
 	req_log_access = access_armory
 	has_logs = 1
 
@@ -1225,9 +1229,11 @@
 	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
 	icon_state = "secequip"
 	icon_deny = "secequip-deny"
-	charge_free_department = DEPT_POLICE
-	block_persistence = TRUE
+
 	products = list(
+	/obj/item/weapon/storage/belt/security = 6,
+	/obj/item/device/radio/headset/headset_sec = 6,
+	/obj/item/clothing/glasses/sunglasses/sechud = 6,
 	/obj/item/clothing/glasses/sunglasses = 6,
 	/obj/item/clothing/under/rank/security = 6,
 	/obj/item/clothing/under/rank/security/skirt = 6,
@@ -1243,10 +1249,37 @@
 	/obj/item/clothing/accessory/holster/hip = 6,
 	/obj/item/clothing/accessory/holster/leg = 6,
 	/obj/item/weapon/storage/backpack/security = 6,
-	/obj/item/weapon/storage/backpack/satchel/sec = 6,
-	/obj/item/clothing/glasses/sunglasses/sechud = 6
+	/obj/item/weapon/storage/backpack/satchel/sec = 6
 
 	)
+
+/obj/machinery/vending/security/detective
+	name = "Detective Equipment Vendotron"
+	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
+	req_access = list(access_forensics_lockers)
+	products = list(
+	/obj/item/weapon/storage/box/csi_markers = 3,
+	/obj/item/weapon/storage/box/evidence = 6,
+	/obj/item/device/flash = 5,
+	/obj/item/weapon/reagent_containers/spray/luminol = 2,
+	/obj/item/device/uv_light = 5,
+	/obj/item/weapon/storage/box/fingerprints = 6,
+	/obj/item/clothing/accessory/badge/holo/detective = 2,
+	/obj/item/weapon/gun/projectile/revolver/deckard/rubber = 2,
+	/obj/item/ammo_magazine/s38/rubber = 6
+	/obj/item/weapon/storage/belt/detective = 2,
+	/obj/item/clothing/glasses/sunglasses/sechud = 2,
+	/obj/item/clothing/glasses/sunglasses = 2,
+	/obj/item/clothing/suit/storage/vest/detective = 2,
+	/obj/item/clothing/accessory/holster/hip = 6,
+	/obj/item/taperoll/police = 6,
+	/obj/item/device/flashlight/flare = 6,
+	/obj/item/device/camera = 6,
+	/obj/item/device/camera_film = 6,
+	/obj/item/device/taperecorder = 6,
+	/obj/item/weapon/reagent_containers/food/drinks/flask/detflask = 2
+	)
+
 
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"

@@ -13,6 +13,8 @@
 
 	unique_save_vars = list("use_message")
 
+	price_tag = 20
+
 /obj/item/device/hailer/verb/set_message()
 	set name = "Set Hailer Message"
 	set category = "Object"

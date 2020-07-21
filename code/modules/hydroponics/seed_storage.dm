@@ -36,6 +36,7 @@
 	name = "Random seed storage"
 	scanner = list("stats", "produce", "soil", "temperature", "light")
 	starting_seeds = list(/obj/item/seeds/random = 50)
+	dont_save = TRUE
 
 /obj/machinery/seed_storage/garden
 	name = "Garden seed storage"
@@ -78,7 +79,7 @@
 		/obj/item/seeds/wheatseed = 3,
 		/obj/item/seeds/whitebeetseed = 3
 		)
-
+	dont_save = TRUE
 /obj/machinery/seed_storage/xenobotany
 	name = "Xenobotany seed storage"
 	scanner = list("stats", "produce", "soil", "temperature", "light")
@@ -126,6 +127,8 @@
 		/obj/item/seeds/wheatseed = 3,
 		/obj/item/seeds/whitebeetseed = 3
 		)
+
+	dont_save = TRUE
 
 /obj/machinery/seed_storage/attack_hand(mob/user as mob)
 	user.set_machine(src)

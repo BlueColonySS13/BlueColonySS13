@@ -54,9 +54,29 @@
 	name = "glass carafe"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/carafe
 
-/datum/category_item/autolathe/general/drinkingglass_pitcher
-	name = "plastic pitcher"
-	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/pitcher
+/datum/category_item/autolathe/general/drinkingglass_meta
+	name = "metamorphic glass"
+	path = /obj/item/weapon/reagent_containers/food/drinks/metaglass
+
+/datum/category_item/autolathe/general/shaker
+	name = "shaker"
+	path = /obj/item/weapon/reagent_containers/food/drinks/shaker
+
+/datum/category_item/autolathe/general/barflask
+	name = "bar flask"
+	path = /obj/item/weapon/reagent_containers/food/drinks/flask/barflask
+
+/datum/category_item/autolathe/general/vacuumflask
+	name = "vacuum flask"
+	path = /obj/item/weapon/reagent_containers/food/drinks/flask/vacuumflask
+
+/datum/category_item/autolathe/general/lithiumflask
+	name = "lithium flask"
+	path = /obj/item/weapon/reagent_containers/food/drinks/flask/lithium
+
+/datum/category_item/autolathe/general/shinyflask
+	name = "shiny flask"
+	path = /obj/item/weapon/reagent_containers/food/drinks/flask/shiny
 
 /datum/category_item/autolathe/general/flashlight
 	name = "flashlight"
@@ -146,5 +166,6 @@
 /datum/category_item/autolathe/general/keypad
 	name = "door keypad"
 	path = /obj/item/keypad
+
 
 

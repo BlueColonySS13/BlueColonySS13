@@ -41,3 +41,7 @@
 /datum/category_item/autolathe/medical/implanter
 	name = "implanter"
 	path =/obj/item/weapon/implanter
+
+/datum/category_item/autolathe/medical/roller
+	name = "roller bed"
+	path = /obj/item/roller

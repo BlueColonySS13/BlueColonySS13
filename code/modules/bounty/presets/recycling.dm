@@ -43,9 +43,48 @@
 	description = "I run a museum of macabre oddities and knick-nacks. My last supplier met an... unfortunate end but I still \
 	do not have enough bones for my main attraction. Please, if you come across any bones, send them to me. You will be handsomely compensated."
 
-	items_wanted = list(/obj/item/weapon/bone = 4)
+	random_items_wanted = list(
+	/obj/item/weapon/bone/arm,
+	/obj/item/weapon/bone/leg,
+	/obj/item/weapon/bone/ribs,
+	/obj/item/weapon/bone/skull
 
-	department_reward = 200
+	)
+
+	department_reward = 100
 	individual_reward = 75
 
 	allow_subtypes = TRUE
+
+
+/datum/bounty/recycling/absolute_trash
+	name = "Absolute Trash"
+	author = "Sarah Fardeep"
+	description = "We're making a display - no, a statement! I have been arranging junk heaps in a true work of art to critique our wasteful nature. I'm \
+	just missing one thing..."
+
+	random_items_wanted = list(
+	/obj/item/trash/candle,
+	/obj/item/trash/candle/candelabra_stand,
+	/obj/item/trash/candy,
+	/obj/item/trash/candy/proteinbar,
+	/obj/item/trash/cheesie,
+	/obj/item/trash/chips,
+	/obj/item/trash/liquidfood,
+	/obj/item/trash/liquidprotein,
+	/obj/item/trash/pistachios,
+	/obj/item/trash/plate,
+	/obj/item/trash/popcorn,
+	/obj/item/trash/raisins,
+	/obj/item/trash/semki,
+	/obj/item/trash/snack_bowl,
+	/obj/item/trash/sosjerky,
+	/obj/item/trash/syndi_cakes,
+	/obj/item/trash/tastybread,
+	/obj/item/trash/tray,
+	/obj/item/trash/unajerky,
+	/obj/item/trash/waffles
+	)
+
+	department_reward = 90
+	individual_reward = 50
