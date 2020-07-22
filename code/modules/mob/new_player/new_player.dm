@@ -8,7 +8,7 @@
 	var/datum/browser/panel
 
 	var/selected_job = "Civilian"
-	var/job_select_mode = "ALL"	// Options: All, Public or Private
+	var/job_select_mode = "PUBLIC"	// Options: Public or Private
 
 	universal_speak = 1
 	invisibility = 101
@@ -33,7 +33,6 @@
 
 /mob/new_player/proc/new_player_panel_proc()
 	var/output = "<div align='center'>"
-
 	output += "[using_map.get_map_info()]"
 	output +="<hr>"
 
@@ -223,18 +222,24 @@
 		for (var/mob/living/carbon/human/C in mob_list)
 			var/char_name = client.prefs.real_name
 			if(char_name == C.real_name)
-				to_chat(usr, "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one.</span>")
+				usr << "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one.</span>"
 				return
 
 		if(!config.enter_allowed)
-			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
+			usr << "<span class='notice'>There is an administrative lock on entering the game!</span>"
 			return
 		else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
-			to_chat(usr, "<span class='danger'>The city is currently exploding. Joining would go poorly.</span>")
+			usr << "<span class='danger'>The city is currently exploding. Joining would go poorly.</span>"
 			return
 
-		if(!can_enter_round())
-			return
+		if(!is_alien_whitelisted(src, all_species[client.prefs.species]))
+			src << alert("You are currently not whitelisted to play [client.prefs.species].")
+			return 0
+
+		var/datum/species/S = all_species[client.prefs.species]
+		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
+			src << alert("Your current species, [client.prefs.species], is not available for play on the city.")
+			return 0
 
 		AttemptLateSpawn(href_list["SelectedJob"],client.prefs.spawnpoint)
 		return
@@ -343,31 +348,23 @@
 		return
 
 /mob/new_player/proc/handle_server_news()
-	var/dat = server_news_text()
-
-	var/datum/browser/popup = new(src, "Server News", "Server News", 450, 300, src)
-	popup.set_content(dat)
-	popup.open()
-
-/mob/new_player/proc/server_news_text()
 	if(!client)
 		return
-
-	var/dat
-
 	var/savefile/F = get_server_news()
 	if(F)
 		client.prefs.lastnews = md5(F["body"])
 		client.prefs.save_preferences()
 
-		dat = "<html><body><center>"
-		dat += "<h1>[F["title"] ? F["title"] : "No Title"]</h1>"
+		var/dat = "<html><body><center>"
+		dat += "<h1>[F["title"]]</h1>"
 		dat += "<br>"
-		dat += "[F["body"] ? F["body"] : "No News Message"]"
+		dat += "[F["body"]]"
 		dat += "<br>"
-		dat += "<font size='2'><i>Last written by [F["author"] ? F["author"] : "Anonymous"], on [F["timestamp"] ? F["timestamp"] : "Unknown Date"].</i></font>"
-
-	return dat
+		dat += "<font size='2'><i>Last written by [F["author"]], on [F["timestamp"]].</i></font>"
+		dat += "</center></body></html>"
+		var/datum/browser/popup = new(src, "Server News", "Server News", 450, 300, src)
+		popup.set_content(dat)
+		popup.open()
 
 /mob/new_player/proc/IsJobAvailable(rank)
 	var/datum/job/job = SSjobs.GetJob(rank)
@@ -387,34 +384,6 @@
 		if(biz && biz.suspended) return 0
 
 	return 1
-
-// Used to check someone doesn't try to join the game with skills they can't get.
-// Its possible for skill costs to change and as a result, people no longer being able to afford their setup.
-// Instead of wiping their setup entirely when that happens, this will let them go tweak it.
-/mob/new_player/proc/check_skill_validity()
-	if(!client)
-		return FALSE
-
-	if(!client.prefs.skill_manager) // Lazyload it if its not already instantiated.
-		client.prefs.skill_manager = new(client, client.prefs.skill_list, src)
-
-	return client.prefs.skill_manager.is_valid()
-
-// A nicer, more generic way to conditionally stop people from joining the round, via latejoin or otherwise. Doesn't forbid observing.
-/mob/new_player/proc/can_enter_round()
-	if(!is_alien_whitelisted(src, all_species[client.prefs.species]))
-		to_chat(src, span("warning", "You are currently not whitelisted to play [client.prefs.species]."))
-		return FALSE
-
-	var/datum/species/S = all_species[client.prefs.species]
-	if(!(S.spawn_flags & SPECIES_CAN_JOIN))
-		to_chat(src, span("warning", "Your current species, [client.prefs.species], is not available for play on the station."))
-		return FALSE
-
-	if(!check_skill_validity())
-		to_chat(src, span("warning", "There is a problem with your character's skill configuration, and you cannot join until it is resolved."))
-		return FALSE
-	return TRUE
 
 /mob/new_player/proc/AttemptLateSpawn(rank,var/spawning_at)
 	if (src != usr)
@@ -450,9 +419,6 @@
 	SSjobs.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(T)	//creates the human and transfers vars and mind
-	if(!character)
-		return FALSE
-
 	character = SSjobs.EquipRank(character, rank, 1)					//equips the human
 	UpdateFactionList(character)
 	log_game("JOINED [key_name(character)] as \"[rank]\"")
@@ -558,7 +524,6 @@
 			new_character.rename_self("clown")
 		mind.original = new_character
 		mind.traits = client.prefs.traits.Copy()
-		mind.skills = client.prefs.skill_list.Copy()
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
 
 	new_character.name = real_name
