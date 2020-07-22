@@ -167,5 +167,11 @@
 	name = "door keypad"
 	path = /obj/item/keypad
 
+/datum/category_item/autolathe/general/toolbox
+	name = "toolbox"
+	path = /obj/item/weapon/storage/toolbox
+
+
+
 
 

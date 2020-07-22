@@ -408,6 +408,7 @@
 	associated_reagents = list("protein")
 	dyeable = TRUE
 	stack_color = COLOR_BROWN
+	drop_sound = 'sound/items/drop/clothing.ogg'
 
 /obj/item/stack/material/silk
 	name = "silk"
@@ -419,6 +420,7 @@
 	burntime = 5
 	associated_reagents = list("protein")
 	dyeable = TRUE
+	drop_sound = 'sound/items/drop/clothing.ogg'
 
 /obj/item/stack/material/cotton
 	name = "cotton"
@@ -430,18 +432,8 @@
 	burntime = 5
 	associated_reagents = list("protein")
 	dyeable = TRUE
+	drop_sound = 'sound/items/drop/clothing.ogg'
 
-/obj/item/stack/material/denim
-	name = "denim"
-	desc = "The worker's fabric as many would say."
-	icon_state = "sheet-fabric"
-	default_type = "denim"
-	no_variants = FALSE
-	burn_state = 0 //Burnable
-	burntime = 5
-	associated_reagents = list("protein")
-	dyeable = TRUE
-	stack_color = COLOR_DENIM
 
 
 /obj/item/stack/material/cotton/black
@@ -471,6 +463,19 @@
 /obj/item/stack/material/cotton/pink
 	stack_color = COLOR_PINK
 
+/obj/item/stack/material/denim
+	name = "denim"
+	desc = "The worker's fabric as many would say."
+	icon_state = "sheet-fabric"
+	default_type = "denim"
+	no_variants = FALSE
+	burn_state = 0 //Burnable
+	burntime = 5
+	associated_reagents = list("protein")
+	dyeable = TRUE
+	stack_color = COLOR_DENIM
+	drop_sound = 'sound/items/drop/clothing.ogg'
+
 /obj/item/stack/material/wool
 	name = "wool"
 	desc = "Sheared from your local sheep. A so-done sheep."
@@ -481,6 +486,7 @@
 	burntime = 5
 	associated_reagents = list("protein")
 	dyeable = TRUE
+	drop_sound = 'sound/items/drop/clothing.ogg'
 
 /obj/item/stack/material/glass
 	name = "glass"
