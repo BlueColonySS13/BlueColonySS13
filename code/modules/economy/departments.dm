@@ -211,6 +211,15 @@
 
 	return dept_jobs
 
+/datum/department/proc/get_available_jobs(mob/new_player/np)
+	var/list/all_jobs = list()
+	for(var/datum/job/J in get_all_jobs())
+		if(!np.IsJobAvailable(J.title))
+			continue
+		all_jobs += J
+
+	return all_jobs
+
 /datum/department/proc/get_business()
 	for(var/datum/business/B in GLOB.all_businesses)
 		if(B.business_uid == id)

@@ -16,9 +16,9 @@
 	dat += "</center><br>"
 
 	//Selected job (quick sanitization, just in case)
-	if(!selected_job || !job_select_mode || !(job_select_mode in list("PUBLIC", "PRIVATE")) )
+	if(!selected_job || !job_select_mode || !(job_select_mode in list("PUBLIC", "PRIVATE", "ALL")) )
 		selected_job = initial(selected_job)
-		job_select_mode = "PUBLIC"
+		job_select_mode = "ALL"
 
 	var/datum/job/job = SSjobs.GetJob(selected_job)
 
@@ -106,21 +106,27 @@
 	// ####### JOB SELECTION MENU ########## //
 
 	var/list/job_departments = list()
-	var/label = "Public Sector"
-	var/switch_type = "PUBLIC"
+	var/label = "Active Jobs"
+	var/switch_type = "ALL"
 
 	switch(job_select_mode)
+		if("ALL")
+			job_departments += (SSeconomy.get_all_nonbusiness_departments()+SSeconomy.get_all_business_departments())
+			label = "Active Jobs"
+			dat += "<BR>Active Jobs | <a href='byond://?src=\ref[src];SelectDeptType=PUBLIC'>Public Sector Jobs</a>"
+			dat += " | <a href='byond://?src=\ref[src];SelectDeptType=PRIVATE'>Private Sector Jobs</a>"
+			dat += "<BR>This is a list of all available jobs that you can join. See the public and private tabs to filter."
 		if("PUBLIC")
 			job_departments += SSeconomy.get_all_nonbusiness_departments()
 			label = "Public Sector"
 			switch_type = "PRIVATE"
-			dat += "<BR>Public Sector Jobs | <a href='byond://?src=\ref[src];SelectDeptType=[switch_type]'>Private Sector Jobs</a>"
+			dat += "<BR><a href='byond://?src=\ref[src];SelectDeptType=ALL'>Active Jobs</a> | Public Sector Jobs | <a href='byond://?src=\ref[src];SelectDeptType=[switch_type]'>Private Sector Jobs</a>"
 			dat += "<BR>Public jobs are jobs funded by the government or aren't associated with any private business."
 		if("PRIVATE")
 			job_departments += SSeconomy.get_all_business_departments()
 			label = "Private Sector"
 			switch_type = "PUBLIC"
-			dat += "<BR><a href='byond://?src=\ref[src];SelectDeptType=[switch_type]'>Public Sector Jobs</a> | Private Sector Jobs"
+			dat += "<BR><a href='byond://?src=\ref[src];SelectDeptType=ALL'>Active Jobs</a> | <a href='byond://?src=\ref[src];SelectDeptType=[switch_type]'>Public Sector Jobs</a> | Private Sector Jobs"
 			dat += "<BR>These are private sector jobs, business owners of the city occasionally open jobs for you to join."
 
 
@@ -130,22 +136,39 @@
 
 	dat += "<br><b>[label]</b><br>"
 
+
+
 	if(!isemptylist(GLOB.public_departments))
+
 		for(var/datum/department/PUB_D in job_departments)
-			if(isemptylist(PUB_D.get_all_jobs()))
+			var/list/available_jobs = PUB_D.get_available_jobs(src)
+			var/list/net_jobs = PUB_D.get_all_jobs()
+
+			if(switch_type == "ALL" && isemptylist(available_jobs))
 				continue
 
+			if(isemptylist(net_jobs))
+				continue
 
 			dat += "<fieldset style='width: 80%; border: 2px solid #515151; display: inline'>"
 			dat += "<legend align='center' style='color: #fff'>[PUB_D.name]</legend>"
 
-			for(var/datum/job/pub_job in PUB_D.get_all_jobs() )
+			var/list/all_jobs = list()
+
+			if(switch_type == "ALL")
+				all_jobs = available_jobs
+			else
+				all_jobs = net_jobs
+
+
+			for(var/datum/job/pub_job in all_jobs )
 
 				var/job_color = PUB_D.dept_color
 				var/job_text = "#fff"
 
 				if(!IsJobAvailable(pub_job.title))
 					job_color = "#515151"
+
 				if(pub_job in SSjobs.prioritized_jobs)
 					job_text = "yellow"
 
