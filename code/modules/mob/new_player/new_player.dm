@@ -8,7 +8,7 @@
 	var/datum/browser/panel
 
 	var/selected_job = "Civilian"
-	var/job_select_mode = "PUBLIC"	// Options: Public or Private
+	var/job_select_mode = "ALL"	// Options: All, Public or Private
 
 	universal_speak = 1
 	invisibility = 101
@@ -222,14 +222,14 @@
 		for (var/mob/living/carbon/human/C in mob_list)
 			var/char_name = client.prefs.real_name
 			if(char_name == C.real_name)
-				usr << "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one.</span>"
+				to_chat(usr, "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one.</span>")
 				return
 
 		if(!config.enter_allowed)
-			usr << "<span class='notice'>There is an administrative lock on entering the game!</span>"
+			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 			return
 		else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
-			usr << "<span class='danger'>The city is currently exploding. Joining would go poorly.</span>"
+			to_chat(usr, "<span class='danger'>The city is currently exploding. Joining would go poorly.</span>")
 			return
 
 		if(!is_alien_whitelisted(src, all_species[client.prefs.species]))
