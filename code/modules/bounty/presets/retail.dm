@@ -149,12 +149,14 @@
 
 	days_until_expiry = 1
 
+	allow_subtypes = TRUE
+
 /datum/bounty/retail/bear_traps
 	name = "The Right To Bear Traps"
 	author = "Bear Grillis"
 	description = "I'm getting him. I'm getting him this time!"
 
-	items_wanted = list(/datum/category_item/autolathe/devices/beartrap = 3)
+	items_wanted = list(/obj/item/weapon/beartrap = 3)
 
 	department_reward = 150
 	individual_reward = 55

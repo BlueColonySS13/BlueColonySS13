@@ -346,6 +346,7 @@
 	desc = "Careful not to cut yourself on that edge."
 	icon_state = "razorblade"
 	shave_sound = null
+	matter = list(DEFAULT_WALL_MATERIAL = 80)
 
 /obj/item/weapon/razor/blade/disposable
 	name = "disposable razor"

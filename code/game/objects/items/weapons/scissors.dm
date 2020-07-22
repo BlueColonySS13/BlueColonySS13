@@ -9,6 +9,7 @@
 	w_class = 2
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slices", "cuts", "stabs", "jabs")
+	matter = list(DEFAULT_WALL_MATERIAL = 800)
 
 /obj/item/weapon/scissors/barber
 	name = "barber's Scissors"

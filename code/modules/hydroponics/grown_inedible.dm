@@ -7,6 +7,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	var/plantname
 	var/potency = 1
+	w_class = ITEMSIZE_TINY
 
 /obj/item/weapon/grown/New(newloc,planttype)
 

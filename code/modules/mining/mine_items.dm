@@ -124,7 +124,7 @@
 	item_state = "shovel"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 50)
+	matter = list(DEFAULT_WALL_MATERIAL = 500)
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	sharp = 0
 	edge = 1
