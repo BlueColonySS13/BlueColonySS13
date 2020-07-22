@@ -20,7 +20,7 @@
 	allowed_buy_types = list(SPEND_OFFICE)
 
 /datum/department/public
-	name = "Public Funds"
+	name = "Public"
 	id = DEPT_PUBLIC
 	starting_money = 300
 	desc = "The public funding account. This pays welfare to unemployed, disabled or providing vacation pay to off-duty coucil members, also may fund any jobs that are government supported."
@@ -84,7 +84,7 @@
 // ## Private Presets ## //
 
 /datum/department/factory
-	name = "Factory Funds"
+	name = "Factory"
 	id = DEPT_FACTORY
 	desc = "The factory and its employees are paid from this account."
 	starting_money = 500
