@@ -37,6 +37,8 @@
 	var/business						// if this is linked to a business, business ID is here.
 	var/list/exclusive_employees = list()	// if this job has uids in it, only people of these UIDs can become employees.
 
+	var/list/skill_templates = list()
+
 /datum/job/proc/sanitize_job()
 	if(!exclusive_employees)
 		exclusive_employees = list()

@@ -506,7 +506,8 @@ SUBSYSTEM_DEF(jobs)
 						var/obj/new_item = G.spawn_item(B, metadata)
 
 						B.add_fingerprint(H)
-						new_item.add_fingerprint(H)
+						if(new_item)
+							new_item.add_fingerprint(H)
 
 				else
 					to_chat(H, "<span class='danger'>Failed to locate a storage object on your mob, either you spawned with no arms and no backpack or this is a bug.</span>")

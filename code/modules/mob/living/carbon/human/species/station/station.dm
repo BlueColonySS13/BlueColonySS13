@@ -37,6 +37,11 @@
 		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
 
+	skill_curve_lowest_age = 17
+	skill_curve_highest_age = 80
+	skill_curve_minimum_points = SKILL_POINT_FLOOR
+	skill_curve_maximum_points = SKILL_POINT_CEILING
+
 /datum/species/human/get_bodytype(var/mob/living/carbon/human/H)
 	return SPECIES_HUMAN
 

@@ -31,6 +31,8 @@
 	var/obj/item/device/mmi/stored_mmi
 	robotic = ORGAN_ASSISTED
 
+	dont_save = TRUE
+
 /obj/item/organ/internal/mmi_holder/Destroy()
 	if(stored_mmi && (stored_mmi.loc == src))
 		qdel(stored_mmi)

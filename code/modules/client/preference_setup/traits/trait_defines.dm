@@ -46,7 +46,7 @@
 	modifier_type = /datum/modifier/trait/haemophilia
 
 /datum/trait/modifier/physical/haemophilia/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
+	if(setup.pref.is_FBP())
 		return "Full Body Prosthetics cannot bleed."
 	// If a species lacking blood is added, it is suggested to add a check for them here.
 	return ..()
@@ -98,7 +98,7 @@
 	mutually_exclusive = list(/datum/trait/modifier/physical/fat, /datum/trait/modifier/physical/obese, /datum/trait/modifier/physical/thinner)
 	selectable = 0
 /datum/trait/modifier/physical/thin/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
+	if(setup.pref.is_FBP())
 		return "Full Body Prosthetics cannot gain or lose weight."
 	return ..()
 
@@ -108,7 +108,7 @@
 	mutually_exclusive = list(/datum/trait/modifier/physical/fat, /datum/trait/modifier/physical/obese, /datum/trait/modifier/physical/thin)
 	selectable = 0
 /datum/trait/modifier/physical/thinner/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
+	if(setup.pref.is_FBP())
 		return "Full Body Prosthetics cannot gain or lose weight."
 	return ..()
 
@@ -118,7 +118,7 @@
 	mutually_exclusive = list(/datum/trait/modifier/physical/thin, /datum/trait/modifier/physical/obese, /datum/trait/modifier/physical/thinner)
 	selectable = 0
 /datum/trait/modifier/physical/fat/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
+	if(setup.pref.is_FBP())
 		return "Full Body Prosthetics cannot gain or lose weight."
 	return ..()
 
@@ -128,7 +128,7 @@
 	mutually_exclusive = list(/datum/trait/modifier/physical/fat, /datum/trait/modifier/physical/thinner, /datum/trait/modifier/physical/thin)
 	selectable = 0
 /datum/trait/modifier/physical/obese/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
+	if(setup.pref.is_FBP())
 		return "Full Body Prosthetics cannot gain or lose weight."
 	return ..()
 
@@ -139,7 +139,7 @@
 	mutually_exclusive = list(/datum/trait/modifier/physical/low_metabolism)
 
 /datum/trait/modifier/physical/high_metabolism/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
+	if(setup.pref.is_FBP())
 		return "Full Body Prosthetics do not have a metabolism."
 	return ..()
 
@@ -150,7 +150,7 @@
 	mutually_exclusive = list(/datum/trait/modifier/physical/high_metabolism)
 
 /datum/trait/modifier/physical/low_metabolism/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
+	if(setup.pref.is_FBP())
 		return "Full Body Prosthetics do not have a metabolism."
 	return ..()
 
@@ -161,7 +161,7 @@
 	modifier_type = /datum/modifier/cloned
 
 /datum/trait/modifier/physical/cloned/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
+	if(setup.pref.is_FBP())
 		return "Full Body Prosthetics cannot be cloned."
 	return ..()
 
@@ -171,7 +171,7 @@
 	modifier_type = /datum/modifier/no_clone
 
 /datum/trait/modifier/physical/no_clone/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
+	if(setup.pref.is_FBP())
 		return "Full Body Prosthetics cannot be cloned anyways."
 	return ..()
 
@@ -181,7 +181,7 @@
 	modifier_type = /datum/modifier/no_borg
 
 /datum/trait/modifier/physical/no_borg/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
+	if(setup.pref.is_FBP())
 		return "Full Body Prosthetics are already partly or fully mechanical."
 	return ..()
 
@@ -193,8 +193,8 @@
 	category = "Mental"
 
 /datum/trait/modifier/mental/test_for_invalidity(var/datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
-		if(setup.get_FBP_type() == PREF_FBP_SOFTWARE)
+	if(setup.pref.is_FBP())
+		if(setup.pref.get_FBP_type() == PREF_FBP_SOFTWARE)
 			return "Drone Intelligences cannot feel emotions."
 	return ..()
 

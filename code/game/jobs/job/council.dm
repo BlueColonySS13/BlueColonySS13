@@ -33,6 +33,14 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
 	duties = list("Fire council members for incompetence", "Smoke cigars", "Get arrested for corruption")
 
+	// WIP
+	skill_templates = list(
+		"Colony Director" = list(
+			SKILL_EVA = SKILL_LEVEL_ONE,
+			SKILL_EXOSUITS = SKILL_LEVEL_ONE
+			)
+	)
+
 
 /datum/job/captain/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email

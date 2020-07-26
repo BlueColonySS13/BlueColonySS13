@@ -82,6 +82,7 @@ var/list/gamemode_cache = list()
 	var/ToRban = 0
 	var/automute_on = 0					//enables automuting/spam prevention
 	var/jobs_have_minimal_access = 0		//determines whether jobs use minimal access or expanded access.
+	var/mechanical_skill_system = FALSE		// If true, the new skill system will use in-game mechanics instead of the honor system.
 
 	var/cult_ghostwriter = 1                //Allows ghosts to write in blood in cult rounds...
 	var/cult_ghostwriter_req_cultists = 10  //...so long as this many cultists are active.
@@ -844,6 +845,9 @@ var/list/gamemode_cache = list()
 					config.ert_species = splittext(value, ";")
 					if(!config.ert_species.len)
 						config.ert_species += SPECIES_HUMAN
+
+				if("mechanical_skill_system")
+					config.mechanical_skill_system = TRUE
 
 				if("law_zero")
 					law_zero = value

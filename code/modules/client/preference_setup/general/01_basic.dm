@@ -71,7 +71,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 
 	pref.biological_gender  = sanitize_inlist(pref.biological_gender, get_genders(), pick(get_genders()))
 	pref.identifying_gender = (pref.identifying_gender in all_genders_define_list) ? pref.identifying_gender : pref.biological_gender
-	pref.real_name		= sanitize_name(pref.real_name, pref.species, is_FBP())
+	pref.real_name		= sanitize_name(pref.real_name, pref.species, pref.is_FBP())
 	if(!pref.real_name || (pref.real_name in pref.characters_created))
 		pref.real_name      = random_name(pref.identifying_gender, pref.species)
 
@@ -99,7 +99,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 
 // Moved from /datum/preferences/proc/copy_to()
 /datum/category_item/player_setup_item/general/basic/copy_to_mob(var/mob/living/carbon/human/character)
-	if(config.humans_need_surnames && !is_FBP())
+	if(config.humans_need_surnames && !pref.is_FBP())
 		var/firstspace = findtext(pref.real_name, " ")
 		var/name_length = length(pref.real_name)
 		if(!firstspace)	//we need a surname
@@ -107,7 +107,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 		else if(firstspace == name_length)
 			pref.real_name += "[pick(last_names)]"
 
-	if(is_FBP() && !pref.real_name)
+	if(pref.is_FBP() && !pref.real_name)
 		pref.real_name = "[pick(last_names)]"
 
 	character.real_name = pref.real_name
@@ -180,7 +180,7 @@ F
 	if(href_list["rename"])
 		var/raw_name = input(user, "Choose your character's name:", "Character Name")  as text|null
 		if (!isnull(raw_name) && CanUseTopic(user))
-			var/new_name = sanitize_name(raw_name, pref.species, is_FBP())
+			var/new_name = sanitize_name(raw_name, pref.species, pref.is_FBP())
 
 			if(new_name in pref.characters_created)
 				user << "<span class='warning'>You cannot play this character again. Ahelp if this is in error.</span>"
@@ -204,7 +204,7 @@ F
 	else if(href_list["nickname"])
 		var/raw_nickname = input(user, "Choose your character's nickname:", "Character Nickname")  as text|null
 		if (!isnull(raw_nickname) && CanUseTopic(user))
-			var/new_nickname = sanitize_name(raw_nickname, pref.species, is_FBP())
+			var/new_nickname = sanitize_name(raw_nickname, pref.species, pref.is_FBP())
 			if(new_nickname)
 				pref.nickname = new_nickname
 				return TOPIC_REFRESH

@@ -302,6 +302,14 @@
 #define SLIME_COMMAND_FACTION	2 // When in the same 'faction'.
 #define SLIME_COMMAND_FRIEND	3 // When befriended with a slime friendship agent.
 
+// Age defines.
+#define MMI_LIFE_EXTENSION		20 // How many years past the maximum can someone in an MMI achieve.
+
+// Max age defines for posibrains and drones.
+// It's here because they're not a real species, and these numbers are referenced in multiple places.
+#define MAX_AGE_POSI	220
+#define MAX_AGE_DRONE	150
+
 //Vision flags, for dealing with plane visibility
 #define VIS_FULLBRIGHT		1
 #define VIS_LIGHTING		2

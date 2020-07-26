@@ -18,7 +18,11 @@
 
 /datum/browser/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, var/atom/nref = null)
 
-	user = nuser
+	if(istype(nuser, /client))
+		var/client/C = nuser
+		user = C.mob
+	else
+		user = nuser
 	window_id = nwindow_id
 	if (ntitle)
 		title = format_text(ntitle)
