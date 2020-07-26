@@ -6,6 +6,8 @@
 	name = "General"
 	category_item_type = /datum/category_item/skill/general
 
+
+//botany
 /datum/category_item/skill/general/botany
 	id = SKILL_BOTANY
 	name = "Botany"
@@ -30,7 +32,7 @@
 	Slipping in space is possible if not secured to a surface."
 
 /datum/skill_level/botany/one
-	name = "EVA Trained"
+	name = "Botany Trained"
 	flavor_desc = "You can comfortably use a space suit, and may do so regularly in the course of your work. \
 	You’ve also been trained in the usage of various pieces of equipment for EVA."
 	mechanics_desc = "Allows you to understand data on the plant analyser.<br>\
@@ -39,17 +41,19 @@
 	cost = 10
 
 /datum/skill_level/botany/two
-	name = "EVA Specialist"
+	name = "Botany Specialist"
 	flavor_desc = "You can use all kinds of space suits, including specialized powered suits., and you’ve become accustomed to using a jetpack to move around."
 	mechanics_desc = "Can wear RIG suits.<br>\
 	Can toggle stabilization setting on jetpacks to remain in place in space."
 	cost = 20
 
 /datum/skill_level/botany/three
-	name = "EVA Expert"
+	name = "Botany Expert"
 	flavor_desc = "You are just as much at home in a vacuum as in atmosphere. Your training and experience helps keep you from being disoriented in space."
 	mechanics_desc = "Voidsuit and RIG encumbrance is reduced somewhat.<br>\
 	Will no longer slip in space due to being unsecured.<br>\
 	Will land gracefully when suddenly entering gravity, instead of falling to the ground."
 	enhancing = TRUE
 	cost = 40
+
+//
