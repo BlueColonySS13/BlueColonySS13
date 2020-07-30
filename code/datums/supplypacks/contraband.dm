@@ -92,7 +92,7 @@
 					/obj/item/ammo_magazine/clip/c12g
 					)
 			)
-	cost = 3500 //very expensive to curb abuse at the factory
+	cost = 5000 //very expensive to curb abuse at the factory. How many more times can the price be raised before it ends?
 	contraband = 1
 	containertype = /obj/structure/largecrate/suspicious
 	containername = "Suspicious crate"

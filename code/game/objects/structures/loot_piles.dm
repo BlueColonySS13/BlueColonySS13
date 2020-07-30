@@ -548,9 +548,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
     common_loot = list(
         /obj/item/weapon/bone,
         /obj/item/weapon/bone/skull,
-        /obj/item/weapon/bone/skull/tajaran,
-        /obj/item/weapon/bone/skull/unathi,
-        /obj/item/weapon/bone/skull/unknown,
         /obj/item/weapon/bone/leg,
         /obj/item/weapon/bone/arm,
         /obj/item/weapon/bone/ribs,
