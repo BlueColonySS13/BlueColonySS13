@@ -57,6 +57,7 @@
 	/obj/item/device/radio/headset/headset_mine,
 	/obj/item/device/analyzer,
 	/obj/item/weapon/storage/bag/ore = 2,
+	/obj/item/weapon/storage/bag/sheetsnatcher = 2,
 	/obj/item/device/flashlight/lantern = 2,
 	/obj/item/weapon/shovel = 2,
 	/obj/item/weapon/pickaxe = 2,

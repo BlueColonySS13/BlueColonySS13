@@ -60,13 +60,13 @@
 
 /obj/item/clothing/accessory/permit/gun/tier_three
 	name = "tier three weapon permit"
-	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, (.45)ballistic pistols, small knives, energy weapons that only have a stun setting and energy pistols. "
+	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, (.45)ballistic pistols, small knives, energy weapons that only have a stun setting, and energy pistols. "
 	tier = 3
 	price_tag = 1000
 
 /obj/item/clothing/accessory/permit/gun/tier_four
 	name = "tier four weapon permit"
-	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, (.45) and (.9mm)ballistic pistols, small and large knives, energy weapons that only have a stun setting, energy pistols and civilian grade shotguns."
+	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, (.45) and (.9mm)ballistic pistols, small and large knives, energy weapons that only have a stun setting, energy pistols, and civilian grade shotguns."
 	tier = 4
 	price_tag = 1500
 
@@ -99,12 +99,14 @@
 	desc = "A card issued by the government, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card on PolGov colonies, by law."
 	icon_state = "permit_drone"
 	tiered = FALSE
+	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/synth
 	name = "synth identification card"
 	desc = "A card issued by the government, indicating that the owner is a Synthetic. Synths are mandated to carry this card on PolGov colonies, by law."
 	icon_state = "permit_drone"
 	tiered = FALSE
+	dont_save = TRUE
 
 //Some spare gun permits in a box
 /obj/item/weapon/storage/box/gun_permits
@@ -119,3 +121,67 @@
 	/obj/item/clothing/accessory/permit/gun/tier_three = 5,
 	/obj/item/clothing/accessory/permit/gun/tier_four = 5
 	)
+
+//Business permits - We should streamline this at some point//
+
+/obj/item/clothing/accessory/permit/retail
+	name = "retail license"
+	desc = "A card indicating the owner is allowed to sell a controlled substance."
+	icon_state = "permit_3"
+	tiered = FALSE
+
+/obj/item/clothing/accessory/permit/retail/cannabis
+	name = "cannabis retail license"
+	desc = "A card indicating the owner is allowed to conduct retail sales of cannabis."
+	price_tag = 800
+
+/obj/item/clothing/accessory/permit/retail/tobacco
+	name = "tobacco retail license"
+	desc = "A card indicating the owner is allowed to conduct retail sales of tobacco."
+	price_tag = 400
+
+/obj/item/clothing/accessory/permit/retail/alcohol
+	name = "alcohol retail license"
+	desc = "A card indicating the owner is allowed to conduct retail sales of alcohol."
+	price_tag = 400
+
+/obj/item/clothing/accessory/permit/firearms
+	name = "firearms retail license"
+	desc = "A card indicating the owner is allowed to conduct retail sales of firearms."
+	price_tag = 400
+
+/obj/item/clothing/accessory/permit/production
+	name = "production license"
+	desc = "A card indicating the owner is allowed to produce and distribute a controlled substance to licensed industries."
+	icon_state = "permit_5"
+	tiered = FALSE
+
+/obj/item/clothing/accessory/permit/production/cannabis
+	name = "cannabis production license"
+	desc = "A card indicating the owner is allowed to grow and distribute cannabis to licensed industries."
+	price_tag = 800
+
+/obj/item/clothing/accessory/permit/production/blades
+	name = "bladed weapon production license"
+	desc = "A card indicating the owner is allowed to manufacture and distribute bladed weapons to licensed industries."
+	price_tag = 400
+
+/obj/item/clothing/accessory/permit/production/firearms
+	name = "firearms manufacturing license"
+	desc = "A card indicating the owner is allowed to manufacture and distribute firearms to licensed industries."
+	price_tag = 400
+
+/obj/item/weapon/storage/box/permits
+	name = "box of permits"
+	desc = "A box of business related permits."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "permit"
+	starts_with = list(
+	/obj/item/clothing/accessory/permit/retail/cannabis = 5,
+	/obj/item/clothing/accessory/permit/retail/tobacco = 5,
+	/obj/item/clothing/accessory/permit/retail/alcohol = 5,
+	/obj/item/clothing/accessory/permit/firearms = 5,
+	/obj/item/clothing/accessory/permit/production = 5,
+	/obj/item/clothing/accessory/permit/production/cannabis = 5,
+	/obj/item/clothing/accessory/permit/production/blades = 5,
+	/obj/item/clothing/accessory/permit/production/firearms = 5)

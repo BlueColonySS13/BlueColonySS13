@@ -447,6 +447,7 @@ SUBSYSTEM_DEF(jobs)
 		job.apply_fingerprints(H)
 
 		equip_passport(H)
+		equip_permits(H)
 		if(job.title != "Cyborg" && job.title != "AI")
 			H.equip_post_job()
 
@@ -776,3 +777,19 @@ SUBSYSTEM_DEF(jobs)
 	H.update_passport(pass)
 	H.equip_to_slot_or_del(pass, slot_in_backpack)
 
+/datum/controller/subsystem/jobs/proc/equip_permits(var/mob/living/carbon/human/H)
+	if(!H.mind || !H.mind.prefs) return
+
+	var/synth_type = H.get_FBP_type()
+
+	switch(synth_type)
+		if(FBP_NONE)
+			return
+		if(FBP_DRONE)
+			var/obj/item/clothing/accessory/permit/drone/permit = new/obj/item/clothing/accessory/permit/drone(get_turf(H))
+			permit.set_name(H.real_name)
+			H.equip_to_slot_or_del(permit, slot_in_backpack)
+/*		if(FBP_POSI) //Uncomment this when synths are mandated to have identification cards
+			var/obj/item/clothing/accessory/permit/synth/permit = new/obj/item/clothing/accessory/permit/synth(get_turf(H))
+			permit.set_name(H.real_name)
+			H.equip_to_slot_or_del(permit, slot_in_backpack)	*/
