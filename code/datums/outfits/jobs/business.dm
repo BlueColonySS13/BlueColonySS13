@@ -1,5 +1,6 @@
 /decl/hierarchy/outfit/job/business
 	name = OUTFIT_JOB_NAME("business")
+	pda_type = /obj/item/device/pda
 
 /decl/hierarchy/outfit/job/business/formal
 	name = OUTFIT_COSTUME("Formal")
