@@ -1,6 +1,6 @@
 /decl/hierarchy/outfit/job/business
 	name = OUTFIT_JOB_NAME("business")
-	pda_type = /obj/item/device/pda
+	pda_slot = slot_r_store
 
 /decl/hierarchy/outfit/job/business/formal
 	name = OUTFIT_COSTUME("Formal")
@@ -119,4 +119,9 @@
 	backpack = /obj/item/weapon/storage/backpack/medic
 	satchel_one = /obj/item/weapon/storage/backpack/satchel/med
 	messenger_bag = /obj/item/weapon/storage/backpack/messenger/med
+
+/decl/hierarchy/outfit/job/business/casual
+	name = OUTFIT_JOB_NAME("Business Casual")
+	uniform = /obj/item/clothing/under/sl_suit
+	shoes = /obj/item/clothing/shoes/laceup
 
