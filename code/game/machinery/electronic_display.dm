@@ -402,7 +402,7 @@
 		return
 
 	if(maint_mode)
-		if(istype(W, /obj/item))
+		if(istype(W, /obj/item) && !istype(W, /obj/item/pizzabox))
 			add_to_storage(W, user)
 			return TRUE
 

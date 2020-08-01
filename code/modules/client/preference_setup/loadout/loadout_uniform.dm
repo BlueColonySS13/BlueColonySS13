@@ -142,12 +142,12 @@
 /datum/gear/uniform/job_skirt/viro
 	display_name = "skirt, virologist"
 	path = /obj/item/clothing/under/rank/virologist/skirt
-	allowed_roles = list("Chief Medical Officer","Doctor")
+	allowed_roles = list("Chief Medical Officer","Physician")
 
 /datum/gear/uniform/job_skirt/med
 	display_name = "skirt, medical"
 	path = /obj/item/clothing/under/rank/medical/skirt
-	allowed_roles = list("Chief Medical Officer","Doctor","Chemist","Psychiatrist","Paramedic")
+	allowed_roles = list("Chief Medical Officer","Physician","Chemist","Psychiatrist","Paramedic")
 
 /datum/gear/uniform/job_skirt/sci
 	display_name = "skirt, scientist"
@@ -451,7 +451,7 @@
 /datum/gear/uniform/job_turtle/medical
 	display_name = "turtleneck, medical"
 	path = /obj/item/clothing/under/rank/medical/turtleneck
-	allowed_roles = list("Chief Medical Officer", "Paramedic", "Medical Doctor", "Psychologist", "Search and Rescue", "Chemist")
+	allowed_roles = list("Chief Medical Officer", "Paramedic", "Medical Physician", "Psychologist", "Search and Rescue", "Chemist")
 
 /datum/gear/uniform/mbill
 	display_name = "outfit, major bill's (Cargo)"

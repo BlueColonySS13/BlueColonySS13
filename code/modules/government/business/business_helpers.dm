@@ -8,7 +8,12 @@ var/global/list/business_outfits = list(
 	"Chaplain" = list("path" = /decl/hierarchy/outfit/job/business/priest),
 	"Explorer" = list("path" = /decl/hierarchy/outfit/job/business/explorer),
 	"Barber" = list("path" = /decl/hierarchy/outfit/job/business/barber),
-	"Mailman" = list("path" = /decl/hierarchy/outfit/job/business/mailman)
+	"Mailman" = list("path" = /decl/hierarchy/outfit/job/business/mailman),
+	"Doctor" = list("path" = /decl/hierarchy/outfit/job/business/doctor),
+	"Nurse" = list("path" = /decl/hierarchy/outfit/job/business/nurse),
+	"Scientist" = list("path" = /decl/hierarchy/outfit/job/business/scientist),
+	"Engineer" = list("path" = /decl/hierarchy/outfit/job/business/engineer),
+	"Business Casual" = list("path" = /decl/hierarchy/outfit/job/business/casual)
 
 )
 

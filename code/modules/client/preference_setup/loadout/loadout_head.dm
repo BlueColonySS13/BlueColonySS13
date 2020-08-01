@@ -39,7 +39,7 @@
 /datum/gear/head/medical_beret
 	display_name = "medical beret"
 	path = /obj/item/clothing/head/medical_beret
-	allowed_roles = list("Chief Medical Officer","Doctor","Chemist","Geneticist","Psychiatrist","Paramedic","Medical Intern")
+	allowed_roles = list("Chief Medical Officer","Physician","Chemist","Geneticist","Psychiatrist","Paramedic","Medical Intern")
 
 /datum/gear/head/beret/bsec
 	display_name = "beret, navy (officer)"
