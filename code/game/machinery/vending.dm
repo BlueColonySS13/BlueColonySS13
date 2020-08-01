@@ -1409,6 +1409,26 @@
 
 	vendor_department = DEPT_MAINTENANCE
 
+/obj/machinery/vending/mining
+	name = "Mining Supplies Vendor"
+	icon_state = "minvendor"
+	desc = "A mining supplies vendor, useful for the amateur miner."
+	products = list(/obj/item/weapon/storage/backpack/industrial = 5,
+					/obj/item/weapon/storage/backpack/satchel/eng = 5,
+					/obj/item/clothing/under/rank/miner = 5,
+					/obj/item/device/analyzer = 5,
+					/obj/item/weapon/storage/bag/ore = 5,
+					/obj/item/device/flashlight/lantern = 5,
+					/obj/item/weapon/shovel = 5,
+					/obj/item/weapon/pickaxe = 5,
+					/obj/item/clothing/glasses/material = 5,
+					/obj/item/clothing/suit/storage/hooded/wintercoat/miner = 5,
+					/obj/item/clothing/shoes/boots/winter/mining = 5,
+					/obj/item/stack/marker_beacon/thirty = 5
+					)
+	auto_price = TRUE
+	vendor_department = DEPT_PUBLIC
+
 /obj/machinery/vending/materials
 	name = "Material Supply Vendor"
 	icon_state = "minvendor"
