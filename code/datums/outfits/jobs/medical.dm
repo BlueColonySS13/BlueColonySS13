@@ -27,7 +27,7 @@
 		permit.set_name(H.real_name)
 
 /decl/hierarchy/outfit/job/medical/doctor
-	name = OUTFIT_JOB_NAME("Physician")
+	name = OUTFIT_JOB_NAME("Doctor")
 	uniform = /obj/item/clothing/under/rank/medical
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat
 	l_hand = /obj/item/weapon/storage/firstaid/regular
