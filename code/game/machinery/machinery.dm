@@ -124,6 +124,8 @@ Class Procs:
 		set_dir(d)
 	if(circuit)
 		circuit = new circuit(src)
+		if(dont_save)
+			circuit.dont_save = TRUE // no circuit stealing for free stuff.
 
 /obj/machinery/initialize()
 	. = ..()

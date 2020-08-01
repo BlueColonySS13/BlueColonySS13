@@ -1214,7 +1214,8 @@
 	/obj/item/device/taperecorder = 6,
 	/obj/item/device/tape = 4,
 	/obj/item/device/hailer = 6,
-	/obj/item/device/holowarrant = 8
+	/obj/item/device/holowarrant = 8,
+	/obj/item/device/breathalyzer = 8
 	)
 
 
@@ -1277,8 +1278,27 @@
 	/obj/item/device/camera = 6,
 	/obj/item/device/camera_film = 6,
 	/obj/item/device/taperecorder = 6,
-	/obj/item/weapon/reagent_containers/food/drinks/flask/detflask = 2
+	/obj/item/weapon/reagent_containers/food/drinks/flask/detflask = 2,
+	/obj/item/device/breathalyzer = 2
 	)
+
+/obj/machinery/vending/security/prisoner
+	name = "Prisoner Equipment"
+	desc = "A clothing vendor for prisoner supplies."
+	icon_state = "prisoner_vend"
+	icon_deny = "prisoner_vend-deny"
+	products = list(
+	/obj/item/clothing/under/color/orange/prisoner = 10,
+	/obj/item/clothing/under/color/white/prisoner = 10,
+	/obj/item/clothing/shoes/orange = 10,
+	/obj/item/clothing/shoes/black = 10,
+	/obj/item/weapon/handcuffs = 10,
+	/obj/item/weapon/handcuffs/legcuffs = 5,
+	/obj/item/weapon/handcuffs/legcuffs/ballchain = 3,
+	/obj/item/weapon/implantcase/tracking = 8,
+	/obj/item/weapon/implanter = 3
+	)
+
 
 
 /obj/machinery/vending/hydronutrients
@@ -1429,6 +1449,10 @@
 	auto_price = TRUE
 	vendor_department = DEPT_PUBLIC
 
+/obj/machinery/vending/mining/police
+	auto_price = FALSE
+	block_persistence = TRUE
+
 /obj/machinery/vending/materials
 	name = "Material Supply Vendor"
 	icon_state = "minvendor"
@@ -1467,8 +1491,8 @@
 
 /obj/machinery/vending/materials/maintenance
 	name = "Maintenance Materials Supply Vendor"
-	req_access = list(access_ce)
-	req_log_access = access_qm
+	req_access = list(access_engine)
+	req_log_access = access_ce
 	block_persistence = TRUE
 	charge_free_department = DEPT_MAINTENANCE
 	charge_paid_department = DEPT_MAINTENANCE
@@ -2251,6 +2275,7 @@
 	name = "BlastTech Defense Solutions Ballistics Vendor"
 	req_access = list(3)
 	products = list(/obj/item/weapon/gun/projectile/police = 6,
+					/obj/item/weapon/gun/launcher/grenade = 3,
 					/obj/item/ammo_magazine/m45 = 12,
 					/obj/item/weapon/gun/projectile/shotgun/pump/combat = 4,
 					/obj/item/weapon/storage/box/beanbags = 2,

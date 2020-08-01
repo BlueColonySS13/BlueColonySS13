@@ -120,6 +120,11 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	S["law_STIMM"] << law_STIMM
 	S["law_CYANIDE"] << law_CYANIDE
 	S["law_CHLORAL"] << law_CHLORAL
+	S["law_LSD"] << law_LSD
+	S["law_DMT"] << law_DMT
+	S["law_AYAHUASCA"] << law_AYAHUASCA
+	S["law_BATHSALTS"] << law_BATHSALTS
+	S["law_KROKODIL"] << law_KROKODIL
 
 	S["law_GUNS"] << law_GUNS
 	S["law_SMALLKNIVES"] << law_SMALLKNIVES
@@ -184,12 +189,16 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	S["law_STIMM"] >> law_STIMM
 	S["law_CYANIDE"] >> law_CYANIDE
 	S["law_CHLORAL"] >> law_CHLORAL
+	S["law_LSD"] >> law_LSD
+	S["law_DMT"] >> law_DMT
+	S["law_AYAHUASCA"] >> law_AYAHUASCA
+	S["law_BATHSALTS"] >> law_BATHSALTS
+	S["law_KROKODIL"] >> law_KROKODIL
 
 	S["law_GUNS"] >> law_GUNS
 	S["law_SMALLKNIVES"] >> law_SMALLKNIVES
 	S["law_LARGEKNIVES"] >> law_LARGEKNIVES
 	S["law_EXPLOSIVES"] >> law_EXPLOSIVES
-
 
 	S["voting_age"] >> voting_age
 	S["drinking_age"] >> drinking_age

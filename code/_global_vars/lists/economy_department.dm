@@ -58,7 +58,7 @@ GLOBAL_LIST_INIT(business_categories, list( // list of categories businesses can
 	CAT_XENOBIO
 ))
 
-GLOBAL_LIST_INIT(hidden_categories, list( // list of categories businesses can list themselves as
+GLOBAL_LIST_INIT(hidden_categories, list( // list of categories businesses cannot list themselves as
 	CAT_DRUGS,
 	CAT_BLACKMARKET,
 	CAT_PIRACY,
@@ -66,7 +66,8 @@ GLOBAL_LIST_INIT(hidden_categories, list( // list of categories businesses can l
 	CAT_POLITICALTRAD,
 	CAT_POLITICALREVO,
 	CAT_POLITICALCONSPIRACY,
-	CAT_POLITICSSTATE
+	CAT_POLITICSSTATE,
+	CAT_PRISON_MINING
 
 ))
 

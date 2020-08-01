@@ -16,6 +16,8 @@
 	var/initialize_loc = BP_TORSO
 	show_messages = 1
 
+	price_tag = 1000
+
 /obj/item/weapon/implant/proc/trigger(emote, source as mob)
 	return
 

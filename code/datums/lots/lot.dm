@@ -15,11 +15,12 @@
 
 //	var/company_name						// if owned by a company. (not implemented)
 
-	var/service_light_warning = 5000
-	var/service_charge_warning = 15000			// how much debt landlord is in before letters start arriving.
-	var/service_charge_possession = 20000  		//how much debt landlord is in with service charges before council come be a bitch.
+	var/service_light_warning = 500
+	var/service_charge_warning = 2000			// how much debt landlord is in before letters start arriving.
+	var/service_charge_possession = 5000  		//how much debt landlord is in with service charges before council come be a bitch.
 
 	var/required_deposit = 200
+	var/autorent_deposit = 0					// the minimum deposit needed to rent this property instantly without landlord approval
 
 	var/list/landlord_checkbook = list()		//changes every payroll
 

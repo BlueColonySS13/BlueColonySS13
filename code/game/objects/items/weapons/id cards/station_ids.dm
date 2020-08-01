@@ -246,8 +246,8 @@
 	secondary_color = rgb(223,255,255)
 
 /obj/item/weapon/card/id/medical/doctor
-	assignment = "Physician"
-	rank = "Physician"
+	assignment = "Doctor"
+	rank = "Doctor"
 	job_access_type = /datum/job/doctor
 
 /obj/item/weapon/card/id/medical/chemist

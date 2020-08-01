@@ -82,12 +82,13 @@
 
 /obj/turbolift_map_holder/police
 	name = "Police Station Elevator"
-	depth = 2
+	depth = 3
 	lift_size_x = 3
 	lift_size_y = 3
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 
 	areas_to_use = list(
+		/area/turbolift/police_lower_ground,
 		/area/turbolift/police_ground,
 		/area/turbolift/police_top
 		)

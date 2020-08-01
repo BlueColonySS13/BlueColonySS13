@@ -7,6 +7,9 @@ var/datum/antagonist/traitor/traitors
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	can_speak_aooc = TRUE
 
+	allow_lobbyjoin = TRUE
+	police_per_antag = 2
+
 /datum/antagonist/traitor/auto
 	id = MODE_AUTOTRAITOR
 	allow_latejoin = 1

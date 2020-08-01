@@ -24,6 +24,7 @@
 #define CAT_XENOBIO "Xeno Biology/Archeology/Flora"
 #define CAT_SOCIAL "Community/Social"
 #define CAT_MINING "Mining"
+#define CAT_PRISON_MINING "Prison Mining"
 #define CAT_GUNS "Guns and Ammunition"
 
 //black market categories

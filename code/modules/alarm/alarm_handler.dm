@@ -93,8 +93,9 @@
 	listeners -= object
 
 /datum/alarm_handler/proc/notify_listeners(var/alarm, var/was_raised)
-	for(var/listener in listeners)
-		call(listener, listeners[listener])(src, alarm, was_raised)
+//	for(var/listener in listeners)
+//		call(listener, listeners[listener])(src, alarm, was_raised)
+	return
 
 /datum/alarm_handler/proc/visible_alarms()
 	var/list/visible_alarms = new()

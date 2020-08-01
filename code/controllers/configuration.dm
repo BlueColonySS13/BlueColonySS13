@@ -273,6 +273,9 @@ var/list/gamemode_cache = list()
 	// allow businesses to be made?
 	var/allow_businesses = FALSE
 
+	// can antagonists join from the lobby?
+	var/allow_lobby_antagonists = FALSE
+
 
 
 /datum/configuration/New()
@@ -366,6 +369,9 @@ var/list/gamemode_cache = list()
 
 				if("allow_businesses")
 					config.allow_businesses = 1
+
+				if("allow_lobby_antagonists")
+					config.allow_lobby_antagonists = 1
 
 				if ("log_say")
 					config.log_say = 1

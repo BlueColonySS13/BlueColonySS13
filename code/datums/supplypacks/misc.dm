@@ -30,6 +30,8 @@
 	/obj/item/weapon/storage/pill_bottle/dice_nerd,
 	/obj/item/weapon/deck/cah,
 	/obj/item/weapon/deck/cah/black,
+	/obj/item/weapon/deck/tarot,
+	/obj/item/weapon/deck/cards,
 	)
 
 	cost = 50
@@ -230,7 +232,7 @@
 	name = "Umbrella crate"
 	containername = "Umbrella crate"
 	containertype = "/obj/structure/closet/crate"
-	cost = 15
+	cost = 45
 	contains = list(
 				/obj/item/weapon/melee/umbrella/random = 5
 				)
@@ -258,7 +260,7 @@
 	name = "calories scanners"
 	contains = list(/obj/item/device/calories_scanner = 5)
 
-	cost = 10
+	cost = 40
 	containertype = /obj/structure/closet/crate
 	containername = "calories scanners"
 

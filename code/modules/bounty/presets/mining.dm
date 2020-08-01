@@ -22,7 +22,7 @@
 
 	stacks_wanted = list(/obj/item/stack/material/plastic = 100)
 
-	department_reward = 200
+	department_reward = 300
 	individual_reward = 30
 
 	days_until_expiry = 2
@@ -36,7 +36,20 @@
 
 	stacks_wanted = list(/obj/item/stack/material/iron = 100)
 
-	department_reward = 150
+	department_reward = 250
+	individual_reward = 30
+
+	days_until_expiry = 2
+
+/datum/bounty/mining/steel_here
+	name = "Are You Steel Here?"
+	author = "Sister Rust"
+	description = " The Sisterhood of Mekhanikal Hands requests that you send steel to adorn the hair of our lovely goddess. Let us not ask questions \
+	as it will be all clear soon."
+
+	stacks_wanted = list(/obj/item/stack/material/steel = 200)
+
+	department_reward = 450
 	individual_reward = 30
 
 	days_until_expiry = 2
@@ -50,7 +63,7 @@
 
 	stacks_wanted = list(/obj/item/stack/material/uranium = 150)
 
-	department_reward = 500
+	department_reward = 800
 	individual_reward = 100
 
 /datum/bounty/mining/minting
@@ -74,7 +87,7 @@
 
 	stacks_wanted = list(/obj/item/stack/material/platinum = 50)
 
-	department_reward = 100
+	department_reward = 3000
 	individual_reward = 30
 
 /datum/bounty/mining/phoron_slime
@@ -85,5 +98,5 @@
 
 	stacks_wanted = list(/obj/item/stack/material/phoron = 100)
 
-	department_reward = 400
-	individual_reward = 120
+	department_reward = 5000
+	individual_reward = 220

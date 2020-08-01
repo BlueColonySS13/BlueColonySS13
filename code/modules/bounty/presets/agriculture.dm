@@ -1,18 +1,6 @@
 /datum/bounty/agriculture
 	category = CAT_FARM
 
-/datum/bounty/agriculture/vape_weed
-	name = "Vape Weed"
-	author = "Green eVape Pharma"
-	description = "Yes, we vape. We're looking to sell THC and CBD vape fluid, we're lacking in both at the moment and plan to make more. \
-	We'll shoot a decent sum if you send us 30 cannabis plants so we can make the stoners happy. Peace and, no deus strains, please."
-
-	grown_wanted = list("cannabis" = 30)
-
-	department_reward = 260
-	individual_reward = 40
-
-	days_until_expiry = 1
 
 /datum/bounty/agriculture/potato_famine
 	name = "Potato Famine"

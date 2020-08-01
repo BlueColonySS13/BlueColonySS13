@@ -43,7 +43,7 @@
 		bound_height = width * world.icon_size
 
 
-/obj/machinery/door/airlock/multi_tile/update_connections(var/propagate = 0)
+/obj/machinery/door/airlock/multi_tile/update_connections(var/propagate = 1)
 	var/dirs = 0
 
 	for(var/direction in GLOB.cardinal)

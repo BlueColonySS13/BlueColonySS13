@@ -63,7 +63,7 @@
 	desc = "The police department is funded by this account. Money made from fines are paid into this account."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_SECURITYSUPPLIES, SPEND_WEAPONS)
 	dept_color = "#7a2a2a"
-	categories = list(CAT_SEC)
+	categories = list(CAT_SEC, CAT_PRISON_MINING)
 
 /datum/department/healthcare
 	name = "Healthcare"
@@ -89,7 +89,7 @@
 	desc = "The factory and its employees are paid from this account."
 	starting_money = 500
 	dept_type = PRIVATE_DEPARTMENT
-	allowed_buy_types = list(SPEND_OFFICE, SPEND_MATERIALS, SPEND_MININGSUPPLIES)
+	allowed_buy_types = list(SPEND_OFFICE, SPEND_MININGSUPPLIES)
 	dept_color = "#7a4f33"
 	categories = list(CAT_MANUFACTURE, CAT_MINING)
 
