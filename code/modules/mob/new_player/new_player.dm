@@ -77,6 +77,8 @@
 	else
 		output += "<a href='byond://?src=\ref[src];manifest=1'>Citizen's Roster</A><br>"
 		output += "<p><a href='byond://?src=\ref[src];late_join=1'>Join Game!</A>"
+		if(config.allow_lobby_antagonists)
+			output += "<p><a href='byond://?src=\ref[src];join_as_antag=1'>Join As Antagonist</A>"
 
 
 	output += "<hr>Current character: <b>[client.prefs.real_name]</b>, [client.prefs.economic_status]<br>"
@@ -171,10 +173,18 @@
 	if(href_list["late_join"])
 
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-			usr << "<font color='red'>The round is either not ready, or has already finished...</font>"
+			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
 
 		LateChoices()
+
+
+	if(href_list["join_as_antag"])
+		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
+			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
+			return
+
+		JoinAsAntag()
 
 	if(href_list["manifest"])
 		ViewManifest()
