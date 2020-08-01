@@ -127,9 +127,9 @@ var/datum/planet/pollux/planet_pollux = null
 		WEATHER_CARPFALL 	= new /datum/weather/pollux/carpfall(),
 		WEATHER_CARPNADO 	= new /datum/weather/pollux/carpnado(),
 		WEATHER_BLOOD_MOON	= new /datum/weather/pollux/blood_moon(),
-		WEATHER_EMBERFALL	= new /datum/weather/pollux/emberfall(),
-		WEATHER_ASH_STORM	= new /datum/weather/pollux/ash_storm(),
-		WEATHER_FALLOUT	= new /datum/weather/pollux/fallout()
+//		WEATHER_EMBERFALL	= new /datum/weather/pollux/emberfall(),
+//		WEATHER_ASH_STORM	= new /datum/weather/pollux/ash_storm(),
+//		WEATHER_FALLOUT	= new /datum/weather/pollux/fallout()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_CLEAR		= 30,

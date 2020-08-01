@@ -18,27 +18,42 @@
 	var/answer = seconds_stored + amount * 10
 	if(answer >= seconds_in_day)
 		rollover(answer)
-	return new type(answer)
+		seconds_stored = 0
+	else
+		seconds_stored = answer
+
+	return TRUE
 
 /datum/time/proc/add_minutes(amount)
 	var/real_amount = amount * seconds_in_minute
 	var/answer = real_amount + seconds_stored
 	if(answer >= seconds_in_day)
 		rollover(answer)
-	return new type(answer)
+		seconds_stored = 0
+	else
+		seconds_stored = answer
+
+	return TRUE
+
 
 /datum/time/proc/add_hours(amount)
 	var/real_amount = amount * seconds_in_hour
 	var/answer = real_amount + seconds_stored
 	if(answer >= seconds_in_day)
 		rollover(answer)
-	return new type(answer)
+		seconds_stored = 0
+	else
+		seconds_stored = answer
+
+	return TRUE
+
 
 /datum/time/proc/rollover(time)
 	return max(time - seconds_in_day, 0)
 
 /datum/time/proc/make_random_time()
-	return new type(rand(0, seconds_in_day - 1))
+	seconds_stored = rand(0, seconds_in_day - 1)
+	return TRUE
 
 // This works almost exactly like time2text.
 // The advantage of this is that it can handle time systems beyond 24h.
