@@ -132,32 +132,32 @@
 /datum/gear/accessory/brown_vest
 	display_name = "webbing, brown"
 	path = /obj/item/clothing/accessory/storage/brown_vest
-	allowed_roles = list("Maintenance Worker","Maintenance Director","Chief Engineer","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Medical Director","Doctor")
+	allowed_roles = list("Maintenance Worker","Maintenance Director","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Medical Director","Doctor")
 
 /datum/gear/accessory/black_vest
 	display_name = "webbing, black"
 	path = /obj/item/clothing/accessory/storage/black_vest
-	allowed_roles = list("Maintenance Worker","Maintenance Director","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Chief Medical Officer","Doctor")
+	allowed_roles = list("Maintenance Worker","Maintenance Director","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Medical Director","Doctor")
 
 /datum/gear/accessory/white_vest
 	display_name = "webbing, white"
 	path = /obj/item/clothing/accessory/storage/white_vest
-	allowed_roles = list("Maintenance Worker","Maintenance Director","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Chief Medical Officer","Doctor")
+	allowed_roles = list("Maintenance Worker","Maintenance Director","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Medical Director","Doctor")
 
 /datum/gear/accessory/brown_drop_pouches
 	display_name = "drop pouches, brown"
 	path = /obj/item/clothing/accessory/storage/brown_drop_pouches
-	allowed_roles = list("Maintenance Worker","Maintenance Director","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Chief Medical Officer","Doctor")
+	allowed_roles = list("Maintenance Worker","Maintenance Director","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Medical Director","Doctor")
 
 /datum/gear/accessory/black_drop_pouches
 	display_name = "drop pouches, black"
 	path = /obj/item/clothing/accessory/storage/black_drop_pouches
-	allowed_roles = list("Maintenance Worker","Maintenance Director","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Chief Medical Officer","Doctor")
+	allowed_roles = list("Maintenance Worker","Maintenance Director","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Medical Director","Doctor")
 
 /datum/gear/accessory/white_drop_pouches
 	display_name = "drop pouches, white"
 	path = /obj/item/clothing/accessory/storage/white_drop_pouches
-	allowed_roles = list("Maintenance Worker","Maintenance Director","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Chief Medical Officer","Doctor")
+	allowed_roles = list("Maintenance Worker","Maintenance Director","Police Officer","Detective","Chief of Police","Prison Warden","Paramedic","Medical Director","Doctor")
 
 /datum/gear/accessory/fannypack
 	display_name = "fannypack selection"
@@ -236,7 +236,7 @@
 /datum/gear/accessory/stethoscope
 	display_name = "stethoscope"
 	path = /obj/item/clothing/accessory/stethoscope
-	allowed_roles = list("Medical Director","Physician","Chemist","Psychiatrist","Paramedic")
+	allowed_roles = list("Medical Director","Doctor","Chemist","Psychiatrist","Paramedic")
 
 /datum/gear/accessory/locket
 	display_name = "locket"
