@@ -13,7 +13,7 @@
 	selection_color = "#8E2929"
 	idtype = /obj/item/weapon/card/id/security/head
 	req_admin_notify = 1
-	wage = 400
+	wage = 480
 	access = list(access_security, access_medical, access_warrant, access_bodyguard, access_eva, access_sec_doors, access_brig, access_armory,
 			            access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
 			            access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway, access_external_airlocks)
@@ -28,6 +28,10 @@
 
 	clean_record_required = TRUE
 
+	description = "Your job is to ensure the police unit runs correctly, you should make sure that police officers are enforcing the law correctly and \
+	not breaking SOP. You authorize warrants and make sure that the police departments runs like a well-oiled cog."
+
+	duties = list("Keep the police officers in line", "Communicate with the warden", "Try not to get caught drinking")
 
 /datum/job/hos/get_job_email()
 	return using_map.police_email
@@ -44,7 +48,7 @@
 	supervisors = "the chief of police"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/warden
-	wage = 295
+	wage = 340
 	access = list(access_security, access_bodyguard, access_warrant, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_morgue, access_external_airlocks)
 	minimal_access = list(access_security, access_warrant, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 5
@@ -54,6 +58,13 @@
 	alt_titles = list("Correctional Officer", "Brig Attendant")
 
 	clean_record_required = TRUE
+
+
+	description = "Your job? Look after the criminals of this society. Keep an eye on them and try not to leave the prison area unless you really, really need \
+	to. Your responsibility to also maintain the prison and make sure no one is breaking in or out, You make sure prisoners are fed, get their visitation met, \
+	and aren't being abused by police while in your custody. (Or not.)"
+
+	duties = list("Stop prisoners from breaking out", "Fall asleep", "Chase after escaped prisoners")
 
 /datum/job/warden/get_job_email()
 	return using_map.police_email
@@ -72,7 +83,7 @@
 	idtype = /obj/item/weapon/card/id/security/detective
 	access = list(access_security, access_sec_doors, access_forensics_lockers, access_medical, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks, access_medical)
 	minimal_access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
-	wage = 285
+	wage = 340
 	minimal_player_age = 3
 	minimum_character_age = 25
 
@@ -86,7 +97,7 @@
 	investigate the evidence and scene and compile it for the courts, even if it takes multiple shifts to get it done. \
 	You also have a gun ment for self-defence, what a meme."
 
-	duties = list("Arrest criminals", "Beg higher-ups for warrants", "Cry over arrest reports", "Empty the donut box", "Survive")
+	duties = list("Investigate crimes", "Don't get your own prints and fibers on the evidence", "Drink whiskey", "Compile reports", "Blotch the entire thing anyway")
 
 
 /datum/job/detective/get_job_email()
@@ -104,7 +115,7 @@
 	supervisors = "the chief of police"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/officer
-	wage = 200
+	wage = 300
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3

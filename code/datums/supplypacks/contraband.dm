@@ -14,7 +14,7 @@
 			)
 
 	name = "Contraband crate"
-	cost = 250
+	cost = 850
 	containertype = /obj/structure/closet/crate
 	containername = "Unlabeled crate"
 	contraband = 1
@@ -30,7 +30,7 @@
 			/obj/item/weapon/grenade/smokebomb = 4,
 			/obj/item/weapon/grenade/chem_grenade/incendiary
 			)
-	cost = 500
+	cost = 900
 	containertype = /obj/structure/closet/crate
 	containername = "Special Ops crate"
 	contraband = 1
@@ -92,7 +92,7 @@
 					/obj/item/ammo_magazine/clip/c12g
 					)
 			)
-	cost = 3500 //very expensive to curb abuse at the factory
+	cost = 6500 //very expensive to curb abuse at the factory
 	contraband = 1
 	containertype = /obj/structure/largecrate/suspicious
 	containername = "Suspicious crate"

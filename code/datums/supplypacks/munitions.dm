@@ -21,7 +21,7 @@
 			/obj/item/weapon/gun/projectile/colt/detective = 2,
 			/obj/item/weapon/storage/box/flashbangs = 2
 			)
-	cost = 195
+	cost = 1950
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Security equipment crate"
 	access = access_security

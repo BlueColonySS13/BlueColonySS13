@@ -12,21 +12,21 @@
 /datum/supply_pack/materials/metal50
 	name = "150 metal sheets"
 	contains = list(/obj/fiftyspawner/steel = 3)
-	cost = 60
+	cost = 90
 	containertype = /obj/structure/closet/crate
 	containername = "Metal sheets crate"
 
 /datum/supply_pack/materials/glass50
 	name = "150 glass sheets"
 	contains = list(/obj/fiftyspawner/glass = 3)
-	cost = 60
+	cost = 70
 	containertype = /obj/structure/closet/crate
 	containername = "Glass sheets crate"
 
 /datum/supply_pack/materials/plastic50
 	name = "150 plastic sheets"
 	contains = list(/obj/fiftyspawner/plastic = 3)
-	cost = 60
+	cost = 70
 	containertype = /obj/structure/closet/crate
 	containername = "Plastic sheets crate"
 
@@ -40,7 +40,7 @@
 /datum/supply_pack/materials/marble
 	name = "50 marble slabs"
 	contains = list(/obj/fiftyspawner/marble = 3)
-	cost = 120
+	cost = 190
 	containername = "marble slabs crate"
 
 /datum/supply_pack/materials/carpet

@@ -35,6 +35,8 @@ var/datum/antagonist/thug/thugs
 	var/accessory
 	var/weapon
 
+	allow_lobbyjoin = TRUE
+
 /datum/antagonist/thug/New()
 	..()
 	pick_outfit()
@@ -91,9 +93,10 @@ var/datum/antagonist/thug/thugs
 	if(!..())
 		return
 
-	player << "<span class='danger'>You remember that you brought your uniform and weapons in a box with you - as discussed from a meeting with your gang...</span>"
+	to_chat(player, "<span class='danger'>You remember that you brought your uniform and weapons in a box with you - as discussed from a meeting with your gang...</span>")
 
 	var/obj/item/weapon/storage/box/kit = new(get_turf(player))
+	kit.dont_save = TRUE
 	kit.max_storage_space = 35
 	kit.max_w_class = 8
 	kit.name = "large strange kit"

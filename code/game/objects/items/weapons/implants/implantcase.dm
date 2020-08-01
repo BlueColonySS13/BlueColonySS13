@@ -10,6 +10,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_TINY
 	var/obj/item/weapon/implant/imp = null
+	price_tag = 1000
 
 /obj/item/weapon/implantcase/proc/update()
 	if (src.imp)
@@ -66,6 +67,7 @@
 	name = "glass case - 'tracking'"
 	desc = "A case containing a tracking implant."
 	icon_state = "implantcase-b"
+
 
 /obj/item/weapon/implantcase/tracking/New()
 	src.imp = new /obj/item/weapon/implant/tracking( src )

@@ -52,10 +52,42 @@
 	// turf animation
 	var/atom/movable/overlay/c_animation = null
 
+	var/can_knock = TRUE
+
 /obj/machinery/door/on_persistence_load()
 	update_connections(1)
 	update_icon()
 
+
+/obj/machinery/door/verb/knock(mob/user)
+	set name = "Knock Door"
+	set desc = "Knocks the door to see if someone will open it."
+	set category = "Object"
+	set src in view(1)
+
+	if(!user || user.stat || user.restrained() || user.lying || !istype(user, /mob/living))
+		to_chat(user, "<span class='warning'>You can't do that.</span>")
+		return
+
+	if(!Adjacent(user))
+		to_chat(user, "You can't reach it.")
+		return
+
+	if(!can_knock)
+		to_chat(user, "<span class='notice'>You can't seem to knock on \the [src]...</span>")
+		return
+
+	to_chat(user, "<span class='notice'>You knock on \the [src].</span>")
+
+
+	var/sound_volume = 50
+	if(!(user.a_intent == "harm"))
+		visible_message("<span class='notice'><b>You hear a knock on the \the [src].</b></span>")
+	else
+		visible_message("<span class='danger'><b>You hear a very [pick("urgent", "loud", "persistent")] knock on the \the [src]!</b></span>")
+		sound_volume = 90
+
+	playsound(src.loc, 'sound/effects/door_knocking.ogg', sound_volume, 0)
 
 /obj/machinery/door/attack_generic(var/mob/user, var/damage)
 	if(isanimal(user))
@@ -64,7 +96,7 @@
 		if(!A.can_destroy_structures())
 			damage = 0
 		if(damage >= 10)
-			visible_message("<span class='danger'>\The [user] smashes into the [src]!</span>")
+			visible_message("<span class='danger'>\The [user] smashes into \the [src]!</span>")
 
 			take_damage(damage)
 		else
@@ -244,10 +276,10 @@
 
 	if(istype(I, /obj/item/stack/material) && I.get_material_name() == src.get_material_name())
 		if(stat & BROKEN)
-			user << "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>"
+			to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
 			return
 		if(health >= maxhealth)
-			user << "<span class='notice'>Nothing to fix!</span>"
+			to_chat(user, "<span class='notice'>Nothing to fix!</span>")
 			return
 		if(!density)
 			user << "<span class='warning'>\The [src] must be closed before you can repair it.</span>"

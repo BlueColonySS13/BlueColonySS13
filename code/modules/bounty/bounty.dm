@@ -241,11 +241,11 @@
 
 	D.adjust_funds(final_pay, "Bounty Completion: [name] by [author][D.business_taxed ? " ([cash2text( tax_amt, FALSE, TRUE, TRUE )] tax)" : ""]")
 	if(author_department)
-		var/datum/department/DA = dept_by_id(source_department)
+		var/datum/department/DA = dept_by_id(author_department)
 		if(!DA) return
 		DA.adjust_funds(-department_reward, "Bounty Completion: [name] by [author]")
 
-	if(LAZYLEN(contributors_bankids))
+	if(LAZYLEN(contributors_bankids) && individual_reward)
 		var/full_no = 0
 		var/inv_money = 0
 		for(var/C in contributors_bankids)
