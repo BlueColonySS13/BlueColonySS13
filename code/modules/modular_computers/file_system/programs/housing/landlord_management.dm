@@ -921,6 +921,10 @@
 					alert("Due to conflict of interest, as a council member you cannot handle lots that you are a tenant or landlord of.")
 					return
 
+				if(!(LOT.get_landlord_balance() >= LOT.service_charge_possession))
+					error_msg = "This lot has not accured enough debt to be eligible for reposession. It must be -[LOT.service_charge_possession]CR and under."
+					alert("This lot has not accured enough debt to be eligible for reposession. It must be -[LOT.service_charge_possession]CR and under.")
+					return
 
 				LOT.add_note(full_name, "Repossessed [LOT.name] as a tenant from [LOT.name] - [cash2text( LOT.get_landlord_balance(), FALSE, TRUE, TRUE )] processed to landlord's account",usr)
 				LOT.repossess_lot()

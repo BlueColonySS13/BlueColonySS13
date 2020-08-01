@@ -3259,7 +3259,7 @@
 	drop_sound = 'sound/items/drop/box.ogg'
 
 /obj/item/pizzabox/on_persistence_load()
-	var/pizza_inside = locate(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza in contents)
+	var/pizza_inside = locate(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza) in contents
 
 	if(!pizza_inside)
 		if(pizza)

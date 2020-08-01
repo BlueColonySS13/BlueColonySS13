@@ -30,7 +30,7 @@
 	if(grass_chance && prob(grass_chance))
 		var/has_grass = FALSE
 
-		if (locate(/obj/structure/flora in src))
+		if (locate(/obj/structure/flora) in src)
 			has_grass = TRUE
 
 		if(!has_grass)

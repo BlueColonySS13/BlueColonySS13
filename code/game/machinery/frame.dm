@@ -235,6 +235,8 @@
 			var/obj/O = new A
 			components += O
 
+	update_icon()
+
 	return TRUE
 
 
