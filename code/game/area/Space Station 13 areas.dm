@@ -1991,6 +1991,10 @@ area/space/atmosalert()
 		temp_timer.releasetime = 1
 	..()
 
+/area/security/mine
+	name = "\improper Prison Mining Area"
+	icon_state = "security"
+
 /area/security/warden
 	name = "\improper Police Station - Warden's Office"
 	icon_state = "Warden"

@@ -165,6 +165,9 @@
 	data["largeknives_status"] = persistent_economy.law_LARGEKNIVES
 	data["explosives_status"] = persistent_economy.law_EXPLOSIVES
 
+	//wages
+	data["min_wage"] = persistent_economy.minimum_wage
+
 	//taxes
 	data["medical_tax"] = persistent_economy.medical_tax * 100
 	data["weapons_tax"] = persistent_economy.weapons_tax * 100
@@ -213,6 +216,19 @@
 	if(href_list["taxes"])
 		. = 1
 		index = 2
+
+
+	if(href_list["adjust_minimum_wage"])
+		. = 1
+
+		var/min_wage = input(usr, "Please input the new minimum wage. (Min 1 - Max 100)", "Minimum Wage", persistent_economy.minimum_wage) as num|null
+
+		if(!min_wage || (min_wage > 100) || (0 > min_wage))
+			error_msg = "This wage range is incorrect. You must enter a decimal between 1 and 100."
+			return
+
+		persistent_economy.minimum_wage = min_wage
+
 
 
 	if(href_list["adjust_wc_taxes"])

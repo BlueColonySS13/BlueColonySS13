@@ -24,7 +24,7 @@
 			/obj/item/device/assembly/signaler = 3,
 			/obj/item/device/transfer_valve = 3
 			)
-	cost = 10
+	cost = 100
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "Phoron assembly crate"
 	access = access_tox_storage
@@ -39,7 +39,7 @@
 			/obj/item/seeds/random = 6,
 			/obj/item/seeds/kudzuseed
 			)
-	cost = 15
+	cost = 150
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Exotic Seeds crate"
 	access = access_hydroponics

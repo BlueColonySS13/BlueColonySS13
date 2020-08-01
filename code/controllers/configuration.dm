@@ -273,6 +273,13 @@ var/list/gamemode_cache = list()
 	// allow businesses to be made?
 	var/allow_businesses = FALSE
 
+	// redbot settings
+	var/comms_key = ""
+	var/bot_ip = ""
+
+	// can antagonists join from the lobby?
+	var/allow_lobby_antagonists = FALSE
+
 
 
 /datum/configuration/New()
@@ -366,6 +373,15 @@ var/list/gamemode_cache = list()
 
 				if("allow_businesses")
 					config.allow_businesses = 1
+
+				if("comms_key")
+					config.comms_key = text2num(value)
+
+				if("bot_ip")
+					config.bot_ip = text2num(value)
+
+				if("allow_lobby_antagonists")
+					config.allow_lobby_antagonists = 1
 
 				if ("log_say")
 					config.log_say = 1

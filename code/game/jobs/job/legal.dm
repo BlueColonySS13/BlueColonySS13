@@ -12,7 +12,7 @@
 	supervisors = "government officials and the president"
 	selection_color = "#1D1D4F"
 	idtype = /obj/item/weapon/card/id/heads/judge
-	wage = 350
+	wage = 550
 	access = list(access_judge, access_warrant, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
 	minimal_access = list(access_judge, access_warrant, access_sec_doors, access_heads, access_legal)
 	minimal_player_age = 14
@@ -41,7 +41,7 @@
 	supervisors = "the judge"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/prosecutor
-	wage = 200
+	wage = 230
 	access = list(access_prosecutor, access_sec_doors, access_maint_tunnels, access_heads, access_legal, access_warrant)
 	minimal_access = list(access_prosecutor, access_sec_doors, access_heads, access_legal, access_warrant)
 	minimal_player_age = 14

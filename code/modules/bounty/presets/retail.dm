@@ -24,7 +24,7 @@
 
 	items_wanted = list(/obj/item/weapon/storage/toolbox = 1)
 
-	department_reward = 30
+	department_reward = 90
 	individual_reward = 5
 
 	days_until_expiry = 2
@@ -68,7 +68,7 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/glass/bucket = 1)
 
-	department_reward = 10
+	department_reward = 70
 	individual_reward = 5
 
 	days_until_expiry = 1
@@ -80,7 +80,7 @@
 
 	items_wanted = list(/obj/item/weapon/extinguisher = 1)
 
-	department_reward = 15
+	department_reward = 75
 	individual_reward = 8
 
 	days_until_expiry = 1
@@ -94,7 +94,7 @@
 
 	items_wanted = list(/obj/item/weapon/picket_sign = 5)
 
-	department_reward = 45
+	department_reward = 95
 	individual_reward = 25
 
 	days_until_expiry = 1
@@ -144,7 +144,7 @@
 
 	items_wanted = list(/obj/item/weapon/soap = 1)
 
-	department_reward = 20
+	department_reward = 60
 	individual_reward = 15
 
 	days_until_expiry = 1
@@ -158,7 +158,7 @@
 
 	items_wanted = list(/obj/item/weapon/beartrap = 3)
 
-	department_reward = 150
+	department_reward = 350
 	individual_reward = 55
 
 	days_until_expiry = 1

@@ -40,6 +40,7 @@
 	name = "court injunction manager"
 	expense_type = /datum/expense/law
 	expense_limit = 500000
+	req_access = list(access_judge)
 
 /obj/machinery/expense_manager/attackby(obj/item/I, mob/user)
 

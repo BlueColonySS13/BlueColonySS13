@@ -327,7 +327,7 @@ datum/preferences
 	else if(href_list["deleteslot"])
 		if("No" == alert("This will delete the current slot. If you do this, you WON'T be able to play this character again. Continue?", "Delete current slot?", "No", "Yes"))
 			return 0
-		if("No" == alert("Just making sure - If there is something you need adjusted, contact an admin instead of deleting this slot. This will make a character with this name unplayable and can be treated as permadeath. Continue?", "Delete current slot?", "No", "Yes"))
+		if("No" == alert("Just making sure - If there is something you need adjusted, contact an admin instead of deleting this slot. This will make a character with this name unplayable and can be treated as permadeath, the game won't allow you to play a character with the same name. Continue?", "Delete current slot?", "No", "Yes"))
 			return 0
 		delete_character()
 	else

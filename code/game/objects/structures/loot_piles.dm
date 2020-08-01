@@ -192,7 +192,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/weapon/caution/cone,
 		/obj/item/weapon/card/emag_broken,
 		/obj/item/device/camera,
-		/obj/item/device/pda,
+//		/obj/item/device/pda,
 		/obj/item/device/radio/headset,
 		/obj/item/device/paicard,
 		/obj/item/clothing/head/tinfoil

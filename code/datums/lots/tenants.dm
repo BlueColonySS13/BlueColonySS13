@@ -11,6 +11,8 @@
 	//applicant stuff
 	var/agreed_deposit
 
+	var/application_note = ""
+
 // Future: Allow landlords to discriminate against their tenants.
 /*
 	var/has_criminal_record = FALSE

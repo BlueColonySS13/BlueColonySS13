@@ -118,6 +118,7 @@
 		page_msg = "This is the Landlord Management Portal, [full_name].<br>\
 		You can buy new properties, or sell existing ones. Please select from the menu."
 
+
 	else if(index == 2) // Buy Property Page
 		page_msg = "Here is a list of available properties that you may buy. Please select from the list.<br>"
 
@@ -153,6 +154,9 @@
 				var/datum/tenant/your_landlord = L.get_landlord()
 				page_msg += "<font color=\"yellow\"><b>Lot Name:</b></font> [L.name]<br>"
 				page_msg += "<font color=\"yellow\">[L.desc]</font><br>"
+				page_msg += "<font color=\"yellow\"><b>Minimum Deposit:</b></font> [cash2text( L.required_deposit, FALSE, TRUE, TRUE )]<br>"
+				if(L.autorent_deposit)
+					page_msg += "<font color=\"yellow\"><b>Auto-Rent :</b></font> [cash2text( L.autorent_deposit, FALSE, TRUE, TRUE )]<br>"
 				page_msg += "<font color=\"yellow\"><b>Status:</b></font> [L.get_status()]<br>"
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
 				page_msg += "Lot has [L.tenancy_no_info()] tenants. Profit: [cash2text( L.get_approx_earnings(), FALSE, TRUE, TRUE )] per payroll.<br>"
@@ -189,6 +193,8 @@
 						page_msg += "<a href='?src=\ref[src];choice=rent_lot;lot=\ref[L]'>Put up for Renting</a> </font>"
 
 					page_msg += "<a href='?src=\ref[src];choice=set_rent;lot=\ref[L]'>Set Rent</a> </font>"
+					page_msg += "<a href='?src=\ref[src];choice=set_autorent;lot=\ref[L]'>Set Auto-rent Minimum</a> </font>"
+
 					page_msg += "<a href='?src=\ref[src];choice=set_price;lot=\ref[L]'>Set Price</a> </font>"
 
 					page_msg += "<a href='?src=\ref[src];choice=rename_lot;lot=\ref[L]'>Rename Lot</a> </font>"
@@ -243,7 +249,12 @@
 				page_msg += "<font color=\"yellow\"><b>ID:</b></font> \"[L.id]\"<br>"
 				page_msg += "<font color=\"yellow\"><b>Rent:</b></font> [cash2text( L.get_rent(), FALSE, TRUE, TRUE )] (per payroll)<br>"
 				page_msg += "Lot has [L.tenancy_no_info()] tenants.<br>"
-				page_msg += "<font color=\"yellow\"><b>Minimum Required Deposit:</b></font> [cash2text( L.required_deposit, FALSE, TRUE, TRUE )]<br><br>"
+				page_msg += "<font color=\"yellow\"><b>Minimum Required Deposit:</b></font> [cash2text( L.required_deposit, FALSE, TRUE, TRUE )]<br>"
+				if(L.autorent_deposit)
+					page_msg += "<font color=\"yellow\"><b>This property is eligible for instant renting if deposit is [cash2text( L.autorent_deposit, FALSE, TRUE, TRUE )] and over.</b></font> <br>"
+
+				page_msg += "<br>"
+
 
 
 				if(!(unique_id == L.get_landlord_uid() ))
@@ -308,6 +319,9 @@
 					page_msg += "<font color=\"yellow\"><b>Applicant Name:</b></font> [A.name]<br>"
 					page_msg += "<font color=\"yellow\"><b>Email:</b></font> [A.email]<br>"
 					page_msg += "<font color=\"yellow\"><b>Offered Deposit:</b></font> [cash2text( A.agreed_deposit, FALSE, TRUE, TRUE )]<br>"
+					if(A.application_note)
+						page_msg += "<font color=\"yellow\"><b>Application Note:</b></font> [A.application_note]<br>"
+
 
 					page_msg += "<a href='?src=\ref[src];choice=accept_app;lot=\ref[L];applicant=\ref[A]'>Accept</a> "
 					page_msg += "<a href='?src=\ref[src];choice=reject_app;lot=\ref[L];applicant=\ref[A]'>Reject</a>"
@@ -347,13 +361,19 @@
 			page_msg = "There appears to be no lot selected.<br>"
 		else
 			var/datum/lot/L = current_lot
+			var/status = L.get_status()
 
 			page_msg = "<h3>[L.name]</h3>"
 			page_msg += "<b>ID</b>:<br> [L.id]<br>"
 			page_msg += "<b>Name</b>:<br> [L.name]<br>"
 			page_msg += "<b>Description</b>:<br> [L.desc]<br>"
-			page_msg += "<b>Status</b>:<br> [L.get_status()]<br>"
+			page_msg += "<b>Status</b>:<br> [status]<br>"
 			page_msg += "<b>Owner</b>:<br> [L.get_landlord_name()]<br>"
+
+			if(status == FOR_RENT)
+				page_msg += "<font color=\"yellow\"><b>Minimum Required Deposit:</b></font> [cash2text( L.required_deposit, FALSE, TRUE, TRUE )]<br>"
+				if(L.autorent_deposit)
+					page_msg += "<font color=\"yellow\"><b>This property is eligible for instant renting if deposit is [cash2text( L.autorent_deposit, FALSE, TRUE, TRUE )] and over.</b></font> <br>"
 
 			if(L.landlord)
 				page_msg += "<b>Contact Email:</b> [L.landlord.email]<br>"
@@ -517,6 +537,28 @@
 				LOT.add_note(full_name, "Changed [LOT.name]'s price from [LOT.get_price()]CR to [lot_new_price]CR.",usr)
 
 				LOT.price = lot_new_price
+
+
+			if("set_autorent")
+				var/L = locate(href_list["lot"])
+
+				var/datum/lot/LOT = L
+
+				if(!LOT)
+					return
+
+				var/lot_new_autorent = input("Auto-renting occurs when you set an minimum deposit amount needed to automatically rent. This must be higher than your minimum deposit.", "Set Autorent", LOT.autorent_deposit) as num|null
+
+				if(0 > lot_new_autorent || (LOT.required_deposit > lot_new_autorent))
+					return
+
+				if("No" == alert("Set the autorent of [LOT.name] to [lot_new_autorent]CR?", "Autorent Lot", "No", "Yes"))
+					return
+
+				LOT.add_note(full_name, "Changed [LOT.name]'s minimum deposit for autorent from [LOT.autorent_deposit]CR to [lot_new_autorent]CR.",usr)
+
+				LOT.autorent_deposit = lot_new_autorent
+
 
 
 			if("set_rent")
@@ -879,6 +921,10 @@
 					alert("Due to conflict of interest, as a council member you cannot handle lots that you are a tenant or landlord of.")
 					return
 
+				if(!(LOT.get_landlord_balance() >= LOT.service_charge_possession))
+					error_msg = "This lot has not accured enough debt to be eligible for reposession. It must be -[LOT.service_charge_possession]CR and under."
+					alert("This lot has not accured enough debt to be eligible for reposession. It must be -[LOT.service_charge_possession]CR and under.")
+					return
 
 				LOT.add_note(full_name, "Repossessed [LOT.name] as a tenant from [LOT.name] - [cash2text( LOT.get_landlord_balance(), FALSE, TRUE, TRUE )] processed to landlord's account",usr)
 				LOT.repossess_lot()
@@ -968,6 +1014,10 @@
 					error_msg = "You are already a tenant."
 					return
 
+				var/reason = sanitize(input(usr, "Please enter your reasons for renting this property.", "Pay Rent") as message, MAX_NAME_LEN)
+				if(!reason)
+					return
+
 				var/offered_deposit = input(usr, "Enter your offered deposit. You can leave this as default, however a higher deposit might get you \
 				better chances at being picked. The landlord will review all applications. \
 				Please note: Your bank details will be stored, if successful, a deposit charge will be applied \
@@ -976,7 +1026,7 @@
 				if(!offered_deposit)
 					return
 
-				if(offered_deposit > LOT.required_deposit)
+				if(LOT.required_deposit > offered_deposit)
 					error_msg = "You must enter a number equal to or higher than the minimum deposit!"
 					return
 
@@ -1008,7 +1058,10 @@
 					return
 
 
-				LOT.add_applicant(unique_id, full_name, I.associated_account_number, email, offered_deposit)
+				var/datum/tenant/app = LOT.add_applicant(unique_id, full_name, I.associated_account_number, email, offered_deposit, reason)
+
+				if(app && (offered_deposit >= LOT.autorent_deposit))
+					LOT.accept_rentee(app) // woohoo instant accept!
 
 				clear_data()
 				index = 1
@@ -1076,28 +1129,7 @@
 					error_msg = "Unfortunately, the applicant's bank account cannot currently be charged at this time. This may be due to issues with the applicant's bank account."
 					return
 
-				var/datum/computer_file/data/email_account/council_email = get_email(using_map.council_email)
-				var/datum/computer_file/data/email_message/message = new/datum/computer_file/data/email_message()
-				var/eml_cnt = "Dear [applicant.name], \[br\]"
-				eml_cnt += "Congratulations, you been successful for your application for renting the property '[LOT.name]'. \
-				You will now be able to start using the lot commencing onwards. \[br\] \
-				Your rent will be [cash2text( LOT.get_rent(), FALSE, TRUE, TRUE )] per payroll. Your landlord is [LOT.get_landlord_name()] may contact them on [LOT.landlord.email] \
-				for any enquiries. Best wishes,\[br\] City Council \[br\] Do not reply: This is an automated email."
-
-				message.stored_data = eml_cnt
-				message.title = "Your New Property: [LOT.name] - Acceptance"
-				message.source = "noreply@nanotrasen.gov.nt"
-
-				council_email.send_mail(applicant.email, message)
-
-				LOT.tenants += applicant
-				LOT.applied_tenants -= applicant
-
-				applicant.account_balance = applicant.agreed_deposit
-
-				LOT.tenants_wanted = FALSE
-
-				LOT.add_note(full_name, "Accepted [LOT.name]'s tenancy application for [applicant.name]",usr)
+				LOT.accept_rentee(applicant)
 
 			if("pay_rent") // paying the rent
 				var/L = locate(href_list["lot"])

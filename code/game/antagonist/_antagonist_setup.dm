@@ -68,3 +68,12 @@ var/global/list/antag_names_to_ids = list()
 		if(player in antag.pending_antagonists)
 			return 1
 	return 0
+
+
+/proc/get_lobbyjoin_antagonism()
+	var/list/lobbyjoin_antags = list()
+	var/datum/antagonist/antag = all_antag_types
+	if(antag && antag.allow_lobbyjoin)
+		lobbyjoin_antags += antag
+
+	return lobbyjoin_antags

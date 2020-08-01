@@ -93,16 +93,23 @@
 
 /area/turbolift/police_top
 	name = "lift (upper police station)"
-	lift_floor_label = "Floor 2"
+	lift_floor_label = "Floor 1"
 	lift_floor_name = "Upper Police Station"
 	lift_announce_str = "Lift arriving at the upper police station, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/police_ground
 	name = "lift (police station main)"
-	lift_floor_label = "Floor 1"
-	lift_floor_name = "Lower Police Station"
+	lift_floor_label = "Ground"
+	lift_floor_name = "Ground Police Station"
 	lift_announce_str = "Lift arriving at the lower police station, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/tiled/steel_ridged
+
+/area/turbolift/police_lower_ground
+	name = "lift (prison mines)"
+	lift_floor_label = "Lower Ground"
+	lift_floor_name = "Prison Mines"
+	lift_announce_str = "Lift arriving at the prison mines, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 //shuttle areas

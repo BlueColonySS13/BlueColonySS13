@@ -121,7 +121,7 @@
 /datum/lot/proc/remove_tenant(uid)
 	var/datum/tenant/tenant = get_tenant_by_uid(uid)
 
-	charge_to_account(landlord.bank_id, "Remaining Balance", "[name] Lot Remaining Balance", "Landlord Management", tenant.account_balance)
+	charge_to_account(tenant.bank_id, "Remaining Balance", "[name] Lot Remaining Balance", "Landlord Management", tenant.account_balance)
 
 	tenants -= tenant
 	QDEL_NULL(tenant)
@@ -189,12 +189,15 @@
 
 // Application helps
 
-/datum/lot/proc/add_applicant(uid, t_name, bank_id, email, offered_deposit)
+/datum/lot/proc/add_applicant(uid, t_name, bank_id, email, offered_deposit, reason)
 	var/datum/tenant/applicant = make_tenant(uid, t_name, bank_id, email)
 
 	applicant.agreed_deposit = offered_deposit
+	applicant.application_note = reason
 
 	applied_tenants += applicant
+
+	return applicant
 
 /datum/lot/proc/remove_applicant(applicant)
 	if(!applicant || !(applicant in applied_tenants))
@@ -215,3 +218,27 @@
 	log_lots(user, action)
 
 	truncate_oldest(notes, MAX_LANDLORD_LOGS)
+
+/datum/lot/proc/accept_rentee(var/datum/tenant/applicant)
+	var/datum/computer_file/data/email_account/council_email = get_email(using_map.council_email)
+	var/datum/computer_file/data/email_message/message = new/datum/computer_file/data/email_message()
+	var/eml_cnt = "Dear [applicant.name], \[br\]"
+	eml_cnt += "Congratulations, you been successful for your application for renting the property '[name]'. \
+	You will now be able to start using the lot commencing onwards. \[br\] \
+	Your rent will be [cash2text( get_rent(), FALSE, TRUE, TRUE )] per payroll. Your landlord is [get_landlord_name()] may contact them on [landlord.email] \
+	for any enquiries. Best wishes,\[br\] City Council \[br\] Do not reply: This is an automated email."
+
+	message.stored_data = eml_cnt
+	message.title = "Your New Property: [name] - Acceptance"
+	message.source = "noreply@nanotrasen.gov.nt"
+
+	council_email.send_mail(applicant.email, message)
+
+	tenants += applicant
+	applied_tenants -= applicant
+
+	applicant.account_balance = applicant.agreed_deposit
+
+	tenants_wanted = FALSE
+
+	add_note(applicant.name, "Accepted [name]'s tenancy application for [applicant.name]",usr)

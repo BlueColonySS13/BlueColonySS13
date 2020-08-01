@@ -51,6 +51,10 @@
 		to_chat(user,"<span class='notice'>This bounty is already complete, please select \"Confirm Completion\" to redeem the reward!</span>")
 		return
 
+	if(I.dont_save)
+		to_chat(user,"<span class='notice'>This appears to be tagged to belong to an establishment or individual, please try another one.</span>")
+		return
+
 	if(current_bounty.check_item(I, bank_id))
 		playsound(src, 'sound/machines/chime.ogg', 25)
 		to_chat(user,"<span class='info'>[item_name] loses it's physical shape and morphs into a beam of light!</span>")

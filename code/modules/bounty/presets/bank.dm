@@ -13,7 +13,7 @@
 
 	days_until_expiry = 2
 
-	department_reward = 450
+	department_reward = 850
 	individual_reward = 10
 
 /datum/bounty/bank/another_transfer
@@ -23,7 +23,7 @@
 	description = "I am studying to become a scientist at Cascington's Pennington University. I have a high GPA and my parents say I am a good boy. \
 	Where is my loan?"
 
-	cash_wanted = 6000
+	cash_wanted = 5000
 
 	days_until_expiry = 2
 
@@ -43,7 +43,7 @@
 
 	days_until_expiry = 2
 
-	department_reward = 5250
+	department_reward = 9250
 	individual_reward = 20
 
 /datum/bounty/bank/a_car
@@ -57,7 +57,7 @@
 
 	days_until_expiry = 4
 
-	department_reward = 20000
+	department_reward = 21000
 	individual_reward = 100
 
 
@@ -72,7 +72,23 @@
 
 	days_until_expiry = 2
 
-	department_reward = 7000
+	department_reward = 9000
 	individual_reward = 100
+
+
+
+/datum/bounty/bank/solgov_loan
+	name = "Colony Funding for Earth"
+	author = "Sol Government"
+
+	description = "We propose a sum agreement of %CASHWANTED to cover government expenses, please send at your earliest convienience."
+
+	cash_min = 9000
+	cash_max = 10000
+
+	days_until_expiry = 2
+
+	department_reward = 13000
+	individual_reward = 1000
 
 

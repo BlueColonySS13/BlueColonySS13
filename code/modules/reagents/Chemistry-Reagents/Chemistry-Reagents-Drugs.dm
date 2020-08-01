@@ -77,7 +77,7 @@ datum/reagent/drug/ecstasy/overdose(var/mob/living/M as mob)
 /datum/reagent/drug/nicotine
 	name = "Nicotine"
 	id = "nicotine"
-	description = "A highly addictive stimulant extracted from the tobacco plant."
+	description = "A highly addictive stimulant extracted from the tobacco plant. Sometimes can throw off breathalyzer results."
 	taste_description = "bitterness"
 	reagent_state = LIQUID
 	color = "#685511" //brown

@@ -256,8 +256,17 @@ a, a:link, a:visited, a:active, .linkOn, .linkOff
 
 	<div class="itemLabel">
 		Sentencing Age:
-	</div> {{:data.sentencing_age}}  {{:helper.link("Change", null, {'sentencing_age' : 1})}}
-	<br><br>
+	</div> {{:data.sentencing_age}}  {{:helper.link("Change", null, {'sentencing_age' : 1})}}<br>
+	<br>
+
+	<div class="itemLabel">
+		Minimum Wage:
+	</div> {{:data.min_wage}}CR  {{:helper.link("Change", null, {'adjust_minimum_wage' : 1})}}
+	<br>
+	<br>
+
+
+	
 	{{:helper.link("Back", null, {'back' : 1})}}
 {{/if}}
 

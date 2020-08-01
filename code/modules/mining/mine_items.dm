@@ -27,7 +27,7 @@
 	var/drill_sound = 'sound/weapons/Genhit.ogg'
 	var/drill_verb = "drilling"
 	sharp = 1
-
+	price_tag = 200
 	var/excavation_amount = 200
 
 /obj/item/weapon/pickaxe/hammer
@@ -129,6 +129,7 @@
 	sharp = 0
 	edge = 1
 	digspeed = 40
+	price_tag = 100
 
 /obj/item/weapon/shovel/spade
 	name = "spade"
@@ -139,6 +140,7 @@
 	throwforce = 7.0
 	w_class = ITEMSIZE_SMALL
 	digspeed = 60
+	price_tag = 60
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
 

@@ -40,6 +40,8 @@ var/global/list/additional_antag_types = list()
 	var/event_delay_mod_major                // As above.
 	var/antag_text = ""
 
+	var/allow_late_antag = FALSE
+
 /datum/game_mode/New()
 	..()
 
