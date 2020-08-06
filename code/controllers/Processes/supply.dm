@@ -281,7 +281,8 @@ var/datum/controller/supply/supply_controller = new()
 
 	// Deduct cost
 	adjust_dept_funds(DEPT_FACTORY, O.object.cost, "[O.ordernum]: [O.object.name] | Ordered by: [O.ordered_by] | Approved by: [O.approved_by]")
-	DC.spending_limit -= O.object.cost
+	if(DC)
+		DC.spending_limit -= O.object.cost
 
 	return TRUE
 

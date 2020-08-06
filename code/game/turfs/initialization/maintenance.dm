@@ -14,7 +14,7 @@
 		T.dirt += rand(0,10)
 	T.update_dirt()
 
-	if(prob(2))
+	if(prob(6))
 		var/lootpile = loot_pile()
 		if(lootpile)
 			new lootpile(T)
