@@ -793,3 +793,19 @@ SUBSYSTEM_DEF(jobs)
 			var/obj/item/clothing/accessory/permit/synth/permit = new/obj/item/clothing/accessory/permit/synth(get_turf(H))
 			permit.set_name(H.real_name)
 			H.equip_to_slot_or_del(permit, slot_in_backpack)	*/
+
+
+
+/datum/controller/subsystem/jobs/proc/get_active_police()
+
+	var/active_popo = 0
+
+	for(var/J in security_positions)
+		var/datum/job/police_officer = SSjobs.GetJob(J)
+
+		if(!police_officer)
+			continue
+
+		active_popo += police_officer.get_active()
+
+	return active_popo

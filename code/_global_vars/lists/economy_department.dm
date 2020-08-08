@@ -34,7 +34,6 @@ GLOBAL_LIST_EMPTY(business_ids)
 GLOBAL_LIST_INIT(business_categories, list( // list of categories businesses can list themselves as
 	CAT_ADS,
 	CAT_FARM,
-	CAT_BANK,
 	CAT_LIBRARY,
 	CAT_BUILDING,
 	CAT_EDU,
@@ -42,7 +41,6 @@ GLOBAL_LIST_INIT(business_categories, list( // list of categories businesses can
 	CAT_ENTERTAINMENT,
 	CAT_FOOD,
 	CAT_HOSPITALITY,
-	CAT_LEGAL,
 	CAT_LEISURE,
 	CAT_MANUFACTURE,
 	CAT_MOTOR,
@@ -57,6 +55,12 @@ GLOBAL_LIST_INIT(business_categories, list( // list of categories businesses can
 	CAT_GUNS,
 	CAT_XENOBIO
 ))
+
+GLOBAL_LIST_INIT(license_business_categories, list( // so people stop cheesing this, i'll figure it out another time
+	CAT_BANK,
+	CAT_LEGAL
+))
+
 
 GLOBAL_LIST_INIT(hidden_categories, list( // list of categories businesses cannot list themselves as
 	CAT_DRUGS,

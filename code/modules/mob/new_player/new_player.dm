@@ -116,6 +116,35 @@
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
 
+
+/mob/new_player/proc/JoinLate(selected_job_name, antag_type)
+	//Prevents people rejoining as same character.
+	for (var/mob/living/carbon/human/C in mob_list)
+		var/char_name = client.prefs.real_name
+		if(char_name == C.real_name)
+			to_chat(usr, "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one.</span>")
+			return
+
+	if(!config.enter_allowed)
+		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
+		return
+	else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
+		to_chat(usr, "<span class='danger'>The city is currently exploding. Joining would go poorly.</span>")
+		return
+
+	if(!is_alien_whitelisted(src, all_species[client.prefs.species]))
+		src << alert("You are currently not whitelisted to play [client.prefs.species].")
+		return 0
+
+	var/datum/species/S = all_species[client.prefs.species]
+	if(!(S.spawn_flags & SPECIES_CAN_JOIN))
+		src << alert("Your current species, [client.prefs.species], is not available for play on the city.")
+		return 0
+
+	AttemptLateSpawn(selected_job_name,client.prefs.spawnpoint, antag_type)
+
+	return TRUE
+
 /mob/new_player/Topic(href, href_list[])
 	if(!client)	return 0
 
@@ -178,13 +207,36 @@
 
 		LateChoices()
 
-
 	if(href_list["join_as_antag"])
+
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
 			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
 			return
 
 		JoinAsAntag()
+
+	if(href_list["JoinAsAntag"])	//pre- SelectedJob usage for new menu
+		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
+			to_chat(usr,"<font color='red'>The round is either not ready, or has already finished...</font>")
+			return
+
+		var/E = href_list["JoinAsAntag"]
+
+		var/antag_type = E
+		var/datum/antagonist/antag = null
+
+		for(var/datum/antagonist/A in GLOB.lobbyjoin_antagonists)
+			if(A.id == antag_type)
+				antag = A
+
+		if(!antag)
+			return
+
+		JoinAntag(antag)
+
+		return
+
+
 
 	if(href_list["manifest"])
 		ViewManifest()
@@ -228,31 +280,8 @@
 		return
 
 	if(href_list["SelectedJob"])
-		//Prevents people rejoining as same character.
-		for (var/mob/living/carbon/human/C in mob_list)
-			var/char_name = client.prefs.real_name
-			if(char_name == C.real_name)
-				to_chat(usr, "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one.</span>")
-				return
+		JoinLate(href_list["SelectedJob"])
 
-		if(!config.enter_allowed)
-			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
-			return
-		else if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
-			to_chat(usr, "<span class='danger'>The city is currently exploding. Joining would go poorly.</span>")
-			return
-
-		if(!is_alien_whitelisted(src, all_species[client.prefs.species]))
-			src << alert("You are currently not whitelisted to play [client.prefs.species].")
-			return 0
-
-		var/datum/species/S = all_species[client.prefs.species]
-		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
-			src << alert("Your current species, [client.prefs.species], is not available for play on the city.")
-			return 0
-
-		AttemptLateSpawn(href_list["SelectedJob"],client.prefs.spawnpoint)
-		return
 
 	if(href_list["privacy_poll"])
 		establish_db_connection()
@@ -395,7 +424,7 @@
 
 	return 1
 
-/mob/new_player/proc/AttemptLateSpawn(rank,var/spawning_at)
+/mob/new_player/proc/AttemptLateSpawn(rank, var/spawning_at, antag_type)
 	if (src != usr)
 		return 0
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
@@ -484,6 +513,11 @@
 	else
 		AnnounceCyborg(character, rank, join_message)
 
+
+	//assign antag role, if any
+	var/datum/antagonist/antag = all_antag_types[antag_type]
+	if(antag)
+		antag.add_antagonist(character.mind,1,0,1)
 
 
 	qdel(src)
@@ -581,6 +615,7 @@
 
 	src << browse(null, "window=latechoices") //closes late choices window
 	src << browse(null, "window=News") //closes news window
+	src << browse(null, "window=joinasantag") //closes news window
 	//src << browse(null, "window=playersetup") //closes the player setup window
 	panel.close()
 

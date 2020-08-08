@@ -93,7 +93,7 @@ var/list/engineering_positions = list(
 
 var/list/medical_positions = list(
 	"Medical Director",
-	"Physician",
+	"Doctor",
 	"Geneticist",
 	"Psychiatrist",
 	"Chemist",
@@ -108,8 +108,7 @@ var/list/science_positions = list(
 	"Geneticist",	//Part of both medical and science
 	"Roboticist",
 	"Xenobiologist",
-	"Research Assistant",
-	"Research Security"
+	"Research Assistant"
 )
 
 //BS12 EDIT
@@ -122,16 +121,11 @@ var/list/cargo_positions = list(
 var/list/civilian_positions = list(
 	"City Clerk",
 	"Judge",
-	"Bartender",
-	"Botanist",
-	"Chef",
-	"Journalist",
 	"Defense Attorney",
 	"Chaplain",
 	"Civilian",
-	"Barber",
+	"City Hall Guard",
 	"City Hall Secretary",
-	"Bar Manager"
 )
 
 
@@ -140,7 +134,6 @@ var/list/security_positions = list(
 	"Prison Warden",
 	"Detective",
 	"Police Officer",
-	"City Hall Guard",
 	"District Prosecutor"
 )
 
