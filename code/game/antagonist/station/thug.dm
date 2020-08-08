@@ -5,7 +5,7 @@
 	role_text = "Thug"
 	role_text_plural = "Thugs"
 	bantype = "renegade"
-	restricted_jobs = list("Prisoner", "AI", "Cyborg","Mayor","City Clerk""Chief of Police","Police Officer",\
+	restricted_jobs = list("Prisoner", "AI", "Cyborg","Mayor","City Clerk", "Chief of Police","Police Officer",\
 	"Prison Warden","Detective","Medical Director","Maintenance Director","Research Director","Judge")
 	welcome_text = "Sometimes, people just need to get messed up. Luckily, that's what you're here to do."
 	antag_text = "You are a <b>thug</b>! You work with other thugs who work together to do what thugs do, be it violence, drug dealing, theft, or \
