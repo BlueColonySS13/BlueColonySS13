@@ -95,7 +95,7 @@
 	to_chat(player, "<span class='danger'>You remember that you brought your uniform and weapons in a box with you - as discussed from a meeting with your gang...</span>")
 
 	var/obj/item/weapon/storage/box/kit = new(get_turf(player))
-	kit.dont_save = TRUE
+	kit.make_nonpersistent() // box contents should be non-persistent, not just the box haha. no free gun for you.
 	kit.max_storage_space = 35
 	kit.max_w_class = 8
 	kit.name = "large strange kit"

@@ -44,15 +44,15 @@
 /atom/proc/make_persistent()
 	dont_save = FALSE
 
-	for(var/V in get_saveable_contents())
-		dont_save = FALSE
+	for(var/obj/I in get_saveable_contents())
+		I.dont_save = FALSE
+
 
 /atom/proc/make_nonpersistent()
 	dont_save = TRUE
 
-	for(var/V in get_saveable_contents())
-		dont_save = TRUE
-
+	for(var/obj/I in get_saveable_contents())
+		I.dont_save = TRUE
 
 
 /atom/proc/get_persistent_metadata()
