@@ -594,7 +594,7 @@
 	spawn(vend_delay)
 		var/obj/I = R.get_product(get_turf(src))
 		if(block_persistence)
-			I.dont_save = TRUE
+			I.make_nonpersistent()
 		if(has_logs)
 			do_logging(R, user, 1)
 		if(prob(1))
