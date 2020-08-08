@@ -227,8 +227,11 @@
 	if(!LAZYLEN(part_data))
 		return FALSE
 
-	if(part_data["circuit"])
+	if(ispath(part_data["circuit"]))
 		circuit = new part_data["circuit"]
+	else if(islist(part_data["circuit"]))
+		for(var/C in islist(part_data["circuit"]))
+			circuit = new C
 
 	if(LAZYLEN(part_data["components"]))
 		for(var/A in part_data["components"])

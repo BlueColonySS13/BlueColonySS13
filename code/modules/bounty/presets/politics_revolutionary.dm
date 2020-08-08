@@ -141,7 +141,7 @@
 	persistent_economy.law_KROKODIL)
 
 	for(var/V in substance_laws)
-		if(!(V == LEGAL))
+		if(V != LEGAL)
 			return FALSE
 
 	return TRUE

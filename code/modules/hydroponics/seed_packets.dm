@@ -25,6 +25,9 @@ var/global/list/plant_seed_sprites = list()
 /obj/item/seeds/on_persistence_load()
 	update_seed()
 
+	if(!seed)	// whoops
+		qdel(src)
+
 /obj/item/seeds/initialize()
 	update_seed()
 	. = ..()
