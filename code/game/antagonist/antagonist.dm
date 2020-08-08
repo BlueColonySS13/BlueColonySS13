@@ -101,6 +101,9 @@
 		if(role_text) hud_icon_reference[role_text] = antaghud_indicator
 		if(faction_role_text) hud_icon_reference[faction_role_text] = antaghud_indicator
 
+	if(allow_lobbyjoin)
+		GLOB.lobbyjoin_antagonists += src
+
 
 
 /datum/antagonist/proc/tick()

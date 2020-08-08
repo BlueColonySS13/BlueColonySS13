@@ -15,7 +15,7 @@
 	var/next_offer_time					//The time a discount will next be offered
 	var/datum/uplink_item/discount_item	//The item to be discounted
 	var/discount_amount					//The amount as a percent the item will be discounted by
-
+	var/block_persistence = TRUE
 /obj/item/device/uplink/nano_host()
 	return loc
 

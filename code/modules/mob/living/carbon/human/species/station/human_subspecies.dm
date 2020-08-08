@@ -65,7 +65,10 @@
 	a cortical stack implanted in the nape of their neck that serves to store the sum total of their experience and \
 	memories. Mass-Produced Vatborn tend to lack the full set of social skills that other Vatborn develop due to their existence \
 	as tools, rather than people. Their biological ages often differ from their actual age and it is common to see Mass-Produced Vatborn \
-	as young as 2 years old working in positions often relegated to humans with several years of experience."
+	as young as 2 years old working in positions often relegated to humans with several years of experience. <br><br> \
+	And lo, did humans cross the boundary and manufacture their own people, to do the menial, tedious work no-one wished to do. \
+	Impressed with false memories and even false dreams to keep them placid, these creatures are considered with the disdain and disgust of Frankenstein's monster; <br>\
+	With all the importance of a roomba. It is best not to entertain their delusions."
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,

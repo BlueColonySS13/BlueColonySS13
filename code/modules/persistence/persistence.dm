@@ -41,18 +41,19 @@
 /atom/proc/on_persistence_save()
 	persistence_loaded = TRUE
 
-
 /atom/proc/make_persistent()
 	dont_save = FALSE
 
 	for(var/obj/I in get_saveable_contents())
 		I.dont_save = FALSE
 
+
 /atom/proc/make_nonpersistent()
 	dont_save = TRUE
 
 	for(var/obj/I in get_saveable_contents())
 		I.dont_save = TRUE
+
 
 /atom/proc/get_persistent_metadata()
 	return

@@ -83,6 +83,7 @@ var/list/outfits_decls_by_type_
 		if(istype(O, /obj/item/weapon/card/department))
 			var/obj/item/weapon/card/department/D = O
 			D.owner_name = H.real_name
+			D.update_name()
 
 	if(flags & OUTFIT_HAS_JETPACK)
 		var/obj/item/weapon/tank/jetpack/J = locate(/obj/item/weapon/tank/jetpack) in H
