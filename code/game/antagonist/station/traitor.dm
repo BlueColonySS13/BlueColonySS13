@@ -5,8 +5,8 @@ var/datum/antagonist/traitor/traitors
 	id = MODE_TRAITOR
 	protected_jobs = list("Prisoner", "Police Officer", "Prison Warden", "Detective", "Judge", "Chief of Police", "Mayor")
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
-	restricted_jobs = list("Prisoner", "AI", "Cyborg","Mayor","Chief of Police","Police Officer",\
-	"Prison Warden","Detective","Chief Medical Officer","Chief Engineer","Research Director","Judge")
+	restricted_jobs = list("Prisoner", "AI", "Cyborg","Mayor","City Clerk""Chief of Police","Police Officer",\
+	"Prison Warden","Detective","Medical Director","Maintenance Director","Research Director","Judge")
 	can_speak_aooc = TRUE
 	antag_text = "As a traitor, you are a solo operative who works on behalf of local syndicate contractors to perform certain roles. \
 	You are still expected to escalate accordingly. Try to make sure other players have fun! AOOC is enabled, but please do not metagame. \

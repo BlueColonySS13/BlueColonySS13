@@ -11,8 +11,8 @@ var/datum/antagonist/traitor/infiltrator/infiltrators
 	role_text = "Infiltrator"
 	role_text_plural = "Infiltrators"
 	welcome_text = "To speak on your team's private channel, use :t."
-	restricted_jobs = list("Prisoner", "AI", "Cyborg","Mayor","Chief of Police","Police Officer",\
-	"Prison Warden","Detective","Chief Medical Officer","Chief Engineer","Research Director","Judge")
+	restricted_jobs = list("Prisoner", "AI", "Cyborg","Mayor","City Clerk""Chief of Police","Police Officer",\
+	"Prison Warden","Detective","Medical Director","Maintenance Director","Research Director","Judge")
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 
 	antag_text = "As a infiltrator, you are in a group of other infiltraitors with shared objectives - you are loyal to your objectives and team at all costs. \
