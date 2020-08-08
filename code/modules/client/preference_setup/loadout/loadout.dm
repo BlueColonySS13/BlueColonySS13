@@ -267,6 +267,6 @@ var/list/gear_datums = list()
 		M.amend_exploitable(item)
 
 	//Temporary measure for now. to prevent loadout abuse.
-	item.dont_save = TRUE
+	item.make_nonpersistent()
 
 	return item
