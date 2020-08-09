@@ -493,3 +493,6 @@ IPR_ALLOW_EXISTING
 
 # And what that age is (number)
 IPR_MINIMUM_AGE 5
+
+# Allows antagonists to join from the lobby
+ALLOW_LOBBY_ANTAGONISTS
