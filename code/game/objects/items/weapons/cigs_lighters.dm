@@ -308,6 +308,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		reagents.add_reagent("menthol", menthol_amt)
 
 /obj/item/clothing/mask/smokable/cigarette/menthol
+	desc = "A roll of tobacco and nicotine. It smells faintly of menthol."
+	menthol_amt = 5
+	nicotine_amt = 10
+
+/obj/item/clothing/mask/smokable/cigarette/nightshade
+	desc = "A roll of tobacco and nicotine. It smells faintly of menthol. This particularly brand has a purple filter!"
+	icon_state = "pcig"
+	item_state = "pcig"
 	menthol_amt = 5
 	nicotine_amt = 10
 

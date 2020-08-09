@@ -11,7 +11,7 @@
 /datum/supply_pack/hydro/monkey
 	name = "Monkey crate"
 	contains = list (/obj/item/weapon/storage/box/monkeycubes)
-	cost = 80
+	cost = 100
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "Monkey crate"
 

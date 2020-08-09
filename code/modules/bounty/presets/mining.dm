@@ -66,6 +66,8 @@
 	department_reward = 800
 	individual_reward = 100
 
+	days_until_expiry = 2
+
 /datum/bounty/mining/minting
 	name = "Commemerative Minting"
 	author = "Faden Minting Co."
@@ -88,7 +90,7 @@
 	stacks_wanted = list(/obj/item/stack/material/platinum = 50)
 
 	department_reward = 3000
-	individual_reward = 30
+	individual_reward = 300
 
 /datum/bounty/mining/phoron_slime
 	name = "Slime Breeding"
@@ -100,3 +102,55 @@
 
 	department_reward = 5000
 	individual_reward = 220
+
+/datum/bounty/mining/gorilla_warfare
+	name = "Aerial Superiority"
+	author = "Polluxian Air Force"
+	description = "This is a public contract available to all civilian industries. Large quantities of durasteel are required for military purposes. Payment \
+	will be wired upon completion of the contract."
+
+	stacks_wanted = list(/obj/item/stack/material/durasteel = 50)
+
+	department_reward = 3750
+	individual_reward = 375
+
+	days_until_expiry = 3
+
+/datum/bounty/mining/plasteel_hearts
+	name = "Plasteel Hearts"
+	author = "Sister Rust"
+	description = "Some say the Sisterhood of Mekhanikal Hands are heartless. Others say our hearts are are hardened as plasteel. Then why aren't our tears \
+	made of metal? Why do they burn so? Our hearts cry out for the poor beings that walk this planet, not knowing of of the wonders of Mekhanika and her \
+	ever turning cogs. Send us plasteel, so we may reinforce her chassis."
+
+	stacks_wanted = list(/obj/item/stack/material/plasteel = 50)
+
+	department_reward = 2000
+	individual_reward = 175
+
+	days_until_expiry = 2
+
+/datum/bounty/mining/stargazing
+	name = "Stargazing"
+	author = "Blue Colony Astronomers' Association"
+	description = "We recently received authorization from the Office of Space Innovation to launch our new UV Spectrometer into orbit. Unfortunately, our last \
+	shipment of osmium oxidized and... let's just say, our insurance premium has gone through the roof. We need more osmium to finish constructing our spectrometer. \
+	Quick science fact: We coat the mirrors of our spectrometer with osmium because of its high reflectivity in the UV range! And they say bounties don't teach \
+	you anything!"
+
+	stacks_wanted = list(/obj/item/stack/material/osmium = 50)
+
+	department_reward = 3000
+	individual_reward = 300
+
+/datum/bounty/mining/tamperproof
+	name = "Tamperproof Sights"
+	author = "NSS Discovery"
+	description = "We've had an increase in hull breaches recently thanks to a particularly overzealous and \"hot-headed\" jester and a suspiciously chemistry-literate Assistant \
+	aboard our station. We need to increase the heat resistance of our exterior windows in order to avoid any more mishaps. Our engineering team needs you to send over borosilicate \
+	glass at your earliest convenience."
+
+	stacks_wanted = list(/obj/item/stack/material/glass/phoronglass = 50)
+
+	department_reward = 3000
+	individual_reward = 300

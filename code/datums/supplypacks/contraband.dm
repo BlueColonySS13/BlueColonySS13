@@ -30,7 +30,7 @@
 			/obj/item/weapon/grenade/smokebomb = 4,
 			/obj/item/weapon/grenade/chem_grenade/incendiary
 			)
-	cost = 900
+	cost = 1000
 	containertype = /obj/structure/closet/crate
 	containername = "Special Ops crate"
 	contraband = 1

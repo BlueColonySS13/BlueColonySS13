@@ -58,7 +58,6 @@
 	suit = /obj/item/clothing/suit/storage/hooded/explorer
 	gloves = /obj/item/clothing/gloves/black
 	l_ear = /obj/item/device/radio/headset
-	id_pda_assignment = "Explorer"
 
 /decl/hierarchy/outfit/job/business/priest
 	name = OUTFIT_JOB_NAME("Priest")

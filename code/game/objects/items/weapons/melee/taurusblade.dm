@@ -4,6 +4,7 @@
 	name = "Taurus"
 	desc = "A blade made with the bone of some great creature. Its surface shifts and morphs before your very eyes."
 	icon_state = "taurus_ein"
+	item_state = "taurus_ein"
 	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 25
 	throwforce = 10
@@ -13,7 +14,7 @@
 	attack_verb = list("sliced", "slashed", "cut", "pierced", "diced", "torn")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	unacidable = TRUE
-	origin_tech = list(TECH_ARCANE = 5, TECH_COMBAT = 6, TECH_MATERIAL = 7, TECH_BLUESPACE = 4) //shapeshifting redspace sword
+	origin_tech = list(TECH_ARCANE = 5, TECH_COMBAT = 5, TECH_MATERIAL = 7, TECH_BLUESPACE = 4) //shapeshifting redspace sword
 	var/current_form = "longsword"
 	var/maturity = 0 //The power of the blade. Increases when fed with souls.
 	unique_save_vars = list("maturity")
@@ -70,18 +71,23 @@
 	set desc = "Exploit the non-euclidean nature of the Taurus to change its weapon form."
 	set src in usr
 
+	var/mob/living/M = loc
+
 	if(maturity < 30)
 		to_chat(usr, "\The [src] hums menacingly and doesn't respond to your mental command.")
 		return
 	else
 		transmogrify(current_form)
+		M.update_inv_l_hand()
+		M.update_inv_r_hand()
 
-/obj/item/weapon/melee/taurusblade/verb/boomerang(var/mob/living/carbon/target in living_mobs(7))
+/*/obj/item/weapon/melee/taurusblade/verb/boomerang(var/mob/living/carbon/target in living_mobs(7))
 	set name = "Chakram: Boomerang"
 	set category = "Taurus"
 	set desc = "Launch the deadly Taurus Chakram at a target and have it return to your hand."
 	set src in usr
 
+	var/mob/living/M = loc
 
 	if(current_form != "chakram")
 		to_chat(usr, "\The [src] must be in its chakram form to utilize this ability!")
@@ -96,12 +102,12 @@
 
 			else
 				visible_message("<span class='danger'>\The [src] roars to life and flies out of [usr]'s hand towards [target]!</span>")
-				bangarang(target, usr)
+				bangarang(target, M)
 
 /obj/item/weapon/melee/taurusblade/proc/bangarang(var/target, var/mob/living/carbon/human/user)
 	embed_chance = 100
-	user.drop_item()
-	src.throw_at(target, 7, 4, user)
+	user.drop_from_inventory(src, src.loc)
+	throw_at(target, 7, 4)
 	if(ishuman(src.loc)) //Stolen code from Yank Out Object verb - hehehehe
 		var/mob/living/carbon/human/H = src.loc
 		var/obj/item/organ/external/affected
@@ -119,24 +125,23 @@
 			var/datum/wound/internal_bleeding/I = new (min(src.w_class * 5, 15))
 			affected.wounds += I
 			H.custom_pain("Something tears wetly in your [affected] as \the [src] is pulled free!", 50)
-			user.drop_item()
 			src.forceMove(get_turf(H))
 			src.throwforce = 0 //Don't let it hurt you on the way back!
 			src.embed_chance = 0 //Normal embed chance
-			src.throw_at(user,7,4,user)
+			throw_at(user,7,4)
 			user.put_in_active_hand(src)
 			visible_message("<span class='warning'>[user] catches \the [src]!</span>")
 			src.throwforce = 25
+*/
 
-/obj/item/weapon/melee/taurusblade/proc/transmogrify(var/current_form)
-	var/formshift
+/obj/item/weapon/melee/taurusblade/proc/transmogrify(var/current)
 
-	switch(current_form)
+	switch(current)
 		if("longsword") //Transforms into a heavy, wielded two-handed blade. Slows you down but is extremely powerful.
-			usr << "DEBUG: Switched to [current_form]"
 			usr.visible_message("<span class='danger'>[usr]'s \the [src] quivers and morphs into a great and imposing zweihander.", \
 			"Your \the [src] quivers and morphs into a great and imposing zweihander.</span>")
 			icon_state = "taurus_zwei"
+			item_state = "taurus_zwei"
 			w_class = ITEMSIZE_HUGE
 			attack_verb = list("cleaved", "sundered", "hacked", "carved", "dissevered", "hewn", "gored")
 			desc = "A massive blade made with the bone of some great creature. Its surface shifts and morphs before your very eyes."
@@ -147,15 +152,14 @@
 			throw_range = 1
 			slowdown = 1
 			reach = 2
-			update_icon()
-			update_held_icon()
-			formshift = 2
-			break
+			current_form = "zweihander"
+			return
+
 		if("zweihander") //Transforms into a lightweight throwing weapon. Not the best in direct combat but is a god-like throwing weapon with some unique abilities.
-			usr << "DEBUG: Switched to [current_form]"
 			usr.visible_message("<span class='danger'>[usr]'s \the [src] quivers and morphs into a razor sharp double-sided chakram.", \
 			"Your \the [src] quivers and morphs into a razor sharp double-sided chakram.</span>")
 			icon_state = "taurus_chakram"
+			item_state = "taurus_chakram"
 			desc = "A curved, double-sided blade made with the bone of some great creature. Its surface shifts and morphs before your very eyes."
 			w_class = ITEMSIZE_NORMAL
 			attack_verb = list("sliced", "diced", "cut", "shaved", "ribboned", "filleted", "shorn")
@@ -167,15 +171,14 @@
 			throw_speed = 4
 			slowdown = 0
 			reach = 1
-			update_icon()
-			update_held_icon()
-			formshift = 3
-			break
+			current_form = "chakram"
+			return
+
 		if("chakram") //Transforms back into its base form.
-			usr << "DEBUG: Switched to [current_form]"
 			usr.visible_message("<span class='danger'>[usr]'s \the [src] quivers and morphs into a perfectly balanced longsword.", \
 			"Your \the [src] quivers and morphs into a perfectly balanced longsword.</span>")
 			icon_state = "taurus_ein"
+			item_state = "taurus_ein"
 			desc = "A blade made with the bone of some great creature. Its surface shifts and morphs before your very eyes."
 			w_class = ITEMSIZE_LARGE
 			slot_flags = SLOT_BELT | SLOT_BACK
@@ -183,18 +186,9 @@
 			force = 25
 			throwforce = 10
 			throw_speed = 1
-			update_icon()
-			update_held_icon()
-			formshift = 1
-			break
-		else
-			to_chat(usr, "<span class='danger'>REPORT THIS TO AN ADMIN</span>")
-
-	switch(formshift) //A necessary evil
-		if(1)
 			current_form = "longsword"
-		if(2)
-			current_form = "zweihander"
-		if(3)
-			current_form = "chakram"
+			return
 
+		else
+			to_chat(usr, "<span class='warning'>UH OH! THIS SHOULDN'T HAVE HAPPENED! Report it here: https://github.com/GeneriedJenelle/The-World-Server-Redux/issues</span>")
+			return "FAILED"

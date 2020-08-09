@@ -300,7 +300,7 @@
 				/obj/item/weapon/storage/box/matches = 10,
 				/obj/item/weapon/flame/lighter/random = 5,
 				)
-	cost = 2
+	cost = 10
 	containertype = /obj/structure/closet/crate
 	containername = "Tobacco Paraphernalia Set"
 	spend_type = SPEND_HOSPITALITY
@@ -309,7 +309,8 @@
 	name = "Deluxe Cigarettes (Bulk)"
 	contains = list(/obj/item/weapon/storage/fancy/cigar = 5,
 				/obj/item/weapon/storage/fancy/cigarettes/carcinomas = 5,
-				/obj/item/weapon/storage/fancy/cigarettes/professionals = 5)
+				/obj/item/weapon/storage/fancy/cigarettes/professionals = 5,
+				/obj/item/weapon/storage/fancy/cigarettes/nightshade = 5)
 	cost = 300
 	containertype = /obj/structure/closet/crate
 	containername = "Deluxe Cigarettes set"

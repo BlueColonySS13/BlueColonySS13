@@ -1,6 +1,6 @@
 /*
 *	Here is where any supply packs
-*	related to security tasks live
+*	related to science tasks live
 */
 /datum/supply_pack/sci
 	group = "Science"
@@ -44,34 +44,34 @@
 	containername = "Exotic Seeds crate"
 	access = access_hydroponics
 
-/datum/supply_pack/sci/vatcubes
+/*/datum/supply_pack/sci/vatcubes  //huh?
 	name = "Compressed Vatborns Crate"
 	contains = list(
 			/obj/item/weapon/storage/box/monkeycubes/vatborncubes = 1,
 			)
 	cost = 1000
 	containertype = /obj/structure/closet/crate/science
-	containername = "Compressed Living Lifeforms crate"
+	containername = "Compressed Living Lifeforms crate" */
 
 /datum/supply_pack/sci/monkeycubes
 	name = "Monkey Cubes crate"
 	contains = list(
 			/obj/item/weapon/storage/box/monkeycubes = 5
 			)
-	cost = 200
+	cost = 500
 	containertype = /obj/structure/closet/crate/science
 	containername = "Compressed Living Lifeforms crate"
 
 /datum/supply_pack/sci/integrated_circuit_printer
 	name = "Integrated circuit printer"
-	contains = list(/obj/item/device/integrated_circuit_printer = 2)
-	cost = 150
+	contains = list(/obj/item/device/integrated_circuit_printer)
+	cost = 3000 //to curb the current meta of using an IC printer to instantly raise tech levels
 	containertype = /obj/structure/closet/crate
 	containername = "Integrated circuit crate"
 
-/datum/supply_pack/sci/integrated_circuit_printer_upgrade
+/* /datum/supply_pack/sci/integrated_circuit_printer_upgrade //to curb the current meta of using an IC printer to instantly raise tech levels
 	name = "Integrated circuit printer upgrade - advanced designs"
 	contains = list(/obj/item/weapon/disk/integrated_circuit/upgrade/advanced)
-	cost = 300
+	cost = 750
 	containertype = /obj/structure/closet/crate
-	containername = "Integrated circuit crate"
+	containername = "Integrated circuit crate" */
