@@ -60,8 +60,8 @@
 
 	var/police_needed = get_needed_police() + (antags_to_join * police_per_antag)
 
-	if(police_needed > SSjobs.get_active_police())
-		return FALSE
+	if(SSjobs.get_active_police() >= police_needed)
+		return TRUE
 
 
 

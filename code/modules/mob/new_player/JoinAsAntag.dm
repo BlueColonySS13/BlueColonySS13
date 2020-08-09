@@ -71,7 +71,7 @@
 			else if(antag.get_antag_count() >= antag.hard_cap)
 				dat += "<br><font color='red'><b>This antag type has reached the maximum amount.</b></font>"
 
-			else if(!antag.meets_police_lobby_join())
+			else if(!antag.meets_police_lobby_join(1))
 				dat += "<br><font color='red'><b>To join, the round needs at least [antag.get_needed_police()] police officer(s).</b></font>"
 			else
 				dat += "<br><a href='byond://?src=\ref[src];JoinAsAntag=[antag.id]'>Join As [antag.role_text]</a>"
@@ -105,7 +105,7 @@
 		to_chat(src, "Limit for this antagonist group reached.")
 		return FALSE
 
-	if(!antag.meets_police_lobby_join())
+	if(!antag.meets_police_lobby_join(1))
 		to_chat(src, "This antagonist type cannot be joined until more police officers join.")
 		return FALSE
 
