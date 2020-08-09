@@ -1,4 +1,5 @@
 /obj/item/stack/material/animalhide
+	name = "animal hide"
 	drop_sound = 'sound/items/drop/clothing.ogg'
 
 /obj/item/stack/material/animalhide/human

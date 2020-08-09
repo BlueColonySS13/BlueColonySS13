@@ -58,6 +58,9 @@
 	if(!get_needed_police())
 		return TRUE
 
+	if(!LAZYLEN(get_antag_count()))
+		return TRUE
+
 	var/police_needed = get_needed_police() + (antags_to_join * police_per_antag)
 
 	if(SSjobs.get_active_police() >= police_needed)

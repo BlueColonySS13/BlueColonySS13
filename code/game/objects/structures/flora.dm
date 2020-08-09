@@ -164,7 +164,7 @@
 	icon = 'icons/obj/plants.dmi'
 	icon_state = "plant-01"
 
-	plane = OBJ_PLANE
+	plane = MOB_PLANE
 
 	var/obj/item/stored_item
 	table_drag = TRUE

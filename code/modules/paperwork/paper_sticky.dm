@@ -166,7 +166,7 @@
 
 
 /obj/item/weapon/paper/sticky/poster/reset_persistence_tracking()
-	SSpersistence.forget_value(src, /datum/persistent/paper/sticky_posters)
+	SSpersistence.forget_value(src, /datum/persistent/paper/sticky/sticky_posters)
 
 /obj/item/weapon/paper/sticky/poster/track_value()
-	SSpersistence.track_value(src, /datum/persistent/paper/sticky_posters)
+	SSpersistence.track_value(src, /datum/persistent/paper/sticky/sticky_posters)

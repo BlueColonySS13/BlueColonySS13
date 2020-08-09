@@ -17,7 +17,6 @@
 /obj/item/weapon/circuitboard/oven
 	name = "circuit board (Oven)"
 	build_path = /obj/machinery/cooker/oven
-	board_type = "machine"
 	board_type = new /datum/frame/frame_types/machine
 
 	origin_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 1)
@@ -29,7 +28,6 @@
 /obj/item/weapon/circuitboard/grill
 	name = "circuit board (Grill)"
 	build_path = /obj/machinery/cooker/grill
-	board_type = "machine"
 	origin_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 1)
 	req_components = list(
 							/obj/item/weapon/stock_parts/micro_laser = 2,
