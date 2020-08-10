@@ -121,7 +121,7 @@
 
 /datum/paperwork_template/courtrules
 	name = "Courtroom Rules"
-	title = "Courtroom Rulest"
+	title = "Courtroom Rules"
 	categories = list(PAPERWORK_GOVERNMENT)
 	file_source = 'code/modules/paperwork/paperwork_templates/council/courtrules.txt'
 
@@ -132,6 +132,12 @@
 	title = "Prescription Form"
 	categories = list(PAPERWORK_MEDICAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/medical/prescription.txt'
+
+/datum/paperwork_remplate/med_death_certificate
+	name = "Death Certificate Form"
+	title = "Death Certificate"
+	categories = list(PAPERWORK_MEDICAL)
+	file_source = 'code/modules/paper/paperwork_templates/medical/death-certificate.txt'
 
 // MISC
 
