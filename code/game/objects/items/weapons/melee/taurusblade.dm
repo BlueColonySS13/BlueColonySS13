@@ -18,6 +18,8 @@
 	var/current_form = "longsword"
 	var/maturity = 0 //The power of the blade. Increases when fed with souls.
 	unique_save_vars = list("maturity")
+	var/list/voice_mobs = list()
+	can_speak = 1
 
 /obj/item/weapon/melee/taurusblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(50))
@@ -192,3 +194,17 @@
 		else
 			to_chat(usr, "<span class='warning'>UH OH! THIS SHOULDN'T HAVE HAPPENED! Report it here: https://github.com/GeneriedJenelle/The-World-Server-Redux/issues</span>")
 			return "FAILED"
+
+/obj/item/weapon/melee/taurusblade/proc/ghost_inhabit(var/mob/candidate)  //shamelesslly ripped from the cursedblade
+	if(!isobserver(candidate))
+		return
+	//Handle moving the ghost into the new shell.
+	announce_ghost_joinleave(candidate, 0, "They are occupying the Taurus now.")
+	var/mob/living/voice/new_voice = new /mob/living/voice(src) 	//Make the voice mob the ghost is going to be.
+	new_voice.transfer_identity(candidate) 	//Now make the voice mob load from the ghost's active character in preferences.
+	new_voice.mind = candidate.mind			//Transfer the mind, if any.
+	new_voice.ckey = candidate.ckey			//Finally, bring the client over.
+	new_voice.name = "Taurus"			//Cursed swords shouldn't be known characters.
+	new_voice.real_name = "Taurus"
+	voice_mobs.Add(new_voice)
+	listening_objects |= src
