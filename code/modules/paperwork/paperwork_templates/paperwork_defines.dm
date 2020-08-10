@@ -133,7 +133,7 @@
 	categories = list(PAPERWORK_MEDICAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/medical/prescription.txt'
 
-/datum/paperwork_remplate/med_death_certificate
+/datum/paperwork_template/med_death_certificate
 	name = "Death Certificate Form"
 	title = "Death Certificate"
 	categories = list(PAPERWORK_MEDICAL)
