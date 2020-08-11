@@ -137,7 +137,7 @@
 	name = "Death Certificate Form"
 	title = "Death Certificate"
 	categories = list(PAPERWORK_MEDICAL)
-	file_source = 'code/modules/paper/paperwork_templates/medical/death-certificate.txt'
+	file_source = 'code/modules/paperwork/paperwork_templates/medical/death-certificate.txt'
 
 // MISC
 
