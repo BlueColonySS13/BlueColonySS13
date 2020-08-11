@@ -99,7 +99,7 @@
 	path =/obj/item/device/radio/headset
 
 /datum/category_item/autolathe/general/radio_bounced
-	name = "station bounced radio"
+	name = "city bounced radio"
 	path =/obj/item/device/radio/off
 
 /datum/category_item/autolathe/general/suit_cooler

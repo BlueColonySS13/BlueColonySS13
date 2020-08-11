@@ -284,7 +284,7 @@
 /var/const/access_network = 46
 /datum/access/network
 	id = access_network
-	desc = "Station Network"
+	desc = "City Network"
 	region = ACCESS_REGION_RESEARCH
 
 /var/const/access_research = 47

@@ -8,7 +8,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "floor_magnet-f"
 	name = "Electromagnetic Generator"
-	desc = "A device that uses station power to create points of magnetic energy."
+	desc = "A device that uses city power to create points of magnetic energy."
 	plane = PLATING_PLANE
 	anchored = 1
 	use_power = 1

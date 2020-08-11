@@ -6,7 +6,7 @@
 	network = "tcommsat"
 
 /obj/machinery/telecomms/relay/preset/station
-	id = "Station Relay"
+	id = "City Relay"
 	listening_level = 1
 	autolinkers = list("s_relay")
 

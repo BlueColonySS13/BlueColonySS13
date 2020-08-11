@@ -115,7 +115,7 @@ var/list/global_webhooks = list()
 			OutData["embeds"] = list(emb)
 		if (WEBHOOK_CBIA_EMERGENCY_MESSAGE)
 			var/emb = list(
-				"title" = "Emergency message from station",
+				"title" = "Emergency message from city",
 				"fields" = list()
 			)
 			var/f1 = list("name"="[data["sender"]] wrote:", "value"="[data["message"]]")

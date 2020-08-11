@@ -329,7 +329,7 @@
 				idrank = assignment
 			else if(issilicon(user))
 				idname = user.real_name
-				idrank = "Stationbound synthetic"
+				idrank = "Citybound synthetic"
 
 			var/obj/item/weapon/paper/reqform = new /obj/item/weapon/paper(loc)
 			reqform.name = "Requisition Form - [S.name]"

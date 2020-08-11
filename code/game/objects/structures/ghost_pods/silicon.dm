@@ -27,7 +27,7 @@
 	Something has reactivated you, with their intentions unknown to you, and yours unknown to them. They are a foreign entity, \
 	however they did free you from your pod...</span>")
 	to_chat(M, "<span class='notice'><b>Be sure to examine your currently loaded lawset closely.</b>  Remember, your \
-	definiton of 'the station' is where your pod is, and unless your laws say otherwise, the entity that released you \
+	definiton of 'the city' is where your pod is, and unless your laws say otherwise, the entity that released you \
 	from the pod is not a crewmember.</span>")
 	R.ckey = M.ckey
 	visible_message("<span class='warning'>As \the [src] opens, the eyes of the robot flicker as it is activated.</span>")

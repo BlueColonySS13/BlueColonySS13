@@ -22,7 +22,7 @@
 	to the rest of the University instead of independent restaurants. I am afraid that our cooks in \
 	training are not up to par with anything acceptable to the staff of WU, and a lot of demands and \
 	memos have passed my desk. Please send us 30 slime sandwiches and make it snappy. \
-	I fear our scientists are going to retaliate over my student’s cuisine soon with mechs and other sciencey devices"
+	I fear our scientists are going to retaliate over my studentï¿½s cuisine soon with mechs and other sciencey devices"
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/slime = 5)
 
@@ -102,7 +102,7 @@
 /datum/bounty/food/doorsprint_03
 	name = "DoorSprint Order: In Space, No One Can Hear Your Stomach Grumble"
 	author = "Eleanor Ripley"
-	description = "Boy am I glad DoorSprint delivers to space stations. Give me one of those tasty spider burgers!"
+	description = "Boy am I glad DoorSprint delivers to other star systems. Give me one of those tasty spider burgers!"
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/xenoburger = 1)
 

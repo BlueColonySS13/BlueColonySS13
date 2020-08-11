@@ -197,7 +197,7 @@
 				if (emergency_shuttle.can_call())
 					emergency_shuttle.call_evac()
 					log_admin("[key_name(usr)] called the Emergency Shuttle")
-					message_admins("<font color='blue'>[key_name_admin(usr)] called the Emergency Shuttle to the station.</font>", 1)
+					message_admins("<font color='blue'>[key_name_admin(usr)] called the Emergency Shuttle to the city.</font>", 1)
 
 			if("2")
 				if (!( ticker ) || !emergency_shuttle.location())
@@ -205,7 +205,7 @@
 				if (emergency_shuttle.can_call())
 					emergency_shuttle.call_evac()
 					log_admin("[key_name(usr)] called the Emergency Shuttle")
-					message_admins("<font color='blue'>[key_name_admin(usr)] called the Emergency Shuttle to the station.</font>", 1)
+					message_admins("<font color='blue'>[key_name_admin(usr)] called the Emergency Shuttle to the city.</font>", 1)
 
 				else if (emergency_shuttle.can_recall())
 					emergency_shuttle.recall()
@@ -1798,7 +1798,7 @@
 					news_network.wanted_issue.body = src.admincaster_feed_message.body
 					news_network.wanted_issue.backup_author = src.admincaster_feed_message.backup_author
 					src.admincaster_screen = 19
-				log_admin("[key_name_admin(usr)] issued a Station-wide Wanted Notification for [src.admincaster_feed_message.author]!")
+				log_admin("[key_name_admin(usr)] issued a City-wide Wanted Notification for [src.admincaster_feed_message.author]!")
 		src.access_news_network()
 
 	else if(href_list["ac_cancel_wanted"])
