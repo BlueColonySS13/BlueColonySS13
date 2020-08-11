@@ -54,7 +54,7 @@
 	if(owner_name)
 		name = "[owner_name]'s [D.name] [initial(name)]"
 
-	if(D.dept_type != HIDDEN_DEPARTMENT)
+	if(D.dept_type == HIDDEN_DEPARTMENT)
 		name = "[D.name] [initial(name)]"
 
 
