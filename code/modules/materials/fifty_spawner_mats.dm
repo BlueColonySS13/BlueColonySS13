@@ -133,3 +133,34 @@
 /obj/fiftyspawner/deuterium
 	name = "stack of deuterium"
 	type_to_spawn = /obj/item/stack/material/deuterium
+
+/obj/fiftyspawner/void_opal
+	name = "stack of void opals"
+	type_to_spawn = /obj/item/stack/material/void_opal
+
+/obj/fiftyspawner/painite
+	name = "stack of painite"
+	type_to_spawn = /obj/item/stack/material/painite
+/obj/fiftyspawner/aluminium
+	name = "stack of aluminium"
+	type_to_spawn = /obj/item/stack/material/aluminium
+
+/obj/fiftyspawner/titanium
+	name = "stack of titanium"
+	type_to_spawn = /obj/item/stack/material/titanium
+
+/obj/fiftyspawner/tin
+	name = "stack of tin"
+	type_to_spawn = /obj/item/stack/material/tin
+
+/obj/fiftyspawner/copper
+	name = "stack of copper"
+	type_to_spawn = /obj/item/stack/material/copper
+
+/obj/fiftyspawner/bronze
+	name = "stack of bronze"
+	type_to_spawn = /obj/item/stack/material/bronze
+
+/obj/fiftyspawner/quartz
+	name = "stack of quartz"
+	type_to_spawn = /obj/item/stack/material/quartz

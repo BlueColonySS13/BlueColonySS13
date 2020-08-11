@@ -46,7 +46,14 @@ var/list/mining_overlay_cache = list()
 		"osmium" = /obj/item/weapon/ore/osmium,
 		"hydrogen" = /obj/item/weapon/ore/hydrogen,
 		"silicates" = /obj/item/weapon/ore/glass,
-		"carbon" = /obj/item/weapon/ore/coal
+		"carbon" = /obj/item/weapon/ore/coal,
+		"copper" = /obj/item/weapon/ore/copper,
+		"tin" = /obj/item/weapon/ore/tin,
+		"bauxite" = /obj/item/weapon/ore/bauxite,
+		"void opals" = /obj/item/weapon/ore/void_opal,
+		"painite" = /obj/item/weapon/ore/painite,
+		"rutile" = /obj/item/weapon/ore/rutile,
+		"quartz" = /obj/item/weapon/ore/quartz,
 	)
 
 	has_resources = 1
@@ -588,10 +595,10 @@ var/list/mining_overlay_cache = list()
 
 	var/mineral_name
 	if(rare_ore)
-		mineral_name = pickweight(list("uranium" = 10, "platinum" = 10, "hematite" = 20, "carbon" = 20, "diamond" = 2, "gold" = 10, "silver" = 10, "phoron" = 20))
+		mineral_name = pickweight(list("uranium" = 10, "platinum" = 10, "hematite" = 20, "carbon" = 20, "diamond" = 4, "gold" = 10, "silver" = 10, "phoron" = 20, "void opal" = 1, "painite" = 3, "quartz" = 15, "bauxite" = 18, "rutile" = 13, "copper" = 18, "tin" = 18))
 
 	else
-		mineral_name = pickweight(list("uranium" = 5, "platinum" = 5, "hematite" = 35, "carbon" = 35, "diamond" = 1, "gold" = 5, "silver" = 5, "phoron" = 10))
+		mineral_name = pickweight(list("uranium" = 5, "platinum" = 5, "hematite" = 35, "carbon" = 35, "diamond" = 2, "gold" = 5, "silver" = 5, "phoron" = 10, "void opal" = 1, "painite" = 1, "quartz" = 8, "bauxite" = 30, "rutile" = 30, "copper" = 30, "tin" = 30))
 
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]

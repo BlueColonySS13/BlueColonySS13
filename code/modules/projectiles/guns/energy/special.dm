@@ -210,3 +210,82 @@ obj/item/weapon/gun/energy/staff/focus
 		list(mode_name="five shot burst", burst = 5, burst_accuracy = list(75,75,75,75,75), dispersion = list(1,1,1,1,1)),
 		list(mode_name="ten shot burst", burst = 10, burst_accuracy = list(75,75,75,75,75,75,75,75,75,75), dispersion = list(2,2,2,2,2,2,2,2,2,2)),
 		)
+
+/obj/item/weapon/gun/energy/service_weapon
+	name = "service weapon"
+	desc = "A mysterious firearm that can change forms at will."
+	icon_state = "service_weapon"
+	fire_sound = 'sound/weapons/gunshot/gunshot_light.ogg'
+	force = 5
+	slot_flags = SLOT_BELT
+	origin_tech = list(TECH_ARCANE = 5, TECH_COMBAT = 7, TECH_MATERIAL = 7, TECH_BLUESPACE = 4)
+	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	charge_cost = 80
+	cell_type = /obj/item/weapon/cell/device/weapon/recharge/captain
+	battery_lock = 1
+	fire_delay = 5
+	w_class = ITEMSIZE_NORMAL
+	var/current_form = "Grip"
+
+/obj/item/weapon/gun/energy/service_weapon/update_icon() //override due to this being an energy weapon. we don't want any pesky partial charge states.
+
+/obj/item/weapon/gun/energy/service_weapon/verb/morph_form()
+	set name = "Shift Service Weapon Form"
+	set category = "Object"
+	set desc = "Exploit the non-euclidean nature of the Service Weapon to change its weapon form."
+	set src in usr
+
+	transmogrify(current_form)
+	usr.visible_message("<span class='danger'>[usr]'s [src] morphs into a new form!</span>", \
+			"<span class='danger'>Your [src] shifts into its [current_form] form.</span>")
+
+/obj/item/weapon/gun/energy/service_weapon/proc/transmogrify(var/form)
+	switch(form)
+		if("Grip") //Transition to shotgun mode - Shatter
+			desc = "A mysterious firearm that can change forms at will. It is currently in its 'Shatter' form."
+			icon_state = "service_weapon_shatter"
+			projectile_type = /obj/item/projectile/bullet/pellet/shotgun
+			fire_delay = 10
+			charge_cost = 160
+			fire_sound = 'sound/weapons/gunshot/shotgun.ogg'
+			current_form = "Shatter"
+			return
+		if("Shatter") //Transition to smg mode - Spin
+			desc = "A mysterious firearm that can change forms at will. It is currently in its 'Spin' form."
+			icon_state = "service_weapon_spin"
+			projectile_type = /obj/item/projectile/bullet/pistol
+			fire_delay = 2
+			accuracy = -15 //rapid fire but inaccurate
+			charge_cost = 48
+			burst = 3
+			burst_accuracy = list(0,-5,-10,-15,-15)
+			dispersion = list(1,1,1,1,1)
+			fire_sound = 'sound/weapons/gunshot/gunshot_smg.ogg'
+			current_form = "Spin"
+			return
+		if("Spin") //Transition to piercing mode - Pierce
+			desc = "A mysterious firearm that can change forms at will. It is currently in its 'Pierce' form."
+			icon_state = "service_weapon_pierce"
+			fire_delay = 15
+			burst = 1
+			dispersion = list(0)
+			accuracy = 0
+			charge_cost = 480
+			fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
+			current_form = "Pierce"
+			return
+		if("Pierce")
+			desc = "A mysterious firearm that can change forms at will. It is currently in its 'Grip' form."
+			icon_state = "service_weapon"
+			fire_sound = 'sound/weapons/gunshot/gunshot_light.ogg'
+			charge_cost = 48
+			fire_delay = 5
+			projectile_type = /obj/item/projectile/bullet/pistol/medium
+			current_form = "Grip"
+			return
+		else
+			to_chat(usr, "<span class='warning'>UH OH! THIS SHOULDN'T HAVE HAPPENED! Report it here: https://github.com/GeneriedJenelle/The-World-Server-Redux/issues</span>")
+			return "FAILED"
+/*		if("Mjolnir")
+		if("Excalibur")
+		if("Varunastra")		*/

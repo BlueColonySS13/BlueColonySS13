@@ -221,9 +221,9 @@
 	slot = ACCESSORY_SLOT_ARMOR_M
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/clothing/accessory/armor/tag/sifguard
-	name = "\improper Sif Defense Force crest"
-	desc = "An emblem depicting the crest of the Sif Defense Force."
+/obj/item/clothing/accessory/armor/tag/solguard
+	name = "\improper Sol Defense Force crest"
+	desc = "An emblem depicting the crest of the Sol Defense Force."
 	icon_state = "ecflag"
 
 /obj/item/clothing/accessory/armor/tag/sec

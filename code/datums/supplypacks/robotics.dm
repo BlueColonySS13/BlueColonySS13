@@ -21,7 +21,7 @@
 			/obj/item/device/flash = 4,
 			/obj/item/weapon/cell/high = 2
 			)
-	cost = 10
+	cost = 75
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robotics assembly"
 	access = access_robotics

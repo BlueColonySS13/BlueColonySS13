@@ -311,20 +311,20 @@
 /datum/supply_pack/med/virus
 	name = "Virus sample crate"
 	contains = list(/obj/item/weapon/virusdish/random = 4)
-	cost = 145
+	cost = 500
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Virus sample crate"
 
 /datum/supply_pack/med/defib
 	name = "Defibrillator crate"
 	contains = list(/obj/item/device/defib_kit = 2)
-	cost = 140
+	cost = 275
 	containertype = /obj/structure/closet/crate/medical
 	containername = "Defibrillator crate"
 
 /datum/supply_pack/med/biomass
 	name = "Biomass Crate"	// limbs should be more scarce
 	contains = list(/obj/item/weapon/reagent_containers/glass/bottle/biomass = 10)
-	cost = 9000
+	cost = 9000 //bruh
 	containertype = /obj/structure/closet/crate/medical
 	containername = "Biomass Crate"
