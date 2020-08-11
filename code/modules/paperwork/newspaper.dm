@@ -4,7 +4,7 @@
 
 /obj/item/weapon/newspaper
 	name = "The Geminus Standard"
-	desc = "An issue of The Geminus Standard, the newspaper circulating aboard most stations."
+	desc = "An issue of The Geminus Standard, the BEST in Geminus News."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "newspaper"
 	w_class = ITEMSIZE_SMALL	//Let's make it fit in trashbags!
@@ -26,7 +26,7 @@ obj/item/weapon/newspaper/attack_self(mob/user as mob)
 		switch(screen)
 			if(0) //Cover
 				dat+="<DIV ALIGN='center'><B><FONT SIZE=6>[name]</FONT></B></div>"
-				dat+="<DIV ALIGN='center'><FONT SIZE=2>[using_map.company_name]-standard newspaper, for use on [using_map.company_name]© Space Facilities</FONT></div><HR>"
+				dat+="<DIV ALIGN='center'><FONT SIZE=2>[using_map.company_name]-standard newspaper, for use on [using_map.company_name]ï¿½ Space Facilities</FONT></div><HR>"
 				if(isemptylist(news_content))
 					if(important_message)
 						dat+="Contents:<BR><ul><B><FONT COLOR='red'>**</FONT>Important Security Announcement<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [pages+2]\]</FONT><BR></ul>"

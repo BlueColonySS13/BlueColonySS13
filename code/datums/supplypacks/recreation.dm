@@ -58,9 +58,9 @@
 	containername = "Arts and Crafts crate"
 
 /datum/supply_pack/recreation/painters
-	name = "Station Painting Supplies"
+	name = "City Painting Supplies"
 	cost = 30
-	containername = "station painting supplies crate"
+	containername = "city painting supplies crate"
 	containertype = /obj/structure/closet/crate
 	contains = list(
 			/obj/item/device/pipe_painter = 2,

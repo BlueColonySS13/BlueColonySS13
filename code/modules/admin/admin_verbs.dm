@@ -906,7 +906,7 @@ var/list/admin_verbs_event_manager = list(
 
 /client/proc/change_security_level()
 	set name = "Set security level"
-	set desc = "Sets the station security level"
+	set desc = "Sets the city security level"
 	set category = "Admin"
 
 	if(!check_rights(R_ADMIN))	return

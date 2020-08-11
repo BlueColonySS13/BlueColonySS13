@@ -421,7 +421,7 @@
 							shuttle_status["force"] = shuttle.can_force()
 
 				else
-					shuttle_status["location"] = "Station"
+					shuttle_status["location"] = "City"
 					shuttle_status["mode"] = SUP_SHUTTLE_DOCKED
 
 			else

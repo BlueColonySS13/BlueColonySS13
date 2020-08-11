@@ -36,7 +36,7 @@
 		if(4)
 			msg = "A passing derelict ship's drone defense systems have just activated. If any are sighted in the area, use caution."
 		if(5)
-			msg = "We're detecting a swarm of small objects approaching your station.  Most likely a bunch of drones.  Please exercise caution if you see any."
+			msg = "We're detecting a swarm of small objects approaching your city.  Most likely a bunch of drones.  Please exercise caution if you see any."
 
 	command_announcement.Announce(msg, "Rogue drone alert")
 

@@ -397,13 +397,13 @@
 		if(!WS.can_cloak)
 			return
 		WS.cloaked = TRUE
-		to_chat(usr, "<span class='danger'>Ship stealth systems have been activated. The station will not be warned of our arrival.</span>")
+		to_chat(usr, "<span class='danger'>Ship stealth systems have been activated. The city will not be warned of our arrival.</span>")
 
 	if(href_list["uncloak_command"])
 		if(!WS.can_cloak)
 			return
 		WS.cloaked = FALSE
-		to_chat(usr, "<span class='danger'>Ship stealth systems have been deactivated. The station will be warned of our arrival.</span>")
+		to_chat(usr, "<span class='danger'>Ship stealth systems have been deactivated. The city will be warned of our arrival.</span>")
 
 	if(href_list["autopilot_on_command"])
 		WS.adjust_autopilot(TRUE)

@@ -214,7 +214,7 @@
 		if(!MS.can_cloak)
 			return
 		MS.cloaked = !MS.cloaked
-		to_chat(usr, "<font color='red'>Ship stealth systems have been [(MS.cloaked ? "activated. The station will not" : "deactivated. The station will")] be warned of our arrival.</font>")
+		to_chat(usr, "<font color='red'>Ship stealth systems have been [(MS.cloaked ? "activated. The city will not" : "deactivated. The city will")] be warned of our arrival.</font>")
 
 	if(href_list["move_multi"])
 		if((MS.last_move + MS.cooldown*10) > world.time)

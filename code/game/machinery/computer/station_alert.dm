@@ -1,7 +1,7 @@
 
 /obj/machinery/computer/station_alert
-	name = "Station Alert Console"
-	desc = "Used to access the station's automated alert system."
+	name = "City Alert Console"
+	desc = "Used to access the city's automated alert system."
 	icon_keyboard = "tech_key"
 	icon_screen = "alert:0"
 	light_color = "#e6ffff"

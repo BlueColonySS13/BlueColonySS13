@@ -302,7 +302,7 @@
 
 				<h2>Power outage</h2>
 
-				A power problem has made the entire station lose power? Could be station-wide wiring problems or syndicate power sinks. In any case follow these steps:
+				A power problem has made the entire city lose power? Could be city-wide wiring problems or syndicate power sinks. In any case follow these steps:
 
 				<ol>
 					<li><b><font color='red'>PANIC!</font></b></li>
@@ -1267,7 +1267,7 @@
 				<br>
 
 				EVA gear. Wonderful to use. It's useful for mining, engineering, and occasionally just surviving, if things are that bad. Most people have EVA training,
-				but apparently there are some on a space station who don't. This guide should give you a basic idea of how to use this gear, safely. It's split into three main sections:
+				but apparently there are some in a city who don't. This guide should give you a basic idea of how to use this gear, safely. It's split into three main sections:
 				softsuits, voidsuits, and hardsuits. General advice and instructions for modification are present as well.<BR><BR>
 
 				One important point for synthetics and people using full-body prosthetics: You obviously don't need oxygen, but you do run the risk of overheating in vacuum.
@@ -1348,7 +1348,7 @@
 					<li>If you have modified it manually, is absolutely everything sealed perfectly?</li>
 					<li>Do you either have shoes on under the suit, or magnetic boots on over it?</li>
 					<li>Do you have internals connected and activated?</li>
-					<li>Do you have a way to communicate with the station in case something goes wrong?</li>
+					<li>Do you have a way to communicate with the city in case something goes wrong?</li>
 					<li>Do you have a second person watching if this is a training session?</li><BR>
 				</ul>
 

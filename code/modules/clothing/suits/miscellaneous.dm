@@ -12,7 +12,7 @@
  */
 /obj/item/clothing/suit/bluetag
 	name = "blue laser tag armour"
-	desc = "Blue Pride, Station Wide."
+	desc = "Blue Pride, City Wide."
 	icon_state = "bluetag"
 	item_state_slots = list(slot_r_hand_str = "tdblue", slot_l_hand_str = "tdblue")
 	blood_overlay_type = "armor"
