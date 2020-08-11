@@ -65,7 +65,7 @@
 
 /proc/get_lobbyjoin_antag_count()
 	var/count = 0
-	for(var/datum/antagonist/antag in lobbyjoin_antagonists)
+	for(var/datum/antagonist/antag in GLOB.lobbyjoin_antagonists)
 		count += antag.get_antag_count()
 
 	return count
