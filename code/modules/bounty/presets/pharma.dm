@@ -110,3 +110,16 @@
 	individual_reward = 20
 
 	days_until_expiry = 1
+
+/datum/bounty/health_pharma/messing_around
+	name = "Messing Around"
+	author = "Jan Itor"
+	description = "There's a new resident here at Sacred Heart Hospital and I think he's going to be my new target for pranks and hijinks. I think \
+	I'll start small. Some space lube on his car's door handles. Lube on his toilet seat. Lube, everywhere."
+
+	regents_wanted = list("lube" = 100)
+
+	department_reward = 100
+	individual_reward = 50
+
+	days_until_expiry = 2
