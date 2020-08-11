@@ -181,7 +181,7 @@
 				if(announcment_cooldown)
 					to_chat(usr, "Please allow at least one minute to pass between announcements")
 					return TRUE
-				var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement") as null|text
+				var/input = input(usr, "Please write a message to announce to the city residents.", "Priority Announcement") as null|text
 				if(!input || !can_still_topic())
 					return 1
 				crew_announcement.Announce(input)
