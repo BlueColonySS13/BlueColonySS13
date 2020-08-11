@@ -519,3 +519,72 @@
 	default_type = "reinforced borosilicate glass"
 	no_variants = FALSE
 
+/obj/item/stack/material/bronze
+	name = "bronze"
+	icon_state = "sheet-ingot"
+	singular_name = "bronze ingot"
+	default_type = "bronze"
+	apply_colour = 1
+	no_variants = FALSE
+	stack_color = COLOR_BROWN
+
+/obj/item/stack/material/tin
+	name = "tin"
+	icon_state = "sheet-ingot"
+	singular_name = "tin ingot"
+	default_type = "tin"
+	apply_colour = 1
+	no_variants = FALSE
+	stack_color = COLOR_WHITE
+
+/obj/item/stack/material/copper
+	name = "copper"
+	icon_state = "sheet-ingot"
+	singular_name = "copper ingot"
+	default_type = "copper"
+	apply_colour = 1
+	no_variants = FALSE
+	stack_color = COLOR_DARK_BROWN
+
+/obj/item/stack/material/painite
+	name = "painite"
+	icon_state = "sheet-gem"
+	singular_name = "painite gem"
+	default_type = "painite"
+	apply_colour = 1
+	no_variants = FALSE
+	stack_color = COLOR_NT_RED
+
+/obj/item/stack/material/void_opal
+	name = "void opal"
+	icon_state = "sheet-void_opal"
+	singular_name = "void opal"
+	default_type = "void opal"
+	no_variants = FALSE
+
+/obj/item/stack/material/quartz
+	name = "quartz"
+	icon_state = "sheet-gem"
+	singular_name = "quartz gem"
+	default_type = "quartz"
+	apply_colour = 1
+	no_variants = FALSE
+	stack_color = COLOR_WHITE
+
+/obj/item/stack/material/titanium
+	name = "titanium"
+	icon_state = "sheet-ingot"
+	singular_name = "titanium ingot"
+	default_type = "titanium"
+	apply_colour = 1
+	no_variants = FALSE
+	stack_color = COLOR_TITANIUM
+
+/obj/item/stack/material/aluminium
+	name = "aluminium"
+	icon_state = "sheet-ingot"
+	singular_name = "aluminium ingot"
+	default_type = "aluminium"
+	apply_colour = 1
+	no_variants = FALSE
+	stack_color = COLOR_GRAY

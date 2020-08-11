@@ -271,6 +271,9 @@ var/list/name_to_material
 
 /material/gold/bronze //placeholder for ashtrays
 	name = "bronze"
+	stack_type = /obj/item/stack/material/bronze
+	sheet_singular_name = "ingot"
+	sheet_plural_name = "ingots"
 	icon_colour = "#EDD12F"
 
 /material/silver
@@ -416,6 +419,7 @@ var/list/name_to_material
 
 /material/plasteel/titanium
 	name = "titanium"
+	stack_type = /obj/item/stack/material/titanium
 	stack_type = null
 	conductivity = 2.38
 	icon_base = "metal"
@@ -771,3 +775,63 @@ var/list/name_to_material
 	hardness = 1
 	weight = 1
 	protectiveness = 0 // 0%
+
+/material/void_opal
+	name = "void opal"
+	display_name = "void opal"
+	use_name = "void opal"
+	stack_type = /obj/item/stack/material/void_opal
+	flags = MATERIAL_UNMELTABLE
+	cut_delay = 60
+	reflectivity = 0
+	conductivity = 1
+	shard_type = SHARD_SHARD
+	tableslam_noise = 'sound/effects/Glasshit.ogg'
+	hardness = 100
+	stack_origin_tech = list(TECH_ARCANE = 1, TECH_MATERIAL = 6)
+	sheet_singular_name = "gem"
+	sheet_plural_name = "gems"
+
+/material/painite
+	name = "painite"
+	display_name = "painite"
+	use_name = "painite"
+	stack_type = /obj/item/stack/material/painite
+	flags = MATERIAL_UNMELTABLE
+	tableslam_noise = 'sound/effects/Glasshit.ogg'
+	sheet_singular_name = "gem"
+	sheet_plural_name = "gems"
+
+/material/tin
+	name = "tin"
+	display_name = "tin"
+	use_name = "tin"
+	stack_type = /obj/item/stack/material/tin
+	sheet_singular_name = "ingot"
+	sheet_plural_name = "ingots"
+
+/material/copper
+	name = "copper"
+	display_name = "copper"
+	use_name = "copper"
+	stack_type = /obj/item/stack/material/copper
+	conductivity = 52
+	sheet_singular_name = "ingot"
+	sheet_plural_name = "ingots"
+
+/material/quartz
+	name = "quartz"
+	display_name = "quartz"
+	use_name = "quartz"
+	stack_type = /obj/item/stack/material/quartz
+	tableslam_noise = 'sound/effects/Glasshit.ogg'
+	sheet_singular_name = "crystal"
+	sheet_plural_name = "crystals"
+
+/material/aluminium
+	name = "aluminium"
+	display_name = "aluminium"
+	use_name = "aluminium"
+	stack_type = /obj/item/stack/material/aluminium
+	sheet_singular_name = "ingot"
+	sheet_plural_name = "ingots"

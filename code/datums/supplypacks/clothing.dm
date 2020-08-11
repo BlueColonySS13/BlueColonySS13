@@ -1,6 +1,6 @@
 /*
 *	Here is where any supply packs
-*	related to weapons live.
+*	related to clothing live.
 */
 
 

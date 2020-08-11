@@ -79,6 +79,10 @@
 				playsound(loc, "sound/machines/copier.ogg", 100, 1)
 				var/obj/item/weapon/paper_bundle/B = bundlecopy(copyitem)
 				sleep(11*B.pages.len)
+			else if (istype(copyitem,/obj/item/weapon/paper/card/business))
+				playsound(loc, "sound/machines/copier.ogg", 100, 1)
+				sleep(11)
+				copy(copyitem)
 			else
 				usr << "<span class='warning'>\The [copyitem] can't be copied by \the [src].</span>"
 				break
@@ -170,8 +174,14 @@
 					toner = 0
 	return
 
+//hacky code time by yours truly
 /obj/machinery/photocopier/proc/copy(var/obj/item/weapon/paper/copy, var/need_toner=1)
-	var/obj/item/weapon/paper/c = new /obj/item/weapon/paper (loc)
+	//a check to determine if it's a business card or a paper
+	var/obj/item/weapon/paper/c
+	if (istype(copy,/obj/item/weapon/paper/card/business))
+		c = new /obj/item/weapon/paper/card/business (loc)
+	else if (istype(copy,/obj/item/weapon/paper))
+		c = new /obj/item/weapon/paper (loc)
 	if(toner > 10)	//lots of toner, make it dark
 		c.info = "<font color = #101010>"
 	else			//no toner? shitty copies for you!

@@ -74,7 +74,7 @@
 
 /decl/hierarchy/outfit/job/nanotrasen/guard //Deployed to keep NT officials safe, like the city hall guard -- not death squad
 	name = "Nanotrasen Security" //Name also subject to lore nerds, Nanotrasen Guard just seemed wimpy
-	uniform = /obj/item/clothing/under/utility/sifguard
+	uniform = /obj/item/clothing/under/utility/solguard
 	suit = /obj/item/clothing/suit/armor/pcarrier/medium/nt
 	head = /obj/item/clothing/head/helmet/dermal
 	shoes = /obj/item/clothing/shoes/boots/jackboots

@@ -78,7 +78,7 @@
 			/obj/item/clothing/accessory/storage/white_drop_pouches,
 			/obj/item/clothing/accessory/storage/webbing
 			)
-	cost = 30
+	cost = 70
 	containertype = "/obj/structure/closet/crate"
 	containername = "Webbing crate"
 	spend_type = SPEND_WEAPONS

@@ -278,6 +278,13 @@
 	icon_state = "P100packet"
 	brand = "Professional 120"
 
+/obj/item/weapon/storage/fancy/cigarettes/nightshade
+	name = "\improper pack of Darlene's Nightshade"
+	desc = "Got too much time and nowhere to go."
+	icon_state = "Cpacket"
+	brand = "Darlene's Nightshade"
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/nightshade = 6)
+
 /obj/item/weapon/storage/fancy/cigar
 	name = "cigar case"
 	desc = "A case for holding your cigars when you are not smoking them."
