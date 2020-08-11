@@ -36,6 +36,8 @@
 	var/data
 
 /proc/save_map(var/id, var/path, var/save_obj = 1)
+	set background = 1
+
 	var/area/map_area
 
 	for(var/area/A in return_sorted_areas())
@@ -239,6 +241,8 @@
 	return TRUE
 
 /proc/map_write(var/area/map_area, var/save_obj)
+	set background = 1
+
 	var/list/full_map = list()
 
 	var/list/all_turfs = get_area_turfs(map_area)
@@ -316,6 +320,8 @@
 
 
 /proc/get_map_data(var/list/full_map)
+	set background = 1
+
 	if(!full_map) return 0
 
 	for(var/datum/map_turf/MT in full_map)
@@ -410,7 +416,7 @@
 
 
 /proc/map_to_file(var/list/full_map, var/path, var/map_name)
-
+	set background = 1
 	if(!full_map)
 		CRASH("No full map provided.")
 

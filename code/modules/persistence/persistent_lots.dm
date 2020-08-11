@@ -1,4 +1,6 @@
 /datum/lot/proc/save_metadata(new_path)
+	set background = 1
+
 	var/taken_path = path
 
 	if(new_path)
@@ -90,6 +92,8 @@
 
 
 /datum/lot/proc/save_lot_data()
+	set background = 1
+
 	if(!lot_area)
 		message_admins("SAVE: [id] Issue with finding lot area for [name].", 1)
 		return FALSE
@@ -107,6 +111,8 @@
 	return TRUE
 
 /datum/lot/proc/backup_lot()
+	set background = 1
+
 	if(!lot_area)
 		message_admins("SAVE: [id] Issue with finding lot area for [name].", 1)
 		return FALSE
