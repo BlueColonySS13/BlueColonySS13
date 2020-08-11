@@ -29,6 +29,7 @@
 	dat += "<b>Current Character:</b> [client.prefs.real_name]<br>"
 	dat += "<b>Current Job:</b> [job.title]<br>"
 	dat += "<b>Active Police Officers:</b> [SSjobs.get_active_police()]<hr>"
+	dat += "<b>Antag Cap:</b> [get_lobbyjoin_antag_count()]/[ticker.mode.max_antags]<br>"
 
 	if(config.canonicity)
 		dat += "<b>NOTICE:</b> This is a <i>canon</i> round, everything your character does this round is canon. Your character's criminal record and \
@@ -65,13 +66,16 @@
 			if(job.title in antag.restricted_jobs)
 				dat += "<br><font color='red'><b>This antagonist type cannot be played by your current job: [job.title].</b></font>"
 
-			if(!antag.can_become_antag(mind))
+			else if(!antag.can_become_antag(mind))
 				dat += "<br><font color='red'><b>You are not eligible for this role.</b></font>"
+
+			else if(get_lobbyjoin_antag_count() >= ticker.mode.max_antags)
+				dat += "<b>Max antag count for this gamemode reached.</b></font>"
 
 			else if(antag.get_antag_count() >= antag.hard_cap)
 				dat += "<br><font color='red'><b>This antag type has reached the maximum amount.</b></font>"
 
-			else if(!antag.meets_police_lobby_join(1))
+			else if(!antag.meets_police_lobby_join())
 				dat += "<br><font color='red'><b>To join, the round needs at least [antag.get_needed_police()] police officer(s).</b></font>"
 			else
 				dat += "<br><a href='byond://?src=\ref[src];JoinAsAntag=[antag.id]'>Join As [antag.role_text]</a>"
@@ -87,6 +91,10 @@
 /mob/new_player/proc/JoinAntag(var/datum/antagonist/antag)
 
 	if(!antag || !istype(antag, /datum/antagonist) )
+		return FALSE
+
+	if(get_lobbyjoin_antag_count() >= ticker.mode.max_antags)
+		to_chat(src, "<b>Max antag count for this gamemode reached.</b></font>")
 		return FALSE
 
 	if(selected_job in antag.restricted_jobs)
@@ -105,7 +113,7 @@
 		to_chat(src, "Limit for this antagonist group reached.")
 		return FALSE
 
-	if(!antag.meets_police_lobby_join(1))
+	if(!antag.meets_police_lobby_join())
 		to_chat(src, "This antagonist type cannot be joined until more police officers join.")
 		return FALSE
 

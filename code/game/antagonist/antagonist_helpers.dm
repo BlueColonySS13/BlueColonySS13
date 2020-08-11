@@ -54,17 +54,21 @@
 
 	return (police_per_antag * get_antag_count())
 
-/datum/antagonist/proc/meets_police_lobby_join(antags_to_join = 1) // can we get one (or more) for lobby join?
+/datum/antagonist/proc/meets_police_lobby_join() // can we get one (or more) for lobby join?
 	if(!get_needed_police())
 		return TRUE
 
-	if(!LAZYLEN(get_antag_count()))
-		return TRUE
-
-	var/police_needed = get_needed_police() + (antags_to_join * police_per_antag)
+	var/police_needed = get_needed_police() + police_per_antag
 
 	if(SSjobs.get_active_police() >= police_needed)
 		return TRUE
+
+/proc/get_lobbyjoin_antag_count()
+	var/count = 0
+	for(var/datum/antagonist/antag in lobbyjoin_antagonists)
+		count += antag.get_antag_count()
+
+	return count
 
 
 
