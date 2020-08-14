@@ -62,6 +62,8 @@
 
 
 /proc/get_object_data(obj/O)
+	set background = 1
+
 	if(!O)
 		return FALSE
 
@@ -121,6 +123,8 @@
 	return MO
 
 /proc/full_item_save(obj/O)
+	set background = 1
+
 // get all objects in a area. I hate the method that's about to follow, but after finding exploits and potential shitcode that's in the game right now
 // actually worried we'd get the bad reference juju happening (like syringes containing blood and that blood having the actual mob reference in its data
 // which caused an infinite loop) - or items non-existing causing broken loading. because of this, the saving process has to be manually filtered for all the loops.

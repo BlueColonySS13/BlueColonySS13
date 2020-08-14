@@ -921,7 +921,7 @@
 					alert("Due to conflict of interest, as a council member you cannot handle lots that you are a tenant or landlord of.")
 					return
 
-				if(!(LOT.get_landlord_balance() >= LOT.service_charge_possession))
+				if(LOT.service_charge_possession > LOT.get_landlord_balance())
 					error_msg = "This lot has not accured enough debt to be eligible for reposession. It must be -[LOT.service_charge_possession]CR and under."
 					alert("This lot has not accured enough debt to be eligible for reposession. It must be -[LOT.service_charge_possession]CR and under.")
 					return
@@ -984,7 +984,7 @@
 					return
 
 				LOT.add_note(full_name, "Terminated own tenancy for [LOT.name]",usr)
-				LOT.remove_tenant()
+				LOT.remove_tenant(tenant.unique_id)	//fixes issue where one cannot cancel own tenancy.
 				clear_data()
 				index = 10
 
@@ -1260,6 +1260,10 @@
 
 				if(LOT.get_landlord_balance() > 0)
 					error_msg = "This landlord is not in debt."
+					return
+
+				if(LOT.get_landlord_balance() > -LOT.service_light_warning)
+					error_msg = "This landlord needs to be at least [-LOT.service_light_warning] in debt before a warning can be sent."
 					return
 
 				LOT.send_arrears_letter(LOT.get_landlord_uid())
