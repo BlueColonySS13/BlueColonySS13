@@ -35,6 +35,28 @@
 		playsound(src.loc, src.use_sound, 50, 1, -5)
 	..()
 
+//redd - pens can rename boxes now
+/obj/item/weapon/storage/box/AltClick(mob/living/carbon/user)
+	if ( istype(user) )
+		//check if the user is in range, and if they aren't restrained or downed.
+		if( (!in_range(src, user)) || user.stat || user.restrained() )
+			return
+		//get the item in the users hand
+		var/obj/item/i = user.get_active_hand()
+		//is it a pen?
+		if (istype(i,/obj/item/weapon/pen))
+			//check if user is actually holding the box
+			if ((loc == usr) && usr.stat == 0)
+				var/n_name = sanitizeSafe(input(usr, "What would you like to label the box?", "Box Labelling", null)  as text, MAX_NAME_LEN)
+				//check once more
+				if ((loc == usr) && usr.stat == 0 && n_name)
+					name = n_name
+				else if (n_name)
+					user << "<span class='warning'>You must be holding \the [src] to rename it.</span>"
+			else
+				user << "<span class='warning'>You must be holding \the [src] to rename it.</span>"
+	return
+
 // BubbleWrap - A box can be folded up to make card
 /obj/item/weapon/storage/box/attack_self(mob/user as mob)
 	if(..()) return
