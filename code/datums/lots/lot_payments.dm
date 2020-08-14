@@ -51,7 +51,7 @@
 
 	if(get_tenant_by_uid(uid))
 		resident = get_tenant_by_uid(uid)
-	if(landlord.unique_id == uid)
+	if(!resident && landlord.unique_id == uid)
 		resident = landlord
 		type = "LEASEHOLDER"
 
@@ -61,7 +61,7 @@
 	var/severity
 
 	if(resident.account_balance > service_charge_warning)
-		severity = "\[b\]WARNING\[/b\]"
+		severity = "WARNING"
 	else if(resident.account_balance > service_light_warning)
 		severity = "Reminder"
 

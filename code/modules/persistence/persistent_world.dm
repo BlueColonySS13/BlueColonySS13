@@ -36,7 +36,7 @@
 		H.save_mob_to_prefs()
 
 	if(config.lot_saving)
-		to_chat(world, "<h3>Saving all lots...</h3>")
+		to_chat(world, "<h3>Saving all lots... Note: This might lag the world for a short while.</h3>")
 		SSlots.save_all_lots()
 
 	for(var/datum/persistent_inventory/PI in GLOB.persistent_inventories)
