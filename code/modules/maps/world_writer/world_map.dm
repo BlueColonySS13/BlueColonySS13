@@ -102,6 +102,8 @@
 		if(save_var)
 			MO.object_vars[V] = O.vars[V]
 
+		CHECK_TICK
+
 
 	if(O.save_reagents && O.reagents)
 		MO.reagent_data = O.pack_persistence_data()
@@ -133,6 +135,8 @@
 	var/datum/map_object/MO = get_object_data(O)
 	if(!MO) return
 
+	CHECK_TICK
+
 
 	for(var/obj/A in O.get_saveable_contents())
 		if(!O.save_contents)
@@ -145,6 +149,8 @@
 
 		MO.contents += MO_2
 
+		CHECK_TICK
+
 		for(var/obj/B in A.get_saveable_contents())
 			if(!A.save_contents) continue
 			if(B.dont_save) continue
@@ -153,6 +159,8 @@
 
 			MO_2.contents += MO_3
 
+			CHECK_TICK
+
 			for(var/obj/C in B.get_saveable_contents())
 				if(!B.save_contents) continue
 				if(C.dont_save) continue
@@ -160,6 +168,10 @@
 				if(!MO_4) continue
 
 				MO_3.contents += MO_4
+
+				CHECK_TICK
+
+		CHECK_TICK
 
 	return MO
 
@@ -182,6 +194,8 @@
 		MD.unpack_object_data(A)
 		A.forceMove(O)
 
+		CHECK_TICK
+
 		for(var/datum/map_object/MF in MD.contents)
 			if(!ispath(MF.savedtype))
 				error("Undefined save type [MF.savedtype]")
@@ -192,6 +206,8 @@
 			MF.unpack_object_data(B)
 			B.forceMove(A)
 
+			CHECK_TICK
+
 			for(var/datum/map_object/MG in MF.contents)
 				if(!ispath(MG.savedtype))
 					error("Undefined save type [MG.savedtype]")
@@ -201,6 +217,8 @@
 				CHECK_TICK
 				MG.unpack_object_data(C)
 				C.forceMove(B)
+
+				CHECK_TICK
 
 	return O
 
@@ -234,7 +252,7 @@
 		O.fingerprintshidden = forensic_data["fingerprintshidden"]
 		O.suit_fibers = forensic_data["suit_fibers"]
 
-	CHECK_TICK
+
 	O.load_persistent_metadata(metadata)
 	O.on_persistence_load()
 
@@ -320,6 +338,8 @@
 
 				all_objs += O
 
+		CHECK_TICK
+
 	return full_map
 
 
@@ -368,6 +388,8 @@
 					if(!decal_type || !ispath(decal_type))
 						continue
 					new decal_type(newturf, L["dir"], L["color"])
+
+					CHECK_TICK
 
 		for(var/datum/map_object/MO in MT.map_objects)
 			if(!ispath(MO.savedtype))
