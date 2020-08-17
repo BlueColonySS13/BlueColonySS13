@@ -3,11 +3,6 @@
 	desc = "Slick black suit vest."
 	icon_state = "det_vest"
 
-/obj/item/clothing/accessory/poshblazer
-	name = "women's posh blazer"
-	desc = "This is a bit fancy, like the new recruit in a news office who is trying too hard to impress the managers."
-	icon_state = "poshblazer"
-
 /obj/item/clothing/accessory/jacket
 	name = "tan suit jacket"
 	desc = "Cozy suit jacket."
@@ -263,6 +258,8 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
+
+	matter = list("wool" = 2000)
 
 /obj/item/clothing/accessory/sweater/pink
 	name = "pink sweater"

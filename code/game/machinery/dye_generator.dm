@@ -413,6 +413,12 @@
 		use_dye()
 		return
 
+	var/obj/structure/curtain/CU = A
+	if(istype(CU))
+		CU.color = dye_color
+		use_dye()
+		return
+
 	var/obj/item/stack/S = A
 	if(istype(S))
 		if(!S.dyeable)

@@ -529,7 +529,7 @@
 /obj/item/device/retail_scanner/science
 	account_to_connect = DEPT_RESEARCH
 
-/obj/item/device/retail_scanner/security
+/obj/item/device/retail_scanner/police
 	account_to_connect = DEPT_POLICE
 	menu_items = LAW
 

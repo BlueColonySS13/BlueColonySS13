@@ -410,6 +410,11 @@
 	stack_color = COLOR_BROWN
 	drop_sound = 'sound/items/drop/clothing.ogg'
 
+/obj/item/stack/material/leather/synthetic
+	name = "synthetic leather"
+	default_type = "synthetic leather"
+	desc = "A synthetic product which is cheaper than the actual thing."
+
 /obj/item/stack/material/silk
 	name = "silk"
 	desc = "Many lives were lost trying to wrangle the silk from giant spiders, but it was a risk we were willing to take."
@@ -481,6 +486,18 @@
 	desc = "Sheared from your local sheep. A so-done sheep."
 	icon_state = "sheet-fabric"
 	default_type = "wool"
+	no_variants = FALSE
+	burn_state = 0 //Burnable
+	burntime = 5
+	associated_reagents = list("protein")
+	dyeable = TRUE
+	drop_sound = 'sound/items/drop/clothing.ogg'
+
+/obj/item/stack/material/polychromatic_thread
+	name = "polychromatic thread"
+	desc = "A color shifting thread that can easily change color via electromagnetic pulses."
+	icon_state = "sheet-fabric"
+	default_type = "polychromatic thread"
 	no_variants = FALSE
 	burn_state = 0 //Burnable
 	burntime = 5

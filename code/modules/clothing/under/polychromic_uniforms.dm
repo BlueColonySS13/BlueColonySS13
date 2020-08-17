@@ -31,6 +31,8 @@
 	sprite_sheets = null	//To prevent alternate species sprite sheets from popping up
 	ispolychromic = 1
 
+	matter = list("polychromatic thread" = 3000)
+
 	unique_save_vars = list("primary_color", "secondary_color", "tertiary_color")
 	/* Stuff from Cit
 	mutantrace_variation = NO_MUTANTRACE_VARIATION // because I'm too lazy to port these to digi-compatible and to prove a point from /tg/ whining - Pooj
