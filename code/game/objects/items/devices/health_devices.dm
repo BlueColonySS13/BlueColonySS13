@@ -52,7 +52,7 @@
 	if(!M || !user)
 		return
 
-	if(!do_after(user,40))
+	if(!do_after(M,40))
 		return 0
 
 	var/list/found_reagents = list()
@@ -60,10 +60,11 @@
 
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if(C.reagents.total_volume)
+		if(C.ingested && C.ingested.total_volume)
 			for(var/datum/reagent/R in C.ingested.reagent_list)
 				if((R.id in obscuring_reagents) && prob(obscure_chance))
 					obscure = TRUE
+					break
 
 				if(R.id in reagent_exceptions)
 					continue
@@ -71,14 +72,14 @@
 				for(var/V in reagent_types_to_detect)
 					if(istype(R, V))
 						found_reagents += R
-						break
+						continue
 
 	if(isemptylist(found_reagents) || obscure)
 		results = "<b>[M]:</b> No drugs found in bloodstream."
 	else
 		results = "<b>[M]:</b>"
 		for(var/datum/reagent/R in found_reagents)
-			results += "<br>[R]: [R.volume] unit(s)"
+			results += "<br>[R]: [round(R.volume)] unit(s)"
 
 	user.visible_message("<span class='notice'>[user] scans [M] with [src].</span>")
 	user.visible_message("<span class='notice'>[results]</span>")

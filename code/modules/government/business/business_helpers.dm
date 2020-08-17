@@ -34,6 +34,15 @@ var/global/list/business_outfits = list(
 		if(B.owner.unique_id == uid)
 			return B
 
+
+/datum/business/proc/get_funds()
+	var/datum/money_account/business_account = dept_acc_by_id(department)
+
+	if(!business_account)
+		return 0
+
+	return business_account.money
+
 /datum/business/proc/try_auth_business(pass)
 	if(access_password == pass)
 		return 1

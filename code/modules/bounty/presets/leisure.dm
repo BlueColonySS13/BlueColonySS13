@@ -146,17 +146,3 @@
 
 	days_until_expiry = 1
 	allow_subtypes = TRUE
-
-/datum/bounty/leisure/my_wedding
-	name = "My Wedding"
-	author = "Jerkarta Adams"
-	description = "Getting married to a mafia boss is not the easiest thing in the world, there's a lot of politics behind it. Regardless, I'll be needin' one \
-	of your finest wedding dresses to outshine the rival gangs in mi' area."
-
-	items_wanted = list(/obj/item/clothing/under/wedding = 1)
-
-	department_reward = 800
-	individual_reward = 170
-
-	days_until_expiry = 1
-	allow_subtypes = TRUE

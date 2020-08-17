@@ -93,9 +93,9 @@
 	clean_record_required = TRUE
 
 	description = "Theoretically, you're somewhat smarter than the average cop considering your forensics degree, \
-	but in reality thats rarely the case. The job is simple enough, just wait for any crime that needs some physical evidence, \
+	but in reality that's rarely the case. The job is simple enough, just wait for any crime that needs some physical evidence, \
 	investigate the evidence and scene and compile it for the courts, even if it takes multiple shifts to get it done. \
-	You also have a gun ment for self-defence, what a meme."
+	You also have a gun meant for self-defence, what a meme."
 
 	duties = list("Investigate crimes", "Don't get your own prints and fibers on the evidence", "Drink whiskey", "Compile reports", "Blotch the entire thing anyway")
 

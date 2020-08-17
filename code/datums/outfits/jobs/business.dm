@@ -1,6 +1,6 @@
 /decl/hierarchy/outfit/job/business
 	name = OUTFIT_JOB_NAME("business")
-	pda_slot = slot_r_store
+	pda_slot = slot_belt
 
 /decl/hierarchy/outfit/job/business/formal
 	name = OUTFIT_COSTUME("Formal")

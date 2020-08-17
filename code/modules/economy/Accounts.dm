@@ -197,6 +197,7 @@
 	money = Clamp(money, -MAX_MONEY, MAX_MONEY)
 	if(!transaction_log)
 		transaction_log = list()
+
 	truncate_oldest(transaction_log, max_transaction_logs)
 
 /proc/all_public_accounts(show_hidden = FALSE)

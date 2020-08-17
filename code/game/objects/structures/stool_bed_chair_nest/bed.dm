@@ -275,6 +275,7 @@
 	w_class = ITEMSIZE_LARGE
 	var/rollertype = /obj/item/roller
 	var/bedtype = /obj/structure/bed/roller
+	matter = list(DEFAULT_WALL_MATERIAL = 2750)
 
 /obj/item/roller/attack_self(mob/user)
 	var/obj/structure/bed/roller/R = new bedtype(user.loc)
@@ -300,6 +301,7 @@
 	w_class = ITEMSIZE_NORMAL
 	rollertype = /obj/item/roller/adv
 	bedtype = /obj/structure/bed/roller/adv
+	matter = list(DEFAULT_WALL_MATERIAL = 3750)
 
 /obj/item/roller_holder
 	name = "roller bed rack"
@@ -307,6 +309,7 @@
 	icon = 'icons/obj/rollerbed.dmi'
 	icon_state = "rollerbed"
 	var/obj/item/roller/held
+	matter = list(DEFAULT_WALL_MATERIAL = 2850)
 
 /obj/item/roller_holder/New()
 	..()
