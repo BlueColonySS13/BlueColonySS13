@@ -188,8 +188,6 @@
 	return T
 
 /datum/money_account/proc/sanitize_values()
-	GLOB.all_money_accounts |= src
-
 	if(!account_number)
 		account_number = md5("[owner_name][GLOB.current_date_string][get_game_time()]")
 
