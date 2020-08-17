@@ -181,6 +181,8 @@
 	var/base_name = " "
 	var/base_desc = " "
 
+	matter = list("plastic" = 400)
+
 /obj/item/weapon/storage/pill_bottle/New()
 	..()
 	base_name = name

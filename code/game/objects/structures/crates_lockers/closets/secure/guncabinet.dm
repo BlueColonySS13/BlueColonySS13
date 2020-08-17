@@ -58,6 +58,7 @@
 	name = "bodyguard's gun cabinet"
 	req_access = list(access_bodyguard)
 	req_one_access = list(access_bodyguard)
+	dont_save = TRUE
 
 	New()
 		..()
@@ -74,4 +75,4 @@
 		new /obj/item/clothing/accessory/holster/hip(src)
 		new /obj/item/weapon/handcuffs(src)
 		new /obj/item/weapon/handcuffs(src)
-		return
+

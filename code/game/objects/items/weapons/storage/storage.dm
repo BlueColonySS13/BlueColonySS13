@@ -691,6 +691,8 @@
 	var/open_state
 	var/closed_state
 
+	matter = list("silk" = 950)
+
 /obj/item/weapon/storage/trinketbox/update_icon()
 	overlays.Cut()
 	if(open)

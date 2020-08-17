@@ -4,6 +4,9 @@
 	icon_state = "med"
 	slot = "armband"
 
+/obj/item/clothing/accessory/armband/silk
+	matter = list("silk" = 550)
+
 /obj/item/clothing/accessory/armband/red
 	name = "red armband"
 	desc = "A fancy red armband!"

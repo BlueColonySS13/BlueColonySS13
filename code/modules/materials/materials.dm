@@ -634,6 +634,15 @@ var/list/name_to_material
 	melting_point = T0C+300
 	protectiveness = 3 // 13%
 
+/material/leather/synthetic
+	name = "synthetic leather"
+	icon_colour = COLOR_LEATHER
+	stack_origin_tech = list(TECH_MATERIAL = 2)
+	flags = MATERIAL_PADDING
+	ignition_point = T0C+400
+	melting_point = T0C+400
+	protectiveness = 2 // 13%
+
 /material/denim
 	name = "denim"
 	icon_colour = COLOR_DENIM
@@ -664,6 +673,15 @@ var/list/name_to_material
 /material/cotton
 	name = "cotton"
 	display_name ="cotton"
+	icon_colour = "#FFFFFF"
+	flags = MATERIAL_PADDING
+	ignition_point = T0C+232
+	melting_point = T0C+300
+	protectiveness = 1 // 4%
+
+/material/polychromatic_thread
+	name = "polychromatic thread"
+	display_name ="polychromatic thread"
 	icon_colour = "#FFFFFF"
 	flags = MATERIAL_PADDING
 	ignition_point = T0C+232

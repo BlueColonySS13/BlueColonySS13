@@ -29,7 +29,11 @@
 	var/index			//null by default, if set, will change which dmi it uses
 	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 
+	matter = list("cotton" = 3250)
+
 	price_tag = 30
+
+	unique_save_vars = list("matter") // clothing matter can vary now
 
 /obj/item/clothing/New()
 	..()

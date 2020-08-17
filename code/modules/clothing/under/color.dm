@@ -53,7 +53,7 @@
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/color/white
-	name = "white jumpsuit"
+	name = "jumpsuit"
 	icon_state = "white"
 	rolled_sleeves = 0
 

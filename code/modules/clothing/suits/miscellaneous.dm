@@ -287,13 +287,14 @@ obj/item/clothing/suit/kimono
 	desc = "A traditional Japanese kimono."
 	icon_state = "kimono"
 	addblends = "kimono_a"
+	matter = list("silk" = 1250)
 
 obj/item/clothing/suit/kamishimo
 	name = "kamishimo"
 	desc = "Traditional Japanese menswear."
 	icon_state = "kamishimo"
 	index = 1
-
+	matter = list("silk" = 1250)
 /*
  * coats
  */
@@ -490,6 +491,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	cold_protection = UPPER_TORSO|ARMS
 	min_cold_protection_temperature = T0C - 20
 	siemens_coefficient = 0.7
+	matter = list("leather" = 2000, "wool" = 400)
 
 /obj/item/clothing/suit/storage/bomber/alt
 	name = "bomber jacket"
@@ -503,22 +505,22 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/storage/toggle/leather_jacket
-	name = "leather jacket"
-	desc = "A black leather coat."
+	name = "jacket"
+	desc = "A black leather jacket."
 	icon_state = "leather_jacket"
 	allowed = list (/obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight, /obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/leather_jacket/sleeveless
-	name = "leather vest"
+	name = "sleeveless jacket vest"
 	desc = "A black leather vest."
 	icon_state = "leather_jacket_sleeveless"
 	body_parts_covered = UPPER_TORSO
 	item_state_slots = list(slot_r_hand_str = "leather_jacket", slot_l_hand_str = "leather_jacket")
 
 /obj/item/clothing/suit/storage/leather_jacket_alt
-	name = "leather vest"
+	name = "black vest"
 	desc = "A black leather vest."
 	icon_state = "leather_jacket_alt"
 	item_state_slots = list(slot_r_hand_str = "leather_jacket", slot_l_hand_str = "leather_jacket")
@@ -539,7 +541,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 //This one has buttons for some reason
 /obj/item/clothing/suit/storage/toggle/brown_jacket
 	name = "brown jacket"
-	desc = "A brown leather coat."
+	desc = "A brown leather jacket."
 	icon_state = "brown_jacket"
 	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
 	allowed = list (/obj/item/weapon/pen, /obj/item/weapon/paper, /obj/item/device/flashlight,/obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/storage/box/matches, /obj/item/weapon/reagent_containers/food/drinks/flask)
@@ -566,7 +568,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
 
 /obj/item/clothing/suit/storage/toggle/denim_jacket
-	name = "denim jacket"
+	name = "jacket"
 	desc = "A denim coat."
 	icon_state = "denim_jacket"
 	item_state_slots = list(slot_r_hand_str = "denim_jacket", slot_l_hand_str = "denim_jacket")
@@ -575,7 +577,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/denim_jacket/sleeveless
-	name = "denim vest"
+	name = "vest"
 	desc = "A denim vest."
 	icon_state = "denim_jacket_sleeveless"
 	body_parts_covered = UPPER_TORSO
@@ -722,7 +724,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 
 /obj/item/clothing/suit/storage/hooded/wintercoat
 	name = "winter coat"
-	desc = "A heavy jacket made from 'synthetic' animal furs."
+	desc = "A heavy jacket made from leather and wool."
 	icon_state = "coatwinter"
 	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -1155,6 +1157,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	icon_state = "poshblazer"
 	body_parts_covered = UPPER_TORSO|ARMS
 	index = 1
+	matter = list("silk" = 1550)
 
 /obj/item/clothing/suit/storage/formalblazer
 	name = "women's formal blazer"
@@ -1162,6 +1165,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	icon_state = "formalblazer"
 	body_parts_covered = UPPER_TORSO|ARMS
 	index = 1
+	matter = list("silk" = 1250)
 
 /obj/item/clothing/suit/storage/loosesleeveblazer
 	name = "loose sleeve blazer"
