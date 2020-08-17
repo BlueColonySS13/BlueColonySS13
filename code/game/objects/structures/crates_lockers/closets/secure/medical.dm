@@ -8,6 +8,7 @@
 	icon_broken = "medicalbroken"
 	icon_off = "medicaloff"
 	req_access = list(access_medical)
+	dont_save = TRUE
 
 
 /obj/structure/closet/secure_closet/medical1/New()
@@ -22,7 +23,7 @@
 		new /obj/item/weapon/reagent_containers/glass/bottle/inaprovaline(src)
 		new /obj/item/weapon/reagent_containers/glass/bottle/antitoxin(src)
 		new /obj/item/weapon/reagent_containers/glass/bottle/antitoxin(src)
-		return
+
 
 
 
@@ -36,6 +37,7 @@
 	icon_broken = "medicalbroken"
 	icon_off = "medicaloff"
 	req_access = list(access_surgery)
+	dont_save = TRUE
 
 
 /obj/structure/closet/secure_closet/medical2/New()
@@ -46,7 +48,7 @@
 		new /obj/item/clothing/mask/breath/medical(src)
 		new /obj/item/clothing/mask/breath/medical(src)
 		new /obj/item/clothing/mask/breath/medical(src)
-		return
+
 
 
 
@@ -59,6 +61,7 @@
 	icon_opened = "securemedopen"
 	icon_broken = "securemedbroken"
 	icon_off = "securemedoff"
+	dont_save = TRUE
 
 /obj/structure/closet/secure_closet/medical3/New()
 	..()
@@ -116,7 +119,6 @@
 	new /obj/item/weapon/storage/box/freezer(src)
 	new /obj/item/weapon/storage/box/freezer(src)
 	new /obj/item/weapon/storage/box/freezer(src)
-	return
 
 /obj/structure/closet/secure_closet/paramedic
 	name = "paramedic locker"
@@ -128,6 +130,7 @@
 	icon_broken = "medicalbroken"
 	icon_off = "medicaloff"
 	req_access = list(access_medical_equip)
+	dont_save = TRUE
 
 
 /obj/structure/closet/secure_closet/paramedic/New()
@@ -155,7 +158,6 @@
 		new /obj/item/weapon/storage/box/freezer(src)
 		new /obj/item/clothing/accessory/storage/white_vest(src)
 		new /obj/item/taperoll/medical(src)
-		return
 
 /obj/structure/closet/secure_closet/CMO
 	name = "chief medical officer's locker"
@@ -166,6 +168,7 @@
 	icon_opened = "cmosecureopen"
 	icon_broken = "cmosecurebroken"
 	icon_off = "cmosecureoff"
+	dont_save = TRUE
 
 /obj/structure/closet/secure_closet/CMO/New()
 	..()
@@ -210,7 +213,6 @@
 	new /obj/item/weapon/storage/box/freezer(src)
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/taperoll/medical(src)
-	return
 
 
 
@@ -239,6 +241,7 @@
 	icon_broken = "medicalbroken"
 	icon_off = "medicaloff"
 	req_access = list(access_chemistry)
+	dont_save = TRUE
 
 
 /obj/structure/closet/secure_closet/chemical/New()
@@ -254,7 +257,7 @@
 		new /obj/item/weapon/reagent_containers/glass/bottle/inaprovaline(src)
 		new /obj/item/weapon/reagent_containers/glass/bottle/antitoxin(src)
 		new /obj/item/weapon/reagent_containers/glass/bottle/antitoxin(src)
-		return
+
 
 /obj/structure/closet/secure_closet/psych
 	name = "psychiatric closet"
@@ -266,6 +269,7 @@
 	icon_broken = "medicalbroken"
 	icon_off = "medicaloff"
 	req_access = list(access_psychiatrist)
+	dont_save = TRUE
 
 
 /obj/structure/closet/secure_closet/psych/New()
@@ -285,7 +289,6 @@
 		new /obj/item/device/tape/random(src)
 		new /obj/item/device/camera(src)
 		new /obj/item/toy/plushie/therapy/blue(src)
-		return
 
 /obj/structure/closet/secure_closet/medical_wall
 	name = "first aid closet"
@@ -300,6 +303,7 @@
 	density = 0
 	wall_mounted = 1
 	req_access = list(access_medical_equip)
+	dont_save = TRUE
 
 /obj/structure/closet/secure_closet/medical_wall/update_icon()
 	if(broken)
@@ -322,12 +326,13 @@
 		new /obj/item/weapon/storage/pill_bottle/antitox(src)
 		new /obj/item/weapon/storage/pill_bottle/carbon(src)
 		new /obj/random/medical/pillbottle(src)
-		return
+
 
 /obj/structure/closet/secure_closet/medical_wall/anesthetics
 	name = "anesthetics wall closet"
 	desc = "Used to knock people out."
 	req_access = list(access_surgery)
+	dont_save = TRUE
 
 /obj/structure/closet/secure_closet/medical_wall/anesthetics/New()
 		..()
@@ -337,4 +342,3 @@
 		new /obj/item/clothing/mask/breath/medical(src)
 		new /obj/item/clothing/mask/breath/medical(src)
 		new /obj/item/clothing/mask/breath/medical(src)
-		return

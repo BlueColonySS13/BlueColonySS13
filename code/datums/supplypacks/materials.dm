@@ -137,15 +137,39 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Sewing Set"
 
-/datum/supply_pack/materials/tailor_materials
-	name = "Tailoring Materials"
-	contains = list(/obj/fiftyspawner/silk = 2,
-	/obj/fiftyspawner/cotton = 3,
-	/obj/fiftyspawner/leather = 3,
-	/obj/fiftyspawner/denim = 4)
+/datum/supply_pack/materials/silk
+	name = "150 silk sheets"
+	contains = list(/obj/fiftyspawner/silk = 3)
 	cost = 800
 	containertype = /obj/structure/closet/crate
-	containername = "Fine Tailoring Materials"
+	containername = "150 silk sheets"
 
+/datum/supply_pack/materials/cotton
+	name = "150 cotton sheets"
+	contains = list(/obj/fiftyspawner/cotton = 3)
+	cost = 300
+	containertype = /obj/structure/closet/crate
+	containername = "150 cotton sheets"
+
+/datum/supply_pack/materials/leather
+	name = "150 leather sheets"
+	contains = list(/obj/fiftyspawner/leather = 3)
+	cost = 600
+	containertype = /obj/structure/closet/crate
+	containername = "150 leather sheets"
+
+/datum/supply_pack/materials/denim
+	name = "150 denim sheets"
+	contains = list(/obj/fiftyspawner/denim = 3)
+	cost = 400
+	containertype = /obj/structure/closet/crate
+	containername = "150 denim sheets"
+
+/datum/supply_pack/materials/polychrome
+	name = "150 polychromatic thread sheets"
+	contains = list(/obj/fiftyspawner/polychrome = 3)
+	cost = 2000
+	containertype = /obj/structure/closet/crate
+	containername = "150 polychromatic thread sheets"
 
 

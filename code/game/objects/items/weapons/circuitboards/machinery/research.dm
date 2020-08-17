@@ -45,6 +45,17 @@ obj/item/weapon/circuitboard/rdserver/attackby(obj/item/I as obj, mob/user as mo
 							/obj/item/weapon/stock_parts/manipulator = 1,
 							/obj/item/weapon/stock_parts/console_screen = 1)
 
+/obj/item/weapon/circuitboard/autolathe/sewing_machine
+	name = T_BOARD("Sewing Machine")
+	build_path = /obj/machinery/autolathe/sewing_machine
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_DATA = 2)
+	req_components = list(
+							/obj/item/weapon/stock_parts/matter_bin = 3,
+							/obj/item/weapon/stock_parts/manipulator = 1,
+							/obj/item/weapon/stock_parts/console_screen = 1,
+							/obj/item/device/threadneedle = 1)
+
 /obj/item/weapon/circuitboard/protolathe
 	name = T_BOARD("protolathe")
 	build_path = /obj/machinery/r_n_d/protolathe

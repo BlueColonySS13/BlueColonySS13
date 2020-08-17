@@ -113,6 +113,10 @@
 	name = "stack of leather"
 	type_to_spawn = /obj/item/stack/material/leather
 
+/obj/fiftyspawner/polychrome
+	name = "stack of polychromatic thread"
+	type_to_spawn = /obj/item/stack/material/polychromatic_thread
+
 /obj/fiftyspawner/glass
 	name = "stack of glass"
 	type_to_spawn = /obj/item/stack/material/glass

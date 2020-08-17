@@ -133,7 +133,7 @@
 	icon_state = "skirt_short_red"
 
 /obj/item/clothing/under/skirt/denim
-	name = "short denim skirt"
+	name = "short skirt"
 	desc = "A skirt that is made of denim."
 	icon_state = "skirt_short_denim"
 
