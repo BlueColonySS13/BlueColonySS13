@@ -45,13 +45,7 @@
 
 /datum/bounty/leisure/beanies/meets_standards(var/obj/O) // additional custom checks
 	if(istype(O, /obj/item/clothing/head/beanie))
-		if(O.name_unlabel) // to prevent hand labeller cheating
-			if(findtext(O.name_unlabel, "silk"))
-				return TRUE
-			else
-				return FALSE
-
-		if(findtext(O.name, "silk"))
+		if(LAZYLEN(O.matter) && ("silk" in O.matter))
 			return TRUE
 
 	return FALSE
@@ -127,14 +121,28 @@
 	Need it ASAP."
 
 	random_items_wanted = list(
-	/obj/item/clothing/suit/storage/toggle/coat,
 	/obj/item/clothing/suit/storage/toggle/leather_jacket,
 	/obj/item/clothing/suit/storage/toggle/leather_jacket/sleeveless,
-	/obj/item/clothing/suit/storage/leather_jacket_alt,
-	/obj/item/clothing/suit/storage/toggle/brown_jacket,
+	/obj/item/clothing/suit/storage/hooded/wintercoat
+
 	)
 
 	department_reward = 120
 	individual_reward = 25
 
 	days_until_expiry = 1
+
+
+/datum/bounty/leisure/my_wedding
+	name = "My Wedding"
+	author = "Jerkarta Adams"
+	description = "Getting married to a mafia boss is not the easiest thing in the world, there's a lot of politics behind it. Regardless, I'll be needin' one \
+	of your finest wedding dresses to outshine the rival gangs in mi' area."
+
+	items_wanted = list(/obj/item/clothing/under/wedding = 1)
+
+	department_reward = 800
+	individual_reward = 170
+
+	days_until_expiry = 1
+	allow_subtypes = TRUE

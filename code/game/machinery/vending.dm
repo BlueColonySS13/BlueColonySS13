@@ -1215,7 +1215,8 @@
 	/obj/item/device/tape = 4,
 	/obj/item/device/hailer = 6,
 	/obj/item/device/holowarrant = 8,
-	/obj/item/device/breathalyzer = 8
+	/obj/item/device/breathalyzer = 8,
+	/obj/item/device/retail_scanner/police = 8
 	)
 
 
@@ -1261,6 +1262,7 @@
 	products = list(
 	/obj/item/weapon/storage/box/csi_markers = 3,
 	/obj/item/weapon/storage/box/evidence = 6,
+	/obj/item/weapon/storage/briefcase/crimekit = 2,
 	/obj/item/device/flash = 5,
 	/obj/item/weapon/reagent_containers/spray/luminol = 2,
 	/obj/item/device/uv_light = 5,

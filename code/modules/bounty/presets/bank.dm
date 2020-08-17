@@ -57,7 +57,7 @@
 
 	days_until_expiry = 4
 
-	department_reward = 21000
+	department_reward = 28000
 	individual_reward = 100
 
 

@@ -2,7 +2,7 @@
 	category = CAT_PRISON_MINING
 	author_department = DEPT_FACTORY	// Yes, the factory buys their raw materials from prison labour, just like many irl factories do. :)
 	author = "Geminus City Factory"
-	days_until_expiry = 2
+	days_until_expiry = 12
 	individual_reward = 0
 
 /datum/bounty/prison_mining/coal
@@ -10,7 +10,7 @@
 	description = "The factory needs 50 pieces of coal to sell to customers, please provide promptly."
 
 	items_wanted = list(/obj/item/weapon/ore/coal = 50)
-
+	days_until_expiry = 10
 	department_reward = 140
 
 /datum/bounty/prison_mining/hematite
@@ -18,7 +18,7 @@
 	description = "The factory needs 50 pieces of hematite ore to sell to customers, please provide promptly."
 
 	items_wanted = list(/obj/item/weapon/ore/iron = 50)
-
+	days_until_expiry = 6
 	department_reward = 140
 
 /datum/bounty/prison_mining/diamond
@@ -26,7 +26,7 @@
 	description = "The factory needs 20 unprocessed diamonds to sell to customers abroad, please provide promptly."
 
 	items_wanted = list(/obj/item/weapon/ore/diamond = 20)
-
+	days_until_expiry = 12
 	department_reward = 2500
 
 /datum/bounty/prison_mining/sol_sand
@@ -34,7 +34,7 @@
 	description = "The factory needs 50 piles of sand to sell to customers, please provide promptly."
 
 	items_wanted = list(/obj/item/weapon/ore/glass = 50)
-
+	days_until_expiry = 2
 	department_reward = 100
 
 /datum/bounty/prison_mining/phoron // yes science is on it too
@@ -79,3 +79,11 @@
 	items_wanted = list(/obj/item/weapon/ore/phoron = 300)
 
 	department_reward = 3400
+
+/datum/bounty/prison_mining/solgov_uranium
+	name = "SolGov Uranium Trade Agreement"
+	description = "As per the SolGov and Polluxian trade agreement please send a fixed sum of uranium, as promised we will reimburse and cover bluespace costs."
+	author_department = DEPT_SOLGOV
+	items_wanted = list(/obj/item/weapon/ore/uranium = 150)
+
+	department_reward = 1400

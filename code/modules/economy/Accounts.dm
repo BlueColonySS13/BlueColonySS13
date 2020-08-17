@@ -188,6 +188,8 @@
 	return T
 
 /datum/money_account/proc/sanitize_values()
+	GLOB.all_money_accounts |= src
+
 	if(!account_number)
 		account_number = md5("[owner_name][GLOB.current_date_string][get_game_time()]")
 
@@ -197,6 +199,7 @@
 	money = Clamp(money, -MAX_MONEY, MAX_MONEY)
 	if(!transaction_log)
 		transaction_log = list()
+
 	truncate_oldest(transaction_log, max_transaction_logs)
 
 /proc/all_public_accounts(show_hidden = FALSE)

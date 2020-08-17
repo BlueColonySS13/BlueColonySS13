@@ -160,8 +160,8 @@
 	icon_state = "baggy_jeansclassic"
 
 /obj/item/clothing/under/pants/baggy/mustangjeans
-	name = "maggy must hang jeans"
-	desc = "Made in the finest space jeans factory this side of Alpha Centauri."
+	name = "baggy must hang jeans"
+	desc = "Made in the finest space jeans factory this side of the Vetra System."
 	icon_state = "baggy_jeansmustang"
 
 /obj/item/clothing/under/pants/baggy/blackjeans
@@ -210,7 +210,7 @@
 	icon_state = "baggy_khaki"
 
 /obj/item/clothing/under/pants/leather
-	name = "leather pants"
+	name = "pants"
 	desc = "A pair of tight black leather pants."
 	icon_state = "leatherpants"
 

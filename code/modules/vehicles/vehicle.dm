@@ -76,6 +76,8 @@
 
 /obj/vehicle/unbuckle_mob(mob/living/buckled_mob, force = FALSE)
 	. = ..(buckled_mob, force)
+	if(!buckled_mob)
+		return
 	buckled_mob.update_water()
 	if(riding_datum)
 		riding_datum.restore_position(buckled_mob)
