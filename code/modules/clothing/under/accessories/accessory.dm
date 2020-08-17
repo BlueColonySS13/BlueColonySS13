@@ -96,6 +96,9 @@
 	name = "tie"
 	icon_state = "whitetie"
 
+/obj/item/clothing/accessory/tie/silk
+	matter = list("silk" = 930)
+
 /obj/item/clothing/accessory/tie/blue
 	name = "blue tie"
 	icon_state = "bluetie"
@@ -156,6 +159,8 @@
 	desc = "A banner that may or may not have some kind of meaning. Who knows?"
 	icon_state = "sash"
 
+	matter = list("silk" = 950)
+
 /obj/item/clothing/accessory/tie/sash/red
 	color = COLOR_RED
 
@@ -166,6 +171,8 @@
 	name = "cravat"
 	desc = "The class on this poofy thing is almost unbearable."
 	icon_state = "cravat"
+
+	matter = list("silk" = 1050)
 
 /obj/item/clothing/accessory/tie/neckerchief
 	name = "neckerchief"

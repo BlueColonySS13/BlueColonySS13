@@ -123,3 +123,16 @@
 	individual_reward = 50
 
 	days_until_expiry = 2
+
+
+/datum/bounty/health_pharma/train_rockets
+	name = "Train Rockets"
+	author = "Issei Hariyama"
+	description = "Imagine a rocket and a train combined? Yes, an amazing idea isn't it? I need to fuel this thing and hope it doesn't explode..."
+
+	reagents_wanted = list("phoron" = 200)
+
+	department_reward = 500
+	individual_reward = 60
+
+	days_until_expiry = 2

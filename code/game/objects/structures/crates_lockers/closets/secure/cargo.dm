@@ -7,6 +7,7 @@
 	icon_opened = "securecargoopen"
 	icon_broken = "securecargobroken"
 	icon_off = "securecargooff"
+	dont_save = TRUE
 
 	New()
 		..()
@@ -28,8 +29,7 @@
 		new /obj/item/clothing/gloves/black(src)
 		new /obj/item/clothing/gloves/fingerless(src)
 		new /obj/item/clothing/head/soft(src)
-//		new /obj/item/weapon/cartridge/quartermaster(src)
-		return
+
 
 /obj/structure/closet/secure_closet/quartermaster
 	name = "quartermaster's locker"
@@ -40,6 +40,7 @@
 	icon_opened = "secureqmopen"
 	icon_broken = "secureqmbroken"
 	icon_off = "secureqmoff"
+	dont_save = TRUE
 
 	New()
 		..()
@@ -58,7 +59,6 @@
 		new /obj/item/device/radio/headset/headset_cargo/alt(src)
 		new /obj/item/clothing/gloves/black(src)
 		new /obj/item/clothing/gloves/fingerless(src)
-//		new /obj/item/weapon/cartridge/quartermaster(src)
 		new /obj/item/clothing/suit/fire/firefighter(src)
 		new /obj/item/weapon/tank/emergency/oxygen(src)
 		new /obj/item/clothing/mask/gas(src)
@@ -66,7 +66,6 @@
 		new /obj/item/clothing/head/soft(src)
 		new /obj/item/clothing/suit/storage/hooded/wintercoat/cargo(src)
 		new /obj/item/clothing/shoes/boots/winter/supply(src)
-		return
 
 /obj/structure/closet/secure_closet/miner
 	name = "miner's equipment"
@@ -77,6 +76,7 @@
 	icon_broken = "miningsecbroken"
 	icon_off = "miningsecoff"
 	req_access = list(access_mining)
+	dont_save = TRUE
 
 /obj/structure/closet/secure_closet/miner/New()
 	..()

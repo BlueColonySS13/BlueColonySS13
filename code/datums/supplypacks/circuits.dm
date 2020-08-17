@@ -157,3 +157,19 @@
 	cost = 4000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robotics Circuits"
+
+/datum/supply_pack/circuits/autolathe
+	contains = list(/obj/item/weapon/circuitboard/autolathe)
+
+	name = "Autolathe Circuit"
+	cost = 3000
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Autolathe Circuit"
+
+/datum/supply_pack/circuits/sewing_machine
+	contains = list(/obj/item/weapon/circuitboard/autolathe/sewing_machine)
+
+	name = "Sewing Machine Circuit"
+	cost = 3000
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Sewing Machine Circuit"

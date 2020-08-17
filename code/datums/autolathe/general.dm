@@ -1,173 +1,173 @@
-/datum/category_item/autolathe/general/bucket
+/datum/category_item/crafting/autolathe/general/bucket
 	name = "bucket"
 	path =/obj/item/weapon/reagent_containers/glass/bucket
 
-/datum/category_item/autolathe/general/cooler_bottle
+/datum/category_item/crafting/autolathe/general/cooler_bottle
 	name = "water-cooler bottle"
 	path =/obj/item/weapon/reagent_containers/glass/cooler_bottle
 
-/datum/category_item/autolathe/general/spraybottle
+/datum/category_item/crafting/autolathe/general/spraybottle
 	name = "spray bottle"
 	path = /obj/item/weapon/reagent_containers/spray
 
-/datum/category_item/autolathe/general/grinder
+/datum/category_item/crafting/autolathe/general/grinder
 	name = "grinder"
 	path = /obj/item/weapon/grinder
 
-/datum/category_item/autolathe/general/ecig_cart
+/datum/category_item/crafting/autolathe/general/ecig_cart
 	name = "ecigarette cartridge"
 	path = /obj/item/weapon/reagent_containers/ecig_cartridge/blank
 
-/datum/category_item/autolathe/general/drinkingglass_square
+/datum/category_item/crafting/autolathe/general/drinkingglass_square
 	name = "half-pint glass"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/square
 
-/datum/category_item/autolathe/general/drinkingglass_rocks
+/datum/category_item/crafting/autolathe/general/drinkingglass_rocks
 	name = "rocks glass"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/rocks
 
-/datum/category_item/autolathe/general/drinkingglass_shake
+/datum/category_item/crafting/autolathe/general/drinkingglass_shake
 	name = "milkshake glass"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/shake
 
-/datum/category_item/autolathe/general/drinkingglass_cocktail
+/datum/category_item/crafting/autolathe/general/drinkingglass_cocktail
 	name = "cocktail glass"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/cocktail
 
-/datum/category_item/autolathe/general/drinkingglass_shot
+/datum/category_item/crafting/autolathe/general/drinkingglass_shot
 	name = "shot glass"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/shot
 
-/datum/category_item/autolathe/general/drinkingglass_pint
+/datum/category_item/crafting/autolathe/general/drinkingglass_pint
 	name = "pint glass"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/pint
 
-/datum/category_item/autolathe/general/drinkingglass_mug
+/datum/category_item/crafting/autolathe/general/drinkingglass_mug
 	name = "glass mug"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/mug
 
-/datum/category_item/autolathe/general/drinkingglass_wine
+/datum/category_item/crafting/autolathe/general/drinkingglass_wine
 	name = "wine glass"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/wine
 
-/datum/category_item/autolathe/general/drinkingglass_carafe
+/datum/category_item/crafting/autolathe/general/drinkingglass_carafe
 	name = "glass carafe"
 	path =/obj/item/weapon/reagent_containers/food/drinks/glass2/carafe
 
-/datum/category_item/autolathe/general/drinkingglass_meta
+/datum/category_item/crafting/autolathe/general/drinkingglass_meta
 	name = "metamorphic glass"
 	path = /obj/item/weapon/reagent_containers/food/drinks/metaglass
 
-/datum/category_item/autolathe/general/shaker
+/datum/category_item/crafting/autolathe/general/shaker
 	name = "shaker"
 	path = /obj/item/weapon/reagent_containers/food/drinks/shaker
 
-/datum/category_item/autolathe/general/barflask
+/datum/category_item/crafting/autolathe/general/barflask
 	name = "bar flask"
 	path = /obj/item/weapon/reagent_containers/food/drinks/flask/barflask
 
-/datum/category_item/autolathe/general/vacuumflask
+/datum/category_item/crafting/autolathe/general/vacuumflask
 	name = "vacuum flask"
 	path = /obj/item/weapon/reagent_containers/food/drinks/flask/vacuumflask
 
-/datum/category_item/autolathe/general/lithiumflask
+/datum/category_item/crafting/autolathe/general/lithiumflask
 	name = "lithium flask"
 	path = /obj/item/weapon/reagent_containers/food/drinks/flask/lithium
 
-/datum/category_item/autolathe/general/shinyflask
+/datum/category_item/crafting/autolathe/general/shinyflask
 	name = "shiny flask"
 	path = /obj/item/weapon/reagent_containers/food/drinks/flask/shiny
 
-/datum/category_item/autolathe/general/flashlight
+/datum/category_item/crafting/autolathe/general/flashlight
 	name = "flashlight"
 	path =/obj/item/device/flashlight
 
-/datum/category_item/autolathe/general/floor_light
+/datum/category_item/crafting/autolathe/general/floor_light
 	name = "floor light"
 	path =/obj/machinery/floor_light
 
-/datum/category_item/autolathe/general/extinguisher
+/datum/category_item/crafting/autolathe/general/extinguisher
 	name = "extinguisher"
 	path =/obj/item/weapon/extinguisher
 
-/datum/category_item/autolathe/general/jar
+/datum/category_item/crafting/autolathe/general/jar
 	name = "jar"
 	path =/obj/item/glass_jar
 
-/datum/category_item/autolathe/general/radio_headset
+/datum/category_item/crafting/autolathe/general/radio_headset
 	name = "radio headset"
 	path =/obj/item/device/radio/headset
 
-/datum/category_item/autolathe/general/radio_bounced
+/datum/category_item/crafting/autolathe/general/radio_bounced
 	name = "city bounced radio"
 	path =/obj/item/device/radio/off
 
-/datum/category_item/autolathe/general/suit_cooler
+/datum/category_item/crafting/autolathe/general/suit_cooler
 	name = "suit cooling unit"
 	path =/obj/item/device/suit_cooling_unit
 
-/datum/category_item/autolathe/general/weldermask
+/datum/category_item/crafting/autolathe/general/weldermask
 	name = "welding mask"
 	path =/obj/item/clothing/head/welding
 
-/datum/category_item/autolathe/general/metal
+/datum/category_item/crafting/autolathe/general/metal
 	name = "steel sheets"
 	path =/obj/item/stack/material/steel
 	is_stack = 1
 
-/datum/category_item/autolathe/general/glass
+/datum/category_item/crafting/autolathe/general/glass
 	name = "glass sheets"
 	path =/obj/item/stack/material/glass
 	is_stack = 1
 
-/datum/category_item/autolathe/general/rglass
+/datum/category_item/crafting/autolathe/general/rglass
 	name = "reinforced glass sheets"
 	path =/obj/item/stack/material/glass/reinforced
 	is_stack = 1
 
-/datum/category_item/autolathe/general/rods
+/datum/category_item/crafting/autolathe/general/rods
 	name = "metal rods"
 	path =/obj/item/stack/rods
 	is_stack = 1
 
-/datum/category_item/autolathe/general/knife
+/datum/category_item/crafting/autolathe/general/knife
 	name = "kitchen knife"
 	path =/obj/item/weapon/material/knife
 
-/datum/category_item/autolathe/general/tube
+/datum/category_item/crafting/autolathe/general/tube
 	name = "light tube"
 	path =/obj/item/weapon/light/tube
 
-/datum/category_item/autolathe/general/bulb
+/datum/category_item/crafting/autolathe/general/bulb
 	name = "light bulb"
 	path =/obj/item/weapon/light/bulb
 
-/datum/category_item/autolathe/general/ashtray_glass
+/datum/category_item/crafting/autolathe/general/ashtray_glass
 	name = "glass ashtray"
 	path =/obj/item/weapon/material/ashtray/glass
 
-/datum/category_item/autolathe/general/weldinggoggles
+/datum/category_item/crafting/autolathe/general/weldinggoggles
 	name = "welding goggles"
 	path =/obj/item/clothing/glasses/welding
 
-/datum/category_item/autolathe/general/maglight
+/datum/category_item/crafting/autolathe/general/maglight
 	name = "maglight"
 	path =/obj/item/device/flashlight/maglight
 
-/datum/category_item/autolathe/general/handcuffs
+/datum/category_item/crafting/autolathe/general/handcuffs
 	name = "handcuffs"
 	path =/obj/item/weapon/handcuffs
 	hidden = 1
 
-/datum/category_item/autolathe/general/ecigcartridge
-	name = "ecigarette cartridge"
-	path = /obj/item/weapon/reagent_containers/ecig_cartridge/blank
+/datum/category_item/crafting/autolathe/general/pill_bottle
+	name = "pill bottle"
+	path = /obj/item/weapon/storage/pill_bottle
 
-/datum/category_item/autolathe/general/keypad
+/datum/category_item/crafting/autolathe/general/keypad
 	name = "door keypad"
 	path = /obj/item/keypad
 
-/datum/category_item/autolathe/general/toolbox
+/datum/category_item/crafting/autolathe/general/toolbox
 	name = "toolbox"
 	path = /obj/item/weapon/storage/toolbox
 

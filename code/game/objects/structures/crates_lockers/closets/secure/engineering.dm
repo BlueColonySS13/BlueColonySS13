@@ -7,6 +7,7 @@
 	icon_opened = "secureceopen"
 	icon_broken = "securecebroken"
 	icon_off = "secureceoff"
+	dont_save = TRUE
 
 
 	New()
@@ -39,7 +40,7 @@
 		new /obj/item/clothing/suit/storage/hooded/wintercoat/engineering(src)
 		new /obj/item/clothing/shoes/boots/winter/engineering(src)
 		new /obj/item/weapon/tank/emergency/oxygen/engi(src)
-		return
+
 
 
 
@@ -52,6 +53,7 @@
 	icon_opened = "toolclosetopen"
 	icon_broken = "secureengelecbroken"
 	icon_off = "secureengelecoff"
+	dont_save = TRUE
 
 
 	New()
@@ -67,7 +69,7 @@
 		new /obj/item/device/multitool(src)
 		new /obj/item/device/multitool(src)
 		new /obj/item/device/multitool(src)
-		return
+
 
 
 
@@ -80,6 +82,7 @@
 	icon_opened = "toolclosetopen"
 	icon_broken = "secureengweldbroken"
 	icon_off = "secureengweldoff"
+	dont_save = TRUE
 
 
 	New()
@@ -96,7 +99,7 @@
 		new /obj/item/clothing/glasses/welding(src)
 		new /obj/item/clothing/glasses/welding(src)
 		new /obj/item/clothing/glasses/welding(src)
-		return
+
 
 
 
@@ -109,6 +112,7 @@
 	icon_opened = "secureengopen"
 	icon_broken = "secureengbroken"
 	icon_off = "secureengoff"
+	dont_save = TRUE
 
 
 	New()
@@ -131,7 +135,7 @@
 		new /obj/item/clothing/suit/storage/hooded/wintercoat/engineering(src)
 		new /obj/item/clothing/shoes/boots/winter/engineering(src)
 		new /obj/item/weapon/tank/emergency/oxygen/engi(src)
-		return
+
 
 
 
@@ -144,6 +148,7 @@
 	icon_opened = "secureatmopen"
 	icon_broken = "secureatmbroken"
 	icon_off = "secureatmoff"
+	dont_save = TRUE
 
 
 	New()
@@ -167,4 +172,4 @@
 		new /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/atmos(src)
 		new /obj/item/clothing/shoes/boots/winter/atmos(src)
 		new /obj/item/weapon/tank/emergency/oxygen/engi(src)
-		return
+
