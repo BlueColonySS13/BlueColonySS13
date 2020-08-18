@@ -10,6 +10,14 @@
 	var/closed_state = "closed"
 	var/sheet_material = /obj/item/stack/material/cotton
 
+	unique_save_vars = list("density")
+
+/obj/structure/curtain/on_persistence_load()
+	if(density)
+		icon_state = open_state
+	else
+		icon_state = closed_state
+
 /obj/structure/curtain/open
 	icon_state = "open"
 	layer = SHOWER_CLOSED_LAYER
