@@ -21,6 +21,7 @@
 	var/full_name
 
 	var/datum/business/current_business
+	var/datum/business/selected_business
 
 
 /*****************************
@@ -305,7 +306,37 @@
 		else
 			page_msg += "Something went wrong trying to display the job page, please try again!"
 
+	else if(index == 6) // Business List Page
+		page_msg += "<h2>Business Directory</h2><hr>"
+		page_msg += "Here is a list of active businesses that exist, please select one to continue:<br>"
 
+		for(var/datum/business/B in GLOB.businesses)
+			page_msg += " <a href='?src=\ref[src];choice=select_business;biz=\ref[B]'>[B.name]</a><br>"
+
+
+	else if(index == 7) // Business Viewer
+		if(selected_business)
+			page_msg += "<h2>[selected_business.name]</h2><hr>"
+			page_msg += "<b>Name:</b> [selected_business.name]<br>"
+			if(selected_business.description)
+				page_msg += "<b>Description:</b> [selected_business.description]<br>"
+			page_msg += "<b>Unique ID:</b> [selected_business.business_uid]<br>"
+			page_msg += "<b>Suspended:</b> [selected_business.suspended ? "Yes" : "No"]<br>"
+			if(selected_business.suspended)
+				page_msg += "<b>Suspended Reason: [selected_business.suspended_reason]<br>"
+			page_msg += "<b>Created:</b> [selected_business.creation_date]<br>"
+			page_msg += "<b>Owner:</b> [selected_business.get_owner_name()]<br>"
+
+			var/datum/department/biz_dept = dept_by_id(selected_business.department)
+
+			if(biz_dept && biz_dept.has_bank)
+				page_msg += "<b>Net Worth:</b> [cash2text( biz_dept.get_balance(), FALSE, TRUE, TRUE )]<br>"
+				page_msg += "<b>Bank ID:</b> [biz_dept.bank_account.account_number]<br>"
+				page_msg += "<b>Taxed:</b> [biz_dept.business_taxed ? "Yes" : "No"]<br>"
+
+			page_msg += " <a href='?src=\ref[src];choice=business_transactions;biz=\ref[B]'>Print Transaction History</a><br>"
+		else
+			page_msg += "This business does not exist, please try again."
 	data["index"] = index
 	data["page_msg"] = page_msg
 	data["full_name"] = full_name
@@ -341,6 +372,9 @@
 		. = 1
 		if(current_business)
 			index = 2
+		else if(selected_business)
+			selected_business = null
+			index = 6
 		else
 			index = 1
 			reset_fields()
@@ -743,6 +777,59 @@
 	// Choices menus
 	if(href_list["choice"])
 		switch(href_list["choice"])
+
+			if("select_business")
+				var/B = locate(href_list["biz"])
+				var/datum/business/biz = B
+
+				if(!biz)
+					return
+
+				selected_business = biz
+
+
+			if("business_transactions")
+				var/B = locate(href_list["biz"])
+				var/datum/business/biz = B
+
+				if(!biz)
+					return
+
+				to_chat(usr, "Printing transaction balance...")
+
+				var/datum/department/biz_dept = dept_by_id(selected_business.department)
+				if(biz_dept && biz_dept.has_bank)
+
+					var/R
+					R.name = "Transaction logs: [authenticated_account.owner_name]"
+					R.info = "<b>Transaction logs</b><br>"
+					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
+					R.info += "<i>Account ID:</i> [authenticated_account.account_number]<br>"
+					R.info += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
+					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
+					R.info += "<table border=1 style='width:100%'>"
+					R.info += "<tr>"
+					R.info += "<td><b>Date</b></td>"
+					R.info += "<td><b>Time</b></td>"
+					R.info += "<td><b>Target</b></td>"
+					R.info += "<td><b>Purpose</b></td>"
+					R.info += "<td><b>Value</b></td>"
+					R.info += "<td><b>Source terminal ID</b></td>"
+					R.info += "</tr>"
+					for(var/datum/transaction/T in authenticated_account.transaction_log)
+						R.info += "<tr>"
+						R.info += "<td>[T.date]</td>"
+						R.info += "<td>[T.time]</td>"
+						R.info += "<td>[T.target_name]</td>"
+						R.info += "<td>[T.purpose]</td>"
+						R.info += "<td>[T.amount]</td>"
+						R.info += "<td>[T.source_terminal]</td>"
+						R.info += "</tr>"
+					R.info += "</table>"
+
+			if(!computer.nano_printer.print_text(output, "Business Transation Data: [biz.name]"))
+				to_chat(user, "Hardware error: Printer was unable to print the file. It may be out of paper.")
+				return
 
 			if("remove_access")
 				var/C = locate(href_list["access"])
