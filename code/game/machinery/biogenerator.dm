@@ -117,7 +117,7 @@
 					dat += "<A href='?src=\ref[src];action=create;item=l4z;cost=120'>Left 4 Zed</A> <FONT COLOR=blue>([round(120/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=l4z5;cost=600'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=rh;cost=150'>Robust Harvest</A> <FONT COLOR=blue>([round(150/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=rh5;cost=750'>x5</A><BR>"
 					dat += "Leather:<BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=synthleather;cost=10'>Synthetic Leather</A> <FONT COLOR=blue>([round(100/build_eff)])</FONT><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=synthleather;cost=10'>Synthetic Leather</A> <FONT COLOR=blue>([round(100/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=synthleather5;cost=500'>x5</A><BR>"
 					dat += "Cardboard:<BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=cardboard;cost=20'>Cardboard</A> <FONT COLOR=blue>([round(20/build_eff)])</FONT><BR>"
 
@@ -223,7 +223,12 @@
 			new/obj/item/weapon/reagent_containers/glass/bottle/robustharvest(loc)
 		if("synthleather")
 			new/obj/item/stack/material/leather/synthetic(loc)
-
+		if("synthleather5")
+			new/obj/item/stack/material/leather/synthetic(loc)
+			new/obj/item/stack/material/leather/synthetic(loc)
+			new/obj/item/stack/material/leather/synthetic(loc)
+			new/obj/item/stack/material/leather/synthetic(loc)
+			new/obj/item/stack/material/leather/synthetic(loc)
 		if("cardboard")
 			new/obj/fiftyspawner/cardboard(loc)
 	processing = 0

@@ -287,6 +287,17 @@
 	name = "fedora hat"
 	path = /obj/item/clothing/head/fedora
 	force_matter = list("silk" = 210)
+
+/datum/category_item/crafting/sewing_machine/silk/fedora/brown
+	name = "brown fedora hat"
+	path = /obj/item/clothing/head/fedora/brown
+	force_matter = list("silk" = 210)
+
+/datum/category_item/crafting/sewing_machine/silk/fedora/grey
+	name = "grey fedora hat"
+	path = /obj/item/clothing/head/fedora/grey
+	force_matter = list("silk" = 210)
+
 /datum/category_item/crafting/sewing_machine/silk/trilby
 	name = "trilby hat"
 	path = /obj/item/clothing/head/feathertrilby

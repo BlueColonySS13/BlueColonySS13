@@ -202,6 +202,8 @@
 		recipes += new/datum/stack_recipe("reinforced basic window", /obj/structure/window/reinforced, 1, time = 1, supplied_material = "[name]")
 		recipes += new/datum/stack_recipe("reinforced full window", /obj/structure/window/reinforced/full, 1, time = 1, supplied_material = "[name]", ignore_direction = TRUE)
 
+	recipes += new/datum/stack_recipe("framed window", /obj/structure/window/framed, 1, time = 1, supplied_material = "[name]")
+
 	recipes += new/datum/stack_recipe_list("windoor assemblies", list( \
 		new/datum/stack_recipe("standard windoor assembly", /obj/structure/windoor_assembly, 4, time = 50, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("secure windoor assembly", /obj/structure/windoor_assembly/secure, 4, time = 50, one_per_turf = 1, on_floor = 1), \

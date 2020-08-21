@@ -453,6 +453,17 @@
 	path = /obj/item/clothing/head/pin/bow/big
 	force_matter = list("cotton" = 310)
 
+/datum/category_item/crafting/sewing_machine/cotton/santa
+	name = "red santa hat"
+	path = /obj/item/clothing/head/santa
+	force_matter = list("cotton" = 410)
+
+/datum/category_item/crafting/sewing_machine/cotton/santa/green
+	name = "green santa hat"
+	path = /obj/item/clothing/head/santa/green
+	force_matter = list("cotton" = 410)
+
+
 // misc
 
 /datum/category_item/crafting/sewing_machine/cotton/towel
@@ -501,3 +512,25 @@
 	name = "androgov banner"
 	path = /obj/item/weapon/banner/androgov
 */
+
+// bags
+
+/datum/category_item/crafting/sewing_machine/cotton/backpack
+	name = "backpack"
+	path = /obj/item/weapon/storage/backpack
+
+/datum/category_item/crafting/sewing_machine/cotton/backpack/dufflebag
+	name = "dufflebag"
+	path = /obj/item/weapon/storage/backpack/dufflebag
+
+/datum/category_item/crafting/sewing_machine/cotton/backpack/messenger
+	name = "messenger bag"
+	path = /obj/item/weapon/storage/backpack/messenger
+
+/datum/category_item/crafting/sewing_machine/cotton/backpack/messenger/black
+	name = "black messenger bag"
+	path = /obj/item/weapon/storage/backpack/messenger/black
+
+/datum/category_item/crafting/sewing_machine/cotton/backpack/parachute
+	name = "parachute"
+	path = /obj/item/weapon/storage/backpack/parachute

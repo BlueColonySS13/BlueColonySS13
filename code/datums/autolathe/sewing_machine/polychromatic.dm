@@ -54,3 +54,10 @@
 /datum/category_item/crafting/sewing_machine/polychromatic/skirt
 	name = "polychromic skirt"
 	path = /obj/item/clothing/under/polychromic/skirt
+
+// accessories
+
+
+/datum/category_item/crafting/sewing_machine/polychromatic/wallet
+	name = "polychromic wallet"
+	path = /obj/item/weapon/storage/wallet/poly
