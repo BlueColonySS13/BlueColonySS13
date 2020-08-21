@@ -139,3 +139,76 @@
 	name = "sheet snatcher"
 	path = /obj/item/weapon/storage/bag/sheetsnatcher
 	force_matter = list("leather" = 4000)
+
+
+// other bags
+/datum/category_item/crafting/sewing_machine/leather/santabag
+	name = "santa bag"
+	path = /obj/item/weapon/storage/backpack/santabag/normal
+	force_matter = list("leather" = 3000)
+
+/datum/category_item/crafting/sewing_machine/leather/satchel
+	name = "satchel"
+	path = /obj/item/weapon/storage/backpack/satchel
+	force_matter = list("leather" = 5000)
+
+
+// belts
+
+/datum/category_item/crafting/sewing_machine/leather/belt
+	name = "utility belt"
+	path = /obj/item/weapon/storage/belt/utility
+	force_matter = list("leather" = 3000)
+
+/datum/category_item/crafting/sewing_machine/leather/belt/fannypack
+	name = "fannypack"
+	path = /obj/item/weapon/storage/belt/fannypack
+	prefix = null
+
+/datum/category_item/crafting/sewing_machine/leather/belt/fannypack/black
+	name = "black fannypack"
+	path = /obj/item/weapon/storage/belt/fannypack/black
+
+/datum/category_item/crafting/sewing_machine/leather/belt/fannypack/blue
+	name = "blue fannypack"
+	path = /obj/item/weapon/storage/belt/fannypack/blue
+
+/datum/category_item/crafting/sewing_machine/leather/belt/fannypack/cyan
+	name = "cyan fannypack"
+	path = /obj/item/weapon/storage/belt/fannypack/cyan
+
+/datum/category_item/crafting/sewing_machine/leather/belt/fannypack/green
+	name = "green fannypack"
+	path = /obj/item/weapon/storage/belt/fannypack/green
+
+/datum/category_item/crafting/sewing_machine/leather/belt/fannypack/orange
+	name = "orange fannypack"
+	path = /obj/item/weapon/storage/belt/fannypack/orange
+
+/datum/category_item/crafting/sewing_machine/leather/belt/fannypack/purple
+	name = "purple fannypack"
+	path = /obj/item/weapon/storage/belt/fannypack/purple
+
+/datum/category_item/crafting/sewing_machine/leather/belt/fannypack/red
+	name = "red fannypack"
+	path = /obj/item/weapon/storage/belt/fannypack/red
+
+/datum/category_item/crafting/sewing_machine/leather/belt/fannypack/white
+	name = "white fannypack"
+	path = /obj/item/weapon/storage/belt/fannypack/white
+
+/datum/category_item/crafting/sewing_machine/leather/belt/fannypack/yellow
+	name = "yellow fannypack"
+	path = /obj/item/weapon/storage/belt/fannypack/yellow
+
+// wallets
+
+/datum/category_item/crafting/sewing_machine/leather/wallet
+	name = "wallet"
+	path = /obj/item/weapon/storage/wallet
+
+/datum/category_item/crafting/sewing_machine/leather/wallet/womens
+	name = "women's wallet"
+	path = /obj/item/weapon/storage/wallet/womens
+
+

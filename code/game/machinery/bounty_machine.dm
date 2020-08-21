@@ -179,8 +179,7 @@
 		if(LAZYLEN(current_bounty.stacks_wanted))
 			dat += "<br><strong>Materials wanted:</strong><br>"
 			for(var/V in current_bounty.stacks_wanted)
-				var/atom/tmp = V
-				dat += "<ol> - <b>[initial(tmp.name)]</b> "
+				dat += "<ol> - <b>[capitalize(V)]</b> "
 				dat += "([current_bounty.stacks_given[V]] out of"
 				dat += " [current_bounty.stacks_wanted[V]] stacks)"
 				dat += "</ol>"

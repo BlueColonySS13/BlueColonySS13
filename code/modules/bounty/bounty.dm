@@ -395,16 +395,16 @@
 
 
 	if(LAZYLEN(stacks_wanted))
-		if(istype(the_thing, /obj/item/stack))
-			var/obj/item/stack/stack = the_thing
-			if(stack.type in stacks_wanted)
-				if(stack.amount >= stacks_wanted[stack.type])
-					var/to_add = stacks_wanted[stack.type] - stacks_given[stack.type]
-					stacks_given[stack.type] += to_add
+		if(istype(the_thing, /obj/item/stack/material))
+			var/obj/item/stack/material/stack = the_thing
+			if(stack.default_type in stacks_wanted)
+				if(stack.amount >= stacks_wanted[stack.default_type])
+					var/to_add = stacks_wanted[stack.default_type] - stacks_given[stack.default_type]
+					stacks_given[stack.default_type] += to_add
 					qdel(stack)
 					return TRUE
 				else
-					stacks_given[stack.type] += stack.amount
+					stacks_given[stack.default_type] += stack.amount
 					qdel(stack)
 					return TRUE
 
