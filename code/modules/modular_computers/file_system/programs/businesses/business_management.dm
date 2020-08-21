@@ -21,6 +21,7 @@
 	var/full_name
 
 	var/datum/business/current_business
+	var/datum/business/selected_business
 
 
 /*****************************
@@ -305,12 +306,43 @@
 		else
 			page_msg += "Something went wrong trying to display the job page, please try again!"
 
+	else if(index == 6) // Business List Page
+		page_msg = "<h2>Business Directory</h2><hr>"
+		page_msg += "Here is a list of active businesses that exist, please select one to continue:<br>"
 
+		for(var/datum/business/B in GLOB.all_businesses)
+			page_msg += " <a href='?src=\ref[src];choice=select_business;biz=\ref[B]'>[B.name]</a><br>"
+
+
+	else if(index == 7) // Business Viewer
+		page_msg = "<h2>Business Directory</h2><hr>"
+		if(selected_business)
+			page_msg += "<h2>[selected_business.name]</h2><hr>"
+			page_msg += "<b>Name:</b> [selected_business.name]<br>"
+			if(selected_business.description)
+				page_msg += "<b>Description:</b> [selected_business.description]<br>"
+			page_msg += "<b>Unique ID:</b> [selected_business.business_uid]<br>"
+			page_msg += "<b>Suspended:</b> [selected_business.suspended ? "Yes" : "No"]<br>"
+			if(selected_business.suspended)
+				page_msg += "<b>Suspended Reason: [selected_business.suspended_reason]<br>"
+			page_msg += "<b>Created:</b> [selected_business.creation_date]<br>"
+			page_msg += "<b>Owner:</b> [selected_business.get_owner_name()]<br>"
+
+			var/datum/department/biz_dept = dept_by_id(selected_business.department)
+
+			if(biz_dept && biz_dept.has_bank)
+				page_msg += "<b>Net Worth:</b> [cash2text( biz_dept.get_balance(), FALSE, TRUE, TRUE )]<br>"
+				page_msg += "<b>Bank ID:</b> [biz_dept.bank_account.account_number]<br>"
+				page_msg += "<b>Taxed:</b> [biz_dept.business_taxed ? "Yes" : "No"]<br>"
+
+			page_msg += " <a href='?src=\ref[src];business_transactions=1'>Print Transaction History</a><br>"
+		else
+			page_msg += "This business does not exist, please try again."
 	data["index"] = index
 	data["page_msg"] = page_msg
 	data["full_name"] = full_name
 	data["error_msg"] = error_msg
-	data["current_business"] = current_business
+	data["current_business"] = (current_business || selected_business)
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -322,6 +354,45 @@
 		ui.open()
 
 
+
+///
+/datum/computer_file/program/business_manager/proc/print_business_transaction(mob/user)
+	var/datum/nano_module/program/business_manager/biz_mgr = NM
+	if(!biz_mgr)
+		return
+
+	to_chat(usr, "Printing transaction balance...")
+
+	var/datum/department/biz_dept = dept_by_id(biz_mgr.selected_business.department)
+	if(!biz_dept || !biz_dept.bank_account)
+		return
+
+	var/R
+	R += "<b>Transaction logs</b>: [biz_dept.name]<br>"
+	R += "<i>Account holder:</i> [biz_dept.bank_account.owner_name]<br>"
+	R += "<i>Account ID:</i> [biz_dept.bank_account.account_number]<br>"
+	R += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
+	R += "<table border=1 style='width:100%'>"
+	R += "<tr>"
+	R += "<td><b>Date</b></td>"
+	R += "<td><b>Time</b></td>"
+	R += "<td><b>Target</b></td>"
+	R += "<td><b>Purpose</b></td>"
+	R += "<td><b>Value</b></td>"
+	R += "</tr>"
+	for(var/datum/transaction/T in biz_dept.bank_account.transaction_log)
+		R += "<tr>"
+		R += "<td>[T.date]</td>"
+		R += "<td>[T.time]</td>"
+		R += "<td>[T.target_name]</td>"
+		R += "<td>[T.purpose]</td>"
+		R += "<td>[T.amount]</td>"
+		R += "</tr>"
+	R += "</table>"
+
+	if(!computer.nano_printer.print_text(R, "Business Transation Data: [biz_dept.name]"))
+		to_chat(user, "Hardware error: Printer was unable to print the file. It may be out of paper.")
+		return
 
 
 /datum/nano_module/program/business_manager/Topic(href, href_list)
@@ -341,6 +412,9 @@
 		. = 1
 		if(current_business)
 			index = 2
+		else if(selected_business)
+			selected_business = null
+			index = 6
 		else
 			index = 1
 			reset_fields()
@@ -542,6 +616,11 @@
 		alert("[cash2text( amount, FALSE, TRUE, TRUE )] successfully sent to account id #[account_id] ([account_to_send.owner_name])")
 
 
+	if(href_list["business_transactions"])
+		if(!selected_business)
+			return
+		var/datum/computer_file/program/business_manager/printprog = program
+		printprog.print_business_transaction(usr)
 
 	if(href_list["add_funds"])
 		if(!current_business)
@@ -743,6 +822,17 @@
 	// Choices menus
 	if(href_list["choice"])
 		switch(href_list["choice"])
+
+			if("select_business")
+				var/B = locate(href_list["biz"])
+				var/datum/business/biz = B
+
+				if(!biz)
+					return
+
+				selected_business = biz
+				index = 7
+
 
 			if("remove_access")
 				var/C = locate(href_list["access"])
