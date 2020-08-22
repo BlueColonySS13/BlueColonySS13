@@ -1,19 +1,16 @@
-[hr][center][logo][/center]
-[u][center]Prescription [/center][/u]
-[small]
-[b]Name of Patient:[/b] [field]
+[b]Date:[/b] [u][date][/u] [center][large][b]Geminus City Hospital[/large][/b]
+2003-216  High Street
+Geminus City, Geminus
+fc00:667c:d4b4:930f:b84e[/center][hr][b]Patient Name: [/b][u][field][/u]
+[b]Patient Age: [/b][u][field][/u]
 
-[b]Medication name:[/b] [field]
-[b]Treatment period:[/b] [field] - [field]
-[b]Dose:[/b] [field]
-[b]Intake instructions:[/b] [field]
+[b][large]RX:[/large][/b][field]
 
-Do not exceed prescribed dose.
-Do not cease treatment prematurely.
-Side effects may occur; consult physician if severe.
+[b]Disp: [/b][u][field][/u]
 
-[hr][b]Prescribing doctor[/b] [field]
-[b]Signature:[/b] [field]
-[b]Date:[/b] [field]
-[/small]
-[hr]
+[b]Sig: [/b][u][field][/u]
+
+[b]May be refilled [/b][u][field][/u] [b]times[/b]
+
+[b]Physician Provider (please print and sign):[/b] [u][field][/u]
+[hr][small][i]Do not exceed prescribed dose. Do not cease treatment prematurely. Side effects may occur; consult physician if severe.[/small][/i]

@@ -12,7 +12,7 @@
 	department_reward = 2000
 	individual_reward = 400
 
-	days_until_expiry = 2
+	days_until_expiry = 4
 
 /datum/bounty/mining/spaceboogle
 	name = "Cascington Valley Startup"
@@ -92,6 +92,8 @@
 	department_reward = 3000
 	individual_reward = 300
 
+	days_until_expiry = 3
+
 /datum/bounty/mining/phoron_slime
 	name = "Slime Breeding"
 	author = "Goop LLC."
@@ -143,6 +145,8 @@
 	department_reward = 3000
 	individual_reward = 300
 
+	days_until_expiry = 3
+
 /datum/bounty/mining/tamperproof
 	name = "Tamperproof Sights"
 	author = "NSS Discovery"
@@ -155,6 +159,8 @@
 	department_reward = 3000
 	individual_reward = 300
 
+	days_until_expiry = 3
+
 /datum/bounty/mining/into_the_void
 	name = "Into the Void"
 	author = "Sister Rust"
@@ -166,7 +172,65 @@
 	department_reward = 7500
 	individual_reward = 750
 
-	days_until_expiry = 3
+	days_until_expiry = 7
+
+/datum/bounty/mining/thirty_pieces
+	name = "Thirty Pieces"
+	author = "Jude I. Carot"
+	description = "I'll keep this quick as I have things to attend to. Production has stalled on my company's RFID tags as we have run out of silver paste and the workers have gone on strike. \
+	One of my workers has been preaching of the benefits of unions and teaching men to fish. I have been offered new workers, in exchange for any excess silver I have. Send me silver so that \
+	production can begin again!"
+
+	stacks_wanted = list(/obj/item/stack/material/silver = 100)
+
+	department_reward = 1000
+	individual_reward = 150
+
+/datum/bounty/mining/wires_everywhere
+	name = "Wires Everywhere"
+	author = "Rein Recyclables Ltd."
+	description = "One of our workers has made a grave error and the resulting cascade failure has shut down our plant. Unfortunately, we promised a rather powerful man that we would route most \
+	of our recycled copper to his factories. We need you to send us copper ingots ASAP before we come down with a case of cement poisoning!"
+
+	stacks_wanted = list(/obj/item/stack/material/copper = 200)
+
+	department_reward = 400
+	individual_reward = 100
+
+/datum/bounty/mining/can_you_can_can
+	name = "Can You Can-Can?"
+	author = "Shimo Canning Co."
+	description = "Despite our name, we don't actually can food items or beverages. We make the cans! We need aluminium to cover the increase in can demand here in Blue Colony. I suppose people \
+	really enjoy drinking Space Cola and eating that disgusting Carp-in-a-Can. 200 ingots should cover our needs for the time being. We will send payment once we receive the ingots."
+
+	stacks_wanted = list(/obj/item/stack/material/aluminium = 200)
+
+	department_reward = 400
+	indvidiual_reward = 100
+
+/datum/bounty/mining/contemporary_art
+	name = "Contemporary Art Piece"
+	author = "Le Magnifique"
+	description = "I am the great artist, Le Magnifique! Surely you've heard of me. I have created such wondrous works as \"The Kneecap\", \"Much Ado About Adieu\", and \"Burning in Glace Gria\". \
+	The time has come for me to create my next great piece! I will erect a giant sculpture of myself out in the wilds of Blue Colony to proclaim my dominion over this planet! I will need bronze, \
+	lots of it! Send it to me and know that you will have contributed to the greatest artistic endeavour in the history of sculpture! Is there no greater reward?"
+
+	stacks_wanted = list(/obj/item/stack/material/bronze = 100)
+
+	department_reward = 800
+	individual_reward = 200
+
+/datum/bounty/mining/superconductor
+	name = "Superconductor Trials"
+	author = "Einstein Engines, LLC."
+	description = "We are currently researching ways to miniaturize superconducting magnets for use in consumer products. To get to our eventual goal of complete miniaturization, we need to start \
+	big. We need a large amount of tin which will be alloyed here at our facilities into a niobium-tin alloy that will then be used to construct out superconductors. Payment will be remitted once \
+	we have received the materials."
+
+	stacks_wanted = list(/obj/item/stack/material/tin = 200)
+
+	department_reward = 400
+	individual_reward = 100
 
 /* Mass Extraction Contracts
  * High paying, high yield bounties go under here

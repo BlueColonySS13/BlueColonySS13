@@ -522,19 +522,21 @@
 
 /obj/item/stack/material/glass/phoronglass
 	name = "borosilicate glass"
-	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures"
+	desc = "This sheet is special phoron-glass alloy designed to withstand large temperatures"
 	singular_name = "borosilicate glass sheet"
-	icon_state = "sheet-phoronglass"
+	icon_state = "sheet-glass"
 	default_type = "borosilicate glass"
 	no_variants = FALSE
+	stack_color = COLOR_PHORON
 
 /obj/item/stack/material/glass/phoronrglass
 	name = "reinforced borosilicate glass"
-	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures. It is reinforced with few rods."
+	desc = "This sheet is special phoron-glass alloy designed to withstand large temperatures. It is reinforced with few rods."
 	singular_name = "reinforced borosilicate glass sheet"
-	icon_state = "sheet-phoronrglass"
+	icon_state = "sheet-rglass"
 	default_type = "reinforced borosilicate glass"
 	no_variants = FALSE
+	stack_color = COLOR_PHORON
 
 /obj/item/stack/material/bronze
 	name = "bronze"

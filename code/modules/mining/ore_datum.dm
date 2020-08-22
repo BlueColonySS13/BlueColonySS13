@@ -191,9 +191,9 @@ var/global/list/ore_data = list()
 	scan_icon = "mineral_rare"
 
 /ore/void_opal
-	name = "voidopal"
+	name = "void opal"
 	display_name = "rough void opal"
-	compresses_to = "voidopal"
+	compresses_to = "void opal"
 	result_amount = 5
 	spread_chance = 1
 	ore = /obj/item/weapon/ore/void_opal
