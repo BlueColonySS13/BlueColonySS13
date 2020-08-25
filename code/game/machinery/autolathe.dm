@@ -11,8 +11,8 @@
 	var/datum/category_collection/machine_recipes
 	var/category_type = /datum/category_collection/crafting/autolathe
 
-	var/list/stored_material =  list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0)
-	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 25000, "glass" = 12500, "plastic" = 22500)
+	var/list/stored_material =  list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "copper" = 0, "aluminium" = 0)
+	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 25000, "glass" = 12500, "plastic" = 22500, "copper" = 12500, "aluminium" = 12500)
 	var/datum/category_group/current_category
 
 	var/hacked = 0

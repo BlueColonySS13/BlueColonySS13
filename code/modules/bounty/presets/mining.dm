@@ -181,7 +181,7 @@
 	One of my workers has been preaching of the benefits of unions and teaching men to fish. I have been offered new workers, in exchange for any excess silver I have. Send me silver so that \
 	production can begin again!"
 
-	stacks_wanted = list(/obj/item/stack/material/silver = 100)
+	stacks_wanted = list("silver" = 100)
 
 	department_reward = 1000
 	individual_reward = 150
@@ -192,7 +192,7 @@
 	description = "One of our workers has made a grave error and the resulting cascade failure has shut down our plant. Unfortunately, we promised a rather powerful man that we would route most \
 	of our recycled copper to his factories. We need you to send us copper ingots ASAP before we come down with a case of cement poisoning!"
 
-	stacks_wanted = list(/obj/item/stack/material/copper = 200)
+	stacks_wanted = list("copper" = 200)
 
 	department_reward = 400
 	individual_reward = 100
@@ -203,10 +203,10 @@
 	description = "Despite our name, we don't actually can food items or beverages. We make the cans! We need aluminium to cover the increase in can demand here in Blue Colony. I suppose people \
 	really enjoy drinking Space Cola and eating that disgusting Carp-in-a-Can. 200 ingots should cover our needs for the time being. We will send payment once we receive the ingots."
 
-	stacks_wanted = list(/obj/item/stack/material/aluminium = 200)
+	stacks_wanted = list("aluminium" = 200)
 
 	department_reward = 400
-	indvidiual_reward = 100
+	individual_reward = 100
 
 /datum/bounty/mining/contemporary_art
 	name = "Contemporary Art Piece"
@@ -215,7 +215,7 @@
 	The time has come for me to create my next great piece! I will erect a giant sculpture of myself out in the wilds of Blue Colony to proclaim my dominion over this planet! I will need bronze, \
 	lots of it! Send it to me and know that you will have contributed to the greatest artistic endeavour in the history of sculpture! Is there no greater reward?"
 
-	stacks_wanted = list(/obj/item/stack/material/bronze = 100)
+	stacks_wanted = list("bronze" = 100)
 
 	department_reward = 800
 	individual_reward = 200
@@ -227,10 +227,21 @@
 	big. We need a large amount of tin which will be alloyed here at our facilities into a niobium-tin alloy that will then be used to construct out superconductors. Payment will be remitted once \
 	we have received the materials."
 
-	stacks_wanted = list(/obj/item/stack/material/tin = 200)
+	stacks_wanted = list("tin" = 200)
 
 	department_reward = 400
 	individual_reward = 100
+
+/datum/bounty/mining/mechatronic_dreams
+	name = "Mechatronic Dreams"
+	author = "Lark Industries"
+	description = "Our team is currently working on a new generation of exosuits for use in the industrial sector and we need titanium to construct our prototypes. The next generation of mechas will \
+	prove to be unparalleled by any other company on Pollux. Lark Industries will become a household name for its groundbreaking innovations in chassis design!"
+
+	stacks_wanted = list("titanium" = 200)
+
+	department_reward = 800
+	individual_reward = 200
 
 /* Mass Extraction Contracts
  * High paying, high yield bounties go under here

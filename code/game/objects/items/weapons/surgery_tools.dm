@@ -51,7 +51,7 @@
 	name = "cautery"
 	desc = "This stops bleeding."
 	icon_state = "cautery"
-	matter = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500)
+	matter = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500, "copper" = 250)
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	attack_verb = list("burnt")
 
@@ -63,7 +63,7 @@
 	desc = "You can drill using this item. You dig?"
 	icon_state = "drill"
 	hitsound = 'sound/weapons/circsawhit.ogg'
-	matter = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 10000)
+	matter = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 10000, "copper" = 500)
 	force = 15.0
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
@@ -148,7 +148,7 @@
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 20000,"glass" = 10000)
+	matter = list(DEFAULT_WALL_MATERIAL = 20000,"glass" = 10000, "copper" = 1000)
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
 	sharp = 1
 	edge = 1
