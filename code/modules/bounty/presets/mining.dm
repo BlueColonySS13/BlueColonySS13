@@ -9,8 +9,8 @@
 
 	stacks_wanted = list(/obj/item/stack/material/diamond = 50)
 
-	department_reward = 2000
-	individual_reward = 400
+	department_reward = 3500
+	individual_reward = 500
 
 	days_until_expiry = 4
 
@@ -36,7 +36,7 @@
 
 	stacks_wanted = list(/obj/item/stack/material/iron = 100)
 
-	department_reward = 250
+	department_reward = 150
 	individual_reward = 30
 
 	days_until_expiry = 2
@@ -113,8 +113,8 @@
 
 	stacks_wanted = list(/obj/item/stack/material/durasteel = 50)
 
-	department_reward = 3750
-	individual_reward = 375
+	department_reward = 3500
+	individual_reward = 355
 
 	days_until_expiry = 3
 
@@ -194,8 +194,8 @@
 
 	stacks_wanted = list("copper" = 200)
 
-	department_reward = 400
-	individual_reward = 100
+	department_reward = 150
+	individual_reward = 30
 
 /datum/bounty/mining/can_you_can_can
 	name = "Can You Can-Can?"
@@ -205,8 +205,8 @@
 
 	stacks_wanted = list("aluminium" = 200)
 
-	department_reward = 400
-	individual_reward = 100
+	department_reward = 200
+	individual_reward = 40
 
 /datum/bounty/mining/contemporary_art
 	name = "Contemporary Art Piece"
@@ -217,8 +217,8 @@
 
 	stacks_wanted = list("bronze" = 100)
 
-	department_reward = 800
-	individual_reward = 200
+	department_reward = 400
+	individual_reward = 75
 
 /datum/bounty/mining/superconductor
 	name = "Superconductor Trials"
@@ -229,8 +229,8 @@
 
 	stacks_wanted = list("tin" = 200)
 
-	department_reward = 400
-	individual_reward = 100
+	department_reward = 150
+	individual_reward = 30
 
 /datum/bounty/mining/mechatronic_dreams
 	name = "Mechatronic Dreams"
@@ -240,8 +240,8 @@
 
 	stacks_wanted = list("titanium" = 200)
 
-	department_reward = 800
-	individual_reward = 200
+	department_reward = 500
+	individual_reward = 100
 
 /* Mass Extraction Contracts
  * High paying, high yield bounties go under here

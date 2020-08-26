@@ -186,7 +186,7 @@ var/global/list/ore_data = list()
 	display_name = "rough painite"
 	compresses_to = "painite"
 	result_amount = 5
-	spread_chance = 2
+	spread_chance = 3
 	ore = /obj/item/weapon/ore/painite
 	scan_icon = "mineral_rare"
 
