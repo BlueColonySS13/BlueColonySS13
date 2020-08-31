@@ -110,6 +110,15 @@
 	desc = "Cracks rocks with sonic blasts. This one seems like an improved design."
 	drill_verb = "hammering"
 
+/obj/item/weapon/pickaxe/steel
+	name = "pickaxe"
+	desc = "A pickaxe with a reinforced steel head."
+	drill_verb = "picking"
+	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
+	icon_state = "stpickaxe"
+	item_state = "syringe_0"
+	digspeed = 45
+
 /*****************************Shovel********************************/
 
 /obj/item/weapon/shovel
