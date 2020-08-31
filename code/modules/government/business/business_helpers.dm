@@ -72,6 +72,11 @@ var/global/list/business_outfits = list(
 /datum/business/proc/get_department()
 	return dept_by_id(department)
 
+/datum/business/proc/get_department_id()
+	var/datum/department/D = get_department()
+	if(D)
+		return D.id
+
 /proc/businesses_by_category(cat)
 	var/list/biz = list()
 	for(var/datum/business/B in GLOB.all_businesses)

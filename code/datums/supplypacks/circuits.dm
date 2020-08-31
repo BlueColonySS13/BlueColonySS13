@@ -173,3 +173,13 @@
 	cost = 3000
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Sewing Machine Circuit"
+
+
+/datum/supply_pack/circuits/expense_manager
+	contains = list(/obj/item/weapon/circuitboard/expense_manager)
+
+	name = "Expense Manager Circuit"
+	cost = 9000
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Business Expense Manager Circuit"
+

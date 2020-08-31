@@ -199,9 +199,14 @@ log transactions
 							if(!isemptylist(authenticated_account.expenses))
 								dat += "<br><br><b>Debts:</b><br>"
 								for(var/datum/expense/E in authenticated_account.expenses)
+									var/dept_name
+									if(E.department)
+										dept_name = dept_name_by_id(E.department)
 									var/purpose_name
 									if(E.purpose)
 										purpose_name = " ([E.purpose])"
+										if(dept_name)
+											dat += "([dept_name]) "
 										dat += "<b>[E.name][purpose_name]:</b> [E.amount_left] credits. ([E.cost_per_payroll] per payroll.)<br>"
 							dat += "<br>"
 

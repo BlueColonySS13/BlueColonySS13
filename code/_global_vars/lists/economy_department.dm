@@ -20,6 +20,7 @@ GLOBAL_LIST_EMPTY(public_department_accounts)
 GLOBAL_LIST_EMPTY(private_department_accounts)
 GLOBAL_LIST_EMPTY(external_department_accounts)
 GLOBAL_LIST_EMPTY(hidden_department_accounts)
+GLOBAL_LIST_EMPTY(business_department_accounts)
 
 GLOBAL_VAR_INIT(num_financial_terminals, 1)
 GLOBAL_VAR_INIT(economy_init, 0)
