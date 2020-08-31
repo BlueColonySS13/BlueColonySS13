@@ -1,6 +1,6 @@
 /datum/expense
   var/name = "Generic Expense"
-  var/cost_per_payroll = 1          // per payroll
+  var/cost_per_payroll = 20          // per payroll
   var/department = DEPT_COUNCIL
   var/purpose = "Bill"
 
@@ -10,7 +10,7 @@
 
   var/initial_cost				//how much it cost in the beginning
 
-  var/amount_left
+  var/amount_left = 0
 
   var/active = TRUE		               // If this is currently active, or not.
 
@@ -38,6 +38,9 @@
 		return 0
 
 	var/charge
+
+	if(cost_per_payroll > amount_left)
+		cost_per_payroll = amount_left
 
 	if(num > amount_left)
 		charge += amount_left
@@ -91,6 +94,10 @@
 /proc/charge_expense(var/datum/expense/E, var/datum/money_account/bank_account, var/num)
 	if(!E.is_active())
 		return 0
+
+	if(E.cost_per_payroll > E.amount_left)
+		E.cost_per_payroll = E.amount_left
+		num = E.amount_left
 
 	E.process_charge(num)
 	bank_account.money -= num

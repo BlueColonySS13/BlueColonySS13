@@ -4,15 +4,28 @@ SUBSYSTEM_DEF(economy)
 	flags = SS_NO_FIRE
 
 	var/list/all_departments = list()
+	var/list/all_department_accounts = list()
+	var/list/all_public_depts = list()
+	var/list/all_private_depts = list()
+	var/list/all_hidden_depts = list()
+	var/list/all_business_depts = list()
+	var/list/all_money_accounts_list = list()
 
 /datum/controller/subsystem/economy/Initialize(timeofday)
 	setup_economy()
-	all_departments = GLOB.departments
 	load_economy()
 	load_business_departments()
 	init_expenses()
 	persistent_economy.load_accounts()
 	link_economy_accounts()
+
+	all_departments = GLOB.departments
+	all_department_accounts = GLOB.department_accounts
+	all_public_depts = GLOB.public_departments
+	all_private_depts = GLOB.private_departments
+	all_hidden_depts = GLOB.hidden_departments
+	all_business_depts = GLOB.business_departments
+	all_money_accounts_list = GLOB.all_money_accounts
 	. = ..()
 
 /datum/controller/subsystem/economy/proc/get_all_nonbusiness_departments()
@@ -55,10 +68,7 @@ SUBSYSTEM_DEF(economy)
 
 	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
 		if(CR.account_to_connect)
-			var/datum/money_account/M = dept_acc_by_id(CR.account_to_connect)
-			if(!M)
-				continue
-			CR.linked_account = M.account_number
+			CR.connect_to_dept()
 
 	for(var/obj/machinery/status_display/money_display/MD in GLOB.money_displays)
 		MD.link_to_account()

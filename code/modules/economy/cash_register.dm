@@ -26,7 +26,7 @@
 
 	var/cash_stored = 0
 	var/obj/item/confirm_item
-	var/linked_account
+	var/datum/money_account/linked_account
 	var/account_to_connect = null
 
 	var/menu_items
@@ -35,21 +35,38 @@
 	var/owner_uid = null
 	var/owner_name = null
 
-	unique_save_vars = list("locked", "cash_stored", "linked_account", "owner_uid", "owner_name")
+	var/dept_id = "" // Now connects to department instead of a specific account.
+
+	unique_save_vars = list("locked", "cash_stored", "dept_id", "owner_uid", "owner_name")
 
 // Claim machine ID
 /obj/machinery/cash_register/initialize(mapload)
 	machine_id = "[station_name()] RETAIL #[GLOB.num_financial_terminals++]"
 	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
-	if(SSeconomy && account_to_connect)
-		var/datum/money_account/M = dept_acc_by_id(account_to_connect)
-		if(!M)
-			return
-		linked_account = M.account_number
+
+	connect_to_dept()
 
 /obj/machinery/cash_register/on_persistence_load()
-	if(!account_to_connect && !check_account_exists(linked_account))
-		linked_account = null
+	connect_to_dept()
+
+/obj/machinery/cash_register/proc/connect_to_dept()
+	if(!SSeconomy)
+		return
+
+	if(account_to_connect)
+		//public account linking
+		var/datum/money_account/M = dept_acc_by_id(account_to_connect)
+		if(!M)
+			return FALSE
+		linked_account = M
+	else
+		//business account linking
+		var/datum/money_account/M = dept_acc_by_id(dept_id)
+
+		linked_account = M
+
+	return linked_account
+
 
 
 /obj/machinery/cash_register/examine(mob/user as mob)
@@ -62,6 +79,7 @@
 
 	if(owner_name)
 		to_chat(user, "This cash register is locked to [owner_name].")
+
 
 /obj/machinery/cash_register/attack_hand(mob/user as mob)
 	// Don't be accessible from the wrong side of the machine
@@ -87,18 +105,20 @@
 /obj/machinery/cash_register/interact(mob/user as mob)
 	var/dat = get_data_ui()
 
-	user << browse(dat, "window=cash_register;size=350x500")
-	onclose(user, "cash_register")
+	var/datum/browser/popup = new(user, "cash_register", "[src]", 350, 500, src)
+	popup.set_content(jointext(dat,null))
+	popup.open()
 
+	onclose(user, "cash_register")
 
 /obj/machinery/cash_register/proc/get_data_ui()
 	var/dat = "<h2>Cash Register<hr></h2>"
 
-	if(!account_to_connect && !owner_uid)
-		dat += "Please swipe your ID card to claim this till.<br>"
+	if(!account_to_connect && !dept_id)
+		dat += "This register requires you to own a business to your name. Please swipe your ID card to claim this till.<br>"
 		return dat
 
-	var/acc_name = get_account_name(linked_account)
+	var/acc_name = get_account_name(linked_account.account_number)
 	if (locked)
 		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Unlock</a><br>"
 
@@ -111,7 +131,9 @@
 		if(owner_uid)
 			dat += "<a href='?src=\ref[src];choice=reset_owner'>Reset Owner</a><br>"
 
-	dat += "<a href='?src=\ref[src];choice=custom_order'>Custom Order</a><hr>"
+	dat += "<a href='?src=\ref[src];choice=custom_order'>Custom Order</a> | "
+	dat += "<a href='?src=\ref[src];choice=show_shopping_list'>Show List</a> <hr>"
+
 
 	if(item_list.len)
 		dat += get_current_transaction()
@@ -179,24 +201,40 @@
 				if(!locked)
 					cash_locked = !cash_locked
 			if("link_account")
-				var/attempt_account_num = sanitize(input("Enter account id", "New account id") as text)
-				var/attempt_pin = input("Enter PIN", "Account PIN") as num
+				if(!account_to_connect)
+					var/list/all_bizzies = list()
+					for(var/datum/business/B in GLOB.all_businesses)
+						all_bizzies += B.name
 
-				var/okay_account = FALSE
-				if(attempt_account_access(attempt_account_num, attempt_pin, 1) && !check_account_suspension(linked_account))
-					okay_account = TRUE
-				else if((get_persistent_acc_pin(attempt_account_num) == attempt_pin) && !get_persistent_acc_suspension(attempt_account_num))
-					okay_account = TRUE
+					var/login_biz = input(usr, "Please select a business to log into.", "Business Login") as null|anything in all_bizzies
+					var/datum/business/login_business = get_business_by_name(login_biz)
 
-				if(okay_account)
-					to_chat(usr, "Account connected.")
-					linked_account = attempt_account_num
-					return
+					if(!login_business)
+						alert("No business found with that name, it may have been deleted - contact an administrator.")
+						return
+					var/access_password = sanitize(copytext(input(usr, "Please provide the password. (Max 40 letters)", "Business Management Utility")  as text,1,40))
 
-				if(check_account_suspension(linked_account))
-					linked_account = null
-					src.visible_message("\icon[src]<span class='warning'>Account has been suspended.</span>")
-					return
+					if(!login_business || (access_password != login_business.access_password))
+						alert("Incorrect password, please try again.")
+						return
+
+					dept_id = login_business.get_department_id()
+					connect_to_dept()
+					return TRUE
+				else
+					var/list/all_depts = list()
+					for(var/datum/department/D in GLOB.public_departments)
+						all_depts += D.name
+					var/new_dept = input(usr, "Please select a department.", "Department Login") as null|anything in all_depts
+					var/datum/department/login_dept = dept_by_name(new_dept)
+
+					if(!login_dept)
+						return
+
+					linked_account = login_dept.bank_account
+					account_to_connect = login_dept.id
+					return TRUE
+
 
 				to_chat(usr, "\icon[src]<span class='warning'>Account not found.</span>")
 			if("custom_order")
@@ -204,9 +242,10 @@
 				if (!t_purpose || !Adjacent(usr)) return
 				transaction_purpose = t_purpose
 //				item_list += t_purpose
-				var/t_amount = round(input("Enter price", "New price") as num)
+				var/t_amount = round(input("Enter price (Max 10000)", "New price") as num)
 				if (!t_amount || !Adjacent(usr)) return
 				if(t_amount < 0) return
+				t_amount = Clamp(t_amount, 0, 10000)
 				transaction_amount += t_amount
 //				price_list += t_amount
 
@@ -303,6 +342,17 @@
 					item_list.Cut()
 					price_list.Cut()
 					tax_list.Cut()
+
+			if("set_price")
+				var/item_name = locate(href_list["item"])
+				var/n_amount = round(input("Enter new price. (Max 10000)", "New price") as num)
+				n_amount = Clamp(n_amount, 0, 10000)
+				if (!item_list[item_name]  || !price_list[item_name] || !Adjacent(usr)) return
+
+				transaction_amount -= (item_list[item_name] * price_list[item_name])
+				price_list[item_name] = n_amount
+				transaction_amount += (item_list[item_name] * price_list[item_name])
+
 			if("reset_log")
 				transaction_logs.Cut()
 				to_chat(usr, "\icon[src]<span class='notice'>Transaction log reset.</span>")
@@ -311,6 +361,14 @@
 				if(choice == "Yes")
 					owner_uid = null
 					owner_name = null
+					dept_id = null
+					linked_account = null
+
+
+			if("show_shopping_list")
+				if(LAZYLEN(item_list))
+					playsound(src, 'sound/effects/checkout.ogg', 25)
+					show_shopping_list()
 	updateDialog()
 
 
@@ -322,9 +380,21 @@
 		if(!I.unique_ID || !I.registered_name)
 			to_chat(usr, "\icon[src]<span class='notice'>Invalid card: Identification card lacks registered name and/or unique ID.</span>")
 			return
+
+		var/datum/business/B = get_business_by_owner_uid(I.unique_ID)
+		var/datum/department/D
+
+		if(B)
+			D = dept_by_id(B.business_uid)
+
+		if(!D || !D.bank_account)
+			to_chat(usr, "\icon[src]<span class='notice'>No Business: Please register a business before continuing.</span>")
+			return
 		to_chat(usr, "\icon[src]<span class='notice'>New owner set to [I.registered_name].</span>")
 		owner_uid = I.unique_ID
 		owner_name = I.registered_name
+		dept_id = D.id
+		connect_to_dept()
 	if(I)
 		scan_card(I, O)
 	else if (istype(O, /obj/item/weapon/spacecash/ewallet))
@@ -404,10 +474,10 @@
 				else
 					// Transfer the money
 					D.money -= transaction_amount
-					charge_to_account(linked_account, "[D.owner_name]", "[transaction_purpose]: #[transaction_logs.len+1]", machine_id, transaction_amount)
+					charge_to_account(linked_account.account_number, "[D.owner_name]", "[transaction_purpose]: #[transaction_logs.len+1]", machine_id, transaction_amount)
 
 					// Create log entry in client's account
-					D.add_transaction_log(get_account_name(linked_account), transaction_purpose, -transaction_amount, machine_id)
+					D.add_transaction_log(get_account_name(linked_account.account_number), transaction_purpose, -transaction_amount, machine_id)
 
 					// Save log
 					add_transaction_log(I.registered_name ? I.registered_name : "n/A", "ID Card", -transaction_amount)
@@ -442,7 +512,7 @@
 		else
 			// Transfer the money
 			E.worth -= transaction_amount
-			charge_to_account(linked_account, "E-Wallet Purchase", "[transaction_purpose]: #[transaction_logs.len+1]", machine_id, transaction_amount)
+			charge_to_account(linked_account.account_number, "E-Wallet Purchase", "[transaction_purpose]: #[transaction_logs.len+1]", machine_id, transaction_amount)
 
 			// Confirm and reset
 			transaction_complete()
@@ -486,6 +556,9 @@
 		// Confirm and reset
 		transaction_complete()
 
+/obj/machinery/cash_register/proc/show_shopping_list()
+	for(var/O in item_list)
+		src.visible_message("\icon[src] <b>[O]:</b> [price_list[O] ? "[price_list[O]] credit\s" : "free of charge"][tax_list[O] ? "([tax_list[O] * 100]% tax)" : ""].")
 
 /obj/machinery/cash_register/proc/scan_item_price(obj/O)
 	if(!istype(O))	return
@@ -532,9 +605,9 @@
 /obj/machinery/cash_register/proc/get_current_transaction()
 	var/dat = {"
 	<head><style>
-		.tx-title-r {text-align: center; background-color:#ffdddd; font-weight: bold}
-		.tx-name-r {background-color: #eebbbb}
-		.tx-data-r {text-align: right; background-color: #ffcccc;}
+		.tx-title-r {text-align: center; background-color:BF6275; font-weight: bold}
+		.tx-name-r {background-color: #9F4053}
+		.tx-data-r {text-align: right; background-color: #BF6275;}
 	</head></style>
 	<table width=300>
 	<tr><td colspan="2" class="tx-title-r">New Entry</td></tr>
@@ -546,7 +619,7 @@
 		tax = tax_list[item_name]
 	for(var/i=1, i<=item_list.len, i++)
 		item_name = item_list[i]
-		dat += "<tr><td class=\"tx-name-r\">[item_list[item_name] ? "<a href='?src=\ref[src];choice=subtract;item=\ref[item_name]'>-</a> <a href='?src=\ref[src];choice=set_amount;item=\ref[item_name]'>Set</a> <a href='?src=\ref[src];choice=add;item=\ref[item_name]'>+</a> [item_list[item_name]] x " : ""][item_name][tax ? " ([tax * 100]% tax)" : ""] <a href='?src=\ref[src];choice=clear;item=\ref[item_name]'>Remove</a></td><td class=\"tx-data-r\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
+		dat += "<tr><td class=\"tx-name-r\">[item_list[item_name] ? "<a href='?src=\ref[src];choice=subtract;item=\ref[item_name]'>-</a> <a href='?src=\ref[src];choice=set_amount;item=\ref[item_name]'>Set</a> <a href='?src=\ref[src];choice=add;item=\ref[item_name]'>+</a> [item_list[item_name]] x " : ""][item_name][tax ? " ([tax * 100]% tax)" : ""] <a href='?src=\ref[src];choice=clear;item=\ref[item_name]'>Remove</a> <a href='?src=\ref[src];choice=set_price;item=\ref[item_name]'>Set Price</a></td><td class=\"tx-data-r\" width=50>[price_list[item_name] * item_list[item_name]] &thorn</td></tr>"
 	dat += "</table><table width=300>"
 	dat += "<tr><td class=\"tx-name-r\"><a href='?src=\ref[src];choice=clear'>Clear Entry</a></td><td class=\"tx-name-r\" style='text-align: right'><b>Total Amount: [cash2text( transaction_amount, FALSE, TRUE, TRUE )] &thorn</b></td></tr>"
 	dat += "</table></html>"
@@ -556,9 +629,9 @@
 /obj/machinery/cash_register/proc/add_transaction_log(var/c_name, var/p_method, var/t_amount)
 	var/dat = {"
 	<head><style>
-		.tx-title {text-align: center; background-color:#ddddff; font-weight: bold}
+		.tx-title {text-align: center; background-color:#55a358; font-weight: bold}
 		.tx-name {background-color: #bbbbee}
-		.tx-data {text-align: right; background-color: #ccccff;}
+		.tx-data {text-align: right; background-color: #2f7832;}
 	</head></style>
 	<table width=300>
 	<tr><td colspan="2" class="tx-title">Transaction #[transaction_logs.len+1]</td></tr>
@@ -584,9 +657,9 @@
 /obj/machinery/cash_register/proc/get_receipt(var/c_name, var/p_method, var/t_amount)
 	var/dat = {"
 	<head><style>
-		.tx-title {text-align: center; background-color:#ddddff; font-weight: bold}
+		.tx-title {text-align: center; background-color:#55a358; font-weight: bold}
 		.tx-name {background-color: #bbbbee}
-		.tx-data {text-align: right; background-color: #ccccff;}
+		.tx-data {text-align: right; background-color: #2f7832;}
 	</head></style>
 	<table width=300>
 	<tr><td colspan="2" class="tx-title">Receipt</td></tr>
@@ -610,11 +683,14 @@
 	return dat
 
 /obj/machinery/cash_register/proc/check_account()
-	if (!check_account_exists(linked_account))
+	if(!linked_account)
+		return
+
+	if (!get_account(linked_account.account_number))
 		usr.visible_message("\icon[src]<span class='warning'>Unable to connect to linked account.</span>")
 		return 0
 
-	if(check_account_suspension(linked_account))
+	if(check_account_suspension(linked_account.account_number))
 		src.visible_message("\icon[src]<span class='warning'>Connected account has been suspended.</span>")
 		return 0
 	return 1
