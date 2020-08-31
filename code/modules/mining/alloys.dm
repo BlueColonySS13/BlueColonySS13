@@ -40,6 +40,7 @@
 /datum/alloy/borosilicate
 	metaltag = "borosilicate glass"
 	requires = list(
+		"phoron" = 1,
 		"platinum" = 1,
 		"sand" = 2
 		)

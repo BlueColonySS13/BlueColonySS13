@@ -22,6 +22,10 @@
 	name = "proximity sensor"
 	path =/obj/item/device/assembly/prox_sensor
 
+/datum/category_item/crafting/autolathe/devices/voice_trig
+	name = "voice analyzer"
+	path =/obj/item/device/assembly/voice
+
 /datum/category_item/crafting/autolathe/devices/beartrap
 	name = "mechanical trap"
 	path =/obj/item/weapon/beartrap

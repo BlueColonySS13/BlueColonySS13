@@ -32,7 +32,7 @@
 	icon_state = "38"
 	caliber = ".357"
 	ammo_type = /obj/item/ammo_casing/a357
-	matter = list(DEFAULT_WALL_MATERIAL = 1260)
+	matter = list(DEFAULT_WALL_MATERIAL = 1260, "copper" = 315)
 	max_ammo = 6
 	multiple_sprites = 1
 
@@ -43,7 +43,7 @@
 	desc = "A speedloader for .38 revolvers."
 	icon_state = "38"
 	caliber = ".38"
-	matter = list(DEFAULT_WALL_MATERIAL = 360)
+	matter = list(DEFAULT_WALL_MATERIAL = 360, "copper" = 90)
 	ammo_type = /obj/item/ammo_casing/a38
 	max_ammo = 6
 	multiple_sprites = 1
@@ -69,7 +69,7 @@
 	icon_state = "45"
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/a45
-	matter = list(DEFAULT_WALL_MATERIAL = 525) //metal costs are very roughly based around 1 .45 casing = 75 metal
+	matter = list(DEFAULT_WALL_MATERIAL = 525, "copper" = 131) //metal costs are very roughly based around 1 .45 casing = 75 metal
 	caliber = ".45"
 	max_ammo = 7
 	multiple_sprites = 1
@@ -102,7 +102,7 @@
 	icon_state = "uzi45"
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/a45
-	matter = list(DEFAULT_WALL_MATERIAL = 1200)
+	matter = list(DEFAULT_WALL_MATERIAL = 1200, "copper" = 300)
 	caliber = ".45"
 	max_ammo = 16
 	multiple_sprites = 1
@@ -115,7 +115,7 @@
 	icon_state = "tommy-mag"
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/a45
-	matter = list(DEFAULT_WALL_MATERIAL = 1500)
+	matter = list(DEFAULT_WALL_MATERIAL = 1500, "copper" = 375)
 	caliber = ".45"
 	max_ammo = 20
 
@@ -132,7 +132,7 @@
 	w_class = ITEMSIZE_NORMAL // Bulky ammo doesn't fit in your pockets!
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/a45
-	matter = list(DEFAULT_WALL_MATERIAL = 3750)
+	matter = list(DEFAULT_WALL_MATERIAL = 3750, "copper" = 937)
 	caliber = ".45"
 	max_ammo = 50
 
@@ -149,7 +149,7 @@
 	desc = "A stripper clip for reloading .45 rounds into magazines."
 	caliber = ".45"
 	ammo_type = /obj/item/ammo_casing/a45
-	matter = list(DEFAULT_WALL_MATERIAL = 675) // metal costs very roughly based around one .45 casing = 75 metal
+	matter = list(DEFAULT_WALL_MATERIAL = 675, "copper" = 169) // metal costs very roughly based around one .45 casing = 75 metal
 	max_ammo = 9
 	multiple_sprites = 1
 
@@ -169,7 +169,7 @@
 	name = "speedloader (.45)"
 	icon_state = "45s"
 	ammo_type = /obj/item/ammo_casing/a45
-	matter = list(DEFAULT_WALL_MATERIAL = 525) //metal costs are very roughly based around 1 .45 casing = 75 metal
+	matter = list(DEFAULT_WALL_MATERIAL = 525, "copper" = 131) //metal costs are very roughly based around 1 .45 casing = 75 metal
 	caliber = ".45"
 	max_ammo = 7
 	multiple_sprites = 1
@@ -200,7 +200,7 @@
 	icon_state = "9x19p_fullsize"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
-	matter = list(DEFAULT_WALL_MATERIAL = 600)
+	matter = list(DEFAULT_WALL_MATERIAL = 600, "copper" = 150)
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/a9mm
 	max_ammo = 10
@@ -236,7 +236,7 @@
 	icon_state = "9x19p"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
-	matter = list(DEFAULT_WALL_MATERIAL = 480)
+	matter = list(DEFAULT_WALL_MATERIAL = 480, "copper" = 120)
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/a9mm
 	max_ammo = 8
@@ -263,7 +263,7 @@
 	icon_state = "9mmt"
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/a9mm
-	matter = list(DEFAULT_WALL_MATERIAL = 1200)
+	matter = list(DEFAULT_WALL_MATERIAL = 1200, "copper" = 300)
 	caliber = "9mm"
 	max_ammo = 20
 	multiple_sprites = 1
@@ -288,7 +288,7 @@
 	icon_state = "p90"
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/a9mm/ap
-	matter = list(DEFAULT_WALL_MATERIAL = 3000)
+	matter = list(DEFAULT_WALL_MATERIAL = 3000, "copper" = 750)
 	caliber = "9mm"
 	max_ammo = 50
 	multiple_sprites = 1
@@ -302,7 +302,7 @@
 	desc = "A stripper clip for reloading 9mm rounds into magazines."
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/a9mm
-	matter = list(DEFAULT_WALL_MATERIAL = 540) // metal costs are very roughly based around one 9mm casing = 60 metal
+	matter = list(DEFAULT_WALL_MATERIAL = 540, "copper" = 135) // metal costs are very roughly based around one 9mm casing = 60 metal
 	max_ammo = 9
 	multiple_sprites = 1
 
@@ -322,7 +322,7 @@
 	name = "ammunition Box (9mm)"
 	icon_state = "9mm"
 	origin_tech = list(TECH_COMBAT = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 1800)
+	matter = list(DEFAULT_WALL_MATERIAL = 1800, "copper" = 450)
 	caliber = "9mm"
 	ammo_type = /obj/item/ammo_casing/a9mm
 	max_ammo = 30
@@ -338,7 +338,7 @@
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
 	caliber = "10mm"
-	matter = list(DEFAULT_WALL_MATERIAL = 1500)
+	matter = list(DEFAULT_WALL_MATERIAL = 1500, "copper" = 375)
 	ammo_type = /obj/item/ammo_casing/a10mm
 	max_ammo = 20
 	multiple_sprites = 1
@@ -352,7 +352,7 @@
 	desc = "A stripper clip for reloading 5mm rounds into magazines."
 	caliber = "10mm"
 	ammo_type = /obj/item/ammo_casing/a10mm
-	matter = list(DEFAULT_WALL_MATERIAL = 675) // metal costs are very roughly based around one 10mm casing = 75 metal
+	matter = list(DEFAULT_WALL_MATERIAL = 675, "copper" = 169) // metal costs are very roughly based around one 10mm casing = 75 metal
 	max_ammo = 9
 	multiple_sprites = 1
 
@@ -368,14 +368,14 @@
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
 	caliber = "5.45mm"
-	matter = list(DEFAULT_WALL_MATERIAL = 1800)
+	matter = list(DEFAULT_WALL_MATERIAL = 1800, "copper" = 450)
 	ammo_type = /obj/item/ammo_casing/a545
 	max_ammo = 20
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m545/ext
 	name = "extended magazine (5.45mm)"
-	matter = list(DEFAULT_WALL_MATERIAL = 2700)
+	matter = list(DEFAULT_WALL_MATERIAL = 2700, "copper" = 675)
 	max_ammo = 30
 
 /obj/item/ammo_magazine/m545/empty
@@ -411,7 +411,7 @@
 /obj/item/ammo_magazine/m545/small
 	name = "reduced magazine (5.45mm)"
 	icon_state = "m545-small"
-	matter = list(DEFAULT_WALL_MATERIAL = 900)
+	matter = list(DEFAULT_WALL_MATERIAL = 900, "copper" = 225)
 	max_ammo = 10
 
 /obj/item/ammo_magazine/m545/small/empty
@@ -434,7 +434,7 @@
 	icon_state = "clip_rifle"
 	caliber = "5.45mm"
 	ammo_type = /obj/item/ammo_casing/a545
-	matter = list(DEFAULT_WALL_MATERIAL = 450) // metal costs are very roughly based around one 10mm casing = 180 metal
+	matter = list(DEFAULT_WALL_MATERIAL = 450, "copper" = 113) // metal costs are very roughly based around one 10mm casing = 180 metal
 	max_ammo = 5
 	multiple_sprites = 1
 
@@ -456,7 +456,7 @@
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
 	caliber = "5.45mm"
-	matter = list(DEFAULT_WALL_MATERIAL = 10000)
+	matter = list(DEFAULT_WALL_MATERIAL = 10000, "copper" = 2500)
 	ammo_type = /obj/item/ammo_casing/a545
 	w_class = ITEMSIZE_NORMAL // This should NOT fit in your pocket!!
 	max_ammo = 50
@@ -481,7 +481,7 @@
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
 	caliber = ".44"
-	matter = list(DEFAULT_WALL_MATERIAL = 1260)
+	matter = list(DEFAULT_WALL_MATERIAL = 1260, "copper" = 315)
 	ammo_type = /obj/item/ammo_casing/a44
 	max_ammo = 7
 	multiple_sprites = 1
@@ -495,7 +495,7 @@
 	desc = "A stripper clip for reloading .44 rounds into magazines."
 	caliber = ".44"
 	ammo_type = /obj/item/ammo_casing/a44
-	matter = list(DEFAULT_WALL_MATERIAL = 1620) // metal costs are very roughly based around one .50 casing = 180 metal
+	matter = list(DEFAULT_WALL_MATERIAL = 1620, "copper" = 405) // metal costs are very roughly based around one .50 casing = 180 metal
 	max_ammo = 9
 	multiple_sprites = 1
 
@@ -503,7 +503,7 @@
 	name = "speedloader (.44)"
 	icon_state = "44"
 	ammo_type = /obj/item/ammo_casing/a44
-	matter = list(DEFAULT_WALL_MATERIAL = 1260) //metal costs are very roughly based around 1 .45 casing = 75 metal
+	matter = list(DEFAULT_WALL_MATERIAL = 1260, "copper" = 315) //metal costs are very roughly based around 1 .45 casing = 75 metal
 	caliber = ".44"
 	max_ammo = 6
 	multiple_sprites = 1
@@ -523,7 +523,7 @@
 	icon_state = "m762-small"
 	mag_type = MAGAZINE
 	caliber = "7.62mm"
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(DEFAULT_WALL_MATERIAL = 2000, "copper" = 500)
 	ammo_type = /obj/item/ammo_casing/a762
 	max_ammo = 10
 	multiple_sprites = 1
@@ -540,7 +540,7 @@
 	icon_state = "m762"
 	mag_type = MAGAZINE
 	caliber = "7.62mm"
-	matter = list(DEFAULT_WALL_MATERIAL = 4000)
+	matter = list(DEFAULT_WALL_MATERIAL = 4000, "copper" = 1000)
 	ammo_type = /obj/item/ammo_casing/a762
 	max_ammo = 20
 	multiple_sprites = 1
@@ -557,7 +557,7 @@
 	icon_state = "gclip"
 	mag_type = MAGAZINE
 	caliber = "7.62mm"
-	matter = list(DEFAULT_WALL_MATERIAL = 1600)
+	matter = list(DEFAULT_WALL_MATERIAL = 1600, "copper" = 400)
 	ammo_type = /obj/item/ammo_casing/a762
 	max_ammo = 8
 	multiple_sprites = 1
@@ -574,7 +574,7 @@
 	icon_state = "clip_rifle"
 	caliber = "7.62mm"
 	ammo_type = /obj/item/ammo_casing/a762
-	matter = list(DEFAULT_WALL_MATERIAL = 1000) // metal costs are very roughly based around one 7.62 casing = 200 metal
+	matter = list(DEFAULT_WALL_MATERIAL = 1000, "copper" = 250) // metal costs are very roughly based around one 7.62 casing = 200 metal
 	max_ammo = 5
 	multiple_sprites = 1
 
@@ -595,7 +595,7 @@
 	icon_state = "SVD"
 	mag_type = MAGAZINE
 	caliber = "7.62mm"
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(DEFAULT_WALL_MATERIAL = 2000, "copper" = 500)
 	ammo_type = /obj/item/ammo_casing/a762
 	max_ammo = 10
 	multiple_sprites = 1
@@ -614,7 +614,7 @@
 	icon_state = "12g"
 	mag_type = MAGAZINE
 	caliber = "12g"
-	matter = list(DEFAULT_WALL_MATERIAL = 13000) //did the math. now fixed the exploityness of this thing. Have fun!
+	matter = list(DEFAULT_WALL_MATERIAL = 13000, "copper" = 3250) //did the math. now fixed the exploityness of this thing. Have fun!
 	ammo_type = /obj/item/ammo_casing/a12g
 	max_ammo = 24
 	multiple_sprites = 1
@@ -640,7 +640,7 @@
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with slugs."
 	caliber = "12g"
 	ammo_type = /obj/item/ammo_casing/a12g
-	matter = list(DEFAULT_WALL_MATERIAL = 1070) // slugs shells x2 + 350 metal for the clip itself.
+	matter = list(DEFAULT_WALL_MATERIAL = 1070, "copper" = 268) // slugs shells x2 + 350 metal for the clip itself.
 	max_ammo = 2
 	multiple_sprites = 1
 
@@ -649,14 +649,14 @@
 	icon_state = "12gclipshell"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with buckshot."
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
-	matter = list(DEFAULT_WALL_MATERIAL = 1070) // buckshot and slugs cost the same
+	matter = list(DEFAULT_WALL_MATERIAL = 1070, "copper" = 260) // buckshot and slugs cost the same
 
 /obj/item/ammo_magazine/clip/c12g/beanbag
 	name = "ammo clip (12g beanbag)"
 	icon_state = "12gclipbean"
 	desc = "A color-coded metal clip for holding and quickly loading shotgun shells. This one is loaded with beanbags."
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
-	matter = list(DEFAULT_WALL_MATERIAL = 710) //beanbags x2 + 350 metal
+	matter = list(DEFAULT_WALL_MATERIAL = 710, "copper" = 178) //beanbags x2 + 350 metal
 
 ///////// .75 Gyrojet /////////
 
