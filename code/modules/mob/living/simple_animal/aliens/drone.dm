@@ -3,6 +3,7 @@
 /mob/living/simple_animal/hostile/malf_drone
 	name = "combat drone"
 	desc = "An automated combat drone armed with state of the art weaponry and shielding."
+	tt_desc = "An automated combat drone armed with state of the art weaponry and shielding."
 	icon_state = "drone3"
 	icon_living = "drone3"
 	icon_dead = "drone_dead"
