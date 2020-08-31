@@ -1,6 +1,7 @@
 /mob/living/simple_animal/hostile/strider
 	name = "creature"
 	desc = "What looks to be a canine that clawed its way out from the pits of hell."
+	tt_desc = "Canis Ignem" //dog fire??
 	icon_state = "goliath_baby"
 	icon_living = "goliath_baby"
 	icon_dead = "goliath_baby_dead"
