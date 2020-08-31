@@ -630,7 +630,7 @@
 	var/dat = {"
 	<head><style>
 		.tx-title {text-align: center; background-color:#55a358; font-weight: bold}
-		.tx-name {background-color: #bbbbee}
+		.tx-name {background-color: #62629F}
 		.tx-data {text-align: right; background-color: #2f7832;}
 	</head></style>
 	<table width=300>
