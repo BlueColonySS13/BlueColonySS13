@@ -60,6 +60,8 @@
 
 	days_until_expiry = 1
 
+	allow_subtypes = TRUE
+
 
 /datum/bounty/retail/lord_bucket
 	name = "Need A New Face"
@@ -161,18 +163,57 @@
 	department_reward = 350
 	individual_reward = 55
 
-	days_until_expiry = 1
+	days_until_expiry = 2
 
 /datum/bounty/retail/noir_drink
 	name = "Something Something Whiskey"
 	author = "Detective Damon"
 	description = "You know that thing... the thing we use to hold my whiskey? What was it again?"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/drinks/flask/barflask = 1)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/drinks/flask = 1)
 
 	department_reward = 90
 	individual_reward = 35
 
 	days_until_expiry = 1
 
+	allow_subtypes = TRUE
 
+/datum/bounty/retail/komodo_flashlight
+	name = "It's Dark In Here"
+	author = "Bear Grillis"
+	description = "So we were chasing down one of these genetically modified Komodo Dragons before I dropped my maglight. It's already eaten \
+	two of the cameramen because there's no blasted lights in this cave. The remaining crew would be happy for a light at this time."
+
+	items_wanted = list(/obj/item/device/flashlight = 10)
+
+	department_reward = 460
+	individual_reward = 70
+
+	days_until_expiry = 4
+
+/datum/bounty/retail/whatacooler
+	name = "What-A-Cooler Water Coolers"
+	author = "What-A-Cooler"
+	description = "What-A-Cooler office coolers are back on sale now! Or they would have been if we hadn't run out of stock. Please supply us with more."
+
+	items_wanted = list(/obj/item/weapon/reagent_containers/glass/cooler_bottle = 5)
+
+	department_reward = 600
+	individual_reward = 30
+
+	days_until_expiry = 3
+
+
+/datum/bounty/retail/skateboard
+	name = "Hello Fellow Skateboarders!"
+	author = "Zoomer Skateboards"
+	description = "Hello fellow skateboarders! That's our slogan. We've gotta show these kids how hip and cool we are as part of our marketing campaign. \
+	WROoooM! Boawsa!"
+
+	items_wanted = list(/obj/item/melee/skateboard = 5)
+
+	department_reward = 500
+	individual_reward = 70
+
+	days_until_expiry = 2

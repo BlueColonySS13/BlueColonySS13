@@ -149,12 +149,13 @@
 				attack_generic(H,rand(1,3),"punched")
 				return
 
-			if(H.IsAntiGrief())
-				to_chat(H, "<span class='danger'>You wish to do no harm.</span>")
-				return 0
-
 			if(H == src) // no more punching yourself to death
 				return
+
+			if(H.IsAntiGrief())
+				to_chat(H, "<span class='danger'>You wish to do no harm. (You currently have anti-grief enabled either due to being a brand new player or grief-banned.)</span>")
+				visible_message("<b>[H]</b> has raises their fist to punch [M], but lowers it, reconsidering.")
+				return 0
 
 			var/rand_damage = rand(1, 5)
 			var/block = 0

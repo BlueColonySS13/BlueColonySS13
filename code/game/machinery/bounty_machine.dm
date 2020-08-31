@@ -51,7 +51,7 @@
 		to_chat(user,"<span class='notice'>This bounty is already complete, please select \"Confirm Completion\" to redeem the reward!</span>")
 		return
 
-	if(I.dont_save)
+	if(I.dont_save && !istype(I,/obj/item/weapon/photo))
 		to_chat(user,"<span class='notice'>This appears to be tagged to belong to an establishment or individual, please try another one.</span>")
 		return
 
@@ -310,10 +310,8 @@
 	if(..())
 		return 1
 
-
 	if(href_list["connect_business"])
 		var/obj/item/weapon/card/id/ID = usr.GetIdCard()
-
 		if(!ID || !ID.unique_ID)
 			to_chat(usr,"<span class='notice'>Please wear a valid citizen ID card that is linked to your citizen details.</span>")
 			return
@@ -344,7 +342,7 @@
 
 				var/bounty_name = bounty.name
 
-				if(bounty.complete_bounty(item_spawn_location = get_turf(src)))
+				if(bounty.complete_bounty(FALSE, get_turf(src), usr))
 					playsound(src, 'sound/machines/chime.ogg', 25)
 					to_chat(usr, "\icon[src] <b>[bounty_name]</b> has been completed!")
 

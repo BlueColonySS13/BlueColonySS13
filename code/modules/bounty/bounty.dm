@@ -216,7 +216,7 @@
 	return TRUE
 
 
-/datum/bounty/proc/complete_bounty(skip_completion_check = FALSE, turf/item_spawn_location = null)
+/datum/bounty/proc/complete_bounty(skip_completion_check = FALSE, turf/item_spawn_location = null, mob/user)
 	if(!skip_completion_check)
 		if(!check_for_completion())
 			return FALSE
@@ -245,13 +245,22 @@
 		if(!DA) return
 		DA.adjust_funds(-department_reward, "Bounty Completion: [name] by [author]")
 
+	if(!LAZYLEN(contributors_bankids) && individual_reward && user) // useful for custom objective bounties
+		var/obj/item/weapon/card/id/ID = user.GetIdCard()
+
+		if(ID && ID.associated_account_number)
+			contributors_bankids += ID.associated_account_number
+			contributors_bankids[ID.associated_account_number] = 1
+
+
 	if(LAZYLEN(contributors_bankids) && individual_reward)
 		var/full_no = 0
 		var/inv_money = 0
 		for(var/C in contributors_bankids)
 			full_no += contributors_bankids[C]
 
-		inv_money = individual_reward / full_no
+		if(full_no)
+			inv_money = individual_reward / full_no
 
 		for(var/V in contributors_bankids)
 			var/division_number = contributors_bankids[V]
@@ -261,7 +270,7 @@
 			var/payment_owed = round(inv_money * division_number)
 
 			if(payment_owed)
-				charge_to_account(V, "Boun-T", "Bounty Completion Contribution: [name]/[D.name]", "BouNT Finances", payment_owed, leave_log = !hidden)
+				charge_to_account(V, "Boun-T", "Bounty Completion Contribution: [name]/[D.name]", "BouNT Finances", payment_owed, !hidden)
 
 	if(item_spawn_location && isturf(item_spawn_location))
 		for(var/A in item_rewards)
