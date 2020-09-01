@@ -1,6 +1,7 @@
 /mob/living/simple_animal/hostile/ash_drake
 	name = "creature"
 	desc = "The legends foretold of their return. One word: Run."
+	tt_desc = "Analysis: Run." //RUN
 	icon = 'icons/mob/256x256.dmi'
 	icon_state = "ashdrake"
 	icon_living = "ashdrake"

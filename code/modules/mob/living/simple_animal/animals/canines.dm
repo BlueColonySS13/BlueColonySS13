@@ -9,6 +9,7 @@
 /mob/living/simple_animal/corgi/fox
 	name = "fox"
 	desc = "It's a fox. I wonder what it says?"
+	tt_desc = "Vulpes Vulpes"
 	icon_state = "fox"
 	icon_living = "fox"
 	icon_dead = "fox_dead"
