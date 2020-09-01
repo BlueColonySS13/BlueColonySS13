@@ -1,6 +1,12 @@
 /datum/bounty/mining
 	category = CAT_MINING
 
+/* Mining bounties utilize a simple 1-to-10 ratio for rewards.
+   For every 10 credits in the department reward, an individual
+   receives 1 credit. Prices determined by the ore's chance of
+   appearing in the mines and complex mind-bending maths, in the
+   case of alloys.*/
+
 /datum/bounty/mining/diamonds_forever
 	name = "Diamonds are Forever"
 	author = "Earlington Wedding Jewellers"
@@ -9,10 +15,10 @@
 
 	stacks_wanted = list("diamond" = 50)
 
-	department_reward = 3500
-	individual_reward = 500
+	department_reward = 1300
+	individual_reward = 130
 
-	days_until_expiry = 4
+	days_until_expiry = 3
 
 /datum/bounty/mining/spaceboogle
 	name = "Cascington Valley Startup"
@@ -22,8 +28,8 @@
 
 	stacks_wanted = list("plastic" = 100)
 
-	department_reward = 300
-	individual_reward = 30
+	department_reward = 100
+	individual_reward = 20
 
 	days_until_expiry = 2
 
@@ -37,7 +43,7 @@
 	stacks_wanted = list("iron" = 100)
 
 	department_reward = 150
-	individual_reward = 30
+	individual_reward = 25
 
 	days_until_expiry = 2
 
@@ -49,8 +55,8 @@
 
 	stacks_wanted = list("steel" = 200)
 
-	department_reward = 450
-	individual_reward = 30
+	department_reward = 400
+	individual_reward = 40
 
 	days_until_expiry = 2
 
@@ -63,8 +69,8 @@
 
 	stacks_wanted = list("uranium" = 150)
 
-	department_reward = 800
-	individual_reward = 100
+	department_reward = 750
+	individual_reward = 75
 
 	days_until_expiry = 2
 
@@ -75,10 +81,10 @@
 	in New Britannia. Our first batch of coins, the \"Autochthon Set,\" are beautiful golden coins dedicated to humanity and its achievements. \
 	To continue minting new coins, we need more gold ingots to melt down. Please send us 200 ingots."
 
-	stacks_wanted = list("gold" = 200)
+	stacks_wanted = list("gold" = 100)
 
-	department_reward = 2250
-	individual_reward = 250
+	department_reward = 1000
+	individual_reward = 100
 
 /datum/bounty/mining/better_than_gold
 	name = "Better Than Gold"
@@ -89,8 +95,8 @@
 
 	stacks_wanted = list("platinum" = 50)
 
-	department_reward = 3000
-	individual_reward = 300
+	department_reward = 1000
+	individual_reward = 100
 
 	days_until_expiry = 3
 
@@ -102,8 +108,8 @@
 
 	stacks_wanted = list("phoron" = 100)
 
-	department_reward = 5000
-	individual_reward = 220
+	department_reward = 900
+	individual_reward = 90
 
 /datum/bounty/mining/gorilla_warfare
 	name = "Aerial Superiority"
@@ -113,8 +119,8 @@
 
 	stacks_wanted = list("durasteel" = 50)
 
-	department_reward = 3500
-	individual_reward = 355
+	department_reward = 1500
+	individual_reward = 150
 
 	days_until_expiry = 3
 
@@ -127,8 +133,8 @@
 
 	stacks_wanted = list("plasteel" = 50)
 
-	department_reward = 2000
-	individual_reward = 175
+	department_reward = 1175
+	individual_reward = 118
 
 	days_until_expiry = 2
 
@@ -142,8 +148,8 @@
 
 	stacks_wanted = list("osmium" = 50)
 
-	department_reward = 3000
-	individual_reward = 300
+	department_reward = 1000
+	individual_reward = 100
 
 	days_until_expiry = 3
 
@@ -154,10 +160,10 @@
 	aboard our station. We need to increase the heat resistance of our exterior windows in order to avoid any more mishaps. Our engineering team needs you to send over borosilicate \
 	glass at your earliest convenience."
 
-	stacks_wanted = list("phoron glass" = 50)
+	stacks_wanted = list(/obj/item/stack/material/glass/phoronglass = 50)
 
-	department_reward = 3000
-	individual_reward = 300
+	department_reward = 800
+	individual_reward = 800
 
 	days_until_expiry = 3
 
@@ -169,8 +175,8 @@
 
 	stacks_wanted = list("void opal" = 50)
 
-	department_reward = 7500
-	individual_reward = 750
+	department_reward = 1500
+	individual_reward = 150
 
 	days_until_expiry = 7
 
@@ -184,7 +190,7 @@
 	stacks_wanted = list("silver" = 100)
 
 	department_reward = 1000
-	individual_reward = 150
+	individual_reward = 100
 
 /datum/bounty/mining/wires_everywhere
 	name = "Wires Everywhere"
@@ -194,8 +200,8 @@
 
 	stacks_wanted = list("copper" = 200)
 
-	department_reward = 150
-	individual_reward = 30
+	department_reward = 350
+	individual_reward = 35
 
 /datum/bounty/mining/can_you_can_can
 	name = "Can You Can-Can?"
@@ -205,8 +211,8 @@
 
 	stacks_wanted = list("aluminium" = 200)
 
-	department_reward = 200
-	individual_reward = 40
+	department_reward = 350
+	individual_reward = 35
 
 /datum/bounty/mining/contemporary_art
 	name = "Contemporary Art Piece"
@@ -217,8 +223,8 @@
 
 	stacks_wanted = list("bronze" = 100)
 
-	department_reward = 400
-	individual_reward = 75
+	department_reward = 350
+	individual_reward = 35
 
 /datum/bounty/mining/superconductor
 	name = "Superconductor Trials"
@@ -229,8 +235,8 @@
 
 	stacks_wanted = list("tin" = 200)
 
-	department_reward = 150
-	individual_reward = 30
+	department_reward = 350
+	individual_reward = 35
 
 /datum/bounty/mining/mechatronic_dreams
 	name = "Mechatronic Dreams"
@@ -240,11 +246,25 @@
 
 	stacks_wanted = list("titanium" = 200)
 
-	department_reward = 500
-	individual_reward = 100
+	department_reward = 600
+	individual_reward = 60
+
+/datum/bounty/mining/jay_jewellers
+	name = "Every Joyful Moment Begins With Jay"
+	author = "Jay Jewellers"
+	description = "Jay Jewellers is searching for a precious gem that will set us apart from other jewelry businesses in our area. Our experts have identified painite as one such gem that will \
+	attract more discerning customers to our business. Please deliver the cut jewels to us for use in a variety of necklaces, rings, and other accessories."
+
+	stacks_wanted = list("painite" = 50)
+
+	department_reward = 675
+	individual_reward = 68
+
+	days_until_expiry = 3
 
 /* Mass Extraction Contracts
  * High paying, high yield bounties go under here
+ * Revisit this in the future.
  */
 /*
 /datum/bounty/mining/public_works
