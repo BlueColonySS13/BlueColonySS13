@@ -1,6 +1,7 @@
 /mob/living/simple_animal/hostile/zombie
 	name = "zombie"
-	desc = "Looks like just another night-shift worker, nothing to be worried about. Righ?"
+	desc = "Looks like just another night-shift worker, nothing to be worried about. Right?"
+	tt_desc = "Homo Mortuus" //dead man
 	icon_state = "zombie"
 	icon_living = "zombie"
 

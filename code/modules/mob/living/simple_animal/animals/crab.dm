@@ -2,7 +2,7 @@
 /mob/living/simple_animal/crab
 	name = "crab"
 	desc = "A hard-shelled crustacean. Seems quite content to lounge around all the time."
-	tt_desc = "Ranina ranina"
+	tt_desc = "Ranina Ranina"
 	icon_state = "crab"
 	icon_living = "crab"
 	icon_dead = "crab_dead"

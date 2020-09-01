@@ -1,6 +1,12 @@
 /datum/bounty/mining
 	category = CAT_MINING
 
+/* Mining bounties utilize a simple 1-to-10 ratio for rewards.
+   For every 10 credits in the department reward, an individual
+   receives 1 credit. Prices determined by the ore's chance of
+   appearing in the mines and complex mind-bending maths, in the
+   case of alloys.*/
+
 /datum/bounty/mining/diamonds_forever
 	name = "Diamonds are Forever"
 	author = "Earlington Wedding Jewellers"
@@ -9,10 +15,10 @@
 
 	stacks_wanted = list("diamond" = 50)
 
-	department_reward = 2000
-	individual_reward = 400
+	department_reward = 1300
+	individual_reward = 130
 
-	days_until_expiry = 2
+	days_until_expiry = 3
 
 /datum/bounty/mining/spaceboogle
 	name = "Cascington Valley Startup"
@@ -22,8 +28,8 @@
 
 	stacks_wanted = list("plastic" = 100)
 
-	department_reward = 300
-	individual_reward = 30
+	department_reward = 100
+	individual_reward = 20
 
 	days_until_expiry = 2
 
@@ -36,8 +42,8 @@
 
 	stacks_wanted = list("iron" = 100)
 
-	department_reward = 250
-	individual_reward = 30
+	department_reward = 150
+	individual_reward = 25
 
 	days_until_expiry = 2
 
@@ -49,8 +55,8 @@
 
 	stacks_wanted = list("steel" = 200)
 
-	department_reward = 450
-	individual_reward = 30
+	department_reward = 400
+	individual_reward = 40
 
 	days_until_expiry = 2
 
@@ -63,8 +69,8 @@
 
 	stacks_wanted = list("uranium" = 150)
 
-	department_reward = 800
-	individual_reward = 100
+	department_reward = 750
+	individual_reward = 75
 
 	days_until_expiry = 2
 
@@ -75,10 +81,10 @@
 	in New Britannia. Our first batch of coins, the \"Autochthon Set,\" are beautiful golden coins dedicated to humanity and its achievements. \
 	To continue minting new coins, we need more gold ingots to melt down. Please send us 200 ingots."
 
-	stacks_wanted = list("gold" = 200)
+	stacks_wanted = list("gold" = 100)
 
-	department_reward = 2250
-	individual_reward = 250
+	department_reward = 1000
+	individual_reward = 100
 
 /datum/bounty/mining/better_than_gold
 	name = "Better Than Gold"
@@ -89,8 +95,10 @@
 
 	stacks_wanted = list("platinum" = 50)
 
-	department_reward = 3000
-	individual_reward = 300
+	department_reward = 1000
+	individual_reward = 100
+
+	days_until_expiry = 3
 
 /datum/bounty/mining/phoron_slime
 	name = "Slime Breeding"
@@ -100,8 +108,8 @@
 
 	stacks_wanted = list("phoron" = 100)
 
-	department_reward = 5000
-	individual_reward = 220
+	department_reward = 900
+	individual_reward = 90
 
 /datum/bounty/mining/gorilla_warfare
 	name = "Aerial Superiority"
@@ -111,8 +119,8 @@
 
 	stacks_wanted = list("durasteel" = 50)
 
-	department_reward = 3750
-	individual_reward = 375
+	department_reward = 1500
+	individual_reward = 150
 
 	days_until_expiry = 3
 
@@ -125,8 +133,8 @@
 
 	stacks_wanted = list("plasteel" = 50)
 
-	department_reward = 2000
-	individual_reward = 175
+	department_reward = 1175
+	individual_reward = 118
 
 	days_until_expiry = 2
 
@@ -140,8 +148,10 @@
 
 	stacks_wanted = list("osmium" = 50)
 
-	department_reward = 3000
-	individual_reward = 300
+	department_reward = 1000
+	individual_reward = 100
+
+	days_until_expiry = 3
 
 /datum/bounty/mining/tamperproof
 	name = "Tamperproof Sights"
@@ -150,10 +160,12 @@
 	aboard our station. We need to increase the heat resistance of our exterior windows in order to avoid any more mishaps. Our engineering team needs you to send over borosilicate \
 	glass at your earliest convenience."
 
-	stacks_wanted = list("phoron glass" = 50)
+	stacks_wanted = list(/obj/item/stack/material/glass/phoronglass = 50)
 
-	department_reward = 3000
-	individual_reward = 300
+	department_reward = 800
+	individual_reward = 800
+
+	days_until_expiry = 3
 
 /datum/bounty/mining/into_the_void
 	name = "Into the Void"
@@ -163,13 +175,96 @@
 
 	stacks_wanted = list("void opal" = 50)
 
-	department_reward = 7500
-	individual_reward = 750
+	department_reward = 1500
+	individual_reward = 150
+
+	days_until_expiry = 7
+
+/datum/bounty/mining/thirty_pieces
+	name = "Thirty Pieces"
+	author = "Jude I. Carot"
+	description = "I'll keep this quick as I have things to attend to. Production has stalled on my company's RFID tags as we have run out of silver paste and the workers have gone on strike. \
+	One of my workers has been preaching of the benefits of unions and teaching men to fish. I have been offered new workers, in exchange for any excess silver I have. Send me silver so that \
+	production can begin again!"
+
+	stacks_wanted = list("silver" = 100)
+
+	department_reward = 1000
+	individual_reward = 100
+
+/datum/bounty/mining/wires_everywhere
+	name = "Wires Everywhere"
+	author = "Rein Recyclables Ltd."
+	description = "One of our workers has made a grave error and the resulting cascade failure has shut down our plant. Unfortunately, we promised a rather powerful man that we would route most \
+	of our recycled copper to his factories. We need you to send us copper ingots ASAP before we come down with a case of cement poisoning!"
+
+	stacks_wanted = list("copper" = 200)
+
+	department_reward = 350
+	individual_reward = 35
+
+/datum/bounty/mining/can_you_can_can
+	name = "Can You Can-Can?"
+	author = "Shimo Canning Co."
+	description = "Despite our name, we don't actually can food items or beverages. We make the cans! We need aluminium to cover the increase in can demand here in Blue Colony. I suppose people \
+	really enjoy drinking Space Cola and eating that disgusting Carp-in-a-Can. 200 ingots should cover our needs for the time being. We will send payment once we receive the ingots."
+
+	stacks_wanted = list("aluminium" = 200)
+
+	department_reward = 350
+	individual_reward = 35
+
+/datum/bounty/mining/contemporary_art
+	name = "Contemporary Art Piece"
+	author = "Le Magnifique"
+	description = "I am the great artist, Le Magnifique! Surely you've heard of me. I have created such wondrous works as \"The Kneecap\", \"Much Ado About Adieu\", and \"Burning in Glace Gria\". \
+	The time has come for me to create my next great piece! I will erect a giant sculpture of myself out in the wilds of Blue Colony to proclaim my dominion over this planet! I will need bronze, \
+	lots of it! Send it to me and know that you will have contributed to the greatest artistic endeavour in the history of sculpture! Is there no greater reward?"
+
+	stacks_wanted = list("bronze" = 100)
+
+	department_reward = 350
+	individual_reward = 35
+
+/datum/bounty/mining/superconductor
+	name = "Superconductor Trials"
+	author = "Einstein Engines, LLC."
+	description = "We are currently researching ways to miniaturize superconducting magnets for use in consumer products. To get to our eventual goal of complete miniaturization, we need to start \
+	big. We need a large amount of tin which will be alloyed here at our facilities into a niobium-tin alloy that will then be used to construct out superconductors. Payment will be remitted once \
+	we have received the materials."
+
+	stacks_wanted = list("tin" = 200)
+
+	department_reward = 350
+	individual_reward = 35
+
+/datum/bounty/mining/mechatronic_dreams
+	name = "Mechatronic Dreams"
+	author = "Lark Industries"
+	description = "Our team is currently working on a new generation of exosuits for use in the industrial sector and we need titanium to construct our prototypes. The next generation of mechas will \
+	prove to be unparalleled by any other company on Pollux. Lark Industries will become a household name for its groundbreaking innovations in chassis design!"
+
+	stacks_wanted = list("titanium" = 200)
+
+	department_reward = 600
+	individual_reward = 60
+
+/datum/bounty/mining/jay_jewellers
+	name = "Every Joyful Moment Begins With Jay"
+	author = "Jay Jewellers"
+	description = "Jay Jewellers is searching for a precious gem that will set us apart from other jewelry businesses in our area. Our experts have identified painite as one such gem that will \
+	attract more discerning customers to our business. Please deliver the cut jewels to us for use in a variety of necklaces, rings, and other accessories."
+
+	stacks_wanted = list("painite" = 50)
+
+	department_reward = 675
+	individual_reward = 68
 
 	days_until_expiry = 3
 
 /* Mass Extraction Contracts
  * High paying, high yield bounties go under here
+ * Revisit this in the future.
  */
 /*
 /datum/bounty/mining/public_works

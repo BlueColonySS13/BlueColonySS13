@@ -9,7 +9,7 @@
 	like behind the market to get anything from him and that is too far. Please send me some Tricordrazine pills so I will not \
 	actually have to do my job."
 
-	reagents_wanted = list("tricordrazine" = 200)
+	reagents_wanted = list("tricordrazine" = 180)
 
 	department_reward = 200
 	individual_reward = 50
@@ -77,7 +77,7 @@
 	author = "Vladislav Vanburg"
 	description = "Our... hospital is low on BLOOD. Donate to our cause. Stick your neck out for BLOOD hungry people in need."
 
-	reagents_wanted = list("blood" = 500)
+	reagents_wanted = list("blood" = 480)
 
 	department_reward = 650   //Reagent is hard to accumulate in vast quantities such as this. High reward. // Vatborn cubes can offset blood accumilation.
 	individual_reward = 150
@@ -104,7 +104,7 @@
 	Western Spider venom! With enough charcoal, it keep bring even the most jellied victims out of the cold, bony hands of the grim reaper. Obviously, \
 	I don't plan on using it that way, otherwise you wouldn't send me the synaptizine. Heh. Please send - this venom burns."
 
-	reagents_wanted = list("synaptizine" = 100)
+	reagents_wanted = list("synaptizine" = 120)
 
 	department_reward = 100
 	individual_reward = 20
@@ -117,7 +117,7 @@
 	description = "There's a new resident here at Sacred Heart Hospital and I think he's going to be my new target for pranks and hijinks. I think \
 	I'll start small. Some space lube on his car's door handles. Lube on his toilet seat. Lube, everywhere."
 
-	reagents_wanted = list("lube" = 100)
+	reagents_wanted = list("lube" = 120)
 
 	department_reward = 100
 	individual_reward = 50
@@ -130,7 +130,7 @@
 	author = "Issei Hariyama"
 	description = "Imagine a rocket and a train combined? Yes, an amazing idea isn't it? I need to fuel this thing and hope it doesn't explode..."
 
-	reagents_wanted = list("phoron" = 200)
+	reagents_wanted = list("phoron" = 240)
 
 	department_reward = 500
 	individual_reward = 60

@@ -2,7 +2,7 @@
 /mob/living/simple_animal/hostile/bear
 	name = "bear"
 	desc = "Oh, one of these."
-	tt_desc = "Brown bear." //...bearspace? Maybe.
+	tt_desc = "Ursa Edepol" //this sadly translates to The Bear Pollux, but meh.
 	icon_state = "brownbear"
 	icon_living = "brownbear"
 	icon_dead = "brownbear_dead"

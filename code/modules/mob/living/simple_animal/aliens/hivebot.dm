@@ -6,6 +6,7 @@
 /mob/living/simple_animal/hostile/hivebot
 	name = "hivebot"
 	desc = "A robot. It appears to be somewhat resilient, but lacks a true weapon."
+	tt_desc = "A robot. It appears to be somewhat resilient, but lacks a true weapon."
 	icon = 'icons/mob/hivebot.dmi'
 	icon_state = "basic"
 	icon_living = "basic"
@@ -60,6 +61,7 @@
 /mob/living/simple_animal/hostile/hivebot/swarm
 	name = "swarm hivebot"
 	desc = "A robot. It looks fragile and weak"
+	tt_desc = "A robot. It looks fragile and weak"
 	maxHealth = 1 LASERS_TO_KILL
 	health = 1 LASERS_TO_KILL
 	melee_damage_lower = 8
@@ -69,6 +71,7 @@
 /mob/living/simple_animal/hostile/hivebot/range
 	name = "ranged hivebot"
 	desc = "A robot.  It has a simple ballistic weapon."
+	tt_desc = "A robot. It has a simple ballistic weapon."
 	ranged = 1
 	maxHealth = 2 LASERS_TO_KILL
 	health = 2 LASERS_TO_KILL
@@ -77,6 +80,7 @@
 /mob/living/simple_animal/hostile/hivebot/range/rapid
 	name = "rapid hivebot"
 	desc = "A robot.  It has a fast firing ballistic rifle."
+	tt_desc = "A robot. It has a fast firing ballistic rifle."
 	icon_living = "strong"
 	rapid = 1
 	maxHealth = 2 LASERS_TO_KILL
@@ -85,7 +89,8 @@
 // Shoots EMPs, to screw over other robots.
 /mob/living/simple_animal/hostile/hivebot/range/ion
 	name = "engineering hivebot"
-	desc = "A robot. It has a tool which emits focused electromagnetic pulses, which are deadly to synthetic adverseries."
+	desc = "A robot. It has a tool which emits focused electromagnetic pulses, which are deadly to synthetic adversaries."
+	tt_desc = "A robot. It has a tool which emits focused electromagnetic pulses, which are deadly to synthetic adversaries."
 	projectiletype = /obj/item/projectile/ion
 	projectilesound = 'sound/weapons/Laser.ogg'
 	icon_living = "engi"
@@ -97,6 +102,7 @@
 /mob/living/simple_animal/hostile/hivebot/range/laser
 	name = "laser hivebot"
 	desc = "A robot. It has an energy weapon."
+	tt_desc = "A robot. It has an energy weapon."
 	projectiletype = /obj/item/projectile/beam/blue
 	projectilesound = 'sound/weapons/Laser.ogg'
 	maxHealth = 2 LASERS_TO_KILL
@@ -106,6 +112,7 @@
 /mob/living/simple_animal/hostile/hivebot/range/strong
 	name = "strong hivebot"
 	desc = "A robot.  This one has reinforced plating, and looks tougher."
+	tt_desc = "A robot.  This one has reinforced plating, and looks tougher."
 	icon_living = "strong"
 	maxHealth = 4 LASERS_TO_KILL
 	health = 4 LASERS_TO_KILL
@@ -116,6 +123,7 @@
 /mob/living/simple_animal/hostile/hivebot/range/guard
 	name = "guard hivebot"
 	desc = "A robot.  It seems to be guarding something."
+	tt_desc = "A robot.  It seems to be guarding something."
 	returns_home = TRUE
 	maxHealth = 4 LASERS_TO_KILL
 	health = 4 LASERS_TO_KILL
@@ -124,6 +132,7 @@
 /mob/living/simple_animal/hostile/hivebot/range/player
 	name = "commander hivebot"
 	desc = "A robot.  This one seems to direct the others, and it has a laser weapon."
+	tt_desc = "A robot.  This one seems to direct the others, and it has a laser weapon."
 	icon_living = "commander"
 	maxHealth = 5 LASERS_TO_KILL
 	health = 5 LASERS_TO_KILL
@@ -182,6 +191,7 @@
 /mob/living/simple_animal/hostile/hivebot/tele//this still needs work
 	name = "Beacon"
 	desc = "Some odd beacon thing"
+	tt_desc = "Some odd beacon thing"
 	icon = 'icons/mob/hivebot.dmi'
 	icon_state = "def_radar-off"
 	icon_living = "def_radar-off"
