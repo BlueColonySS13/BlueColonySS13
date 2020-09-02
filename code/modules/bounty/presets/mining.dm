@@ -10,7 +10,7 @@
 /datum/bounty/mining/diamonds_forever
 	name = "Diamonds are Forever"
 	author = "Earlington Wedding Jewellers"
-	description = "Diamonds from Sol are far too expensive these days, we’re looking for a full sheet of diamonds (fifty stacks) \
+	description = "Diamonds from Sol are far too expensive these days, weâ€™re looking for a full sheet of diamonds (fifty stacks) \
 	for our new engagement ring line. We will pay handsomely."
 
 	stacks_wanted = list("diamond" = 50)
@@ -153,7 +153,7 @@
 
 	days_until_expiry = 3
 
-/datum/bounty/mining/tamperproof
+/*/datum/bounty/mining/tamperproof
 	name = "Tamperproof Sights"
 	author = "NSS Discovery"
 	description = "We've had an increase in hull breaches recently thanks to a particularly overzealous and \"hot-headed\" jester and a suspiciously chemistry-literate Assistant \
@@ -165,7 +165,7 @@
 	department_reward = 800
 	individual_reward = 800
 
-	days_until_expiry = 3
+	days_until_expiry = 3*/
 
 /datum/bounty/mining/into_the_void
 	name = "Into the Void"
