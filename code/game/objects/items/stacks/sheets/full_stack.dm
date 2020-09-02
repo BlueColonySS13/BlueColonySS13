@@ -21,3 +21,12 @@
 
 /obj/item/stack/material/phoron/full
 	amount = 50
+
+/obj/item/stack/material/copper/full
+	amount = 50
+
+/obj/item/stack/material/aluminium/full
+	amount = 50
+
+/obj/item/stack/material/titanium/full
+	amount = 50
