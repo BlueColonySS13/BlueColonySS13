@@ -160,7 +160,7 @@
 	aboard our station. We need to increase the heat resistance of our exterior windows in order to avoid any more mishaps. Our engineering team needs you to send over borosilicate \
 	glass at your earliest convenience."
 
-	stacks_wanted = list(/obj/item/stack/material/glass/phoronglass = 50)
+	stacks_wanted = list("borosilicate glass" = 50)
 
 	department_reward = 800
 	individual_reward = 800
