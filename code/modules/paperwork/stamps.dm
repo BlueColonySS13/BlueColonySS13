@@ -84,11 +84,6 @@
 	var/business_name
 	unique_save_vars = list("business_name")
 
-/obj/item/weapon/stamp/business/examine(mob/user)
-	..()
-	if(business_name)
-		to_chat(user, "[name] belongs to <b>[business_name]</b>.")
-
 /obj/item/weapon/stamp/business/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	var/obj/item/weapon/card/id/I = W.GetID()
 
