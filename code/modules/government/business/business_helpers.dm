@@ -30,7 +30,7 @@ var/global/list/business_outfits = list(
 /proc/get_business_by_owner_uid(uid)
 	for(var/datum/business/B in GLOB.all_businesses)
 		if(!B.owner)
-			continue
+			return
 		if(B.owner.unique_id == uid)
 			return B
 
