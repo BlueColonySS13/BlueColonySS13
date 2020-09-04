@@ -92,13 +92,13 @@
 
 /obj/item/weapon/stamp/business/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	var/obj/item/weapon/card/id/I = W.GetID()
+	var/owner_uid = I.unique_ID
 
 	if(!business_name)
-		var/biz = get_business_by_owner_uid(I.unique_ID)
-		var/bizname = biz.name  //I know, I know. Travis was being a little b****.
-		if(bizname)
+		var/biz = get_business_by_owner_uid(owner_uid).get_business_name()
+		if(biz)
 			playsound(src, 'sound/machines/chime.ogg', 25)
-			name = "[bizname] rubber stamp"
+			name = "[biz] rubber stamp"
 			to_chat(user, "<span class='notice'>The stamp registers your business name to its memory.</span>")
 		else
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
