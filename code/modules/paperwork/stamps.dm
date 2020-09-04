@@ -95,7 +95,7 @@
 	var/owner_uid = I.unique_ID
 
 	if(!business_name)
-		var/biz = get_business_by_owner_uid(owner_uid).get_business_name()
+		var/biz = get_business_by_owner_uid(owner_uid).name
 		if(biz)
 			playsound(src, 'sound/machines/chime.ogg', 25)
 			name = "[biz] rubber stamp"
