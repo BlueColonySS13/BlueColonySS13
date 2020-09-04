@@ -1479,7 +1479,10 @@
 	products = list(/obj/item/stack/material/glass/full = 5,
 					/obj/item/stack/material/glass/reinforced/full = 3,
 					/obj/item/stack/material/steel/full = 6,
-					/obj/item/stack/material/phoron/full = 2
+					/obj/item/stack/material/phoron/full = 2,
+					/obj/item/stack/material/copper/full = 2,
+					/obj/item/stack/material/aluminium/full = 2,
+					/obj/item/stack/material/titanium/full = 2
 					)
 
 /obj/machinery/vending/materials/factory

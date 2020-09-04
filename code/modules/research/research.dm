@@ -208,8 +208,8 @@ research holder datum.
 	level = 0
 
 /datum/tech/arcane
-	name = "Arcane Research"
-	desc = "Research into the occult and arcane field for use in practical science"
+	name = "Esoteric Research"
+	desc = "The study of technologies and concepts that defy currently accepted theories and laws."
 	id = TECH_ARCANE
 	level = 0
 
