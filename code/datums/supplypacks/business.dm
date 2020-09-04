@@ -69,4 +69,9 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Mining Starter Kit"
 
-
+/datum/supply_pack/business/business_stamps
+	contains = list(/obj/item/weapon/stamp/business = 3)
+	name = "Business Stamps"
+	cost = 75
+	containertype = /obj/structure/closet/crate
+	containername = "Business Stamps"

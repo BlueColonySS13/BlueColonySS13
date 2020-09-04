@@ -77,11 +77,38 @@
 	name = "\improper Sol Government rubber stamp"
 	icon_state = "stamp-sg"
 
+/obj/item/weapon/stamp/business
+	name = "business rubber stamp"
+	desc = "An small handheld printer for stamping important documents."
+	icon_state = "stamp-biz"
+	var/business_name
+	unique_save_vars = list("business_name")
+
+/obj/item/weapon/stamp/business/examine(mob/user)
+	..()
+	if(business_name)
+		to_chat(user, "[name] belongs to <b>[business_name]</b>.")
+
+/obj/item/weapon/stamp/business/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	var/obj/item/weapon/card/id/I = W.GetID()
+
+	if(!business_name)
+		var/biz = get_business_by_owner_uid(I.unique_ID).name
+		if(biz)
+			playsound(src, 'sound/machines/chime.ogg', 25)
+			name = "[biz] rubber stamp"
+			to_chat(user, "<span class='notice'>The stamp registers your business name to its memory.</span>")
+		else
+			playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
+			to_chat(user, "<span class='notice'>[name] was unable to find a business linked to your ID.</span>")
+	else
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
+		to_chat(user, "<span class='notice'>There is already a business linked to the stamp.</span>")
 
 // Syndicate stamp to forge documents.
 /obj/item/weapon/stamp/chameleon/attack_self(mob/user as mob)
 
-	var/list/stamp_types = typesof(/obj/item/weapon/stamp) - src.type // Get all stamp types except our own
+	var/list/stamp_types = typesof(/obj/item/weapon/stamp) - list(src.type, /obj/item/weapon/stamp/business) // Get all stamp types except our own
 	var/list/stamps = list()
 
 	// Generate them into a list
