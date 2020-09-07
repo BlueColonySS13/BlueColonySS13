@@ -168,7 +168,7 @@
 	
 	var/datum/money_account/owner_account = get_account(business_bank_id)
 	if(owner_account.money < value_to_transfer)
-		to_chat(user, span("warning", "The bank account associated with \the [src] does not have sufficent funds to cover this transaction, \
+		to_chat(user, span("warning", "The bank account associated with \the [src] does not have sufficient funds to cover this transaction, \
 		and thus it cannot pay you."))
 		return FALSE
 
