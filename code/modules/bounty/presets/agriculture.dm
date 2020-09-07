@@ -11,7 +11,7 @@
 
 	grown_wanted = list("potato" = 40)
 
-	department_reward = 250
+	department_reward = 130
 	individual_reward = 40
 
 	days_until_expiry = 1
@@ -50,7 +50,7 @@
 
 	items_wanted = list(/obj/item/weapon/storage/fancy/egg_box = 1)
 
-	department_reward = 140
+	department_reward = 60
 	individual_reward = 50
 
 	days_until_expiry = 1
@@ -76,9 +76,9 @@
 	wheat before I tear this whole bloody kitchen apart. I can't believe it. Next they'll tell me the ice is frozen too? End speech transcription. \
 	You! Over there, come here! Where's the lamb saaaaauce!? What the... is this thing still recording?"
 
-	grown_wanted = list("wheat" = 42)
+	grown_wanted = list("wheat" = 30)
 
-	department_reward = 255
+	department_reward = 120
 	individual_reward = 50
 
 	days_until_expiry = 1
@@ -91,7 +91,7 @@
 
 	grown_wanted = list("soybean" = 80)
 
-	department_reward = 400
+	department_reward = 200
 	individual_reward = 90
 
 	days_until_expiry = 1
@@ -104,7 +104,7 @@
 
 	grown_wanted = list("soybean" = 50)
 
-	department_reward = 250
+	department_reward = 130
 	individual_reward = 65
 
 /datum/bounty/agriculture/renewable_fuels_corn
@@ -115,7 +115,7 @@
 
 	grown_wanted = list("corn" = 40)
 
-	department_reward = 300
+	department_reward = 90
 	individual_reward = 75
 
 /datum/bounty/agriculture/cabbages
@@ -126,6 +126,6 @@
 
 	grown_wanted = list("cabbage" = 30)
 
-	department_reward = 250
+	department_reward = 70
 	individual_reward = 75
 

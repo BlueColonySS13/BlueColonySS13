@@ -8,9 +8,9 @@
 	We’re undermanned and need something to level the playing field. \
 	Please send us a ED-209 assemblies to help spread the weight around."
 
-	items_wanted = list(/obj/item/weapon/secbot_assembly/ed209_assembly = 4)
+	items_wanted = list(/obj/item/weapon/secbot_assembly/ed209_assembly = 3)
 
-	department_reward = 560
+	department_reward = 260
 	individual_reward = 80
 
 	days_until_expiry = 3
@@ -53,7 +53,7 @@
 	can be sold for civilian use! Unfortunately, I can't afford the industrial use diodes. Can you send me 16 \
 	high-power micro-lasers? And be sure to watch my broadcast at Seize.tv.nt/gangesblue!"
 
-	items_wanted = list(/obj/item/weapon/stock_parts/micro_laser/high = 16)
+	items_wanted = list(/obj/item/weapon/stock_parts/micro_laser/high = 25)
 
 	department_reward = 350
 	individual_reward = 155
@@ -64,7 +64,7 @@
 	description = "The Asagarth Valkyries are going up against the Firehome Phoenixes next week and our poxball launchers \
 	were damaged in a recent earthquake. Send us 12 advanced capacitors so we can repair them!"
 
-	items_wanted = list(/obj/item/weapon/stock_parts/capacitor/adv = 12)
+	items_wanted = list(/obj/item/weapon/stock_parts/capacitor/adv = 20)
 
 	department_reward = 525
 	individual_reward = 55
@@ -123,5 +123,5 @@
 
 	items_wanted = list(/obj/item/weapon/gun/energy/floragun = 1)
 
-	department_reward = 300
+	department_reward = 200
 	individual_reward = 100

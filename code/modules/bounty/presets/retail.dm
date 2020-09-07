@@ -86,6 +86,7 @@
 	individual_reward = 8
 
 	days_until_expiry = 1
+	allow_subtypes = TRUE
 
 
 /datum/bounty/retail/rightful_protest
