@@ -14,6 +14,10 @@
 	name = "grinder"
 	path = /obj/item/weapon/grinder
 
+/datum/category_item/crafting/autolathe/general/tape
+	name = "tape"
+	path = /obj/item/device/tape
+
 /datum/category_item/crafting/autolathe/general/ecig_cart
 	name = "ecigarette cartridge"
 	path = /obj/item/weapon/reagent_containers/ecig_cartridge/blank

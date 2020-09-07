@@ -75,6 +75,9 @@
 			else if(antag.get_antag_count() >= antag.hard_cap)
 				dat += "<br><font color='red'><b>This antag type has reached the maximum amount.</b></font>"
 
+			else if(isnum(client.player_age) && !(client.player_age >= antag.minimum_player_age))
+				dat += "<br><font color='red'><b>You don't meet the minimum player age to play this role.</b></font>"
+
 			else if(!antag.meets_police_lobby_join())
 				dat += "<br><font color='red'><b>To join, the round needs at least [antag.get_needed_police()] police officer(s).</b></font>"
 			else
@@ -117,5 +120,7 @@
 		to_chat(src, "This antagonist type cannot be joined until more police officers join.")
 		return FALSE
 
-
+	if(isnum(client.player_age) && !(client.player_age >= antag.minimum_player_age))
+		to_chat(src, "You don't meet the minimum player age to play this role.")
+		return FALSE
 	JoinLate(selected_job, antag.id)

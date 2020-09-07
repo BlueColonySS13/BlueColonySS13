@@ -287,11 +287,12 @@
 		return 0
 	if (isnull(tamount))
 		tamount = src.get_amount()
-
 	var/transfer = max(min(tamount, src.get_amount(), (S.get_max_amount() - S.get_amount())), 0)
 
 	var/orig_amount = src.get_amount()
 	if (transfer && src.use(transfer))
+		if(dont_save)	// no more exploiting. sorry.
+			S.dont_save = TRUE
 		S.add(transfer)
 		if (prob(transfer/orig_amount * 100))
 			transfer_fingerprints_to(S)
@@ -313,6 +314,8 @@
 	if (transfer && src.use(transfer))
 		var/obj/item/stack/newstack = new src.type(loc, transfer)
 		newstack.color = color
+		if(dont_save)
+			newstack.dont_save = TRUE
 		if (prob(transfer/orig_amount * 100))
 			transfer_fingerprints_to(newstack)
 			if(blood_DNA)

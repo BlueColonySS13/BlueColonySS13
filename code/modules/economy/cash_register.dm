@@ -114,7 +114,7 @@
 /obj/machinery/cash_register/proc/get_data_ui()
 	var/dat = "<h2>Cash Register<hr></h2>"
 
-	if(!account_to_connect && !dept_id)
+	if(!account_to_connect || !dept_id || !owner_uid|| !owner_name)
 		dat += "This register requires you to own a business to your name. Please swipe your ID card to claim this till.<br>"
 		return dat
 
@@ -376,7 +376,7 @@
 /obj/machinery/cash_register/attackby(obj/O as obj, user as mob)
 	// Check for a method of paying (ID, PDA, e-wallet, cash, ect.)
 	var/obj/item/weapon/card/id/I = O.GetID()
-	if(I && !account_to_connect && !owner_uid)
+	if(I && !account_to_connect && (!owner_uid || !dept_id))
 		if(!I.unique_ID || !I.registered_name)
 			to_chat(usr, "\icon[src]<span class='notice'>Invalid card: Identification card lacks registered name and/or unique ID.</span>")
 			return

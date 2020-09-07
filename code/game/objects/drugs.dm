@@ -96,7 +96,7 @@
 	w_class = ITEMSIZE_SMALL
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "grinder"
-	matter = list("glass" = 30, DEFAULT_WALL_MATERIAL = 30)
+	matter = list("plastic" = 30)
 
 // To do: Make the grinder icon a bit lighter, so we can make them multi-colored.
 
