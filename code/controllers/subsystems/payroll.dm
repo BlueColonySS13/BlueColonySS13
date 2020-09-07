@@ -19,9 +19,6 @@ SUBSYSTEM_DEF(payroll)
 
 
 /datum/controller/subsystem/payroll/proc/city_charges()
-	for(var/datum/expense/E in persistent_economy.city_expenses)
-		E.charge_department(E.cost_per_payroll)
-
 	for(var/datum/data/record/R in data_core.general)
 		payroll(R)
 

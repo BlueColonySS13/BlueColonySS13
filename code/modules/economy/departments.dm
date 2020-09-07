@@ -190,7 +190,7 @@
 /datum/department/proc/get_account()
 	return bank_account
 
-/datum/department/proc/adjust_funds(amount, purpose)	//hard editing mostly. don't use in most circumstances. Use direct_charge_money() instead for trans logs
+/datum/department/proc/adjust_funds(amount, purpose)
 	if(!bank_account)
 		return FALSE
 
