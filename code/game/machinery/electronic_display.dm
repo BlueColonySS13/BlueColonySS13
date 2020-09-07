@@ -47,6 +47,9 @@
 		staff_pin = rand(1111,9999)
 	..()
 
+/obj/machinery/electronic_display_case/ex_act(severity)
+	return // no more deleted display cases by lightning
+
 /obj/machinery/electronic_display_case/get_saveable_contents()
 	return stored_products
 

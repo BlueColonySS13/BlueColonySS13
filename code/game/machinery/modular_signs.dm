@@ -54,6 +54,9 @@
 /obj/machinery/modular_sign/on_persistence_load()
 	update_sign()
 
+/obj/machinery/modular_sign/ex_act(severity)
+	return // no more deleted signs by lightning
+
 /obj/machinery/modular_sign/proc/update_sign()
 	update_icon()
 	update_sign_text()
