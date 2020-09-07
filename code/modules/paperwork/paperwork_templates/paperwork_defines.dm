@@ -127,11 +127,11 @@
 
 // MEDICAL
 
-/datum/paperwork_template/med_prescription
+/*/datum/paperwork_template/med_prescription
 	name = "Medical Prescription Form"
 	title = "Prescription Form"
 	categories = list(PAPERWORK_MEDICAL)
-	file_source = 'code/modules/paperwork/paperwork_templates/medical/prescription.txt'
+	file_source = 'code/modules/paperwork/paperwork_templates/medical/prescription.txt'*/
 
 /datum/paperwork_template/med_death_certificate
 	name = "Death Certificate Form"

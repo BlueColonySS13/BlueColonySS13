@@ -272,6 +272,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	name = "pile of boxes"
 	desc = "A large pile of boxes sits here."
 	density = TRUE
+	climbable = TRUE
 	icon_states_to_use = list("boxfort")
 
 	common_loot = list(
@@ -328,6 +329,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	name = "broken machine"
 	desc = "A destroyed machine with unknown purpose, and doesn't look like it can be fixed.  It might still have some functional components?"
 	density = TRUE
+	climbable = TRUE
 	icon_states_to_use = list("technical_pile1", "technical_pile2", "technical_pile3")
 
 	common_loot = list(
@@ -588,6 +590,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	icon = 'icons/mecha/mecha.dmi'
 	icon_state = "engineering_pod-broken"
 	density = TRUE
+	climbable = TRUE
 
 	chance_uncommon = 20
 	chance_rare = 10

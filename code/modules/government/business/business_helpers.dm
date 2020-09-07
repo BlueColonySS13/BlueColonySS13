@@ -28,10 +28,12 @@ var/global/list/business_outfits = list(
 			return B
 
 /proc/get_business_by_owner_uid(uid)
+	RETURN_TYPE(/datum/business)
 	for(var/datum/business/B in GLOB.all_businesses)
 		if(!B.owner)
 			continue
 		if(B.owner.unique_id == uid)
+
 			return B
 
 
@@ -71,6 +73,11 @@ var/global/list/business_outfits = list(
 
 /datum/business/proc/get_department()
 	return dept_by_id(department)
+
+/datum/business/proc/get_department_id()
+	var/datum/department/D = get_department()
+	if(D)
+		return D.id
 
 /proc/businesses_by_category(cat)
 	var/list/biz = list()

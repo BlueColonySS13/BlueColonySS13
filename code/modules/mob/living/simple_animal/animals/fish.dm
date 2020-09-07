@@ -2,6 +2,7 @@
 /mob/living/simple_animal/fish
 	name = "fish"
 	desc = "Its a fishy.  No touchy fishy."
+	tt_desc = "Its a fishy.  No touchy fishy."
 	icon = 'icons/mob/fish.dmi'
 	icon_state = "trout-dead"
 
@@ -43,6 +44,7 @@
 
 /mob/living/simple_animal/fish/bass
 	name = "bass"
+	tt_desc = "A bass of some kind."
 	icon_state = "bass-swim"
 	icon_living = "bass-swim"
 	icon_dead = "bass-dead"
@@ -50,6 +52,7 @@
 
 /mob/living/simple_animal/fish/trout
 	name = "trout"
+	tt_desc = "A trout of some kind."
 	icon_state = "trout-swim"
 	icon_living = "trout-swim"
 	icon_dead = "trout-dead"
@@ -57,6 +60,7 @@
 
 /mob/living/simple_animal/fish/salmon
 	name = "salmon"
+	tt_desc = "A salmon of some kind."
 	icon_state = "salmon-swim"
 	icon_living = "salmon-swim"
 	icon_dead = "salmon-dead"
@@ -64,6 +68,7 @@
 
 /mob/living/simple_animal/fish/perch
 	name = "perch"
+	tt_desc = "A perch of some kind."
 	icon_state = "perch-swim"
 	icon_living = "perch-swim"
 	icon_dead = "perch-dead"
@@ -71,6 +76,7 @@
 
 /mob/living/simple_animal/fish/pike
 	name = "pike"
+	tt_desc = "A pike of some kind."
 	icon_state = "pike-swim"
 	icon_living = "pike-swim"
 	icon_dead = "pike-dead"
@@ -78,6 +84,7 @@
 
 /mob/living/simple_animal/fish/koi
 	name = "koi"
+	tt_desc = "Cyprinus Rubrofuscus"
 	icon_state = "koi-swim"
 	icon_living = "koi-swim"
 	icon_dead = "koi-dead"

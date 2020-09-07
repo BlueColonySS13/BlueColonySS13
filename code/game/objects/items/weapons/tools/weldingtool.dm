@@ -19,7 +19,7 @@
 	w_class = ITEMSIZE_SMALL
 
 	//Cost to make in the autolathe
-	matter = list(DEFAULT_WALL_MATERIAL = 70, "glass" = 30)
+	matter = list(DEFAULT_WALL_MATERIAL = 70, "glass" = 30, "copper" = 20)
 
 	//R&D tech level
 	origin_tech = list(TECH_ENGINEERING = 1)

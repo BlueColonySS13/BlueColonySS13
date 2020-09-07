@@ -1,6 +1,7 @@
 /mob/living/simple_animal/retaliate/diyaab
 	name = "diyaab"
 	desc = "A small pack animal. Although largely herbivorous, it will hunt meat on occasion."
+	tt_desc = "A small pack animal."
 	faction = "diyaab"
 	icon_state = "diyaab"
 	icon_living = "diyaab"
