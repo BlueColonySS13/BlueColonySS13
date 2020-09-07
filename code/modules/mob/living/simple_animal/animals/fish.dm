@@ -88,4 +88,13 @@
 	icon_state = "koi-swim"
 	icon_living = "koi-swim"
 	icon_dead = "koi-dead"
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish/koi
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish/piranha
+
+/mob/living/simple_animal/fish/piranha
+	name = "piranha"
+	tt_desc = "Pygocentrus Nattereri"
+	icon_state = "piranha-swim"
+	icon_living = "piranha-swim"
+	icon_dead = "piranha-dead"
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish/piranha
+	hostile = TRUE
