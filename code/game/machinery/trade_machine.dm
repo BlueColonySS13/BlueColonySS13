@@ -17,7 +17,7 @@
 	unique_save_vars = list("anchored", "maint_mode", "owner_uid", "staff_pin", "business_bank_id")
 
 	var/list/trade_offers = list() // List of datums for what the machine is offering to buy.
-	var/max_offers = 10
+	var/max_offers = 5 // How many trade offers can exist at one time per machine.
 	var/list/purchased_goods = list() // List of objects this machine bought, waiting to be collected by the owner.
 	var/maint_mode = FALSE // If true, settings can be changed and stuff can be taken out.
 	var/owner_uid = null // UID of the actual owner.
@@ -30,6 +30,13 @@
 		staff_pin = rand(1111, 9999)
 	return ..()
 
+/obj/machinery/trade_machine/Destroy()
+	QDEL_NULL(auth)
+	trade_offers.Cut()
+	for(var/thing in purchased_goods)
+		var/atom/movable/AM = thing
+		AM.forceMove(get_turf(src))
+	return ..()
 
 /obj/machinery/trade_machine/get_saveable_contents()
 	return purchased_goods
@@ -73,7 +80,10 @@
 
 	// Adding a new offer.
 	if(maint_mode)
-		add_offer(I, user)
+		if(add_offer(I, user))
+			playsound(src, 'sound/machines/chime.ogg', 25, TRUE)
+		else
+			playsound(src, 'sound/machines/buzz-sigh.ogg', 25, TRUE)
 		return
 	
 	// Trying to sell an item to the owner.
@@ -90,6 +100,9 @@
 	
 	if(!sold)
 		to_chat(user, span("warning", "\The [src] doesn't have any valid offers for \the [I]."))
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 25, TRUE)
+	else
+		playsound(src, 'sound/machines/chime.ogg', 25, TRUE)
 
 // Called when hitting the machine with something while in maint mode.
 /obj/machinery/trade_machine/proc/add_offer(obj/item/I, mob/user)
@@ -107,7 +120,9 @@
 	if(istype(I, /obj/item/stack))
 		type_to_use = /datum/trade_offer/stack
 	else if(istype(I, /obj/item/weapon/reagent_containers))
-		type_to_use = /datum/trade_offer/reagent
+		var/list/exclude_reagent_containers = list(/obj/item/weapon/reagent_containers/food)
+		if(!is_type_in_list(exclude_reagent_containers))
+			type_to_use = /datum/trade_offer/reagent
 
 	var/datum/trade_offer/offer = new type_to_use()
 	if(!offer.scan_prototype(I))
@@ -121,6 +136,7 @@
 	interact(user)
 	return TRUE
 
+// Return TRUE if the item got sold and nothing went wrong, FALSE otherwise.
 /obj/machinery/trade_machine/proc/sell_to_machine(obj/item/I, datum/trade_offer/offer, mob/living/user)
 	// Check that the user isn't trying to sell nonpersistant stuff.
 	if(I.dont_save)
@@ -130,6 +146,12 @@
 	// Check that the owner can afford to buy, to maintain the laws of econo-dynamics and not make money from thin air.
 	var/quantity_to_sell = offer.check_item_quantity(I)
 	quantity_to_sell = min(quantity_to_sell, offer.quantity_wanted) // Don't sell more than they want.
+
+	// In the future, maybe there can be code in the trade offer datum to automatically split stacks or reagents somehow.
+	// For now let's be lazy and make the player do it.
+	if(quantity_to_sell != offer.check_item_quantity(I))
+		to_chat(user, span("warning", "\The [src] doesn't want [offer.check_item_quantity(I)] of \the [I], but only [quantity_to_sell]. \
+		Please try again with a smaller amount."))
 	var/value_to_transfer = offer.payment_offered * quantity_to_sell
 
 	if(quantity_to_sell <= 0)
@@ -268,7 +290,6 @@
 		var/i = 1
 		for(var/thing in purchased_goods)
 			var/atom/movable/AM =  thing
-			// TODO, make button work.
 			. += href(src, list("withdraw_item" = 1, "index" = i), AM.name)
 			. += "<br>"
 			i++
@@ -363,17 +384,13 @@
 		else
 			to_chat(usr, span("notice", "You toggle the anchors of \the [src]. It can now be moved."))
 	
-	// TODO: Put in authentication datum?
 	if(href_list["set_staff_pin"])
+		if(!auth)
+			auth = new /datum/ingame_authentication(owner_uid, staff_pin)
 		var/new_pin = input(usr, "Write the new PIN here (1111-9999).", "New PIN", staff_pin) as null|num
-		if(!isnull(new_pin))
-			if(new_pin > 9999 || new_pin < 1111)
-				to_chat(usr, span("warning", "New PIN is invalid. It must contain four digits."))
-				return
-			staff_pin = new_pin
-			if(auth)
-				auth.staff_pin = new_pin
-			to_chat(usr, span("notice", "New PIN is now <b>[staff_pin]</b>."))
+		var/validated_pin = auth.validate_pin_change(usr, new_pin)
+		if(!isnull(validated_pin))
+			staff_pin = auth.staff_pin // So it gets saved.
 
 	if(href_list["remove_offer"])
 		var/datum/trade_offer/offer = trade_offers[index]
@@ -384,7 +401,7 @@
 	if(href_list["set_quantity"])
 		var/datum/trade_offer/offer = trade_offers[index]
 
-		var/new_value = input(usr, "Input new quantity here. The current setting is [offer.quantity_wanted].", "New Quantity") as null|num
+		var/new_value = input(usr, "Input new quantity here. The current setting is [offer.quantity_wanted].", "New Quantity", offer.quantity_wanted) as null|num
 		if(!isnull(new_value))
 			if(new_value <= 0)
 				to_chat(usr, span("warning", "Please use positive numbers only."))
@@ -395,7 +412,7 @@
 	if(href_list["set_payment"])
 		var/datum/trade_offer/offer = trade_offers[index]
 
-		var/new_value = input(usr, "Input new payment offer here. The current setting is [offer.payment_offered].", "New Payment Offer") as null|num
+		var/new_value = input(usr, "Input new payment offer here. The current setting is [offer.payment_offered].", "New Payment Offer", offer.payment_offered) as null|num
 		if(!isnull(new_value))
 			if(new_value <= 0)
 				to_chat(usr, span("warning", "Please use positive numbers only."))
@@ -408,6 +425,12 @@
 
 		offer.wanted = !offer.wanted
 		to_chat(usr, span("notice", "\The [src] will [offer.wanted ? "now" : "no longer"] buy [offer.display_name()]."))
+	
+	if(href_list["withdraw_item"])
+		var/atom/movable/AM = LAZYACCESS(purchased_goods, index)
+		if(AM)
+			AM.forceMove(get_turf(src))
+			to_chat(usr, span("notice", "You withdraw \the [AM] from \the [src]'s storage."))
 
 	if(href_list["factory_reset"])
 		if(alert(usr, "Really reset everything?", "Factory Reset Confirmation", "No", "Yes") == "No")
@@ -416,102 +439,3 @@
 		to_chat(usr, span("notice", "All settings on \the [src] have been reset."))
 	
 	interact(usr) // To refresh the UI.
-
-
-// Holds information on what the trade machine is willing to buy.
-/datum/trade_offer
-	var/atom/movable/type_wanted = null // Type of object the machine is wanting to buy. Used to get the name of the object and to check that it's the correct item.
-	var/quantity_wanted = 1 // How many of that type is wanted.
-	var/payment_offered = 0 // How much to pay when someone tries to sell the object.
-	var/wanted = TRUE // If false, the machine won't buy it even if it's in the offers list.
-
-// Looks at an item to set up future trades for similar items.
-// Returns FALSE if the item isn't suitable (e.g. empty reagent container)
-/datum/trade_offer/proc/scan_prototype(atom/movable/prototype)
-	type_wanted = prototype.type
-	payment_offered = prototype.get_item_cost() ? prototype.get_item_cost() : 1
-	return TRUE
-
-// Checks if an item matches what the datum wants.
-/datum/trade_offer/proc/check_item(obj/item/I)
-	return I.type == type_wanted
-
-// Returns the 'quantity' of an item. For regular items it's always one, since each instance represents one object.
-/datum/trade_offer/proc/check_item_quantity(obj/item/I)
-	return 1
-
-/datum/trade_offer/proc/display_name()
-	return initial(type_wanted.name)
-
-/datum/trade_offer/proc/display_quantity_offer()
-	return "[quantity_wanted]"
-
-// Subtypes can display how much the machine will pay with added context (e.g. how much per stack).
-/datum/trade_offer/proc/display_payment_offer()
-	return "[payment_offered]CR"
-
-// Subtypes.
-// The machine will use these if it scans a specific type of item, in order to be able to compare them properly.
-
-// Material stacks have a quantity var so the machine needs to operate of that instead of object instances.
-/datum/trade_offer/stack
-
-/datum/trade_offer/stack/check_item_quantity(obj/item/stack/I)
-	ASSERT(istype(I))
-	return I.amount
-
-/datum/trade_offer/stack/display_quantity_offer()
-	return "[quantity_wanted] sheets"
-
-/datum/trade_offer/stack/display_payment_offer()
-	var/obj/item/stack/S = type_wanted
-	return "[payment_offered]CR/sheet ([payment_offered * initial(S.max_amount)]CR/stack)"
-
-
-
-
-// Reagents are inside of reagent containers so the machine needs to be aware of that.
-/datum/trade_offer/reagent
-	var/reagent_id_wanted = null // ID of the reagent that the machine wants.
-
-/datum/trade_offer/reagent/scan_prototype(obj/item/weapon/reagent_containers/prototype)
-	ASSERT(istype(prototype))
-	..()
-	var/datum/reagent/R = prototype?.reagents?.reagent_list[1]
-	if(R)
-		reagent_id_wanted = R.id
-		payment_offered = R.get_item_cost() ? R.get_item_cost() : 1
-		return TRUE
-	return FALSE
-
-
-// This overrides the check so the machine doesn't try to buy matching bottles but instead the contents of the bottle.
-/datum/trade_offer/reagent/check_item(obj/item/weapon/reagent_containers/I)
-	if(!istype(I))
-		return FALSE
-	if(isnull(I.reagents) || !LAZYLEN(I.reagents.reagent_list))
-		return FALSE // Can't hold reagents or is an empty container.
-	if(LAZYLEN(I.reagents.reagent_list) > 1)
-		return FALSE // Pure bottles only.
-	var/datum/reagent/R = I.reagents.reagent_list[1]
-	return R.id == reagent_id_wanted
-
-/datum/trade_offer/reagent/check_item_quantity(obj/item/weapon/reagent_containers/I)
-	ASSERT(istype(I))
-	for(var/thing in I?.reagents?.reagent_list)
-		var/datum/reagent/R = thing
-		if(R.id != reagent_id_wanted)
-			continue
-		return R.volume
-	return 0
-
-/datum/trade_offer/reagent/display_name()
-	var/datum/reagent/R = chemistryProcess.chemical_reagents[reagent_id_wanted] // I wish this was SSchemistry.
-	if(R)
-		return R.name
-
-/datum/trade_offer/reagent/display_quantity_offer()
-	return "[quantity_wanted]u"
-
-/datum/trade_offer/reagent/display_payment_offer()
-	return "[payment_offered]CR/u"

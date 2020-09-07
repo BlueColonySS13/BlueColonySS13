@@ -35,3 +35,13 @@
 		return TRUE
 	return FALSE
 
+// Checks if a new PIN is valid (right now, being four digits from 1111 to 9999).
+// Returns the new PIN if it's valid, null otherwise.
+/datum/ingame_authentication/proc/validate_pin_change(mob/living/user, new_pin)
+	if(!isnull(new_pin))
+		if(new_pin > 9999 || new_pin < 1111)
+			to_chat(usr, span("warning", "New PIN is invalid. It must contain four digits."))
+			return null
+		staff_pin = new_pin
+		to_chat(usr, span("notice", "New PIN is now <b>[staff_pin]</b>."))
+		return new_pin // So the caller can put the number somewhere that will be serialized.

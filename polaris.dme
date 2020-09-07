@@ -280,6 +280,7 @@
 #include "code\datums\records.dm"
 #include "code\datums\riding.dm"
 #include "code\datums\sun.dm"
+#include "code\datums\trade_offers.dm"
 #include "code\datums\weakref.dm"
 #include "code\datums\autolathe\arms.dm"
 #include "code\datums\autolathe\autolathe.dm"
