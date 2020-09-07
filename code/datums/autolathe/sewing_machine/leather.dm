@@ -158,7 +158,7 @@
 /datum/category_item/crafting/sewing_machine/leather/belt
 	name = "utility belt"
 	path = /obj/item/weapon/storage/belt/utility
-	force_matter = list("leather" = 3000)
+	force_matter = list("leather" = 2500)
 
 /datum/category_item/crafting/sewing_machine/leather/belt/fannypack
 	name = "fannypack"

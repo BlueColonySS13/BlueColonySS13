@@ -13,6 +13,8 @@
 	var/show_above_suit = 0
 	drop_sound = 'sound/items/drop/leather.ogg'
 
+	matter = list("leather" = 2500)
+
 /obj/item/weapon/storage/belt/verb/toggle_layer()
 	set name = "Switch Belt Layer"
 	set category = "Object"

@@ -6,7 +6,12 @@
 	name = "sheets"
 	path = /obj/item/stack/material/leather/synthetic
 	is_stack = 1
+// belts
 
+/datum/category_item/crafting/sewing_machine/synthetic_leather/belt
+	name = "utility belt"
+	path = /obj/item/weapon/storage/belt/utility
+	force_matter = list("leather" = 3500)
 
 // suits
 
