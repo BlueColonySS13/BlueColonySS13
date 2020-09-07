@@ -114,7 +114,7 @@
 /obj/machinery/cash_register/proc/get_data_ui()
 	var/dat = "<h2>Cash Register<hr></h2>"
 
-	if(!account_to_connect || !dept_id || !owner_uid|| !owner_name)
+	if(!account_to_connect && (!dept_id || !owner_uid|| !owner_name))
 		dat += "This register requires you to own a business to your name. Please swipe your ID card to claim this till.<br>"
 		return dat
 
