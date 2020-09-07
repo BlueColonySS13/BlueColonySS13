@@ -99,3 +99,14 @@
 							/obj/item/weapon/stock_parts/subspace/transmitter = 1,
 							/obj/item/weapon/stock_parts/subspace/crystal = 1,
 							)
+
+/obj/item/weapon/circuitboard/trade_machine
+	name = T_BOARD("auto-commerce")
+	build_path = /obj/machinery/trade_machine
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_DATA = 2)
+	req_components = list(
+							/obj/item/weapon/stock_parts/capacitor = 1,
+							/obj/item/weapon/stock_parts/console_screen = 1,
+							/obj/item/weapon/stock_parts/matter_bin = 3
+							)
