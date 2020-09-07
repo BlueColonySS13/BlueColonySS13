@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(webhooks)
 			for(var/webhook_data in json_decode(webhook_config))
 				var/wid = webhook_data["id"]
 				var/wurl = webhook_data["url"]
-				var/wmention = "<[webhook_data["mentions"]]>"
+				var/wmention = webhook_data["mentions"]
 				to_world_log("Setting up webhook [wid].")
 				if(wid && wurl && all_webhooks_by_id[wid])
 					var/decl/webhook/webhook = all_webhooks_by_id[wid]
