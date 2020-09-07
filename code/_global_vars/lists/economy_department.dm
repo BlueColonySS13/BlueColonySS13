@@ -41,6 +41,7 @@ GLOBAL_LIST_INIT(business_categories, list( // list of categories businesses can
 	CAT_EMPLOY,
 	CAT_ENTERTAINMENT,
 	CAT_FOOD,
+	CAT_DRINKS,
 	CAT_HOSPITALITY,
 	CAT_LEISURE,
 	CAT_MANUFACTURE,
