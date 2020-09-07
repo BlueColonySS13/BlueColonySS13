@@ -75,3 +75,12 @@
 	cost = 75
 	containertype = /obj/structure/closet/crate
 	containername = "Business Stamps"
+
+
+
+/datum/supply_pack/business/trade_machine
+	contains = list(/obj/item/weapon/circuitboard/trade_machine)
+	name = "Auto-Commerce Machine"
+	cost = 2000
+	containertype = /obj/structure/closet/crate
+	containername = "Auto-Commerce Machine"
