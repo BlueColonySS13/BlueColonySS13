@@ -110,9 +110,10 @@
 
 	var/turf/obj_turf = get_turf(O)
 
-	MO.x = obj_turf.x
-	MO.y = obj_turf.y
-	MO.z = obj_turf.z
+	if(obj_turf)
+		MO.x = obj_turf.x
+		MO.y = obj_turf.y
+		MO.z = obj_turf.z
 
 	// forensic data has to be stored independently because lists don't typically save
 	if(O.save_forensics)

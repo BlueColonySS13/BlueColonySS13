@@ -523,6 +523,8 @@ client/verb/character_setup()
 /mob/proc/IsAntiGrief()
 	if(!client)
 		return FALSE
+	if(jobban_isbanned(src, "Grief"))
+		return TRUE
 
 	return client.IsAntiGrief()
 

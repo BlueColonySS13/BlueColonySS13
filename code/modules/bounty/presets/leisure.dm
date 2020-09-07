@@ -141,7 +141,7 @@
 
 	items_wanted = list(/obj/item/clothing/under/wedding = 1)
 
-	department_reward = 800
+	department_reward = 300
 	individual_reward = 170
 
 	days_until_expiry = 1

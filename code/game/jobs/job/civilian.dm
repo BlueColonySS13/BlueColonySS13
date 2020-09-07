@@ -15,17 +15,12 @@
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
 	outfit_type = /decl/hierarchy/outfit/job/assistant
-	alt_titles = list("Tourist",
+	alt_titles = list(
+					"Tourist",
 					"Expat",
-					"Asylum Seeker",
-					"Migrant",
 					"Socialite",
-					"Job Seeker",
-					"Business Owner",
 					"Investor",
 					"Traveller",
-					"Unemployed",
-					"Homeless",
 					"Entrepreneur",
 					"Visitor" = /decl/hierarchy/outfit/job/assistant/visitor,
 					"Resident" = /decl/hierarchy/outfit/job/assistant/resident)

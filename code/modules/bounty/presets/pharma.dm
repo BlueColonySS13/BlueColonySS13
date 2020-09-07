@@ -9,10 +9,10 @@
 	like behind the market to get anything from him and that is too far. Please send me some Tricordrazine pills so I will not \
 	actually have to do my job."
 
-	reagents_wanted = list("tricordrazine" = 180)
+	reagents_wanted = list("tricordrazine" = 30)
 
-	department_reward = 200
-	individual_reward = 50
+	department_reward = 20
+	individual_reward = 15
 
 	days_until_expiry = 1
 
@@ -23,10 +23,10 @@
 	description = "We’re running dangerously low on Chloral Hydrate, and some of our more... interesting patients are starting to wake up. \
 	We need a restock in order to keep our \"patients\" completely sedated until they’re ready for \"treatment\". Yes. Treatment."
 
-	reagents_wanted = list("chloralhydrate" = 300)
+	reagents_wanted = list("chloralhydrate" = 30)
 
-	department_reward = 800
-	individual_reward = 250
+	department_reward = 80
+	individual_reward = 25
 
 	days_until_expiry = 1
 
@@ -36,12 +36,10 @@
 	description = "We’re running low on basic medical supplies for our people. We need Bicardine and Trauma Kits desperately, \
 	but we don’t have much money. We hope this will suffice."
 
-	items_wanted = list(/obj/item/stack/medical/advanced/bruise_pack = 5)
+	reagents_wanted = list("bicaridine" = 20)
 
-	reagents_wanted = list("bicaridine" = 120)
-
-	department_reward = 300
-	individual_reward = 60
+	department_reward = 70
+	individual_reward = 20
 
 	days_until_expiry = 1
 
@@ -51,10 +49,10 @@
 	description = "Out of season blizzards have disrupted the Courier Network providing us an ample supply of EZ-Nutrient for our \
 	crops. We need to stock up fast before the next storm hits us in approximately 48 hours. We need as much fertilizer as you can spare."
 
-	reagents_wanted = list("ammonia" = 480)
+	reagents_wanted = list("ammonia" = 30)
 
-	department_reward = 200	//ammonia is easy to make. reducing this a bit
-	individual_reward = 80
+	department_reward = 30	//ammonia is easy to make. reducing this a bit
+	individual_reward = 20
 
 	days_until_expiry = 1
 
@@ -65,24 +63,12 @@
 	is suffering from radiation poisoning. Our Medbay was destroyed by the blast and we are under strict quarantine orders! Please send us \
 	Arithrazine A.S.A.P! We aren't going to make it without your help!"
 
-	reagents_wanted = list("arithrazine" = 300)
+	reagents_wanted = list("arithrazine" = 60)
 
-	department_reward = 300
-	individual_reward = 60
+	department_reward = 140
+	individual_reward = 25
 
 	days_until_expiry = 1
-
-/datum/bounty/health_pharma/vampire
-	name = "All Donations Velcome"
-	author = "Vladislav Vanburg"
-	description = "Our... hospital is low on BLOOD. Donate to our cause. Stick your neck out for BLOOD hungry people in need."
-
-	reagents_wanted = list("blood" = 480)
-
-	department_reward = 650   //Reagent is hard to accumulate in vast quantities such as this. High reward. // Vatborn cubes can offset blood accumilation.
-	individual_reward = 150
-
-	days_until_expiry = 3
 
 /datum/bounty/health_pharma/pain_pain_go_away
 	name = "Pain, Pain, Go Away"
@@ -92,8 +78,8 @@
 
 	reagents_wanted = list("tramadol" = 60)
 
-	department_reward = 200
-	individual_reward = 50
+	department_reward = 70
+	individual_reward = 30
 
 	days_until_expiry = 2
 
@@ -104,10 +90,10 @@
 	Western Spider venom! With enough charcoal, it keep bring even the most jellied victims out of the cold, bony hands of the grim reaper. Obviously, \
 	I don't plan on using it that way, otherwise you wouldn't send me the synaptizine. Heh. Please send - this venom burns."
 
-	reagents_wanted = list("synaptizine" = 120)
+	reagents_wanted = list("synaptizine" = 20)
 
-	department_reward = 100
-	individual_reward = 20
+	department_reward = 50
+	individual_reward = 25
 
 	days_until_expiry = 1
 
@@ -117,10 +103,10 @@
 	description = "There's a new resident here at Sacred Heart Hospital and I think he's going to be my new target for pranks and hijinks. I think \
 	I'll start small. Some space lube on his car's door handles. Lube on his toilet seat. Lube, everywhere."
 
-	reagents_wanted = list("lube" = 120)
+	reagents_wanted = list("lube" = 30)
 
-	department_reward = 100
-	individual_reward = 50
+	department_reward = 50
+	individual_reward = 20
 
 	days_until_expiry = 2
 
@@ -132,7 +118,7 @@
 
 	reagents_wanted = list("phoron" = 240)
 
-	department_reward = 500
-	individual_reward = 60
+	department_reward = 120
+	individual_reward = 40
 
 	days_until_expiry = 2

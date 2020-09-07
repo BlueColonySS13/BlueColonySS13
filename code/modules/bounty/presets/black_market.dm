@@ -40,8 +40,8 @@
 
 	reagents_wanted = list("blood" = 500)
 
-	department_reward = 1200	// blood isn't that hard to get - vatborn cubes and hospital break ins can usually prove this
-	individual_reward = 450
+	department_reward = 900	// blood isn't that hard to get - vatborn cubes and hospital break ins can usually prove this
+	individual_reward = 250
 
 	days_until_expiry = 3
 

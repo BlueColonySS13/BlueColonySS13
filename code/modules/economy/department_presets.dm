@@ -89,7 +89,7 @@
 	desc = "The factory and its employees are paid from this account."
 	starting_money = 500
 	dept_type = PRIVATE_DEPARTMENT
-	allowed_buy_types = list(SPEND_OFFICE, SPEND_MININGSUPPLIES)
+	allowed_buy_types = list(SPEND_OFFICE)
 	dept_color = "#7a4f33"
 	categories = list(CAT_MANUFACTURE, CAT_MINING)
 
