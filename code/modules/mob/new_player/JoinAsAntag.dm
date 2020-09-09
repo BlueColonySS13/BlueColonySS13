@@ -64,7 +64,7 @@
 				dat += "<br><b>Police Per [antag.role_text]:</b> [antag.police_per_antag]"
 
 			if(client.lobby_joined)
-				dat += "<br><font color='red'><b>You already played as antag this round. Please wait for the next round.</b></font>")
+				dat += "<br><font color='red'><b>You already played as antag this round. Please wait for the next round.</b></font>"
 
 			if(job.title in antag.restricted_jobs)
 				dat += "<br><font color='red'><b>This antagonist type cannot be played by your current job: [job.title].</b></font>"
