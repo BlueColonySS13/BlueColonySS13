@@ -169,7 +169,7 @@
 	notes = "To be in possession of items controlled or banned by law without proper authorization \
 	with intent to distribute A quantity is usually a good tell. A handful of drug pills is a \
 	believable amount for personal use. When it's a bag full of pills chances are the person \
-	is probably trying to sell them. 200 credits fine. 20 mins them."
+	is probably trying to sell them."
 
 /datum/law/criminal/fraud
 	name = "Fraud & Embezzlement"
