@@ -22,7 +22,7 @@
 	/obj/item/clothing/under/dress/festivedress = 1
 	)
 
-	department_reward = 300
+	department_reward = 150
 	individual_reward = 50
 
 	days_until_expiry = 2
@@ -37,7 +37,7 @@
 
 	items_wanted = list(/obj/item/clothing/head/beanie = 10)
 
-	department_reward = 600
+	department_reward = 400
 	individual_reward = 170
 
 	days_until_expiry = 1
@@ -127,7 +127,7 @@
 
 	)
 
-	department_reward = 120
+	department_reward = 140
 	individual_reward = 25
 
 	days_until_expiry = 1
@@ -149,6 +149,22 @@
 
 /datum/bounty/leisure/mlady
 	name = "For M'Lady"
+	author = "Nick Bearde"
+	description = "You might not know this, but a fedora was once considered a woman's hat, named after the... beautiful lady Fedora herself. \
+	Anyway, I plan to introduce many women to this concept by giving out these hats for free and dropping random knowledge like I did now. Hopefully \
+	it lands with at least one of them. Any color fedora is fine, truly."
+
+	items_wanted = list(/obj/item/clothing/head/fedora = 25)
+
+	department_reward = 720
+	individual_reward = 160
+
+	days_until_expiry = 1
+	allow_subtypes = TRUE
+
+
+/datum/bounty/leisure/cotton
+	name = "Cotton Balls"
 	author = "Nick Bearde"
 	description = "You might not know this, but a fedora was once considered a woman's hat, named after the... beautiful lady Fedora herself. \
 	Anyway, I plan to introduce many women to this concept by giving out these hats for free and dropping random knowledge like I did now. Hopefully \

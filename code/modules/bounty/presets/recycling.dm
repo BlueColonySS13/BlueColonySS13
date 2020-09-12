@@ -88,3 +88,40 @@
 
 	department_reward = 90
 	individual_reward = 50
+
+
+/datum/bounty/recycling/toy_for_christmas
+	name = "A Toy For Christmas"
+	author = "Collectables R Us"
+	description = "Over here, it's always Christmas - considering the convienience of the holiday. Yes, we need a toy for sick Tommy over here, he's very \
+	specific but we don't mind because he's going to make us the sweet, sweet PR. We can't wait!"
+
+	random_items_wanted = list(/obj/item/weapon/storage/box/snappops,
+				/obj/item/toy/blink,
+				/obj/item/toy/sword,
+				/obj/item/weapon/gun/projectile/revolver/capgun,
+				/obj/item/toy/crossbow,
+				/obj/item/toy/sword,
+				/obj/item/toy/balloon,
+				/obj/item/toy/crossbow,
+				/obj/item/toy/blink,
+				/obj/item/toy/waterflower,
+				/obj/item/toy/eight_ball,
+				/obj/item/toy/eight_ball/conch,
+				/obj/item/toy/prize/ripley,
+				/obj/item/toy/prize/fireripley,
+				/obj/item/toy/prize/deathripley,
+				/obj/item/toy/prize/gygax,
+				/obj/item/toy/prize/durand,
+				/obj/item/toy/prize/honk,
+				/obj/item/toy/prize/marauder,
+				/obj/item/toy/prize/seraph,
+				/obj/item/toy/prize/mauler,
+				/obj/item/toy/prize/odysseus,
+				/obj/item/toy/prize/phazon,
+				/obj/item/toy/stickhorse)
+
+	department_reward = 145
+	individual_reward = 95
+
+	days_until_expiry = 5
