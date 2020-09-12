@@ -1,0 +1,1 @@
+/datum/category_item/crafting/jewelry_press/rings
