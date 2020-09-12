@@ -162,18 +162,3 @@
 	days_until_expiry = 1
 	allow_subtypes = TRUE
 
-
-/datum/bounty/leisure/cotton
-	name = "Cotton Balls"
-	author = "Nick Bearde"
-	description = "You might not know this, but a fedora was once considered a woman's hat, named after the... beautiful lady Fedora herself. \
-	Anyway, I plan to introduce many women to this concept by giving out these hats for free and dropping random knowledge like I did now. Hopefully \
-	it lands with at least one of them. Any color fedora is fine, truly."
-
-	items_wanted = list(/obj/item/clothing/head/fedora = 25)
-
-	department_reward = 720
-	individual_reward = 160
-
-	days_until_expiry = 1
-	allow_subtypes = TRUE
