@@ -13,8 +13,8 @@
 	/obj/item/slime_extract/metal = 1
 	)
 
-	department_reward = 350
-	individual_reward = 160
+	department_reward = 150
+	individual_reward = 60
 
 	days_until_expiry = 2
 
@@ -26,8 +26,7 @@
 	If the time permits please send me some monkey cubes. Sorry."
 
 	items_wanted = list(
-	/obj/item/weapon/reagent_containers/food/snacks/monkeycube = 5
-	)
+	/obj/item/weapon/reagent_containers/food/snacks/monkeycube = 8)
 
 	department_reward = 150	// monkey cubes aren't scarce
 	individual_reward = 60
@@ -204,7 +203,7 @@
 
 	items_wanted = list(/obj/item/slimepotion/docility = 1)
 
-	department_reward = 1500
-	individual_reward = 1000
+	department_reward = 1200
+	individual_reward = 600
 
 	days_until_expiry = 3
