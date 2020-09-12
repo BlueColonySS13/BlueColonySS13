@@ -2685,6 +2685,7 @@
 #include "code\modules\virus2\isolator.dm"
 #include "code\modules\virus2\items_devices.dm"
 #include "code\modules\webhooks\_webhook.dm"
+#include "code\modules\webhooks\webhook_adminhelp.dm"
 #include "code\modules\webhooks\webhook_custom_event.dm"
 #include "code\modules\webhooks\webhook_email_gov.dm"
 #include "code\modules\webhooks\webhook_roundend.dm"
