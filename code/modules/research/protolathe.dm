@@ -7,7 +7,7 @@
 	idle_power_usage = 30
 	active_power_usage = 5000
 
-	var/max_material_storage = 130000
+	var/max_material_storage = 230000
 
 	var/list/datum/design/queue = list()
 	var/progress = 0
