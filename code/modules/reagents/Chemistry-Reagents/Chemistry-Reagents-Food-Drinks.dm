@@ -2693,7 +2693,7 @@
 	taste_description = "very sweet dried fruit with many elegant notes"
 	color = "#4C130B" // rgb(76,19,11)
 	strength = 20
-
+	price_tag = 0.75
 	glass_name = "Wine Brandy"
 	glass_desc = "A very classy looking after-dinner drink."
 
@@ -2818,7 +2818,7 @@
 	taste_description = "sweet raspberry"
 	color = "#dd00a6" // rgb(221, 0, 166)
 	strength = 30
-
+	price_tag = 0.25
 	glass_name = "Clover Club"
 	glass_desc = "A light and refreshing rasberry cocktail."
 
@@ -2829,7 +2829,7 @@
 	taste_description = "summer nights and wood smoke"
 	color = "#77000d" // rgb(119, 0, 13)
 	strength = 25
-
+	price_tag = 0.78
 	glass_name = "Negroni"
 	glass_desc = "A dark, complicated blend, perfect for relaxing nights by the fire."
 
@@ -3031,7 +3031,7 @@
 	taste_description = "minty alcohol"
 	color = "#8FC468"
 	strength = 25
-	price_tag = 0.5
+	price_tag = 0.3
 	glass_name = "peppermint schnapps"
 	glass_desc = "A glass of peppermint schnapps. It seems like it'd be better, mixed."
 
@@ -3042,7 +3042,7 @@
 	taste_description = "peaches"
 	color = "#d67d4d"
 	strength = 25
-	price_tag = 0.5
+	price_tag = 0.3
 	glass_name = "peach schnapps"
 	glass_desc = "A glass of peach schnapps. It seems like it'd be better, mixed."
 
@@ -3053,7 +3053,7 @@
 	taste_description = "sweet, lemon-y alcohol"
 	color = "#FFFF00"
 	strength = 25
-	price_tag = 0.5
+	price_tag = 0.3
 	glass_name = "lemonade schnapps"
 	glass_desc = "A glass of lemonade schnapps. It seems like it'd be better, mixed."
 
@@ -3114,7 +3114,7 @@
 
 	glass_name = "Black Rose"
 	glass_desc = "Each taste imparts the flavor of flowers blooming in Spring. Exquisite."
-	price_tag = 0.33
+	price_tag = 0.63
 /datum/reagent/nutriment/coffee
 	name = "Coffee Powder"
 	id = "coffeepowder"
@@ -3123,7 +3123,7 @@
 	taste_mult = 1.3
 	nutriment_factor = 1
 	color = "#482000"
-
+	price_tag = 0.2
 /datum/reagent/nutriment/tea
 	name = "Tea Powder"
 	id = "teapowder"
@@ -3132,7 +3132,7 @@
 	taste_mult = 1.3
 	nutriment_factor = 1
 	color = "#101000"
-
+	price_tag = 0.2
 /datum/reagent/nutriment/instantjuice
 	name = "Juice Powder"
 	id = "instantjuice"
