@@ -1637,7 +1637,7 @@
 	id = "vodkakora"
 	description = "The finest vodka ever distilled using secret Neo-Ruskiya techniques."
 	taste_description = "spicy alcohol, followed by the taste of finesse and a creamy finish"
-	price_tag = 1.6
+	price_tag = 9.6
 
 	glass_name = "kora vodka"
 	glass_desc = "The finest vodka ever distilled. Best served chilled in a diamond-studded silver shot cup."
@@ -3065,7 +3065,7 @@
 
 	glass_name = "Serpent's Spirit"
 	glass_desc = "An expensive blue wine made from a secret blend of spices passed down from generation to generation."
-
+	price_tag = 0.43
 /datum/reagent/ethanol/goldfinger
 	name = "Goldfinger"
 	id = "goldfinger"
@@ -3076,6 +3076,7 @@
 
 	glass_name = "Goldfinger"
 	glass_desc = "This is gold, Mr. Bond."
+	price_tag = 0.58
 
 /datum/reagent/ethanol/blackrose
 	name = "Black Rose"
@@ -3087,7 +3088,7 @@
 
 	glass_name = "Black Rose"
 	glass_desc = "Each taste imparts the flavor of flowers blooming in Spring. Exquisite."
-
+	price_tag = 0.33
 /datum/reagent/nutriment/coffee
 	name = "Coffee Powder"
 	id = "coffeepowder"

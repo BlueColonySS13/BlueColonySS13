@@ -1,5 +1,6 @@
 /datum/bounty/mining
 	category = CAT_MINING
+	author_department = DEPT_FACTORY
 
 /* Mining bounties utilize a simple 1-to-10 ratio for rewards.
    For every 10 credits in the department reward, an individual
