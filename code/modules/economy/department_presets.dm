@@ -91,7 +91,7 @@
 	dept_type = PRIVATE_DEPARTMENT
 	allowed_buy_types = list(SPEND_OFFICE)
 	dept_color = "#7a4f33"
-	categories = list(CAT_MANUFACTURE, CAT_MINING)
+	categories = list(CAT_MANUFACTURE, CAT_RETAIL)
 
 // ## External Presets
 

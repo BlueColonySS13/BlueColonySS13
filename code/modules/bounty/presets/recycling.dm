@@ -1,6 +1,6 @@
 /datum/bounty/recycling
 	category = CAT_JANITOR
-
+	author_department = DEPT_FACTORY
 /datum/bounty/recycling/packet_curtains
 	name = "Packets for Curtains!"
 	author = "The Eco Charity"
