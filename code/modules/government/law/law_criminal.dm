@@ -177,7 +177,8 @@
 	fine = 9000
 	cell_time = 28
 
-	notes = "This includes breaking a written contract and abusing government resources for private gain."
+	notes = "This includes breaking a written contract and abusing government resources for private gain, 
+	such as public employees abandoning their duties by working in private businesses while on-duty."
 
 /datum/law/criminal/justice
 	name = "Obstruction of Justice"
