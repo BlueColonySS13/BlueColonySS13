@@ -205,20 +205,6 @@
 	description = "Inciting, or attempting to incite, an unlawful demonstration."
 	notes = "If a Non-Pollux citizen incites any demonstration, lawful or not, they can be charged with this."
 
-/datum/law/criminal/demo
-	name = "Participating in an Unlawful Demonstration"
-	fine = 2000
-	cell_time = 45
-
-	description = "Participating in any organized demonstration that interferes with the operation of \
-	civil services or personnel, has an undue impact on uninvolved people, causes property damage during \
-	the course of the demonstration, or is rallying toward an unlawful goal."
-
-	notes = "A protest calling for a law to be changed isn't unlawful, a protest calling for that law to \
-	be broken, or breaking that law, is. Radio spam, harassing passersby, blocking roads, etc. is considered \
-	undue impact. Non-Pollux citizens participating in demonstrations may be charged with this, whether the \
-	demonstration is lawful or not."
-
 /datum/law/criminal/trespass
 	name = "Trespassing in a Secure Area."
 	description = "To unlawfully access a high security area, including police property, government facilities, or high value storage."

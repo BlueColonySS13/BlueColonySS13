@@ -76,11 +76,3 @@
 	fine = 2000
 
 	notes = "Clearly unwanted means that it's been made clear that the advances aren't welcome."
-
-/datum/law/misdemeanor/littering
-    name = "Littering"
-    description = "To obstruct the public face with trash or otherwise ecologically foreign material."
-    cell_time = 15
-    fine = 500
-
-    notes = "Instances of littering could be any domestic pollutants, such as trash or foreign residues, medical waste, and discarded tobacco products."
