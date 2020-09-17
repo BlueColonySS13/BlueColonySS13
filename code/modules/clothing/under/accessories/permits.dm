@@ -42,31 +42,31 @@
 
 /obj/item/clothing/accessory/permit/gun
 	name = "tier 0 weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a flash."
+	desc = "A card indicating that the owner is allowed to carry simple equipment, such as a flash, pepper spray, telescopic batons, and wooden batons."
 	tier = 0
 	price_tag = 200
 
 /obj/item/clothing/accessory/permit/gun/tier_one
 	name = "tier one weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a flash and a pepperspray."
+	desc = "A card indicating that the owner is allowed to carry improved simple equipment, such as flashbang grenades, stunbatons, smoke grenades, and restraining equipment."
 	tier = 1
 	price_tag = 400
 
 /obj/item/clothing/accessory/permit/gun/tier_two
 	name = "tier two weapon permit"
-	desc = "A card indicating that the owner is allowed to carry a flash, pepperspray, (.45)ballistic pistols for self-defense, small knives and energy weapons that only have a stun setting."
+	desc = "A card indicating that the owner is allowed to carry civilian-grade lethal equipment, such as 9mm non-suppressed pistols, Bolt action rifles, EMP grenades, small knives, and  .38 revolvers."
 	tier = 2
 	price_tag = 700
 
 /obj/item/clothing/accessory/permit/gun/tier_three
 	name = "tier three weapon permit"
-	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, (.45)ballistic pistols, small knives, energy weapons that only have a stun setting, and energy pistols. "
+	desc = "A card indicating that the owner is allowed to carry improved civilian-grade lethal equipment, such as  .45 non suppressed firearms, CS gas grenades, lever action rifles, Desert Eagles, civilian shotguns, large knives, and NT Mk30 NL Tasers. "
 	tier = 3
 	price_tag = 1000
 
 /obj/item/clothing/accessory/permit/gun/tier_four
 	name = "tier four weapon permit"
-	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, (.45) and (.9mm)ballistic pistols, small and large knives, energy weapons that only have a stun setting, energy pistols, and civilian grade shotguns."
+	desc = "A card indicating that the owner is allowed to carry police-restricted and low-tier military equipment such as submachine guns, taser rifles,  advanced energy guns, ion weaponry, energy guns, stun revolvers, combat shotguns, and grenade launchesr."
 	tier = 4
 	price_tag = 1500
 
