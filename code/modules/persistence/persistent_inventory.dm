@@ -32,6 +32,10 @@
 
 	circuit = /obj/item/weapon/circuitboard/inventory_box
 
+	save_contents = FALSE
+
+	var/item_processing = FALSE
+
 
 /obj/machinery/inventory_machine/New()
 	..()
@@ -257,6 +261,7 @@
 			return
 
 		if(!emagged)
+
 			var/list/contents_to_search = list()
 			contents_to_search += I.get_saveable_contents()
 			contents_to_search += I
@@ -452,6 +457,9 @@
 		atmpt_maint_mode = TRUE
 
 	if(href_list["cancel"])
+		if(item_processing)
+			return FALSE
+
 		atmpt_maint_mode = FALSE
 		maint_mode = FALSE
 		current_inventory = null
@@ -589,15 +597,27 @@
 	GLOB.persistent_inventories += src
 
 /datum/persistent_inventory/proc/add_item(var/obj/item/O, mob/user)
+	if(item_processing)
+		return FALSE
 	if(disallowed_items.len && is_type_in_list(O, disallowed_items))
 		return FALSE
 
+
+	I.forceMove(src) // move item into it to prevent glitches.
+
+	item_processing = TRUE
+
 	var/datum/map_object/MO = full_item_save(O)
+
+
+
 
 	stored_items += MO
 	if(user)
 		to_chat(user, "You add [O] to the storage.")
 	qdel(O)
+
+	item_processing = FALSE
 
 	return MO
 
