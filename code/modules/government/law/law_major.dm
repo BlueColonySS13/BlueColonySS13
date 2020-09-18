@@ -110,8 +110,8 @@
 
 /datum/law/major/civil_negl
 	name = "Civil Neglect"
-	description = "When a Council department or Private Organizations  collectively conspires or commits\
-	criminal offenses, utilising assets belonging or provided by The City"
+	description = "When a Council department or Private Organization conspires or commits criminal offenses,\
+	 utilizing either resources provided by the city, or the time and cooperation of public employees."
 
 	fine = 45000
 	cell_time = 30
