@@ -251,6 +251,9 @@
 		return
 
 	if(current_inventory)
+		if(item_processing)
+			visible_message("<b>[src]</b> beeps, \"<span class='danger'>Please wait!</span>\" ")
+			return FALSE
 		if(I.dont_save)
 			visible_message("<b>[src]</b> beeps, \"<span class='danger'>I'm sorry! I'm unable to accept this item!</span>\" ")
 			flick("inv-tri_warn",src)
@@ -272,7 +275,14 @@
 					visible_message("<b>[src]</b> beeps, \"<span class='danger'>I can't take this item as it is a government controlled item, I'm sorry!</span>\" ")
 					flick("inv-tri_warn",src)
 					return
+
+
+		item_processing = TRUE
+		I.forceMove(src) // move item into it to prevent glitches.
+
 		current_inventory.add_item(I, user)
+
+		item_processing = FALSE
 		updateDialog()
 		update_icon()
 		return
@@ -597,27 +607,15 @@
 	GLOB.persistent_inventories += src
 
 /datum/persistent_inventory/proc/add_item(var/obj/item/O, mob/user)
-	if(item_processing)
-		return FALSE
 	if(disallowed_items.len && is_type_in_list(O, disallowed_items))
 		return FALSE
 
-
-	I.forceMove(src) // move item into it to prevent glitches.
-
-	item_processing = TRUE
-
 	var/datum/map_object/MO = full_item_save(O)
-
-
-
 
 	stored_items += MO
 	if(user)
 		to_chat(user, "You add [O] to the storage.")
 	qdel(O)
-
-	item_processing = FALSE
 
 	return MO
 
