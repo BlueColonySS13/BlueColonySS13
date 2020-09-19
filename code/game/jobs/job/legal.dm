@@ -16,7 +16,7 @@
 	access = list(access_judge, access_warrant, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
 	minimal_access = list(access_judge, access_warrant, access_sec_doors, access_heads, access_legal)
 	minimal_player_age = 14
-	minimum_character_age = 25
+	minimum_character_age = 34
 	alt_titles = list("Magistrate")
 
 	outfit_type = /decl/hierarchy/outfit/job/heads/judge
