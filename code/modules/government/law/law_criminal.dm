@@ -203,7 +203,9 @@
 	cell_time = 30
 
 	description = "Inciting, or attempting to incite, an unlawful demonstration."
-	notes = "If a Non-Pollux citizen incites any demonstration, lawful or not, they can be charged with this."
+	notes = "Any civil gathering held on public grounds, excluding the chapel only for religious reasons, that counts a total of 8 or more people is considered a demonstration. \
+	A demonstration must be approved by City Hall staff or else intervention from the local police department is warranted. \
+	Demonstration leaders may be charged with this crime, rowdy protestors with Disorderly Conduct or Civil Unrest. "
 
 /datum/law/criminal/trespass
 	name = "Trespassing in a Secure Area."
