@@ -278,6 +278,7 @@
 
 
 		item_processing = TRUE
+		user.drop_from_inventory(I, src)
 		I.forceMove(src) // move item into it to prevent glitches.
 
 		current_inventory.add_item(I, user)
