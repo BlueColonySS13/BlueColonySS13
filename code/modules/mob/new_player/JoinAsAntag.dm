@@ -127,7 +127,7 @@
 		to_chat(src, "This antagonist type cannot be joined until more police officers join.")
 		return FALSE
 
-	if(isnum(client.player_age) && !(client.player_age >= antag.minimum_player_age))
+	if(config.use_age_restriction_for_antags && isnum(client.player_age) && !(client.player_age >= antag.minimum_player_age))
 		to_chat(src, "You don't meet the minimum player age to play this role.")
 		return FALSE
 	JoinLate(selected_job, antag.id)

@@ -14,6 +14,8 @@ var/datum/antagonist/traitor/traitors
 	allow_lobbyjoin = TRUE
 	police_per_antag = 2
 
+	minimum_player_age = 4
+
 /datum/antagonist/traitor/auto
 	id = MODE_AUTOTRAITOR
 	allow_latejoin = 1
