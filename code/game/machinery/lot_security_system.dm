@@ -213,7 +213,7 @@
 		for(var/thing in custom_access_exemptions)
 			. += " - "
 			if(istext(thing)) // Dumb but it works, since business accesses are strings and normal ones are (hopefully) numbers.
-				. += get_biz_access_name_id(thing) // TODO: Business accesses don't show properly, test that this fixes it.
+				. += get_biz_access_name_id(thing)
 			else
 				. += get_access_desc(thing)
 			. += href(src, list("toggle_access" = thing), "Remove")
