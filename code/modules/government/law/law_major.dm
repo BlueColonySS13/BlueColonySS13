@@ -4,7 +4,7 @@
 	name = "Resisting Arrest"
 	description = "To violently resist a lawful arrest."
 	cell_time = 30
-	fine = 9000
+	fine = 4000
 
 	notes = "Remember that it has to be violent to qualify. \
 	Resisting cuffs, pushing, disarming or fighting law enforcement \
@@ -15,7 +15,7 @@
 	name = "Assault"
 	description = "To inflict injuries to another person."
 	cell_time = 20
-	fine = 10000
+	fine = 5500
 
 	notes = "Grabbing, pinning, hitting someone with no weapon, inflicting injuries \
 	as well as attacking someone with a non-lethal weapon or drugging someone \
@@ -26,7 +26,7 @@
 	name = "Aggravated Assault"
 	description = "To inflict serious injuries to another person or use a deadly weapon against another person."
 	cell_time = 30
-	fine = 20000
+	fine = 6500
 
 
 	notes = "Injuries can be generally considered serious if they require specialized medical \
@@ -42,13 +42,13 @@
 	unfortunate accident, carelessness or excessive self-defense."
 
 	cell_time = 60
-	fine = 30000
+	fine = 8000
 
 /datum/law/major/kidnapping
 	name = "Kidnapping and Hostage Taking"
 	description = "To restrict a person's freedom or forcefully transport a person against their will."
 	cell_time = 60
-	fine = 15000
+	fine = 6500
 
 
 /datum/law/major/abuse_police
@@ -59,7 +59,7 @@
 	notes = "Includes wrongful charges, abuse of suspects, unlawful searches, etc. It's highly \
 	recommended that officers charged with this be fired. "
 	cell_time = 30
-	fine = 20000
+	fine = 5000
 
 /datum/law/major/official_powers
 	name = "Exceeding Official Powers"
@@ -68,14 +68,14 @@
 
 	notes = "Demotion of council member advised."
 	cell_time = 35
-	fine = 25000
+	fine = 9000
 
 /datum/law/major/blue
 	name = "Procedure Violation (Blue)"
 	description = "When the code blue procedure is not respected."
 
 	cell_time = 35
-	fine = 10000
+	fine = 5000
 
 /datum/law/major/unrest
 	name = "Civil Unrest"
@@ -84,20 +84,20 @@
 
 	notes = "Should this happen in a larger scale, Sociocide charges may be applicable."
 	cell_time = 60
-	fine = 20000
+	fine = 6000
 
 /datum/law/major/jailbreak
 	name = "Jailbreak (Non-Permanent Confined Inmate)"
 	description = "Jailbreaker recieves the same original time. Jailbroken inmate receives double time and a timer reset."
 
-	fine = 40000
+	fine = 7500
 
 /datum/law/major/impersonate
 	name = "Impersonation of Government Officials"
 	description = "This will include any high ranking \
 	body from the rank of Mayor up to President in Chief, or any titles pertaining to the local Nanotrasen branch."
 
-	fine = 35000
+	fine = 20000
 	cell_time = 60
 
 /datum/law/major/elec_fraud
@@ -113,5 +113,5 @@
 	description = "When a Council department or Private Organization conspires or commits criminal offenses,\
 	 utilizing either resources provided by the city, or the time and cooperation of public employees."
 
-	fine = 45000
+	fine = 9000
 	cell_time = 30
