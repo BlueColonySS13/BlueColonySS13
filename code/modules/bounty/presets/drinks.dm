@@ -1,5 +1,6 @@
 /datum/bounty/drinks
 	category = CAT_DRINKS
+	author_department = DEPT_FACTORY
 
 /datum/bounty/drinks/doorsprint_07
 	name = "DoorSprint Order: Minty Fresh?"

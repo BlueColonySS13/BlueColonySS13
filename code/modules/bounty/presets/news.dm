@@ -47,7 +47,7 @@
 
 	items_wanted = list(/obj/item/weapon/photo = 3)
 
-	department_reward = 400
+	department_reward = 300
 	individual_reward = 150
 
 	days_until_expiry = 5

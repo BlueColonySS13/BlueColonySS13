@@ -60,25 +60,25 @@ var/global/list/medical_bills = list()
 /datum/medical_bill/machinery_cryo
 	name = "Cryo Cell"
 	description = "Use of cryo cell."
-	cost = 350
+	cost = 50
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/bone_surgery
 	name = "Bone Repair Surgery"
 	description = "Surgery to mend and repair bones, per bone."
-	cost = 100
+	cost = 50
 	insurance_coverage = INSURANCE_INTERMEDIATE
 
 /datum/medical_bill/organ_repair
 	name = "Organ Repair Surgery"
 	description = "Surgery to mend injured or septic organs, per organ."
-	cost = 200
+	cost = 50
 	insurance_coverage = INSURANCE_INTERMEDIATE
 
 /datum/medical_bill/internal_bleeding
 	name = "Internal Bleeding"
 	description = "Fixing internal bleeding."
-	cost = 100
+	cost = 50
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/replacement_organs
@@ -120,5 +120,5 @@ var/global/list/medical_bills = list()
 /datum/medical_bill/therapy
 	name = "Therapy Session"
 	description = "A psychotherapy session which is used to treat mental health."
-	cost = 150
+	cost = 10
 	insurance_coverage = INSURANCE_BASIC

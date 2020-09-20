@@ -22,7 +22,7 @@
 	/obj/item/clothing/under/dress/festivedress = 1
 	)
 
-	department_reward = 300
+	department_reward = 150
 	individual_reward = 50
 
 	days_until_expiry = 2
@@ -37,7 +37,7 @@
 
 	items_wanted = list(/obj/item/clothing/head/beanie = 10)
 
-	department_reward = 600
+	department_reward = 400
 	individual_reward = 170
 
 	days_until_expiry = 1
@@ -127,7 +127,7 @@
 
 	)
 
-	department_reward = 120
+	department_reward = 140
 	individual_reward = 25
 
 	days_until_expiry = 1
@@ -161,3 +161,4 @@
 
 	days_until_expiry = 1
 	allow_subtypes = TRUE
+

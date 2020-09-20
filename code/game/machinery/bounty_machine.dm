@@ -28,6 +28,7 @@
 	unique_save_vars = list("starting_department")
 
 	var/restrict_bounty_for_business = FALSE
+	var/accept_nonpersistent = FALSE
 
 
 /obj/machinery/bounty_machine/attackby(obj/item/I, mob/user, params)
@@ -51,7 +52,7 @@
 		to_chat(user,"<span class='notice'>This bounty is already complete, please select \"Confirm Completion\" to redeem the reward!</span>")
 		return
 
-	if(I.dont_save && !istype(I,/obj/item/weapon/photo))
+	if(!accept_nonpersistent && I.dont_save && !istype(I,/obj/item/weapon/photo))
 		to_chat(user,"<span class='notice'>This appears to be tagged to belong to an establishment or individual, please try another one.</span>")
 		return
 
@@ -278,6 +279,7 @@
 
 /obj/machinery/bounty_machine/preset/police
 	starting_department = DEPT_POLICE
+	accept_nonpersistent = TRUE
 
 /obj/machinery/bounty_machine/preset/healthcare
 	starting_department = DEPT_HEALTHCARE

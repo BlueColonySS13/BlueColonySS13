@@ -497,6 +497,9 @@
 	name = "purple banner"
 	path = /obj/item/weapon/banner/purple
 
+/datum/category_item/crafting/sewing_machine/cotton/banner/white
+	name = "white banner"
+	path = /obj/item/weapon/banner/white
 
 
 /*

@@ -17,7 +17,7 @@
 	var/icon_state_active = "expense_1"
 	var/icon_state_inactive = "expense"
 	var/expense_limit = 500000			// highest expense you can set.
-	var/payroll_limit = 150 // max that can be charged per payroll
+	var/payroll_limit = 15000 // max that can be charged per payroll
 
 	var/business_id = ""
 	var/business = FALSE
@@ -36,7 +36,8 @@
 	name = "business expense manager"
 	business = TRUE
 	req_access = list()
-	expense_limit = 100000
+	expense_limit = 800000
+	payroll_limit = 8000
 	dont_save = FALSE
 	circuit = /obj/item/weapon/circuitboard/expense_manager
 
@@ -57,7 +58,7 @@
 /obj/machinery/expense_manager/police
 	name = "police fine manager"
 	expense_type = /datum/expense/police
-	expense_limit = 10000
+	expense_limit = 100000
 	req_access = list(access_sec_doors)
 
 /obj/machinery/expense_manager/hospital
@@ -421,13 +422,13 @@
 				var/E = locate(href_list["expense"])
 				if(!E) return
 				var/datum/expense/exp = E
-				var/payroll_amt = sanitize_integer(input(usr, "Enter expense amount (in credits). Max: [payroll_limit]", "Expense Amount", exp.cost_per_payroll)  as num|null, 1, 1000)
+				var/payroll_amt = sanitize_integer(input(usr, "Enter expense amount per hour (in credits). Max: [payroll_limit]", "Expense Amount", exp.cost_per_payroll)  as num|null, 1, 1000)
 				if(!payroll_amt || (payroll_amt > payroll_limit))
 					to_chat(usr, "Please enter a valid amount!")
 					return
 
-				payroll_amt = Clamp(exp.cost_per_payroll, 0, exp.amount_left)
-
+				if(payroll_amt > exp.amount_left)
+					payroll_amt = exp.amount_left
 
 				var/datum/money_account/M = dept_acc_by_id(exp.department)
 				if(M)

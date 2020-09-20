@@ -86,6 +86,9 @@
 
 	var/block_persistence = FALSE
 
+	unique_save_vars = list("vendor_department", "charge_free_department", "charge_paid_department")
+
+
 /obj/machinery/vending/examine(mob/user)
 	..()
 
@@ -794,6 +797,7 @@
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/pitcher = 2,
 					/obj/item/weapon/reagent_containers/food/drinks/metaglass = 10,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/gin = 5,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/champagne = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/cognac = 5,
@@ -847,6 +851,7 @@
 //	block_persistence = TRUE
 
 	dont_save = FALSE
+	save_contents = FALSE // to stop hoarding since this regens the contents anyway
 
 
 /obj/machinery/vending/assist
@@ -1403,6 +1408,7 @@
 //	charge_free_department = DEPT_BAR
 
 	dont_save = FALSE
+	save_contents = FALSE
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"

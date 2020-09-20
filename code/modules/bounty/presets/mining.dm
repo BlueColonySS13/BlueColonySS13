@@ -1,5 +1,6 @@
 /datum/bounty/mining
 	category = CAT_MINING
+	author_department = DEPT_FACTORY
 
 /* Mining bounties utilize a simple 1-to-10 ratio for rewards.
    For every 10 credits in the department reward, an individual
@@ -18,7 +19,7 @@
 	department_reward = 1300
 	individual_reward = 130
 
-	days_until_expiry = 3
+	days_until_expiry = 6
 
 /datum/bounty/mining/spaceboogle
 	name = "Cascington Valley Startup"
@@ -55,7 +56,7 @@
 
 	stacks_wanted = list("steel" = 200)
 
-	department_reward = 400
+	department_reward = 300
 	individual_reward = 40
 
 	days_until_expiry = 2
@@ -83,7 +84,7 @@
 
 	stacks_wanted = list("gold" = 100)
 
-	department_reward = 1000
+	department_reward = 900
 	individual_reward = 100
 
 /datum/bounty/mining/better_than_gold
@@ -108,8 +109,10 @@
 
 	stacks_wanted = list("phoron" = 100)
 
-	department_reward = 900
+	department_reward = 550
 	individual_reward = 90
+
+	days_until_expiry = 6
 
 /datum/bounty/mining/gorilla_warfare
 	name = "Aerial Superiority"
@@ -119,7 +122,7 @@
 
 	stacks_wanted = list("durasteel" = 50)
 
-	department_reward = 1500
+	department_reward = 800
 	individual_reward = 150
 
 	days_until_expiry = 3
@@ -133,7 +136,7 @@
 
 	stacks_wanted = list("plasteel" = 50)
 
-	department_reward = 1175
+	department_reward = 575
 	individual_reward = 118
 
 	days_until_expiry = 2
@@ -148,7 +151,7 @@
 
 	stacks_wanted = list("osmium" = 50)
 
-	department_reward = 1000
+	department_reward = 900
 	individual_reward = 100
 
 	days_until_expiry = 3
@@ -189,7 +192,7 @@
 
 	stacks_wanted = list("silver" = 100)
 
-	department_reward = 1000
+	department_reward = 800
 	individual_reward = 100
 
 /datum/bounty/mining/wires_everywhere
@@ -200,7 +203,7 @@
 
 	stacks_wanted = list("copper" = 200)
 
-	department_reward = 350
+	department_reward = 200
 	individual_reward = 35
 
 /datum/bounty/mining/can_you_can_can
@@ -211,7 +214,7 @@
 
 	stacks_wanted = list("aluminium" = 200)
 
-	department_reward = 350
+	department_reward = 250
 	individual_reward = 35
 
 /datum/bounty/mining/contemporary_art
@@ -223,7 +226,7 @@
 
 	stacks_wanted = list("bronze" = 100)
 
-	department_reward = 350
+	department_reward = 250
 	individual_reward = 35
 
 /datum/bounty/mining/superconductor
@@ -235,7 +238,7 @@
 
 	stacks_wanted = list("tin" = 200)
 
-	department_reward = 350
+	department_reward = 300
 	individual_reward = 35
 
 /datum/bounty/mining/mechatronic_dreams
@@ -246,7 +249,7 @@
 
 	stacks_wanted = list("titanium" = 200)
 
-	department_reward = 600
+	department_reward = 400
 	individual_reward = 60
 
 /datum/bounty/mining/jay_jewellers
@@ -257,7 +260,7 @@
 
 	stacks_wanted = list("painite" = 50)
 
-	department_reward = 675
+	department_reward = 375
 	individual_reward = 68
 
 	days_until_expiry = 3

@@ -32,6 +32,10 @@
 
 	circuit = /obj/item/weapon/circuitboard/inventory_box
 
+	save_contents = FALSE
+
+	var/item_processing = FALSE
+
 
 /obj/machinery/inventory_machine/New()
 	..()
@@ -247,6 +251,9 @@
 		return
 
 	if(current_inventory)
+		if(item_processing)
+			visible_message("<b>[src]</b> beeps, \"<span class='danger'>Please wait!</span>\" ")
+			return FALSE
 		if(I.dont_save)
 			visible_message("<b>[src]</b> beeps, \"<span class='danger'>I'm sorry! I'm unable to accept this item!</span>\" ")
 			flick("inv-tri_warn",src)
@@ -257,6 +264,7 @@
 			return
 
 		if(!emagged)
+
 			var/list/contents_to_search = list()
 			contents_to_search += I.get_saveable_contents()
 			contents_to_search += I
@@ -267,7 +275,15 @@
 					visible_message("<b>[src]</b> beeps, \"<span class='danger'>I can't take this item as it is a government controlled item, I'm sorry!</span>\" ")
 					flick("inv-tri_warn",src)
 					return
+
+
+		item_processing = TRUE
+		user.drop_from_inventory(I, src)
+		I.forceMove(src) // move item into it to prevent glitches.
+
 		current_inventory.add_item(I, user)
+
+		item_processing = FALSE
 		updateDialog()
 		update_icon()
 		return
@@ -452,6 +468,9 @@
 		atmpt_maint_mode = TRUE
 
 	if(href_list["cancel"])
+		if(item_processing)
+			return FALSE
+
 		atmpt_maint_mode = FALSE
 		maint_mode = FALSE
 		current_inventory = null
