@@ -80,6 +80,9 @@
 	//cap the amount of damage, so that things like emitters can't destroy walls in one hit.
 	var/damage = min(proj_damage, 100)
 
+	if(damage > 0)
+		trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "\The [src] was hit by \the [Proj].")
+
 	if(Proj.damage_type == BURN && damage > 0)
 		if(thermite)
 			thermitemelt()

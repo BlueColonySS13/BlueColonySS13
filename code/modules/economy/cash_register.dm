@@ -87,6 +87,8 @@
 
 	if(cash_open)
 		if(cash_stored)
+			if(trigger_lot_security_system(user, /datum/lot_security_option/theft, "Removing [cash_stored]CR from \the [src]."))
+				return
 			spawn_money(cash_stored, loc, user)
 			cash_stored = 0
 			overlays -= "register_cash"

@@ -14,7 +14,7 @@
 /var/const/access_security = 1
 /datum/access/security
 	id = access_security
-	desc = "Security Equipment"
+	desc = "Police"
 	region = ACCESS_REGION_SECURITY
 
 /var/const/access_brig = 2 // Brig timers and permabrig

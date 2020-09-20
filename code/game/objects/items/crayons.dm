@@ -127,6 +127,9 @@
 					return
 				to_chat(user, "You start drawing an arrow on the [target.name].")
 
+		if(target.trigger_lot_security_system(user, /datum/lot_security_option/graffiti, "Drawing graffiti on \the [target] with \a [src]."))
+			return
+		
 		if(instant || do_after(user, 50))
 			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
@@ -319,6 +322,8 @@
 	if(is_type_in_list(target,validSurfaces))
 		playsound(loc, 'sound/effects/spraycan_shake.ogg', 5, 1, 5)
 		user << "You start drawing graffiti on the [target.name]."
+		if(target.trigger_lot_security_system(user, /datum/lot_security_option/graffiti, "Drawing graffiti on \the [target] with \a [src]."))
+			return
 		if(instant || do_after(user, 50))
 			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
 			playsound(loc, 'sound/effects/spray.ogg', 5, 1, 5)
