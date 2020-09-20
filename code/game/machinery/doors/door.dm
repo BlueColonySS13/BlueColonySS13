@@ -99,6 +99,7 @@
 			visible_message("<span class='danger'>\The [user] smashes into \the [src]!</span>")
 
 			take_damage(damage)
+			trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Smashed into \the [src].")
 		else
 
 			if(A.can_destroy_structures())
@@ -227,6 +228,9 @@
 
 	var/damage = Proj.get_structure_damage()
 
+	if(damage > 0)
+		trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "\The [src] was hit by \the [Proj].")
+
 	// Emitter Blasts - these will eventually completely destroy the door, given enough time.
 	if (damage > 90)
 		destroy_hits--
@@ -246,17 +250,20 @@
 
 
 
-/obj/machinery/door/hitby(AM as mob|obj, var/speed=5)
+/obj/machinery/door/hitby(atom/movable/AM, var/speed=5)
 
 	..()
 	visible_message("<span class='danger'>[src.name] was hit by [AM].</span>")
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 15 * (speed/5)
-	else
-		tforce = AM:throwforce * (speed/5)
+	else if(isobj(AM))
+		var/obj/O = AM
+		tforce = O.throwforce * (speed/5)
 	playsound(src.loc, hitsound, 100, 1)
 	take_damage(tforce)
+	if(tforce > 0)
+		trigger_lot_security_system(AM.thrower, /datum/lot_security_option/vandalism, "Threw \the [AM] at \the [src].")
 	return
 
 /obj/machinery/door/attack_ai(mob/user as mob)
@@ -342,6 +349,7 @@
 				user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 				playsound(src.loc, hitsound, 100, 1)
 				take_damage(W.force)
+				trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Struck \the [src] with \a [W].")
 		return
 
 	if(src.operating > 0 || isrobot(user))	return //borgs can't attack doors open because it conflicts with their AI-like interaction with them.

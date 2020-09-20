@@ -362,7 +362,7 @@
 
 		if(!auth) // Only make the datum if needed, to save on (a very tiny amount of) memory.
 			auth = new /datum/ingame_authentication(owner_uid, staff_pin)
-		if(auth.attempt_authentication(usr))
+		if(auth.attempt_authentication(usr, src))
 			maint_mode = TRUE
 		interact(usr)
 		return

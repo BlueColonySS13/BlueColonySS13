@@ -309,3 +309,10 @@ var/global/list/##LIST_NAME = list();\
 
 #define MAX_WARRANTS 50
 #define MAX_FINGERPRINTS 20
+
+// Lot Security machine settings.
+#define LOT_SECURITY_STOP_VANDALISM		1 // Deconstructing walls, smashing airlocks, breaking windows.
+#define LOT_SECURITY_STOP_THEFT			2 // Opening cash registers.
+#define LOT_SECURITY_STOP_GRAFFITI		4 // Covers actual graffiti and painting walls.
+#define LOT_SECURITY_STOP_INTRUSION		8 // Hacking airlocks, brute forcing PINs.
+#define LOT_SECURITY_STOP_EVERYTHING	(LOT_SECURITY_STOP_VANDALISM|LOT_SECURITY_STOP_THEFT|LOT_SECURITY_STOP_GRAFFITI|LOT_SECURITY_STOP_INTRUSION)

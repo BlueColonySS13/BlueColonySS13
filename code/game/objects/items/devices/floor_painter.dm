@@ -84,6 +84,9 @@
 		to_chat(usr, "<span class='notice'>You set \the [src] to paint with <font color='[paint_colour]'>a new colour</font>.</span>")
 		return
 
+	if(A.trigger_lot_security_system(user, /datum/lot_security_option/graffiti, "Painting \the [A] with \a [src]."))
+		return
+
 	var/obj/machinery/electronic_display_case/DC = A
 	if(istype(DC))
 		var/choice = input(user, "What do you wish to paint?") as null|anything in list("Glass", "Frame")

@@ -345,6 +345,8 @@ var/const/enterloopsanity = 100
 
 	vandal.visible_message("<span class='warning'>\The [vandal] begins carving something into \the [src].</span>")
 
+	trigger_lot_security_system(vandal, /datum/lot_security_option/graffiti, "Attempting to carve graffiti into \the [src] with \a [tool].")
+
 	if(!do_after(vandal, max(20, length(message)), src))
 		return FALSE
 
