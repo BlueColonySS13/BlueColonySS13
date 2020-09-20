@@ -81,7 +81,7 @@
 			else if(isnum(client.player_age) && !(client.player_age >= antag.minimum_player_age))
 				dat += "<br><font color='red'><b>You don't meet the minimum player age to play this role.</b></font>"
 
-			else if(!antag.meets_police_lobby_join())
+			else if(antag.get_needed_police() > SSjobs.get_active_police())
 				dat += "<br><font color='red'><b>To join, the round needs at least [antag.get_needed_police()] police officer(s).</b></font>"
 			else
 				dat += "<br><a href='byond://?src=\ref[src];JoinAsAntag=[antag.id]'>Join As [antag.role_text]</a>"
@@ -123,7 +123,7 @@
 		to_chat(src, "Limit for this antagonist group reached.")
 		return FALSE
 
-	if(!antag.meets_police_lobby_join())
+	if(antag.get_needed_police() > SSjobs.get_active_police())
 		to_chat(src, "This antagonist type cannot be joined until more police officers join.")
 		return FALSE
 

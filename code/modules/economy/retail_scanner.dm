@@ -8,7 +8,7 @@
 	icon_state = "retail_idle"
 	flags = NOBLUDGEON|CONDUCT
 	slot_flags = SLOT_BELT
-	req_access = list(access_heads)
+	req_access = list()
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1)
 
@@ -515,35 +515,35 @@
 
 /obj/item/device/retail_scanner/city
 	account_to_connect = DEPT_COLONY
-
+	req_access = list(access_heads)
 /obj/item/device/retail_scanner/command
 	account_to_connect = DEPT_COUNCIL
-
+	req_access = list(access_heads)
 /obj/item/device/retail_scanner/medical
 	account_to_connect = DEPT_HEALTHCARE
 	menu_items = MED
-
+	req_access = list(access_heads)
 /obj/item/device/retail_scanner/engineering
 	account_to_connect = DEPT_MAINTENANCE
-
+	req_access = list(access_heads)
 /obj/item/device/retail_scanner/science
 	account_to_connect = DEPT_RESEARCH
-
+	req_access = list(access_heads)
 /obj/item/device/retail_scanner/police
 	account_to_connect = DEPT_POLICE
 	menu_items = LAW
-
+	req_access = list(access_heads)
 /obj/item/device/retail_scanner/cargo
 	account_to_connect = DEPT_FACTORY
-
+	req_access = list(access_heads)
 /obj/item/device/retail_scanner/civilian
 	account_to_connect = DEPT_PUBLIC
-
+	req_access = list(access_heads)
 /obj/item/device/retail_scanner/bar
 	account_to_connect = DEPT_BAR
-
+	req_access = list(access_heads)
 /obj/item/device/retail_scanner/botany
 	account_to_connect = DEPT_BOTANY
-
+	req_access = list(access_heads)
 #undef LAW
 #undef MED

@@ -12,7 +12,7 @@
 	calories_factor = 40 // Per unit
 	var/injectable = 0
 	color = "#664330"
-	price_tag = 0.1
+	price_tag = 0.4
 
 /datum/reagent/nutriment/mix_data(var/list/newdata, var/newamount)
 
@@ -60,7 +60,7 @@
 	color = "#FFFFFF"
 	calories_factor = 8
 	injectable = 1
-	price_tag = 0.2
+	price_tag = 0.3
 
 /datum/reagent/nutriment/protein // Bad for Skrell!
 	name = "animal protein"
@@ -743,6 +743,7 @@
 	cup_icon_state = "cup_tea"
 	cup_name = "cup of tea"
 	cup_desc = "Tasty black tea, it has antioxidants, it's good for you!"
+	glass_special = list(DRINK_VAPOR)
 
 /datum/reagent/drink/tea/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -851,7 +852,7 @@
 	glass_name = "cup of coffee"
 	glass_desc = "Don't drop it, or you'll send scalding liquid and glass shards everywhere."
 	glass_special = list(DRINK_VAPOR)
-
+	price_tag = 0.2
 /datum/reagent/drink/coffee/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
@@ -1637,7 +1638,7 @@
 	id = "vodkakora"
 	description = "The finest vodka ever distilled using secret Neo-Ruskiya techniques."
 	taste_description = "spicy alcohol, followed by the taste of finesse and a creamy finish"
-	price_tag = 1.6
+	price_tag = 5.5
 
 	glass_name = "kora vodka"
 	glass_desc = "The finest vodka ever distilled. Best served chilled in a diamond-studded silver shot cup."
@@ -1686,7 +1687,7 @@
 	id = "amontilladowine"
 	description = "A 700 year old wine from Italy."
 	taste_description = "a sweet and round wine, complimented by an oaky vanilla character"
-	price_tag = 2.2
+	price_tag = 6
 
 	glass_name = "amontillado wine"
 	glass_desc = "A 700 year old wine from Italy. Every sip is a taste of history."
@@ -3091,7 +3092,8 @@
 
 	glass_name = "Serpent's Spirit"
 	glass_desc = "An expensive blue wine made from a secret blend of spices passed down from generation to generation."
-	price_tag = 0.95
+	price_tag = 4
+
 /datum/reagent/ethanol/goldfinger
 	name = "Goldfinger"
 	id = "goldfinger"
@@ -3102,7 +3104,7 @@
 
 	glass_name = "Goldfinger"
 	glass_desc = "This is gold, Mr. Bond."
-	price_tag = 1.58
+	price_tag = 4.75
 
 /datum/reagent/ethanol/blackrose
 	name = "Black Rose"
@@ -3114,7 +3116,8 @@
 
 	glass_name = "Black Rose"
 	glass_desc = "Each taste imparts the flavor of flowers blooming in Spring. Exquisite."
-	price_tag = 0.63
+	price_tag = 4
+
 /datum/reagent/nutriment/coffee
 	name = "Coffee Powder"
 	id = "coffeepowder"
