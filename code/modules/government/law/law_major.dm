@@ -115,3 +115,10 @@
 
 	fine = 9000
 	cell_time = 30
+
+/datum/law/major/aid_terrorist
+	name = "Aiding Terrorist Activities"
+	description = "To knowingly providing aid and resources to terrorists or terrorist organizations without being a member, \
+	in the form of money, arms, housing, refuge, medical care, and other forms of assistance."
+
+	fine = 20000
