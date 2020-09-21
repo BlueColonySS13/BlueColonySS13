@@ -243,4 +243,4 @@
 	description = "To engage in speech that causes an environment of panic or danger regarding a group of citizens, including calling for violence against them."
 
 	fine = 2000
-	notes = "This law covers speech against vatborns, immigrants, and political organizations, but does not qualify for non-citizens, such as synthetics."
+	notes = "This law covers speech against vatborns, immigrants, and political ideologies, but does not qualify for non-citizens, such as synthetics, or organizations."
