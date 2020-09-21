@@ -237,3 +237,10 @@
 
 	fine = 1000
 	cell_time = 20
+
+/datum/law/criminal/hate_speech
+	name = "Hate Speech"
+	description = "To engage in speech that denigrates, stereotypes, or otherwise generally insults a large group of citizens, including calling for violence against them."
+
+	fine = 2000
+	notes = "This law covers speech against vatborns, immigrants, and political organizations, but does not qualify for non-citizens, such as synthetics."
