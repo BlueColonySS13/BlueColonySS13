@@ -205,8 +205,7 @@
 	description = "Inciting, or attempting to incite, an unlawful demonstration."
 	notes = "Any civil gathering held on public grounds, excluding the chapel for religious reasons, that counts a total of 6 or more people is considered a demonstration. \
 	A demonstration must be approved by City Hall staff or else intervention from the local police department is warranted. \
-	Demonstration leaders may be charged with this crime and Disorderly Conduct or Civil Unrest, rowdy protestors with Disorderly Conduct or Civil Unrest.
- "
+	Demonstration leaders may be charged with this crime and Disorderly Conduct or Civil Unrest, rowdy protestors with Disorderly Conduct or Civil Unrest."
 
 /datum/law/criminal/trespass
 	name = "Trespassing in a Secure Area."
