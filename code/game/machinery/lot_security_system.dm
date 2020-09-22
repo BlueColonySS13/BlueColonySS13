@@ -12,8 +12,8 @@
 	anchored = TRUE
 	density = TRUE
 
-	unique_save_vars = list("prevent_flags", "report_flags", "owner_uid", "zap_power", "reports", "custom_access_exemptions", "active")
-	
+	unique_save_vars = list("prevent_flags", "report_flags", "owner_uid", "zap_power", "reports", "custom_access_exemptions", "active", "anchored")
+
 	// Working vars.
 	var/prevent_flags = 0		// What the system will try to stop as well as log. Bitflag.
 	var/report_flags = 0		// What the system will only log. Bitflag.
@@ -46,6 +46,10 @@
 	hardened = TRUE
 	desired_area_type = /area
 
+/obj/machinery/lot_security_system/centcom/president	// for the commander in chief
+	name = "Presidential Z.E.U.S. System Deluxe"
+	innate_access_exemptions = list(access_president)
+
 // The kind you get straight from the factory, only difference is that it doesn't start anchored.
 /obj/machinery/lot_security_system/factory_ordered
 	anchored = FALSE
@@ -57,6 +61,9 @@
 /obj/machinery/lot_security_system/Destroy()
 	remove_from_area()
 	return ..()
+
+/obj/machinery/lot_security_system/on_persistence_load()
+	add_to_area()
 
 /obj/machinery/lot_security_system/get_persistent_metadata()
 	return reports
@@ -90,7 +97,7 @@
 /obj/machinery/lot_security_system/attackby(obj/item/I, mob/living/user)
 	if(!istype(I))
 		return
-	
+
 	// Claiming.
 	if(istype(I, /obj/item/weapon/card/id))
 		var/obj/item/weapon/card/id/ID = I
@@ -99,7 +106,7 @@
 			to_chat(user, SPAN_NOTICE("You claim \the [src] as your own."))
 			interact(user)
 			return
-	
+
 	// Refilling.
 	if(istype(I, /obj/item/weapon/lot_security_charge))
 		var/obj/item/weapon/lot_security_charge/charge = I
@@ -161,7 +168,7 @@
 			. += " <b>Report Only</b> "
 		else
 			. += href(src, list("set_report" = option.id), "Report Only")
-		
+
 		if(prevent_flags & option.id)
 			. += " <b>Report & Prevent</b>"
 		else
@@ -259,7 +266,7 @@
 	. += href(src, list("print_report" = REF(reports)), "Print All Reports")
 	. += "<br>"
 	. += href(src, list("wipe_all_reports" = 1), "Wipe Reports")
-	
+
 	. += "<hr>"
 	. += "<h2>Reports In Memory</h2>"
 	. += "<i>Reports are listed from oldest to newest.</i>"
@@ -280,7 +287,7 @@
 	var/i = 1
 	for(var/thing in input)
 		var/datum/lot_security_report/report = thing
-		
+
 		. += "<tr>"
 		. += "<td>[report.timestamp]</td>"
 		. += "<td>[report.perp]</td>"
@@ -294,13 +301,13 @@
 			. += "</td>"
 		. += "</tr>"
 		i++
-	
+
 	. += "</table>"
 
 /obj/machinery/lot_security_system/Topic(href, href_list)
 	if(..())
 		return
-	
+
 	// Just some extra checks to ward off schannigans.
 	var/mob/living/L = usr
 	if(!istype(L))
@@ -314,17 +321,17 @@
 
 	if(href_list["set_ignore"])
 		set_ignore(text2num(href_list["set_ignore"]))
-	
+
 	if(href_list["set_report"])
 		set_report(text2num(href_list["set_report"]))
-	
+
 	if(href_list["toggle_bolts"])
 		toggle_anchored()
 		to_chat(L, SPAN_NOTICE("\The [src] is now [anchored ? "secured to the ground" : "able to be moved"]."))
 
 	if(href_list["set_prevent"])
 		set_prevent(text2num(href_list["set_prevent"]))
-	
+
 	if(href_list["toggle_security"])
 		temporary_inactive = FALSE
 		if(active)
@@ -357,7 +364,7 @@
 			input_access = converted_access
 		if(isnull(input_access))
 			return
-		
+
 		if(input_access in custom_access_exemptions)
 			custom_access_exemptions -= input_access
 		else
@@ -368,14 +375,14 @@
 	if(href_list["reports_window"])
 		show_report_window(L)
 		return
-	
+
 	if(href_list["wipe_all_reports"])
 		if(alert(L, "Really delete all reports in storage? This cannot be undone.", "Report Wipe Confirmation", "No", "Yes") == "No")
 			return
 		reports.Cut()
 		show_report_window(L)
 		return
-	
+
 	if(href_list["delete_report"])
 		var/index = text2num(href_list["delete_report"])
 		if(!index)
@@ -385,7 +392,7 @@
 		reports.Cut(index, index+1)
 		show_report_window(L)
 		return
-	
+
 	if(href_list["print_report"])
 		var/list/input = locate(href_list["print_report"])
 		if(istype(input, /datum/lot_security_report))
@@ -405,7 +412,7 @@
 		var/list/html = list("<h1>[title]</h1><hr>")
 		html += build_report_table(input)
 
-		
+
 		P.info = html.Join()
 		playsound(src, "sound/effects/printer.ogg", 50, TRUE)
 
@@ -413,7 +420,7 @@
 		if(alert(L, "Really reset all settings and wipe this machine's memory? This cannot be undone.", "Factory Reset Confirmation", "No", "Yes") == "No")
 			return
 		factory_reset()
-	
+
 	// To refresh the UI.
 	interact(usr)
 
@@ -452,7 +459,7 @@
 		add_to_area()
 	else
 		remove_from_area()
-		
+
 
 // Sets the bitflags to make the machine zap someone who does a specific bad thing.
 /obj/machinery/lot_security_system/proc/set_prevent(security_flag)
@@ -483,15 +490,15 @@
 	var/obj/item/weapon/card/id/ID = baddie.GetIdCard()
 	if(ID?.unique_ID == owner_uid)
 		return TRUE
-	
+
 	// Check if the 'baddie' has one of the accesses on their ID card.
 	if(!istype(ID))
 		return FALSE
-	
+
 	var/list/combined_access = innate_access_exemptions.Copy() + custom_access_exemptions.Copy()
 	if(has_access(null, combined_access, ID.GetAccess()))
 		return TRUE
-	
+
 	return FALSE
 
 // Called when an object says that it's being used against a lot.
@@ -520,7 +527,7 @@
 			zap_criminal(baddie)
 			action_taken = "Retaliated."
 			. = TRUE
-	
+
 	// Logging.
 	if((prevent_flags|report_flags) & security_flag)
 		// In the grim dark future, we will use ISO 8601.
@@ -593,7 +600,7 @@
 
 // Basic /atom proc that should be called when someone does something naughty.
 // It relays the call to the security machine, if one exists, based on the area.
-// Make sure this gets called by the 'victim' object, e.g. a window being hit, 
+// Make sure this gets called by the 'victim' object, e.g. a window being hit,
 // and not the object that's causing the issue.
 
 // First parameter is who's doing the bad thing. This CAN be null if you don't want someone getting zapped but still want it to get logged.
@@ -664,4 +671,3 @@ GLOBAL_LIST_INIT(all_lot_security_options, init_subtypes_assoc(/datum/lot_securi
 	offense = new_offense
 	details = new_details
 	action_taken = new_action_taken
-	
