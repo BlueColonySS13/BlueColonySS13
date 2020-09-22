@@ -4,7 +4,7 @@
 	name = "Threat of Death or Bodily Harm"
 	description = "To threaten a person's life or well-being."
 
-	fine = 750
+	fine = 300
 
 	notes = "The threat does not necessarily have to be verbal. \
 	Pointing a gun at people for example would also fit this charge."
@@ -15,21 +15,21 @@
 	description = "To willfully and repeatedly follow and/or harass another person."
 	notes = "A victim of this can seek a restraining order."
 	cell_time = 10
-	fine = 600
+	fine = 400
 
 /datum/law/misdemeanor/defamation
 	name = "Defamation"
 	description = "To spread false information about a person or organization \
 	with an intention of damaging the reputation of thereof."
 
-	fine = 900
+	fine = 300
 
 
 /datum/law/misdemeanor/battery
 	name = "Battery"
 	description = "To initiate an unwanted physical contact with another person."
 	cell_time = 10
-	fine = 1500
+	fine = 750
 
 	notes = "Slapping, pushing, disarming, repeatedly bumping into someone can be considered \
 	battery. Anything more serious is to be charged with assault"
@@ -39,7 +39,7 @@
 	name = "Vandalism"
 	description = "To desecrate or deface public or private property."
 
-	fine = 600
+	fine = 200
 
 	notes = "Vandalism covers only cosmetic alterations like graffiti. For anything serious \
 	see \"Property Damage\"."
@@ -61,7 +61,7 @@
 	name = "Trespassing"
 	description = "To enter the area one does not have access to or permission to be in."
 
-	fine = 800
+	fine = 400
 
 	notes = "Make sure the person really doesn’t have access to the are or wasn’t let there \
 	by other personnel. Trespassing often goes hand to hand with other crimes like damage \
@@ -73,6 +73,6 @@
 	noncontact actions. If there is actually sexual activity, see Sexual Assault."
 
 	cell_time = 10
-	fine = 2000
+	fine = 1000
 
 	notes = "Clearly unwanted means that it's been made clear that the advances aren't welcome."
