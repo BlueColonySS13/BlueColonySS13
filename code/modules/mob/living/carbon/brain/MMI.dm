@@ -319,10 +319,10 @@
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/posi_brain
-	base_icon = "posibrain"
+	base_state = "posibrain"
 
 /obj/item/device/mmi/digital/posibrain/request_player()
-	icon_state = "[base_icon]-searching"
+	icon_state = "[base_state]-searching"
 	..()
 
 
@@ -331,16 +331,16 @@
 	if(brainmob.mind)
 		brainmob.mind.assigned_role = "Positronic Brain"
 	brainmob << "<span class='notify'>You feel slightly disoriented. That's normal when you're just a metal cube.</span>"
-	icon_state = "[base_icon]-occupied"
+	icon_state = "[base_state]-occupied"
 	return
 
 /obj/item/device/mmi/digital/posibrain/transfer_personality(var/mob/candidate)
 	..()
-	icon_state = "[base_icon]-occupied"
+	icon_state = "[base_state]-occupied"
 
 /obj/item/device/mmi/digital/posibrain/reset_search() //We give the players sixty seconds to decide, then reset the timer.
 	..()
-	icon_state = "[base_icon]"
+	icon_state = "[base_state]"
 
 /obj/item/device/mmi/digital/posibrain/New()
 	..()
