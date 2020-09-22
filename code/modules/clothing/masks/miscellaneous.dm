@@ -71,9 +71,16 @@
 	body_parts_covered = 0
 
 /obj/item/clothing/mask/snorkel
-	name = "Snorkel"
+	name = "snorkel"
 	desc = "For the Swimming Savant."
 	icon_state = "snorkel"
+	flags_inv = HIDEFACE
+	body_parts_covered = 0
+
+/obj/item/clothing/mask/veil
+	name = "veil"
+	desc = "A lacy veil."
+	icon_state = "veil"
 	flags_inv = HIDEFACE
 	body_parts_covered = 0
 
