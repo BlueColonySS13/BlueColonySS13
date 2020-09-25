@@ -58,6 +58,34 @@
 		RG.reagents.add_reagent("toiletwater", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
 		user.visible_message("<span class='notice'>[user] fills \the [RG] using \the [src].</span>","<span class='notice'>You fill \the [RG] using \the [src].</span>")
 		return 1
+	else if(istype(I, /obj/item/weapon/wrench))
+		if(!anchored)
+			to_chat(user, "<span class='notice'>You start to wrench \the [src] into place.</span>")
+			playsound(src.loc, I.usesound, 50, 1)
+			if(do_after(user, 20 * I.toolspeed))
+				anchored = TRUE
+				return
+		else if(anchored)
+			playsound(src, I.usesound, 50, 1)
+			if(do_after(user, 20 * I.toolspeed))
+				to_chat(user, "<span class='notice'>You unfasten \the [src].</span>")
+				anchored = FALSE
+				return
+	else if(istype(I, /obj/item/weapon/weldingtool))
+		if(!anchored)
+			var/obj/item/weapon/weldingtool/WT = I
+			if(WT.remove_fuel(0, user))
+				playsound(src.loc, I.usesound, 50, 1)
+				if(do_after(user, 20 * I.toolspeed))
+					if(src && WT.isOn())
+						to_chat(user, "<span class='notice'>You deconstruct \the [src].</span>")
+						new /obj/item/stack/material/plastic(src.loc, 2)
+						qdel(src)
+						return
+			else if(!WT.remove_fuel(0, user))
+				to_chat(user, "The welding tool must be on to complete this task.")
+				return
+
 
 	if(istype(I, /obj/item/weapon/grab))
 		user.setClickCooldown(user.get_attack_speed(I))
@@ -97,6 +125,42 @@
 		to_chat(user, "You carefully place \the [I] into the cistern.")
 		return
 
+/obj/structure/toilet/verb/rotate_counterclockwise()
+	set name = "The toilet Counter-Clockwise"
+	set category = "Object"
+	set src in oview(1)
+
+	if(usr.incapacitated())
+		return FALSE
+
+	if(anchored)
+		to_chat(usr, "It is fastened to the wall therefore you can't rotate it!")
+		return FALSE
+
+	src.set_dir(turn(src.dir, 90))
+
+	to_chat(usr, "<span class='notice'>You rotate \the [src] to face [dir2text(dir)]!</span>")
+
+	return
+
+
+/obj/structure/toilet/verb/rotate_clockwise()
+	set name = "The toilet Clockwise"
+	set category = "Object"
+	set src in oview(1)
+
+	if(usr.incapacitated())
+		return FALSE
+
+	if(anchored)
+		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
+		return FALSE
+
+	src.set_dir(turn(src.dir, 270))
+
+	to_chat(usr, "<span class='notice'>You rotate \the [src] to face [dir2text(dir)]!</span>")
+
+	return
 
 
 /obj/structure/urinal
@@ -441,6 +505,33 @@
 		to_chat(user, "<span class='notice'>You wet \the [O] in \the [src].</span>")
 		playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return
+	else if(istype(O, /obj/item/weapon/wrench))
+		if(!anchored)
+			to_chat(user, "<span class='notice'>You start to wrench \the [src] into place.</span>")
+			playsound(src.loc, O.usesound, 50, 1)
+			if(do_after(user, 20 * O.toolspeed))
+				anchored = TRUE
+				return
+		else if(anchored)
+			playsound(src, O.usesound, 50, 1)
+			if(do_after(user, 20 * O.toolspeed))
+				to_chat(user, "<span class='notice'>You unfasten \the [src].</span>")
+				anchored = FALSE
+				return
+	else if(istype(O, /obj/item/weapon/weldingtool))
+		if(!anchored)
+			var/obj/item/weapon/weldingtool/WT = O
+			if(WT.remove_fuel(0, user))
+				playsound(src.loc, O.usesound, 50, 1)
+				if(do_after(user, 20 * O.toolspeed))
+					if(src && WT.isOn())
+						to_chat(user, "<span class='notice'>You deconstruct \the [src].</span>")
+						new /obj/item/stack/material/plastic(src.loc, 2)
+						qdel(src)
+						return
+			else if(!WT.remove_fuel(0, user))
+				to_chat(user, "The welding tool must be on to complete this task.")
+				return
 
 	var/turf/location = user.loc
 	if(!isturf(location)) return
@@ -462,6 +553,45 @@
 	user.visible_message( \
 		"<span class='notice'>[user] washes \a [I] using \the [src].</span>", \
 		"<span class='notice'>You wash \a [I] using \the [src].</span>")
+
+
+
+/obj/structure/sink/verb/rotate_counterclockwise()
+	set name = "the sink Counter-Clockwise"
+	set category = "Object"
+	set src in oview(1)
+
+	if(usr.incapacitated())
+		return FALSE
+
+	if(anchored)
+		to_chat(usr, "It is fastened to the wall therefore you can't rotate it!")
+		return FALSE
+
+	src.set_dir(turn(src.dir, 90))
+
+	to_chat(usr, "<span class='notice'>You rotate \the [src] to face [dir2text(dir)]!</span>")
+
+	return
+
+
+/obj/structure/sink/verb/rotate_clockwise()
+	set name = "the sink Clockwise"
+	set category = "Object"
+	set src in oview(1)
+
+	if(usr.incapacitated())
+		return FALSE
+
+	if(anchored)
+		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
+		return FALSE
+
+	src.set_dir(turn(src.dir, 270))
+
+	to_chat(usr, "<span class='notice'>You rotate \the [src] to face [dir2text(dir)]!</span>")
+
+	return
 
 /obj/structure/sink/kitchen
 	name = "kitchen sink"

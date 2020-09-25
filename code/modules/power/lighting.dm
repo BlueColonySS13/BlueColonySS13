@@ -89,7 +89,7 @@ var/global/list/light_type_cache = list()
 		src.update_icon()
 		src.stage = 1
 		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, "red")
-		user.visible_message("[user.name] removes the wiring from [src].", \
+		user.visible_message("You removes the wiring from [src].", \
 			"You remove the wiring from [src].", "You hear a noise.")
 		playsound(src.loc, W.usesound, 50, 1)
 		return
@@ -100,25 +100,77 @@ var/global/list/light_type_cache = list()
 		if (coil.use(1))
 			src.stage = 2
 			src.update_icon()
-			user.visible_message("[user.name] adds wires to [src].", \
+			user.visible_message("You adds wires to [src].", \
 				"You add wires to [src].")
 		return
 
 	if(istype(W, /obj/item/weapon/screwdriver))
-		if (src.stage == 2)
+		if(!anchored && src.stage == 1)
+			playsound(src.loc, W.usesound, 75, 1)
+			to_chat(usr, "You start to screw [src] into place.")
+			if(do_after(user, 20 * W.toolspeed))
+				anchored = TRUE
+				user.visible_message("You screw [src] into place.")
+				return
+
+		else if(anchored && src.stage == 1)
+			playsound(src, W.usesound, 75, 1)
+			to_chat(usr, "You start to unscrew [src] into place.")
+			if(do_after(user, 20 * W.toolspeed))
+				user.visible_message("You unfasten [src].")
+				anchored = FALSE
+				return
+		else if (src.stage == 2)
 			src.stage = 3
 			src.update_icon()
-			user.visible_message("[user.name] closes [src]'s casing.", \
+			user.visible_message("You closes [src]'s casing.", \
 				"You close [src]'s casing.", "You hear a noise.")
 			playsound(src, W.usesound, 75, 1)
 
-			var/obj/machinery/light/newlight = new fixture_type(src.loc, src)
-			newlight.set_dir(src.dir)
+			var/obj/machinery/light/newlight = new fixture_type(src.loc, src, anchored)
+			newlight.set_dir(turn(dir, 180))
 
 			src.transfer_fingerprints_to(newlight)
 			qdel(src)
 			return
 	..()
+
+/obj/machinery/light_construct/verb/rotate_counterclockwise()
+	set name = "Rotate Frame Counter-Clockwise"
+	set category = "Object"
+	set src in oview(1)
+
+	if(usr.incapacitated())
+		return FALSE
+
+	if(anchored)
+		to_chat(usr, "It is fastened to the wall therefore you can't rotate it!")
+		return FALSE
+
+	src.set_dir(turn(src.dir, 90))
+
+	to_chat(usr, "<span class='notice'>You rotate the [src] to face [dir2text(dir)]!</span>")
+
+	return
+
+
+/obj/machinery/light_construct/verb/rotate_clockwise()
+	set name = "Rotate Frame Clockwise"
+	set category = "Object"
+	set src in oview(1)
+
+	if(usr.incapacitated())
+		return FALSE
+
+	if(anchored)
+		to_chat(usr, "It is fastened to the wall therefore you can't rotate it!")
+		return FALSE
+
+	src.set_dir(turn(src.dir, 270))
+
+	to_chat(usr, "<span class='notice'>You rotate the [src] to face [dir2text(dir)]!</span>")
+
+	return
 
 /obj/machinery/light_construct/small
 	name = "small light fixture frame"
@@ -136,7 +188,7 @@ var/global/list/light_type_cache = list()
 	desc = "A floor light fixture under construction."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flamp-construct-stage1"
-	anchored = 0
+	anchored = 1
 	layer = OBJ_LAYER
 	plane = ABOVE_MOB_PLANE
 	stage = 1
