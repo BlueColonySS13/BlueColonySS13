@@ -42,6 +42,14 @@
 	has_sensor = 2
 	sensor_mode = 3
 
+/obj/item/clothing/under/color/orange/prisoneralt
+	name = "orange prison jumpsuit"
+	desc = "It's standardized prisoner-wear. Its suit sensors are permanently set to the \"Tracking\" position."
+	icon_state = "prisoneralt2"
+	has_sensor = 2
+	sensor_mode = 3
+
+
 /obj/item/clothing/under/color/pink
 	name = "pink jumpsuit"
 	icon_state = "pink"

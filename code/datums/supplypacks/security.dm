@@ -249,7 +249,8 @@
 			/obj/item/device/flashlight/flare,
 			/obj/item/clothing/accessory/storage/black_vest,
 			/obj/item/clothing/head/soft/sec/corp,
-			/obj/item/clothing/under/rank/security/corp,
+			/obj/item/clothing/under/rank/policeofficeralt,
+			/obj/item/clothing/head/police/policeofficercap,
 			/obj/item/weapon/gun/energy/taser,
 			/obj/item/device/flashlight/maglight
 			)
