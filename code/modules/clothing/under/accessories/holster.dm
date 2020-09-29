@@ -2,7 +2,7 @@
 	name = "shoulder holster"
 	desc = "A handgun holster."
 	icon_state = "holster"
-	slot = "utility"
+	slot = "holster"
 	concealed_holster = 1
 	var/obj/item/holstered = null
 	var/holster_in = 'sound/weapons/holster/holsterin.ogg'

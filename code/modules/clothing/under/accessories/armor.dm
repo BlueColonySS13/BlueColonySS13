@@ -84,7 +84,7 @@
 	name = "tactical armor plate"
 	desc = "A medium armor plate with additional ablative coating. Attaches to a plate carrier."
 	icon_state = "armor_tactical"
-	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
+	armor = list(melee = 50, bullet = 50, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
 
 /obj/item/clothing/accessory/armor/armorplate/merc
 	name = "heavy armor plate"
@@ -227,9 +227,19 @@
 	icon_state = "ecflag"
 
 /obj/item/clothing/accessory/armor/tag/sec
-	name = "\improper POLICE tag"
-	desc = "An armor tag with the word POLICE printed in silver lettering on it."
+	name = "Security tag"
+	desc = "An armor tag with the word Security printed in silver lettering on it."
 	icon_state = "sectag"
+
+/obj/item/clothing/accessory/armor/tag/police
+	name = "POLICE tag"
+	desc = "An armor tag with the word POLICE printed in gold lettering on it."
+	icon_state = "policetag"
+
+/obj/item/clothing/accessory/armor/tag/swat
+	name = "SWAT tag"
+	desc = "An armor tag with the word SWAT printed in silver lettering on it."
+	icon_state = "swattag"
 
 /obj/item/clothing/accessory/armor/tag/com
 	name = "\improper SCG tag"
