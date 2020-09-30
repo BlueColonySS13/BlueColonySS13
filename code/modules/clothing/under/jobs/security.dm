@@ -182,3 +182,59 @@
 	icon_state = "wardenblueclothes"
 	item_state_slots = list(slot_r_hand_str = "ba_suit", slot_l_hand_str = "ba_suit")
 	rolled_sleeves = 0
+
+//Blue Police Uniforms
+
+/obj/item/clothing/under/rank/wardenalt
+	desc = "a Police Sergeant's uniform, its gold ranks indicate seniroity."
+	name = "police sergeant's uniform"
+	icon_state = "policewardenalt"
+	item_state_slots = list(slot_r_hand_str = "darkblue", slot_l_hand_str = "darkblue")
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.9
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/policeofficeralt
+	desc = "a police officers uniform, donut not included"
+	name = "police officer's uniform"
+	icon_state = "policealt"
+	item_state_slots = list(slot_r_hand_str = "darkblue", slot_l_hand_str = "darkblue")
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.9
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/policecadetalt
+	desc = "a police cadets uniform, donut not included"
+	name = "police cadets's uniform"
+	icon_state = "policecadetalt"
+	item_state_slots = list(slot_r_hand_str = "darkblue", slot_l_hand_str = "darkblue")
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.9
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/policedetectivealt
+	desc = "a police investigator's uniform, zippo not included"
+	name = "police investigator's uniform"
+	icon_state = "policedetectivealt"
+	item_state_slots = list(slot_r_hand_str = "darkblue", slot_l_hand_str = "darkblue")
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.9
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/policetrafficalt
+	desc = "a traffic officer's uniform, orange cone not included"
+	name = "traffic officer's uniform"
+	icon_state = "policetrafficalt"
+	item_state_slots = list(slot_r_hand_str = "darkblue", slot_l_hand_str = "darkblue")
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.9
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/policechiefalt
+	desc = "a police chief's uniform, alcoholism not included"
+	name = "police chief's uniform"
+	icon_state = "policechiefalt"
+	item_state_slots = list(slot_r_hand_str = "darkblue", slot_l_hand_str = "darkblue")
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.9
+	rolled_sleeves = 0

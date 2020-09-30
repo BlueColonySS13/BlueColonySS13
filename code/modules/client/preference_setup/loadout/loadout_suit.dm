@@ -291,6 +291,16 @@
 	path = /obj/item/clothing/suit/storage/forensics/red
 	allowed_roles = list("Detective")
 
+/datum/gear/suit/police/policejacket
+	display_name = "Police Jacket"
+	path = /obj/item/clothing/suit/storage/toggle/policejacket
+	allowed_roles = list("Police Officer", "Chief of Police", "Prison Warden", "Detective")
+
+/datum/gear/suit/police/policehivis
+	display_name = "Police High vis vest"
+	path = /obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen
+	allowed_roles = list("Police Officer", "Chief of Police", "Prison Warden", "Detective")
+
 /datum/gear/suit/wintercoat
 	display_name = "winter coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat
@@ -299,11 +309,6 @@
 	display_name = "winter coat, mayor"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/captain
 	allowed_roles = list("Mayor")
-
-/datum/gear/suit/wintercoat/security
-	display_name = "winter coat, security"
-	path = /obj/item/clothing/suit/storage/hooded/wintercoat/security
-	allowed_roles = list("Police Officer", "Chief of Police", "Prison Warden", "Detective")
 
 /datum/gear/suit/wintercoat/medical
 	display_name = "winter coat, medical"

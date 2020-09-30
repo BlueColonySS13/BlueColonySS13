@@ -55,7 +55,7 @@
 	minimum_character_age = 28
 
 	outfit_type = /decl/hierarchy/outfit/job/security/warden
-	alt_titles = list("Correctional Officer", "Brig Attendant")
+	alt_titles = list("Correctional Officer", "Brig Attendant", "Police Sergeant")
 
 	clean_record_required = TRUE
 
@@ -122,7 +122,7 @@
 	minimum_character_age = 23
 
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
-	alt_titles = list("Police Cadet","Traffic Warden" = /decl/hierarchy/outfit/job/security/traffic)
+	alt_titles = list("Police Cadet" = /decl/hierarchy/outfit/job/security/cadet,"Traffic Warden" = /decl/hierarchy/outfit/job/security/traffic)
 
 	clean_record_required = TRUE
 

@@ -46,30 +46,20 @@
 	path = /obj/item/clothing/head/beret/sec/navy/officer
 	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
 
-/datum/gear/head/beret/bsec_warden
-	display_name = "beret, navy (warden)"
-	path = /obj/item/clothing/head/beret/sec/navy/warden
+/datum/gear/head/beret/seniorpolice
+	display_name = "Senior Police beret"
+	path = /obj/item/clothing/head/beret/policegold
 	allowed_roles = list("Chief of Police","Prison Warden")
 
-/datum/gear/head/beret/bsec_hos
-	display_name = "beret, navy (hos)"
-	path = /obj/item/clothing/head/beret/sec/navy/hos
-	allowed_roles = list("Chief of Police")
-
-/datum/gear/head/beret/csec
-	display_name = "beret, corporate (officer)"
-	path = /obj/item/clothing/head/beret/sec/corporate/officer
+/datum/gear/head/beret/police
+	display_name = "police officer's beret"
+	path = /obj/item/clothing/head/beret/police
 	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
 
-/datum/gear/head/beret/csec_warden
-	display_name = "beret, corporate (warden)"
-	path = /obj/item/clothing/head/beret/sec/corporate/warden
-	allowed_roles = list("Chief of Police","Prison Warden")
-
-/datum/gear/head/beret/csec_hos
-	display_name = "beret, corporate (hos)"
-	path = /obj/item/clothing/head/beret/sec/corporate/hos
-	allowed_roles = list("Chief of Police")
+/datum/gear/head/beret/policedetective
+	display_name = "police investigator's beret"
+	path = /obj/item/clothing/head/beret/policered
+	allowed_roles = list("Detective")
 
 /datum/gear/head/beret/eng
 	display_name = "beret, engie-orange"
@@ -78,11 +68,6 @@
 /datum/gear/head/beret/purp
 	display_name = "beret, purple"
 	path = /obj/item/clothing/head/beret/purple
-
-/datum/gear/head/beret/sec
-	display_name = "beret, red (security)"
-	path = /obj/item/clothing/head/beret/sec
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
 
 /datum/gear/head/cap
 	display_name = "cap, black"
@@ -100,10 +85,35 @@
 	display_name = "cap, brown-flat"
 	path = /obj/item/clothing/head/flatcap
 
-/datum/gear/head/cap/corp
-	display_name = "cap, corporate (Security)"
-	path = /obj/item/clothing/head/soft/sec/corp
+/datum/gear/head/cap/policeofficer
+	display_name = "Police officer's ballcap"
+	path = /obj/item/clothing/head/soft/police
 	allowed_roles = list("Police Officer","Chief of Police","Prison Warden", "Detective")
+
+/datum/gear/head/cap/policecadet
+	display_name = "Police cadet's ballcap"
+	/obj/item/clothing/head/soft/policecadet
+	allowed_roles = list("Police Officer")
+
+/datum/gear/head/cap/policedetective
+	display_name = "Police investigator's ballcap"
+	/obj/item/clothing/head/soft/policedetective
+	allowed_roles = list("Detective")
+
+/datum/gear/head/cap/policedetective
+	display_name = "Police Sergeant's ballcap"
+	/obj/item/clothing/head/soft/policewarden
+	allowed_roles = list("Prison Warden")
+
+/datum/gear/head/cap/policetraffic
+	display_name = "Traffic officer's ballcap"
+	/obj/item/clothing/head/soft/policetraffic
+	allowed_roles = list("Prison Officer")
+
+/datum/gear/head/cap/policechief
+	display_name = "Police Chief's ballcap"
+	/obj/item/clothing/head/soft/policechief
+	allowed_roles = list("Chief of Police")
 
 /datum/gear/head/cap/green
 	display_name = "cap, green"

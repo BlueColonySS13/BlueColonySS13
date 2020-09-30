@@ -174,6 +174,63 @@
 	icon_state = "beret_corporate_hos"
 	item_state_slots = list(slot_r_hand_str = "beret_black", slot_l_hand_str = "beret_black")
 
+//Blue Police Hats
+
+/obj/item/clothing/head/police/policeofficercap
+	name = "police officer's cap"
+	desc = "A blue peaked cap belonging to a police office"
+	icon_state = "policeofficercap"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
+
+/obj/item/clothing/head/police/policecadetcap
+	name = "police cadets's cap"
+	desc = "A blue peaked cap belonging to a police office"
+	icon_state = "policecadetcap"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
+
+/obj/item/clothing/head/police/policewardencap
+	name = "police sergeant's cap"
+	desc = "A blue peaked cap belonging to a senior member of the GCPD"
+	icon_state = "policewardencap"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
+
+/obj/item/clothing/head/police/policechiefcap
+	name = "police chief's cap"
+	desc = "A blue peaked cap adorned with gold belonging to the chief of the GCPD"
+	icon_state = "policechiefcap"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
+
+/obj/item/clothing/head/police/policedetectivecap
+	name = "police investigator's cap"
+	desc = "A blue peaked cap belonging to an investigator"
+	icon_state = "policedetectivecap"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
+
+/obj/item/clothing/head/police/policetrafficcap
+	name = "traffic officer's cap"
+	desc = "A checkered blue peaked cap belonging to a traffic office"
+	icon_state = "policetrafficcap"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
+
+/obj/item/clothing/head/beret/police
+	name = "police officer beret"
+	desc = "A blue beret for an officer of the GCPD"
+	icon_state = "policeberet"
+	item_state_slots = list(slot_r_hand_str = "beret_navy", slot_l_hand_str = "beret_navy")
+
+/obj/item/clothing/head/beret/policegold
+	name = "senior police beret"
+	desc = "A blue beret for an a senior officer of the GCPD"
+	icon_state = "policeberetgold"
+	item_state_slots = list(slot_r_hand_str = "beret_navy", slot_l_hand_str = "beret_navy")
+
+/obj/item/clothing/head/beret/policered
+	name = "police investigator's beret"
+	desc = "A blue beret for an investigator of the GCPD"
+	icon_state = "policeberetred"
+	item_state_slots = list(slot_r_hand_str = "beret_navy", slot_l_hand_str = "beret_navy")
+
+
 //Medical
 /obj/item/clothing/head/surgery
 	name = "surgical cap"
