@@ -24,6 +24,9 @@
 	var/table_drag = FALSE // Can this be click dragged onto a table?
 	var/table_shift = 14	// If dragged onto a table, what's the pixel y of this?
 
+	var/wall_drag = FALSE
+	var/wall_shift = 0	// If dragged onto a wall, what's the pixel y of this?
+
 /obj/Destroy()
 	processing_objects -= src
 	return ..()

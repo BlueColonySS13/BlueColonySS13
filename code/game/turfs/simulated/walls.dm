@@ -317,9 +317,11 @@
 	return TRUE
 
 /turf/simulated/wall/MouseDrop_T(obj/O as obj, mob/user as mob)
-	if(istype(O, /obj/machinery/modular_sign))
-		if(!O.anchored)
-			O.forceMove(get_turf(src))
-			return
+	if(!istype(O) || O.anchored || !O.wall_drag)
+		return
+
+	O.forceMove(get_turf(src))
+	if(O.wall_shift)
+		O.pixel_y = O.wall_shift
 
 	..()
