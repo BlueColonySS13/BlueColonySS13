@@ -1254,6 +1254,8 @@
 	/obj/item/clothing/head/soft/policecadet = 6,
 	/obj/item/clothing/head/soft/policetraffic = 6,
 	/obj/item/clothing/head/beret/police = 6,
+	/obj/item/clothing/suit/armor/pcarrier/medium/police = 6,
+	/obj/item/clothing/head/helmet/police = 6,
 	//obj/item/clothing/suit/storage/hooded/wintercoat/security = 6,
 	/obj/item/clothing/accessory/holster/waist = 6,
 	/obj/item/clothing/accessory/holster/armpit = 6,
@@ -1261,7 +1263,8 @@
 	/obj/item/clothing/accessory/holster/leg = 6,
 	/obj/item/weapon/storage/backpack/security = 6,
 	/obj/item/weapon/storage/backpack/satchel/sec = 6,
-	/obj/item/clothing/suit/storage/toggle/policejacket =6,
+	/obj/item/clothing/suit/storage/toggle/policejacket = 6,
+	/obj/item/clothing/accessory/badge/holo/police = 6,
 
 	)
 
@@ -1283,7 +1286,8 @@
 	/obj/item/weapon/storage/belt/detective = 2,
 	/obj/item/clothing/glasses/sunglasses/sechud = 2,
 	/obj/item/clothing/glasses/sunglasses = 2,
-	/obj/item/clothing/suit/storage/vest/detective = 2,
+	/obj/item/clothing/suit/armor/pcarrier/medium/police = 2,
+	/obj/item/clothing/head/helmet/police =2,
 	/obj/item/clothing/accessory/holster/hip = 6,
 	/obj/item/taperoll/police = 6,
 	/obj/item/device/flashlight/flare = 6,
@@ -2319,10 +2323,10 @@
 /obj/machinery/vending/armory/gcpd/ppe
 	name = "BlastTech Defense Solution PPE Vendor"
 	req_access = list(3)
-	products = list(/obj/item/clothing/head/helmet/combat = 4,
-					/obj/item/clothing/suit/armor/combat = 4,
-					/obj/item/clothing/gloves/arm_guard/combat = 4,
-					/obj/item/clothing/shoes/leg_guard/combat = 4,
+	products = list(//obj/item/clothing/head/helmet/combat = 4,
+					//obj/item/clothing/suit/armor/combat = 4,
+					//obj/item/clothing/gloves/arm_guard/combat = 4,
+					//obj/item/clothing/shoes/leg_guard/combat = 4,
 					/obj/item/clothing/head/helmet/bulletproof = 2,
 					/obj/item/clothing/suit/armor/bulletproof/alt = 2,
 					/obj/item/clothing/gloves/arm_guard/bulletproof = 2,
@@ -2338,7 +2342,9 @@
 					/obj/item/weapon/shield/riot = 4,
 					/obj/item/weapon/melee/baton = 4,
 					/obj/item/clothing/glasses/sunglasses/sechud/tactical = 6,
-					/obj/item/clothing/mask/gas/half = 6
+					/obj/item/clothing/mask/gas/half = 6,
+					/obj/item/clothing/head/helmet/tac = 8,
+					/obj/item/clothing/suit/armor/pcarrier/tan/policetactical = 8,
 					)
 
 
