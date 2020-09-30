@@ -1139,6 +1139,7 @@
 #include "code\game\objects\items\weapons\storage\misc.dm"
 #include "code\game\objects\items\weapons\storage\mre.dm"
 #include "code\game\objects\items\weapons\storage\quickdraw.dm"
+#include "code\game\objects\items\weapons\storage\redemption_box.dm"
 #include "code\game\objects\items\weapons\storage\secure.dm"
 #include "code\game\objects\items\weapons\storage\storage.dm"
 #include "code\game\objects\items\weapons\storage\toolbox.dm"

@@ -49,6 +49,12 @@
 	containertype = /obj/structure/largecrate
 	containername = "Business Sign"
 
+/datum/supply_pack/business/business_money_display
+	contains = list(/obj/machinery/status_display/money_display)
+	name = "Business Money Display"
+	cost = 900
+	containertype = /obj/structure/largecrate
+	containername = "Business Money Display"
 
 /datum/supply_pack/business/mining_starter
 	contains = list(
