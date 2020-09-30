@@ -315,3 +315,19 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Deluxe Cigarettes set"
 	spend_type = SPEND_TOBACCO
+
+/datum/supply_pack/hospitality/bingo_machine
+	name = "Bingo Machine"
+	contains = list(/obj/machinery/bingo_machine)
+	cost = 500
+	containertype = /obj/structure/closet/crate
+	containername = "Bingo Machine"
+	spend_type = SPEND_HOSPITALITY
+
+/datum/supply_pack/hospitality/daubers
+	name = "Bingo Daubers"
+	contains = list(/obj/item/weapon/pen/crayon/marker/red/dauber = 10)
+	cost = 100
+	containertype = /obj/structure/closet/crate
+	containername = "Bingo Daubers"
+	spend_type = SPEND_HOSPITALITY
