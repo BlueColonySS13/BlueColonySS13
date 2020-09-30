@@ -174,8 +174,10 @@ var/list/name_to_material
 	if(islist(composite_material))
 		for(var/material_string in composite_material)
 			temp_matter[material_string] = composite_material[material_string]
-	else if(SHEET_MATERIAL_AMOUNT)
+	#ifdef SHEET_MATERIAL_AMOUNT
+	else
 		temp_matter[name] = SHEET_MATERIAL_AMOUNT
+	#endif
 	return temp_matter
 
 // As above.

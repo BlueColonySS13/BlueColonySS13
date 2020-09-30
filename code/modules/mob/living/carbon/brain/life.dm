@@ -221,7 +221,8 @@
 				reset_view(null)
 
 	return 1
-
+/*
+	// Unreachable code.
 	if (stat != 2)
 		if (machine)
 			if (machine.check_eye(src) < 0)
@@ -229,3 +230,4 @@
 		else
 			if(client && !client.adminobs)
 				reset_view(null)
+*/

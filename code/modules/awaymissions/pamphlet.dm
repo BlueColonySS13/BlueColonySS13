@@ -60,9 +60,9 @@
 		switch(M.insurance_coverage)
 			if(INSURANCE_BASIC)
 				info += "Basic Insurance and above."
-			else if(INSURANCE_INTERMEDIATE)
+			if(INSURANCE_INTERMEDIATE)
 				info += "Intermediate Insurance and above."
-			else if(INSURANCE_HIGH)
+			if(INSURANCE_HIGH)
 				info += "High tier Insurance required."
 			else
 				info += "Not on insurance."
