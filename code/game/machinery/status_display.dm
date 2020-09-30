@@ -63,15 +63,15 @@
 		radio_controller.remove_object(src,frequency)
 	return ..()
 
-/obj/machinery/status_display/attackby(I as obj, user as mob)
-	if(I.is_wrench())
-		playsound(src.loc, P.usesound, 50, 1)
-		if(do_after(user, 20 * P.toolspeed))
+/obj/machinery/status_display/attackby(obj/item/weapon/W, user as mob)
+	if(W.is_wrench())
+		playsound(src.loc, W.usesound, 50, 1)
+		if(do_after(user, 20 * W.toolspeed))
 			anchored = !anchored
 			to_chat(user,"<span class='notice'>You [anchored ? "fasten" : "unfasten"] [src]'s bolts.</span>")
 		return
 
-	if(computer_deconstruction_screwdriver(user, I))
+	if(computer_deconstruction_screwdriver(user, W))
 		return
 	else
 		attack_hand(user)
