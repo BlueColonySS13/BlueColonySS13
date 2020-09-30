@@ -12,7 +12,6 @@
 	name = "Official Party Management"
 	var/index = 0
 	var/page_msg
-	var/
 
 	var/user_uid
 	var/can_login

@@ -255,6 +255,8 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 			ghost.animate_towards(user)
 	return
 
+	// Unreachable code.
+	/*
 	if(burn_state == 1)
 		var/mob/living/carbon/human/H = user
 		if(istype(H))
@@ -269,6 +271,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 				return
 		else
 			extinguish()
+	*/
 
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/weapon/robot_module))

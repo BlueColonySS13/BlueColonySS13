@@ -544,7 +544,6 @@
 				if(e && H.lying)
 					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && (e.splinted in e.contents) && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
 						return 1
-						break
 	return 0
 
 /mob/MouseDrop(mob/M as mob)

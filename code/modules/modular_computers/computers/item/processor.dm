@@ -55,7 +55,6 @@
 /obj/item/modular_computer/processor/New(var/comp)
 	if(!comp || !istype(comp, /obj/machinery/modular_computer))
 		CRASH("Inapropriate type passed to obj/item/modular_computer/processor/New()! Aborting.")
-		return
 	// Obtain reference to machinery computer
 	machinery_computer = comp
 	machinery_computer.cpu = src

@@ -491,6 +491,9 @@
 				overlays += I
 	return
 
+	/*
+	// Unreachable code. Left incase it is needed later.
+
 	// Damage overlays.
 	var/ratio = health / maxhealth
 	ratio = Ceiling(ratio * 4) * 25
@@ -501,6 +504,7 @@
 	overlays += I
 
 	return
+	*/
 
 /obj/structure/window/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > maximal_heat)

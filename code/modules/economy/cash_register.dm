@@ -238,7 +238,7 @@
 					return TRUE
 
 
-				to_chat(usr, "\icon[src]<span class='warning'>Account not found.</span>")
+
 			if("custom_order")
 				var/t_purpose = sanitize(input("Enter purpose", "New purpose") as text)
 				if (!t_purpose || !Adjacent(usr)) return
