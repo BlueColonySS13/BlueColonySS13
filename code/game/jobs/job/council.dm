@@ -105,7 +105,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	supervisors = "the City Clerk"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/secretary
-	wage = 270
+	wage = 100
 	access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
 	minimal_access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
 
@@ -133,7 +133,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/silver/secretary
 	minimal_player_age = 5
-	wage = 170
+	wage = 100
 	minimum_character_age = 25
 	access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_legal)
 	minimal_access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_legal)
