@@ -42,6 +42,80 @@
 
 	unique_save_vars = list("purchase", "anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode")
 
+GLOBAL_LIST_INIT(display_case_icons, list(
+	     "NONE" = "",
+	     "Generic" = "generic",
+	     "Generic 2" =  "generic_buy",
+
+	     "Produce" = "produce",
+	     "Fish" = "fish",
+
+	     "Liberation Station" = "liberationstation",
+	     "Orange Bubbles" = "starkist",
+	     "Theater" = "theater",
+	     "Shamblers" = "shamblers_juice",
+	     "Space Up" = "space_up",
+	     "Games" = "games",
+	     "Snacks - Green" = "snackgreen",
+	     "Snacks - Orange" = "snackorange",
+	     "Snacks - Teal" = "snackteal",
+	     "Cola - Black" = "black cola",
+	     "Cola - Red" = "soda_red",
+	     "Coffee" = "coffee",
+	     "Cigarettes" = "cigs",
+		"Smokes" = "smoke_packet",
+	     "Whiskey" = "whiskey",
+	     "Manhatten" = "manhatten",
+
+
+	     "Artistic" = "artvend",
+	     "Clothing" = "clothes",
+		"Luxury Vendor" = "luxvend",
+		"Laptop" = "laptop",
+		"Toiletries" = "toiletries",
+		"Minerals" = "minerals",
+		"Soda Fox" = "soda_fox",
+		"Snix" = "snix",
+		"Uniforms" = "uniforms",
+		"Japanese" = "weeb",
+		"Gold and Black" =  "gold_black",
+		"PowerGame" =  "power_game",
+		"Cannabis" = "cannabis",
+
+		"Hot Food" = "hot_food",
+		"Burger" = "burger",
+		"Coke" =  "coke",
+		"Fitness" =  "fitness",
+	     "Medicine" = "med",
+	     "Pills" = "pills",
+
+		"Shoes" = "shoes",
+		"Luxury Shoes" = "shoes2",
+		"Shirts" = "shirts",
+		"Coats" = "coats",
+		"Dress" = "dress",
+		"Undershirts" = "undersuits",
+		"Suits" = "suits",
+		"Jeans" = "jeans",
+	     "Boots" = "boots",
+	     "Dye" = "dye",
+	     "Cigars" = "cigars",
+
+		"Jewels" = "jewels",
+		"Paperwork" = "paperwork",
+		"Upholstry" = "upholstry",
+		"Decoration" =  "decor",
+		"Security Supplies" = "security"
+
+
+))
+
+GLOBAL_LIST_INIT(display_case_hacked_icons, list(
+	     "Syndicate" = "syndi",
+
+))
+
+
 /obj/machinery/electronic_display_case/initialize()
 	if(!staff_pin)
 		staff_pin = rand(1111,9999)
@@ -111,135 +185,16 @@
 
 
 /obj/machinery/electronic_display_case/proc/choose_static_icon(mob/user)
-	var/static_icons_list = list("NONE","liberation station", "orange bubbles", "theater", "shamblers", "space up", "games", \
-	"snacks green", "snacks orange", "snacks teal", "coffee", "cigarettes", "medicine", "black cola", "soda red", "art", \
-	"clothes", "generic", "luxvend", "laptop", "toiletries", "minerals", "soda fox", "snix", "uniforms", \
-	"weeb", "gold black", "shoes", "power game", "generic buy", "hot food", "fitness", "shirts", "shoes 2", "coats", \
-	"dress", "undersuits", "suits", "jeans", "boots", "dye", "cigars", "pills", "whiskey", "manhatten", "produce", \
-	"jewels", "paperwork", "decor", "cannabis", "smoke packet", "security", "burger", "coke", "fish")
+	var/static_icons_list = GLOB.display_case_icons
 
 	if(emagged)
-		static_icons_list += "syndi"
+		static_icons_list += GLOB.display_case_hacked_icons
 
 	var/new_icon = input(usr, "Select a new appearance!", "Appearance Morph")  as null|anything in static_icons_list
 	if(!new_icon)
 		return
 
-	switch(new_icon)
-		if("NONE")
-			static_icon = null
-		if("liberation station")
-			static_icon = "liberationstation"
-		if("orange bubbles")
-			static_icon = "starkist"
-		if("theater")
-			static_icon = "theater"
-		if("shamblers")
-			static_icon = "shamblers_juice"
-		if("space up")
-			static_icon = "space_up"
-		if("games")
-			static_icon = "games"
-		if("snacks green")
-			static_icon = "snackgreen"
-		if("snacks orange")
-			static_icon = "snackorange"
-		if("snacks teal")
-			static_icon = "snackteal"
-		if("coffee")
-			static_icon = "coffee"
-		if("cigarettes")
-			static_icon = "cigs"
-		if("medicine")
-			static_icon = "med"
-		if("black cola")
-			static_icon = "cola_black"
-		if("soda red")
-			static_icon = "soda_red"
-		if("art")
-			static_icon = "artvend"
-		if("clothes")
-			static_icon = "clothes"
-		if("generic")
-			static_icon = "generic"
-		if("luxvend")
-			static_icon = "luxvend"
-		if("laptop")
-			static_icon = "laptop"
-		if("toiletries")
-			static_icon = "toiletries"
-		if("minerals")
-			static_icon = "minerals"
-		if("soda fox")
-			static_icon = "soda_fox"
-		if("snix")
-			static_icon = "snix"
-		if("uniforms")
-			static_icon = "uniforms"
-		if("weeb")
-			static_icon = "weeb"
-		if("gold black")
-			static_icon = "gold_black"
-		if("shoes")
-			static_icon = "shoes"
-		if("power game")
-			static_icon = "power_game"
-		if("generic buy")
-			static_icon = "generic_buy"
-		if("syndi")
-			static_icon = "syndi"
-		if("hot food")
-			static_icon = "hot_food"
-		if("fitness")
-			static_icon = "fitness"
-		if("shirts")
-			static_icon = "shirts"
-		if("shoes 2")
-			static_icon = "shoes2"
-		if("coats")
-			static_icon = "coats"
-		if("dress")
-			static_icon = "dress"
-		if("undersuits")
-			static_icon = "undersuits"
-		if("suits")
-			static_icon = "suits"
-		if("jeans")
-			static_icon = "jeans"
-		if("boots")
-			static_icon = "boots"
-		if("dye")
-			static_icon = "dye"
-		if("cigars")
-			static_icon = "cigars"
-		if("pills")
-			static_icon = "pills"
-		if("whiskey")
-			static_icon = "whiskey"
-		if("manhatten")
-			static_icon = "manhatten"
-		if("produce")
-			static_icon = "produce"
-		if("jewels")
-			static_icon = "jewels"
-		if("paperwork")
-			static_icon = "paperwork"
-		if("upholstry")
-			static_icon = "upholstry"
-		if("decor")
-			static_icon = "decor"
-		if("cannabis")
-			static_icon = "cannabis"
-		if("smoke packet")
-			static_icon = "smoke_packet"
-		if("security")
-			static_icon = "security"
-		if("burger")
-			static_icon = "burger"
-		if("coke")
-			static_icon = "coke"
-		if("fish")
-			static_icon = "fish"
+	static_icon = static_icons_list[new_icon]
 
 	visible_message("<span class='info'>[src] morphs into a new appearance!</span>")
 	playsound(user, 'sound/machines/click.ogg', 20, 1)
