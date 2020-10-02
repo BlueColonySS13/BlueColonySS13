@@ -36,13 +36,13 @@ var/global/list/medical_bills = list()
 /datum/medical_bill/basic_treatment_vend
 	name = "NanoMed Vended Items"
 	description = "Items vended from NanoMed Plus."
-	cost = 150
+	cost = 100
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/basic_treatment_iv
 	name = "IV Drip"
 	description = "Use of IV drip to restore patient blood."
-	cost = 250
+	cost = 200
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/machinery
@@ -102,13 +102,13 @@ var/global/list/medical_bills = list()
 /datum/medical_bill/miscellaneous_stasis
 	name = "Stasis Bag"
 	description = "Use of stasis bag to transport an individual."
-	cost = 150
+	cost = 100
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/defib
 	name = "Defibrillator"
 	description = "Use of Defibrillator to revive."
-	cost = 250
+	cost = 100
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/genetics_treatment
