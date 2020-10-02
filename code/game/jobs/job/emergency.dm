@@ -13,7 +13,7 @@
 	idtype = /obj/item/weapon/card/id/engineering/head
 	req_admin_notify = 1
 
-	wage = 330
+	wage = 350
 
 	minimum_character_age = 25
 	ideal_character_age = 50
