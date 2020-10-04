@@ -7,7 +7,7 @@
 	cell_time = 30
 	fine = 100
 
-	notes = "Remember that it has to be violent to quality - this usually includes resisting cuffs, \
+	notes = "This usually includes resisting cuffs, \
 	this does not qualify if no harm was caused to officers. If this suspect has harmed people, please see \
 	Violently Resisting Arrest instead of using this charge."
 	
@@ -131,4 +131,4 @@
 
 	notes = "Remember that it has to be violent to qualify. \
 	This refers to a form of battery that occurs to police officers during an arrest, it includes pushing, disarming or fighting law enforcement \
-	officers during a lawful arrest."
+	officers during a lawful arrest. See Resisting Arrest if no physical harm came to officers or other people."
