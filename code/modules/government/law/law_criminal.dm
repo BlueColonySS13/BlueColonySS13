@@ -228,6 +228,8 @@
 	name = "Contempt of Court"
 	description = "To be disrespectful towards the Court of law, in the form of \
 	behaviour that defies the authority, justice and dignity of the Court."
+	
+	notes = "Only applies in within court."
 
 	fine = 1000
 	cell_time = 20
@@ -254,3 +256,13 @@
     evidence 
     fine = 3000
     cell_time = 25
+    
+/datum/law/criminal/resisting
+	name = "Resisting Arrest"
+	description = "To resist a lawful arrest in a non-violent manner."
+	cell_time = 30
+	fine = 100
+
+	notes = "This usually includes resisting cuffs, \
+	this does not qualify if no harm was caused to officers. If this suspect has harmed people, please see \
+	Violently Resisting Arrest instead of using this charge."
