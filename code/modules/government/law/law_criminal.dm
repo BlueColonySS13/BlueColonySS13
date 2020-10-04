@@ -253,7 +253,7 @@
     notes = "For a business owner to be charged with this, there needs to be evidence that they were aware this was taking place. Business owners who are \
     aware of this occuring due to technical errors or employee misconduct are required to notify authorities as soon as possible and refund the tax losses \
     to prevent prosecution."
-    evidence 
+    
     fine = 3000
     cell_time = 25
     
