@@ -49,8 +49,39 @@ GLOBAL_LIST_INIT(display_case_icons, list(
 
 	     "Produce" = "produce",
 	     "Fish" = "fish",
+	     "Meat" = "meat",
+
+	     "Sale - Orange" = "sale_orange",
+	     "Sale - Green" = "sale_green",
+	     "Sale - Blue" = "sale_blue",
+
+	     "Skateboards" = "skateboard",
+
+	     "Secure" = "secure",
+	     "Snacks" = "snacks",
+	     "Free" = "free",
+	     "News" = "news",
+
 
 	     "Liberation Station" = "liberationstation",
+	     "Guns" = "guns",
+	     "Armor" = "armor",
+	     "Ammo" = "ammo",
+
+	     "Rings" = "rings",
+
+	     "Valentines" = "valentines",
+	     "Halloween" = "halloween",
+	     "Christmas" = "christmas",
+	     "Easter" = "easter",
+
+	     "Machine Parts" = "machine_parts",
+	     "Zeus Charges" = "zeus_charges",
+	     "Stock Parts" = "stock_parts",
+
+	     "Metals" = "metal_sheets",
+	     "Glasses" = "glass_sheets",
+
 	     "Orange Bubbles" = "starkist",
 	     "Theater" = "theater",
 	     "Shamblers" = "shamblers_juice",
@@ -100,19 +131,22 @@ GLOBAL_LIST_INIT(display_case_icons, list(
 	     "Boots" = "boots",
 	     "Dye" = "dye",
 	     "Cigars" = "cigars",
+	     "Accessories" = "accessories",
 
 		"Jewels" = "jewels",
 		"Paperwork" = "paperwork",
 		"Upholstry" = "upholstry",
 		"Decoration" =  "decor",
-		"Security Supplies" = "security"
+		"Security Supplies" = "security",
 
 
 ))
 
 GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 	     "Syndicate" = "syndi",
-
+		"Nanotrasen" =  "nanotrasen",
+		"SolGov" = "solgov",
+		"AndroGov" =  "androgov"
 ))
 
 
