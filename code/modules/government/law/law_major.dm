@@ -1,5 +1,14 @@
 ///////// MAJOR LAWS //////////
 
+/datum/law/major/violently_resisting_arrest
+	name = "Violently Resisting Arrest"
+	description = "To violently resist a lawful arrest in a manner that causes harm to people."
+	cell_time = 30
+	fine = 800
+
+	notes = "Remember that it has to be violent to qualify. \
+	This refers to a form of battery that occurs to police officers during an arrest, it includes pushing, disarming or fighting law enforcement \
+	officers during a lawful arrest. Use Resisting Arrest instead if no physical harm came to officers or other people."
 	
 /datum/law/major/assault
 	name = "Assault"
@@ -113,12 +122,4 @@
 
 	fine = 20000
 
-/datum/law/major/violently_resisting_arrest
-	name = "Violently Resisting Arrest"
-	description = "To violently resist a lawful arrest in a manner that causes harm to people."
-	cell_time = 30
-	fine = 800
 
-	notes = "Remember that it has to be violent to qualify. \
-	This refers to a form of battery that occurs to police officers during an arrest, it includes pushing, disarming or fighting law enforcement \
-	officers during a lawful arrest. Use Resisting Arrest instead if no physical harm came to officers or other people."
