@@ -4,7 +4,7 @@
 	name = "Fleeing & Eluding"
 	description = "To non-violently flee from or elude a lawful arrest."
 
-	fine = 1000
+	fine = 500
 	cell_time = 6
 
 	notes = "Running, hiding and other nonviolent forms of resisting arrest \
@@ -17,7 +17,7 @@
 	name = "Disorderly Conduct"
 	description = "To act in a way that creates public disturbance or nuisance."
 
-	fine = 1000
+	fine = 800
 	cell_time = 5
 
 	notes = "A catch all charge for minor crimes such as littering, \
@@ -30,15 +30,14 @@
 	name = "Procedure Violation (Green)"
 	description = "When the code green procedure is not respected."
 
-	fine = 1500
+	fine = 500
 	cell_time = 20
-
-
+	
 /datum/law/criminal/property
 	name = "Property Damage"
 	description = "To damage or destroy public or private property."
 
-	fine = 1500
+	fine = 2500
 	cell_time = 20
 
 	notes = "A step up from vandalism, this covers any actual damage done to the \
@@ -47,25 +46,22 @@
 
 /datum/law/criminal/dead
 	name = "Disrespect to the Dead"
-	description = "To abuse or desecrate a corpse."
+	description = "To abuse or desecrate a corpse. This also includes digging up graves or removing grave markers."
 
 	fine = 2000
 	cell_time = 25
-
 
 /datum/law/criminal/animal
 	name = "Animal Cruelty"
 	description = "To willingly and knowingly cause unnecessary death or suffering of an animal."
 
-	fine = 1500
+	fine = 1800
 	cell_time = 8
 
 	notes = "This charge applies only to unnecessary harm and death. People that kill animals \
 	as part of their usual duties (like the chef or the janitor) or those that have sufficient \
-	reason to kill (dispatching rodents or protecting a life) should not be charged with this \
-	as long as their means of dispatching animals is fairly humane."
-
-
+	reason to kill (dispatching rodents, space carp, or protecting their life or another's against a hostile animal) should not be charged with this \
+	as long as their means of dispatching animals is fairly humane or necessary due to circumstances."
 
 /datum/law/criminal/violation
 	name = "Violation of Privacy Laws"
@@ -75,9 +71,9 @@
 	cell_time = 15
 
 	notes = "Your personal records (security, medical and employment), confidential \
-	information passed toyour doctor or lawyer as well as your identification card, \
+	information passed to your doctor or lawyer as well as your identification card, \
 	personal items and property are protected by the Polluxian privacy laws. \
-	Spreading such information without your approval,neglecting to properly \
+	Spreading such information without your approval, neglecting to properly \
 	secure it falls under this charge as well as unauthorized searches of \
 	your personal property. In addition, so does spying on you through a non-governmental camera console. \
 	If a police officer is the offender, refer to Abuse of Police Powers."
@@ -104,12 +100,10 @@
 	is also considered theft even if you normally have access to them. For example \
 	a doctor bagging all the aid kits from the hospital storage would be committing a crime."
 
-
-
 /datum/law/criminal/traffic
 	name = "General Traffic Violation"
 	description = "To disregard traffic safety guidelines."
-	fine = 2000
+	fine = 50
 	cell_time = 30
 
 	notes = "Speeding, driving on the opposite side of the road, blowing red lights, \
@@ -130,7 +124,7 @@
 	name = "Failure to Produce Identification"
 	description = "To fail to present a valid form of identification upon a lawful request a \
 	representative of local or federal authorities."
-	fine = 1250
+	fine = 250
 	cell_time = 5
 
 	notes = "An officer asking you to produce your identification should provide a \
@@ -234,6 +228,8 @@
 	name = "Contempt of Court"
 	description = "To be disrespectful towards the Court of law, in the form of \
 	behaviour that defies the authority, justice and dignity of the Court."
+	
+	notes = "Only applies in within court."
 
 	fine = 1000
 	cell_time = 20
@@ -243,4 +239,30 @@
 	description = "To engage in speech that causes an environment of panic or danger regarding a group of citizens, including calling for violence against them."
 
 	fine = 2000
-	notes = "This law covers speech against vatborns, immigrants, and political ideologies, but does not qualify for non-citizens, such as synthetics, or organizations."
+	notes = "This law only covers discriminatory language that is designed to incite violence towards innate traits that are protected. \
+	This covers star system nationality or origin, baseline vatborns, any social background, people who have full prosethetic bodies or \
+	robotic limbs, but does not qualify for non-humans, such as synthetics or robots."
+	
+/datum/law/criminal/tax_evasion
+    name = "Tax Evasion"
+    description = "To delibrately evade tax where it usually applies through electronic and non-electronic mediums. \
+    For manual tax evasion, a form of this is not declaring income or manually paying tax where it is due. \
+    This includes avoiding income tax, business tax, all taxes relating to sales or property without an approved government tax break. If it does not \
+    apply to taxes, see Fraud and Embezzlement."
+
+    notes = "For a business owner to be charged with this, there needs to be evidence that they were aware this was taking place. Business owners who are \
+    aware of this occuring due to technical errors or employee misconduct are required to notify authorities as soon as possible and refund the tax losses \
+    to prevent prosecution."
+    
+    fine = 3000
+    cell_time = 25
+    
+/datum/law/criminal/resisting
+	name = "Resisting Arrest"
+	description = "To resist a lawful arrest in a non-violent manner."
+	cell_time = 30
+	fine = 100
+
+	notes = "This usually includes resisting cuffs, \
+	this does not qualify if no harm was caused to officers. If this suspect has harmed people, please see \
+	Violently Resisting Arrest instead of using this charge."

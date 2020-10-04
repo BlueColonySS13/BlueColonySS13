@@ -159,6 +159,9 @@
 /obj/machinery/cash_register/proc/get_custom_menu()
 	var/dat
 	if(menu_items == LAW)
+		dat += "Government protocol now allows former convicts to have misdemeanor and criminal offenses paid off from their record by doubling original fine amount \
+		 - major crimes are exempt. To be eligible they must have written permission from a Judge or Chief of Police showing they \
+		have had good behaviour and no criminal offenses in the last 30 days. A note is left by a judge or prosecutor detailing which crimes are removed.<br><br>"
 		for(var/datum/law/L in presidential_laws)
 			if(L.fine)
 				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[L]'>([L.id]) [L.name]</a><br>"

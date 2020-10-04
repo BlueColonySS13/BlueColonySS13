@@ -134,11 +134,13 @@ var/global/list/medical_bills = list()
 /datum/medical_bill/group_therapy
 	name = "Group Therapy Session"
 	description = "To be charged per one person in a group therapy session."
-	cost = 60
+	cost = 100
+  
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/psych_permit_eval
 	name = "Psych Permit Evaluation"
 	description = "An evaluation to determine if the holder is suitable to hold a gun permit or to check up frequently if they are still eligible for one."
-	cost = 250
+
+	cost = 400
 	insurance_coverage = INSURANCE_BASIC
