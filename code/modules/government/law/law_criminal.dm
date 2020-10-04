@@ -60,7 +60,7 @@
 
 	notes = "This charge applies only to unnecessary harm and death. People that kill animals \
 	as part of their usual duties (like the chef or the janitor) or those that have sufficient \
-	reason to kill (dispatching rodents, space carp, or protecting their life or another's against a hostile anime) should not be charged with this \
+	reason to kill (dispatching rodents, space carp, or protecting their life or another's against a hostile animal) should not be charged with this \
 	as long as their means of dispatching animals is fairly humane or necessary due to circumstances."
 
 /datum/law/criminal/violation
@@ -240,3 +240,17 @@
 	notes = "This law only covers discriminatory language that is designed to incite violence towards innate traits that are protected. \
 	This covers star system nationality or origin, baseline vatborns, any social background, people who have full prosethetic bodies or \
 	robotic limbs, but does not qualify for non-humans, such as synthetics or robots."
+	
+/datum/law/criminal/tax_evasion
+    name = "Tax Evasion"
+    description = "To delibrately evade tax where it usually applies through electronic and non-electronic mediums. \
+    For manual tax evasion, a form of this is not declaring income or manually paying tax where it is due. \
+    This includes avoiding income tax, business tax, all taxes relating to sales or property without an approved government tax break. If it does not \
+    apply to taxes, see Fraud and Embezzlement."
+
+    notes = "For a business owner to be charged with this, there needs to be evidence that they were aware this was taking place. Business owners who are \
+    aware of this occuring due to technical errors or employee misconduct are required to notify authorities as soon as possible and refund the tax losses \
+    to prevent prosecution."
+    evidence 
+    fine = 3000
+    cell_time = 25
