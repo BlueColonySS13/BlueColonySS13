@@ -1,21 +1,21 @@
 ///////// MAJOR LAWS //////////
 
+
 /datum/law/major/resisting
 	name = "Resisting Arrest"
-	description = "To violently resist a lawful arrest."
+	description = "To resist a lawful arrest."
 	cell_time = 30
-	fine = 4000
+	fine = 100
 
-	notes = "Remember that it has to be violent to qualify. \
-	Resisting cuffs, pushing, disarming or fighting law enforcement \
-	officers during a lawful arrest can be considered resisting arrest."
-
-
+	notes = "Remember that it has to be violent to quality - this usually includes resisting cuffs, \
+	this does not qualify if no harm was caused to officers. If this suspect has harmed people, please see \
+	Violently Resisting Arrest instead of using this charge."
+	
 /datum/law/major/assault
 	name = "Assault"
 	description = "To inflict injuries to another person."
 	cell_time = 20
-	fine = 5500
+	fine = 4500
 
 	notes = "Grabbing, pinning, hitting someone with no weapon, inflicting injuries \
 	as well as attacking someone with a non-lethal weapon or drugging someone \
@@ -26,9 +26,8 @@
 	name = "Aggravated Assault"
 	description = "To inflict serious injuries to another person or use a deadly weapon against another person."
 	cell_time = 30
-	fine = 6500
-
-
+	fine = 4500
+	
 	notes = "Injuries can be generally considered serious if they require specialized medical \
 	care to treat them. Any object capable of inflicting deadly wounds is considered a weapon \
 	in this case. Guns, knives, improperly used stunbatons are considered a deadly weapon as \
@@ -39,7 +38,8 @@
 	description = "To cause a death of a person with no malicious intent or premeditation."
 
 	notes = "The lack of malicious intent turns murder into manslaughter, be it death caused due to \
-	unfortunate accident, carelessness or excessive self-defense."
+	unfortunate accident, carelessness or excessive self-defense. To quality as manslaughter, it has to be \
+	considered a preventable incident."
 
 	cell_time = 60
 	fine = 8000
@@ -103,7 +103,7 @@
 /datum/law/major/elec_fraud
 	name = "Electoral Fraud"
 	description = "Coercing voters via bribery or blackmail, to ensure \
-	they vote in the offender's interest."
+	they vote in the offender's interest. This covers official petitions to government, electoral voting, and no-confidence voting."
 
 	fine = 50000
 	cell_time = 43710
@@ -122,3 +122,13 @@
 	in the form of money, arms, housing, refuge, medical care, and other forms of assistance."
 
 	fine = 20000
+
+/datum/law/major/violent_resisting_arrest
+	name = "Violent Resisting Arrest"
+	description = "To violently resist a lawful arrest in a manner that causes harm to people."
+	cell_time = 30
+	fine = 800
+
+	notes = "Remember that it has to be violent to qualify. \
+	This refers to a form of battery that occurs to police officers during an arrest, it includes pushing, disarming or fighting law enforcement \
+	officers during a lawful arrest."
