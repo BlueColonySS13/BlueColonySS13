@@ -19,7 +19,7 @@
 	initial_spawn_req = 2
 	initial_spawn_target = 4
 	hard_cap = 8
-	police_per_antag = 3
+	police_per_antag = 2
 	minimum_player_age = 1
 
 	//Thugs get their own universal outfit, each round.
