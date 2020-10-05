@@ -101,7 +101,7 @@
 /obj/item/weapon/ore/rutile
 	name = "rutile"
 	icon_state = "ore_rutile"
-	material = "rutile"
+	material = "titanium"
 
 /obj/item/weapon/ore/void_opal
 	name = "raw void opal"
