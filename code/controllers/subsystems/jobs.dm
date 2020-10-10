@@ -789,10 +789,10 @@ SUBSYSTEM_DEF(jobs)
 			var/obj/item/clothing/accessory/permit/drone/permit = new/obj/item/clothing/accessory/permit/drone(get_turf(H))
 			permit.set_name(H.real_name)
 			H.equip_to_slot_or_del(permit, slot_in_backpack)
-/*		if(FBP_POSI) //Uncomment this when synths are mandated to have identification cards
+		if(FBP_POSI)
 			var/obj/item/clothing/accessory/permit/synth/permit = new/obj/item/clothing/accessory/permit/synth(get_turf(H))
 			permit.set_name(H.real_name)
-			H.equip_to_slot_or_del(permit, slot_in_backpack)	*/
+			H.equip_to_slot_or_del(permit, slot_in_backpack)
 
 
 
