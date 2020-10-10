@@ -795,7 +795,6 @@ SUBSYSTEM_DEF(jobs)
 			H.equip_to_slot_or_del(permit, slot_in_backpack)
 
 
-
 /datum/controller/subsystem/jobs/proc/get_active_police()
 
 	var/active_popo = 0
