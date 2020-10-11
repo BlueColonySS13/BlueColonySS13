@@ -1,5 +1,15 @@
 //This'll be used for gun permits, such as for heads of staff, antags, and bartenders
 
+// this  can be expanded
+GLOBAL_LIST_INIT(permit_types, list(
+	"Weapons Permit - Tier 0" = /obj/item/clothing/accessory/permit/gun,
+	"Weapons Permit - Tier 1" = /obj/item/clothing/accessory/permit/gun/tier_one,
+	"Weapons Permit - Tier 2" = /obj/item/clothing/accessory/permit/gun/tier_two,
+	"Weapons Permit - Tier 3" = /obj/item/clothing/accessory/permit/gun/tier_three,
+	"Weapons Permit - Tier 4" = /obj/item/clothing/accessory/permit/gun/tier_four,
+	"Weapons Permit - Tier 5" = /obj/item/clothing/accessory/permit/gun/tier_five,
+))
+
 /obj/item/clothing/accessory/permit
 	name = "permit"
 	desc = "A permit for something."

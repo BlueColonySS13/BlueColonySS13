@@ -35,12 +35,17 @@
 
 	//other
 	var/obj/currently_vending
+
 	var/maint_mode = FALSE
 	var/atmpt_maint_mode = FALSE
 
 	var/max_items = 60
 
-	unique_save_vars = list("purchase", "anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode")
+	unique_save_vars = list("purchase", "required_permit", "anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode")
+
+	// permit stuff
+	var/requesting_permit = FALSE
+	var/required_permit = null
 
 GLOBAL_LIST_INIT(display_case_icons, list(
 	     "NONE" = "",
@@ -61,7 +66,6 @@ GLOBAL_LIST_INIT(display_case_icons, list(
 	     "Snacks" = "snacks",
 	     "Free" = "free",
 	     "News" = "news",
-
 
 	     "Liberation Station" = "liberationstation",
 	     "Guns" = "guns",
@@ -132,14 +136,14 @@ GLOBAL_LIST_INIT(display_case_icons, list(
 	     "Dye" = "dye",
 	     "Cigars" = "cigars",
 	     "Accessories" = "accessories",
+	     "Hats" = "hats",
 
 		"Jewels" = "jewels",
 		"Paperwork" = "paperwork",
 		"Upholstry" = "upholstry",
 		"Decoration" =  "decor",
 		"Security Supplies" = "security",
-
-
+		"Devices" = "devices"
 ))
 
 GLOBAL_LIST_INIT(display_case_hacked_icons, list(
@@ -179,6 +183,10 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 	else
 		to_chat(user, "<b>It is firmly anchored to the floor.</b>")
 
+	if(required_permit)
+		var/atom/tmp = required_permit
+		var/permit_name = initial(tmp.name)
+		to_chat(user, "<b>You need a [permit_name] to buy things from this vendor.</b>")
 
 
 /obj/machinery/electronic_display_case/emag_act(var/remaining_charges, var/mob/user)
@@ -268,6 +276,14 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 		dat += "Please swipe your ID to claim ownership of this machine.<br>"
 		return dat
 
+	if(requesting_permit)
+		var/atom/tmp = required_permit
+		var/permit_name = initial(tmp.name)
+		dat += "Please swipe your [permit_name] to proceed to the purchase menu.<br>"
+
+		dat += "<a href='?src=\ref[src];cancel=1'>Cancel &#8617</a>"
+
+		return dat
 
 	if(atmpt_maint_mode)
 		dat += "Please swipe the initial ID you used to register this machine, or enter a staff pin code.<br>"
@@ -334,12 +350,17 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 			dat += "<a href='?src=\ref[src];choice=remove_item;item=\ref[O]'>Remove</a> <a href='?src=\ref[src];choice=reprice_item;item=\ref[O]'>Change Price</a> <b>[O.name]</b> - [cash2text( O.get_item_cost(), FALSE, TRUE, TRUE )] \
 			(Adds [cash2text( O.post_tax_cost(), FALSE, TRUE, TRUE )] tax)"
 			dat += "<br>"
+		var/permit_name = null
+		if(required_permit)
+			var/atom/tmp = required_permit
+			permit_name = initial(tmp.name)
 		dat += "</div><br>"
 		dat += "<a href='?src=\ref[src];change_pin=1'>Change Staff Pin</a> "
 		dat += "<a href='?src=\ref[src];edit_name=1'>Edit Name</a> "
 		dat += "<a href='?src=\ref[src];edit_owner_message=1'>Edit Owner Message</a> "
 		dat += "<a href='?src=\ref[src];edit_bank=1'>Update Bank Details</a> "
 		dat += "<a href='?src=\ref[src];toggle_anchor=1'>Toggle Anchors</a> "
+		dat += "<a href='?src=\ref[src];permit_requirements=1'>Permit Requirement: [required_permit ? permit_name : "None"]</a> "
 		dat += "<a href='?src=\ref[src];change_appearance=1'>Change Appearance</a> "
 		dat += "<a href='?src=\ref[src];toggle_buy=1'>Toggle Buy Mode</a> "
 		dat += "<a href='?src=\ref[src];reset_owner=1'>Reset Ownership</a> "
@@ -356,6 +377,9 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 	playsound(src, 'sound/machines/chime.ogg', 25)
 
 /obj/machinery/electronic_display_case/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if(!W)
+		return
+
 	var/obj/item/weapon/card/id/I = W.GetID()
 
 	if(!owner_uid && I)
@@ -370,6 +394,13 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 			maint_mode = TRUE
 			update_icon()
 			updateDialog()
+		return
+
+	if(requesting_permit && required_permit)
+		if(istype(W, required_permit))
+			requesting_permit = FALSE
+			updateDialog()
+			to_chat(user, "<span class='info'>Permit recognised!</span>")
 		return
 
 	if(currently_vending)
@@ -563,6 +594,7 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 		currently_vending = null
 		maint_mode = FALSE
 		atmpt_maint_mode = FALSE
+		requesting_permit = null
 		update_icon()
 
 	if(href_list["maint_mode"])
@@ -652,6 +684,23 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 		else
 			to_chat(usr, "<b>You toggle the anchors of the display case. It can now be moved.</b>")
 
+	if(href_list["permit_requirements"])
+		if(!maint_mode)
+			return
+
+		var/list/all_permits = list("NONE")
+
+		all_permits += GLOB.permit_types
+
+		var/new_permit = input(usr, "Select a required permit type", "Appearance Morph")  as null|anything in all_permits
+		if(!new_permit)
+			return
+
+		if(new_permit == "NONE")
+			required_permit = null
+		else
+			required_permit = GLOB.permit_types[new_permit]
+
 
 	if(href_list["change_appearance"])
 		if(!maint_mode)
@@ -693,10 +742,14 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 
 				var/obj/O = item
 
-				if(!O.get_item_cost())
-					vend(O, usr)
-				else
+				if(required_permit)
+					requesting_permit = TRUE
 					currently_vending = O
+				else
+					if(!O.get_item_cost())
+						vend(O, usr)
+					else
+						currently_vending = O
 
 			if("remove_item")
 				var/item = locate(href_list["item"])
