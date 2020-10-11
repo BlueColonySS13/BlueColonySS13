@@ -115,7 +115,7 @@
 			label = "Active Jobs"
 			dat += "<BR>Active Jobs | <a href='byond://?src=\ref[src];SelectDeptType=PUBLIC'>Public Sector Jobs</a>"
 			dat += " | <a href='byond://?src=\ref[src];SelectDeptType=PRIVATE'>Private Sector Jobs</a>"
-			dat += "<BR>This is a list of all available jobs that you can join. See the public and private tabs to filter."
+			dat += "<BR>This is a list of all available jobs that you can join, feel free to play as one. See the public and private tabs to filter."
 		if("PUBLIC")
 			job_departments += shuffle(SSeconomy.get_all_nonbusiness_departments())
 			label = "Public Sector"

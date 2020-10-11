@@ -1,0 +1,58 @@
+[h2]Food Stamps Application Form[/h2]
+[hr]
+[small][center][b]Criteria:[/b][/center]
+[list][*]Must actively be looking for employment.
+[*]Must have less than [b]300CR[/b] total in their bank account (business account, if in ownership of one) combined. Property worth (by original value) is also factored in.
+[*]Wage of current job or role must not exceed [b]25CR[/b] before tax.
+[*]Candidate cannot have previous convictions relating to food stamps fraud.
+[*]Only one physical food stamp per day. Even in cases of reported theft or damage food stamps cannot be replaced unless evidence is confirmed by the police.
+[*] Each food stamp card will have a maximum of three meals for redemption.
+[*] Only City Hall staff members can distribute food stamps.
+[*] Food stamps may not be given to any business or organisation without express written permission from the President.
+[/list]
+[center][large][b]Application[/b][/large][/center]
+
+[table][row][cell]
+
+[b]Current Job (N/A for None):[/b] 
+[field]
+
+[b]Jobs Applied For This Week:[/b]
+[field]
+
+[b]Current Bank Account Balance:[/b] 
+[field]
+
+[b]Business Account Balance (N/A for None):[/b] 
+[field]
+
+[b]Total Net Worth of Owned Properties/Lots (N/A for None):[/b] 
+[field]
+
+[b]Are there any other sources of income? (N/A for None):[/b]
+[field]
+
+[b]I, the applicant, agree that by signing this form I confirm that the information provided above is true to the best of my knowledge.[/b]
+(Please Sign Below.)
+
+[b]Applicant Signature:[/b] 
+[field]
+
+
+[/table]
+
+
+
+[hr]
+
+[b]City Hall Staff Use Only:[/b]
+(Cross the boxes that apply.)
+Applicant Meets Critera [[field]]
+
+[b]Attached Files:[/b]
+Bank Balance [[field]] | Business Balance [[field]] (If Applicable) | Organisation Usage Permission [[field]] (If Applicable)
+
+[b]Staff Signature: [/b]
+[field]
+
+[/small]

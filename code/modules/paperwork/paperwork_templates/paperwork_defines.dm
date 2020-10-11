@@ -2,14 +2,14 @@
 // LEGAL PAPERWORK
 
 /datum/paperwork_template/crim_rep
-	name = "Lawyer: Criminal Representation Form"
-	title = "Criminal Representation Form"
+	name = "Lawyer: Civil Representation Form"
+	title = "Civil Representation Form"
 	categories = list(PAPERWORK_LEGAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/legal/civrepform.txt'
 
 /datum/paperwork_template/civ_rep
-	name = "Lawyer: Civil Representation Form"
-	title = "Civil Representation Form"
+	name = "Lawyer: Criminal Representation Form"
+	title = "Criminal Representation Form"
 	categories = list(PAPERWORK_LEGAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/legal/crimrepform.txt'
 
@@ -107,6 +107,12 @@
 	categories = list(PAPERWORK_COUNCIL)
 	file_source = 'code/modules/paperwork/paperwork_templates/council/replacementcard.txt'
 
+/datum/paperwork_template/foodstamps
+	name = "City Clerk: Food Stamps Form"
+	title = "Food Stamps Form"
+	categories = list(PAPERWORK_COUNCIL)
+	file_source = 'code/modules/paperwork/paperwork_templates/council/foodstamps.txt'
+
 /datum/paperwork_template/ordinance
 	name = "Mayor: City Ordinance Form"
 	title = "City Ordinance Form"
@@ -124,6 +130,8 @@
 	title = "Courtroom Rules"
 	categories = list(PAPERWORK_GOVERNMENT)
 	file_source = 'code/modules/paperwork/paperwork_templates/council/courtrules.txt'
+
+
 
 // MEDICAL
 
