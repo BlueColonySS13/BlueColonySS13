@@ -109,7 +109,7 @@
 
 /obj/item/organ/internal/mmi_holder/robot/update_from_mmi()
 	..()
-	if(!stored_mmi | !stored_mmi.brainmob)
+	if(!stored_mmi || !stored_mmi.brainmob || !owner)
 		return
 	stored_mmi.icon_state = "mainboard"
 	icon_state = stored_mmi.icon_state
