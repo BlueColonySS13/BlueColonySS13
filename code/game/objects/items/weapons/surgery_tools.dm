@@ -107,14 +107,14 @@
  * Researchable Scalpels
  */
 /obj/item/weapon/surgical/scalpel/laser1
-	name = "laser scalpel"
+	name = "improved laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks basic and could be improved."
 	icon_state = "scalpel_laser1_on"
 	damtype = "fire"
 	hitsound = 'sound/weapons/saw/circsawhit.ogg'
 
 /obj/item/weapon/surgical/scalpel/laser2
-	name = "laser scalpel"
+	name = "advanced laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks somewhat advanced."
 	icon_state = "scalpel_laser2_on"
 	damtype = "fire"
@@ -122,7 +122,7 @@
 	drop_sound = 'sound/items/drop/accessory.ogg'
 
 /obj/item/weapon/surgical/scalpel/laser3
-	name = "laser scalpel"
+	name = "superior laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks to be the pinnacle of precision energy cutlery!"
 	icon_state = "scalpel_laser3_on"
 	damtype = "fire"
