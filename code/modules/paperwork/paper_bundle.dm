@@ -24,7 +24,8 @@
 	for(var/obj/O in src)
 		pages.Add(O)
 
-	update_icon()
+	if(LAZYLEN(pages))
+		update_icon()
 
 /obj/item/weapon/paper_bundle/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
