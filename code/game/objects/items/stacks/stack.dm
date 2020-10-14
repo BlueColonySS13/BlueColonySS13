@@ -72,7 +72,7 @@
 /obj/item/stack/examine(mob/user)
 	if(..(user, 1))
 		if(!uses_charge)
-			user << "There are [src.amount] [src.singular_name] in the stack."
+			user << "There are [src.amount] [src.singular_name]\s in the stack."
 		else
 			user << "There is enough charge for [get_amount()]."
 
@@ -113,7 +113,7 @@
 				title+= "[R.res_amount]x [R.title]\s"
 			else
 				title+= "[R.title]"
-			title+= " ([R.req_amount] [src.singular_name])"
+			title+= " ([R.req_amount] [src.singular_name])\s"
 			if (can_build)
 				t1 += text("<A href='?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
 			else
@@ -354,7 +354,7 @@
 			continue
 		var/transfer = src.transfer_to(item)
 		if (transfer)
-			user << "<span class='notice'>You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name].</span>"
+			user << "<span class='notice'>You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.</span>"
 		if(!amount)
 			break
 
