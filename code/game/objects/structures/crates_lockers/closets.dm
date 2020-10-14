@@ -26,9 +26,6 @@
 	unique_save_vars = list("opened","welded", "health", "density")
 
 /obj/structure/closet/on_persistence_load()
-	if(opened)
-		density = 0
-
 	update_icon()
 
 /obj/structure/closet/initialize()
