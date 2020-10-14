@@ -290,7 +290,7 @@
 	maptext_height = 26
 	maptext_width = 62
 	font_color = "#84ff00"
-	var/business = FALSE
+	var/business = TRUE
 
 	unique_save_vars = list("department")
 

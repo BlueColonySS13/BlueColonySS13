@@ -85,17 +85,17 @@
 			if(islist(O.vars[V]))
 				var/list/M = O.vars[V]
 				for(var/P in M)
-					if(!istext(P) && !isnum(P))
+					if(!istext(P) && !isnum(P) && !ispath(P))
 						save_var = FALSE
 						continue
 					if(listgetindex(M,P))
 						var/asso_var = listgetindex(M,P)
-						if(asso_var && (!istext(asso_var) && !isnum(asso_var)) )
+						if(asso_var && (!istext(asso_var) && !isnum(asso_var) && !ispath(asso_var)) )
 							save_var = FALSE
 							continue
 
 			else
-				if(!istext(O.vars[V]) && !isnum(O.vars[V]))	// make sure all references to mobs/objs/turfs etc, are fully cut!
+				if(!istext(O.vars[V]) && !isnum(O.vars[V]) && !ispath(O.vars[V]))	// make sure all references to mobs/objs/turfs etc, are fully cut!
 					save_var = FALSE
 					continue
 
@@ -227,6 +227,9 @@
 
 
 /datum/map_object/proc/unpack_object_data(obj/O, obj/containing_obj)
+	if(!O || QDELETED(O))
+		return
+
 	O.x = x
 	O.y = y
 	O.z = z
@@ -234,7 +237,7 @@
 	if(containing_obj)
 		O.forceMove(containing_obj)
 
-	if(!O.initialized)
+	if(!O.initialized && !QDELETED(O))
 		O.initialize()
 
 	clearlist(O.contents)

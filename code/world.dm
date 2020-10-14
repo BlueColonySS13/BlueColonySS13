@@ -198,7 +198,10 @@ var/world_topic_spam_protect_time = world.timeofday
 		s["stationtime"] = stationtime2text()
 		s["roundduration"] = roundduration2text()
 		s["stationname"] = station_name()
-		s["round_type"] = capitalize(ticker.mode.name)
+		if(ticker && ticker.mode)
+			s["round_type"] = capitalize(ticker.mode.name)
+		else
+			s["round_type"] = "No Data"
 		s["security_level"] = get_security_level()
 
 		if(input["status"] == "2")
