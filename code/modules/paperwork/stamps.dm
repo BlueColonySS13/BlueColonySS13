@@ -20,6 +20,10 @@
 /obj/item/weapon/stamp/hop
 	name = "city clerk's rubber stamp"
 	icon_state = "stamp-hop"
+	
+/obj/item/weapon/stamp/hop
+	name = "city secretary's rubber stamp"
+	icon_state = "stamp-hop"
 
 /obj/item/weapon/stamp/hos
 	name = "chief of police's rubber stamp"
@@ -38,7 +42,7 @@
 	icon_state = "stamp-rd"
 
 /obj/item/weapon/stamp/cmo
-	name = "chief medical officer's rubber stamp"
+	name = "medical director's rubber stamp"
 	icon_state = "stamp-cmo"
 
 /obj/item/weapon/stamp/psych
@@ -60,13 +64,61 @@
 /obj/item/weapon/stamp/clown
 	name = "clown's rubber stamp"
 	icon_state = "stamp-clown"
+	
+/obj/item/weapon/stamp/highcourt
+	name = "high court rubber stamp"
+	icon_state = "stamp-intaff"
+
+/obj/item/weapon/stamp/supremecourt
+	name = "supreme court rubber stamp"
+	icon_state = "stamp-intaff"
 
 /obj/item/weapon/stamp/internalaffairs
 	name = "internal affairs rubber stamp"
 	icon_state = "stamp-intaff"
 
+/obj/item/weapon/stamp/pdsi
+	name = "PDSI rubber stamp"
+	icon_state = "stamp-intaff"
+
+/obj/item/weapon/stamp/nanotrasencommittee
+	name = "\improper Nanotrasen Committee rubber stamp"
+	icon_state = "stamp-cent"
+
 /obj/item/weapon/stamp/centcomm
-	name = "\improper CentCom rubber stamp"
+	name = "\improper Nanotrasen Representative rubber stamp"
+	icon_state = "stamp-cent"
+	
+/obj/item/weapon/stamp/president
+	name = "president's rubber Stamp"
+	icon_state = "stamp-cent"
+	
+/obj/item/weapon/stamp/vicepresident
+	name = "vice President's rubber Stamp"
+	icon_state = "stamp-cent"
+
+/obj/item/weapon/stamp/advisorjustice
+	name = "advisor of justice's rubber Stamp"
+	icon_state = "stamp-cent"
+
+/obj/item/weapon/stamp/advisordefense
+	name = "advisor of defense's rubber Stamp"
+	icon_state = "stamp-cent"
+
+/obj/item/weapon/stamp/advisorinnovation
+	name = "advisor of innovation's rubber Stamp"
+	icon_state = "stamp-cent"
+
+/obj/item/weapon/stamp/advisorhealth
+	name = "advisor of health's rubber Stamp"
+	icon_state = "stamp-cent"
+
+/obj/item/weapon/stamp/advisorfinance
+	name = "advisor of finance's rubber Stamp"
+	icon_state = "stamp-cent"
+	
+/obj/item/weapon/stamp/governor
+	name = "governor's rubber Stamp"
 	icon_state = "stamp-cent"
 
 /obj/item/weapon/stamp/qm
@@ -79,6 +131,18 @@
 
 /obj/item/weapon/stamp/solgov
 	name = "\improper Sol Government rubber stamp"
+	icon_state = "stamp-sg"
+	
+/obj/item/weapon/stamp/solgovambassador
+	name = "\improper Sol Ambassador's rubber stamp"
+	icon_state = "stamp-sg"
+	
+/obj/item/weapon/stamp/androgov
+	name = "\improper Andromeda Government rubber stamp"
+	icon_state = "stamp-sg"
+	
+/obj/item/weapon/stamp/androgovambassador
+	name = "\improper Andromeda Ambassador's rubber stamp"
 	icon_state = "stamp-sg"
 
 //Business Stamps
