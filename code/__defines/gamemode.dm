@@ -96,6 +96,7 @@ var/list/be_special_flags = list(
 #define MODE_FACTIONS_FI "libre oracle factionist"
 #define MODE_FACTIONS_BC "blue moon cartel factionist"
 #define MODE_FACTIONS_CD "coalition against detection factionist"
+#define MODE_PAX "pax synthetica"
 
 
 #define DEFAULT_TELECRYSTAL_AMOUNT 120
