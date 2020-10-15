@@ -164,16 +164,6 @@
 	path = /obj/item/clothing/under/rank/cargo/skirt
 	allowed_roles = list("Factory Manager")
 
-/datum/gear/uniform/job_skirt/warden
-	display_name = "skirt, warden"
-	path = /obj/item/clothing/under/rank/warden/skirt
-	allowed_roles = list("Chief of Police", "Prison Warden")
-
-/datum/gear/uniform/job_skirt/security
-	display_name = "skirt, security"
-	path = /obj/item/clothing/under/rank/security/skirt
-	allowed_roles = list("Chief of Police", "Prison Warden", "Detective", "Police Officer")
-
 /datum/gear/uniform/job_skirt/head_of_security
 	display_name = "skirt, hos"
 	path = /obj/item/clothing/under/rank/head_of_security/skirt
@@ -296,11 +286,6 @@
 	path = /obj/item/clothing/under/det/corporate
 	allowed_roles = list("Detective","Chief of Police")
 
-/datum/gear/uniform/corpsecsuit
-	display_name = "uniform, corporate (Security)"
-	path = /obj/item/clothing/under/rank/security/corp
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
-
 /datum/gear/uniform/corpwarsuit
 	display_name = "uniform, corporate (Warden)"
 	path = /obj/item/clothing/under/rank/warden/corp
@@ -321,11 +306,6 @@
 	path = /obj/item/clothing/under/dress/dress_hr
 
 	allowed_roles = list("City Clerk")
-
-/datum/gear/uniform/navysecsuit
-	display_name = "uniform, navy blue (Security)"
-	path = /obj/item/clothing/under/rank/security/navyblue
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
 
 /datum/gear/uniform/navywarsuit
 	display_name = "uniform, navy blue (Warden)"
@@ -457,12 +437,6 @@
 	display_name = "outfit, major bill's (Cargo)"
 	path = /obj/item/clothing/under/mbill
 	allowed_roles = list("Factory Manager","Factory Worker")
-
-/datum/gear/uniform/pcrc
-	display_name = "uniform, PCRC (Security)"
-	path = /obj/item/clothing/under/pcrc
-	cost = 2
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
 
 /datum/gear/uniform/brandsuit/grayson
 	display_name = "outfit, grayson"

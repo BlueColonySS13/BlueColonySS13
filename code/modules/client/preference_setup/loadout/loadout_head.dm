@@ -41,11 +41,6 @@
 	path = /obj/item/clothing/head/medical_beret
 	allowed_roles = list("Chief Medical Officer","Physician","Chemist","Geneticist","Psychiatrist","Paramedic","Medical Intern")
 
-/datum/gear/head/beret/bsec
-	display_name = "beret, navy (officer)"
-	path = /obj/item/clothing/head/beret/sec/navy/officer
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
-
 /datum/gear/head/beret/seniorpolice
 	display_name = "Senior Police beret"
 	path = /obj/item/clothing/head/beret/policegold
@@ -138,11 +133,6 @@
 /datum/gear/head/cap/red
 	display_name = "cap, red"
 	path = /obj/item/clothing/head/soft/red
-
-/datum/gear/head/cap/sec
-	display_name = "cap, security (Security)"
-	path = /obj/item/clothing/head/soft/sec
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden", "Detective")
 
 /datum/gear/head/cap/yellow
 	display_name = "cap, yellow"

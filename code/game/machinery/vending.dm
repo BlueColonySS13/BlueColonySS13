@@ -1193,7 +1193,7 @@
 					/obj/item/stack/medical/ointment = 15,/obj/item/device/healthanalyzer = 10)
 
 	vendor_department = DEPT_HEALTHCARE
-	block_persistence = TRUE
+	block_persistence = FALSE
 
 /obj/machinery/vending/security
 	name = "SecTech"
@@ -1214,6 +1214,7 @@
 	/obj/item/weapon/melee/baton/loaded = 6,
 	/obj/item/taperoll/police = 6,
 	/obj/item/device/flashlight/flare = 6,
+	/obj/item/device/flashlight/maglight =6,
 	/obj/item/device/camera = 6,
 	/obj/item/device/camera_film = 6,
 	/obj/item/device/taperecorder = 6,
@@ -1264,6 +1265,7 @@
 	/obj/item/weapon/storage/backpack/security = 6,
 	/obj/item/weapon/storage/backpack/satchel/sec = 6,
 	/obj/item/clothing/suit/storage/toggle/policejacket = 6,
+	/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen = 6,
 	/obj/item/clothing/accessory/badge/holo/police = 6,
 
 	)
@@ -1294,12 +1296,15 @@
 	/obj/item/device/camera = 6,
 	/obj/item/device/camera_film = 6,
 	/obj/item/device/taperecorder = 6,
+	/obj/item/device/flashlight/maglight = 2,
 	/obj/item/weapon/reagent_containers/food/drinks/flask/detflask = 2,
 	/obj/item/device/breathalyzer = 2,
 	/obj/item/clothing/under/rank/policedetectivealt = 4,
 	/obj/item/clothing/head/police/policedetectivecap = 4,
 	/obj/item/clothing/head/soft/policecdetective = 4,
-	/obj/item/clothing/suit/storage/toggle/policejacket =4,
+	/obj/item/clothing/head/beret/policered = 4,
+	/obj/item/clothing/suit/storage/toggle/policejacket = 4,
+	/datum/gear/suit/police/policehivis = 4,
 	
 	)
 
@@ -2317,6 +2322,7 @@
 	products = list(/obj/item/weapon/gun/energy/gun = 4,
 					/obj/item/weapon/gun/energy/taser/carbine = 4,
 					/obj/item/weapon/gun/energy/laser = 2,
+					/obj/item/weapon/gun/energy/ionrifle = 2,
 					/obj/item/weapon/cell/device/weapon = 20
 					)
 

@@ -122,7 +122,7 @@
 	minimum_character_age = 23
 
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
-	alt_titles = list("Police Cadet" = /decl/hierarchy/outfit/job/security/cadet,"Traffic Warden" = /decl/hierarchy/outfit/job/security/traffic)
+	alt_titles = list("Police Cadet" = /decl/hierarchy/outfit/job/security/cadet,"Traffic Officer" = /decl/hierarchy/outfit/job/security/traffic)
 
 	clean_record_required = TRUE
 
