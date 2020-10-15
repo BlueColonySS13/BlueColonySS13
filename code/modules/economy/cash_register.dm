@@ -120,7 +120,11 @@
 		dat += "This register requires you to own a business to your name. Please swipe your ID card to claim this till.<br>"
 		return dat
 
-	var/acc_name = get_account_name(linked_account.account_number)
+	var/acc_name = null
+
+	if(linked_account)
+		acc_name = get_account_name(linked_account.account_number)
+
 	if (locked)
 		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Unlock</a><br>"
 
