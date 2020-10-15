@@ -782,7 +782,7 @@ SUBSYSTEM_DEF(jobs)
 
 	var/synth_type = H.get_FBP_type()
 	var/obj/item/clothing/uniform = H.w_uniform
-	var/obj/item/clothing/accessory/permit
+	var/obj/item/clothing/accessory/permit/permit
 
 	switch(synth_type)
 		if(FBP_NONE)
