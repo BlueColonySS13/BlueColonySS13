@@ -114,9 +114,17 @@ GLOBAL_LIST_INIT(permit_types, list(
 /obj/item/clothing/accessory/permit/synth
 	name = "synth identification card"
 	desc = "A card issued by the government, indicating that the owner is a Synthetic. Synths are mandated to carry this card on PolGov colonies, by law."
-	icon_state = "permit_drone"
+	icon_state = "permit_synth"
 	tiered = FALSE
 	dont_save = TRUE
+
+/obj/item/clothing/accessory/permit/fbp
+	name = "full body identification card"
+	desc = "A card issued by the government. It signifies that the owner is human but has a full body prosthetic as a disability. It is used to differiate the owner from synths, it is optional to wear by law."
+	icon_state = "permit_fbp"
+	tiered = FALSE
+	dont_save = TRUE
+
 
 //Some spare gun permits in a box
 /obj/item/weapon/storage/box/gun_permits

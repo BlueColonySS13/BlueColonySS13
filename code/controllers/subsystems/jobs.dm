@@ -781,18 +781,30 @@ SUBSYSTEM_DEF(jobs)
 	if(!H.mind || !H.mind.prefs) return
 
 	var/synth_type = H.get_FBP_type()
+	var/obj/item/clothing/uniform = H.w_uniform
+	var/obj/item/clothing/accessory/permit
 
 	switch(synth_type)
 		if(FBP_NONE)
 			return
+
 		if(FBP_DRONE)
-			var/obj/item/clothing/accessory/permit/drone/permit = new/obj/item/clothing/accessory/permit/drone(get_turf(H))
-			permit.set_name(H.real_name)
-			H.equip_to_slot_or_del(permit, slot_in_backpack)
+			permit = new/obj/item/clothing/accessory/permit/drone(get_turf(H))
+
 		if(FBP_POSI)
-			var/obj/item/clothing/accessory/permit/synth/permit = new/obj/item/clothing/accessory/permit/synth(get_turf(H))
-			permit.set_name(H.real_name)
-			H.equip_to_slot_or_del(permit, slot_in_backpack)
+			permit = new/obj/item/clothing/accessory/permit/synth(get_turf(H))
+
+		if(FBP_CYBORG)
+			permit = new/obj/item/clothing/accessory/permit/fbp(get_turf(H))
+
+
+	if(permit)
+		permit.set_name(H.real_name)
+
+		if(uniform && uniform.can_attach_accessory(permit)) // attaches permit to uniform
+			uniform.attach_accessory(null, permit)
+		else
+			H.equip_to_slot_or_del(permit, slot_in_backpack) // otherwise puts it in your backpack
 
 
 /datum/controller/subsystem/jobs/proc/get_active_police()
