@@ -24,6 +24,10 @@
 /obj/item/weapon/stamp/citysecretary
 	name = "city secretary's rubber stamp"
 	icon_state = "stamp-hop"
+	
+/obj/item/weapon/stamp/lawyer // for publicly funded lawyers only
+	name = "public attorney's rubber stamp"
+	icon_state = "stamp-hop"
 
 /obj/item/weapon/stamp/hos
 	name = "chief of police's rubber stamp"
@@ -31,6 +35,10 @@
 
 /obj/item/weapon/stamp/ward
 	name = "warden's rubber stamp"
+	icon_state = "stamp-ward"
+	
+/obj/item/weapon/stamp/prosecutor
+	name = "district prosecutor's rubber stamp"
 	icon_state = "stamp-ward"
 
 /obj/item/weapon/stamp/ce
