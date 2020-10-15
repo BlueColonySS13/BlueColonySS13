@@ -404,9 +404,12 @@
 						break
 			while(length(t) > 5563)
 
+
 			//split into lines
 			spawn()
 				var/list/lines = splittext(t, "\n")
+				if(!LAZYLEN(lines))
+					return
 				var/tempo = 5
 				if(copytext(lines[1],1,6) == "BPM: ")
 					tempo = 600 / text2num(copytext(lines[1],6))

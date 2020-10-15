@@ -28,7 +28,7 @@ var/list/mining_overlay_cache = list()
 
 	var/datum/geosample/geologic_data
 	var/excavation_level = 0
-	var/list/finds
+	var/list/finds = list()
 	var/next_rock = 0
 	var/archaeo_overlay = ""
 	var/excav_overlay = ""
@@ -388,14 +388,14 @@ var/list/mining_overlay_cache = list()
 
 			//handle any archaeological finds we might uncover
 			var/fail_message = ""
-			if(finds && finds.len)
+			if(LAZYLEN(finds))
 				var/datum/find/F = finds[1]
 				if(newDepth > F.excavation_required) // Digging too deep can break the item. At least you won't summon a Balrog (probably)
 					fail_message = ". <b>[pick("There is a crunching noise","[W] collides with some different rock","Part of the rock face crumbles away","Something breaks under [W]")]</b>"
 
 			to_chat(user, "<span class='notice'>You start [P.drill_verb][fail_message].</span>")
 
-			if(fail_message && prob(90))
+			if(fail_message && prob(90) && LAZYLEN(finds))
 				if(prob(25))
 					excavate_find(prob(5), finds[1])
 				else if(prob(50))
@@ -405,7 +405,7 @@ var/list/mining_overlay_cache = list()
 
 			if(do_after(user,P.digspeed))
 
-				if(finds && finds.len)
+				if(LAZYLEN(finds))
 					var/datum/find/F = finds[1]
 					if(newDepth == F.excavation_required) // When the pick hits that edge just right, you extract your find perfectly, it's never confined in a rock
 						excavate_find(1, F)
@@ -438,13 +438,13 @@ var/list/mining_overlay_cache = list()
 				var/updateIcon = 0
 
 				//archaeo overlays
-				if(!archaeo_overlay && finds && finds.len)
+				if(!archaeo_overlay && LAZYLEN(finds))
 					var/datum/find/F = finds[1]
 					if(F.excavation_required <= excavation_level + F.view_range)
 						archaeo_overlay = "overlay_archaeo[rand(1,3)]"
 						updateIcon = 1
 
-				else if(archaeo_overlay && (!finds || !finds.len))
+				else if(archaeo_overlay && (!finds || !LAZYLEN(finds)))
 					archaeo_overlay = null
 					updateIcon = 1
 
@@ -527,7 +527,7 @@ var/list/mining_overlay_cache = list()
 				if(prob(50))
 					M.Stun(5)
 //			SSradiation.flat_radiate(src, 25, 100)
-			if(prob(25))
+			if(prob(25) && LAZYLEN(finds))
 				excavate_find(prob(5), finds[1])
 	else if(rand(1,500) == 1)
 		visible_message("<span class='notice'>An old dusty crate was buried within!</span>")

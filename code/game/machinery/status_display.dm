@@ -296,7 +296,8 @@
 
 
 /obj/machinery/status_display/money_display/examine(mob/user)
-	to_chat(user, "<b>[message1]:</b> [cash2text(linked_department.get_balance(), FALSE, TRUE, TRUE )]")
+	if(linked_department)
+		to_chat(user, "<b>[message1]:</b> [cash2text(linked_department.get_balance(), FALSE, TRUE, TRUE )]")
 
 /obj/machinery/status_display/money_display/on_persistence_load()
 	link_to_account()
