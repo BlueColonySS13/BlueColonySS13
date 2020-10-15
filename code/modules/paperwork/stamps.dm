@@ -21,7 +21,7 @@
 	name = "city clerk's rubber stamp"
 	icon_state = "stamp-hop"
 	
-/obj/item/weapon/stamp/hop
+/obj/item/weapon/stamp/citysecretary
 	name = "city secretary's rubber stamp"
 	icon_state = "stamp-hop"
 
