@@ -390,6 +390,8 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 					blackbox.msg_government += blackbox_msg
 				if(EXP_FREQ)
 					blackbox.msg_explorer += blackbox_msg
+				if(PAX_FREQ)
+					blackbox.msg_pax_synthetica += blackbox_msg
 				else
 					blackbox.messages += blackbox_msg
 

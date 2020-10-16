@@ -84,6 +84,11 @@
 	syndie = 1
 	ks1type = /obj/item/device/encryptionkey/syndicate
 
+/obj/item/device/radio/headset/pax_synthetica
+	origin_tech = list(TECH_ILLEGAL = 3)
+	syndie = 1
+	ks1type = /obj/item/device/encryptionkey/pax_synthetica
+
 /obj/item/device/radio/headset/syndicate/alt
 	icon_state = "syndie_headset"
 	item_state = "headset"
