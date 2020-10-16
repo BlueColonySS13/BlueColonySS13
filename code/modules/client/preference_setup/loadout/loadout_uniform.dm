@@ -658,18 +658,6 @@
 	display_name = "gothic dress"
 	path = /obj/item/clothing/under/dress/gothic
 
-/datum/gear/uniform/formalred
-	display_name = "formal red dress"
-	path = /obj/item/clothing/under/dress/formalred
-
-/datum/gear/uniform/pentagram
-	display_name = "pentagram dress"
-	path = /obj/item/clothing/under/dress/pentagram
-
-/datum/gear/uniform/yellowswoop
-	display_name = "yellow swooped dress"
-	path = /obj/item/clothing/under/dress/yellowswoop
-
 /datum/gear/uniform/greenasym
 	display_name = "green asymmetrical jumpsuit"
 	path = /obj/item/clothing/under/greenasym
@@ -677,6 +665,12 @@
 /datum/gear/uniform/cyberpunkharness
 	display_name = "cyberpunk strapped harness"
 	path = /obj/item/clothing/under/cyberpunkharness
+
+/datum/gear/uniform/disheveled
+	display_name = "disheveled suit"
+	path = /obj/item/clothing/under/disheveled
+
+/// Comment the items below out one week after the "Ports clothing from Polaris + Additional" PR is merged! Excxlusivity! ///
 
 /datum/gear/uniform/whitegown
 	display_name = "white gown"
@@ -698,6 +692,14 @@
 	display_name = "sheer blue dress"
 	path = /obj/item/clothing/under/sheerblue
 
-/datum/gear/uniform/disheveled
-	display_name = "disheveled suit"
-	path = /obj/item/clothing/under/disheveled
+/datum/gear/uniform/formalred
+	display_name = "formal red dress"
+	path = /obj/item/clothing/under/dress/formalred
+
+/datum/gear/uniform/pentagram
+	display_name = "pentagram dress"
+	path = /obj/item/clothing/under/dress/pentagram
+
+/datum/gear/uniform/yellowswoop
+	display_name = "yellow swooped dress"
+	path = /obj/item/clothing/under/dress/yellowswoop
