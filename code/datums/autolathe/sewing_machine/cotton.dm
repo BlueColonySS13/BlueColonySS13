@@ -125,6 +125,34 @@
 	name = "halter top"
 	path = /obj/item/clothing/under/haltertop
 
+/datum/category_item/crafting/sewing_machine/cotton/gothic
+	name = "gothic dress"
+	path = /obj/item/clothing/under/dress/gothic
+
+/datum/category_item/crafting/sewing_machine/cotton/pentagram
+	name = "pentagram dress"
+	path = /obj/item/clothing/under/dress/pentagram
+
+/datum/category_item/crafting/sewing_machine/cotton/revealing
+	name = "revealing dress"
+	path = /obj/item/clothing/under/dress/revealingdress
+
+/datum/category_item/crafting/sewing_machine/cotton/formalred
+	name = "formal red dress"
+	path = /obj/item/clothing/under/dress/formalred
+
+/datum/category_item/crafting/sewing_machine/cotton/yellowswoop
+	name = "yellow swoop dress"
+	path = /obj/item/clothing/under/dress/yellowswoop
+
+/datum/category_item/crafting/sewing_machine/cotton/sheerblue
+	name = "sheer blue dress"
+	path = /obj/item/clothing/under/sheerblue
+
+/datum/category_item/crafting/sewing_machine/cotton/blackngold
+	name = "black and gold gown"
+	path = /obj/item/clothing/under/blackngold
+
 // under
 
 /datum/category_item/crafting/sewing_machine/cotton/punk
@@ -132,6 +160,25 @@
 	path = /obj/item/clothing/under/punk
 	force_matter = list("cotton" = 2220)
 
+/datum/category_item/crafting/sewing_machine/cotton/punk
+	name = "green asymmetrical jumpsuit"
+	path = /obj/item/clothing/under/greenasym
+	force_matter = list("cotton" = 2220)
+
+/datum/category_item/crafting/sewing_machine/cotton/strappedharness
+	name = "strapped harness"
+	path = /obj/item/clothing/under/cyberpunkharness
+	force_matter = list("cotton" = 2220)
+
+/datum/category_item/crafting/sewing_machine/cotton/rippedpunk
+	name = "fishnet punk outfit"
+	path = /obj/item/clothing/under/rippedpunk
+	force_matter = list("cotton" = 2220)
+
+/datum/category_item/crafting/sewing_machine/cotton/disheveled
+	name = "disheveled suit"
+	path = /obj/item/clothing/under/disheveled
+	force_matter = list("cotton" = 2220)
 
 // pants
 
@@ -461,6 +508,11 @@
 /datum/category_item/crafting/sewing_machine/cotton/santa/green
 	name = "green santa hat"
 	path = /obj/item/clothing/head/santa/green
+	force_matter = list("cotton" = 410)
+
+/datum/category_item/crafting/sewing_machine/cotton/blackngoldheaddress
+	name = "black and gold headdress"
+	path = /obj/item/clothing/head/blackngoldheaddress
 	force_matter = list("cotton" = 410)
 
 

@@ -642,7 +642,62 @@
 	display_name = "punk outfit"
 	path = /obj/item/clothing/under/punk
 
-
 /datum/gear/uniform/aristocrat
 	display_name = "aristocrat formal wear"
 	path = /obj/item/clothing/under/aristocrat
+
+/datum/gear/uniform/revealingdress
+	display_name = "revealing dress"
+	path = /obj/item/clothing/under/dress/revealingdress
+
+/datum/gear/uniform/rippedpunk
+	display_name = "ripped punk jeans"
+	path = /obj/item/clothing/under/rippedpunk
+
+/datum/gear/uniform/gothic
+	display_name = "gothic dress"
+	path = /obj/item/clothing/under/dress/gothic
+
+/datum/gear/uniform/formalred
+	display_name = "formal red dress"
+	path = /obj/item/clothing/under/dress/formalred
+
+/datum/gear/uniform/pentagram
+	display_name = "pentagram dress"
+	path = /obj/item/clothing/under/dress/pentagram
+
+/datum/gear/uniform/yellowswoop
+	display_name = "yellow swooped dress"
+	path = /obj/item/clothing/under/dress/yellowswoop
+
+/datum/gear/uniform/greenasym
+	display_name = "green asymmetrical jumpsuit"
+	path = /obj/item/clothing/under/greenasym
+
+/datum/gear/uniform/cyberpunkharness
+	display_name = "cyberpunk strapped harness"
+	path = /obj/item/clothing/under/cyberpunkharness
+
+/datum/gear/uniform/whitegown
+	display_name = "white gown"
+	path = /obj/item/clothing/under/wedding/whitegown
+
+/datum/gear/uniform/floofdress
+	display_name = "floofy dress"
+	path = /obj/item/clothing/under/wedding/floofdress
+
+/datum/gear/uniform/floofdress/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/uniform/blackngold
+	display_name = "black and gold gown"
+	path = /obj/item/clothing/under/blackngold
+
+/datum/gear/uniform/sheerblue
+	display_name = "sheer blue dress"
+	path = /obj/item/clothing/under/sheerblue
+
+/datum/gear/uniform/disheveled
+	display_name = "disheveled suit"
+	path = /obj/item/clothing/under/disheveled

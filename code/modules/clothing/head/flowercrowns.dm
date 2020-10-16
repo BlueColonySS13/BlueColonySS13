@@ -56,3 +56,9 @@
 	desc = "A flower crown weaved with poppies."
 	icon_state = "poppy_crown"
 	body_parts_covered = 0
+
+/obj/item/clothing/head/rose_crown
+	name = "rose crown"
+	desc = "A flower crown weaved with roses."
+	icon_state = "rose_crown"
+	body_parts_covered = 0
