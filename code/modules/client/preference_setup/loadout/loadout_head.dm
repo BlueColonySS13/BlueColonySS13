@@ -378,25 +378,48 @@
 		sols[initial(sol.name)] = sol
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(sols))
 
-/datum/gear/head/surgical/black
-	display_name = "surgical cap, black"
-	path = /obj/item/clothing/head/surgery/black
+/datum/gear/head/surgery
+	display_name = "surgical cap selection"
+	description = "Choose from a number of rings of different caps."
+	path = /obj/item/clothing/head/surgery
 
-/datum/gear/head/surgical/blue
-	display_name = "surgical cap, blue"
-	path = /obj/item/clothing/head/surgery/blue
+/datum/gear/head/surgery/New()
+	..()
+	var/cap_type = list()
+	cap_type["Purple cap"] = /obj/item/clothing/head/surgery/purple
+	cap_type["Blue cap"] = /obj/item/clothing/head/surgery/blue
+	cap_type["Green cap"] = /obj/item/clothing/head/surgery/green
+	cap_type["Black cap"] = /obj/item/clothing/head/surgery/black
+	cap_type["Navy cap"] = /obj/item/clothing/head/surgery/navyblue
+	gear_tweaks += new/datum/gear_tweak/path(cap_type)
 
-/datum/gear/head/surgical/green
-	display_name = "surgical cap, green"
-	path = /obj/item/clothing/head/surgery/green
+/datum/gear/head/maangtikka
+	display_name = "maang tikka"
+	path = /obj/item/clothing/head/maangtikka
 
-/datum/gear/head/surgical/navyblue
-	display_name = "surgical cap, navy blue"
-	path = /obj/item/clothing/head/surgery/navyblue
+/datum/gear/head/jingasa
+	display_name = "jingasa"
+	path = /obj/item/clothing/head/jingasa
 
-/datum/gear/head/surgical/purple
-	display_name = "surgical cap, purple"
-	path = /obj/item/clothing/head/surgery/purple
+/datum/gear/head/sunflower_crown
+	display_name = "sunflower crown"
+	path = /obj/item/clothing/head/sunflower_crown
+
+/datum/gear/head/lavender_crown
+	display_name = "lavender crown"
+	path = /obj/item/clothing/head/lavender_crown
+
+/datum/gear/head/poppy_crown
+	display_name = "poppy crown"
+	path = /obj/item/clothing/head/poppy_crown
+
+/datum/gear/head/rose_crown
+	display_name = "rose crown"
+	path = /obj/item/clothing/head/rose_crown
+
+/datum/gear/head/blackngoldheaddress
+	display_name = "black and gold headdress"
+	path = /obj/item/clothing/head/blackngoldheaddress
 
 /datum/gear/head/tinfoil
 	display_name = "tinfoil hat"
