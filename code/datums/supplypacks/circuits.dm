@@ -145,7 +145,7 @@
 					/obj/item/weapon/circuitboard/destructive_analyzer)
 
 	name = "Research Circuits"
-	cost = 10000 // a huge profit maker, so should be expensive. the entirety of research in one crate. has science gone too far?
+	cost = 1250000 // a huge profit maker, so should be expensive. the entirety of research in one crate. has science gone too far?
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Research Circuits"
 
@@ -154,7 +154,7 @@
 					/obj/item/weapon/circuitboard/mechfab/business)
 
 	name = "Robotics Circuits"
-	cost = 4000
+	cost = 550000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robotics Circuits"
 

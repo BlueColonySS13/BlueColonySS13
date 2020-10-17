@@ -1449,6 +1449,7 @@
 #include "code\modules\blob2\overmind\powers.dm"
 #include "code\modules\blob2\overmind\types.dm"
 #include "code\modules\bounty\bounty.dm"
+#include "code\modules\bounty\misc.dm"
 #include "code\modules\bounty\presets\agriculture.dm"
 #include "code\modules\bounty\presets\black_market.dm"
 #include "code\modules\bounty\presets\drinks.dm"
