@@ -787,6 +787,10 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			dat += "List of Researched Technologies and Designs:"
 			dat += GetResearchListInfo()
 
+		///////////////////Admeme Screens//////////////////////////////////
+		if(5.1)
+			dat += "<font size='15' color='green' background-color='black'>SYSTEM DISABLED BY N3RD4L3R7.NTEXE<BR><BR>SEND 5 MILLION CREDITS TO THIS ACCOUNT AND WE'LL UNLOCK YOUR CONSOLE.<BR><BR>a0758c296676b1dd59002667cb9ea4fa<BR></font>"
+
 	user << browse("<TITLE>Research and Development Console</TITLE><HR>[dat.Join()]", "window=rdconsole;size=850x600")
 	onclose(user, "rdconsole")
 
@@ -803,6 +807,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	name = "Independent R&D Console"
 	req_access = null
 	id = 3
+	screen = 5.1
 	circuit = /obj/item/weapon/circuitboard/rdconsole/business
 	independent = 1
 	var/owner_name = ""
@@ -845,7 +850,6 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 	src.updateUsrDialog()
 	return
-
 
 
 /obj/machinery/computer/rdconsole/business/proc/set_new_owner(obj/item/weapon/card/id/I)
