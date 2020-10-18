@@ -625,6 +625,9 @@
 	if(M.client)
 		if(alert(M,"Would you like to enter long-term storage?",,"Yes","No") == "Yes")
 			if(!M) return
+			if(!M.Adjacent(src))
+				to_chat(M, span("warning", "You are too far away from \the [src]!"))
+				return
 			willing = 1
 	else
 		willing = 1

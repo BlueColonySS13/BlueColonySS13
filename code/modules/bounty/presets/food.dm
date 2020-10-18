@@ -24,7 +24,7 @@
 	memos have passed my desk. Please send us 30 slime sandwiches and make it snappy. \
 	I fear our scientists are going to retaliate over my student�s cuisine soon with mechs and other sciencey devices"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/slime = 5)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/cherry = 5)
 
 	department_reward = 350
 	individual_reward = 200

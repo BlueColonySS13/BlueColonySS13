@@ -26,7 +26,7 @@
 	blend_objects = list(/obj/machinery/door) // Objects which to blend with
 	noblend_objects = list(/obj/machinery/door/window)
 
-	unique_save_vars = list("health", "material_color", "on_frame")
+	unique_save_vars = list("health", "material_color", "on_frame", "silicate")
 
 /obj/structure/window/examine(mob/user)
 	. = ..(user)
@@ -317,7 +317,7 @@
 	else if(istype(W, /obj/item/weapon/crowbar) && reinf && state <= 1)
 		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [W] to modify \the [src]."))
 			return
-		
+
 		state = 1 - state
 		playsound(src, W.usesound, 75, 1)
 		user << (state ? "<span class='notice'>You have pried the window into the frame.</span>" : "<span class='notice'>You have pried the window out of the frame.</span>")
@@ -327,7 +327,7 @@
 		else
 			if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [W] to dismantle \the [src]."))
 				return
-			
+
 			playsound(src, W.usesound, 75, 1)
 			visible_message("<span class='notice'>[user] dismantles \the [src].</span>")
 			var/obj/item/stack/material/mats = new glasstype(loc)
