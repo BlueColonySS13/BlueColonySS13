@@ -424,7 +424,6 @@ var/list/name_to_material
 /material/plasteel/titanium
 	name = "titanium"
 	stack_type = /obj/item/stack/material/titanium
-	stack_type = null
 	conductivity = 2.38
 	icon_base = "metal"
 	door_icon_base = "metal"

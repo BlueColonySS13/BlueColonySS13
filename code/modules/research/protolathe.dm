@@ -197,8 +197,16 @@
 		reagents.remove_reagent(C, D.chemicals[C] * mat_efficiency)
 
 	if(D.build_path)
-		var/obj/new_item = D.Fabricate(src, src)
-		new_item.loc = loc
+		var/obj/item/new_item = D.Fabricate(src, src)
+		new_item.tagged_price = D.price
+		if(D.protected)
+			var/obj/item/weapon/redemption_box/r_box = new /obj/item/weapon/redemption_box(loc)
+			r_box.receiving_department = DEPT_RESEARCH
+			if(LAZYLEN(new_item.origin_tech))
+				r_box.origin_tech = new_item.origin_tech
+			new_item.forceMove(r_box)
+		else
+			new_item.loc = loc
 		if(mat_efficiency != 1) // No matter out of nowhere
 			if(new_item.matter && new_item.matter.len > 0)
 				for(var/i in new_item.matter)
@@ -227,6 +235,14 @@
 			mattype = /obj/item/stack/material/phoron
 		if("uranium")
 			mattype = /obj/item/stack/material/uranium
+		if("copper")
+			mattype = /obj/item/stack/material/copper
+		if("aluminium")
+			mattype = /obj/item/stack/material/aluminium
+		if("void opal")
+			mattype = /obj/item/stack/material/void_opal
+		if("titanium")
+			mattype = /obj/item/stack/material/titanium
 		else
 			return
 	var/obj/item/stack/material/S = new mattype(loc)

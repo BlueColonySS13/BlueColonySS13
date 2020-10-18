@@ -66,6 +66,14 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			return_name = "Uranium"
 		if("diamond")
 			return_name = "Diamond"
+		if("copper")
+			return_name = "Copper"
+		if("aluminium")
+			return_name = "Aluminium"
+		if("void opal")
+			return_name = "Void Opal"
+		if("titanium")
+			return_name = "Titanium"
 	return return_name
 
 /obj/machinery/computer/rdconsole/proc/CallReagentName(var/ID)
