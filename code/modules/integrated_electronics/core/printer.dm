@@ -57,7 +57,7 @@
 			new /obj/item/device/electronic_assembly/large(null),
 			new /obj/item/device/electronic_assembly/drone(null),
 			new /obj/item/weapon/implant/integrated_circuit(null),
-			new /obj/item/device/electronic_assembly/device (null)
+			new /obj/item/device/assembly/electronic_assembly(null)
 		)
 		recipe_list["Assemblies"] = assembly_list
 
@@ -176,6 +176,9 @@
 		else if(ispath(build_type, /obj/item/weapon/implant/integrated_circuit))
 			var/obj/item/weapon/implant/integrated_circuit/IM = build_type
 			cost = initial(IM.w_class)
+		else if(ispath(build_type, /obj/item/device/assembly/electronic_assembly))
+			var/obj/item/device/assembly/electronic_assembly/AC = build_type
+			cost = initial(AC.w_class)
 		else if(!(build_type in ic_tool_list))
 			log_and_message_admins("[key_name(usr)] attempted to href exploit with the integrated electronics printer.")
 			return
