@@ -51,6 +51,10 @@
 		if(temp && !temp.is_usable())
 			user << "<span class='notice'>You try to move your [temp.name], but cannot!</span>"
 			return
+
+	if (user.a_intent == I_GRAB)
+		return ..()
+
 	var/response = ""
 	if(!papers.len > 0)
 		if(has_carbon_paper)

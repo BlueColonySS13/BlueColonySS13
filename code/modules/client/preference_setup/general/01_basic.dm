@@ -26,6 +26,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	S["existing_character"]		>> pref.existing_character
 	S["played"]				>> pref.played
 	S["unique_id"]				>> pref.unique_id
+	S["silent_join"]			>> pref.silent_join
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
 	S["real_name"]				<< pref.real_name
@@ -43,6 +44,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	S["existing_character"]		<< pref.existing_character
 	S["played"]				<< pref.played
 	S["unique_id"]				<< pref.unique_id
+	S["silent_join"]			<< pref.silent_join
 
 /datum/category_item/player_setup_item/general/basic/delete_character()
 	if(pref.played)
@@ -64,7 +66,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	pref.unique_id = null
 	if(fdel("data/persistent/emails/[pref.email].sav"))
 		pref.email = null
-
+	pref.silent_join = null
 
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
@@ -172,6 +174,8 @@ F
 		. += "[pref.birth_day]/[pref.birth_month]/[pref.birth_year]<br><br>"
 
 	. += "<b>Spawn Point</b>:<br> <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
+	. += "<b>Silent Arrival</b>:<br> <a href='?src=\ref[src];silent_join=1'>[(pref.silent_join) ? "Yes" : "No"]</a><br>"
+
 	if(config.allow_Metadata)
 		. += "<b>OOC Notes:</b><br> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
 	. = jointext(.,null)
@@ -312,6 +316,11 @@ F
 		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , pref.metadata) as message|null)
 		if(new_metadata && CanUseTopic(user))
 			pref.metadata = new_metadata
+			return TOPIC_REFRESH
+
+	else if(href_list["silent_join"])
+		if(CanUseTopic(user))
+			pref.silent_join = !pref.silent_join
 			return TOPIC_REFRESH
 
 	return ..()

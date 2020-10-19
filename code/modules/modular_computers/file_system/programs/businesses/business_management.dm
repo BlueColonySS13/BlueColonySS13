@@ -361,7 +361,7 @@
 	if(!biz_mgr)
 		return
 
-	to_chat(usr, "Printing transaction balance...")
+	to_chat(usr, span("notice", "Printing transaction balance..."))
 
 	var/datum/department/biz_dept = dept_by_id(biz_mgr.selected_business.department)
 	if(!biz_dept || !biz_dept.bank_account)
@@ -388,6 +388,7 @@
 		R += "<td>[T.purpose]</td>"
 		R += "<td>[T.amount]</td>"
 		R += "</tr>"
+		CHECK_TICK
 	R += "</table>"
 
 	if(!computer.nano_printer.print_text(R, "Business Transation Data: [biz_dept.name]"))

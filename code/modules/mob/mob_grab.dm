@@ -329,6 +329,11 @@
 						attack_eye(affecting, assailant)
 					else if(hit_zone == BP_HEAD)
 						headbutt(affecting, assailant)
+					else if(hit_zone == BP_TORSO)
+						if(prob(1))
+							titty_twist(affecting, assailant)
+						else
+							attack_generic(H,rand(1,3),"punched")
 					else
 						dislocate(affecting, assailant, hit_zone)
 

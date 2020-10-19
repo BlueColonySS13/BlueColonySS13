@@ -1,7 +1,7 @@
 /obj/item/weapon/storage/box/mixedglasses
 	name = "glassware box"
 	desc = "A box of assorted glassware"
-	can_hold = list(/obj/item/weapon/reagent_containers/food/drinks/glass2)
+	can_hold = list(/obj/item/weapon/reagent_containers/food/drinks/glass2, /obj/item/weapon/reagent_containers/food/drinks/metaglass)
 	New()
 		..()
 		new /obj/item/weapon/reagent_containers/food/drinks/glass2/square(src)

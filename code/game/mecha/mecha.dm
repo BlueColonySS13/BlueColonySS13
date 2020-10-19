@@ -69,7 +69,7 @@
 	var/max_equip = 3
 	var/datum/events/events
 
-	unique_save_vars = list("health")
+	unique_save_vars = list("health", "icon_state")
 
 /obj/mecha/drain_power(var/drain_check)
 
