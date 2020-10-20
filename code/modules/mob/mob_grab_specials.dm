@@ -92,13 +92,7 @@
 	if(target.lying)
 		return
 	var/datum/gender/T = gender_datums[attacker.get_visible_gender()]
-	var/smooched = 0
-
-	if(prob(1))
-		attacker.visible_message(span("danger", "[attacker] plants a deadly smooch on [target]'s lips!"))
-		smooched = 1
-	else
-		attacker.visible_message("<span class='danger'>[attacker] thrusts [T.his] head into [target]'s skull!</span>")
+	attacker.visible_message("<span class='danger'>[attacker] thrusts [T.his] head into [target]'s skull!</span>")
 
 	var/damage = 20
 	var/obj/item/clothing/hat = attacker.head
@@ -114,12 +108,8 @@
 		target.apply_effect(20, PARALYZE)
 		target.visible_message("<span class='danger'>[target] [target.species.get_knockout_message(target)]</span>")
 
-	if(smooched)
-		playsound(attacker.loc, 'sound/effects/mob_effects/smooch.ogg', 25, 1, -1)
-		add_attack_logs(attacker,target,"Smooched using grab")
-	else
-		playsound(attacker.loc, "swing_hit", 25, 1, -1)
-		add_attack_logs(attacker,target,"Headbutted using grab")
+	playsound(attacker.loc, "swing_hit", 25, 1, -1)
+	add_attack_logs(attacker,target,"Headbutted using grab")
 
 	attacker.drop_from_inventory(src)
 	src.loc = null
@@ -183,6 +173,8 @@
 		attacker.stomach_contents.Add(target)
 		qdel(src)
 
+/* Some day...
+
 /obj/item/weapon/grab/proc/titty_twist(mob/target, mob/attacker)
 	if(state < GRAB_AGGRESSIVE)
 		to_chat(attacker, span("warning", "You require a better grab to do this."))
@@ -195,3 +187,5 @@
 		playsound(target.loc, 'sound/effects/mob_effects/Wilhelm_Scream.ogg', 25, 1, -1)
 		target.Weaken(2)
 		target.stuttering += 2
+
+*/

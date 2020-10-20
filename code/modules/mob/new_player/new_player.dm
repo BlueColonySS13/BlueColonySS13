@@ -510,7 +510,9 @@
 		//Grab some data from the character prefs for use in random news procs.
 		if(!character.mind.prefs.silent_join)
 			AnnounceArrival(character, rank, join_message)
-		else
+
+	else
+		if(!character.mind.prefs.silent_join)
 			AnnounceCyborg(character, rank, join_message)
 
 
