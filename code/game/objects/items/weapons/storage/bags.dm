@@ -62,8 +62,10 @@
 	icon = 'icons/obj/trash.dmi'
 	icon_state = "plasticbag"
 
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_SMALL
+	max_w_class = ITEMSIZE_LARGE	// this allows clothing to be placed in plastic bags so groceries can be a thing.
+	max_storage_space = INVENTORY_STANDARD_SPACE
+	w_class = ITEMSIZE_NORMAL
+
 	can_hold = list() // any
 	cant_hold = list(/obj/item/weapon/disk/nuclear)
 	drop_sound = 'sound/items/drop/wrapper.ogg'
