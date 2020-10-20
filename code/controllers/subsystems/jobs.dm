@@ -422,20 +422,22 @@ SUBSYSTEM_DEF(jobs)
 						to_chat(H, "<span class='warning'>Your current species, job or whitelist status does not permit you to spawn with [thing]!</span>")
 						continue
 
+					// Implants get special treatment
 					if(G.slot == "implant")
 						var/obj/item/weapon/implant/I = G.spawn_item(H)
+						I.invisibility = 100
 						I.implant_loadout(H)
 						continue
 
+					// Try desperately (and sorta poorly) to equip the item. Now with increased desperation!
 					if(G.slot && !(G.slot in custom_equip_slots))
-						// This is a miserable way to fix the loadout overwrite bug, but the alternative requires
-						// adding an arg to a bunch of different procs. Will look into it after this merge. ~ Z
 						var/metadata = H.client.prefs.gear[G.display_name]
 						if(G.slot == slot_wear_mask || G.slot == slot_wear_suit || G.slot == slot_head)
 							custom_equip_leftovers += thing
 						else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
 							to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
-							custom_equip_slots.Add(G.slot)
+							if(G.slot != slot_tie)
+								custom_equip_slots.Add(G.slot)
 						else
 							custom_equip_leftovers.Add(thing)
 					else
