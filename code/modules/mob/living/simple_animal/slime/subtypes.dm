@@ -483,7 +483,7 @@
 	reagent_injected = "radium"
 	var/rads = 25
 
-	description_info = "This slime will irradiate anything nearby passively, and will inject radium on attack.  \
+	description_info = "This slime will inject radium on attack.  \
 	A radsuit or other thick and radiation-hardened armor can protect from this.  It will only radiate while alive."
 
 	slime_mutation = list(
@@ -492,14 +492,6 @@
 			/mob/living/simple_animal/slime/emerald,
 			/mob/living/simple_animal/slime/emerald
 		)
-
-/mob/living/simple_animal/slime/green/Life()
-	if(stat != DEAD)
-		irradiate()
-	..()
-
-/mob/living/simple_animal/slime/green/proc/irradiate()
-	SSradiation.radiate(src, rads)
 
 
 /mob/living/simple_animal/slime/pink
