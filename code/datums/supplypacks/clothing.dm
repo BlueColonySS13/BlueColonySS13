@@ -266,6 +266,7 @@ datum/supply_pack/clothing/halloween
 			/obj/item/clothing/head/redcoat,
 			/obj/item/clothing/head/mailman,
 			/obj/item/clothing/head/plaguedoctorhat,
+			/obj/item/clothing/mask/gas/plaguedoctor,
 			/obj/item/clothing/head/pirate,
 			/obj/item/clothing/head/hasturhood,
 			/obj/item/clothing/head/powdered_wig,
