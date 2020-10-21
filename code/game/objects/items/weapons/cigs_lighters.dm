@@ -528,6 +528,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			G.reagents.trans_to_obj(J, G.reagents.total_volume)
 		J.name = "[G.name] joint"
 		J.desc = "A joint lovingly rolled and filled with [G.name]. Blaze it."
+		qdel(G)
 		qdel(src)
 
 //adding drugs from baggies

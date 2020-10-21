@@ -300,7 +300,17 @@
 		add_contributor(bank_id)
 		return TRUE
 
+	var/datum/department/D = dept_by_id(source_department)
+
+	if(D.dept_type == PUBLIC_DEPARTMENT)
+		if(istype(the_thing, /obj/item/weapon/redemption_box))
+			if(check_redemption_box(the_thing, bank_id))
+				add_contributor(bank_id)
+				qdel(the_thing)
+				return TRUE
+
 	return FALSE
+
 
 /datum/bounty/proc/meets_standards(var/obj/O)	// additional custom checks
 	return TRUE
@@ -455,7 +465,28 @@
 
 	return FALSE
 
+/datum/bounty/proc/check_redemption_box(var/obj/item/weapon/redemption_box/the_thing, bank_id)
+	if(!the_thing || !isobj(the_thing))
+		return
 
+	if(!istype(the_thing, /obj/item/weapon/redemption_box))
+		return
+
+	var/obj/item/weapon/redemption_box/R = the_thing
+
+	var/got_something = FALSE
+
+	for(var/obj/O in R.GetAllContents())
+		if(check_single_item(O))
+			add_contributor(bank_id)
+			got_something = TRUE
+
+	if(got_something)
+		return TRUE
+
+	if(check_single_item(R))
+		add_contributor(bank_id)
+		return TRUE
 
 /datum/bounty/proc/sanitize_bounty()
 	if(!name)

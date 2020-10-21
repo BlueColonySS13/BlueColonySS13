@@ -166,6 +166,9 @@ datum/preferences
 	// Communicator identity data
 	var/communicator_visibility = 1
 
+	//Silent joining for shenanigans
+	var/silent_join = 0
+
 	var/datum/category_collection/player_setup_collection/player_setup
 	var/datum/browser/panel
 

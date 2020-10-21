@@ -508,10 +508,12 @@
 		ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 
 		//Grab some data from the character prefs for use in random news procs.
+		if(!character.mind.prefs.silent_join)
+			AnnounceArrival(character, rank, join_message)
 
-		AnnounceArrival(character, rank, join_message)
 	else
-		AnnounceCyborg(character, rank, join_message)
+		if(!character.mind.prefs.silent_join)
+			AnnounceCyborg(character, rank, join_message)
 
 
 	//assign antag role, if any
