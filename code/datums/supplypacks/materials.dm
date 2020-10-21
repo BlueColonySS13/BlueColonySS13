@@ -106,7 +106,7 @@
 	name = "linoleum"
 	containertype = /obj/structure/closet/crate
 	containername = "Linoleum crate"
-	cost = 15
+	cost = 20
 	contains = list(/obj/fiftyspawner/linoleum)
 
 /datum/supply_pack/misc/diamond_tiles
@@ -132,8 +132,8 @@
 
 /datum/supply_pack/materials/sewingset
 	name = "Sewing Set"
-	contains = list(/obj/item/device/threadneedle = 2)
-	cost = 5
+	contains = list(/obj/item/device/threadneedle = 5)
+	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "Sewing Set"
 
@@ -165,10 +165,17 @@
 	containertype = /obj/structure/closet/crate
 	containername = "150 denim sheets"
 
+/datum/supply_pack/materials/wool
+	name = "150 wool sheets"
+	contains = list(/obj/fiftyspawner/wool = 3)
+	cost = 400
+	containertype = /obj/structure/closet/crate
+	containername = "150 wool sheets"
+
 /datum/supply_pack/materials/polychrome
 	name = "150 polychromatic thread sheets"
 	contains = list(/obj/fiftyspawner/polychrome = 3)
-	cost = 2000
+	cost = 1000
 	containertype = /obj/structure/closet/crate
 	containername = "150 polychromatic thread sheets"
 

@@ -392,12 +392,16 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	allowed = list(/obj/item/weapon/tank/emergency/oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter)
 	flags_inv = HIDEHOLSTER
 
+/obj/item/clothing/suit/storage/duster/alt
+	name = "modern coat"
+	desc = "A coat that has a nice finished feel."
+	icon_state = "jacketalt"
+
 /obj/item/clothing/suit/tailcoat
 	name = "tailcoat"
 	desc = "A fancy victorian tailcoat."
 	icon_state = "tailcoat"
 	index = 1
-
 
 /obj/item/clothing/suit/tailcoat/ladies
 	name = "ladies victorian coat"

@@ -1,5 +1,4 @@
 /datum/category_item/crafting/sewing_machine/cotton
-	prefix = "cotton"
 	force_matter = list("cotton" = 3200)
 
 
@@ -144,6 +143,7 @@
 /datum/category_item/crafting/sewing_machine/cotton/yellowswoop
 	name = "yellow swoop dress"
 	path = /obj/item/clothing/under/dress/yellowswoop
+
 
 /datum/category_item/crafting/sewing_machine/cotton/sheerblue
 	name = "sheer blue dress"
@@ -392,23 +392,49 @@
 	name = "cowboy duster"
 	path = /obj/item/clothing/suit/storage/duster
 
+/datum/category_item/crafting/sewing_machine/cotton/modern_coat
+	name = "modern coat"
+	path = /obj/item/clothing/suit/storage/duster/alt
+
 /datum/category_item/crafting/sewing_machine/cotton/jacket
 	name = "jacket"
 	path = /obj/item/clothing/suit/storage/toggle/lawyer/whitejacket
+	force_matter = list("cotton" = 2850)
 
 /datum/category_item/crafting/sewing_machine/cotton/flannel
 	name = "flannel"
 	path = /obj/item/clothing/suit/storage/flannel
+	force_matter = list("cotton" = 1950)
 
 /datum/category_item/crafting/sewing_machine/cotton/suspenders
 	name = "suspenders"
 	path = /obj/item/clothing/suit/suspenders
+	force_matter = list("cotton" = 650)
 
 /datum/category_item/crafting/sewing_machine/cotton/biker
 	name = "red biker jacket"
 	path = /obj/item/clothing/suit/storage/redbiker
+	force_matter = list("cotton" = 2550)
+
+/datum/category_item/crafting/sewing_machine/cotton/charcoal_jacket
+	name = "charcoal jacket"
+	path = /obj/item/clothing/accessory/jacket/charcoal
 	force_matter = list("cotton" = 2850)
 
+/datum/category_item/crafting/sewing_machine/cotton/navy_jacket
+	name = "navy jacket"
+	path = /obj/item/clothing/accessory/jacket/navy
+	force_matter = list("cotton" = 2850)
+
+/datum/category_item/crafting/sewing_machine/cotton/burgundy_jacket
+	name = "burgundy jacket"
+	path = /obj/item/clothing/accessory/jacket/burgundy
+	force_matter = list("cotton" = 2850)
+
+/datum/category_item/crafting/sewing_machine/cotton/checkered_jacket
+	name = "checkered jacket"
+	path = /obj/item/clothing/accessory/jacket/checkered
+	force_matter = list("cotton" = 2850)
 
 // accessories
 
@@ -426,9 +452,14 @@
 	path = /obj/item/clothing/accessory/tie
 	force_matter = list("cotton" = 410)
 
-/datum/category_item/crafting/sewing_machine/cotton/tie
+/datum/category_item/crafting/sewing_machine/cotton/armband
 	name = "armband"
 	path = /obj/item/clothing/accessory/armband
+	force_matter = list("cotton" = 210)
+
+/datum/category_item/crafting/sewing_machine/cotton/neckerchief
+	name = "neckerchief"
+	path = /obj/item/clothing/accessory/tie/neckerchief
 	force_matter = list("cotton" = 210)
 
 /datum/category_item/crafting/sewing_machine/cotton/waistcoat
@@ -589,3 +620,75 @@
 /datum/category_item/crafting/sewing_machine/cotton/backpack/parachute
 	name = "parachute"
 	path = /obj/item/weapon/storage/backpack/parachute
+
+// shoes
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes
+	force_matter = list("leather" = 900)
+	prefix = null
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/hitop
+	name = "hitop shoes"
+	path = /datum/gear/shoes/hitops
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/hitop/red
+	name = "hitop shoes (red)"
+	path = /obj/item/clothing/shoes/hitops/red
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/hitop/black
+	name = "hitop shoes (black)"
+	path = /obj/item/clothing/shoes/hitops/black
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/hitop/orange
+	name = "hitop shoes (orange)"
+	path = /obj/item/clothing/shoes/hitops/orange
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/hitop/blue
+	name = "hitop shoes (blue)"
+	path = /obj/item/clothing/shoes/hitops/blue
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/hitop/green
+	name = "hitop shoes (green)"
+	path = /obj/item/clothing/shoes/hitops/green
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/hitop/purple
+	name = "hitop shoes (purple)"
+	path = /obj/item/clothing/shoes/hitops/purple
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/hitop/yellow
+	name = "hitop shoes (yellow)"
+	path = /obj/item/clothing/shoes/hitops/yellow
+
+
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes
+	name = "shoes"
+	path = /obj/item/clothing/shoes/white
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/black
+	name = "shoes (black)"
+	path = /obj/item/clothing/shoes/black
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/blue
+	name = "shoes (blue)"
+	path = /obj/item/clothing/shoes/blue
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/brown
+	name = "shoes (browns)"
+	path = /obj/item/clothing/shoes/brown
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/blue
+	name = "shoes (blue)"
+	path = /obj/item/clothing/shoes/blue
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/green
+	name = "shoes (green)"
+	path = /obj/item/clothing/shoes/green
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/purple
+	name = "shoes (purple)"
+	path = /obj/item/clothing/shoes/purple
+
+/datum/category_item/crafting/sewing_machine/cotton/shoes/yellow
+	name = "shoes (yellow)"
+	path = /obj/item/clothing/shoes/yellow
