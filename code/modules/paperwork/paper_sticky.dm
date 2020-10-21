@@ -123,10 +123,16 @@
 /obj/item/weapon/paper/sticky/proc/track_value()
 	SSpersistence.track_value(src, /datum/persistent/paper/sticky)
 
+var/global/list/disallowed_sticky_items = list(/obj/item/weapon/storage, /obj/machinery/inventory_machine, /obj/machinery/door)
+
 /obj/item/weapon/paper/sticky/afterattack(var/A, var/mob/user, var/flag, var/params)
 
-	if(!in_range(user, A) || istype(A, /obj/machinery/door) || istype(A, /obj/item/weapon/storage) || icon_state == scrap_state)
+	if(!in_range(user, A) || icon_state == scrap_state)
 		return
+
+	for(var/V in disallowed_sticky_items)
+		if(istype(A, V))
+			return
 
 	var/turf/target_turf = get_turf(A)
 	var/turf/source_turf = get_turf(user)
