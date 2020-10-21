@@ -12,7 +12,7 @@
 	calories_factor = 40 // Per unit
 	var/injectable = 0
 	color = "#664330"
-	price_tag = 0.4
+	price_tag = 0.6
 
 /datum/reagent/nutriment/mix_data(var/list/newdata, var/newamount)
 
