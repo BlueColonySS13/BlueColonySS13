@@ -1,6 +1,6 @@
 /obj/item/toy/dummy
 	name = "ventriloquist dummy"
-	desc = "It's a dummy, dummy."
+	desc = "It's a dummy, dummy. Use :d to talk through the dummy."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "assistant"
 	item_state = "doll"
@@ -9,7 +9,7 @@
 
 /obj/item/toy/dummy/cursed
 	desc = " Yer here fer one reason and one reason only, ya dumb broad \
-	and that's to keep yer hand up my backside and not speak unless spoken to--ya get me?"
+	and that's to keep yer hand up my backside and not speak unless spoken to--ya get me? Use :d to talk through the dummy."
 	canremove = 0
 	nodrop = 1
 
