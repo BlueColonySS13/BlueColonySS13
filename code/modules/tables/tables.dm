@@ -255,12 +255,12 @@
 	if(item_place)
 		if(isrobot(user))
 			return
-		user.drop_item(src.loc)
-		if(!W.fixed_position)
-			W.pixel_x = clickedx
-			W.pixel_y = clickedy
-			W.Move(loc)
-			W.plane = ABOVE_MOB_PLANE
+		if(user.drop_item(src.loc))
+			if(!W.fixed_position)
+				W.pixel_x = clickedx
+				W.pixel_y = clickedy
+				W.Move(loc)
+				W.plane = ABOVE_MOB_PLANE
 
 	return
 	/*

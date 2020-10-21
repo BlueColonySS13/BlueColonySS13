@@ -92,6 +92,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 
 	var/icon/default_worn_icon	//Default on-mob icon
 	var/worn_layer				//Default on-mob layer
+	var/nodrop = 0 //Eclipse add - similar to canremove, but for dropping
 
 /obj/item/New()
 	..()
@@ -219,7 +220,6 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 
 	var/old_loc = src.loc
 	src.pickup(user)
-	src.plane = initial(plane) //resets the plane of the object when it's picked up from a table. might have other consequences
 
 	//If it's a certain type of object, log it for admins, quite useful in some situations.
 	//todo, create an attack log proc that's that's a lot shorter.
@@ -243,11 +243,16 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 
 	src.throwing = 0
 	if (src.loc == user)
+		if (src.nodrop)
+			return
 		if(!user.unEquip(src))
 			return
 	else
 		if(isliving(src.loc))
 			return
+
+	src.plane = initial(plane) //resets the plane of the object when it's picked up from a table. might have other consequences
+
 	if(user.put_in_active_hand(src))
 		if(isturf(old_loc))
 			var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
@@ -459,7 +464,8 @@ var/list/global/slot_flags_enumeration = list(
 /obj/item/proc/mob_can_unequip(mob/M, slot, disable_warning = 0)
 	if(!slot) return 0
 	if(!M) return 0
-
+	if(nodrop)
+		return 0
 	if(!canremove)
 		return 0
 	if(!M.slot_is_accessible(slot, src, disable_warning? null : M))
