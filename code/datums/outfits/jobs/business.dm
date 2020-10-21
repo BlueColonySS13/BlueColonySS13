@@ -40,6 +40,24 @@
 	uniform = /obj/item/clothing/under/waiter
 	backpack_contents = null
 
+/decl/hierarchy/outfit/job/business/bartender/waiter/red
+	name = OUTFIT_JOB_NAME("High End Waiter (Red)")
+	uniform = /obj/item/clothing/under/sl_suit{ starting_accessories=list(/obj/item/clothing/accessory/wcoat/red) }
+	shoes = /obj/item/clothing/shoes/dress
+	gloves = /obj/item/clothing/gloves/white
+	
+/decl/hierarchy/outfit/job/business/bartender/waiter/grey
+	name = OUTFIT_JOB_NAME("High End Waiter (Grey)")
+	uniform = /obj/item/clothing/under/sl_suit{ starting_accessories=list(/obj/item/clothing/accessory/wcoat/grey) }
+	shoes = /obj/item/clothing/shoes/dress
+	gloves = /obj/item/clothing/gloves/white
+
+/decl/hierarchy/outfit/job/business/bartender/waiter/brown
+	name = OUTFIT_JOB_NAME("High End Waiter (Brown)")
+	uniform = /obj/item/clothing/under/sl_suit{ starting_accessories=list(/obj/item/clothing/accessory/wcoat/brown) }
+	shoes = /obj/item/clothing/shoes/dress
+	gloves = /obj/item/clothing/gloves/white
+
 /decl/hierarchy/outfit/job/business/barber
 	name = OUTFIT_JOB_NAME("Barber")
 	uniform = /obj/item/clothing/under/rank/barber
@@ -123,4 +141,17 @@
 	name = OUTFIT_JOB_NAME("Business Casual")
 	uniform = /obj/item/clothing/under/sl_suit
 	shoes = /obj/item/clothing/shoes/laceup
-
+	
+/decl/hierarchy/outfit/job/business/clown
+	name = OUTFIT_JOB_NAME("Clown")
+	uniform = /obj/item/clothing/under/rank/clown
+	shoes = /obj/item/clothing/shoes/clown_shoes
+	backpack = /obj/item/weapon/storage/backpack/clown
+	head = /obj/item/clothing/mask/gas/clown_hat
+	r_pocket = /obj/item/weapon/bikehorn
+	
+/decl/hierarchy/outfit/job/business/mime
+	name = OUTFIT_JOB_NAME("Mime")
+	uniform = /obj/item/clothing/under/mime
+	shoes = /obj/item/clothing/shoes/mime
+	head = /obj/item/clothing/head/beret
