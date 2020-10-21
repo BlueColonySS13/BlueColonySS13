@@ -109,14 +109,6 @@
 	name = "stack of cardboard"
 	type_to_spawn = /obj/item/stack/material/cardboard
 
-/obj/fiftyspawner/leather
-	name = "stack of leather"
-	type_to_spawn = /obj/item/stack/material/leather
-
-/obj/fiftyspawner/polychrome
-	name = "stack of polychromatic thread"
-	type_to_spawn = /obj/item/stack/material/polychromatic_thread
-
 /obj/fiftyspawner/glass
 	name = "stack of glass"
 	type_to_spawn = /obj/item/stack/material/glass
@@ -132,6 +124,32 @@
 /obj/fiftyspawner/phoronrglass
 	name = "stack of reinforced borosilicate glass"
 	type_to_spawn = /obj/item/stack/material/glass/phoronrglass
+
+// cloth
+
+/obj/fiftyspawner/silk
+	name = "stack of silk"
+	type_to_spawn = /obj/item/stack/material/silk
+
+/obj/fiftyspawner/cotton
+	name = "stack of cotton"
+	type_to_spawn = /obj/item/stack/material/cotton
+
+/obj/fiftyspawner/denim
+	name = "stack of denim"
+	type_to_spawn = /obj/item/stack/material/denim
+
+/obj/fiftyspawner/wool
+	name = "stack of wool"
+	type_to_spawn = /obj/item/stack/material/wool
+
+/obj/fiftyspawner/leather
+	name = "stack of leather"
+	type_to_spawn = /obj/item/stack/material/leather
+
+/obj/fiftyspawner/polychrome
+	name = "stack of polychromatic thread"
+	type_to_spawn = /obj/item/stack/material/polychromatic_thread
 
 //R-UST port
 /obj/fiftyspawner/deuterium

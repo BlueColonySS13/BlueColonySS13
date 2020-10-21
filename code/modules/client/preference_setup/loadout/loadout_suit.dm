@@ -107,6 +107,11 @@
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
+/datum/gear/suit/duster/alt
+	display_name = "modern coat"
+	path = /obj/item/clothing/suit/storage/duster/alt
+
+
 /datum/gear/suit/hazard_vest
 	display_name = "hazard vest selection"
 	path = /obj/item/clothing/suit/storage/hazardvest
@@ -484,17 +489,20 @@
 	gear_tweaks = list(gear_tweak_free_color_choice)
 
 /datum/gear/suit/tailcoat
-	display_name = "tailcoat selection"
+	display_name = "tailcoat"
 	path = /obj/item/clothing/suit/tailcoat
 
 /datum/gear/suit/tailcoat/New()
 	..()
-	var/list/tailcoats = list()
-	for(var/tailcoat_style in typesof(/obj/item/clothing/suit/tailcoat))
-		var/obj/item/clothing/suit/tailcoat/tailcoat = tailcoat_style
-		tailcoats[initial(tailcoat.name)] = tailcoat
-	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(tailcoats))
+	gear_tweaks = list(gear_tweak_free_color_choice)
 
+/datum/gear/suit/ladies_tailcoat
+	display_name = "ladies tailcoat (black)"
+	path = /obj/item/clothing/suit/tailcoat/ladies
+
+/datum/gear/suit/ladies_tailcoat/red
+	display_name = "ladies tailcoat (red)"
+	path = /obj/item/clothing/suit/tailcoat/ladies/red
 
 /datum/gear/suit/hartcoat
 	display_name = "fur-lined greatcoat"

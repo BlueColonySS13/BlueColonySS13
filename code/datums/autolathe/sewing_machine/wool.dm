@@ -1,5 +1,4 @@
 /datum/category_item/crafting/sewing_machine/wool
-	prefix = "wool"
 	force_matter = list("wool" = 2000)
 
 /datum/category_item/crafting/sewing_machine/wool/sheets
@@ -52,9 +51,17 @@
 /datum/category_item/crafting/sewing_machine/wool/scarf
 	name = "scarf"
 	path = /obj/item/clothing/accessory/scarf/white
+	prefix = "wool"
 
 // hats
 
 /datum/category_item/crafting/sewing_machine/wool/ushanka
 	name = "ushanka"
 	path = /obj/item/clothing/head/ushanka
+
+// shoes
+
+/datum/category_item/crafting/sewing_machine/wool/shoes/bunny_slippers
+	name = "bunny slippers"
+	path = /datum/gear/shoes/slippers
+	force_matter = list("wool" = 900)
