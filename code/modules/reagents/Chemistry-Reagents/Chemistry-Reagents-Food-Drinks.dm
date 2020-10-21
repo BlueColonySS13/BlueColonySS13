@@ -1126,7 +1126,9 @@
 
 /datum/reagent/drink/soda/nuka_cola/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
-	M.add_chemical_effect(CE_SPEEDBOOST, 1)
+//	M.add_chemical_effect(CE_SPEEDBOOST, 1)
+	var/adjust_tox = rand(-4, 2)
+	M.adjustToxLoss(adjust_tox * removed)
 	M.make_jittery(20)
 	M.druggy = max(M.druggy, 30)
 	M.dizziness += 5
