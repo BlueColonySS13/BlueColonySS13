@@ -7,9 +7,6 @@
 	var/mob/living/dummy_voice/voice = null
 	var/doll_name = "Dummy"
 
-/obj/item/toy/dummy/borg
-	i
-
 /obj/item/toy/dummy/cursed
 	desc = " Yer here fer one reason and one reason only, ya dumb broad \
 	and that's to keep yer hand up my backside and not speak unless spoken to--ya get me?"
