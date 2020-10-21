@@ -19,7 +19,7 @@ var/global/list/business_outfits = list(
 	"High End Waiter (Brown)" = list("path" = /decl/hierarchy/outfit/job/business/bartender/waiter/brown),
 	"Clown" = list("path" = /decl/hierarchy/outfit/job/business/clown),	
 	"Mime" = list("path" = /decl/hierarchy/outfit/job/business/mime)
-	)
+	
 
 )
 
