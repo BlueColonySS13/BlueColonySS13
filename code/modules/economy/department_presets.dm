@@ -80,18 +80,20 @@
 	desc = "Nanotrasen's Pollux Defense Force - the city pays a staggering amount of money to call for this department. "
 	starting_money = 5000
 	dept_color = "#3F823F"
-
-// ## Private Presets ## //
-
+	
+// Factory is now a public department.
 /datum/department/factory
 	name = "Factory"
 	id = DEPT_FACTORY
 	desc = "The factory and its employees are paid from this account."
 	starting_money = 500
-	dept_type = PRIVATE_DEPARTMENT
+//	dept_type = PRIVATE_DEPARTMENT
 	allowed_buy_types = list(SPEND_OFFICE)
 	dept_color = "#7a4f33"
 	categories = list(CAT_MANUFACTURE, CAT_RETAIL)
+
+// ## Private Presets ## //
+
 
 // ## External Presets
 
