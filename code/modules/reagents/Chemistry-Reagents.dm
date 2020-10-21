@@ -37,7 +37,7 @@
 	var/hydration_factor = 0 // Per unit
 	var/calories_factor = 0 // Per unit
 
-	price_tag = 0.1
+	price_tag = 0.3
 
 	var/color = "#000000"
 	var/color_weight = 1

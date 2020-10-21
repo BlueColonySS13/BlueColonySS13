@@ -931,7 +931,7 @@
 	desc = "The cheese adds a good flavor."
 	icon_state = "cheeseburger"
 	center_of_mass = list("x"=16, "y"=11)
-	nutriment_amt = 2
+	nutriment_amt = 6
 	nutriment_desc = list("cheese" = 2, "bun" = 2)
 
 /obj/item/weapon/reagent_containers/food/snacks/cheeseburger/New()
@@ -944,7 +944,7 @@
 	icon_state = "hburger"
 	filling_color = "#D63C3C"
 	center_of_mass = list("x"=16, "y"=11)
-	nutriment_amt = 2
+	nutriment_amt = 6
 	nutriment_desc = list("bun" = 2)
 
 /obj/item/weapon/reagent_containers/food/snacks/monkeyburger/New()
@@ -971,7 +971,7 @@
 	icon_state = "tofuburger"
 	filling_color = "#FFFEE0"
 	center_of_mass = list("x"=16, "y"=10)
-	nutriment_amt = 2
+	nutriment_amt = 4
 	nutriment_desc = list("bun" = 2, "pseudo-soy meat" = 3)
 
 /obj/item/weapon/reagent_containers/food/snacks/tofuburger/New()
@@ -1096,7 +1096,7 @@
 	icon_state = "berryclafoutis"
 	trash = /obj/item/trash/plate
 	center_of_mass = list("x"=16, "y"=13)
-	nutriment_amt = 4
+	nutriment_amt = 5
 	nutriment_desc = list("sweetness" = 2, "pie" = 3)
 
 /obj/item/weapon/reagent_containers/food/snacks/berryclafoutis/New()

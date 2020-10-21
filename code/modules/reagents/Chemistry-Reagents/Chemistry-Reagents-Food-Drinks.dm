@@ -12,7 +12,7 @@
 	calories_factor = 40 // Per unit
 	var/injectable = 0
 	color = "#664330"
-	price_tag = 0.4
+	price_tag = 0.6
 
 /datum/reagent/nutriment/mix_data(var/list/newdata, var/newamount)
 
@@ -1122,14 +1122,20 @@
 	glass_name = "Nuka-Cola"
 	glass_desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland"
 	glass_special = list(DRINK_FIZZ)
+	overdose = REAGENTS_OVERDOSE
 
 /datum/reagent/drink/soda/nuka_cola/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
-	M.add_chemical_effect(CE_SPEEDBOOST, 1)
+//	M.add_chemical_effect(CE_SPEEDBOOST, 1)
+	var/adjust_tox = rand(-4, 2)
+	M.adjustToxLoss(adjust_tox * removed)
 	M.make_jittery(20)
 	M.druggy = max(M.druggy, 30)
 	M.dizziness += 5
 	M.drowsyness = 0
+
+/datum/reagent/drink/soda/nuka_cola/overdose(var/mob/living/M as mob)
+	M.apply_effect(1, IRRADIATE, 0)
 
 /datum/reagent/drink/grenadine
 	name = "Grenadine Syrup"
