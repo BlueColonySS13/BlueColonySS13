@@ -296,8 +296,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	var/total = 0
 
-	if(reagents && reagents.reagents_list)
-		for(var/datum/reagent/R in reagents.reagents_list)
+	if(reagents && reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.reagent_list)
 			total += R.get_item_cost()
 
 	return total
