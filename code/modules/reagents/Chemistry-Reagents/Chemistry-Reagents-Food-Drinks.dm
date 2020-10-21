@@ -1122,6 +1122,7 @@
 	glass_name = "Nuka-Cola"
 	glass_desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland"
 	glass_special = list(DRINK_FIZZ)
+	overdose = REAGENTS_OVERDOSE
 
 /datum/reagent/drink/soda/nuka_cola/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -1130,6 +1131,9 @@
 	M.druggy = max(M.druggy, 30)
 	M.dizziness += 5
 	M.drowsyness = 0
+
+/datum/reagent/drink/soda/nuka_cola/overdose(var/mob/living/M as mob)
+	M.apply_effect(1, IRRADIATE, 0)
 
 /datum/reagent/drink/grenadine
 	name = "Grenadine Syrup"
