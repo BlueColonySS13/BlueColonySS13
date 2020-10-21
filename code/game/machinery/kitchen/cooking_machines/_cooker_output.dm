@@ -6,6 +6,24 @@
 	nutriment_amt = 5
 	bitesize = 2
 
+	unique_save_vars = list("original_item", "desc", "filling_color")
+	var/original_item = null // put the type of food it is supposed to copy
+
+
+/obj/item/weapon/reagent_containers/food/snacks/variable/on_persistence_load()
+	..()
+	update_icon()
+
+/obj/item/weapon/reagent_containers/food/snacks/variable/update_icon()
+	if(!original_item)
+		return
+
+	var/orig_color = color
+	var/atom/tmp = original_item
+	appearance = tmp
+
+	color = orig_color
+
 /obj/item/weapon/reagent_containers/food/snacks/variable/pizza
 	name = "personal pizza"
 	desc = "A personalized pan pizza meant for only one person."
