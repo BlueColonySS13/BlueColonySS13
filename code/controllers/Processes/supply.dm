@@ -109,7 +109,11 @@ var/datum/controller/supply/supply_controller = new()
 
 
 				var/obj/sold = A
-				EC.contents[EC.contents.len]["value"] = sold.get_item_cost()
+				var/price = sold.price_tag
+				if(!price)
+					EC.contents[EC.contents.len]["value"] = 0
+				else
+					EC.contents[EC.contents.len]["value"] = price
 				EC.contents[EC.contents.len]["quantity"] = 1
 				EC.value += EC.contents[EC.contents.len]["value"]
 
