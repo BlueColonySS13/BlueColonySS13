@@ -5,7 +5,7 @@
 	icon_state = "assistant"
 	item_state = "doll"
 	var/mob/living/dummy_voice/voice = null
-	var/doll_name = "Dummy"
+	var/doll_name = "Puppet Man"
 
 /obj/item/toy/dummy/cursed
 	desc = " Yer here fer one reason and one reason only, ya dumb broad \
