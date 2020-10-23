@@ -154,19 +154,21 @@ var/list/slot_equipment_priority = list( \
 	var/obj/item/item_dropped = null
 	if (hand)
 		item_dropped = l_hand
-		if(item_dropped.nodrop)
+		if(item_dropped && item_dropped.nodrop)
 			return
 		else
 			. = drop_l_hand(Target)
 	else
 		item_dropped = r_hand
-		if(item_dropped.nodrop)
+		if(item_dropped && item_dropped.nodrop)
 			return
 		else
 			. = drop_r_hand(Target)
 
 	if (istype(item_dropped) && !QDELETED(item_dropped))
 		make_item_drop_sound(item_dropped)
+
+	return TRUE
 
 
 /mob/proc/make_item_drop_sound(obj/item/I)
