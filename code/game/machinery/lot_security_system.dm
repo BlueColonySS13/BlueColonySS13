@@ -503,7 +503,7 @@
 
 // Called when an object says that it's being used against a lot.
 // Return TRUE if whatever caused this to get called should be interrupted (if the caller cares about that), FALSE otherwise.
-/obj/machinery/lot_security_system/proc/respond_to_crime(mob/living/baddie, obj/mecha/badmech, security_option_type, details)
+/obj/machinery/lot_security_system/proc/respond_to_crime(mob/living/baddie, security_option_type, details)
 	. = FALSE
 
 	if(!is_active())
@@ -516,17 +516,12 @@
 
 	// Prevention.
 	if(prevent_flags & security_flag)
-		if(!istype(baddie) || !istype(badmech)) // If we don't know who did it, we can't punish them, but we can log it anyways.
+		if(!istype(baddie)) // If we don't know who did it, we can't punish them, but we can log it anyways.
 			action_taken = "Failed to retaliate: Unknown perpetrator."
 		else if(check_exemption(baddie, security_flag))
 			action_taken = "Logged (Exemption)"
 		else if(option.cost > zap_power)
 			action_taken = "Failed to retaliate: Insufficent charge."
-		else if(istype(badmech))
-			zap_power -= option.cost
-			zap_criminal(0, badmech)
-			action_taken = "Retaliated."
-			. = TRUE
 		else
 			zap_power -= option.cost
 			zap_criminal(baddie)
@@ -538,12 +533,10 @@
 		// In the grim dark future, we will use ISO 8601.
 		var/timestamp = "[get_game_year()]-[get_game_month()]-[get_game_day()]T[get_game_hour()]:[get_game_minute()]:[get_game_second()]"
 		var/perp = null
-		if(!baddie || !badmech)
+		if(!baddie)
 			perp = "N/A"
-		else if(baddie)
-			perp = baddie.name // This will show the baddie's false identity if one is being used, as it's not using `realname`.
 		else
-			perp = badmech.name
+			perp = baddie.name // This will show the baddie's false identity if one is being used, as it's not using `realname`.
 /*
 		var/list/new_report = list()
 		new_report["timestamp"] = timestamp
@@ -556,50 +549,26 @@
 		add_report(new_report)
 
 
-/obj/machinery/lot_security_system/proc/zap_criminal(mob/living/baddie, obj/mecha/badmech)
+/obj/machinery/lot_security_system/proc/zap_criminal(mob/living/baddie)
 	var/zap_damage = damage_to_criminals
 	// Do double damage to non-humanoids. Fluff it as the system not holding back or something.
 	// Otherwise it will cost a thousand or so credits to kill a spider.
-	if(baddie)
-		if(isanimal(baddie))
-			zap_damage *= 2
-		baddie.electrocute_act(damage_to_criminals, src, 1, BP_TORSO)
-		baddie.Weaken(stun_to_criminals) // The electrocute_act should also stun, but just to be safe.
+	if(isanimal(baddie))
+		zap_damage *= 2
+	baddie.electrocute_act(damage_to_criminals, src, 1, BP_TORSO)
+	baddie.Weaken(stun_to_criminals) // The electrocute_act should also stun, but just to be safe.
 
-		playsound(baddie, 'sound/effects/lightningbolt.ogg', 75, TRUE)
-		playsound(src, 'sound/machines/alarm4.ogg', 60, TRUE)
-		Beam(baddie, "lightning[rand(1, 12)]", 'icons/effects/beam.dmi', 0.5 SECONDS, INFINITY)
-		flick("[icon_state]_fire", src)
+	playsound(baddie, 'sound/effects/lightningbolt.ogg', 75, TRUE)
+	playsound(src, 'sound/machines/alarm4.ogg', 60, TRUE)
+	Beam(baddie, "lightning[rand(1, 12)]", 'icons/effects/beam.dmi', 0.5 SECONDS, INFINITY)
+	flick("[icon_state]_fire", src)
 
-		baddie.visible_message(
-			span("danger", "\The [baddie] was shocked by \the [get_area(src)]'s security system!"),
-			span("danger", "You've been shocked by the security system!"),
-			span("danger", "You hear an electric zap.")
-		)
-		log_and_message_admins("was zapped by \the [src] at \the [get_area(src)].", baddie)
-	else if(badmech)
-		var/list/badpassengers = list()
-		badpassengers += badmech.occupant //Add pilot to targets list
-
-		if(locate(/obj/item/mecha_parts/mecha_equipment/tool/passenger) in badmech.contents)	//If there is a passenger compartment in the mech...
-			for(var/obj/item/mecha_parts/mecha_equipment/tool/passenger/P in badmech.contents)  //Look through the compartment...
-				if(P.occupant)
-					badpassengers += P.occupant //And tag them as targets!
-
-		for(var/mob/living/M in badpassengers)
-			M.electrocute_act(damage_to_criminals, src, 1, BP_TORSO)
-			M.Weaken(stun_to_criminals) // The electrocute_act should also stun, but just to be safe.
-
-		badmech.health -= (zap_damage * 2.5) //Enough to do some damage, not enough to blow it up
-		playsound(badmech, 'sound/effects/lightningbolt.ogg', 75, TRUE)
-		playsound(src, 'sound/machines/alarm4.ogg', 60, TRUE)
-		Beam(badmech, "lightning[rand(1, 12)]", 'icons/effects/beam.dmi', 0.5 SECONDS, INFINITY)
-		flick("[icon_state]_fire", src)
-
-		badmech.visible_message(span("danger", "\The [badmech] was shocked by \the [get_area(src)]'s security system!"))
-	else
-		log_and_message_admins("ZEUS error at [get_area(src)]. Please investigate") //Shouldn't happen but just to be safe
-		return
+	baddie.visible_message(
+		span("danger", "\The [baddie] was shocked by \the [get_area(src)]'s security system!"),
+		span("danger", "You've been shocked by the security system!"),
+		span("danger", "You hear an electric zap.")
+	)
+	log_and_message_admins("was zapped by \the [src] at \the [get_area(src)].", baddie)
 
 /obj/machinery/lot_security_system/proc/factory_reset()
 	owner_uid = null
@@ -637,10 +606,10 @@
 // First parameter is who's doing the bad thing. This CAN be null if you don't want someone getting zapped but still want it to get logged.
 // Second one is the type of `/datum/lot_security_option` that is relevant, e.g. `/datum/lot_security_option/vandalism` if someone is smashing a window.
 // Third is a short description of what happened e.g. `\The [src] was hit by \the [W].`
-/atom/proc/trigger_lot_security_system(mob/living/baddie, obj/mecha/badmech, security_option_type, details)
+/atom/proc/trigger_lot_security_system(mob/living/baddie, security_option_type, details)
 	var/area/A = get_area(src)
 	if(A)
-		return A.trigger_lot_security_system(baddie, badmech, security_option_type, details)
+		return A.trigger_lot_security_system(baddie, security_option_type, details)
 	return FALSE // Wew nullspace.
 
 /area
@@ -648,10 +617,10 @@
 
 // Tells the security machine that someone is being bad.
 // Defined on the base area type instead of `/area/lots` in-case there is ever a need for these to be used outside those areas in the future.
-/area/trigger_lot_security_system(mob/living/baddie, obj/mecha/badmech, security_option_type, details)
+/area/trigger_lot_security_system(mob/living/baddie, security_option_type, details)
 	if(!security_system)
 		return FALSE
-	return security_system.respond_to_crime(baddie, badmech, security_option_type, details)
+	return security_system.respond_to_crime(baddie, security_option_type, details)
 
 // Datums of options for the owner to configure the security system.
 // The various datums are singletons, as only the bitflag on the machine is needed to store what the machine should stop.
