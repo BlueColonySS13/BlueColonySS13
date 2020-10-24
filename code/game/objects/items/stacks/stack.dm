@@ -290,7 +290,7 @@
 	if (isnull(tamount))
 		tamount = src.get_amount()
 	if(0 > amount)	// to avoid sheet exploits
-		dqel(src)
+		qdel(src)
 		return 0
 	var/transfer = max(min(tamount, src.get_amount(), (S.get_max_amount() - S.get_amount())), 0)
 
