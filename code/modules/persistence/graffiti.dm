@@ -12,7 +12,8 @@
 	var/message
 	var/graffiti_age = 0
 	var/author = "unknown"
-
+	anchored = TRUE
+	
 /obj/effect/decal/writing/New(var/newloc, var/_age, var/_message, var/_author)
 	..(newloc)
 	if(!isnull(_age))
