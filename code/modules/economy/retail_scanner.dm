@@ -406,6 +406,10 @@
 
 	// First check if item has a valid price
 	var/price = O.get_item_cost()
+	
+	if(0 > price)
+		price = 0
+	
 	if(isnull(price))
 		src.visible_message("\icon[src]<span class='warning'>Unable to find item in database.</span>")
 		return
