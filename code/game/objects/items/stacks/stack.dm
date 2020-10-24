@@ -34,6 +34,7 @@
 /obj/item/stack/on_persistence_load()
 	if(0 > amount)
 		amount = 1
+		
 	update_icon()
 
 /obj/item/stack/New(var/loc, var/amount=null)
