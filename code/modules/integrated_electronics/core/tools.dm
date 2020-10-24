@@ -9,11 +9,10 @@
 	desc = "It's a small wiring tool, with a wire roll, electric soldering iron, wire cutter, and more in one package. \
 	The wires used are generally useful for small electronics, such as circuitboards and breadboards, as opposed to larger wires \
 	used for power or data transmission."
-	icon = 'icons/obj/electronic_assemblies.dmi'
+	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "wirer-wire"
 	item_state = "wirer"
-	flags = CONDUCT
-	w_class = 2
+	w_class = ITEMSIZE_SMALL
 	var/datum/integrated_io/selected_io = null
 	var/mode = WIRE
 
@@ -108,9 +107,8 @@
 	name = "circuit debugger"
 	desc = "This small tool allows one working with custom machinery to directly set data to a specific pin, useful for writing \
 	settings to specific circuits, or for debugging purposes.  It can also pulse activation pins."
-	icon = 'icons/obj/electronic_assemblies.dmi'
+	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "debugger"
-	flags = CONDUCT
 	w_class = 2
 	var/data_to_write = null
 	var/accepting_refs = 0
@@ -170,6 +168,7 @@
 
 
 /obj/item/device/multitool
+	var/accepting_refs
 	var/datum/integrated_io/selected_io = null
 	var/mode = 0
 
@@ -190,6 +189,10 @@
 	else
 		if(buffer || connecting || connectable)
 			icon_state = "multitool_tracking_fail"
+		else if(accepting_refs)
+			icon_state = "multitool_ref_scan"
+		else if(weakref_wiring)
+			icon_state = "multitool_no_camera"
 		else
 			icon_state = "multitool"
 
@@ -239,7 +242,13 @@
 		io1.holder.interact(user) // This is to update the UI.
 		update_icon()
 
-
+/obj/item/device/multitool/afterattack(atom/target, mob/living/user, proximity)
+	if(accepting_refs && toolmode == MULTITOOL_MODE_INTCIRCUITS && proximity)
+		weakref_wiring = weakref(target)
+		visible_message("<span class='notice'>[user] slides \a [src]'s over \the [target].</span>")
+		to_chat(user, "<span class='notice'>You set \the [src]'s memory to a reference to [target.name] \[Ref\].  The ref scanner is \
+		now off.</span>")
+		accepting_refs = 0
 
 
 
@@ -252,7 +261,7 @@
 /obj/item/weapon/storage/bag/circuits
 	name = "circuit kit"
 	desc = "This kit's essential for any circuitry projects."
-	icon = 'icons/obj/electronic_assemblies.dmi'
+	icon = 'icons/obj/integrated_electronics/electronic_misc.dmi'
 	icon_state = "circuit_kit"
 	w_class = 3
 	display_contents_with_number = 0
@@ -265,61 +274,56 @@
 		/obj/item/weapon/screwdriver,
 		/obj/item/device/multitool
 		)
+	cant_hold = list(/obj/item/weapon/screwdriver/power)
 
-/obj/item/weapon/storage/bag/circuits/basic/New()
-	..()
-	spawn(2 SECONDS) // So the list has time to initialize.
-//		for(var/obj/item/integrated_circuit/IC in all_integrated_circuits)
-//			if(IC.spawn_flags & IC_SPAWN_DEFAULT)
-//				for(var/i = 1 to 4)
-//					new IC.type(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/arithmetic(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/trig(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/input(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/output(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/memory(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/logic(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/time(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/reagents(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/transfer(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/converter(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/power(src)
+/obj/item/weapon/storage/bag/circuits/basic/initialize()
+	. = ..()
+	new /obj/item/weapon/storage/bag/circuits/mini/arithmetic(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/trig(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/input(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/output(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/memory(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/logic(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/time(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/reagents(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/transfer(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/converter(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/power(src)
 
-		new /obj/item/device/electronic_assembly(src)
-		new /obj/item/device/assembly/electronic_assembly(src)
-		new /obj/item/device/assembly/electronic_assembly(src)
-		new /obj/item/device/multitool(src)
-		new /obj/item/weapon/screwdriver(src)
-		new /obj/item/weapon/crowbar(src)
-		make_exact_fit()
+	new /obj/item/device/electronic_assembly(src)
+	new /obj/item/device/assembly/electronic_assembly(src)
+	new /obj/item/device/assembly/electronic_assembly(src)
+	new /obj/item/device/multitool(src)
+	new /obj/item/weapon/screwdriver(src)
+	new /obj/item/weapon/crowbar(src)
+	make_exact_fit()
 
-/obj/item/weapon/storage/bag/circuits/all/New()
-	..()
-	spawn(2 SECONDS) // So the list has time to initialize.
-		new /obj/item/weapon/storage/bag/circuits/mini/arithmetic/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/trig/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/input/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/output/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/memory/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/logic/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/smart/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/manipulation/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/time/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/reagents/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/transfer/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/converter/all(src)
-		new /obj/item/weapon/storage/bag/circuits/mini/power/all(src)
+/obj/item/weapon/storage/bag/circuits/all/initialize()
+	. = ..()
+	new /obj/item/weapon/storage/bag/circuits/mini/arithmetic/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/trig/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/input/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/output/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/memory/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/logic/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/smart/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/manipulation/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/time/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/reagents/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/transfer/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/converter/all(src)
+	new /obj/item/weapon/storage/bag/circuits/mini/power/all(src)
 
-		new /obj/item/device/electronic_assembly(src)
-		new /obj/item/device/electronic_assembly/medium(src)
-		new /obj/item/device/electronic_assembly/large(src)
-		new /obj/item/device/electronic_assembly/drone(src)
-		new /obj/item/device/integrated_electronics/wirer(src)
-		new /obj/item/device/integrated_electronics/debugger(src)
-		new /obj/item/weapon/crowbar(src)
-		make_exact_fit()
+	new /obj/item/device/electronic_assembly(src)
+	new /obj/item/device/electronic_assembly/medium(src)
+	new /obj/item/device/electronic_assembly/large(src)
+	new /obj/item/device/electronic_assembly/drone(src)
+	new /obj/item/device/integrated_electronics/wirer(src)
+	new /obj/item/device/integrated_electronics/debugger(src)
+	new /obj/item/weapon/crowbar(src)
+	make_exact_fit()
 
-/obj/item/weapon/storage/bag/circuits/mini/
+/obj/item/weapon/storage/bag/circuits/mini
 	name = "circuit box"
 	desc = "Used to partition categories of circuits, for a neater workspace."
 	w_class = 2
