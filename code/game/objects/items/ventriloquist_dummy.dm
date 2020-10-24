@@ -5,7 +5,7 @@
 	icon_state = "assistant"
 	item_state = "doll"
 	var/mob/living/dummy_voice/voice = null
-	var/doll_name = "Dummy"
+	var/doll_name = "Puppet Man"
 
 /obj/item/toy/dummy/cursed
 	desc = " Yer here fer one reason and one reason only, ya dumb broad \
@@ -40,7 +40,7 @@
 	var/new_name = sanitizeName(input(usr,"What would you like to name the dummy?","Input a name", doll_name) as null|text)
 	if(!new_name)
 		return
-	voice.name = new_name
+	voice.name = "Puppet [new_name]"
 	voice.real_name = voice.name
 	to_chat(usr, "<span class='notice'>You name the dummy as \"[voice.name]\".</span>")
 	name = "[initial(name)] - [voice.name]"

@@ -530,6 +530,9 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 		if((stored_products.len + 1) > max_items)
 			to_chat(user, "You may have no more than [max_items] in your display case.")
 			return
+			
+	if(0 > O.tagged_price) // prevent negative numbers causing exploits
+		O.tagged_price = 0
 
 	user.drop_from_inventory(O, src)
 	O.forceMove(src)
@@ -774,6 +777,12 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 				var/obj/O = item
 
 				var/new_tag = input("Please enter the new price you want for this item. Enter 0 to make the item free.", "Set Bank", O.price_tag) as num
+				
+				if(!new_tag)
+					return
+				
+				if(0 > new_tag)
+					new_tag = 0
 
 				O.tagged_price = new_tag
 
