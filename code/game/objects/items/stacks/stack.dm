@@ -32,6 +32,8 @@
 	unique_save_vars = list("amount", "stack_color")
 
 /obj/item/stack/on_persistence_load()
+	if(0 > amount)
+		amount = 1
 	update_icon()
 
 /obj/item/stack/New(var/loc, var/amount=null)
@@ -286,6 +288,9 @@
 		return 0
 	if (isnull(tamount))
 		tamount = src.get_amount()
+	if(0 > amount)	// to avoid sheet exploits
+		dqel(src)
+		return 0
 	var/transfer = max(min(tamount, src.get_amount(), (S.get_max_amount() - S.get_amount())), 0)
 
 	var/orig_amount = src.get_amount()
