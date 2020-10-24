@@ -581,6 +581,10 @@
 
 	// First check if item has a valid price
 	var/price = O.get_item_cost()
+	
+	if(0 > price) // no money exploits here
+		price = 0
+	
 	var/tax
 
 	if(adds_tax)
