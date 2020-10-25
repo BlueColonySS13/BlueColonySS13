@@ -45,7 +45,7 @@
 	var/bank_id = ID.associated_account_number
 
 
-	if (istype(I, /obj/item/weapon/wrench) && (!current_bounty || (!(I.type in current_bounty.items_wanted))) // you can now move bounty machines around
+	if (istype(I, /obj/item/weapon/wrench)) // you can now move bounty machines around
 		if(target.trigger_lot_security_system(user, /datum/lot_security_option/theft, "Unwrenching \the [src] with [I]."))
 			return
 		playsound(src.loc, I.usesound, 50, 1)
