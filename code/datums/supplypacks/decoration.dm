@@ -101,3 +101,17 @@
 		/obj/structure/sculpting_block/sculpted/bust)
 	cost = 800
 	containername = "greek bust"
+
+/datum/supply_pack/decoration/balloons
+	name = "Assorted Balloons"
+	contains = list(/obj/structure/balloon/random = 10)
+	cost = 30
+	containertype = /obj/structure/closet/crate
+	containername = "Assorted Balloons"
+
+/datum/supply_pack/decoration/halloween_balloons
+	name = "Halloween Balloons"
+	contains = list(/obj/structure/balloon/bat = 5,
+	/obj/structure/balloon/ghost = 5)
+	cost = 40
+	containername = "Halloween Balloons"
