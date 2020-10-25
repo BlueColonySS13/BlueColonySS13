@@ -46,7 +46,7 @@
 
 
 	if (istype(I, /obj/item/weapon/wrench)) // you can now move bounty machines around
-		if(target.trigger_lot_security_system(user, /datum/lot_security_option/theft, "Unwrenching \the [src] with [I]."))
+		if(trigger_lot_security_system(user, /datum/lot_security_option/theft, "Attempted to unwrench [src] with \the [I]."))
 			return
 		playsound(src.loc, I.usesound, 50, 1)
 		to_chat(user,"<span class='notice'>You begin to [anchored ? "loosen" : "tighten"] loosen \the [src]'s fixtures...</span>")
