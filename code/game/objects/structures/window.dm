@@ -52,6 +52,9 @@
 			user << "<span class='notice'>There is a thick layer of silicate covering it.</span>"
 
 /obj/structure/window/proc/take_damage(var/damage = 0,  var/sound_effect = 1)
+	if(!damage)
+		return 0
+
 	var/initialhealth = health
 
 	if(silicate)
@@ -73,7 +76,7 @@
 		else if(health < maxhealth * 3/4 && initialhealth >= maxhealth * 3/4)
 			visible_message("Cracks begin to appear in [src]!" )
 			update_icon()
-	return
+	return 1
 
 /obj/structure/window/proc/apply_silicate(var/amount)
 	if(health < maxhealth) // Mend the damage
@@ -187,11 +190,13 @@
 /obj/structure/window/attack_hand(mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed())
 	if(HULK in user.mutations)
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Smashed \the [src]."))
+			return
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
 		user.visible_message("<span class='danger'>[user] smashes through [src]!</span>")
 		user.do_attack_animation(src)
 		shatter()
-		trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Smashed \the [src].")
+
 
 	else if (usr.a_intent == I_HURT)
 
@@ -226,12 +231,16 @@
 		if(!A.can_destroy_structures())
 			damage = 0
 			harmless = TRUE
+
+	if(damage && trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to break \the [src]."))
+		return
+
 	if(damage >= 10)
 		visible_message("<span class='danger'>[user] smashes into [src]!</span>")
 		if(reinf)
 			damage = damage / 2
 		take_damage(damage)
-		trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Smashed into \the [src].")
+
 	else
 		if(!harmless)
 			visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")

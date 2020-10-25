@@ -559,6 +559,9 @@ var/global/list/light_type_cache = list()
 		return
 	if(!(status == LIGHT_OK||status == LIGHT_BURNED))
 		return
+	if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to smash [src]."))
+		return
+
 	visible_message("<span class='danger'>[user] smashes the light!</span>")
 	user.do_attack_animation(src)
 	broken()
@@ -647,7 +650,8 @@ var/global/list/light_type_cache = list()
 		//If xenos decide they want to smash a light bulb with a toolbox, who am I to stop them? /N
 
 	else if(status != LIGHT_BROKEN && status != LIGHT_EMPTY)
-
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to smash [src] with [W]."))
+			return
 
 		if(prob(1+W.force * 5))
 			to_chat(user, "You hit the light, and it smashes!")
@@ -759,6 +763,8 @@ var/global/list/light_type_cache = list()
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 			user.setClickCooldown(user.get_attack_speed())
+			if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to smash [src]."))
+				return
 			for(var/mob/M in viewers(src))
 				M.show_message("<font color='red'>[user.name] smashed the light!</font>", 3, "You hear a tinkle of breaking glass", 2)
 			broken()
@@ -780,13 +786,16 @@ var/global/list/light_type_cache = list()
 		else
 			prot = 1
 
+		if(!prot && trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Tried to remove [src] from the fitting."))
+			return
+
 		if(prot > 0 || (COLD_RESISTANCE in user.mutations))
 			to_chat(user, "You remove the light [get_fitting_name()]")
 		else if(TK in user.mutations)
 			to_chat(user, "You telekinetically remove the light [get_fitting_name()].")
 		else
 			to_chat(user, "You try to remove the light [get_fitting_name()], but it's too hot and you don't want to burn your hand.")
-			return				// if burned, don't remove the light
+			return	// if burned, don't remove the light
 	else
 		to_chat(user, "You remove the light [get_fitting_name()].")
 
@@ -911,7 +920,7 @@ var/global/list/light_type_cache = list()
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
 	var/brightness_color = null
-	var/broken_chance = 2
+	var/broken_chance = 0.3
 
 /obj/item/weapon/light/tube
 	name = "light tube"

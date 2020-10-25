@@ -44,6 +44,19 @@
 
 	var/bank_id = ID.associated_account_number
 
+	if (istype(O, /obj/item/weapon/wrench) && (!current_bounty || (!(O.type in current_bounty.items_wanted))) // you can now move bounty machines around
+		if(target.trigger_lot_security_system(user, /datum/lot_security_option/theft, "Unwrenching \the [src] with [O]."))
+			return
+		playsound(src.loc, O.usesound, 50, 1)
+		to_chat(user,"<span class='notice'>You begin to [anchored ? "loosen" : "tighten"] loosen \the [src]'s fixtures...</span>")
+		if (do_after(user, 40 * O.toolspeed))
+			user.visible_message( \
+				"[user] [anchored ? "loosens" : "tightens"] \the [src]'s casters.", \
+				"<span class='notice'>You have [anchored ? "loosened" : "tightened"] \the [src]. It is [anchored ? "now secured" : "moveable"].</span>", \
+				"You hear ratchet.")
+			anchored = !anchored
+
+
 	if(!current_bounty)
 		to_chat(user,"<span class='notice'>You need to select a bounty first!</span>")
 		return
