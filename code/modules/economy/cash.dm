@@ -21,6 +21,8 @@
 	unique_save_vars = list("worth")
 
 /obj/item/weapon/spacecash/on_persistence_load()
+	if(0 > worth)
+		worth = 1
 	update_icon()
 
 /obj/item/weapon/spacecash/get_item_cost()

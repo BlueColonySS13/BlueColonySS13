@@ -236,7 +236,12 @@
 /obj/machinery/cooker/proc/change_product_appearance(var/obj/item/weapon/reagent_containers/food/snacks/product)
 	if(product.type == /obj/item/weapon/reagent_containers/food/snacks/variable) // Base type, generic.
 		var/obj/item/weapon/reagent_containers/food/snacks/variable/variable_product = product
-		variable_product.original_item = cooking_obj.type
+		if(!istype(cooking_obj, variable_product))
+			variable_product.original_item = cooking_obj.type
+		else
+			var/obj/item/weapon/reagent_containers/food/snacks/variable/cooking_product = cooking_obj
+			variable_product.original_item = cooking_product.original_item
+
 		variable_product.filling_color = food_color
 		variable_product.update_icon()
 		variable_product.color = food_color

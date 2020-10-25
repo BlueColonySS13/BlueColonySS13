@@ -92,15 +92,13 @@
 /datum/bounty/retail/rightful_protest
 	name = "Rightfully Timed Protest"
 	author = "Anonymous Protestor"
-	description = "It's time to stick it up to the government again, there's five of us so make sure none of our hands are empty. We will be heard! \
+	description = "It's time to stick it up to the government again, there's many of us so make sure none of our hands are empty. We will be heard! \
 	Justice will be served!"
 
-	items_wanted = list(/obj/item/weapon/picket_sign = 5)
+	items_wanted = list(/obj/item/weapon/picket_sign = 15)
 
-	department_reward = 95
+	department_reward = 195
 	individual_reward = 25
-
-	days_until_expiry = 1
 
 
 /datum/bounty/retail/soapy_sods
@@ -167,7 +165,7 @@
 	department_reward = 200
 	individual_reward = 30
 
-	days_until_expiry = 3
+	days_until_expiry = 6
 
 
 /datum/bounty/retail/skateboard
@@ -182,3 +180,15 @@
 	individual_reward = 70
 
 	days_until_expiry = 2
+
+/datum/bounty/retail/grinda
+	name = "For The Grind"
+	author = "Bill Kush"
+	description = "Yeah... -giggles- Send some of those grinders yeah? Be a pal..."
+
+	items_wanted = list(/obj/item/weapon/grinder = 10)
+
+	department_reward = 180
+	individual_reward = 50
+
+	days_until_expiry = 3
