@@ -29,12 +29,12 @@
 
 	// Balance/config vars.
 	var/damage_to_criminals = 20 		// How much damage to inflict on someone who the machine thinks is guilty.
-	var/stun_to_criminals = 3			// How severe of a stun will that someone get alongside the damage.
+	var/stun_to_criminals = 3		// How severe of a stun will that someone get alongside the damage.
 	var/desired_area_type = /area/lots	// The system only works inside this type of area. By default it only works in lots.
 	var/max_zap_storage = 30			// Max amount of zapping power that can be stored.
-	var/max_report_length = 50			// How many log entries the machine can store before it starts deleting the oldest entries.
+	var/max_report_length = 50		// How many log entries the machine can store before it starts deleting the oldest entries.
 	var/emp_disable_time = 2 MINUTES	// How long the machine turns off when EMP'd.
-	var/hardened = FALSE				// If true, EMP does nothing.
+	var/hardened = FALSE			// If true, EMP does nothing.
 
 // A subtype that could be useful for mapping in admin-only areas to stop end-of-round griffins from hacking in or something.
 // Also useful for testing.
@@ -510,6 +510,10 @@
 		return FALSE
 
 	var/datum/lot_security_option/option = GLOB.all_lot_security_options[security_option_type]
+
+	if(!option)
+		return FALSE
+
 	var/security_flag = option.id
 
 	var/action_taken = "Logged."

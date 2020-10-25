@@ -146,6 +146,8 @@
 /obj/structure/girder/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/wrench) && state == 0)
 		if(anchored && !reinf_material)
+			if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to deassemable \the [src] with \the [W]."))
+				return
 			playsound(src, W.usesound, 100, 1)
 			to_chat(user, "<span class='notice'>Now disassembling the girder...</span>")
 			if(do_after(user,(35 + round(max_health/50)) * W.toolspeed))
@@ -153,6 +155,8 @@
 				to_chat(user, "<span class='notice'>You dissasembled the girder!</span>")
 				dismantle()
 		else if(!anchored)
+			if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to secure [W] in the building."))
+				return
 			playsound(src, W.usesound, 100, 1)
 			to_chat(user, "<span class='notice'>Now securing the girder...</span>")
 			if(do_after(user, 40 * W.toolspeed, src))
@@ -160,6 +164,8 @@
 				reset_girder()
 
 	else if(istype(W, /obj/item/weapon/pickaxe/plasmacutter))
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to slice \the [src] with \the [W]."))
+			return
 		to_chat(user, "<span class='notice'>Now slicing apart the girder...</span>")
 		if(do_after(user,30 * W.toolspeed))
 			if(!src) return
@@ -167,11 +173,15 @@
 			dismantle()
 
 	else if(istype(W, /obj/item/weapon/pickaxe/diamonddrill))
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to drill \the [src] with \the [W]."))
+			return
 		to_chat(user, "<span class='notice'>You drill through the girder!</span>")
 		dismantle()
 
 	else if(istype(W, /obj/item/weapon/screwdriver))
 		if(state == 2)
+			if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to unsecure \the [src] with \the [W]."))
+				return
 			playsound(src, W.usesound, 100, 1)
 			to_chat(user, "<span class='notice'>Now unsecuring support struts...</span>")
 			if(do_after(user,40 * W.toolspeed))
@@ -184,6 +194,8 @@
 			to_chat(user, "<span class='notice'>\The [src] can now be [reinforcing? "reinforced" : "constructed"]!</span>")
 
 	else if(istype(W, /obj/item/weapon/wirecutters) && state == 1)
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to remove \the [src]'s support with \the [W]."))
+			return
 		playsound(src, W.usesound, 100, 1)
 		to_chat(user, "<span class='notice'>Now removing support struts...</span>")
 		if(do_after(user,40 * W.toolspeed))
@@ -194,6 +206,8 @@
 			reset_girder()
 
 	else if(istype(W, /obj/item/weapon/crowbar) && state == 0 && anchored)
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to dislodge \the [src] with \the [W]."))
+			return
 		playsound(src, W.usesound, 100, 1)
 		to_chat(user, "<span class='notice'>Now dislodging the girder...</span>")
 		if(do_after(user, 40 * W.toolspeed))

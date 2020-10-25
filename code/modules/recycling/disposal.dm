@@ -27,6 +27,7 @@
 	active_power_usage = 2200	//the pneumatic pump power. 3 HP ~ 2200W
 	idle_power_usage = 100
 
+
 // create a new disposal
 // find the attached trunk (if present) and init gas resvr.
 /obj/machinery/disposal/New()
@@ -887,7 +888,8 @@
 		src.add_fingerprint(user)
 		if(istype(I, /obj/item/weapon/weldingtool))
 			var/obj/item/weapon/weldingtool/W = I
-
+			if(trigger_lot_security_system(user, /datum/lot_security_option/theft, "Slicing \the [src] with [I]."))
+				return
 			if(W.remove_fuel(0,user))
 				playsound(src, W.usesound, 50, 1)
 				// check if anything changed over 2 seconds
