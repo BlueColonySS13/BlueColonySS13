@@ -436,7 +436,7 @@
 /obj/structure/device/piano/attackby(obj/item/O as obj, mob/user as mob)
 	if (istype(O, /obj/item/weapon/wrench))
 		if (anchored)
-			if(target.trigger_lot_security_system(user, /datum/lot_security_option/theft, "Unwrenching \the [src] with [O]."))
+			if(trigger_lot_security_system(user, /datum/lot_security_option/theft, "Unwrenching \the [src] with [O]."))
 				return
 			playsound(src.loc, O.usesound, 50, 1)
 			to_chat(user,"<span class='notice'>You begin to loosen \the [src]'s casters...</span>")

@@ -888,7 +888,7 @@
 		src.add_fingerprint(user)
 		if(istype(I, /obj/item/weapon/weldingtool))
 			var/obj/item/weapon/weldingtool/W = I
-			if(target.trigger_lot_security_system(user, /datum/lot_security_option/theft, "Slicing \the [src] with \the [W]."))
+			if(trigger_lot_security_system(user, /datum/lot_security_option/theft, "Slicing \the [src] with [I]."))
 				return
 			if(W.remove_fuel(0,user))
 				playsound(src, W.usesound, 50, 1)
