@@ -28,6 +28,9 @@
 	w_class = ITEMSIZE_NORMAL
 	var/open = FALSE
 
+	is_contraband()
+		return 0
+
 /obj/item/weapon/melee/umbrella/New()
 	..()
 	update_icon()
