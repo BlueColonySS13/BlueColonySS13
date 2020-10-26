@@ -104,7 +104,7 @@
 
 /datum/supply_pack/decoration/balloons
 	name = "Assorted Balloons"
-	contains = list(/obj/structure/balloon/random = 10)
+	contains = list(/obj/item/toy/colorballoon/random = 10)
 	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "Assorted Balloons"
