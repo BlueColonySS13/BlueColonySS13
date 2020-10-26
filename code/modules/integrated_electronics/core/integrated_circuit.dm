@@ -4,29 +4,28 @@ a creative player the means to solve many problems.  Circuits are held inside an
 */
 
 /obj/item/integrated_circuit/examine(mob/user)
-	. = ..()
-	. += external_examine(user)
 	interact(user)
+	external_examine(user)
+	. = ..()
 
 // This should be used when someone is examining while the case is opened.
 /obj/item/integrated_circuit/proc/internal_examine(mob/user)
-	. = list()
-	. += "This board has [inputs.len] input pin\s, [outputs.len] output pin\s and [activators.len] activation pin\s."
+	to_chat(user, "This board has [inputs.len] input pin\s, [outputs.len] output pin\s and [activators.len] activation pin\s.")
 	for(var/datum/integrated_io/I in inputs)
 		if(I.linked.len)
-			. += "The '[I]' is connected to [I.get_linked_to_desc()]."
+			to_chat(user, "The '[I]' is connected to [I.get_linked_to_desc()].")
 	for(var/datum/integrated_io/O in outputs)
 		if(O.linked.len)
-			. += "The '[O]' is connected to [O.get_linked_to_desc()]."
+			to_chat(user, "The '[O]' is connected to [O.get_linked_to_desc()].")
 	for(var/datum/integrated_io/activate/A in activators)
 		if(A.linked.len)
-			. += "The '[A]' is connected to [A.get_linked_to_desc()]."
-	. += any_examine(user)
+			to_chat(user, "The '[A]' is connected to [A.get_linked_to_desc()].")
+	any_examine(user)
 	interact(user)
 
 // This should be used when someone is examining from an 'outside' perspective, e.g. reading a screen or LED.
 /obj/item/integrated_circuit/proc/external_examine(mob/user)
-	return any_examine(user)
+	any_examine(user)
 
 /obj/item/integrated_circuit/proc/any_examine(mob/user)
 	return
@@ -234,7 +233,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 		else
 			var/datum/integrated_io/io = pin
-			io.ask_for_pin_data(usr, held_item) // The pins themselves will determine how to ask for data, and will validate the data.
+			io.ask_for_pin_data(usr) // The pins themselves will determine how to ask for data, and will validate the data.
 			/*
 			if(io.io_type == DATA_CHANNEL)
 
@@ -331,7 +330,6 @@ a creative player the means to solve many problems.  Circuits are held inside an
 			to_chat(usr, "<span class='warning'>\The [src] seems to be permanently attached to the case.</span>")
 			return
 		var/obj/item/device/electronic_assembly/ea = loc
-		power_fail()
 		disconnect_all()
 		var/turf/T = get_turf(src)
 		forceMove(T)
@@ -396,9 +394,3 @@ a creative player the means to solve many problems.  Circuits are held inside an
 		O.disconnect()
 	for(var/datum/integrated_io/activate/A in activators)
 		A.disconnect()
-
-/obj/item/integrated_circuit/proc/on_anchored()
-	return
-
-/obj/item/integrated_circuit/proc/on_unanchored()
-	return

@@ -12,7 +12,7 @@
 	..()
 
 /obj/item/device/assembly/electronic_assembly/attackby(obj/item/I as obj, mob/user as mob)
-	if (I.is_crowbar())
+	if (iscrowbar(I) )
 		toggle_open(user)
 	else if (opened)
 		EA.attackby(I, user)
@@ -20,7 +20,7 @@
 		..()
 
 /obj/item/device/assembly/electronic_assembly/proc/toggle_open(mob/user)
-	playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+	playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
 	opened = !opened
 	EA.opened = opened
 	to_chat(user, "<span class='notice'>You [opened ? "opened" : "closed"] \the [src].</span>")
@@ -46,10 +46,10 @@
 		return
 
 /obj/item/device/assembly/electronic_assembly/examine(mob/user)
-	. = ..()
+	.=..(user, 1)
 	if(EA)
 		for(var/obj/item/integrated_circuit/IC in EA.contents)
-			. += IC.external_examine(user)
+			IC.external_examine(user)
 
 /obj/item/device/assembly/electronic_assembly/verb/toggle()
 	set src in usr
@@ -82,3 +82,5 @@
 		return 0
 	return 1
 
+/obj/item/device/electronic_assembly/get_cell()
+	return battery

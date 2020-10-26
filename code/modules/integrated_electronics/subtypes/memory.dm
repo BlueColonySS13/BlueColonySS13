@@ -19,7 +19,7 @@
 	..()
 
 /obj/item/integrated_circuit/memory/examine(mob/user)
-	. = ..()
+	..()
 	var/i
 	for(i = 1, i <= outputs.len, i++)
 		var/datum/integrated_io/O = outputs[i]
@@ -30,7 +30,7 @@
 				data = "[d]"
 		else if(!isnull(O.data))
 			data = O.data
-		. += "\The [src] has [data] saved to address [i]."
+		to_chat(user, "\The [src] has [data] saved to address [i].")
 
 /obj/item/integrated_circuit/memory/do_work()
 	for(var/i = 1 to inputs.len)
@@ -75,6 +75,7 @@
 /obj/item/integrated_circuit/memory/constant
 	name = "constant chip"
 	desc = "This tiny chip can store one piece of data, which cannot be overwritten without disassembly."
+	icon_state = "memory"
 	complexity = 1
 	inputs = list()
 	outputs = list("output pin" = IC_PINTYPE_ANY)
