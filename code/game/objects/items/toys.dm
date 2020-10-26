@@ -147,7 +147,7 @@
 	else
 		user.visible_message("<span class='notice'><b>\The [user]</b> lightly bats the [src].</span>","<span class='notice'>You lightly bat the [src].</span>")
 
-/obj/structure/balloon/random/New()
+/obj/item/toy/colorballoon/random/New()
 	color = "#[get_random_colour()]"
 	..()
 
