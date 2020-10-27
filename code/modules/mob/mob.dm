@@ -305,7 +305,7 @@
 /mob/proc/update_flavor_text()
 	set src in usr
 	if(usr != src)
-		to_chat(usr, No.")
+		to_chat(usr, "No.")
 	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb. Can also be used for OOC notes about your character.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)
 
 	if(msg != null)
