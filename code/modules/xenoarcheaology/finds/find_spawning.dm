@@ -435,7 +435,6 @@
 				/obj/item/weapon/surgical/surgicaldrill/alien,
 				/obj/item/weapon/cell/device/weapon/recharge/alien,
 				/obj/item/clothing/suit/armor/alien,
-				/obj/item/clothing/suit/armor/alien/tank,
 				/obj/item/clothing/head/helmet/alien,
 				/obj/item/clothing/head/psy_crown/wrath
 			)
