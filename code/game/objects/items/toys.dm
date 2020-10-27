@@ -150,6 +150,10 @@
 /obj/structure/balloon/random/New()
 	color = "#[get_random_colour()]"
 	..()
+	
+/obj/item/toy/colorballoon/random/New()
+	color = "#[get_random_colour()]"
+	..()
 
 /obj/structure/balloon/bat
 	name = "giant bat balloon"
