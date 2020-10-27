@@ -275,7 +275,7 @@
 	if(mind)
 		mind.show_memory(src)
 	else
-		src << "The game appears to have misplaced your mind datum, so we can't show you your notes."
+		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 
 /mob/verb/add_memory(msg as message)
 	set name = "Add Note"
@@ -286,7 +286,7 @@
 	if(mind)
 		mind.store_memory(msg)
 	else
-		src << "The game appears to have misplaced your mind datum, so we can't show you your notes."
+		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 
 /mob/proc/store_memory(msg as message, popup, sane = 1)
 	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
@@ -305,7 +305,7 @@
 /mob/proc/update_flavor_text()
 	set src in usr
 	if(usr != src)
-		usr << "No."
+		to_chat(usr, No.")
 	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb. Can also be used for OOC notes about your character.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)
 
 	if(msg != null)
@@ -313,8 +313,8 @@
 
 /mob/proc/warn_flavor_changed()
 	if(flavor_text && flavor_text != "") // don't spam people that don't use it!
-		src << "<h2 class='alert'>OOC Warning:</h2>"
-		src << "<span class='alert'>Your flavor text is likely out of date! <a href='byond://?src=\ref[src];flavor_change=1'>Change</a></span>"
+		to_chat(src, "<h2 class='alert'>OOC Warning:</h2>")
+		to_chat(src, "<span class='alert'>Your flavor text is likely out of date! <a href='byond://?src=\ref[src];flavor_change=1'>Change</a></span>")
 
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
@@ -336,21 +336,21 @@
 	set category = "OOC"
 
 	if (!( config.abandon_allowed ))
-		usr << "<span class='notice'>Respawn is disabled.</span>"
+		to_chat(usr, "<span class='notice'>Respawn is disabled.</span>")
 		return
 	if ((stat != 2 || !( ticker )))
-		usr << "<span class='notice'><B>You must be dead to use this!</B></span>"
+		to_chat(usr, "<span class='notice'><B>You must be dead to use this!</B></span>")
 		return
 
 	if (ticker.mode && ticker.mode.deny_respawn) //BS12 EDIT
-		usr << "<span class='notice'>Respawn is disabled for this roundtype.</span>"
+		to_chat(usr, "<span class='notice'>Respawn is disabled for this roundtype.</span>")
 		return
 	else
 		var/deathtime = world.time - src.timeofdeath
 		if(istype(src,/mob/observer/dead))
 			var/mob/observer/dead/G = src
 			if(G.has_enabled_antagHUD == 1 && config.antag_hud_restricted && !client.holder)
-				usr << "<font color='blue'><B>Upon using the antagHUD you forfeighted the ability to join the round.</B></font>"
+				to_chat(usr, "<font color='blue'><B>Upon using the antagHUD you forfeighted the ability to join the round.</B></font>")
 				return
 		var/deathtimeminutes = round(deathtime / 600)
 		var/pluralcheck = "minute"
@@ -361,13 +361,13 @@
 		else if(deathtimeminutes > 1)
 			pluralcheck = " [deathtimeminutes] minutes and"
 		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
-		usr << "You have been dead for[pluralcheck] [deathtimeseconds] seconds."
+		to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
 
 		if (!client.holder && (deathtime < (5 * 600)) && (ticker && ticker.current_state > GAME_STATE_PREGAME))
-			usr << "You must wait 5 minutes to respawn!"
+			to_chat(usr, "You must wait 5 minutes to respawn!")
 			return
 		else
-			usr << "You can respawn now, enjoy your new life!"
+			to_chat(usr, "You can respawn now, enjoy your new life!")
 
 	log_game("[usr.name]/[usr.key] used abandon mob.")
 
@@ -375,11 +375,11 @@
 		var/mob/living/carbon/human/H = usr
 		if(H.save_mob_to_prefs()) // saves character if round is canon.
 			spawn(20)
-			H << "<span class='notice'><b>Your character has now been saved.</b> All changes from this round will apply to your current character.</span>"
+			to_chat(H, "<span class='notice'><b>Your character has now been saved.</b> All changes from this round will apply to your current character.</span>")
 		else
-			H << "<span class='notice'><b>As this is not a canon round, your character will not be saved this time.</b></span>"
+			to_chat(H, "<span class='notice'><b>As this is not a canon round, your character will not be saved this time.</b></span>")
 
-	usr << "<font color='blue'><B>Make sure to play a different character, and please roleplay correctly!</B></font>"
+	to_chat(usr, "<font color='blue'><B>Make sure to play a different character, and please roleplay correctly!</B></font>")
 
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
