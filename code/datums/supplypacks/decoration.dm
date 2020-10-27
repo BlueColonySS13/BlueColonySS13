@@ -112,6 +112,7 @@
 /datum/supply_pack/decoration/halloween_balloons
 	name = "Halloween Balloons"
 	contains = list(/obj/structure/balloon/bat = 5,
-	/obj/structure/balloon/ghost = 5)
+	/obj/structure/balloon/ghost = 5,
+	/obj/structure/balloon/random = 5)
 	cost = 40
 	containername = "Halloween Balloons"
