@@ -29,6 +29,7 @@
 	var/current_operator = ""
 
 	dont_save = TRUE
+	table_drag = TRUE
 
 
 
