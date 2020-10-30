@@ -1,3 +1,13 @@
+GLOBAL_LIST_INIT(metal_detector_items, typecacheof(list(
+	/obj/item/weapon/gun,
+	/obj/item/weapon/material,
+	/obj/item/weapon/melee,
+	/obj/item/device/transfer_valve,
+	/obj/item/weapon/grenade,
+	/obj/item/ammo_casing,
+	/obj/item/ammo_magazine
+	)))
+
 /obj/machinery/metal_detector
 	name = "metal detector"
 	desc = "An advanced metal detector used to detect weapons."
@@ -59,8 +69,8 @@
 		return
 
 	var/list/items_to_check = M.GetAllContents()
-	for(var/obj/O in items_to_check)
-		if(O.is_contraband())
+	for(var/A in items_to_check)
+		if(is_type_in_typecache(A, GLOB.metal_detector_items))
 			trigger_alarm(M)
 			break
 
