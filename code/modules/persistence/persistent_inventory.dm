@@ -264,18 +264,29 @@
 			return
 
 		if(!emagged)
+			var/safety = 200
+			var/list/objects_to_search = list(I)
+			var/has_illegal_things = FALSE
 
-			var/list/contents_to_search = list()
-			contents_to_search += I.get_saveable_contents()
-			contents_to_search += I
-
-			for(var/obj/P in contents_to_search)
-				var/contraband_status = P.is_contraband()
-				if(!(!contraband_status || contraband_status == LEGAL) )
-					visible_message("<b>[src]</b> beeps, \"<span class='danger'>I can't take this item as it is a government controlled item, I'm sorry!</span>\" ")
-					flick("inv-tri_warn",src)
+			while(objects_to_search.len)
+				if(--safety <= 0) // Just in case.
+					message_admins("Recursion limit hit when trying to parse contraband status of the contents of \the [I].")
 					return
+				var/atom/movable/AM = objects_to_search[1]
 
+				var/contraband_status = AM.is_contraband()
+				if(!(!contraband_status || contraband_status == LEGAL) )
+					has_illegal_things = TRUE
+					break
+				
+				objects_to_search -= AM
+				objects_to_search += AM.get_saveable_contents()
+
+			if(has_illegal_things)
+				visible_message("<b>[src]</b> beeps, \"<span class='danger'>I can't take this item as it is a government controlled item, I'm sorry!</span>\" ")
+				flick("inv-tri_warn",src)
+				playsound(src, 'sound/machines/deniedbeep.ogg', 50, FALSE)
+				return
 
 		item_processing = TRUE
 		user.drop_from_inventory(I, src)
