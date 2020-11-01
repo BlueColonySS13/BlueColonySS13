@@ -39,11 +39,14 @@
 	name = "Chemical Injector"
 	item_cost = 40
 	path = /obj/item/rig_module/chem_dispenser/injector
-
+/*
 /datum/uplink_item/item/hardsuit_modules/power_sink
 	name = "Power Sink"
 	item_cost = 45
 	path = /obj/item/rig_module/power_sink
+*/
+
+// useless on this codebase
 
 /datum/uplink_item/item/hardsuit_modules/egun
 	name = "Mounted Energy Gun"
