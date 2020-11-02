@@ -204,6 +204,7 @@
 			r_box.receiving_department = DEPT_RESEARCH
 			if(LAZYLEN(new_item.origin_tech))
 				r_box.origin_tech = new_item.origin_tech
+				r_box.name += " ([new_item.name])"
 			new_item.forceMove(r_box)
 		else
 			new_item.loc = loc
