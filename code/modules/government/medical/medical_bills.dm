@@ -24,19 +24,19 @@ var/global/list/medical_bills = list()
 /datum/medical_bill/basic_treatment
 	name = "Damage (Oxyloss, Toxin, Burns, Brute) under 50 ticks"
 	description = "A basic treatment which usually involves items within any medical pack under 50 ticks."
-	cost = 40
+	cost = 80
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/basic_treatment_over
 	name = "Damage (Oxyloss, Toxin, Burns, Brute) over 50 ticks"
 	description = "A basic treatment which usually involves items within any medical pack over 50 ticks."
-	cost = 60
+	cost = 100
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/basic_treatment_vend
 	name = "NanoMed Vended Items"
 	description = "Items vended from NanoMed Plus."
-	cost = 50
+	cost = 60
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/basic_treatment_iv
@@ -50,7 +50,7 @@ var/global/list/medical_bills = list()
 /datum/medical_bill/machinery
 	name = "Body Scan"
 	description = "Scan of patient vitals through body scanner."
-	cost = 50
+	cost = 75
 	insurance_coverage = INSURANCE_BASIC
 
 /datum/medical_bill/machinery_sleep
@@ -104,7 +104,7 @@ var/global/list/medical_bills = list()
 /datum/medical_bill/miscellaneous_stasis
 	name = "Stasis Bag"
 	description = "Use of stasis bag to transport an individual."
-	cost = 20
+	cost = 80
 	insurance_coverage = INSURANCE_BASIC
 /*
 /datum/medical_bill/defib
