@@ -273,6 +273,6 @@
 	cell_time = 15
 	fine = 3000
 
-	notes = "This includes participating in political activities, events or campaigning while being paid by the government, \, 
-	encouraging others to vote a specific way in any vote, and publicly challenging senior government officials without a legal basis.\
+	notes = "This includes participating in political activities, events or campaigning while being paid by the government, \
+	encouraging others to vote a specific way in any vote, and publicly challenging senior government officials without a legal basis. \
  	Anyone charged with this should be demoted."
