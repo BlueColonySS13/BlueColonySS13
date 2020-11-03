@@ -48,7 +48,7 @@
 	supervisors = "the chief of police"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/warden
-	wage = 160
+	wage = 175
 	access = list(access_security, access_bodyguard, access_warrant, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_morgue, access_external_airlocks)
 	minimal_access = list(access_security, access_warrant, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 5
@@ -83,7 +83,7 @@
 	idtype = /obj/item/weapon/card/id/security/detective
 	access = list(access_security, access_sec_doors, access_forensics_lockers, access_medical, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks, access_medical)
 	minimal_access = list(access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_eva, access_external_airlocks)
-	wage = 140
+	wage = 150
 	minimal_player_age = 3
 	minimum_character_age = 25
 
@@ -115,7 +115,7 @@
 	supervisors = "the chief of police"
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/security/officer
-	wage = 100
+	wage = 125
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 3
