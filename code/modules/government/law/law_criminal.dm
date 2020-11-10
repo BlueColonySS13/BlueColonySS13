@@ -266,3 +266,13 @@
 	notes = "This usually includes resisting cuffs, \
 	this does not qualify if no harm was caused to officers. If this suspect has harmed people, please see \
 	Violently Resisting Arrest instead of using this charge."
+
+/datum/law/criminal/insubordination
+	name = "Public Insubordination"
+	description = "To publicly challenge, defy, interfere with or engage in the derision of the operations, policies or actions of the government while holding a publicly funded position."
+	cell_time = 15
+	fine = 3000
+
+	notes = "This includes participating in political activities, events or campaigning while being paid by the government, \
+	encouraging others to vote a specific way in any vote, and publicly challenging senior government officials without a legal basis. \
+ 	Anyone charged with this should be demoted."

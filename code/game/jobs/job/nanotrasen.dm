@@ -52,7 +52,7 @@
 	alt_titles = list("Advisor" = /decl/hierarchy/outfit/job/nanotrasen/minister,
 	 "Vice President" = /decl/hierarchy/outfit/job/heads/vpresident,
 	  "Supreme Justice" = /decl/hierarchy/outfit/job/nanotrasen/justice)
-	wage = 6500
+	wage = 4500
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/governor
 	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
 	minimum_character_age = 30
