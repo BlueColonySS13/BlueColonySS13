@@ -1401,6 +1401,27 @@ CIRCUITS BELOW
 	build_path = /obj/item/weapon/circuitboard/biogenerator
 	sort_string = "KBAAA"
 
+/datum/design/circuit/botany_extractor
+	name = "lysis-isolation centrifuge"
+	id = "lysis"
+	req_tech = list (TECH_DATA = 2, TECH_BIO = 2)
+	build_path = /obj/item/weapon/circuitboard/botany_extractor
+	sort_string = "KBAAB"
+
+/datum/design/circuit/botany_editor
+	name = "bioballistic delivery system"
+	id = "bioball"
+	req_tech = list (TECH_DATA = 2, TECH_BIO = 2)
+	build_path = /obj/item/weapon/circuitboard/botany_editor
+	sort_string = "KBAAC"
+
+/datum/design/circuit/slimeprocessor
+	name = "slime processor"
+	id = "slimeprocessor"
+	req_tech = list (TECH_DATA = 2, TECH_BIO = 2)
+	build_path = /obj/item/weapon/circuitboard/processor
+	sort_string = "KBAAD"
+
 /datum/design/circuit/miningdrill
 	name = "mining drill head"
 	id = "mining drill head"
