@@ -6,7 +6,7 @@ Hazardous Material Permit
 [b]Requestee Field of Study:[/b] [field]
 [b]Educational Background (Bachelor, Master, Doctorate, in what):[/b] [field]
 [b]Employment Background:[/b] [field]
-[hr][b]Conditions and Terms as stipulated by the Governing Committee of the National Polluxian Foundation of Sciences, Enginering, and Medicine;[/b]
+[hr][b]Conditions and Terms as stipulated by the Governing Committee of the NPFSEM;[/b]
 [list][field][/list][hr][b]Vote Tally:[/b]
 [list][u]Aye:[/u] [field]
 [u]Nay:[/u] [field]
