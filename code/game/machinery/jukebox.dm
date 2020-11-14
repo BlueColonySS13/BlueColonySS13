@@ -49,6 +49,10 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("Syn", 'sound/music/disco/Syn.ogg'),
 		new/datum/track("System Collapse", 'sound/music/disco/System_Collapse.ogg'),
 		new/datum/track("This is Rain", 'sound/music/disco/This is Rain.ogg')
+		new/datum/track("Chippin In", 'sound/music/disco//Chippin In.ogg'),
+		new/datum/track("A Like Supreme", 'sound/music/disco/Like A Supreme.ogg')
+		new/datum/track("Never Fade Away", 'sound/music/disco/Never Fade Away.ogg'),
+		new/datum/track("The Ballad of Buck Ravers", 'sound/music/disco/The Ballad of Buck Ravers.ogg')
 
 	)
 
