@@ -3,7 +3,7 @@
 	var/last_message_time = 0
 	var/spam_alert = 0
 
-/client/proc/handle_spam_prevention(var/mute_type = MUTE_ALL, var/spam_delay = 0.5 SECONDS)
+/client/proc/handle_spam_prevention(var/mute_type = MUTE_ALL, var/spam_delay = 0.5 SECONDS, sent_message)
 	if(world.time - last_message_time < spam_delay)
 		spam_alert++
 		if(spam_alert > 5)
@@ -11,3 +11,5 @@
 	else
 		spam_alert = max(0, spam_alert--)
 	last_message_time = world.time
+	if(sent_message)
+		last_ooc_message = sent_message

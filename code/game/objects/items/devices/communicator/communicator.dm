@@ -9,7 +9,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 #define PHONTAB 2
 #define CONTTAB 3
 #define MESSTAB 4
-#define NEWSTAB 5
+// #define NEWSTAB 5
 #define NOTETAB 6
 #define WTHRTAB 7
 #define MANITAB 8
@@ -20,7 +20,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 /obj/item/device/communicator
 	name = "communicator"
 	desc = "A personal device used to enable long range dialog between two people, utilizing existing telecommunications infrastructure to allow \
-	communications across different stations, planets, or even star systems."
+	communications across different cities, planets, or even star systems."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "communicator"
 	w_class = ITEMSIZE_SMALL
@@ -28,7 +28,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 	show_messages = 1
 
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_MAGNET = 2, TECH_BLUESPACE = 2, TECH_DATA = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 10)
+	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 10,"copper" = 5)
 
 	var/video_range = 4
 	var/obj/machinery/camera/communicator/video_source	// Their camera
@@ -55,7 +55,6 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 							list("module" = "Phone", "icon" = "phone64", "number" = PHONTAB),
 							list("module" = "Contacts", "icon" = "person64", "number" = CONTTAB),
 							list("module" = "Messaging", "icon" = "comment64", "number" = MESSTAB),
-							list("module" = "News", "icon" = "note64", "number" = NEWSTAB), // Need a different icon,
 							list("module" = "Note", "icon" = "note64", "number" = NOTETAB),
 							list("module" = "Weather", "icon" = "sun64", "number" = WTHRTAB),
 							list("module" = "Crew Manifest", "icon" = "note64", "number" = MANITAB), // Need a different icon,
@@ -417,7 +416,7 @@ var/global/list/obj/item/device/communicator/all_communicators = list()
 /obj/item/device/communicator/watch
 	name = "communicator watch"
 	desc = "A personal device used to enable long range dialog between two people, utilizing existing telecommunications infrastructure to allow \
-	communications across different stations, planets, or even star systems. You can wear this one on your wrist!"
+	communications across different cities, planets, or even star systems. You can wear this one on your wrist!"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "commwatch"
 	slot_flags = SLOT_GLOVES

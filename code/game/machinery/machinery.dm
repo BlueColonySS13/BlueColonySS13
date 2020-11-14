@@ -124,6 +124,8 @@ Class Procs:
 		set_dir(d)
 	if(circuit)
 		circuit = new circuit(src)
+		if(dont_save && istype(circuit, /obj/item/weapon/circuitboard))
+			circuit.dont_save = TRUE // no circuit stealing for free stuff.
 
 /obj/machinery/initialize()
 	. = ..()
@@ -402,6 +404,9 @@ Class Procs:
 
 /obj/machinery/proc/dismantle()
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
+	//TFF 3/6/19 - port Cit RP fix of infinite frames. If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
+	if(!circuit)
+		return 0
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
 	var/obj/item/weapon/circuitboard/M = circuit
 	A.circuit = M
@@ -440,3 +445,9 @@ Class Procs:
 	M.deconstruct(src)
 	qdel(src)
 	return 1
+
+/datum/proc/apply_visual(mob/M)
+	return
+
+/datum/proc/remove_visual(mob/M)
+	return

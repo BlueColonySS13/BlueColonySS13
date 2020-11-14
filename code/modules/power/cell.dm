@@ -29,6 +29,8 @@
 	var/overlay_full_state = "cell-o2" // Overlay used when fully charged.
 	var/last_overlay_state = null // Used to optimize update_icon() calls.
 
+	unique_save_vars = list("charge", "rigged")
+
 /obj/item/weapon/cell/New()
 	..()
 	charge = maxcharge
@@ -138,18 +140,13 @@
 
 
 /obj/item/weapon/cell/examine(mob/user)
-	var/msg = desc
+	..()
 
 	if(get_dist(src, user) <= 1)
-		msg += " It has a power rating of [maxcharge].\nThe charge meter reads [round(src.percent() )]%."
+		to_chat(user, "The manufacturer's label states this cell has a power rating of [maxcharge], and that you should not swallow it. \nThe charge meter reads [round(src.percent() )]%.")
+	return
 
-	to_chat(user, msg)
-/*
-		if(maxcharge <= 2500)
-			to_chat(user, "[desc]\nThe manufacturer's label states this cell has a power rating of [maxcharge], and that you should not swallow it.\nThe charge meter reads [round(src.percent() )]%.")
-		else
-			to_chat(user, "This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of [maxcharge]!\nThe charge meter reads [round(src.percent() )]%.")
-*/
+
 /obj/item/weapon/cell/attackby(obj/item/W, mob/user)
 	..()
 	if(istype(W, /obj/item/weapon/reagent_containers/syringe))

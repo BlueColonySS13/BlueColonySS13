@@ -1,4 +1,4 @@
-// This will save things to a sav file, sadly can't be a map export. But I may make a convertor for that in-game to help out.
+// This will save things to a sav file, sadly can't be a map export. But I may make a converter for that in-game to help out. ~Cass
 
 /datum/map_turf
 	var/turf_type
@@ -6,22 +6,49 @@
 	var/y
 	var/z
 	var/turf_vars = list()
-	var/objects = list()
-	var/mobs = list()
+	var/list/map_objects = list()
+	var/list/decals = list()
+
+	//for walls
+	var/material //material id goes here
+	var/reinforced_material
+	var/girder_material
+
+	var/metadata
 
 /datum/map_object
 	var/savedtype
 	var/object_vars = list()
+	var/contents = list()
+	var/list/forensic_data = list()
 
-/datum/map_mob
-	var/savedtype
-	var/mob_vars = list()
+	var/list/reagent_data = list()
+	var/metadata
+	var/x
+	var/y
+	var/z
 
+	var/name = ""
 
-/proc/save_map(var/turf/t1, var/turf/t2, var/id, var/path, var/save_obj = 1, var/save_mob = 0)
-	var/block = get_map_turfs(t1, t2)
+/datum/map_reagent_data
+	var/id
+	var/amount
+	var/data
 
-	var/full_map = map_write(block, save_obj, save_mob)
+/proc/save_map(var/id, var/path, var/save_obj = 1)
+	set background = 1
+
+	var/area/map_area
+
+	for(var/area/A in return_sorted_areas())
+		if(A.lot_id == id)
+			map_area = A
+			break
+
+	if(!map_area)
+		return
+
+	var/full_map = map_write(map_area, save_obj)
 	if(!full_map)
 		return 0
 
@@ -30,32 +57,228 @@
 
 /proc/restore_map(var/id, var/path)
 	var/map_data = file_to_map(path, id)
-	get_map_data(map_data)
-	return 1
+	if(get_map_data(map_data))
+		return 1
 
 
-/proc/get_map_turfs(var/turf/t1 as turf, var/turf/t2 as turf)
-	//Check for valid turfs.
-	if(!isturf(t1) || !isturf(t2))
-		CRASH("Invalid arguments supplied to proc map_write, arguments were not turfs.")
+/proc/get_object_data(obj/O)
+	set background = 1
 
-	var/turf/ne = locate(max(t1.x,t2.x),max(t1.y,t2.y),max(t1.z,t2.z)) // Outer corner
-	var/turf/sw = locate(min(t1.x,t2.x),min(t1.y,t2.y),min(t1.z,t2.z)) // Inner corner
+	if(!O)
+		return FALSE
 
-	var/list/map_area = list()
+	var/datum/map_object/MO = new/datum/map_object
+	if(!MO)
+		return
+	O.on_persistence_save()
+	O.sanitize_for_saving()
+	MO.savedtype = O.type
 
-	for(var/turf/T in block(ne, sw) )
-		map_area += T
+	MO.name = O.name
 
-	return map_area
+	for(var/V in O.vars_to_save() )
+		var/save_var = TRUE
+		if(!(V in O.vars))
+			save_var = FALSE
+			continue
+		if(!(O.vars[V] == initial(O.vars[V])))
+			if(islist(O.vars[V]))
+				var/list/M = O.vars[V]
+				for(var/P in M)
+					if(!istext(P) && !isnum(P) && !ispath(P))
+						save_var = FALSE
+						continue
+					if(listgetindex(M,P))
+						var/asso_var = listgetindex(M,P)
+						if(asso_var && (!istext(asso_var) && !isnum(asso_var) && !ispath(asso_var)) )
+							save_var = FALSE
+							continue
 
-/proc/map_write(var/list/CHUNK, var/save_obj, var/save_mob)
+			else
+				if(!istext(O.vars[V]) && !isnum(O.vars[V]) && !ispath(O.vars[V]))	// make sure all references to mobs/objs/turfs etc, are fully cut!
+					save_var = FALSE
+					continue
+
+		if(save_var)
+			MO.object_vars[V] = O.vars[V]
+
+		CHECK_TICK
+
+
+	if(O.save_reagents && O.reagents)
+		MO.reagent_data = O.pack_persistence_data()
+
+	var/turf/obj_turf = get_turf(O)
+
+	if(obj_turf)
+		MO.x = obj_turf.x
+		MO.y = obj_turf.y
+		MO.z = obj_turf.z
+
+	// forensic data has to be stored independently because lists don't typically save
+	if(O.save_forensics)
+		MO.forensic_data["fingerprints"] = O.fingerprints
+		MO.forensic_data["fingerprintshidden"] = O.fingerprintshidden
+		MO.forensic_data["suit_fibers"] = O.suit_fibers
+
+	MO.metadata = O.get_persistent_metadata()
+
+	return MO
+
+/proc/full_item_save(obj/O)
+	set background = 1
+
+// get all objects in a area. I hate the method that's about to follow, but after finding exploits and potential shitcode that's in the game right now
+// actually worried we'd get the bad reference juju happening (like syringes containing blood and that blood having the actual mob reference in its data
+// which caused an infinite loop) - or items non-existing causing broken loading. because of this, the saving process has to be manually filtered for all the loops.
+
+	if(O.dont_save) return
+	var/datum/map_object/MO = get_object_data(O)
+	if(!MO) return
+
+	CHECK_TICK
+
+
+	for(var/obj/A in O.get_saveable_contents())
+		if(!O.save_contents)
+			continue
+		if(A.dont_save)
+			continue
+		var/datum/map_object/MO_2 = get_object_data(A)
+		if(!MO_2)
+			continue
+
+		MO.contents += MO_2
+
+		CHECK_TICK
+
+		for(var/obj/B in A.get_saveable_contents())
+			if(!A.save_contents) continue
+			if(B.dont_save) continue
+			var/datum/map_object/MO_3 = get_object_data(B)
+			if(!MO_3) continue
+
+			MO_2.contents += MO_3
+
+			CHECK_TICK
+
+			for(var/obj/C in B.get_saveable_contents())
+				if(!B.save_contents) continue
+				if(C.dont_save) continue
+				var/datum/map_object/MO_4 = get_object_data(C)
+				if(!MO_4) continue
+
+				MO_3.contents += MO_4
+
+				CHECK_TICK
+
+		CHECK_TICK
+
+	return MO
+
+/proc/full_item_load(var/datum/map_object/MO, loc)
+	if(!ispath(MO.savedtype))
+		error("Undefined save type [MO.savedtype]")
+		return
+	var/obj/O = new MO.savedtype (loc)
+	CHECK_TICK
+	MO.unpack_object_data(O)
+	O.forceMove(loc)
+
+	for(var/datum/map_object/MD in MO.contents)
+		if(!ispath(MD.savedtype))
+			error("Undefined save type [MD.savedtype]")
+			continue
+
+		var/obj/A = new MD.savedtype (loc)
+		CHECK_TICK
+		MD.unpack_object_data(A)
+		A.forceMove(O)
+
+		CHECK_TICK
+
+		for(var/datum/map_object/MF in MD.contents)
+			if(!ispath(MF.savedtype))
+				error("Undefined save type [MF.savedtype]")
+				continue
+
+			var/obj/B = new MF.savedtype (loc)
+			CHECK_TICK
+			MF.unpack_object_data(B)
+			B.forceMove(A)
+
+			CHECK_TICK
+
+			for(var/datum/map_object/MG in MF.contents)
+				if(!ispath(MG.savedtype))
+					error("Undefined save type [MG.savedtype]")
+					continue
+
+				var/obj/C = new MG.savedtype (loc)
+				CHECK_TICK
+				MG.unpack_object_data(C)
+				C.forceMove(B)
+
+				CHECK_TICK
+
+	return O
+
+
+
+
+/datum/map_object/proc/unpack_object_data(obj/O, obj/containing_obj)
+	if(!O || QDELETED(O))
+		return
+
+	O.x = x
+	O.y = y
+	O.z = z
+
+	if(containing_obj)
+		O.forceMove(containing_obj)
+
+	if(!O.initialized && !QDELETED(O))
+		O.initialize()
+
+	clearlist(O.contents)
+
+	for(var/V in O.vars_to_save())
+		if(object_vars[V])
+			O.vars[V] = object_vars[V]
+
+	if(!isemptylist(reagent_data) && O.reagents)
+		var/obj/item/weapon/reagent_containers/container = O
+		container.unpack_persistence_data(reagent_data)
+
+	// forensic data has to be stored independently because lists don't typically save
+	if(O.save_forensics && !isemptylist(forensic_data))
+		O.fingerprints = forensic_data["fingerprints"]
+		O.fingerprintshidden = forensic_data["fingerprintshidden"]
+		O.suit_fibers = forensic_data["suit_fibers"]
+
+
+	O.load_persistent_metadata(metadata)
+	O.on_persistence_load()
+
+	var/turf/turfmoveto = locate(x,y,z)	// this should fix display sign issues
+	if(turfmoveto && (turfmoveto != get_turf(O)) )
+		O.forceMove(turfmoveto)
+
+	return TRUE
+
+/proc/map_write(var/area/map_area, var/save_obj)
+	set background = 1
+
 	var/list/full_map = list()
 
-	for(var/turf/T in CHUNK)
+	var/list/all_turfs = get_area_turfs(map_area)
+	var/list/all_objs = list()
+
+	for(var/turf/T in all_turfs)
 		if(T.dont_save) continue
 
 		T.on_persistence_save()
+
 
 		var/datum/map_turf/MT = new/datum/map_turf()
 		MT.turf_type = T.type
@@ -63,105 +286,167 @@
 		MT.x = T.x
 		MT.y = T.y
 		MT.z = T.z
+
+		MT.metadata = T.get_persistent_metadata()
+
+		var/is_wall = FALSE
+
+		if(istype(T, /turf/simulated/wall))
+			var/turf/simulated/wall/new_wall = T
+			is_wall = TRUE
+			if(new_wall.material)
+				MT.material = new_wall.material.name
+			if(new_wall.reinf_material)
+				MT.reinforced_material = new_wall.reinf_material.name
+			if(new_wall.girder_material)
+				MT.girder_material = new_wall.girder_material.name
+
+		if(istype(T, /turf/simulated/floor))
+			if(T.decals)
+				var/list/full_decals_save = list()
+				var/dcl_count = 0
+				for(var/image/I in T.decals)
+					var/list/dcl_save = list()
+					dcl_save["type"] = I.metadata
+					dcl_save["color"] = I.color
+					dcl_save["dir"] = I.dir
+					dcl_count++
+					full_decals_save["[dcl_count]"] = dcl_save
+
+				MT.decals += full_decals_save
+
 		for(var/V in T.vars_to_save() )
-			if(!(T.vars[V] == initial(T.vars[V])))
+			if(!(V in T.vars))
+				continue
+
+			if(is_wall && (T.type in subtypesof(/turf/simulated/wall)) )	// reason why is because admin spawned walls actually have an /issue/ when being spawned anew + saving
+				MT.turf_vars[V] = initial(T.vars[V])
+
+			if(!(T.vars[V] == initial(T.vars[V])))	// transfer save values over
 				MT.turf_vars[V] = T.vars[V]
 
 
-		if(save_obj)
-			for(var/obj/O in T.contents)
-				if(O.dont_save) continue
-
-				O.on_persistence_save()
-
-				var/datum/map_object/MO = new/datum/map_object
-				MO.savedtype = O.type
-
-				for(var/V in O.vars_to_save() )
-					if(!(O.vars[V] == initial(O.vars[V])))
-						MO.object_vars[V] = O.vars[V]
-
-						if(V == "contents")
-							var/list/contents = MO.object_vars["contents"]
-							for(var/atom/A in contents)
-								if(A.dont_save)
-									A -= MO.object_vars["contents"]
-
-				MO.object_vars["x"] = O.vars["x"]
-				MO.object_vars["y"] = O.vars["y"]
-				MO.object_vars["z"] = O.vars["z"]
-
-				MT.objects += MO
-
-		if(save_mob)
-			for(var/mob/living/M in T.contents)
-				if(M.dont_save) continue
-
-				M.on_persistence_save()
-
-				var/datum/map_mob/MM = new/datum/map_mob
-				MM.savedtype = M.type
-
-
-				for(var/V in M.vars_to_save() )
-					if(!(M.vars[V] == initial(M.vars[V])))
-						MM.mob_vars[V] = M.vars[V]
-
-
-				MM.mob_vars["x"] = M.vars["x"]
-				MM.mob_vars["y"] = M.vars["y"]
-				MM.mob_vars["z"] = M.vars["z"]
-
-				MT.mobs += MM
-
 		full_map += MT
+
+		if(save_obj)
+			for(var/obj/O in T)
+				if(O.dont_save)
+					continue
+
+				if(O in all_objs)
+					continue
+
+				var/datum/map_object/saved_obj_1 = full_item_save(O)
+
+				MT.map_objects += saved_obj_1
+
+				all_objs += O
+
+		CHECK_TICK
 
 	return full_map
 
 
 /proc/get_map_data(var/list/full_map)
+	set background = 1
+
 	if(!full_map) return 0
 
 	for(var/datum/map_turf/MT in full_map)
+		var/change_turf = TRUE
+		if(!ispath(MT.turf_type))
+			error("Undefined save type [MT.turf_type]")
+			change_turf = FALSE
+
 		var/turf/newturf = locate(MT.x,MT.y,MT.z)
 
 		if(!newturf)
 			continue
 
-		newturf.ChangeTurf(MT.turf_type, 0, 1)
-		newturf.on_persistence_load()
+		if(change_turf)
+			if(ispath(MT.turf_type,/turf/simulated/wall))
+				newturf.ChangeTurf(/turf/simulated/wall)
+			else
+				newturf.ChangeTurf(MT.turf_type)
+
 		for(var/V in newturf.vars_to_save())
 			if(MT.turf_vars[V])
 				newturf.vars[V] = MT.turf_vars[V]
 
+		if(MT.metadata)
+			newturf.load_persistent_metadata(MT.metadata)
 
-		for(var/datum/map_object/MO in MT.objects)
-			var/obj/O = new MO.savedtype (newturf.loc)
-			for(var/V in O.vars_to_save())
-				if(MO.object_vars[V])
-					O.vars[V] = MO.object_vars[V]
+		if(istype(newturf, /turf/simulated/wall))
+			var/turf/simulated/wall/new_wall = newturf
+			new_wall.set_material(get_material_by_name(MT.material), get_material_by_name(MT.reinforced_material), get_material_by_name(MT.girder_material))
 
-			O.vars["x"] = MO.object_vars["x"]
-			O.vars["y"] = MO.object_vars["y"]
-			O.vars["z"] = MO.object_vars["z"]
+		if(istype(newturf, /turf/simulated/floor))
+			if(MT.decals)
+				var/no_count = 0
+				for(var/V in MT.decals)
+					no_count++
+					var/list/L = MT.decals["[no_count]"]
+					if(!L)
+						continue
+					var/decal_type = L["type"]
+					if(!decal_type || !ispath(decal_type))
+						continue
+					new decal_type(newturf, L["dir"], L["color"])
 
-		for(var/datum/map_mob/MM in MT.mobs)
-			var/mob/M = new MM.savedtype (newturf.loc)
-			M.on_persistence_load()
-			for(var/V in M.vars_to_save())
-				if(MM.mob_vars[V])
-					M.vars[V] = MM.mob_vars[V]
+					CHECK_TICK
 
-			M.vars["x"] = MM.mob_vars["x"]
-			M.vars["y"] = MM.mob_vars["y"]
-			M.vars["z"] = MM.mob_vars["z"]
+		for(var/datum/map_object/MO in MT.map_objects)
+			if(!ispath(MO.savedtype))
+				error("Undefined save type [MO.savedtype]")
+				continue
 
+			var/obj/O = new MO.savedtype ( newturf.loc )
+			CHECK_TICK
+			MO.unpack_object_data(O)
+
+			// first loop
+			for(var/datum/map_object/MO_2 in MO.contents)
+				if(!ispath(MO_2.savedtype))
+					error("Undefined save type [MO_2.savedtype] (in [MO])")
+					continue
+				var/obj/A = new MO_2.savedtype (O)
+				CHECK_TICK
+				MO_2.unpack_object_data(A, O)
+
+				// second loop
+				for(var/datum/map_object/MO_3 in MO_2.contents)
+					if(!ispath(MO_3.savedtype))
+						error("Undefined save type [MO_3.savedtype] (in [MO_2])")
+						continue
+					var/obj/B = new MO_3.savedtype (A)
+					CHECK_TICK
+					MO_3.unpack_object_data(B, A)
+
+					// third loop
+					for(var/datum/map_object/MO_4 in MO_3.contents)
+						if(!ispath(MO_4.savedtype))
+							error("Undefined save type [MO_4.savedtype] (in [MO_3])")
+							continue
+						var/obj/C = new MO_4.savedtype (B)
+						CHECK_TICK
+						MO_4.unpack_object_data(C, B)
+
+						// third loop
+						for(var/datum/map_object/MO_5 in MO_4.contents)
+							if(!ispath(MO_5.savedtype))
+								error("Undefined save type [MO_5.savedtype] (in [MO_4])")
+								continue
+							var/obj/D = new MO_5.savedtype (C)
+							CHECK_TICK
+							MO_5.unpack_object_data(D, C)
 	return 1
 
 
 
-/proc/map_to_file(var/list/full_map, var/path, var/map_name)
 
+
+/proc/map_to_file(var/list/full_map, var/path, var/map_name)
+	set background = 1
 	if(!full_map)
 		CRASH("No full map provided.")
 

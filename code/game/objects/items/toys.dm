@@ -113,6 +113,58 @@
 	icon_state = "ntballoon"
 	w_class = ITEMSIZE_LARGE
 
+/obj/item/toy/colorballoon /// To color it, VV the 'color' var with a hex color code with the # included.
+	name = "balloon"
+	desc = "It's a plain little balloon. Comes in many colors!"
+	throwforce = 0
+	throw_speed = 4
+	throw_range = 20
+	force = 0
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "colorballoon"
+	w_class = ITEMSIZE_LARGE
+	drop_sound = 'sound/items/drop/rubber.ogg'
+
+/// Balloon structures
+
+/obj/structure/balloon
+	name = "generic balloon"
+	desc = "A generic balloon. How boring."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "ghostballoon"
+	anchored = 0
+	density = 0
+
+/obj/structure/balloon/attack_hand(mob/user)
+	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+
+	if(user.a_intent == I_HELP)
+		user.visible_message("<span class='notice'><b>\The [user]</b> pokes [src]!</span>","<span class='notice'>You poke [src]!</span>")
+	else if (user.a_intent == I_HURT)
+		user.visible_message("<span class='warning'><b>\The [user]</b> punches [src]!</span>","<span class='warning'>You punch [src]!</span>")
+	else if (user.a_intent == I_GRAB)
+		user.visible_message("<span class='warning'><b>\The [user]</b> attempts to pop [src]!</span>","<span class='warning'>You attempt to pop [src]!</span>")
+	else
+		user.visible_message("<span class='notice'><b>\The [user]</b> lightly bats the [src].</span>","<span class='notice'>You lightly bat the [src].</span>")
+
+/obj/structure/balloon/random/New()
+	color = "#[get_random_colour()]"
+	..()
+	
+/obj/item/toy/colorballoon/random/New()
+	color = "#[get_random_colour()]"
+	..()
+
+/obj/structure/balloon/bat
+	name = "giant bat balloon"
+	desc = "A large balloon in the shape of a spooky bat with orange eyes."
+	icon_state = "batballoon"
+
+/obj/structure/balloon/ghost
+	name = "giant ghost balloon"
+	desc = "Oh no, it's a ghost! Oh wait, it's just a balloon. Phew!"
+	icon_state = "ghostballoon"
+
 /*
  * Fake telebeacon
  */
@@ -360,6 +412,11 @@
 	return
 
 /obj/item/toy/waterflower/afterattack(atom/A as mob|obj, mob/user as mob)
+	if (istype(A, /obj/machinery/inventory_machine ))
+		return
+
+	if(!reagents)
+		return
 
 	if (istype(A, /obj/item/weapon/storage/backpack ))
 		return
@@ -534,7 +591,7 @@
 	name = "Assistant action figure"
 	desc = "A \"Space Life\" brand Assistant action figure."
 	icon_state = "assistant"
-	toysay = "Grey tide station wide!"
+	toysay = "Grey tide city wide!"
 
 /obj/item/toy/figure/atmos
 	name = "Atmospheric Technician action figure"
@@ -561,8 +618,8 @@
 	toysay = "Dude, I see colors..."
 
 /obj/item/toy/figure/captain
-	name = "Colony Director action figure"
-	desc = "A \"Space Life\" brand Colony Director action figure."
+	name = "Mayor action figure"
+	desc = "A \"Space Life\" brand Mayor action figure."
 	icon_state = "captain"
 	toysay = "How do I open this display case?"
 
@@ -842,10 +899,41 @@
 	icon_state = "ianplushie"
 	anchored = 0
 	density = 1
+	var/opened = FALSE	// has this been slit open? this will allow you to store an object in a plushie.
+	var/obj/item/stored_item	// Note: Stored items can't be bigger than the plushie itself.
+	var/searching = FALSE
 	var/phrase = "I don't want to exist anymore!"
+
+	unique_save_vars = list("opened")
+
+/obj/structure/plushie/examine(mob/user)
+	..()
+	if(opened)
+		to_chat(user, "<i>You notice an incision has been made on [src].</i>")
+		if(in_range(user, src) && stored_item)
+			to_chat(user, "<i>You can see something in there...</i>")
+
+/obj/structure/plushie/on_persistence_load()
+	if(isemptylist(contents))
+		return TRUE
+
+	if(contents[1])
+		stored_item = contents[1]
+
 
 /obj/structure/plushie/attack_hand(mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	if(stored_item && opened && !searching)
+		searching = TRUE
+		if(do_after(user, 10))
+			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")
+			stored_item.forceMove(get_turf(src))
+			stored_item = null
+			searching = FALSE
+			return
+		else
+			searching = FALSE
+
 	if(user.a_intent == I_HELP)
 		user.visible_message("<span class='notice'><b>\The [user]</b> hugs [src]!</span>","<span class='notice'>You hug [src]!</span>")
 	else if (user.a_intent == I_HURT)
@@ -856,6 +944,34 @@
 		user.visible_message("<span class='notice'><b>\The [user]</b> pokes the [src].</span>","<span class='notice'>You poke the [src].</span>")
 		visible_message("[src] says, \"[phrase]\"")
 
+
+/obj/structure/plushie/attackby(obj/item/I as obj, mob/user as mob)
+	if(istype(I, /obj/item/device/threadneedle) && opened)
+		to_chat(user, "You sew the hole in [src].")
+		opened = FALSE
+		return
+
+	if(is_sharp(I) && !opened)
+		to_chat(user, "You open a small incision in [src]. You can place tiny items inside.")
+		opened = TRUE
+		return
+
+	if(opened)
+		if(stored_item)
+			to_chat(user, "There is already something in here.")
+			return
+
+		if(!(I.w_class > w_class))
+			to_chat(user, "You place [I] inside [src].")
+			user.drop_from_inventory(I, src)
+			I.forceMove(src)
+			stored_item = I
+			return
+		else
+			to_chat(user, "You open a small incision in [src]. You can place tiny items inside.")
+
+
+	..()
 
 /obj/structure/plushie/ian
 	name = "plush corgi"
@@ -890,7 +1006,39 @@
 	w_class = ITEMSIZE_TINY
 	var/last_message = 0
 
+	var/searching = FALSE
+	var/opened = FALSE	// has this been slit open? this will allow you to store an object in a plushie.
+	var/obj/item/stored_item	// Note: Stored items can't be bigger than the plushie itself.
+
+	unique_save_vars = list("opened")
+
+/obj/item/toy/plushie/on_persistence_load()
+	if(isemptylist(contents))
+		return TRUE
+
+	if(contents[1])
+		stored_item = contents[1]
+
+
+/obj/item/toy/plushie/examine(mob/user)
+	..()
+	if(opened)
+		to_chat(user, "<i>You notice an incision has been made on [src].</i>")
+		if(in_range(user, src) && stored_item)
+			to_chat(user, "<i>You can see something in there...</i>")
+
 /obj/item/toy/plushie/attack_self(mob/user as mob)
+	if(stored_item && opened && !searching)
+		searching = TRUE
+		if(do_after(user, 10))
+			to_chat(user, "You find \icon[stored_item] [stored_item] in [src]!")
+			stored_item.forceMove(get_turf(src))
+			stored_item = null
+			searching = FALSE
+			return
+		else
+			searching = FALSE
+
 	if(world.time - last_message <= 1 SECOND)
 		return
 	if(user.a_intent == I_HELP)
@@ -922,6 +1070,30 @@
 	if(istype(I, /obj/item/toy/plushie) || istype(I, /obj/item/organ/external/head))
 		user.visible_message("<span class='notice'>[user] makes \the [I] kiss \the [src]!.</span>", \
 		"<span class='notice'>You make \the [I] kiss \the [src]!.</span>")
+		return
+
+	if(istype(I, /obj/item/device/threadneedle) && opened)
+		to_chat(user, "You sew the hole underneath [src].")
+		opened = FALSE
+		return
+
+	if(is_sharp(I) && !opened)
+		to_chat(user, "You open a small incision in [src]. You can place tiny items inside.")
+		opened = TRUE
+		return
+
+	if( (!(I.w_class > w_class)) && opened)
+		if(stored_item)
+			to_chat(user, "There is already something in here.")
+			return
+
+		to_chat(user, "You place [I] inside [src].")
+		user.drop_from_inventory(I, src)
+		I.forceMove(src)
+		stored_item = I
+		to_chat(user, "You placed [I] into [src].")
+		return
+
 	return ..()
 
 /obj/item/toy/plushie/nymph
@@ -1310,3 +1482,12 @@
 	name = "roxie"
 	desc = "Roxie, the bestest girl pet in the whole wide universe!"
 	icon_state = "roxie"
+
+/obj/item/toy/pet_rock/gold
+	name = "pet gold ore"
+	desc = "For the aspiring pet owner born with a silver spoon in their mouth."
+	icon_state = "gold"
+	attack_verb = list("luxuriously smashed", "rocked with finesse", "smashed with success", "bashed with opulence")
+
+/obj/item/toy/pet_rock/gold/attack_self(mob/user)
+	to_chat(user, "<span class='notice'>You caress \the [src] lovingly.</span>")

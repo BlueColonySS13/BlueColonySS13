@@ -1,166 +1,127 @@
 SUBSYSTEM_DEF(economy)
 	name = "Economy"
-	init_order = INIT_ORDER_PAYROLL
+	init_order = INIT_ORDER_ECONOMY
+	flags = SS_NO_FIRE
 
-	wait = 1200 //Ticks once per 2 minutes
-	var/payday_interval = 1 HOUR
-	var/next_payday = 1 HOUR
+	var/list/all_departments = list()
+	var/list/all_department_accounts = list()
+	var/list/all_public_depts = list()
+	var/list/all_private_depts = list()
+	var/list/all_hidden_depts = list()
+	var/list/all_business_depts = list()
+	var/list/all_money_accounts_list = list()
 
-/datum/controller/subsystem/economy/Initialize()
-	.=..()
+/datum/controller/subsystem/economy/Initialize(timeofday)
+	setup_economy()
+	load_economy()
+	load_business_departments()
+	init_expenses()
+	persistent_economy.load_accounts()
+	link_economy_accounts()
 
-/datum/controller/subsystem/economy/fire()
-	if (world.time >= next_payday)
-		next_payday = world.time + payday_interval
+	all_departments = GLOB.departments
+	all_department_accounts = GLOB.department_accounts
+	all_public_depts = GLOB.public_departments
+	all_private_depts = GLOB.private_departments
+	all_hidden_depts = GLOB.hidden_departments
+	all_business_depts = GLOB.business_departments
+	all_money_accounts_list = GLOB.all_money_accounts
+	. = ..()
 
-		//Search general records, and process payroll for all those that have bank numbers.
-		city_charges()
-		command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
+/datum/controller/subsystem/economy/proc/get_all_nonbusiness_departments()
+	var/list/depts = list()
+	for(var/datum/department/D in all_departments)
+		if(D.dept_type == BUSINESS_DEPARTMENT)
+			continue
+		depts |= D
 
+	return depts
 
-/datum/controller/subsystem/economy/proc/city_charges()
-	for(var/datum/expense/E in persistent_economy.city_expenses)
-		E.charge_department(E.cost_per_payroll)
+/datum/controller/subsystem/economy/proc/get_all_business_departments()
+	var/list/depts = list()
+	for(var/datum/department/D in all_departments)
+		if(D.dept_type != BUSINESS_DEPARTMENT)
+			continue
+		depts |= D
 
-		for(var/datum/data/record/R in data_core.general)
-			payroll(R)
+	return depts
 
-/proc/payroll(var/datum/data/record/G)
-	var/bank_number = G.fields["bank_account"]
-	var/datum/job/job = job_master.GetJob(G.fields["real_rank"])
-	var/department
-	var/class = G.fields["economic_status"]
-	var/name = G.fields["name"]
-	var/age = G.fields["age"]
-	var/datum/money_account/bank_account
-	var/wage
-	var/calculated_tax
-	var/tax
+/datum/controller/subsystem/economy/proc/setup_economy()
+	for(var/instance in subtypesof(/datum/department))
+		new instance
 
-	var/unique_id = G.fields["unique_id"]
+	GLOB.current_date_string = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
 
-	var/mob/living/carbon/human/linked_person
+/datum/controller/subsystem/economy/proc/init_expenses()
+	for(var/E in subtypesof(/datum/expense/nanotrasen) - list(/datum/expense/nanotrasen/pest_control,
+	 /datum/expense/nanotrasen/tech_support, /datum/expense/nanotrasen/external_defense
+	 ))
+		var/datum/expense/new_expense = new E
+		persistent_economy.city_expenses += new_expense
 
+		new_expense.do_effect()
 
+/datum/controller/subsystem/economy/proc/link_economy_accounts()
+	for(var/obj/item/device/retail_scanner/RS in GLOB.transaction_devices)
+		if(RS.account_to_connect)
+			RS.linked_account = dept_acc_by_id(RS.account_to_connect)
 
-	//let's find the relevent person.
-	for(var/mob/living/carbon/human/H in mob_list)
-		if(unique_id == H.unique_id)
-			linked_person = H
+	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
+		if(CR.account_to_connect)
+			CR.connect_to_dept()
 
-	if(!bank_number)
-//		message_admins("ERROR: No bank number found for field. Returned [bank_number].", 1)
+	for(var/obj/machinery/status_display/money_display/MD in GLOB.money_displays)
+		MD.link_to_account()
+
+	for(var/obj/machinery/inventory_machine/nanotrasen/NTBOX in GLOB.inventory_boxes)
+		NTBOX.link_nt_account()
+
+/datum/controller/subsystem/economy/proc/charge_head_department(amount, purpose)
+	if(!using_map || !HEAD_DEPARTMENT) // shouldn't happen, but just in case
 		return
 
+	var/datum/department/head_account = using_map.get_head_department()
 
-	bank_account = get_account(bank_number)
+	if(head_account.adjust_funds(amount))
+		if(purpose)
+			head_account.bank_account.add_transaction_log(head_account.name, purpose, amount, "[head_account.name] Funding Account")
+		return TRUE
 
-	if(!bank_account)
-//		message_admins("ERROR: Could not find a bank account for [bank_number].", 1)
+/datum/controller/subsystem/economy/proc/charge_main_department(amount, purpose)
+	if(!using_map || !MAIN_DEPARTMENT) // shouldn't happen, but just in case
 		return
 
+	var/datum/department/main_account = using_map.get_main_department()
 
-	department = job.department
+	if(main_account.adjust_funds(amount))
+		if(purpose)
+			main_account.bank_account.add_transaction_log(main_account.name, purpose, amount, "[main_account.name] Funding Account")
+		return TRUE
 
-	if(!(department in station_departments))
-//		message_admins("ERROR: Could not find [department] in station departments.", 1)
-		return
+/datum/controller/subsystem/economy/proc/get_all_dept_names(var/needs_bank = FALSE, var/type)
+	var/list/dept_names = list()
+	for(var/datum/department/D in GLOB.departments)
+		if(needs_bank && !D.has_bank)
+			continue
+		if(type && !(D.dept_type == type))
+			continue
+		dept_names += D.name
 
-	if(bank_account.suspended)
-//		message_admins("ERROR: Bank account [bank_number] is suspended.", 1)
-		// If there's no money in the department account, tough luck. Not getting paid.
-		var/datum/transaction/N = new()
-		N.target_name = bank_account.owner_name
-		N.purpose = "[department] Payroll: Failed (Payment Bounced Due to Suspension)"
-		N.amount = 0
-		N.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-		N.time = stationtime2text()
-		N.source_terminal = "[department] Funding Account"
+	return dept_names
 
-		//add the account
-		bank_account.transaction_log.Add(N)
-		return
-
-	if((!class)  ||  (class == "Unknown"))
-		class = CLASS_WORKING
-//		message_admins("ERROR: Could not find class. Assigned working class.", 1)
-
-	if(!unique_id) // shouldn't happen, but you know.
-		return
-
-	if(linked_person.client)
-		var/client/linked_client = linked_person.client
-
-		if(linked_client.inactivity > 18000) // About 30 minutes inactivity.
-			return // inactive people don't get paid, sorry.
-	else
-//		message_admins("ERROR: Not paid due to inactivity.", 1)
-		return		// person's not in the round? welp.
-
-	switch(class)
-		if(CLASS_UPPER)
-			tax = persistent_economy.tax_rate_upper
-		if(CLASS_MIDDLE)
-			tax = persistent_economy.tax_rate_middle
-		if(CLASS_WORKING)
-			tax = persistent_economy.tax_rate_lower
+/datum/controller/subsystem/economy/proc/collect_all_earnings()
+	// collects money from all cash registers and puts 'em in their relavent accounts
+	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
+		if(CR.linked_account && CR.account_to_connect && CR.cash_stored)
+			charge_to_account(CR.linked_account, "Money Collection", "Money Left in Till", CR.machine_id, CR.cash_stored)
+			CR.cash_stored = 0
 
 
-	wage = job.wage
+/datum/controller/subsystem/economy/proc/prepare_economy_save()
+	// put anything here that you want to run just before saving happens.
+	collect_all_earnings()
 
-//	message_admins("Wage set to [job.wage].", 1)
-
-	if(!wage)
-//		message_admins("ERROR: Job does not have wage.", 1)
-		return
-
-
-	if(wage > department_accounts[department].money)
-		// If there's no money in the department account, tough luck. Not getting paid.
-		var/datum/transaction/N = new()
-		N.target_name = bank_account.owner_name
-		N.purpose = "[department] Payroll: Failed (Inadequate Department Funds)"
-		N.amount = 0
-		N.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-		N.time = stationtime2text()
-		N.source_terminal = "[department] Funding Account"
-
-		//add the account
-		bank_account.transaction_log.Add(N)
-
-//		message_admins("ERROR: Not paid because not enough money in department account.", 1)
-		return
-
-	if(age > 17) // Do they pay tax?
-		calculated_tax = round(tax * wage, 1)
-
-	//Tax goes to the treasury. Mh-hm.
-	department_accounts["[station_name()] Funds"].money += calculated_tax
-
-	//Your wage comes from your department, yes.
-	department_accounts[department].money -= wage
-
-	wage -= calculated_tax
-
-	//You get paid.
-	bank_account.money += wage
-
-	//create an entry for the payroll (for the payee).
-	var/datum/transaction/T = new()
-	T.target_name = bank_account.owner_name
-	T.purpose = "[department] Payroll: [name] ([calculated_tax] credit tax)"
-	T.amount = wage
-	T.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-	T.time = stationtime2text()
-	T.source_terminal = "[department] Funding Account"
-
-	//add the account
-	bank_account.transaction_log.Add(T)
+	return TRUE
 
 
 
-	//if you owe anything, let's deduct your ownings.
-	for(var/datum/expense/E in bank_account.expenses)
-		E.payroll_expense(bank_account)
-
-	//Complete

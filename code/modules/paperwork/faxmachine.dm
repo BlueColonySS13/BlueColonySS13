@@ -15,6 +15,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	idle_power_usage = 30
 	active_power_usage = 200
 	circuit = /obj/item/weapon/circuitboard/fax
+	table_drag = TRUE
 
 	var/obj/item/weapon/card/id/scan = null // identification
 	var/authenticated = 0
@@ -24,6 +25,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 	var/cciaa_present = 0
 	var/cciaa_afk = 0
+
+	unique_save_vars = list("department")
 
 /obj/machinery/photocopier/faxmachine/New()
 	allfaxes += src
@@ -186,11 +189,12 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	adminfaxes += rcvdcopy
 
 	//message badmins that a fax has arrived
-	if (destination == using_map.boss_name)
+	// Can't use a `switch()` statement due to `using_map.boss_name` not being a constant value.
+	if(destination == using_map.boss_name)
 		message_admins(sender, "[uppertext(using_map.boss_short)] FAX", rcvdcopy, "CentComFaxReply", "#006100")
-	else if ("Polluxian Governmental Authority")
+	else if(destination == "Polluxian Governmental Authority")
 		message_admins(sender, "POLLUX GOVERNMENT FAX", rcvdcopy, "CentComFaxReply", "#1F66A0")
-	else if ("Supply")
+	else if(destination == "Supply")
 		message_admins(sender, "[uppertext(using_map.boss_short)] SUPPLY FAX", rcvdcopy, "CentComFaxReply", "#5F4519")
 	else
 		message_admins(sender, "[uppertext(destination)] FAX", rcvdcopy, "UNKNOWN")

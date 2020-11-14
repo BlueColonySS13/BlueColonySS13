@@ -21,7 +21,7 @@
 	if(high_msg_enabled)
 		if(prob(high_message_chance))
 			high_msg = pick(high_msg_list)
-			M << "<span class='notice'>[high_msg]</span>"
+			to_chat(M, "<span class='notice'>[high_msg]</span>")
 	..()
 
 //Space Drugs has been renamed to Ecstasy.
@@ -77,7 +77,7 @@ datum/reagent/drug/ecstasy/overdose(var/mob/living/M as mob)
 /datum/reagent/drug/nicotine
 	name = "Nicotine"
 	id = "nicotine"
-	description = "A highly addictive stimulant extracted from the tobacco plant."
+	description = "A highly addictive stimulant extracted from the tobacco plant. Sometimes can throw off breathalyzer results."
 	taste_description = "bitterness"
 	reagent_state = LIQUID
 	color = "#685511" //brown

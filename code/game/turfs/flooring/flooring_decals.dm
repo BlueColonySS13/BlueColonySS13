@@ -9,8 +9,12 @@ var/list/floor_decals = list()
 	plane = DECAL_PLANE
 	var/supplied_dir
 
-/obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour)
+/obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour, var/newicon, var/new_state)
 	supplied_dir = newdir
+	if(newicon)
+		icon = newicon
+	if(new_state)
+		icon_state = new_state
 	if(newcolour) color = newcolour
 	..(newloc)
 
@@ -33,6 +37,7 @@ var/list/floor_decals = list()
 			I.color = color
 			I.alpha = alpha
 			floor_decals[cache_key] = I
+			I.metadata = type
 		LAZYADD(T.decals, I) // Add to its decals list (so it remembers to re-apply after it cuts overlays)
 		T.add_overlay(I) // Add to its current overlays too.
 		return T
@@ -48,8 +53,14 @@ var/list/floor_decals = list()
 	initialized = TRUE
 	return INITIALIZE_HINT_QDEL
 
+/obj/effect/floor_decal/full
+	icon_state = "fulltile"
+
 /obj/effect/floor_decal/corner
 	icon_state = "corner_white"
+
+/obj/effect/floor_decal/corner/diagonal
+	icon_state = "corner_white_diagonal"
 
 /obj/effect/floor_decal/corner/black
 	name = "black corner"
@@ -1162,3 +1173,25 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/grass_edge/corner
 	name = "grass edge"
 	icon_state = "grass_edge_corner"
+
+// pavement decals
+
+/obj/effect/floor_decal/pavement_grit
+	name = "pavement grit"
+	icon_state = "pavement_grit1"
+
+/obj/effect/floor_decal/pavement_grit/centered
+	name = "edged pavement grit"
+	icon_state = "pavement_grit1"
+
+/obj/effect/floor_decal/pavement_grit/edged
+	name = "edged pavement grit"
+	icon_state = "pavement_grit2"
+
+/obj/effect/floor_decal/pavement_grit/rough
+	name = "rough pavement grit"
+	icon_state = "pavement_grit3"
+
+/obj/effect/floor_decal/pavement_grit/rough_edged
+	name = "rough edged pavement grit"
+	icon_state = "pavement_grit4"

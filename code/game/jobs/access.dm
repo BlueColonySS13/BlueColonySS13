@@ -165,7 +165,7 @@
 		if(ACCESS_REGION_COMMAND) //command
 			return "Command"
 		if(ACCESS_REGION_GENERAL) //station general
-			return "Station General"
+			return "City General"
 		if(ACCESS_REGION_SUPPLY) //supply
 			return "Supply"
 
@@ -249,3 +249,7 @@ proc/get_all_job_icons() //For all existing HUD icons
 		return
 
 	return "Unknown" //Return unknown if none of the above apply
+
+/proc/get_access_by_id(id)
+	var/list/AS = get_all_access_datums_by_id()
+	return AS[id]

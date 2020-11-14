@@ -19,6 +19,12 @@
 	throw_speed = 4
 	throw_range = 20
 
+	unique_save_vars = list("emagged")
+
+/obj/item/device/taperecorder/on_persistence_load()
+	if(!isemptylist(contents))
+		mytape = contents[1]
+
 /obj/item/device/taperecorder/New()
 	..()
 	if(ispath(mytape))
@@ -376,6 +382,10 @@
 	var/list/timestamp = new/list()
 	var/ruined = 0
 
+	price_tag = 5
+
+	unique_save_vars = list("storedinfo", "timestamp", "ruined")
+	matter = list("plastic" = 130)
 
 /obj/item/device/tape/update_icon()
 	overlays.Cut()

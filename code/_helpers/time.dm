@@ -83,6 +83,11 @@ var/next_station_date_change = 1 DAY
 	game_minute = (text2num(game_minute))
 	return game_minute
 
+/proc/get_game_second()
+	var/game_second = (time2text(world.timeofday, "ss"))
+	game_second = (text2num(game_second))
+	return game_second
+
 /proc/get_real_year()
 	var/year = (time2text(world.timeofday, "YYYY"))
 	year = (text2num(year))

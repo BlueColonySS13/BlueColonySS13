@@ -30,6 +30,11 @@
 	var/burn_time = 20 //if the rag burns for too long it turns to ashes
 	drop_sound = 'sound/items/drop/clothing.ogg'
 
+	matter = list("cotton" = 250)
+
+/obj/item/weapon/reagent_containers/glass/rag/silk
+	matter = list("silk" = 250)
+
 /obj/item/weapon/reagent_containers/glass/rag/New()
 	..()
 	update_name()

@@ -5,7 +5,7 @@ CIRCUITS BELOW
 /datum/design/circuit
 	build_type = IMPRINTER
 	req_tech = list(TECH_DATA = 2)
-	materials = list("glass" = 2000)
+	materials = list("glass" = 2000, "copper" = 1000, "aluminium" = 1000)
 	chemicals = list("sacid" = 20)
 	time = 5
 
@@ -102,8 +102,8 @@ CIRCUITS BELOW
 	id = "clonescanner"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	build_path = /obj/item/weapon/circuitboard/clonescanner
-	sort_string = "FAGAG" 
-	
+	sort_string = "FAGAG"
+
 */
 
 /datum/design/circuit/crewconsole
@@ -555,7 +555,7 @@ CIRCUITS BELOW
 
 /datum/design/circuit/shield
 	req_tech = list(TECH_BLUESPACE = 4, TECH_PHORON = 3)
-	materials = list("glass" = 2000, "gold" = 1000)
+	materials = list("glass" = 2000, "copper" = 2000, "aluminium" = 1000, "gold" = 1000)
 
 /datum/design/circuit/shield/AssembleDesignName()
 	name = "Shield generator circuit design ([name])"

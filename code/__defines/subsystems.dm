@@ -66,20 +66,24 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_PLANETS		-4
 #define INIT_ORDER_HOLOMAPS		-5
 #define INIT_ORDER_OVERLAY		-6
-#define INIT_ORDER_XENOARCH		-20
-#define INIT_ORDER_CIRCUIT		-21
-#define INIT_ORDER_EMAILS		-22
-#define INIT_ORDER_AI			-23
-#define INIT_ORDER_PERSISTENCE	-24
-#define INIT_ORDER_PAYROLL		-25
-#define INIT_ORDER_ELECTIONS		-26
-#define INIT_ORDER_LAW			-27
-#define INIT_ORDER_LOTS			-28
-
-
+#define INIT_ORDER_ECONOMY		-18
+#define INIT_ORDER_JOBS            -19
+#define INIT_ORDER_BUSINESS		-20
+#define INIT_ORDER_BOUNTIES		-21
+#define INIT_ORDER_XENOARCH		-22
+#define INIT_ORDER_CIRCUIT		-23
+#define INIT_ORDER_EMAILS		-24
+#define INIT_ORDER_AI			-25
+#define INIT_ORDER_PERSISTENCE	-26
+#define INIT_ORDER_PAYROLL		-27
+#define INIT_ORDER_ELECTIONS		-28
+#define INIT_ORDER_LAW			-29
+#define INIT_ORDER_LOTS			-30
+#define INIT_ORDER_WEBSITES		-31
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
+#define FIRE_PRIORITY_INACTIVITY	1
 #define FIRE_PRIORITY_SHUTTLES		5
 #define FIRE_PRIORITY_ORBIT			8
 #define FIRE_PRIORITY_VOTE			9

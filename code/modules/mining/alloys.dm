@@ -40,7 +40,16 @@
 /datum/alloy/borosilicate
 	metaltag = "borosilicate glass"
 	requires = list(
+		"phoron" = 1,
 		"platinum" = 1,
 		"sand" = 2
 		)
 	product = /obj/item/stack/material/glass/phoronglass
+
+/datum/alloy/bronze
+	metaltag = "bronze"
+	requires = list(
+		"copper" = 2,
+		"tin" = 1
+		)
+	product = /obj/item/stack/material/bronze

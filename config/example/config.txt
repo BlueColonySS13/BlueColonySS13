@@ -36,9 +36,6 @@ JOBS_HAVE_MINIMAL_ACCESS
 Configure how fast explosion strength diminishes when travelling up/down z levels. All explosion distances are multiplied by this each time they go up/down z-levels.
 #MULTI_Z_EXPLOSION_SCALAR 0.5
 
-# Radiation weakens with distance from the source; stop calculating when the strength falls below this value.   Lower values mean radiation reaches smaller (with increasingly trivial damage) at the cost of more CPU usage.  Max range =  DISTANCE^2 * POWER / RADIATION_LOWER_LIMIT
-# RADIATION_LOWER_LIMIT	0.35
-
 ## log OOC channel
 LOG_OOC
 
@@ -406,3 +403,96 @@ STARLIGHT 0
 ### EMOJI ###
 #Comment this out if you want to disable emojis
 EMOJIS
+
+### RADIATION ###
+## Rate of radiation decay (how much it's reduced by) per life tick
+RADIATION_DECAY_RATE 1
+
+## Lower limit on radiation for actually irradiating things on a turf
+RADIATION_LOWER_LIMIT 0.01
+
+## Multiplier for radiation resistances when tracing a ray from source to destination to compute radiation on a turf
+RADIATION_RESISTANCE_MULTIPLIER 2.1
+
+## Divisor for material weights when computing radiation resistance of a material object (walls)
+RADIATION_MATERIAL_RESISTANCE_DIVISOR 16
+
+
+## Mode of computing radiation resistance into effective radiation on a turf
+## One and only one of the following options must be uncommented
+RADIATION_RESISTANCE_CALC_DIVIDE
+# RADIATION_RESISTANCE_CALC_SUBTRACT
+
+## Uncomment to enable simple Skype/Discord style markup over say, dsay, actions, and admin narrate.
+ALLOW_CHAT_MARKUP
+
+## Prevents people from making characters with no last names. Comment this out to allow snowflakes.
+HUMANS_NEED_SURNAMES
+
+## FPS ##
+#Set this to the default FPS (Can be customised in-game)
+FPS 60
+
+## Protecting people from attacking or looting from SSDs. Comment to disable.
+SSD_PROTECT
+
+## Allows you to hard save
+HARD_SAVING
+
+## Comment out to disable lot saving.
+LOT_SAVING
+
+## Comment out to disable businesses.
+ALLOW_BUSINESSES
+
+## Gamemode voting
+# Comment this out to disable gamemode voting.
+# GAMEMODE_VOTE
+
+## BYOND Age ##
+#Set this to the byond age people need to be to join this server.
+MIN_BYOND_AGE 0
+
+#People under this byond age will be automatically given the anti-grief var
+BYOND_ANTIGRIEF_AGE 14
+
+#People under this player age will be automatically given the anti-grief var
+PLAYER_ANTIGRIEF_AGE 5
+
+## Panic Bunker - Comment out to disable the panic bunker.
+# PANIC_BUNKER
+
+## Allow repeat OOC messages in a row - comment out to disable
+ALLOW_REPEAT_OOC_MESSAGES
+
+## OOC/LOOC control ##
+# Uncomment to allow links of the following kinds. #
+
+# ALLOW_BYOND_LINKS
+# ALLOW_DISCORD_LINKS
+ALLOW_URL_LINKS
+
+## Comment out to disallow businesses
+ALLOW_BUSINESSES
+
+## IP Reputation Checking
+# Enable/disable IP reputation checking (present/nonpresent)
+#IP_REPUTATION
+
+# Set the e-mail address problems can go to for IPR checks (e-mail address)
+IPR_EMAIL whatever@whatever.com
+
+# Above this value, reputation scores are considered 'bad' (number)
+IPR_BAD_SCORE 1
+
+# If you want the people disconnected. Otherwise it just logs. (present/nonpresent)
+IPR_BLOCK_BAD_IPS
+
+# If players of a certain length of playtime are allowed anyway (REQUIRES DATABASE) (present/nonpresent)
+IPR_ALLOW_EXISTING
+
+# And what that age is (number)
+IPR_MINIMUM_AGE 5
+
+# Allows antagonists to join from the lobby
+ALLOW_LOBBY_ANTAGONISTS

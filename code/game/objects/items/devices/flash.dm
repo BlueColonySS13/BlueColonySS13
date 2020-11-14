@@ -9,12 +9,15 @@
 	throw_range = 10
 	flags = CONDUCT
 	origin_tech = list(TECH_MAGNET = 2, TECH_COMBAT = 1)
+	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 20)
 
 	var/times_used = 0 //Number of times it's been used.
 	var/broken = 0     //Is the flash burnt out?
 	var/last_used = 0 //last world.time it was used.
 	var/max_flashes = 10 // How many times the flash can be used before needing to self recharge.
 	var/halloss_per_flash = 30
+
+	var/synthetic_only = FALSE
 
 /obj/item/device/flash/proc/clown_check(var/mob/user)
 	if(user && (CLUMSY in user.mutations) && prob(50))
@@ -75,27 +78,36 @@
 		return
 
 	playsound(src.loc, 'sound/weapons/flash.ogg', 100, 1)
+
+
 	var/flashfail = 0
 
+
+	if(user.IsAntiGrief())
+		flashfail = 1
+
 	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(C.stat != DEAD)
-			var/safety = C.eyecheck()
-			if(safety <= 0)
-				var/flash_strength = 5
-				if(ishuman(C))
-					var/mob/living/carbon/human/H = C
-					flash_strength *= H.species.flash_mod
+		if(!synthetic_only)
+			var/mob/living/carbon/C = M
+			if(C.stat != DEAD)
+				var/safety = C.eyecheck()
+				if(safety <= 0)
+					var/flash_strength = 5
+					if(ishuman(C))
+						var/mob/living/carbon/human/H = C
+						flash_strength *= H.species.flash_mod
 
-					if(flash_strength > 0)
-						H.Confuse(flash_strength + 5)
-						H.Blind(flash_strength)
-						H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
-						H.flash_eyes()
-						H.adjustHalLoss(halloss_per_flash * (flash_strength / 5)) // Should take four flashes to stun.
+						if(flash_strength > 0)
+							H.Confuse(flash_strength + 5)
+							H.Blind(flash_strength)
+							H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
+							H.flash_eyes()
+							H.adjustHalLoss(halloss_per_flash * (flash_strength / 5)) // Should take four flashes to stun.
 
-			else
-				flashfail = 1
+				else
+					flashfail = 1
+		else
+			flashfail = 1
 
 	else if(issilicon(M))
 		flashfail = 0
@@ -212,3 +224,10 @@
 		broken = 1
 		to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")
 		icon_state = "flashburnt"
+
+/obj/item/device/flash/synthdisabler
+	name = "synth disabler"
+	desc = "A human-safe flash that only affects synthetics and robots."
+	icon_state = "synthflash"
+
+	synthetic_only = TRUE

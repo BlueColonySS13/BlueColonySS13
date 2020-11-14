@@ -1,8 +1,3 @@
-#define RAD_LEVEL_LOW 0.01 // Around the level at which radiation starts to become harmful
-#define RAD_LEVEL_MODERATE 10
-#define RAD_LEVEL_HIGH 25
-#define RAD_LEVEL_VERY_HIGH 50
-
 //Geiger counter
 //Rewritten version of TG's geiger counter
 //I opted to show exact radiation levels
@@ -29,7 +24,7 @@
 /obj/item/device/geiger/proc/get_radiation()
 	if(!scanning)
 		return
-	radiation_count = radiation_repository.get_rads_at_turf(get_turf(src))
+	radiation_count = SSradiation.get_rads_at_turf(get_turf(src))
 	update_icon()
 
 /obj/item/device/geiger/examine(mob/user)

@@ -4,11 +4,14 @@
 	icon_state = "ano01"
 	var/find_type = 0
 
+	unique_save_vars = list("find_type")
+
 /obj/item/weapon/archaeological_find/New(loc, var/new_item_type)
 	if(new_item_type)
 		find_type = new_item_type
 	else
-		find_type = rand(1, MAX_ARCHAEO)
+		if(!find_type)
+			find_type = rand(1, MAX_ARCHAEO)
 
 	var/item_type = "object"
 	icon_state = "unknown[rand(1,4)]"
@@ -439,6 +442,8 @@
 			var/new_type = pick(alien_stuff)
 			new_item = new new_type(src.loc)
 			item_type = new_item.name
+		if(37)
+			new_item = new /obj/item/device/redspace_key(src.loc)
 
 	var/decorations = ""
 	if(apply_material_decorations)

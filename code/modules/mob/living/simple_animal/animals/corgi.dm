@@ -3,7 +3,7 @@
 	name = "corgi"
 	real_name = "corgi"
 	desc = "It's a corgi."
-	tt_desc = "Canis familiaris"
+	tt_desc = "Canis Familiaris"
 	intelligence_level = SA_ANIMAL
 	icon_state = "corgi"
 	icon_living = "corgi"

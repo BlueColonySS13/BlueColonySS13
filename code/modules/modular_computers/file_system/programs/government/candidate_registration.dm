@@ -64,7 +64,7 @@
 
 
 	if(index == 6)
-		page_msg = "No bank details found, either you are missing an ID card with an associated or you lack sufficient funds in your account. \
+		page_msg = "Unable to process details, you might be missing an ID card with associated bank details or you lack sufficient funds in your account. \
 		Please try again later."
 
 
@@ -74,7 +74,7 @@
 	if(index == 8)
 		page_msg = "According to the current law, you are not eligible to register as a candidate, you must be of the minimum age and have the same criteria of the general voting rights to become a president. See law book for details."
 
-		var/datum/job/presjob = job_master.GetJob("President")
+		var/datum/job/presjob = SSjobs.GetJob("President")
 
 		page_msg += "<br><br><b><u>Current Critera:</u></b>"
 		page_msg += "<br><b>Minimum President age:</b> [presjob.minimum_character_age]"
@@ -151,7 +151,7 @@
 	if(href_list["submit_register"])
 		. = 1
 
-		if(!SSelections.is_registration_days( get_game_day() ) || !SSelections.snap_election)
+		if(!SSelections.can_register())
 			reg_error = "It is not possible to register a new candidate account during non-registration days."
 			return
 
@@ -173,7 +173,7 @@
 				reg_error = "You already are registered as a candidate!"
 				return
 
-		if(unique_id == SSelections.current_president.unique_id)
+		if(SSelections.uid_is_candidate(unique_id))
 			reg_error = "You already are registered as a candidate!"
 			return
 
@@ -188,11 +188,18 @@
 			index = 6
 			return
 
+		var/datum/money_account/M = get_account(I.associated_account_number)
+
+		if(!M || 3500 > M.money)
+			index = 6
+			return
+
+
 		if(!charge_to_account(I.associated_account_number, "Candidate Registrar", "Candidate registration", "Electoral Registration", -3500))
 			index = 6
 			return
 
-		department_accounts["[station_name()] Funds"].money += 3500
+		SSeconomy.charge_head_department(3500, "Electoral Registration: [I.registered_name]")
 
 		var/datum/president_candidate/associated_candidacy
 
@@ -233,14 +240,14 @@
 
 	if(href_list["register_new"])
 		. = 1
-		if(!SSelections.is_registration_days( get_game_day() ) || !SSelections.snap_election)
+		if(!SSelections.can_register())
 			index = 7
 			return
 
 		var/old_enough = 0
 		if(ishuman(usr))
 			var/mob/living/carbon/human/H = usr
-			var/datum/job/presjob = job_master.GetJob("President")
+			var/datum/job/presjob = SSjobs.GetJob("President")
 			if(H.age > presjob.minimum_character_age - 1)
 				old_enough = 1
 		if(is_voting_ineligible(usr) || !old_enough)

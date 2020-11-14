@@ -4,6 +4,8 @@
 	anchored = 0
 	density = 0
 
+	unique_save_vars = list("id")
+
 
 /obj/machinery/iv_drip/var/mob/living/carbon/human/attached = null
 /obj/machinery/iv_drip/var/mode = 1 // 1 is injecting, 0 is taking blood.

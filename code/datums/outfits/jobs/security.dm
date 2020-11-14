@@ -20,22 +20,30 @@
 
 /decl/hierarchy/outfit/job/security/hos
 	name = OUTFIT_JOB_NAME("Chief of Police")
+	head = /obj/item/clothing/head/police/policechiefcap
 	l_ear = /obj/item/device/radio/headset/heads/hos
-	uniform = /obj/item/clothing/under/rank/head_of_security
+	uniform = /obj/item/clothing/under/rank/policechiefalt
 	id_type = /obj/item/weapon/card/id/security/head
 	pda_type = /obj/item/device/pda/heads/hos
+	backpack_contents = list(/obj/item/weapon/handcuffs = 1,
+	/obj/item/clothing/accessory/permit/gun/tier_four = 1,
+	/obj/item/device/holowarrant = 1,
+	/obj/item/weapon/card/department/police = 1)
+
 
 /decl/hierarchy/outfit/job/security/warden
 	name = OUTFIT_JOB_NAME("Prison Warden")
-	uniform = /obj/item/clothing/under/rank/warden
+	head = /obj/item/clothing/head/police/policewardencap
+	uniform = /obj/item/clothing/under/rank/wardenalt
 	l_pocket = /obj/item/device/flash
 	id_type = /obj/item/weapon/card/id/security/warden
 	pda_type = /obj/item/device/pda/warden
 
-/decl/hierarchy/outfit/job/security/warden/pre_equip(mob/living/carbon/human/H)
-	..()
-	if(H.gender == FEMALE)
-		uniform = /obj/item/clothing/under/rank/warden/skirt
+//
+// /decl/hierarchy/outfit/job/security/warden/pre_equip(mob/living/carbon/human/H)
+//	..()
+//	if(H.gender == FEMALE)
+//		uniform = /obj/item/clothing/under/rank/warden/skirt
 
 /decl/hierarchy/outfit/job/security/detective
 	name = OUTFIT_JOB_NAME("Detective")
@@ -44,7 +52,6 @@
 	suit = /obj/item/clothing/suit/storage/det_trench
 	l_pocket = /obj/item/weapon/flame/lighter/zippo
 	shoes = /obj/item/clothing/shoes/laceup
-	r_hand = /obj/item/weapon/storage/briefcase/crimekit
 	id_type = /obj/item/weapon/card/id/security/detective
 	pda_type = /obj/item/device/pda/detective
 	backpack = /obj/item/weapon/storage/backpack
@@ -58,17 +65,27 @@
 
 /decl/hierarchy/outfit/job/security/officer
 	name = OUTFIT_JOB_NAME("Police Officer")
-	uniform = /obj/item/clothing/under/rank/security
+	head = /obj/item/clothing/head/police/policeofficercap
+	uniform = /obj/item/clothing/under/rank/policeofficeralt
 	l_pocket = /obj/item/device/flash
 	id_type = /obj/item/weapon/card/id/security/officer
 	pda_type = /obj/item/device/pda/security
 
 /decl/hierarchy/outfit/job/security/traffic
 	name = OUTFIT_JOB_NAME("Traffic Warden")
-	uniform = /obj/item/clothing/under/rank/security/traffic
-	suit = /obj/item/clothing/suit/storage/toggle/marshal_jacket
+	head = /obj/item/clothing/head/police/policetrafficcap
+	uniform = /obj/item/clothing/under/rank/policetrafficalt
+	suit = /obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen
 	l_pocket = /obj/item/device/flash
 	id_type = /obj/item/weapon/card/id/security/officer
 	pda_type = /obj/item/device/pda/security
 	backpack_contents = list(/obj/item/device/camera = 1)
+
+/decl/hierarchy/outfit/job/security/cadet
+	name = OUTFIT_JOB_NAME("Police Cadet")
+	head = /obj/item/clothing/head/police/policecadetcap
+	uniform = /obj/item/clothing/under/rank/policecadetalt
+	l_pocket = /obj/item/device/flash
+	id_type = /obj/item/weapon/card/id/security/officer
+	pda_type = /obj/item/device/pda/security
 

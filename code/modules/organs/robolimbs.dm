@@ -81,6 +81,13 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/bishop/bishop_alt2.dmi'
 	unavailable_to_build = 1
 
+/datum/robolimb/bishop_alt3
+	company = "Bishop - Rook(Red)"
+	desc = "This limb has a solid plastic casing with blue lights along it."
+	icon = 'icons/mob/human_races/cyberlimbs/bishop/bishop_alt3.dmi'
+	unavailable_to_build = 1
+	unavailable_at_chargen = 1
+
 /datum/robolimb/bishop_monitor
 	company = "Bishop Monitor"
 	desc = "Bishop Cybernetics' unique spin on a popular prosthetic head model. The themes conflict in an intriguing way."
@@ -296,17 +303,50 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 /obj/item/weapon/disk/limb/bishop
 	company = "Bishop"
 
+/obj/item/weapon/disk/limb/bishop/rook
+	company = "Bishop - Rook"
+
+/obj/item/weapon/disk/limb/bishop/rook_red
+	company = "Bishop - Rook(Red)"
+
 /obj/item/weapon/disk/limb/cybersolutions
 	company = "Cyber Solutions"
+
+/obj/item/weapon/disk/limb/cybersolutions/array
+	company = "Cyber Solutions - Array"
+
+/obj/item/weapon/disk/limb/cybersolutions/wight
+	company = "Cyber Solutions - Wight"
 
 /obj/item/weapon/disk/limb/grayson
 	company = "Grayson"
 
+/obj/item/weapon/disk/limb/grayson/reinforced
+	company = "Grayson - Reinforced"
+
+/obj/item/weapon/disk/limb/grayson/monitor
+	company = "Grayson - Monitor"
+
 /obj/item/weapon/disk/limb/hephaestus
 	company = "Hephaestus"
 
+/obj/item/weapon/disk/limb/hephaestus/athena
+	company = "Hephaestus - Athena"
+
+/obj/item/weapon/disk/limb/hephaestus/frontier
+	company = "Hephaestus - Frontier"
+
+/obj/item/weapon/disk/limb/hephaestus/monitor
+	company = "Hephaestus Monitor"
+
 /obj/item/weapon/disk/limb/morpheus
 	company = "Morpheus"
+
+/obj/item/weapon/disk/limb/morpheus/zenith
+	company = "Morpheus - Zenith"
+
+/obj/item/weapon/disk/limb/morpheus/skeletoncrew
+	company = "Morpheus - Skeleton Crew"
 
 /obj/item/weapon/disk/limb/veymed
 	company = "Vey-Med"
@@ -314,8 +354,29 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 /obj/item/weapon/disk/limb/wardtakahashi
 	company = "Ward-Takahashi"
 
+/obj/item/weapon/disk/limb/wardtakahashi/shroud
+	company = "Ward-Takahashi - Shroud"
+
+/obj/item/weapon/disk/limb/wardtakahashi/spirit
+	company = "Ward-Takahashi - Spirit"
+
+/obj/item/weapon/disk/limb/wardtakahashi/monitor
+	company = "Ward-Takahashi Monitor"
+
 /obj/item/weapon/disk/limb/xion
 	company = "Xion"
+
+/obj/item/weapon/disk/limb/xion/breach
+	company = "Xion - Breach"
+
+/obj/item/weapon/disk/limb/xion/breach_whiteout
+	company = "Xion - Breach - Whiteout"
+
+/obj/item/weapon/disk/limb/xion/hull
+	company = "Xion - Hull"
+
+/obj/item/weapon/disk/limb/xion/whiteout
+	company = "Xion - Whiteout"
 
 /obj/item/weapon/disk/limb/zenghu
 	company = "Zeng-Hu"

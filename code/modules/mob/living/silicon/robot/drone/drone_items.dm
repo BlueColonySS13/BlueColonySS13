@@ -97,7 +97,10 @@
 		/obj/item/weapon/reagent_containers/glass,
 		/obj/item/weapon/reagent_containers/food,
 		/obj/item/seeds,
-		/obj/item/weapon/grown
+		/obj/item/weapon/grown,
+		/obj/item/weapon/storage/fancy/egg_box,
+		/obj/item/weapon/material/kitchen/rollingpin
+
 		)
 
 /obj/item/weapon/gripper/gravekeeper	//Used for handling grave things, flowers, etc.

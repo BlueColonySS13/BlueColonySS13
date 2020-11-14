@@ -24,32 +24,6 @@
 	var/mode = 1
 	w_class = ITEMSIZE_NORMAL
 
-/obj/item/weapon/soap
-	name = "soap"
-	desc = "A cheap bar of soap. Doesn't smell."
-	gender = PLURAL
-	icon = 'icons/obj/items.dmi'
-	icon_state = "soap"
-	w_class = ITEMSIZE_SMALL
-	slot_flags = SLOT_HOLSTER
-	throwforce = 0
-	throw_speed = 4
-	throw_range = 20
-
-/obj/item/weapon/soap/nanotrasen
-	desc = "A NanoTrasen-brand bar of soap. Smells of phoron."
-	icon_state = "soapnt"
-
-/obj/item/weapon/soap/deluxe
-	icon_state = "soapdeluxe"
-
-/obj/item/weapon/soap/deluxe/New()
-	desc = "A deluxe Waffle Co. brand bar of soap. Smells of [pick("lavender", "vanilla", "strawberry", "chocolate" ,"space")]."
-	..()
-
-/obj/item/weapon/soap/syndie
-	desc = "An untrustworthy bar of soap. Smells of fear."
-	icon_state = "soapsyndie"
 
 /obj/item/weapon/bikehorn
 	name = "bike horn"
@@ -137,11 +111,65 @@
 		icon_state = "nullrod"
 		item_state = "foldcane"
 
-/obj/item/weapon/cane/whitecane
+
+/obj/item/weapon/cane/white
 	name = "white cane"
-	desc = "A cane used by the blind."
+	desc = "A white cane. They are commonly used by the blind or visually impaired as a mobility tool or as a courtesy to others."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "whitecane"
+
+/obj/item/weapon/cane/white/attack(mob/M as mob, mob/user as mob)
+	if(user.a_intent == I_HELP)
+		user.visible_message("<span class='notice'>\The [user] has lightly tapped [M] on the ankle with their white cane!</span>")
+		return TRUE
+	else
+		. = ..()
+
+//Code for Telescopic White Cane writen by Gozulio
+
+/obj/item/weapon/cane/white/collapsible
+	name = "telescopic white cane"
+	desc = "A telescopic white cane. They are commonly used by the blind or visually impaired as a mobility tool or as a courtesy to others."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "whitecane1in"
+	item_icons = list(
+			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
+			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+		)
+	slot_flags = SLOT_BELT
+	w_class = ITEMSIZE_SMALL
+	force = 3
+	var/on = 0
+
+/obj/item/weapon/cane/white/collapsible/attack_self(mob/user as mob)
+	on = !on
+	if(on)
+		user.visible_message("<span class='notice'>\The [user] extends the white cane.</span>",\
+				"<span class='warning'>You extend the white cane.</span>",\
+				"You hear an ominous click.")
+		icon_state = "whitecane1out"
+		item_state_slots = list(slot_r_hand_str = "whitecane", slot_l_hand_str = "whitecane")
+		w_class = ITEMSIZE_NORMAL
+		force = 5
+		attack_verb = list("smacked", "struck", "cracked", "beaten")
+	else
+		user.visible_message("<span class='notice'>\The [user] collapses the white cane.</span>",\
+		"<span class='notice'>You collapse the white cane.</span>",\
+		"You hear a click.")
+		icon_state = "whitecane1in"
+		item_state_slots = list(slot_r_hand_str = null, slot_l_hand_str = null)
+		w_class = ITEMSIZE_SMALL
+		force = 3
+		attack_verb = list("hit", "poked", "prodded")
+
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_l_hand()
+		H.update_inv_r_hand()
+
+	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
+	add_fingerprint(user)
+	return TRUE
 
 /obj/item/weapon/cane/crutch
 	name ="crutch"
@@ -172,18 +200,6 @@
 	item_state = "sheet-metal"
 	w_class = ITEMSIZE_HUGE
 */
-
-/obj/item/weapon/gift
-	name = "gift"
-	desc = "A wrapped item."
-	icon = 'icons/obj/items.dmi'
-	icon_state = "gift3"
-	var/size = 3.0
-	var/obj/item/gift = null
-	item_state = "gift"
-	w_class = ITEMSIZE_LARGE
-	burn_state = 0 //Burnable
-	burntime = SHORT_BURN
 
 /obj/item/weapon/caution
 	desc = "Caution! Wet Floor!"

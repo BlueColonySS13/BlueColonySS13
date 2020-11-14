@@ -202,6 +202,7 @@ var/global/list/PDA_Manifest = list()
 	density = 1
 	anchored = 1
 	unacidable = 1//temporary until I decide whether the borg can be removed. -veyveyr
+	plane = MOB_PLANE
 
 /obj/structure/showcase/sign
 	name = "WARNING: WILDERNESS"

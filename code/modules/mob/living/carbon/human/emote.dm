@@ -577,7 +577,13 @@
 			if (!src.restrained())
 				message = "raises a hand."
 			m_type = 1
-
+			
+		if("crack")
+			if(!restrained())
+				message = "cracks [T.his] knuckles."
+				playsound(src, 'sound/voice/knuckles.ogg', 50, 1)
+				m_type = 1
+				
 		if("shake")
 			message = "shakes [T.his] head."
 			m_type = 1

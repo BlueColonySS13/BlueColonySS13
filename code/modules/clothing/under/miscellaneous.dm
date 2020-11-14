@@ -169,13 +169,13 @@
 	icon_state = "gentlesuit_skirt"
 
 /obj/item/clothing/under/gimmick/rank/captain/suit
-	name = "colony director's suit"
+	name = "mayor's suit"
 	desc = "A green suit and yellow necktie. Exemplifies authority."
 	icon_state = "green_suit"
 	item_state_slots = list(slot_r_hand_str = "centcom", slot_l_hand_str = "centcom")
 
 /obj/item/clothing/under/gimmick/rank/captain/suit/skirt
-	name = "colony director's skirt suit"
+	name = "mayor's skirt suit"
 	icon_state = "green_suit_skirt"
 
 /obj/item/clothing/under/gimmick/rank/head_of_personnel/suit
@@ -311,7 +311,7 @@
 	icon_state = "black_tango"
 
 /obj/item/clothing/under/dress/blacktango/alt
-	name = "black tango dress"
+	name = "alternative black tango dress"
 	desc = "Filled with Latin fire."
 	icon_state = "black_tango_alt"
 	item_state_slots = list(slot_r_hand_str = "black_tango", slot_l_hand_str = "black_tango")
@@ -327,7 +327,7 @@
 	icon_state = "sailor_dress"
 
 /obj/item/clothing/under/dress/redeveninggown
-	name = "red evening gown"
+	name = "evening gown"
 	desc = "Fancy dress for space bar singers."
 	icon_state = "red_evening_gown"
 	flags_inv = HIDESHOES
@@ -379,8 +379,8 @@
 	item_state_slots = list(slot_r_hand_str = "dress_white", slot_l_hand_str = "dress_white")
 
 /obj/item/clothing/under/dress/dress_cap
-	name = "colony director's dress uniform"
-	desc = "Feminine fashion for the style conscious Colony Director."
+	name = "mayor's dress uniform"
+	desc = "Feminine fashion for the style conscious Mayor."
 	icon_state = "dress_cap"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
@@ -428,19 +428,22 @@
 	item_state_slots = list(slot_r_hand_str = "darkreddress", slot_l_hand_str = "darkreddress")
 	index = 1
 
-
 /obj/item/clothing/under/dress/sari/green
 	name = "green sari"
 	icon_state = "sari_green"
 	item_state_slots = list(slot_r_hand_str = "dress_green", slot_l_hand_str = "dress_green")
 	index = 1
 
-
 /obj/item/clothing/under/dress/lilacdress
 	name = "lilac dress"
 	desc = "A simple black dress adorned in fake purple lilacs."
 	icon_state = "lilacdress"
 	index = 1
+
+/obj/item/clothing/under/dress/lacygown
+	name = "lacy gown"
+	desc = "A beautiful lace gown that can be found in many different colors."
+	icon_state = "lacygown"
 
 /obj/item/clothing/under/dress/white
 	name = "white wedding dress"
@@ -518,10 +521,49 @@
 	desc = "A red and white dress themed after some winter holidays. Tastefully festive!"
 	icon_state = "festivedress"
 
+/obj/item/clothing/under/dress/formalred
+	name = "formal red dress"
+	desc = "A very formal red dress, for those fancy galas."
+	icon_state = "formalred"
+	flags_inv = HIDESHOES
+	index = 1
+
+/obj/item/clothing/under/dress/revealingdress
+	name = "revealing dress"
+	desc = "A very revealing black and blue dress. Is this work appropriate?"
+	icon_state = "revealingdress"
+	index = 1
+
+/obj/item/clothing/under/dress/gothic
+	name = "gothic dress"
+	desc = "A black dress with a sheer mesh over it, tastefully old school goth."
+	icon_state = "gothic"
+	index = 1
+
+/obj/item/clothing/under/dress/formalred
+	name = "formal red dress"
+	desc = "A very formal red dress, for those fancy galas."
+	icon_state = "formalred"
+	flags_inv = HIDESHOES
+	index = 1
+
+/obj/item/clothing/under/dress/pentagram
+	name = "pentagram dress"
+	desc = "A black dress with straps over the chest in the shape of a pentagram."
+	icon_state = "pentagram"
+	index = 1
+
+/obj/item/clothing/under/dress/yellowswoop
+	name = "yellow swooped dress"
+	desc = "A yellow dress that swoops to the side."
+	icon_state = "yellowswoop"
+	index = 1
+
 /*
  * wedding stuff
  */
 /obj/item/clothing/under/wedding
+	name = "wedding dress"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
 
 /obj/item/clothing/under/wedding/bride_orange
@@ -555,6 +597,23 @@
 	flags_inv = HIDESHOES
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
+/obj/item/clothing/under/wedding/floofdress
+	name = "floofy dress"
+	desc = "A lovely floofed out dress for formal occasions. Comes in many colors!"
+	icon_state = "floofdress"
+	flags_inv = HIDESHOES
+	index = 1
+
+/obj/item/clothing/under/wedding/whitegown
+	name = "white gown"
+	desc = "A elegant white gown with accents of sheer mesh."
+	icon_state = "whitegown"
+	index = 1
+
+/*
+Uniforms and stuff
+*/
+
 /obj/item/clothing/under/sundress
 	name = "sundress"
 	desc = "Makes you want to frolic in a field of daisies."
@@ -568,8 +627,8 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/captainformal
-	name = "colony director's formal uniform"
-	desc = "A Colony Director's formal-wear, for special occasions."
+	name = "mayor's formal uniform"
+	desc = "A Mayor's formal-wear, for special occasions."
 	icon_state = "captain_formal"
 	item_state_slots = list(slot_r_hand_str = "lawyer_blue", slot_l_hand_str = "lawyer_blue")
 
@@ -585,9 +644,9 @@
 	icon_state = "hos_formal_fem"
 	item_state_slots = list(slot_r_hand_str = "lawyer_red", slot_l_hand_str = "lawyer_red")
 
-/obj/item/clothing/under/assistantformal
-	name = "assistant's formal uniform"
-	desc = "An assistant's formal-wear. Why an assistant needs formal-wear is still unknown."
+/obj/item/clothing/under/aristocrat
+	name = "aristocrat's formal uniform"
+	desc = "An aristocrat's formal-wear."
 	icon_state = "assistant_formal"
 	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
 
@@ -1044,13 +1103,13 @@
 	icon_state = "victorianredvest"
 
 /obj/item/clothing/under/arisgroom
-	name = "aristocratic groom tuxedo"
+	name = "aristocratic tuxedo"
 	desc = "You can almost smell the bank notes this was sewn from."
 	icon_state = "arisgroom"
 	index = 1
 
 /obj/item/clothing/under/arisbestman
-	name = "aristocratic best man tuxedo"
+	name = "aristocratic purple tuxedo"
 	desc = "You should have asked her out sooner. But at least you have this cool suit..."
 	icon_state = "arisbestman"
 	index = 1
@@ -1092,3 +1151,40 @@
 	name = "wetsuit"
 	desc = "A skin-tight neoprene wetsuit designed to provide thermal insulation and increase buoyancy."
 	icon_state = "wetsuit"
+
+/obj/item/clothing/under/rippedpunk
+	name = "ripped punk jeans"
+	desc = "Black ripped jeans and a fishnet top. How punk."
+	icon_state = "rippedpunk"
+	index = 1
+
+/obj/item/clothing/under/greenasym
+	name = "green asymmetrical jumpsuit"
+	desc = "A green futuristic uniform with asymmetrical pants. Trendy!"
+	icon_state = "greenasym"
+	index = 1
+
+/obj/item/clothing/under/cyberpunkharness
+	name = "strapped harness"
+	desc = "A cyberpunk styled harness and pants. Perfect for your dystopian future."
+	icon_state = "cyberhell"
+	index = 1
+
+/obj/item/clothing/under/blackngold
+	name = "black and gold gown"
+	desc = "A black and gold gown. You get the impression this is typically worn for religious purposes."
+	icon_state = "blackngold"
+	index = 1
+
+/obj/item/clothing/under/sheerblue
+	name = "sheer blue dress"
+	desc = "An entirely sheer blue dress. Best worn with something underneath!"
+	icon_state = "sheerblue"
+	index = 1
+
+/obj/item/clothing/under/disheveled
+	name = "disheveled suit"
+	desc = "What might pass as well maintained formal attire. If you're blind."
+	icon_state = "disheveled"
+	index = 1
+

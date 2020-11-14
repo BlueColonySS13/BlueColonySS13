@@ -212,12 +212,9 @@
 	name = "sprinkler control"
 	desc = "It controls spinklers and showers, remotely."
 
-/obj/machinery/button/remote/emitter/trigger(mob/user as mob)
-	for(var/obj/machinery/shower/E in get_area(src))
-		spawn(0)
-			if(E.on)
-				E.on = FALSE
-			else
-				E.on = TRUE
-
-			return
+/obj/machinery/button/remote/sprinker/trigger(mob/user as mob)
+	for(var/obj/machinery/shower/E in machines)
+		if(E.id == id)
+			spawn(0)
+				E.toggle_wash(user)
+				return

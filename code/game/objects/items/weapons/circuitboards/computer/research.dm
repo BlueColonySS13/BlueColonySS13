@@ -19,3 +19,14 @@
 			build_path = /obj/machinery/computer/rdconsole/core
 			user << "<span class='notice'>Access protocols set to default.</span>"
 	return
+
+/obj/item/weapon/circuitboard/rdconsole/business
+	name = T_BOARD("Independent R&D control console")
+	build_path = /obj/machinery/computer/rdconsole/business
+
+/obj/item/weapon/circuitboard/rdconsole/attackby(obj/item/I as obj, mob/user as mob)
+	return //override - do nothing
+
+/obj/item/weapon/circuitboard/rdserver/business
+	name = T_BOARD("Independent Research Server")
+	build_path = /obj/machinery/r_n_d/server/business

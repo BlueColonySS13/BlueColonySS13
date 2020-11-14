@@ -48,6 +48,7 @@
 		//things that require the database//
 		////////////////////////////////////
 	var/player_age = "Requires database"	//So admins know why it isn't working - Used to determine how old the account is - in days.
+	var/byond_join_date = null
 	var/related_accounts_ip = "Requires database"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this ip
 	var/related_accounts_cid = "Requires database"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
 
@@ -57,3 +58,11 @@
 
 	// Has the client been granted permission to mess with SSDs by an admin?
 	var/bypass_ssd_guard = FALSE
+	var/antigrief = FALSE		// given to certain clients to prevent grief
+
+	var/last_ooc_message = ""
+	var/last_ping_time = 0 // Stores the last time this cilent pinged someone in OOC, to protect against spamming pings
+
+	var/ip_reputation = 0 //Do we think they're using a proxy/vpn? Only if IP Reputation checking is enabled in config.
+
+	var/lobby_joined = FALSE // Have they already joined as a lobby join antag?

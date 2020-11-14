@@ -23,6 +23,11 @@
 
 	var/list/will_contain
 
+	unique_save_vars = list("opened","welded", "health", "density")
+
+/obj/structure/closet/on_persistence_load()
+	update_icon()
+
 /obj/structure/closet/initialize()
 	. = ..()
 	if(will_contain)

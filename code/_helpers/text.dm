@@ -511,7 +511,51 @@ var/icon/text_tag_icons = new('./icons/chattags.dmi')
 	t = replacetext(t, "<span class=\"paper_field\"></span>", "\[field\]")
 	t = strip_html_properly(t)
 	return t
-
+/proc/pencode2webhook(t) // needed for webhooks
+	t = replacetext(t, "\[center\]", "")
+	t = replacetext(t, "\[/center\]", "")
+	t = replacetext(t, "\[br\]", "\n")
+	t = replacetext(t, "\[b\]", "**")
+	t = replacetext(t, "\[/b\]", "")
+	t = replacetext(t, "\[i\]", "*")
+	t = replacetext(t, "\[/i\]", "*")
+	t = replacetext(t, "\[u\]", "__")
+	t = replacetext(t, "\[/u\]", "__")
+	t = replacetext(t, "\[time\]", "[stationtime2text()]")
+	t = replacetext(t, "\[date\]", "[stationdate2text()]")
+	t = replacetext(t, "\[large\]", "")
+	t = replacetext(t, "\[/large\]", "")
+	t = replacetext(t, "\[field\]", "")
+	t = replacetext(t, "\[h1\]", "**")
+	t = replacetext(t, "\[/h1\]", "**")
+	t = replacetext(t, "\[h2\]", "**")
+	t = replacetext(t, "\[/h2\]", "**")
+	t = replacetext(t, "\[h3\]", "**")
+	t = replacetext(t, "\[/h3\]", "**")
+	t = replacetext(t, "\[*\]", " - ")
+	t = replacetext(t, "\[hr\]", "\n _ \n")
+	t = replacetext(t, "\[small\]", "")
+	t = replacetext(t, "\[/small\]", "")
+	t = replacetext(t, "\[list\]", "")
+	t = replacetext(t, "\[/list\]", "")
+	t = replacetext(t, "\[table\]", "")
+	t = replacetext(t, "\[/table\]", "")
+	t = replacetext(t, "\[grid\]", "")
+	t = replacetext(t, "\[/grid\]", "")
+	t = replacetext(t, "\[row\]", "")
+	t = replacetext(t, "\[cell\]", "")
+//	t = replacetext(t, "\[logo\]", "<img src = torchltd.png>")
+//	t = replacetext(t, "\[bluelogo\]", "<img src = bluentlogo.png>")
+//	t = replacetext(t, "\[solcrest\]", "<img src = sollogo.png>")
+//	t = replacetext(t, "\[torchltd\]", "<img src = torchltd.png>")
+//	t = replacetext(t, "\[iccgseal\]", "<img src = terralogo.png>")
+//	t = replacetext(t, "\[ntlogo\]", "<img src = ntlogo.png>")
+//	t = replacetext(t, "\[daislogo\]", "<img src = daislogo.png>")
+//	t = replacetext(t, "\[eclogo\]", "<img src = eclogo.png>")
+//	t = replacetext(t, "\[xynlogo\]", "<img src = xynlogo.png>")
+//	t = replacetext(t, "\[fleetlogo\]", "<img src = fleetlogo.png>")
+	t = replacetext(t, "\[editorbr\]", "\n")
+	return t
 // Random password generator
 /proc/GenerateKey()
 	//Feel free to move to Helpers.
@@ -546,8 +590,8 @@ var/icon/text_tag_icons = new('./icons/chattags.dmi')
 	if(dat[length(dat)] == ".")	//kill trailing .
 		dat.Cut(length(dat))
 	return jointext(dat, null)
-	
-	
+
+
 /proc/dmm_encode(text)
 	// First, go through and nix out any of our escape sequences so we don't leave ourselves open to some escape sequence attack
 	// Some coder will probably despise me for this, years down the line

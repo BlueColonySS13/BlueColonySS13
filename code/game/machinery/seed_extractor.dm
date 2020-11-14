@@ -5,6 +5,7 @@
 	icon_state = "sextractor"
 	density = 1
 	anchored = 1
+	circuit = /obj/item/weapon/circuitboard/seed_extractor
 
 obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
@@ -21,15 +22,21 @@ obj/machinery/seed_extractor/attackby(var/obj/item/O as obj, var/mob/user as mob
 			var/obj/item/weapon/reagent_containers/food/snacks/grown/F = O
 			new_seed_type = plant_controller.seeds[F.plantname]
 
+		// For scarcity reasons, make a chance for the produce not to have any seeds in it, by chance.
+		if(prob(30))
+			to_chat(user, "[O] didn't have any useful seeds in it this time.")
+			qdel(O)
+			return
+
 		if(new_seed_type)
-			user << "<span class='notice'>You extract some seeds from [O].</span>"
+			to_chat(user, "<span class='notice'>You extract some seeds from [O].</span>")
 			var/produce = rand(1,4)
 			for(var/i = 0;i<=produce;i++)
 				var/obj/item/seeds/seeds = new(get_turf(src))
 				seeds.seed_type = new_seed_type.name
 				seeds.update_seed()
 		else
-			user << "[O] doesn't seem to have any usable seeds inside it."
+			to_chat(user, "[O] doesn't seem to have any usable seeds inside it.")
 
 		qdel(O)
 

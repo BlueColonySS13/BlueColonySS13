@@ -35,9 +35,14 @@
 	var/list/fighting_sounds = list('sound/voice/biamthelaw.ogg', 'sound/voice/bradio.ogg', 'sound/voice/bjustice.ogg')
 
 /mob/living/bot/secbot/beepsky
-	name = "Officer Beepsky"
-	desc = "It's Officer Beep O'sky! Powered by a potato and a shot of whiskey."
+	name = "Commander Beep O'sky"
+	desc = "It's Commander Beep O'sky! Officially the superior officer of all bots on station, Beepsky remains as humble and dedicated to the law as the day he was first fabricated."
 	will_patrol = 1
+	dont_save = TRUE
+
+/mob/living/bot/secbot/beepsky/pipsqueak
+	name = "Officer Pipsqueak"
+	desc = "It's Commander Beep O'sky's smaller, just-as aggressive cousin, Pipsqueak."
 
 /mob/living/bot/secbot/slime
 	name = "Slime Securitron"
@@ -151,7 +156,7 @@
 /mob/living/bot/secbot/proc/react_to_attack(mob/attacker)
 	if(!target)
 		playsound(src.loc, pick(threat_found_sounds), 50)
-		global_announcer.autosay("[src] was attacked by a hostile <b>[target_name(attacker)]</b> in <b>[get_area(src)]</b>.", "[src]", "Security")
+		global_announcer.autosay("[src] was attacked by a hostile <b>[target_name(attacker)]</b> in <b>[get_area(src)]</b>.", "[src]", "Police")
 	target = attacker
 	awaiting_surrender = INFINITY	// Don't try and wait for surrender
 
@@ -159,7 +164,7 @@
 /mob/living/bot/secbot/proc/demand_surrender(mob/target, var/threat)
 	var/suspect_name = target_name(target)
 	if(declare_arrests)
-		global_announcer.autosay("[src] is [arrest_type ? "detaining" : "arresting"] a level [threat] suspect <b>[suspect_name]</b> in <b>[get_area(src)]</b>.", "[src]", "Security")
+		global_announcer.autosay("[src] is [arrest_type ? "detaining" : "arresting"] a level [threat] suspect <b>[suspect_name]</b> in <b>[get_area(src)]</b>.", "[src]", "Police")
 	say("Down on the floor, [suspect_name]! You have [SECBOT_WAIT_TIME] seconds to comply.")
 	playsound(src.loc, pick(preparing_arrest_sounds), 50)
 	// Register to be told when the target moves
@@ -212,7 +217,7 @@
 			var/action = arrest_type ? "detaining" : "arresting"
 			if(istype(target, /mob/living/simple_animal))
 				action = "fighting"
-			global_announcer.autosay("[src] is [action] a level [threat] [action != "fighting" ? "suspect" : "threat"] <b>[target_name(target)]</b> in <b>[get_area(src)]</b>.", "[src]", "Security")
+			global_announcer.autosay("[src] is [action] a level [threat] [action != "fighting" ? "suspect" : "threat"] <b>[target_name(target)]</b> in <b>[get_area(src)]</b>.", "[src]", "Police")
 		UnarmedAttack(target)
 
 // So Beepsky talks while beating up simple mobs.

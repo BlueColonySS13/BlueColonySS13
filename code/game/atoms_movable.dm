@@ -136,6 +136,7 @@
 		return 0
 	if(target.z != src.z)
 		return 0
+
 	//use a modified version of Bresenham's algorithm to get from the atom's current position to that of the target
 	src.throwing = 1
 	src.thrower = thrower
@@ -144,6 +145,13 @@
 	if(usr)
 		if(HULK in usr.mutations)
 			src.throwing = 2 // really strong throw!
+
+		if(usr.IsAntiGrief())
+			src.throwing = 0
+			src.thrower = null
+			src.throw_source = null
+			fall()
+			return
 
 	var/dist_travelled = 0
 	var/dist_since_sleep = 0

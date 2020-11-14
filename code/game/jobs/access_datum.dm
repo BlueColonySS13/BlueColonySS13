@@ -3,6 +3,7 @@
 	var/desc = ""
 	var/region = ACCESS_REGION_NONE
 	var/access_type = ACCESS_TYPE_STATION
+	var/department_tag			// mostly for businesses, if this is something it'll appear next to it
 
 /datum/access/dd_SortValue()
 	return "[access_type][desc]"
@@ -13,7 +14,7 @@
 /var/const/access_security = 1
 /datum/access/security
 	id = access_security
-	desc = "Security Equipment"
+	desc = "Police"
 	region = ACCESS_REGION_SECURITY
 
 /var/const/access_brig = 2 // Brig timers and permabrig
@@ -247,7 +248,7 @@
 /var/const/access_cmo = 40
 /datum/access/cmo
 	id = access_cmo
-	desc = "Chief Medical Officer"
+	desc = "Medical Director"
 	region = ACCESS_REGION_COMMAND
 
 /var/const/access_qm = 41
@@ -283,7 +284,7 @@
 /var/const/access_network = 46
 /datum/access/network
 	id = access_network
-	desc = "Station Network"
+	desc = "City Network"
 	region = ACCESS_REGION_RESEARCH
 
 /var/const/access_research = 47
@@ -307,7 +308,7 @@
 /var/const/access_mailsorting = 50
 /datum/access/mailsorting
 	id = access_mailsorting
-	desc = "Cargo Office"
+	desc = "Factory Office"
 	region = ACCESS_REGION_SUPPLY
 
 /var/const/access_warrant = 51
@@ -340,7 +341,7 @@
 /var/const/access_ce = 56
 /datum/access/ce
 	id = access_ce
-	desc = "Chief Engineer"
+	desc = "Maintenance Director"
 	region = ACCESS_REGION_ENGINEERING
 
 /var/const/access_hop = 57
@@ -484,7 +485,7 @@
 /var/const/access_cbia = 111
 /datum/access/cbia
 	id = access_cbia
-	desc = "CBIA Agent"
+	desc = "PDSI Agent"
 	access_type = ACCESS_TYPE_CENTCOM
 
 /***************

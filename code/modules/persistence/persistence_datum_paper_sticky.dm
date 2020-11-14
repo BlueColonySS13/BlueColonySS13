@@ -26,3 +26,4 @@
 	LAZYADD(., "[paper.pixel_x]")
 	LAZYADD(., "[paper.pixel_y]")
 	LAZYADD(., "[paper.color]")
+

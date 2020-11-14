@@ -4,6 +4,7 @@
 	icon = 'icons/effects/writing.dmi'
 	desc = "It looks like someone has scratched something here."
 	gender = PLURAL
+	anchored = 1
 	blend_mode = BLEND_MULTIPLY
 	color = "#000000"
 	alpha = 120
@@ -11,7 +12,8 @@
 	var/message
 	var/graffiti_age = 0
 	var/author = "unknown"
-
+	anchored = TRUE
+	
 /obj/effect/decal/writing/New(var/newloc, var/_age, var/_message, var/_author)
 	..(newloc)
 	if(!isnull(_age))

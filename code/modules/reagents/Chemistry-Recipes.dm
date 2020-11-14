@@ -605,6 +605,19 @@
 	required_reagents = list("hydrogen" = 2, "carbon" = 2, "ammonia" = 2)
 	result_amount = 6
 
+/datum/chemical_reaction/soapbar
+	name = "Soap Bar"
+	id = "soapbar"
+	result = null
+	required_reagents = list("wax" = 10, "cleaner" = 5)
+	result_amount = 1
+
+/datum/chemical_reaction/soapbar/on_reaction(var/datum/reagents/holder, var/created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/random/soap(location)
+	return
+
 /* Solidification */
 
 /datum/chemical_reaction/solidification

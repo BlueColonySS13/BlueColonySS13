@@ -98,6 +98,10 @@
 	stack_paths[DEFAULT_WALL_MATERIAL] = /obj/item/stack/material/steel
 	stack_storage["plasteel"] = 0
 	stack_paths["plasteel"] = /obj/item/stack/material/plasteel
+	stack_storage["steel sheet"] = 0
+	stack_paths["steel sheet"] = /obj/item/stack/material/steel
+	stack_storage["steel sheets"] = 0
+	stack_paths["steel sheets"] = /obj/item/stack/material/steel/full
 
 	spawn( 5 )
 		for (var/dir in cardinal)

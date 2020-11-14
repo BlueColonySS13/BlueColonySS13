@@ -14,10 +14,13 @@
 			)
 
 	name = "Contraband crate"
-	cost = 250
+	cost = 850
 	containertype = /obj/structure/closet/crate
 	containername = "Unlabeled crate"
 	contraband = 1
+
+	spend_type = SPEND_CONTRABAND
+
 	group = "Supplies"
 
 /datum/supply_pack/security/specialops
@@ -27,22 +30,11 @@
 			/obj/item/weapon/grenade/smokebomb = 4,
 			/obj/item/weapon/grenade/chem_grenade/incendiary
 			)
-	cost = 500
+	cost = 1000
 	containertype = /obj/structure/closet/crate
 	containername = "Special Ops crate"
 	contraband = 1
-/*
-/datum/supply_pack/supply/moghes
-	name = "Moghes imports"
-	contains = list(
-			/obj/item/weapon/reagent_containers/food/drinks/bottle/redeemersbrew = 2,
-			/obj/item/weapon/reagent_containers/food/snacks/unajerky = 4
-			)
-	cost = 25
-	containertype = /obj/structure/closet/crate
-	containername = "Moghes imports crate"
-	contraband = 1
-*/
+
 /datum/supply_pack/munitions/bolt_rifles_militia
  	name = "Weapon - Surplus militia rifles"
  	contains = list(
@@ -57,6 +49,7 @@
 /datum/supply_pack/randomised/misc/telecrate //you get something awesome, a couple of decent things, and a few weak/filler things
 	name = "ERR_NULL_ENTRY" //null crate! also dream maker is hell,
 	num_contained = 1
+
 	contains = list(
 			list( //drug hydroponicist
 					/obj/item/seeds/chacruna = 2,
@@ -99,7 +92,7 @@
 					/obj/item/ammo_magazine/clip/c12g
 					)
 			)
-	cost = 3500 //very expensive to curb abuse at the factory
+	cost = 6500 //very expensive to curb abuse at the factory
 	contraband = 1
 	containertype = /obj/structure/largecrate/suspicious
 	containername = "Suspicious crate"

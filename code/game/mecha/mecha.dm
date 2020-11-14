@@ -69,6 +69,8 @@
 	var/max_equip = 3
 	var/datum/events/events
 
+	unique_save_vars = list("health", "icon_state")
+
 /obj/mecha/drain_power(var/drain_check)
 
 	if(drain_check)
@@ -500,7 +502,7 @@
 
 /obj/mecha/attack_hand(mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed())
-	src.log_message("Attack by hand/paw. Attacker - [user].",1)
+	src.log_message("Attack by hand. Attacker - [user].",1)
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
@@ -1066,6 +1068,12 @@
 
 	if (usr.buckled)
 		to_chat(usr,"<span class='warning'>You can't climb into the exosuit while buckled!</span>")
+		return
+
+	var/mob/user = usr
+
+	if(user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>You're not confident using this yet.</span>")
 		return
 
 	src.log_message("[usr] tries to move in.")

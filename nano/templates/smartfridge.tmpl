@@ -22,12 +22,6 @@
 		{{if value.quantity >= 10}}
 			{{:helper.link('x10', 'circle-arrow-s', { "vend" : value.vend, "amount" : 10 }, null, 'statusValue')}}
 		{{/if}}
-		{{if value.quantity >= 25}}
-			{{:helper.link('x25', 'circle-arrow-s', { "vend" : value.vend, "amount" : 25 }, null, 'statusValue')}}
-		{{/if}}
-		{{if value.quantity > 1}}
-			{{:helper.link('All', 'circle-arrow-s', { "vend" : value.vend, "amount" : value.quantity }, null, 'statusValue')}}
-		{{/if}}
       </div>
     {{/for}}
   {{else}}

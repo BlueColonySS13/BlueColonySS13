@@ -35,6 +35,28 @@
 		playsound(src.loc, src.use_sound, 50, 1, -5)
 	..()
 
+//redd - pens can rename boxes now
+/obj/item/weapon/storage/box/AltClick(mob/living/carbon/user)
+	if ( istype(user) )
+		//check if the user is in range, and if they aren't restrained or downed.
+		if( (!in_range(src, user)) || user.stat || user.restrained() )
+			return
+		//get the item in the users hand
+		var/obj/item/i = user.get_active_hand()
+		//is it a pen?
+		if (istype(i,/obj/item/weapon/pen))
+			//check if user is actually holding the box
+			if ((loc == usr) && usr.stat == 0)
+				var/n_name = sanitizeSafe(input(usr, "What would you like to label the box?", "Box Labelling", null)  as text, MAX_NAME_LEN)
+				//check once more
+				if ((loc == usr) && usr.stat == 0 && n_name)
+					name = n_name
+				else if (n_name)
+					user << "<span class='warning'>You must be holding \the [src] to rename it.</span>"
+			else
+				user << "<span class='warning'>You must be holding \the [src] to rename it.</span>"
+	return
+
 // BubbleWrap - A box can be folded up to make card
 /obj/item/weapon/storage/box/attack_self(mob/user as mob)
 	if(..()) return
@@ -58,6 +80,11 @@
 	user << "<span class='notice'>You fold [src] flat.</span>"
 	new foldable(get_turf(src))
 	qdel(src)
+
+/obj/item/weapon/storage/box/large
+	name = "large box"
+	icon_state = "largebox"
+	max_storage_space = 48
 
 /obj/item/weapon/storage/box/survival
 	name = "emergency supply box"
@@ -362,6 +389,11 @@
 	desc = "Drymate brand neaera cubes, shipped from Jargon 4. Just add water!"
 	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/neaeracube = 4)
 
+/obj/item/weapon/storage/box/monkeycubes/vatborncubes
+	name = "vatborn cube box"
+	desc = "Drymate brand neaera cubes, shipped from Ocral Spax. Just add water!"
+	starts_with = list(/obj/item/weapon/reagent_containers/food/snacks/monkeycube/wrapped/vatborncube = 4)
+
 /obj/item/weapon/storage/box/ids
 	name = "box of spare IDs"
 	desc = "Has so many empty IDs."
@@ -499,3 +531,48 @@
 	name = "box of press badges"
 	desc = "A box that holds press badges."
 	starts_with = list(/obj/item/clothing/accessory/badge/press = 7)
+
+/obj/item/weapon/storage/box/produce_box
+	name = "produce box"
+	icon_state = "producebox"
+	desc = "A box that is made for holding grown produce."
+	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/grown)
+	starts_with = null
+	max_storage_space = 24
+
+/obj/item/weapon/storage/box/meat_box
+	name = "box of meat"
+	icon_state = "meatbox"
+	desc = "A box that is made for holding meat."
+	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/meat)
+	starts_with = null
+	max_storage_space = 24
+/*
+ * Candle Box
+ */
+
+/obj/item/weapon/storage/box/candle_box
+	name = "candle pack"
+	desc = "A pack of candles."
+	icon = 'icons/obj/candle.dmi'
+	icon_state = "candlebox"
+	slot_flags = SLOT_BELT
+	starts_with = list(/obj/item/weapon/flame/candle = 5)
+
+/obj/item/weapon/storage/box/candle_box/empty
+	starts_with = null
+
+/obj/item/weapon/storage/box/candle_box/random
+	name = "assorted candle pack"
+	desc = "A pack of assorted candles."
+	starts_with = list(/obj/item/weapon/flame/candle/random = 5)
+
+/obj/item/weapon/storage/box/candle_box/candelabra
+	name = "candelabra pack"
+	desc = "A pack of red candelabras."
+	starts_with = list(/obj/item/weapon/flame/candle/candelabra = 5)
+
+/obj/item/weapon/storage/box/candle_box/candelabra/random
+	name = "assorted candelabra pack"
+	desc = "A pack of assorted candelabras."
+	starts_with = list(/obj/item/weapon/flame/candle/candelabra/random = 5)

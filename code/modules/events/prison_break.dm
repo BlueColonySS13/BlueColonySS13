@@ -39,7 +39,7 @@
 
 /datum/event/prison_break/announce()
 	if(areas && areas.len > 0)
-		command_announcement.Announce("[pick("Gr3y.T1d3 virus","Malignant trojan")] detected in [station_name()] [(eventDept == "Security")? "imprisonment":"containment"] subroutines. Secure any compromised areas immediately. Station AI involvement is recommended.", "[eventDept] Alert")
+		command_announcement.Announce("[pick("Gr3y.T1d3 virus","Malignant trojan")] detected in [station_name()] [(eventDept == "Security")? "imprisonment":"containment"] subroutines. Secure any compromised areas immediately. City AI involvement is recommended.", "[eventDept] Alert")
 
 
 /datum/event/prison_break/start()
@@ -72,7 +72,7 @@
 			var/obj/machinery/power/apc/theAPC = null
 			for(var/area/A in areas)
 				theAPC = A.get_apc()
-				if(theAPC.operating)	//If the apc's off, it's a little hard to overload the lights.
+				if(theAPC && theAPC.operating)	//If the apc's off, it's a little hard to overload the lights.
 					for(var/obj/machinery/light/L in A)
 						L.flicker(10)
 

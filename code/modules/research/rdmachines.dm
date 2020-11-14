@@ -36,6 +36,14 @@
 			return /obj/item/stack/material/uranium
 		if("diamond")
 			return /obj/item/stack/material/diamond
+		if("copper")
+			return /obj/item/stack/material/copper
+		if("aluminium")
+			return /obj/item/stack/material/aluminium
+		if("void opal")
+			return /obj/item/stack/material/void_opal
+		if("titanium")
+			return /obj/item/stack/material/titanium
 	return null
 
 /obj/machinery/r_n_d/proc/getMaterialName(var/type)
@@ -58,6 +66,14 @@
 			return "uranium"
 		if(/obj/item/stack/material/diamond)
 			return "diamond"
+		if(/obj/item/stack/material/copper)
+			return "copper"
+		if(/obj/item/stack/material/aluminium)
+			return "aluminium"
+		if(/obj/item/stack/material/void_opal)
+			return "void opal"
+		if(/obj/item/stack/material/titanium)
+			return "titanium"
 
 /obj/machinery/r_n_d/proc/eject(var/material, var/amount)
 	if(!(material in materials))

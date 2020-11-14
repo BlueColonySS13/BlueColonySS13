@@ -1,5 +1,5 @@
 /obj/item/device/radio/intercom
-	name = "station intercom (General)"
+	name = "city intercom (General)"
 	desc = "Talk through this."
 	icon_state = "intercom"
 	anchored = 1
@@ -12,16 +12,16 @@
 	var/wiresexposed = 0
 
 /obj/item/device/radio/intercom/custom
-	name = "station intercom (Custom)"
+	name = "city intercom (Custom)"
 	broadcasting = 0
 	listening = 0
 
 /obj/item/device/radio/intercom/interrogation
-	name = "station intercom (Interrogation)"
+	name = "city intercom (Interrogation)"
 	frequency  = 1449
 
 /obj/item/device/radio/intercom/private
-	name = "station intercom (Private)"
+	name = "city intercom (Private)"
 	frequency = AI_FREQ
 
 /obj/item/device/radio/intercom/specops
@@ -36,12 +36,12 @@
 	listening = 1
 
 /obj/item/device/radio/intercom/department/medbay
-	name = "station intercom (Medbay)"
+	name = "city intercom (Medbay)"
 	icon_state = "medintercom"
 	frequency = MED_I_FREQ
 
 /obj/item/device/radio/intercom/department/security
-	name = "station intercom (Security)"
+	name = "city intercom (Security)"
 	icon_state = "secintercom"
 	frequency = SEC_I_FREQ
 

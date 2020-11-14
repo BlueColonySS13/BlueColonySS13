@@ -1,5 +1,6 @@
 /obj/structure/door_assembly
 	name = "airlock assembly"
+	desc = "This needs to be wrenched into place first. Add wires, then an airlock electronics circuit. Then add a keypad optionally. Finish off with a screwdriver."
 	icon = 'icons/obj/doors/station/door.dmi'
 	icon_state = "construction"
 	anchored = 0
@@ -15,6 +16,8 @@
 	var/panel_icon = 'icons/obj/doors/station/panel.dmi'
 	var/fill_icon = 'icons/obj/doors/station/fill_steel.dmi'
 	var/glass_icon = 'icons/obj/doors/station/fill_glass.dmi'
+
+	var/keypad = FALSE
 
 	New()
 		update_state()
@@ -156,6 +159,15 @@
 			src.electronics = W
 
 	else if(W.is_crowbar() && state == 2 )
+		if(keypad)
+			if(do_after(user, 40,src))
+				if(!src) return
+				playsound(src.loc, 'sound/items/Crowbar.ogg', 100, 1)
+				to_chat(user, "<span class='notice'>You removed the keypad!</span>")
+				keypad = FALSE
+				new/obj/item/keypad(src.loc)
+			return
+
 		//This should never happen, but just in case I guess
 		if (!electronics)
 			to_chat(user, "<span class='notice'>There was nothing to remove.</span>")
@@ -198,6 +210,17 @@
 								to_chat(user, "<span class='notice'>You installed [material_display_name(material_name)] plating into the airlock assembly.</span>")
 								glass = material_name
 
+	else if(istype(W, /obj/item/keypad) && state == 2 )
+		playsound(src.loc, 'sound/items/Screwdriver.ogg', 100, 1)
+		to_chat(user, "<span class='notice'>Adding a keypad to the airlock...</span>")
+
+		if(do_after(user, 40,src))
+			if(!src) return
+			to_chat(user, "<span class='notice'>You add a keypad to the airlock!</span>")
+			keypad = TRUE
+			qdel(W)
+		return
+
 	else if(W.is_screwdriver() && state == 2 )
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 		to_chat(user, "<span class='notice'>Now finishing the airlock.</span>")
@@ -213,7 +236,10 @@
 			else
 				path = text2path("/obj/machinery/door/airlock[airlock_type]")
 
-			new path(src.loc, src)
+			var/obj/machinery/door/door = new path(src.loc, src)
+			if(keypad)
+				door.keypad = TRUE
+
 			qdel(src)
 	else
 		..()

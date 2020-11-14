@@ -3,6 +3,7 @@
 
 
 /obj/item/trash
+	name = "trash"
 	var/age = 0
 
 /obj/item/trash/New(var/newloc, var/_age)
@@ -56,7 +57,7 @@
 	icon_state = "sosjerky"
 
 /obj/item/trash/unajerky
-	name = "Moghes Imported Sissalik Jerky"
+	name = "Sol Imported Lizard Jerky"
 	icon_state = "unathitinred"
 
 /obj/item/trash/syndi_cakes
@@ -94,6 +95,9 @@
 	name = "candle"
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candle4"
+
+/obj/item/trash/candle/candelabra_stand
+	icon_state = "candelabra_stand"
 
 /obj/item/trash/liquidfood
 	name = "\improper \"LiquidFood\" ration"

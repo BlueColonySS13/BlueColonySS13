@@ -25,6 +25,8 @@
 	var/canRwall = 0
 	var/disabled = 0
 
+	unique_save_vars = list("stored_matter")
+
 /obj/item/weapon/rcd/attack()
 	return 0
 
@@ -150,6 +152,9 @@
 
 	working = 0
 	if(build_delay && !can_use(user,T))
+		return 0
+
+	if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "[(deconstruct ? "Deconstructing the" : "Building on")] [T] with [src]."))
 		return 0
 
 	if(build_turf)

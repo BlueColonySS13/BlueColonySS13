@@ -8,6 +8,28 @@
 	var/obj/item/weapon/extinguisher/has_extinguisher
 	var/opened = 0
 
+	unique_save_vars = list("opened", "anchored")
+
+/obj/structure/extinguisher_cabinet/get_persistent_metadata()
+	var/spawn_extinguisher = FALSE
+
+	if(has_extinguisher)
+		spawn_extinguisher = TRUE
+
+	return spawn_extinguisher
+
+/obj/structure/extinguisher_cabinet/load_persistent_metadata(spawn_extinguisher)
+	if(spawn_extinguisher)
+		if(!has_extinguisher)
+			has_extinguisher = new/obj/item/weapon/extinguisher(src)
+	else
+		if(has_extinguisher)
+			QDEL_NULL(has_extinguisher)
+
+	update_icon()
+
+	return TRUE
+
 /obj/structure/extinguisher_cabinet/New(var/loc, var/dir, var/building = 0)
 	..()
 

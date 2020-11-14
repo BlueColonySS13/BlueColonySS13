@@ -8,10 +8,12 @@
 	idle_power_usage = 10
 	active_power_usage = 2000
 	circuit = /obj/item/weapon/circuitboard/autolathe
-	var/datum/category_collection/autolathe/machine_recipes
-	var/list/stored_material =  list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
-	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0)
-	var/datum/category_group/autolathe/current_category
+	var/datum/category_collection/machine_recipes
+	var/category_type = /datum/category_collection/crafting/autolathe
+
+	var/list/stored_material =  list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "copper" = 0, "aluminium" = 0)
+	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 25000, "glass" = 12500, "plastic" = 22500, "copper" = 12500, "aluminium" = 12500)
+	var/datum/category_group/current_category
 
 	var/hacked = 0
 	var/disabled = 0
@@ -22,6 +24,11 @@
 	var/build_time = 50
 
 	var/datum/wires/autolathe/wires = null
+
+	var/process_sound = 'sound/machines/copier.ogg'
+
+	unique_save_vars = list("stored_material", "hacked")
+
 
 /obj/machinery/autolathe/New()
 	..()
@@ -42,7 +49,7 @@
 /obj/machinery/autolathe/proc/update_recipe_list()
 	if(!machine_recipes)
 		if(!autolathe_recipes)
-			autolathe_recipes = new()
+			autolathe_recipes = new category_type()
 		machine_recipes = autolathe_recipes
 		current_category = machine_recipes.categories[1]
 
@@ -56,7 +63,7 @@
 	if(shocked)
 		shock(user, 50)
 	var/list/dat = list()
-	dat += "<center><h1>Autolathe Control Panel</h1><hr/>"
+	dat += "<center><h1>[capitalize(name)] Control Panel</h1><hr/>"
 
 	if(!disabled)
 		dat += "<table width = '100%'>"
@@ -70,7 +77,7 @@
 		dat += "[material_top.Join()]</tr>[material_bottom.Join()]</tr></table><hr>"
 		dat += "<h2>Printable Designs</h2><h3>Showing: <a href='?src=\ref[src];change_category=1'>[current_category]</a>.</h3></center><table width = '100%'>"
 
-		for(var/datum/category_item/autolathe/R in current_category.items)
+		for(var/datum/category_item/crafting/R in current_category.items)
 			if(R.hidden && !hacked)
 				continue
 			var/can_make = 1
@@ -113,7 +120,12 @@
 
 		dat += "<hr>"
 
-	user << browse(dat.Join(), "window=autolathe")
+
+
+	var/datum/browser/popup = new(user, "autolathe", "[src]", 650, 650, src)
+	popup.set_content(jointext(dat,null))
+	popup.open()
+
 	onclose(user, "autolathe")
 
 /obj/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -203,7 +215,7 @@
 	else
 		user << "You fill \the [src] with \the [eating]."
 
-	flick("autolathe_o", src) // Plays metal insertion animation. Work out a good way to work out a fitting animation. ~Z
+	flick("[initial(icon_state)]_o", src) // Plays metal insertion animation. Work out a good way to work out a fitting animation. ~Z
 
 	if(istype(eating,/obj/item/stack))
 		var/obj/item/stack/stack = eating
@@ -238,7 +250,7 @@
 
 	if(href_list["make"] && machine_recipes)
 		var/multiplier = text2num(href_list["multiplier"])
-		var/datum/category_item/autolathe/making = locate(href_list["make"]) in current_category.items
+		var/datum/category_item/crafting/making = locate(href_list["make"]) in current_category.items
 
 
 		if(!making)
@@ -248,6 +260,7 @@
 		sanitize_integer(multiplier, 1, 100, 1)
 
 		busy = 1
+		playsound(src.loc, process_sound, 30, 1)
 		update_use_power(2)
 
 		//Check if we still have the materials.
@@ -274,6 +287,17 @@
 
 		//Create the desired item.
 		var/obj/item/I = new making.path(src.loc)
+
+		if(LAZYLEN(making.force_matter))			// forces the matter list to be something else.
+			I.matter = making.force_matter
+
+		if(making.prefix)
+			I.name = "[making.prefix] [I.name]"
+		if(making.suffix)
+			I.name = "[I.name] [making.suffix]"
+		if(making.override_color)
+			I.color = making.override_color
+
 		if(multiplier > 1 && istype(I, /obj/item/stack))
 			var/obj/item/stack/S = I
 			S.amount = multiplier
@@ -282,13 +306,13 @@
 
 /obj/machinery/autolathe/update_icon()
 	if(panel_open)
-		icon_state = "autolathe_t"
+		icon_state = "[initial(icon_state)]_t"
 	else if(busy)
-		icon_state = "autolathe_n"
+		icon_state = "[initial(icon_state)]_n"
 	else
-		if(icon_state == "autolathe_n")
-			flick("autolathe_u", src) // If lid WAS closed, show opening animation
-		icon_state = "autolathe"
+		if(icon_state == "[initial(icon_state)]_n")
+			flick("[initial(icon_state)]_u", src) // If lid WAS closed, show opening animation
+		icon_state = "[initial(icon_state)]"
 
 //Updates overall lathe storage size.
 /obj/machinery/autolathe/RefreshParts()
@@ -300,8 +324,9 @@
 	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
 		man_rating += M.rating
 
-	storage_capacity[DEFAULT_WALL_MATERIAL] = mb_rating  * 25000
-	storage_capacity["glass"] = mb_rating  * 12500
+	for(var/V in storage_capacity)	// automatically calculates for us.
+		storage_capacity[V] = (mb_rating * storage_capacity[V])
+
 	build_time = 50 / man_rating
 	mat_efficiency = 1.1 - man_rating * 0.1// Normally, price is 1.25 the amount of material, so this shouldn't go higher than 0.8. Maximum rating of parts is 3
 

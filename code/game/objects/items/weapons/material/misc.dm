@@ -33,6 +33,10 @@
 	get_tax()
 		return WEAPONS_TAX
 
+	is_contraband()
+		return CONTRABAND_KNIFELARGE
+
+
 /obj/item/weapon/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."

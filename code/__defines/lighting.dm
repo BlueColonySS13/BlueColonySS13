@@ -16,6 +16,7 @@
 
 #define LIGHTING_SOFT_THRESHOLD 0.05 // If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.  This also should be the transparancy of the "soft_dark" icon state.
 
+#define LIGHTING_MULT_FACTOR 0.5
 // If I were you I'd leave this alone.
 #define LIGHTING_BASE_MATRIX \
 	list                     \
@@ -73,3 +74,12 @@
 #define LIGHT_COLOR_SLIME_LAMP "#AFC84B" //Weird color, between yellow and green, very slimy. rgb(175, 200, 75)
 #define LIGHT_COLOR_TUNGSTEN   "#FAE1AF" //Extremely diluted yellow, close to skin color (for some reason). rgb(250, 225, 175)
 #define LIGHT_COLOR_HALOGEN    "#F0FAFA" //Barely visible cyan-ish hue, as the doctor prescribed. rgb(240, 250, 250)
+
+#define LIGHT_COLOR_FLUORESCENT_TUBE "#E0EFFF"
+#define LIGHT_COLOR_FLUORESCENT_FLASHLIGHT "#CDDDFF"
+#define LIGHT_COLOR_INCANDESCENT_TUBE "#FFFEB8"
+#define LIGHT_COLOR_INCANDESCENT_BULB "#FFDDBB"
+#define LIGHT_COLOR_INCANDESCENT_FLASHLIGHT "#FFCC66"
+
+//
+#define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-2, size=4, offset=4, color="#04080FAA")

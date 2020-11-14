@@ -25,13 +25,16 @@
 	var/paint_color
 	var/stripe_color
 
-//	var/stripes_glow = FALSE
-
 	var/global/list/wall_stripe_cache = list()
 	var/list/blend_turfs = list(/turf/simulated/wall/cult, /turf/simulated/wall/wood, /turf/simulated/wall/walnut, /turf/simulated/wall/maple, /turf/simulated/wall/mahogany, /turf/simulated/wall/ebony)
 	var/list/blend_objects = list(/obj/structure/window/framed, /obj/machinery/door, /obj/machinery/door/airlock/multi_tile, /obj/structure/wall_frame, /obj/structure/grille, /obj/structure/window/reinforced/full, /obj/structure/window/reinforced/polarized/full, /obj/structure/window/shuttle, ,/obj/structure/window/phoronbasic/full, /obj/structure/window/phoronreinforced/full) // Objects which to blend with
 	var/list/noblend_objects = list(/obj/machinery/door/window, /obj/structure/grille/smallfence) //Objects to avoid blending with (such as children of listed blend objects.
 
+
+	unique_save_vars = list("paint_color", "stripe_color", "damage", "can_open")
+
+/turf/simulated/wall/on_persistence_load()
+	update_material()
 
 // Walls always hide the stuff below them.
 /turf/simulated/wall/levelupdate()
@@ -76,6 +79,9 @@
 
 	//cap the amount of damage, so that things like emitters can't destroy walls in one hit.
 	var/damage = min(proj_damage, 100)
+
+	if(damage > 0)
+		trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "\The [src] was hit by \the [Proj].")
 
 	if(Proj.damage_type == BURN && damage > 0)
 		if(thermite)
@@ -144,7 +150,8 @@
 			to_chat(user, "<span class='warning'>It looks moderately damaged.</span>")
 		else
 			to_chat(user, "<span class='danger'>It looks heavily damaged.</span>")
-
+	if(paint_color)
+		to_chat(user, "<span class='notice'>It has a coat of paint applied.</span>")
 	if(locate(/obj/effect/overlay/wallrot) in src)
 		to_chat(user, "<span class='warning'>There is fungus growing on [src].</span>")
 
@@ -240,6 +247,9 @@
 		else
 			return
 
+/turf/simulated/wall/get_color()
+	return paint_color
+
 // Wall-rot effect, a nasty fungus that destroys walls.
 /turf/simulated/wall/proc/rot()
 	if(locate(/obj/effect/overlay/wallrot) in src)
@@ -286,7 +296,7 @@
 	if(!total_radiation)
 		return
 
-	radiation_repository.radiate(src, total_radiation)
+	SSradiation.radiate(src, total_radiation)
 	return total_radiation
 
 /turf/simulated/wall/proc/burn(temperature)
@@ -305,3 +315,13 @@
 
 /turf/simulated/wall/is_wall()
 	return TRUE
+
+/turf/simulated/wall/MouseDrop_T(obj/O as obj, mob/user as mob)
+	if(!istype(O) || O.anchored || !O.wall_drag)
+		return
+
+	O.forceMove(get_turf(src))
+	if(O.wall_shift)
+		O.pixel_y = O.wall_shift
+
+	..()

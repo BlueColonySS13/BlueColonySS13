@@ -24,10 +24,18 @@
 	var/list/datum/matter_synth/synths = null
 	var/no_variants = TRUE // Determines whether the item should update it's sprites based on amount.
 	var/list/associated_reagents = list() // put reagent "id" here
-	var/reagents_per_unit = 2
+	var/reagent_multiplier = 3 // Reagent unit times by this number will be produced per amount unit in the stack. 3 will produce 150 units for a 50 stack.
 
-/obj/item/stack/proc/update_reagents()
-	return
+	var/stack_color = null // overrides apply_material_color if used
+	var/dyeable = FALSE
+
+	unique_save_vars = list("amount", "stack_color")
+
+/obj/item/stack/on_persistence_load()
+	if(0 > amount)
+		amount = 1
+		
+	update_icon()
 
 /obj/item/stack/New(var/loc, var/amount=null)
 	..()
@@ -35,8 +43,8 @@
 		stacktype = type
 	if (amount)
 		src.amount = amount
-	create_reagents(max_amount * reagents_per_unit) // getting the max that any stack will have
-	update_reagents()
+	if(stack_color)
+		color = stack_color
 	update_icon()
 	return
 
@@ -50,6 +58,9 @@
 	return ..()
 
 /obj/item/stack/update_icon()
+	if(stack_color)
+		color = stack_color
+
 	if(no_variants)
 		icon_state = initial(icon_state)
 	else
@@ -156,13 +167,38 @@
 			O = new recipe.result_type(user.loc, recipe.use_material)
 		else
 			O = new recipe.result_type(user.loc)
-		O.set_dir(user.dir)
+
+		if(recipe.use_material_color)
+			if(!stack_color)
+				var/material/material_ref = get_material_by_name(recipe.use_material)
+				if(material_ref)
+					if(recipe.color_var && O.vars[recipe.color_var])
+						O.vars[recipe.color_var] = material_ref.icon_colour
+					else
+						O.color = material_ref.icon_colour
+			else
+				O.color = stack_color
+
+		if(stack_color && (recipe.color_var in O.vars))
+			O.vars[recipe.color_var] = stack_color
+
+		if(!recipe.ignore_dir)
+			O.set_dir(user.dir)
+
+		if(recipe.apply_prefix)
+			O.name = "[initial(name)] [O.name]"
+
+		if(recipe.apply_suffix)
+			O.name = "[O.name] [initial(name)]"
+
 		O.add_fingerprint(user)
 
 		if (istype(O, /obj/item/stack))
 			var/obj/item/stack/S = O
 			S.amount = produced
 			S.add_to_stacks(user)
+
+		O.update_icon()
 
 		if (istype(O, /obj/item/weapon/storage)) //BubbleWrap - so newly formed boxes are empty
 			for (var/obj/item/I in O)
@@ -215,7 +251,6 @@
 				usr.remove_from_mob(src)
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
-		update_reagents()
 		return 1
 	else
 		if(get_amount() < used)
@@ -223,9 +258,7 @@
 		for(var/i = 1 to uses_charge)
 			var/datum/matter_synth/S = synths[i]
 			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
-		update_reagents()
 		return 1
-	return 0
 
 /obj/item/stack/proc/add(var/extra)
 	if(!uses_charge)
@@ -233,7 +266,6 @@
 			return 0
 		else
 			amount += extra
-		update_reagents()
 		update_icon()
 		return 1
 	else if(!synths || synths.len < uses_charge)
@@ -257,11 +289,15 @@
 		return 0
 	if (isnull(tamount))
 		tamount = src.get_amount()
-
+	if(0 > amount)	// to avoid sheet exploits
+		qdel(src)
+		return 0
 	var/transfer = max(min(tamount, src.get_amount(), (S.get_max_amount() - S.get_amount())), 0)
 
 	var/orig_amount = src.get_amount()
 	if (transfer && src.use(transfer))
+		if(dont_save)	// no more exploiting. sorry.
+			S.dont_save = TRUE
 		S.add(transfer)
 		if (prob(transfer/orig_amount * 100))
 			transfer_fingerprints_to(S)
@@ -283,11 +319,12 @@
 	if (transfer && src.use(transfer))
 		var/obj/item/stack/newstack = new src.type(loc, transfer)
 		newstack.color = color
+		if(dont_save)
+			newstack.dont_save = TRUE
 		if (prob(transfer/orig_amount * 100))
 			transfer_fingerprints_to(newstack)
 			if(blood_DNA)
 				newstack.blood_DNA |= blood_DNA
-		update_reagents()
 		return newstack
 	return null
 
@@ -324,22 +361,24 @@
 		var/transfer = src.transfer_to(item)
 		if (transfer)
 			user << "<span class='notice'>You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.</span>"
-			update_reagents()
 		if(!amount)
 			break
 
 /obj/item/stack/attack_hand(mob/user as mob)
 	if (user.get_inactive_hand() == src)
 		var/N = input("How many stacks of [src] would you like to split off?  There are currently [amount].", "Split stacks", 1) as num|null
-		if(N)
-			var/obj/item/stack/F = src.split(N)
-			if (F)
-				user.put_in_hands(F)
-				src.add_fingerprint(user)
-				F.add_fingerprint(user)
-				spawn(0)
-					if (src && usr.machine==src)
-						src.interact(usr)
+		
+		if(!N || (0 > N) || (N > amount))
+			return
+
+		var/obj/item/stack/F = src.split(N)
+		if (F)
+			user.put_in_hands(F)
+			src.add_fingerprint(user)
+			F.add_fingerprint(user)
+			spawn(0)
+				if (src && usr.machine==src)
+					src.interact(usr)
 	else
 		..()
 	return
@@ -370,8 +409,14 @@
 	var/one_per_turf = 0
 	var/on_floor = 0
 	var/use_material
+	var/use_material_color = FALSE
+	var/ignore_dir = FALSE
+	var/color_var	// if this is set, this is what will be colored instead of the regular "color" variable. It will check the object's variables for this.
+	var/apply_prefix
+	var/apply_suffix
 
-	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null)
+	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, \
+	supplied_material = null, apply_material_color = FALSE, ignore_direction = FALSE, colour_var = null, prefix = FALSE, suffix = FALSE)
 		src.title = title
 		src.result_type = result_type
 		src.req_amount = req_amount
@@ -381,6 +426,11 @@
 		src.one_per_turf = one_per_turf
 		src.on_floor = on_floor
 		src.use_material = supplied_material
+		src.use_material_color = apply_material_color
+		src.ignore_dir = ignore_direction
+		src.color_var = colour_var
+		src.apply_prefix = prefix
+		src.apply_suffix = suffix
 
 /*
  * Recipe list datum

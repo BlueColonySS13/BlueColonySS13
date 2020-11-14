@@ -125,6 +125,10 @@
 		"mutagen" = 15
 		)
 
+/obj/machinery/portable_atmospherics/hydroponics/map // for mapping since people can't stop stealing em.
+	name = "NanoTrasen supplied hydroponics tray"
+	dont_save = TRUE
+
 /obj/machinery/portable_atmospherics/hydroponics/AltClick()
 	if(mechanical && !usr.incapacitated() && Adjacent(usr))
 		close_lid(usr)

@@ -15,10 +15,12 @@ datum/preferences
 	var/last_id
 	var/first_seen
 	var/last_seen
-	
+
 	var/list/ips_associated	= list()
 	var/list/cids_associated = list()
-	
+	var/list/characters_created = list()
+	var/byond_join_date
+
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
 	var/ooccolor = "#010000"			//Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color
@@ -39,7 +41,7 @@ datum/preferences
 	var/birth_year						//year you were born
 	// There's no birth year, as that's automatically calculated by your age.
 
-	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
+	var/spawnpoint = "City Arrivals Airbus" //where this character will spawn (0-2).
 	var/b_type = "O+"					//blood type (not-chooseable)
 	var/backbag = 2					//backpack type
 	var/pdachoice = 1					//PDA type
@@ -163,6 +165,9 @@ datum/preferences
 
 	// Communicator identity data
 	var/communicator_visibility = 1
+
+	//Silent joining for shenanigans
+	var/silent_join = 0
 
 	var/datum/category_collection/player_setup_collection/player_setup
 	var/datum/browser/panel
@@ -323,7 +328,9 @@ datum/preferences
 		load_character(SAVE_RESET)
 		sanitize_preferences()
 	else if(href_list["deleteslot"])
-		if("No" == alert("This will delete the current slot. Continue?", "Delete current slot?", "No", "Yes"))
+		if("No" == alert("This will delete the current slot. If you do this, you WON'T be able to play this character again. Continue?", "Delete current slot?", "No", "Yes"))
+			return 0
+		if("No" == alert("Just making sure - If there is something you need adjusted, contact an admin instead of deleting this slot. This will make a character with this name unplayable and can be treated as permadeath, the game won't allow you to play a character with the same name. Continue?", "Delete current slot?", "No", "Yes"))
 			return 0
 		delete_character()
 	else

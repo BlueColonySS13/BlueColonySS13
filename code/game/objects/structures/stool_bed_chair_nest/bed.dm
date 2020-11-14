@@ -41,6 +41,31 @@
 /obj/structure/bed/get_material()
 	return material
 
+/obj/structure/bed/get_persistent_metadata()
+	if(!material)
+		return FALSE
+
+	var/list/table_data = list()
+	table_data["material"] = material.name
+	if(padding_material)
+		table_data["padding_material"] = padding_material.name
+
+	return table_data
+
+/obj/structure/bed/load_persistent_metadata(metadata)
+	var/list/table_data = metadata
+	if(!islist(table_data))
+		return
+	if(get_material_by_name(table_data["material"]))
+		material = get_material_by_name(table_data["material"])
+	if(get_material_by_name(table_data["padding_material"]))
+		padding_material = get_material_by_name(table_data["padding_material"])
+
+	update_icon()
+
+	return TRUE
+
+
 // Reuse the cache/code from stools, todo maybe unify.
 /obj/structure/bed/update_icon()
 	// Prep icon.
@@ -103,6 +128,8 @@
 
 /obj/structure/bed/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/wrench))
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to deassemble \the [src] with [W]."))
+			return
 		playsound(src, W.usesound, 50, 1)
 		dismantle()
 		qdel(src)
@@ -137,6 +164,8 @@
 		if(!padding_material)
 			to_chat(user, "\The [src] has no padding to remove.")
 			return
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to remove padding from \the [src] with [W]."))
+			return
 		to_chat(user, "You remove the padding from \the [src].")
 		playsound(src.loc, W.usesound, 100, 1)
 		remove_padding()
@@ -170,7 +199,7 @@
 	padding_material = get_material_by_name(padding_type)
 	update_icon()
 
-/obj/structure/bed/proc/dismantle()
+/obj/structure/bed/dismantle()
 	material.place_sheet(get_turf(src))
 	if(padding_material)
 		padding_material.place_sheet(get_turf(src))
@@ -215,6 +244,7 @@
 	surgery_odds = 75
 	var/bedtype = /obj/structure/bed/roller
 	var/rollertype = /obj/item/roller
+	matter = list(DEFAULT_WALL_MATERIAL = 3875)
 
 /obj/structure/bed/roller/adv
 	name = "advanced roller bed"
@@ -249,6 +279,7 @@
 	w_class = ITEMSIZE_LARGE
 	var/rollertype = /obj/item/roller
 	var/bedtype = /obj/structure/bed/roller
+	matter = list(DEFAULT_WALL_MATERIAL = 2750)
 
 /obj/item/roller/attack_self(mob/user)
 	var/obj/structure/bed/roller/R = new bedtype(user.loc)
@@ -274,6 +305,7 @@
 	w_class = ITEMSIZE_NORMAL
 	rollertype = /obj/item/roller/adv
 	bedtype = /obj/structure/bed/roller/adv
+	matter = list(DEFAULT_WALL_MATERIAL = 3750)
 
 /obj/item/roller_holder
 	name = "roller bed rack"
@@ -281,6 +313,7 @@
 	icon = 'icons/obj/rollerbed.dmi'
 	icon_state = "rollerbed"
 	var/obj/item/roller/held
+	matter = list(DEFAULT_WALL_MATERIAL = 2850)
 
 /obj/item/roller_holder/New()
 	..()

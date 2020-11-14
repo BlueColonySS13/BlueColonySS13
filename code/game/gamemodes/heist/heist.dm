@@ -17,3 +17,4 @@ var/global/list/obj/cortical_stacks = list() //Stacks for 'leave nobody behind' 
 		attempts of robbery, fraud and other malicious actions."
 	end_on_antag_death = 0
 	antag_tags = list(MODE_RAIDER)
+	votable = 0

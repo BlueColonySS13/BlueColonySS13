@@ -2,14 +2,14 @@
 // LEGAL PAPERWORK
 
 /datum/paperwork_template/crim_rep
-	name = "Lawyer: Criminal Representation Form"
-	title = "Criminal Representation Form"
+	name = "Lawyer: Civil Representation Form"
+	title = "Civil Representation Form"
 	categories = list(PAPERWORK_LEGAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/legal/civrepform.txt'
 
 /datum/paperwork_template/civ_rep
-	name = "Lawyer: Civil Representation Form"
-	title = "Civil Representation Form"
+	name = "Lawyer: Criminal Representation Form"
+	title = "Criminal Representation Form"
 	categories = list(PAPERWORK_LEGAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/legal/crimrepform.txt'
 
@@ -18,6 +18,67 @@
 	title = "Divorce Application"
 	categories = list(PAPERWORK_LEGAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/legal/divorcepapers.txt'
+
+/datum/paperwork_template/criminal_complaint
+	name = "Criminal Complaint Form"
+	title = "Criminal Complaint"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/AO91.txt'
+
+/datum/paperwork_template/discovery_package_cover
+	name = "Discovery Package Cover"
+	title = "Discovery Package Cover"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/discovery_package_cover.txt'
+
+/datum/paperwork_template/decision
+	name = "Court Decision Form"
+	title = "Court Decision"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/courtdec.txt'
+
+/datum/paperwork_template/motion
+	name = "Court Motion Form"
+	title = "Court Motion"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/courtmotion.txt'
+
+/datum/paperwork_template/corder
+	name = "Court Order Form"
+	title = "Court Order"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/courtorder.txt'
+
+/datum/paperwork_template/injunction
+	name = "Court Injunction Form"
+	title = "Court Injunction"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/injunction.txt'
+
+/datum/paperwork_template/deposition
+	name = "Deposition Form"
+	title = "Deposition"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/deposition.txt'
+
+/datum/paperwork_template/statementclaim
+	name = "Statement of Claim Form"
+	title = "Statement of Claim"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/statementclaim.txt'
+
+/datum/paperwork_template/NDA
+	name = "Non-Disclosure Agreement"
+	title = "NDA Contract"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/NDA.txt'
+
+/datum/paperwork_template/ceasedesist
+	name = "Cease and Desist Order"
+	title = "Cease and Desist"
+	categories = list(PAPERWORK_LEGAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/legal/ceasedesist.txt'
+
 
 // COUNCIL PAPERWORK
 
@@ -46,13 +107,45 @@
 	categories = list(PAPERWORK_COUNCIL)
 	file_source = 'code/modules/paperwork/paperwork_templates/council/replacementcard.txt'
 
+/datum/paperwork_template/foodstamps
+	name = "City Clerk: Food Stamps Form"
+	title = "Food Stamps Form"
+	categories = list(PAPERWORK_COUNCIL)
+	file_source = 'code/modules/paperwork/paperwork_templates/council/foodstamps.txt'
+
+/datum/paperwork_template/ordinance
+	name = "Mayor: City Ordinance Form"
+	title = "City Ordinance Form"
+	categories = list(PAPERWORK_COUNCIL)
+	file_source = 'code/modules/paperwork/paperwork_templates/council/ordinance.txt'
+
+/datum/paperwork_template/permit_form
+	name = "City Clerk: Weapon Permit Application"
+	title = "Weapon Permit Form"
+	categories = list(PAPERWORK_COUNCIL)
+	file_source = 'code/modules/paperwork/paperwork_templates/council/weaponpermit.txt'
+
+/datum/paperwork_template/courtrules
+	name = "Courtroom Rules"
+	title = "Courtroom Rules"
+	categories = list(PAPERWORK_GOVERNMENT)
+	file_source = 'code/modules/paperwork/paperwork_templates/council/courtrules.txt'
+
+
+
 // MEDICAL
 
-/datum/paperwork_template/med_prescription
+/*/datum/paperwork_template/med_prescription
 	name = "Medical Prescription Form"
 	title = "Prescription Form"
 	categories = list(PAPERWORK_MEDICAL)
-	file_source = 'code/modules/paperwork/paperwork_templates/medical/prescription.txt'
+	file_source = 'code/modules/paperwork/paperwork_templates/medical/prescription.txt'*/
+
+/datum/paperwork_template/med_death_certificate
+	name = "Death Certificate Form"
+	title = "Death Certificate"
+	categories = list(PAPERWORK_MEDICAL)
+	file_source = 'code/modules/paperwork/paperwork_templates/medical/death-certificate.txt'
 
 // MISC
 
@@ -70,6 +163,12 @@
 	categories = list(PAPERWORK_POLICE)
 	file_source = 'code/modules/paperwork/paperwork_templates/police/arrestreport.txt'
 
+/datum/paperwork_template/criminal_complaint
+	name = "A091 Criminal Complaint"
+	title = "Criminal Complaint Form"
+	categories = list(PAPERWORK_POLICE)
+	file_source = 'code/modules/paperwork/paperwork_templates/police/criminalcomplaint.txt'
+
 // GOVERNMENT
 
 /datum/paperwork_template/pdsi_report
@@ -77,3 +176,4 @@
 	title = "PDSI Report"
 	categories = list(PAPERWORK_GOVERNMENT)
 	file_source = 'code/modules/paperwork/paperwork_templates/government/pdsireport.txt'
+

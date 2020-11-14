@@ -1,0 +1,1 @@
+#define MAX_URL_LENGTH 120

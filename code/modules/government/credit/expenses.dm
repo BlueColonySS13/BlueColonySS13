@@ -1,7 +1,7 @@
 /datum/expense
   var/name = "Generic Expense"
-  var/cost_per_payroll = 1          // per payroll
-  var/department = "Civilian"
+  var/cost_per_payroll = 20          // per payroll
+  var/department = DEPT_COUNCIL
   var/purpose = "Bill"
 
   var/charge_department			// if specified, this is the department that will be charged instead of an account.
@@ -10,7 +10,7 @@
 
   var/initial_cost				//how much it cost in the beginning
 
-  var/amount_left
+  var/amount_left = 0
 
   var/active = TRUE		               // If this is currently active, or not.
 
@@ -39,6 +39,9 @@
 
 	var/charge
 
+	if(cost_per_payroll > amount_left)
+		cost_per_payroll = amount_left
+
 	if(num > amount_left)
 		charge += amount_left
 	else
@@ -50,7 +53,7 @@
 	amount_left -= charge
 
 	if(department)
-		department_accounts[department].money += charge
+		adjust_dept_funds(department, charge)
 
 	return charge
 
@@ -62,13 +65,28 @@
 // If you want to charge a department.
 
 /datum/expense/proc/charge_department(num)
-	if(!charge_department) return
+	if(!charge_department || !department) return
 
-	var/datum/money_account/bank_acc = department_accounts[charge_department]
+	var/negative = FALSE
 
-	if(!bank_acc) return
+	if(0 > num)
+		negative = TRUE
 
-	charge_expense(src, bank_acc, num)
+	//the department getting charged.
+	var/datum/money_account/bank_acc = dept_acc_by_id(charge_department)
+	// department recieving the money.
+	var/datum/money_account/dept_bank_acc = dept_acc_by_id(department)
+
+	if(!bank_acc || !dept_bank_acc) return
+
+	if(negative)
+		charge_expense(src, bank_acc, num)
+		charge_expense(src, dept_bank_acc, -num)
+	else
+		charge_expense(src, bank_acc, -num)
+		charge_expense(src, dept_bank_acc, num)
+
+	return TRUE
 
 
 //This if for if you have a expense, and a bank account.
@@ -77,20 +95,14 @@
 	if(!E.is_active())
 		return 0
 
+	if(E.cost_per_payroll > E.amount_left)
+		E.cost_per_payroll = E.amount_left
+		num = E.amount_left
+
 	E.process_charge(num)
 	bank_account.money -= num
 
-	//create an entry for the charge.
-	var/datum/transaction/T = new()
-	T.target_name = bank_account.owner_name
-	T.purpose = "Debt Payment: [E.name]"
-	T.amount = num
-	T.date = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-	T.time = stationtime2text()
-	T.source_terminal = "[E.department] Funding Account"
-
-	//add the account
-	bank_account.transaction_log.Add(T)
+	bank_account.add_transaction_log(bank_account.owner_name, "Debt Payment: [E.name]", -num, "[E.department] Funding Account")
 
 	E.do_effect()
 
@@ -106,7 +118,7 @@
 	cost_per_payroll = 30
 	var/datum/law/fine
 
-	department = "Police"
+	department = DEPT_POLICE
 
 	color = COLOR_RED_GRAY
 
@@ -116,7 +128,7 @@
 	cost_per_payroll = 30
 	var/datum/medical_bill
 
-	department = "Public Healthcare"
+	department = DEPT_HEALTHCARE
 
 	color = COLOR_BLUE_GRAY
 
@@ -125,7 +137,7 @@
 	name = "Court Injunction"
 	cost_per_payroll = 50
 
-	department = "Civilian"
+	department = DEPT_LEGAL
 
 	color = COLOR_OLIVE
 

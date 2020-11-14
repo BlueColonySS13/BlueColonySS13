@@ -8,6 +8,7 @@
 	density = 1
 	anchored = 0
 	pressure_resistance = 2*ONE_ATMOSPHERE
+	table_drag = TRUE
 
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(10,25,50,100)
@@ -62,6 +63,21 @@
 /obj/structure/reagent_dispensers/blob_act()
 	qdel(src)
 
+
+/obj/structure/reagent_dispensers/vat
+	name = "vat"
+	desc = "A vat that can hold a lot of fluid. Usually found in reservoirs."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "vat"
+	amount_per_transfer_from_this = 10
+	anchored = TRUE
+
+/obj/structure/reagent_dispensers/vat/water
+	name = "water vat"
+
+/obj/structure/reagent_dispensers/vat/water/New()
+	..()
+	reagents.add_reagent("water", 1000)
 
 
 //Dispensers
@@ -126,7 +142,16 @@
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
+
+	if (W.is_hot() && user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>Yikes, that might be a bad idea.</span>")
+		return 0
+
 	if (istype(W,/obj/item/weapon/wrench))
+		if(user.IsAntiGrief())
+			to_chat(user, "<span class='danger'>You don't want to unwrench the faucet...</span>")
+			return 0
+
 		user.visible_message("[user] wrenches [src]'s faucet [modded ? "closed" : "open"].", \
 			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
 		modded = modded ? 0 : 1
@@ -139,6 +164,12 @@
 		if (rig)
 			user << "<span class='warning'>There is another device in the way.</span>"
 			return ..()
+
+
+		if(user && user.IsAntiGrief())
+			to_chat(user, "<span class='danger'>You don't feel like rigging the fueltank.</span>")
+			return 0
+
 		user.visible_message("[user] begins rigging [W] to \the [src].", "You begin rigging [W] to \the [src]")
 		if(do_after(user, 20))
 			user.visible_message("<span class='notice'>[user] rigs [W] to \the [src].</span>", "<span class='notice'>You rig [W] to \the [src]</span>")
@@ -161,6 +192,16 @@
 
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(var/obj/item/projectile/Proj)
+	//lot protection
+	var/area/this_area = get_area(src)
+	if(this_area.lot_id)
+		return
+
+	// grief protection
+	var/mob/fueltank_shooter = Proj.firer
+	if(fueltank_shooter.IsAntiGrief() )
+		return
+
 	if(Proj.get_structure_damage())
 		if(istype(Proj.firer))
 			message_admins("[key_name_admin(Proj.firer)] shot fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
@@ -352,6 +393,18 @@
 		I = image(icon, "water_cooler_cups")
 		overlays += I
 	return
+
+
+/obj/structure/reagent_dispensers/barrel
+	name = "barrel"
+	desc = "A wooden barrel that is used to hold a high quantity of fluid for transport."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "barrel"
+	amount_per_transfer_from_this = 10
+
+/obj/structure/reagent_dispensers/barrel/wine/New()
+	..()
+	reagents.add_reagent("wine",1000)
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"

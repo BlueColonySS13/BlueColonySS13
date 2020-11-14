@@ -267,12 +267,6 @@ obj/machinery/lapvend/attackby(obj/item/weapon/W as obj, mob/user as mob)
 		return 0
 	else
 		customer_account.money -= total_price
-		var/datum/transaction/T = new()
-		T.target_name = "Computer Manufacturer (via [src.name])"
-		T.purpose = "Purchase of [(devtype == 1) ? "laptop computer" : "tablet microcomputer"]."
-		T.amount = total_price
-		T.source_terminal = src.name
-		T.date = current_date_string
-		T.time = stationtime2text()
-		customer_account.transaction_log.Add(T)
+		customer_account.add_transaction_log("Laptop Vendor", "Purchase of [(devtype == 1) ? "laptop computer" : "tablet microcomputer"].", -total_price, src.name)
+
 		return 1

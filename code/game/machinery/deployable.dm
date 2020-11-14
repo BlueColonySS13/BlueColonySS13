@@ -113,7 +113,7 @@ for reference:
 			return
 		..()
 
-/obj/structure/barricade/proc/dismantle()
+/obj/structure/barricade/dismantle()
 	material.place_dismantled_product(get_turf(src))
 	qdel(src)
 	return

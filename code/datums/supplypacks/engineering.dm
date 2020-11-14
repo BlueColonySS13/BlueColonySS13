@@ -6,60 +6,62 @@
 
 /datum/supply_pack/eng
 	group = "Engineering"
+	spend_type = SPEND_ENGINEERING
+
 
 /datum/supply_pack/eng/lightbulbs
 	name = "Replacement lights"
 	contains = list(/obj/item/weapon/storage/box/lights/mixed = 3)
-	cost = 30
+	cost = 75
 	containertype = /obj/structure/closet/crate
 	containername = "Replacement lights"
 
 /datum/supply_pack/eng/smescoil
 	name = "Superconducting Magnetic Coil"
 	contains = list(/obj/item/weapon/smes_coil)
-	cost = 75
+	cost = 125
 	containertype = /obj/structure/closet/crate/engineering
 	containername = "Superconducting Magnetic Coil crate"
 
 /datum/supply_pack/eng/shield_capacitor
 	name = "Shield Capacitor"
 	contains = list(/obj/machinery/shield_capacitor)
-	cost = 20
+	cost = 250
 	containertype = /obj/structure/closet/crate/engineering
 	containername = "shield capacitor crate"
 
 /datum/supply_pack/eng/shield_capacitor/advanced
 	name = "Advanced Shield Capacitor"
 	contains = list(/obj/machinery/shield_capacitor/advanced)
-	cost = 30
+	cost = 500
 	containertype = /obj/structure/closet/crate/engineering
 	containername = "advanced shield capacitor crate"
 
 /datum/supply_pack/eng/bubble_shield
 	name = "Bubble Shield Generator"
 	contains = list(/obj/machinery/shield_gen)
-	cost = 400
+	cost = 650
 	containertype = /obj/structure/closet/crate/engineering
 	containername = "shield bubble generator crate"
 
 /datum/supply_pack/eng/bubble_shield/advanced
 	name = "Advanced Bubble Shield Generator"
 	contains = list(/obj/machinery/shield_gen/advanced)
-	cost = 600
+	cost = 800
 	containertype = /obj/structure/closet/crate/engineering
 	containername = "advanced bubble shield generator crate"
 
 /datum/supply_pack/eng/hull_shield
 	name = "Hull Shield Generator"
 	contains = list(/obj/machinery/shield_gen/external)
-	cost = 900
+	cost = 1000
 	containertype = /obj/structure/closet/crate/engineering
 	containername = "shield hull generator crate"
 
 /datum/supply_pack/eng/hull_shield/advanced
 	name = "Advanced Hull Shield Generator"
 	contains = list(/obj/machinery/shield_gen/external/advanced)
-	cost = 1200
+	cost = 1450
 	containertype = /obj/structure/closet/crate/engineering
 	containername = "advanced hull shield generator crate"
 
@@ -71,7 +73,7 @@
 			/obj/item/weapon/cell = 2,
 			/obj/item/weapon/cell/high = 2
 			)
-	cost = 30
+	cost = 75
 	containertype = /obj/structure/closet/crate/engineering/electrical
 	containername = "Electrical maintenance crate"
 
@@ -80,7 +82,7 @@
 	contains = list(
 			/obj/item/weapon/weldingtool/electric = 3
 			)
-	cost = 20
+	cost = 30
 	containertype = /obj/structure/closet/crate/engineering/electrical
 	containername = "Electric welder crate"
 
@@ -92,7 +94,7 @@
 			/obj/item/clothing/head/welding = 2,
 			/obj/item/clothing/head/hardhat
 			)
-	cost = 30
+	cost = 75
 	containertype = /obj/structure/closet/crate/engineering
 	containername = "Mechanical maintenance crate"
 /*
@@ -118,7 +120,7 @@
 /datum/supply_pack/eng/engine
 	name = "Emitter crate"
 	contains = list(/obj/machinery/power/emitter = 2)
-	cost = 100
+	cost = 250
 	containertype = /obj/structure/closet/crate/secure/engineering
 	containername = "Emitter crate"
 	access = access_ce
@@ -194,7 +196,7 @@
 /datum/supply_pack/eng/teg
 	contains = list(/obj/machinery/power/generator)
 	name = "Mark I Thermoelectric Generator"
-	cost = 400
+	cost = 500
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "Mk1 TEG crate"
 	access = access_engine
@@ -202,7 +204,7 @@
 /datum/supply_pack/eng/circulator
 	contains = list(/obj/machinery/atmospherics/binary/circulator)
 	name = "Binary atmospheric circulator"
-	cost = 200
+	cost = 300
 	containertype = /obj/structure/closet/crate/secure/large
 	containername = "Atmospheric circulator crate"
 	access = access_engine
@@ -213,7 +215,7 @@
 			/obj/item/clothing/head/radiation = 3
 			)
 	name = "Radiation suits package"
-	cost = 200
+	cost = 300
 	containertype = /obj/structure/closet/radiation
 	containername = "Radiation suit locker"
 
@@ -245,7 +247,7 @@
 
 /datum/supply_pack/eng/fusion_core
 	name = "R-UST Mk. 8 Tokamak fusion core crate"
-	cost = 500
+	cost = 750
 	containername = "R-UST Mk. 8 Tokamak Fusion Core crate"
 	containertype = /obj/structure/closet/crate/secure/engineering
 	access = access_engine
@@ -257,7 +259,7 @@
 
 /datum/supply_pack/eng/fusion_fuel_injector
 	name = "R-UST Mk. 8 fuel injector crate"
-	cost = 300
+	cost = 500
 	containername = "R-UST Mk. 8 fuel injector crate"
 	containertype = /obj/structure/closet/crate/secure/engineering
 	access = access_engine
@@ -269,7 +271,7 @@
 
 /datum/supply_pack/eng/gyrotron
 	name = "Gyrotron crate"
-	cost = 150
+	cost = 250
 	containername = "Gyrotron Crate"
 	containertype = /obj/structure/closet/crate/secure/engineering
 	access = access_engine
@@ -280,7 +282,7 @@
 
 /datum/supply_pack/eng/fusion_fuel_compressor
 	name = "Fusion Fuel Compressor circuitry crate"
-	cost = 100
+	cost = 300
 	containername = "Fusion Fuel Compressor circuitry crate"
 	containertype = /obj/structure/closet/crate/engineering
 	contains = list(/obj/item/weapon/circuitboard/fusion_fuel_compressor)

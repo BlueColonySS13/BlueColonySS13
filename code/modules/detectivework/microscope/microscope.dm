@@ -6,6 +6,8 @@
 	icon_state = "microscope"
 	anchored = 1
 	density = 1
+	table_drag = TRUE
+	circuit = /obj/item/weapon/circuitboard/microscope
 
 	var/obj/item/weapon/sample = null
 	var/report_num = 0

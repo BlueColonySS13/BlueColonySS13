@@ -15,6 +15,7 @@
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("robusted")
 	drop_sound = 'sound/items/drop/metalboots.ogg'
+	matter = list(DEFAULT_WALL_MATERIAL = 800)
 
 /obj/item/weapon/storage/toolbox/emergency
 	name = "emergency toolbox"

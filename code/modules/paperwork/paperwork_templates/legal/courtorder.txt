@@ -1,0 +1,17 @@
+[center]Geminus City High Court
+[small][b]Court Order[/b][/center][br][hr]
+[i]This form permits the enforcement of the following orders by the employees of the Police Department, and other authorized peace officers, onto the concerned 'Citizen' who shall be legally obligated to abide by and fufill said order(s).[/i][br]
+[b]Date:[/b] [field]
+[b]Order Type:[/b][list][[field]] Injunction
+[[field]] Subpoena 
+[[field]] General Order
+[[field]] Other[/list]
+
+[b]Citizen(s) or Entity Concerned:[/b] [field]
+
+[b]Order to be Enforced:[/b][br]
+[field][br]
+[b]Additional Notes:[/b][list]
+[field][/list]
+[hr][b]Judge's Signature:[/b] [field]
+[/small]

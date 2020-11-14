@@ -126,8 +126,8 @@
 /*
  * Sushi Mat
  */
-/obj/item/kitchen/sushimat
-	name = "Sushi Mat"
+/obj/item/weapon/material/kitchen/sushimat
+	name = "sushi mat"
 	desc = "A wooden mat used for efficient sushi crafting."
 	icon_state = "sushi_mat"
 	force = 5

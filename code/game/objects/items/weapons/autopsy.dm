@@ -1,14 +1,9 @@
-
-//moved these here from code/defines/obj/weapon.dm
-//please preference put stuff where it's easy to find - C
-
 /obj/item/weapon/autopsy_scanner
 	name = "biopsy scanner"
 	desc = "Extracts information on wounds."
 	icon = 'icons/obj/autopsy_scanner.dmi'
 	icon_state = ""
 	item_state = "autopsy_scanner"
-	flags = CONDUCT
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	var/list/datum/autopsy_data_scanner/wdata = list()
@@ -51,10 +46,9 @@
 			*/
 
 			// Buffing this stuff up for now!
-			if(1)
-				W.pretend_weapon = W.weapon
-			else
-				W.pretend_weapon = pick("mechanical toolbox", "wirecutters", "revolver", "crowbar", "fire extinguisher", "tomato soup", "oxygen tank", "emergency oxygen tank", "laser", "bullet")
+			W.pretend_weapon = W.weapon
+//			else
+//				W.pretend_weapon = pick("mechanical toolbox", "wirecutters", "revolver", "crowbar", "fire extinguisher", "tomato soup", "oxygen tank", "emergency oxygen tank", "laser", "bullet")
 
 
 		var/datum/autopsy_data_scanner/D = wdata[V]
@@ -81,7 +75,7 @@
 	set src in view(usr, 1)
 	set name = "Print Data"
 	if(usr.stat || !(istype(usr,/mob/living/carbon/human)))
-		usr << "No."
+		to_chat(usr, "No.")
 		return
 
 	var/scan_data = ""
@@ -166,26 +160,29 @@
 /obj/item/weapon/autopsy_scanner/do_surgery(mob/living/carbon/human/M, mob/living/user)
 	if(!istype(M))
 		return 0
-	if (user.a_intent == I_HELP)
-		return ..()
+
 	if(target_name != M.name)
 		target_name = M.name
 		src.wdata = list()
 		src.chemtraces = list()
 		src.timeofdeath = null
-		user << "<span class='notice'>A new patient has been registered. Purging data for previous patient.</span>"
+		to_chat(user, "<span class='notice'>A new patient has been registered. Purging data for previous patient.</span>")
 
 	src.timeofdeath = M.timeofdeath
 
 	var/obj/item/organ/external/S = M.get_organ(user.zone_sel.selecting)
-	if(!S)
-		usr << "<span class='warning'>You can't scan this body part.</span>"
-		return
-	if(!S.open)
-		usr << "<span class='warning'>You have to cut [S] open first!</span>"
-		return
-	M.visible_message("<span class='notice'>\The [user] scans the wounds on [M]'s [S.name] with [src]</span>")
+	if (S.open == 2)
+		return ..()
+	else
+		if(!S)
+			to_chat(user, "<span class='warning'>You can't scan this body part.</span>")
+			return
+		if(!S.open)
+			to_chat(user, "<span class='warning'>You have to cut [S] open first!</span>")
+			return
+		M.visible_message("<span class='notice'>\The [user] scans the wounds on [M]'s [S.name] with [src]</span>")
 
-	src.add_data(S)
+		src.add_data(S)
 
-	return 1
+		return 1
+

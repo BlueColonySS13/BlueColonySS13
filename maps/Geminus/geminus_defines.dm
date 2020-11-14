@@ -36,6 +36,8 @@
 
 	allowed_spawns = list("City Arrivals Airbus", "Cryogenic Storage", "Prison")
 
+	planet_datums_to_make = list(/datum/planet/pollux)
+
 	usable_email_tlds = list("freemail.net", "ntmail.nt", "interpollux.org", "solnet.org", "vetralife.nt", "andromedian.org")
 	default_law_type = /datum/ai_laws/pollux
 
@@ -68,10 +70,8 @@
 
 
 /datum/map/geminus/perform_map_generation()
-//	new /datum/random_map/automata/cave_system(null, 1, 1, Z_LEVEL_FIRST_GEMINUS	, world.maxx, world.maxy) // Create the mining Z-level.
+	new /datum/random_map/automata/cave_system(null, 1, 1, Z_LEVEL_FIRST_GEMINUS	, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_FIRST_GEMINUS	, 64, 64)         // Create the mining ore distribution map.
-
-//	new /datum/random_map/automata/cave_system(null, 1, 1, Z_LEVEL_SECOND_GEMINUS, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SECOND_GEMINUS, 64, 64)         // Create the mining ore distribution map.
 
 	return 1
@@ -103,7 +103,7 @@
 //	holomap_offset_x = GEMINUS_HOLOMAP_MARGIN_X - 40
 //	holomap_offset_y = GEMINUS_HOLOMAP_MARGIN_Y + GEMINUS_MAP_SIZE*0
 
-/datum/planet/sif
+/datum/planet/pollux
 	expected_z_levels = list(
 		Z_LEVEL_SKY_GEMINUS,
 		Z_LEVEL_SECOND_GEMINUS

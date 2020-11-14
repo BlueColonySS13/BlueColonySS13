@@ -33,6 +33,7 @@
 							/obj/item/clothing/head/cowboy_hat/small		= 2,
 							/obj/item/toy/stickhorse						= 2
 							)
+	var/token_inserted = 0
 
 /obj/machinery/computer/arcade/New()
 	..()
@@ -59,6 +60,11 @@
 /obj/machinery/computer/arcade/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
+/obj/machinery/computer/arcade/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/token))
+		to_chat(usr, "<span class = 'notice'>You insert \the [W] into \the [src].</span>")
+		token_inserted = 1
+		qdel(W)
 
 /obj/machinery/computer/arcade/emp_act(severity)
 	if(stat & (NOPOWER|BROKEN))
@@ -119,8 +125,11 @@
 /obj/machinery/computer/arcade/battle/attack_hand(mob/user as mob)
 	if(..())
 		return
-	user.set_machine(src)
-	ui_interact(user)
+	if(!token_inserted)
+		to_chat(usr, "<span class='notice'>You cannot play \the [src] until you insert a token!</span>")
+	else
+		user.set_machine(src)
+		ui_interact(user)
 
 /**
  *  Display the NanoUI window for the arcade machine.
@@ -208,7 +217,9 @@
 	if ((enemy_mp <= 0) || (enemy_hp <= 0))
 		if(!gameover)
 			gameover = 1
+			token_inserted = 0
 			temp = "[enemy_name] has fallen! Rejoice!"
+			usr.unset_machine()
 
 			if(emagged)
 				feedback_inc("arcade_win_emagged")
@@ -259,11 +270,13 @@
 	if ((player_mp <= 0) || (player_hp <= 0))
 		gameover = 1
 		temp = "You have been crushed! GAME OVER"
+		token_inserted = 0
 		if(emagged)
 			feedback_inc("arcade_loss_hp_emagged")
 			usr.gib()
 		else
 			feedback_inc("arcade_loss_hp_normal")
+			usr.unset_machine()
 
 	blocked = 0
 	return
@@ -386,63 +399,69 @@
 /obj/machinery/computer/arcade/orion_trail/attack_hand(mob/user)
 	if(..())
 		return
-	if(fuel <= 0 || food <=0 || settlers.len == 0)
-		gameStatus = ORION_STATUS_GAMEOVER
-		event = null
-	user.set_machine(src)
-	var/dat = ""
-	if(gameStatus == ORION_STATUS_GAMEOVER)
-		dat = "<center><h1>Game Over</h1></center>"
-		dat += "Like many before you, your crew never made it to Orion, lost to space... <br><b>forever</b>."
-		if(settlers.len == 0)
-			dat += "<br>Your entire crew died, and your ship joins the fleet of ghost-ships littering the galaxy."
-		else
-			if(food <= 0)
-				dat += "<br>You ran out of food and starved."
-				if(emagged)
-					user.nutrition = 0 //yeah you pretty hongry
-					to_chat(user, span("danger", "<font size=3>Your body instantly contracts to that of one who has not eaten in months. Agonizing cramps seize you as you fall to the floor.</font>"))
-			if(fuel <= 0)
-				dat += "<br>You ran out of fuel, and drift, slowly, into a star."
-				if(emagged)
-					var/mob/living/M = user
-					M.adjust_fire_stacks(5)
-					M.IgniteMob() //flew into a star, so you're on fire
-					to_chat(user,span("danger", "<font size=3>You feel an immense wave of heat emanate from \the [src]. Your skin bursts into flames.</font>"))
-		dat += "<br><P ALIGN=Right><a href='byond://?src=\ref[src];menu=1'>OK...</a></P>"
 
-		if(emagged)
-			to_chat(user, span("danger", "<font size=3>You're never going to make it to Orion...</font>"))
-			user.death()
-			emagged = 0 //removes the emagged status after you lose
-			gameStatus = ORION_STATUS_START
-			name = "The Orion Trail"
-			desc = "Learn how our ancestors got to Orion, and have fun in the process!"
-
-	else if(event)
-		dat = eventdat
-	else if(gameStatus == ORION_STATUS_NORMAL)
-		var/title = stops[turns]
-		var/subtext = stopblurbs[turns]
-		dat = "<center><h1>[title]</h1></center>"
-		dat += "[subtext]"
-		dat += "<h3><b>Crew:</b></h3>"
-		dat += english_list(settlers)
-		dat += "<br><b>Food: </b>[food] | <b>Fuel: </b>[fuel]"
-		dat += "<br><b>Engine Parts: </b>[engine] | <b>Hull Panels: </b>[hull] | <b>Electronics: </b>[electronics]"
-		if(turns == 7)
-			dat += "<P ALIGN=Right><a href='byond://?src=\ref[src];pastblack=1'>Go Around</a> <a href='byond://?src=\ref[src];blackhole=1'>Continue</a></P>"
-		else
-			dat += "<P ALIGN=Right><a href='byond://?src=\ref[src];continue=1'>Continue</a></P>"
-		dat += "<P ALIGN=Right><a href='byond://?src=\ref[src];killcrew=1'>Kill a crewmember</a></P>"
-		dat += "<P ALIGN=Right><a href='byond://?src=\ref[src];close=1'>Close</a></P>"
+	if(!token_inserted)
+		to_chat(usr, "<span class='notice'>You cannot play \the [src] until you insert a token!</span>")
 	else
-		dat = "<center><h2>The Orion Trail</h2></center>"
-		dat += "<br><center><h3>Experience the journey of your ancestors!</h3></center><br><br>"
-		dat += "<center><b><a href='byond://?src=\ref[src];newgame=1'>New Game</a></b></center>"
-		dat += "<P ALIGN=Right><a href='byond://?src=\ref[src];close=1'>Close</a></P>"
-	user << browse(dat,"window=arcade")
-	return
+		if(fuel <= 0 || food <=0 || settlers.len == 0)
+			gameStatus = ORION_STATUS_GAMEOVER
+			event = null
+		user.set_machine(src)
+		var/dat = ""
+		if(gameStatus == ORION_STATUS_GAMEOVER)
+			dat = "<center><h1>Game Over</h1></center>"
+			dat += "Like many before you, your crew never made it to Orion, lost to space... <br><b>forever</b>."
+			token_inserted = 0
+			if(settlers.len == 0)
+				dat += "<br>Your entire crew died, and your ship joins the fleet of ghost-ships littering the galaxy."
+			else
+				if(food <= 0)
+					dat += "<br>You ran out of food and starved."
+					if(emagged)
+						user.nutrition = 0 //yeah you pretty hongry
+						to_chat(user, span("danger", "<font size=3>Your body instantly contracts to that of one who has not eaten in months. Agonizing cramps seize you as you fall to the floor.</font>"))
+				if(fuel <= 0)
+					dat += "<br>You ran out of fuel, and drift, slowly, into a star."
+					if(emagged)
+						var/mob/living/M = user
+						M.adjust_fire_stacks(5)
+						M.IgniteMob() //flew into a star, so you're on fire
+						to_chat(user,span("danger", "<font size=3>You feel an immense wave of heat emanate from \the [src]. Your skin bursts into flames.</font>"))
+			dat += "<br><P ALIGN=Right><a href='byond://?src=\ref[src];menu=1'>OK...</a></P>"
+			usr.unset_machine()
+
+			if(emagged)
+				to_chat(user, span("danger", "<font size=3>You're never going to make it to Orion...</font>"))
+				user.death()
+				emagged = 0 //removes the emagged status after you lose
+				gameStatus = ORION_STATUS_START
+				name = "The Orion Trail"
+				desc = "Learn how our ancestors got to Orion, and have fun in the process!"
+
+		else if(event)
+			dat = eventdat
+		else if(gameStatus == ORION_STATUS_NORMAL)
+			var/title = stops[turns]
+			var/subtext = stopblurbs[turns]
+			dat = "<center><h1>[title]</h1></center>"
+			dat += "[subtext]"
+			dat += "<h3><b>Crew:</b></h3>"
+			dat += english_list(settlers)
+			dat += "<br><b>Food: </b>[food] | <b>Fuel: </b>[fuel]"
+			dat += "<br><b>Engine Parts: </b>[engine] | <b>Hull Panels: </b>[hull] | <b>Electronics: </b>[electronics]"
+			if(turns == 7)
+				dat += "<P ALIGN=Right><a href='byond://?src=\ref[src];pastblack=1'>Go Around</a> <a href='byond://?src=\ref[src];blackhole=1'>Continue</a></P>"
+			else
+				dat += "<P ALIGN=Right><a href='byond://?src=\ref[src];continue=1'>Continue</a></P>"
+			dat += "<P ALIGN=Right><a href='byond://?src=\ref[src];killcrew=1'>Kill a crewmember</a></P>"
+			dat += "<P ALIGN=Right><a href='byond://?src=\ref[src];close=1'>Close</a></P>"
+		else
+			dat = "<center><h2>The Orion Trail</h2></center>"
+			dat += "<br><center><h3>Experience the journey of your ancestors!</h3></center><br><br>"
+			dat += "<center><b><a href='byond://?src=\ref[src];newgame=1'>New Game</a></b></center>"
+			dat += "<P ALIGN=Right><a href='byond://?src=\ref[src];close=1'>Close</a></P>"
+		user << browse(dat,"window=arcade")
+		return
 
 /obj/machinery/computer/arcade/orion_trail/Topic(href, href_list)
 	if(..())
@@ -1000,6 +1019,8 @@
 	emagged = 0
 	name = "The Orion Trail"
 	desc = "Learn how our ancestors got to Orion, and have fun in the process!"
+	token_inserted = 0
+	usr.unset_machine()
 
 /obj/machinery/computer/arcade/orion_trail/emag_act(mob/user)
 	if(!emagged)
@@ -1047,6 +1068,17 @@
 	src.visible_message(span("danger", "[src] explodes!"))
 	explosion(src.loc, 1,2,4)
 	qdel(src)
+
+//***************//
+//	  TOKENS!    //
+// will move l8r //
+//***************//
+
+/obj/item/token
+	name = "arcade token"
+	desc = "A token commonly used in arcade cabinets."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "coin_gold"
 
 #undef ORION_TRAIL_WINTURN
 #undef ORION_TRAIL_RAIDERS

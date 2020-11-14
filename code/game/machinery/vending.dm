@@ -33,6 +33,8 @@
 	*/
 	var/list/products	= list() // For each, use the following pattern:
 	var/list/contraband	= list() // list(/type/path = amount,/type/path2 = amount2)
+	var/list/code_blue_items = list()	// Items only available on code blue.
+	var/list/code_red_items = list()
 	var/list/premium 	= list() // No specified amount = only one in stock
 	var/list/prices     = list() // Prices for each item, list(/type/path = price), items not in the list don't have a price.
 
@@ -55,36 +57,55 @@
 	var/slogan_delay = 6000 //How long until we can pitch again?
 
 	// Things that can go wrong
-	emagged = 0 //Ignores if somebody doesn't have card access to that machine.
-	var/seconds_electrified = 0 //Shock customers like an airlock.
-	var/shoot_inventory = 0 //Fire items at customers! We're broken!
+	emagged = 0 						//Ignores if somebody doesn't have card access to that machine.
+	var/seconds_electrified = 0 			//Shock customers like an airlock.
+	var/shoot_inventory = 0 				//Fire items at customers! We're broken!
 
 	var/scan_id = 1
 	var/obj/item/weapon/coin/coin
 	var/datum/wires/vending/wires = null
 
 	var/list/log = list()
-	var/req_log_access = access_cargo //default access for checking logs is cargo
-	var/has_logs = 0 //defaults to 0, set to anything else for vendor to have logs
+	var/req_log_access = access_cargo 		//	default access for checking logs is cargo
+	var/has_logs = 0					//	defaults to 0, set to anything else for vendor to have logs
 
 	var/vending_sound = "machines/vending_drop.ogg"
 
-	var/vendor_department	//this is the department the vending machine gives money it acquires to.
-	var/charge_department	//"free items" get charged from this department account, or all paid items get charged, etcetera
+	var/vendor_department				//	this is the department the vending machine gives money it acquires to.
+	var/charge_free_department			//	free items get charged to dept account
+	var/charge_paid_department			//	if this is filled. stuff gets charged to this instead
 
-	var/charge_free_to_department			//free items get charged to dept account
-	var/charge_paid_to_department			//paid items get charged to dept instead of going through payment
+	var/auto_price	= FALSE				//	select this if you want vending items to be autopriced based on actual cost so you don't have to use prices var
 
-	var/auto_price			//select this if you want vending items to be autopriced based on actual cost so you don't have to use prices var
+	var/required_pass	//	if this needs a type of object instead of cash in order to access the items, this is it.
+
+	dont_save = TRUE
+
+	var/can_wrench = FALSE
+	var/can_hack = FALSE
+
+	var/block_persistence = FALSE
+
+	unique_save_vars = list("vendor_department", "charge_free_department", "charge_paid_department")
+
 
 /obj/machinery/vending/examine(mob/user)
 	..()
+
+	if(required_pass)
+		var/atom/tmp = required_pass
+		var/pass_name = initial(tmp.name)
+
+		to_chat(user, "It only accepts [pass_name]s as a vending currency.")
+
 	if(vendor_department)
-		to_chat(user, "<b>[src]</b> pays to the [vendor_department] account.")
-	if(charge_department && charge_free_to_department)
-		to_chat(user, "It charges from the [charge_department] account for free items.")
-	if(charge_department && charge_paid_to_department)
-		to_chat(user, "Paid items are supplied by the [charge_department] account.")
+		to_chat(user, "It pays to the [dept_name_by_id(vendor_department)] account.")
+
+	if(charge_free_department)
+		to_chat(user, "It charges from the [dept_name_by_id(charge_free_department)] account for free items.")
+
+	if(charge_paid_department)
+		to_chat(user, "Paid items are supplied by the [dept_name_by_id(charge_paid_department)] account.")
 
 /obj/machinery/vending/New()
 	..()
@@ -167,36 +188,44 @@
 
 /obj/machinery/vending/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
-		emagged = 1
+		emagged = TRUE
 		to_chat(user, "You short out \the [src]'s product lock.")
-		return 1
+		return TRUE
 
 /obj/machinery/vending/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 	var/obj/item/weapon/card/id/I = W.GetID()
 
-	if(currently_vending && vendor_account && !vendor_account.suspended)
-		var/paid = 0
-		var/handled = 0
 
-		if(I) //for IDs and PDAs and wallets with IDs
-			paid = pay_with_card(I,W)
+
+	if(currently_vending)
+		var/paid = FALSE
+		var/handled = FALSE
+
+		if(required_pass && (istype(W, required_pass)))
+			var/obj/C = W
+			paid = pay_with_pass(C)
 			handled = 1
-		else if(istype(W, /obj/item/weapon/spacecash/ewallet))
-			var/obj/item/weapon/spacecash/ewallet/C = W
-			paid = pay_with_ewallet(C)
-			handled = 1
-		else if(istype(W, /obj/item/weapon/spacecash))
-			var/obj/item/weapon/spacecash/C = W
-			paid = pay_with_cash(C, user)
-			handled = 1
-		else if(istype(W, /obj/item/weapon/card/foodstamp))
-			var/obj/item/weapon/card/foodstamp/C = W
-			paid = pay_with_foodstamp(C)
-			handled = 1
+
+		if(!required_pass)
+			if((charge_paid_department || (charge_free_department && !currently_vending.price)))
+				paid = TRUE
+				handled = TRUE
+			else if(I) //for IDs and PDAs and wallets with IDs
+				paid = pay_with_card(I,W)
+				handled = 1
+			else if(istype(W, /obj/item/weapon/spacecash/ewallet))
+				var/obj/item/weapon/spacecash/ewallet/C = W
+				paid = pay_with_ewallet(C)
+				handled = 1
+			else if(istype(W, /obj/item/weapon/spacecash))
+				var/obj/item/weapon/spacecash/C = W
+				paid = pay_with_cash(C, user)
+				handled = 1
+
 		if(paid)
 			if(vendor_department)
-				department_accounts["[vendor_department]"].money += currently_vending.price
+				adjust_dept_funds(vendor_department, currently_vending.price)
 
 			vend(currently_vending, usr)
 
@@ -208,6 +237,7 @@
 	if(I || istype(W, /obj/item/weapon/spacecash))
 		attack_hand(user)
 		return
+
 	else if(istype(W, /obj/item/weapon/screwdriver))
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
@@ -219,9 +249,9 @@
 		SSnanoui.update_uis(src)  // Speaker switch is on the main UI, not wires UI
 		return
 	else if(istype(W, /obj/item/device/multitool)||istype(W, /obj/item/weapon/wirecutters))
-		if(panel_open)
+		if(can_hack && panel_open)
 			attack_hand(user)
-		return
+			return
 	else if(istype(W, /obj/item/weapon/coin) && premium.len > 0)
 		user.drop_item()
 		W.forceMove(src)
@@ -231,17 +261,18 @@
 		SSnanoui.update_uis(src)
 		return
 	else if(istype(W, /obj/item/weapon/wrench))
-		playsound(src, W.usesound, 100, 1)
-		if(anchored)
-			user.visible_message("[user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
-		else
-			user.visible_message("[user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
+		if(can_wrench)
+			playsound(src, W.usesound, 100, 1)
+			if(anchored)
+				user.visible_message("[user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
+			else
+				user.visible_message("[user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
 
-		if(do_after(user, 20 * W.toolspeed))
-			if(!src) return
-			to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
-			anchored = !anchored
-		return
+			if(do_after(user, 20 * W.toolspeed))
+				if(!src) return
+				to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
+				anchored = !anchored
+			return
 	else
 
 		for(var/datum/stored_item/vending_product/R in product_records)
@@ -296,24 +327,29 @@
 		return 1
 
 /**
- * Scan food stamp card and dispense product.
+ * Scan any "pass object" and dispense product.
  *
  * Returns 1 if successful, 0 if failed
  */
-/obj/machinery/vending/proc/pay_with_foodstamp(var/obj/item/weapon/card/foodstamp/ebt)
+/obj/machinery/vending/proc/pay_with_pass(var/obj/ebt)
 	visible_message("<span class='info'>\The [usr] taps \the [ebt] against \the [src]'s scanner.</span>")
-	if(istype(src, /obj/machinery/vending/foodstamp))
-		if(ebt.meals_remaining > 0)
-			ebt.meals_remaining = ebt.meals_remaining - 1
-			return 1
-		else
-			status_message = "No meals remaining on social service card."
-			status_error = 1
-			return 0
-	else
-		status_message = "Social service cards cannot be used at this machine."
+
+	if(!(istype(ebt, required_pass)))
+		status_message = "Incorrect method of payment. Please try again."
 		status_error = 1
 		return 0
+
+	else
+		if(istype(ebt, /obj/item/weapon/card/foodstamp))
+			var/obj/item/weapon/card/foodstamp/C = ebt
+			if(C.meals_remaining > 0)
+				C.meals_remaining = C.meals_remaining - 1
+				return 1
+
+		QDEL_NULL(ebt)
+		return 1
+
+
 
 /**
  * Scan a card and attempt to transfer payment from associated account.
@@ -322,10 +358,12 @@
  * successful, 0 if failed
  */
 /obj/machinery/vending/proc/pay_with_card(var/obj/item/weapon/card/id/I, var/obj/item/ID_container)
+
 	if(I==ID_container || ID_container == null)
 		visible_message("<span class='info'>\The [usr] swipes \the [I] through \the [src].</span>")
 	else
 		visible_message("<span class='info'>\The [usr] swipes \the [ID_container] through \the [src].</span>")
+
 	var/datum/money_account/customer_account = get_account(I.associated_account_number)
 	if(!customer_account)
 		status_message = "Error: Unable to access account. Please contact technical support if problem persists."
@@ -352,30 +390,19 @@
 		status_message = "Insufficient funds in account."
 		status_error = 1
 		return 0
-	else
-		// Okay to move the money at this point
 
-		// debit money from the purchaser's account
-		customer_account.money -= currently_vending.price
+	// Okay to move the money at this point
 
-		// create entry in the purchaser's account log
-		var/datum/transaction/T = new()
-		T.target_name = "[vendor_account.owner_name] (via [name])"
-		T.purpose = "Purchase of [currently_vending.item_name]"
-		if(currently_vending.price > 0)
-			T.amount = "([currently_vending.price])"
-		else
-			T.amount = "[currently_vending.price]"
-		T.source_terminal = name
-		T.date = current_date_string
-		T.time = stationtime2text()
-		customer_account.transaction_log.Add(T)
+	// debit money from the purchaser's account
+	customer_account.money -= currently_vending.price
 
-		// Give the vendor the money. We use the account owner name, which means
-		// that purchases made with stolen/borrowed card will look like the card
-		// owner made them
-		credit_purchase(customer_account.owner_name)
-		return 1
+	customer_account.add_transaction_log("[dept_name_by_id(vendor_department)] (via [name])", "Purchase of [currently_vending.item_name]", -currently_vending.price, name)
+
+	// Give the vendor the money. We use the account owner name, which means
+	// that purchases made with stolen/borrowed card will look like the card
+	// owner made them
+	credit_purchase(customer_account.owner_name)
+	return 1
 
 /**
  *  Add money for current purchase to the vendor account.
@@ -383,16 +410,11 @@
  *  Called after the money has already been taken from the customer.
  */
 /obj/machinery/vending/proc/credit_purchase(var/target as text)
-	vendor_account.money += currently_vending.price
-
-	var/datum/transaction/T = new()
-	T.target_name = target
-	T.purpose = "Purchase of [currently_vending.item_name]"
-	T.amount = "[currently_vending.price]"
-	T.source_terminal = name
-	T.date = current_date_string
-	T.time = stationtime2text()
-	vendor_account.transaction_log.Add(T)
+	if(vendor_department)
+		var/datum/money_account/vendor_bank = dept_acc_by_id(vendor_department)
+		if(!vendor_bank)
+			return
+		vendor_bank.add_transaction_log(target, "Purchase of [currently_vending.item_name]", currently_vending.price, name)
 
 /obj/machinery/vending/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -424,6 +446,7 @@
 		data["message_err"] = 0
 		data["message"] = status_message
 		data["message_err"] = status_error
+		data["requires_pass"] = status_error
 	else
 		data["mode"] = 0
 		var/list/listed_products = list()
@@ -484,6 +507,8 @@
 				playsound(src.loc, 'sound/machines/deniedbeep.ogg', 50, 0)
 				return
 
+
+
 			var/key = text2num(href_list["vend"])
 			var/datum/stored_item/vending_product/R = product_records[key]
 
@@ -491,32 +516,37 @@
 			if(!(R.category & categories))
 				return
 
-			if(charge_department)
-				if(charge_paid_to_department && R.price)
-					department_accounts["[charge_department]"].money -= R.price
-					vend(R, usr)
-
-				if(charge_free_to_department && !R.price && R.item_default_price)
-					department_accounts["[charge_department]"].money -= R.item_default_price
-					vend(R, usr)
-
-				if(vendor_department)
-					department_accounts["[vendor_department]"].money += R.price
-
-			if(R.price <= 0 && !charge_free_to_department)
-				vend(R, usr)
-
-			else if(istype(usr,/mob/living/silicon)) //If the item is not free, provide feedback if a synth is trying to buy something.
+			if((istype(usr,/mob/living/silicon)) && R.price) //If the item is not free, provide feedback if a synth is trying to buy something.
 				to_chat(usr, "<span class='danger'>Lawed unit recognized.  Lawed units cannot complete this transaction.  Purchase canceled.</span>")
 				return
-			else
-				currently_vending = R
-				if(!vendor_account || vendor_account.suspended)
+
+			if(charge_paid_department && R.price)
+				adjust_dept_funds(charge_paid_department, -R.price)
+				vend(R, usr)
+
+			if(charge_free_department && !R.price && !required_pass)
+				vend(R, usr)
+
+			if(vendor_department)
+				adjust_dept_funds(vendor_department, R.price)
+
+			if(R.price <= 0 && !charge_free_department)
+				vend(R, usr)
+
+			currently_vending = R
+			if(vendor_department)
+				var/datum/money_account/M = dept_acc_by_id(vendor_department)
+				if(!M || M.suspended)
 					status_message = "This machine is currently unable to process payments due to issues with the associated account."
 					status_error = 1
-				else
-					status_message = "Please swipe a card or insert cash to pay for the item."
-					status_error = 0
+			if(!required_pass)
+				status_message = "Please swipe a card or insert cash to pay for the item."
+			else
+				var/atom/tmp = required_pass
+				var/pass_name = initial(tmp.name)
+
+				status_message = "Please deposit a [pass_name] recieve this item."
+			status_error = 0
 
 		else if(href_list["cancelpurchase"])
 			currently_vending = null
@@ -565,13 +595,26 @@
 		flick(icon_vend,src)
 	playsound(src.loc, "sound/[vending_sound]", 100, 1)
 	spawn(vend_delay)
-		R.get_product(get_turf(src))
+		var/obj/I = R.get_product(get_turf(src))
+		if(block_persistence)
+			I.make_nonpersistent()
 		if(has_logs)
 			do_logging(R, user, 1)
 		if(prob(1))
 			sleep(3)
 			if(R.get_product(get_turf(src)))
 				visible_message("<span class='notice'>\The [src] clunks as it vends an additional item.</span>")
+
+		if(charge_free_department && !R.price && I.get_item_cost())
+			adjust_dept_funds(charge_free_department, -I.get_item_cost())
+
+		if(I.post_tax_cost())
+			if(charge_free_department)
+				adjust_dept_funds(charge_free_department, -I.post_tax_cost())
+			else if(charge_paid_department)
+				adjust_dept_funds(charge_free_department, -I.post_tax_cost())
+
+			SSeconomy.charge_main_department(I.post_tax_cost(), "[src] Tax Transfer: [I.name] ([I.post_tax_cost()])")
 
 		status_message = ""
 		status_error = 0
@@ -750,14 +793,21 @@
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/pint = 10,
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/mug = 10,
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/wine = 10,
+					/obj/item/weapon/reagent_containers/food/drinks/glass2/carafe = 2,
+					/obj/item/weapon/reagent_containers/food/drinks/glass2/pitcher = 2,
 					/obj/item/weapon/reagent_containers/food/drinks/metaglass = 10,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/gin = 5,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/champagne = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/cognac = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/grenadine = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/kahlua = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/melonliquor = 5,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/peppermintschnapps = 5,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/peachschnapps = 5,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/lemonadeschnapps = 5,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/small/cider = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/rum = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/sake = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/specialwhiskey = 5,
@@ -790,15 +840,18 @@
 	contraband = list()
 	vend_delay = 15
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
-	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty on this station?"
+	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty in this city?"
 	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
-	req_access = list(access_bar)
-	req_log_access = access_bar
+//	req_access = list(access_bar)
+//	req_log_access = access_bar
 	has_logs = 1
 	vending_sound = "machines/vending_cans.ogg"
 
-	charge_department = "Bar"
-	charge_free_to_department = TRUE
+//	charge_free_department = DEPT_BAR
+//	block_persistence = TRUE
+
+	dont_save = FALSE
+	save_contents = FALSE // to stop hoarding since this regens the contents anyway
 
 
 /obj/machinery/vending/assist
@@ -820,9 +873,9 @@
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/ice = 10)
 	vending_sound = "machines/vending_coffee.ogg"
 
-	vendor_department = "Bar"
+	vendor_department = DEPT_PUBLIC
 
-	auto_price = 1
+	auto_price = TRUE
 
 
 /obj/machinery/vending/snack
@@ -837,8 +890,8 @@
 	contraband = list(/obj/item/weapon/reagent_containers/food/snacks/syndicake = 6,/obj/item/weapon/reagent_containers/food/snacks/unajerky = 6,)
 
 
-	vendor_department = "Bar"
-	auto_price = 1
+	vendor_department = DEPT_PUBLIC
+	auto_price = TRUE
 
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
@@ -853,8 +906,8 @@
 					/obj/item/weapon/reagent_containers/food/drinks/cans/gingerale = 10, /obj/item/weapon/reagent_containers/food/drinks/bottle/cola = 10)
 	contraband = list(/obj/item/weapon/reagent_containers/food/drinks/cans/thirteenloko = 5, /obj/item/weapon/reagent_containers/food/snacks/liquidfood = 6)
 
-	vendor_department = "Bar"
-	auto_price = 1
+	vendor_department = DEPT_PUBLIC
+	auto_price = TRUE
 
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	vending_sound = "machines/vending_cans.ogg"
@@ -891,21 +944,7 @@
 
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/steroid = 4)
 
-	vendor_department = "Civilian"
-
-
-/obj/machinery/vending/cart
-	name = "PTech"
-	desc = "Cartridges for PDAs."
-	product_slogans = "Carts to go!"
-	icon_state = "cart"
-	icon_deny = "cart-deny"
-	req_access = list(access_hop)
-	products = list(/obj/item/weapon/cartridge/medical = 10,/obj/item/weapon/cartridge/engineering = 10,/obj/item/weapon/cartridge/security = 10,
-					/obj/item/weapon/cartridge/janitor = 10,/obj/item/weapon/cartridge/signal/science = 10, /obj/item/device/pda/heads = 10,
-					/obj/item/weapon/cartridge/captain = 3,/obj/item/weapon/cartridge/quartermaster = 10)
-	req_log_access = access_hop
-	has_logs = 1
+	vendor_department = DEPT_PUBLIC
 
 /obj/machinery/vending/cigarette
 	name = "cigarette machine"
@@ -961,8 +1000,8 @@
 					/obj/item/weapon/reagent_containers/ecig_cartridge/coffee = 15,
 					/obj/item/weapon/reagent_containers/ecig_cartridge/blanknico = 15)
 
-	vendor_department = "Civilian"
-	auto_price = 1
+	vendor_department = DEPT_PUBLIC
+	auto_price = TRUE
 
 /obj/machinery/vending/medical
 	name = "NanoMed Plus"
@@ -994,8 +1033,119 @@
 	req_log_access = access_cmo
 	has_logs = 1
 
-	charge_department = "Public Healthcare"
-	charge_free_to_department = TRUE
+	charge_free_department = DEPT_HEALTHCARE
+
+	block_persistence = TRUE
+
+/obj/machinery/vending/medical/hospital/gcch
+	charge_free_department = DEPT_HEALTHCARE
+
+
+/obj/machinery/vending/medical/hospital/gcchgms
+	name = "NanoMed General Medical Supplies Vendor"
+	desc = "A patent pending, branded, NanoMed machine which holds general medical supplies. You feel the healthcare costs rising while looking at this machine."
+	req_access = list(access_medical)
+	products = list (/obj/item/clothing/glasses/hud/health = 6,
+					 /obj/item/weapon/storage/belt/medical = 6,
+					 /obj/item/roller = 6,
+					 /obj/item/weapon/storage/firstaid/regular = 4,
+					 /obj/item/weapon/storage/firstaid/adv = 4,
+					 /obj/item/weapon/storage/firstaid/toxin = 3,
+					 /obj/item/weapon/storage/firstaid/o2 = 3,
+					 /obj/item/weapon/storage/firstaid/fire = 3,
+					 /obj/item/weapon/storage/box/gloves = 2,
+					 /obj/item/weapon/storage/box/masks = 2,
+					 /obj/item/weapon/storage/box/syringes = 2,
+					 /obj/item/weapon/storage/box/beakers = 2,
+					 /obj/item/weapon/storage/box/bodybags = 2)
+	charge_free_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
+
+/obj/machinery/vending/medical/hospital/gcchsms
+	name = "NanoMed Specialized Medical Supplies Vendor"
+	desc = "A patent pending, branded, NanoMed vendor which holds specialized medical supplies. Much like the bloodpressure of the mayor, the prices on healthcare are increasing exponentially."
+	req_access = list(access_medical)
+	products = list (/obj/item/bodybag/cryobag = 6,
+					 /obj/item/weapon/reagent_containers/spray/sterilizine = 5,
+					 /obj/item/device/defib_kit/loaded = 3,
+					 /obj/item/weapon/cane = 3,
+					 /obj/item/weapon/cane/crutch = 3,
+					 /obj/item/weapon/cane/white = 3,
+					 /obj/item/weapon/cane/white/collapsible = 5,
+					 /obj/item/weapon/storage/firstaid/surgery = 2,
+					 /obj/item/weapon/storage/box/rxglasses = 2,
+					 /obj/item/weapon/storage/box/autoinjectors = 1,
+					 /obj/item/weapon/storage/box/cdeathalarm_kit = 1)
+	charge_free_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
+
+/obj/machinery/vending/medical/hospital/cvcrb
+	name = "C.V.C Refridgerated Bloodbank"
+	desc = "A fully stocked bloodbank, equipped with advanced cooling technology which keeps your blood extra cold. One bloodbag ah ah ah, two bloodbag ah ah ah, three bloodbag ah ah ah."
+	icon_state = "smartfridge"
+	req_access = list(access_medical)
+	products = list (/obj/item/weapon/reagent_containers/blood/empty = 8,
+					 /obj/item/weapon/reagent_containers/blood/OMinus = 6,
+					 /obj/item/weapon/reagent_containers/blood/APlus = 4,
+					 /obj/item/weapon/reagent_containers/blood/AMinus = 4,
+					 /obj/item/weapon/reagent_containers/blood/BPlus = 4,
+					 /obj/item/weapon/reagent_containers/blood/BMinus = 4,
+					 /obj/item/weapon/reagent_containers/blood/OPlus =4)
+	charge_free_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
+
+/obj/machinery/vending/medical/hospital/chem
+	name = "Johnny's Chems"
+	desc = "A fully stocked chemistry machine designed for hospital use. You look at it and are reminded of a familiar theme song."
+	req_access = list(access_chemistry)
+	products = list (/obj/item/weapon/reagent_containers/glass/beaker/large = 4,
+					 /obj/item/clothing/glasses/science = 4,
+					 /obj/item/stack/material/phoron = 3,
+					 /obj/item/weapon/reagent_containers/dropper/industrial = 2,
+					 /obj/item/device/mass_spectrometer/adv = 2,
+					 /obj/item/weapon/storage/box/autoinjectors = 2,
+					 /obj/item/weapon/storage/bag/chemistry = 2,
+					 /obj/item/weapon/storage/box/pillbottles = 2,
+					 /obj/item/weapon/storage/fancy/vials = 2,
+					 /obj/item/weapon/storage/lockbox/vials = 1,
+					 /obj/item/clothing/under/rank/chemist = 4,
+					 /obj/item/clothing/under/rank/chemist/skirt = 4,
+					 /obj/item/clothing/shoes/white = 4,
+					 /obj/item/clothing/suit/storage/toggle/labcoat/chemist = 4,
+					 /obj/item/weapon/storage/backpack/chemistry = 4,
+					 /obj/item/weapon/storage/backpack/satchel/chem = 4,
+					 /obj/item/weapon/storage/bag/chemistry = 4
+				 )
+
+	charge_free_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
+
+/obj/machinery/vending/medical/hospital/psych
+	name = "Mania Inc. Psychiatric Vendomat"
+	desc = "A vending machine which puts the man, back in mania. Stocks all manner of psychiatric supplies."
+	req_access = list(64)
+	products = list (/obj/item/weapon/storage/pill_bottle/citalopram = 2,
+					 /obj/item/weapon/reagent_containers/glass/bottle/stoxin = 2,
+					 /obj/item/weapon/reagent_containers/syringe = 10,
+					 /obj/item/clothing/suit/straight_jacket = 6,
+					 /obj/item/weapon/gun/launcher/syringe = 5,
+					 /obj/item/weapon/storage/box/syringegun = 2,
+					 /obj/item/weapon/storage/pill_bottle/citalopram = 5,
+					 /obj/item/clothing/under/rank/psych = 4,
+					 /obj/item/clothing/under/rank/psych/turtleneck = 4,
+					 /obj/item/weapon/clipboard = 4,
+					 /obj/item/device/taperecorder = 4,
+					 /obj/item/device/tape/random = 5,
+					 /obj/item/device/camera = 5,
+					 /obj/item/toy/plushie/therapy/blue = 2,
+					 /obj/item/toy/plushie/therapy/green = 2,
+					 /obj/item/toy/plushie/therapy/orange = 2,
+					 /obj/item/toy/plushie/therapy/purple = 2,
+					 /obj/item/toy/plushie/therapy/red = 2,
+					 /obj/item/toy/plushie/therapy/yellow = 2
+					 )
+	charge_free_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
 
 /obj/machinery/vending/phoronresearch
 	name = "Toximate 3000"
@@ -1006,8 +1156,8 @@
 	req_log_access = access_rd
 	has_logs = 1
 
-	charge_department = "Research and Science"
-	charge_free_to_department = TRUE
+	charge_free_department = DEPT_RESEARCH
+	block_persistence = TRUE
 
 /obj/machinery/vending/wallmed1
 	name = "NanoMed"
@@ -1021,8 +1171,11 @@
 	req_log_access = access_cmo
 	has_logs = 1
 
-	charge_department = "Public Healthcare"
-	charge_free_to_department = TRUE
+	charge_free_department = DEPT_HEALTHCARE
+	block_persistence = TRUE
+
+/obj/machinery/vending/wallmed1/gcch
+	vendor_department = DEPT_HEALTHCARE
 
 /obj/machinery/vending/wallmed2
 	name = "NanoMed"
@@ -1039,7 +1192,8 @@
 	prices = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 15, /obj/item/weapon/reagent_containers/syringe/antitoxin = 10,/obj/item/stack/medical/bruise_pack = 15,
 					/obj/item/stack/medical/ointment = 15,/obj/item/device/healthanalyzer = 10)
 
-	vendor_department = "Public Healthcare"
+	vendor_department = DEPT_HEALTHCARE
+	block_persistence = FALSE
 
 /obj/machinery/vending/security
 	name = "SecTech"
@@ -1048,14 +1202,130 @@
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(access_security)
-	products = list(/obj/item/weapon/handcuffs = 8,/obj/item/weapon/grenade/flashbang = 4,/obj/item/device/flash = 5,
-					/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,/obj/item/weapon/storage/box/evidence = 6)
-	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/weapon/storage/box/donut = 2)
+	products = list(
+	/obj/item/weapon/gun/energy/taser = 8,
+	/obj/item/weapon/reagent_containers/spray/pepper = 8,
+	/obj/item/weapon/handcuffs = 8,
+	/obj/item/weapon/grenade/flashbang = 4,
+	/obj/item/device/flash = 5,
+	/obj/item/weapon/reagent_containers/food/snacks/donut/normal = 12,
+	/obj/item/weapon/storage/box/evidence = 6,
+	/obj/item/weapon/melee/classic_baton = 6,
+	/obj/item/weapon/melee/baton/loaded = 6,
+	/obj/item/taperoll/police = 6,
+	/obj/item/device/flashlight/flare = 6,
+	/obj/item/device/flashlight/maglight =6,
+	/obj/item/device/camera = 6,
+	/obj/item/device/camera_film = 6,
+	/obj/item/device/taperecorder = 6,
+	/obj/item/device/tape = 4,
+	/obj/item/device/hailer = 6,
+	/obj/item/device/holowarrant = 8,
+	/obj/item/device/breathalyzer = 8,
+	/obj/item/device/retail_scanner/police = 8
+	)
+
+
 	req_log_access = access_armory
 	has_logs = 1
 
-	charge_department = "Police"
-	charge_free_to_department = TRUE
+	charge_free_department = DEPT_POLICE
+	block_persistence = TRUE
+
+/obj/machinery/vending/security/gcpd
+	name = "GCPD Equipment Vendotron"
+	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
+	icon_state = "secequip"
+	icon_deny = "secequip-deny"
+
+	products = list(
+	/obj/item/weapon/storage/belt/security = 6,
+	/obj/item/device/radio/headset/headset_sec = 6,
+	/obj/item/device/radio/headset/headset_sec/alt = 6,
+	/obj/item/clothing/glasses/sunglasses/sechud = 6,
+	/obj/item/clothing/glasses/sunglasses = 6,
+	/obj/item/clothing/under/rank/policeofficeralt = 6,
+	/obj/item/clothing/under/rank/policecadetalt = 6,
+	/obj/item/clothing/under/rank/policetrafficalt = 6,
+	/obj/item/clothing/head/police/policeofficercap = 6,
+	/obj/item/clothing/head/police/policecadetcap = 6,
+	/obj/item/clothing/head/police/policetrafficcap = 6,
+	/obj/item/clothing/shoes/boots/jackboots = 6,
+	/obj/item/clothing/head/soft/police = 6,
+	/obj/item/clothing/head/soft/policecadet = 6,
+	/obj/item/clothing/head/soft/policetraffic = 6,
+	/obj/item/clothing/head/beret/police = 6,
+	/obj/item/clothing/suit/armor/pcarrier/medium/police = 6,
+	/obj/item/clothing/head/helmet/police = 6,
+	//obj/item/clothing/suit/storage/hooded/wintercoat/security = 6,
+	/obj/item/clothing/accessory/holster/waist = 6,
+	/obj/item/clothing/accessory/holster/armpit = 6,
+	/obj/item/clothing/accessory/holster/hip = 6,
+	/obj/item/clothing/accessory/holster/leg = 6,
+	/obj/item/weapon/storage/backpack/security = 6,
+	/obj/item/weapon/storage/backpack/satchel/sec = 6,
+	/obj/item/clothing/suit/storage/toggle/policejacket = 6,
+	/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen = 6,
+	/obj/item/clothing/accessory/badge/holo/police = 6,
+
+	)
+
+/obj/machinery/vending/security/detective
+	name = "Detective Equipment Vendotron"
+	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
+	req_access = list(access_forensics_lockers)
+	products = list(
+	/obj/item/weapon/storage/box/csi_markers = 3,
+	/obj/item/weapon/storage/box/evidence = 6,
+	/obj/item/weapon/storage/briefcase/crimekit = 2,
+	/obj/item/device/flash = 5,
+	/obj/item/weapon/reagent_containers/spray/luminol = 2,
+	/obj/item/device/uv_light = 5,
+	/obj/item/weapon/storage/box/fingerprints = 6,
+	/obj/item/clothing/accessory/badge/holo/detective = 2,
+	/obj/item/weapon/gun/projectile/revolver/deckard/rubber = 2,
+	/obj/item/ammo_magazine/s38/rubber = 6,
+	/obj/item/weapon/storage/belt/detective = 2,
+	/obj/item/clothing/glasses/sunglasses/sechud = 2,
+	/obj/item/clothing/glasses/sunglasses = 2,
+	/obj/item/clothing/suit/armor/pcarrier/medium/police = 2,
+	/obj/item/clothing/head/helmet/police =2,
+	/obj/item/clothing/accessory/holster/hip = 6,
+	/obj/item/taperoll/police = 6,
+	/obj/item/device/flashlight/flare = 6,
+	/obj/item/device/camera = 6,
+	/obj/item/device/camera_film = 6,
+	/obj/item/device/taperecorder = 6,
+	/obj/item/device/flashlight/maglight = 2,
+	/obj/item/weapon/reagent_containers/food/drinks/flask/detflask = 2,
+	/obj/item/device/breathalyzer = 2,
+	/obj/item/clothing/under/rank/policedetectivealt = 4,
+	/obj/item/clothing/head/police/policedetectivecap = 4,
+	/obj/item/clothing/head/soft/policecdetective = 4,
+	/obj/item/clothing/head/beret/policered = 4,
+	/obj/item/clothing/suit/storage/toggle/policejacket = 4,
+	/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen = 4,
+	
+	)
+
+/obj/machinery/vending/security/prisoner
+	name = "Prisoner Equipment"
+	desc = "A clothing vendor for prisoner supplies."
+	icon_state = "prisoner_vend"
+	icon_deny = "prisoner_vend-deny"
+	products = list(
+	/obj/item/clothing/under/color/orange/prisoneralt = 10,
+	/obj/item/clothing/under/color/white/prisoner = 10,
+	/obj/item/clothing/shoes/orange = 10,
+	/obj/item/clothing/shoes/black = 10,
+	/obj/item/weapon/handcuffs = 10,
+	/obj/item/weapon/handcuffs/legcuffs = 5,
+	/obj/item/weapon/handcuffs/legcuffs/ballchain = 3,
+	/obj/item/weapon/implantcase/tracking = 8,
+	/obj/item/weapon/implanter = 3
+	)
+
+
 
 /obj/machinery/vending/hydronutrients
 	name = "NutriMax"
@@ -1068,11 +1338,12 @@
 					/obj/item/weapon/reagent_containers/syringe = 5,/obj/item/weapon/storage/bag/plants = 5)
 	premium = list(/obj/item/weapon/reagent_containers/glass/bottle/ammonia = 10,/obj/item/weapon/reagent_containers/glass/bottle/diethylamine = 5)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
+	block_persistence = TRUE
 
 /obj/machinery/vending/hydroseeds
 	name = "MegaSeed Servitor"
 	desc = "When you need seeds fast!"
-	product_slogans = "THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!;Hands down the best seed selection on the station!;Also certain mushroom varieties available, more for experts! Get certified today!"
+	product_slogans = "THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!;Hands down the best seed selection in the city!;Also certain mushroom varieties available, more for experts! Get certified today!"
 	product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
 	icon_state = "seeds"
 
@@ -1082,14 +1353,13 @@
 					/obj/item/seeds/poppyseed = 3,/obj/item/seeds/sugarcaneseed = 3,/obj/item/seeds/cannabisseed = 3,/obj/item/seeds/peanutseed = 3,/obj/item/seeds/whitebeetseed = 3,/obj/item/seeds/watermelonseed = 3,/obj/item/seeds/lavenderseed = 3,/obj/item/seeds/limeseed = 3,
 					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2,
 					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3)
+
 	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
-					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,
-					  /obj/item/seeds/chacruna = 2,/obj/item/seeds/caapi = 2, /obj/item/seeds/coca)
+	/obj/item/seeds/nettleseed = 2, /obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2, /obj/item/seeds/chacruna = 2, /obj/item/seeds/caapi = 2, /obj/item/seeds/coca = 4)
 	premium = list(/obj/item/toy/waterflower = 1)
 
-	charge_department = "Botany"
-	charge_free_to_department = TRUE
-
+	charge_free_department = DEPT_BOTANY
+	block_persistence = TRUE
 /**
  *  Populate hydroseeds product_records
  *
@@ -1123,7 +1393,7 @@
 	product_slogans = "Sling spells the proper way with MagiVend!;Be your own Houdini! Use MagiVend!"
 	vend_delay = 15
 	vend_reply = "Have an enchanted evening!"
-	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Destroy the station!;Admin conspiracies since forever!;Space-time bending hardware!"
+	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Destroy the City!;Admin conspiracies since forever!;Space-time bending hardware!"
 	products = list(/obj/item/clothing/head/wizard = 1,/obj/item/clothing/suit/wizrobe = 1,/obj/item/clothing/head/wizard/red = 1,/obj/item/clothing/suit/wizrobe/red = 1,/obj/item/clothing/shoes/sandal = 1,/obj/item/weapon/staff = 2)
 
 /obj/machinery/vending/dinnerware
@@ -1154,8 +1424,10 @@
 	/obj/item/weapon/storage/toolbox/lunchbox/syndicate = 3)
 	contraband = list(/obj/item/weapon/material/knife/butch = 2)
 
-	charge_department = "Bar"
-	charge_free_to_department = TRUE
+//	charge_free_department = DEPT_BAR
+
+	dont_save = FALSE
+	save_contents = FALSE
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"
@@ -1174,13 +1446,101 @@
 	icon_deny = "tool-deny"
 	//req_access = list(access_maint_tunnels) //Maintenance access
 	products = list(/obj/item/stack/cable_coil/random = 10,/obj/item/weapon/crowbar = 5,/obj/item/weapon/weldingtool = 3,/obj/item/weapon/wirecutters = 5,
-					/obj/item/weapon/wrench = 5,/obj/item/device/analyzer = 5,/obj/item/device/t_scanner = 5,/obj/item/weapon/screwdriver = 5,
+					/obj/item/weapon/wrench = 5,  /obj/item/weapon/screwdriver = 5, /obj/item/device/analyzer = 5,/obj/item/device/t_scanner = 5,/obj/item/weapon/screwdriver = 5,
 					/obj/item/device/flashlight/glowstick = 3, /obj/item/device/flashlight/glowstick/red = 3, /obj/item/device/flashlight/glowstick/blue = 3,
 					/obj/item/device/flashlight/glowstick/orange =3, /obj/item/device/flashlight/glowstick/yellow = 3)
 	contraband = list(/obj/item/weapon/weldingtool/hugetank = 2,/obj/item/clothing/gloves/fyellow = 2,)
 	premium = list(/obj/item/clothing/gloves/yellow = 1)
 	req_log_access = access_ce
 	has_logs = 1
+
+	vendor_department = DEPT_MAINTENANCE
+
+/obj/machinery/vending/mining
+	name = "Mining Supplies Vendor"
+	icon_state = "minvendor"
+	desc = "A mining supplies vendor, useful for the amateur miner."
+	products = list(/obj/item/weapon/storage/backpack/industrial = 5,
+					/obj/item/weapon/storage/backpack/satchel/eng = 5,
+					/obj/item/clothing/under/rank/miner = 5,
+					/obj/item/device/analyzer = 5,
+					/obj/item/weapon/storage/bag/ore = 5,
+					/obj/item/device/flashlight/lantern = 5,
+					/obj/item/weapon/shovel = 5,
+					/obj/item/weapon/pickaxe = 5,
+					/obj/item/clothing/glasses/material = 5,
+					/obj/item/clothing/suit/storage/hooded/wintercoat/miner = 5,
+					/obj/item/clothing/shoes/boots/winter/mining = 5,
+					/obj/item/stack/marker_beacon/thirty = 5
+					)
+	auto_price = TRUE
+	vendor_department = DEPT_PUBLIC
+
+/obj/machinery/vending/mining/police
+	auto_price = FALSE
+	block_persistence = TRUE
+
+/obj/machinery/vending/materials
+	name = "Material Supply Vendor"
+	icon_state = "minvendor"
+	desc = "A department designated material supply vendor. Comes with limited materials."
+	products = list(/obj/item/stack/material/glass/full = 5,
+					/obj/item/stack/material/glass/reinforced/full = 3,
+					/obj/item/stack/material/cardboard/full = 5,
+					/obj/item/stack/material/plastic/full = 3,
+					/obj/item/stack/material/steel/full = 6,
+					/obj/item/stack/material/plasteel/full = 3,
+					/obj/item/stack/material/durasteel/full = 3
+					)
+
+/obj/machinery/vending/materials/science
+	name = "Science Material Supply Vendor"
+	req_access = list(access_research)
+	req_log_access = access_rd
+	block_persistence = TRUE
+	charge_free_department = DEPT_RESEARCH
+	charge_paid_department = DEPT_RESEARCH
+
+	products = list(/obj/item/stack/material/glass/full = 5,
+					/obj/item/stack/material/glass/reinforced/full = 3,
+					/obj/item/stack/material/steel/full = 6,
+					/obj/item/stack/material/phoron/full = 2,
+					/obj/item/stack/material/copper/full = 2,
+					/obj/item/stack/material/aluminium/full = 2,
+					/obj/item/stack/material/titanium/full = 2
+					)
+
+/obj/machinery/vending/materials/factory
+	name = "Factory Materials Supply Vendor"
+	req_access = list(access_mailsorting)
+	req_log_access = access_qm
+	block_persistence = TRUE
+	charge_free_department = DEPT_FACTORY
+	charge_paid_department = DEPT_FACTORY
+
+
+/obj/machinery/vending/materials/maintenance
+	name = "Maintenance Materials Supply Vendor"
+	req_access = list(access_engine)
+	req_log_access = access_ce
+	block_persistence = TRUE
+	charge_free_department = DEPT_MAINTENANCE
+	charge_paid_department = DEPT_MAINTENANCE
+
+/obj/machinery/vending/materials/chemistry
+	name = "Chemistry Materials Supply Vendor"
+	req_access = list(access_chemistry)
+	req_log_access = access_cmo
+	block_persistence = TRUE
+	charge_free_department = DEPT_HEALTHCARE
+	charge_paid_department = DEPT_HEALTHCARE
+
+	products = list(
+					/obj/fiftyspawner/phoron = 4,
+					/obj/item/weapon/reagent_containers/dropper/industrial = 4,
+					/obj/item/weapon/reagent_containers/glass/beaker = 4,
+					/obj/item/weapon/reagent_containers/glass/beaker/large = 4
+					)
 
 /obj/machinery/vending/engivend
 	name = "Engi-Vend"
@@ -1204,10 +1564,41 @@
 	product_records = list()
 	req_log_access = access_ce
 	has_logs = 1
+	block_persistence = TRUE
+
+/obj/machinery/vending/engivend/circuits
+	name = "Vomisa Inc. Circuit Vendor"
+	desc = "A city-owned circuit vendor run by a company with only three laws."
+	products = list(/obj/item/weapon/circuitboard/med_data = 1,
+					/obj/item/weapon/circuitboard/rdserver = 1,
+					/obj/item/weapon/circuitboard/protolathe = 1,
+					/obj/item/weapon/circuitboard/destructive_analyzer = 1,
+					/obj/item/weapon/circuitboard/rdconsole = 1,
+					/obj/item/weapon/circuitboard/skills = 1,
+					/obj/item/weapon/circuitboard/security = 1,
+					/obj/item/weapon/circuitboard/secure_data = 1,
+					/obj/item/weapon/circuitboard/autolathe = 1,
+					/obj/item/weapon/circuitboard/security/mining = 1,
+					/obj/item/weapon/circuitboard/atmos_alert = 1,
+					/obj/item/weapon/circuitboard/security/engineering = 1,
+					/obj/item/weapon/circuitboard/stationalert_engineering = 1,
+					/obj/item/weapon/circuitboard/powermonitor = 1,
+					/obj/item/weapon/circuitboard/message_monitor = 1)
+
+/obj/machinery/vending/engivend/circuits/secure
+	name = "Vosima Inc. Secure Circuit Vendor"
+	desc = "A city-owned circuit vendor run by a company with only three laws, this model appears to be fitted with secure-locking mechanisms, reinforced glass, and what appears to be a small EMP device?"
+	products = list(/obj/item/weapon/circuitboard/aiupload = 1,
+					/obj/item/weapon/circuitboard/borgupload = 1,
+					/obj/item/weapon/circuitboard/communications = 1,
+					/obj/item/weapon/circuitboard/mecha_control = 1,
+					/obj/item/weapon/circuitboard/robotics = 1,
+					/obj/item/weapon/aiModule/reset = 1,
+					/obj/item/device/aicard = 1)
 
 /obj/machinery/vending/engineering
 	name = "Robco Tool Maker"
-	desc = "Everything you need for do-it-yourself station repair."
+	desc = "Everything you need for do-it-yourself city repair."
 	icon_state = "engi"
 	icon_deny = "engi-deny"
 	req_access = list(access_engine_equip)
@@ -1222,6 +1613,7 @@
 	// The original products list wasn't finished.  The ones without given quantities became quantity 5.  -Sayu
 	req_log_access = access_ce
 	has_logs = 1
+	block_persistence = TRUE
 
 /obj/machinery/vending/robotics
 	name = "Robotech Deluxe"
@@ -1236,6 +1628,7 @@
 	//everything after the power cell had no amounts, I improvised.  -Sayu
 	req_log_access = access_rd
 	has_logs = 1
+	block_persistence = TRUE
 
 /obj/machinery/vending/giftvendor
 	name = "AlliCo Baubles and Confectionaries"
@@ -1270,7 +1663,8 @@
 					/obj/item/toy/plushie/face_hugger = 1,
 					/obj/item/toy/plushie/carp = 1,
 					/obj/item/toy/plushie/deer = 1,
-					/obj/item/toy/plushie/tabby_cat = 1)
+					/obj/item/toy/plushie/tabby_cat = 1,
+					/obj/item/device/threadneedle = 3)
 	premium = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/champagne = 1,
 					/obj/item/weapon/storage/trinketbox = 2)
 	prices = list(/obj/item/weapon/spacecash/ewallet/lotto = 5,
@@ -1301,9 +1695,10 @@
 					/obj/item/toy/plushie/face_hugger = 50,
 					/obj/item/toy/plushie/carp = 50,
 					/obj/item/toy/plushie/deer = 50,
-					/obj/item/toy/plushie/tabby_cat = 50)
+					/obj/item/toy/plushie/tabby_cat = 50,
+					/obj/item/device/threadneedle = 2)
 
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
 // Clothing dispensers
 
@@ -1499,7 +1894,7 @@
 						/obj/item/clothing/under/croptop/red = 30,
 						/obj/item/clothing/under/cuttop = 30,
 						/obj/item/clothing/under/cuttop/red = 30)
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
 /obj/machinery/vending/suitdispenser
 	name = "\improper Suitlord 9000"
@@ -1626,7 +2021,8 @@
 						 /obj/item/clothing/suit/storage/snowsuit = 40,
 						 /obj/item/clothing/suit/storage/hooded/wintercoat = 40)
 
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
+
 /obj/machinery/vending/shoedispenser
 	name = "\improper Shoe O Mat"
 	desc = "Wow, hatlord looked fancy, suitlord looked streamlined, and this is just normal. The guy who designed these must be an idiot."
@@ -1692,7 +2088,7 @@
 						/obj/item/clothing/shoes/heels = 30)
 
 	premium = list(/obj/item/clothing/shoes/rainbow = 1)
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
 /obj/machinery/vending/hatdispenser
 	name = "\improper Hatlord 9000"
@@ -1778,7 +2174,7 @@
 	contraband = list(/obj/item/clothing/head/bearpelt = 5)
 	premium = list(/obj/item/clothing/head/soft/rainbow = 1)
 
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
 /obj/machinery/vending/crittercare//Paradise port.
 	name = "\improper CritterCare"
@@ -1800,7 +2196,7 @@
 	contraband = list(/obj/item/fish_eggs/babycarp = 5)
 	premium = list(/obj/item/toy/pet_rock/fred = 1, /obj/item/toy/pet_rock/roxie = 1)
 
-	vendor_department = "Civilian"
+	vendor_department = DEPT_PUBLIC
 
 
 /obj/machinery/vending/crittercare/free
@@ -1868,7 +2264,7 @@
 					)
 
 
-	vendor_department = "Public Healthcare"
+	vendor_department = DEPT_HEALTHCARE
 
 //ration vending machines
 /obj/machinery/vending/foodstamp/rations
@@ -1889,45 +2285,123 @@
 					/obj/item/weapon/storage/mre/menu10 = 5
 					)
 	contraband = list(/obj/item/weapon/storage/mre/menu12 = 5)
-	prices = list(/obj/item/weapon/storage/mre/menu2 = 50,
-					/obj/item/weapon/storage/mre/menu3 = 50,
-					/obj/item/weapon/storage/mre/menu4 = 50,
-					/obj/item/weapon/storage/mre/menu5 = 50,
-					/obj/item/weapon/storage/mre/menu6 = 50,
-					/obj/item/weapon/storage/mre/menu7 = 50,
-					/obj/item/weapon/storage/mre/menu8 = 50,
-					/obj/item/weapon/storage/mre/menu9 = 50,
-					/obj/item/weapon/storage/mre/menu10 = 50
+	charge_free_department = DEPT_PUBLIC
+
+	required_pass = /obj/item/weapon/card/foodstamp
+
+//armory vending machines, many guns.
+/obj/machinery/vending/armory
+	name = "BlastTech Defense Solutions Vendor"
+	desc = "A standardized way to store and dispense all manners of weaponry and personal protective equipment. Made from reinforced diamond-infused plasteel with a built-in energy shield, lifetime warranty included."
+	product_slogans = "Keeping you safe since 2564!"
+	product_ads = "Don't let Sol get the upper hand! Use your nearest BlastTech vendor today!"
+	vend_delay = 10
+	icon_state = "gunrack"
+	icon_deny = "gunrack-deny"
+	vend_reply = "Thank you for using BlastTech's automated vending service, happy hunting."
+	block_persistence = TRUE
+
+/obj/machinery/vending/armory/gcpd/ballistics
+	name = "BlastTech Defense Solutions Ballistics Vendor"
+	req_access = list(3)
+	products = list(/obj/item/weapon/gun/projectile/police = 6,
+					/obj/item/weapon/gun/launcher/grenade = 3,
+					/obj/item/ammo_magazine/m45 = 12,
+					/obj/item/weapon/gun/projectile/shotgun/pump/combat = 4,
+					/obj/item/weapon/storage/box/beanbags = 2,
+					/obj/item/weapon/storage/box/shotgunammo = 2,
+					/obj/item/weapon/storage/box/shotgunshells = 2,
+					/obj/item/weapon/storage/box/stunshells = 2,
+					/obj/item/weapon/gun/projectile/automatic/sts35 = 2,
+					/obj/item/ammo_magazine/m545 = 4
 					)
 
-/obj/machinery/vending/foodstamp/rations/psp
-	name = "Ration Dispenser"
-	desc = "A vending machine holding self-contained complete meals. This particular machine has the Planetary Security Party's emblem on it."
-	product_slogans = "Have you tried Menu #2? It's pizza time!; It's always Taco Tuesday with Menu #5!; Liberals leave you thirsting for freedom? Wash that despair down with an Instant Grape packet!; Want something to spice up your life? Try Menu #8: Hot Chili!"
-	product_ads = "Order. Unity. Conduct.; Remember the Pillars of civilized society and we shall be successful.; The True Citizen knows the true value of Charity.; Remember, it is great to be part of the Greater Good."
-	vend_delay = 15
-	vend_reply = "Enjoy your delicious ration pack! Remember: it is great to be part of the Greater Good!"
-	icon_state = "rations-psp"
-	shut_up = 0
-	products = list(/obj/item/weapon/storage/mre/menu2 = 5,
-					/obj/item/weapon/storage/mre/menu3 = 5,
-					/obj/item/weapon/storage/mre/menu4 = 5,
-					/obj/item/weapon/storage/mre/menu5 = 5,
-					/obj/item/weapon/storage/mre/menu6 = 5,
-					/obj/item/weapon/storage/mre/menu7 = 5,
-					/obj/item/weapon/storage/mre/menu8 = 5,
-					/obj/item/weapon/storage/mre/menu9 = 5,
-					/obj/item/weapon/storage/mre/menu10 = 5
+/obj/machinery/vending/armory/gcpd/energy
+	name = "BlastTech Defense Solutions Energy Vendor"
+	req_access = list(3)
+	products = list(/obj/item/weapon/gun/energy/gun = 4,
+					/obj/item/weapon/gun/energy/taser/carbine = 4,
+					/obj/item/weapon/gun/energy/laser = 2,
+					/obj/item/weapon/gun/energy/ionrifle = 2,
+					/obj/item/weapon/cell/device/weapon = 20
 					)
-	contraband = list(/obj/item/weapon/storage/mre/menu12 = 5)
-	prices = list(/obj/item/weapon/storage/mre/menu2 = 50,
-					/obj/item/weapon/storage/mre/menu3 = 50,
-					/obj/item/weapon/storage/mre/menu4 = 50,
-					/obj/item/weapon/storage/mre/menu5 = 50,
-					/obj/item/weapon/storage/mre/menu6 = 50,
-					/obj/item/weapon/storage/mre/menu7 = 50,
-					/obj/item/weapon/storage/mre/menu8 = 50,
-					/obj/item/weapon/storage/mre/menu9 = 50,
-					/obj/item/weapon/storage/mre/menu10 = 50
+
+/obj/machinery/vending/armory/gcpd/ppe
+	name = "BlastTech Defense Solution PPE Vendor"
+	req_access = list(3)
+	products = list(//obj/item/clothing/head/helmet/combat = 4,
+					//obj/item/clothing/suit/armor/combat = 4,
+					//obj/item/clothing/gloves/arm_guard/combat = 4,
+					//obj/item/clothing/shoes/leg_guard/combat = 4,
+					/obj/item/clothing/head/helmet/bulletproof = 2,
+					/obj/item/clothing/suit/armor/bulletproof/alt = 2,
+					/obj/item/clothing/gloves/arm_guard/bulletproof = 2,
+					/obj/item/clothing/shoes/leg_guard/bulletproof = 2,
+					/obj/item/clothing/head/helmet/laserproof = 2,
+					/obj/item/clothing/suit/armor/laserproof = 2,
+					/obj/item/clothing/gloves/arm_guard/laserproof = 2,
+					/obj/item/clothing/shoes/leg_guard/laserproof = 2,
+					/obj/item/clothing/head/helmet/riot = 4,
+					/obj/item/clothing/suit/armor/riot = 4,
+					/obj/item/clothing/gloves/arm_guard/riot = 4,
+					/obj/item/clothing/shoes/leg_guard/riot = 4,
+					/obj/item/weapon/shield/riot = 4,
+					/obj/item/weapon/melee/baton = 4,
+					/obj/item/clothing/glasses/sunglasses/sechud/tactical = 6,
+					/obj/item/clothing/mask/gas/half = 6,
+					/obj/item/clothing/head/helmet/tac = 8,
+					/obj/item/clothing/suit/armor/pcarrier/tan/policetactical = 8,
 					)
+
+
+/obj/machinery/vending/luxvend
+	name = "LuxVend"
+	desc = "LuxVend - For the Polluxian who has everything. This machine is sponsored by the fashion company, Obsidienne."
+	icon_state = "luxvend"
+	icon_deny = "luxvend-deny"
+	vend_delay = 8
+	vend_reply = "Money talks - and yours just said, \"Goodbye!\" Thank you for choosing LuxVend. Enjoy!"
+	products = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/goldfinger = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit = 3,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose = 3,
+					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 5,
+					/obj/item/weapon/storage/box/multigrain = 5,
+					/obj/item/weapon/storage/box/caviar = 7,
+					/obj/item/weapon/storage/box/caviar/red = 7,
+					/obj/item/weapon/storage/briefcase/clutch/obsidienne = 5,
+					/obj/item/weapon/storage/wallet/obsidienne = 5,
+					/obj/item/weapon/storage/backpack/purse/obsidienne = 5,
+					/obj/item/weapon/storage/backpack/satchel/obsidienne = 5,
+					/obj/item/clothing/glasses/holovisor = 7,
+					/obj/item/toy/pet_rock/gold = 5,
+					/obj/item/weapon/flame/lighter/zippo/corgi = 5,
+					/obj/item/weapon/flame/lighter/zippo/capitalist = 5,
+					/obj/item/weapon/flame/lighter/zippo/royal = 5,
+					/obj/item/weapon/storage/fancy/cigarettes/professionals = 5,
+					/obj/item/clothing/accessory/badge/rich = 3
+					)
+	prices = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/amontillado = 600,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodkakora = 550,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/goldfinger = 475,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit = 400,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose = 400,
+					/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 75,
+					/obj/item/weapon/storage/box/multigrain = 30,
+					/obj/item/weapon/storage/box/caviar = 90,
+					/obj/item/weapon/storage/box/caviar/red = 70,
+					/obj/item/weapon/storage/briefcase/clutch/obsidienne = 175,
+					/obj/item/weapon/storage/wallet/obsidienne = 150,
+					/obj/item/weapon/storage/backpack/purse/obsidienne = 185,
+					/obj/item/weapon/storage/backpack/satchel/obsidienne = 225,
+					/obj/item/clothing/glasses/holovisor = 100,
+					/obj/item/toy/pet_rock/gold = 250,
+					/obj/item/weapon/flame/lighter/zippo/corgi = 75,
+					/obj/item/weapon/flame/lighter/zippo/capitalist = 100,
+					/obj/item/weapon/flame/lighter/zippo/royal = 125,
+					/obj/item/weapon/storage/fancy/cigarettes/professionals = 25,
+					/obj/item/clothing/accessory/badge/rich = 75000
+					)
+	vendor_department = DEPT_PUBLIC
 

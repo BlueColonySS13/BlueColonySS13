@@ -4,7 +4,6 @@
 "d" = (/obj/structure/grille,/turf/simulated/floor/plating/external,/area/submap/construction1)
 "e" = (/obj/structure/firedoor_assembly,/turf/simulated/floor/plating/external,/area/submap/construction1)
 "f" = (/obj/structure/lattice,/turf/simulated/floor/outdoors/rocks,/area/template_noop)
-"g" = (/turf/simulated/floor/plating/external,/area/submap/construction1)
 "h" = (/obj/structure/firedoor_assembly,/obj/structure/grille,/turf/simulated/floor/plating/external,/area/submap/construction1)
 "i" = (/obj/item/clothing/gloves/black,/turf/simulated/floor/outdoors/rocks,/area/template_noop)
 "j" = (/turf/simulated/floor/tiled/external,/area/submap/construction1)
@@ -17,7 +16,7 @@
 "q" = (/obj/item/frame,/turf/simulated/floor/tiled/external,/area/submap/construction1)
 "r" = (/obj/item/clothing/head/orangebandana,/turf/template_noop,/area/template_noop)
 "s" = (/obj/item/clothing/head/welding/engie,/turf/simulated/floor/plating/external,/area/submap/construction1)
-"t" = (/obj/structure/door_assembly/door_assembly_mai,/turf/simulated/floor/plating/external,/area/submap/construction1)
+"t" = (/turf/simulated/floor/plating/external,/area/submap/construction1)
 "u" = (/obj/item/weapon/storage/toolbox/electrical,/turf/simulated/floor/plating/external,/area/submap/construction1)
 "v" = (/obj/item/weapon/airlock_electronics,/turf/simulated/floor/tiled/external,/area/submap/construction1)
 "w" = (/obj/item/clothing/suit/storage/hazardvest,/turf/template_noop,/area/template_noop)
@@ -34,18 +33,18 @@
 (1,1,1) = {"
 aaaaaaaaaaaaaaaa
 aaaaaaaaaaaabaaa
-aaaacdecffccfgba
-aaaachgggficffaa
-aaacchgjkfccccaa
-aaccclmjgfcnccaa
-aalloojjgpfccaaa
-aalggljqgefccraa
-aalsgtjjuffcaaaa
-aalgglvjgffcwaaa
-aalllllxlgfcaaaa
+aaaacdecffccftba
+aaaachtttficffaa
+aaacchtjkfccccaa
+aaccclmjtfcnccaa
+aalloojjtpfccaaa
+aalttljqtefccraa
+aalsttjjuffcaaaa
+aalttlvjtffcwaaa
+aalllllxltfcaaaa
 acyjjzjjjAfcaaaa
-acgBjjjCggfcaaaa
-acddDpggEgfcaaaa
+actBjjjCttfcaaaa
+acddDpttEtfcaaaa
 aacccdeFfffaaaaa
 aaaaaaaaaaaaaaaa
 "}

@@ -50,6 +50,10 @@
 	thrown_force_divisor = 0.2 // 4 when thrown with weight 20 (steel)
 
 /obj/item/weapon/material/butterfly/attack_self(mob/user)
+	if(user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>How do these things work again?</span>")
+		return 0
+
 	active = !active
 	if(active)
 		user << "<span class='notice'>You flip out \the [src].</span>"

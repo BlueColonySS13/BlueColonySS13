@@ -4,6 +4,16 @@
 
 #define TRANSITIONEDGE 7 // Distance from edge to move to another z-level.
 
+// Radiation 'levels'. Used for the geiger counter, for visuals and sound. They are in different files so this goes here.
+#define RAD_LEVEL_LOW 0.5 // Around the level at which radiation starts to become harmful
+#define RAD_LEVEL_MODERATE 5
+#define RAD_LEVEL_HIGH 25
+#define RAD_LEVEL_VERY_HIGH 75
+
+// Calculation modes for effective radiation
+#define RAD_RESIST_CALC_DIV 0 // Each turf absorbs some fraction of the working radiation level
+#define RAD_RESIST_CALC_SUB 1 // Each turf absorbs a fixed amount of radiation
+
 // Invisibility constants.
 #define INVISIBILITY_LIGHTING             20
 #define INVISIBILITY_LEVEL_ONE            35
@@ -294,3 +304,15 @@ var/global/list/##LIST_NAME = list();\
 #define PAPERWORK_BUSINESS "Business"
 #define PAPERWORK_MEDICAL "Medical"
 #define PAPERWORK_GOVERNMENT "Government"
+
+//
+
+#define MAX_WARRANTS 50
+#define MAX_FINGERPRINTS 20
+
+// Lot Security machine settings.
+#define LOT_SECURITY_STOP_VANDALISM		1 // Deconstructing walls, smashing airlocks, breaking windows.
+#define LOT_SECURITY_STOP_THEFT			2 // Opening cash registers.
+#define LOT_SECURITY_STOP_GRAFFITI		4 // Covers actual graffiti and painting walls.
+#define LOT_SECURITY_STOP_INTRUSION		8 // Hacking airlocks, brute forcing PINs.
+#define LOT_SECURITY_STOP_EVERYTHING	(LOT_SECURITY_STOP_VANDALISM|LOT_SECURITY_STOP_THEFT|LOT_SECURITY_STOP_GRAFFITI|LOT_SECURITY_STOP_INTRUSION)

@@ -93,6 +93,13 @@
 	..()
 
 /obj/item/clothing/accessory/tie
+	name = "tie"
+	icon_state = "whitetie"
+
+/obj/item/clothing/accessory/tie/silk
+	matter = list("silk" = 930)
+
+/obj/item/clothing/accessory/tie/blue
 	name = "blue tie"
 	icon_state = "bluetie"
 
@@ -148,9 +155,29 @@
 
 
 /obj/item/clothing/accessory/tie/sash
-	name = "red sash"
-	desc = "A red banner that may or may not have some kind of meaning. Who knows?"
+	name = "sash"
+	desc = "A banner that may or may not have some kind of meaning. Who knows?"
 	icon_state = "sash"
+
+	matter = list("silk" = 950)
+
+/obj/item/clothing/accessory/tie/sash/red
+	color = COLOR_RED
+
+/obj/item/clothing/accessory/tie/sash/gold
+	color = COLOR_YELLOW
+
+/obj/item/clothing/accessory/tie/cravat
+	name = "cravat"
+	desc = "The class on this poofy thing is almost unbearable."
+	icon_state = "cravat"
+
+	matter = list("silk" = 1050)
+
+/obj/item/clothing/accessory/tie/neckerchief
+	name = "neckerchief"
+	desc = "It's tempting to tie it just a liiiittle tighter."
+	icon_state = "neckerchief"
 
 /obj/item/clothing/accessory/stethoscope
 	name = "stethoscope"
@@ -268,8 +295,12 @@
 //Scarves
 
 /obj/item/clothing/accessory/scarf
-	name = "green scarf"
+	name = "scarf"
 	desc = "A stylish scarf. The perfect winter accessory for those with a keen fashion sense, and those who just can't handle a cold breeze on their necks."
+	icon_state = "whitescarf"
+
+/obj/item/clothing/accessory/scarf/green
+	name = "green scarf"
 	icon_state = "greenscarf"
 
 /obj/item/clothing/accessory/scarf/red
@@ -401,3 +432,72 @@
 	..(newloc, "glass")
 
 	..()
+
+/obj/item/clothing/accessory/necklace
+	name = "necklace"
+	desc = "A simple silver colored necklace."
+	icon = 'icons/obj/clothing/ties.dmi'
+	icon_state = "necklace"
+	w_class = ITEMSIZE_TINY
+	slot_flags = SLOT_TIE
+
+/obj/item/clothing/accessory/necklace/bottle
+	name = "bottle necklace"
+	desc = "A cute heart shaped gold necklace with a decorative bottle in the middle."
+	icon_state = "bottlenecklace"
+	var/obj/item/weapon/reagent_containers/glass/bottle/open/bottle
+
+/obj/item/clothing/accessory/necklace/bottle/New()
+	..()
+	bottle = new /obj/item/weapon/reagent_containers/glass/bottle/open(src)
+
+/obj/item/clothing/accessory/necklace/bottle/attackby(var/obj/item/I, var/mob/user)
+	if(bottle)
+		if(istype(I, /obj/item/weapon/reagent_containers/syringe) || istype(I, /obj/item/weapon/reagent_containers/dropper))
+			var/obj/item/weapon/reagent_containers/extractor = I
+			extractor.afterattack(bottle, user, TRUE)
+
+/obj/item/clothing/accessory/necklace/material/New(var/newloc, var/new_material)
+	..(newloc)
+	if(!new_material)
+		new_material = DEFAULT_WALL_MATERIAL
+	material = get_material_by_name(new_material)
+	if(!istype(material))
+		qdel(src)
+		return
+	name = "[material.display_name] necklace"
+	desc = "A necklace made from [material.display_name]."
+	color = material.icon_colour
+
+/obj/item/clothing/accessory/necklace/material/get_material()
+	return material
+
+/obj/item/clothing/accessory/necklace/material/wood/New(var/newloc)
+	..(newloc, "wood")
+
+/obj/item/clothing/accessory/necklace/material/plastic/New(var/newloc)
+	..(newloc, "plastic")
+
+/obj/item/clothing/accessory/necklace/material/iron/New(var/newloc)
+	..(newloc, "iron")
+
+/obj/item/clothing/accessory/necklace/material/steel/New(var/newloc)
+	..(newloc, "steel")
+
+/obj/item/clothing/accessory/necklace/material/silver/New(var/newloc)
+	..(newloc, "silver")
+
+/obj/item/clothing/accessory/necklace/material/gold/New(var/newloc)
+	..(newloc, "gold")
+
+/obj/item/clothing/accessory/necklace/material/platinum/New(var/newloc)
+	..(newloc, "platinum")
+
+/obj/item/clothing/accessory/necklace/material/phoron/New(var/newloc)
+	..(newloc, "phoron")
+
+/obj/item/clothing/accessory/necklace/material/glass/New(var/newloc)
+	..(newloc, "glass")
+
+	..()
+

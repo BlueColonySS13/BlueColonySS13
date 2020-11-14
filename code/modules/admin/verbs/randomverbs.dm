@@ -219,7 +219,7 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 
 	var/show_log = alert(src, "Show ion message?", "Message", "Yes", "No")
 	if(show_log == "Yes")
-		command_announcement.Announce("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
+		command_announcement.Announce("Ion storm detected near the city. Please check all AI-controlled equipment for errors.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
 
 	IonStorm(0)
 	feedback_add_details("admin_verb","ION") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -474,7 +474,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	//If desired, apply equipment.
 	if(equipment)
 		if(charjob)
-			job_master.EquipRank(new_character, charjob, 1)
+			SSjobs.EquipRank(new_character, charjob, 1)
 		equip_custom_items(new_character)
 
 	//If desired, add records.
@@ -522,7 +522,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/show_log = alert(src, "Show ion message?", "Message", "Yes", "No")
 	if(show_log == "Yes")
-		command_announcement.Announce("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
+		command_announcement.Announce("Ion storm detected near the city. Please check all AI-controlled equipment for errors.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
 	feedback_add_details("admin_verb","IONC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_rejuvenate(mob/living/M as mob in mob_list)
@@ -599,8 +599,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if (!holder)
 		src << "Only administrators may use this command."
 		return
-	if(job_master)
-		for(var/datum/job/job in job_master.occupations)
+	if(SSjobs)
+		for(var/datum/job/job in SSjobs.occupations)
 			src << "[job.title]: [job.total_positions]"
 	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -800,10 +800,15 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set name = "Change View Range"
 	set desc = "switches between 1x and custom views"
 
+	if(!holder)
+		return
+
+	var/view = src.view
 	if(view == world.view)
 		view = input("Select view range:", "FUCK YE", 7) in list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,128)
 	else
 		view = world.view
+	mob.set_viewsize(view)
 
 	log_admin("[key_name(usr)] changed their view range to [view].")
 	//message_admins("<font color='blue'>[key_name_admin(usr)] changed their view range to [view].</font>", 1)	//why? removed by order of XSI
@@ -977,10 +982,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 		var/mob/living/carbon/human/H = M
 		if(H.save_mob_to_prefs()) // saves character if round is canon.
-			spawn(20)
-			M << "<span class='notice'><b>Your character has now been saved.</b> All changes from this round will apply to your current character.</span>"
+			to_chat(H, "<span class='notice'><b>Your character has now been saved.</b> All changes from this round will apply to your current character.</span>")
 		else
-			M << "<span class='notice'><b>As this is not a canon round, your character will not be saved this time.</b></span>"
+			to_chat(H, "<span class='notice'><b>As this is not a canon round, your character will not be saved this time.</b></span>")
 
 
 		M.ghostize()

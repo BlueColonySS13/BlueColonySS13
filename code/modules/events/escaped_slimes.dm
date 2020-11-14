@@ -27,7 +27,7 @@
 /datum/event/escaped_slimes/announce()
 	command_announcement.Announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", new_sound = 'sound/AI/aliens.ogg')
 	sleep(15)
-	command_announcement.Announce("The previously unidentified lifesigns have been identified as escaped slimes from Xenobiology. Secure any exterior access, including ducting and ventilation, taking care to return the slimes to their proper confinement.", "Lifesign Alert")
+	command_announcement.Announce("The previously unidentified lifesigns have been identified as escaped slimes from Xenoarchology. Secure any exterior access, including ducting and ventilation, taking care to return the slimes to their proper confinement.", "Lifesign Alert")
 
 
 /datum/event/escaped_slimes/start()

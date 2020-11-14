@@ -9,3 +9,4 @@
 	end_on_antag_death = 0
 	antag_tags = list(MODE_AUTOTRAITOR, MODE_RENEGADE)
 	require_all_templates = 1
+	votable = 0

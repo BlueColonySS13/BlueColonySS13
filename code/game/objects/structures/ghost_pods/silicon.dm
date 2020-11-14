@@ -27,7 +27,7 @@
 	Something has reactivated you, with their intentions unknown to you, and yours unknown to them. They are a foreign entity, \
 	however they did free you from your pod...</span>")
 	to_chat(M, "<span class='notice'><b>Be sure to examine your currently loaded lawset closely.</b>  Remember, your \
-	definiton of 'the station' is where your pod is, and unless your laws say otherwise, the entity that released you \
+	definiton of 'the city' is where your pod is, and unless your laws say otherwise, the entity that released you \
 	from the pod is not a crewmember.</span>")
 	R.ckey = M.ckey
 	visible_message("<span class='warning'>As \the [src] opens, the eyes of the robot flicker as it is activated.</span>")
@@ -88,7 +88,7 @@
 /obj/structure/ghost_pod/manual/cursedblade
 	name = "abandoned blade"
 	desc = "A red crystal blade that someone jammed deep into a stone. If you try hard enough, you might be able to remove it."
-	icon_state = "soulblade-embedded"
+	icon_state = "taurus-embedded"
 	icon_state_opened = "soulblade-released"
 	density = TRUE
 	anchored = TRUE
@@ -108,4 +108,18 @@
 	R.ghost_inhabit(M)
 	visible_message("<span class='warning'>The blade shines brightly for a brief moment as [usr] pulls it out of the stone!</span>")
 	log_and_message_admins("successfully acquired a cursed sword.")
+	..()
+
+/obj/structure/ghost_pod/manual/cursedblade/taurus
+	desc = "A blade made of some sort of bone is trapped in this rock. If you try hard enough, you might be able to remove it."
+
+/obj/structure/ghost_pod/manual/cursedblade/taurus/create_occupant(var/mob/M)
+	density = FALSE
+	var/obj/item/weapon/melee/cursedblade/R = new(get_turf(src))
+	to_chat(M, "<span class='notice'>You are the <b>Taurus</b>, discovered by a hapless explorer. \
+	You are inhabited by a multitude of eons old spirits. Your past is shrouded in mystery and there are so many souls \
+	within you that even you do not know which one was first. You do not even know your own name. Only that you are the Taurus.</span>")
+	R.ghost_inhabit(M)
+	visible_message("<span class='warning'>The blade quivers for a brief moment as [usr] pulls it out of the stone!</span>")
+	log_and_message_admins("successfully acquired the Taurus.")
 	..()

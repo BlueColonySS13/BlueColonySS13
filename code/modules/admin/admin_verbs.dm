@@ -181,7 +181,8 @@ var/list/admin_verbs_server = list(
 	/client/proc/nanomapgen_DumpImage,
 	/client/proc/modify_server_news,
 	/client/proc/recipe_dump,
-	/client/proc/panicbunker
+	/client/proc/panicbunker,
+	/client/proc/ip_reputation
 	)
 
 var/list/admin_verbs_debug = list(
@@ -262,6 +263,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/department_account_view,
 	/client/proc/debug_politics,
 	/client/proc/debug_news,
+	/client/proc/backup_all_lots,
 	/client/proc/save_all_characters,
 	/client/proc/save_department_accounts,
 	/client/proc/load_department_accounts,
@@ -406,6 +408,7 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/department_account_view,
 	/client/proc/debug_politics,
 	/client/proc/debug_news,
+	/client/proc/backup_all_lots,
 	/client/proc/save_department_accounts,
 	/client/proc/load_department_accounts,
 	/datum/admins/proc/call_supply_drop,
@@ -903,7 +906,7 @@ var/list/admin_verbs_event_manager = list(
 
 /client/proc/change_security_level()
 	set name = "Set security level"
-	set desc = "Sets the station security level"
+	set desc = "Sets the city security level"
 	set category = "Admin"
 
 	if(!check_rights(R_ADMIN))	return
@@ -1003,7 +1006,7 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Admin"
 	if(holder)
 		var/list/jobs = list()
-		for (var/datum/job/J in job_master.occupations)
+		for (var/datum/job/J in SSjobs.occupations)
 			if (J.current_positions >= J.total_positions && J.total_positions != -1)
 				jobs += J.title
 		if (!jobs.len)
@@ -1011,7 +1014,7 @@ var/list/admin_verbs_event_manager = list(
 			return
 		var/job = input("Please select job slot to free", "Free job slot")  as null|anything in jobs
 		if (job)
-			job_master.FreeRole(job)
+			SSjobs.FreeRole(job)
 			message_admins("A job slot for [job] has been opened by [key_name_admin(usr)]")
 			return
 
@@ -1129,9 +1132,10 @@ var/list/admin_verbs_event_manager = list(
 /client/proc/process_payroll()
 	set category = "Economy"
 	set name = "Process Payroll"
-	set desc = "Pays everyone."
+	set desc = "Pays everyone, deducts from accounts."
 
-	//Search general records, and process payroll for all those that have bank numbers.
-	for(var/datum/data/record/R in data_core.general)
-		payroll(R)
-		command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
+	if(!check_rights(R_DEBUG|R_ADMIN))	return
+
+	SSpayroll.city_charges()
+
+	command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")

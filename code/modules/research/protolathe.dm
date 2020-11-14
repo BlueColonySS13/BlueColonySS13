@@ -7,7 +7,7 @@
 	idle_power_usage = 30
 	active_power_usage = 5000
 
-	var/max_material_storage = 100000
+	var/max_material_storage = 230000
 
 	var/list/datum/design/queue = list()
 	var/progress = 0
@@ -15,7 +15,7 @@
 	var/mat_efficiency = 1
 	var/speed = 1
 
-	materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "phoron" = 0, "uranium" = 0, "diamond" = 0)
+	materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "phoron" = 0, "uranium" = 0, "diamond" = 0, "iron" = 0, "copper" = 0, "aluminium" = 0, "titanium" = 0)
 
 /obj/machinery/r_n_d/protolathe/New()
 	..()
@@ -197,8 +197,17 @@
 		reagents.remove_reagent(C, D.chemicals[C] * mat_efficiency)
 
 	if(D.build_path)
-		var/obj/new_item = D.Fabricate(src, src)
-		new_item.loc = loc
+		var/obj/item/new_item = D.Fabricate(src, src)
+		new_item.tagged_price = D.price
+		if(D.protected)
+			var/obj/item/weapon/redemption_box/r_box = new /obj/item/weapon/redemption_box(loc)
+			r_box.receiving_department = DEPT_RESEARCH
+			if(LAZYLEN(new_item.origin_tech))
+				r_box.origin_tech = new_item.origin_tech
+				r_box.name += " ([new_item.name])"
+			new_item.forceMove(r_box)
+		else
+			new_item.loc = loc
 		if(mat_efficiency != 1) // No matter out of nowhere
 			if(new_item.matter && new_item.matter.len > 0)
 				for(var/i in new_item.matter)
@@ -227,6 +236,14 @@
 			mattype = /obj/item/stack/material/phoron
 		if("uranium")
 			mattype = /obj/item/stack/material/uranium
+		if("copper")
+			mattype = /obj/item/stack/material/copper
+		if("aluminium")
+			mattype = /obj/item/stack/material/aluminium
+		if("void opal")
+			mattype = /obj/item/stack/material/void_opal
+		if("titanium")
+			mattype = /obj/item/stack/material/titanium
 		else
 			return
 	var/obj/item/stack/material/S = new mattype(loc)

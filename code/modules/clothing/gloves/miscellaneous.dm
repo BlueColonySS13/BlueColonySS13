@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/captain
 	desc = "Regal blue gloves, with a nice gold trim. Swanky."
-	name = "colony director's gloves"
+	name = "mayor's gloves"
 	icon_state = "captain"
 	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
 
@@ -78,7 +78,7 @@
 
 /obj/item/clothing/gloves/botanic_leather
 	desc = "These leather work gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."
-	name = "botanist's leather gloves"
+	name = "botanist gloves"
 	icon_state = "leather"
 	item_state_slots = list(slot_r_hand_str = "lightbrown", slot_l_hand_str = "lightbrown")
 	permeability_coefficient = 0.05
@@ -131,3 +131,9 @@
 	force = 5
 	punch_force = 5
 	drop_sound = 'sound/items/drop/metalshield.ogg'
+
+	get_tax()
+		return WEAPONS_TAX
+
+	is_contraband()
+		return CONTRABAND_KNIFESMALL

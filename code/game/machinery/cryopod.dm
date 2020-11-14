@@ -25,7 +25,7 @@
 
 	var/storage_type = "crewmembers"
 	var/storage_name = "Cryogenic Oversight Control"
-	var/allow_items = 1
+	var/allow_items = 0
 
 /obj/machinery/computer/cryopod/update_icon()
 	..()
@@ -432,7 +432,7 @@
 	//Handle job slot/tater cleanup.
 	var/job = to_despawn.mind.assigned_role
 
-	job_master.FreeRole(job)
+	SSjobs.FreeRole(job)
 
 	if(to_despawn.mind.objectives.len)
 		qdel(to_despawn.mind.objectives)
@@ -625,6 +625,9 @@
 	if(M.client)
 		if(alert(M,"Would you like to enter long-term storage?",,"Yes","No") == "Yes")
 			if(!M) return
+			if(!M.Adjacent(src))
+				to_chat(M, span("warning", "You are too far away from \the [src]!"))
+				return
 			willing = 1
 	else
 		willing = 1

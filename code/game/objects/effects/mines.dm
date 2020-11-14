@@ -10,6 +10,7 @@
 	var/mineitemtype = /obj/item/weapon/mine
 	var/panel_open = 0
 	var/datum/wires/mines/wires = null
+	dont_save = FALSE
 
 /obj/effect/mine/New()
 	icon_state = "uglyminearmed"

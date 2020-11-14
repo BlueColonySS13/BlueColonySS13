@@ -326,7 +326,7 @@ proc/random_hair_color(var/mob/living/carbon/human/M)
 	var/green
 	var/blue
 
-	var/col = pick ("blonde", "black", "chestnut", "copper", "brown", "wheat", "punk")
+	var/col = pick ("blonde", "black", "chestnut", "copper", "brown", "wheat")
 	if(M.age > 70)
 		red = rand (100, 255)
 		green = red
@@ -357,10 +357,6 @@ proc/random_hair_color(var/mob/living/carbon/human/M)
 				red = 255
 				green = 255
 				blue = 153
-			if("punk")
-				red = rand (0, 255)
-				green = rand (0, 255)
-				blue = rand (0, 255)
 
 	red = max(min(red + rand (-25, 25), 255), 0)
 	green = max(min(green + rand (-25, 25), 255), 0)

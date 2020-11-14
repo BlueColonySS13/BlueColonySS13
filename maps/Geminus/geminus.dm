@@ -3,11 +3,15 @@
 	#include "geminus-1.dmm"
 	#include "geminus-2.dmm"
 	#include "geminus-3.dmm"
+	#include "geminus-redspace-1.dmm"
 	#include "geminus-VR.dmm"
+	#include "geminus-VR-psych.dmm"
 	#include "geminus_shuttles.dm"
 	#include "geminus_defines.dm"
 	#include "geminus_elevator.dm"
 	#include "geminus_areas.dm"
+	#include "geminus_lots.dm"
+	#include "geminus_lot_areas.dm"
 	#include "geminus_VR_games.dm"
 
 	#define USING_MAP_DATUM /datum/map/geminus

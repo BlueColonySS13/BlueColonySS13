@@ -13,8 +13,8 @@
 
 	var/speed = 1
 	var/mat_efficiency = 1
-	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "diamond" = 0, "phoron" = 0, "uranium" = 0)
-	var/res_max_amount = 200000
+	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "diamond" = 0, "phoron" = 0, "uranium" = 0, "copper" = 0, "titanium" = 0, "aluminium" = 0)
+	var/res_max_amount = 230000
 
 	var/datum/research/files
 	var/list/datum/design/queue = list()
@@ -24,6 +24,8 @@
 	var/list/categories = list()
 	var/category = null
 	var/sync_message = ""
+
+	unique_save_vars = list("speed", "mat_efficiency", "res_max_amount")
 
 /obj/machinery/mecha_part_fabricator/New()
 	..()
@@ -263,6 +265,10 @@
 
 /obj/machinery/mecha_part_fabricator/proc/update_categories()
 	categories = list()
+
+	if(!files)
+		files = new /datum/research(src) //Setup the research data holder.
+
 	for(var/datum/design/D in files.known_designs)
 		if(!D.build_path || !(D.build_type & MECHFAB))
 			continue
@@ -296,6 +302,23 @@
 /obj/machinery/mecha_part_fabricator/proc/sync()
 	sync_message = "Error: no console found."
 	for(var/obj/machinery/computer/rdconsole/RDC in get_area_all_atoms(get_area(src)))
+		if(!RDC.sync)
+			continue
+		for(var/datum/tech/T in RDC.files.known_tech)
+			files.AddTech2Known(T)
+		for(var/datum/design/D in RDC.files.known_designs)
+			files.AddDesign2Known(D)
+		files.RefreshResearch()
+		sync_message = "Sync complete."
+	update_categories()
+
+/obj/machinery/mecha_part_fabricator/business
+	req_access = null
+	circuit = /obj/item/weapon/circuitboard/mechfab/business
+
+/obj/machinery/mecha_part_fabricator/business/sync()
+	sync_message = "Error: no independent console found."
+	for(var/obj/machinery/computer/rdconsole/business/RDC in get_area_all_atoms(get_area(src)))
 		if(!RDC.sync)
 			continue
 		for(var/datum/tech/T in RDC.files.known_tech)

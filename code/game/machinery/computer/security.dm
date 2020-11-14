@@ -57,7 +57,7 @@
 	if(..())
 		return
 	if (using_map && !(src.z in using_map.contact_levels))
-		user << "<span class='warning'>Unable to establish a connection:</span> You're too far away from the station!"
+		user << "<span class='warning'>Unable to establish a connection:</span> You're too far away from the city!"
 		return
 	var/dat
 
@@ -647,7 +647,7 @@ What a mess.*/
 
 
 /obj/machinery/computer/secure_data/detective_computer
-	icon_state = "messyfiles"
+	name = "Detective's Computer"
 
 /obj/machinery/computer/secure_data/laptop
 	name = "Records Database Laptop"

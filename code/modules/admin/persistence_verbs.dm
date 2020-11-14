@@ -51,16 +51,22 @@
 	set desc = "Saves all department accounts, assuming the round is canon."
 	set category = "Persistence"
 
+
+	if(!SSeconomy)
+		to_chat(usr, "<font color='red'>The economy does not currently exist yet.</font>")
+		return 0
+
 	if(!holder)
-		usr << "<font color='red'>Only admins can use this command!</font>"
+		to_chat(usr, "<font color='red'>Only admins can use this command!</font>")
 		return 0
 
 	if(!config.canonicity) //if we're not canon in config or by gamemode, nothing will save.
-		usr << "<font color='red'>The round is not canon!</font>"
+		to_chat(usr, "<font color='red'>The round is not canon!</font>")
 		return 0
 
-	persistent_economy.save_economy()
+	SSeconomy.save_economy()
 	message_admins("Admin [key_name_admin(usr)] has saved all dept accs through verb.", 1)
+
 	return 1
 
 /client/proc/load_department_accounts()
@@ -68,11 +74,15 @@
 	set desc = "Loads all department accounts."
 	set category = "Persistence"
 
-	if(!holder)
-		usr << "<font color='red'>Only admins can use this command!</font>"
+	if(!SSeconomy)
+		to_chat(usr, "<font color='red'>The economy does not currently exist yet.</font>")
 		return 0
 
-	persistent_economy.load_accounts()
+	if(!holder)
+		to_chat(usr, "<font color='red'>Only admins can use this command!</font>")
+		return 0
+
+	SSeconomy.load_economy()
 	message_admins("Admin [key_name_admin(usr)] has loaded all dept accs through verb.", 1)
 
 	return 1
@@ -106,3 +116,20 @@
 		return 0
 
 	debug_variables(news_data)
+
+
+/client/proc/backup_all_lots()
+	set category = "Persistence"
+	set name = "Backup Lots"
+	set desc = "Makes backups of all lots in game."
+
+	if(!holder)
+		to_chat(usr,"<font color='red'>Only admins can use this command!</font>")
+		return 0
+
+	if(SSlots)
+		SSlots.backup_all_lots()
+		to_chat(usr,"<b>Lot data has been backed up!</b>")
+
+	else
+		to_chat(usr,"<b>Could not find lots controller, has it booted yet?</b>")

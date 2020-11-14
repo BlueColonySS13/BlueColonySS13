@@ -27,6 +27,7 @@
 	active_power_usage = 2200	//the pneumatic pump power. 3 HP ~ 2200W
 	idle_power_usage = 100
 
+
 // create a new disposal
 // find the attached trunk (if present) and init gas resvr.
 /obj/machinery/disposal/New()
@@ -130,7 +131,7 @@
 				for (var/mob/C in viewers(src))
 					C.show_message("<font color='red'>[GM.name] has been placed in the [src] by [user].</font>", 3)
 				qdel(G)
-				
+
 				add_attack_logs(user,GM,"Disposals dunked")
 		return
 
@@ -168,9 +169,14 @@
 	var/msg
 	for (var/mob/V in viewers(usr))
 		if(target == user && !user.stat && !user.weakened && !user.stunned && !user.paralysis)
-			V.show_message("[usr] starts climbing into the disposal.", 3)
+			V.show_message("[usr] starts climbing into the disposal. It doesn't look like a good idea at all.", 3)
 		if(target != user && !user.restrained() && !user.stat && !user.weakened && !user.stunned && !user.paralysis)
 			if(target.anchored) return
+
+			if(user.IsAntiGrief())
+				to_chat(user, "<span class='danger'>You realise doing this might be an awful thing to do and stop.</span>")
+				return
+
 			V.show_message("[usr] starts stuffing [target.name] into the disposal.", 3)
 	if(!do_after(usr, 20))
 		return
@@ -668,6 +674,9 @@
 	var/base_icon_state	// initial icon state on map
 	var/sortType = ""
 	var/subtype = 0
+
+	unique_save_vars = list("icon_state", "dir", "dpdir", "sortType", "subtype", "health", "level")
+
 	// new pipe, set the icon_state as on map
 	New()
 		..()
@@ -879,7 +888,8 @@
 		src.add_fingerprint(user)
 		if(istype(I, /obj/item/weapon/weldingtool))
 			var/obj/item/weapon/weldingtool/W = I
-
+			if(trigger_lot_security_system(user, /datum/lot_security_option/theft, "Slicing \the [src] with [I]."))
+				return
 			if(W.remove_fuel(0,user))
 				playsound(src, W.usesound, 50, 1)
 				// check if anything changed over 2 seconds
@@ -1139,6 +1149,8 @@
 	icon_state = "pipe-tagger"
 	var/sort_tag = ""
 	var/partial = 0
+
+	unique_save_vars = list("partial", "sort_tag", "icon_state", "dir", "dpdir", "sortType", "subtype", "health", "level")
 
 	proc/updatedesc()
 		desc = initial(desc)

@@ -97,8 +97,7 @@ var/list/gamemode_cache = list()
 	var/uneducated_mice = 0 				//Set to 1 to prevent newly-spawned mice from understanding human speech
 
 	var/middle_class_age = 7 			// How many days a player must be before they can make a middle class character
-	var/upper_class_age = 14 				// How many days a player must be before they can make a upper class character
-
+	var/upper_class_age = 14 			// How many days a player must be before they can make a upper class character
 
 	var/usealienwhitelist = 0
 	var/limitalienplayers = 0
@@ -107,6 +106,30 @@ var/list/gamemode_cache = list()
 	var/guests_allowed = 1
 	var/debugparanoid = 0
 	var/panic_bunker = 0
+
+	var/min_byond_age = 0				//This denies anyone under this byond age from joining.
+
+	var/byond_antigrief_age = 0
+	var/player_antigrief_age = 0
+	//A softer option. Clients under this age will be marked with "antigrief" which prevents certain items
+	//from being used such as weapons, explosives, atmos, etc. until they reach a certain age
+
+	var/allow_byond_links = 0
+	var/allow_discord_links = 0
+	var/allow_url_links = 0					// honestly if I were you i'd leave this one off, only use in dire situations
+
+	var/allow_repeat_ooc_messages = 0			 // if set to true, you can't send same message in OOC twice in a row.
+
+
+	var/ip_reputation = FALSE		//Should we query IPs to get scores? Generates HTTP traffic to an API service.
+	var/ipr_email					//Left null because you MUST specify one otherwise you're making the internet worse.
+	var/ipr_block_bad_ips = FALSE		//Should we block anyone who meets the minimum score below? Otherwise we just log it (If paranoia logging is on, visibly in chat).
+	var/ipr_bad_score = 1			//The API returns a value between 0 and 1 (inclusive), with 1 being 'definitely VPN/Tor/Proxy'. Values equal/above this var are considered bad.
+	var/ipr_allow_existing = FALSE 	//Should we allow known players to use VPNs/Proxies? If the player is already banned then obviously they still can't connect.
+	var/ipr_minimum_age = 5			//How many days before a player is considered 'fine' for the purposes of allowing them to use VPNs.
+
+
+	var/gamemode_vote = 0
 
 	var/serverurl
 	var/server
@@ -119,12 +142,12 @@ var/list/gamemode_cache = list()
 	var/mapurl
 
 	//Alert level description
-	var/alert_desc_green = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
-	var/alert_desc_blue_upto = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted."
-	var/alert_desc_blue_downto = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
-	var/alert_desc_red_upto = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
-	var/alert_desc_red_downto = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
-	var/alert_desc_delta = "The station's self-destruct mechanism has been engaged. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
+	var/alert_desc_green = "All threats to the city have passed. Police Officials may not have weapons visible, privacy laws are once again fully enforced."
+	var/alert_desc_blue_upto = "The city has received reliable information about possible hostile activity in the city. Police Officials may have weapons visible, random searches are permitted."
+	var/alert_desc_blue_downto = "The immediate threat has passed. Police Officials may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
+	var/alert_desc_red_upto = "There is an immediate serious threat to the city. Police Officials may have weapons unholstered at all times. Random searches are allowed and advised."
+	var/alert_desc_red_downto = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the city. Police Officials may have weapons unholstered at all times, random searches are allowed and advised."
+	var/alert_desc_delta = "The city's self-destruct mechanism has been engaged. All residents are instructed to obey all instructions given by members of City Council. Any violations of these orders can be punished by death. This is not a drill."
 
 	var/forbid_singulo_possession = 0
 
@@ -236,11 +259,28 @@ var/list/gamemode_cache = list()
 	var/allow_chat_markup = 0 // Mark-up enabling
 	var/show_human_death_message = 1
 
+	var/radiation_resistance_calc_mode = RAD_RESIST_CALC_SUB // 0:1 subtraction:division for computing effective radiation on a turf
 	var/radiation_decay_rate = 1 //How much radiation is reduced by each tick
 	var/radiation_resistance_multiplier = 6.5
+	var/radiation_material_resistance_divisor = 1
 	var/radiation_lower_limit = 0.35 //If the radiation level for a turf would be below this, ignore it.
 
 	var/ssd_protect = 0
+
+	// can lots be saved? if this is set to false, this disables lots. it will auto-toggle if lot loading is borked in process to prevent data corruption.
+	var/lot_saving = FALSE
+
+	// allow businesses to be made?
+	var/allow_businesses = FALSE
+
+	// redbot settings
+	var/comms_key = ""
+	var/bot_ip = ""
+
+	// can antagonists join from the lobby?
+	var/allow_lobby_antagonists = FALSE
+
+
 
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
@@ -328,11 +368,29 @@ var/list/gamemode_cache = list()
 				if ("hard_saving")
 					config.hard_saving = 1
 
+				if ("lot_saving")
+					config.lot_saving = 1
+
+				if("allow_businesses")
+					config.allow_businesses = 1
+
+				if("comms_key")
+					config.comms_key = text2num(value)
+
+				if("bot_ip")
+					config.bot_ip = text2num(value)
+
+				if("allow_lobby_antagonists")
+					config.allow_lobby_antagonists = 1
+
 				if ("log_say")
 					config.log_say = 1
 
 				if ("debug_paranoid")
 					config.debugparanoid = 1
+
+				if("panic_bunker")
+					config.panic_bunker = 1
 
 				if ("log_admin")
 					config.log_admin = 1
@@ -645,6 +703,9 @@ var/list/gamemode_cache = list()
 				if("continuous_rounds")
 					config.continous_rounds = 1
 
+				if("gamemode_vote")
+					config.gamemode_vote = 1
+
 				if("ghost_interaction")
 					config.ghost_interaction = 1
 
@@ -716,8 +777,47 @@ var/list/gamemode_cache = list()
 					using_map.player_levels = text2numlist(value, ";")
 */
 
+				if("ip_reputation")
+					config.ip_reputation = 1
+
+				if("ipr_email")
+					config.ipr_email = value
+
+				if("ipr_block_bad_ips")
+					config.ipr_block_bad_ips = 1
+
+				if("ipr_bad_score")
+					config.ipr_bad_score = text2num(value)
+
+				if("ipr_allow_existing")
+					config.ipr_allow_existing = 1
+
+				if("ipr_minimum_age")
+					config.ipr_minimum_age = text2num(value)
+
+				if ("min_byond_age")
+					config.min_byond_age = text2num(value)
+
+				if ("byond_antigrief_age")
+					config.byond_antigrief_age = text2num(value)
+
+				if ("player_antigrief_age")
+					config.player_antigrief_age = text2num(value)
+
+				if ("allow_byond_links")
+					config.allow_byond_links = 1
+
+				if ("allow_discord_links")
+					config.allow_discord_links = 1
+
+				if ("allow_url_links")
+					config.allow_url_links = 1
+
+				if ("allow_repeat_ooc_messages")
+					config.allow_repeat_ooc_messages = 1
+
 				if("ssd_protect")
-					config.ssd_protect = text2num(value)
+					config.ssd_protect = 1
 
 				if("expected_round_length")
 					config.expected_round_length = MinutesToTicks(text2num(value))
@@ -774,6 +874,21 @@ var/list/gamemode_cache = list()
 
 				if("radiation_lower_limit")
 					radiation_lower_limit = text2num(value)
+
+				if("radiation_resistance_calc_divide")
+					radiation_resistance_calc_mode = RAD_RESIST_CALC_DIV
+
+				if("radiation_resistance_calc_subtract")
+					radiation_resistance_calc_mode = RAD_RESIST_CALC_SUB
+
+				if("radiation_resistance_multiplier")
+					radiation_resistance_multiplier = text2num(value)
+
+				if("radiation_material_resistance_divisor")
+					radiation_material_resistance_divisor = text2num(value)
+
+				if("radiation_decay_rate")
+					radiation_decay_rate = text2num(value)
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")

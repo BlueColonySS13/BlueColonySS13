@@ -13,8 +13,8 @@
 
 	var/speed = 1
 	var/mat_efficiency = 1
-	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "diamond" = 0, "phoron" = 0, "uranium" = 0, "plasteel" = 0)
-	var/res_max_amount = 200000
+	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "diamond" = 0, "phoron" = 0, "uranium" = 0, "plasteel" = 0, "copper" = 0, "aluminium" = 0)
+	var/res_max_amount = 230000
 
 	var/datum/research/files
 	var/list/datum/design/queue = list()
@@ -25,6 +25,9 @@
 	var/category = null
 	var/manufacturer = null
 	var/sync_message = ""
+	var/independent = 0 //Prevent businesses from using Research servers
+
+	unique_save_vars = list("speed", "mat_efficiency", "res_max_amount")
 
 /obj/machinery/pros_fabricator/New()
 	..()
@@ -169,7 +172,6 @@
 				var/datum/robolimb/R = all_robolimbs[D.company]
 				R.unavailable_to_build = 0
 				user << "<span class='notice'>Installed [D.company] blueprints!</span>"
-				qdel(I)
 		return
 
 	if(istype(I,/obj/item/stack/material))
@@ -288,13 +290,14 @@
 	return time2text(round(10 * D.time / speed), "mm:ss")
 
 /obj/machinery/pros_fabricator/proc/update_categories()
-	categories = list()
-	for(var/datum/design/D in files.known_designs)
-		if(!D.build_path || !(D.build_type & PROSFAB))
-			continue
-		categories |= D.category
-	if(!category || !(category in categories))
-		category = categories[1]
+	if(files)
+		categories = list()
+		for(var/datum/design/D in files.known_designs)
+			if(!D.build_path || !(D.build_type & PROSFAB))
+				continue
+			categories |= D.category
+		if(!category || !(category in categories))
+			category = categories[1]
 
 /obj/machinery/pros_fabricator/proc/get_materials()
 	. = list()
@@ -322,6 +325,24 @@
 /obj/machinery/pros_fabricator/proc/sync()
 	sync_message = "Error: no console found."
 	for(var/obj/machinery/computer/rdconsole/RDC in get_area_all_atoms(get_area(src)))
+		if(!RDC.sync)
+			continue
+		for(var/datum/tech/T in RDC.files.known_tech)
+			files.AddTech2Known(T)
+		for(var/datum/design/D in RDC.files.known_designs)
+			files.AddDesign2Known(D)
+		files.RefreshResearch()
+		sync_message = "Sync complete."
+	update_categories()
+
+/obj/machinery/pros_fabricator/business
+	req_access = null
+	circuit = /obj/item/weapon/circuitboard/prosthetics/business
+	independent = 1
+
+/obj/machinery/pros_fabricator/business/sync()
+	sync_message = "Error: no console found."
+	for(var/obj/machinery/computer/rdconsole/business/RDC in get_area_all_atoms(get_area(src)))
 		if(!RDC.sync)
 			continue
 		for(var/datum/tech/T in RDC.files.known_tech)

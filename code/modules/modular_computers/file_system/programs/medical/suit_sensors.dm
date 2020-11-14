@@ -2,7 +2,6 @@
 	filename = "sensormonitor"
 	filedesc = "Suit Sensors Monitoring"
 	nanomodule_path = /datum/nano_module/crew_monitor
-	ui_header = "crew_green.gif"
 	program_icon_state = "crew"
 //	program_key_state = "med_key"
 //	program_menu_icon = "heart"
@@ -11,36 +10,20 @@
 	requires_ntnet = 1
 	network_destination = "crew lifesigns monitoring system"
 	size = 11
-	var/has_alert = FALSE
 
-/datum/computer_file/program/suit_sensors/process_tick()
-	..()
 
-	var/datum/nano_module/crew_monitor/NMC = NM
-	if(istype(NMC) && (NMC.has_alerts() != has_alert))
-		if(!has_alert)
-			program_icon_state = "crew-red"
-			ui_header = "crew_red.gif"
-		else
-			program_icon_state = "crew"
-			ui_header = "crew_green.gif"
-		update_computer_icon()
-		has_alert = !has_alert
 
-	return 1
+
 
 /datum/nano_module/crew_monitor
 	name = "Crew monitor"
 
-/datum/nano_module/crew_monitor/proc/has_alerts()
-	for(var/z_level in using_map.map_levels)
-		if (crew_repository.has_health_alert(z_level))
-			return TRUE
-	return FALSE
-
 /datum/nano_module/crew_monitor/Topic(href, href_list)
 	if(..()) return 1
-
+	var/turf/T = get_turf(nano_host())	// TODO: Allow setting any using_map.contact_levels from the interface.
+	if (!T || !(T.z in using_map.player_levels))
+		usr << "<span class='warning'>Unable to establish a connection</span>: You're too far away from the city!"
+		return 0
 	if(href_list["track"])
 		if(isAI(usr))
 			var/mob/living/silicon/ai/AI = usr
@@ -53,21 +36,40 @@
 	var/list/data = list()
 	if(program)
 		data = program.get_header_data()
+	var/turf/T = get_turf(nano_host())
 
 	data["isAI"] = isAI(user)
+	data["map_levels"] = using_map.get_map_levels(T.z, FALSE)
 	data["crewmembers"] = list()
-	for(var/z_level in using_map.map_levels)
-		data["crewmembers"] += crew_repository.health_data(z_level)
+	for(var/z in (data["map_levels"] | T.z))  // Always show crew from the current Z even if we can't show a map
+		data["crewmembers"] += crew_repository.health_data(z)
+
+	if(!data["map_levels"].len)
+		to_chat(user, "<span class='warning'>The crew monitor doesn't seem like it'll work here.</span>")
+		return
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "crew_monitor.tmpl", "Crew Monitoring Computer", 1050, 800, state = state)
+		ui = new(user, src, ui_key, "crew_monitor.tmpl", "Crew Monitoring Computer", 900, 800, state = state)
 
 		// adding a template with the key "mapContent" enables the map ui functionality
 		ui.add_template("mapContent", "crew_monitor_map_content.tmpl")
 		// adding a template with the key "mapHeader" replaces the map header content
 		ui.add_template("mapHeader", "crew_monitor_map_header.tmpl")
+		if(!(ui.map_z_level in data["map_levels"]))
+			ui.set_map_z_level(data["map_levels"][1])
 
 		ui.set_initial_data(data)
 		ui.open()
+
+		// should make the UI auto-update; doesn't seem to?
 		ui.set_auto_update(1)
+
+/*/datum/nano_module/crew_monitor/proc/scan()
+	for(var/mob/living/carbon/human/H in mob_list)
+		if(istype(H.w_uniform, /obj/item/clothing/under))
+			var/obj/item/clothing/under/C = H.w_uniform
+			if (C.has_sensor)
+				tracked |= C
+	return 1
+*/

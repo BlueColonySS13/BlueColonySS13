@@ -67,12 +67,16 @@
 		return
 	if(default_deconstruction_crowbar(user, B))
 		return
-		
+
 	return
 
 /obj/machinery/chem_master/attack_hand(mob/user as mob)
 	if(stat & BROKEN)
 		return
+	if(user.IsAntiGrief())
+		to_chat(user, "<span class='notice'>You don't feel like messing around with chemistry right now.</span>")
+		return
+
 	user.set_machine(src)
 	ui_interact(user)
 
@@ -217,7 +221,7 @@
 
 			if (href_list["createpill_multiple"])
 				count = input("Select the number of pills to make.", "Max [max_pill_count]", pillamount) as num
-				count = Clamp(count, 1, max_pill_count)
+				count = CLAMP(round(count), 1, max_pill_count) // Fix decimals input and clamp to reasonable amounts
 
 			if(reagents.total_volume/count < 1) //Sanity checking.
 				return
@@ -229,7 +233,7 @@
 
 			if(reagents.total_volume/count < 1) //Sanity checking.
 				return
-			while (count--)
+			while(count-- > 0) // Will definitely eventually stop.
 				var/obj/item/weapon/reagent_containers/pill/P = new/obj/item/weapon/reagent_containers/pill(src.loc)
 				if(!name) name = reagents.get_master_reagent_name()
 				P.name = "[name] pill"
@@ -269,6 +273,7 @@
 /obj/machinery/chem_master/condimaster
 	name = "CondiMaster 3000"
 	condi = 1
+	circuit = /obj/item/weapon/circuitboard/condimaster
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -369,10 +374,9 @@
 	if(istype(O,/obj/item/stack))
 		var/obj/item/stack/stack = O
 
-		if(!(!isemptylist(stack.associated_reagents) && stack.reagents.total_volume))
-			user << "\The [O] is not suitable for blending."
-
-
+		if(isemptylist(stack.associated_reagents))
+			to_chat(user, "\The [O] is not suitable for blending.")
+			return 0
 
 
 	user.remove_from_mob(O)
@@ -491,22 +495,28 @@
 		if(remaining_volume <= 0)
 			break
 
-		if(reagents)
+		if(istype(O, /obj/item/stack))
 			var/obj/item/stack/stack = O
-			if(istype(stack))
-				var/list/sheet_components = stack.reagents.reagent_list
-				var/amount_to_take = max(0,min(stack.amount,round(remaining_volume/stack.reagents_per_unit)))
-				if(amount_to_take)
-					stack.use(amount_to_take)
-					if(QDELETED(stack))
-						holdingitems -= stack
-					if(islist(sheet_components))
-						amount_to_take = (amount_to_take/(sheet_components.len))
-						for(var/i in sheet_components)
-							beaker.reagents.add_reagent(i, (amount_to_take*stack.reagents_per_unit))
-					else
-						beaker.reagents.add_reagent(sheet_components, (amount_to_take*stack.reagents_per_unit))
-					continue
+			if(!isemptylist(stack.associated_reagents))
+				var/to_use = 0
+
+				if((stack.amount * stack.reagent_multiplier) > remaining_volume)
+					to_use += remaining_volume
+				else
+					to_use += stack.amount
+
+				var/divided_amount = (to_use / stack.associated_reagents.len) * stack.reagent_multiplier
+
+				for(var/G in stack.associated_reagents)
+					beaker.reagents.add_reagent(G, divided_amount)
+
+
+
+				qdel(stack)
+				holdingitems -= stack
+
+			if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
+				break
 
 		if(O.reagents)
 			O.reagents.trans_to(beaker, min(O.reagents.total_volume, remaining_volume))

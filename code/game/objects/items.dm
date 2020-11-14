@@ -92,6 +92,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 
 	var/icon/default_worn_icon	//Default on-mob icon
 	var/worn_layer				//Default on-mob layer
+	var/nodrop = 0 //Eclipse add - similar to canremove, but for dropping
 
 /obj/item/New()
 	..()
@@ -219,7 +220,6 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 
 	var/old_loc = src.loc
 	src.pickup(user)
-	src.plane = initial(plane) //resets the plane of the object when it's picked up from a table. might have other consequences
 
 	//If it's a certain type of object, log it for admins, quite useful in some situations.
 	//todo, create an attack log proc that's that's a lot shorter.
@@ -243,11 +243,16 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 
 	src.throwing = 0
 	if (src.loc == user)
+		if (src.nodrop)
+			return
 		if(!user.unEquip(src))
 			return
 	else
 		if(isliving(src.loc))
 			return
+
+	src.plane = initial(plane) //resets the plane of the object when it's picked up from a table. might have other consequences
+
 	if(user.put_in_active_hand(src))
 		if(isturf(old_loc))
 			var/obj/effect/temporary_effect/item_pickup_ghost/ghost = new(old_loc)
@@ -255,6 +260,8 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 			ghost.animate_towards(user)
 	return
 
+	// Unreachable code.
+	/*
 	if(burn_state == 1)
 		var/mob/living/carbon/human/H = user
 		if(istype(H))
@@ -269,6 +276,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 				return
 		else
 			extinguish()
+	*/
 
 /obj/item/attack_ai(mob/user as mob)
 	if (istype(src.loc, /obj/item/weapon/robot_module))
@@ -456,7 +464,8 @@ var/list/global/slot_flags_enumeration = list(
 /obj/item/proc/mob_can_unequip(mob/M, slot, disable_warning = 0)
 	if(!slot) return 0
 	if(!M) return 0
-
+	if(nodrop)
+		return 0
 	if(!canremove)
 		return 0
 	if(!M.slot_is_accessible(slot, src, disable_warning? null : M))
@@ -666,6 +675,8 @@ modules/mob/mob_movement.dm if you move you will be zoomed out
 modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 */
 //Looking through a scope or binoculars should /not/ improve your periphereal vision. Still, increase viewsize a tiny bit so that sniping isn't as restricted to NSEW
+/obj/item/var/ignore_visor_zoom_restriction = FALSE
+
 /obj/item/proc/zoom(var/tileoffset = 14,var/viewsize = 9) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 
 	var/devicename
@@ -677,49 +688,57 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 	var/cannotzoom
 
-	if(usr.stat || !(istype(usr,/mob/living/carbon/human)))
-		usr << "You are unable to focus through the [devicename]"
+	if((usr.stat && !zoom) || !(istype(usr,/mob/living/carbon/human)))
+		to_chat(usr, "You are unable to focus through the [devicename]")
 		cannotzoom = 1
 	else if(!zoom && (global_hud.darkMask[1] in usr.client.screen))
-		usr << "Your visor gets in the way of looking through the [devicename]"
+		to_chat(usr, "Your visor gets in the way of looking through the [devicename]")
 		cannotzoom = 1
 	else if(!zoom && usr.get_active_hand() != src)
-		usr << "You are too distracted to look through the [devicename], perhaps if it was in your active hand this might work better"
+		to_chat(usr, "You are too distracted to look through the [devicename], perhaps if it was in your active hand this might work better")
 		cannotzoom = 1
 
+	//We checked above if they are a human and returned already if they weren't.
+	var/mob/living/carbon/human/H = usr
+
 	if(!zoom && !cannotzoom)
-		if(usr.hud_used.hud_shown)
-			usr.toggle_zoom_hud()	// If the user has already limited their HUD this avoids them having a HUD when they zoom in
-		usr.client.view = viewsize
+		if(H.hud_used.hud_shown)
+			H.toggle_zoom_hud()	// If the user has already limited their HUD this avoids them having a HUD when they zoom in
+		H.set_viewsize(viewsize)
 		zoom = 1
 
 		var/tilesize = 32
 		var/viewoffset = tilesize * tileoffset
 
-		switch(usr.dir)
+		switch(H.dir)
 			if (NORTH)
-				usr.client.pixel_x = 0
-				usr.client.pixel_y = viewoffset
+				H.client.pixel_x = 0
+				H.client.pixel_y = viewoffset
 			if (SOUTH)
-				usr.client.pixel_x = 0
-				usr.client.pixel_y = -viewoffset
+				H.client.pixel_x = 0
+				H.client.pixel_y = -viewoffset
 			if (EAST)
-				usr.client.pixel_x = viewoffset
-				usr.client.pixel_y = 0
+				H.client.pixel_x = viewoffset
+				H.client.pixel_y = 0
 			if (WEST)
-				usr.client.pixel_x = -viewoffset
-				usr.client.pixel_y = 0
+				H.client.pixel_x = -viewoffset
+				H.client.pixel_y = 0
 
-		usr.visible_message("[usr] peers through the [zoomdevicename ? "[zoomdevicename] of the [src.name]" : "[src.name]"].")
+		H.visible_message("[usr] peers through the [zoomdevicename ? "[zoomdevicename] of the [src.name]" : "[src.name]"].")
+		if(!ignore_visor_zoom_restriction)
+			H.looking_elsewhere = TRUE
+		H.handle_vision()
 
 	else
-		usr.client.view = world.view
-		if(!usr.hud_used.hud_shown)
-			usr.toggle_zoom_hud()
+		H.set_viewsize() // Reset to default
+		if(!H.hud_used.hud_shown)
+			H.toggle_zoom_hud()
 		zoom = 0
 
-		usr.client.pixel_x = 0
-		usr.client.pixel_y = 0
+		H.client.pixel_x = 0
+		H.client.pixel_y = 0
+		H.looking_elsewhere = FALSE
+		H.handle_vision()
 
 		if(!cannotzoom)
 			usr.visible_message("[zoomdevicename ? "[usr] looks up from the [src.name]" : "[usr] lowers the [src.name]"].")

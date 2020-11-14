@@ -178,6 +178,7 @@
 	var/last_helpask_time = 0		// When did we last call for help?
 	var/follow_until_time = 0		// Give up following when we reach this time (0 = never)
 	var/annoyed = 0					// Do people keep distract-kiting us?
+
 	////// ////// //////
 
 /mob/living/simple_animal/New()
@@ -222,6 +223,9 @@
 	walk_list.Cut()
 	languages.Cut()
 	return ..()
+
+/mob/living/simple_animal/proc/can_destroy_structures()
+	return TRUE
 
 //Client attached
 /mob/living/simple_animal/Login()
@@ -1469,6 +1473,7 @@
 //Check for shuttle bumrush
 /mob/living/simple_animal/proc/check_horde()
 	return 0
+	/*
 	if(emergency_shuttle.shuttle.location)
 		if(!enroute && !target_mob)	//The shuttle docked, all monsters rush for the escape hallway
 			if(!shuttletarget && escape_list.len) //Make sure we didn't already assign it a target, and that there are targets to pick
@@ -1482,6 +1487,7 @@
 		if(get_dist(src, shuttletarget) <= 2)		//The monster reached the escape hallway
 			enroute = 0
 			stop_automated_movement = 0
+	*/
 
 //Shuttle bumrush
 /mob/living/simple_animal/proc/horde()

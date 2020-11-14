@@ -98,3 +98,41 @@
  	name = "shipping cap"
  	desc = "It's a ballcap bearing the colors of Major Bill's Shipping."
  	icon_state = "mbillsoft"
+
+//Blue Police hats
+
+/obj/item/clothing/head/soft/police
+	name = "police baseball cap"
+	desc = "a blue baseball cap for a police officer."
+	icon_state = "policesoft"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
+
+/obj/item/clothing/head/soft/policecadet
+	name = "cadet baseball cap"
+	desc = "a blue baseball cap for a police cadet."
+	icon_state = "policecadetsoft"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
+
+/obj/item/clothing/head/soft/policecdetective
+	name = "Investigator baseball cap"
+	desc = "a blue baseball cap for a police Investigator."
+	icon_state = "policedetectivesoft"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
+
+/obj/item/clothing/head/soft/policetraffic
+	name = "traffic police baseball cap"
+	desc = "a blue baseball cap for a traffic officer."
+	icon_state = "policetrafficsoft"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
+
+/obj/item/clothing/head/soft/policewarden
+	name = "police sergeant cap"
+	desc = "a blue baseball cap for a senior police officer."
+	icon_state = "policewardensoft"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
+
+/obj/item/clothing/head/soft/policechief
+	name = "police chief baseball cap"
+	desc = "a gold adorned baseball cap for a police chief."
+	icon_state = "policechiefsoft"
+	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")

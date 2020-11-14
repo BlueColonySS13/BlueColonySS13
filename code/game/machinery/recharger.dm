@@ -7,6 +7,7 @@ obj/machinery/recharger
 	use_power = 1
 	idle_power_usage = 4
 	active_power_usage = 40000	//40 kW
+	table_drag = TRUE
 	var/obj/item/charging = null
 
 	var/list/allowed_devices = list(/obj/item/weapon/gun/energy,

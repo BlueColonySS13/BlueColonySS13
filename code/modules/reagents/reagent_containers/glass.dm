@@ -239,6 +239,9 @@
 /obj/item/weapon/reagent_containers/glass/beaker/sulphuric
 	prefill = list("sacid" = 60)
 
+/obj/item/weapon/reagent_containers/glass/beaker/radium
+	prefill = list("radium" = 60)
+
 /obj/item/weapon/reagent_containers/glass/bucket
 	desc = "It's a bucket."
 	name = "bucket"

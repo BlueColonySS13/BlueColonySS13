@@ -512,9 +512,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			if(underlay)
 				standing.underlays += underlay
 
-	for(var/mut in mutations)
-		if(LASER)
-			standing.overlays += "lasereyes_s" //TODO
+	if(LASER in mutations)
+		standing.overlays += "lasereyes_s" //TODO
 
 	overlays_standing[MUTATIONS_LAYER]	= standing
 	apply_layer(MUTATIONS_LAYER)
@@ -750,6 +749,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	if(suit.index)
 		suit_sprite = "[INV_SUIT_DEF_ICON]_[suit.index].dmi"
+	else if(istype(suit, /obj/item/clothing) && !isnull(suit.update_icon_define))
+		suit_sprite = suit.update_icon_define
 	else
 		suit_sprite = "[INV_SUIT_DEF_ICON].dmi"
 

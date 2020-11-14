@@ -2,7 +2,7 @@
 /mob/living/simple_animal/crab
 	name = "crab"
 	desc = "A hard-shelled crustacean. Seems quite content to lounge around all the time."
-	tt_desc = "Ranina ranina"
+	tt_desc = "Ranina Ranina"
 	icon_state = "crab"
 	icon_living = "crab"
 	icon_dead = "crab_dead"
@@ -47,6 +47,11 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stomps"
+
+/mob/living/simple_animal/crab/green
+	name = "mutant crab"
+	desc = "This crab has an oddly green color, you usually find these in sewers."
+	color = COLOR_GREEN
 
 //Sif Crabs
 /mob/living/simple_animal/giant_crab

@@ -10,6 +10,8 @@
 	var/mob/living/pulling = null
 	var/bloodiness
 
+	unique_save_vars = list("bloodiness")
+
 /obj/structure/bed/chair/wheelchair/update_icon()
 	return
 
@@ -210,7 +212,7 @@
 	item_state = "wheelchair"
 	w_class = ITEMSIZE_HUGE // Can't be put in backpacks. Oh well.
 	plane = -25
-
+	matter = list(DEFAULT_WALL_MATERIAL = 8000)
 /obj/item/wheelchair/attack_self(mob/user)
 		var/obj/structure/bed/chair/wheelchair/R = new /obj/structure/bed/chair/wheelchair(user.loc)
 		R.add_fingerprint(user)

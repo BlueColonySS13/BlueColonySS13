@@ -1,6 +1,6 @@
 /obj/machinery/power/supermatter
 	description_info = "When energized by a laser (or something hitting it), it emits radiation and heat.  If the heat reaches above 7000 kelvin, it will send an alert and start taking damage. \
-	After integrity falls to zero percent, it will delaminate, causing a massive explosion, station-wide radiation spikes, and hallucinations. \
+	After integrity falls to zero percent, it will delaminate, causing a massive explosion, city-wide radiation spikes, and hallucinations. \
 	Supermatter reacts badly to oxygen in the atmosphere.  It'll also heat up really quick if it is in vacuum.<br>\
 	<br>\
 	Supermatter cores are extremely dangerous to be close to, and requires protection to handle properly.  The protection you will need is:<br>\
@@ -11,7 +11,7 @@
 	It is advised to obtain a genetic backup before trying to drag it."
 
 	description_antag = "Exposing the supermatter to oxygen or vacuum will cause it to start rapidly heating up.  Sabotaging the supermatter and making it explode will \
-	cause a period of lag as the explosion is processed by the server, as well as irradiating the entire station and causing hallucinations to happen.  \
+	cause a period of lag as the explosion is processed by the server, as well as irradiating the entire city and causing hallucinations to happen.  \
 	Wearing radiation equipment will protect you from most of the delamination effects sans explosion."
 
 /obj/machinery/power/apc
@@ -19,7 +19,7 @@
 	out into 'environmental' (Items that manipulate airflow and temperature), 'lighting' (the lights), and 'equipment' (Everything else that consumes power).  \
 	Power consumption and backup power cell charge can be seen from the interface, further controls (turning a specific channel on, off or automatic, \
 	toggling the APC's ability to charge the backup cell, or toggling power for the entire area via master breaker) first requires the interface to be unlocked \
-	with an ID with Engineering access or by one of the station's robots or the artificial intelligence."
+	with an ID with Engineering access or by one of the city's robots or the artificial intelligence."
 
 	description_antag = "This can be emagged to unlock it.  It will cause the APC to have a blue error screen. \
 	Wires can be pulsed remotely with a signaler attached to it.  A powersink will also drain any APCs connected to the same wire the powersink is on."

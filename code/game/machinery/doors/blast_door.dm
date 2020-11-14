@@ -34,6 +34,12 @@
 
 	var/begins_closed = TRUE
 
+
+	unique_save_vars = list("id", "density")
+
+/obj/machinery/door/blast/on_persistence_load()
+	update_icon()
+
 /obj/machinery/door/blast/initialize()
 	..()
 
@@ -65,7 +71,7 @@
 		icon_state = icon_state_closed
 	else
 		icon_state = icon_state_open
-	radiation_repository.resistance_cache.Remove(get_turf(src))
+	SSradiation.resistance_cache.Remove(get_turf(src))
 	return
 
 // Proc: force_open()

@@ -1,4 +1,4 @@
-#define BOLTS_FINE 0
+ #define BOLTS_FINE 0
 #define BOLTS_EXPOSED 1
 #define BOLTS_CUT 2
 
@@ -30,7 +30,7 @@ var/list/airlock_overlays = list()
 	var/has_beeped = 0					//If 1, will not beep on failed closing attempt. Resets when door closes.
 	var/spawnPowerRestoreRunning = 0
 	var/welded = null
-	var/locked = 0
+	locked = 0
 	var/lock_cut_state = BOLTS_FINE
 	var/lights = 1 // Lights show by default
 	var/aiDisabledIdScanner = 0
@@ -79,6 +79,14 @@ var/list/airlock_overlays = list()
 	var/sparks_broken_file = 'icons/obj/doors/station/sparks_broken.dmi'
 	var/welded_file = 'icons/obj/doors/station/welded.dmi'
 	var/emag_file = 'icons/obj/doors/station/emag.dmi'
+
+	var/adjust_dir = TRUE
+
+/obj/machinery/door/airlock/knock(mob/user)
+	if(!issilicon(usr) && try_zap(user))
+		return
+
+	..()
 
 /obj/machinery/door/airlock/attack_generic(var/mob/user, var/damage)
 	if(stat & (BROKEN|NOPOWER))
@@ -143,7 +151,8 @@ var/list/airlock_overlays = list()
 	door_color = COLOR_COMMAND_BLUE
 
 /obj/machinery/door/airlock/security
-	door_color = COLOR_NT_RED
+	door_color = COLOR_COMMAND_BLUE
+	stripe_color = COLOR_SKY_BLUE
 
 /obj/machinery/door/airlock/engineering
 	name = "Maintenance Hatch"
@@ -280,8 +289,8 @@ var/list/airlock_overlays = list()
 
 /obj/machinery/door/airlock/glass_security
 	name = "Maintenance Hatch"
-	door_color = COLOR_NT_RED
-	stripe_color = COLOR_ORANGE
+	door_color = COLOR_COMMAND_BLUE
+	stripe_color = COLOR_SKY_BLUE
 	hitsound = 'sound/effects/Glasshit.ogg'
 	maxhealth = 300
 	explosion_resistance = 5
@@ -539,24 +548,25 @@ About the new airlock wires panel:
 *		one wire for controlling door speed.  When active, dor closes at normal rate.  When cut, door does not close manually.  When pulsed, door attempts to close every tick.
 */
 
-
-
-/obj/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
-	if(!issilicon(usr))
-		if(src.isElectrified())
-			if(!src.justzap)
-				if(src.shock(user, 100))
-					src.justzap = 1
-					spawn (10)
-						src.justzap = 0
-					return
-			else /*if(src.justzap)*/
-				return
-		else if(user.hallucination > 50 && prob(10) && src.operating == 0)
-			to_chat(user,"<span class='danger'>You feel a powerful shock course through your body!</span>")
-			user.halloss += 10
-			user.stunned += 10
+/obj/machinery/door/airlock/proc/try_zap(mob/living/user) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
+	if(src.isElectrified())
+		if(!src.justzap)
+			if(src.shock(user, 100))
+				src.justzap = 1
+				spawn (10)
+					src.justzap = 0
+				return TRUE
+		else /*if(src.justzap)*/
 			return
+	else if(user.hallucination > 50 && prob(10) && src.operating == 0)
+		to_chat(user,"<span class='danger'>You feel a powerful shock course through your body!</span>")
+		user.halloss += 10
+		user.stunned += 10
+		return TRUE
+
+/obj/machinery/door/airlock/bumpopen(mob/living/user) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
+	if(!issilicon(usr))
+		try_zap(user)
 	..(user)
 
 /obj/machinery/door/airlock/bumpopen(mob/living/simple_animal/user as mob)
@@ -704,13 +714,14 @@ About the new airlock wires panel:
 
 
 /obj/machinery/door/airlock/update_icon(state=0, override=0)
-	if(connections in list(NORTH, SOUTH, NORTH|SOUTH))
-		if(connections in list(WEST, EAST, EAST|WEST))
-			set_dir(SOUTH)
+	if(adjust_dir)
+		if(connections in list(NORTH, SOUTH, NORTH|SOUTH))
+			if(connections in list(WEST, EAST, EAST|WEST))
+				set_dir(SOUTH)
+			else
+				set_dir(EAST)
 		else
-			set_dir(EAST)
-	else
-		set_dir(SOUTH)
+			set_dir(SOUTH)
 
 	switch(state)
 		if(0)
@@ -879,6 +890,8 @@ About the new airlock wires panel:
 			if(density && src.arePowerSystemsOn())
 				set_airlock_overlays(AIRLOCK_EMAG)
 				flick("deny", src)
+		else
+			update_icon()
 	return
 
 /obj/machinery/door/airlock/attack_ai(mob/user as mob)
@@ -968,6 +981,7 @@ About the new airlock wires panel:
 	return ..()
 
 /obj/machinery/door/airlock/attack_hand(mob/user as mob)
+
 	if(!istype(usr, /mob/living/silicon))
 		if(src.isElectrified())
 			if(src.shock(user, 100))
@@ -977,6 +991,32 @@ About the new airlock wires panel:
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
 			src.attack_alien(user)
+			return
+
+	if(keypad && !p_open)
+		if(!istype(user, /mob/living/silicon))
+			user.set_machine(src)
+			var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
+			var/message = "Code"
+			if((src.l_set == 0) && (!src.emagged) && (!src.l_setshort))
+				dat += text("<p>\n<b>5-DIGIT PASSCODE NOT SET.<br>ENTER NEW DOOR PASSCODE.</b>")
+			if(src.emagged)
+				dat += text("<p>\n<font color=red><b>LOCKING SYSTE	M ERROR - 1701</b></font>")
+			if(src.l_setshort)
+				dat += text("<p>\n<font color=red><b>ALERT: MEMORY SYSTEM ERROR - 6040 201</b></font>")
+			message = text("[]", src.code)
+			if(!src.locked)
+				message = "*****"
+			dat += text("<HR>\n>[]<BR>\n<A href='?src=\ref[];type=1'>1</A>-<A href='?src=\ref[];type=2'>2</A>-<A href='?src=\ref[];type=3'>3</A><BR>\n<A href='?src=\ref[];type=4'>4</A>-<A href='?src=\ref[];type=5'>5</A>-<A href='?src=\ref[];type=6'>6</A><BR>\n<A href='?src=\ref[];type=7'>7</A>-<A href='?src=\ref[];type=8'>8</A>-<A href='?src=\ref[];type=9'>9</A><BR>\n<A href='?src=\ref[];type=R'>R</A>-<A href='?src=\ref[];type=0'>0</A>-<A href='?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
+
+			if(!locked)
+				dat += "<BR>\n<A href='?src=\ref[src];keypad_toggleopen=1'>Toggle Open/Close</A> <A href='?src=\ref[src];keypad_lock=1'>Lock</A>"
+
+			var/datum/browser/popup = new(user, "keypad_door", "[src]", 300, 280, src)
+			popup.set_content(jointext(dat,null))
+			popup.open()
+
+			onclose(user, "keypad_door")
 			return
 
 	if(src.p_open)
@@ -1005,6 +1045,57 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/Topic(href, href_list)
 	if(..())
 		return 1
+
+	if(keypad)
+		if((usr.stat || usr.restrained()) || (get_dist(src, usr) > 1))
+			return
+
+		src.add_fingerprint(usr)
+
+		if(href_list["keypad_toggleopen"])
+			if (src.allowed(usr))
+				if (src.density)
+					open()
+				else
+					close()
+
+
+		if(href_list["keypad_lock"])
+			if(locked)
+				return
+
+			locked = TRUE
+
+		if(href_list["type"])
+			playsound(src.loc, 'sound/effects/click.ogg', 100, 1)
+			if(href_list["type"] == "E")
+				if((src.l_set == 0) && (length(src.code) == 5) && (!src.l_setshort) && (src.code != "ERROR"))
+					src.l_code = src.code
+					src.l_set = 1
+				else if((src.code == src.l_code) && (src.emagged == 0) && (src.l_set == 1))
+					src.locked = 0
+					update_icon()
+					src.code = null
+				else
+					src.code = "ERROR"
+			else
+				if((href_list["type"] == "R") && (src.emagged == 0) && (!src.l_setshort))
+					src.locked = 1
+					update_icon()
+					src.code = null
+					if(!density)
+						src.close(usr)
+				else
+					src.code += text("[]", href_list["type"])
+					if(length(src.code) > 5)
+						src.code = "ERROR"
+
+
+			for(var/mob/M in viewers(1, src.loc))
+				if((M.client && M.machine == src))
+					src.attack_hand(M)
+				return
+
 
 	var/activate = text2num(href_list["activate"])
 	switch (href_list["command"])
@@ -1078,6 +1169,8 @@ About the new airlock wires panel:
 		return
 	if(!repairing && (istype(C, /obj/item/weapon/weldingtool) && !( src.operating > 0 ) && src.density))
 		var/obj/item/weapon/weldingtool/W = C
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [W] on \the [src]."))
+			return
 		if(W.remove_fuel(0,user))
 			if(!src.welded)
 				src.welded = 1
@@ -1096,6 +1189,8 @@ About the new airlock wires panel:
 				src.p_open = 0
 				playsound(src, C.usesound, 50, 1)
 		else
+			if(trigger_lot_security_system(user, /datum/lot_security_option/intrusion, "Using \the [C] on \the [src] to open the panel."))
+				return
 			src.p_open = 1
 			playsound(src, C.usesound, 50, 1)
 		src.update_icon()
@@ -1125,10 +1220,14 @@ About the new airlock wires panel:
 		if(can_remove_electronics())
 			playsound(src, C.usesound, 75, 1)
 			user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
+			if(trigger_lot_security_system(user, /datum/lot_security_option/intrusion, "Using \the [C] on \the [src] to uninstall the electronics."))
+				return
 			if(do_after(user,40 * C.toolspeed))
 				to_chat(user,"<span class='notice'>You removed the airlock electronics!</span>")
 
 				var/obj/structure/door_assembly/da = new assembly_type(src.loc)
+				if(keypad)
+					da.keypad = TRUE
 				if (istype(da, /obj/structure/door_assembly/multi_tile))
 					da.set_dir(src.dir)
 

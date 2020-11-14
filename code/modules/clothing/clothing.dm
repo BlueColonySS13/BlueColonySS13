@@ -27,6 +27,13 @@
 	drop_sound = 'sound/items/drop/clothing.ogg'
 
 	var/index			//null by default, if set, will change which dmi it uses
+	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
+
+	matter = list("cotton" = 3250)
+
+	price_tag = 30
+
+	unique_save_vars = list("matter") // clothing matter can vary now
 
 /obj/item/clothing/New()
 	..()
@@ -162,7 +169,7 @@
 	else
 		O = src
 
-	user.u_equip(src)
+	user.unEquip(src)
 
 	if (O)
 		user.put_in_hands(O)
@@ -176,6 +183,23 @@
 		var/mob/M = src.loc
 		M.update_inv_ears()
 
+/obj/item/clothing/ears/MouseDrop(var/obj/over_object)
+	if(ishuman(usr))
+		var/mob/living/carbon/human/H = usr
+		// If this covers both ears, we want to return the result of unequipping the primary object, and kill the off-ear one
+		if(slot_flags & SLOT_TWOEARS)
+			var/obj/item/clothing/ears/O = (H.l_ear == src ? H.r_ear : H.l_ear)
+			if(istype(src, /obj/item/clothing/ears/offear))
+				. = O.MouseDrop(over_object)
+				H.drop_from_inventory(src)
+				qdel(src)
+			else
+				. = ..()
+				H.drop_from_inventory(O)
+				qdel(O)
+		else
+			. = ..()
+
 /obj/item/clothing/ears/offear
 	name = "Other ear"
 	w_class = ITEMSIZE_HUGE
@@ -183,12 +207,12 @@
 	icon_state = "block"
 	slot_flags = SLOT_EARS | SLOT_TWOEARS
 
-	New(var/obj/O)
-		name = O.name
-		desc = O.desc
-		icon = O.icon
-		icon_state = O.icon_state
-		set_dir(O.dir)
+/obj/item/clothing/ears/offear/New(var/obj/O)
+	name = O.name
+	desc = O.desc
+	icon = O.icon
+	icon_state = O.icon_state
+	set_dir(O.dir)
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //Gloves
@@ -419,7 +443,8 @@
 		cut_overlay(helmet_light)
 		helmet_light = null
 
-	user.update_inv_head() //Will redraw the helmet with the light on the mob
+	if(user)
+		user.update_inv_head() //Will redraw the helmet with the light on the mob
 
 /obj/item/clothing/head/update_clothing_icon()
 	if (ismob(src.loc))
@@ -652,8 +677,8 @@
 	//convenience var for defining the icon state for the overlay used when the clothing is worn.
 	//Also used by rolling/unrolling.
 	var/worn_state = null
-	valid_accessory_slots = list("utility","armband","decor","over")
-	restricted_accessory_slots = list("utility", "armband")
+	valid_accessory_slots = list("utility","armband","decor","over","holster","insignia")
+	restricted_accessory_slots = list("utility", "armband", "holster")
 
 	var/icon/rolled_down_icon = 'icons/mob/uniform_rolled_down.dmi'
 	var/icon/rolled_down_sleeves_icon = 'icons/mob/uniform_sleeves_rolled.dmi'

@@ -23,6 +23,14 @@
 	material = get_material_by_name("marble")
 	..()
 
+/obj/structure/table/gold
+	icon_state = "plain_preview"
+	color = COLOR_GOLD
+
+/obj/structure/table/gold/New()
+	material = get_material_by_name("gold")
+	..()
+
 /obj/structure/table/reinforced
 	icon_state = "reinf_preview"
 	color = "#EEEEEE"
@@ -54,7 +62,6 @@
 	burn_state = 0 //Burnable
 	burntime = MEDIUM_BURN
 	icon_state = "plain_preview"
-	color = "#824B28"
 
 /obj/structure/table/woodentable/New()
 	material = get_material_by_name("wood")
@@ -212,26 +219,21 @@
 /obj/structure/table/woodentable_reinforced/walnut/New()
 	..()
 	icon_state = "reinf_preview"
-	color = WOOD_COLOR_CHOCOLATE
 	material = get_material_by_name(MATERIAL_WALNUT)
 	reinforced = MATERIAL_WALNUT
 
 /obj/structure/table/woodentable/mahogany/New()
 	..()
-	color = WOOD_COLOR_RICH
 	material = get_material_by_name(MATERIAL_MAHOGANY)
 
 /obj/structure/table/woodentable/maple/New()
 	..()
-	color = WOOD_COLOR_PALE
 	material = get_material_by_name(MATERIAL_MAPLE)
 
 /obj/structure/table/woodentable/ebony/New()
 	..()
-	color = WOOD_COLOR_BLACK
 	material = get_material_by_name(MATERIAL_EBONY)
 
 /obj/structure/table/woodentable/walnut/New()
 	..()
-	color = WOOD_COLOR_CHOCOLATE
 	material = get_material_by_name(MATERIAL_WALNUT)

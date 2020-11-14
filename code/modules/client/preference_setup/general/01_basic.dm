@@ -26,6 +26,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	S["existing_character"]		>> pref.existing_character
 	S["played"]				>> pref.played
 	S["unique_id"]				>> pref.unique_id
+	S["silent_join"]			>> pref.silent_join
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
 	S["real_name"]				<< pref.real_name
@@ -43,8 +44,11 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	S["existing_character"]		<< pref.existing_character
 	S["played"]				<< pref.played
 	S["unique_id"]				<< pref.unique_id
+	S["silent_join"]			<< pref.silent_join
 
 /datum/category_item/player_setup_item/general/basic/delete_character()
+	if(pref.played)
+		pref.characters_created += pref.real_name
 	pref.real_name = null
 	pref.nickname = null
 //	pref.be_random_name = null
@@ -58,9 +62,11 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	pref.metadata = null
 	pref.existing_character = null
 	pref.played = null
+	delete_persistent_inventory(pref.unique_id)
 	pref.unique_id = null
 	if(fdel("data/persistent/emails/[pref.email].sav"))
 		pref.email = null
+	pref.silent_join = null
 
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
@@ -68,7 +74,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	pref.biological_gender  = sanitize_inlist(pref.biological_gender, get_genders(), pick(get_genders()))
 	pref.identifying_gender = (pref.identifying_gender in all_genders_define_list) ? pref.identifying_gender : pref.biological_gender
 	pref.real_name		= sanitize_name(pref.real_name, pref.species, is_FBP())
-	if(!pref.real_name)
+	if(!pref.real_name || (pref.real_name in pref.characters_created))
 		pref.real_name      = random_name(pref.identifying_gender, pref.species)
 
 	if(!pref.birth_year)
@@ -168,6 +174,8 @@ F
 		. += "[pref.birth_day]/[pref.birth_month]/[pref.birth_year]<br><br>"
 
 	. += "<b>Spawn Point</b>:<br> <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
+	. += "<b>Silent Arrival</b>:<br> <a href='?src=\ref[src];silent_join=1'>[(pref.silent_join) ? "Yes" : "No"]</a><br>"
+
 	if(config.allow_Metadata)
 		. += "<b>OOC Notes:</b><br> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
 	. = jointext(.,null)
@@ -177,6 +185,11 @@ F
 		var/raw_name = input(user, "Choose your character's name:", "Character Name")  as text|null
 		if (!isnull(raw_name) && CanUseTopic(user))
 			var/new_name = sanitize_name(raw_name, pref.species, is_FBP())
+
+			if(new_name in pref.characters_created)
+				user << "<span class='warning'>You cannot play this character again. Ahelp if this is in error.</span>"
+				return TOPIC_NOACTION
+
 			if(new_name)
 				pref.real_name = new_name
 				return TOPIC_REFRESH
@@ -300,9 +313,14 @@ F
 		return TOPIC_REFRESH
 
 	else if(href_list["metadata"])
-		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , pref.metadata) as message|null) 
+		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , pref.metadata) as message|null)
 		if(new_metadata && CanUseTopic(user))
 			pref.metadata = new_metadata
+			return TOPIC_REFRESH
+
+	else if(href_list["silent_join"])
+		if(CanUseTopic(user))
+			pref.silent_join = !pref.silent_join
 			return TOPIC_REFRESH
 
 	return ..()

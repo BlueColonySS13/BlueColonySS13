@@ -3,9 +3,10 @@
 /datum/computer_file/data/email_account/proc/save_email()
 	var/full_path = "data/persistent/emails/[login].sav"
 	if(!full_path)			return 0
-	if(!fexists(full_path)) return 0
 
 	var/savefile/S = new /savefile(full_path)
+	if(!fexists(full_path)) return 0
+
 	if(!S)					return 0
 	S.cd = "/"
 
@@ -65,6 +66,7 @@
 	if(isnull(deleted))
 		deleted = list()
 
-
+	if(isnull(max_messages))
+		max_messages = initial(max_messages)
 
 

@@ -1,12 +1,14 @@
 /obj/item/stack/material/animalhide
+	name = "animal hide"
 	drop_sound = 'sound/items/drop/clothing.ogg'
 
 /obj/item/stack/material/animalhide/human
 	name = "human skin"
 	desc = "The by-product of human farming."
 	singular_name = "human skin piece"
-	icon_state = "sheet-hide"
+	icon_state = "sheet-skin"
 	no_variants = FALSE
+	stack_color = COLOR_BROWN
 
 /obj/item/stack/material/animalhide/human
 	amount = 50
@@ -83,8 +85,10 @@
 	name = "hairless hide"
 	desc = "This hide was stripped of it's hair, but still needs tanning."
 	singular_name = "hairless hide piece"
-	icon_state = "sheet-hairlesshide"
+	icon_state = "sheet-skin"
 	no_variants = FALSE
+	stack_color = COLOR_BROWN
+	dyeable = TRUE
 
 /obj/item/stack/material/hairlesshide
 	amount = 50
@@ -93,13 +97,15 @@
 	name = "wet leather"
 	desc = "This leather has been cleaned but still needs to be dried."
 	singular_name = "wet leather piece"
-	icon_state = "sheet-wetleather"
+	icon_state = "sheet-fabric"
 	var/wetness = 30 //Reduced when exposed to high temperautres
 	var/drying_threshold_temperature = 500 //Kelvin to start drying
 	no_variants = FALSE
 	burn_state = 0 //Burnable
 	burntime = 5
 	drop_sound = 'sound/items/drop/clothing.ogg'
+	dyeable = TRUE
+	stack_color = COLOR_DARK_BROWN
 
 /obj/item/stack/material/wetleather
 	amount = 50

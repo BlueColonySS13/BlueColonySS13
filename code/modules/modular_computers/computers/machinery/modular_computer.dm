@@ -27,6 +27,52 @@
 
 	var/obj/item/modular_computer/processor/cpu = null				// CPU that handles most logic while this type only handles power and other specific things.
 
+/obj/machinery/modular_computer/on_persistence_load()
+	// gets cpu
+	var/C = locate(/obj/item/modular_computer/processor) in src
+	if(C)
+		cpu = C
+		cpu.on_persistence_load()
+
+	// adds tesla links
+	var/T = locate(/obj/item/weapon/computer_hardware/tesla_link) in src
+	if(T)
+		tesla_link = T
+
+
+
+	return TRUE
+
+/obj/machinery/modular_computer/get_persistent_metadata()
+	var/list/computer_data = list()
+	if(cpu && cpu.hard_drive)
+		var/obj/item/weapon/computer_hardware/hard_drive/the_hard_drive = cpu.hard_drive
+
+		for(var/datum/computer_file/program/prg in the_hard_drive.stored_files)
+			computer_data += prg.type
+
+	if(!LAZYLEN(computer_data))
+		return FALSE
+
+	return computer_data
+
+/obj/machinery/modular_computer/load_persistent_metadata(computer_data)
+	if(!LAZYLEN(computer_data))
+		return
+
+	if(!cpu || !cpu.hard_drive)
+		return
+
+	for(var/V in computer_data)
+		if(!istype(V, /datum/computer_file/program))
+			continue
+
+		var/rest_prg = new V(src)
+		cpu.hard_drive.stored_files += rest_prg
+
+	return TRUE
+
+
 /obj/machinery/modular_computer/emag_act(var/remaining_charges, var/mob/user)
 	return cpu ? cpu.emag_act(remaining_charges, user) : 0
 
@@ -37,9 +83,13 @@
 	if(!cpu || !cpu.enabled)
 		return
 	if(cpu.active_program)
-		overlays.Add(cpu.active_program.program_icon_state ? cpu.active_program.program_icon_state : screen_icon_state_menu)
+		var/image/I = image(cpu.active_program.program_icon_state ? cpu.active_program.program_icon_state : screen_icon_state_menu)
+		I.plane = PLANE_LIGHTING_ABOVE
+		overlays.Add(I)
 	else
-		overlays.Add(screen_icon_state_menu)
+		var/image/I = image(screen_icon_state_menu)
+		I.plane = PLANE_LIGHTING_ABOVE
+		overlays.Add(I)
 
 // Eject ID card from computer, if it has ID slot with card inside.
 /obj/machinery/modular_computer/verb/eject_id()

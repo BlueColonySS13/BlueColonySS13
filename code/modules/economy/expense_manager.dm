@@ -1,6 +1,6 @@
 /obj/machinery/expense_manager
 	name = "expense manager"
-	desc = "Swipe your ID card to manage expenses for a bank account. Put in the client's ID, not your own."
+	desc = "Swipe your ID card to set up a pay-in-chunks direct debt for a bank account. Useful if customers cannot pay in full. Put in the client's ID, not your own."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "expense"
 	flags = NOBLUDGEON
@@ -17,6 +17,38 @@
 	var/icon_state_active = "expense_1"
 	var/icon_state_inactive = "expense"
 	var/expense_limit = 500000			// highest expense you can set.
+	var/payroll_limit = 15000 // max that can be charged per payroll
+
+	var/business_id = ""
+	var/business = FALSE
+
+	var/owner_name = ""
+	var/owner_uid = ""
+	unique_save_vars = list("business_id", "owner_name", "owner_uid")
+
+	var/current_operator = ""
+
+	dont_save = TRUE
+	table_drag = TRUE
+
+
+
+/obj/machinery/expense_manager/business
+	name = "business expense manager"
+	business = TRUE
+	req_access = list()
+	expense_limit = 800000
+	payroll_limit = 8000
+	dont_save = FALSE
+	circuit = /obj/item/weapon/circuitboard/expense_manager
+
+/obj/machinery/expense_manager/business/examine(mob/user)
+	..()
+	if(expense_limit)
+		to_chat(user, "The expense limit is <b>[expense_limit]CR.</b>")
+	var/datum/business/B = get_business_by_biz_uid(business_id)
+	if(B)
+		to_chat(user, "<b>It is registered to [B.name].</b>")
 
 /obj/machinery/expense_manager/update_icon()
 	if(stored_id)
@@ -27,7 +59,7 @@
 /obj/machinery/expense_manager/police
 	name = "police fine manager"
 	expense_type = /datum/expense/police
-	expense_limit = 10000
+	expense_limit = 100000
 	req_access = list(access_sec_doors)
 
 /obj/machinery/expense_manager/hospital
@@ -40,12 +72,19 @@
 	name = "court injunction manager"
 	expense_type = /datum/expense/law
 	expense_limit = 500000
+	req_access = list(access_judge)
 
 /obj/machinery/expense_manager/attackby(obj/item/I, mob/user)
 
+	if(!I)
+		return
 
 	if (!istype(I, /obj/item/weapon/card/id) && !stored_id)
 		to_chat(user, "\icon[src] <span class='warning'>Error: [src] can only accept identification cards.</span>")
+		return
+
+	if(business && !business_id)
+		set_new_owner(I, user)
 		return
 
 	if(stored_id)
@@ -55,8 +94,10 @@
 	if(insert_id(I, user))
 		var/obj/item/weapon/card/id/iden = user.GetIdCard()
 
-		if(!check_access(iden))
+		if(!iden || !check_access(iden))
 			return
+
+		current_operator = iden.registered_name
 
 		to_chat(user, "You place [I] into [src].")
 		playsound(src, 'sound/machines/chime.ogg', 25)
@@ -65,6 +106,22 @@
 		interact(user)
 	else
 		to_chat(user, "\icon[src] <span class='warning'>Error: Unable to accept ID card, this may be due to incorrect details. Contact an administrator for more information.</span>")
+
+/obj/machinery/expense_manager/proc/set_new_owner(obj/item/O, mob/user)
+	if(!istype(O, /obj/item/weapon/card/id))
+		return
+	var/obj/item/weapon/card/id/I = O
+	var/datum/business/B = get_business_by_owner_uid(I.unique_ID)
+	if(!B)
+		to_chat(usr, "\icon[src]<span class='warning'>No business detected, please register one first.</span>")
+		return
+	if(!dept_acc_by_id(B.business_uid))
+		to_chat(usr, "\icon[src]<span class='warning'>No business bank account detected, please contact an administrator.</span>")
+		return
+	to_chat(usr, "\icon[src]<span class='notice'>Business set to [B.name].</span>")
+	business_id = B.business_uid
+	owner_uid = I.unique_ID
+	owner_name = I.registered_name
 
 /obj/machinery/expense_manager/proc/insert_id(obj/item/weapon/card/id/I, mob/user)
 	current_account = get_account(I.associated_account_number)
@@ -137,6 +194,10 @@
 		to_chat(user, "\icon[src] <span class='warning'>Error: You do not have access to this terminal.</span>")
 		return
 
+	if(!iden || !iden.registered_name || !iden.unique_ID)
+		to_chat(user, "\icon[src] <span class='warning'>Error: You need a valid ID card to use this terminal.</span>")
+		return
+
 	interact(user)
 	updateDialog()
 
@@ -167,13 +228,15 @@
 			var/list/datum/expense/expense_list = list()
 
 			for(var/datum/expense/E in current_account.expenses)
+				if(business && (E.department != business_id))
+					continue
 				if (istype(E, expense_type))
 					expense_list += E
 
 			//show expenses
 			dat += "<br><h2>Debts:</h2><hr>"
 
-			if(!isemptylist(expense_list))
+			if(LAZYLEN(expense_list))
 				for(var/datum/expense/E in expense_list)
 
 					dat += "<fieldset style='border: 2px solid [E.color]; display: inline'>"
@@ -183,14 +246,20 @@
 					dat += "<br>Current Debt Left: [E.amount_left] credits."
 					dat += "<br>Added By: [E.added_by]"
 					dat += "<br>Creation Date: [E.creation_date]"
+					var/dept_name = dept_name_by_id(E.department)
+					if(dept_name)
+						dat += "<br>Department: [dept_name]"
+
 					dat += "<br>Status: [E.active ? "Active" : "Inactive"]<br><br>"
+
+
 
 					dat += "<br>Comments: <i>[E.comments]</i><br>"
 
 					dat += "<a href='?src=\ref[src];choice=edit_expense;expense=\ref[E]''>Edit Expense</a> "
 					dat += "<a href='?src=\ref[src];choice=remove_expense;expense=\ref[E]''>Remove Expense</a> "
 					dat += "<a href='?src=\ref[src];choice=toggle_expense;expense=\ref[E]'>Toggle Expense</a> "
-
+					dat += "<a href='?src=\ref[src];choice=adjust_payroll;expense=\ref[E]'>Adjust Per-Payroll</a> "
 					dat += "</fieldset>"
 
 					dat += "<br>"
@@ -205,6 +274,7 @@
 		onclose(user, "expense_machine")
 
 /obj/machinery/expense_manager/proc/add_new_expense(mob/user)
+
 	var/expense_purpose = sanitize(input("Enter the purpose of this expense.", "Expense Purpose") as text)
 	if(!expense_purpose) return
 
@@ -217,28 +287,66 @@
 	if(!expense_commments) return
 
 
-	var/new_expense = create_expense(expense_type, expense_purpose, expense_commments, expense_amount, user.name, user.ckey)
+	var/datum/expense/new_expense = create_expense(expense_type, expense_purpose, expense_commments, expense_amount, user.name, user.ckey)
+	if(!new_expense) return
+
+	if(business && business_id)
+		var/datum/business/B = get_business_by_biz_uid(business_id)
+		if(B)
+			new_expense.department = B.business_uid
 
 	current_account.expenses += new_expense
 
+	var/datum/money_account/M = dept_acc_by_id(new_expense.department)
+	if(M)
+		M.add_transaction_log("[new_expense.name]: New Expense", "Expense registered to [current_account.owner_name]'s account authorised by [current_operator] (Charged Account ID: [current_account.account_number]). | Amount: [expense_amount]CR | Purpose: [expense_purpose]", 0)
+		current_account.add_transaction_log("[new_expense.name]: New Expense", "Received new expense from [M.owner_name] authorised by [current_operator] (Charging Account ID: [M.account_number]). | Amount: [expense_amount]CR | Purpose: [expense_purpose]", 0)
+		log_money(user, "added expense to [current_account.owner_name]: [new_expense.name]. (Charging Account ID: [M.account_number]). | Amount: [expense_amount]CR | Purpose: [expense_purpose]", current_account.account_number, current_account.owner_name, expense_amount)
+
 
 /obj/machinery/expense_manager/proc/remove_expense(mob/user, var/datum/expense/E)
+	if(!E)
+		return
+
 	var/choice = alert(user,"Would you like to remove this expense?","Remove Expense","No","Yes")
 	if(choice == "Yes")
 		current_account.expenses -= E
+
+		var/datum/money_account/M = dept_acc_by_id(E.department)
+		if(M)
+			M.add_transaction_log("[E.name]: Removed Expense", "Expense removed from [current_account.owner_name]'s account authorised by [current_operator]", 0)
+			current_account.add_transaction_log("[E.name]: Removed Expense", "Expense removed: [M.owner_name] authorised by [current_operator] (Charging Account ID: [M.account_number])", 0)
+			log_money(user, "[E.name]: Removed expense from [current_account.owner_name]: [E.name]. (Charging Account ID: [M.account_number]), current_account.account_number, current_account.owner_name", 0)
 		qdel(E)
-	else
-		return
+
+
+		return TRUE
+
+	return FALSE
 
 /obj/machinery/expense_manager/proc/suspend_expense(mob/user, var/datum/expense/E)
-	var/choice = alert(user,"[E.active ? "Suspend" : "Un-suspend"] this expense?","Suspend Expense","Suspend","Un-Suspend")
-	if(choice == "Suspend")
-		if(E.active)
-			E.active = 0
-	else
-		E.active = 1
+	if(!E)
+		return
+
+	var/choice = alert(user,"[E.active ? "Suspend" : "Un-suspend"] this expense?","Suspend Expense","Yes","No")
+	if(choice == "Yes")
+		E.active = !E.active
+
+		var/datum/money_account/M = dept_acc_by_id(E.department)
+		if(M)
+			M.add_transaction_log("[E.name]: [E.active ? "un" : ""]suspended Expense", "Expense [E.active ? "un" : ""]suspended from [current_account.owner_name]'s account authorised by [current_operator] (Charged Account ID: [current_account.account_number]).", 0)
+			current_account.add_transaction_log("[E.name]: [E.active ? "un" : ""]suspended Expense", "Expense [E.active ? "un" : ""]suspended: Expense from [M.owner_name], authorised by [current_operator] (Charging Account ID: [M.account_number]).", 0)
+			log_money(user, "suspended expense to [current_account.owner_name]: [E.name]. ", current_account.account_number, current_account.owner_name, 0)
+
+		return
+
+
+	return FALSE
 
 /obj/machinery/expense_manager/proc/edit_expense(mob/user, var/datum/expense/E)
+	if(!E)
+		return
+
 	var/expense_purpose = sanitize_text(input(usr, "Enter the purpose of this expense.", "Expense Purpose", E.name)  as text,1,25)
 	if(!expense_purpose) return
 
@@ -255,6 +363,15 @@
 	if(!(user.ckey in E.ckey_edit_list))
 		E.ckey_edit_list += user.ckey
 
+	E.cost_per_payroll = Clamp(E.cost_per_payroll, 0, E.amount_left)
+
+	var/datum/money_account/M = dept_acc_by_id(E.department)
+	if(M)
+		M.add_transaction_log("[E.name]: Edited Expense", "Edited Expense on [current_account.owner_name]'s account authorised by [current_operator] (Charged Account ID: [current_account.account_number]). | Amount: [expense_amount]CR | Purpose: [expense_purpose]", 0)
+		current_account.add_transaction_log("[E.name]: Suspended Expense", "Expense edited: Expense from [M.owner_name] edited, authorised by [current_operator] (Charging Account ID: [M.account_number]) | Amount: [expense_amount]CR | Purpose: [expense_purpose]", 0)
+		log_money(user, "edited expense to [current_account.owner_name]: [E.name]. | Amount: [expense_amount]CR | Purpose: [expense_purpose] | Comments: [expense_commments]", current_account.account_number, current_account.owner_name, 0)
+
+
 /obj/machinery/expense_manager/proc/remove_all_expenses(mob/user)
 
 	if(!current_account)
@@ -263,14 +380,31 @@
 		var/choice = alert(user,"Delete all expenses from account? This cannot be undone!","Delete Expense","No","Yes")
 		if(choice == "Yes")
 			for(var/datum/expense/E in current_account.expenses)
+				if(business && (E.department != business_id))
+					continue
 				if (istype(E, expense_type))
 					current_account.expenses -= E
+
+			var/datum/money_account/M = dept_acc_by_id(business_id)
+			if(M)
+				M.add_transaction_log("Expense Removal", "All expenses removed for [current_account.owner_name]'s account authorised by [current_operator] (Charged Account ID: [current_account.account_number]).", 0)
+				current_account.add_transaction_log("Expense Removal", "All expense removed: All expenses from [M.owner_name] removed, authorised by [current_operator] (Charging Account ID: [M.account_number]).", 0)
+				log_money(user, "all expenses removed from [current_account.owner_name]. ", current_account.account_number, current_account.owner_name, 0)
+
 		else if(choice == "No")
 			return
 
 /obj/machinery/expense_manager/Topic(var/href, var/href_list)
 	if(..())
 		return 1
+
+	var/obj/item/weapon/card/id/iden = usr.GetIdCard()
+
+	if(!check_access(iden))
+		return
+
+	current_operator = iden.registered_name
+
 	if(href_list["choice"])
 		switch(href_list["choice"])
 
@@ -284,6 +418,27 @@
 			if("toggle_expense")
 				var/E = locate(href_list["expense"])
 				suspend_expense(usr, E)
+
+			if("adjust_payroll")
+				var/E = locate(href_list["expense"])
+				if(!E) return
+				var/datum/expense/exp = E
+				var/payroll_amt = sanitize_integer(input(usr, "Enter expense amount per hour (in credits). Max: [payroll_limit]", "Expense Amount", exp.cost_per_payroll)  as num|null, 1, 1000)
+				if(!payroll_amt || (payroll_amt > payroll_limit))
+					to_chat(usr, "Please enter a valid amount!")
+					return
+
+				if(payroll_amt > exp.amount_left)
+					payroll_amt = exp.amount_left
+
+				var/datum/money_account/M = dept_acc_by_id(exp.department)
+				if(M)
+					M.add_transaction_log("[exp.name]: Expense Adjustment", "Expense payroll rate adjustment to [payroll_amt]CR [current_account.owner_name]'s account authorised by [current_operator]", 0)
+					current_account.add_transaction_log("[exp.name]: Adjusted Expense", "Expense payroll adjusted to [payroll_amt]CR: [M.owner_name] authorised by [current_operator] (Charging Account ID: [M.account_number])", 0)
+					log_money(usr, "[exp.name]: Changed payroll rate of [current_account.owner_name] to [payroll_amt]CR: [exp.name]. (Charging Account ID: [M.account_number]), current_account.account_number, current_account.owner_name", 0)
+
+
+				exp.cost_per_payroll = payroll_amt
 
 			if("edit_expense")
 				var/E = locate(href_list["expense"])

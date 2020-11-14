@@ -17,6 +17,7 @@
 	usesound = 'sound/items/ratchet.ogg'
 	toolspeed = 1
 	drop_sound = 'sound/items/drop/sword.ogg'
+	price_tag = 5
 
 /obj/item/weapon/wrench/is_wrench()
 	return TRUE

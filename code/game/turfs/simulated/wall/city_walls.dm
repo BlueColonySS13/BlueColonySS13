@@ -2,8 +2,7 @@
 
 
 /turf/simulated/wall/police
-	paint_color = "#44474d"
-	stripe_color = COLOR_NT_RED
+	paint_color = "#436b8e"
 
 /turf/simulated/wall/disco
 	paint_color = "#312b38"
@@ -46,3 +45,6 @@
 /turf/simulated/wall/iron/blue
 	stripe_color = COLOR_BLUE_GRAY
 //	stripes_glow = TRUE
+
+/turf/simulated/wall/iron/silver_paint
+	paint_color = "#C0C0C0"

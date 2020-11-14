@@ -150,9 +150,9 @@
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.delete_character(S)
 	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.save_character(S)
-	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.sanitize_character()
+	for(var/datum/category_item/player_setup_item/PI in items)
+		PI.save_character(S)
 
 /datum/category_group/player_setup_category/proc/load_preferences(var/savefile/S)
 	for(var/datum/category_item/player_setup_item/PI in items)

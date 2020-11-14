@@ -311,6 +311,12 @@ update_flag
 		onclose(usr, "canister")
 		return
 
+	var/mob/user = usr
+	if(user && user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>You're not confident enough to mess with this right now.</span>")
+		return 0
+
+
 	if(href_list["toggle"])
 		if (valve_open)
 			if (holding)

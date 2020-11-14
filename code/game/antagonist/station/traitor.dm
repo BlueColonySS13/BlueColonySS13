@@ -3,15 +3,26 @@ var/datum/antagonist/traitor/traitors
 // Inherits most of its vars from the base datum.
 /datum/antagonist/traitor
 	id = MODE_TRAITOR
-	protected_jobs = list("Police Officer", "Prison Warden", "Detective", "Judge", "Chief of Police", "Mayor")
+	protected_jobs = list("Prisoner", "Police Officer", "Prison Warden", "Detective", "Judge", "Chief of Police", "Mayor")
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
+	restricted_jobs = list("Prisoner", "AI", "Cyborg","Mayor","City Clerk", "Chief of Police","Police Officer",\
+	"Prison Warden","Detective","Medical Director","Maintenance Director","Research Director","Judge")
 	can_speak_aooc = TRUE
+	antag_text = "As a traitor, you are a solo operative who works on behalf of local syndicate contractors to perform certain roles. \
+	You are still expected to escalate accordingly. Try to make sure other players have fun! AOOC is enabled, but please do not metagame. \
+	<b>This role has uplink items.</b>"
+	allow_lobbyjoin = TRUE
+	police_per_antag = 3
+
+	minimum_player_age = 7
+
 
 /datum/antagonist/traitor/auto
 	id = MODE_AUTOTRAITOR
 	allow_latejoin = 1
 	hard_cap = 4
 	initial_spawn_target = 4
+	allow_lobbyjoin = FALSE
 
 /datum/antagonist/traitor/New()
 	..()

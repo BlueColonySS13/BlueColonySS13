@@ -42,12 +42,35 @@
 	var/list/camera_computers_using_this = list()
 
 	var/on_wall = 1
+	var/autoname = FALSE
+	var/number = 0
+
+	unique_save_vars = list("name", "c_tag")
+
+/obj/machinery/camera/apply_visual(mob/living/carbon/human/M)
+	if(!M.client)
+		return
+	M.overlay_fullscreen("fishbed",/obj/screen/fullscreen/fishbed)
+	M.overlay_fullscreen("scanlines",/obj/screen/fullscreen/scanline)
+	M.overlay_fullscreen("whitenoise",/obj/screen/fullscreen/noise)
+	M.machine_visual = src
+	return 1
+
+/obj/machinery/camera/remove_visual(mob/living/carbon/human/M)
+	if(!M.client)
+		return
+	M.clear_fullscreen("fishbed",0)
+	M.clear_fullscreen("scanlines")
+	M.clear_fullscreen("whitenoise")
+	M.machine_visual = null
+	return 1
 
 /obj/machinery/camera/New()
 	wires = new(src)
 	assembly = new(src)
 	assembly.state = 4
 	client_huds |= global_hud.whitense
+	update_icon()
 
 	/* // Use this to look for cameras that have the same c_tag.
 	for(var/obj/machinery/camera/C in cameranet.cameras)
@@ -62,6 +85,27 @@
 			error("[src.name] in [get_area(src)]has errored. [src.network?"Empty network list":"Null network list"]")
 		ASSERT(src.network)
 		ASSERT(src.network.len > 0)
+
+	if(autoname && (c_tag == initial(c_tag)))
+		var/area/area_for_name = get_area(src)
+
+		if(area_for_name)
+			number = 0
+
+			for(var/obj/machinery/camera/C in area_for_name)
+				if(C != src)
+					number++
+
+			if(number)
+				number++
+
+			var/new_name = area_for_name.name
+
+			c_tag = "[new_name][number ? " #[number]" : " #1"]"
+
+
+		invalidateCameraCache()
+
 	..()
 
 /obj/machinery/camera/Destroy()
@@ -315,14 +359,15 @@
 	if(on_wall)
 		pixel_y = 0
 		pixel_x = 0
-		var/turf/T = get_step(get_turf(src), src.dir)
+		var/turf/T = get_step(get_turf(src), turn(src.dir, 180))
 		if(istype(T, /turf/simulated/wall))
-			if(src.dir == NORTH)
+			if(dir == SOUTH)
 				pixel_y = 21
-			else if(src.dir == EAST)
+			else if(dir == WEST)
 				pixel_x = 10
-			else if(src.dir == WEST)
+			else if(dir == EAST)
 				pixel_x = -10
+
 
 	if (!status || (stat & BROKEN))
 		icon_state = "[initial(icon_state)]1"
@@ -386,7 +431,6 @@
 	for(var/obj/machinery/camera/C in oview(4, M))
 		if(C.can_use())	// check if camera disabled
 			return C
-			break
 	return null
 
 /proc/near_range_camera(var/mob/M)
@@ -394,7 +438,6 @@
 	for(var/obj/machinery/camera/C in range(4, M))
 		if(C.can_use())	// check if camera disabled
 			return C
-			break
 
 	return null
 

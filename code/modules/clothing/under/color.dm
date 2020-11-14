@@ -32,11 +32,23 @@
 
 /obj/item/clothing/under/color/orange
 	name = "orange jumpsuit"
-	desc = "It's standardized prisoner-wear. Its suit sensors are permanently set to the \"Tracking\" position."
 	icon_state = "orange"
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/color/orange/prisoner
+	name = "orange prison jumpsuit"
+	desc = "It's standardized prisoner-wear. Its suit sensors are permanently set to the \"Tracking\" position."
+	icon_state = "prisoneralt"
 	has_sensor = 2
 	sensor_mode = 3
-	rolled_sleeves = 0
+
+/obj/item/clothing/under/color/orange/prisoneralt
+	name = "orange prison jumpsuit"
+	desc = "It's standardized prisoner-wear. Its suit sensors are permanently set to the \"Tracking\" position."
+	icon_state = "prisoneralt2"
+	has_sensor = 2
+	sensor_mode = 3
+
 
 /obj/item/clothing/under/color/pink
 	name = "pink jumpsuit"
@@ -49,9 +61,16 @@
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/color/white
-	name = "white jumpsuit"
+	name = "jumpsuit"
 	icon_state = "white"
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/color/white/prisoner
+	name = "striped prison jumpsuit"
+	desc = "It's standardized prisoner-wear. Its suit sensors are permanently set to the \"Tracking\" position."
+	icon_state = "prisoner"
+	has_sensor = 2
+	sensor_mode = 3
 
 /obj/item/clothing/under/color/yellow
 	name = "yellow jumpsuit"

@@ -28,6 +28,7 @@ var/const/ROBOTICIST			=(1<<8)
 var/const/XENOBIOLOGIST			=(1<<9)
 var/const/MEDICALINTERN			=(1<<10)
 var/const/SCIENCEINTERN			=(1<<11)
+var/const/SCIGUARD				=(1<<12)
 
 var/const/CIVILIAN				=(1<<2)
 
@@ -36,7 +37,7 @@ var/const/BARTENDER				=(1<<1)
 var/const/BOTANIST				=(1<<2)
 var/const/CHEF					=(1<<3)
 var/const/JANITOR				=(1<<4)
-var/const/JOURNALIST				=(1<<5)
+var/const/JOURNALIST			=(1<<5)
 var/const/QUARTERMASTER			=(1<<6)
 var/const/CARGOTECH				=(1<<7)
 var/const/MINER				=(1<<8)
@@ -50,6 +51,7 @@ var/const/BARBER				=(1<<14)
 var/const/SECRETARY				=(1<<15)
 var/const/JUDGE				=(1<<16)
 var/const/PRISONER				=(1<<17)
+var/const/MANAGER         	     =(1<<18)
 
 var/const/GOVLAW				=(1<<3)
 
@@ -65,8 +67,8 @@ var/list/assistant_occupations = list(
 
 
 var/list/gov_positions = list(
-	"NanoTrasen Sector Administrator",
-	"Nanotrasen Representative",
+	"Governor",
+	"Government Representative",
 	"PDSI Agent",
 	"President"
 )
@@ -75,27 +77,27 @@ var/list/command_positions = list(
 	"Mayor",
 	"City Clerk",
 	"Chief of Police",
-	"Fire Chief",
+	"Maintenance Director",
 	"Judge",
-	"Factory Manager",
 	"Research Director",
-	"Chief Medical Officer"
+	"Medical Director"
 )
 
 
 var/list/engineering_positions = list(
-	"Fire Chief",
-	"Firefighter",
-	"Paramedic"
+	"Maintenance Director",
+	"Maintenance Worker",
+	"Sanitation Technician"
 )
 
 
 var/list/medical_positions = list(
-	"Chief Medical Officer",
+	"Medical Director",
 	"Doctor",
 	"Geneticist",
 	"Psychiatrist",
 	"Chemist",
+	"Paramedic",
 	"Medical Intern"
 )
 
@@ -119,16 +121,11 @@ var/list/cargo_positions = list(
 var/list/civilian_positions = list(
 	"City Clerk",
 	"Judge",
-	"Bartender",
-	"Botanist",
-	"Chef",
-	"Sanitation Technician",
-	"Journalist",
 	"Defense Attorney",
 	"Chaplain",
 	"Civilian",
-	"Barber",
-	"City Hall Secretary"
+	"City Hall Guard",
+	"City Hall Secretary",
 )
 
 
@@ -137,7 +134,6 @@ var/list/security_positions = list(
 	"Prison Warden",
 	"Detective",
 	"Police Officer",
-	"City Hall Guard",
 	"District Prosecutor"
 )
 

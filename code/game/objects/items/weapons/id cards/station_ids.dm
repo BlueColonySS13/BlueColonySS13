@@ -132,7 +132,7 @@
 
 /obj/item/weapon/card/id/initialize()
 	. = ..()
-	var/datum/job/J = job_master.GetJob(rank)
+	var/datum/job/J = SSjobs.GetJob(rank)
 	if(J)
 		access = J.get_access()
 
@@ -281,8 +281,8 @@
 	icon_state = "medGold"
 	primary_color = rgb(189,237,237)
 	secondary_color = rgb(255,223,127)
-	assignment = "Chief Medical Officer"
-	rank = "Chief Medical Officer"
+	assignment = "Medical Director"
+	rank = "Medical Director"
 	job_access_type = /datum/job/cmo
 
 /obj/item/weapon/card/id/security
@@ -330,8 +330,8 @@
 	job_access_type = /datum/job/engineer
 */
 /obj/item/weapon/card/id/engineering/atmos
-	assignment = "Firefighter"
-	rank = "Firefighter"
+	assignment = "Maintenance Worker"
+	rank = "Maintenance Worker"
 	job_access_type = /datum/job/atmos
 
 /obj/item/weapon/card/id/engineering/head
@@ -340,8 +340,8 @@
 	icon_state = "engGold"
 	primary_color = rgb(189,94,0)
 	secondary_color = rgb(255,223,127)
-	assignment = "Fire Chief"
-	rank = "Fire Chief"
+	assignment = "Maintenance Director"
+	rank = "Maintenance Director"
 	job_access_type = /datum/job/chief_engineer
 
 /obj/item/weapon/card/id/science

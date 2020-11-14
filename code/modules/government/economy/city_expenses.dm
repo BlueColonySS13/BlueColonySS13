@@ -4,11 +4,12 @@
 
 /datum/expense/nanotrasen
 	name = "NanoTrasen Income"	// nanotrasen's base expense cannot be removed. sorry!
-	cost_per_payroll = 500
+	cost_per_payroll = 9000
 	comments = "Nanotrasen will recieve an allowance from the city's earnings."
 	can_remove = FALSE
 	direct_debit = TRUE
-	charge_department = "Nanotrasen"
+	department = DEPT_NANOTRASEN
+	charge_department = DEPT_COLONY
 
 /datum/expense/nanotrasen/New()
 	..()
@@ -55,6 +56,20 @@
 		persistent_economy.antivirus = FALSE
 	else
 		persistent_economy.antivirus = TRUE
+
+	return 1
+
+/datum/expense/nanotrasen/external_defense/meteor_proof
+	name = "Meteor Proofing"
+	cost_per_payroll = 350
+	comments = "This will protect the city from the Gr3y.T1d3 trojan that causes jailbreaks and other city chaos. \
+	 Covers upgrades that combats the latest versions of this exploit."
+
+/datum/expense/nanotrasen/external_defense/meteor_proof/do_effect()
+	if(!active)
+		persistent_economy.meteor_proof = FALSE
+	else
+		persistent_economy.meteor_proof = TRUE
 
 	return 1
 

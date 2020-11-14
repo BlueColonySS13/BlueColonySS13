@@ -177,13 +177,13 @@
 	icon_state = "lawyer_purp_skirt"
 
 /obj/item/clothing/under/lawyer/oldman
-	name = "Old Man's Suit"
+	name = "old man's suit"
 	desc = "A classic suit for the older gentleman, with built in back support."
 	icon_state = "oldman"
 	item_state_slots = list(slot_r_hand_str = "johnny", slot_l_hand_str = "johnny")
 
 /obj/item/clothing/under/oldwoman
-	name = "Old Woman's Attire"
+	name = "old woman's attire"
 	desc = "A typical outfit for the older woman, a lovely cardigan and comfortable skirt."
 	icon_state = "oldwoman"
 	item_state_slots = list(slot_r_hand_str = "johnny", slot_l_hand_str = "johnny")

@@ -1029,6 +1029,7 @@ Just a object used in constructing fire alarms
 	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 6
+	table_drag = TRUE
 
 /obj/machinery/partyalarm/attack_hand(mob/user as mob)
 	if(user.stat || stat & (NOPOWER|BROKEN))

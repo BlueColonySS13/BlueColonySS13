@@ -149,6 +149,15 @@
 
 /mob/living/carbon/human/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
 	switch(message_mode)
+		if("Dummy")
+			if(!src.restrained())
+				var/obj/item/D = get_active_hand()
+				if (istype(D, /obj/item/toy/dummy))
+					var/obj/item/toy/dummy/DumDum = D
+					DumDum.add_fingerprint(src)
+					DumDum.say_thing(src, message)
+					return 1// if you speak into the dummy, you don't speak.
+
 		if("intercom")
 			if(!src.restrained())
 				for(var/obj/item/device/radio/intercom/I in view(1))

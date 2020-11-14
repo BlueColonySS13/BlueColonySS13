@@ -3,7 +3,7 @@
 	desc = "A small electronic device able to ignite combustable substances."
 	icon_state = "igniter"
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 50, "waste" = 10)
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 50, "copper" = 10)
 
 	secured = 1
 	wires = WIRE_RECEIVE
@@ -32,6 +32,11 @@
 
 
 /obj/item/device/assembly/igniter/attack_self(mob/user as mob)
+
+	if(user && user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>You can't bring yourself to do this.</span>")
+		return 0
+
 	activate()
 	add_fingerprint(user)
 	return

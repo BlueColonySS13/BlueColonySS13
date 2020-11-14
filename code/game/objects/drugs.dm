@@ -6,7 +6,6 @@
 	item_state = "powder"
 	amount_per_transfer_from_this = 2
 	possible_transfer_amounts = 2
-	flags = OPENCONTAINER
 	w_class = ITEMSIZE_TINY
 	volume = 50
 
@@ -97,8 +96,8 @@
 	w_class = ITEMSIZE_SMALL
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "grinder"
-	matter = list("glass" = 30, DEFAULT_WALL_MATERIAL = 30)
-	
+	matter = list("plastic" = 30)
+
 // To do: Make the grinder icon a bit lighter, so we can make them multi-colored.
 
 /obj/item/weapon/grinder/attackby(var/obj/item/weapon/W, var/mob/living/user)

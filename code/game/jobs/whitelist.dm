@@ -136,7 +136,7 @@ var/list/whitelist = list()
 		return CLASS_WORKING
 
 
-	return CLASS_WORKING
+
 
 
 

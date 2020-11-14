@@ -11,6 +11,11 @@
 	endWhen = worst_case_end()
 
 /datum/event/meteor_wave/announce()
+	if(persistent_economy && persistent_economy.meteor_proof)
+		command_announcement.Announce("Meteors have been detected on collision course to the colony and were destroyed pre-emptively.", "Meteor Alert")
+		kill()
+		return
+
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
 			command_announcement.Announce("Meteors have been detected on collision course with the colony.", "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')

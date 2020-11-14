@@ -1,0 +1,167 @@
+"aa" = (/turf/unsimulated/mineral,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ab" = (/turf/simulated/floor/water/deep,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ac" = (/turf/simulated/wall/iron,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ad" = (/obj/structure/window/framed{icon_state = "framewindow"; dir = 1},/obj/structure/curtain/open/color{color = "#000080"},/obj/structure/grille,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ae" = (/obj/structure/window/framed{icon_state = "framewindow"; dir = 1},/obj/structure/curtain/open/color{color = "grey"},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"af" = (/turf/simulated/floor/water,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ag" = (/obj/structure/bed/chair/sofa/corner{tag = "icon-sofacorner (NORTH)"; icon_state = "sofacorner"; dir = 1},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ah" = (/obj/structure/bed/chair/sofa/left,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ai" = (/obj/machinery/light/flamp,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aj" = (/obj/structure/painting/random{pixel_y = 32},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ak" = (/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"al" = (/obj/structure/table/woodentable,/obj/item/weapon/paper_bin,/obj/item/weapon/pen,/obj/machinery/libraryscanner{pixel_y = 15},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"am" = (/obj/structure/undies_wardrobe,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"an" = (/obj/structure/closet/cabinet,/obj/item/clothing/under/pj/blue,/obj/item/clothing/under/pj/red,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ao" = (/obj/structure/bed/chair/sofa{tag = "icon-sofamiddle (EAST)"; icon_state = "sofamiddle"; dir = 4},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ap" = (/obj/structure/table/woodentable,/turf/simulated/floor/carpet/sblucarpet,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aq" = (/obj/machinery/computer/security/wooden_tv/entertainment,/turf/simulated/floor/carpet/sblucarpet,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ar" = (/turf/simulated/floor/carpet/sblucarpet,/area/planets/Geminus/indoor/vr/psychtreatment)
+"as" = (/obj/structure/bed/chair/wood{dir = 4},/obj/effect/landmark/virtual_reality{name = "Psychiatric Rehabilitation Simulation"},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"at" = (/obj/structure/table/woodentable,/obj/machinery/modular_computer/console/preset/civilian{icon_state = "console"; dir = 8},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"au" = (/obj/item/clothing/shoes/slippers,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"av" = (/turf/simulated/floor/carpet/bcarpet,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aw" = (/obj/machinery/light/flamp,/turf/simulated/floor/carpet/bcarpet,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ax" = (/obj/item/weapon/stool/padded,/turf/simulated/floor/carpet/sblucarpet,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ay" = (/mob/living/simple_animal/cat/fluff{name = "Nina"},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"az" = (/obj/structure/simple_door/wood,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aA" = (/obj/item/weapon/bedsheet,/obj/structure/bed/padded,/turf/simulated/floor/carpet/bcarpet,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aB" = (/obj/structure/bed/chair/sofa/corner{tag = "icon-sofacorner (NORTH)"; icon_state = "sofacorner"; dir = 4},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aC" = (/obj/structure/bed/chair/sofa/left{tag = "icon-sofaend_left (WEST)"; icon_state = "sofaend_left"; dir = 1},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aD" = (/obj/structure/dogbed{name = "pet bed"},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aE" = (/obj/structure/device/piano{icon_state = "minimoog"; dir = 1},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aF" = (/obj/structure/table/woodentable,/obj/item/device/violin,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aG" = (/obj/machinery/computer/security/wooden_tv/entertainment,/obj/structure/table/woodentable,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aH" = (/obj/structure/window/reinforced,/obj/structure/closet/wardrobe/white,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aI" = (/obj/machinery/door/window/southleft,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aJ" = (/obj/structure/bookcase{pixel_y = 6},/obj/item/weapon/book/manual/security_space_law,/obj/item/weapon/book/manual/sop,/obj/item/weapon/book/manual/barman_recipes,/obj/structure/window/reinforced,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aK" = (/obj/structure/closet/secure_closet/freezer/fridge,/obj/item/weapon/reagent_containers/food/snacks/meat{name = "beef"},/obj/item/weapon/reagent_containers/food/snacks/meat{name = "beef"},/obj/item/weapon/reagent_containers/food/snacks/meat{name = "beef"},/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aL" = (/obj/structure/sink/kitchen{name = "kitchen washing sink"; pixel_y = 32},/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aM" = (/obj/machinery/washing_machine,/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aN" = (/obj/structure/table/glass,/obj/structure/flora/pottedplant/thinbush{pixel_y = 15},/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aO" = (/obj/structure/table/glass,/obj/item/clothing/suit/towel/random,/turf/simulated/floor/tiled/freezer,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aP" = (/obj/structure/sink{name = "interior sink"; pixel_y = 32},/turf/simulated/floor/tiled/freezer,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aQ" = (/obj/structure/toilet{dir = 8},/turf/simulated/floor/tiled/freezer,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aR" = (/obj/structure/table/marble,/obj/machinery/microwave,/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aS" = (/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aT" = (/obj/structure/simple_door/wood,/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aU" = (/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aV" = (/obj/structure/simple_door/wood,/turf/simulated/floor/tiled/freezer,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aW" = (/turf/simulated/floor/tiled/freezer,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aX" = (/obj/structure/table/glass,/obj/item/weapon/soap,/obj/structure/mirror{dir = 4; pixel_x = 28; pixel_y = 0},/obj/item/weapon/razor,/turf/simulated/floor/tiled/freezer,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aY" = (/obj/structure/table/marble,/obj/item/weapon/material/kitchen/utensil/fork,/obj/item/weapon/material/kitchen/utensil/spoon,/obj/item/weapon/material/kitchen/utensil/spoon,/obj/item/weapon/material/kitchen/utensil/fork,/obj/item/weapon/material/kitchen/utensil/spoon,/obj/item/weapon/material/kitchen/utensil/spoon,/obj/item/weapon/material/knife,/obj/item/weapon/material/knife,/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/vr/psychtreatment)
+"aZ" = (/obj/structure/table/marble,/obj/item/weapon/material/kitchen/rollingpin,/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ba" = (/obj/machinery/light/small{dir = 4},/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bb" = (/obj/machinery/light/flamp,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bc" = (/obj/machinery/light/small{dir = 8; pixel_x = 0},/turf/simulated/floor/tiled/freezer,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bd" = (/obj/structure/curtain/open/shower,/obj/machinery/shower,/turf/simulated/floor/tiled/freezer,/area/planets/Geminus/indoor/vr/psychtreatment)
+"be" = (/obj/structure/window/framed{icon_state = "framewindow"; dir = 1},/obj/structure/curtain/open/color{color = "grey"},/obj/structure/grille,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bf" = (/obj/structure/curtain/open/color{color = "grey"},/obj/structure/window/framed,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bg" = (/obj/structure/simple_door/wood,/turf/simulated/floor/carpet/bcarpet,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bh" = (/obj/structure/sign/directions/roomnum,/turf/simulated/wall/iron,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bi" = (/obj/structure/window/framed,/obj/structure/curtain/open/color{color = "#000080"},/obj/structure/grille,/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bj" = (/obj/machinery/light/street,/turf/simulated/floor/water,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bk" = (/obj/structure/railing{tag = "icon-railing0 (WEST)"; icon_state = "railing0"; dir = 8},/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bl" = (/obj/structure/railing{tag = "icon-railing0 (EAST)"; icon_state = "railing0"; dir = 4},/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bm" = (/obj/structure/flora/ausbushes/reedbush,/turf/simulated/floor/water,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bn" = (/obj/structure/flora/ausbushes/stalkybush,/turf/simulated/floor/water,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bo" = (/obj/structure/railing{icon_state = "railing0"; dir = 1},/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bp" = (/obj/structure/railing{tag = "icon-railing0 (WEST)"; icon_state = "railing0"; dir = 8},/obj/structure/bed/chair,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bq" = (/obj/structure/railing,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"br" = (/obj/structure/railing{tag = "icon-railing0 (EAST)"; icon_state = "railing0"; dir = 4},/obj/structure/bed/chair,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bs" = (/mob/living/simple_animal/fish/bass,/turf/simulated/floor/water,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bt" = (/mob/living/simple_animal/fish/koi,/turf/simulated/floor/water,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bu" = (/obj/structure/table/glass,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bv" = (/obj/structure/bed/chair{dir = 8},/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bw" = (/obj/machinery/vending/foodstamp/rations,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bx" = (/obj/structure/fitness/weightlifter,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"by" = (/obj/structure/table/glass,/obj/item/weapon/storage/fancy/markers,/obj/item/weapon/storage/fancy/crayons,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bz" = (/obj/structure/bed/chair{icon_state = "chair_preview"; dir = 1},/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bA" = (/obj/structure/easel{anchored = 1},/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bB" = (/obj/machinery/media/jukebox,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bC" = (/obj/structure/table/glass,/obj/item/weapon/canvas/twentythreeXtwentythree,/obj/item/weapon/canvas/twentythreeXtwentythree,/obj/item/weapon/canvas/twentythreeXtwentythree,/obj/item/weapon/canvas/twentythreeXtwentythree,/obj/item/weapon/canvas/twentythreeXtwentythree,/obj/item/weapon/canvas/twentythreeXtwentythree,/obj/item/weapon/canvas/twentythreeXtwentythree,/obj/item/weapon/canvas/twentythreeXtwentythree,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bD" = (/obj/structure/bed/chair,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bE" = (/obj/structure/fitness/punchingbag,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bF" = (/obj/structure/table/glass,/obj/machinery/light/colored/blue,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bG" = (/obj/structure/flora/pottedplant/aquatic,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bH" = (/obj/structure/flora/pottedplant/aquatic,/obj/machinery/light/colored/blue,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bI" = (/obj/structure/filingcabinet,/obj/machinery/light/colored/blue{tag = "icon-blue1 (EAST)"; icon_state = "blue1"; dir = 4},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bJ" = (/obj/structure/filingcabinet,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bK" = (/obj/structure/noticeboard{pixel_y = 32},/obj/structure/table/woodentable/walnut,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bL" = (/obj/structure/closet/wardrobe/medic_white,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bM" = (/obj/structure/coatrack,/obj/structure/painting/random{pixel_y = 32},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bN" = (/obj/machinery/computer/security/wooden_tv/entertainment,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bO" = (/obj/structure/table/woodentable/walnut,/obj/machinery/chemical_dispenser/bar_coffee/full,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bP" = (/obj/structure/table/woodentable/walnut,/obj/item/weapon/storage/box/glasses/meta,/obj/machinery/light/colored/blue{tag = "icon-blue1 (WEST)"; icon_state = "blue1"; dir = 8},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bQ" = (/mob/living/simple_animal/fish/perch,/turf/simulated/floor/water,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bR" = (/mob/living/simple_animal/fish/pike,/turf/simulated/floor/water,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bS" = (/obj/structure/flora/pottedplant/aquatic,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bT" = (/obj/structure/bed/chair/wood/walnut,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bU" = (/obj/machinery/papershredder,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bV" = (/obj/structure/table/woodentable/walnut,/obj/item/weapon/paper_bin,/obj/item/weapon/pen/fountain,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bW" = (/obj/structure/table/woodentable/walnut,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bX" = (/obj/structure/table/woodentable/walnut,/obj/item/weapon/storage/box/social_service_cards,/obj/item/weapon/storage/box/social_service_cards,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bY" = (/obj/machinery/photocopier,/obj/machinery/light/colored/blue{tag = "icon-blue1 (EAST)"; icon_state = "blue1"; dir = 4},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"bZ" = (/obj/structure/table/woodentable/walnut,/obj/machinery/modular_computer/console/preset/medical{icon_state = "console"; dir = 4},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ca" = (/obj/structure/bed/chair/bosschair/black{icon_state = "capchair"; dir = 1},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"cb" = (/obj/structure/bed/psych,/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"cc" = (/obj/structure/bed/chair/frilly/black{icon_state = "frillychair"; dir = 8},/obj/machinery/light/colored/blue{tag = "icon-blue1 (WEST)"; icon_state = "blue1"; dir = 8},/turf/simulated/floor/wood/walnut,/area/planets/Geminus/indoor/vr/psychtreatment)
+"cd" = (/mob/living/simple_animal/fish/trout,/turf/simulated/floor/water,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ce" = (/mob/living/simple_animal/fish/salmon,/turf/simulated/floor/water,/area/planets/Geminus/indoor/vr/psychtreatment)
+"cf" = (/obj/structure/window/framed,/obj/structure/curtain/open/color{color = "#000080"},/obj/structure/grille,/turf/simulated/floor/tiled/freezer,/area/planets/Geminus/indoor/vr/psychtreatment)
+"cg" = (/obj/structure/railing{tag = "icon-railing0 (WEST)"; icon_state = "railing0"; dir = 8},/obj/structure/railing,/obj/structure/table/glass,/mob/living/simple_animal/butterfly,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ch" = (/obj/structure/railing,/obj/structure/bed/chair{dir = 8},/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"ci" = (/obj/structure/railing,/obj/structure/bed/chair{dir = 4},/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+"cj" = (/obj/structure/railing,/obj/structure/railing{tag = "icon-railing0 (EAST)"; icon_state = "railing0"; dir = 4},/obj/structure/table/glass,/mob/living/simple_animal/butterfly,/turf/simulated/floor/tiled/old_tile/gray,/area/planets/Geminus/indoor/vr/psychtreatment)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaababababababababababababababababababababababababababababababababababababababaaaaaaaaaaaa
+aaaaaaaaaaababababababababababababababababababababababababababababababababababababababababaaaaaaaaaa
+aaaaaaaaababababababababababababababababababababababababababababababababababababababababababaaaaaaaa
+aaaaaaababababababababababababababababababababababababababababababababababababababababababababaaaaaa
+aaaaababababababababababababababababababababababababababababababababababababababababababababababaaaa
+aaabababababacacadacacacbeacacacadacacacadacacacbeacacacadacacacadacacacaeacacacadacacafabababababaa
+aaabababababacagahaiajakakalacamakanacagahaiajakakalacamakanacagahaiajakakalacamakanacafabababababaa
+aaabababababacaoapaqarakasatacauavawacaoapaqarakasatacauavawacaoapaqarakasatacauavawacafabababababaa
+aaabababababacaoapaxarayakakazakavaAacaoapaxarayakakazakavaAacaoapaxarayakakazakavaAacafabababababaa
+aaabababababacaBaCakaDakakaiacaEaFaGacaBaCakaDakakaiacaEaFaGacaBaCakaDakakaiacaEaFaGacafabababababaa
+aaabababababacacacacacaHaIaJacacacacacacacacacaHaIaJacacacacacacacacacaHaIaJacacacacacafabababababaa
+aaabababababacaKaLaMacaNavaNacaOaPaQacaKaLaMacaNavaNacaOaPaQacaKaLaMacaNavaNacaOaPaQacafabababababaa
+aaabababababacaRaSaSaTaUavaUaVaWaWaXacaRaSaSaTaUavaUaVaWaWaXacaRaSaSaTaUavaUaVaWaWaXacafabababababaa
+aaabababababacaYaZbaacbbavbbacbcaWbdacaYaZbaacbbavbbacbcaWbdacaYaZbaacbbavbbacbcaWbdacafabababababaa
+aaabababababacbibibiacbfbgbfbhcfcfcfacbibibiacbfbgbfbhcfcfcfacbibibiacbfbgbfbhcfcfcfacafabababababaa
+aaabababababafafafafbjbkaUblbmafafafbnafafafbmbkaUblbmafafafbnafafafbmbkaUblbjafafafafafabababababaa
+aaabababababafafafafafbkaUblafafafafafafafafafbkaUblafafafafafafafafafbkaUblafafafafafafabababababaa
+aaabababababafafafafafbkaUblbmafafafbnafafafbmbkaUblbmafafafbnafafafbmbkaUblafafafafafafabababababaa
+aaabababababafafafafafbpaUaUboboboboboboboboboaUaUaUboboboboboboboboboaUaUbrafafafafafafabababababaa
+aaabababababafafafafafcgchbqbqbqbqbqbqbqbqbqbqaUaUaUbqbqbqbqbqbqbqbqbqbqcicjafafafafafafabababababaa
+aaabababababafbsafafafafafafafafafafbjacbibibibkaUblbibibiacbjafafafbtafafafafafbtafafafabababababaa
+aaabababababafafafafafafafafafafafafafbibubvbwbkaUblbxaUbybiafafafafafafafafafafafafafafabababababaa
+aaabababababafafbsafafafafafafafafafafbibzaUaUbkaUblbxaUbAbiafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafbsafafafafafafbibBaUaUaUaUaUaUaUbCbiafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafafafafafafbibDaUaUbkaUblbEaUbAbiafafafafafafafafafafafafafafabababababaa
+aaabababababafbsafafafafafafafafafafafacbFbvbGbkaUblbEaUbHacafafafbtafafbtafafafafafafafabababababaa
+aaabababababafafafafafafafafafafafafafacacacacacazacacacacacafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafafafafafafacbIbJbKbLakbMbNbObPbiafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafbQafafafafacakakakakakakakakakbiafafafafafafafafafbRafafafafabababababaa
+aaabababababafafafafafafafafafafafafafacakakakbSbTbTakakakbiafafafbRafafafafafafafafafafabababababaa
+aaabababababafafafafafbQafafafafafafafacbUakakbVbWbXakakakacafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafafafafafafacbYakakbZcaakakcbccacafafafafafafafafafafbRafafafabababababaa
+aaabababababafafafbQafafafafafafafafafacacacacacacacacacacacafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafbQafafafafafafafafafafafafafafafafafafafafafafbRafafafafafafafabababababaa
+aaabababababafafafafafafafafafafafafcdafafafafafafafafafceafafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafafafafcdafafafafafafafafafafafafafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafafafafafafafafafafafafafafceafafafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafafcdafafafafafafafafafafafafafafceafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafafafafafafafafafafafafceafafafafafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafcdafafafafafafafafafafafafafafafafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafabababababaa
+aaabababababafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafabababababaa
+aaaaababababababababababababababababababababababababababababababababababababababababababababababaaaa
+aaaaaaababababababababababababababababababababababababababababababababababababababababababababaaaaaa
+aaaaaaaaababababababababababababababababababababababababababababababababababababababababababaaaaaaaa
+aaaaaaaaaaababababababababababababababababababababababababababababababababababababababababaaaaaaaaaa
+aaaaaaaaaaaaababababababababababababababababababababababababababababababababababababababaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}

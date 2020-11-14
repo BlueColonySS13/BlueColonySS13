@@ -943,6 +943,13 @@ I said no!
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/cracker
 
+/datum/recipe/caviar
+	reagents = list("sodiumchloride" = 1)
+	items = list(
+		/obj/item/fish_eggs
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/caviar
+
 /datum/recipe/stuffing
 	reagents = list("water" = 5, "sodiumchloride" = 1, "blackpepper" = 1)
 	items = list(

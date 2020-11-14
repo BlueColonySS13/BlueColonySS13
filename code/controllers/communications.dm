@@ -112,6 +112,7 @@ var/const/DTH_FREQ	= 1341
 var/const/SYND_FREQ = 1213
 var/const/RAID_FREQ	= 1277
 var/const/ENT_FREQ	= 1461 //entertainment frequency. This is not a diona exclusive frequency.
+var/const/PAX_FREQ = 1279
 
 // department channels
 var/const/PUB_FREQ = 1459
@@ -131,6 +132,10 @@ var/const/SEC_I_FREQ = 1475
 // nanotrasen & gov channels
 var/const/GOV_FREQ = 1295
 
+//special channels
+var/const/NUM_FREQ = 1487
+var/const/ATC_FREQ = 1483
+
 var/list/radiochannels = list(
 	"Common"		= PUB_FREQ,
 	"Science"		= SCI_FREQ,
@@ -144,13 +149,16 @@ var/list/radiochannels = list(
 	"Special Ops" 	= DTH_FREQ,
 	"Mercenary" 	= SYND_FREQ,
 	"Raider"		= RAID_FREQ,
-	"Supply" 		= SUP_FREQ,
-	"Service" 		= SRV_FREQ,
+	"Factory" 		= SUP_FREQ,
+	"Diner" 		= SRV_FREQ,
 	"Explorer"		= EXP_FREQ,
 	"AI Private"	= AI_FREQ,
 	"Entertainment" = ENT_FREQ,
 	"Hospital(I)"	= MED_I_FREQ,
-	"Police(I)"	= SEC_I_FREQ
+	"Police(I)"	= SEC_I_FREQ,
+	"Unknown Broadcast Station" = NUM_FREQ,
+	"Air Traffic" = ATC_FREQ,
+	"Pax Synthetica" = PAX_FREQ
 )
 
 // central command channels, i.e deathsquid & response teams
@@ -201,6 +209,10 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, ENT_FREQ, MED_FREQ, SEC
 		return "govradio"
 	if(frequency in DEPT_FREQS)
 		return "deptradio"
+	if(frequency == PAX_FREQ)
+		return "syndradio"
+	if(frequency == NUM_FREQ)
+		return "syndradio"
 
 	return "radio"
 

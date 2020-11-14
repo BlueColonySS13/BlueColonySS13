@@ -17,6 +17,13 @@
 	description = "To coerce or physically force a person to engage in a sexual act against their will."
 
 	death_penalty = 1
+
+/datum/law/capital/hazardous
+	name = "Dangerous Misuse of Hazardous Materials"
+	description = "Any unauthorized or negligent handling of items considered Hazardous Materials under the Labour Code that\
+	causes or could cause severe harm or injury to persons or property."
+	notes = "A Research Director must approve this charge before trial may occur, and be willing to testify in court for the prosecution."
+	death_penalty = 1
 	
 /datum/law/capital/deviancy
 	name = "Synthetic Deviancy"

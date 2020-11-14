@@ -46,6 +46,8 @@
 
 	var/default_layer = OBJ_LAYER
 
+	dont_save = TRUE // no free cars for you
+
 	buckle_delay = 5
 	unbuckle_delay = 5
 //-------------------------------------------
@@ -74,6 +76,8 @@
 
 /obj/vehicle/unbuckle_mob(mob/living/buckled_mob, force = FALSE)
 	. = ..(buckled_mob, force)
+	if(!buckled_mob)
+		return
 	buckled_mob.update_water()
 	if(riding_datum)
 		riding_datum.restore_position(buckled_mob)

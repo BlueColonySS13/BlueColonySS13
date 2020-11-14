@@ -15,15 +15,15 @@
 
 //Captain
 /obj/item/clothing/suit/captunic
-	name = "colony director's parade tunic"
-	desc = "Worn by a Colony Director to show their class."
+	name = "mayor's parade tunic"
+	desc = "Worn by a Mayor to show their class."
 	icon_state = "captunic"
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 
 /obj/item/clothing/suit/captunic/capjacket
-	name = "colony director's uniform jacket"
-	desc = "A less formal jacket for everyday Colony Director use."
+	name = "Mayor's uniform jacket"
+	desc = "A less formal jacket for everyday Mayoral use."
 	icon_state = "capjacket"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv = HIDEHOLSTER
@@ -70,7 +70,7 @@
 //Chef
 /obj/item/clothing/suit/chef/classic
 	name = "classic chef's apron"
-	desc = "A basic, dull, white chef's apron."
+	desc = "A basic, dull chef's apron."
 	icon_state = "apronchef"
 	blood_overlay_type = "armor"
 	body_parts_covered = 0
@@ -100,6 +100,12 @@
 	item_state_slots = list(slot_r_hand_str = "suit_navy", slot_l_hand_str = "suit_navy")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/toggle/policejacket
+	name = "police jacket"
+	desc = "A dark blue jacket featuring a white checker, belonging to the GCPD"
+	icon_state = "policejacket"
+	item_state_slots = list(slot_r_hand_str = "suit_navy", slot_l_hand_str = "suit_navy")
 
 //Detective
 /obj/item/clothing/suit/storage/det_trench
@@ -179,7 +185,25 @@
 	desc = "A high-visibility vest used in work zones. This one has a red cross!"
 	icon_state = "hazard_w"
 
+/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen
+	name = "high visibility vest"
+	desc = "A high-visibility vest used in work zones, this one says Police on it."
+	icon_state = "hazardbg"
+	blood_overlay_type = "armor"
+	allowed = list (/obj/item/device/analyzer, /obj/item/device/flashlight, /obj/item/device/multitool, /obj/item/device/pipe_painter, /obj/item/device/radio, /obj/item/device/t_scanner,
+	/obj/item/weapon/crowbar, /obj/item/weapon/screwdriver, /obj/item/weapon/weldingtool, /obj/item/weapon/wirecutters, /obj/item/weapon/wrench, /obj/item/weapon/tank/emergency/oxygen,
+	/obj/item/clothing/mask/gas, /obj/item/taperoll/engineering)
+	body_parts_covered = UPPER_TORSO
+
 //Lawyer
+/obj/item/clothing/suit/storage/toggle/lawyer/whitejacket
+	name = "suit jacket"
+	desc = "A snappy dress jacket."
+	icon_state = "suitjacket_white"
+	item_state_slots = list(slot_r_hand_str = "suit_white", slot_l_hand_str = "suit_white")
+	blood_overlay_type = "coat"
+	body_parts_covered = UPPER_TORSO|ARMS
+
 /obj/item/clothing/suit/storage/toggle/lawyer/bluejacket
 	name = "blue suit jacket"
 	desc = "A snappy dress jacket."

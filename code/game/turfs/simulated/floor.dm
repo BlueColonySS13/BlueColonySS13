@@ -32,6 +32,21 @@
 	heat_capacity = 10000
 	var/lava = 0
 
+	unique_save_vars = list("broken", "burnt")
+
+/turf/simulated/floor/get_persistent_metadata()
+	if(flooring)
+		return flooring.type
+	else
+		return "no floor"
+
+/turf/simulated/floor/load_persistent_metadata(floortype)
+	if(floortype)
+		if(floortype != "no floor")
+			set_flooring(get_flooring_data(floortype))
+		else
+			make_plating()
+
 /turf/simulated/floor/is_plating()
 	return !flooring
 
@@ -62,13 +77,14 @@
 
 	if(islist(decals))
 		decals.Cut()
-		decals = null
+		decals = list()
 
 	name = base_name
 	desc = base_desc
 	icon = base_icon
 	icon_state = base_icon_state
 	footstep_sounds = base_footstep_sounds
+	color = null
 
 	if(flooring)
 		if(flooring.build_type && place_product)

@@ -10,7 +10,7 @@
 	w_class = ITEMSIZE_LARGE
 	force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(DEFAULT_WALL_MATERIAL = 2000, "copper" = 1000, "silver" = 150)
 	projectile_type = /obj/item/projectile/beam/midlaser
 //	one_handed_penalty = 30
 
@@ -85,6 +85,7 @@
 	charge_cost = 480	//to compensate a bit for self-recharging
 	cell_type = /obj/item/weapon/cell/device/weapon/recharge/captain
 	battery_lock = 1
+	dont_save = TRUE
 
 /obj/item/weapon/gun/energy/lasercannon
 	name = "laser cannon"

@@ -111,6 +111,9 @@
 	if(T.client == null)
 		U << "<span class='danger'>Capture failed!</span>: The soul has already fled it's mortal frame."
 		return
+	if(T.isSynthetic())
+		U << "<span class='danger'>Capture failed!</span>: This does not appear to have a human body."
+		return
 	if(src.contents.len)
 		U << "<span class='danger'>Capture failed!</span>: The soul stone is full! Use or free an existing soul to make room."
 		return

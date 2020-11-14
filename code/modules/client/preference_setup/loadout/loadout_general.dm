@@ -4,7 +4,11 @@
 
 /datum/gear/cane/white
 	display_name = "white cane"
-	path = /obj/item/weapon/cane/whitecane
+	path = /obj/item/weapon/cane/white
+
+/datum/gear/cane/white/collapsible
+	display_name = "telescopic white cane"
+	path = /obj/item/weapon/cane/white/collapsible
 
 /datum/gear/crutch
 	display_name = "crutch"
@@ -41,6 +45,10 @@
 /datum/gear/spaceball_pack
 	display_name = "Spaceball booster pack"
 	path = /obj/item/weapon/pack/spaceball
+
+/datum/gear/dummy
+	display_name = "ventriloquist puppet"
+	path = /obj/item/toy/dummy
 
 /datum/gear/plushie
 	display_name = "plushie selection"

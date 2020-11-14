@@ -9,8 +9,10 @@
 	possible_transfer_amounts = 2
 	volume = 10
 	flags = OPENCONTAINER
+	w_class = ITEMSIZE_TINY
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	var/label_text = ""
+
 
 	New()
 		..()
@@ -77,6 +79,9 @@
 		else
 			src.name = "[src.base_name] ([src.label_text])"
 
+
+/obj/item/weapon/reagent_containers/drugs/can_empty()
+	return TRUE
 
 /obj/item/weapon/reagent_containers/drugs/baggie
 	name = "baggie"

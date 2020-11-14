@@ -61,7 +61,7 @@
 		target << "<span class='danger'>You feel extreme pain!</span>"
 
 		var/max_halloss = round(target.species.total_health * 0.8) //up to 80% of passing out
-		affecting.adjustHalLoss(Clamp(0, max_halloss - affecting.halloss, 30))
+		affecting.adjustHalLoss(CLAMP(max_halloss - affecting.halloss, 0, 30))
 
 /obj/item/weapon/grab/proc/attack_eye(mob/living/carbon/human/target, mob/living/carbon/human/attacker)
 	if(!istype(attacker))
@@ -172,3 +172,20 @@
 		target.loc = user
 		attacker.stomach_contents.Add(target)
 		qdel(src)
+
+/* Some day...
+
+/obj/item/weapon/grab/proc/titty_twist(mob/target, mob/attacker)
+	if(state < GRAB_AGGRESSIVE)
+		to_chat(attacker, span("warning", "You require a better grab to do this."))
+		return
+
+	attacker.visible_message(span("danger", "[attacker] grabs hold of [target]'s titties!"))
+	if(do_after(attacker,20) && target)
+		last_action = world.time
+		attacker.visible_message(span("danger", "[attacker] twists [target]'s titties with the white hot fury of a thousand suns!"))
+		playsound(target.loc, 'sound/effects/mob_effects/Wilhelm_Scream.ogg', 25, 1, -1)
+		target.Weaken(2)
+		target.stuttering += 2
+
+*/

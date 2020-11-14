@@ -19,11 +19,9 @@
 
 	if (!( istext(HTMLstring) ))
 		CRASH("Given non-text argument!")
-		return
 	else
 		if (length(HTMLstring) != 7)
 			CRASH("Given non-HTML argument!")
-			return
 	var/textr = copytext(HTMLstring, 2, 4)
 	var/textg = copytext(HTMLstring, 4, 6)
 	var/textb = copytext(HTMLstring, 6, 8)
@@ -40,7 +38,6 @@
 	if (length(textb) < 2)
 		textr = text("0[]", textb)
 	return text("#[][][]", textr, textg, textb)
-	return
 
 //Returns the middle-most value
 /proc/dd_range(var/low, var/high, var/num)
@@ -311,26 +308,20 @@ Turf and target are seperate in case you want to teleport some distance from a t
 					break
 
 		//update our pda and id if we have them on our person
-		var/list/searching = GetAllContents(searchDepth = 3)
-		var/search_id = 1
-		var/search_pda = 1
+		var/list/searching = src.GetAllContents()
 
 		for(var/A in searching)
-			if( search_id && istype(A,/obj/item/weapon/card/id) )
+			if(istype(A,/obj/item/weapon/card/id))
 				var/obj/item/weapon/card/id/ID = A
 				if(ID.registered_name == oldname)
 					ID.registered_name = newname
 					ID.name = "[newname]'s ID Card ([ID.assignment])"
-					if(!search_pda)	break
-					search_id = 0
 
-			else if( search_pda && istype(A,/obj/item/device/pda) )
+			else if(istype(A,/obj/item/device/pda))
 				var/obj/item/device/pda/PDA = A
 				if(PDA.owner == oldname)
 					PDA.owner = newname
 					PDA.name = "PDA-[newname] ([PDA.ownjob])"
-					if(!search_id)	break
-					search_pda = 0
 	return 1
 
 
@@ -612,16 +603,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 /proc/between(var/low, var/middle, var/high)
 	return max(min(middle, high), low)
 
-
-#if DM_VERSION > 513
-#warn 513 is definitely stable now, remove this
-#endif
-#if DM_VERSION < 513
-/proc/arctan(x)
-	var/y=arcsin(x/sqrt(1+x*x))
-	return y
-#endif
-
 //returns random gauss number
 /proc/GaussRand(var/sigma)
   var/x,y,rsq
@@ -636,16 +617,26 @@ Turf and target are seperate in case you want to teleport some distance from a t
 /proc/GaussRandRound(var/sigma,var/roundto)
 	return round(GaussRand(sigma),roundto)
 
-//Will return the contents of an atom recursivly to a depth of 'searchDepth'
-/atom/proc/GetAllContents(searchDepth = 5)
-	var/list/toReturn = list()
-
-	for(var/atom/part in contents)
-		toReturn += part
-		if(part.contents.len && searchDepth)
-			toReturn += part.GetAllContents(searchDepth - 1)
-
-	return toReturn
+// Gets all contents of contents and returns them all in a list.
+/atom/proc/GetAllContents(var/T)
+	var/list/processing_list = list(src)
+	var/list/assembled = list()
+	if(T)
+		while(processing_list.len)
+			var/atom/A = processing_list[1]
+			processing_list.Cut(1, 2)
+			//Byond does not allow things to be in multiple contents, or double parent-child hierarchies, so only += is needed
+			//This is also why we don't need to check against assembled as we go along
+			processing_list += A.contents
+			if(istype(A,T))
+				assembled += A
+	else
+		while(processing_list.len)
+			var/atom/A = processing_list[1]
+			processing_list.Cut(1, 2)
+			processing_list += A.contents
+			assembled += A
+	return assembled
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
 /proc/can_see(var/atom/source, var/atom/target, var/length=5) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
@@ -1184,7 +1175,7 @@ proc/is_hot(obj/item/W as obj)
 		else
 			return 0
 
-	return 0
+
 
 //Whether or not the given item counts as sharp in terms of dealing damage
 /proc/is_sharp(obj/O as obj)
@@ -1683,3 +1674,11 @@ var/mob/dview/dview_mob = new
 			else
 				return "\[[url_encode(thing.tag)]\]"
 	return "\ref[input]"
+
+// Painlessly creates an <a href=...> element.
+// First argument is where to send the Topic call to when clicked. Should be a reference to an object. This is generally src, but not always.
+// Second one is for all the params that will be sent. Uses an assoc list (e.g. "value" = "5").
+// Note that object refs will be converted to text, as if \ref[thing] was done. To get the ref back on Topic() side, you will need to use locate().
+// Third one is the text that will be clickable.
+/proc/href(href_src, list/href_params, href_text)
+	return "<a href='?src=\ref[href_src];[list2params(href_params)]'>[href_text]</a>"

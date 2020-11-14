@@ -134,6 +134,15 @@ obj/machinery/gateway/centerstation/process()
 /obj/machinery/gateway/centerstation/attackby(obj/item/device/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/device/multitool))
 		user << "<font color='black'>The gate is already calibrated, there is no work for you to do here.</font>"
+	if(istype(W,/obj/item/device/redspace_key))
+		var/obj/item/device/redspace_key/R = W
+		if(R.active)
+			to_chat(user, "<span class='warning'>The Gateway whines and flashes red before returning to its normal state.</span>")
+			R.active = 0
+			R.update_icon()
+			awaygate = locate(/obj/machinery/gateway/centeraway/redspace)
+		else
+			to_chat(user, "<span class='notice'>Nothing happens.</span>")
 		return
 
 /////////////////////////////////////Away////////////////////////
@@ -235,3 +244,6 @@ obj/machinery/gateway/centerstation/process()
 			user << "<font color='blue'><b>Recalibration successful!</b>:</font><font color='black'> This gate's systems have been fine tuned. Travel to this gate will now be on target.</font>"
 			calibrated = 1
 			return
+
+/obj/machinery/gateway/centeraway/redspace
+	desc = "A strange variant of a normal gateway."

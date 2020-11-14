@@ -5,16 +5,20 @@
 /datum/category_item/player_setup_item/player_global/ooc/load_preferences(var/savefile/S)
 	S["ignored_players"]	  >> pref.ignored_players
 	S["first_seen"]		  >> pref.first_seen
-	S["last_seen"]		 	 >> pref.last_seen
+	S["last_seen"]		  >> pref.last_seen
 	S["ips_associated"]  	  >> pref.ips_associated
 	S["cids_associated"]   	  >> pref.cids_associated
+	S["characters_created"]   >> pref.characters_created
+	S["byond_join_date"]   >> pref.byond_join_date
 
 /datum/category_item/player_setup_item/player_global/ooc/save_preferences(var/savefile/S)
 	S["ignored_players"]	  << pref.ignored_players
 	S["first_seen"]		  << pref.first_seen
-	S["last_seen"]			  << pref.last_seen
+	S["last_seen"]		  << pref.last_seen
 	S["ips_associated"]  	  << pref.ips_associated
 	S["cids_associated"]   	  << pref.cids_associated
+	S["characters_created"]   << pref.characters_created
+	S["byond_join_date"]   << pref.byond_join_date
 
 /datum/category_item/player_setup_item/player_global/ooc/sanitize_preferences()
 	if(isnull(pref.ignored_players))
@@ -30,6 +34,10 @@
 
 	if(isnull(pref.ips_associated) || !islist(pref.ips_associated))
 		pref.ips_associated = list()
+
+	if(isnull(pref.characters_created))
+		pref.characters_created = list()
+
 
 /*
 /datum/category_item/player_setup_item/player_global/ooc/content(var/mob/user)

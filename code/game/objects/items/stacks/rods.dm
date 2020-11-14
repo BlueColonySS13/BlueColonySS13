@@ -12,6 +12,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 2)
 	max_amount = 60
 	attack_verb = list("hit", "bludgeoned", "whacked")
+	stack_color = COLOR_GRAY40
 
 /obj/item/stack/rods/cyborg
 	name = "metal rod synthesizer"
@@ -30,14 +31,12 @@
 
 /obj/item/stack/rods/update_icon()
 	var/amount = get_amount()
-	if((amount <= 5) && (amount > 0))
+	if((amount <= 3) && (amount > 0))
 		icon_state = "rods-[amount]"
 	else
 		icon_state = "rods"
 
-var/global/list/datum/stack_recipe/rods_recipes = list( \
-	new/datum/stack_recipe("grille", /obj/structure/grille, 2, time = 10, one_per_turf = 1, on_floor = 0),
-	new/datum/stack_recipe("catwalk", /obj/structure/catwalk, 2, time = 80, one_per_turf = 1, on_floor = 1))
+	color = stack_color
 
 /obj/item/stack/rods/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/weldingtool))

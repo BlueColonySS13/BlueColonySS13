@@ -93,15 +93,21 @@
 		data["have_shuttle"] = 0
 
 	//council options
+	data["city_council_control"] = persistent_economy.city_council_control
+
 	data["carp_control"] = "[persistent_economy.carp_control ? "Enabled" : "Disabled"]"
 	data["antivirus"] = "[persistent_economy.antivirus ? "Enabled" : "Disabled"]"
+	data["meteor_proof"] = "[persistent_economy.meteor_proof ? "Enabled" : "Disabled"]"
+
 
 	//council option costs
 	var/datum/expense/nanotrasen/carp = locate(/datum/expense/nanotrasen/pest_control/carp) in persistent_economy.city_expenses
 	var/datum/expense/nanotrasen/antivirus = locate(/datum/expense/nanotrasen/tech_support/prison_break) in persistent_economy.city_expenses
+	var/datum/expense/nanotrasen/meteor_proof = locate(/datum/expense/nanotrasen/external_defense/meteor_proof) in persistent_economy.city_expenses
 
 	data["carp_control_cost"] = "[carp.cost_per_payroll]PH (per hour)"
 	data["antivirus_cost"] = "[antivirus.cost_per_payroll]PH (per hour)"
+	data["meteor_proof_cost"] = "[meteor_proof.cost_per_payroll]PH (per hour)"
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -139,7 +145,7 @@
 		if("edit_service_expenses")
 			. = 1
 
-			var/list/potential_services = list("Carp Control", "Gr3y.T1d3 Firewall") // this can be optimised
+			var/list/potential_services = list("Carp Control", "Gr3y.T1d3 Firewall", "Meteor Proofing") // this can be optimised
 
 			var/service = input(usr, "Please select which service you'd like to edit.", "Select Service") as null|anything in potential_services
 			if(!service) return
@@ -160,6 +166,8 @@
 					persistent_economy.carp_control = status_num
 				if("Gr3y.T1d3 Firewall")
 					persistent_economy.antivirus = status_num
+				if("Meteor Proofing")
+					persistent_economy.meteor_proof = status_num
 
 
 		if("announce")
@@ -173,7 +181,7 @@
 				if(announcment_cooldown)
 					to_chat(usr, "Please allow at least one minute to pass between announcements")
 					return TRUE
-				var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement") as null|text
+				var/input = input(usr, "Please write a message to announce to the city residents.", "Priority Announcement") as null|text
 				if(!input || !can_still_topic())
 					return 1
 				crew_announcement.Announce(input)

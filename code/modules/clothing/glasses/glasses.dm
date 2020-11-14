@@ -27,6 +27,7 @@ BLIND     // can't see anything
 	var/activation_sound = 'sound/items/goggles_charge.ogg'
 	var/obj/screen/overlay = null
 	var/list/away_planes //Holder for disabled planes
+	price_tag = 15
 
 	sprite_sheets = list(
 		"Teshari" = 'icons/mob/species/seromi/eyes.dmi',
@@ -71,6 +72,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	vision_flags = SEE_TURFS
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
+	price_tag = 150
 
 /obj/item/clothing/glasses/meson/New()
 	..()
@@ -398,6 +400,12 @@ BLIND     // can't see anything
 	name = "stylish aviators"
 	desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
 	icon_state = "aviator"
+
+/obj/item/clothing/glasses/fakesunglasses/big
+	name = "big stylish sunglasses"
+	desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
+	icon_state = "bigsunglasses"
+
 
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "\improper HUD sunglasses"

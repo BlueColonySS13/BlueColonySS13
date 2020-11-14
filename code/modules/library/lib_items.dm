@@ -22,6 +22,7 @@
 	burntime = LONG_BURN
 
 /obj/structure/bookcase/metal
+	opacity = 0
 	icon_state = "metalshelf-0"
 
 /obj/structure/bookcase/metal/update_icon()
@@ -162,6 +163,12 @@
 	var/carved = 0	 // Has the book been hollowed out for use as a secret storage item?
 	var/obj/item/store	//What's in the book?
 	drop_sound = 'sound/items/drop/box.ogg'
+
+	unique_save_vars = list("dat", "author", "title", "unique", "carved")
+
+/obj/item/weapon/book/on_persistence_load()
+	if(!isemptylist(contents))
+		store = contents[1]
 
 /obj/item/weapon/book/attack_self(var/mob/user as mob)
 	if(carved)

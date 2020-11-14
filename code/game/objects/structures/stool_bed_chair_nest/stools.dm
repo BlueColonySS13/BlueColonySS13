@@ -14,6 +14,31 @@ var/global/list/stool_cache = list() //haha stool
 	var/material/material
 	var/material/padding_material
 
+/obj/item/weapon/stool/get_persistent_metadata()
+	if(!material)
+		return FALSE
+
+	var/list/stool_data = list()
+	stool_data["material"] = material.name
+	if(padding_material)
+		stool_data["padding_material"] = padding_material.name
+
+	return stool_data
+
+/obj/item/weapon/stool/load_persistent_metadata(metadata)
+	var/list/stool_data = metadata
+	if(!islist(stool_data))
+		return
+	if(get_material_by_name(stool_data["material"]))
+		material = get_material_by_name(stool_data["material"])
+	if(get_material_by_name(stool_data["padding_material"]))
+		padding_material = get_material_by_name(stool_data["padding_material"])
+
+	update_icon()
+
+	return TRUE
+
+
 /obj/item/weapon/stool/wooden
 	burn_state = 0 //Buuuurn baby burn. Disco inferno!
 	burntime = SHORT_BURN
@@ -118,6 +143,8 @@ var/global/list/stool_cache = list() //haha stool
 
 /obj/item/weapon/stool/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/wrench))
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to deassemble \the [src] with [W]."))
+			return
 		playsound(src, W.usesound, 50, 1)
 		dismantle()
 		qdel(src)
@@ -151,7 +178,9 @@ var/global/list/stool_cache = list() //haha stool
 		if(!padding_material)
 			user << "\The [src] has no padding to remove."
 			return
-		user << "You remove the padding from \the [src]."
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to remove padding from \the [src] with [W]."))
+			return
+		to_chat(user, "You remove the padding from \the [src].")
 		playsound(src.loc, W.usesound, 50, 1)
 		remove_padding()
 	else

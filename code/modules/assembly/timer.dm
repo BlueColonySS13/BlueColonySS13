@@ -3,7 +3,7 @@
 	desc = "Used to time things. Works well with contraptions which has to count down. Tick tock."
 	icon_state = "timer"
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 50, "waste" = 10)
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 50, "copper" = 10)
 
 	wires = WIRE_PULSE
 
@@ -85,6 +85,12 @@
 		usr << browse(null, "window=timer")
 		onclose(usr, "timer")
 		return
+
+	var/mob/user = usr
+	if(user && user.IsAntiGrief())
+		to_chat(user, "<span class='danger'>You can't bring yourself to do this.</span>")
+		return 0
+
 
 	if(href_list["time"])
 		timing = text2num(href_list["time"])
