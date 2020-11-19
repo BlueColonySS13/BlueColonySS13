@@ -20,7 +20,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	minimal_player_age = 14
 	wage = 500
 
-	allow_synths = FALSE
+	allows_synths = FALSE
 
 	minimum_character_age = 30
 	ideal_character_age = 50
@@ -70,7 +70,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	minimal_player_age = 10
 	wage = 350
 
-	allow_synths = FALSE
+	allows_synths = FALSE
 
 	minimum_character_age = 26
 	alt_titles = list("City Manager")

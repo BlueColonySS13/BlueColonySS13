@@ -14,7 +14,7 @@
 	req_admin_notify = 1
 
 	wage = 350
-	allow_synths = FALSE
+	allows_synths = FALSE
 
 
 	minimum_character_age = 25

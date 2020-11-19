@@ -161,7 +161,7 @@
 	minimum_character_age = 20
 	ideal_character_age = 35
 
-	allow_synths = FALSE
+	allows_synths = FALSE
 
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
 	alt_titles = list("Supply Chief", "Factory Foreman")
