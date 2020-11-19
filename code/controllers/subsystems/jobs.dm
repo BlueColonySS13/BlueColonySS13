@@ -84,6 +84,9 @@ SUBSYSTEM_DEF(jobs)
 			return 0
 		if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner")
 			return 0
+		if(player.client.prefs.is_synth() && !job.allows_synths)
+			return 0
+
 		var/position_limit = job.total_positions
 		if(!latejoin)
 			position_limit = job.spawn_positions
@@ -129,9 +132,16 @@ SUBSYSTEM_DEF(jobs)
 		if(flag && (!player.client.prefs.be_special & flag))
 			Debug("FOC flag failed, Player: [player], Flag: [flag], ")
 			continue
+
+		if(player.client.prefs.is_synth() && !job.allows_synths)
+			Debug("FOC job does not allow synths, Player: [player]")
+			continue
+
 		if(player.client.prefs.GetJobDepartment(job, level) & job.flag)
 			Debug("FOC pass, Player: [player], Level:[level]")
 			candidates += player
+
+
 
 	return candidates
 
@@ -165,6 +175,11 @@ SUBSYSTEM_DEF(jobs)
 		if(!is_hard_whitelisted(player, job))
 			Debug("GRJ not hard whitelisted failed, Player: [player]")
 			continue
+
+		if(player.client.prefs.is_synth() && !job.allows_synths)
+			Debug("GRJ job does not allow synths, Player: [player]")
+			continue
+
 		if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
 			Debug("GRJ Random job given, Player: [player], Job: [job]")
 			AssignRole(player, job.title)
@@ -318,6 +333,11 @@ SUBSYSTEM_DEF(jobs)
 				if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner") //CASSJUMP
 					Debug("DO player is prisoner, Player: [player], Job:[job.title]")
 					continue
+
+				if(player.client.prefs.is_synth() && !job.allows_synths)
+					Debug("DO job does not allow synths, Player: [player]")
+					continue
+
 				// If the player wants that job on this level, then try give it to him.
 				if(player.client.prefs.GetJobDepartment(job, level) & job.flag)
 

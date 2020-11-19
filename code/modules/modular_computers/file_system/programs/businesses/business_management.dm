@@ -126,8 +126,9 @@
 			page_msg += "<a href='?src=\ref[src];rename_business=1'>Rename Business</a>"
 			page_msg += "<a href='?src=\ref[src];edit_biz_desc=1'>Edit Description</a>"
 			page_msg += "<a href='?src=\ref[src];modify_category=1'>Modify Categories</a>"
-			page_msg += "<a href='?src=\ref[src];change_password=1'>Change Access Password</a>"
+			page_msg += "<a href='?src=\ref[src];change_password=1'>Change Access Password</a><br>"
 			page_msg += "<a href='?src=\ref[src];edit_biz_color=1'>Edit Business Color</a>"
+			page_msg += "<a href='?src=\ref[src];toggle_ceo_pay=1'>[current_business.pay_CEO ? "CEO Recieves Wages" : "CEO Doesn't Recieve Wages"]</a>"
 
 			// : Employment
 			page_msg += "<br><br><b>Employment: </b><br>"
@@ -212,9 +213,17 @@
 			page_msg = "<h2>[current_business]</h2><hr>"
 			page_msg += "Welcome to your jobs portal. You can add or modify your business specific jobs here.<br><br>"
 
-			page_msg += "<br><a href='?src=\ref[src];add_new_job=1'>Add Job</a><hr>"
+			page_msg += "<br><a href='?src=\ref[src];add_new_job=1'>Add Job</a>"
+
+			var/obj/item/weapon/card/id/id_card
+
+			if(program && program.computer && program.computer.card_slot)
+				id_card = program.computer.card_slot.stored_card
+
+			page_msg += "[id_card ? "<b>Current ID:</b> [id_card.name] <a href='?src=\ref[src];choice=eject'>Eject</a>" : "<b>To modify access, please insert an ID</b>"]<br>"
 
 			for(var/datum/job/job in current_business.get_jobs())
+
 
 				page_msg += "<fieldset style='border: 2px solid grey; display: inline; width: 80%'>"
 				page_msg += "<legend align='center' style='color: #fff'>[job.title]</legend>"
@@ -226,12 +235,21 @@
 				page_msg += "<a href='?src=\ref[src];choice=set_job_desc;job=\ref[job]'>Change Description</a>"
 				page_msg += "<a href='?src=\ref[src];choice=delete_job;job=\ref[job]'>Delete Job</a>"
 
+				if(id_card)
+					if(job.title == id_card.rank)
+						page_msg += "<a href='?src=\ref[src];choice=demote_job;job=\ref[job];card=\ref[id_card]'>Demote From Job</a>"
+					else
+						page_msg += "<a href='?src=\ref[src];choice=promote_job;job=\ref[job];card=\ref[id_card]'>Promote to Job</a>"
+
 				page_msg += "<br><br>"
 				var/job_positions = job.total_positions
 				if(0 > job.total_positions)
 					job_positions = "Unlimited"
 				page_msg += "<strong>Max Positions:</strong> [job_positions] <a href='?src=\ref[src];choice=modify_positions;job=\ref[job]'>Change</a><br>"
 				page_msg += "<strong>Wage:</strong> [job.wage] <a href='?src=\ref[src];choice=modify_wage;job=\ref[job]'>Change</a><br>"
+				page_msg += "<strong>Synth Wage:</strong> [job.synth_wage] <a href='?src=\ref[src];choice=modify_synth_wage;job=\ref[job]'>Change</a><br>"
+				page_msg += "<strong>Allow Synths?:</strong> [job.allows_synths ? "Yes" : "No"] <a href='?src=\ref[src];choice=synth_toggle;job=\ref[job]'>Toggle</a><br>"
+
 				page_msg += "<strong>Clean Criminal Record Required:</strong> [job.clean_record_required ? "Yes" : "No"] <a href='?src=\ref[src];choice=toggle_record_req;job=\ref[job]'>Toggle</a><br>"
 				page_msg += "<strong>Minimum Employee Age:</strong> [job.minimum_character_age] <a href='?src=\ref[src];choice=adjust_minimum_age;job=\ref[job]'>Adjust</a><br>"
 				page_msg += "<strong>Exploitable Job*:</strong> [job.minimal_player_age ? "Yes" : "No"] <a href='?src=\ref[src];choice=exploitable_job_toggle;job=\ref[job]'>Toggle</a><br>"
@@ -497,6 +515,9 @@
 
 		var/new_job = sanitize_name(copytext(input(usr, "Enter a new job title. (Max 40 letters)", "Business Management Utility", b_pass)  as text,1,40))
 
+		if(!new_job)
+			return
+
 		if(!(LAZYLEN(current_business.business_jobs) >= MAX_BUSINESS_JOBS))
 			current_business.create_new_job(new_job)
 		else
@@ -578,6 +599,14 @@
 
 		alert("Business renamed to [biz_name].")
 
+	if(href_list["toggle_ceo_pay"])
+
+		if(!current_business)
+			return
+
+		current_business.pay_CEO = !current_business.pay_CEO
+
+
 
 	if(href_list["transfer_money"])
 		if(!current_business)
@@ -599,6 +628,16 @@
 
 		if(!account_to_send)
 			error_msg = "This account does not appear to exist."
+			return
+
+		var/datum/money_account/D = get_account(current_business.owner.bank_id)
+		var/attempt_pin = ""
+		if(D && D.security_level)
+			attempt_pin = input("Enter your personal bank account PIN (Verification Purposes Only)", "Transaction") as num
+
+
+		if(!attempt_account_access(current_business.owner.bank_id, attempt_pin, 2) )
+			error_msg = "There was an error with authenticating your bank account. Please contact your bank's administrator."
 			return
 
 
@@ -944,10 +983,40 @@
 				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [persistent_economy.minimum_wage])", "Select Positions", job.wage) as num
 
 
-				if(!new_wage || (persistent_economy.minimum_wage > new_wage))
+				if((0 > new_wage) || !new_wage || (persistent_economy.minimum_wage > new_wage))
 					job.wage = persistent_economy.minimum_wage
 				else
 					job.wage = new_wage
+
+
+			if("modify_synth_wage")
+
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				if(!current_business || !job)
+					return
+
+				var/synth_option = alert("What would you like to do?", "Synth Wage", "Adjust Synth Wage", "Remove Synth Wage", "Cancel")
+
+				if(synth_option== "Cancel")
+					return
+
+				if(synth_option== "Remove Synth Wage")
+					job.synth_wage = null
+					return
+
+				if(!persistent_economy.allow_synth_discrimination)
+					alert("Synthetics are subjected to equal rights at this moment.")
+					job.synth_wage = null
+					return
+
+				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [persistent_economy.minimum_wage])", "Select Positions", job.wage) as num
+
+
+				if((0 > new_wage) || !new_wage || (persistent_economy.minimum_wage > new_wage))
+					job.synth_wage = persistent_economy.synth_minimum_wage
+				else
+					job.synth_wage = new_wage
 
 
 			if("toggle_record_req")
@@ -987,6 +1056,20 @@
 					job.minimal_player_age = 0
 				else
 					job.minimal_player_age = 14
+
+			if("synth_toggle")	// to prevent grief, makes jobs a min of two weeks old
+
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				if(!current_business || !job)
+					return
+
+				if(!persistent_economy.allow_synth_discrimination)
+					alert("The government has not permitted the discrimination of synthetics in employment at this time.")
+					job.allows_synths = TRUE
+					return
+
+				job.allows_synths = !job.allows_synths
 
 
 			if("set_supervisors")
@@ -1067,6 +1150,64 @@
 						job.access |= A.id
 						job.minimal_access |= A.id
 						break
+
+			if("demote_job")
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				var/G = locate(href_list["card"])
+				var/obj/item/weapon/card/id/id = G
+
+				if(!current_business || !job || !id)
+					return
+
+				id.rank = "Civilian"
+				id.assignment = "Civilian"
+
+				for(var/V in job.access)
+					id.access -= V
+
+				var/datum/data/record/R = gen_record_by_uid(unique_id)
+
+				if(R)
+					R.fields["rank"] = "Civilian"
+					R.fields["real_rank"] = "Civilian"
+
+				alert("You have removed [job.title] to the ID card.")
+
+
+			if("promote_job")
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				var/G = locate(href_list["card"])
+				var/obj/item/weapon/card/id/id = G
+
+				if(!current_business || !job || !id)
+					return
+
+				id.rank = job.title
+				id.assignment = job.title
+
+				var/datum/data/record/R = gen_record_by_uid(unique_id)
+
+				var/new_title
+
+				if(LAZYLEN(job.alt_titles))
+					var/choices = list(job.title) + job.alt_titles
+					new_title = input("Choose a new job title for this ID.", "Choose Title", job.title) as anything in choices|null
+
+				if(R)
+					R.fields["rank"] = (new_title ? new_title : job.title)
+					R.fields["real_rank"] = job.title
+
+				if(id.registered_name)
+					id.name = "[id.registered_name]'s ID Card ([new_title ? new_title : job.title])"
+
+				for(var/V in job.access)
+					id.access += V
+
+				alert("You have added [job.title] to the ID card.")
+
+
 
 			if("add_alt_title")
 				var/E = locate(href_list["job"])

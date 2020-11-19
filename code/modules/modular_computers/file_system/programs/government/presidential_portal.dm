@@ -106,10 +106,10 @@
 	else if(index == 7) // Council Page
 		page_msg = "This is the city council management page. You can enable and disable certain features that affect the council."
 
-	else if(index == 8) // Council Page
+	else if(index == 8) // Funds Page
 		page_msg = "You are now able to manage funds of the colony. You can transfer funds from a certain department to another.<hr><br><br>"
 
-		for(var/datum/department/D in GLOB.public_departments)
+		for(var/datum/department/D in SSeconomy.get_all_nonbusiness_departments())
 			if(!D.has_bank || !D.bank_account)
 				continue
 			var/datum/money_account/M = D.bank_account
@@ -121,6 +121,9 @@
 
 			page_msg += "<a href='?src=\ref[src];send_money=1;transfer_funds=\ref[M]'>Send Money</a> "
 			page_msg += "<a href='?src=\ref[src];manage_transfer=1;transfer_funds=\ref[M]'>Transfer Money From</a> <b>[D.name]</b> (<font color=\"[display_color]\">[M.money]</font>CR)<br>"
+
+	else if(index == 9) // Employment Law Page
+		page_msg = "You now can manage employment law in the colony. Please.<hr><br><br>"
 
 
 	if(index == -1)
@@ -167,7 +170,7 @@
 
 	//wages
 	data["min_wage"] = persistent_economy.minimum_wage
-
+	data["synth_minimum_wage"] = persistent_economy.synth_minimum_wage
 	//taxes
 	data["medical_tax"] = persistent_economy.medical_tax * 100
 	data["weapons_tax"] = persistent_economy.weapons_tax * 100
@@ -186,6 +189,7 @@
 	data["synth_vote"] = "[persistent_economy.synth_vote ? "Can Vote" : "Cannot Vote"]"
 	data["citizenship_vote"] = "[persistent_economy.citizenship_vote ? "Can Vote" : "Cannot Vote"]"
 	data["criminal_vote"] = "[persistent_economy.criminal_vote ? "Can Vote" : "Cannot Vote"]"
+	data["synth_discrimination"] = "[persistent_economy.allow_synth_discrimination ? "Synth Discrimination Allowed" : "Synth Discrimination Not Allowed"]"
 
 	//manage council
 	data["city_services_enable"] = "[persistent_economy.city_council_control ? "Can Manage City Services" : "Cannot Manage City Services"]"
@@ -229,6 +233,25 @@
 
 		persistent_economy.minimum_wage = min_wage
 
+		for(var/datum/job/J in SSjobs.occupations)	// force all biz jobs to adapt to this wage
+			if(J.business && (persistent_economy.minimum_wage > J.wage))
+				J.wage = persistent_economy.minimum_wage
+
+
+	if(href_list["synth_minimum_wage"])
+		. = 1
+
+		var/min_wage = input(usr, "Please input the new synth minimum wage. (Min 1 - Max 100)", "Minimum Wage", persistent_economy.minimum_wage) as num|null
+
+		if(!min_wage || (min_wage > 100) || (0 > min_wage))
+			error_msg = "This wage range is incorrect. You must enter a decimal between 1 and 100."
+			return
+
+		persistent_economy.synth_minimum_wage = min_wage
+
+		for(var/datum/job/J in SSjobs.occupations)	// force all biz jobs to adapt to this wage
+			if(J.business && (persistent_economy.synth_minimum_wage > J.synth_wage))
+				J.synth_wage = persistent_economy.synth_minimum_wage
 
 
 	if(href_list["adjust_wc_taxes"])
@@ -632,3 +655,12 @@
 			persistent_economy.criminal_vote = TRUE
 		else
 			persistent_economy.criminal_vote = FALSE
+
+	if(href_list["toggle_synth_discrimination"])
+		. = 1
+
+		persistent_economy.allow_synth_discrimination = !persistent_economy.allow_synth_discrimination
+
+		for(var/datum/job/J in SSjobs.occupations)
+			J.synth_wage = null
+			J.allows_synths = TRUE

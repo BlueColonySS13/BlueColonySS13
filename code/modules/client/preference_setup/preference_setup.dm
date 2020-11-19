@@ -1,6 +1,3 @@
-#define PREF_FBP_CYBORG "cyborg"
-#define PREF_FBP_POSI "posi"
-#define PREF_FBP_SOFTWARE "software"
 
 /datum/category_group/player_setup_category/general_preferences
 	name = "General"
