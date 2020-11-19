@@ -125,6 +125,12 @@
 	categories = list(PAPERWORK_COUNCIL)
 	file_source = 'code/modules/paperwork/paperwork_templates/council/weaponpermit.txt'
 
+/datum/paperwork_template/permit_form_nonweapon
+	name = "City Clerk: Universal Permit Application Form"
+	title = "Universal Permit Application"
+	categories = list(PAPERWORK_COUNCIL)
+	file_source = 'code/modules/paperwork/paperwork_templates/council/upaf.txt'
+
 /datum/paperwork_template/courtrules
 	name = "Courtroom Rules"
 	title = "Courtroom Rules"
@@ -176,4 +182,10 @@
 	title = "PDSI Report"
 	categories = list(PAPERWORK_GOVERNMENT)
 	file_source = 'code/modules/paperwork/paperwork_templates/government/pdsireport.txt'
+
+/datum/paperwork_template/hmp
+	name = "Hazardous Material Permit - Committee"
+	title = "Hazardous Material Permit"
+	categories = list (PAPERWORK_GOVERNMENT)
+	file_source = 'code/modules/paperwork/paperwork_templates/government/hmp.txt'
 
