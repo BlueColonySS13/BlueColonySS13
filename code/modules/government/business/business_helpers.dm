@@ -15,11 +15,11 @@ var/global/list/business_outfits = list(
 	"Engineer" = list("path" = /decl/hierarchy/outfit/job/business/engineer),
 	"Business Casual" = list("path" = /decl/hierarchy/outfit/job/business/casual),
 	"High End Waiter (Red)" = list("path" = /decl/hierarchy/outfit/job/business/bartender/waiter/red),
-	"High End Waiter (Grey)" = list("path" = /decl/hierarchy/outfit/job/business/bartender/waiter/grey),	
+	"High End Waiter (Grey)" = list("path" = /decl/hierarchy/outfit/job/business/bartender/waiter/grey),
 	"High End Waiter (Brown)" = list("path" = /decl/hierarchy/outfit/job/business/bartender/waiter/brown),
-	"Clown" = list("path" = /decl/hierarchy/outfit/job/business/clown),	
+	"Clown" = list("path" = /decl/hierarchy/outfit/job/business/clown),
 	"Mime" = list("path" = /decl/hierarchy/outfit/job/business/mime)
-	
+
 
 )
 
@@ -70,6 +70,11 @@ var/global/list/business_outfits = list(
 
 /datum/business/proc/get_owner()
 	return owner
+
+/datum/business/proc/get_owner_uid()
+	if(!owner)
+		return
+	return owner.unique_id
 
 /datum/business/proc/get_status()
 	if(suspended)

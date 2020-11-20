@@ -20,6 +20,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	minimal_player_age = 14
 	wage = 500
 
+	allows_synths = FALSE
+
 	minimum_character_age = 30
 	ideal_character_age = 50
 
@@ -68,6 +70,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	minimal_player_age = 10
 	wage = 350
 
+	allows_synths = FALSE
 
 	minimum_character_age = 26
 	alt_titles = list("City Manager")
@@ -106,9 +109,10 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/secretary
 	wage = 100
+	synth_wage = 50
+
 	access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
 	minimal_access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
-
 
 	minimum_character_age = 20
 
@@ -134,6 +138,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	idtype = /obj/item/weapon/card/id/silver/secretary
 	minimal_player_age = 5
 	wage = 100
+	synth_wage = 60
+
 	minimum_character_age = 21
 	access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_legal)
 	minimal_access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_legal)

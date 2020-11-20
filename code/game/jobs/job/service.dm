@@ -111,6 +111,7 @@
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/defense
 	wage = 100
+	synth_wage = 50
 
 	req_admin_notify = 1
 	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
@@ -160,6 +161,8 @@
 	minimum_character_age = 20
 	ideal_character_age = 35
 
+	allows_synths = FALSE
+
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
 	alt_titles = list("Supply Chief", "Factory Foreman")
 
@@ -176,6 +179,7 @@
 	selection_color = "#9b633e"
 	idtype = /obj/item/weapon/card/id/cargo/cargo_tech
 	wage = 70
+	synth_wage = 40
 
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
@@ -197,6 +201,8 @@
 	selection_color = "#9b633e"
 	idtype = /obj/item/weapon/card/id/cargo/mining
 	wage = 40
+	synth_wage = 20
+
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
 	minimum_character_age = 18

@@ -46,8 +46,11 @@ SUBSYSTEM_DEF(payroll)
 	var/unique_id = G.fields["unique_id"]
 
 	var/mob/living/carbon/human/linked_person
+	var/braintype = G.fields["brain_type"]
 
 
+	if(!unique_id) // shouldn't happen, but you know.
+		return
 
 	//let's find the relevent person.
 	for(var/mob/living/carbon/human/H in mob_list)
@@ -72,23 +75,40 @@ SUBSYSTEM_DEF(payroll)
 
 	var/datum/department/department_account = dept_by_id(department)
 
+
 	if(!department_account)
-//		message_admins("ERROR: No department account found for [job]'s department: [department].", 1)
+		message_admins("ERROR: No department account found for [job]'s department: [department].", 1)
+		return
+
+	var/datum/business/business_account = department_account.get_business()
+	if(business_account)
+		if((business_account.get_owner_uid() == unique_id) && !business_account.pay_CEO)
+			// don't pay the CEO if they toggled this option off
+			return
+
+	var/is_synth = FALSE
+	if(!isnull(job.synth_wage) && (braintype == FBP_DRONE || braintype == FBP_POSI))
+		wage = job.synth_wage
+		is_synth = TRUE
+	else
+		wage = job.wage
+
+//	message_admins("Wage set to [job.wage].", 1)
+
+	if(!wage)
+//		message_admins("ERROR: Job does not have wage.", 1)
 		return
 
 	if(bank_account.suspended)
 //		message_admins("ERROR: Bank account [bank_number] is suspended.", 1)
 		// If there's no money in the department account, tough luck. Not getting paid.
-		bank_account.add_transaction_log("Payroll Machine", "[department] Payroll: Failed (Payment Bounced Due to Suspension)", 0, "[department] Funding Account")
-
+		bank_account.add_transaction_log("Payroll Machine", "[department] Payroll: Failed (Payment of [cash2text( wage, FALSE, TRUE, TRUE )] Bounced Due to Suspension)", 0, "[department] Funding Account")
 		return
 
 	if((!class) || (!(class in ECONOMIC_CLASS)) )
 		class = CLASS_WORKING
 //		message_admins("ERROR: Could not find class. Assigned working class.", 1)
 
-	if(!unique_id) // shouldn't happen, but you know.
-		return
 
 	if(linked_person && linked_person.client)
 		var/client/linked_client = linked_person.client
@@ -108,15 +128,6 @@ SUBSYSTEM_DEF(payroll)
 			tax = persistent_economy.tax_rate_lower
 
 
-	wage = job.wage
-
-//	message_admins("Wage set to [job.wage].", 1)
-
-	if(!wage)
-//		message_admins("ERROR: Job does not have wage.", 1)
-		return
-
-
 	if(wage > department_account.get_balance())
 		// If there's no money in the department account, tough luck. Not getting paid.
 		bank_account.add_transaction_log(bank_account.owner_name, "[department_account.name] Payroll: Failed (Inadequate Department Funds)", 0, "[department] Funding Account")
@@ -131,7 +142,7 @@ SUBSYSTEM_DEF(payroll)
 	var/final_amount = (wage - calculated_tax)
 
 	//You get paid by your bank department's account.
-	department_account.direct_charge_money(bank_account.account_number, bank_account.owner_name, final_amount, "[department_account.name] Payroll: [name] ([calculated_tax] credit tax)", "[department_account.name] Funding Account")
+	department_account.direct_charge_money(bank_account.account_number, bank_account.owner_name, final_amount, "[department_account.name] Payroll: [name] ([calculated_tax] credit tax)[is_synth ? " Synth Rate" : ""]", "[department_account.name] Funding Account")
 
 	//if you owe anything, let's deduct your ownings.
 	for(var/datum/expense/E in bank_account.expenses)

@@ -27,6 +27,10 @@
 	minimal_player_age = 10
 	ideal_character_age = 50
 
+	clean_record_required = TRUE
+	allows_synths = FALSE
+
+
 	outfit_type = /decl/hierarchy/outfit/job/science/rd
 	alt_titles = list("Research Supervisor")
 
@@ -63,6 +67,8 @@
 	outfit_type = /decl/hierarchy/outfit/job/science/scientist
 	alt_titles = list("Xenoarchaeologist" = /decl/hierarchy/outfit/job/science/xenoarchaeologist, "Anomalist", "Phoron Researcher")
 
+	clean_record_required = TRUE
+
 /datum/job/xenobiologist
 	title = "Xenobiologist"
 
@@ -83,6 +89,8 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/science/xenobiologist
 	alt_titles = list("Xenobotanist")
+
+	clean_record_required = TRUE
 
 /datum/job/roboticist
 	title = "Roboticist"
@@ -105,6 +113,9 @@
 	outfit_type = /decl/hierarchy/outfit/job/science/roboticist
 	alt_titles = list("Biomechanical Engineer","Mechatronic Engineer","Car Engineer")
 
+	clean_record_required = TRUE
+	allows_synths = FALSE
+
 /datum/job/scienceintern
 	title = "Research Assistant"
 
@@ -124,3 +135,5 @@
 	minimal_player_age = 0
 
 	outfit_type = /decl/hierarchy/outfit/job/science/intern
+
+	clean_record_required = TRUE

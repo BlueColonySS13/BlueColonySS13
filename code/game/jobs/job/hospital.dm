@@ -13,6 +13,8 @@
 	idtype = /obj/item/weapon/card/id/medical/head
 	req_admin_notify = 1
 	wage = 425
+	allows_synths = FALSE
+
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
@@ -45,6 +47,8 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/doctor
 	wage = 260
+	synth_wage = 120
+
 	minimum_character_age = 25
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
@@ -73,6 +77,8 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/chemist
 	wage = 120
+	synth_wage = 80
+
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology)
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
 	alt_titles = list("Pharmacist")
@@ -95,6 +101,8 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/geneticist
 	wage = 160
+	synth_wage = 80
+
 	access = list(access_genetics)
 	minimal_access = list(access_genetics)
 
@@ -110,6 +118,8 @@
 	total_positions = 4
 	spawn_positions = 1
 	wage = 170
+	synth_wage = 80
+
 	minimum_character_age = 25
 	supervisors = "the medical director"
 	selection_color = "#013D3B"
@@ -134,6 +144,8 @@
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/intern
 	wage = 120
+	synth_wage = 60
+
 	minimum_character_age = 20
 	access = list(access_medical)
 	minimal_access = list(access_medical, access_maint_tunnels)
@@ -153,6 +165,8 @@
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/medical/paramedic
 	wage = 220
+	synth_wage = 100
+
 	minimum_character_age = 20
 
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva)

@@ -82,6 +82,9 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	var/foodstamp_meals = 3
 	var/minimum_wage = 15			// Minimum wage for jobs.
 
+	var/allow_synth_discrimination = FALSE // do you allow synthetic discrimination?
+	var/synth_minimum_wage = 0 // minimum wage for synths, respectively
+
 /datum/economy/bank_accounts/proc/save_economy()
 //	message_admins("SAVE: Save all department accounts.", 1)
 	if(!path)				return 0
@@ -149,6 +152,9 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 
 
 	S["minimum_wage"] << minimum_wage
+
+	S["allow_synth_discrimination"] << allow_synth_discrimination
+	S["synth_minimum_wage"] << synth_minimum_wage
 	return TRUE
 
 /datum/economy/bank_accounts/proc/load_accounts()
@@ -216,6 +222,9 @@ var/datum/economy/bank_accounts/persistent_economy = new()
 	S["meteor_proof"] >> meteor_proof
 
 	S["minimum_wage"] >> minimum_wage
+
+	S["allow_synth_discrimination"] >> allow_synth_discrimination
+	S["synth_minimum_wage"] >> synth_minimum_wage
 
 	tax_rate_lower = tax_poor
 	tax_rate_middle = tax_middle

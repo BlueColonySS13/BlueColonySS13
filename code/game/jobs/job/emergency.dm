@@ -14,6 +14,8 @@
 	req_admin_notify = 1
 
 	wage = 350
+	allows_synths = FALSE
+
 
 	minimum_character_age = 25
 	ideal_character_age = 50
@@ -70,6 +72,8 @@
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/engineering/atmos
 	wage = 50
+	synth_wage = 25
+
 	access = list(access_engine, access_engine_equip, access_janitor, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_eva, access_maint_tunnels, access_external_airlocks)
 	minimal_access = list(access_engine, access_engine_equip, access_janitor, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 
@@ -97,5 +101,7 @@
 	minimal_access = list(access_janitor, access_maint_tunnels)
 	minimum_character_age = 16 //Not making it any younger because being a janitor requires a lot of labor, or maybe it just means I'm very lazy? Oh well
 	wage = 40
+	synth_wage = 25
+
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
 	alt_titles = list("Recycling Technician", "Sanitation Engineer")
