@@ -48,13 +48,24 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("Sunyo", 'sound/music/disco/Sunyo.ogg'),
 		new/datum/track("Syn", 'sound/music/disco/Syn.ogg'),
 		new/datum/track("System Collapse", 'sound/music/disco/System_Collapse.ogg'),
-		new/datum/track("This is Rain", 'sound/music/disco/This is Rain.ogg')
+		new/datum/track("This is Rain", 'sound/music/disco/This is Rain.ogg'),
+		new/datum/track("Chippin In", 'sound/music/disco/Chippin In.ogg'),
+		new/datum/track("A Like Supreme", 'sound/music/disco/Like A Supreme.ogg'),
+		new/datum/track("Never Fade Away", 'sound/music/disco/Never Fade Away.ogg'),
+		new/datum/track("The Ballad of Buck Ravers", 'sound/music/disco/The Ballad of Buck Ravers.ogg'),
+		new/datum/track("VHS Dreams", 'sound/music/disco/vhsdreams.ogg'),
+		new/datum/track("Spacedman", 'sound/music/disco/spacedman.ogg'),
+		new/datum/track("Phortitude", 'sound/music/disco/phortitude.ogg'),
+		new/datum/track("Nightchaser", 'sound/music/disco/nightchaser.ogg'),
+		new/datum/track("The Man Who Sold the World", 'sound/music/disco/The Man Who Sold the World.ogg'),
+		new/datum/track("Space Oddity", 'sound/music/disco/Space Oddity.ogg')
 
 	)
 
 	// Only visible if hacked
 	var/list/datum/track/secret_tracks = list(
-		new/datum/track("#$@^^/:|~", 'sound/music/Despacito.ogg')
+		new/datum/track("#$@^^/:|~", 'sound/music/Despacito.ogg'),
+		new/datum/track("Play Me", 'sound/music/disco/Rick Astley.ogg')
 	)
 
 /obj/machinery/media/jukebox/New()
