@@ -473,7 +473,6 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 	else if(istype(O, /obj/item/weapon/wrench))
 		user.visible_message("<span class='warning'>[user] has [anchored ? "un" : ""]secured \the [src].</span>", "<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
 		anchored = !anchored
-		playsound(src, 50, 1)
 		return
 	else
 		..()
