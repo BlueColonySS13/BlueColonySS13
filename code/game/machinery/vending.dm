@@ -1275,6 +1275,7 @@
 	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
 	req_access = list(access_forensics_lockers)
 	products = list(
+	/obj/item/weapon/storage/bag/forensics = 5,
 	/obj/item/weapon/storage/box/csi_markers = 3,
 	/obj/item/weapon/storage/box/evidence = 6,
 	/obj/item/weapon/storage/briefcase/crimekit = 2,
@@ -1305,7 +1306,7 @@
 	/obj/item/clothing/head/beret/policered = 4,
 	/obj/item/clothing/suit/storage/toggle/policejacket = 4,
 	/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen = 4,
-	
+
 	)
 
 /obj/machinery/vending/security/prisoner

@@ -383,7 +383,7 @@
 	name = "cloth bag"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "foodbag"
-	desc = "Allows you to storage a large quantity of clothing."
+	desc = "Allows you to store a large quantity of clothing."
 	max_storage_space = ITEMSIZE_COST_NORMAL * 25
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_SMALL
@@ -391,3 +391,16 @@
 	/obj/item/stack/material/leather/synthetic, /obj/item/stack/material/cotton, /obj/item/stack/material/hairlesshide, \
 	/obj/item/stack/material/polychromatic_thread)
 
+	// -----------------------------
+	//           Clothing Bag
+	// -----------------------------
+/obj/item/weapon/storage/bag/forensics
+	name = "forensics bag"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "forensicsbag"
+	desc = "Allows forensic techs to hold a large amount of evidence on the go."
+	max_storage_space = ITEMSIZE_COST_NORMAL * 25
+	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEMSIZE_SMALL
+	can_hold = list(/obj/item/weapon/forensics, /obj/item/weapon/evidencebag, /obj/item/weapon/sample, /obj/item/weapon/csi_marker, \
+	/obj/item/weapon/storage/photo_album, /obj/item/weapon/photo)
