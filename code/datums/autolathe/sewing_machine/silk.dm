@@ -215,6 +215,17 @@
 
 // preset suits
 
+
+/datum/category_item/crafting/sewing_machine/silk/arisgroom
+	name = "aristocratic groom"
+	path = /obj/item/clothing/under/arisgroom
+	force_matter = list("silk" = 3550)
+
+/datum/category_item/crafting/sewing_machine/silk/arisbestman
+	name = "aristocratic purple tuxedo"
+	path = /obj/item/clothing/under/arisbestman
+	force_matter = list("silk" = 3550)
+
 /datum/category_item/crafting/sewing_machine/silk/gentlesuit
 	name = "gentlemans suit"
 	path = /obj/item/clothing/under/gentlesuit

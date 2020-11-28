@@ -280,6 +280,10 @@
 	name = "modern wrapped coat"
 	path = /obj/item/clothing/under/moderncoat
 
+/datum/category_item/crafting/sewing_machine/cotton/hartsuit
+	name = "striped suit"
+	path = /obj/item/clothing/under/hartsuit
+
 /datum/category_item/crafting/sewing_machine/cotton/soviet
 	name = "soviet uniform"
 	path = /obj/item/clothing/under/soviet

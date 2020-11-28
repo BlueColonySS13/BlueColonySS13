@@ -107,6 +107,11 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 1.0
 
+/obj/item/clothing/head/wizard/marisa/fake/witchhunter
+	name = "witch hunter hat"
+	desc = "Let's get those witches!"
+	icon_state = "witchhunterhat"
+
 /obj/item/clothing/suit/wizrobe/marisa/fake
 	name = "Witch Robe"
 	desc = "Magic is all about the spell power, ZE!"
