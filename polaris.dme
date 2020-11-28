@@ -1735,6 +1735,7 @@
 #include "code\modules\gamemaster\actions\surprise_carp_attack.dm"
 #include "code\modules\gamemaster\actions\surprise_meteor.dm"
 #include "code\modules\gamemaster\actions\waste_disposal.dm"
+#include "code\modules\games\boardgame.dm"
 #include "code\modules\games\cah.dm"
 #include "code\modules\games\cah_black_cards.dm"
 #include "code\modules\games\cah_white_cards.dm"
