@@ -4,7 +4,7 @@
 	var/back_icon = "card_back"
 
 /obj/item/weapon/deck
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEMSIZE_TINY
 	icon = 'icons/obj/playing_cards.dmi'
 	var/list/cards = list()
 	var/cooldown = 0 // to prevent spam shuffle
