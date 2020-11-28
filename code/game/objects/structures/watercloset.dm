@@ -629,3 +629,7 @@
 
 /obj/structure/sink/puddle/fountain/attackby(obj/item/O as obj, mob/user as mob)
 	return
+
+/obj/structure/sink/puddle/fountain/cascington // for walls
+	icon_state = "fountain2"
+	density = FALSE
