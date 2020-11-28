@@ -353,9 +353,14 @@
 	desc = "This is a tiny well lit decorative christmas tree."
 	icon_state = "plant-xmas"
 	density = 1
-	anchored = 1
+	anchored = 0
 	light_range = 2
 	light_power = 1
+
+/obj/structure/flora/pottedplant/xmas/large
+	name = "large christmas tree"
+	icon = 'icons/obj/flora/pinetrees.dmi'
+	icon_state = "pine_c"
 
 /obj/structure/flora/sif
 	icon = 'icons/obj/flora/sifflora.dmi'

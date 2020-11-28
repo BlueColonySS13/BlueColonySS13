@@ -159,7 +159,7 @@ datum/supply_pack/clothing/polychromatic
 	name = "Polychromatic Clothes Collection"
 	containername = "Polychromatic Clothes Collection"
 	containertype = /obj/structure/closet
-	cost = 600
+	cost = 5000
 	contains = list(
 			/obj/item/clothing/under/polychromic/shimatank,
 			/obj/item/clothing/under/polychromic/bottomless,

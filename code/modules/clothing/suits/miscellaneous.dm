@@ -86,6 +86,33 @@
 	allowed = list(/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/spacecash)
 	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 
+/obj/item/clothing/suit/santa
+	name = "santa suit"
+	desc = "A festive suit for that time of year."
+	icon_state = "santa"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+
+/obj/item/clothing/suit/santa/elf
+	name = "elf suit"
+	icon_state = "elf"
+
+
+/obj/item/clothing/suit/frosty
+	name = "frosty the snowman suit"
+	desc = "A frosty the snowman suit. Looks warm, ironically."
+	icon_state = "snowman"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+
+/obj/item/clothing/suit/bunny
+	name = "bunny suit"
+	desc = "Perfect for easter."
+	icon_state = "bunnysuit"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+
+
 /*/obj/item/clothing/suit/wcoat
 	name = "waistcoat"
 	desc = "For some classy, murderous fun."
