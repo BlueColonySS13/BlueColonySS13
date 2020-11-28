@@ -1257,7 +1257,7 @@
 	/obj/item/clothing/head/beret/police = 6,
 	/obj/item/clothing/suit/armor/pcarrier/medium/police = 6,
 	/obj/item/clothing/head/helmet/police = 6,
-	//obj/item/clothing/suit/storage/hooded/wintercoat/security = 6,
+	/obj/item/clothing/suit/storage/hooded/wintercoat/security = 6,
 	/obj/item/clothing/accessory/holster/waist = 6,
 	/obj/item/clothing/accessory/holster/armpit = 6,
 	/obj/item/clothing/accessory/holster/hip = 6,
@@ -1267,7 +1267,7 @@
 	/obj/item/clothing/suit/storage/toggle/policejacket = 6,
 	/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen = 6,
 	/obj/item/clothing/accessory/badge/holo/police = 6,
-
+	/obj/item/device/retail_scanner/police = 8
 	)
 
 /obj/machinery/vending/security/detective
@@ -1306,8 +1306,46 @@
 	/obj/item/clothing/head/beret/policered = 4,
 	/obj/item/clothing/suit/storage/toggle/policejacket = 4,
 	/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen = 4,
-
 	)
+
+/obj/machinery/vending/security/warden
+	name = "Warden Equipment Vendotron"
+	req_access = list(access_forensics_lockers)
+	products = list(
+	/obj/item/device/retail_scanner/police = 2,
+	/obj/item/weapon/storage/backpack/security = 2,
+	/obj/item/weapon/storage/backpack/satchel/sec = 2,
+	/obj/item/weapon/storage/backpack/dufflebag/sec = 2,
+	/obj/item/clothing/suit/armor/pcarrier/medium/police = 2,
+	/obj/item/clothing/head/beret/policegold = 2,
+	/obj/item/clothing/head/soft/policewarden = 2,
+	/obj/item/clothing/head/police/policewardencap = 2,
+	/obj/item/clothing/under/rank/wardenalt = 2,
+	/obj/item/clothing/suit/storage/vest/wardencoat = 2,
+	/obj/item/clothing/suit/storage/vest/wardencoat/alt = 2,
+	/obj/item/clothing/suit/storage/toggle/policejacket = 2,
+	/obj/item/clothing/head/helmet/dermal = 2,
+	/obj/item/clothing/head/helmet/police = 2,
+	/obj/item/weapon/cartridge/security = 2,
+	/obj/item/device/radio/headset/headset_sec = 2,
+	/obj/item/device/radio/headset/headset_sec/alt = 2,
+	/obj/item/clothing/glasses/sunglasses/sechud = 2,
+	/obj/item/taperoll/police = 2,
+	/obj/item/weapon/bodycam = 2,
+	/obj/item/clothing/accessory/badge/holo/warden = 2,
+	/obj/item/weapon/storage/box/flashbangs = 2,
+	/obj/item/weapon/storage/belt/security = 2,
+	/obj/item/weapon/reagent_containers/spray/pepper = 2,
+	/obj/item/weapon/melee/baton/loaded = 2,
+	/obj/item/weapon/gun/energy/gun = 2,
+	/obj/item/weapon/cell/device/weapon = 2,
+	/obj/item/weapon/storage/box/holobadge,
+	/obj/item/clothing/shoes/boots/winter/security = 2,
+	/obj/item/device/flashlight/maglight = 2,
+	/obj/item/device/megaphone = 2,
+	/obj/item/clothing/mask/gas/half = 2,
+	/obj/item/weapon/grenade/flashbang/clusterbang/geminus = 2)
+
 
 /obj/machinery/vending/security/prisoner
 	name = "Prisoner Equipment"

@@ -21,7 +21,7 @@
 			/obj/item/weapon/gun/projectile/colt/detective = 2,
 			/obj/item/weapon/storage/box/flashbangs = 2
 			)
-	cost = 1950
+	cost = 2950
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Security equipment crate"
 	access = access_security
@@ -29,7 +29,7 @@
 /datum/supply_pack/munitions/egunpistol
 	name = "Weapons - Energy sidearms"
 	contains = list(/obj/item/weapon/gun/energy/gun = 10)
-	cost = 3500
+	cost = 36000
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Energy sidearms crate"
 	access = access_security
@@ -42,7 +42,7 @@
 			/obj/item/weapon/gun/projectile/shotgun/doublebarrel/flare,
 			/obj/item/weapon/storage/box/flashshells
 			)
-	cost = 2500
+	cost = 9000
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Flare gun crate"
 	access = access_security
@@ -52,7 +52,7 @@
 	contains = list(
 			/obj/item/weapon/gun/energy/xray = 2,
 			/obj/item/weapon/shield/energy = 2)
-	cost = 5000
+	cost = 14000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Experimental weapons crate"
 	access = access_armory
@@ -60,7 +60,7 @@
 /datum/supply_pack/munitions/energyweapons
 	name = "Weapons - Laser rifle crate"
 	contains = list(/obj/item/weapon/gun/energy/laser = 10)
-	cost = 6060
+	cost = 38000
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Energy weapons crate"
 	access = access_armory
@@ -74,7 +74,7 @@
 			/obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn = 5,
 			/obj/item/weapon/gun/projectile/shotgun/pump/combat = 5
 			)
-	cost = 4215
+	cost = 55500
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Shotgun crate"
 	access = access_armory
@@ -87,7 +87,7 @@
 			/obj/item/weapon/gun/projectile/sec/wood = 5,
 			/obj/item/weapon/gun/projectile/sec/flash = 5,
 			)
-	cost = 4200
+	cost = 75000
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "45 crate"
 	access = access_armory
@@ -95,7 +95,7 @@
 /datum/supply_pack/munitions/erifle
 	name = "Weapons - Energy marksman"
 	contains = list(/obj/item/weapon/gun/energy/sniperrifle = 5)
-	cost = 3000
+	cost = 18500
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Energy marksman crate"
 	access = access_armory
@@ -103,7 +103,7 @@
 /datum/supply_pack/munitions/burstlaser
 	name = "Weapons - Burst laser"
 	contains = list(/obj/item/weapon/gun/energy/gun/burst = 5)
-	cost = 3000
+	cost = 18500
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Burst laser crate"
 	access = access_armory
@@ -114,7 +114,7 @@
 			/obj/item/weapon/gun/energy/ionrifle = 5,
 			/obj/item/weapon/storage/box/empslite = 2
 			)
-	cost = 2500
+	cost = 19000
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Electromagnetic weapons crate"
 	access = access_armory
@@ -123,9 +123,9 @@
 	name = "Weapons - Electromagnetic pistols"
 	contains = list(
 			/obj/item/weapon/gun/energy/ionrifle/pistol = 5,
-			/obj/item/weapon/storage/box/empslite
+			/obj/item/weapon/storage/box/empslite = 2
 			)
-	cost = 2300
+	cost = 20000
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Electromagnetic weapons crate"
 	access = access_armory
@@ -133,7 +133,7 @@
 /datum/supply_pack/munitions/bsmg
 	name = "Weapons - Ballistic SMGs"
 	contains = list(/obj/item/weapon/gun/projectile/automatic/wt550 = 5)
-	cost = 4200
+	cost = 19000
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Ballistic weapon crate"
 	access = access_armory
@@ -141,7 +141,7 @@
 /datum/supply_pack/munitions/brifle
 	name = "Weapons - Ballistic Rifles"
 	contains = list(/obj/item/weapon/gun/projectile/automatic/z8 = 5)
-	cost = 4580
+	cost = 19000
 	containertype = /obj/structure/closet/crate/secure/weapon
 	containername = "Ballistic weapon crate"
 	access = access_armory
