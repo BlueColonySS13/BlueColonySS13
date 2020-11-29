@@ -1169,6 +1169,8 @@ About the new airlock wires panel:
 		return
 	if(!repairing && (istype(C, /obj/item/weapon/weldingtool) && !( src.operating > 0 ) && src.density))
 		var/obj/item/weapon/weldingtool/W = C
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [W] on \the [src]."))
+			return
 		if(W.remove_fuel(0,user))
 			if(!src.welded)
 				src.welded = 1
@@ -1187,6 +1189,8 @@ About the new airlock wires panel:
 				src.p_open = 0
 				playsound(src, C.usesound, 50, 1)
 		else
+			if(trigger_lot_security_system(user, /datum/lot_security_option/intrusion, "Using \the [C] on \the [src] to open the panel."))
+				return
 			src.p_open = 1
 			playsound(src, C.usesound, 50, 1)
 		src.update_icon()
@@ -1216,6 +1220,8 @@ About the new airlock wires panel:
 		if(can_remove_electronics())
 			playsound(src, C.usesound, 75, 1)
 			user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
+			if(trigger_lot_security_system(user, /datum/lot_security_option/intrusion, "Using \the [C] on \the [src] to uninstall the electronics."))
+				return
 			if(do_after(user,40 * C.toolspeed))
 				to_chat(user,"<span class='notice'>You removed the airlock electronics!</span>")
 

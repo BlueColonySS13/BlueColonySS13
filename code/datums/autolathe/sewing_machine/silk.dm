@@ -95,6 +95,14 @@
 	name = "orange wedding dress"
 	path = /obj/item/clothing/under/wedding/bride_orange
 
+/datum/category_item/crafting/sewing_machine/silk/floofy
+	name = "floofy dress"
+	path = /obj/item/clothing/under/wedding/floofdress
+
+/datum/category_item/crafting/sewing_machine/silk/gown
+	name = "gown"
+	path = /obj/item/clothing/under/wedding/whitegown
+
 // preset dresses
 /datum/category_item/crafting/sewing_machine/silk/wench
 	name = "wench dress"
@@ -155,7 +163,33 @@
 	name = "green sari"
 	path = /obj/item/clothing/under/dress/sari/green
 
+/datum/category_item/crafting/sewing_machine/silk/gothic
+	name = "gothic dress"
+	path = /obj/item/clothing/under/dress/gothic
 
+/datum/category_item/crafting/sewing_machine/silk/pentagram
+	name = "pentagram dress"
+	path = /obj/item/clothing/under/dress/pentagram
+
+/datum/category_item/crafting/sewing_machine/silk/revealing
+	name = "revealing dress"
+	path = /obj/item/clothing/under/dress/revealingdress
+
+/datum/category_item/crafting/sewing_machine/silk/formalred
+	name = "formal red dress"
+	path = /obj/item/clothing/under/dress/formalred
+
+/datum/category_item/crafting/sewing_machine/silk/yellowswoop
+	name = "yellow swoop dress"
+	path = /obj/item/clothing/under/dress/yellowswoop
+
+/datum/category_item/crafting/sewing_machine/silk/sheerblue
+	name = "sheer blue dress"
+	path = /obj/item/clothing/under/sheerblue
+
+/datum/category_item/crafting/sewing_machine/silk/blackngold
+	name = "black and gold gown"
+	path = /obj/item/clothing/under/blackngold
 
 // suits
 
@@ -181,6 +215,17 @@
 
 // preset suits
 
+
+/datum/category_item/crafting/sewing_machine/silk/arisgroom
+	name = "aristocratic groom"
+	path = /obj/item/clothing/under/arisgroom
+	force_matter = list("silk" = 3550)
+
+/datum/category_item/crafting/sewing_machine/silk/arisbestman
+	name = "aristocratic purple tuxedo"
+	path = /obj/item/clothing/under/arisbestman
+	force_matter = list("silk" = 3550)
+
 /datum/category_item/crafting/sewing_machine/silk/gentlesuit
 	name = "gentlemans suit"
 	path = /obj/item/clothing/under/gentlesuit
@@ -190,6 +235,10 @@
 	name = "ladies suit"
 	path = /obj/item/clothing/under/gentlesuit/skirt
 	force_matter = list("silk" = 3250)
+
+/datum/category_item/crafting/sewing_machine/silk/disheveled
+	name = "disheveled suit"
+	path = /obj/item/clothing/under/disheveled
 
 // shorts and skirts
 
@@ -302,10 +351,16 @@
 	name = "trilby hat"
 	path = /obj/item/clothing/head/feathertrilby
 	force_matter = list("silk" = 310)
+
 /datum/category_item/crafting/sewing_machine/silk/fex
 	name = "fez hat"
 	path = /obj/item/clothing/head/fez
 	force_matter = list("silk" = 310)
+
+/datum/category_item/crafting/sewing_machine/silk/blackngoldheaddress
+	name = "black and gold headdress"
+	path = /obj/item/clothing/head/blackngoldheaddress
+	force_matter = list("silk" = 410)
 
 // accessories
 
@@ -349,6 +404,10 @@
 /datum/category_item/crafting/sewing_machine/silk/bandana
 	name = "bandana"
 	path = /obj/item/clothing/mask/bandana
+	force_matter = list("silk" = 210)
+/datum/category_item/crafting/sewing_machine/silk/veil
+	name = "veil"
+	path = /obj/item/clothing/mask/veil
 	force_matter = list("silk" = 210)
 
 // gloves

@@ -86,6 +86,9 @@
 
 	var/block_persistence = FALSE
 
+	unique_save_vars = list("vendor_department", "charge_free_department", "charge_paid_department")
+
+
 /obj/machinery/vending/examine(mob/user)
 	..()
 
@@ -794,6 +797,7 @@
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/pitcher = 2,
 					/obj/item/weapon/reagent_containers/food/drinks/metaglass = 10,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/gin = 5,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/champagne = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/cognac = 5,
@@ -847,6 +851,7 @@
 //	block_persistence = TRUE
 
 	dont_save = FALSE
+	save_contents = FALSE // to stop hoarding since this regens the contents anyway
 
 
 /obj/machinery/vending/assist
@@ -1188,7 +1193,7 @@
 					/obj/item/stack/medical/ointment = 15,/obj/item/device/healthanalyzer = 10)
 
 	vendor_department = DEPT_HEALTHCARE
-	block_persistence = TRUE
+	block_persistence = FALSE
 
 /obj/machinery/vending/security
 	name = "SecTech"
@@ -1209,6 +1214,7 @@
 	/obj/item/weapon/melee/baton/loaded = 6,
 	/obj/item/taperoll/police = 6,
 	/obj/item/device/flashlight/flare = 6,
+	/obj/item/device/flashlight/maglight =6,
 	/obj/item/device/camera = 6,
 	/obj/item/device/camera_film = 6,
 	/obj/item/device/taperecorder = 6,
@@ -1235,24 +1241,33 @@
 	products = list(
 	/obj/item/weapon/storage/belt/security = 6,
 	/obj/item/device/radio/headset/headset_sec = 6,
+	/obj/item/device/radio/headset/headset_sec/alt = 6,
 	/obj/item/clothing/glasses/sunglasses/sechud = 6,
 	/obj/item/clothing/glasses/sunglasses = 6,
-	/obj/item/clothing/under/rank/security = 6,
-	/obj/item/clothing/under/rank/security/skirt = 6,
+	/obj/item/clothing/under/rank/policeofficeralt = 6,
+	/obj/item/clothing/under/rank/policecadetalt = 6,
+	/obj/item/clothing/under/rank/policetrafficalt = 6,
+	/obj/item/clothing/head/police/policeofficercap = 6,
+	/obj/item/clothing/head/police/policecadetcap = 6,
+	/obj/item/clothing/head/police/policetrafficcap = 6,
 	/obj/item/clothing/shoes/boots/jackboots = 6,
-	/obj/item/clothing/head/soft/sec = 6,
-	/obj/item/clothing/head/beret/sec = 6,
-	/obj/item/clothing/head/beret/sec/corporate/officer = 6,
-	/obj/item/clothing/mask/bandana/red = 6,
+	/obj/item/clothing/head/soft/police = 6,
+	/obj/item/clothing/head/soft/policecadet = 6,
+	/obj/item/clothing/head/soft/policetraffic = 6,
+	/obj/item/clothing/head/beret/police = 6,
+	/obj/item/clothing/suit/armor/pcarrier/medium/police = 6,
+	/obj/item/clothing/head/helmet/police = 6,
 	/obj/item/clothing/suit/storage/hooded/wintercoat/security = 6,
-	/obj/item/clothing/accessory/armband/red = 6,
 	/obj/item/clothing/accessory/holster/waist = 6,
 	/obj/item/clothing/accessory/holster/armpit = 6,
 	/obj/item/clothing/accessory/holster/hip = 6,
 	/obj/item/clothing/accessory/holster/leg = 6,
 	/obj/item/weapon/storage/backpack/security = 6,
-	/obj/item/weapon/storage/backpack/satchel/sec = 6
-
+	/obj/item/weapon/storage/backpack/satchel/sec = 6,
+	/obj/item/clothing/suit/storage/toggle/policejacket = 6,
+	/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen = 6,
+	/obj/item/clothing/accessory/badge/holo/police = 6,
+	/obj/item/device/retail_scanner/police = 8
 	)
 
 /obj/machinery/vending/security/detective
@@ -1260,6 +1275,7 @@
 	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
 	req_access = list(access_forensics_lockers)
 	products = list(
+	/obj/item/weapon/storage/bag/forensics = 5,
 	/obj/item/weapon/storage/box/csi_markers = 3,
 	/obj/item/weapon/storage/box/evidence = 6,
 	/obj/item/weapon/storage/briefcase/crimekit = 2,
@@ -1273,16 +1289,63 @@
 	/obj/item/weapon/storage/belt/detective = 2,
 	/obj/item/clothing/glasses/sunglasses/sechud = 2,
 	/obj/item/clothing/glasses/sunglasses = 2,
-	/obj/item/clothing/suit/storage/vest/detective = 2,
+	/obj/item/clothing/suit/armor/pcarrier/medium/police = 2,
+	/obj/item/clothing/head/helmet/police =2,
 	/obj/item/clothing/accessory/holster/hip = 6,
 	/obj/item/taperoll/police = 6,
 	/obj/item/device/flashlight/flare = 6,
 	/obj/item/device/camera = 6,
 	/obj/item/device/camera_film = 6,
 	/obj/item/device/taperecorder = 6,
+	/obj/item/device/flashlight/maglight = 2,
 	/obj/item/weapon/reagent_containers/food/drinks/flask/detflask = 2,
-	/obj/item/device/breathalyzer = 2
+	/obj/item/device/breathalyzer = 2,
+	/obj/item/clothing/under/rank/policedetectivealt = 4,
+	/obj/item/clothing/head/police/policedetectivecap = 4,
+	/obj/item/clothing/head/soft/policecdetective = 4,
+	/obj/item/clothing/head/beret/policered = 4,
+	/obj/item/clothing/suit/storage/toggle/policejacket = 4,
+	/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen = 4,
 	)
+
+/obj/machinery/vending/security/warden
+	name = "Warden Equipment Vendotron"
+	req_access = list(access_forensics_lockers)
+	products = list(
+	/obj/item/device/retail_scanner/police = 2,
+	/obj/item/weapon/storage/backpack/security = 2,
+	/obj/item/weapon/storage/backpack/satchel/sec = 2,
+	/obj/item/weapon/storage/backpack/dufflebag/sec = 2,
+	/obj/item/clothing/suit/armor/pcarrier/medium/police = 2,
+	/obj/item/clothing/head/beret/policegold = 2,
+	/obj/item/clothing/head/soft/policewarden = 2,
+	/obj/item/clothing/head/police/policewardencap = 2,
+	/obj/item/clothing/under/rank/wardenalt = 2,
+	/obj/item/clothing/suit/storage/vest/wardencoat = 2,
+	/obj/item/clothing/suit/storage/vest/wardencoat/alt = 2,
+	/obj/item/clothing/suit/storage/toggle/policejacket = 2,
+	/obj/item/clothing/head/helmet/dermal = 2,
+	/obj/item/clothing/head/helmet/police = 2,
+	/obj/item/weapon/cartridge/security = 2,
+	/obj/item/device/radio/headset/headset_sec = 2,
+	/obj/item/device/radio/headset/headset_sec/alt = 2,
+	/obj/item/clothing/glasses/sunglasses/sechud = 2,
+	/obj/item/taperoll/police = 2,
+	/obj/item/weapon/bodycam = 2,
+	/obj/item/clothing/accessory/badge/holo/warden = 2,
+	/obj/item/weapon/storage/box/flashbangs = 2,
+	/obj/item/weapon/storage/belt/security = 2,
+	/obj/item/weapon/reagent_containers/spray/pepper = 2,
+	/obj/item/weapon/melee/baton/loaded = 2,
+	/obj/item/weapon/gun/energy/gun = 2,
+	/obj/item/weapon/cell/device/weapon = 2,
+	/obj/item/weapon/storage/box/holobadge,
+	/obj/item/clothing/shoes/boots/winter/security = 2,
+	/obj/item/device/flashlight/maglight = 2,
+	/obj/item/device/megaphone = 2,
+	/obj/item/clothing/mask/gas/half = 2,
+	/obj/item/weapon/grenade/flashbang/clusterbang/geminus = 2)
+
 
 /obj/machinery/vending/security/prisoner
 	name = "Prisoner Equipment"
@@ -1290,7 +1353,7 @@
 	icon_state = "prisoner_vend"
 	icon_deny = "prisoner_vend-deny"
 	products = list(
-	/obj/item/clothing/under/color/orange/prisoner = 10,
+	/obj/item/clothing/under/color/orange/prisoneralt = 10,
 	/obj/item/clothing/under/color/white/prisoner = 10,
 	/obj/item/clothing/shoes/orange = 10,
 	/obj/item/clothing/shoes/black = 10,
@@ -1403,6 +1466,7 @@
 //	charge_free_department = DEPT_BAR
 
 	dont_save = FALSE
+	save_contents = FALSE
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"
@@ -2297,16 +2361,17 @@
 	products = list(/obj/item/weapon/gun/energy/gun = 4,
 					/obj/item/weapon/gun/energy/taser/carbine = 4,
 					/obj/item/weapon/gun/energy/laser = 2,
+					/obj/item/weapon/gun/energy/ionrifle = 2,
 					/obj/item/weapon/cell/device/weapon = 20
 					)
 
 /obj/machinery/vending/armory/gcpd/ppe
 	name = "BlastTech Defense Solution PPE Vendor"
 	req_access = list(3)
-	products = list(/obj/item/clothing/head/helmet/combat = 4,
-					/obj/item/clothing/suit/armor/combat = 4,
-					/obj/item/clothing/gloves/arm_guard/combat = 4,
-					/obj/item/clothing/shoes/leg_guard/combat = 4,
+	products = list(//obj/item/clothing/head/helmet/combat = 4,
+					//obj/item/clothing/suit/armor/combat = 4,
+					//obj/item/clothing/gloves/arm_guard/combat = 4,
+					//obj/item/clothing/shoes/leg_guard/combat = 4,
 					/obj/item/clothing/head/helmet/bulletproof = 2,
 					/obj/item/clothing/suit/armor/bulletproof/alt = 2,
 					/obj/item/clothing/gloves/arm_guard/bulletproof = 2,
@@ -2322,7 +2387,9 @@
 					/obj/item/weapon/shield/riot = 4,
 					/obj/item/weapon/melee/baton = 4,
 					/obj/item/clothing/glasses/sunglasses/sechud/tactical = 6,
-					/obj/item/clothing/mask/gas/half = 6
+					/obj/item/clothing/mask/gas/half = 6,
+					/obj/item/clothing/head/helmet/tac = 8,
+					/obj/item/clothing/suit/armor/pcarrier/tan/policetactical = 8,
 					)
 
 

@@ -143,6 +143,8 @@ var/global/list/stool_cache = list() //haha stool
 
 /obj/item/weapon/stool/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/wrench))
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to deassemble \the [src] with [W]."))
+			return
 		playsound(src, W.usesound, 50, 1)
 		dismantle()
 		qdel(src)
@@ -176,7 +178,9 @@ var/global/list/stool_cache = list() //haha stool
 		if(!padding_material)
 			user << "\The [src] has no padding to remove."
 			return
-		user << "You remove the padding from \the [src]."
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to remove padding from \the [src] with [W]."))
+			return
+		to_chat(user, "You remove the padding from \the [src].")
 		playsound(src.loc, W.usesound, 50, 1)
 		remove_padding()
 	else

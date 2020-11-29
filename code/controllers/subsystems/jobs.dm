@@ -84,6 +84,9 @@ SUBSYSTEM_DEF(jobs)
 			return 0
 		if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner")
 			return 0
+		if(player.client.prefs.is_synth() && !job.allows_synths)
+			return 0
+
 		var/position_limit = job.total_positions
 		if(!latejoin)
 			position_limit = job.spawn_positions
@@ -129,9 +132,16 @@ SUBSYSTEM_DEF(jobs)
 		if(flag && (!player.client.prefs.be_special & flag))
 			Debug("FOC flag failed, Player: [player], Flag: [flag], ")
 			continue
+
+		if(player.client.prefs.is_synth() && !job.allows_synths)
+			Debug("FOC job does not allow synths, Player: [player]")
+			continue
+
 		if(player.client.prefs.GetJobDepartment(job, level) & job.flag)
 			Debug("FOC pass, Player: [player], Level:[level]")
 			candidates += player
+
+
 
 	return candidates
 
@@ -165,6 +175,11 @@ SUBSYSTEM_DEF(jobs)
 		if(!is_hard_whitelisted(player, job))
 			Debug("GRJ not hard whitelisted failed, Player: [player]")
 			continue
+
+		if(player.client.prefs.is_synth() && !job.allows_synths)
+			Debug("GRJ job does not allow synths, Player: [player]")
+			continue
+
 		if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
 			Debug("GRJ Random job given, Player: [player], Job: [job]")
 			AssignRole(player, job.title)
@@ -318,6 +333,11 @@ SUBSYSTEM_DEF(jobs)
 				if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner") //CASSJUMP
 					Debug("DO player is prisoner, Player: [player], Job:[job.title]")
 					continue
+
+				if(player.client.prefs.is_synth() && !job.allows_synths)
+					Debug("DO job does not allow synths, Player: [player]")
+					continue
+
 				// If the player wants that job on this level, then try give it to him.
 				if(player.client.prefs.GetJobDepartment(job, level) & job.flag)
 
@@ -422,20 +442,22 @@ SUBSYSTEM_DEF(jobs)
 						to_chat(H, "<span class='warning'>Your current species, job or whitelist status does not permit you to spawn with [thing]!</span>")
 						continue
 
+					// Implants get special treatment
 					if(G.slot == "implant")
 						var/obj/item/weapon/implant/I = G.spawn_item(H)
+						I.invisibility = 100
 						I.implant_loadout(H)
 						continue
 
+					// Try desperately (and sorta poorly) to equip the item. Now with increased desperation!
 					if(G.slot && !(G.slot in custom_equip_slots))
-						// This is a miserable way to fix the loadout overwrite bug, but the alternative requires
-						// adding an arg to a bunch of different procs. Will look into it after this merge. ~ Z
 						var/metadata = H.client.prefs.gear[G.display_name]
 						if(G.slot == slot_wear_mask || G.slot == slot_wear_suit || G.slot == slot_head)
 							custom_equip_leftovers += thing
 						else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
 							to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
-							custom_equip_slots.Add(G.slot)
+							if(G.slot != slot_tie)
+								custom_equip_slots.Add(G.slot)
 						else
 							custom_equip_leftovers.Add(thing)
 					else
@@ -481,12 +503,17 @@ SUBSYSTEM_DEF(jobs)
 			if("AI")
 				return H
 			if("Mayor")
-				var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
-				captain_announcement.Announce("The [alt_title ? alt_title : "Mayor"] [H.real_name] has arrived to the city.", new_sound=announce_sound)
+				if(!H.mind.prefs.silent_join)
+					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
+					captain_announcement.Announce("The [alt_title ? alt_title : "Mayor"] [H.real_name] has arrived to the city.", new_sound=announce_sound)
 			if("President")
-				var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/fanfare_prez.ogg', volume=20)
-				captain_announcement.Announce("[alt_title ? alt_title : "President"] [H.real_name] is visiting the city!", new_sound=announce_sound)
-
+				if(!H.mind.prefs.silent_join)
+					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/fanfare_prez.ogg', volume=20)
+					captain_announcement.Announce("[alt_title ? alt_title : "President"] [H.real_name] is visiting the city!", new_sound=announce_sound)
+			if("Governor")
+				if(!H.mind.prefs.silent_join)
+					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
+					captain_announcement.Announce("[alt_title ? alt_title : "Governor"] [H.real_name] is visiting the city!", new_sound=announce_sound)
 
 			if("Prisoner")
 				is_prisoner = TRUE
@@ -781,19 +808,30 @@ SUBSYSTEM_DEF(jobs)
 	if(!H.mind || !H.mind.prefs) return
 
 	var/synth_type = H.get_FBP_type()
+	var/obj/item/clothing/uniform = H.w_uniform
+	var/obj/item/clothing/accessory/permit/permit
 
 	switch(synth_type)
 		if(FBP_NONE)
 			return
-		if(FBP_DRONE)
-			var/obj/item/clothing/accessory/permit/drone/permit = new/obj/item/clothing/accessory/permit/drone(get_turf(H))
-			permit.set_name(H.real_name)
-			H.equip_to_slot_or_del(permit, slot_in_backpack)
-/*		if(FBP_POSI) //Uncomment this when synths are mandated to have identification cards
-			var/obj/item/clothing/accessory/permit/synth/permit = new/obj/item/clothing/accessory/permit/synth(get_turf(H))
-			permit.set_name(H.real_name)
-			H.equip_to_slot_or_del(permit, slot_in_backpack)	*/
 
+		if(FBP_DRONE)
+			permit = new/obj/item/clothing/accessory/permit/drone(get_turf(H))
+
+		if(FBP_POSI)
+			permit = new/obj/item/clothing/accessory/permit/synth(get_turf(H))
+
+		if(FBP_CYBORG)
+			permit = new/obj/item/clothing/accessory/permit/fbp(get_turf(H))
+
+
+	if(permit)
+		permit.set_name(H.real_name)
+
+		if(uniform && uniform.can_attach_accessory(permit)) // attaches permit to uniform
+			uniform.attach_accessory(null, permit)
+		else
+			H.equip_to_slot_or_del(permit, slot_in_backpack) // otherwise puts it in your backpack
 
 
 /datum/controller/subsystem/jobs/proc/get_active_police()

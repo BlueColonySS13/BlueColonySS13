@@ -164,7 +164,7 @@
 	var/obj/item/store	//What's in the book?
 	drop_sound = 'sound/items/drop/box.ogg'
 
-	unique_save_vars = list("dat", "author", "title", "unique", "carved")
+	unique_save_vars = list("dat", "author", "title", "unique", "carved", "icon_state")
 
 /obj/item/weapon/book/on_persistence_load()
 	if(!isemptylist(contents))

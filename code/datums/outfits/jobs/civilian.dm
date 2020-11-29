@@ -92,6 +92,6 @@
 /decl/hierarchy/outfit/job/civilian/prisoner
 	name = OUTFIT_JOB_NAME("Prisoner")
 	id_pda_assignment = "Prisoner"
-	uniform = /obj/item/clothing/under/color/orange
+	uniform = /obj/item/clothing/under/color/orange/prisoneralt
 	shoes = /obj/item/clothing/shoes/orange
 	backpack_contents = list(/obj/item/weapon/storage/mre/menu13 = 2)

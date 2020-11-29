@@ -32,11 +32,15 @@ HALOGEN COUNTER	- Radcount on mobs
 		verbs += /obj/item/device/healthanalyzer/proc/toggle_adv
 	..()
 
-/obj/item/device/healthanalyzer/do_surgery(mob/living/M, mob/living/user)
-//	if(user.a_intent != I_HELP) //in case it is ever used as a surgery tool
-//		return ..()
-	scan_mob(M, user) //default surgery behaviour is just to scan as usual
-	return 1
+	
+/obj/item/device/healthanalyzer/do_surgery(mob/living/carbon/human/M, mob/living/user)
+	var/obj/item/organ/external/S = M.get_organ(user.zone_sel.selecting)
+	if(S.open)
+		return ..()
+		
+	else
+		scan_mob(M, user)
+	
 
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
 	scan_mob(M, user)

@@ -174,8 +174,10 @@ var/list/name_to_material
 	if(islist(composite_material))
 		for(var/material_string in composite_material)
 			temp_matter[material_string] = composite_material[material_string]
-	else if(SHEET_MATERIAL_AMOUNT)
+	#ifdef SHEET_MATERIAL_AMOUNT
+	else
 		temp_matter[name] = SHEET_MATERIAL_AMOUNT
+	#endif
 	return temp_matter
 
 // As above.
@@ -256,6 +258,8 @@ var/list/name_to_material
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
 	hardness = 100
 	stack_origin_tech = list(TECH_MATERIAL = 6)
+	sheet_singular_name = "gem"
+	sheet_plural_name = "gems"
 
 /material/gold
 	name = "gold"
@@ -420,7 +424,6 @@ var/list/name_to_material
 /material/plasteel/titanium
 	name = "titanium"
 	stack_type = /obj/item/stack/material/titanium
-	stack_type = null
 	conductivity = 2.38
 	icon_base = "metal"
 	door_icon_base = "metal"

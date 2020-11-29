@@ -49,6 +49,11 @@
 	user << "Planting explosives..."
 	user.do_attack_animation(target)
 
+	// I know vandalism isn't quite right for this but it is the general 'lot getting damaged' one.
+	// Doesn't seem worth it to make a second category for just one thing.
+	if(target.trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Planting \the [src] on \the [target]."))
+		return
+	
 	if(do_after(user, 50) && in_range(user, target))
 		user.drop_item()
 		src.target = target

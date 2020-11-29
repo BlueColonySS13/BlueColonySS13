@@ -132,22 +132,22 @@
 /datum/gear/uniform/job_skirt/cmo
 	display_name = "skirt, cmo"
 	path = /obj/item/clothing/under/rank/chief_medical_officer/skirt
-	allowed_roles = list("Chief Medical Officer")
+	allowed_roles = list("Medical Director")
 
 /datum/gear/uniform/job_skirt/chem
 	display_name = "skirt, chemist"
 	path = /obj/item/clothing/under/rank/chemist/skirt
-	allowed_roles = list("Chief Medical Officer","Chemist")
+	allowed_roles = list("Medical Director","Chemist")
 
 /datum/gear/uniform/job_skirt/viro
 	display_name = "skirt, virologist"
 	path = /obj/item/clothing/under/rank/virologist/skirt
-	allowed_roles = list("Chief Medical Officer","Physician")
+	allowed_roles = list("Medical Director","Physician")
 
 /datum/gear/uniform/job_skirt/med
 	display_name = "skirt, medical"
 	path = /obj/item/clothing/under/rank/medical/skirt
-	allowed_roles = list("Chief Medical Officer","Physician","Chemist","Psychiatrist","Paramedic")
+	allowed_roles = list("Medical Director","Physician","Chemist","Psychiatrist","Paramedic")
 
 /datum/gear/uniform/job_skirt/sci
 	display_name = "skirt, scientist"
@@ -163,16 +163,6 @@
 	display_name = "skirt, QM"
 	path = /obj/item/clothing/under/rank/cargo/skirt
 	allowed_roles = list("Factory Manager")
-
-/datum/gear/uniform/job_skirt/warden
-	display_name = "skirt, warden"
-	path = /obj/item/clothing/under/rank/warden/skirt
-	allowed_roles = list("Chief of Police", "Prison Warden")
-
-/datum/gear/uniform/job_skirt/security
-	display_name = "skirt, security"
-	path = /obj/item/clothing/under/rank/security/skirt
-	allowed_roles = list("Chief of Police", "Prison Warden", "Detective", "Police Officer")
 
 /datum/gear/uniform/job_skirt/head_of_security
 	display_name = "skirt, hos"
@@ -296,11 +286,6 @@
 	path = /obj/item/clothing/under/det/corporate
 	allowed_roles = list("Detective","Chief of Police")
 
-/datum/gear/uniform/corpsecsuit
-	display_name = "uniform, corporate (Security)"
-	path = /obj/item/clothing/under/rank/security/corp
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
-
 /datum/gear/uniform/corpwarsuit
 	display_name = "uniform, corporate (Warden)"
 	path = /obj/item/clothing/under/rank/warden/corp
@@ -321,11 +306,6 @@
 	path = /obj/item/clothing/under/dress/dress_hr
 
 	allowed_roles = list("City Clerk")
-
-/datum/gear/uniform/navysecsuit
-	display_name = "uniform, navy blue (Security)"
-	path = /obj/item/clothing/under/rank/security/navyblue
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
 
 /datum/gear/uniform/navywarsuit
 	display_name = "uniform, navy blue (Warden)"
@@ -451,18 +431,12 @@
 /datum/gear/uniform/job_turtle/medical
 	display_name = "turtleneck, medical"
 	path = /obj/item/clothing/under/rank/medical/turtleneck
-	allowed_roles = list("Chief Medical Officer", "Paramedic", "Medical Physician", "Psychologist", "Search and Rescue", "Chemist")
+	allowed_roles = list("Medical Director", "Paramedic", "Medical Physician", "Psychologist", "Search and Rescue", "Chemist")
 
 /datum/gear/uniform/mbill
 	display_name = "outfit, major bill's (Cargo)"
 	path = /obj/item/clothing/under/mbill
 	allowed_roles = list("Factory Manager","Factory Worker")
-
-/datum/gear/uniform/pcrc
-	display_name = "uniform, PCRC (Security)"
-	path = /obj/item/clothing/under/pcrc
-	cost = 2
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
 
 /datum/gear/uniform/brandsuit/grayson
 	display_name = "outfit, grayson"
@@ -668,7 +642,64 @@
 	display_name = "punk outfit"
 	path = /obj/item/clothing/under/punk
 
-
 /datum/gear/uniform/aristocrat
 	display_name = "aristocrat formal wear"
 	path = /obj/item/clothing/under/aristocrat
+
+/datum/gear/uniform/revealingdress
+	display_name = "revealing dress"
+	path = /obj/item/clothing/under/dress/revealingdress
+
+/datum/gear/uniform/rippedpunk
+	display_name = "ripped punk jeans"
+	path = /obj/item/clothing/under/rippedpunk
+
+/datum/gear/uniform/gothic
+	display_name = "gothic dress"
+	path = /obj/item/clothing/under/dress/gothic
+
+/datum/gear/uniform/greenasym
+	display_name = "green asymmetrical jumpsuit"
+	path = /obj/item/clothing/under/greenasym
+
+/datum/gear/uniform/cyberpunkharness
+	display_name = "cyberpunk strapped harness"
+	path = /obj/item/clothing/under/cyberpunkharness
+
+/datum/gear/uniform/disheveled
+	display_name = "disheveled suit"
+	path = /obj/item/clothing/under/disheveled
+
+/// Comment the items below out one week after the "Ports clothing from Polaris + Additional" PR is merged! Excxlusivity! ///
+
+/datum/gear/uniform/whitegown
+	display_name = "white gown"
+	path = /obj/item/clothing/under/wedding/whitegown
+
+/datum/gear/uniform/floofdress
+	display_name = "floofy dress"
+	path = /obj/item/clothing/under/wedding/floofdress
+
+/datum/gear/uniform/floofdress/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/uniform/blackngold
+	display_name = "black and gold gown"
+	path = /obj/item/clothing/under/blackngold
+
+/datum/gear/uniform/sheerblue
+	display_name = "sheer blue dress"
+	path = /obj/item/clothing/under/sheerblue
+
+/datum/gear/uniform/formalred
+	display_name = "formal red dress"
+	path = /obj/item/clothing/under/dress/formalred
+
+/datum/gear/uniform/pentagram
+	display_name = "pentagram dress"
+	path = /obj/item/clothing/under/dress/pentagram
+
+/datum/gear/uniform/yellowswoop
+	display_name = "yellow swooped dress"
+	path = /obj/item/clothing/under/dress/yellowswoop

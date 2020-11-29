@@ -63,6 +63,9 @@
 			if(antag.police_per_antag)
 				dat += "<br><b>Police Per [antag.role_text]:</b> [antag.police_per_antag]"
 
+			if(client.lobby_joined)
+				dat += "<br><font color='red'><b>You already played as antag this round. Please wait for the next round.</b></font>"
+
 			if(job.title in antag.restricted_jobs)
 				dat += "<br><font color='red'><b>This antagonist type cannot be played by your current job: [job.title].</b></font>"
 
@@ -78,7 +81,7 @@
 			else if(isnum(client.player_age) && !(client.player_age >= antag.minimum_player_age))
 				dat += "<br><font color='red'><b>You don't meet the minimum player age to play this role.</b></font>"
 
-			else if(!antag.meets_police_lobby_join())
+			else if(antag.get_needed_police() > SSjobs.get_active_police())
 				dat += "<br><font color='red'><b>To join, the round needs at least [antag.get_needed_police()] police officer(s).</b></font>"
 			else
 				dat += "<br><a href='byond://?src=\ref[src];JoinAsAntag=[antag.id]'>Join As [antag.role_text]</a>"
@@ -96,12 +99,16 @@
 	if(!antag || !istype(antag, /datum/antagonist) )
 		return FALSE
 
+	if(client.lobby_joined)
+		to_chat(src, "<b>You already played as antag this round. Please wait for the next round.</b>")
+		return FALSE
+
 	if(get_lobbyjoin_antag_count() >= ticker.mode.max_antags)
-		to_chat(src, "<b>Max antag count for this gamemode reached.</b></font>")
+		to_chat(src, "<b>Max antag count for this gamemode reached.</b>")
 		return FALSE
 
 	if(selected_job in antag.restricted_jobs)
-		to_chat(src, "<b>This antagonist type cannot be played by your current job: [selected_job].</b></font>")
+		to_chat(src, "<b>This antagonist type cannot be played by your current job: [selected_job].</b>")
 		return FALSE
 
 	if(antag.get_antag_count() >= antag.hard_cap)
@@ -116,11 +123,12 @@
 		to_chat(src, "Limit for this antagonist group reached.")
 		return FALSE
 
-	if(!antag.meets_police_lobby_join())
+	if(antag.get_needed_police() > SSjobs.get_active_police())
 		to_chat(src, "This antagonist type cannot be joined until more police officers join.")
 		return FALSE
 
-	if(isnum(client.player_age) && !(client.player_age >= antag.minimum_player_age))
+	if(config.use_age_restriction_for_antags && isnum(client.player_age) && !(client.player_age >= antag.minimum_player_age))
 		to_chat(src, "You don't meet the minimum player age to play this role.")
 		return FALSE
 	JoinLate(selected_job, antag.id)
+	client.lobby_joined = TRUE

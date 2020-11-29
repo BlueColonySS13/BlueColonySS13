@@ -16,6 +16,7 @@
 	var/icon_off
 	var/icon_empty
 	var/ecig_colors = list(null, COLOR_DARK_GRAY, COLOR_RED_GRAY, COLOR_BLUE_GRAY, COLOR_GREEN_GRAY, COLOR_PURPLE_GRAY)
+	matter = list("copper" = 300, DEFAULT_WALL_MATERIAL = 630)
 
 /obj/item/clothing/mask/smokable/ecig/New()
 	..()
@@ -28,7 +29,7 @@
 	icon_off = "ccigoff"
 	icon_empty = "ccigoff"
 	icon_on = "ccigon"
-
+	matter = list("copper" = 300, DEFAULT_WALL_MATERIAL = 430)
 /obj/item/clothing/mask/smokable/ecig/util
 	name = "electronic cigarette"
 	desc = "A popular utilitarian model electronic cigarette, the ONI-55. Comes in a variety of colors."
@@ -36,6 +37,8 @@
 	icon_off = "ecigoff1"
 	icon_empty = "ecigoff1"
 	icon_on = "ecigon"
+	matter = list("copper" = 300, DEFAULT_WALL_MATERIAL = 670)
+
 /obj/item/clothing/mask/smokable/ecig/util/New()
 	..()
 	color = pick(ecig_colors)
@@ -47,6 +50,7 @@
 	icon_off = "pcigoff1"
 	icon_empty = "pcigoff2"
 	icon_on = "pcigon"
+	matter = list("copper" = 500, DEFAULT_WALL_MATERIAL = 1230)
 
 /obj/item/clothing/mask/smokable/ecig/process()
 	if(ishuman(loc))

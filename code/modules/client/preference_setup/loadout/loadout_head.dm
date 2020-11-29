@@ -41,35 +41,20 @@
 	path = /obj/item/clothing/head/medical_beret
 	allowed_roles = list("Chief Medical Officer","Physician","Chemist","Geneticist","Psychiatrist","Paramedic","Medical Intern")
 
-/datum/gear/head/beret/bsec
-	display_name = "beret, navy (officer)"
-	path = /obj/item/clothing/head/beret/sec/navy/officer
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
-
-/datum/gear/head/beret/bsec_warden
-	display_name = "beret, navy (warden)"
-	path = /obj/item/clothing/head/beret/sec/navy/warden
+/datum/gear/head/beret/seniorpolice
+	display_name = "Senior Police beret"
+	path = /obj/item/clothing/head/beret/policegold
 	allowed_roles = list("Chief of Police","Prison Warden")
 
-/datum/gear/head/beret/bsec_hos
-	display_name = "beret, navy (hos)"
-	path = /obj/item/clothing/head/beret/sec/navy/hos
-	allowed_roles = list("Chief of Police")
-
-/datum/gear/head/beret/csec
-	display_name = "beret, corporate (officer)"
-	path = /obj/item/clothing/head/beret/sec/corporate/officer
+/datum/gear/head/beret/police
+	display_name = "police officer's beret"
+	path = /obj/item/clothing/head/beret/police
 	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
 
-/datum/gear/head/beret/csec_warden
-	display_name = "beret, corporate (warden)"
-	path = /obj/item/clothing/head/beret/sec/corporate/warden
-	allowed_roles = list("Chief of Police","Prison Warden")
-
-/datum/gear/head/beret/csec_hos
-	display_name = "beret, corporate (hos)"
-	path = /obj/item/clothing/head/beret/sec/corporate/hos
-	allowed_roles = list("Chief of Police")
+/datum/gear/head/beret/policedetective
+	display_name = "police investigator's beret"
+	path = /obj/item/clothing/head/beret/policered
+	allowed_roles = list("Detective")
 
 /datum/gear/head/beret/eng
 	display_name = "beret, engie-orange"
@@ -78,11 +63,6 @@
 /datum/gear/head/beret/purp
 	display_name = "beret, purple"
 	path = /obj/item/clothing/head/beret/purple
-
-/datum/gear/head/beret/sec
-	display_name = "beret, red (security)"
-	path = /obj/item/clothing/head/beret/sec
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden")
 
 /datum/gear/head/cap
 	display_name = "cap, black"
@@ -100,10 +80,35 @@
 	display_name = "cap, brown-flat"
 	path = /obj/item/clothing/head/flatcap
 
-/datum/gear/head/cap/corp
-	display_name = "cap, corporate (Security)"
-	path = /obj/item/clothing/head/soft/sec/corp
+/datum/gear/head/cap/policeofficer
+	display_name = "Police officer's ballcap"
+	path = /obj/item/clothing/head/soft/police
 	allowed_roles = list("Police Officer","Chief of Police","Prison Warden", "Detective")
+
+/datum/gear/head/cap/policecadet
+	display_name = "Police cadet's ballcap"
+	/obj/item/clothing/head/soft/policecadet
+	allowed_roles = list("Police Officer")
+
+/datum/gear/head/cap/policedetective
+	display_name = "Police investigator's ballcap"
+	/obj/item/clothing/head/soft/policedetective
+	allowed_roles = list("Detective")
+
+/datum/gear/head/cap/policedetective
+	display_name = "Police Sergeant's ballcap"
+	/obj/item/clothing/head/soft/policewarden
+	allowed_roles = list("Prison Warden")
+
+/datum/gear/head/cap/policetraffic
+	display_name = "Traffic officer's ballcap"
+	/obj/item/clothing/head/soft/policetraffic
+	allowed_roles = list("Prison Officer")
+
+/datum/gear/head/cap/policechief
+	display_name = "Police Chief's ballcap"
+	/obj/item/clothing/head/soft/policechief
+	allowed_roles = list("Chief of Police")
 
 /datum/gear/head/cap/green
 	display_name = "cap, green"
@@ -128,11 +133,6 @@
 /datum/gear/head/cap/red
 	display_name = "cap, red"
 	path = /obj/item/clothing/head/soft/red
-
-/datum/gear/head/cap/sec
-	display_name = "cap, security (Security)"
-	path = /obj/item/clothing/head/soft/sec
-	allowed_roles = list("Police Officer","Chief of Police","Prison Warden", "Detective")
 
 /datum/gear/head/cap/yellow
 	display_name = "cap, yellow"
@@ -378,25 +378,48 @@
 		sols[initial(sol.name)] = sol
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(sols))
 
-/datum/gear/head/surgical/black
-	display_name = "surgical cap, black"
-	path = /obj/item/clothing/head/surgery/black
+/datum/gear/head/surgery
+	display_name = "surgical cap selection"
+	description = "Choose from a number of rings of different caps."
+	path = /obj/item/clothing/head/surgery
 
-/datum/gear/head/surgical/blue
-	display_name = "surgical cap, blue"
-	path = /obj/item/clothing/head/surgery/blue
+/datum/gear/head/surgery/New()
+	..()
+	var/cap_type = list()
+	cap_type["Purple cap"] = /obj/item/clothing/head/surgery/purple
+	cap_type["Blue cap"] = /obj/item/clothing/head/surgery/blue
+	cap_type["Green cap"] = /obj/item/clothing/head/surgery/green
+	cap_type["Black cap"] = /obj/item/clothing/head/surgery/black
+	cap_type["Navy cap"] = /obj/item/clothing/head/surgery/navyblue
+	gear_tweaks += new/datum/gear_tweak/path(cap_type)
 
-/datum/gear/head/surgical/green
-	display_name = "surgical cap, green"
-	path = /obj/item/clothing/head/surgery/green
+/datum/gear/head/maangtikka
+	display_name = "maang tikka"
+	path = /obj/item/clothing/head/maangtikka
 
-/datum/gear/head/surgical/navyblue
-	display_name = "surgical cap, navy blue"
-	path = /obj/item/clothing/head/surgery/navyblue
+/datum/gear/head/jingasa
+	display_name = "jingasa"
+	path = /obj/item/clothing/head/jingasa
 
-/datum/gear/head/surgical/purple
-	display_name = "surgical cap, purple"
-	path = /obj/item/clothing/head/surgery/purple
+/datum/gear/head/sunflower_crown
+	display_name = "sunflower crown"
+	path = /obj/item/clothing/head/sunflower_crown
+
+/datum/gear/head/lavender_crown
+	display_name = "lavender crown"
+	path = /obj/item/clothing/head/lavender_crown
+
+/datum/gear/head/poppy_crown
+	display_name = "poppy crown"
+	path = /obj/item/clothing/head/poppy_crown
+
+/datum/gear/head/rose_crown
+	display_name = "rose crown"
+	path = /obj/item/clothing/head/rose_crown
+
+/datum/gear/head/blackngoldheaddress
+	display_name = "black and gold headdress"
+	path = /obj/item/clothing/head/blackngoldheaddress
 
 /datum/gear/head/tinfoil
 	display_name = "tinfoil hat"

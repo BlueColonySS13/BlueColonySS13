@@ -11,7 +11,7 @@
 	id_type = /obj/item/weapon/card/id/gold/captain
 	pda_type = /obj/item/device/pda/captain
 	backpack_contents = list(
-	/obj/item/clothing/accessory/permit/gun/tier_three = 1,
+	/obj/item/clothing/accessory/permit/gun/tier_four = 1,
 	/obj/item/weapon/card/department/council = 1)
 
 /decl/hierarchy/outfit/job/heads/captain/pre_equip(mob/living/carbon/human/H)
@@ -22,7 +22,7 @@
 /decl/hierarchy/outfit/job/heads/captain/post_equip(var/mob/living/carbon/human/H)
 	..()
 	if(H.back)
-		for(var/obj/item/clothing/accessory/permit/gun/tier_three/permit in H.back.contents)
+		for(var/obj/item/clothing/accessory/permit/gun/tier_four/permit in H.back.contents)
 			permit.set_name(H.real_name)
 	if(H.age>49)
 		// Since we can have something other than the default uniform at this
@@ -46,13 +46,13 @@
 	shoes = /obj/item/clothing/shoes/brown
 	id_type = /obj/item/weapon/card/id/silver/hop
 	pda_type = /obj/item/device/pda/heads/hop
-	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_three = 1,
+	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/tier_four = 1,
 	/obj/item/weapon/card/department/council = 1)
 
 /decl/hierarchy/outfit/job/heads/hop/post_equip(mob/living/carbon/human/H)
 	..()
 	if(H.back)
-		for(var/obj/item/clothing/accessory/permit/gun/tier_three/permit in H.back.contents)
+		for(var/obj/item/clothing/accessory/permit/gun/tier_four/permit in H.back.contents)
 			permit.set_name(H.real_name)
 
 /decl/hierarchy/outfit/job/heads/secretary

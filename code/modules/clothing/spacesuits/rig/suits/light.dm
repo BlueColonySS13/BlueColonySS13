@@ -2,7 +2,7 @@
 /obj/item/weapon/rig/light
 	name = "light suit control module"
 	desc = "A lighter, less armoured rig suit."
-	icon_state = "ninja_rig"
+	icon_state = "light_rig"
 	suit_type = "light suit"
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/tank,/obj/item/device/suit_cooling_unit,/obj/item/weapon/cell)
 	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)

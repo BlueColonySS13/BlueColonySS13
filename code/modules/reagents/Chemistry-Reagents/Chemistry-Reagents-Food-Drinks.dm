@@ -12,7 +12,7 @@
 	calories_factor = 40 // Per unit
 	var/injectable = 0
 	color = "#664330"
-	price_tag = 0.1
+	price_tag = 0.6
 
 /datum/reagent/nutriment/mix_data(var/list/newdata, var/newamount)
 
@@ -60,7 +60,7 @@
 	color = "#FFFFFF"
 	calories_factor = 8
 	injectable = 1
-	price_tag = 0.2
+	price_tag = 0.3
 
 /datum/reagent/nutriment/protein // Bad for Skrell!
 	name = "animal protein"
@@ -743,6 +743,7 @@
 	cup_icon_state = "cup_tea"
 	cup_name = "cup of tea"
 	cup_desc = "Tasty black tea, it has antioxidants, it's good for you!"
+	glass_special = list(DRINK_VAPOR)
 
 /datum/reagent/drink/tea/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -851,7 +852,7 @@
 	glass_name = "cup of coffee"
 	glass_desc = "Don't drop it, or you'll send scalding liquid and glass shards everywhere."
 	glass_special = list(DRINK_VAPOR)
-
+	price_tag = 0.2
 /datum/reagent/drink/coffee/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
@@ -1121,14 +1122,20 @@
 	glass_name = "Nuka-Cola"
 	glass_desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland"
 	glass_special = list(DRINK_FIZZ)
+	overdose = REAGENTS_OVERDOSE
 
 /datum/reagent/drink/soda/nuka_cola/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
-	M.add_chemical_effect(CE_SPEEDBOOST, 1)
+//	M.add_chemical_effect(CE_SPEEDBOOST, 1)
+	var/adjust_tox = rand(-4, 2)
+	M.adjustToxLoss(adjust_tox * removed)
 	M.make_jittery(20)
 	M.druggy = max(M.druggy, 30)
 	M.dizziness += 5
 	M.drowsyness = 0
+
+/datum/reagent/drink/soda/nuka_cola/overdose(var/mob/living/M as mob)
+	M.apply_effect(1, IRRADIATE, 0)
 
 /datum/reagent/drink/grenadine
 	name = "Grenadine Syrup"
@@ -1637,7 +1644,7 @@
 	id = "vodkakora"
 	description = "The finest vodka ever distilled using secret Neo-Ruskiya techniques."
 	taste_description = "spicy alcohol, followed by the taste of finesse and a creamy finish"
-	price_tag = 1.6
+	price_tag = 5.5
 
 	glass_name = "kora vodka"
 	glass_desc = "The finest vodka ever distilled. Best served chilled in a diamond-studded silver shot cup."
@@ -1653,6 +1660,7 @@
 	taste_description = "molasses"
 	color = "#4C3100"
 	strength = 25
+	price_tag = 0.6
 
 	glass_name = "whiskey"
 	glass_desc = "The silky, smokey whiskey goodness inside the glass makes the drink look very classy."
@@ -1664,6 +1672,7 @@
 	taste_description = "bitter sweetness"
 	color = "#7E4043" // rgb: 126, 64, 67
 	strength = 15
+	price_tag = 0.5
 
 	glass_name = "wine"
 	glass_desc = "A very classy looking drink."
@@ -1674,6 +1683,7 @@
 	description = "A sparkling wine made with Pinot Noir, Pinot Meunier, and Chardonnay."
 	taste_description = "fizzy bitter sweetness"
 	color = "#D1B166"
+	price_tag = 0.6
 
 	glass_name = "champagne"
 	glass_desc = "An even classier looking drink."
@@ -1683,7 +1693,7 @@
 	id = "amontilladowine"
 	description = "A 700 year old wine from Italy."
 	taste_description = "a sweet and round wine, complimented by an oaky vanilla character"
-	price_tag = 2.2
+	price_tag = 6
 
 	glass_name = "amontillado wine"
 	glass_desc = "A 700 year old wine from Italy. Every sip is a taste of history."
@@ -1697,7 +1707,7 @@
 	reagent_state = LIQUID
 	color = "#365000"
 	strength = 30
-
+	price_tag = 1
 	glass_name = "Acid Spit"
 	glass_desc = "A drink from the company archives. Made from live aliens."
 
@@ -1708,6 +1718,7 @@
 	taste_description = "bitter sweetness"
 	color = "#D8AC45"
 	strength = 25
+	price_tag = 1
 
 	glass_name = "Allies cocktail"
 	glass_desc = "A drink made from your allies."
@@ -1719,7 +1730,7 @@
 	taste_description = "sweet and creamy"
 	color = "#B7EA75"
 	strength = 15
-
+	price_tag = 0.7
 	glass_name = "Aloe"
 	glass_desc = "Very, very, very good."
 
@@ -1768,6 +1779,7 @@
 	color = "#666300"
 	strength = 10
 	druggy = 50
+	price_tag = 1
 
 	glass_name = "Atomic Bomb"
 	glass_desc = "We cannot take legal responsibility for your actions after imbibing."
@@ -1843,6 +1855,7 @@
 	color = "#895C4C"
 	strength = 50
 	nutriment_factor = 2
+	price_tag = 0.3
 
 	glass_name = "bilk"
 	glass_desc = "A brew of milk and beer. For those alcoholics who fear osteoporosis."
@@ -1854,6 +1867,7 @@
 	taste_description = "coffee"
 	color = "#360000"
 	strength = 15
+	price_tag = 0.4
 
 	glass_name = "Black Russian"
 	glass_desc = "For the lactose-intolerant. Still as classy as a White Russian."
@@ -1865,6 +1879,7 @@
 	taste_description = "tomatoes with a hint of lime"
 	color = "#B40000"
 	strength = 15
+	price_tag = 0.4
 
 	glass_name = "Bloody Mary"
 	glass_desc = "Tomato juice, mixed with Vodka and a lil' bit of lime. Tastes like liquid murder."
@@ -1899,6 +1914,7 @@
 	taste_description = "constantly changing flavors"
 	color = "#2E6671"
 	strength = 10
+	price_tag = 0.6
 
 	glass_name = "Changeling Sting"
 	glass_desc = "A stingy drink."
@@ -1910,6 +1926,7 @@
 	taste_description = "dry class"
 	color = "#0064C8"
 	strength = 25
+	price_tag = 0.8
 
 	glass_name = "classic martini"
 	glass_desc = "Damn, the bartender even stirred it, not shook it."
@@ -1956,6 +1973,7 @@
 	nutriment_factor = 1
 	color = "#2E6671"
 	strength = 12
+	price_tag = 0.9
 
 	glass_name = "Driest Martini"
 	glass_desc = "Only for the experienced. You think you see sand floating in the glass."
@@ -2005,6 +2023,7 @@
 	color = "#7F00FF"
 	strength = 10
 	druggy = 15
+	price_tag = 1
 
 	glass_name = "Pan-Galactic Gargle Blaster"
 	glass_desc = "Does... does this mean that Arthur and Ford are in the city? Oh joy."
@@ -2028,6 +2047,8 @@
 	taste_mult = 1.3
 	color = "#F4E46D"
 	strength = 15
+	price_tag = 0.9
+
 
 	glass_name = "Goldschlager"
 	glass_desc = "100 proof that teen girls will drink anything with gold in it."
@@ -2078,6 +2099,7 @@
 	taste_description = "delicious anger"
 	color = "#2E6671"
 	strength = 15
+	price_tag = 0.6
 
 	glass_name = "Irish Car Bomb"
 	glass_desc = "An irish car bomb."
@@ -2089,6 +2111,7 @@
 	taste_description = "giving up on the day"
 	color = "#4C3100"
 	strength = 15
+	price_tag = 0.5
 
 	glass_name = "Irish coffee"
 	glass_desc = "Coffee and alcohol. More fun than a Mimosa to drink in the morning."
@@ -2100,6 +2123,7 @@
 	taste_description = "creamy alcohol"
 	color = "#DDD9A3"
 	strength = 25
+	price_tag = 0.4
 
 	glass_name = "Irish cream"
 	glass_desc = "It's cream, mixed with whiskey. What else would you expect from the Irish?"
@@ -2111,6 +2135,7 @@
 	taste_description = "sweet tea, with a kick"
 	color = "#895B1F"
 	strength = 12
+	price_tag = 0.7
 
 	glass_name = "Long Island iced tea"
 	glass_desc = "The liquor cabinet, brought together in a delicious mix. Intended for middle-aged alcoholic women only."
@@ -2122,6 +2147,7 @@
 	taste_description = "mild dryness"
 	color = "#C13600"
 	strength = 15
+	price_tag = 0.5
 
 	glass_name = "Manhattan"
 	glass_desc = "The Detective's undercover drink of choice. He never could stomach gin..."
@@ -2134,7 +2160,7 @@
 	color = "#C15D00"
 	strength = 10
 	druggy = 30
-
+	price_tag = 0.6
 	glass_name = "Manhattan Project"
 	glass_desc = "A scientist's drink of choice, for thinking how to blow up the city."
 
@@ -2145,6 +2171,7 @@
 	taste_description = "hair on your chest and your chin"
 	color = "#4C3100"
 	strength = 25
+	price_tag = 0.5
 
 	glass_name = "The Manly Dorf"
 	glass_desc = "A manly concotion made from Ale and Beer. Intended for true men only."
@@ -2156,7 +2183,7 @@
 	taste_description = "dry and salty"
 	color = "#8CFF8C"
 	strength = 15
-
+	price_tag = 0.5
 	glass_name = "margarita"
 	glass_desc = "On the rocks with salt on the rim. Arriba~!"
 
@@ -2181,7 +2208,7 @@
 	taste_mult = 2.5
 	color = "#0064C8"
 	strength = 12
-
+	price_tag = 0.3
 	glass_name = "moonshine"
 	glass_desc = "You've really hit rock bottom now... your liver packed its bags and left last night."
 
@@ -2193,6 +2220,7 @@
 	reagent_state = LIQUID
 	color = "#2E2E61"
 	strength = 10
+	price_tag = 0.4
 
 	glass_name = "Neurotoxin"
 	glass_desc = "A drink that is guaranteed to knock you silly."
@@ -2210,6 +2238,7 @@
 	taste_description = "metallic paint thinner"
 	color = "#585840"
 	strength = 30
+	price_tag = 0.8
 
 	glass_name = "Patron"
 	glass_desc = "Drinking patron in the bar, with all the subpar ladies."
@@ -2259,6 +2288,7 @@
 	strength = 15
 	adj_temp = 50
 	targ_temp = 360
+	price_tag = 0.5
 
 	glass_name = "Sbiten"
 	glass_desc = "A spicy mix of Vodka and Spice. Very hot."
@@ -2470,6 +2500,7 @@
 	color = "#FFFF7F"
 	strength = 12
 	nutriment_factor = 1
+	price_tag = 0.7
 
 	glass_name = "Sake Bomb"
 	glass_desc = "Some sake mixed into a pint of beer."
@@ -2504,6 +2535,7 @@
 	taste_description = "fruity booze"
 	color = "#FA8072"
 	strength = 35
+	price_tag = 0.8
 
 	glass_name = "Tokyo Rose"
 	glass_desc = "It's kinda pretty!"
@@ -2515,6 +2547,7 @@
 	taste_description = "dry alcohol"
 	color = "#0064C8"
 	strength = 15
+	price_tag = 0.8
 
 	glass_name = "Saketini"
 	glass_desc = "What are you doing drinking this outside of New Kyoto?"
@@ -2667,7 +2700,7 @@
 	taste_description = "very sweet dried fruit with many elegant notes"
 	color = "#4C130B" // rgb(76,19,11)
 	strength = 20
-
+	price_tag = 0.75
 	glass_name = "Wine Brandy"
 	glass_desc = "A very classy looking after-dinner drink."
 
@@ -2792,7 +2825,7 @@
 	taste_description = "sweet raspberry"
 	color = "#dd00a6" // rgb(221, 0, 166)
 	strength = 30
-
+	price_tag = 0.25
 	glass_name = "Clover Club"
 	glass_desc = "A light and refreshing rasberry cocktail."
 
@@ -2803,7 +2836,7 @@
 	taste_description = "summer nights and wood smoke"
 	color = "#77000d" // rgb(119, 0, 13)
 	strength = 25
-
+	price_tag = 0.78
 	glass_name = "Negroni"
 	glass_desc = "A dark, complicated blend, perfect for relaxing nights by the fire."
 
@@ -3005,7 +3038,7 @@
 	taste_description = "minty alcohol"
 	color = "#8FC468"
 	strength = 25
-
+	price_tag = 0.3
 	glass_name = "peppermint schnapps"
 	glass_desc = "A glass of peppermint schnapps. It seems like it'd be better, mixed."
 
@@ -3016,7 +3049,7 @@
 	taste_description = "peaches"
 	color = "#d67d4d"
 	strength = 25
-
+	price_tag = 0.3
 	glass_name = "peach schnapps"
 	glass_desc = "A glass of peach schnapps. It seems like it'd be better, mixed."
 
@@ -3027,7 +3060,7 @@
 	taste_description = "sweet, lemon-y alcohol"
 	color = "#FFFF00"
 	strength = 25
-
+	price_tag = 0.3
 	glass_name = "lemonade schnapps"
 	glass_desc = "A glass of lemonade schnapps. It seems like it'd be better, mixed."
 
@@ -3038,7 +3071,7 @@
 	taste_description = "a painfully alcoholic lemon soda with an undertone of mint"
 	color = "#6BB486"
 	strength = 9
-
+	price_tag = 0.5
 	glass_name = "fusionnaire"
 	glass_desc = "A relatively new cocktail, mostly served in the bars of NanoTrasen owned stations."
 
@@ -3050,7 +3083,7 @@
 	color = "#EAB300"
 	strength = 10
 	glass_special = list(DRINK_FIZZ)
-
+	price_tag = 0.3
 	glass_name = "cider"
 	glass_desc = "The second most Irish drink."
 	price_tag = 0.08
@@ -3065,6 +3098,7 @@
 
 	glass_name = "Serpent's Spirit"
 	glass_desc = "An expensive blue wine made from a secret blend of spices passed down from generation to generation."
+	price_tag = 4
 
 /datum/reagent/ethanol/goldfinger
 	name = "Goldfinger"
@@ -3076,6 +3110,7 @@
 
 	glass_name = "Goldfinger"
 	glass_desc = "This is gold, Mr. Bond."
+	price_tag = 4.75
 
 /datum/reagent/ethanol/blackrose
 	name = "Black Rose"
@@ -3087,6 +3122,7 @@
 
 	glass_name = "Black Rose"
 	glass_desc = "Each taste imparts the flavor of flowers blooming in Spring. Exquisite."
+	price_tag = 4
 
 /datum/reagent/nutriment/coffee
 	name = "Coffee Powder"
@@ -3096,7 +3132,7 @@
 	taste_mult = 1.3
 	nutriment_factor = 1
 	color = "#482000"
-
+	price_tag = 0.2
 /datum/reagent/nutriment/tea
 	name = "Tea Powder"
 	id = "teapowder"
@@ -3105,7 +3141,7 @@
 	taste_mult = 1.3
 	nutriment_factor = 1
 	color = "#101000"
-
+	price_tag = 0.2
 /datum/reagent/nutriment/instantjuice
 	name = "Juice Powder"
 	id = "instantjuice"

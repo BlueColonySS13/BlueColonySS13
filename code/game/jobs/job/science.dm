@@ -13,7 +13,7 @@
 	selection_color = "#AD6BAD"
 	idtype = /obj/item/weapon/card/id/science/head
 	req_admin_notify = 1
-	wage = 340
+	wage = 425
 	access = list(access_rd, access_heads, access_tox, access_morgue,
 			            access_tox_storage, access_teleporter, access_sec_doors,
 			            access_research, access_robotics, access_xenobiology, access_ai_upload, access_tech_storage,
@@ -26,6 +26,10 @@
 	minimum_character_age = 30
 	minimal_player_age = 10
 	ideal_character_age = 50
+
+	clean_record_required = TRUE
+	allows_synths = FALSE
+
 
 	outfit_type = /decl/hierarchy/outfit/job/science/rd
 	alt_titles = list("Research Supervisor")
@@ -54,7 +58,7 @@
 	supervisors = "the research director"
 	selection_color = "#633D63"
 	idtype = /obj/item/weapon/card/id/science/scientist
-	wage = 190
+	wage = 200
 	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch)
 	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch)
 	minimum_character_age = 25
@@ -62,6 +66,8 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/science/scientist
 	alt_titles = list("Xenoarchaeologist" = /decl/hierarchy/outfit/job/science/xenoarchaeologist, "Anomalist", "Phoron Researcher")
+
+	clean_record_required = TRUE
 
 /datum/job/xenobiologist
 	title = "Xenobiologist"
@@ -84,6 +90,8 @@
 	outfit_type = /decl/hierarchy/outfit/job/science/xenobiologist
 	alt_titles = list("Xenobotanist")
 
+	clean_record_required = TRUE
+
 /datum/job/roboticist
 	title = "Roboticist"
 
@@ -105,6 +113,9 @@
 	outfit_type = /decl/hierarchy/outfit/job/science/roboticist
 	alt_titles = list("Biomechanical Engineer","Mechatronic Engineer","Car Engineer")
 
+	clean_record_required = TRUE
+	allows_synths = FALSE
+
 /datum/job/scienceintern
 	title = "Research Assistant"
 
@@ -124,3 +135,5 @@
 	minimal_player_age = 0
 
 	outfit_type = /decl/hierarchy/outfit/job/science/intern
+
+	clean_record_required = TRUE

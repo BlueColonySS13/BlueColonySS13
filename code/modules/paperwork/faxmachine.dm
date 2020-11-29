@@ -189,11 +189,12 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	adminfaxes += rcvdcopy
 
 	//message badmins that a fax has arrived
-	if (destination == using_map.boss_name)
+	// Can't use a `switch()` statement due to `using_map.boss_name` not being a constant value.
+	if(destination == using_map.boss_name)
 		message_admins(sender, "[uppertext(using_map.boss_short)] FAX", rcvdcopy, "CentComFaxReply", "#006100")
-	else if ("Polluxian Governmental Authority")
+	else if(destination == "Polluxian Governmental Authority")
 		message_admins(sender, "POLLUX GOVERNMENT FAX", rcvdcopy, "CentComFaxReply", "#1F66A0")
-	else if ("Supply")
+	else if(destination == "Supply")
 		message_admins(sender, "[uppertext(using_map.boss_short)] SUPPLY FAX", rcvdcopy, "CentComFaxReply", "#5F4519")
 	else
 		message_admins(sender, "[uppertext(destination)] FAX", rcvdcopy, "UNKNOWN")

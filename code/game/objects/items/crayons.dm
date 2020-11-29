@@ -16,6 +16,7 @@
 	var/colourName = "red" //for updateIcon purposes
 	var/list/validSurfaces = list(/turf/simulated/floor)
 	var/edible = 1 //so you can't eat a spraycan
+	var/base_name = "crayon"
 	price_tag = 1
 
 	unique_save_vars = list("uses", "shadeColour")
@@ -26,17 +27,15 @@
 	viewers(user) << "<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>"
 	return (BRUTELOSS|OXYLOSS)
 
-/obj/item/weapon/pen/crayon/New()
-	name = "[colourName] crayon"
+/obj/item/weapon/pen/crayon/initialize(mapload)
+	name = "[colourName] [base_name]"
+	return ..()
 
 /obj/item/weapon/pen/crayon/marker
 	name = "marker"
 	desc = "A chisel-tip permanent marker. Hopefully non-toxic."
 	icon_state = "markerred"
-
-/obj/item/weapon/pen/crayon/marker/New()
-	name = "[colourName] marker"
-
+	base_name = "marker"
 
 /obj/item/weapon/pen/crayon/red
 	icon_state = "crayonred"
@@ -127,6 +126,9 @@
 					return
 				to_chat(user, "You start drawing an arrow on the [target.name].")
 
+		if(target.trigger_lot_security_system(user, /datum/lot_security_option/graffiti, "Drawing graffiti on \the [target] with \a [src]."))
+			return
+		
 		if(instant || do_after(user, 50))
 			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
 			to_chat(user, "You finish drawing.")
@@ -167,6 +169,12 @@
 	colour = "#DA0000"
 	shadeColour = "#810C0C"
 	colourName = "red"
+
+// If for some reason someone wants different colors of daubers, delete this type, subtype them under markers, and give them color subtypes.
+/obj/item/weapon/pen/crayon/marker/red/dauber
+	name = "dauber"
+	base_name = "dauber"
+	desc = "A tool used to mark specific spots on a board, commonly used to play Bingo."
 
 /obj/item/weapon/pen/crayon/marker/orange
 	icon_state = "markerorange"
@@ -319,6 +327,8 @@
 	if(is_type_in_list(target,validSurfaces))
 		playsound(loc, 'sound/effects/spraycan_shake.ogg', 5, 1, 5)
 		user << "You start drawing graffiti on the [target.name]."
+		if(target.trigger_lot_security_system(user, /datum/lot_security_option/graffiti, "Drawing graffiti on \the [target] with \a [src]."))
+			return
 		if(instant || do_after(user, 50))
 			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
 			playsound(loc, 'sound/effects/spray.ogg', 5, 1, 5)

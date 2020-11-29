@@ -66,6 +66,7 @@
 			return
 
 
+
 /obj/item/device/price_tagger/afterattack(var/atom/A, var/mob/user, proximity, params)
 	if(!on)
 		return
@@ -84,6 +85,9 @@
 
 	if(istype(A.loc, /mob/))
 		to_chat(usr, "You need to set [O] down before it can be labelled!")
+		return
+		
+	if(0 > set_price)	// no negative pricing
 		return
 
 	O.tagged_price = set_price

@@ -154,6 +154,9 @@
 	if(build_delay && !can_use(user,T))
 		return 0
 
+	if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "[(deconstruct ? "Deconstructing the" : "Building on")] [T] with [src]."))
+		return 0
+
 	if(build_turf)
 		T.ChangeTurf(build_turf, preserve_outdoors = TRUE)
 	else if(build_other)

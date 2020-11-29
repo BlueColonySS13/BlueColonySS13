@@ -2,14 +2,14 @@
 // LEGAL PAPERWORK
 
 /datum/paperwork_template/crim_rep
-	name = "Lawyer: Criminal Representation Form"
-	title = "Criminal Representation Form"
+	name = "Lawyer: Civil Representation Form"
+	title = "Civil Representation Form"
 	categories = list(PAPERWORK_LEGAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/legal/civrepform.txt'
 
 /datum/paperwork_template/civ_rep
-	name = "Lawyer: Civil Representation Form"
-	title = "Civil Representation Form"
+	name = "Lawyer: Criminal Representation Form"
+	title = "Criminal Representation Form"
 	categories = list(PAPERWORK_LEGAL)
 	file_source = 'code/modules/paperwork/paperwork_templates/legal/crimrepform.txt'
 
@@ -107,6 +107,12 @@
 	categories = list(PAPERWORK_COUNCIL)
 	file_source = 'code/modules/paperwork/paperwork_templates/council/replacementcard.txt'
 
+/datum/paperwork_template/foodstamps
+	name = "City Clerk: Food Stamps Form"
+	title = "Food Stamps Form"
+	categories = list(PAPERWORK_COUNCIL)
+	file_source = 'code/modules/paperwork/paperwork_templates/council/foodstamps.txt'
+
 /datum/paperwork_template/ordinance
 	name = "Mayor: City Ordinance Form"
 	title = "City Ordinance Form"
@@ -119,11 +125,19 @@
 	categories = list(PAPERWORK_COUNCIL)
 	file_source = 'code/modules/paperwork/paperwork_templates/council/weaponpermit.txt'
 
+/datum/paperwork_template/permit_form_nonweapon
+	name = "City Clerk: Universal Permit Application Form"
+	title = "Universal Permit Application"
+	categories = list(PAPERWORK_COUNCIL)
+	file_source = 'code/modules/paperwork/paperwork_templates/council/upaf.txt'
+
 /datum/paperwork_template/courtrules
 	name = "Courtroom Rules"
 	title = "Courtroom Rules"
 	categories = list(PAPERWORK_GOVERNMENT)
 	file_source = 'code/modules/paperwork/paperwork_templates/council/courtrules.txt'
+
+
 
 // MEDICAL
 
@@ -168,4 +182,10 @@
 	title = "PDSI Report"
 	categories = list(PAPERWORK_GOVERNMENT)
 	file_source = 'code/modules/paperwork/paperwork_templates/government/pdsireport.txt'
+
+/datum/paperwork_template/hmp
+	name = "Hazardous Material Permit - Committee"
+	title = "Hazardous Material Permit"
+	categories = list (PAPERWORK_GOVERNMENT)
+	file_source = 'code/modules/paperwork/paperwork_templates/government/hmp.txt'
 

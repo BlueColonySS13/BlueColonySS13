@@ -128,6 +128,8 @@
 
 /obj/structure/bed/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/wrench))
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to deassemble \the [src] with [W]."))
+			return
 		playsound(src, W.usesound, 50, 1)
 		dismantle()
 		qdel(src)
@@ -161,6 +163,8 @@
 	else if (istype(W, /obj/item/weapon/wirecutters))
 		if(!padding_material)
 			to_chat(user, "\The [src] has no padding to remove.")
+			return
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to remove padding from \the [src] with [W]."))
 			return
 		to_chat(user, "You remove the padding from \the [src].")
 		playsound(src.loc, W.usesound, 100, 1)

@@ -547,18 +547,32 @@
 				if(!LOT)
 					return
 
+
+				var/autorent_option = alert("What would you like to do?", "Autorent Lot", "Adjust Autorent", "Remove Autorent", "Cancel")
+
+				if(autorent_option== "Cancel")
+					return
+
+				if(autorent_option == "Remove Autorent")
+					LOT.autorent_deposit = 0
+					LOT.add_note(full_name, "Removed [LOT.name]'s auto-rent.",usr)
+
+					return
+
 				var/lot_new_autorent = input("Auto-renting occurs when you set an minimum deposit amount needed to automatically rent. This must be higher than your minimum deposit.", "Set Autorent", LOT.autorent_deposit) as num|null
 
-				if(0 > lot_new_autorent || (LOT.required_deposit > lot_new_autorent))
+				if(0 > lot_new_autorent)
 					return
 
 				if("No" == alert("Set the autorent of [LOT.name] to [lot_new_autorent]CR?", "Autorent Lot", "No", "Yes"))
 					return
 
-				LOT.add_note(full_name, "Changed [LOT.name]'s minimum deposit for autorent from [LOT.autorent_deposit]CR to [lot_new_autorent]CR.",usr)
+				if(LOT.required_deposit > lot_new_autorent)
+					lot_new_autorent = LOT.required_deposit
+
+				LOT.add_note(full_name, "Changed [LOT.name]'s auto-rent amount from [LOT.autorent_deposit]CR to [lot_new_autorent]CR.",usr)
 
 				LOT.autorent_deposit = lot_new_autorent
-
 
 
 			if("set_rent")
@@ -1060,8 +1074,9 @@
 
 				var/datum/tenant/app = LOT.add_applicant(unique_id, full_name, I.associated_account_number, email, offered_deposit, reason)
 
-				if(app && (offered_deposit >= LOT.autorent_deposit))
-					LOT.accept_rentee(app) // woohoo instant accept!
+				if(LOT.autorent_deposit)
+					if(app && (offered_deposit >= LOT.autorent_deposit))
+						LOT.accept_rentee(app) // woohoo instant accept!
 
 				clear_data()
 				index = 1

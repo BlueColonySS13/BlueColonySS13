@@ -404,9 +404,12 @@
 						break
 			while(length(t) > 5563)
 
+
 			//split into lines
 			spawn()
 				var/list/lines = splittext(t, "\n")
+				if(!LAZYLEN(lines))
+					return
 				var/tempo = 5
 				if(copytext(lines[1],1,6) == "BPM: ")
 					tempo = 600 / text2num(copytext(lines[1],6))
@@ -433,8 +436,10 @@
 /obj/structure/device/piano/attackby(obj/item/O as obj, mob/user as mob)
 	if (istype(O, /obj/item/weapon/wrench))
 		if (anchored)
+			if(trigger_lot_security_system(user, /datum/lot_security_option/theft, "Unwrenching \the [src] with [O]."))
+				return
 			playsound(src.loc, O.usesound, 50, 1)
-			user << "<span class='notice'>You begin to loosen \the [src]'s casters...</span>"
+			to_chat(user,"<span class='notice'>You begin to loosen \the [src]'s casters...</span>")
 			if (do_after(user, 40 * O.toolspeed))
 				user.visible_message( \
 					"[user] loosens \the [src]'s casters.", \

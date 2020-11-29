@@ -98,10 +98,99 @@
 	force_matter = list("leather" = 900)
 // shoes
 /datum/category_item/crafting/sewing_machine/leather/shoes
-	name = "shoes"
+	name = "leather shoes"
 	path = /obj/item/clothing/shoes/leather
 	force_matter = list("leather" = 900)
 	prefix = null
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/laceup
+	name = "laceup shoes"
+	path = /obj/item/clothing/shoes/laceup
+	force_matter = list("leather" = 1300)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/dress
+	name = "dress shoes"
+	path = /obj/item/clothing/shoes/dress
+	force_matter = list("leather" = 1300)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/dress/white
+	name = "white dress shoes"
+	path = /obj/item/clothing/shoes/dress/white
+	force_matter = list("leather" = 1300)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/skater
+	name = "skater shoes"
+	path = /datum/gear/shoes/skater
+	force_matter = list("leather" = 1300, "cotton" = 200)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/athletic
+	name = "athletic shoes"
+	path = /obj/item/clothing/shoes/athletic
+	force_matter = list("leather" = 1300, "cotton" = 200)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/heels
+	name = "heels"
+	path = /obj/item/clothing/shoes/heels
+	force_matter = list("leather" = 850)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/heels/long
+	name = "long high heels"
+	path = /obj/item/clothing/shoes/heels/long
+	force_matter = list("leather" = 1000)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/cowboy
+	name = "cowboy boots"
+	path = /obj/item/clothing/shoes/boots/cowboy
+	force_matter = list("leather" = 1900)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/cowboy/classic
+	name = "classic cowboy boots"
+	path = /obj/item/clothing/shoes/boots/cowboy/classic
+	force_matter = list("leather" = 1900)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/cowboy/snakeskin
+	name = "snakeskin cowboy boots"
+	path = /obj/item/clothing/shoes/boots/cowboy/snakeskin
+	force_matter = list("leather" = 1900)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/jungle
+	name = "jungle boots"
+	path = /obj/item/clothing/shoes/boots/jungle
+	force_matter = list("leather" = 1900)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/duty
+	name = "duty boots"
+	path = /obj/item/clothing/shoes/boots/duty
+	force_matter = list("leather" = 2000)
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/duty
+	name = "winter boots"
+	path = /obj/item/clothing/shoes/boots/winter
+	force_matter = list("leather" = 2000, "wool" = 2000)
+
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/stylish
+	name = "brown stylish boots"
+	path = /obj/item/clothing/shoes/boots/stylish
+	force_matter = list("leather" = 2000, "cotton" = 200)
+
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/stylish/charcoal
+	name = "charcoal stylish boots"
+	path = /obj/item/clothing/shoes/boots/stylish/charcoal
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/stylish/navy
+	name = "navy stylish boots"
+	path = /obj/item/clothing/shoes/boots/stylish/navy
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/stylish/red
+	name = "red stylish boots"
+	path = /obj/item/clothing/shoes/boots/stylish/red
+
+/datum/category_item/crafting/sewing_machine/leather/shoes/stylish/silver
+	name = "silver stylish boots"
+	path = /obj/item/clothing/shoes/boots/stylish/silver
+
 // bags
 
 /datum/category_item/crafting/sewing_machine/leather/bag
@@ -211,4 +300,72 @@
 	name = "women's wallet"
 	path = /obj/item/weapon/storage/wallet/womens
 
+// pouches
 
+
+/datum/category_item/crafting/sewing_machine/leather/pouch
+	name = "pouch"
+	path = /obj/item/clothing/accessory/storage/pouches
+
+/datum/category_item/crafting/sewing_machine/leather/pouch/blue
+	name = "pouch (blue)"
+	path = /obj/item/clothing/accessory/storage/pouches/blue
+
+/datum/category_item/crafting/sewing_machine/leather/pouch/green
+	name = "pouch (green)"
+	path = /obj/item/clothing/accessory/storage/pouches/green
+
+/datum/category_item/crafting/sewing_machine/leather/pouch/tan
+	name = "pouch (tan)"
+	path = /obj/item/clothing/accessory/storage/pouches/tan
+
+/datum/category_item/crafting/sewing_machine/leather/pouch/navy
+	name = "pouch (navy)"
+	path = /obj/item/clothing/accessory/storage/pouches/navy
+
+/datum/category_item/crafting/sewing_machine/leather/pouch/large
+	name = "pouch (large)"
+	path = /obj/item/clothing/accessory/storage/pouches/large
+
+/datum/category_item/crafting/sewing_machine/leather/pouch/large/blue
+	name = "pouch (large - blue)"
+	path = /obj/item/clothing/accessory/storage/pouches/large/blue
+
+/datum/category_item/crafting/sewing_machine/leather/pouch/large/green
+	name = "pouch (large - green)"
+	path = /obj/item/clothing/accessory/storage/pouches/large/green
+
+/datum/category_item/crafting/sewing_machine/leather/pouch/large/navy
+	name = "pouch (large - navy)"
+	path = /obj/item/clothing/accessory/storage/pouches/large/navy
+
+/datum/category_item/crafting/sewing_machine/leather/pouch/large/tan
+	name = "pouch (large - tan)"
+	path = /obj/item/clothing/accessory/storage/pouches/large/tan
+
+
+// webbing / holsters
+
+/datum/category_item/crafting/sewing_machine/leather/webbing
+	name = "webbing"
+	path = /obj/item/clothing/accessory/storage/webbing
+
+/datum/category_item/crafting/sewing_machine/leather/holster
+	name = "holster"
+	path = /obj/item/clothing/accessory/holster
+
+/datum/category_item/crafting/sewing_machine/leather/holster/armpit
+	name = "armpit holster"
+	path = /obj/item/clothing/accessory/holster/armpit
+
+/datum/category_item/crafting/sewing_machine/leather/holster/hip
+	name = "hip holster"
+	path = /obj/item/clothing/accessory/holster/hip
+
+/datum/category_item/crafting/sewing_machine/leather/holster/leg
+	name = "leg holster"
+	path = /obj/item/clothing/accessory/holster/leg
+
+/datum/category_item/crafting/sewing_machine/leather/holster/waist
+	name = "waist holster"
+	path = /obj/item/clothing/accessory/holster/waist

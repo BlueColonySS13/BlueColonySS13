@@ -46,6 +46,10 @@
 	display_name = "Spaceball booster pack"
 	path = /obj/item/weapon/pack/spaceball
 
+/datum/gear/dummy
+	display_name = "ventriloquist puppet"
+	path = /obj/item/toy/dummy
+
 /datum/gear/plushie
 	display_name = "plushie selection"
 	path = /obj/item/toy/plushie/

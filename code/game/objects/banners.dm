@@ -44,3 +44,10 @@
 	name = "AndroGov banner"
 	icon_state = "banner-androgov"
 	desc = "A banner with the symbol of the Andromedan Governmental Authority, also known as AndroGov."
+
+/obj/item/weapon/banner/white
+	name = "white banner"
+	icon_state = "banner-white"
+	desc = "A white colored banner."
+
+//We can make re-colorable banners in the future. Maybe with overlays we can add decals and whatnot. Good idea for the future. - Flag

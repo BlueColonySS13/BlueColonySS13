@@ -5,6 +5,7 @@
 	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity."
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "mmi_empty"
+	var/base_state = "mmi"
 	w_class = ITEMSIZE_NORMAL
 	can_speak = 1
 	origin_tech = list(TECH_BIO = 3)
@@ -18,6 +19,8 @@
 	var/obj/item/organ/internal/brain/brainobj = null	//The current brain organ.
 	var/obj/mecha = null//This does not appear to be used outside of reference in mecha.dm.
 	var/obj/item/device/radio/headset/mmi_radio/radio = null//Let's give it a radio.
+
+	save_contents = FALSE
 
 /obj/item/device/mmi/New()
 	radio = new(src)//Spawns a radio inside the MMI.
@@ -74,9 +77,9 @@
 
 		name = "man-machine interface ([brainmob.real_name])"
 		if(istype(B, /obj/item/organ/internal/brain/vatborn))
-			icon_state = "mmi_stack"
+			icon_state = "[base_state]_stack"
 		else
-			icon_state = "mmi_full"
+			icon_state = "[base_state]_full"
 
 		locked = 1
 
@@ -117,7 +120,7 @@
 		brain.brainmob = brainmob//Set the brain to use the brainmob
 		brainmob = null//Set mmi brainmob var to null
 
-		icon_state = "mmi_empty"
+		icon_state = "[base_state]_empty"
 		name = "Man-Machine Interface"
 
 /obj/item/device/mmi/proc/transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->robot people.
@@ -133,7 +136,7 @@
 			brainmob.add_modifier(M.type)
 
 	name = "Man-Machine Interface: [brainmob.real_name]"
-	icon_state = "mmi_full"
+	icon_state = "[base_state]_full"
 	locked = 1
 	return
 
@@ -250,8 +253,10 @@
 	searching = 1
 
 	var/datum/ghost_query/Q = new ghost_query_type()
+
 	var/list/winner = Q.query()
 	if(winner.len)
+
 		var/mob/observer/dead/D = winner[1]
 		transfer_personality(D)
 	else
@@ -314,9 +319,10 @@
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/posi_brain
+	base_state = "posibrain"
 
 /obj/item/device/mmi/digital/posibrain/request_player()
-	icon_state = "posibrain-searching"
+	icon_state = "[base_state]-searching"
 	..()
 
 
@@ -325,16 +331,16 @@
 	if(brainmob.mind)
 		brainmob.mind.assigned_role = "Positronic Brain"
 	brainmob << "<span class='notify'>You feel slightly disoriented. That's normal when you're just a metal cube.</span>"
-	icon_state = "posibrain-occupied"
+	icon_state = "[base_state]-occupied"
 	return
 
 /obj/item/device/mmi/digital/posibrain/transfer_personality(var/mob/candidate)
 	..()
-	icon_state = "posibrain-occupied"
+	icon_state = "[base_state]-occupied"
 
 /obj/item/device/mmi/digital/posibrain/reset_search() //We give the players sixty seconds to decide, then reset the timer.
 	..()
-	icon_state = "posibrain"
+	icon_state = "[base_state]"
 
 /obj/item/device/mmi/digital/posibrain/New()
 	..()

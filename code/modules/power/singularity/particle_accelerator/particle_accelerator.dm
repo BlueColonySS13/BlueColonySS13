@@ -247,7 +247,6 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 			update_state()
 		update_icon()
 		return 1
-	return 0
 
 
 
@@ -391,4 +390,3 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 			use_power = 1
 		update_icon()
 		return 1
-	return 0

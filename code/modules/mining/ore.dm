@@ -99,9 +99,9 @@
 	material = "bauxite"
 
 /obj/item/weapon/ore/rutile
-	name = "rutile"
+	name = "raw rutile"
 	icon_state = "ore_rutile"
-	material = "titanium"
+	material = "rutile"
 
 /obj/item/weapon/ore/void_opal
 	name = "raw void opal"

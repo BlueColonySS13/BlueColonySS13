@@ -158,7 +158,7 @@
 				//we do this after we load everything in. if we don't; we'll have weird atmos bugs regarding atmos adjacent turfs
 				T.AfterChange(1,keep_cabling = TRUE)
 				*/
-		return bounds
+		//return bounds
 
 /**
  * Fill a given tile with its area/turf/objects/mobs

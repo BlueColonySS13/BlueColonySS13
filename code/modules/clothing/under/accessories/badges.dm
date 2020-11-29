@@ -9,6 +9,7 @@
 	desc = "Police detective's badge, made from gold."
 	icon_state = "badge"
 	slot_flags = SLOT_BELT | SLOT_TIE
+	slot = "insignia"
 
 	var/stored_name
 	var/badge_string = "Geminus City Police Department"
@@ -133,20 +134,25 @@
 		..()
 		return
 
-/obj/item/clothing/accessory/badge/holo/warden
-	name = "warden's holobadge"
-	desc = "A silver police badge. Stamped with the words 'Warden.'"
+/obj/item/clothing/accessory/badge/holo/police
+	name = "police badge"
+	desc = "A siver police badge."
 	icon_state = "silverbadge"
+
+/obj/item/clothing/accessory/badge/holo/warden
+	name = "police sergeant's badge"
+	desc = "A gold police badge. Stamped with the words 'Sergeant.'"
+	icon_state = "goldbadge"
 	slot_flags = SLOT_TIE | SLOT_BELT
 
 /obj/item/clothing/accessory/badge/holo/hos
-	name = "chief of police's holobadge"
+	name = "chief of police's badge"
 	desc = "An immaculately polished gold police badge. Labeled 'Chief of Police.'"
 	icon_state = "goldbadge"
 	slot_flags = SLOT_TIE | SLOT_BELT
 
 /obj/item/clothing/accessory/badge/holo/detective
-	name = "detective's holobadge"
+	name = "detective's badge"
 	desc = "An immaculately polished gold police badge on leather. Labeled 'Detective.'"
 	icon_state = "marshalbadge"
 	slot_flags = SLOT_TIE | SLOT_BELT

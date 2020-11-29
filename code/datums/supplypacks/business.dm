@@ -49,6 +49,12 @@
 	containertype = /obj/structure/largecrate
 	containername = "Business Sign"
 
+/datum/supply_pack/business/business_money_display
+	contains = list(/obj/machinery/status_display/money_display)
+	name = "Business Money Display"
+	cost = 900
+	containertype = /obj/structure/largecrate
+	containername = "Business Money Display"
 
 /datum/supply_pack/business/mining_starter
 	contains = list(
@@ -75,3 +81,37 @@
 	cost = 75
 	containertype = /obj/structure/closet/crate
 	containername = "Business Stamps"
+
+
+
+/datum/supply_pack/business/trade_machine
+	contains = list(/obj/item/weapon/circuitboard/trade_machine)
+	name = "Auto-Commerce Machine"
+	cost = 2000
+	containertype = /obj/structure/closet/crate
+	containername = "Auto-Commerce Machine"
+
+
+/datum/supply_pack/business/security_system
+	contains = list(/obj/machinery/lot_security_system/factory_ordered)
+	name = "Z.E.U.S. Security System" // 'Security System' is redundant since the S in the name stands for security, but it needs to be obvious in the menu.
+	cost = 9000
+	containertype = /obj/structure/closet/crate
+	containername = "Z.E.U.S. System"
+
+/datum/supply_pack/business/security_system_charge
+	contains = list(/obj/item/weapon/lot_security_charge)
+	name = "Z.E.U.S. Charge (1x)"
+	cost = 100
+	containertype = /obj/structure/closet/crate
+	containername = "Z.E.U.S. Charge"
+
+/datum/supply_pack/business/security_system_charge/five
+	contains = list(/obj/item/weapon/lot_security_charge/five)
+	name = "Z.E.U.S. Charge (5x)"
+	cost = 500
+
+/datum/supply_pack/business/security_system_charge/ten
+	contains = list(/obj/item/weapon/lot_security_charge/ten)
+	name = "Z.E.U.S. Charge (10x)"
+	cost = 1000

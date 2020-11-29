@@ -123,6 +123,8 @@
 		return
 
 	if(istype(W, /obj/item/weapon/crowbar))
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempted to remove [flooring.descriptor] with [W]."))
+			return
 		if(broken || burnt)
 			to_chat(user, "<span class='notice'>You remove the broken [flooring.descriptor].</span>")
 			make_plating()
@@ -139,21 +141,29 @@
 	else if(istype(W, /obj/item/weapon/screwdriver) && (flooring.flags & TURF_REMOVE_SCREWDRIVER))
 		if(broken || burnt)
 			return 0
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempted to remove [flooring.descriptor] with [W]."))
+			return
 		to_chat(user, "<span class='notice'>You unscrew and remove the [flooring.descriptor].</span>")
 		make_plating(1)
 		playsound(src, W.usesound, 80, 1)
 		return 1
 	else if(istype(W, /obj/item/weapon/wrench) && (flooring.flags & TURF_REMOVE_WRENCH))
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempted to remove [flooring.descriptor] with [W]."))
+			return
 		to_chat(user, "<span class='notice'>You unwrench and remove the [flooring.descriptor].</span>")
 		make_plating(1)
 		playsound(src, W.usesound, 80, 1)
 		return 1
 	else if(istype(W, /obj/item/weapon/shovel) && (flooring.flags & TURF_REMOVE_SHOVEL))
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempted to remove [flooring.descriptor] with [W]."))
+			return
 		to_chat(user, "<span class='notice'>You shovel off the [flooring.descriptor].</span>")
 		make_plating(1)
 		playsound(src, 'sound/items/Deconstruct.ogg', 80, 1)
 		return 1
 	else if (istype(W, /obj/item/weapon/pickaxe) && (flooring.flags & TURF_REMOVE_MINEREQUIP))
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempted to remove [flooring.descriptor] with [W]."))
+			return
 		var/obj/item/weapon/pickaxe/tmpVariableForPolymorphism = W
 		if (!do_after(user, tmpVariableForPolymorphism.digspeed))
 			return 0

@@ -87,6 +87,8 @@
 
 	if(cash_open)
 		if(cash_stored)
+			if(trigger_lot_security_system(user, /datum/lot_security_option/theft, "Removing [cash_stored]CR from \the [src]."))
+				return
 			spawn_money(cash_stored, loc, user)
 			cash_stored = 0
 			overlays -= "register_cash"
@@ -114,11 +116,15 @@
 /obj/machinery/cash_register/proc/get_data_ui()
 	var/dat = "<h2>Cash Register<hr></h2>"
 
-	if(!account_to_connect || !dept_id || !owner_uid|| !owner_name)
+	if(!account_to_connect && (!dept_id || !owner_uid|| !owner_name))
 		dat += "This register requires you to own a business to your name. Please swipe your ID card to claim this till.<br>"
 		return dat
 
-	var/acc_name = get_account_name(linked_account.account_number)
+	var/acc_name = null
+
+	if(linked_account)
+		acc_name = get_account_name(linked_account.account_number)
+
 	if (locked)
 		dat += "<a href='?src=\ref[src];choice=toggle_lock'>Unlock</a><br>"
 
@@ -157,6 +163,9 @@
 /obj/machinery/cash_register/proc/get_custom_menu()
 	var/dat
 	if(menu_items == LAW)
+		dat += "Government protocol now allows former convicts to have misdemeanor and criminal offenses paid off from their record by doubling original fine amount \
+		 - major crimes are exempt. To be eligible they must have written permission from a Judge or Chief of Police showing they \
+		have had good behaviour and no criminal offenses in the last 30 days. A note is left by a judge or prosecutor detailing which crimes are removed.<br><br>"
 		for(var/datum/law/L in presidential_laws)
 			if(L.fine)
 				dat += "<a href='?src=\ref[src];choice=add_menu;menuitem=\ref[L]'>([L.id]) [L.name]</a><br>"
@@ -236,7 +245,7 @@
 					return TRUE
 
 
-				to_chat(usr, "\icon[src]<span class='warning'>Account not found.</span>")
+
 			if("custom_order")
 				var/t_purpose = sanitize(input("Enter purpose", "New purpose") as text)
 				if (!t_purpose || !Adjacent(usr)) return
@@ -572,6 +581,10 @@
 
 	// First check if item has a valid price
 	var/price = O.get_item_cost()
+	
+	if(0 > price) // no money exploits here
+		price = 0
+	
 	var/tax
 
 	if(adds_tax)

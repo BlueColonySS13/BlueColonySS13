@@ -19,6 +19,14 @@
 	drop_sound = 'sound/items/drop/paper.ogg'
 	var/age = 0
 
+/obj/item/weapon/paper_bundle/on_persistence_load()
+	//regenerates pages
+	for(var/obj/O in src)
+		pages.Add(O)
+
+	if(LAZYLEN(pages))
+		update_icon()
+
 /obj/item/weapon/paper_bundle/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 

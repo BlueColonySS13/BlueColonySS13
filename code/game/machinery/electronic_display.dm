@@ -35,12 +35,124 @@
 
 	//other
 	var/obj/currently_vending
+
 	var/maint_mode = FALSE
 	var/atmpt_maint_mode = FALSE
 
 	var/max_items = 60
 
-	unique_save_vars = list("purchase", "anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode")
+	unique_save_vars = list("purchase", "required_permit", "anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode")
+
+	// permit stuff
+	var/requesting_permit = FALSE
+	var/required_permit = null
+
+GLOBAL_LIST_INIT(display_case_icons, list(
+	     "NONE" = "",
+	     "Generic" = "generic",
+	     "Generic 2" =  "generic_buy",
+
+	     "Produce" = "produce",
+	     "Fish" = "fish",
+	     "Meat" = "meat",
+
+	     "Sale - Orange" = "sale_orange",
+	     "Sale - Green" = "sale_green",
+	     "Sale - Blue" = "sale_blue",
+
+	     "Skateboards" = "skateboard",
+
+	     "Secure" = "secure",
+	     "Snacks" = "snacks",
+	     "Free" = "free",
+	     "News" = "news",
+
+	     "Liberation Station" = "liberationstation",
+	     "Guns" = "guns",
+	     "Armor" = "armor",
+	     "Ammo" = "ammo",
+
+	     "Rings" = "rings",
+
+	     "Valentines" = "valentines",
+	     "Halloween" = "halloween",
+	     "Christmas" = "christmas",
+	     "Easter" = "easter",
+
+	     "Machine Parts" = "machine_parts",
+	     "Zeus Charges" = "zeus_charges",
+	     "Stock Parts" = "stock_parts",
+
+	     "Metals" = "metal_sheets",
+	     "Glasses" = "glass_sheets",
+
+	     "Orange Bubbles" = "starkist",
+	     "Theater" = "theater",
+	     "Shamblers" = "shamblers_juice",
+	     "Space Up" = "space_up",
+	     "Games" = "games",
+	     "Snacks - Green" = "snackgreen",
+	     "Snacks - Orange" = "snackorange",
+	     "Snacks - Teal" = "snackteal",
+	     "Cola - Black" = "black cola",
+	     "Cola - Red" = "soda_red",
+	     "Coffee" = "coffee",
+	     "Cigarettes" = "cigs",
+		"Smokes" = "smoke_packet",
+	     "Whiskey" = "whiskey",
+	     "Manhatten" = "manhatten",
+
+
+	     "Artistic" = "artvend",
+	     "Clothing" = "clothes",
+		"Luxury Vendor" = "luxvend",
+		"Laptop" = "laptop",
+		"Toiletries" = "toiletries",
+		"Minerals" = "minerals",
+		"Soda Fox" = "soda_fox",
+		"Snix" = "snix",
+		"Uniforms" = "uniforms",
+		"Japanese" = "weeb",
+		"Gold and Black" =  "gold_black",
+		"PowerGame" =  "power_game",
+		"Cannabis" = "cannabis",
+
+		"Hot Food" = "hot_food",
+		"Burger" = "burger",
+		"Coke" =  "coke",
+		"Fitness" =  "fitness",
+	     "Medicine" = "med",
+	     "Pills" = "pills",
+
+		"Shoes" = "shoes",
+		"Luxury Shoes" = "shoes2",
+		"Shirts" = "shirts",
+		"Coats" = "coats",
+		"Dress" = "dress",
+		"Undershirts" = "undersuits",
+		"Suits" = "suits",
+		"Jeans" = "jeans",
+	     "Boots" = "boots",
+	     "Dye" = "dye",
+	     "Cigars" = "cigars",
+	     "Accessories" = "accessories",
+	     "Hats" = "hats",
+
+		"Jewels" = "jewels",
+		"Paperwork" = "paperwork",
+		"Upholstry" = "upholstry",
+		"Decoration" =  "decor",
+		"Security Supplies" = "security",
+		"Devices" = "devices"
+))
+
+GLOBAL_LIST_INIT(display_case_hacked_icons, list(
+	     "Syndicate" = "syndi",
+		"Nanotrasen" =  "nanotrasen",
+		"SolGov" = "solgov",
+		"AndroGov" =  "androgov"
+))
+
 
 /obj/machinery/electronic_display_case/initialize()
 	if(!staff_pin)
@@ -71,6 +183,10 @@
 	else
 		to_chat(user, "<b>It is firmly anchored to the floor.</b>")
 
+	if(required_permit)
+		var/atom/tmp = required_permit
+		var/permit_name = initial(tmp.name)
+		to_chat(user, "<b>You need a [permit_name] to buy things from this vendor.</b>")
 
 
 /obj/machinery/electronic_display_case/emag_act(var/remaining_charges, var/mob/user)
@@ -111,135 +227,16 @@
 
 
 /obj/machinery/electronic_display_case/proc/choose_static_icon(mob/user)
-	var/static_icons_list = list("NONE","liberation station", "orange bubbles", "theater", "shamblers", "space up", "games", \
-	"snacks green", "snacks orange", "snacks teal", "coffee", "cigarettes", "medicine", "black cola", "soda red", "art", \
-	"clothes", "generic", "luxvend", "laptop", "toiletries", "minerals", "soda fox", "snix", "uniforms", \
-	"weeb", "gold black", "shoes", "power game", "generic buy", "hot food", "fitness", "shirts", "shoes 2", "coats", \
-	"dress", "undersuits", "suits", "jeans", "boots", "dye", "cigars", "pills", "whiskey", "manhatten", "produce", \
-	"jewels", "paperwork", "decor", "cannabis", "smoke packet", "security", "burger", "coke", "fish")
+	var/static_icons_list = GLOB.display_case_icons
 
 	if(emagged)
-		static_icons_list += "syndi"
+		static_icons_list += GLOB.display_case_hacked_icons
 
 	var/new_icon = input(usr, "Select a new appearance!", "Appearance Morph")  as null|anything in static_icons_list
 	if(!new_icon)
 		return
 
-	switch(new_icon)
-		if("NONE")
-			static_icon = null
-		if("liberation station")
-			static_icon = "liberationstation"
-		if("orange bubbles")
-			static_icon = "starkist"
-		if("theater")
-			static_icon = "theater"
-		if("shamblers")
-			static_icon = "shamblers_juice"
-		if("space up")
-			static_icon = "space_up"
-		if("games")
-			static_icon = "games"
-		if("snacks green")
-			static_icon = "snackgreen"
-		if("snacks orange")
-			static_icon = "snackorange"
-		if("snacks teal")
-			static_icon = "snackteal"
-		if("coffee")
-			static_icon = "coffee"
-		if("cigarettes")
-			static_icon = "cigs"
-		if("medicine")
-			static_icon = "med"
-		if("black cola")
-			static_icon = "cola_black"
-		if("soda red")
-			static_icon = "soda_red"
-		if("art")
-			static_icon = "artvend"
-		if("clothes")
-			static_icon = "clothes"
-		if("generic")
-			static_icon = "generic"
-		if("luxvend")
-			static_icon = "luxvend"
-		if("laptop")
-			static_icon = "laptop"
-		if("toiletries")
-			static_icon = "toiletries"
-		if("minerals")
-			static_icon = "minerals"
-		if("soda fox")
-			static_icon = "soda_fox"
-		if("snix")
-			static_icon = "snix"
-		if("uniforms")
-			static_icon = "uniforms"
-		if("weeb")
-			static_icon = "weeb"
-		if("gold black")
-			static_icon = "gold_black"
-		if("shoes")
-			static_icon = "shoes"
-		if("power game")
-			static_icon = "power_game"
-		if("generic buy")
-			static_icon = "generic_buy"
-		if("syndi")
-			static_icon = "syndi"
-		if("hot food")
-			static_icon = "hot_food"
-		if("fitness")
-			static_icon = "fitness"
-		if("shirts")
-			static_icon = "shirts"
-		if("shoes 2")
-			static_icon = "shoes2"
-		if("coats")
-			static_icon = "coats"
-		if("dress")
-			static_icon = "dress"
-		if("undersuits")
-			static_icon = "undersuits"
-		if("suits")
-			static_icon = "suits"
-		if("jeans")
-			static_icon = "jeans"
-		if("boots")
-			static_icon = "boots"
-		if("dye")
-			static_icon = "dye"
-		if("cigars")
-			static_icon = "cigars"
-		if("pills")
-			static_icon = "pills"
-		if("whiskey")
-			static_icon = "whiskey"
-		if("manhatten")
-			static_icon = "manhatten"
-		if("produce")
-			static_icon = "produce"
-		if("jewels")
-			static_icon = "jewels"
-		if("paperwork")
-			static_icon = "paperwork"
-		if("upholstry")
-			static_icon = "upholstry"
-		if("decor")
-			static_icon = "decor"
-		if("cannabis")
-			static_icon = "cannabis"
-		if("smoke packet")
-			static_icon = "smoke_packet"
-		if("security")
-			static_icon = "security"
-		if("burger")
-			static_icon = "burger"
-		if("coke")
-			static_icon = "coke"
-		if("fish")
-			static_icon = "fish"
+	static_icon = static_icons_list[new_icon]
 
 	visible_message("<span class='info'>[src] morphs into a new appearance!</span>")
 	playsound(user, 'sound/machines/click.ogg', 20, 1)
@@ -279,6 +276,14 @@
 		dat += "Please swipe your ID to claim ownership of this machine.<br>"
 		return dat
 
+	if(requesting_permit)
+		var/atom/tmp = required_permit
+		var/permit_name = initial(tmp.name)
+		dat += "Please swipe your [permit_name] to proceed to the purchase menu.<br>"
+
+		dat += "<a href='?src=\ref[src];cancel=1'>Cancel &#8617</a>"
+
+		return dat
 
 	if(atmpt_maint_mode)
 		dat += "Please swipe the initial ID you used to register this machine, or enter a staff pin code.<br>"
@@ -345,15 +350,21 @@
 			dat += "<a href='?src=\ref[src];choice=remove_item;item=\ref[O]'>Remove</a> <a href='?src=\ref[src];choice=reprice_item;item=\ref[O]'>Change Price</a> <b>[O.name]</b> - [cash2text( O.get_item_cost(), FALSE, TRUE, TRUE )] \
 			(Adds [cash2text( O.post_tax_cost(), FALSE, TRUE, TRUE )] tax)"
 			dat += "<br>"
+		var/permit_name = null
+		if(required_permit)
+			var/atom/tmp = required_permit
+			permit_name = initial(tmp.name)
 		dat += "</div><br>"
 		dat += "<a href='?src=\ref[src];change_pin=1'>Change Staff Pin</a> "
 		dat += "<a href='?src=\ref[src];edit_name=1'>Edit Name</a> "
 		dat += "<a href='?src=\ref[src];edit_owner_message=1'>Edit Owner Message</a> "
 		dat += "<a href='?src=\ref[src];edit_bank=1'>Update Bank Details</a> "
 		dat += "<a href='?src=\ref[src];toggle_anchor=1'>Toggle Anchors</a> "
+		dat += "<a href='?src=\ref[src];permit_requirements=1'>Permit Requirement: [required_permit ? permit_name : "None"]</a> "
 		dat += "<a href='?src=\ref[src];change_appearance=1'>Change Appearance</a> "
 		dat += "<a href='?src=\ref[src];toggle_buy=1'>Toggle Buy Mode</a> "
 		dat += "<a href='?src=\ref[src];reset_owner=1'>Reset Ownership</a> "
+		dat += "<a href='?src=\ref[src];mass_reprice=1'>Reprice All Items</a> "
 		dat += "<a href='?src=\ref[src];exit_maint_mode=1'>Exit Maintenance Mode</a> "
 	return dat
 
@@ -367,6 +378,9 @@
 	playsound(src, 'sound/machines/chime.ogg', 25)
 
 /obj/machinery/electronic_display_case/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if(!W)
+		return
+
 	var/obj/item/weapon/card/id/I = W.GetID()
 
 	if(!owner_uid && I)
@@ -381,6 +395,13 @@
 			maint_mode = TRUE
 			update_icon()
 			updateDialog()
+		return
+
+	if(requesting_permit && required_permit)
+		if(istype(W, required_permit))
+			requesting_permit = FALSE
+			updateDialog()
+			to_chat(user, "<span class='info'>Permit recognised!</span>")
 		return
 
 	if(currently_vending)
@@ -511,6 +532,9 @@
 			to_chat(user, "You may have no more than [max_items] in your display case.")
 			return
 
+	if(0 > O.tagged_price) // prevent negative numbers causing exploits
+		O.tagged_price = 0
+
 	user.drop_from_inventory(O, src)
 	O.forceMove(src)
 	stored_products += O
@@ -574,6 +598,7 @@
 		currently_vending = null
 		maint_mode = FALSE
 		atmpt_maint_mode = FALSE
+		requesting_permit = null
 		update_icon()
 
 	if(href_list["maint_mode"])
@@ -663,6 +688,23 @@
 		else
 			to_chat(usr, "<b>You toggle the anchors of the display case. It can now be moved.</b>")
 
+	if(href_list["permit_requirements"])
+		if(!maint_mode)
+			return
+
+		var/list/all_permits = list("NONE")
+
+		all_permits += GLOB.permit_types
+
+		var/new_permit = input(usr, "Select a required permit type", "Appearance Morph")  as null|anything in all_permits
+		if(!new_permit)
+			return
+
+		if(new_permit == "NONE")
+			required_permit = null
+		else
+			required_permit = GLOB.permit_types[new_permit]
+
 
 	if(href_list["change_appearance"])
 		if(!maint_mode)
@@ -691,6 +733,24 @@
 		if(choice == "Yes")
 			factory_settings()
 
+
+	if(href_list["mass_reprice"])
+		if(!maint_mode)
+			return
+
+		var/new_tag = input("Please enter the new price you want for all the items. Enter 0 to make the item free.", "Set Bank") as num
+
+		if(!new_tag || 0 > new_tag)
+			new_tag = 0
+
+		for(var/obj/O in stored_products)
+			O.tagged_price = new_tag
+
+
+		to_chat(usr, "<b>You set the price of all items in the vendor.</b>")
+
+
+
 	if(href_list["choice"])
 		switch(href_list["choice"])
 
@@ -704,10 +764,14 @@
 
 				var/obj/O = item
 
-				if(!O.get_item_cost())
-					vend(O, usr)
-				else
+				if(required_permit)
+					requesting_permit = TRUE
 					currently_vending = O
+				else
+					if(!O.get_item_cost())
+						vend(O, usr)
+					else
+						currently_vending = O
 
 			if("remove_item")
 				var/item = locate(href_list["item"])
@@ -732,6 +796,9 @@
 				var/obj/O = item
 
 				var/new_tag = input("Please enter the new price you want for this item. Enter 0 to make the item free.", "Set Bank", O.price_tag) as num
+
+				if(!new_tag || 0 > new_tag)
+					new_tag = 0
 
 				O.tagged_price = new_tag
 

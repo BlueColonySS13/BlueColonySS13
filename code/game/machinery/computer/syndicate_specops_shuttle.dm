@@ -22,7 +22,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 
 /proc/syndicate_elite_process()
 	var/area/syndicate_mothership/control/syndicate_ship = locate()//To find announcer. This area should exist for this proc to work.
-	var/area/syndicate_mothership/elite_squad/elite_squad = locate()//Where is the specops area located?
+//	var/area/syndicate_mothership/elite_squad/elite_squad = locate()//Where is the specops area located?
 	var/mob/living/silicon/decoy/announcer = locate() in syndicate_ship//We need a fake AI to announce some stuff below. Otherwise it will be wonky.
 
 	var/message_tracker[] = list(0,1,2,3,5,10,30,45)//Create a a list with potential time values.
@@ -62,7 +62,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 		usr << "<span class='warning'>The Syndicate Elite shuttle is unable to leave.</span>"
 		return
 
-		sleep(600)
+//		sleep(600)
 /*
 	//Begin Marauder launchpad.
 	spawn(0)//So it parallel processes it.
@@ -129,7 +129,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 					spawn(0)
 						M.close()
 						*/
-		elite_squad.readyreset()//Reset firealarm after the team launched.
+//		elite_squad.readyreset()//Reset firealarm after the team launched.
 	//End Marauder launchpad.
 /*
 	var/obj/explosionmarker = locate("Syndicate Breach Area")

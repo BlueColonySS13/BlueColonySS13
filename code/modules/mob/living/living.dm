@@ -514,14 +514,15 @@ default behaviour is:
 		//	L += get_contents(S)
 
 		for(var/obj/item/weapon/gift/G in Storage.return_inv()) //Check for gift-wrapped items
-			L += G.gift
-			if(istype(G.gift, /obj/item/weapon/storage))
-				L += get_contents(G.gift)
+			for(var/obj/O in G.contents)
+				if(istype(O, /obj/item/weapon/storage))
+					L+= get_contents(O)
 
 		for(var/obj/item/smallDelivery/D in Storage.return_inv()) //Check for package wrapped items
-			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/weapon/storage)) //this should never happen
-				L += get_contents(D.wrapped)
+			for(var/obj/O in D.contents)
+				if(istype(O, /obj/item/weapon/storage)) //this should never happen
+					L += get_contents(O)
+
 		return L
 
 	else
@@ -531,14 +532,14 @@ default behaviour is:
 			L += get_contents(S)
 
 		for(var/obj/item/weapon/gift/G in src.contents) //Check for gift-wrapped items
-			L += G.gift
-			if(istype(G.gift, /obj/item/weapon/storage))
-				L += get_contents(G.gift)
+			for(var/obj/O in G.contents)
+				if(istype(O, /obj/item/weapon/storage))
+					L+= get_contents(O)
 
 		for(var/obj/item/smallDelivery/D in src.contents) //Check for package wrapped items
-			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/weapon/storage)) //this should never happen
-				L += get_contents(D.wrapped)
+			for(var/obj/O in D.contents)
+				if(istype(O, /obj/item/weapon/storage)) //this should never happen
+					L += get_contents(O)
 		return L
 
 /mob/living/proc/check_contents_for(A)
@@ -1024,10 +1025,11 @@ default behaviour is:
 					pixel_y = V.mob_offset_y
 		else if(buckled)
 			anchored = 1
-			canmove = 0
+			canmove = 1 //The line above already makes the chair not swooce away if the sitter presses a button. No need to incapacitate them as a criminally large amount of mechanics read this var as a type of stun.
 			if(istype(buckled))
 				if(buckled.buckle_lying != -1)
 					lying = buckled.buckle_lying
+					canmove = buckled.buckle_movable
 				if(buckled.buckle_movable)
 					anchored = 0
 					canmove = 1
@@ -1178,6 +1180,7 @@ default behaviour is:
 			var/turf/end_T = get_turf(target)
 			if(end_T)
 				add_attack_logs(src,M,"Thrown via grab to [end_T.x],[end_T.y],[end_T.z]")
+			src.drop_from_inventory(G)
 
 	src.drop_from_inventory(item)
 	if(!item || !isturf(item.loc))

@@ -508,17 +508,18 @@
 /obj/effect/fusion_em_field/proc/stability_monitor()
 	var/warnpoint = 0.10 //start warning at 10% instability
 	var/warnmessage = "Warning! Field unstable! Instability at [percent_unstable * 100]%, plasma temperature at [plasma_temperature + 295]k."
-	var/stablemessage = "Containment field returning to stable conditions."
+//	var/stablemessage = "Containment field returning to stable conditions."
 
 	if(percent_unstable >= warnpoint) //we're unstable, start warning engineering
 		global_announcer.autosay(warnmessage, "Field Stability Monitor", "Engineering")
 		stable = 0 //we know we're not stable, so let's not state the safe message.
 		sleep(20)
 	return
-	if(percent_unstable < warnpoint && stable == 0) //The field is stable again. Let's set our safe variable and state the safe message.
-		global_announcer.autosay(stablemessage, "Field Stability Monitor", "Engineering")
-		stable = 1
-	return
+	// Unreachable code.
+//	if(percent_unstable < warnpoint && stable == 0) //The field is stable again. Let's set our safe variable and state the safe message.
+//		global_announcer.autosay(stablemessage, "Field Stability Monitor", "Engineering")
+//		stable = 1
+//	return
 
 //Reaction radiation is fairly buggy and there's at least three procs dealing with radiation here, this is to ensure constant radiation output.
 /obj/effect/fusion_em_field/proc/radiation_scale()

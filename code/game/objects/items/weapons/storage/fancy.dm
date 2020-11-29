@@ -176,11 +176,13 @@
 	return tax_type
 
 /obj/item/weapon/storage/fancy/cigarettes/get_item_cost()
-	var/total
+	if(tagged_price)
+		return tagged_price
+
+	var/total = 0
 
 	for(var/obj/item/clothing/mask/smokable/cigarette/C in src)
-		if(C.nicotine_amt > 1)
-			total += C.nicotine_amt * 0.1
+		total += C.get_item_cost()
 
 	return total
 

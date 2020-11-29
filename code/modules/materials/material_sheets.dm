@@ -129,7 +129,6 @@
 	drop_sound = 'sound/items/drop/glass.ogg'
 	associated_reagents = list("carbon")
 
-
 /obj/item/stack/material/uranium
 	name = "uranium"
 	icon_state = "sheet-uranium"
@@ -579,6 +578,8 @@
 	icon_state = "sheet-void_opal"
 	singular_name = "void opal"
 	default_type = "void opal"
+	stack_color = "#292929"
+	apply_colour = 1
 	no_variants = FALSE
 
 /obj/item/stack/material/quartz

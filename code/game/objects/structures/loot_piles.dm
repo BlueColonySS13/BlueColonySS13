@@ -116,9 +116,13 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	return new path(src)
 
 /obj/structure/loot_pile/initialize()
+	update_icon()
+	. = ..()
+
+/obj/structure/loot_pile/update_icon()
 	if(icon_states_to_use && icon_states_to_use.len)
 		icon_state = pick(icon_states_to_use)
-	. = ..()
+	..()
 
 // Has large amounts of possible items, most of which may or may not be useful.
 /obj/structure/loot_pile/maint/junk
@@ -987,4 +991,55 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	rare_loot = list(
 		/obj/item/device/flashlight/lantern
+		)
+
+// for z level artifact exploration. oooo
+
+/obj/structure/loot_pile/rubble
+	name = "pile of rubble"
+	desc = "One man's garbage is another man's treasure."
+	icon = 'icons/obj/rubble.dmi'
+
+	common_loot = list(/obj/item/stack/material/steel, /obj/item/stack/rods, /obj/item/stack/material/iron
+		)
+
+	uncommon_loot = list(
+		/obj/item/device/flashlight/lantern
+		)
+
+	rare_loot = list(
+		/obj/item/weapon/archaeological_find
+		)
+
+	loot_left = 10
+
+
+/obj/structure/loot_pile/rubble/update_icon()
+	overlays.Cut()
+	var/list/parts = list()
+	for(var/i = 1 to 7)
+		var/image/I = image(icon,"rubble[rand(1,15)]")
+		if(prob(10))
+			var/atom/A = pick(common_loot+uncommon_loot+rare_loot)
+			if(initial(A.icon) && initial(A.icon_state))
+				I.icon = initial(A.icon)
+				I.icon_state = initial(A.icon_state)
+				I.color = initial(A.color)
+			if(!loot_left)
+				I.color = "#54362e"
+		I.appearance_flags = PIXEL_SCALE
+		I.pixel_x = rand(-16,16)
+		I.pixel_y = rand(-16,16)
+		var/matrix/M = matrix()
+		M.Turn(rand(0,360))
+		I.transform = M
+		parts += I
+	overlays = parts
+	if(loot_left)
+		overlays += image(icon,"twinkle[rand(1,3)]")
+
+
+/obj/structure/loot_pile/rubble/redspace
+	rare_loot = list(
+		/obj/item/weapon/archaeological_find
 		)

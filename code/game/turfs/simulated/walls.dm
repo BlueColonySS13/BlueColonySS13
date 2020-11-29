@@ -80,6 +80,9 @@
 	//cap the amount of damage, so that things like emitters can't destroy walls in one hit.
 	var/damage = min(proj_damage, 100)
 
+	if(damage > 0)
+		trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "\The [src] was hit by \the [Proj].")
+
 	if(Proj.damage_type == BURN && damage > 0)
 		if(thermite)
 			thermitemelt()
@@ -314,9 +317,11 @@
 	return TRUE
 
 /turf/simulated/wall/MouseDrop_T(obj/O as obj, mob/user as mob)
-	if(istype(O, /obj/machinery/modular_sign))
-		if(!O.anchored)
-			O.forceMove(get_turf(src))
-			return
+	if(!istype(O) || O.anchored || !O.wall_drag)
+		return
+
+	O.forceMove(get_turf(src))
+	if(O.wall_shift)
+		O.pixel_y = O.wall_shift
 
 	..()

@@ -57,7 +57,7 @@
 /datum/gear/eyes/medical
 	display_name = "Medical HUD (Medical)"
 	path = /obj/item/clothing/glasses/hud/health
-	allowed_roles = list("Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
+	allowed_roles = list("Doctor","Medical Director","Chemist","Paramedic","Geneticist", "Psychiatrist")
 
 /datum/gear/eyes/medical/prescriptionmed
 	display_name = "Medical HUD, prescription (Medical)"

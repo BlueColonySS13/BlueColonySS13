@@ -1,7 +1,6 @@
 /datum/bounty/drugs
 	category = CAT_DRUGS
 
-
 /datum/bounty/drugs/vape_weed
 	name = "Vape Weed"
 	author = "Green eVape Pharma"

@@ -9,7 +9,7 @@
 
 	items_wanted = list(/obj/item/weapon/hand_labeler = 3)
 
-	department_reward = 200
+	department_reward = 120
 	individual_reward = 30
 
 	days_until_expiry = 1
@@ -92,51 +92,13 @@
 /datum/bounty/retail/rightful_protest
 	name = "Rightfully Timed Protest"
 	author = "Anonymous Protestor"
-	description = "It's time to stick it up to the government again, there's five of us so make sure none of our hands are empty. We will be heard! \
+	description = "It's time to stick it up to the government again, there's many of us so make sure none of our hands are empty. We will be heard! \
 	Justice will be served!"
 
-	items_wanted = list(/obj/item/weapon/picket_sign = 5)
+	items_wanted = list(/obj/item/weapon/picket_sign = 15)
 
-	department_reward = 95
+	department_reward = 195
 	individual_reward = 25
-
-	days_until_expiry = 1
-
-/datum/bounty/retail/toy_for_christmas
-	name = "A Toy For Christmas"
-	author = "Collectables R Us"
-	description = "Over here, it's always Christmas - considering the convienience of the holiday. Yes, we need a toy for sick Tommy over here, he's very \
-	specific but we don't mind because he's going to make us the sweet, sweet PR. We can't wait!"
-
-	random_items_wanted = list(/obj/item/weapon/storage/box/snappops,
-				/obj/item/toy/blink,
-				/obj/item/toy/sword,
-				/obj/item/weapon/gun/projectile/revolver/capgun,
-				/obj/item/toy/crossbow,
-				/obj/item/toy/sword,
-				/obj/item/toy/balloon,
-				/obj/item/toy/crossbow,
-				/obj/item/toy/blink,
-				/obj/item/toy/waterflower,
-				/obj/item/toy/eight_ball,
-				/obj/item/toy/eight_ball/conch,
-				/obj/item/toy/prize/ripley,
-				/obj/item/toy/prize/fireripley,
-				/obj/item/toy/prize/deathripley,
-				/obj/item/toy/prize/gygax,
-				/obj/item/toy/prize/durand,
-				/obj/item/toy/prize/honk,
-				/obj/item/toy/prize/marauder,
-				/obj/item/toy/prize/seraph,
-				/obj/item/toy/prize/mauler,
-				/obj/item/toy/prize/odysseus,
-				/obj/item/toy/prize/phazon,
-				/obj/item/toy/stickhorse)
-
-	department_reward = 245
-	individual_reward = 195
-
-	days_until_expiry = 1
 
 
 /datum/bounty/retail/soapy_sods
@@ -161,7 +123,7 @@
 
 	items_wanted = list(/obj/item/weapon/beartrap = 3)
 
-	department_reward = 350
+	department_reward = 250
 	individual_reward = 55
 
 	days_until_expiry = 2
@@ -186,9 +148,9 @@
 	description = "So we were chasing down one of these genetically modified Komodo Dragons before I dropped my maglight. It's already eaten \
 	two of the cameramen because there's no blasted lights in this cave. The remaining crew would be happy for a light at this time."
 
-	items_wanted = list(/obj/item/device/flashlight = 10)
+	items_wanted = list(/obj/item/device/flashlight = 7)
 
-	department_reward = 460
+	department_reward = 360
 	individual_reward = 70
 
 	days_until_expiry = 4
@@ -200,10 +162,10 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/glass/cooler_bottle = 5)
 
-	department_reward = 600
+	department_reward = 200
 	individual_reward = 30
 
-	days_until_expiry = 3
+	days_until_expiry = 6
 
 
 /datum/bounty/retail/skateboard
@@ -214,7 +176,19 @@
 
 	items_wanted = list(/obj/item/melee/skateboard = 5)
 
-	department_reward = 500
+	department_reward = 200
 	individual_reward = 70
 
 	days_until_expiry = 2
+
+/datum/bounty/retail/grinda
+	name = "For The Grind"
+	author = "Bill Kush"
+	description = "Yeah... -giggles- Send some of those grinders yeah? Be a pal..."
+
+	items_wanted = list(/obj/item/weapon/grinder = 10)
+
+	department_reward = 180
+	individual_reward = 50
+
+	days_until_expiry = 3

@@ -18,6 +18,22 @@
 	name = "tape"
 	path = /obj/item/device/tape
 
+/datum/category_item/crafting/autolathe/general/smoking_pipe
+	name = "smoking pipe"
+	path = /obj/item/clothing/mask/smokable/pipe
+
+/datum/category_item/crafting/autolathe/general/ecig
+	name = "electronic cigarette"
+	path = /obj/item/clothing/mask/smokable/ecig/util
+
+/datum/category_item/crafting/autolathe/general/ecig/simple
+	name = "simple electronic cigarette"
+	path = /obj/item/clothing/mask/smokable/ecig/simple
+
+/datum/category_item/crafting/autolathe/general/ecig/deluxe
+	name = "deluxe electronic cigarette"
+	path = /obj/item/clothing/mask/smokable/ecig/deluxe
+
 /datum/category_item/crafting/autolathe/general/ecig_cart
 	name = "ecigarette cartridge"
 	path = /obj/item/weapon/reagent_containers/ecig_cartridge/blank

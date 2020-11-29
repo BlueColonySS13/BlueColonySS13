@@ -89,7 +89,7 @@
 	if(news_data.city_newspaper && !client.seen_news)
 		show_latest_news(news_data.city_newspaper)
 
-	panel = new(src, "Welcome","Welcome, [client.prefs.real_name]", 500, 480, src)
+	panel = new(src, "Welcome","Welcome, [client.prefs.real_name]", 530, 480, src)
 	panel.set_window_options("can_close=0")
 	panel.set_content(output)
 	panel.open()
@@ -418,6 +418,8 @@
 	if(job.title != "Prisoner" && client.prefs.criminal_status == "Incarcerated")	return 0
 	if(job.clean_record_required && client.prefs.crime_record && !isemptylist(client.prefs.crime_record)) return 0
 	if(!isemptylist(job.exclusive_employees) && !(client.prefs.unique_id in job.exclusive_employees)) return 0
+	if(client.prefs.is_synth() && !job.allows_synths)
+		return 0
 	if(job.business)
 		var/datum/business/biz = get_business_by_biz_uid(job.business)
 		if(biz && biz.suspended) return 0
@@ -508,10 +510,12 @@
 		ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 
 		//Grab some data from the character prefs for use in random news procs.
+		if(!character.mind.prefs.silent_join)
+			AnnounceArrival(character, rank, join_message)
 
-		AnnounceArrival(character, rank, join_message)
 	else
-		AnnounceCyborg(character, rank, join_message)
+		if(!character.mind.prefs.silent_join)
+			AnnounceCyborg(character, rank, join_message)
 
 
 	//assign antag role, if any

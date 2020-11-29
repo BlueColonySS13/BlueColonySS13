@@ -130,13 +130,14 @@
 	desc = "A convenient collapsible rifle for covert assassination. Comes with 4 shots and its own secure carrying case."
 	item_cost = DEFAULT_TELECRYSTAL_AMOUNT
 	path = /obj/item/weapon/storage/secure/briefcase/rifle
-	antag_roles = list("traitor", "autotraitor", "infiltrator")
+	antag_roles = list("mercenary")
 
 /datum/uplink_item/item/visible_weapons/fuelrodcannon
 	name = "Fuel-Rod Cannon"
 	desc = "An incredibly bulky weapon whose devastating firepower is only matched by its severe need for expensive, and rare, ammunition. This device will likely require extra preparation to use, you are warned."
 	item_cost = DEFAULT_TELECRYSTAL_AMOUNT
 	path = /obj/item/weapon/storage/secure/briefcase/fuelrod
+	antag_roles = list("mercenary")
 
 /datum/uplink_item/item/visible_weapons/tommygun
 	name = "Tommygun (.45)" // We're keeping this because it's CLASSY. -Spades

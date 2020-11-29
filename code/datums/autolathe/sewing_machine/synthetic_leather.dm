@@ -31,12 +31,35 @@
 	path = /obj/item/clothing/under/pants/leather
 	override_color = COLOR_BROWN
 	force_matter = list("synthetic leather" = 900)
+
+/datum/category_item/crafting/sewing_machine/synthetic_leather/strappedharness
+	name = "strapped harness"
+	path = /obj/item/clothing/under/cyberpunkharness
+
 // shoes
 /datum/category_item/crafting/sewing_machine/synthetic_leather/shoes
 	name = "shoes"
 	path = /obj/item/clothing/shoes/leather
 	force_matter = list("synthetic leather" = 900)
 	prefix = null
+
+/datum/category_item/crafting/sewing_machine/synthetic_leather/stylishboots
+	name = "stylish boots"
+	path = /obj/item/clothing/shoes/boots/stylish/recolorable
+	force_matter = list("synthetic leather" = 900)
+	prefix = "synth leather"
+
+/datum/category_item/crafting/sewing_machine/synthetic_leather/sandals
+	name = "sandals"
+	path = /obj/item/clothing/shoes/sandal
+
+/datum/category_item/crafting/sewing_machine/synthetic_leather/workboots
+	name = "workboots"
+	path = /obj/item/clothing/shoes/boots/workboots
+
+/datum/category_item/crafting/sewing_machine/synthetic_leather/workboots/toeless
+	name = "toeless workboots"
+	path = /obj/item/clothing/shoes/boots/workboots/toeless
 // bags
 
 /datum/category_item/crafting/sewing_machine/synthetic_leather/bag

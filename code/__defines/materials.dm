@@ -55,6 +55,7 @@
 #define MATERIAL_SERENDIBITE			 "serendibite"
 #define MATERIAL_PAINITE				 "painite"
 #define MATERIAL_VOID_OPAL				 "void opal"
+#define MATERIAL_RUTILE					 "rutile"
 
 //woods
 #define MATERIAL_WOOD                    "wood"

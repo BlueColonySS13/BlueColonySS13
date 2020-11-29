@@ -190,6 +190,13 @@
 		var/icon/earbit = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "kittyinner")
 		ears.Blend(earbit, ICON_OVERLAY)
 */
+
+/obj/item/clothing/head/bunny
+	name = "bunny head"
+	desc = "Oh dear."
+	icon_state = "bunnyhead"
+	body_parts_covered = 0
+
 /obj/item/clothing/head/richard
 	name = "chicken mask"
 	desc = "You can hear the distant sounds of rhythmic electronica."
@@ -210,6 +217,76 @@
 	desc = "It's a festive christmas hat, in green!"
 	icon_state = "santahatgreen"
 	item_state_slots = list(slot_r_hand_str = "santahatgreen", slot_l_hand_str = "santahatgreen")
+	body_parts_covered = 0
+
+/obj/item/clothing/head/reindeer
+	name = "reindeer hat"
+	desc = "Comes with a red glowing nose."
+	icon_state = "reindeer"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/frosty
+	name = "frosty head"
+	desc = "Slushy."
+	icon_state = "frosty"
+	body_parts_covered = 0
+
+
+/obj/item/clothing/head/skull
+	name = "skull hat"
+	desc = "A skull hat, very spooky."
+	icon_state = "skull"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/dragon
+	name = "dragon skull"
+	desc = "A skull hat, very spooky."
+	icon_state = "dragon"
+	body_parts_covered = 0
+
+//costume
+
+/obj/item/clothing/head/papersack
+	name = "paper bag"
+	desc = "Shame!"
+	icon_state = "papersack"
+	body_parts_covered = HEAD|FACE
+
+/obj/item/clothing/head/papersack/smile
+	name = "smiley paper bag"
+	icon_state = "papersack_smile"
+
+/obj/item/clothing/head/jester
+	name = "jester hat"
+	desc = "A hat of a royal entertainer."
+	icon_state = "jester_hat"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/jester/alt
+	name = "harlequinn hat"
+	icon_state = "jester2"
+	flags_inv = BLOCKHAIR
+
+/obj/item/clothing/head/crown
+	name = "crown"
+	desc = "How regal."
+	icon_state = "crown"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/crown/fancy
+	name = "fancy crown"
+	icon_state = "fancycrown"
+
+/obj/item/clothing/head/scarecrow
+	name = "scarecrow hat"
+	desc = "Finding one of these is like a needle in a haystack."
+	icon_state = "scarecrow hat"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/pharoah_hat
+	name = "pharoah hat"
+	desc = "Fit for a pharoah."
+	icon_state = "pharoah_hat"
 	body_parts_covered = 0
 
 /*

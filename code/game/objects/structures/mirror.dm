@@ -51,6 +51,8 @@
 /obj/structure/mirror/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/weapon/wrench))
 		if(!glass)
+			if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to unwrench \the [src] with [I]."))
+				return
 			playsound(src.loc, I.usesound, 50, 1)
 			if(do_after(user, 20 * I.toolspeed))
 				user << "<span class='notice'>You unfasten the frame.</span>"
@@ -65,6 +67,8 @@
 			new /obj/item/weapon/material/shard( src.loc )
 			return
 		if(!shattered && glass)
+			if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to remove \the [src]'s glass with [I]."))
+				return
 			playsound(src.loc, I.usesound, 50, 1)
 			user << "<span class='notice'>You remove the glass.</span>"
 			glass = !glass
@@ -92,6 +96,8 @@
 		return
 
 	if(prob(I.force * 2))
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to smash \the [src]'s glass with [I]."))
+			return
 		visible_message("<span class='warning'>[user] smashes [src] with [I]!</span>")
 		if(glass)
 			shatter()

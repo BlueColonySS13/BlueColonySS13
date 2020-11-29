@@ -4,7 +4,7 @@
 	name = "Threat of Death or Bodily Harm"
 	description = "To threaten a person's life or well-being."
 
-	fine = 340
+	fine = 300
 
 	notes = "The threat does not necessarily have to be verbal. \
 	Pointing a gun at people for example would also fit this charge."
@@ -22,14 +22,14 @@
 	description = "To spread false information about a person or organization \
 	with an intention of damaging the reputation of thereof."
 
-	fine = 380
+	fine = 300
 
 
 /datum/law/misdemeanor/battery
 	name = "Battery"
 	description = "To initiate an unwanted physical contact with another person."
 	cell_time = 10
-	fine = 430
+	fine = 750
 
 	notes = "Slapping, pushing, disarming, repeatedly bumping into someone can be considered \
 	battery. Anything more serious is to be charged with assault"
@@ -39,7 +39,7 @@
 	name = "Vandalism"
 	description = "To desecrate or deface public or private property."
 
-	fine = 400
+	fine = 200
 
 	notes = "Vandalism covers only cosmetic alterations like graffiti. For anything serious \
 	see \"Property Damage\"."
@@ -61,7 +61,7 @@
 	name = "Trespassing"
 	description = "To enter the area one does not have access to or permission to be in."
 
-	fine = 430
+	fine = 400
 
 	notes = "Make sure the person really doesn’t have access to the are or wasn’t let there \
 	by other personnel. Trespassing often goes hand to hand with other crimes like damage \
@@ -73,14 +73,6 @@
 	noncontact actions. If there is actually sexual activity, see Sexual Assault."
 
 	cell_time = 10
-	fine = 460
+	fine = 1000
 
 	notes = "Clearly unwanted means that it's been made clear that the advances aren't welcome."
-
-/datum/law/misdemeanor/littering
-    name = "Littering"
-    description = "To obstruct the public face with trash or otherwise ecologically foreign material."
-    cell_time = 15
-    fine = 200
-
-    notes = "Instances of littering could be any domestic pollutants, such as trash or foreign residues, medical waste, and discarded tobacco products."

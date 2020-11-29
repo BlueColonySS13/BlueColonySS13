@@ -11,8 +11,8 @@
 
 	items_wanted = list(/obj/item/weapon/hand_tele = 1)
 
-	department_reward = 700
-	individual_reward = 300
+	department_reward = 150
+	individual_reward = 70
 
 	days_until_expiry = 2
 
@@ -22,10 +22,10 @@
 	description = "When I was working for NanoTrasen, I was informed that there was a genetically modified tomato that has the ability to teleport people \
 	across short distances when thrown. This greatly fascinates me... if you could get me some seeds I can continue research on how this might come about."
 
-	seeds_wanted = list("bluespacetomato" = 2)
+	seeds_wanted = list("bluespacetomato" = 5)
 
-	department_reward = 1700
-	individual_reward = 1000
+	department_reward = 300
+	individual_reward = 100
 
 	days_until_expiry = 3
 
@@ -38,8 +38,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/glass/beaker/bluespace = 1)
 
-	department_reward = 900
-	individual_reward = 800
+	department_reward = 250
+	individual_reward = 80
 
 	days_until_expiry = 3
 
@@ -51,8 +51,8 @@
 
 	items_wanted = list(/obj/item/weapon/storage/toolbox/lunchbox/bluespace_lunchbox = 1)
 
-	department_reward = 100
-	individual_reward = 60
+	department_reward = 30
+	individual_reward = 15
 
 	days_until_expiry = 1
 
@@ -67,8 +67,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/bluespace = 1)
 
-	department_reward = 8000
-	individual_reward = 2500
+	department_reward = 400
+	individual_reward = 250
 
 	days_until_expiry = 1
 
@@ -82,8 +82,8 @@
 
 	items_wanted = list(/obj/item/weapon/disk/tech_disk = 1)
 
-	department_reward = 4000
-	individual_reward = 2000
+	department_reward = 300
+	individual_reward = 150
 
 /datum/bounty/piracy/corporate_espionage/meets_standards(var/obj/O) // additional custom checks
 	if(istype(O, /obj/item/weapon/disk/tech_disk))
@@ -103,8 +103,8 @@
 
 	items_wanted = list(/obj/item/weapon/disk/design_disk = 1)
 
-	department_reward = 3000
-	individual_reward = 1750
+	department_reward = 300
+	individual_reward = 175
 
 /datum/bounty/piracy/radio_pirate/meets_standards(var/obj/O) // additional custom checks
 	if(istype(O, /obj/item/weapon/disk/design_disk))
@@ -124,5 +124,5 @@
 
 	items_wanted = list(/obj/item/device/mmi/digital/robot = 3)
 
-	department_reward = 1550
-	individual_reward = 900
+	department_reward = 190
+	individual_reward = 90

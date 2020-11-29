@@ -28,6 +28,7 @@
 	unique_save_vars = list("starting_department")
 
 	var/restrict_bounty_for_business = FALSE
+	var/accept_nonpersistent = FALSE
 
 
 /obj/machinery/bounty_machine/attackby(obj/item/I, mob/user, params)
@@ -43,6 +44,20 @@
 
 	var/bank_id = ID.associated_account_number
 
+
+	if (istype(I, /obj/item/weapon/wrench)) // you can now move bounty machines around
+		if(trigger_lot_security_system(user, /datum/lot_security_option/theft, "Attempted to unwrench [src] with \the [I]."))
+			return
+		playsound(src.loc, I.usesound, 50, 1)
+		to_chat(user,"<span class='notice'>You begin to [anchored ? "loosen" : "tighten"] loosen \the [src]'s fixtures...</span>")
+		if (do_after(user, 40 * I.toolspeed))
+			user.visible_message( \
+				"[user] [anchored ? "loosens" : "tightens"] \the [src]'s casters.", \
+				"<span class='notice'>You have [anchored ? "loosened" : "tightened"] \the [src]. It is [anchored ? "now secured" : "moveable"].</span>", \
+				"You hear ratchet.")
+			anchored = !anchored
+
+
 	if(!current_bounty)
 		to_chat(user,"<span class='notice'>You need to select a bounty first!</span>")
 		return
@@ -51,7 +66,7 @@
 		to_chat(user,"<span class='notice'>This bounty is already complete, please select \"Confirm Completion\" to redeem the reward!</span>")
 		return
 
-	if(I.dont_save && !istype(I,/obj/item/weapon/photo))
+	if(!accept_nonpersistent && I.dont_save && !istype(I,/obj/item/weapon/photo))
 		to_chat(user,"<span class='notice'>This appears to be tagged to belong to an establishment or individual, please try another one.</span>")
 		return
 
@@ -278,6 +293,7 @@
 
 /obj/machinery/bounty_machine/preset/police
 	starting_department = DEPT_POLICE
+	accept_nonpersistent = TRUE
 
 /obj/machinery/bounty_machine/preset/healthcare
 	starting_department = DEPT_HEALTHCARE

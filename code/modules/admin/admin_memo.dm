@@ -5,7 +5,10 @@
 /client/proc/admin_memo(task in list("write","show","delete"))
 	set name = "Memo"
 	set category = "Server"
-	if(!ENABLE_MEMOS)		return
+	// This is dumb but should be better than the old code and still have the same functionality as before.
+	#ifndef ENABLE_MEMOS
+	return
+	#endif
 	if(!check_rights(0))	return
 	switch(task)
 		if("write")		admin_memo_write()
@@ -31,11 +34,12 @@
 
 //show all memos
 /client/proc/admin_memo_show()
-	if(ENABLE_MEMOS)
-		var/savefile/F = new(MEMOFILE)
-		if(F)
-			for(var/ckey in F.dir)
-				src << "<center><span class='motd'><b>Admin Memo</b><i> by [F[ckey]]</i></span></center>"
+	#ifdef ENABLE_MEMOS
+	var/savefile/F = new(MEMOFILE)
+	if(F)
+		for(var/ckey in F.dir)
+			src << "<center><span class='motd'><b>Admin Memo</b><i> by [F[ckey]]</i></span></center>"
+	#endif
 
 //delete your own or somebody else's memo
 /client/proc/admin_memo_delete()

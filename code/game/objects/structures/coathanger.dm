@@ -38,7 +38,7 @@
 			to_chat(user, "<span class='notice'>You cannot hang [W] on [src]</span>")
 			return
 
-	return ..()
+
 
 /obj/structure/coatrack/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	var/can_hang = 0

@@ -12,7 +12,10 @@ var/datum/antagonist/traitor/traitors
 	You are still expected to escalate accordingly. Try to make sure other players have fun! AOOC is enabled, but please do not metagame. \
 	<b>This role has uplink items.</b>"
 	allow_lobbyjoin = TRUE
-	police_per_antag = 2
+	police_per_antag = 3
+
+	minimum_player_age = 7
+
 
 /datum/antagonist/traitor/auto
 	id = MODE_AUTOTRAITOR

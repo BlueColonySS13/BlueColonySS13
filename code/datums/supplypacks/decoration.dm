@@ -101,3 +101,33 @@
 		/obj/structure/sculpting_block/sculpted/bust)
 	cost = 800
 	containername = "greek bust"
+
+/datum/supply_pack/decoration/balloons
+	name = "Assorted Balloons"
+	contains = list(/obj/item/toy/colorballoon/random = 10)
+	cost = 30
+	containertype = /obj/structure/closet/crate
+	containername = "Assorted Balloons"
+
+/datum/supply_pack/decoration/halloween_balloons
+	name = "Halloween Balloons"
+	contains = list(/obj/structure/balloon/bat = 5,
+	/obj/structure/balloon/ghost = 5,
+	/obj/structure/balloon/random = 5)
+	cost = 40
+	containername = "Halloween Balloons"
+
+
+/datum/supply_pack/decoration/christmas_tree
+	name = "Large Christmas Tree"
+	contains = list(/obj/structure/flora/pottedplant/xmas/large)
+	cost = 1000
+	containername = "Large Christmas Tree"
+
+/datum/supply_pack/decoration/christmas_tree_mini
+	name = "Mini Christmas Tree"
+	contains = list(/obj/structure/flora/pottedplant/xmas)
+	cost = 200
+	containername = "Mini Christmas Tree"
+
+

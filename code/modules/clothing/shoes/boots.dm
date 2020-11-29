@@ -177,28 +177,20 @@
 
 /obj/item/clothing/shoes/boots/stylish/red
 	name = "stylish boots"
-	desc = "A pair of stylish, yet functional, leather boots."
 	icon_state = "stylish_boots_red"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 10, rad = 0)
-	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/stylish/navy
 	name = "stylish boots"
-	desc = "A pair of stylish, yet functional, leather boots."
 	icon_state = "stylish_boots_navy"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 10, rad = 0)
-	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/stylish/charcoal
 	name = "stylish boots"
-	desc = "A pair of stylish, yet functional, leather boots."
 	icon_state = "stylish_boots_charcoal"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 10, rad = 0)
-	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/stylish/silver
 	name = "stylish boots"
-	desc = "A pair of stylish, yet functional, leather boots."
 	icon_state = "stylish_boots_silver"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 10, rad = 0)
-	siemens_coefficient = 0.7
+
+/obj/item/clothing/shoes/boots/stylish/recolorable
+	name = "stylish boots"
+	icon_state = "stylish_boots_white"

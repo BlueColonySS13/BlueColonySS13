@@ -378,6 +378,11 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else
 		. += "<br><br>"
 
+	if(pref.is_synth())
+		. += "<div class='notice'><b>Warning:</b> You are playing a <b>synthetic</b>. In this universe, synthetics are limited rights and are not \
+		considered people, they may face economic and systematic discrimination. They are often considered property to humans and are expected to \
+		be shackled to an owner. Synthetics found to be \"deviant\" may be subjected to decommissioning. Roleplay how you approach this carefully.</div><br>"
+
 	. += "</td><td><b>Preview</b><br>"
 	. += "<div class='statusDisplay'><center><img src=previewicon.png width=[pref.preview_icon.Width()] height=[pref.preview_icon.Height()]></center></div>"
 	. += "<br><a href='?src=\ref[src];cycle_bg=1'>Cycle background</a>"

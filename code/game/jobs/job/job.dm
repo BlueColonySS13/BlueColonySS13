@@ -23,7 +23,6 @@
 	var/minimum_character_age = 18
 	var/ideal_character_age = 30
 	var/account_allowed = 1		  		// Does this job type come with a station account?
-	var/wage = 20					    // Per Hour
 	var/outfit_type
 
 	var/hard_whitelisted = 0 			// jobs that are hard whitelisted need players to be added to hardjobwhitelist.txt with the format [ckey] - [job] in order to work.
@@ -36,6 +35,11 @@
 	var/enabled = TRUE
 	var/business						// if this is linked to a business, business ID is here.
 	var/list/exclusive_employees = list()	// if this job has uids in it, only people of these UIDs can become employees.
+
+	var/wage = 20					    // Per Hour
+	var/synth_wage = null				// if set to null, it defaults synth pay to normal wage. if 0 and over, they are paid this wage
+
+	var/allows_synths = TRUE
 
 /datum/job/proc/sanitize_job()
 	if(!exclusive_employees)
@@ -204,12 +208,19 @@
 			dat += "     - [V].<br>"
 	if(wage)
 		dat += "<br><br><b>Wage:</b> [cash2text( wage, FALSE, TRUE, TRUE )] PH (per hour)"
+
+	if(allows_synths && !isnull(synth_wage) && (synth_wage != wage))
+		dat += "<br><b>Synthetic Wage Rate:</b> [cash2text( synth_wage, FALSE, TRUE, TRUE )].</b>"
+
 	if(head_position && subordinates)
 		dat += "<br><br>You are in charge of <b>[subordinates].</b>"
 	if(supervisors)
 		dat += "<br><br>You follow the orders of <b>[supervisors].</b>"
 	if(clean_record_required)
 		dat += "<br>You need a <b>clean criminal record</b> to work in this job.</b>"
+
+	dat += "<br>Synthetics <b>[allows_synths ? "may" : "may not"]</b> apply to work in this job.</b>"
+
 	return dat
 
 /datum/job/proc/get_active()

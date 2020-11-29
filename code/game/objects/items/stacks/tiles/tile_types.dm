@@ -185,7 +185,12 @@
 /obj/item/stack/tile/carpet/oracarpet
 	icon_state = "tile-carpet"
 	stack_color = COLOR_ORANGE
-	name = "carpet carpet"
+	name = "orange carpet"
+
+/obj/item/stack/tile/carpet/blackcarpet
+	icon_state = "tile-carpet"
+	stack_color = COLOR_GRAY
+	name = "blackcarpet"
 
 /obj/item/stack/tile/floor
 	name = "floor tile"

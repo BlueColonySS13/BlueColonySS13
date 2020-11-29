@@ -817,7 +817,7 @@ var/list/gamemode_cache = list()
 					config.allow_repeat_ooc_messages = 1
 
 				if("ssd_protect")
-					config.ssd_protect = text2num(value)
+					config.ssd_protect = 1
 
 				if("expected_round_length")
 					config.expected_round_length = MinutesToTicks(text2num(value))
