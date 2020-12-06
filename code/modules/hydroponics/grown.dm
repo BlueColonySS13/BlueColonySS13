@@ -11,10 +11,11 @@
 	var/datum/seed/seed
 	var/potency = -1
 	drop_sound = 'sound/items/drop/herb.ogg'
-
+	var/decay = 72 HOURS
+	var/decaytimer = 0
 	price_tag = 3
 
-	unique_save_vars = list("plantname", "potency", "bitecount")
+	unique_save_vars = list("plantname", "potency", "bitecount", "decay", "decaytimer")
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/on_persistence_load()
 	update_plant_info(loc, plantname)
@@ -28,6 +29,21 @@
 /obj/item/weapon/reagent_containers/food/snacks/grown/New(newloc,planttype)
 	..()
 	update_plant_info(newloc,planttype)
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/process()
+	spawn(600) //golly, i hope i didn't have to sleep() it instead
+		if(decay)
+			if(decaytimer < decay)
+				if(istype(loc, /obj/machinery/smartfridge) || /obj/structure/closet/secure_closet/freezer)
+					decaytimer += 300
+				else if(isturf(loc))
+					decaytimer += 1200
+				else
+					decaytimer += 600
+
+			if(decaytimer >= decay)
+				new/obj/item/weapon/reagent_containers/food/snacks/badrecipe/rot(get_turf(src))
+				qdel(src)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/proc/update_plant_info(newloc,planttype)
 	if(!dried_type)
