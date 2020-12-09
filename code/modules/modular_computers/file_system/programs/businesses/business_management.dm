@@ -677,7 +677,7 @@
 
 		var/paying = input(usr, "Please input funding amount to add to your account balance.", "Pay Balance") as num|null
 		
-		if(payment || 0 > paying)
+		if(!paying || 0 > paying)
 			return
 
 		var/datum/money_account/D = get_account(current_business.owner.bank_id)
