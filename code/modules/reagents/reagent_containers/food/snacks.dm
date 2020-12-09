@@ -1555,6 +1555,10 @@
 	reagents.add_reagent("carbon", 3)
 	bitesize = 2
 
+/obj/item/weapon/reagent_containers/food/snacks/badrecipe/rot
+	name = "rotten goop"
+	desc = "This was food once. Not good for much else now."
+
 /obj/item/weapon/reagent_containers/food/snacks/meatsteak
 	name = "Meat steak"
 	desc = "A piece of hot spicy meat."
