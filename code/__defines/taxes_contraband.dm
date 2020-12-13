@@ -45,6 +45,11 @@
 #define NORMAL_TRANSACTION_LIMIT 50
 #define DEPARTMENT_TRANSACTION_LIMIT 1000
 
+#define PORTAL_GENERIC "Generic Portal"
+#define PORTAL_PRESIDENT "President Portal"
+#define PORTAL_HEAD_OFFICE "Head Office Portal"
+#define PORTAL_COUNCIL "Council Portal"
+
 /proc/get_tax_price(tax, price)
 	var/tax_amt
 	tax_amt = tax * price

@@ -93,6 +93,20 @@ GLOBAL_LIST_INIT(permit_types, list(
 	price_tag = 7000
 	dont_save = TRUE
 
+/obj/item/clothing/accessory/permit/gun/tier_five/pdf
+	name = "tier five military weapon permit"
+	desc = "A card indicating that the owner is allowed to any type of weapon as long as they remain a member of the PDF."
+	tier = 5
+	price_tag = 7000
+	dont_save = TRUE
+
+/obj/item/clothing/accessory/permit/gun/tier_five/nanotrasen
+	name = "tier five nanotrasen weapon permit"
+	desc = "A card indicating that the owner is allowed to any type of weapon as long as they are a member of the government."
+	tier = 5
+	price_tag = 7000
+	dont_save = TRUE
+
 /obj/item/clothing/accessory/permit/gun/tier_three/bar
 	name = "bar shotgun permit"
 	desc = "A card indicating that the owner is allowed to carry a shotgun in the bar."
