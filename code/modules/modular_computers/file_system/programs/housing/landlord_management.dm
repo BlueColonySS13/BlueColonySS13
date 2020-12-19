@@ -687,6 +687,7 @@
 
 				LOT.set_new_ownership(unique_id, full_name, I.associated_account_number, landlord_email)
 				clear_data()
+				LOT.for_sale = FALSE
 				index = 4
 
 
@@ -1047,6 +1048,10 @@
 				if("No" == alert("Apply for tenancy for [LOT.name] for [offered_deposit] credits?", "Apply for Tenancy", "No", "Yes"))
 					return
 
+				if(LOT.get_applicant_by_uid(unique_id))
+					error_msg = "You already have applied for this lot."
+					return
+
 				if(unique_id == LOT.get_landlord_uid())
 					error_msg = "You cannot rent out your own property!"
 					return
@@ -1144,7 +1149,8 @@
 					error_msg = "Unfortunately, the applicant's bank account cannot currently be charged at this time. This may be due to issues with the applicant's bank account."
 					return
 
-				LOT.accept_rentee(applicant)
+				if(applicant)
+					LOT.accept_rentee(applicant)
 
 			if("pay_rent") // paying the rent
 				var/L = locate(href_list["lot"])
@@ -1257,12 +1263,12 @@
 					error_msg = "This resident is not in debt."
 					return
 
-				LOT.send_arrears_letter(unique_id)
+				LOT.send_arrears_letter(resident.unique_id) // sent email to resident
 
 				alert("An email has been sent, informing the resident to pay their balance promptly.")
 				LOT.add_note(full_name, "Sent warning notice to [resident.name] for [LOT.name] regarding their [cash2text( resident.account_balance, FALSE, TRUE, TRUE )] arrears.",usr)
 
-			if("send_warning_notice_landlord") // when the landlords say "don't try me" to the occupants
+			if("send_warning_notice_landlord") // when the city council say "don't try me" to the landlord
 				var/L = locate(href_list["lot"])
 				var/datum/lot/LOT = L
 
