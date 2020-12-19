@@ -82,11 +82,13 @@
 // Three helper procs i've created. These are unique to this particular nano module. If you are creating your own nano module, you'll most likely create similar procs too.
 /datum/nano_module/arcade_classic/proc/enemy_play()
 	if((enemy_mana < 5) && prob(60))
+		playsound(src, 'sound/arcade/steal.ogg', 50, 1, extrarange = -3, falloff = 10)
 		var/steal = rand(2, 3)
 		player_mana -= steal
 		enemy_mana += steal
 		information += "[enemy_name] steals [steal] of your power!"
 	else if((enemy_health < 15) && (enemy_mana > 3) && prob(80))
+		playsound(src, 'sound/arcade/heal.ogg', 50, 1, extrarange = -3, falloff = 10)
 		var/healamt = min(rand(3, 5), enemy_mana)
 		enemy_mana -= healamt
 		enemy_health += healamt
@@ -107,6 +109,7 @@
 		gameover = 1
 		return TRUE
 	else if(enemy_health <= 0)
+		playsound(src, 'sound/arcade/win.ogg', 50, 1, extrarange = -3, falloff = 10)
 		gameover = 1
 		information += "Congratulations! You have defeated [enemy_name]!"
 		return TRUE
@@ -141,6 +144,7 @@
 	if(href_list["heal"])
 		var/healfor = rand(6, 8)
 		var/cost = rand(1, 3)
+		playsound(src, 'sound/arcade/heal.ogg', 50, 1, extrarange = -3, falloff = 10)
 		information = "You heal yourself for [healfor] damage, using [cost] energy in the process."
 		player_health += healfor
 		player_mana -= cost
@@ -149,6 +153,7 @@
 		return 1
 	if(href_list["regain_mana"])
 		var/regen = rand(4, 7)
+		playsound(src, 'sound/arcade/heal.ogg', 50, 1, extrarange = -3, falloff = 10)
 		information = "You rest of a while, regaining [regen] energy."
 		player_mana += regen
 		enemy_play()
