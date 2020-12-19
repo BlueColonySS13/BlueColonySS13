@@ -935,7 +935,7 @@
 	set_trait(TRAIT_PRODUCTION,6)
 	set_trait(TRAIT_YIELD,3)
 	set_trait(TRAIT_POTENCY,10)
-	set_trait(TRAIT_PRODUCT_ICON,"vine3")
+	set_trait(TRAIT_PRODUCT_ICON,"vine2")
 	set_trait(TRAIT_PRODUCT_COLOUR,"#DBAC02")
 	set_trait(TRAIT_PLANT_COLOUR,"#21661E")
 	set_trait(TRAIT_PLANT_ICON,"vine2")

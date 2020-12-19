@@ -220,6 +220,8 @@
 	truncate_oldest(notes, MAX_LANDLORD_LOGS)
 
 /datum/lot/proc/accept_rentee(var/datum/tenant/applicant)
+	if(!(applicant in applied_tenants))
+		return
 	var/datum/computer_file/data/email_account/council_email = get_email(using_map.council_email)
 	var/datum/computer_file/data/email_message/message = new/datum/computer_file/data/email_message()
 	var/eml_cnt = "Dear [applicant.name], \[br\]"
@@ -242,3 +244,4 @@
 	tenants_wanted = FALSE
 
 	add_note(applicant.name, "Accepted [name]'s tenancy application for [applicant.name]",usr)
+	qdel(applicant)
