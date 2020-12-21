@@ -481,6 +481,11 @@
 	path = /obj/item/clothing/accessory/scarf/zebra
 	force_matter = list("cotton" = 310)
 
+/datum/category_item/crafting/sewing_machine/cotton/cloak
+	name = "cloak"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak
+	force_matter = list("cotton" = 500)
+
 
 // hats
 
