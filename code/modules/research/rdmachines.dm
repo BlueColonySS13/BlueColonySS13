@@ -12,6 +12,8 @@
 	var/obj/machinery/computer/rdconsole/linked_console
 
 	var/list/materials = list()
+	dont_save = TRUE // preventing people from cheesing Research's machines for their lots while private rnd is being rebalanced.
+
 
 /obj/machinery/r_n_d/attack_hand(mob/user as mob)
 	return
