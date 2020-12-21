@@ -119,10 +119,10 @@
  * Cloak
  */
 /obj/item/clothing/accessory/poncho/roles/cloak
-	name = "brown cloak"
-	desc = "An elaborate brown cloak."
-	icon_state = "qmcloak"
-	item_state = "qmcloak"
+	name = "cloak"
+	desc = "An elaborate cloak."
+	icon_state = "cloak"
+	item_state = "cloak"
 	body_parts_covered = null
 
 /obj/item/clothing/accessory/poncho/roles/cloak/ce
