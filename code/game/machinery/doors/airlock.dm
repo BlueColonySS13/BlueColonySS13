@@ -208,11 +208,17 @@ var/list/airlock_overlays = list()
 	name = "External Airlock"
 	stripe_color = COLOR_NT_RED
 
+/obj/machinery/door/airlock/external/ex_act(severity)
+	return // no more shuttle doors being jammed due to thunder
+
 /obj/machinery/door/airlock/glass_external
 	name = "External Airlock"
 	assembly_type = /obj/structure/door_assembly/door_assembly_ext
 	opacity = 0
 	glass = 1
+
+/obj/machinery/door/airlock/glass_external/ex_act(severity)
+	return // no more shuttle doors being jammed due to thunder
 
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
