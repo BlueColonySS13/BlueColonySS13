@@ -38,21 +38,33 @@
 
 /datum/supply_pack/decoration/flowerpots
 	name = "Assorted Flowering Plants"
-	contains = list(/obj/structure/flora/pottedplant/flower = 2,
-	/obj/structure/flora/pottedplant/small = 2,
-	/obj/structure/flora/pottedplant/orientaltree = 2,
-	/obj/structure/flora/pottedplant/sticky = 2)
-	cost = 50
+	contains = list(/obj/structure/flora/pottedplant/flower,
+	/obj/structure/flora/pottedplant/small,
+	/obj/structure/flora/pottedplant/orientaltree,
+	/obj/structure/flora/pottedplant/sticky,
+	/obj/structure/flora/pottedplant/blueflower,
+	/obj/structure/flora/pottedplant/redflower,
+	/obj/structure/flora/pottedplant/bigleafy,
+	/obj/structure/flora/pottedplant/lily,
+	/obj/structure/flora/pottedplant/pinksakura,
+	)
+	cost = 90
 	containertype = /obj/structure/closet/crate/large
 	containername = "Assorted Flowering Plants"
 
 /datum/supply_pack/decoration/leafpots
 	name = "Assorted Leafy Plants"
-	contains = list(/obj/structure/flora/pottedplant/decorative = 2,
-	/obj/structure/flora/pottedplant/largebush = 2,
-	/obj/structure/flora/pottedplant/minitree = 2,
-	/obj/structure/flora/pottedplant/stoutbush = 2)
-	cost = 50
+	contains = list(/obj/structure/flora/pottedplant/decorative,
+	/obj/structure/flora/pottedplant/largebush,
+	/obj/structure/flora/pottedplant/minitree,
+	/obj/structure/flora/pottedplant/stoutbush,
+	/obj/structure/flora/pottedplant/fernyplant,
+	/obj/structure/flora/pottedplant/winepalm,
+	/obj/structure/flora/pottedplant/greensakura,
+	/obj/structure/flora/pottedplant/brownsakura,
+	/obj/structure/flora/pottedplant/purple
+	)
+	cost = 90
 	containertype = /obj/structure/closet/crate/large
 	containername = "Assorted Leafy Plants"
 
@@ -117,7 +129,6 @@
 	cost = 40
 	containername = "Halloween Balloons"
 
-
 /datum/supply_pack/decoration/christmas_tree
 	name = "Large Christmas Tree"
 	contains = list(/obj/structure/flora/pottedplant/xmas/large)
@@ -129,5 +140,14 @@
 	contains = list(/obj/structure/flora/pottedplant/xmas)
 	cost = 200
 	containername = "Mini Christmas Tree"
+
+/datum/supply_pack/decoration/mistletoe
+	name = "Mistletoe"
+	contains = list(/obj/structure/flora/pottedplant/mistletoe)
+	cost = 80
+	containername = "Mistletoe"
+
+
+
 
 
