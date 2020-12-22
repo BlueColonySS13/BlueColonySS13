@@ -1222,7 +1222,8 @@
 	/obj/item/device/hailer = 6,
 	/obj/item/device/holowarrant = 8,
 	/obj/item/device/breathalyzer = 8,
-	/obj/item/device/retail_scanner/police = 8
+	/obj/item/device/retail_scanner/police = 8,
+	/obj/item/device/radio = 6
 	)
 
 
