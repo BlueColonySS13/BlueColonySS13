@@ -137,6 +137,11 @@
 	path = /obj/item/clothing/under/wedding/regal_wedding
 	force_matter = list("silk" = 6350)
 
+/datum/category_item/crafting/sewing_machine/silk/regal_maidofhonor
+	name = "regal maid of honor"
+	path = /obj/item/clothing/under/wedding/regal_maidofhonor
+	force_matter = list("silk" = 5350)
+
 /datum/category_item/crafting/sewing_machine/silk/pinktutu
 	name = "pink tutu"
 	path = /obj/item/clothing/under/dress/pinktutu
