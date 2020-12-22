@@ -46,7 +46,7 @@
 	/obj/structure/flora/pottedplant/redflower,
 	/obj/structure/flora/pottedplant/bigleafy,
 	/obj/structure/flora/pottedplant/lily,
-	/obj/structure/flora/pottedplant/pinksakura,
+	/obj/structure/flora/pottedplant/pinksakura
 	)
 	cost = 90
 	containertype = /obj/structure/closet/crate/large
