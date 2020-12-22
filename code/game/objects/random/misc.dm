@@ -687,5 +687,5 @@
 				/obj/structure/flora/pottedplant/greensakura,
 				/obj/structure/flora/pottedplant/brownsakura,
 				/obj/structure/flora/pottedplant/pinksakura,
-				/obj/structure/flora/pottedplant/purple
+				/obj/structure/flora/pottedplant/purple,
 				)
