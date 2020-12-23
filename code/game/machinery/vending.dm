@@ -2390,7 +2390,7 @@
 					/obj/item/clothing/glasses/sunglasses/sechud/tactical = 6,
 					/obj/item/clothing/mask/gas/half = 6,
 					/obj/item/clothing/head/helmet/tac = 8,
-					/obj/item/clothing/suit/armor/pcarrier/tan/policetactical = 8,
+					/obj/item/clothing/suit/armor/pcarrier/navy/policetactical = 8,
 					)
 
 
