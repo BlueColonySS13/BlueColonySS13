@@ -54,6 +54,13 @@
 	icon_state = "helmet_tac"
 	armor = list(melee = 50, bullet = 60, laser = 60, energy = 45, bomb = 30, bio = 0, rad = 0)
 	siemens_coefficient = 0.6
+	
+/obj/item/clothing/head/helmet/tacnav
+	name = "tactical helmet"
+	desc = "A navy helmet made from advanced ceramic. Comfortable and robust."
+	icon_state = "helmet_tacnav"
+	armor = list(melee = 50, bullet = 60, laser = 60, energy = 45, bomb = 30, bio = 0, rad = 0)
+	siemens_coefficient = 0.6
 
 /obj/item/clothing/head/helmet/merc
 	name = "combat helmet"
