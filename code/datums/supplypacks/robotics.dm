@@ -21,7 +21,7 @@
 			/obj/item/device/flash = 4,
 			/obj/item/weapon/cell/high = 2
 			)
-	cost = 75
+	cost = 250
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robotics assembly"
 	access = access_robotics
@@ -129,9 +129,9 @@
 	containername = "Robolimb blueprints (Bishop)"
 
 /datum/supply_pack/robotics/robolimbs/veymed
-	name = "Veymed robolimb blueprints"
+	name = "Veymed robolimb blueprints + Installation Licensing"
 	contains = list(/obj/item/weapon/disk/limb/veymed)
-	cost = 250000
+	cost = 1000000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Veymed)"
 
@@ -167,7 +167,7 @@
 			/obj/item/device/kit/paint/ripley/flames_blue
 			)
 	name = "Random APLU modkit"
-	cost = 800
+	cost = 1000
 	containertype = /obj/structure/closet/crate/science
 	containername = "heavy crate"
 
@@ -192,7 +192,7 @@
 	contains = list(
 			/obj/item/device/defib_kit/jumper_kit = 2
 			)
-	cost = 100
+	cost = 500
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Jumper kit crate"
 	access = access_robotics
@@ -201,6 +201,6 @@
 /datum/supply_pack/robotics/hoverpod
 	name = "Hoverpod Shipment"
 	contains = list()
-	cost = 4500
+	cost = 45000
 	containertype = /obj/structure/largecrate/hoverpod
 	containername = "Hoverpod Crate"
