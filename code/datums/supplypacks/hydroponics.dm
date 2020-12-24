@@ -41,19 +41,19 @@
 
 /datum/supply_pack/hydro/cow
 	name = "Cow crate"
-	cost = 70
+	cost = 100
 	containertype = /obj/structure/largecrate/animal/cow
 	containername = "Cow crate"
 
 /datum/supply_pack/hydro/goat
 	name = "Goat crate"
-	cost = 60
+	cost = 90
 	containertype = /obj/structure/largecrate/animal/goat
 	containername = "Goat crate"
 
 /datum/supply_pack/hydro/chicken
 	name = "Chicken crate"
-	cost = 25
+	cost = 50
 	containertype = /obj/structure/largecrate/animal/chick
 	containername = "Chicken crate"
 
@@ -67,7 +67,7 @@
 			/obj/item/weapon/grenade/chem_grenade/antiweed = 2,
 			/obj/item/weapon/material/twohanded/fireaxe/scythe
 			)
-	cost = 45
+	cost = 300
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Weed control crate"
 
@@ -75,7 +75,7 @@
 /datum/supply_pack/hydro/watertank
 	name = "Water tank crate"
 	contains = list(/obj/structure/reagent_dispensers/watertank)
-	cost = 50
+	cost = 250
 	containertype = /obj/structure/largecrate
 	containername = "water tank crate"
 
@@ -87,13 +87,13 @@
 			/obj/item/honey_frame = 5,
 			/obj/item/bee_pack
 			)
-	cost = 120
+	cost = 360
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Beekeeping crate"
 
 /datum/supply_pack/hydro/tray
 	name = "Empty hydroponics trays"
-	cost = 150
+	cost = 500
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Hydroponics tray crate"
 	contains = list(/obj/machinery/portable_atmospherics/hydroponics{anchored = 0} = 3)
@@ -186,4 +186,9 @@
 	containername = "Pure Tobacco Seed Crate"
 	contains = list(/obj/item/seeds/puretobaccoseed = 3)
 
-
+/datum/supply_pack/hydro/cannabis_seeds
+	name = "Cannabis Seed Crate"
+	cost = 420 // lol
+	containertype = /obj/structure/closet/crate/hydroponics
+	containername = "Cannabis Seed Crate"
+	contains = list(/obj/item/seeds/cannabisseed = 3)
