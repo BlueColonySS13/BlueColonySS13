@@ -13,6 +13,8 @@
 
 	var/application_note = ""
 
+	var/unique_rent = null // if set to an integer, will charge that rent instead of the default rent.
+
 // Future: Allow landlords to discriminate against their tenants.
 /*
 	var/has_criminal_record = FALSE
@@ -25,9 +27,13 @@
 /datum/tenant/proc/get_balance()
 	return account_balance
 
+/datum/tenant/proc/get_rent()
+	return unique_rent
+
 /datum/tenant/proc/adjust_balance(amount)
 	account_balance += amount
 
 /datum/tenant/proc/pay_balance(amount)
-	adjust_balance(amount)
-	last_payment = full_game_time()
+	if(amount)
+		adjust_balance(amount)
+		last_payment = full_game_time()

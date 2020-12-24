@@ -54,7 +54,12 @@
 	if(!has_tenants())
 		return 0
 
-	var/earnings = (tenants.len * get_rent()) - get_service_charge()
+	var/tenant_rent = 0
+	for(var/datum/tenant/T in tenants)
+		tenant_rent += get_rent(T)
+
+	var/earnings = tenant_rent - get_service_charge()
+
 
 	return earnings
 
@@ -74,14 +79,19 @@
 /datum/lot/proc/get_default_rent()
 	return initial(rent)
 
-/datum/lot/proc/get_rent()
+/datum/lot/proc/get_rent(var/datum/tenant/T)
+	if(T && !isnull(T.get_rent()))
+		return T.get_rent(T)
+
 	return rent
 
-/datum/lot/proc/get_rent_tax_amount()
-	return (get_rent() * get_tax())
+/datum/lot/proc/get_rent_tax_amount(var/datum/tenant/T)
+	return (get_rent(T) * get_tax())
 
-/datum/lot/proc/get_rent_after_tax()
-	return (get_rent() - get_rent_tax_amount())
+/datum/lot/proc/get_rent_after_tax(var/datum/tenant/T)
+	var/rent = get_rent(T)
+
+	return (rent - get_rent_tax_amount())
 
 /datum/lot/proc/get_landlord_balance()
 	return landlord.get_balance()
@@ -243,5 +253,5 @@
 
 	tenants_wanted = FALSE
 
-	add_note(applicant.name, "Accepted [name]'s tenancy application for [applicant.name]",usr)
+	add_note(landlord.name, "Accepted [name]'s tenancy application for [applicant.name]",usr)
 	qdel(applicant)
