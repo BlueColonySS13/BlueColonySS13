@@ -24,7 +24,7 @@
 			/obj/item/device/assembly/signaler = 3,
 			/obj/item/device/transfer_valve = 3
 			)
-	cost = 100
+	cost = 420
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "Phoron assembly crate"
 	access = access_tox_storage
@@ -39,7 +39,7 @@
 			/obj/item/seeds/random = 6,
 			/obj/item/seeds/kudzuseed
 			)
-	cost = 150
+	cost = 500
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Exotic Seeds crate"
 	access = access_hydroponics
@@ -65,7 +65,7 @@
 /datum/supply_pack/sci/integrated_circuit_printer
 	name = "Integrated circuit printer"
 	contains = list(/obj/item/device/integrated_circuit_printer)
-	cost = 3000 //to curb the current meta of using an IC printer to instantly raise tech levels
+	cost = 7500 //to curb the current meta of using an IC printer to instantly raise tech levels
 	containertype = /obj/structure/closet/crate
 	containername = "Integrated circuit crate"
 
