@@ -121,14 +121,26 @@
 	name = "aristocratic bridesmaid dress"
 	path = /obj/item/clothing/under/dress/arisbridesmaid
 	force_matter = list("silk" = 5350)
+
 /datum/category_item/crafting/sewing_machine/silk/arisflowergirl
 	name = "aristocratic flowergirl dress"
 	path = /obj/item/clothing/under/dress/arisflowergirl/colorable
 	force_matter = list("silk" = 3350)
+
 /datum/category_item/crafting/sewing_machine/silk/ariswedding
 	name = "aristocratic wedding dress"
 	path = /obj/item/clothing/under/dress/ariswedding
 	force_matter = list("silk" = 6350)
+
+/datum/category_item/crafting/sewing_machine/silk/regalwedding
+	name = "regal wedding dress"
+	path = /obj/item/clothing/under/wedding/regal_wedding
+	force_matter = list("silk" = 6350)
+
+/datum/category_item/crafting/sewing_machine/silk/regal_maidofhonor
+	name = "regal maid of honor"
+	path = /obj/item/clothing/under/wedding/regal_maidofhonor
+	force_matter = list("silk" = 5350)
 
 /datum/category_item/crafting/sewing_machine/silk/pinktutu
 	name = "pink tutu"
@@ -214,6 +226,27 @@
 
 
 // preset suits
+
+
+/datum/category_item/crafting/sewing_machine/silk/arisgroom
+	name = "aristocratic groom"
+	path = /obj/item/clothing/under/arisgroom
+	force_matter = list("silk" = 3550)
+
+/datum/category_item/crafting/sewing_machine/silk/arisbestman
+	name = "aristocratic purple tuxedo"
+	path = /obj/item/clothing/under/arisbestman
+	force_matter = list("silk" = 3550)
+
+/datum/category_item/crafting/sewing_machine/silk/regalgroom
+	name = "regal groom tuxedo"
+	path = /obj/item/clothing/under/regal_groom
+	force_matter = list("silk" = 6350)
+
+/datum/category_item/crafting/sewing_machine/silk/regalbestman
+	name = "regal bestman tuxedo"
+	path = /obj/item/clothing/under/regal_bestman
+	force_matter = list("silk" = 6350)
 
 /datum/category_item/crafting/sewing_machine/silk/gentlesuit
 	name = "gentlemans suit"

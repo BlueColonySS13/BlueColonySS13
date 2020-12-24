@@ -49,6 +49,8 @@
 		"Larynx" = list(/obj/item/organ/internal/voicebox, 20),
 		"Head" = list(/obj/item/organ/external/head, 40)
 		)
+		
+	dont_save = TRUE
 
 /obj/machinery/organ_printer/attackby(var/obj/item/O, var/mob/user)
 	if(default_deconstruction_screwdriver(user, O))

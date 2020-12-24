@@ -227,6 +227,13 @@
 #define MOB_PULL_SAME 2
 #define MOB_PULL_LARGER 3
 
+
+// SYNTH TYPES
+#define PREF_FBP_CYBORG "cyborg"
+#define PREF_FBP_POSI "posi"
+#define PREF_FBP_SOFTWARE "software"
+
+
 //XENOBIO2 FLAGS
 #define NOMUT		0
 #define COLORMUT 	1

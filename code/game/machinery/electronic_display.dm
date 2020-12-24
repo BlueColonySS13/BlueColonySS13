@@ -41,11 +41,11 @@
 
 	var/max_items = 60
 
-	unique_save_vars = list("purchase", "required_permit", "anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode")
+	unique_save_vars = list("purchase", "required_tier", "anchored", "emagged", "glass_color", "frame_color", "owner_name", "owner_uid", "staff_pin", "bank_id", "owner_message", "static_icon", "maint_mode", "atmpt_maint_mode")
 
 	// permit stuff
 	var/requesting_permit = FALSE
-	var/required_permit = null
+	var/required_tier = null
 
 GLOBAL_LIST_INIT(display_case_icons, list(
 	     "NONE" = "",
@@ -183,10 +183,8 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 	else
 		to_chat(user, "<b>It is firmly anchored to the floor.</b>")
 
-	if(required_permit)
-		var/atom/tmp = required_permit
-		var/permit_name = initial(tmp.name)
-		to_chat(user, "<b>You need a [permit_name] to buy things from this vendor.</b>")
+	if(required_tier)
+		to_chat(user, "<b>You need a Tier [required_tier] weapons permit to buy things from this vendor.</b>")
 
 
 /obj/machinery/electronic_display_case/emag_act(var/remaining_charges, var/mob/user)
@@ -277,9 +275,7 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 		return dat
 
 	if(requesting_permit)
-		var/atom/tmp = required_permit
-		var/permit_name = initial(tmp.name)
-		dat += "Please swipe your [permit_name] to proceed to the purchase menu.<br>"
+		dat += "Please swipe your Tier [required_tier] to proceed to the purchase menu.<br>"
 
 		dat += "<a href='?src=\ref[src];cancel=1'>Cancel &#8617</a>"
 
@@ -351,19 +347,19 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 			(Adds [cash2text( O.post_tax_cost(), FALSE, TRUE, TRUE )] tax)"
 			dat += "<br>"
 		var/permit_name = null
-		if(required_permit)
-			var/atom/tmp = required_permit
-			permit_name = initial(tmp.name)
+		if(required_tier)
+			permit_name = "Tier [required_tier] weapons permit"
 		dat += "</div><br>"
 		dat += "<a href='?src=\ref[src];change_pin=1'>Change Staff Pin</a> "
 		dat += "<a href='?src=\ref[src];edit_name=1'>Edit Name</a> "
 		dat += "<a href='?src=\ref[src];edit_owner_message=1'>Edit Owner Message</a> "
 		dat += "<a href='?src=\ref[src];edit_bank=1'>Update Bank Details</a> "
 		dat += "<a href='?src=\ref[src];toggle_anchor=1'>Toggle Anchors</a> "
-		dat += "<a href='?src=\ref[src];permit_requirements=1'>Permit Requirement: [required_permit ? permit_name : "None"]</a> "
+		dat += "<a href='?src=\ref[src];permit_requirements=1'>Permit Requirement: [required_tier ? permit_name : "None"]</a> "
 		dat += "<a href='?src=\ref[src];change_appearance=1'>Change Appearance</a> "
 		dat += "<a href='?src=\ref[src];toggle_buy=1'>Toggle Buy Mode</a> "
 		dat += "<a href='?src=\ref[src];reset_owner=1'>Reset Ownership</a> "
+		dat += "<a href='?src=\ref[src];mass_reprice=1'>Reprice All Items</a> "
 		dat += "<a href='?src=\ref[src];exit_maint_mode=1'>Exit Maintenance Mode</a> "
 	return dat
 
@@ -396,12 +392,14 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 			updateDialog()
 		return
 
-	if(requesting_permit && required_permit)
-		if(istype(W, required_permit))
-			requesting_permit = FALSE
-			updateDialog()
-			to_chat(user, "<span class='info'>Permit recognised!</span>")
-		return
+	if(requesting_permit && required_tier)
+		if(istype(W, /obj/item/clothing/accessory/permit/gun))
+			var/obj/item/clothing/accessory/permit/gun/P = W
+			if(P.get_tier() >= required_tier)
+				requesting_permit = FALSE
+				updateDialog()
+				to_chat(user, "<span class='info'>Permit recognised!</span>")
+			return
 
 	if(currently_vending)
 		var/paid = FALSE
@@ -530,7 +528,7 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 		if((stored_products.len + 1) > max_items)
 			to_chat(user, "You may have no more than [max_items] in your display case.")
 			return
-			
+
 	if(0 > O.tagged_price) // prevent negative numbers causing exploits
 		O.tagged_price = 0
 
@@ -691,18 +689,16 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 		if(!maint_mode)
 			return
 
-		var/list/all_permits = list("NONE")
+		var/list/all_permits = list("NONE", 1, 2, 3, 4, 5)
 
-		all_permits += GLOB.permit_types
-
-		var/new_permit = input(usr, "Select a required permit type", "Appearance Morph")  as null|anything in all_permits
+		var/new_permit = input(usr, "Select a required permit type", "Tier Requirement")  as null|anything in all_permits
 		if(!new_permit)
 			return
 
 		if(new_permit == "NONE")
-			required_permit = null
+			required_tier = null
 		else
-			required_permit = GLOB.permit_types[new_permit]
+			required_tier = new_permit
 
 
 	if(href_list["change_appearance"])
@@ -732,6 +728,24 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 		if(choice == "Yes")
 			factory_settings()
 
+
+	if(href_list["mass_reprice"])
+		if(!maint_mode)
+			return
+
+		var/new_tag = input("Please enter the new price you want for all the items. Enter 0 to make the item free.", "Set Bank") as num
+
+		if(!new_tag || 0 > new_tag)
+			new_tag = 0
+
+		for(var/obj/O in stored_products)
+			O.tagged_price = new_tag
+
+
+		to_chat(usr, "<b>You set the price of all items in the vendor.</b>")
+
+
+
 	if(href_list["choice"])
 		switch(href_list["choice"])
 
@@ -745,7 +759,7 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 
 				var/obj/O = item
 
-				if(required_permit)
+				if(required_tier)
 					requesting_permit = TRUE
 					currently_vending = O
 				else
@@ -777,11 +791,8 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 				var/obj/O = item
 
 				var/new_tag = input("Please enter the new price you want for this item. Enter 0 to make the item free.", "Set Bank", O.price_tag) as num
-				
-				if(!new_tag)
-					return
-				
-				if(0 > new_tag)
+
+				if(!new_tag || 0 > new_tag)
 					new_tag = 0
 
 				O.tagged_price = new_tag

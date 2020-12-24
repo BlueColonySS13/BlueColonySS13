@@ -213,7 +213,19 @@ a, a:link, a:visited, a:active, .linkOn, .linkOff
 
 {{:data.error_msg}}<p>
 
-	<h3>Voting Status and Eligibility Options:</h3><br>
+	<h3>Employment, Voting Status and Eligibility Options:</h3><br>
+
+	<div class="itemLabel">
+		Employers Can Reject Synths:
+	</div> {{:data.synth_discrimination}}  {{:helper.link("Change", null, {'toggle_synth_discrimination' : 1})}}
+	<br>
+	<br>
+
+	<div class="itemLabel">
+		Synth Minimum Wage:
+	</div> {{:data.synth_minimum_wage}}CR  {{:helper.link("Change", null, {'synth_minimum_wage' : 1})}}
+	<br>
+	<br>
 
 	<div class="itemLabel">
 		Synth Voting Rights:

@@ -441,6 +441,14 @@
 	icon_state = "sombrero"
 	body_parts_covered = 0
 
+/obj/item/clothing/head/sombrero/green
+	name = "green sombrero"
+	icon_state = "greensombrero"
+
+/obj/item/clothing/head/sombrero/pink
+	name = "pink sombrero"
+	icon_state = "shamebrero"
+
 /obj/item/clothing/head/headband/maid
 	name = "maid headband"
 	desc = "Keeps hair out of the way for important... jobs."

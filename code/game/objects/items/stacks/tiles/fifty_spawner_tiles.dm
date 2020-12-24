@@ -81,6 +81,10 @@
 	name = "stack of orange carpet"
 	type_to_spawn = /obj/item/stack/tile/carpet/oracarpet
 
+/obj/fiftyspawner/blackcarpet
+	name = "stack of black carpet"
+	type_to_spawn = /obj/item/stack/tile/carpet/blackcarpet
+
 //tiled
 /obj/fiftyspawner/floor
 	name = "stack of floor tiles"

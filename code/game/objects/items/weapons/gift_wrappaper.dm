@@ -18,6 +18,7 @@
 	..()
 	if (!( locate(/obj/structure/table, src.loc) ))
 		user << "<span class='warning'>You MUST put the paper on a table!</span>"
+		return
 	if (W.w_class < ITEMSIZE_LARGE)
 		if (user.get_type_in_hands(/obj/item/weapon/scissors))
 			var/a_used = 2 ** (src.w_class - 1)

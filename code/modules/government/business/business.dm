@@ -14,6 +14,7 @@
 	var/list/blacklisted_ckeys = list()		// uses ckeys
 
 	var/datum/business_person/owner
+	var/pay_CEO = FALSE	// does the CEO get paid. QoL feature.
 
 	var/access_password = " "
 

@@ -27,6 +27,9 @@
 
 	var/process_sound = 'sound/machines/copier.ogg'
 
+	var/print_multiplier = 1
+	var/max_multiplier = 10
+
 	unique_save_vars = list("stored_material", "hacked")
 
 
@@ -75,6 +78,10 @@
 			material_bottom += "<td width = '25%' align = center>[stored_material[material]]<b>/[storage_capacity[material]]</b></td>"
 
 		dat += "[material_top.Join()]</tr>[material_bottom.Join()]</tr></table><hr>"
+
+
+		dat += "<b>Print Multiplier</b>: <a href='?src=\ref[src];change_print_multiplier=1'>[print_multiplier]</a><br>"
+
 		dat += "<h2>Printable Designs</h2><h3>Showing: <a href='?src=\ref[src];change_category=1'>[current_category]</a>.</h3></center><table width = '100%'>"
 
 		for(var/datum/category_item/crafting/R in current_category.items)
@@ -93,13 +100,13 @@
 					var/sheets = round(stored_material[material]/round(R.resources[material]*mat_efficiency))
 					if(isnull(max_sheets) || max_sheets > sheets)
 						max_sheets = sheets
-					if(!isnull(stored_material[material]) && stored_material[material] < round(R.resources[material]*mat_efficiency))
+					if(!isnull(stored_material[material]) && stored_material[material] < (print_multiplier * round(R.resources[material]*mat_efficiency)))
 						can_make = 0
 					if(!comma)
 						comma = 1
 					else
 						material_string += ", "
-					material_string += "[round(R.resources[material] * mat_efficiency)] [material]"
+					material_string += "[(round(R.resources[material] * mat_efficiency)) * print_multiplier] [material]"
 				material_string += ".<br></td>"
 				//Build list of multipliers for sheets.
 				if(R.is_stack)
@@ -239,8 +246,19 @@
 	add_fingerprint(usr)
 
 	if(busy)
-		usr << "<span class='notice'>The autolathe is busy. Please wait for completion of previous operation.</span>"
+		to_chat(usr, "<span class='notice'>The autolathe is busy. Please wait for completion of previous operation.</span>")
 		return
+
+	if(href_list["change_print_multiplier"])
+		var/new_multiplier = input("Current multiplier is [print_multiplier], input the new amount of items you want to print. Max is [max_multiplier].", "Set Multiplier", print_multiplier) as num|null
+
+		if(!new_multiplier || (1 > new_multiplier) || (new_multiplier > max_multiplier) )
+			return
+
+		print_multiplier = round(new_multiplier)
+		updateUsrDialog()
+		return
+
 
 	if(href_list["change_category"])
 
@@ -258,6 +276,7 @@
 		if(!making.is_stack && multiplier != 1)
 			return
 		sanitize_integer(multiplier, 1, 100, 1)
+		sanitize_integer(print_multiplier, 1, max_multiplier, 1)
 
 		busy = 1
 		playsound(src.loc, process_sound, 30, 1)
@@ -266,41 +285,48 @@
 		//Check if we still have the materials.
 		for(var/material in making.resources)
 			if(!isnull(stored_material[material]))
-				if(stored_material[material] < round(making.resources[material] * mat_efficiency) * multiplier)
+				if((stored_material[material] < round(making.resources[material] * mat_efficiency) * multiplier) * print_multiplier)
+					busy = 0
+					to_chat(usr, "<span class='notice'>You don't have enough materials for this.</span>")
 					return
 
 		//Consume materials.
 		for(var/material in making.resources)
 			if(!isnull(stored_material[material]))
-				stored_material[material] = max(0, stored_material[material] - round(making.resources[material] * mat_efficiency) * multiplier)
+				stored_material[material] = max(0, stored_material[material] - (round(making.resources[material] * mat_efficiency) * multiplier) * print_multiplier)
 
 		update_icon() // So lid closes
 
-		sleep(build_time)
+		for(var/i = 0, i < print_multiplier, i++)
+			sleep(build_time)
+
+			update_use_power(1)
+			update_icon() // So lid opens
+
+			//Sanity check.
+			if(!making || !src) return
+
+			//Create the desired item(s).
+
+			var/obj/item/I = new making.path(src.loc)
+
+			if(LAZYLEN(making.force_matter))			// forces the matter list to be something else.
+				I.matter = making.force_matter
+
+			if(making.prefix)
+				I.name = "[making.prefix] [I.name]"
+			if(making.suffix)
+				I.name = "[I.name] [making.suffix]"
+			if(making.override_color)
+				I.color = making.override_color
+
+			if(multiplier > 1 && istype(I, /obj/item/stack))
+				var/obj/item/stack/S = I
+				S.amount = multiplier
+
 
 		busy = 0
-		update_use_power(1)
-		update_icon() // So lid opens
-
-		//Sanity check.
-		if(!making || !src) return
-
-		//Create the desired item.
-		var/obj/item/I = new making.path(src.loc)
-
-		if(LAZYLEN(making.force_matter))			// forces the matter list to be something else.
-			I.matter = making.force_matter
-
-		if(making.prefix)
-			I.name = "[making.prefix] [I.name]"
-		if(making.suffix)
-			I.name = "[I.name] [making.suffix]"
-		if(making.override_color)
-			I.color = making.override_color
-
-		if(multiplier > 1 && istype(I, /obj/item/stack))
-			var/obj/item/stack/S = I
-			S.amount = multiplier
+		update_icon()
 
 	updateUsrDialog()
 

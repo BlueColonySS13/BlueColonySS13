@@ -280,6 +280,10 @@
 	name = "modern wrapped coat"
 	path = /obj/item/clothing/under/moderncoat
 
+/datum/category_item/crafting/sewing_machine/cotton/hartsuit
+	name = "striped suit"
+	path = /obj/item/clothing/under/hartsuit
+
 /datum/category_item/crafting/sewing_machine/cotton/soviet
 	name = "soviet uniform"
 	path = /obj/item/clothing/under/soviet
@@ -476,6 +480,11 @@
 	name = "zebra scarf"
 	path = /obj/item/clothing/accessory/scarf/zebra
 	force_matter = list("cotton" = 310)
+
+/datum/category_item/crafting/sewing_machine/cotton/cloak
+	name = "cloak"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak
+	force_matter = list("cotton" = 500)
 
 
 // hats

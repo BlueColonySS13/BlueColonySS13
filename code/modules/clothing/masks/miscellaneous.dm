@@ -70,6 +70,14 @@
 	flags_inv = HIDEFACE
 	body_parts_covered = 0
 
+/obj/item/clothing/mask/santabeard
+	name = "santa beard"
+	desc = "Ripping that off his face must have hurt."
+	icon_state = "santabeard"
+	flags_inv = HIDEFACE
+	body_parts_covered = 0
+
+
 /obj/item/clothing/mask/snorkel
 	name = "snorkel"
 	desc = "For the Swimming Savant."
