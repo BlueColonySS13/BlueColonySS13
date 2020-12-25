@@ -8,12 +8,7 @@
 	slot_flags = SLOT_TIE
 	w_class = ITEMSIZE_SMALL
 	var/slot = ACCESSORY_SLOT_DECOR
-	var/obj/item/clothing/has_suit = null		// The suit the tie may be attached to
-	var/image/inv_overlay = null				// Overlay used when attached to clothing.
-	var/image/mob_overlay = null
-	var/overlay_state = null
-	var/concealed_holster = 0
-	var/mob/living/carbon/human/wearer = null 	// To check if the wearer changes, so species spritesheets change properly.
+	concealed_holster = 0
 	var/list/on_rolled = list()					// Used when jumpsuit sleevels are rolled ("rolled" entry) or it's rolled down ("down"). Set to "none" to hide in those states.
 	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/seromi/ties.dmi') //Teshari can into webbing, too!
 
@@ -35,7 +30,7 @@
 		inv_overlay.appearance_flags = appearance_flags	// Stops has_suit's color from being multiplied onto the accessory
 	return inv_overlay
 
-/obj/item/clothing/accessory/proc/get_mob_overlay()
+/obj/item/clothing/accessory/get_mob_overlay()
 	if(!istype(loc,/obj/item/clothing/))	//don't need special handling if it's worn as normal item.
 		return ..()
 	var/tmp_icon_state = "[overlay_state? "[overlay_state]" : "[icon_state]"]"
