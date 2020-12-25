@@ -542,6 +542,10 @@
 	name = "navy plate carrier"
 	desc = "A lightweight navy blue plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
 	icon_state = "pcarrier_navy"
+	
+/obj/item/clothing/suit/armor/pcarrier/navy/policetactical
+	name = "tactical plate carrier"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/tactical, /obj/item/clothing/accessory/storage/pouches/navy, /obj/item/clothing/accessory/armor/tag/swat, /obj/item/clothing/accessory/armor/armguards/navy, /obj/item/clothing/accessory/armor/legguards/navy)
 
 /obj/item/clothing/suit/armor/pcarrier/tan
 	name = "tan plate carrier"
