@@ -23,7 +23,7 @@
 	/obj/item/weapon/circuitboard/grinder,
 	/obj/item/weapon/circuitboard/condimaster)
 	name = "Kitchen Circuit Set"
-	cost = 1000
+	cost = 2000
 	containertype = /obj/structure/closet/crate
 	containername = "Kitchen Circuit Set"
 
@@ -34,7 +34,7 @@
 	/obj/item/weapon/circuitboard/vr_sleeper/business,
 	)
 	name = "Entertainment Circuit Set"
-	cost = 200
+	cost = 300
 	containertype = /obj/structure/closet/crate
 	containername = "Entertainment Circuit Set"
 
@@ -43,7 +43,7 @@
 	/obj/item/weapon/circuitboard/arcade/orion_trail,
 	)
 	name = "Arcade Circuit Set"
-	cost = 60
+	cost = 400
 	containertype = /obj/structure/closet/crate
 	containername = "Arcade Circuit Set"
 
@@ -52,7 +52,7 @@
 	/obj/item/weapon/circuitboard/recharger/wrecharger,
 	)
 	name = "Recharger Set"
-	cost = 60
+	cost = 400
 	containertype = /obj/structure/closet/crate
 	containername = "Recharger Set"
 
@@ -60,7 +60,7 @@
 	contains = list(/obj/item/weapon/circuitboard/washing
 	)
 	name = "Washing Machine"
-	cost = 60
+	cost = 150
 	containertype = /obj/structure/closet/crate
 	containername = "Washing Machine"
 
@@ -72,7 +72,7 @@
 	/obj/item/weapon/circuitboard/seed_extractor,
 	/obj/item/weapon/circuitboard/honey_extractor)
 	name = "Botany Circuit Set"
-	cost = 700
+	cost = 2350
 	containertype = /obj/structure/closet/crate
 	containername = "Botany Circuit Set"
 
@@ -80,28 +80,28 @@
 	contains = list(/obj/item/weapon/circuitboard/dye_generator,
 	/obj/item/weapon/circuitboard/dye_generator/commercial)
 	name = "Tailoring Circuit Set"
-	cost = 200
+	cost = 500
 	containertype = /obj/structure/closet/crate
 	containername = "Tailoring Circuit Set"
 
 /datum/supply_pack/circuits/popcorn_machine
 	contains = list(/obj/item/weapon/circuitboard/popcorn_machine)
 	name = "Popcorn Vendor Circuit"
-	cost = 500
+	cost = 200
 	containertype = /obj/structure/closet/crate
 	containername = "Popcorn Vendor Circuit"
 
 /datum/supply_pack/circuits/smartfridge
 	contains = list(/obj/item/weapon/circuitboard/smartfridge)
 	name = "Smartfridge Circuit"
-	cost = 500
+	cost = 750
 	containertype = /obj/structure/closet/crate
 	containername = "Smartfridge Circuit"
 
 /datum/supply_pack/circuits/smartfridge/food
 	contains = list(/obj/item/weapon/circuitboard/smartfridge/food)
 	name = "Food Smartfridge Circuit"
-	cost = 500
+	cost = 750
 	containertype = /obj/structure/closet/crate
 	containername = "Food Smartfridge Circuit"
 
@@ -116,7 +116,7 @@
 /datum/supply_pack/circuits/bounty_machine
 	contains = list(/obj/item/weapon/circuitboard/bounty_machine)
 	name = "bounty-T Circuit"
-	cost = 8000
+	cost = 10000
 	containertype = /obj/structure/closet/crate
 	containername = "Bounty Machine Circuit"
 
@@ -126,14 +126,14 @@
 	/obj/item/weapon/circuitboard/microscope,
 	)
 	name = "Forensics Circuits"
-	cost = 800
+	cost = 4000
 	containertype = /obj/structure/closet/crate
 	containername = "Forensics Circuits"
 
 /datum/supply_pack/circuits/inventory_box
 	contains = list(/obj/item/weapon/circuitboard/inventory_box)
 	name = "Inventory box Circuit"
-	cost = 6000
+	cost = 10000
 	containertype = /obj/structure/closet/crate
 	containername = "Inventory Box Circuit"
 
@@ -145,7 +145,7 @@
 					/obj/item/weapon/circuitboard/destructive_analyzer)
 
 	name = "Research Circuits"
-	cost = 1250000 // a huge profit maker, so should be expensive. the entirety of research in one crate. has science gone too far?
+	cost = 2000000 // a huge profit maker, so should be expensive. the entirety of research in one crate. has science gone too far?
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Research Circuits"
 
@@ -154,7 +154,7 @@
 					/obj/item/weapon/circuitboard/mechfab/business)
 
 	name = "Robotics Circuits"
-	cost = 550000
+	cost = 250000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robotics Circuits"
 
@@ -162,7 +162,7 @@
 	contains = list(/obj/item/weapon/circuitboard/autolathe)
 
 	name = "Autolathe Circuit"
-	cost = 3000
+	cost = 7500
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Autolathe Circuit"
 
@@ -179,7 +179,7 @@
 	contains = list(/obj/item/weapon/circuitboard/expense_manager)
 
 	name = "Expense Manager Circuit"
-	cost = 9000
+	cost = 1000
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Business Expense Manager Circuit"
 

@@ -229,6 +229,8 @@
 	if(isnull(M)) return
 	if(isnull(M.key)) return
 	if (ishuman(M))
+		sanitize_for_saving()
+
 		var/mob/living/carbon/human/H = M
 		if (!istype(H.dna, /datum/dna))
 			return 0
@@ -256,9 +258,7 @@
 	if(isAI(M)) return
 	if(isnull(M.key)) return
 	if (ishuman(M))
-		//Add the list if it does not exist.
-		if(!fingerprintshidden)
-			fingerprintshidden = list()
+		sanitize_for_saving()
 
 		//Fibers~
 		add_fibers(M)
@@ -370,14 +370,7 @@
 
 /atom/proc/transfer_fingerprints_to(var/atom/A)
 
-	if(!istype(A.fingerprints,/list))
-		A.fingerprints = list()
-
-	if(!istype(A.fingerprintshidden,/list))
-		A.fingerprintshidden = list()
-
-	if(!istype(fingerprintshidden, /list))
-		fingerprintshidden = list()
+	sanitize_for_saving()
 
 	//skytodo
 	//A.fingerprints |= fingerprints            //detective
@@ -466,7 +459,7 @@
 	var/list/seeing_objs = see["objs"]
 	if(LAZYLEN(exclude_mobs))
 		seeing_mobs -= exclude_mobs
-		
+
 	for(var/obj in seeing_objs)
 		var/obj/O = obj
 		O.show_message(message, 1, blind_message, 2)

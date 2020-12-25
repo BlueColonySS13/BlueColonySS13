@@ -6,9 +6,10 @@
 	burn_state = 0 //Burnable
 	burntime = 8
 	var/list/accessories = list()
-	var/list/valid_accessory_slots
-	var/list/restricted_accessory_slots
-	var/list/starting_accessories
+	var/list/valid_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_HOLSTER, ACCESSORY_SLOT_OVER, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DEPT, \
+	ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
+	var/list/restricted_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_HOLSTER)
+	var/list/starting_accessories = list()
 
 	var/flash_protection = FLASH_PROTECTION_NONE
 	var/tint = TINT_NONE
@@ -35,10 +36,6 @@
 
 	unique_save_vars = list("matter") // clothing matter can vary now
 
-/obj/item/clothing/New()
-	..()
-	set_clothing_index()
-
 //Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
 	return
@@ -50,6 +47,7 @@
 
 /obj/item/clothing/New()
 	..()
+	set_clothing_index()
 	if(starting_accessories)
 		for(var/T in starting_accessories)
 			var/obj/item/clothing/accessory/tie = new T(src)
@@ -618,8 +616,8 @@
 		SPECIES_VOX = 'icons/mob/species/vox/suit.dmi'
 		)
 
-	valid_accessory_slots = list("over", "armband")
-	restricted_accessory_slots = list("armband")
+	valid_accessory_slots = list(ACCESSORY_SLOT_OVER, ACCESSORY_SLOT_ARMBAND)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/set_clothing_index()
 	..()
@@ -677,8 +675,8 @@
 	//convenience var for defining the icon state for the overlay used when the clothing is worn.
 	//Also used by rolling/unrolling.
 	var/worn_state = null
-	valid_accessory_slots = list("utility","armband","decor","over","holster","insignia")
-	restricted_accessory_slots = list("utility", "armband", "holster")
+	valid_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_OVER, ACCESSORY_SLOT_HOLSTER, ACCESSORY_SLOT_INSIGNIA)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_HOLSTER)
 
 	var/icon/rolled_down_icon = 'icons/mob/uniform_rolled_down.dmi'
 	var/icon/rolled_down_sleeves_icon = 'icons/mob/uniform_sleeves_rolled.dmi'
@@ -792,7 +790,7 @@
 
 /obj/item/clothing/under/examine(mob/user)
 	..(user)
-	switch(src.sensor_mode)
+	switch(sensor_mode)
 		if(0)
 			user << "Its sensors appear to be disabled."
 		if(1)
