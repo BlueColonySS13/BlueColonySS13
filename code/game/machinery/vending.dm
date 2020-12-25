@@ -1310,7 +1310,7 @@
 	/obj/item/clothing/under/det/grey = 2,
 	/obj/item/clothing/under/det/black = 2,
 	/obj/item/clothing/under/det/waistcoat = 2,
-	/obj/item/clothing/under/det/grey/waiscoat = 2,
+	/obj/item/clothing/under/det/grey/waistcoat = 2,
 	/obj/item/clothing/under/det/skirt = 2,
 	/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen = 4,
 	)
