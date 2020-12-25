@@ -264,6 +264,8 @@
 	if(turfmoveto && (turfmoveto != get_turf(O)) )
 		O.forceMove(turfmoveto)
 
+	O.persistence_loaded = TRUE
+
 	return TRUE
 
 /proc/map_write(var/area/map_area, var/save_obj)
