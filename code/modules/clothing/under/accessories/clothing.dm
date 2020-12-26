@@ -55,7 +55,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
-	slot = "over"
+	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
 		"Teshari" = 'icons/mob/species/seromi/suit.dmi'
@@ -119,10 +119,10 @@
  * Cloak
  */
 /obj/item/clothing/accessory/poncho/roles/cloak
-	name = "brown cloak"
-	desc = "An elaborate brown cloak."
-	icon_state = "qmcloak"
-	item_state = "qmcloak"
+	name = "cloak"
+	desc = "An elaborate cloak."
+	icon_state = "cloak"
+	item_state = "cloak"
 	body_parts_covered = null
 
 /obj/item/clothing/accessory/poncho/roles/cloak/ce

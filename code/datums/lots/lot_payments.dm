@@ -6,8 +6,12 @@
 	var/service_charge = round(get_service_charge())
 
 	for(var/datum/tenant/tenant in get_tenants())
+		var/the_rent = get_rent(tenant)
 
-		tenant.pay_balance(-get_rent())
+		if(!the_rent)
+			continue
+
+		tenant.pay_balance(-the_rent)
 
 		if(landlord)
 				// if tenant's balance is below 0, landlord isn't being paid, obviously
@@ -21,7 +25,7 @@
 					add_landlord_checkbook("[tenant.name] for [name]: Payment of [cash2text( get_rent_after_tax(), FALSE, TRUE, TRUE )] successfully paid to landlord account. (After [cash2text( get_rent_tax_amount(), FALSE, TRUE, TRUE )] tax)")
 
 
-	if(landlord)
+	if(landlord && service_charge)
 		if(service_charge > get_landlord_balance())
 			add_landlord_checkbook("[landlord.name] for [name]: Unable to clear payment. Balance under service charge amount.")
 			landlord.account_balance -= service_charge
@@ -51,9 +55,10 @@
 
 	if(get_tenant_by_uid(uid))
 		resident = get_tenant_by_uid(uid)
-	if(!resident && landlord.unique_id == uid)
-		resident = landlord
-		type = "LEASEHOLDER"
+	else
+		if(!resident && landlord.unique_id == uid)
+			resident = landlord
+			type = "LEASEHOLDER"
 
 	if(!resident)
 		return

@@ -9,7 +9,7 @@
 	desc = "Police detective's badge, made from gold."
 	icon_state = "badge"
 	slot_flags = SLOT_BELT | SLOT_TIE
-	slot = "insignia"
+	slot = ACCESSORY_SLOT_INSIGNIA
 
 	var/stored_name
 	var/badge_string = "Geminus City Police Department"

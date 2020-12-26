@@ -46,8 +46,8 @@
 
 /datum/job/nanotrasen/ceo
 	title = "Governor"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2 // This allows VP and Governor to be on at the same time without staff intervention.
 	flag = CEO
 	alt_titles = list("Advisor" = /decl/hierarchy/outfit/job/nanotrasen/minister,
 	 "Vice President" = /decl/hierarchy/outfit/job/heads/vpresident,

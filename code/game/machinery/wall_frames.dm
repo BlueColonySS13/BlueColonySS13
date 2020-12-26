@@ -248,7 +248,6 @@
 	build_machine_type = /obj/structure/mirror
 	is_wall_frame = TRUE
 	is_floor_frame = FALSE
-	reverse = TRUE
 
 /obj/item/frame/fireaxe_cabinet
 	name = "fire axe cabinet frame"

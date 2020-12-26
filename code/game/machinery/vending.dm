@@ -1222,7 +1222,8 @@
 	/obj/item/device/hailer = 6,
 	/obj/item/device/holowarrant = 8,
 	/obj/item/device/breathalyzer = 8,
-	/obj/item/device/retail_scanner/police = 8
+	/obj/item/device/retail_scanner/police = 8,
+	/obj/item/device/radio = 6
 	)
 
 
@@ -2388,8 +2389,9 @@
 					/obj/item/weapon/melee/baton = 4,
 					/obj/item/clothing/glasses/sunglasses/sechud/tactical = 6,
 					/obj/item/clothing/mask/gas/half = 6,
-					/obj/item/clothing/head/helmet/tac = 8,
-					/obj/item/clothing/suit/armor/pcarrier/tan/policetactical = 8,
+					/obj/item/clothing/head/helmet/tacnav = 8,
+					/obj/item/clothing/suit/armor/pcarrier/navy/policetactical = 8,
+					/obj/item/clothing/under/rank/security = 8
 					)
 
 

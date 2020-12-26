@@ -133,7 +133,13 @@ obj/machinery/recharger
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	active_power_usage = 25000	//25 kW , It's more specialized than the standalone recharger (guns, batons, and flashlights only) so make it more powerful
-	allowed_devices = list(/obj/item/weapon/gun/energy, /obj/item/weapon/gun/magnetic, /obj/item/weapon/melee/baton, /obj/item/device/flashlight, /obj/item/weapon/cell/device)
+	allowed_devices = list(/obj/item/weapon/gun/energy,
+	/obj/item/weapon/gun/magnetic,
+	/obj/item/weapon/melee/baton,
+	/obj/item/device/flashlight,
+	/obj/item/weapon/cell/device,
+	/obj/item/device/communicator,
+	/obj/item/device/defib_kit)
 	icon_state_charged = "wrecharger2"
 	icon_state_charging = "wrecharger1"
 	icon_state_idle = "wrecharger0"

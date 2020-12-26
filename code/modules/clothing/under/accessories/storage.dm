@@ -2,7 +2,7 @@
 	name = "load bearing equipment"
 	desc = "Used to hold things when you don't have enough hands."
 	icon_state = "webbing"
-	slot = "utility"
+	slot = ACCESSORY_SLOT_UTILITY
 	show_messages = 1
 
 	var/slots = 3

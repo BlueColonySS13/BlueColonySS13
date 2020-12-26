@@ -118,6 +118,12 @@ GLOBAL_LIST_INIT(permit_types, list(
 	desc = "A card indicating that the owner is allowed to carry a firearm while on the surface."
 	tiered = FALSE
 
+/obj/item/clothing/accessory/permit/gun/proc/get_tier()
+	if(!tier)
+		return 0
+	else
+		return tier
+
 /obj/item/clothing/accessory/permit/drone
 	name = "drone identification card"
 	desc = "A card issued by the government, indicating that the owner is a Drone Intelligence. Drones are mandated to carry this card on PolGov colonies, by law."

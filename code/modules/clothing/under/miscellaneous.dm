@@ -610,6 +610,20 @@
 	icon_state = "whitegown"
 	index = 1
 
+/obj/item/clothing/under/wedding/regal_wedding
+	name = "red regal wedding dress"
+	desc = "A elegant royal gown, fit for nobility."
+	icon_state = "regal_wedding"
+	flags_inv = HIDESHOES
+	index = 1
+
+/obj/item/clothing/under/wedding/regal_maidofhonor
+	name = "regal maid of honor dress"
+	desc = "A elegant regal peplum dress with a frilly red skirt."
+	icon_state = "regal_maidenhonor"
+	index = 1
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
 /*
 Uniforms and stuff
 */
@@ -1112,6 +1126,24 @@ Uniforms and stuff
 	name = "aristocratic purple tuxedo"
 	desc = "You should have asked her out sooner. But at least you have this cool suit..."
 	icon_state = "arisbestman"
+	index = 1
+
+/obj/item/clothing/under/arisgroom
+	name = "aristocratic tuxedo"
+	desc = "You can almost smell the bank notes this was sewn from."
+	icon_state = "arisgroom"
+	index = 1
+
+/obj/item/clothing/under/regal_groom
+	name = "regal groom tuxedo"
+	desc = "A red elegent groom outfit."
+	icon_state = "regal_groom"
+	index = 1
+
+/obj/item/clothing/under/regal_bestman
+	name = "regal best man tuxedo"
+	desc = "A red elegent best man outfit."
+	icon_state = "regal_bestman"
 	index = 1
 
 /obj/item/clothing/under/hartsuit
