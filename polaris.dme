@@ -1774,7 +1774,6 @@
 #include "code\modules\government\president\landlord.dm"
 #include "code\modules\government\president\permits.dm"
 #include "code\modules\government\president\procedures.dm"
-#include "code\modules\government\president\service.dm"
 #include "code\modules\government\president\social_costs.dm"
 #include "code\modules\government\president\taxes.dm"
 #include "code\modules\government\president\wages.dm"
