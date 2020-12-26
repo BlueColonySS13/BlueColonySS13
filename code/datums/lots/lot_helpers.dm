@@ -254,4 +254,3 @@
 	tenants_wanted = FALSE
 
 	add_note(landlord.name, "Accepted [name]'s tenancy application for [applicant.name]",usr)
-	qdel(applicant)
