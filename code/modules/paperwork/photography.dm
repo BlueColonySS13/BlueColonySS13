@@ -33,6 +33,7 @@ var/global/photo_count = 0
 	w_class = ITEMSIZE_SMALL
 	var/id
 	var/icon/img	//Big photo image
+	var/image_id = null
 	var/scribble	//Scribble on the back.
 	var/icon/tiny
 	var/cursed = 0
@@ -45,10 +46,36 @@ var/global/photo_count = 0
 
 	drop_sound = 'sound/items/drop/paper.ogg'
 
-	dont_save = 1
+	unique_save_vars = list("image_id", "scribble", "photo_size", "sensational", "gruesome", "scandalous", "scary")
 
-/obj/item/weapon/photo/New()
+/obj/item/weapon/photo/initialize(mapload, ...)
 	id = photo_count++
+	return ..()
+
+/obj/item/weapon/photo/on_persistence_save()
+	if(!image_id) // If it already has an image_id, it got saved before, so don't make duplicates.
+		image_id = "[game_id]-[id]"
+		SSpersistence.save_image(img, image_id, PERSISTENT_PHOTO_DIRECTORY)
+	return ..()
+
+/obj/item/weapon/photo/on_persistence_load()
+	if(image_id)
+		img = SSpersistence.load_image(image_id, PERSISTENT_PHOTO_DIRECTORY)
+		make_small_sprite() // So the tiny sprite isn't a black square.
+	return ..()
+
+/obj/item/weapon/photo/proc/make_small_sprite()
+	var/icon/small_img = icon(img)
+	var/icon/tiny_img = icon(img)
+	var/icon/ic = icon('icons/obj/items.dmi',"photo")
+	var/icon/pc = icon('icons/obj/bureaucracy.dmi', "photo")
+	small_img.Scale(8, 8)
+	tiny_img.Scale(4, 4)
+	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
+	pc.Blend(tiny_img,ICON_OVERLAY, 12, 19)
+
+	icon = ic
+	tiny = pc
 
 /obj/item/weapon/photo/attack_self(mob/user as mob)
 	user.examinate(src)
@@ -340,20 +367,10 @@ var/global/photo_count = 0
 /obj/item/device/camera/proc/createpicture(atom/target, mob/user, list/turfs, mobs, flag)
 	var/icon/photoimage = get_icon(turfs, target)
 
-	var/icon/small_img = icon(photoimage)
-	var/icon/tiny_img = icon(photoimage)
-	var/icon/ic = icon('icons/obj/items.dmi',"photo")
-	var/icon/pc = icon('icons/obj/bureaucracy.dmi', "photo")
-	small_img.Scale(8, 8)
-	tiny_img.Scale(4, 4)
-	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
-	pc.Blend(tiny_img,ICON_OVERLAY, 12, 19)
-
 	var/obj/item/weapon/photo/p = new()
 	p.name = "photo"
-	p.icon = ic
-	p.tiny = pc
 	p.img = photoimage
+	p.make_small_sprite()
 	p.desc = mobs
 	p.pixel_x = rand(-10, 10)
 	p.pixel_y = rand(-10, 10)
