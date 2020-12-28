@@ -18,7 +18,7 @@
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/security
-	name = "police officer's uniform"
+	name = "police officer's tactical uniform"
 	desc = "It's made of a slightly sturdier material than standard suits, to allow for robust protection."
 	icon_state = "police"
 	item_state_slots = list(slot_r_hand_str = "darkblue", slot_l_hand_str = "darkblue")
