@@ -89,6 +89,10 @@
 	var/toxins_mod =		1								// Toxloss modifier
 	var/radiation_mod =		1								// Radiation modifier
 	var/flash_mod =			1								// Stun from blindness modifier.
+	var/chem_strength_heal =	1						// Multiplier to most beneficial chem strength
+	var/chem_strength_pain =	1						// Multiplier to painkiller strength (could be used in a negative trait to simulate long-term addiction reducing effects, etc.)
+	var/chem_strength_tox =		1						// Multiplier to toxic chem strength (inc. chloral/sopo/mindbreaker/etc. thresholds)
+	var/chemOD_threshold =		1						// Multiplier to overdose threshold; lower = easier overdosing
 	var/chemOD_mod =		1								// Damage modifier for overdose
 	var/vision_flags = SEE_SELF								// Same flags as glasses.
 
