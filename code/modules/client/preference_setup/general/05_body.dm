@@ -180,6 +180,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.calories	= pref.calories
 	character.hydration	= pref.hydration
 	character.nutrition	= pref.nutrition
+	character.set_gender( pref.biological_gender)
 
 	// Destroy/cyborgize organs and limbs.
 	for(var/name in list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO))
