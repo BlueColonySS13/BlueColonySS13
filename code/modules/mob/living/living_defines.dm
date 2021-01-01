@@ -60,3 +60,5 @@
 	var/list/hud_list		//Holder for health hud, status hud, wanted hud, etc (not like inventory slots)
 	var/has_huds = FALSE	//Whether or not we should bother initializing the above list
 	var/looking_elsewhere = FALSE //If the mob's view has been relocated to somewhere else, like via a camera or with binocs
+
+	var/allow_self_surgery = FALSE	// Used to determine if the mob can perform surgery on itself.
