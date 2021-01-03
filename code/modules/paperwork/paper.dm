@@ -613,7 +613,9 @@
 		stamped += P.type
 		overlays += stampoverlay
 
+		playsound(loc, 'sound/effects/stamp-assault.ogg', 70, TRUE)
 		user << "<span class='notice'>You stamp the paper with your rubber stamp.</span>"
+
 
 	else if(istype(P, /obj/item/weapon/flame))
 		burnpaper(P, user)
