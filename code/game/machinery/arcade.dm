@@ -125,7 +125,7 @@
 /obj/machinery/food_machine/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	var/obj/item/weapon/card/id/I = W.GetID()
 
-	if(!istype(W, /obj/item/weapon/reagent_containers/food/snacks/grown) || !istype(W,/obj/item/weapon/card/id) || !istype(W,/obj/item/weapon/spacecash/ewallet || !istype(W,/obj/item/weapon/spacecash)) //i hate looking at this line
+	if(!istype(W, /obj/item/weapon/reagent_containers/food/snacks/grown) || !istype(W,/obj/item/weapon/card/id) || !istype(W,/obj/item/weapon/spacecash/ewallet) || !istype(W,/obj/item/weapon/spacecash)) //i hate looking at this line
 		return
 
 	if(!owner_uid && I)
