@@ -84,8 +84,8 @@
 
 
 /obj/item/proc/can_do_surgery(mob/living/carbon/M, mob/living/user)
-	if(M == user)
-		return 0
+//	if(M == user)
+//		return 0
 	if(!ishuman(M))
 		return 1
 	var/mob/living/carbon/human/H = M
@@ -110,6 +110,13 @@
 		if(S.tool_quality(src))
 			var/step_is_valid = S.can_use(user, M, zone, src)
 			if(step_is_valid && S.is_valid_target(M))
+
+				if(M == user)	// Once we determine if we can actually do a step at all, give a slight delay to self-surgery to confirm attempts.
+					to_chat(user, "<span class='critical'>You focus on attempting to perform surgery upon yourself.</span>")
+
+					if(!do_after(user, 3 SECONDS, M))
+						return 0
+
 				if(step_is_valid == SURGERY_FAILURE) // This is a failure that already has a message for failing.
 					return 1
 				M.op_stage.in_progress += zone
@@ -121,7 +128,7 @@
 					success = FALSE
 
 				// Bad or no surface may mean failure as well.
-				var/obj/surface = M.get_surgery_surface()
+				var/obj/surface = M.get_surgery_surface(user)
 				if(!surface || !prob(surface.surgery_odds))
 					success = FALSE
 
