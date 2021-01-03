@@ -101,7 +101,7 @@
 	blood_type = "O+"
 
 /obj/item/weapon/reagent_containers/blood/OMinus
-	name= "Blood Pack (A-)"
+	name= "Blood Pack (O-)"
 	blood_type = "O-"
 
 /obj/item/weapon/reagent_containers/blood/empty
