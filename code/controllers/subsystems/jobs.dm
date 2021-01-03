@@ -808,6 +808,7 @@ SUBSYSTEM_DEF(jobs)
 	if(!H.mind || !H.mind.prefs) return
 
 	var/synth_type = H.get_FBP_type()
+	var/is_mpl_vatborn = (H.get_species() == SPECIES_HUMAN_VATBORN_MPL)
 	var/obj/item/clothing/uniform = H.w_uniform
 	var/obj/item/clothing/accessory/permit/permit
 
@@ -828,6 +829,15 @@ SUBSYSTEM_DEF(jobs)
 	if(permit)
 		permit.set_name(H.real_name)
 
+		if(uniform && uniform.can_attach_accessory(permit)) // attaches permit to uniform
+			uniform.attach_accessory(null, permit)
+		else
+			H.equip_to_slot_or_del(permit, slot_in_backpack) // otherwise puts it in your backpack
+
+	if(is_mpl_vatborn)
+		permit = new/obj/item/clothing/accessory/permit/vatborn
+
+		permit.set_name(H.real_name)
 		if(uniform && uniform.can_attach_accessory(permit)) // attaches permit to uniform
 			uniform.attach_accessory(null, permit)
 		else
