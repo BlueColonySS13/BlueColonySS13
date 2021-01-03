@@ -15,7 +15,7 @@
 	var/decaytimer = 0
 	price_tag = 3
 
-	unique_save_vars = list("plantname", "potency", "bitecount", "decay", "decaytimer")
+	unique_save_vars = list("plantname", "potency", "bitecount", "decay", "decaytimer", "dry")
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/on_persistence_load()
 	update_plant_info(loc, plantname)
