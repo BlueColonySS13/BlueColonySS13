@@ -131,6 +131,12 @@ GLOBAL_LIST_INIT(permit_types, list(
 	tiered = FALSE
 	dont_save = TRUE
 
+/obj/item/clothing/accessory/permit/vatborn
+	name = "mass produced vatborn identification card"
+	desc = "A card issued by the government, indicating that the owner is a Mass Produced Vatborn. Mass Produced are mandated to carry this card on PolGov colonies, by law."
+	icon_state = "permit_5"
+	tiered = FALSE
+	dont_save = TRUE
 
 //Some spare gun permits in a box
 /obj/item/weapon/storage/box/gun_permits
