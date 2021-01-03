@@ -2514,10 +2514,3 @@
 	required_reagents = list("peanutoil" = 2, "sugar" = 1, "sodiumchloride" = 1)
 	catalysts = list("enzyme" = 5)
 	result_amount = 3
-
-/datum/chemical_reaction/biomass
-	name = "Biomass"
-	id = "biomass"
-	result = "biomass"
-	required_reagents = list("protein" = 1, "sugar" = 1, "phoron" = 1)
-	result_amount = 1	// Roughly 20u per phoron sheet
