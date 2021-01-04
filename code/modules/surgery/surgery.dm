@@ -112,6 +112,10 @@
 			if(step_is_valid && S.is_valid_target(M))
 
 				if(M == user)	// Once we determine if we can actually do a step at all, give a slight delay to self-surgery to confirm attempts.
+					if(zone == O_EYES || zone == O_MOUTH || zone == BP_HEAD || zone == BP_TORSO || zone == BP_GROIN)
+						to_chat(user, span("critical", "You cannot perform self-surgery on that area!"))
+						return 0
+
 					to_chat(user, "<span class='critical'>You focus on attempting to perform surgery upon yourself.</span>")
 
 					if(!do_after(user, 3 SECONDS, M))
