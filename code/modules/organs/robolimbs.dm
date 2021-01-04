@@ -210,6 +210,25 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	blood_color = "#CCCCCC"
 	speech_bubble_appearance = "normal"
 
+/datum/robolimb/veymed_alt1
+	company = "Vey-Med - Reinforced"
+	desc = "This high quality limb is nearly indistinguishable from an organic one, save for some visible cybernetic reinforcement in key areas."
+	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_alt1.dmi'
+	unavailable_to_build = 1
+	lifelike = 1
+	skin_tone = 1
+	blood_color = "#CCCCCC"
+	speech_bubble_appearance = "normal"
+
+/datum/roboolimb/veymed_alt2
+	company = "Vey-Med - Cyberwalker"
+	desc = "This limb features bleeding edge cooling technology that allows for the continuous operation of high intensity cyberware implants with minimal impact on user health."
+	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_alt2.dmi'
+	unavailable_to_build = 1
+	skin_tone = 1
+	blood_color = "#CCCCCC"
+	speech_bubble_appearance = "normal"
+
 /datum/robolimb/wardtakahashi
 	company = "Ward-Takahashi"
 	desc = "This limb features sleek black and white polymers."
