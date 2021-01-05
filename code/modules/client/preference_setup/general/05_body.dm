@@ -270,7 +270,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		. += "[pref.disabilities & NEARSIGHTED ? "Yes" : "No"]<br>"
 	. += "<b>Limbs:</b> <br>"
 
-	. += "<br><a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
+	if(!pref.existing_character)
+		. += "<br><a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
+
 	. += "<b>Internal Organs:</b> "
 	. += "<a href='?src=\ref[src];organs=1'>Adjust</a><br>"
 
