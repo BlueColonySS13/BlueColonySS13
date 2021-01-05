@@ -220,7 +220,7 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	blood_color = "#CCCCCC"
 	speech_bubble_appearance = "normal"
 
-/datum/roboolimb/veymed_alt2
+/datum/robolimb/veymed_alt2
 	company = "Vey-Med - Cyberwalker"
 	desc = "This limb features bleeding edge cooling technology that allows for the continuous operation of high intensity cyberware implants with minimal impact on user health."
 	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_alt2.dmi'

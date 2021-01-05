@@ -443,7 +443,7 @@ SUBSYSTEM_DEF(jobs)
 						continue
 
 					// Implants get special treatment
-					if(G.slot == "implant")
+					if(G.sort_category == "Cyberware")
 						var/obj/item/weapon/implant/I = G.spawn_item(H)
 						I.invisibility = 100
 						I.implant_loadout(H)

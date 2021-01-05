@@ -1,10 +1,25 @@
 /obj/item/weapon/implant/dud
-	name = "unknown implant"
+	name = "cyberware control implant"
 	desc = "A small device with small connector wires."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "implant"
 	initialize_loc = BP_HEAD
-	var/roundstart = TRUE
+
+/obj/item/weapon/implant/dud/get_data()
+	var/dat = {"<b>Implant Specifications:</b><BR>
+<b>Name:</b> Cyberware Control Implant<BR>
+<b>Life:</b> Duration of Brain Function<BR>
+<b>Important Notes:</b> None<BR>
+<HR>
+<b>Implant Details:</b> <BR>
+<b>Function:</b> Aids in the adaptation to and continued usage of cyberware and other augmentations.<BR>
+<b>Special Features:</b><BR>
+<i>Neuro-Safe</i>- Specialized shell absorbs excess voltages self-destructing the chip if
+a malfunction occurs thereby attempting to secure the safety of subject.<BR>
+<b>Integrity:</b> Gradient creates slight risk of being overcharged and frying the
+circuitry. Resulting faults can cause damage to the host's brain.<HR>
+Implant Specifics:<BR>"}
+	return dat
 
 /obj/item/weapon/implant/dud/torso
 	name = "unknown implant"
@@ -15,19 +30,9 @@
 
 /obj/item/weapon/implant/dud/old
 	name = "old implant"
-	desc = "A small device with small connector wires."
+	desc = "An older generation cyberware device with small connector wires."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "implant"
-	roundstart = FALSE
-
-/obj/item/weapon/implant/dud/initialize()
-	..()
-	if(roundstart)
-		invisibility = 100
-		..()
-		spawn(3)
-			if(!ishuman(loc) && !QDELETED(src))
-				qdel(src)
 
 /obj/item/weapon/implant/neural
 	name = "neural framework implant"
@@ -57,6 +62,7 @@
 	STOP_PROCESSING(SSobj, src)
 	my_brain = null
 	return ..()
+
 /obj/item/weapon/implant/neural/process()
 	if(my_brain && part)
 		if(my_brain.loc != part.loc)
