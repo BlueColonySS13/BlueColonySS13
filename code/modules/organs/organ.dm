@@ -40,6 +40,7 @@ var/list/organ_cache = list()
 	var/forgiving_class = TRUE	// Will the organ give its verbs when it isn't a perfect match? I.E., assisted in organic, synthetic in organic.
 
 	drop_sound = 'sound/items/drop/flesh.ogg'
+	unique_save_vars = list("robotic", "damage", "preserved", "germ_level")
 
 /obj/item/organ/Destroy()
 

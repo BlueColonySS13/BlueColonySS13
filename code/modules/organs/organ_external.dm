@@ -77,7 +77,7 @@
 	// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
 
-	unique_save_vars = list("model")
+	unique_save_vars = list("model", "robotic", "damage", "preserved", "germ_level", "sabotaged")
 
 /obj/item/organ/external/Destroy()
 
