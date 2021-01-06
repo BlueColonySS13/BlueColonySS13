@@ -403,6 +403,12 @@
 		playsound(src,"mechstep",40,1)
 	return result
 
+/obj/mecha/proc/do_after(delay as num)
+    sleep(delay)
+    if(src)
+        return 1
+    return 0
+
 /obj/mecha/Bump(var/atom/obstacle)
 //	src.inertia_dir = null
 	if(istype(obstacle, /obj))
