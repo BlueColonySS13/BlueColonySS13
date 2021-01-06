@@ -156,7 +156,7 @@
  			/obj/item/target/alien = 2,
  			/obj/item/target/syndicate = 2
  			)
- 	cost = 2500
+ 	cost = 7000
  	containertype = /obj/structure/closet/crate/secure/weapon
  	containername = "Ballistic weapons crate"
  	access = access_security
