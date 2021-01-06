@@ -10,7 +10,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_TINY
 	var/obj/item/weapon/implant/imp = null
-	price_tag = 1000
+	price_tag = 10
 
 /obj/item/weapon/implantcase/proc/update()
 	if (src.imp)
