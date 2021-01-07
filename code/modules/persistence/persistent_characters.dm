@@ -75,6 +75,9 @@
 
 		else
 			if(current_limb.robotic)
+				if(istype(current_limb, /obj/item/organ/external/head))
+					if(!isSynthetic())
+						mind.prefs.organ_data[O_BRAIN] = "assisted"
 				mind.prefs.rlimb_data[current_limb.icon_name] = current_limb.model
 				mind.prefs.organ_data[current_limb.icon_name] = "cyborg"
 
