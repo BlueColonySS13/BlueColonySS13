@@ -16,6 +16,9 @@
 		if(!action_checks(target)) return
 		if(!cargo_holder) return
 
+		if(chassis.occupant && trigger_lot_security_system(chassis.occupant, /datum/lot_security_option/theft, "Attempted to load \the [target] onto \the [chassis]."))
+			return
+
 		//loading
 		if(istype(target,/obj))
 			var/obj/O = target
@@ -82,6 +85,10 @@
 		if(isobj(target))
 			var/obj/target_obj = target
 			if(!target_obj.vars.Find("unacidable") || target_obj.unacidable)	return
+
+		if(chassis.occupant && trigger_lot_security_system(chassis.occupant, /datum/lot_security_option/intrusion, "Attempted to drill \the [target] with \the [chassis]."))
+			return
+
 		set_ready_state(0)
 		chassis.use_power(energy_drain)
 		chassis.visible_message("<span class='danger'>[chassis] starts to drill [target]</span>", "<span class='warning'>You hear the drill.</span>")
@@ -133,6 +140,10 @@
 		if(isobj(target))
 			var/obj/target_obj = target
 			if(target_obj.unacidable)	return
+
+		if(chassis.occupant && trigger_lot_security_system(chassis.occupant, /datum/lot_security_option/intrusion, "Attempted to drill \the [target] with \the [chassis]."))
+			return
+
 		set_ready_state(0)
 		chassis.use_power(energy_drain)
 		chassis.visible_message("<span class='danger'>[chassis] starts to drill [target]</span>", "<span class='warning'>You hear the drill.</span>")
@@ -252,6 +263,10 @@
 			disabled = 0
 		if(!istype(target, /turf) && !istype(target, /obj/machinery/door/airlock))
 			target = get_turf(target)
+
+		if(chassis.occupant && trigger_lot_security_system(chassis.occupant, /datum/lot_security_option/intrusion, "Attempted to drill \the [target] with \the [chassis]."))
+			return
+
 		if(!action_checks(target) || disabled || get_dist(chassis, target)>3) return
 		playsound(chassis, 'sound/machines/click.ogg', 50, 1)
 		//meh
@@ -997,6 +1012,10 @@
 	action(atom/target)
 		if(!action_checks(target)) return
 		if(!cargo_holder) return
+
+		if(chassis.occupant && trigger_lot_security_system(chassis.occupant, /datum/lot_security_option/theft, "Attempted to load \the [target] onto \the [chassis]."))
+			return
+
 		if(istype(target,/obj))
 			var/obj/O = target
 			if(!O.anchored)
