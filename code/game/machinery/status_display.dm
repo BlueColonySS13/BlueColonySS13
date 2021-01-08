@@ -47,6 +47,8 @@
 	var/const/STATUS_DISPLAY_TIME = 4
 	var/const/STATUS_DISPLAY_CUSTOM = 99
 
+	var/seclevel = "green"
+
 	//If any of these are set, they'll override the default.
 	var/font_size = "5pt"
 	var/font_color = "#09f"
@@ -181,6 +183,32 @@
 		message2 = ""
 		index2 = 0
 
+/obj/machinery/status_display/proc/display_alert(var/newlevel)
+	remove_display()
+	if(seclevel != newlevel)
+		seclevel = newlevel
+	switch(seclevel)
+		if("green")	set_light(l_range = 2, l_power = 0.25, l_color = "#00ff00")
+		if("yellow")	set_light(l_range = 2, l_power = 0.25, l_color = "#ffff00")
+		if("violet")	set_light(l_range = 2, l_power = 0.25, l_color = "#9933ff")
+		if("orange")	set_light(l_range = 2, l_power = 0.25, l_color = "#ff9900")
+		if("blue")	set_light(l_range = 2, l_power = 0.25, l_color = "#1024A9")
+		if("red")	set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
+		if("delta")	set_light(l_range = 4, l_power = 0.9, l_color = "#FF6633")
+	set_picture("status_display_[seclevel]")
+
+// Called when the alert level is changed.
+/obj/machinery/status_display/proc/on_alert_changed(new_level)
+	// On most alerts, this will change to a flashing alert picture in a specific color.
+	// Doing that for green alert automatically doesn't really make sense, but it is still available on the comm consoles/PDAs.
+	if(seclevel2num(new_level) == SEC_LEVEL_GREEN)
+		mode = STATUS_DISPLAY_TIME
+		set_light(0) // Remove any glow we had from the alert previously.
+		update()
+		return
+	mode = STATUS_DISPLAY_ALERT
+	display_alert(new_level)
+
 /obj/machinery/status_display/proc/set_picture(state)
 	remove_display()
 	if(!picture || picture_state != state)
@@ -250,13 +278,16 @@
 	switch(signal.data["command"])
 		if("blank")
 			mode = STATUS_DISPLAY_BLANK
+			set_light(0)
 
 		if("shuttle")
 			mode = STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME
+			set_light(0)
 
 		if("message")
 			mode = STATUS_DISPLAY_MESSAGE
 			set_message(signal.data["msg1"], signal.data["msg2"])
+			set_light(0)
 
 		if("alert")
 			mode = STATUS_DISPLAY_ALERT
@@ -264,6 +295,7 @@
 
 		if("time")
 			mode = STATUS_DISPLAY_TIME
+			set_light(0)
 	update()
 
 #undef FONT_COLOR
