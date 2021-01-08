@@ -1,4 +1,9 @@
-/datum/persistent_option/portal/value/food_stamps_wage
+
+/datum/persistent_option/number_value/social_cost
+	var_to_edit = "value"
+	portal_category = "Social Costs"
+
+/datum/persistent_option/number_value/social_cost/food_stamps_wage
 	name = "Food Stamp Eligibility Wage"
 	description = "This is the cap for someone's wage before they are ineligible for a food stamp. Only will work if food stamps are enabled."
 	id = "food_stamps_wage"
@@ -6,7 +11,7 @@
 	min_value = 0
 	max_value = 9000
 
-/datum/persistent_option/portal/value/government_meals
+/datum/persistent_option/number_value/social_cost/government_meals
 	name = "Food Stamps Allowance"
 	description = "This is the max amount of food stamps someone can redeem if they redeem a food stamp."
 	id = "food_stamps_wage"
@@ -15,14 +20,14 @@
 	max_value = 5
 
 
-/datum/persistent_option/portal/value/business_registration
+/datum/persistent_option/number_value/social_cost/business_registration
 	name = "Business Registration Fee"
 	description = "This is registration fee required to be paid upon making a new business."
 	id = "business_registration"
 	value = 3500
 
 /*
-/datum/persistent_option/portal/value/party_registration
+/datum/persistent_option/number_value/social_cost/party_registration
 	name = "Party Registration Fee"
 	description = "This is registration fee required to be paid upon making a new business."
 	id = "party_registration"

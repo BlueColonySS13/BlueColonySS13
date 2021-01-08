@@ -24,9 +24,13 @@ GLOBAL_LIST_INIT(permit_types, list(
 
 	unique_save_vars = list("owner", "tier")
 
+	var/permit_portal_id = null
+
 /obj/item/clothing/accessory/permit/New()
 	..()
 	update_icon()
+	if(permit_portal_id)
+		price_tag = SSpersistent_options.get_persistent_option_value(permit_portal_id) // takes the permit id from the portal and uses the price there.
 
 /obj/item/clothing/accessory/permit/attack_self(mob/user as mob)
 	if(isliving(user))
@@ -54,63 +58,59 @@ GLOBAL_LIST_INIT(permit_types, list(
 	name = "tier 0 weapon permit"
 	desc = "A card indicating that the owner is allowed to carry simple equipment, such as a flash, pepper spray, telescopic batons, and wooden batons."
 	tier = 0
-	price_tag = 200
+	permit_portal_id = "gun_permit_tier_0"
 
 /obj/item/clothing/accessory/permit/gun/tier_one
 	name = "tier one weapon permit"
 	desc = "A card indicating that the owner is allowed to carry improved simple equipment, such as flashbang grenades, stunbatons, smoke grenades, and restraining equipment."
 	tier = 1
-	price_tag = 400
+	permit_portal_id = "gun_permit_tier_1"
 
 /obj/item/clothing/accessory/permit/gun/tier_two
 	name = "tier two weapon permit"
 	desc = "A card indicating that the owner is allowed to carry civilian-grade lethal equipment, such as 9mm non-suppressed pistols, Bolt action rifles, EMP grenades, small knives, and  .38 revolvers."
 	tier = 2
-	price_tag = 700
+	permit_portal_id = "gun_permit_tier_2"
 
 /obj/item/clothing/accessory/permit/gun/tier_three
 	name = "tier three weapon permit"
 	desc = "A card indicating that the owner is allowed to carry improved civilian-grade lethal equipment, such as  .45 non suppressed firearms, CS gas grenades, lever action rifles, Desert Eagles, civilian shotguns, large knives, and NT Mk30 NL Tasers. "
 	tier = 3
-	price_tag = 1000
+	permit_portal_id = "gun_permit_tier_3"
 
 /obj/item/clothing/accessory/permit/gun/tier_four
 	name = "tier four weapon permit"
 	desc = "A card indicating that the owner is allowed to carry police-restricted and low-tier military equipment such as submachine guns, taser rifles,  advanced energy guns, ion weaponry, energy guns, stun revolvers, combat shotguns, and grenade launchesr."
 	tier = 4
-	price_tag = 1500
+	permit_portal_id = "gun_permit_tier_4"
 
 /obj/item/clothing/accessory/permit/gun/tier_five
 	name = "tier five weapon permit"
 	desc = "A card indicating that the owner is allowed to carry flashes, pepperspray, ballistic pistols, all types of energy guns, and civilian grade shotguns."
 	tier = 5
-	price_tag = 7000
+	permit_portal_id = "gun_permit_tier_5"
 
 /obj/item/clothing/accessory/permit/gun/tier_five/police
 	name = "tier five police weapon permit"
 	desc = "A card indicating that the owner is allowed to any type of weapon provided by the police department as long as they remain on the police force."
 	tier = 5
-	price_tag = 7000
 	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/gun/tier_five/pdf
 	name = "tier five military weapon permit"
 	desc = "A card indicating that the owner is allowed to any type of weapon as long as they remain a member of the PDF."
 	tier = 5
-	price_tag = 7000
 	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/gun/tier_five/nanotrasen
 	name = "tier five nanotrasen weapon permit"
 	desc = "A card indicating that the owner is allowed to any type of weapon as long as they are a member of the government."
 	tier = 5
-	price_tag = 7000
 	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/gun/tier_three/bar
 	name = "bar shotgun permit"
 	desc = "A card indicating that the owner is allowed to carry a shotgun in the bar."
-	tier = 3
 	dont_save = TRUE
 
 /obj/item/clothing/accessory/permit/gun/planetside
@@ -171,22 +171,22 @@ GLOBAL_LIST_INIT(permit_types, list(
 /obj/item/clothing/accessory/permit/retail/cannabis
 	name = "cannabis retail license"
 	desc = "A card indicating the owner is allowed to conduct retail sales of cannabis."
-	price_tag = 800
+	permit_portal_id = "retail_permit_cannabis"
 
 /obj/item/clothing/accessory/permit/retail/tobacco
 	name = "tobacco retail license"
 	desc = "A card indicating the owner is allowed to conduct retail sales of tobacco."
-	price_tag = 400
+	permit_portal_id = "retail_permit_tobacco"
 
 /obj/item/clothing/accessory/permit/retail/alcohol
 	name = "alcohol retail license"
 	desc = "A card indicating the owner is allowed to conduct retail sales of alcohol."
-	price_tag = 400
+	permit_portal_id = "retail_permit_alcohol"
 
 /obj/item/clothing/accessory/permit/firearms
 	name = "firearms retail license"
 	desc = "A card indicating the owner is allowed to conduct retail sales of firearms."
-	price_tag = 400
+	permit_portal_id = "retail_permit_firearms"
 
 /obj/item/clothing/accessory/permit/production
 	name = "production license"
@@ -197,17 +197,17 @@ GLOBAL_LIST_INIT(permit_types, list(
 /obj/item/clothing/accessory/permit/production/cannabis
 	name = "cannabis production license"
 	desc = "A card indicating the owner is allowed to grow and distribute cannabis to licensed industries."
-	price_tag = 800
+	permit_portal_id = "retail_production_cannabis"
 
 /obj/item/clothing/accessory/permit/production/blades
 	name = "bladed weapon production license"
 	desc = "A card indicating the owner is allowed to manufacture and distribute bladed weapons to licensed industries."
-	price_tag = 400
+	permit_portal_id = "retail_production_blades"
 
 /obj/item/clothing/accessory/permit/production/firearms
 	name = "firearms manufacturing license"
 	desc = "A card indicating the owner is allowed to manufacture and distribute firearms to licensed industries."
-	price_tag = 400
+	permit_portal_id = "retail_production_blades"
 
 /obj/item/weapon/storage/box/permits
 	name = "box of permits"

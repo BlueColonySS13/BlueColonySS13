@@ -263,7 +263,8 @@
 			flick("inv-tri_warn",src)
 			return
 
-		if(!emagged)
+
+		if(!emagged && SSpersistent_options.get_persistent_option_value("inventory_box_control"))
 			var/safety = 200
 			var/list/objects_to_search = list(I)
 			var/has_illegal_things = FALSE
@@ -278,7 +279,7 @@
 				if(!(!contraband_status || contraband_status == LEGAL) )
 					has_illegal_things = TRUE
 					break
-				
+
 				objects_to_search -= AM
 				objects_to_search += AM.get_saveable_contents()
 
@@ -287,6 +288,7 @@
 				flick("inv-tri_warn",src)
 				playsound(src, 'sound/machines/deniedbeep.ogg', 50, FALSE)
 				return
+
 
 		item_processing = TRUE
 		user.drop_from_inventory(I, src)

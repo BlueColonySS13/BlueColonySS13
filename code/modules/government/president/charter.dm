@@ -7,6 +7,10 @@
 	It is used as reference for legal matters."
 	id = "pollux_charter"
 	value_text = "Placeholder."
+	value_type = 1
+	bbcode_value = TRUE
+
+	var_to_edit = "value_text"
 
 /*
 
