@@ -15,14 +15,14 @@
 
 		if(landlord)
 				// if tenant's balance is below 0, landlord isn't being paid, obviously
-			if(get_rent() > tenant.account_balance)
+			if(the_rent > tenant.account_balance)
 				add_landlord_checkbook("[tenant.name] for [name]: Unable to clear payment. Balance under rent charge.")
 			else
 				if(landlord)
-					landlord.account_balance += round(get_rent_after_tax())
+					landlord.account_balance += round(get_rent_after_tax(tenant))
 					var/datum/department/council = dept_by_id(DEPT_COUNCIL)
-					council.adjust_funds(get_rent_tax_amount(), "Taxes for [name]")
-					add_landlord_checkbook("[tenant.name] for [name]: Payment of [cash2text( get_rent_after_tax(), FALSE, TRUE, TRUE )] successfully paid to landlord account. (After [cash2text( get_rent_tax_amount(), FALSE, TRUE, TRUE )] tax)")
+					council.adjust_funds(get_rent_tax_amount(tenant), "Taxes for [name]")
+					add_landlord_checkbook("[tenant.name] for [name]: Payment of [cash2text( get_rent_after_tax(tenant), FALSE, TRUE, TRUE )] successfully paid to landlord account. (After [cash2text( get_rent_tax_amount(tenant), FALSE, TRUE, TRUE )] tax)")
 
 
 	if(landlord && service_charge)
