@@ -62,6 +62,7 @@
 				return
 
 		user.visible_message("<span class='notice'>\The [user] sticks \a [O] into \the [src].</span>")
+		B.preserved = TRUE
 
 		brainmob = B.brainmob
 		B.brainmob = null
@@ -114,6 +115,7 @@
 			brainobj = null
 		else	//Or make a new one if empty.
 			brain = new(user.loc)
+		brain.preserved = FALSE
 		brainmob.container = null//Reset brainmob mmi var.
 		brainmob.loc = brain//Throw mob into brain.
 		living_mob_list -= brainmob//Get outta here
