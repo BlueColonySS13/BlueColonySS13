@@ -111,7 +111,9 @@
 	else if(opened)
 		playsound(src.loc, close_sound, 15, 1, -3)
 	src.opened = !src.opened
-	src.density = !src.density
+
+	if(initial(density))
+		src.density = !src.density
 
 /obj/structure/closet/proc/close()
 	if(!src.opened)

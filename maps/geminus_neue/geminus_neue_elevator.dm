@@ -24,15 +24,14 @@
 
 /obj/turbolift_map_holder/geminushospital
 	name = "City Hospital Elevator"
-	depth = 3
+	depth = 2
 	lift_size_x = 3
 	lift_size_y = 3
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 
 	areas_to_use = list(
 		/area/turbolift/geminus_overground_hospital,
-		/area/turbolift/geminus_ground_hospital,
-		/area/turbolift/geminus_underground_hospital
+		/area/turbolift/geminus_ground_hospital
 		)
 
 
