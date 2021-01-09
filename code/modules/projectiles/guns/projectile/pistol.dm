@@ -281,6 +281,8 @@
 	load_method = SINGLE_CASING
 	max_shells = 1 //literally just a barrel
 
+	uses = 30
+
 	var/global/list/ammo_types = list(
 		/obj/item/ammo_casing/a357              = ".357",
 		/obj/item/ammo_casing/a9mmf             = "9mm",
