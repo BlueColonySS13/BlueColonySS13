@@ -47,6 +47,10 @@
 		sparks.attach(user)
 		sparks.start()
 
+		if(A.security_system)
+			to_chat(user, "\The [src] was unable to teleport you to that area - it appears a security system is blocking you.")
+			return
+
 		if(user && user.buckled)
 			user.buckled.unbuckle_mob()
 
@@ -63,8 +67,8 @@
 				targets.Add(T)
 
 		if(!targets.len)
-			user << "\The [src] was unable to locate a suitable teleport destination, as all the possibilities \
-			were nonexistant or hazardous. Try a different area."
+			to_chat(user, "\The [src] was unable to locate a suitable teleport destination, as all the possibilities \
+			were nonexistant or hazardous. Try a different area.")
 			return
 		var/turf/simulated/destination = null
 

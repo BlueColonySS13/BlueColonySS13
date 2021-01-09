@@ -45,10 +45,17 @@
 	zap_power = INFINITY
 	hardened = TRUE
 	desired_area_type = /area
+	owner_uid = "Nanotrasen"
 
 /obj/machinery/lot_security_system/centcom/president	// for the commander in chief
 	name = "Presidential Z.E.U.S. System Deluxe"
 	innate_access_exemptions = list(access_president)
+
+/obj/machinery/lot_security_system/centcom/police
+	name = "Police Z.E.U.S. System Deluxe"
+	innate_access_exemptions = list(access_security)
+	damage_to_criminals = 0 // avoid police lawsuits lol
+	hardened = FALSE // should be empable
 
 // The kind you get straight from the factory, only difference is that it doesn't start anchored.
 /obj/machinery/lot_security_system/factory_ordered

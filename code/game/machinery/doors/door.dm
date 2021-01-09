@@ -367,7 +367,10 @@
 		do_animate("deny")
 	return
 
-/obj/machinery/door/emag_act(var/remaining_charges)
+/obj/machinery/door/emag_act(var/remaining_charges, var/mob/user)
+	if(trigger_lot_security_system(user, /datum/lot_security_option/intrusion, "Attempted to emag \the [src]."))
+		return
+
 	if(density && operable())
 		do_animate("emag")
 		sleep(6)
