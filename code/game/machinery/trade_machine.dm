@@ -186,7 +186,7 @@
 	if(ID.rank)
 		var/datum/job/J = SSjobs.GetJob(ID.rank)
 		var/datum/department/D = dept_by_id(J?.department)
-		if(D && J.department != DEPT_PUBLIC) // Ignore Public department so civilians don't lose their payment.
+		if(D && D.dept_type != PUBLIC_DEPARTMENT) // Ignore public departments. Only private business employees will have sales go to the business account.
 			var/datum/money_account/department/department_account = D.bank_account
 			target_account_number = department_account.account_number
 			department_transaction = TRUE
