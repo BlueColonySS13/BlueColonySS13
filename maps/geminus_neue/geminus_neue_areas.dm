@@ -42,26 +42,18 @@
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_overground_hospital
-	name = "lift (hospital overground - asylum)"
-	lift_floor_label = "Floor 1"
-	lift_floor_name = "Geminus City Hospital - Asylum"
-	lift_announce_str = "Lift arriving at Geminus City - Asylum, please stand clear of the doors."
-	base_turf = /turf/simulated/floor/tiled/steel_ridged
-
-/area/turbolift/geminus_ground_hospital
 	name = "lift (city hospital)"
 	lift_floor_label = "Ground Floor"
 	lift_floor_name = "Geminus City Hospital - Hospital"
 	lift_announce_str = "Lift arriving at Geminus City - Hospital, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
-/area/turbolift/geminus_underground_hospital
-	name = "lift (hospital underground - Asylum)"
-	lift_floor_label = "Lower Ground (LG) Floor"
+/area/turbolift/geminus_ground_hospital
+	name = "lift (hospital overground - asylum)"
+	lift_floor_label = "Floor 1"
 	lift_floor_name = "Geminus City Hospital - Asylum"
 	lift_announce_str = "Lift arriving at Geminus City - Asylum, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
-
 
 /area/turbolift/geminus_court_top
 	name = "lift (court offices)"

@@ -34,6 +34,10 @@
 							/obj/item/toy/stickhorse						= 2
 							)
 	var/token_inserted = 0
+	var/requires_token = TRUE
+
+/obj/machinery/computer/arcade/free
+	requires_token = FALSE
 
 /obj/machinery/computer/arcade/New()
 	..()
@@ -125,7 +129,7 @@
 /obj/machinery/computer/arcade/battle/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if(!token_inserted)
+	if(!token_inserted && requires_token)
 		to_chat(usr, "<span class='notice'>You cannot play \the [src] until you insert a token!</span>")
 	else
 		user.set_machine(src)
