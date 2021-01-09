@@ -5,6 +5,10 @@
 	reusable = TRUE
 
 /datum/gm_action/dust/announce()
+	if(persistent_economy && persistent_economy.meteor_proof)
+		command_announcement.Announce("Debris resulting from activity on another nearby asteroid have been destroyed pre-emptively.", "Dust Alert")
+		end()
+		return
 	command_announcement.Announce("Debris resulting from activity on another nearby asteroid is approaching your colony.", "Dust Alert")
 
 /datum/gm_action/dust/get_weight()

@@ -3,6 +3,10 @@
 	endWhen		= 30
 
 /datum/event/dust/announce()
+	if(persistent_economy && persistent_economy.meteor_proof)
+		command_announcement.Announce("Debris resulting from activity on another nearby asteroid have been destroyed pre-emptively.", "Dust Alert")
+		kill()
+		return
 	command_announcement.Announce("Debris resulting from activity on another nearby asteroid is approaching your colony.", "Dust Alert")
 
 /datum/event/dust/start()
