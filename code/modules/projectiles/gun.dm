@@ -93,7 +93,10 @@
 	var/last_shot = 0			//records the last shot fired
 	drop_sound = 'sound/items/drop/gun.ogg'
 
-	price_tag = 3500	// at a BASE, it should cost at least this.
+	var/usage_buffer = 5 // each gun is different and will have a variation of this amount on how many uses it has.
+	var/uses = 100 // uses until this gun finally kicks the can
+
+	unique_save_vars = list("uses")
 
 /obj/item/weapon/gun/get_tax()
 	return WEAPONS_TAX
@@ -115,6 +118,9 @@
 		verbs -= /obj/item/weapon/gun/verb/remove_dna
 		verbs -= /obj/item/weapon/gun/verb/give_dna
 		verbs -= /obj/item/weapon/gun/verb/allow_dna
+
+	if(usage_buffer)
+		uses = pick( (uses - rand(0, usage_buffer)), (uses + rand(0, usage_buffer)) )
 
 /obj/item/weapon/gun/update_twohanding()
 	if(one_handed_penalty)
@@ -160,11 +166,16 @@
 		to_chat(user, "<span class='danger'>Fear sets in and you realise you're too scared to pull the trigger.</span>")
 		return 0
 
+	if(1 > uses)
+		to_chat(user, "<span class='danger'>\The [src]'s mechanism makes a faulty clicking noise.</span>")
+		playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
+		return 0
+
 	var/mob/living/M = user
 	if(dna_lock && attached_lock.stored_dna)
 		if(!authorized_user(user))
 			if(attached_lock.safety_level == 0)
-				M << "<span class='danger'>\The [src] buzzes in dissapoint and displays an invalid DNA symbol.</span>"
+				to_chat(M, "<span class='danger'>\The [src] buzzes in dissapoint and displays an invalid DNA symbol.</span>")
 				return 0
 			if(!attached_lock.exploding)
 				if(attached_lock.safety_level == 1)
@@ -563,6 +574,12 @@
 	if(recoil)
 		spawn()
 			shake_camera(user, recoil+1, recoil)
+
+	uses--
+
+	if(1 > uses)
+		to_chat(user, "<span class='warning'>You hear a breaking noise from \the [src]!</span>")
+
 	update_icon()
 
 
