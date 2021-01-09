@@ -1166,13 +1166,14 @@
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/stack/medical/bruise_pack = 2,/obj/item/stack/medical/ointment = 2,/obj/item/weapon/reagent_containers/hypospray/autoinjector = 4,/obj/item/device/healthanalyzer = 1)
+	products = list(/obj/item/stack/medical/bruise_pack = 2,/obj/item/stack/medical/ointment = 2,/obj/item/weapon/reagent_containers/hypospray/autoinjector = 4,/obj/item/device/healthanalyzer = 1, /obj/item/device/defib_kit/loaded = 5)
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/antitoxin = 4,/obj/item/weapon/reagent_containers/syringe/antiviral = 4,/obj/item/weapon/reagent_containers/pill/tox = 1)
 	req_log_access = access_cmo
 	has_logs = 1
 
 	charge_free_department = DEPT_HEALTHCARE
 	block_persistence = TRUE
+	req_access = list(access_medical)
 
 /obj/machinery/vending/wallmed1/gcch
 	vendor_department = DEPT_HEALTHCARE
@@ -1184,13 +1185,13 @@
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
 	products = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 10,/obj/item/weapon/reagent_containers/syringe/antitoxin = 10,/obj/item/stack/medical/bruise_pack = 10,
-					/obj/item/stack/medical/ointment = 10, /obj/item/device/healthanalyzer = 2)
+					/obj/item/stack/medical/ointment = 10, /obj/item/device/healthanalyzer = 2, /obj/item/device/defib_kit/loaded = 5)
 	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 3)
 	req_log_access = access_cmo
 	has_logs = 1
 
 	prices = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 15, /obj/item/weapon/reagent_containers/syringe/antitoxin = 10,/obj/item/stack/medical/bruise_pack = 15,
-					/obj/item/stack/medical/ointment = 15,/obj/item/device/healthanalyzer = 10)
+					/obj/item/stack/medical/ointment = 15,/obj/item/device/healthanalyzer = 10, /obj/item/device/defib_kit/loaded = 200)
 
 	vendor_department = DEPT_HEALTHCARE
 	block_persistence = FALSE
