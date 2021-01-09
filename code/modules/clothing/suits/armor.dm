@@ -213,15 +213,16 @@
 /obj/item/clothing/suit/armor/alien
 	name = "alien enhancement vest"
 	desc = "It's a strange piece of what appears to be armor. It looks very light and agile. Strangely enough it seems to have been designed for a humanoid shape."
-	description_info = "It has a 20% chance to completely nullify an incoming attack, and the wearer moves slightly faster."
+	description_info = "It has a 10% chance to absorb the kinetic energy of an attack. When the kinetic weave is overloaded, it will release a shockwave that knocks back everything within 2 meters."
 	icon_state = "alien_speed"
 	blood_overlay_type = "armor"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
-	slowdown = -1
+	slowdown = 0
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 50, bio = 0, rad = 40)
 	siemens_coefficient = 0.4
-	var/block_chance = 20
+	var/block_chance = 10
+	var/kinetic_charge = 0
 
 /obj/item/clothing/suit/armor/alien/tank
 	name = "alien protection suit"
@@ -235,9 +236,24 @@
 
 /obj/item/clothing/suit/armor/alien/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(prob(block_chance))
-		user.visible_message("<span class='danger'>\The [src] completely absorbs [attack_text]!</span>")
-		return TRUE
+		if(kinetic_charge >= 100)
+			var/turf/T = get_turf(user)
+			user.visible_message("<span class='danger'>\The [src] releases a kinetic charge!</span>")
+			shockwave(T, kinetic_charge)
+			return TRUE
+		else
+			user.visible_message("<span class='danger'>\The [src] completely absorbs [attack_text]!</span>")
+			kinetic_charge += damage/10
+			return TRUE
 	return FALSE
+
+/obj/item/clothing/suit/armor/alien/proc/shockwave(turf/T, kinetic_charge)
+	for(var/atom/movable/X in view(2))
+		if(istype(X, /obj/effect))
+			continue
+		if(X && !X.anchored)
+			X.throw_at(get_edge_target_turf(T, get_dir(T, X)), round(kinetic_charge/10), 1 + round(kinetic_charge/10))
+	return TRUE
 
 //Non-hardsuit ERT armor.
 /obj/item/clothing/suit/armor/vest/ert

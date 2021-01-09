@@ -91,7 +91,7 @@
 /datum/lot/proc/get_rent_after_tax(var/datum/tenant/T)
 	var/rent = get_rent(T)
 
-	return (rent - get_rent_tax_amount())
+	return (rent - get_rent_tax_amount(T))
 
 /datum/lot/proc/get_landlord_balance()
 	return landlord.get_balance()
@@ -254,4 +254,3 @@
 	tenants_wanted = FALSE
 
 	add_note(landlord.name, "Accepted [name]'s tenancy application for [applicant.name]",usr)
-	qdel(applicant)

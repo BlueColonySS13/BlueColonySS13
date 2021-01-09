@@ -77,7 +77,7 @@
 	// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
 
-	unique_save_vars = list("model")
+	unique_save_vars = list("model", "robotic", "damage", "preserved", "germ_level", "sabotaged")
 
 /obj/item/organ/external/Destroy()
 
@@ -1089,6 +1089,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 			R = basic_robolimb
 		if(R)
 			force_icon = R.icon
+			brute_mod *= R.robo_brute_mod
+			burn_mod *= R.robo_burn_mod
 			if(R.lifelike)
 				robotic = ORGAN_LIFELIKE
 				name = "[initial(name)]"

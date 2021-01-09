@@ -4,6 +4,7 @@
 	price = 100000
 	rent = 5
 	licenses = list(LICENSE_LANDLORD_COMMERCIAL)
+	max_tenants = 6
 
 /datum/lot/business/one
 	name = "Business Lot 1"
@@ -75,14 +76,25 @@
 	id = "bizlot10"
 	price = 120000
 	desc = "A very old lot that requires refurbishment - is it two floors and worth investment."
-	max_tenants = 4
+	max_tenants = 6
 	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
+
 /datum/lot/business/eleven
 	name = "Business Lot 11"
 	id = "bizlot11"
 	desc = "An old lot in need of refurbishment, is it currently in disrepair after the previous landowner's tenants used it for illegal purposes."
 	price = 90000
 	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
+	max_tenants = 6
+
+/datum/lot/business/twelve
+	name = "Business Lot 12"
+	id = "bizlot12"
+	price = 130000
+	desc = "A business lot located on the east side of the hospital, modern, unfurnished and medium sized and suitable for many uses.."
+	max_tenants = 6
+	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
+
 // shopping lots
 
 /datum/lot/shopping

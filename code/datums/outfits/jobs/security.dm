@@ -56,7 +56,8 @@
 	pda_type = /obj/item/device/pda/detective
 	backpack = /obj/item/weapon/storage/backpack
 	satchel_one = /obj/item/weapon/storage/backpack/satchel/norm
-	backpack_contents = list(/obj/item/weapon/storage/box/evidence = 1)
+	backpack_contents = list(/obj/item/weapon/storage/box/evidence = 1,
+	/obj/item/clothing/accessory/permit/gun/tier_four = 1)
 
 /decl/hierarchy/outfit/job/security/detective/forensic
 	name = OUTFIT_JOB_NAME("Forensic technician")

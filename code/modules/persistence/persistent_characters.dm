@@ -63,6 +63,24 @@
 	mind.prefs.nutrition = nutrition
 	mind.prefs.hydration = hydration
 
+	//ROBOLIMBS
+	for(var/limb in BP_ALL)
+		var/obj/item/organ/external/current_limb = organs_by_name[limb]
+
+		if(isnull(current_limb))
+			if((limb == "groin") || (limb == "head"))
+				//do nothing
+			else
+				mind.prefs.organ_data[limb] = "amputated"
+
+		else
+			if(current_limb.robotic)
+				if(istype(current_limb, /obj/item/organ/external/head))
+					if(!isSynthetic())
+						mind.prefs.organ_data[O_BRAIN] = "assisted"
+				mind.prefs.rlimb_data[current_limb.icon_name] = current_limb.model
+				mind.prefs.organ_data[current_limb.icon_name] = "cyborg"
+
 	if(police_record)
 		mind.prefs.crime_record = police_record.fields["crim_record"]
 		mind.prefs.sec_record = police_record.fields["notes"]

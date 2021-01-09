@@ -292,6 +292,42 @@
 	inhibitors = list("clonexadone" = 1) // Messes with cryox
 	result_amount = 2
 
+/datum/chemical_reaction/respirodaxon
+	name = "Respirodaxon"
+	id = "respirodaxon"
+	result = "respirodaxon"
+	required_reagents = list("dexalinp" = 2, "biomass" = 2, "phoron" = 1)
+	catalysts = list("phoron" = 5)
+	inhibitors = list("dexalin" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/gastirodaxon
+	name = "Gastirodaxon"
+	id = "gastirodaxon"
+	result = "gastirodaxon"
+	required_reagents = list("carthatoline" = 1, "biomass" = 2, "tungsten" = 2)
+	catalysts = list("phoron" = 5)
+	inhibitors = list("lithium" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/hepanephrodaxon
+	name = "Hepanephrodaxon"
+	id = "hepanephrodaxon"
+	result = "hepanephrodaxon"
+	required_reagents = list("carthatoline" = 2, "biomass" = 2, "lithium" = 1)
+	catalysts = list("phoron" = 5)
+	inhibitors = list("tungsten" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/cordradaxon
+	name = "Cordradaxon"
+	id = "cordradaxon"
+	result = "cordradaxon"
+	required_reagents = list("potassium_chlorophoride" = 1, "biomass" = 2, "bicaridine" = 2)
+	catalysts = list("phoron" = 5)
+	inhibitors = list("clonexadone" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/virus_food
 	name = "Virus Food"
 	id = "virusfood"

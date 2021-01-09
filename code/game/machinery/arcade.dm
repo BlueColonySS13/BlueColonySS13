@@ -125,6 +125,9 @@
 /obj/machinery/food_machine/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	var/obj/item/weapon/card/id/I = W.GetID()
 
+	if(!istype(W, /obj/item/weapon/reagent_containers/food/snacks/grown) || !istype(W,/obj/item/weapon/card/id) || !istype(W,/obj/item/weapon/spacecash/ewallet) || !istype(W,/obj/item/weapon/spacecash)) //i hate looking at this line
+		return
+
 	if(!owner_uid && I)
 		if(!I.unique_ID || !I.registered_name || !I.associated_account_number || !check_account_exists(I.associated_account_number))
 			visible_message("<span class='notice'>There is an issue with setting your ownership on this message, it could be due to a lack of details on the card like \

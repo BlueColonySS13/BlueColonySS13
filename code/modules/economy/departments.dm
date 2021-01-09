@@ -18,7 +18,7 @@
 	// paths of items types of what their department cards can buy (for heads)
 
 	var/allowed_buy_types = list()
-	var/card_spending_limit = 1500 // max you can spend from this card
+	var/card_spending_limit = 15000 // max you can spend from this card
 
 	var/max_bounties = 15
 

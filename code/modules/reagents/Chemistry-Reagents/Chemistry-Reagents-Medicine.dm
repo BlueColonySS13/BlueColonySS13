@@ -525,6 +525,133 @@
 					if(W.damage <= 0)
 						O.wounds -= W
 
+/datum/reagent/respirodaxon
+	name = "Respirodaxon"
+	id = "respirodaxon"
+	description = "Used to repair the tissue of the lungs and similar organs."
+	taste_description = "metallic"
+	reagent_state = LIQUID
+	color = "#4444FF"
+	metabolism = REM * 1.5
+	overdose = 10
+	overdose_mod = 1.75
+	scannable = 1
+
+/datum/reagent/respirodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/repair_strength = 1 * M.species.chem_strength_heal
+	if(alien == IS_SLIME)
+		repair_strength = 0.6
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		for(var/obj/item/organ/I in H.internal_organs)
+			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LUNGS, O_VOICE, O_GBLADDER)))
+				continue
+			if(I.damage > 0)
+				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				H.Confuse(2)
+		if(M.reagents.has_reagent("gastirodaxon") || M.reagents.has_reagent("peridaxon"))
+			if(H.losebreath >= 15 && prob(H.losebreath))
+				H.Stun(2)
+			else
+				H.losebreath = CLAMP(H.losebreath + 3, 0, 20)
+		else
+			H.losebreath = max(H.losebreath - 4, 0)
+
+/datum/reagent/gastirodaxon
+	name = "Gastirodaxon"
+	id = "gastirodaxon"
+	description = "Used to repair the tissues of the digestive system."
+	taste_description = "chalk"
+	reagent_state = LIQUID
+	color = "#8B4513"
+	metabolism = REM * 1.5
+	overdose = 10
+	overdose_mod = 1.75
+	scannable = 1
+
+/datum/reagent/gastirodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/repair_strength = 1 * M.species.chem_strength_heal
+	if(alien == IS_SLIME)
+		repair_strength = 0.6
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		for(var/obj/item/organ/I in H.internal_organs)
+			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_APPENDIX, O_STOMACH, O_INTESTINE, O_NUTRIENT, O_PLASMA, O_POLYP)))
+				continue
+			if(I.damage > 0)
+				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				H.Confuse(2)
+		if(M.reagents.has_reagent("hepanephrodaxon") || M.reagents.has_reagent("peridaxon"))
+			if(prob(10))
+				H.vomit(1)
+			else if(H.nutrition > 30)
+				M.adjust_nutrition(-removed * 30)
+		else
+			H.adjustToxLoss(-10 * removed) // Carthatoline based, considering cost.
+
+/datum/reagent/hepanephrodaxon
+	name = "Hepanephrodaxon"
+	id = "hepanephrodaxon"
+	description = "Used to repair the common tissues involved in filtration."
+	taste_description = "glue"
+	reagent_state = LIQUID
+	color = "#D2691E"
+	metabolism = REM * 1.5
+	overdose = 10
+	overdose_mod = 1.75
+	scannable = 1
+
+/datum/reagent/hepanephrodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/repair_strength = 1 * M.species.chem_strength_heal
+	if(alien == IS_SLIME)
+		repair_strength = 0.4
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		for(var/obj/item/organ/I in H.internal_organs)
+			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LIVER, O_KIDNEYS, O_APPENDIX, O_ACID, O_HIVE)))
+				continue
+			if(I.damage > 0)
+				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				H.Confuse(2)
+		if(M.reagents.has_reagent("cordradaxon") || M.reagents.has_reagent("peridaxon"))
+			if(prob(5))
+				H.vomit(1)
+			else if(prob(5))
+				to_chat(H, "<span class='danger'>Something churns inside you.</span>")
+				H.adjustToxLoss(10 * removed)
+				H.vomit(0, 1)
+		else
+			H.adjustToxLoss(-12 * removed) // Carthatoline based, considering cost.
+
+/datum/reagent/cordradaxon
+	name = "Cordradaxon"
+	id = "cordradaxon"
+	description = "Used to repair the specialized tissues involved in the circulatory system."
+	taste_description = "rust"
+	reagent_state = LIQUID
+	color = "#FF4444"
+	metabolism = REM * 1.5
+	overdose = 10
+	overdose_mod = 1.75
+	scannable = 1
+
+/datum/reagent/cordradaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/repair_strength = 1 * M.species.chem_strength_heal
+	if(alien == IS_SLIME)
+		repair_strength = 0.6
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		for(var/obj/item/organ/I in H.internal_organs)
+			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_HEART, O_SPLEEN, O_RESPONSE, O_ANCHOR, O_EGG)))
+				continue
+			if(I.damage > 0)
+				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				H.Confuse(2)
+		if(M.reagents.has_reagent("respirodaxon") || M.reagents.has_reagent("peridaxon"))
+			H.losebreath = CLAMP(H.losebreath + 1, 0, 10)
+		else
+			H.adjustOxyLoss(-30 * removed) // Deals with blood oxygenation.
+
 /datum/reagent/ryetalyn
 	name = "Ryetalyn"
 	id = "ryetalyn"
@@ -766,7 +893,7 @@
 
 /* Antidepressants */
 
-#define ANTIDEPRESSANT_MESSAGE_DELAY 5*60*10
+#define ANTIDEPRESSANT_MESSAGE_DELAY 50*60*100
 
 /datum/reagent/methylphenidate
 	name = "Methylphenidate"

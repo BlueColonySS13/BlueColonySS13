@@ -20,11 +20,11 @@
 /obj/item/weapon/stamp/hop
 	name = "city clerk's rubber stamp"
 	icon_state = "stamp-hop"
-	
+
 /obj/item/weapon/stamp/citysecretary
 	name = "city secretary's rubber stamp"
 	icon_state = "stamp-hop"
-	
+
 /obj/item/weapon/stamp/lawyer // for publicly funded lawyers only
 	name = "public attorney's rubber stamp"
 	icon_state = "stamp-hop"
@@ -36,7 +36,7 @@
 /obj/item/weapon/stamp/ward
 	name = "warden's rubber stamp"
 	icon_state = "stamp-ward"
-	
+
 /obj/item/weapon/stamp/prosecutor
 	name = "district prosecutor's rubber stamp"
 	icon_state = "stamp-ward"
@@ -72,7 +72,7 @@
 /obj/item/weapon/stamp/clown
 	name = "clown's rubber stamp"
 	icon_state = "stamp-clown"
-	
+
 /obj/item/weapon/stamp/highcourt
 	name = "high court rubber stamp"
 	icon_state = "stamp-intaff"
@@ -96,11 +96,11 @@
 /obj/item/weapon/stamp/centcomm
 	name = "\improper Nanotrasen Representative rubber stamp"
 	icon_state = "stamp-cent"
-	
+
 /obj/item/weapon/stamp/president
 	name = "president's rubber Stamp"
 	icon_state = "stamp-cent"
-	
+
 /obj/item/weapon/stamp/vicepresident
 	name = "vice President's rubber Stamp"
 	icon_state = "stamp-cent"
@@ -124,7 +124,7 @@
 /obj/item/weapon/stamp/advisorfinance
 	name = "advisor of finance's rubber Stamp"
 	icon_state = "stamp-cent"
-	
+
 /obj/item/weapon/stamp/governor
 	name = "governor's rubber Stamp"
 	icon_state = "stamp-cent"
@@ -140,15 +140,15 @@
 /obj/item/weapon/stamp/solgov
 	name = "\improper Sol Government rubber stamp"
 	icon_state = "stamp-sg"
-	
+
 /obj/item/weapon/stamp/solgovambassador
 	name = "\improper Sol Ambassador's rubber stamp"
 	icon_state = "stamp-sg"
-	
+
 /obj/item/weapon/stamp/androgov
 	name = "\improper Andromeda Government rubber stamp"
 	icon_state = "stamp-sg"
-	
+
 /obj/item/weapon/stamp/androgovambassador
 	name = "\improper Andromeda Ambassador's rubber stamp"
 	icon_state = "stamp-sg"
@@ -201,3 +201,8 @@
 		if(chosen_stamp)
 			name = chosen_stamp.name
 			icon_state = chosen_stamp.icon_state
+
+/obj/item/stamp/suicide_act(mob/user)
+	user.visible_message("<span class='suicide'>[user] stamps 'VOID' on their forehead, then promptly falls over, dead.</span>")
+	playsound(loc, 'sound/effects/stampicide.ogg', 60, TRUE)
+	return OXYLOSS

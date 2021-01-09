@@ -53,3 +53,40 @@ SUBSYSTEM_DEF(persistence)
 	var/datum/browser/popup = new(user, "admin_persistence", "Persistence Data")
 	popup.set_content(jointext(dat, null))
 	popup.open()
+
+
+// Persistent images.
+// Used for things like photos, and the Case DB. All files are `.png`.
+
+// Make sure `image_id` is unique or else images will be overwritten.
+
+// Saves an image file to disk outside of the cache, so it gets perserved.
+/datum/controller/subsystem/persistence/proc/save_image(image, image_id, image_directory)
+	var/full_path = "[image_directory][image_id].png"
+	var/icon/image_to_save = icon(image, dir = SOUTH, frame = 1)
+	fcopy(image_to_save, full_path)
+
+// Loads an image from disk to an icon object.
+// Avoid repeatively calling this if possible.
+/datum/controller/subsystem/persistence/proc/load_image(image_id, image_directory)
+	var/full_path = "[image_directory][image_id].png"
+	if(!fexists(full_path))
+		CRASH("Asked to load a nonexistent image file '[full_path]'.")
+	var/icon/loaded_image = icon(file(full_path))
+	return loaded_image
+
+
+
+// Deletes an image from disk.
+/datum/controller/subsystem/persistence/proc/delete_image(image_id, image_directory)
+	var/full_path = "[image_directory][image_id].png"
+	if(fexists(full_path))
+		fdel(full_path)
+		return TRUE
+	CRASH("Asked to delete a nonexistent image file '[full_path]'.") 
+
+// Checks if the full path actually exists.
+// Use if you're not sure if `load_image` or `delete_image` will succeed for whatever reason.
+/datum/controller/subsystem/persistence/proc/image_exists(image_id, image_directory)
+	var/full_path = "[image_directory][image_id].png"
+	return fexists(full_path)
