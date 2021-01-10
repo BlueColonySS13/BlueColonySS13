@@ -12,7 +12,7 @@
 	display_name = "implant, neural assistance web"
 	description = "A complex web implanted into the subject, medically in order to compensate for neurological disease."
 	path = /obj/item/weapon/implant/neural
-	cost = 1
+	cost = 0
 
 /datum/gear/cyberware/dud2
 	display_name = "implant, torso"

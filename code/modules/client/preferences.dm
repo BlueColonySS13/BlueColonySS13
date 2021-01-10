@@ -183,6 +183,8 @@ datum/preferences
 	var/savecharcooldown
 	var/loadcharcooldown
 
+	var/cyber_control = FALSE //Allows players to use cyberware on spawn
+
 /datum/preferences/New(client/C)
 	player_setup = new(src)
 	set_biological_gender(pick(MALE, FEMALE))

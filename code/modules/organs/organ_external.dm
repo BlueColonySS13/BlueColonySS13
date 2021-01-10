@@ -1145,6 +1145,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 	return 0
 
 /obj/item/organ/external/proc/is_usable()
+	if(robotic >= ORGAN_ROBOT && (owner.can_use_cyberware() == FALSE))
+		return FALSE
+
 	return !(status & (ORGAN_MUTATED|ORGAN_DEAD))
 
 /obj/item/organ/external/proc/is_malfunctioning()
