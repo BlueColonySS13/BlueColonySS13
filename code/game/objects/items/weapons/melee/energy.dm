@@ -1,16 +1,20 @@
 /obj/item/weapon/melee/energy
-	var/active = 0
-	var/active_force
-	var/active_throwforce
-	var/active_w_class
-	var/active_embed_chance = 0		//In the off chance one of these is supposed to embed, you can just tweak this var
-	sharp = 0
-	edge = 0
-	armor_penetration = 50
-	flags = NOBLOODY
-	var/lrange = 2
-	var/lpower = 2
-	var/lcolor = "#0099FF"
+    var/active = 0
+    var/active_force
+    var/active_throwforce
+    var/active_w_class
+    var/active_embed_chance = 0        //In the off chance one of these is supposed to embed, you can just tweak this var
+    sharp = 0
+    edge = 0
+    armor_penetration = 50
+    flags = NOBLOODY
+    var/lrange = 2
+    var/lpower = 2
+    var/lcolor = "#0099FF"
+    item_icons = list(
+            slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
+            slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+            )
 
 /obj/item/weapon/melee/energy/proc/activate(mob/living/user)
 	if(active)
@@ -71,6 +75,7 @@
 	name = "energy axe"
 	desc = "An energised battle axe."
 	icon_state = "axe0"
+	item_state = "axe0"
 	//active_force = 150 //holy...
 	active_force = 60
 	active_throwforce = 35
@@ -92,11 +97,13 @@
 /obj/item/weapon/melee/energy/axe/activate(mob/living/user)
 	..()
 	icon_state = "axe1"
+	item_state = "axe1"
 	to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
 
 /obj/item/weapon/melee/energy/axe/deactivate(mob/living/user)
 	..()
-	icon_state = initial(icon_state)
+	icon_state = "axe0"
+	item_state = "axe0"
 	to_chat(user, "<span class='notice'>\The [src] is de-energised. It's just a regular axe now.</span>")
 
 /obj/item/weapon/melee/energy/axe/suicide_act(mob/user)
@@ -112,6 +119,7 @@
 	name = "energy sword"
 	desc = "May the force be within you."
 	icon_state = "sword0"
+	item_state = "sword0"
 	active_force = 30
 	active_throwforce = 20
 	active_w_class = ITEMSIZE_LARGE
@@ -155,20 +163,22 @@
 	lcolor = "#800080"
 
 /obj/item/weapon/melee/energy/sword/activate(mob/living/user)
-	if(!active)
-		to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
+    if(!active)
+        to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
 
-	..()
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	icon_state = "[active_state][blade_color]"
+    ..()
+    attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+    icon_state = "[active_state][blade_color]"
+    item_state = "[active_state][blade_color]"
 
 
 /obj/item/weapon/melee/energy/sword/deactivate(mob/living/user)
-	if(active)
-		to_chat(user, "<span class='notice'>\The [src] deactivates!</span>")
-	..()
-	attack_verb = list()
-	icon_state = initial(icon_state)
+    if(active)
+        to_chat(user, "<span class='notice'>\The [src] deactivates!</span>")
+    ..()
+    attack_verb = list()
+    icon_state = "sword0"
+    item_state = "sword0"
 
 /obj/item/weapon/melee/energy/sword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(active && default_parry_check(user, attacker, damage_source) && prob(50))
@@ -185,10 +195,12 @@
 	name = "energy cutlass"
 	desc = "Arrrr matey."
 	icon_state = "cutlass0"
+	item_state = "cutlass0"
 
 /obj/item/weapon/melee/energy/sword/pirate/activate(mob/living/user)
 	..()
 	icon_state = "cutlass1"
+	item_state = "cutlass1"
 
 /*
  *Ionic Rapier
@@ -201,6 +213,7 @@
 	Striking a lesser robotic entity will compel it to attack you, as well.  It also does extra burn damage to robotic entities, but it does \
 	very little damage to purely organic targets."
 	icon_state = "ionic_rapier0"
+	item_state = "ionic_rapier0"
 	random_color = FALSE
 	active_force = 5
 	active_throwforce = 3
@@ -248,6 +261,7 @@
 	name = "energy blade"
 	desc = "A concentrated beam of energy in the shape of a blade. Very stylish... and lethal."
 	icon_state = "blade"
+	item_state = "blade"
 	force = 40 //Normal attacks deal very high damage - about the same as wielded fire axe
 	armor_penetration = 100
 	sharp = 1
@@ -306,6 +320,7 @@
  	name = "energy spear"
  	desc = "Concentrated energy forming a sharp tip at the end of a long rod."
  	icon_state = "espear0"
+ 	item_state = "espear0"
  	armor_penetration = 75
  	sharp = 1
  	edge = 1
@@ -315,11 +330,12 @@
  	throw_range = 11
  	reach = 2
  	w_class = ITEMSIZE_LARGE
+ 	flags = NOBLOODY
  	active_force = 25
  	active_throwforce = 30
  	active_w_class = ITEMSIZE_HUGE
  	var/random_color = TRUE
- 	var/tip_color = ""
+ 	var/tip_color
  	var/active_state = "espear"
 
 /obj/item/weapon/melee/energy/spear/New()
@@ -344,19 +360,20 @@
 	lcolor = "#800080"
 
 /obj/item/weapon/melee/energy/spear/activate(mob/living/user)
-	if(!active)
-		to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
-	..()
-	attack_verb = list("jabbed", "stabbed", "impaled")
-	icon_state = "[active_state]-[tip_color]"
-
+    if(!active)
+        to_chat(user, "<span class='notice'>\The [src] is now energised.</span>")
+    ..()
+    attack_verb = list("jabbed", "stabbed", "impaled")
+    icon_state = "[active_state]-[tip_color]"
+    item_state = "[active_state]-[tip_color]"
 
 /obj/item/weapon/melee/energy/spear/deactivate(mob/living/user)
-	if(active)
-		to_chat(user, "<span class='notice'>\The [src] deactivates!</span>")
-	..()
-	attack_verb = list("whacked", "beat", "slapped", "thonked")
-	icon_state = "espear0"
+    if(active)
+        to_chat(user, "<span class='notice'>\The [src] deactivates!</span>")
+    ..()
+    attack_verb = list("whacked", "beat", "slapped", "thonked")
+    icon_state = "espear0"
+    item_state = "espear0"
 
 /obj/item/weapon/melee/energy/spear/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(active && default_parry_check(user, attacker, damage_source) && prob(50))
