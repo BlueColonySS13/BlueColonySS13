@@ -167,6 +167,18 @@
 /proc/isLivingSSD(mob/living/M)
 	return istype(M) && !M.client || !M.key && M.stat != DEAD
 
+/mob/living/carbon/human/proc/can_use_cyberware()
+	if(isSynthetic())
+		return TRUE
+
+	else
+		var/obj/item/organ/external/H = organs_by_name["head"]
+
+		if(locate(/obj/item/weapon/implant/neural) in H.contents)
+			return TRUE
+		else
+			return FALSE
+
 #undef HUMAN_EATING_NO_ISSUE
 #undef HUMAN_EATING_NO_MOUTH
 #undef HUMAN_EATING_BLOCKED_MOUTH

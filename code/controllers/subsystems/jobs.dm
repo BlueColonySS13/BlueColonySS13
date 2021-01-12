@@ -473,6 +473,12 @@ SUBSYSTEM_DEF(jobs)
 		if(job.title != "Cyborg" && job.title != "AI")
 			H.equip_post_job()
 
+		//Robolimb Control
+		if(H.client.prefs.cyber_control)
+			var/obj/item/weapon/implant/neural/N = new /obj/item/weapon/implant/neural
+			N.invisibility = 100
+			N.implant_loadout(H)
+
 		//If some custom items could not be equipped before, try again now.
 		for(var/thing in custom_equip_leftovers)
 			var/datum/gear/G = gear_datums[thing]

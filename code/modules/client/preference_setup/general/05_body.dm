@@ -44,6 +44,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["synth_blue"]			>> pref.b_synth
 	pref.preview_icon = null
 	S["bgstate"]			>> pref.bgstate
+	S["cyber_control"]		>> pref.cyber_control
 
 /datum/category_item/player_setup_item/general/body/save_character(var/savefile/S)
 	S["species"]			<< pref.species
@@ -78,6 +79,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["synth_green"]		<< pref.g_synth
 	S["synth_blue"]			<< pref.b_synth
 	S["bgstate"]			<< pref.bgstate
+	S["cyber_control"]		<< pref.cyber_control
 
 /datum/category_item/player_setup_item/general/body/delete_character(var/savefile/S)
 	pref.species = null
@@ -113,6 +115,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.weight = null
 	pref.hydration = initial(pref.hydration)
 	pref.nutrition = initial(pref.nutrition)
+	pref.cyber_control = null
 
 /datum/category_item/player_setup_item/general/body/sanitize_character(var/savefile/S)
 	if(!pref.species || !(pref.species in playable_species))
@@ -148,6 +151,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else pref.body_markings &= body_marking_styles_list
 	if(!pref.bgstate || !(pref.bgstate in pref.bgstate_options))
 		pref.bgstate = "000"
+
+	pref.cyber_control	= sanitize_integer(pref.cyber_control, initial(pref.cyber_control))
 
 // Moved from /datum/preferences/proc/copy_to()
 /datum/category_item/player_setup_item/general/body/copy_to_mob(var/mob/living/carbon/human/character)
@@ -380,6 +385,13 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		. += "\[...\]<br><br>"
 	else
 		. += "<br><br>"
+
+	if(LAZYLEN(pref.rlimb_data) && !pref.is_synth())
+		. += "<div class='notice'><b>Warning: A neural framework implant is required to use cybernetic limbs.</b> If you do not have one installed prior to saving your \
+		character, you WILL not be able to control cybernetic limbs, putting you at a significant disadvantage depending on the affected \
+		limbs. You will have to receive an implant during gameplay to use your cybernetic limbs in the future.</div><br>"
+		. += "<b>Neural Framework Implant Installed: </b><br>"
+		. += "<a href='?src=\ref[src];cyber_control=[pref.cyber_control]'><b>[pref.cyber_control ? "Yes" : "No"]</b></a><br>"
 
 	if(pref.is_synth())
 		. += "<div class='notice'><b>Warning:</b> You are playing a <b>synthetic</b>. In this universe, synthetics are limited rights and are not \
@@ -855,6 +867,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["disabilities"])
 		var/disability_flag = text2num(href_list["disabilities"])
 		pref.disabilities ^= disability_flag
+		return TOPIC_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["cyber_control"])
+		pref.cyber_control = !pref.cyber_control
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["toggle_preview_value"])
