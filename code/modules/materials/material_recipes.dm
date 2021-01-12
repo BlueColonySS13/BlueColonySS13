@@ -262,6 +262,7 @@
 		new/datum/stack_recipe("rolling pin", 		/obj/item/weapon/material/kitchen/rollingpin, 	2, time = 5, supplied_material = "[name]"),\
 		new/datum/stack_recipe("gavel hammer", 		/obj/item/weapon/gavelhammer, 							2, time = 5),\
 		new/datum/stack_recipe("gavel block", 		/obj/item/weapon/gavelblock, 							2, time = 3),\
+		new/datum/stack_recipe("fishing rod",		/obj/item/weapon/material/fishing_rod, 2, time = 5, supplied_material = "[name]"),\
 		))
 
 /material/wood/ebony/generate_recipes()
