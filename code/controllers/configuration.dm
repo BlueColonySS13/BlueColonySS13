@@ -280,7 +280,7 @@ var/list/gamemode_cache = list()
 	// can antagonists join from the lobby?
 	var/allow_lobby_antagonists = FALSE
 
-	var/defib_timer = 10 // How long until someone can't be defibbed anymore, in minutes.
+	var/defib_timer = 30 // How long until someone can't be defibbed anymore, in minutes.
 	var/defib_braindamage_timer = 2 // How long until someone will get brain damage when defibbed, in minutes. The closer to the end of the above timer, the more brain damage they get.
 
 
