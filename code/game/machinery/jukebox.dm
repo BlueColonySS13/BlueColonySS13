@@ -61,7 +61,7 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("The Man Who Sold the World", 'sound/music/disco/The Man Who Sold the World.ogg'),
 		new/datum/track("Space Oddity", 'sound/music/disco/Space Oddity.ogg'),
 		new/datum/track("The Place Where There Is No Darkness", 'sound/music/disco/The Place Where There Is No Darkness.ogg'),
-		new/datum/track("Hikings Song", 'sound/music/disco/The Hiking Song.ogg'),
+		new/datum/track("Hikings Song", 'sound/music/disco/1984 The Hiking Song.ogg'),
 		new/datum/track("Duel of the Fates", 'sound/music/disco/Duel of the Fates.ogg'),
 		new/datum/track("The Bounty Hunter", 'sound/music/disco/The Mandalorian OST - Main Theme.ogg'),
 		new/datum/track("The Rebel Path", 'sound/music/disco/The Rebel Path.ogg'),
