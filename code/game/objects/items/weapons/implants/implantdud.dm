@@ -77,7 +77,7 @@ Implant Specifics:<BR>"}
 <b>Important Notes:</b> None<BR>
 <HR>
 <b>Implant Details:</b> <BR>
-<b>Function:</b> Maintains some function or structure of the target's brain.<BR>
+<b>Function:</b> Maintains some function or structure of the target's brain. Also aids in the adaptation to and continued usage of cyberware and other augmentations.<BR>
 <b>Special Features:</b><BR>
 <i>Neuro-Safe</i>- Specialized shell absorbs excess voltages self-destructing the chip if
 a malfunction occurs thereby attempting to secure the safety of subject.<BR>

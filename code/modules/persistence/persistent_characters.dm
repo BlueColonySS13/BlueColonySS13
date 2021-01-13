@@ -67,12 +67,17 @@
 	for(var/limb in BP_ALL)
 		var/obj/item/organ/external/current_limb = organs_by_name[limb]
 
+		if(limb == "head")
+			//check for neural framework implant
+			if(!mind.prefs.cyber_control)
+				if(current_limb.contents.Find(/obj/item/weapon/implant/neural)) //If one was added during this round, save it
+					mind.prefs.cyber_control = TRUE
+
 		if(isnull(current_limb))
 			if((limb == "groin") || (limb == "head"))
 				//do nothing
 			else
 				mind.prefs.organ_data[limb] = "amputated"
-
 		else
 			if(current_limb.robotic)
 				if(istype(current_limb, /obj/item/organ/external/head))

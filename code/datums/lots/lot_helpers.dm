@@ -135,6 +135,7 @@
 
 	tenants -= tenant
 	QDEL_NULL(tenant)
+	listclearnulls(tenants)
 
 	return TRUE
 
@@ -215,6 +216,7 @@
 
 	applied_tenants -= applicant
 	QDEL_NULL(applicant)
+	listclearnulls(applied_tenants)
 
 /datum/lot/proc/get_applicant_by_uid(uid)
 	for(var/datum/tenant/applicant in applied_tenants)

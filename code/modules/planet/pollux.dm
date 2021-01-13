@@ -7,7 +7,7 @@ var/datum/planet/pollux/planet_pollux = null
 	name = "Pollux"
 	desc = "Pollux is a terrestrial planet in the Vir system. It is somewhat earth-like, in that it has oceans, a \
 	breathable atmosphere, a magnetic field, weather, and similar gravity to Earth. It is currently the capital planet of Vetra. \
-	Its center of government is the equatorial city and site of first settlement, Geminus Cit." // Ripped straight from the wiki.
+	Its center of government is the equatorial city and site of first settlement, Geminus City." // Ripped straight from the wiki.
 	current_time = new /datum/time/pollux() // 32 hour clocks are nice.
 //	expected_z_levels = list(1) // To be changed when real map is finished.
 	planetary_wall_type = /turf/unsimulated/wall/planetary/pollux
@@ -127,6 +127,7 @@ var/datum/planet/pollux/planet_pollux = null
 		WEATHER_CARPFALL 	= new /datum/weather/pollux/carpfall(),
 		WEATHER_CARPNADO 	= new /datum/weather/pollux/carpnado(),
 		WEATHER_BLOOD_MOON	= new /datum/weather/pollux/blood_moon(),
+		WEATHER_EARTHQUAKE	= new /datum/weather/pollux/earthquake(),
 //		WEATHER_EMBERFALL	= new /datum/weather/pollux/emberfall(),
 //		WEATHER_ASH_STORM	= new /datum/weather/pollux/ash_storm(),
 //		WEATHER_FALLOUT	= new /datum/weather/pollux/fallout()
@@ -378,6 +379,51 @@ var/datum/planet/pollux/planet_pollux = null
 	var/turf/T = pick(holder.our_planet.planet_floors) // This has the chance to 'strike' the sky, but that might be a good thing, to scare reckless pilots.
 	lightning_strike(T)
 
+/datum/weather/pollux/earthquake
+	name = "earthquake"
+	wind_high = 4
+	wind_low = 2
+	flight_failure_modifier = 10
+	observed_message = "The ground begins to shake and trumble."
+	effect_message = "<span class='warning'>You feel the ground beneath you quake!</span>"
+
+	transition_messages = list(
+		"Everything around you is shaking!",
+		"A loud roar comes from the ground below you!",
+		"The floor appears to be moving!"
+	)
+
+
+	transition_chances = list(
+		WEATHER_OVERCAST = 50,
+		WEATHER_RAIN = 30,
+		WEATHER_STORM = 20,
+		)
+
+	var/earthquake_min_intensity = 3
+	var/earthquake_max_intensity = 10
+
+	var/earthquake_level = 5 // randomly picked from min/max
+	var/throw_chance = 7
+
+/datum/weather/pollux/earthquake/New()
+	..()
+	earthquake_level = rand(earthquake_min_intensity, earthquake_max_intensity)
+
+/datum/weather/pollux/earthquake/process_effects()
+	..()
+	for(var/mob/living/L in living_mob_list)
+		if(L.z in holder.our_planet.expected_z_levels)
+			shake_camera(L, earthquake_level, 3)
+
+			if((earthquake_level > 4) && !L.lying && prob(throw_chance)) // now and then randomly yeet people standing up lol
+				L.throw_at(get_edge_target_turf(L, pick(alldirs)), 8, 1, L)
+				L.Weaken(5)
+
+			CHECK_TICK
+
+
+
 /datum/weather/pollux/hail
 	name = "hail"
 	icon_state = "hail"
@@ -595,7 +641,7 @@ var/datum/planet/pollux/planet_pollux = null
 	flight_failure_modifier = 10
 
 	transition_chances = list(
-		WEATHER_RADSTORM = 100,
+		WEATHER_ACID_RAIN = 100,
 		)
 
 	observed_message = "A cloud of intense radiation passes through the area, it drapes the air."

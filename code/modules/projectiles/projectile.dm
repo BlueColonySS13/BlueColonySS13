@@ -422,6 +422,7 @@
 	yo = null
 	xo = null
 	var/result = 0 //To pass the message back to the gun.
+	var/atom/movable/result_ref = null // The thing that got hit that made the check return true.
 
 /obj/item/projectile/test/Bump(atom/A as mob|obj|turf|area, forced=0)
 	if(A == firer)
@@ -440,6 +441,7 @@
 		if(!S.anchored)
 			return
 	if(istype(A, /mob/living) || istype(A, /obj/mecha) || istype(A, /obj/vehicle))
+		result_ref = A
 		result = 2 //We hit someone, return 1!
 		return
 	result = 1
@@ -460,7 +462,8 @@
 /obj/item/projectile/test/process(var/turf/targloc)
 	while(src) //Loop on through!
 		if(result)
-			return (result - 1)
+			return result_ref
+		//	return (result - 1)
 		if((!( targloc ) || loc == targloc))
 			targloc = locate(min(max(x + xo, 1), world.maxx), min(max(y + yo, 1), world.maxy), z) //Finding the target turf at map edge
 
@@ -471,11 +474,13 @@
 
 		var/mob/living/M = locate() in get_turf(src)
 		if(istype(M)) //If there is someting living...
-			return 1 //Return 1
+			result_ref = M
+			return result_ref //Return 1
 		else
 			M = locate() in get_step(src,targloc)
 			if(istype(M))
-				return 1
+				result_ref = M
+				return result_ref
 
 //Helper proc to check if you can hit them or not.
 /proc/check_trajectory(atom/target as mob|obj, atom/firer as mob|obj, var/pass_flags=PASSTABLE|PASSGLASS|PASSGRILLE, flags=null)

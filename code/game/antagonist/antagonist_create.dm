@@ -97,6 +97,10 @@
 	return code
 
 /datum/antagonist/proc/greet(var/datum/mind/player)
+	// Makes it harder to miss if you're alt-tabbed or not paying attention.
+	if(antag_sound)
+		SEND_SOUND(player.current, sound(antag_sound))
+	window_flash(player.current.client)
 
 	// Basic intro text.
 	player.current << "<span class='danger'><font size=3>You are a [role_text]!</font></span>"

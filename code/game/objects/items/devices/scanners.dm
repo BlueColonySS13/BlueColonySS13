@@ -32,15 +32,15 @@ HALOGEN COUNTER	- Radcount on mobs
 		verbs += /obj/item/device/healthanalyzer/proc/toggle_adv
 	..()
 
-	
+
 /obj/item/device/healthanalyzer/do_surgery(mob/living/carbon/human/M, mob/living/user)
 	var/obj/item/organ/external/S = M.get_organ(user.zone_sel.selecting)
 	if(S.open)
 		return ..()
-		
+
 	else
 		scan_mob(M, user)
-	
+
 
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
 	scan_mob(M, user)
@@ -415,25 +415,29 @@ HALOGEN COUNTER	- Radcount on mobs
 	var/details = 0
 	var/recent_fail = 0
 
-/obj/item/device/reagent_scanner/afterattack(obj/O, mob/user as mob, proximity)
+/obj/item/device/reagent_scanner/afterattack(obj/O, mob/living/user, proximity)
 	if(!proximity || user.stat || !istype(O))
 		return
-	if (!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+
+	if(!istype(user))
 		return
 
 	if(!isnull(O.reagents))
+		if(!(O.flags & OPENCONTAINER)) // The idea is that the scanner has to touch the reagents somehow. This is done to prevent cheesing unidentified autoinjectors.
+			to_chat(user, span("warning", "\The [O] is sealed, and cannot be scanned by \the [src] until unsealed."))
+			return
+
 		var/dat = ""
 		if(O.reagents.reagent_list.len > 0)
 			var/one_percent = O.reagents.total_volume / 100
 			for (var/datum/reagent/R in O.reagents.reagent_list)
-				dat += "\n \t <span class='notice'>[R][details ? ": [R.volume / one_percent]%" : ""]</span>"
+				dat += "\n \t " + span("notice", "[R][details ? ": [R.volume / one_percent]%" : ""]")
 		if(dat)
-			to_chat(user, "<span class='notice'>Chemicals found: [dat]</span>")
+			to_chat(user, span("notice", "Chemicals found: [dat]</span>"))
 		else
-			to_chat(user, "<span class='notice'>No active chemical agents found in [O].</span>")
+			to_chat(user, span("notice", "No active chemical agents found in [O]."))
 	else
-		to_chat(user, "<span class='notice'>No significant chemical agents found in [O].</span>")
+		to_chat(user, span("notice", "No significant chemical agents found in [O]."))
 
 	return
 

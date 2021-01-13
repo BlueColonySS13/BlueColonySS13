@@ -581,6 +581,14 @@ other types of metals and chemistry for reagents).
 	protected = TRUE
 	price = 500
 
+/datum/design/item/implant/neural
+	name = "neural"
+	id = "implant_neural"
+	req_tech = list(TECH_BIO = 3, TECH_DATA = 3)
+	build_path = /obj/item/weapon/implant/neural
+	sort_string = "MFAAC"
+	price = 750
+
 /datum/design/item/weapon/AssembleDesignName()
 	..()
 	name = "Weapon prototype ([item_name])"

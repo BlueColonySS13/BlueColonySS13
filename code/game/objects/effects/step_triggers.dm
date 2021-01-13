@@ -194,7 +194,7 @@ var/global/list/tele_landmarks = list() // Terrible, but the alternative is loop
 		if(isliving(A))
 			message_admins("\The [A] fell out of the sky.")
 		// ... because they're probably going to die from it.
-		A.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
+		A.fall_impact(T, 60, 100, FALSE, TRUE)	//You will not be defibbed from this.
 	else
 		message_admins("ERROR: planetary_fall step trigger lacks a planet to fall onto.")
 		return

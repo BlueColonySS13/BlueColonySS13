@@ -53,7 +53,7 @@
 /turf/simulated/floor/carpet/tealcarpet
 	name = "teal carpet"
 	icon_state = "tealcarpet"
-	initial_flooring = /decl/flooring/carpet/oracarpet
+	initial_flooring = /decl/flooring/carpet/tealcarpet
 
 /turf/simulated/floor/carpet/blackcarpet
 	name = "black carpet"

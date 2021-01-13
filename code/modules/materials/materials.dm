@@ -837,6 +837,7 @@ var/list/name_to_material
 	sheet_singular_name = "gem"
 	sheet_plural_name = "gems"
 	worth = 25
+	icon_colour = "#292929"
 
 /material/painite
 	name = "painite"
@@ -848,6 +849,7 @@ var/list/name_to_material
 	sheet_singular_name = "gem"
 	sheet_plural_name = "gems"
 	worth = 10
+	icon_colour = COLOR_NT_RED
 
 /material/tin
 	name = "tin"
@@ -857,6 +859,7 @@ var/list/name_to_material
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	worth = 1.2
+	icon_colour = COLOR_WHITE
 
 /material/copper
 	name = "copper"
@@ -867,6 +870,7 @@ var/list/name_to_material
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	worth = 1.2
+	icon_colour = COLOR_DARK_BROWN
 
 /material/quartz
 	name = "quartz"
@@ -877,6 +881,16 @@ var/list/name_to_material
 	sheet_singular_name = "crystal"
 	sheet_plural_name = "crystals"
 	worth = 4
+	icon_colour = COLOR_WHITE
+
+/material/quartz/rose_quartz
+	name = "rose quartz"
+	display_name = "rose quartz"
+	use_name = "rose quartz"
+	worth = 7
+	stack_type = /obj/item/stack/material/quartz/rose_quartz
+
+	icon_colour = "#e3a3a3"
 
 /material/aluminium
 	name = "aluminium"
@@ -886,3 +900,4 @@ var/list/name_to_material
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 	worth = 1.2
+	icon_colour = COLOR_GRAY

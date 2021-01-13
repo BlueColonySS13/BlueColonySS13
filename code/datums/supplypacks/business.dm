@@ -88,7 +88,7 @@
 	contains = list(/obj/item/weapon/circuitboard/trade_machine)
 	name = "Auto-Commerce Machine"
 	cost = 2000
-	containertype = /obj/structure/closet/crate
+	containertype = /obj/structure/largecrate
 	containername = "Auto-Commerce Machine"
 
 
@@ -96,7 +96,7 @@
 	contains = list(/obj/machinery/lot_security_system/factory_ordered)
 	name = "Z.E.U.S. Security System" // 'Security System' is redundant since the S in the name stands for security, but it needs to be obvious in the menu.
 	cost = 10000
-	containertype = /obj/structure/closet/crate
+	containertype = /obj/structure/largecrate
 	containername = "Z.E.U.S. System"
 
 /datum/supply_pack/business/security_system_charge
@@ -115,3 +115,45 @@
 	contains = list(/obj/item/weapon/lot_security_charge/ten)
 	name = "Z.E.U.S. Charge (10x)"
 	cost = 1000
+
+/datum/supply_pack/business/stackholder_metals
+	contains = list(/obj/structure/stack_holder/metals)
+	name = "Solid Metals Holder"
+	cost = 1000
+	containertype = /obj/structure/largecrate
+	containername = "Solid Metals Holder"
+
+/datum/supply_pack/business/stackholder_gems
+	contains = list(/obj/structure/stack_holder/gem)
+	name = "Gemstones Cabinet"
+	cost = 1000
+	containertype = /obj/structure/largecrate
+	containername = "Precious Gems and Stones Cabinet"
+
+/datum/supply_pack/business/stackholder_refined
+	contains = list(/obj/structure/stack_holder/refined)
+	name = "Refined Materials Holder"
+	cost = 1000
+	containertype = /obj/structure/largecrate
+	containername = "Refined Materials Holder"
+
+/datum/supply_pack/business/stackholder_fabric
+	contains = list(/obj/structure/stack_holder/fabric)
+	name = "Fabrics Storage Unit"
+	cost = 1000
+	containertype = /obj/structure/largecrate
+	containername = "Fabrics Storage Unit"
+
+/datum/supply_pack/business/stackholder_tiles
+	contains = list(/obj/structure/stack_holder/tiles)
+	name = "Tiles Storage"
+	cost = 1000
+	containertype = /obj/structure/largecrate
+	containername = "Tiles Storage"
+
+/datum/supply_pack/business/stackholder_cabinet
+	contains = list(/obj/structure/stack_holder/medical)
+	name = "Medical Cabinet"
+	cost = 1000
+	containertype = /obj/structure/largecrate
+	containername = "Medical Cabinet"

@@ -3,6 +3,7 @@ var/datum/antagonist/traitor/traitors
 // Inherits most of its vars from the base datum.
 /datum/antagonist/traitor
 	id = MODE_TRAITOR
+	antag_sound = 'sound/effects/antag_notice/traitor_alert.ogg'
 	protected_jobs = list("Prisoner", "Police Officer", "Prison Warden", "Detective", "Judge", "Chief of Police", "Mayor")
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	restricted_jobs = list("Prisoner", "AI", "Cyborg","Mayor","City Clerk", "Chief of Police","Police Officer",\

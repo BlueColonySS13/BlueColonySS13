@@ -186,3 +186,7 @@
 /obj/fiftyspawner/quartz
 	name = "stack of quartz"
 	type_to_spawn = /obj/item/stack/material/quartz
+
+/obj/fiftyspawner/quartz/rose_quartz
+	name = "stack of rose quartz"
+	type_to_spawn = /obj/item/stack/material/quartz/rose_quartz
