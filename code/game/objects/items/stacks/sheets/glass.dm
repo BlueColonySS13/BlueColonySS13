@@ -19,6 +19,8 @@
 
 	stack_color = GLASS_COLOR
 
+	stacktype = /obj/item/stack/material/glass
+
 /obj/item/stack/material/glass/attack_self(mob/user as mob)
 	list_recipes(user)
 
@@ -113,6 +115,7 @@
 	icon_state = "sheet-rglass"
 	default_type = "reinforced glass"
 	is_reinforced = 1
+	stacktype = /obj/item/stack/material/glass/reinforced
 
 /*
  * Phoron Glass sheets
@@ -124,6 +127,8 @@
 	associated_reagents = list("phoron")
 
 	stack_color = COLOR_PHORON
+
+	stacktype = /obj/item/stack/material/glass/phoronglass
 
 /obj/item/stack/material/glass/phoronglass/attackby(obj/item/W, mob/user)
 	..()
@@ -153,3 +158,5 @@
 	is_reinforced = 1
 	associated_reagents = list("phoron")
 	stack_color = COLOR_PHORON
+
+	stacktype = /obj/item/stack/material/glass/phoronrglass
