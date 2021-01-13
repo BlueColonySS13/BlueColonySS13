@@ -271,6 +271,7 @@
 	name = "mahogany plank"
 	default_type = MATERIAL_MAHOGANY
 	stack_color = WOOD_COLOR_RICH
+	stacktype = /obj/item/stack/material/wood/mahogany
 
 /obj/item/stack/material/wood/mahogany/ten
 	amount = 10
@@ -282,6 +283,7 @@
 	name = "maple plank"
 	default_type = MATERIAL_MAPLE
 	stack_color = WOOD_COLOR_PALE
+	stacktype = /obj/item/stack/material/wood/maple
 
 /obj/item/stack/material/wood/maple/ten
 	amount = 10
@@ -293,6 +295,7 @@
 	name = "ebony plank"
 	default_type = MATERIAL_EBONY
 	stack_color = WOOD_COLOR_BLACK
+	stacktype = /obj/item/stack/material/wood/ebony
 
 /obj/item/stack/material/wood/ebony/ten
 	amount = 10
@@ -304,6 +307,7 @@
 	name = "walnut plank"
 	default_type = MATERIAL_WALNUT
 	stack_color = WOOD_COLOR_CHOCOLATE
+	stacktype = /obj/item/stack/material/wood/walnut
 
 /obj/item/stack/material/wood/walnut/ten
 	amount = 10
@@ -315,6 +319,7 @@
 	name = "bamboo plank"
 	default_type = MATERIAL_BAMBOO
 	stack_color = WOOD_COLOR_PALE2
+	stacktype = /obj/item/stack/material/wood/bamboo
 
 /obj/item/stack/material/wood/bamboo/ten
 	amount = 10
@@ -326,6 +331,7 @@
 	name = "yew plank"
 	default_type = MATERIAL_YEW
 	stack_color = WOOD_COLOR_YELLOW
+	stacktype = /obj/item/stack/material/wood/yew
 
 /obj/item/stack/material/wood/yew/ten
 	amount = 10
@@ -337,6 +343,7 @@
 	name = "alien wooden plank"
 	default_type = MAT_SIFWOOD
 	stack_color = "#0099cc"
+	stacktype = /obj/item/stack/material/wood/sif
 
 /obj/item/stack/material/log
 	name = "log"

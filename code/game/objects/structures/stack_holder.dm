@@ -101,6 +101,7 @@
 	/obj/item/stack/material/wool,
 	/obj/item/stack/material/polychromatic_thread,
 	/obj/item/stack/material/animalhide,
+	/obj/item/stack/material/hairlesshide,
 
 	)
 
@@ -329,7 +330,7 @@
 				var/S = text2path(href_list["stack"])
 				var/amount = text2num(href_list["amount"])
 
-				if(!S in stacks_held || !amount)
+				if(!(S in stacks_held) || !amount)
 					return
 
 				if(trigger_lot_security_system(usr, /datum/lot_security_option/theft, "Attempted to remove items from \the [src]."))
