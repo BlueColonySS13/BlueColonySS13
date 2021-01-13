@@ -401,10 +401,10 @@ var/datum/planet/pollux/planet_pollux = null
 		)
 
 	var/earthquake_min_intensity = 3
-	var/earthquake_max_intensity = 15
+	var/earthquake_max_intensity = 10
 
 	var/earthquake_level = 5 // randomly picked from min/max
-	var/throw_chance = 10
+	var/throw_chance = 7
 
 /datum/weather/pollux/earthquake/New()
 	..()
@@ -416,7 +416,7 @@ var/datum/planet/pollux/planet_pollux = null
 		if(L.z in holder.our_planet.expected_z_levels)
 			shake_camera(L, earthquake_level, 3)
 
-			if(!L.lying && prob(throw_chance)) // now and then randomly yeet people standing up lol
+			if((earthquake_level > 4) !L.lying && prob(throw_chance)) // now and then randomly yeet people standing up lol
 				L.throw_at(get_edge_target_turf(L, pick(alldirs)), 8, 1, L)
 				L.Weaken(5)
 
