@@ -118,6 +118,12 @@
 	icon_state = "ore_quartz"
 	material = "quartz"
 
+/obj/item/weapon/ore/quartz/rose_quartz
+	name = "raw rose quartz"
+	icon_state = "ore_quartz"
+	material = "rose quartz"
+
+
 /obj/item/weapon/ore/New()
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8

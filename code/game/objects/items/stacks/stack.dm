@@ -34,7 +34,7 @@
 /obj/item/stack/on_persistence_load()
 	if(0 > amount)
 		amount = 1
-		
+
 	update_icon()
 
 /obj/item/stack/New(var/loc, var/amount=null)
@@ -45,6 +45,9 @@
 		src.amount = amount
 	if(stack_color)
 		color = stack_color
+
+	if(!stacktype)
+		stacktype = type
 	update_icon()
 	return
 
@@ -367,7 +370,7 @@
 /obj/item/stack/attack_hand(mob/user as mob)
 	if (user.get_inactive_hand() == src)
 		var/N = input("How many stacks of [src] would you like to split off?  There are currently [amount].", "Split stacks", 1) as num|null
-		
+
 		if(!N || (0 > N) || (N > amount))
 			return
 

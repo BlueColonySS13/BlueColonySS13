@@ -163,6 +163,12 @@ var/global/list/ore_data = list()
 	ore = /obj/item/weapon/ore/quartz
 	scan_icon = "mineral_common"
 
+/ore/quartz/rose_quartz
+	display_name = "unrefined rose quartz"
+	compresses_to = "rose quartz"
+	ore = /obj/item/weapon/ore/quartz/rose_quartz
+	scan_icon = "mineral_rare"
+
 /ore/bauxite
 	name = "bauxite"
 	display_name = "bauxite"

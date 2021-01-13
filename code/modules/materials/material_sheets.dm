@@ -31,7 +31,7 @@
 		return 0
 
 	recipes = material.get_recipes()
-	stacktype = material.stack_type
+
 	if(islist(material.stack_origin_tech))
 		origin_tech = material.stack_origin_tech.Copy()
 
@@ -40,6 +40,9 @@
 
 	if(material.conductive)
 		flags |= CONDUCT
+
+	if (!stacktype)
+		stacktype = material.stack_type
 
 	matter = material.get_matter()
 	update_strings()
@@ -143,6 +146,7 @@
 	default_type = "phoron"
 	no_variants = FALSE
 	associated_reagents = list("phoron")
+	stacktype = /obj/item/stack/material/phoron
 
 /obj/item/stack/material/plastic
 	name = "plastic"
@@ -154,6 +158,7 @@
 	drop_sound = 'sound/items/drop/boots.ogg'
 	associated_reagents = list("silicon")
 	dyeable = TRUE
+	stacktype = /obj/item/stack/material/plastic
 
 /obj/item/stack/material/gold
 	name = "gold"
@@ -223,6 +228,7 @@
 	associated_reagents = list("iron")
 
 	stack_color = COLOR_GRAY40
+	stacktype = /obj/item/stack/material/steel
 
 /obj/item/stack/material/plasteel
 	name = "plasteel"
@@ -232,6 +238,7 @@
 	associated_reagents = list("iron", "carbon", "platinum")
 
 	stack_color = COLOR_GRAY40
+	stacktype = /obj/item/stack/material/plasteel
 
 /obj/item/stack/material/durasteel
 	name = "durasteel"
@@ -252,6 +259,7 @@
 	associated_reagents = list("woodpulp")
 	stack_color = WOOD_COLOR_GENERIC
 	no_variants = FALSE
+	stacktype = /obj/item/stack/material/wood
 
 /obj/item/stack/material/wood/ten
 	amount = 10
@@ -344,11 +352,15 @@
 	var/plank_type = /obj/item/stack/material/wood
 	associated_reagents = list("woodpulp")
 
+	stacktype = /obj/item/stack/material/log
+
 /obj/item/stack/material/log/sif
 	name = "alien log"
 	default_type = MAT_SIFLOG
 	color = "#0099cc"
 	plank_type = /obj/item/stack/material/wood/sif
+	stacktype = /obj/item/stack/material/log/sif
+
 
 /obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
 	if(!istype(W) || W.force <= 0)
@@ -437,8 +449,7 @@
 	associated_reagents = list("protein")
 	dyeable = TRUE
 	drop_sound = 'sound/items/drop/clothing.ogg'
-
-
+	stacktype = /obj/item/stack/material/cotton
 
 /obj/item/stack/material/cotton/black
 	stack_color = COLOR_BLACK
@@ -507,7 +518,7 @@
 /obj/item/stack/material/glass
 	name = "glass"
 	icon_state = "sheet-glass"
-	default_type = "glass"
+	default_type = MATERIAL_GLASS
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/glass.ogg'
 	associated_reagents = list("silicon")
@@ -516,7 +527,7 @@
 /obj/item/stack/material/glass/reinforced
 	name = "reinforced glass"
 	icon_state = "sheet-rglass"
-	default_type = "rglass"
+	default_type = MATERIAL_REINFORCED_GLASS
 	no_variants = FALSE
 
 /obj/item/stack/material/glass/phoronglass
@@ -541,7 +552,7 @@
 	name = "bronze"
 	icon_state = "sheet-ingot"
 	singular_name = "bronze ingot"
-	default_type = "bronze"
+	default_type = MATERIAL_BRONZE
 	apply_colour = 1
 	no_variants = FALSE
 	stack_color = COLOR_BROWN
@@ -550,7 +561,7 @@
 	name = "tin"
 	icon_state = "sheet-ingot"
 	singular_name = "tin ingot"
-	default_type = "tin"
+	default_type = MATERIAL_TIN
 	apply_colour = 1
 	no_variants = FALSE
 	stack_color = COLOR_WHITE
@@ -559,16 +570,17 @@
 	name = "copper"
 	icon_state = "sheet-ingot"
 	singular_name = "copper ingot"
-	default_type = "copper"
+	default_type = MATERIAL_COPPER
 	apply_colour = 1
 	no_variants = FALSE
 	stack_color = COLOR_DARK_BROWN
+	stacktype = /obj/item/stack/material/copper
 
 /obj/item/stack/material/painite
 	name = "painite"
 	icon_state = "sheet-gem"
 	singular_name = "painite gem"
-	default_type = "painite"
+	default_type = MATERIAL_PAINITE
 	apply_colour = 1
 	no_variants = FALSE
 	stack_color = COLOR_NT_RED
@@ -577,7 +589,7 @@
 	name = "void opal"
 	icon_state = "sheet-void_opal"
 	singular_name = "void opal"
-	default_type = "void opal"
+	default_type = MATERIAL_VOID_OPAL
 	stack_color = "#292929"
 	apply_colour = 1
 	no_variants = FALSE
@@ -586,25 +598,34 @@
 	name = "quartz"
 	icon_state = "sheet-gem"
 	singular_name = "quartz gem"
-	default_type = "quartz"
+	default_type = MATERIAL_QUARTZ
 	apply_colour = 1
 	no_variants = FALSE
 	stack_color = COLOR_WHITE
+
+/obj/item/stack/material/quartz/rose_quartz
+	name = "rose quartz"
+	singular_name = "rose quartz gem"
+	default_type = MATERIAL_ROSE_QUARTZ
+
+	stack_color = "#e3a3a3"
+	stacktype = /obj/item/stack/material/quartz/rose_quartz
 
 /obj/item/stack/material/titanium
 	name = "titanium"
 	icon_state = "sheet-ingot"
 	singular_name = "titanium ingot"
-	default_type = "titanium"
+	default_type = MATERIAL_TITANIUM
 	apply_colour = 1
 	no_variants = FALSE
 	stack_color = COLOR_TITANIUM
+	stacktype = /obj/item/stack/material/titanium
 
 /obj/item/stack/material/aluminium
 	name = "aluminium"
 	icon_state = "sheet-ingot"
 	singular_name = "aluminium ingot"
-	default_type = "aluminium"
+	default_type = MATERIAL_ALUMINIUM
 	apply_colour = 1
 	no_variants = FALSE
 	stack_color = COLOR_GRAY
