@@ -39,6 +39,7 @@
 #define MATERIAL_PITCHBLENDE             "pitchblende"
 #define MATERIAL_HEMATITE                "hematite"
 #define MATERIAL_QUARTZ                  "quartz"
+#define MATERIAL_ROSE_QUARTZ             "rose quartz"
 #define MATERIAL_PYRITE                  "pyrite"
 #define MATERIAL_SPODUMENE               "spodumene"
 #define MATERIAL_CINNABAR                "cinnabar"
