@@ -13,6 +13,10 @@
 
 	unique_save_vars = list("open")
 
+/obj/structure/curtain/New()
+	..()
+	update_icon()
+
 /obj/structure/curtain/on_persistence_load()
 	update_icon()
 
@@ -37,10 +41,11 @@
 
 /obj/structure/curtain/update_icon()
 	if(open)
+		set_opacity(0)
 		icon_state = closed_state
 		layer = SHOWER_CLOSED_LAYER
 	else
-		opacity = 0
+		set_opacity(1)
 		icon_state = open_state
 		layer = SHOWER_OPEN_LAYER
 
