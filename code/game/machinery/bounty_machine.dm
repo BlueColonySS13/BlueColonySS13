@@ -180,10 +180,13 @@
 		<center><h1 style = "color: #ecebdd;">[current_bounty.name]</h1><br>[current_bounty.get_author()]</center><br />
 		<div class='statusDisplay' style= "padding: 9px;"><p>[current_bounty.get_description()]</p><br>"}
 
+		if(LAZYLEN(current_bounty.contributors_bankids))
+			dat += "[LAZYLEN(current_bounty.contributors_bankids)] contributor(s).<br>"
+
 		if(current_bounty.bounty_expires)
-			dat += "No expiry."
-		else
 			dat += "Expires in [current_bounty.expiry_days()] day(s)."
+		else
+			dat += "No expiry."
 
 		dat += "</div><br><span style=\"color:yellow\"><strong>Required:</strong></span>"
 

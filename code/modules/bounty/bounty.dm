@@ -185,14 +185,16 @@
 
 		pay_contributors(D)
 
-		if(src in D.bounties)
-			D.bounties -= src
+		if(delete_upon_completion)
+			if(src in D.bounties)
+				D.bounties -= src
 
-	if(src in SSbounties.active_bounties)
-		SSbounties.active_bounties -= src
 
 	if(delete_upon_completion)
+		if(src in SSbounties.active_bounties)
+			SSbounties.active_bounties -= src
 		qdel(src)
+
 	else
 		reset_bounty()
 		sanitize_bounty()
