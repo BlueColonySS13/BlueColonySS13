@@ -54,7 +54,7 @@
 	desc = "Science and research employees are paid from this account. Any money made by Research is paid into this account."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_SCIENCE, SPEND_ROBOTICS, SPEND_MATERIALS)
 	dept_color = "#633D63"
-	categories = list(CAT_MANUFACTURE, CAT_TECH, CAT_MOTOR, CAT_XENOBIO)
+	categories = list(CAT_MANUFACTURE, CAT_TECH, CAT_MOTOR, CAT_XENOBIO, CAT_GUNS)
 
 /datum/department/police
 	name = "Police"
@@ -80,7 +80,7 @@
 	desc = "Nanotrasen's Pollux Defense Force - the city pays a staggering amount of money to call for this department. "
 	starting_money = 5000
 	dept_color = "#3F823F"
-	
+
 // Factory is now a public department.
 /datum/department/factory
 	name = "Factory"
@@ -90,7 +90,8 @@
 //	dept_type = PRIVATE_DEPARTMENT
 	allowed_buy_types = list(SPEND_OFFICE)
 	dept_color = "#7a4f33"
-	categories = list(CAT_MANUFACTURE, CAT_RETAIL)
+	categories = list(CAT_MANUFACTURE, CAT_RETAIL, CAT_JANITOR, CAT_BUILDING, CAT_MINING, CAT_DRINKS, CAT_FOOD, CAT_FARM, CAT_NEWS)
+	max_bounties = 80
 
 // ## Private Presets ## //
 

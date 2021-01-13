@@ -34,6 +34,7 @@
 	//expiry stuff
 	var/creation_date				// used for calculating vs the current day for bounties that last several days.
 	var/days_until_expiry = 1		// difference between today and creation date, past this, it will expire.
+	var/bounty_expires = TRUE
 
 	//bounty item stuff
 	var/custom_requirement = ""		// actually does nothing, is just there to give players direction, usually paired with a custom completion method.
@@ -101,30 +102,8 @@
 	if(new_cash_wanted)
 		cash_wanted = new_cash_wanted
 
-	if(LAZYLEN(random_items_wanted))
-		items_wanted += pick(random_items_wanted)
-
-	if(LAZYLEN(random_grown_wanted))
-		grown_wanted += pick(random_grown_wanted)
-
-	if(LAZYLEN(random_seeds_wanted))
-		seeds_wanted += pick(random_seeds_wanted)
-
-	if(LAZYLEN(random_stacks_wanted))
-		stacks_wanted += pick(random_stacks_wanted)
-
-	if(LAZYLEN(random_reagents_wanted))
-		reagents_wanted += pick(random_reagents_wanted)
-
-	if(cash_max)
-		cash_wanted = rand(cash_min, cash_max)
-
-	if(cash_reward_max)
-		department_reward = rand(cash_reward_min, cash_reward_max)
-		individual_reward = round(department_reward / 4)
-
+	reset_bounty()
 	sanitize_bounty()
-	replace_all_strings()
 
 	if(add_active_bounty_list)
 		SSbounties.active_bounties |= src
@@ -204,6 +183,8 @@
 		if(!D)
 			return
 
+		pay_contributors(D)
+
 		if(src in D.bounties)
 			D.bounties -= src
 
@@ -212,8 +193,47 @@
 
 	if(delete_upon_completion)
 		qdel(src)
+	else
+		reset_bounty()
+		sanitize_bounty()
 
 	return TRUE
+
+
+/datum/bounty/proc/reset_bounty()
+	items_given = list()
+	seeds_given = list()
+	grown_given = list()
+	stacks_given = list()
+	reagents_given = list()
+	cash_given = 0
+	contributors_bankids = list()
+
+	if(LAZYLEN(random_items_wanted))
+		items_wanted += pick(random_items_wanted)
+
+	if(LAZYLEN(random_grown_wanted))
+		grown_wanted += pick(random_grown_wanted)
+
+	if(LAZYLEN(random_seeds_wanted))
+		seeds_wanted += pick(random_seeds_wanted)
+
+	if(LAZYLEN(random_stacks_wanted))
+		stacks_wanted += pick(random_stacks_wanted)
+
+	if(LAZYLEN(random_reagents_wanted))
+		reagents_wanted += pick(random_reagents_wanted)
+
+	if(cash_max)
+		cash_wanted = rand(cash_min, cash_max)
+
+	if(cash_reward_max)
+		department_reward = rand(cash_reward_min, cash_reward_max)
+		individual_reward = round(department_reward / 4)
+
+	creation_date = full_real_time()
+	replace_all_strings()
+
 
 
 /datum/bounty/proc/complete_bounty(skip_completion_check = FALSE, turf/item_spawn_location = null, mob/user)
@@ -228,10 +248,6 @@
 
 	if(!D || !D.bank_account)
 		return
-
-
-	var/hidden = D.bank_account.hidden
-
 
 	var/tax_amt = persistent_economy.business_income_tax * department_reward
 	var/final_pay = department_reward
@@ -252,6 +268,23 @@
 			contributors_bankids += ID.associated_account_number
 			contributors_bankids[ID.associated_account_number] = 1
 
+	pay_contributors(D)
+
+	if(item_spawn_location && isturf(item_spawn_location))
+		for(var/A in item_rewards)
+			if(ispath(A))
+				new A(item_spawn_location)
+
+	expire_bounty()
+
+	return TRUE
+
+
+/datum/bounty/proc/pay_contributors(var/datum/department/D)
+	if(!D || !D.bank_account)
+		return
+
+	var/hidden = D.bank_account.hidden
 
 	if(LAZYLEN(contributors_bankids) && individual_reward)
 		var/full_no = 0
@@ -272,14 +305,7 @@
 			if(payment_owed)
 				charge_to_account(V, "Boun-T", "Bounty Completion Contribution: [name]/[D.name]", "BouNT Finances", payment_owed, !hidden)
 
-	if(item_spawn_location && isturf(item_spawn_location))
-		for(var/A in item_rewards)
-			if(ispath(A))
-				new A(item_spawn_location)
-
-	expire_bounty()
-
-	return TRUE
+		return TRUE
 
 
 /datum/bounty/proc/expiry_days()
@@ -501,26 +527,28 @@
 
 	var/days_expiry = expiry_days()
 
-	if(0 >= days_expiry)
+	if((1 > days_expiry) && bounty_expires)
 		expire_bounty()
 
+	//wanted
 	if(!isnum(cash_wanted))
 		cash_wanted = initial(cash_wanted)
 
-	if(!islist(items_wanted))
+	if(!items_wanted || !islist(items_wanted))
 		items_wanted = initial(items_wanted)
 
-	if(!islist(stacks_wanted))
+	if(!stacks_wanted || !islist(stacks_wanted))
 		stacks_wanted = initial(stacks_wanted)
 
-	if(!islist(reagents_wanted))
+	if(!reagents_wanted || !islist(reagents_wanted))
 		reagents_wanted = initial(reagents_wanted)
 
-	if(!islist(seeds_wanted))
+	if(!seeds_wanted || !islist(seeds_wanted))
 		seeds_wanted = initial(seeds_wanted)
 
-	if(!islist(grown_wanted))
+	if(!grown_wanted || !islist(grown_wanted))
 		grown_wanted = initial(grown_wanted)
+
 
 	for(var/A in items_wanted)
 		if(!items_given[A])

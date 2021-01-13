@@ -23,9 +23,9 @@
 	var/business = TRUE
 
 	var/atom/stored_thing
-	var/starting_department = null
+	var/starting_department = "" // no more private bounties was fun while it was a thing
 
-	unique_save_vars = list("starting_department")
+	unique_save_vars = list("starting_department")	// removing player owned bounties being unique
 
 	var/restrict_bounty_for_business = FALSE
 	var/accept_nonpersistent = FALSE
@@ -57,6 +57,8 @@
 				"You hear ratchet.")
 			anchored = !anchored
 
+	if(current_bounty)
+		current_bounty.sanitize_bounty() // give it a chance to expire
 
 	if(!current_bounty)
 		to_chat(user,"<span class='notice'>You need to select a bounty first!</span>")
@@ -104,7 +106,10 @@
 	var/dat
 
 	if(!current_department && starting_department && dept_by_id(starting_department))
-		current_department = dept_by_id(starting_department)
+		if(config.allow_business_bounties || !business)
+			current_department = dept_by_id(starting_department)
+		else
+			current_department = dept_by_id(DEPT_FACTORY) // lol
 
 	if(!current_department)
 		dat += "Welcome to [name], this allows you to trade with businesses all over the world."
@@ -173,11 +178,14 @@
 
 		dat += {"
 		<center><h1 style = "color: #ecebdd;">[current_bounty.name]</h1><br>[current_bounty.get_author()]</center><br />
-		<div class='statusDisplay' style= "padding: 9px;"><p>[current_bounty.get_description()]</p>"}
+		<div class='statusDisplay' style= "padding: 9px;"><p>[current_bounty.get_description()]</p><br>"}
 
-		dat += "<br>Expires in [current_bounty.expiry_days()] day(s).</div><br>"
+		if(current_bounty.bounty_expires)
+			dat += "No expiry."
+		else
+			dat += "Expires in [current_bounty.expiry_days()] day(s)."
 
-		dat += "<span style=\"color:yellow\"><strong>Required:</strong></span>"
+		dat += "</div><br><span style=\"color:yellow\"><strong>Required:</strong></span>"
 
 		if(current_bounty.custom_requirement)
 			dat += "<br>[current_bounty.custom_requirement]<br> "
@@ -272,6 +280,7 @@
 
 /obj/machinery/bounty_machine/preset
 	icon_state = "bounty_nanotrasen"
+	business = FALSE
 
 /obj/machinery/bounty_machine/preset/colony
 	starting_department = DEPT_COLONY
@@ -348,6 +357,7 @@
 				if(!bounty || !current_department || (!(bounty in current_department.bounties)))
 					return
 
+				bounty.sanitize_bounty() // just in case
 				current_bounty = bounty
 
 			if("complete_bounty")

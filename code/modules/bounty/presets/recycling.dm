@@ -1,16 +1,17 @@
 /datum/bounty/recycling
 	category = CAT_JANITOR
-	author_department = DEPT_FACTORY
+	bounty_expires = FALSE
+
 /datum/bounty/recycling/packet_curtains
 	name = "Packets for Curtains!"
 	author = "The Eco Charity"
 	description = "Plastic recycling is so important for our economy and planet. If you please, send us some bread tube packets. \
 	We'll use it for the Ando-shower curtain company that needs it. God bless."
 
-	items_wanted = list(/obj/item/trash/tastybread = 5)
+	items_wanted = list(/obj/item/trash/tastybread = 100)
 
-	department_reward = 30
-	individual_reward = 10
+	department_reward = 100
+	individual_reward = 200
 
 	days_until_expiry = 5
 
@@ -23,8 +24,8 @@
 
 	items_wanted = list(/obj/item/stack/material/cardboard = 30)
 
-	department_reward = 150
-	individual_reward = 50
+	department_reward = 300
+	individual_reward = 500
 
 /datum/bounty/recycling/dont_box
 	name = "Don't Put Me In A Box"
@@ -32,10 +33,10 @@
 	description = "As we struggle with the highly capitalistic and materialistic reality of our world I will be making an art exhibit to liberate \
 	the minds of people in Cascington. Boxes, that is all this one needs."
 
-	items_wanted = list(/obj/item/weapon/storage/box = 8)
+	items_wanted = list(/obj/item/weapon/storage/box = 100)
 
-	department_reward = 70
-	individual_reward = 50
+	department_reward = 200
+	individual_reward = 300
 
 /datum/bounty/recycling/boneman
 	name = "Spooky Scary Skeletons"
