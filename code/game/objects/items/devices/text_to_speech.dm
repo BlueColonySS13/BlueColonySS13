@@ -22,11 +22,11 @@
 		named = 1
 		*/
 
-	visible_message("<span class='notice'>[user] begins to type on \the [src]...</span>")
-	var/message = sanitize(input(user,"Choose a message to relay to those around you.") as text|null)
+	visible_message(user, "<span class='notice'>[user] begins to type on \the [src]...</span>")
+	var/message = sanitize(input(user, "Choose a message to relay to those around you.") as text|null)
 	
 	if(message)
 		var/obj/item/device/text_to_speech/O = src
 		audible_message("\icon[O] \The [O.name] states, \"[message]\"")
 	else
-		visible_message("<span class='notice'>[user] stops typing on \the [src], reconsidering.</span>")
+		visible_message(user, "<span class='notice'>[user] stops typing on \the [src], reconsidering.</span>")
