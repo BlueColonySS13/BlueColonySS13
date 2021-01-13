@@ -270,8 +270,6 @@
 			contributors_bankids += ID.associated_account_number
 			contributors_bankids[ID.associated_account_number] = 1
 
-	pay_contributors(D)
-
 	if(item_spawn_location && isturf(item_spawn_location))
 		for(var/A in item_rewards)
 			if(ispath(A))
