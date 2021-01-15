@@ -1,4 +1,4 @@
-/mob/proc/say(message)
+/mob/proc/say(message, whispering)
 	return
 
 /mob/verb/whisper(message as text)

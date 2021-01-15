@@ -254,7 +254,7 @@
 	update_icon()
 
 
-/mob/living/simple_mob/say(var/message,var/datum/language/language)
+/mob/living/simple_mob/say(var/message, whispering, var/datum/language/language)
 	var/verb = "says"
 	if(speak_emote.len)
 		verb = pick(speak_emote)

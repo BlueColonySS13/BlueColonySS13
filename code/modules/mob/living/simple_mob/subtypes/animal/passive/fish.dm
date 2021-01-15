@@ -19,7 +19,7 @@
 	)
 
 // Makes the AI unable to willingly go on land.
-/mob/living/simple_mob/animal/passive/fish/IMove(newloc, safety = TRUE)
+/mob/living/simple_mob/animal/passive/fish/IMove(newloc, safety)
 	if(is_type_in_list(newloc, suitable_turf_types))
 		return ..() // Procede as normal.
 	return MOVEMENT_FAILED // Don't leave the water!
