@@ -173,7 +173,7 @@
 				chemicals -= 30
 
 			if(host.getToxLoss() >= 30 && chemicals > 50)
-				var/randomchem = pickweight("tramadol" = 7, "anti_toxin" = 15, "frostoil" = 3)
+				var/randomchem = pickweight(list("tramadol" = 7, "anti_toxin" = 15, "frostoil" = 3))
 				host.reagents.add_reagent(randomchem, 5)
 				chemicals -= 50
 
@@ -305,9 +305,9 @@
 	if(!host)
 		return
 
-		if(ai_holder)
-			ai_holder.hostile = initial(ai_holder.hostile)
-			ai_holder.lose_target()
+	if(ai_holder)
+		ai_holder.hostile = initial(ai_holder.hostile)
+		ai_holder.lose_target()
 
 	host_bodypart.implants -= src
 	host_bodypart = null
