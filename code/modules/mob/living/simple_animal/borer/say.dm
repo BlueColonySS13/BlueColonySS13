@@ -1,4 +1,4 @@
-/mob/living/simple_animal/borer/say(var/message, whispering)
+/mob/living/simple_mob/animal/borer/say(var/message, whispering)
 
 	message = sanitize(message)
 	message = capitalize(message)

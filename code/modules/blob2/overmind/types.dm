@@ -32,7 +32,7 @@
 	var/can_build_resources = FALSE		// Ditto, for resource blobs.
 	var/can_build_nodes = TRUE			// Ditto, for nodes.
 
-	var/spore_type = /mob/living/simple_animal/hostile/blob/spore
+	var/spore_type = /mob/living/simple_mob/blob/spore
 
 // Called when a blob receives damage.  This needs to return the final damage or blobs will be immortal.
 /datum/blob_type/proc/on_received_damage(var/obj/structure/blob/B, damage, damage_type)
@@ -63,7 +63,7 @@
 	return
 
 // Spore things
-/datum/blob_type/proc/on_spore_death(mob/living/simple_animal/hostile/blob/spore/S)
+/datum/blob_type/proc/on_spore_death(mob/living/simple_mob/blob/spore/S)
 	return
 
 
@@ -182,9 +182,9 @@
 	burn_multiplier = 3
 	ai_aggressiveness = 40
 	can_build_factories = TRUE
-	spore_type = /mob/living/simple_animal/hostile/blob/spore/infesting
+	spore_type = /mob/living/simple_mob/blob/spore/infesting
 
-/datum/blob_type/fungal_bloom/on_spore_death(mob/living/simple_animal/hostile/blob/spore/S)
+/datum/blob_type/fungal_bloom/on_spore_death(mob/living/simple_mob/blob/spore/S)
 	if(S.is_infesting)
 		return // Don't make blobs if they were on someone's head.
 	var/turf/T = get_turf(S)
@@ -213,18 +213,18 @@
 	brute_multiplier = 1.5
 	ai_aggressiveness = 30 // The spores do most of the fighting.
 	can_build_factories = TRUE
-	spore_type = /mob/living/simple_animal/hostile/blob/spore/weak
+	spore_type = /mob/living/simple_mob/blob/spore/weak
 
 /datum/blob_type/fulminant_organism/on_expand(var/obj/structure/blob/B, var/obj/structure/blob/new_B, var/turf/T, var/mob/observer/blob/O)
 	if(prob(10)) // 10% chance to make a weak spore when expanding.
-		var/mob/living/simple_animal/hostile/blob/S = new spore_type(T)
+		var/mob/living/simple_mob/blob/spore/S = new spore_type(T)
 		S.overmind = O
 		S.update_icons()
 		O.blob_mobs.Add(S)
 
 /datum/blob_type/fulminant_organism/on_death(obj/structure/blob/B)
 	if(prob(33)) // 33% chance to make a spore when dying.
-		var/mob/living/simple_animal/hostile/blob/S = new spore_type(get_turf(B))
+		var/mob/living/simple_mob/blob/spore/S = new spore_type(get_turf(B))
 		B.visible_message("<span class='danger'>A spore floats free from the [name]!</span>")
 		S.overmind = B.overmind
 		S.update_icons()

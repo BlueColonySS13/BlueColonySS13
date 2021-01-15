@@ -150,5 +150,11 @@
 	var/turf/below = GetBelow(src)
 	return !below || below.is_space()
 
+/turf/simulated/open/is_safe_to_enter(mob/living/L)
+	if(L.can_fall())
+		if(!locate(/obj/structure/stairs) in GetBelow(src))
+			return FALSE
+	return ..()
+
 /turf/simulated/open/is_open()
 	return TRUE

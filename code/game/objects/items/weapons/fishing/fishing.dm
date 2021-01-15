@@ -2,9 +2,9 @@
 /turf/simulated/floor/water
 	var/has_fish = TRUE //If the water has fish or not.
 
-	var/list/rare_fish_list = list(/mob/living/simple_animal/fish/salmon, /mob/living/simple_animal/fish/pike)
-	var/list/common_fish_list = list(/mob/living/simple_animal/fish/bass)
-	var/list/uncommon_fish_list = list(/mob/living/simple_animal/fish/trout)
+	var/list/rare_fish_list = list(/mob/living/simple_mob/animal/passive/fish/salmon, /mob/living/simple_mob/animal/passive/fish/koi, /mob/living/simple_mob/animal/passive/fish/pike)
+	var/list/common_fish_list = list(/mob/living/simple_mob/animal/passive/fish/bass, /mob/living/simple_mob/animal/passive/fish/perch)
+	var/list/uncommon_fish_list = list(/mob/living/simple_mob/animal/passive/fish/trout)
 	var/list/junk_list = list(/obj/item/clothing/shoes/boots/cowboy)
 
 	var/fish_type

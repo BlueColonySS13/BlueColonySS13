@@ -17,7 +17,7 @@
 /mob/living/proc/seen_cult_turfs()
 	return seen_turfs_in_range(src, 3)
 
-/mob/living/carbon/human/seen_cult_turfs()
+/mob/living/simple_mob/seen_cult_turfs()
 	if(mind in cult.current_antagonists)
 		return seen_turfs_in_range(src, world.view)
 	return ..()
@@ -28,7 +28,7 @@
 /mob/living/simple_animal/seen_cult_turfs()
 	return seen_turfs_in_range(src, 1)
 
-/mob/living/simple_animal/shade/narsie/seen_cult_turfs()
+/mob/living/simple_mob/construct/shade/seen_cult_turfs()
 	return view(2, src)
 
 /proc/seen_turfs_in_range(var/source, var/range)

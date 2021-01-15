@@ -16,11 +16,14 @@
 	dsma.blend_mode = BLEND_ADD
 	dsoverlay.appearance = dsma
 
+	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
+
 /mob/living/Destroy()
 	dsoverlay.loc = null //I'll take my coat with me
 	dsoverlay = null
 	if(buckled)
 		buckled.unbuckle_mob(src, TRUE)
+	qdel(selected_image)
 	return ..()
 
 //mob verbs are faster than object verbs. See mob/verb/examine.
@@ -499,6 +502,36 @@ default behaviour is:
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
 
+// Applies direct "cold" damage while checking protection against the cold.
+/mob/living/proc/inflict_cold_damage(amount)
+	amount *= 1 - get_cold_protection(50) // Within spacesuit protection.
+	if(amount > 0)
+		adjustFireLoss(amount)
+
+// Ditto, but for "heat".
+/mob/living/proc/inflict_heat_damage(amount)
+	amount *= 1 - get_heat_protection(10000) // Within firesuit protection.
+	if(amount > 0)
+		adjustFireLoss(amount)
+
+// and one for electricity because why not
+/mob/living/proc/inflict_shock_damage(amount)
+	electrocute_act(amount, null, 1 - get_shock_protection())
+
+// also one for water (most things resist it entirely, except for slimes)
+/mob/living/proc/inflict_water_damage(amount)
+	amount *= 1 - get_water_protection()
+	if(amount > 0)
+		adjustToxLoss(amount)
+
+// one for abstracted away ""poison"" (mostly because simplemobs shouldn't handle reagents)
+/mob/living/proc/inflict_poison_damage(amount)
+	if(isSynthetic())
+		return
+	amount *= 1 - get_poison_protection()
+	if(amount > 0)
+		adjustToxLoss(amount)
+
 /mob/proc/get_contents()
 
 
@@ -613,6 +646,8 @@ default behaviour is:
 	BITSET(hud_updateflag, LIFE_HUD)
 	ExtinguishMob()
 	fire_stacks = 0
+	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
+		ai_holder.go_wake()
 
 /mob/living/proc/rejuvenate()
 	if(reagents)
@@ -845,7 +880,7 @@ default behaviour is:
 
 		// Update whether or not this mob needs to pass emotes to contents.
 		for(var/atom/A in M.contents)
-			if(istype(A,/mob/living/simple_animal/borer) || istype(A,/obj/item/weapon/holder))
+			if(istype(A,/mob/living/simple_mob/animal/borer) || istype(A,/obj/item/weapon/holder))
 				return
 
 	else if(istype(H.loc,/obj/item/clothing/accessory/holster))
@@ -1260,33 +1295,3 @@ default behaviour is:
 		"}
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
-
-// Applies direct "cold" damage while checking protection against the cold.
-/mob/living/proc/inflict_cold_damage(amount)
-	amount *= 1 - get_cold_protection(50) // Within spacesuit protection.
-	if(amount > 0)
-		adjustFireLoss(amount)
-
-// Ditto, but for "heat".
-/mob/living/proc/inflict_heat_damage(amount)
-	amount *= 1 - get_heat_protection(10000) // Within firesuit protection.
-	if(amount > 0)
-		adjustFireLoss(amount)
-
-// and one for electricity because why not
-/mob/living/proc/inflict_shock_damage(amount)
-	electrocute_act(amount, null, 1 - get_shock_protection(), pick(BP_HEAD, BP_TORSO, BP_GROIN))
-
-// also one for water (most things resist it entirely, except for slimes)
-/mob/living/proc/inflict_water_damage(amount)
-	amount *= 1 - get_water_protection()
-	if(amount > 0)
-		adjustToxLoss(amount)
-
-// one for abstracted away ""poison"" (mostly because simplemobs shouldn't handle reagents)
-/mob/living/proc/inflict_poison_damage(amount)
-	if(isSynthetic())
-		return
-	amount *= 1 - get_poison_protection()
-	if(amount > 0)
-		adjustToxLoss(amount)

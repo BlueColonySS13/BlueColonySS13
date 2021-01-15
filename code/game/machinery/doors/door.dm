@@ -91,21 +91,21 @@
 
 /obj/machinery/door/attack_generic(var/mob/user, var/damage)
 	if(isanimal(user))
-		var/mob/living/simple_animal/A = user
+		var/mob/living/simple_mob/S = user
 
-		if(!A.can_destroy_structures())
+		if(!S.can_destroy_structures())
 			damage = 0
-		if(damage >= 10)
+		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 			visible_message("<span class='danger'>\The [user] smashes into \the [src]!</span>")
 
 			take_damage(damage)
 			trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Smashed into \the [src].")
 		else
 
-			if(A.can_destroy_structures())
+			if(S.can_destroy_structures())
 				visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
 
-		playsound(src, A.attack_sound, 75, 1)
+		playsound(src, S.attack_sound, 75, 1)
 		user.do_attack_animation(src)
 
 

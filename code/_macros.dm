@@ -14,13 +14,13 @@
 
 #define isalien(A) istype(A, /mob/living/carbon/alien)
 
-#define isanimal(A) istype(A, /mob/living/simple_animal)
+#define isanimal(A) istype(A, /mob/living/simple_mob)
 
 #define isbrain(A) istype(A, /mob/living/carbon/brain)
 
 #define iscarbon(A) istype(A, /mob/living/carbon)
 
-#define iscorgi(A) istype(A, /mob/living/simple_animal/corgi)
+#define iscorgi(A) istype(A, /mob/living/simple_mob/animal/passive/dog/corgi)
 
 #define isEye(A) istype(A, /mob/observer/eye)
 
@@ -28,7 +28,7 @@
 
 #define isliving(A) istype(A, /mob/living)
 
-#define ismouse(A) istype(A, /mob/living/simple_animal/mouse)
+#define ismouse(A) istype(A, /mob/living/simple_mob/animal/passive/mouse)
 
 #define isnewplayer(A) istype(A, /mob/new_player)
 
@@ -42,11 +42,11 @@
 
 #define isvoice(A) istype(A, /mob/living/voice)
 
-#define isslime(A) istype(A, /mob/living/simple_animal/slime)
+#define isslime(A) istype(A, /mob/living/simple_mob/slime)
 
 #define isbot(A) istype(A, /mob/living/bot)
 
-#define isxeno(A) istype(A, /mob/living/simple_animal/xeno)
+#define isxeno(A) istype(A, /mob/living/simple_mob/animal/space/alien)
 
 #define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
 

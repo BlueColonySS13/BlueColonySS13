@@ -165,11 +165,13 @@
 		src.visible_message("*fizzle*")
 	playsound(src.loc, 'sound/effects/sparks1.ogg', 100, 1)
 
+/*
 /obj/item/weapon/gun/energy/staff/animate
 	name = "staff of animation"
 	desc = "An artifact that spits bolts of life force, which causes objects which are hit by it to animate and come to life! This magic doesn't affect machines."
 	projectile_type = /obj/item/projectile/animate
 	charge_cost = 240
+*/
 
 obj/item/weapon/gun/energy/staff/focus
 	name = "mental focus"

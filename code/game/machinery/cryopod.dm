@@ -532,10 +532,10 @@
 		usr << "<span class='notice'><B>\The [src] is in use.</B></span>"
 		return
 
-	for(var/mob/living/simple_animal/slime/M in range(1,usr))
-		if(M.victim == usr)
-			usr << "You're too busy getting your life sucked out of you."
-			return
+	if(isliving(usr))
+		var/mob/living/L = usr
+		if(L.has_buckled_mobs())
+			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
 
 	visible_message("[usr] [on_enter_visible_message] [src].", 3)
 

@@ -226,16 +226,16 @@
 	var/harmless = 0
 
 	if(isanimal(user))
-		var/mob/living/simple_animal/A = user
-		playsound(src, A.attack_sound, 75, 1)
-		if(!A.can_destroy_structures())
+		var/mob/living/simple_mob/M = user
+		playsound(src, M.attack_sound, 75, 1)
+		if(!M.can_destroy_structures())
 			damage = 0
 			harmless = TRUE
 
 	if(damage && trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to break \the [src]."))
 		return
 
-	if(damage >= 10)
+	if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		visible_message("<span class='danger'>[user] smashes into [src]!</span>")
 		if(reinf)
 			damage = damage / 2
