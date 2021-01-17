@@ -586,6 +586,33 @@
 	reagent_state = LIQUID
 	color = "#DF9FBF"
 
+
+/*************
+	Nanites
+*************/
+
+// This exists to cut the number of chemicals a merc borg has to juggle on their hypo.
+/datum/reagent/healing_nanites
+	name = "Restorative Nanites"
+	id = "healing_nanites"
+	description = "Miniature medical robots that swiftly restore bodily damage."
+	taste_description = "metal"
+	reagent_state = SOLID
+	color = "#555555"
+	metabolism = REM * 4 // Nanomachines gotta go fast.
+	price_tag = 2
+
+	get_tax()
+		return MEDICAL_TAX
+
+
+/datum/reagent/healing_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.heal_organ_damage(2 * removed, 2 * removed)
+	M.adjustOxyLoss(-4 * removed)
+	M.adjustToxLoss(-2 * removed)
+	M.adjustCloneLoss(-2 * removed)
+
+
 // The opposite to healing nanites, exists to make unidentified hypos implied to have nanites not be 100% safe.
 /datum/reagent/defective_nanites
 	name = "Defective Nanites"
@@ -595,10 +622,42 @@
 	reagent_state = SOLID
 	color = "#333333"
 	metabolism = REM * 3 // Broken nanomachines go a bit slower.
-	scannable = 1
 
 /datum/reagent/defective_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.take_organ_damage(2 * removed, 2 * removed)
 	M.adjustOxyLoss(4 * removed)
 	M.adjustToxLoss(2 * removed)
 	M.adjustCloneLoss(2 * removed)
+
+//Unstable Mutagen but in nanite form.
+/datum/reagent/mutating_nanites
+	name = "Mutagenic Nanites"
+	id = "mutagenic_nanites"
+	description = "Miniature medical robots that modify a living organism's cells down to the genetic level."
+	taste_description = "metal"
+	reagent_state = SOLID
+	color = "#333333"
+	metabolism = REM * 4
+
+/datum/reagent/mutating_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+
+	if(M.isSynthetic())
+		return
+
+	var/mob/living/carbon/human/H = M
+	if(istype(H) && (H.species.flags & NO_SCAN))
+		return
+
+	if(M.dna)
+		if(prob(removed * 10))
+			randmuti(M)
+			if(prob(98))
+				randmutb(M)
+			else
+				randmutg(M)
+			domutcheck(M, null)
+			M.UpdateAppearance()
+		if(prob(removed * 40))
+			randmuti(M)
+			M << "<span class='warning'>You feel odd!</span>"
+	M.apply_effect(10 * removed, IRRADIATE, 0)

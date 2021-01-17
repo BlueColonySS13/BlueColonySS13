@@ -167,7 +167,7 @@
 
 /turf/simulated/floor/redspace
 	icon = 'icons/turf/redspace.dmi'
-	icon_state = "basalt"
+	icon_state = "greyrock"
 	oxygen = MOLES_O2POLLUX
 	nitrogen = MOLES_N2POLLUX
-	temperature = 430
+	temperature = 361 //Uncomfortably warm
