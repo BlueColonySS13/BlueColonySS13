@@ -456,6 +456,14 @@
 	catalysts = list("phoron" = 5)
 	result_amount = 2
 
+/datum/chemical_reaction/immunosuprizine
+	name = "Immunosuprizine"
+	id = "immunosuprizine"
+	result = "immunosuprizine"
+	required_reagents = list("corophizine" = 1, "tungsten" = 1, "sacid" = 1)
+	catalysts = list("phoron" = 5)
+	result_amount = 2
+
 /datum/chemical_reaction/imidazoline
 	name = "imidazoline"
 	id = "imidazoline"

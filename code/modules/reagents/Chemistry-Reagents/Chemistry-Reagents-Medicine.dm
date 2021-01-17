@@ -774,6 +774,63 @@
 	..()
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
 
+/datum/reagent/immunosuprizine
+	name = "Immunosuprizine"
+	id = "immunosuprizine"
+	description = "An experimental medicine believed to have the ability to prevent any organ rejection."
+	taste_description = "flesh"
+	reagent_state = SOLID
+	color = "#7B4D4F"
+	overdose = 20
+	overdose_mod = 1.5
+	scannable = 1
+
+/datum/reagent/immunosuprizine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/strength_mod = 1 * M.species.chem_strength_heal
+
+	if(alien == IS_DIONA)	// It's a tree.
+		strength_mod = 0.25
+
+	if(alien == IS_SLIME)	// Diffculty bonding with internal cellular structure.
+		strength_mod = 0.75
+
+	if(alien == IS_SKRELL)	// Natural inclination toward toxins.
+		strength_mod = 1.5
+
+	if(alien == IS_UNATHI)	// Natural regeneration, robust biology.
+		strength_mod = 1.75
+
+	if(alien == IS_TAJARA)	// Highest metabolism.
+		strength_mod = 2
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(alien != IS_DIONA)
+			H.adjustToxLoss((30 / strength_mod) * removed)
+
+		var/list/organtotal = list()
+		organtotal |= H.organs
+		organtotal |= H.internal_organs
+
+		for(var/obj/item/organ/I in organtotal)	// Don't mess with robot bits, they don't reject.
+			if(I.robotic >= ORGAN_ROBOT)
+				organtotal -= I
+
+		if(dose >= 15)
+			for(var/obj/item/organ/I in organtotal)
+				if(I.transplant_data && prob(round(15 * strength_mod)))	// Reset the rejection process, toggle it to not reject.
+					I.rejecting = 0
+					I.can_reject = FALSE
+
+		if(H.reagents.has_reagent("spaceacillin") || H.reagents.has_reagent("corophizine"))	// Chemicals that increase your immune system's aggressiveness make this chemical's job harder.
+			for(var/obj/item/organ/I in organtotal)
+				if(I.transplant_data)
+					var/rejectmem = I.can_reject
+					I.can_reject = initial(I.can_reject)
+					if(rejectmem != I.can_reject)
+						H.adjustToxLoss((15 / strength_mod))
+						I.take_damage(1)
+
 /datum/reagent/corophizine
 	name = "Corophizine"
 	id = "corophizine"
@@ -1008,26 +1065,3 @@
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
 			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
-
-// This exists to cut the number of chemicals a merc borg has to juggle on their hypo.
-/datum/reagent/healing_nanites
-	name = "Restorative Nanites"
-	id = "healing_nanites"
-	description = "Miniature medical robots that swiftly restore bodily damage."
-	taste_description = "metal"
-	reagent_state = SOLID
-	color = "#555555"
-	metabolism = REM * 4 // Nanomachines gotta go fast.
-	scannable = 1
-	price_tag = 2
-
-	get_tax()
-		return MEDICAL_TAX
-
-
-/datum/reagent/healing_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.heal_organ_damage(2 * removed, 2 * removed)
-	M.adjustOxyLoss(-4 * removed)
-	M.adjustToxLoss(-2 * removed)
-	M.adjustCloneLoss(-2 * removed)
-
