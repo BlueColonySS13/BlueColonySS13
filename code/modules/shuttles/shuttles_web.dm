@@ -466,6 +466,14 @@
 	density = TRUE
 	anchored = TRUE
 
+/obj/structure/flight_center
+	name = "flight computer console"
+	desc = "To infinity and beyond!"
+	icon = 'icons/obj/flight_computer.dmi'
+	icon_state = "center"
+	density = TRUE
+	anchored = TRUE
+
 //An object for creating a shuttle destination to dynamically loaded maps
 /obj/shuttle_connector
 	name = "shuttle connector"

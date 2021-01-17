@@ -234,3 +234,24 @@
 	P.stamped = list(/obj/item/weapon/stamp/rd)
 	P.overlays = list("paper_stamped_rd")
 	src.contents += P
+
+/obj/structure/noticeboard/abendrot_1
+	notices = 3
+	icon_state = "nboard03"
+
+/obj/structure/noticeboard/abendrot_1/New()
+	var/obj/item/weapon/paper/P = new()
+	P.name = "Notice: This NOT a Bulletin Board"
+	P.info = "<b><center>THIS IS NOT A BULLETIN BOARD.<br>DO NOT POST FLYERS HERE.</b></center>"
+	src.contents += P
+
+	P = new()
+	P.name = "New Password For Maintenance"
+	P.info = "Dr. North,<br>it's that time of the year again and all of our passwords have been reset for security reasons. Your new maintenance password is Ke1$3nif23t429g3. Please memorize \
+	it and shred of this document utilizing a NanoTrasen-certified documents shredder."
+	src.contents += P
+
+	P = new()
+	P.name = "Poxball Game on Sunday"
+	P.info = "No flyers on this noticeboard - cry me a river. We're getting the guys together for a poxball game next Sunday. Gear will be provided, just BYOB.<br>- Ted"
+	src.contents += P
