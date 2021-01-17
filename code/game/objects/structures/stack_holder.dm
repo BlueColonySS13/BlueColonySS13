@@ -33,6 +33,7 @@
 	/obj/item/stack/material/osmium,
 	/obj/item/stack/material/tritium,
 	/obj/item/stack/material/mhydrogen,
+	/obj/item/stack/material/aluminium,
 	/obj/item/stack/material/platinum,
 	/obj/item/stack/material/silver,
 	/obj/item/stack/material/gold,
@@ -237,6 +238,10 @@
 				"You hear ratchet.")
 			anchored = !anchored
 
+		return
+		
+	if(I.dont_save)
+		to_chat(user,"<span class='notice'>\The [I] is protected from entering this unit.</span>")
 		return
 
 	if(!istype(I, /obj/item/stack))
