@@ -60,6 +60,8 @@
 	var/drowsy = 0
 	var/agony = 0
 	var/reflected = 0 // This should be set to 1 if reflected by any means, to prevent infinite reflections.
+	var/modifier_type_to_apply = null // If set, will apply a modifier to mobs that are hit by this projectile.
+	var/modifier_duration = null // How long the above modifier should last for. Leave null to be permanent.
 
 	embed_chance = 0	//Base chance for a projectile to embed
 
@@ -87,6 +89,8 @@
 //	if(isanimal(target))	return 0
 	var/mob/living/L = target
 	L.apply_effects(stun, weaken, paralyze, irradiate, stutter, eyeblur, drowsy, agony, blocked, incendiary, flammability) // add in AGONY!
+	if(modifier_type_to_apply)
+		L.add_modifier(modifier_type_to_apply, modifier_duration)
 	return 1
 
 //called when the projectile stops flying because it collided with something

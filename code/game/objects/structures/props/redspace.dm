@@ -3,7 +3,6 @@
 	desc = "You have no idea what this is."
 	density = 1
 	anchored = 1
-	var/interaction_message = null
 
 /obj/structure/prop/redspace/attack_hand(mob/living/user) // Used to tell the player that this isn't useful for anything.
 	if(!istype(user))

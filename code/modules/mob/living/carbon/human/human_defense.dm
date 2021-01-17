@@ -156,6 +156,10 @@ emp_act
 
 	return siemens_coefficient
 
+// Returns a number between 0 to 1, with 1 being total protection.
+/mob/living/carbon/human/get_shock_protection()
+	return between(0, 1-get_siemens_coefficient_average(), 1)
+
 // Returns a list of clothing that is currently covering def_zone.
 /mob/living/carbon/human/proc/get_clothing_list_organ(var/obj/item/organ/external/def_zone, var/type)
 	var/list/results = list()
@@ -560,6 +564,19 @@ emp_act
 		perm += perm_by_part[part]
 
 	return perm
+
+// This is for preventing harm by being covered in water, which only prometheans need to deal with.
+// This is not actually used for now since the code for prometheans gets changed a lot.
+/mob/living/carbon/human/get_water_protection()
+	var/protection = ..() // Todo: Replace with species var later.
+	if(protection == 1) // No point doing permeability checks if it won't matter.
+		return protection
+	// Wearing clothing with a low permeability_coefficient can protect from water.
+
+	var/converted_protection = 1 - protection
+	var/perm = reagent_permeability()
+	converted_protection *= perm
+	return 1-converted_protection
 
 /mob/living/carbon/human/shank_attack(obj/item/W, obj/item/weapon/grab/G, mob/user, hit_zone)
 

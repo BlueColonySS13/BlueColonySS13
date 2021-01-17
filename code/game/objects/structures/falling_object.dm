@@ -5,9 +5,9 @@
 	anchored = TRUE
 	density = FALSE
 	unacidable = TRUE
-	var/falling_type = /mob/living/simple_animal/hostile/carp
+	var/falling_type = /mob/living/simple_mob/animal/space/carp
 
-/obj/effect/falling_effect/initialize(mapload, type = /mob/living/simple_animal/hostile/carp)
+/obj/effect/falling_effect/initialize(mapload, type = /mob/living/simple_mob/animal/space/carp)
 	..()
 	falling_type = type
 	return INITIALIZE_HINT_LATELOAD
@@ -56,15 +56,14 @@
 
 /obj/effect/falling_effect/carpfall/initialize(mapload)
 	..()
-	falling_type = pick(prob(75);/mob/living/simple_animal/hostile/carp/weak,
-				prob(15);/mob/living/simple_animal/hostile/carp,
-				prob(10);/mob/living/simple_animal/hostile/carp/large)
+	falling_type = pick(prob(75);/mob/living/simple_mob/animal/space/carp/weak,
+				prob(15);/mob/living/simple_mob/animal/space/carp,
+				prob(10);/mob/living/simple_mob/animal/space/carp/large)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/effect/falling_effect/carpfall/LateInitialize()
 	new falling_type(src)
-	var/mob/living/simple_animal/dropped = pick(contents) // Stupid, but allows to get spawn result without efforts if it is other type(Or if it was randomly generated).
-	dropped.ai_inactive = 1 //Don't fight eachother while we're still setting up!
+	var/mob/living/simple_mob/dropped = pick(contents) // Stupid, but allows to get spawn result without efforts if it is other type(Or if it was randomly generated).
 	dropped.loc = get_turf(src)
 	var/initial_x = dropped.pixel_x
 	var/initial_y = dropped.pixel_y
@@ -78,8 +77,6 @@
 		spawn(7)
 			dropped.visible_message("<span class='danger'>\The [dropped.name] splatters on impact!</span>")
 			dropped.gib()
-	spawn(7)
-		dropped.ai_inactive = 0 //wakey wakey
 	qdel(src)
 
 
@@ -88,8 +85,8 @@
 
 /obj/effect/falling_effect/carpfall/carpnado/initialize(mapload)
 	..()
-	falling_type = pick(prob(70);/mob/living/simple_animal/hostile/carp/weak,
-				prob(19);/mob/living/simple_animal/hostile/carp,
-				prob(10);/mob/living/simple_animal/hostile/carp,
-				prob(1);/mob/living/simple_animal/hostile/carp/large/huge)
+	falling_type = pick(prob(70);/mob/living/simple_mob/animal/space/carp/weak,
+				prob(19);/mob/living/simple_mob/animal/space/carp,
+				prob(10);/mob/living/simple_mob/animal/space/carp,
+				prob(1);/mob/living/simple_mob/animal/space/carp/large/huge)
 	return INITIALIZE_HINT_LATELOAD

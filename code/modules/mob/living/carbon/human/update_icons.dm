@@ -90,7 +90,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #define R_HAND_LAYER			28		//Right-hand item
 #define MODIFIER_EFFECTS_LAYER	29		//Effects drawn by modifiers
 #define FIRE_LAYER				30		//'Mob on fire' overlay layer
-#define WATER_LAYER				31		//'Mob submerged' overlay layer
+#define SUBMERGE_LAYER			31		//'Mob submerged' overlay layer
 #define TARGETED_LAYER			32		//'Aimed at' overlay layer
 #define TOTAL_LAYERS			32//<---- KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
 
@@ -985,15 +985,15 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(QDESTROYING(src))
 		return
 
-	remove_layer(WATER_LAYER)
+	remove_layer(SUBMERGE_LAYER)
 
 	var/depth = check_submerged()
 	if(!depth || lying)
 		return
 
-	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
+	overlays_standing[SUBMERGE_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+SUBMERGE_LAYER) //TODO: Improve
 
-	apply_layer(WATER_LAYER)
+	apply_layer(SUBMERGE_LAYER)
 
 /mob/living/carbon/human/proc/update_surgery()
 	if(QDESTROYING(src))
@@ -1079,6 +1079,6 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #undef R_HAND_LAYER
 #undef MODIFIER_EFFECTS_LAYER
 #undef FIRE_LAYER
-#undef WATER_LAYER
+#undef SUBMERGE_LAYER
 #undef TARGETED_LAYER
 #undef TOTAL_LAYERS

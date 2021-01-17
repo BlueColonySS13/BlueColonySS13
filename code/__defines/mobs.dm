@@ -27,6 +27,8 @@
 #define BORGXRAY  0x4
 #define BORGMATERIAL  8
 
+#define STANCE_ATTACK    11 // Backwards compatability
+#define STANCE_ATTACKING 12 // Ditto
 /*
 #define STANCE_IDLE      1	// Looking for targets if hostile.  Does idle wandering.
 #define STANCE_ALERT     2	// Bears
@@ -39,13 +41,16 @@
 #define STANCE_SLEEP        0	// Doing (almost) nothing, to save on CPU because nobody is around to notice or the mob died.
 #define STANCE_IDLE         1	// The more or less default state. Wanders around, looks for baddies, and spouts one-liners.
 #define STANCE_ALERT        2	// A baddie is visible but not too close, and essentially we tell them to go away or die.
-#define STANCE_ATTACK       3	// Attempting to get into range to attack them.
-#define STANCE_ATTACKING    4	// Actually fighting, with melee or ranged.
-#define STANCE_REPOSITION   5	// Relocating to a better position while in combat. Only used for ranged mobs since melee only has one better position, which STANCE_ATTACK already handles.
-#define STANCE_MOVE         6	// Similar to above but for out of combat. If a baddie is seen, they'll cancel and fight them.
-#define STANCE_FOLLOW       7	// Following somone, without trying to murder them.
-#define STANCE_FLEE         8	// Run away from the target because they're too spooky/we're dying/some other reason.
-#define STANCE_STUNNED      9	// Do nothing, because the mob is unable to act in some form. Can be applied by other disabling effects besides stuns.
+#define STANCE_APPROACH     3	// Attempting to get into range to attack them.
+#define STANCE_FIGHT	    4	// Actually fighting, with melee or ranged.
+#define STANCE_BLINDFIGHT   5	// Fighting something that cannot be seen by the mob, from invisibility or out of sight.
+#define STANCE_REPOSITION   6	// Relocating to a better position while in combat. Also used when moving away from a danger like grenades.
+#define STANCE_MOVE         7	// Similar to above but for out of combat. If a baddie is seen, they'll cancel and fight them.
+#define STANCE_FOLLOW       8	// Following somone, without trying to murder them.
+#define STANCE_FLEE         9	// Run away from the target because they're too spooky/we're dying/some other reason.
+#define STANCE_DISABLED     10	// Used when the holder is afflicted with certain status effects, such as stuns or confusion.
+
+#define STANCES_COMBAT      list(STANCE_ALERT, STANCE_APPROACH, STANCE_FIGHT, STANCE_BLINDFIGHT, STANCE_REPOSITION)
 
 #define LEFT  0x1
 #define RIGHT 0x2
@@ -316,10 +321,33 @@
 #define SA_ROBOTIC	3
 #define SA_HUMANOID	4
 
+// More refined version of SA_* ""intelligence"" seperators.
+// Now includes bitflags, so to target two classes you just do 'MOB_CLASS_ANIMAL|MOB_CLASS_HUMANOID'
+#define MOB_CLASS_NONE 			0	// Default value, and used to invert for _ALL.
+
+#define MOB_CLASS_PLANT			1	// Unused at the moment.
+#define MOB_CLASS_ANIMAL		2	// Animals and beasts like spiders, saviks, and bears.
+#define MOB_CLASS_HUMANOID		4	// Non-robotic humanoids, including /simple_mob and /carbon/humans and their alien variants.
+#define MOB_CLASS_SYNTHETIC		8	// Silicons, mechanical simple mobs, FBPs, and anything else that would pass is_synthetic()
+#define MOB_CLASS_SLIME			16	// Everyone's favorite xenobiology specimen (and maybe prometheans?).
+#define MOB_CLASS_ABERRATION	32	// Weird shit.
+#define MOB_CLASS_DEMONIC		64	// Cult stuff.
+#define MOB_CLASS_BOSS			128	// Future megafauna hopefully someday.
+#define MOB_CLASS_ILLUSION		256	// Fake mobs, e.g. Technomancer illusions.
+#define MOB_CLASS_PHOTONIC		512	// Holographic mobs like holocarp, similar to _ILLUSION, but that make no attempt to hide their true nature.
+
+#define MOB_CLASS_ALL (~MOB_CLASS_NONE)
+
 // For slime commanding.  Higher numbers allow for more actions.
 #define SLIME_COMMAND_OBEY		1 // When disciplined.
 #define SLIME_COMMAND_FACTION	2 // When in the same 'faction'.
 #define SLIME_COMMAND_FRIEND	3 // When befriended with a slime friendship agent.
+
+// Threshold for mobs being able to damage things like airlocks or reinforced glass windows.
+// If the damage is below this, nothing will happen besides a message saying that the attack was ineffective.
+// Generally, this was not a define but was commonly set to 10, however 10 may be too low now since simple_mobs now attack twice as fast,
+// at half damage compared to the old mob system, meaning mobs who could hurt structures may not be able to now, so now it is 5.
+#define STRUCTURE_MIN_DAMAGE_THRESHOLD 5
 
 //Vision flags, for dealing with plane visibility
 #define VIS_FULLBRIGHT		1
