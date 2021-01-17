@@ -83,6 +83,8 @@ var/list/gamemode_cache = list()
 	var/automute_on = 0					//enables automuting/spam prevention
 	var/jobs_have_minimal_access = 0		//determines whether jobs use minimal access or expanded access.
 
+	var/allow_exports = 0				//allow factory exports?
+
 	var/cult_ghostwriter = 1                //Allows ghosts to write in blood in cult rounds...
 	var/cult_ghostwriter_req_cultists = 10  //...so long as this many cultists are active.
 
@@ -270,8 +272,8 @@ var/list/gamemode_cache = list()
 	// can lots be saved? if this is set to false, this disables lots. it will auto-toggle if lot loading is borked in process to prevent data corruption.
 	var/lot_saving = FALSE
 
-	// allow businesses to be made?
-	var/allow_businesses = FALSE
+	var/allow_businesses = FALSE // allow businesses to be made?
+	var/allow_business_bounties = FALSE // allow bounties for businesses?
 
 	// redbot settings
 	var/comms_key = ""
@@ -375,6 +377,9 @@ var/list/gamemode_cache = list()
 
 				if("allow_businesses")
 					config.allow_businesses = 1
+
+				if("allow_business_bounties")
+					config.allow_business_bounties = 1
 
 				if("comms_key")
 					config.comms_key = text2num(value)
@@ -765,6 +770,9 @@ var/list/gamemode_cache = list()
 
 				if("use_overmap")
 					config.use_overmap = 1
+
+				if("allow_exports")
+					config.allow_exports = 1
 /*
 				if("station_levels")
 					using_map.station_levels = text2numlist(value, ";")

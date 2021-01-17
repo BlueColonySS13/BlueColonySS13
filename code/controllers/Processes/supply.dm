@@ -44,10 +44,6 @@ var/datum/controller/supply/supply_controller = new()
 	//shuttle movement
 	var/movetime = 1200
 	var/datum/shuttle/ferry/supply/shuttle
-	var/list/material_points_conversion = list( // Any materials not named in this list are worth 0 points
-			"phoron" = 5,
-			"platinum" = 5
-		)
 
 
 /datum/controller/supply/New()
@@ -80,6 +76,9 @@ var/datum/controller/supply/supply_controller = new()
 /datum/controller/supply/proc/sell()
 	var/area/area_shuttle = shuttle.get_location_area()
 	if(!area_shuttle)
+		return
+
+	if(!config.allow_exports)
 		return
 
 	callHook("sell_shuttle", list(area_shuttle));

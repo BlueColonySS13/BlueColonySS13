@@ -1,7 +1,6 @@
 /datum/bounty/gun
 	category = CAT_GUNS
 
-/*
 /datum/bounty/gun/smg_guards
 	name = "Get the Ultra Premium Care Plan: It Sounds Better"
 	author = "Howard Hows"
@@ -88,8 +87,8 @@
 
 	department_reward = 2200
 	individual_reward = 850
-*/
 
+/*
 /datum/bounty/gun/low_demand
 	name = "UNAVAILABLE"
 	author = "UNAVAILABLE"
@@ -100,3 +99,5 @@
 
 	department_reward = 0
 	individual_reward = 0
+
+*/
