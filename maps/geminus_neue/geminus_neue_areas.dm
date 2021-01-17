@@ -457,20 +457,22 @@
 	name = "\improper President's Office - Geminus" //Central Command Command totally isn't RAS Syndrome in action.
 	icon_state = "centcom_command"
 
-/area/redspace/outpost
-	name = "Parascience Outpost Exterior"
+/area/abandoned_lab
+	name = "\improper NSS Abendrot"
+	sound_env = TUNNEL_ENCLOSED
+	icon_state = "blue"
+	requires_power = 0
+	dynamic_lighting = 1
+	base_turf = /turf/simulated/floor/plating
 
-/area/redspace/outpost/toilets
-	name = "Parascience Outpost - Toilets"
+/area/abandoned_lab/laboratory
+	name = "\improper NSS Abendrot - Laboratory"
+	icon_state = "yellow"
 
-/area/redspace/outpost/dorms
-	name = "Parascience Outpost - Dorms"
+/area/abandoned_lab/gateway
+	name = "\improper NSS Abendrot - Gateway"
+	icon_state = "green"
 
-/area/redspace/outpost/kitchen
-	name = "Parascience Outpost - Kitchen"
-
-/area/redspace/outpost/maintenance
-	name = "Parascience Outpost - Maintenance"
-
-/area/redspace/outpost/lab
-	name = "Parascience Outpost - Laboratory"
+/area/abandoned_lab/bridge
+	name = "\improper NSS Abendrot - Bridge"
+	icon_state = "bridge"
