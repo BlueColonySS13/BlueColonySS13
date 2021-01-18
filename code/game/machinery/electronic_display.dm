@@ -94,7 +94,7 @@ GLOBAL_LIST_INIT(display_case_icons, list(
 	     "Snacks - Green" = "snackgreen",
 	     "Snacks - Orange" = "snackorange",
 	     "Snacks - Teal" = "snackteal",
-	     "Cola - Black" = "black cola",
+	     "Cola - Black" = "cola_black",
 	     "Cola - Red" = "soda_red",
 	     "Coffee" = "coffee",
 	     "Cigarettes" = "cigs",
