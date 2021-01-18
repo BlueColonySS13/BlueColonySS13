@@ -5,7 +5,7 @@
 	name = "You Have 20 Seconds To Comply"
 	author = "Ornias Police Department"
 	description = "Another day, another unsanctioned protest in front of city hall... \
-	We’re undermanned and need something to level the playing field. \
+	Weâ€™re undermanned and need something to level the playing field. \
 	Please send us a ED-209 assemblies to help spread the weight around."
 
 	items_wanted = list(/obj/item/weapon/secbot_assembly/ed209_assembly = 3)
@@ -62,7 +62,7 @@
 	name = "URGENT: Poxlauncher Parts Needed"
 	author = "Asagarth Valkyries Management"
 	description = "The Asagarth Valkyries are going up against the Firehome Phoenixes next week and our poxball launchers \
-	were damaged in a recent earthquake. Send us 12 advanced capacitors so we can repair them!"
+	were damaged in a recent earthquake. Send us 20 advanced capacitors so we can repair them!"
 
 	items_wanted = list(/obj/item/weapon/stock_parts/capacitor/adv = 20)
 
