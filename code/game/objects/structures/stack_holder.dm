@@ -34,6 +34,7 @@
 	/obj/item/stack/material/tritium,
 	/obj/item/stack/material/mhydrogen,
 	/obj/item/stack/material/aluminium,
+	/obj/item/stack/material/titanium,
 	/obj/item/stack/material/platinum,
 	/obj/item/stack/material/silver,
 	/obj/item/stack/material/gold,
