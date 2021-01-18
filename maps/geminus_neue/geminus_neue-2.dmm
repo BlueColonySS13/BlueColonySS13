@@ -2525,7 +2525,7 @@
 "aWC" = (/obj/machinery/disposal,/obj/structure/disposalpipe/trunk{dir = 1; icon_state = "pipe-t"},/turf/simulated/floor/wood/walnut,/area/lots/business/business_lot_twelve)
 "aWD" = (/obj/machinery/lot_security_system/centcom/police,/turf/simulated/floor/tiled/techfloor,/area/security/armoury)
 "aWE" = (/obj/machinery/button/flasher{id = "permaflash"; pixel_x = 25; pixel_y = 5; req_access = list(5)},/turf/simulated/floor/tiled,/area/security/main)
-"aWF" = (/obj/machinery/vending/security/detective,/turf/simulated/floor/tiled/dark,/area/security/warden)
+"aWF" = (/obj/machinery/vending/security/warden,/turf/simulated/floor/tiled/dark,/area/security/warden)
 "aWG" = (/obj/machinery/computer/secure_data{name = "criminal records database"; desc = "Used to view, edit and maintain the criminal database of the Mendell City operations area."; icon_state = "computer"; dir = 8},/turf/simulated/floor/tiled/dark,/area/security/warden)
 "aWH" = (/obj/effect/floor_decal/corner/paleblue{dir = 5},/turf/simulated/floor/tiled,/area/medical/medbay2)
 "aWI" = (/obj/machinery/light/colored/blue{tag = "icon-blue1 (EAST)"; icon_state = "blue1"; dir = 4},/turf/simulated/floor/pavement/corner_invert{tag = "icon-pave_invert_corner (EAST)"; icon_state = "pave_invert_corner"; dir = 4},/area/planets/Geminus/outdoor/central)
