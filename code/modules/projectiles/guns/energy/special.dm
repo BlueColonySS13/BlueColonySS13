@@ -55,6 +55,8 @@
 	cell_type = /obj/item/weapon/cell/device/weapon/recharge
 	battery_lock = 1
 	var/decl/plantgene/gene = null
+	
+	uses = 1000
 
 	firemodes = list(
 		list(mode_name="induce mutations", projectile_type=/obj/item/projectile/energy/floramut, modifystate="floramut"),
@@ -150,6 +152,8 @@
 	cell_type = /obj/item/weapon/cell/device/weapon/recharge
 	battery_lock = 1
 	charge_meter = 0
+	
+	uses = 500
 
 /obj/item/weapon/gun/energy/staff/special_check(var/mob/user)
 	if((user.mind && !wizards.is_antagonist(user.mind)))
