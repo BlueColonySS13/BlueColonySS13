@@ -221,7 +221,7 @@
 	path = /obj/item/clothing/accessory/poncho/roles/cargo
 
 /datum/gear/suit/roles/poncho/cloak/hos
-	display_name = "cloak, head of security"
+	display_name = "cloak, chief of police"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/hos
 	allowed_roles = list("Chief of Police")
 
@@ -251,7 +251,7 @@
 	allowed_roles = list("Mayor")
 
 /datum/gear/suit/roles/poncho/cloak/hop
-	display_name = "cloak, head of personnel"
+	display_name = "cloak, city clerk"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/hop
 	allowed_roles = list("City Clerk")
 
