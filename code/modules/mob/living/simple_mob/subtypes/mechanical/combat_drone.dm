@@ -7,8 +7,8 @@
 /mob/living/simple_mob/mechanical/combat_drone
 	name = "combat drone"
 	desc = "An automated combat drone armed with state of the art weaponry and shielding."
-	icon_state = "drone"
-	icon_living = "drone"
+	icon_state = "drone3"
+	icon_living = "drone3"
 	icon_dead = "drone_dead"
 	has_eye_glow = TRUE
 
