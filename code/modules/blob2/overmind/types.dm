@@ -69,26 +69,67 @@
 
 // Subtypes
 
-// Super fast spreading, but weak to EMP.
+// The deadliest of blob encounters. An amalgam of what makes the other blob types dangerous. While expanding, the blob has a chance to create a weak spore. Damage is spread across
+// adjacent blob tiles. Additionally, the affected tile has a chance to swap places with another blob tile. However, it is weak to EMPs and with constant bombardment can be destroyed.
 /datum/blob_type/grey_goo
-	name = "grey tide"
-	desc = "A swarm of self replicating nanomachines.  Extremely illegal and dangerous, the EIO was meant to prevent this from showing up a second time."
+	name = "nanite swarm"
+	desc = "A swarm of aggressive self-replicating nanomachines.  Extremely illegal and dangerous, the EIO was meant to prevent this from showing up a second time."
 	effect_desc = "Spreads much faster than average, but is harmed greatly by electromagnetic pulses."
 	ai_desc = "genocidal"
-	difficulty = BLOB_DIFFICULTY_SUPERHARD // Fastest spread of them all and has snowballing capabilities.
+	difficulty = BLOB_DIFFICULTY_MASSACRE // The endgame of all blobs.
 	color = "#888888"
 	complementary_color = "#CCCCCC"
-	spread_modifier = 1.0
+	spread_modifier = 1.5
 	slow_spread_with_size = FALSE
-	ai_aggressiveness = 80
+	ai_aggressiveness = 100
+	can_build_factories = TRUE
 	can_build_resources = TRUE
-	attack_message = "The tide tries to shallow you"
+	brute_multiplier = 0.3 // EMPs or bust
+	burn_multiplier = 0// I'm not explaining myself.
+	attack_message = "The nanite swarm tries to assimilate you"
 	attack_message_living = ", and you feel your skin dissolve"
 	attack_message_synth = ", and your external plating dissolves"
+	spore_type = /mob/living/simple_mob/blob/spore/infesting
 
 /datum/blob_type/grey_goo/on_emp(obj/structure/blob/B, severity)
-	B.adjust_integrity(-(20 / severity))
+	B.adjust_integrity(-(60 / severity))
 
+/datum/blob_type/grey_goo/on_expand(var/obj/structure/blob/B, var/obj/structure/blob/new_B, var/turf/T, var/mob/observer/blob/O)
+	if(prob(1)) // 1% chance to make a weak spore when expanding.
+		var/mob/living/simple_mob/blob/spore/S = new spore_type(T)
+		S.overmind = O
+		S.update_icons()
+		O.blob_mobs.Add(S)
+
+	if(istype(B, /obj/structure/blob/normal) || (istype(B, /obj/structure/blob/shield) && prob(25)))
+		new_B.forceMove(get_turf(B))
+		B.forceMove(T)
+
+/datum/blob_type/grey_goo/on_received_damage(var/obj/structure/blob/B, damage, damage_type)
+	var/list/blobs_to_hurt = list() // Maximum split is 9, reducing the damage each blob takes to 11.1% but doing that damage to 9 blobs.
+	for(var/obj/structure/blob/C in range(1, B))
+		if(!istype(C, /obj/structure/blob/core) && !istype(C, /obj/structure/blob/node) && C.overmind && (C.overmind == B.overmind) ) //if it doesn't have the same 'ownership' or is a core or node, don't split damage to it
+			blobs_to_hurt += C
+
+	for(var/thing in blobs_to_hurt)
+		var/obj/structure/blob/C = thing
+		if(C == B)
+			continue // We'll damage this later.
+
+		C.adjust_integrity(-(damage / blobs_to_hurt.len))
+
+	if(damage > 0 && prob(60))
+		var/list/available_blobs = list()
+		for(var/obj/structure/blob/OB in orange(1, B))
+			if((istype(OB, /obj/structure/blob/normal) || (istype(OB, /obj/structure/blob/shield) && prob(25))) && OB.overmind && OB.overmind == B.overmind)
+				available_blobs += OB
+		if(available_blobs.len)
+			var/obj/structure/blob/targeted = pick(available_blobs)
+			var/turf/T = get_turf(targeted)
+			targeted.forceMove(get_turf(B))
+			B.forceMove(T) // Swap places.
+
+	return damage / max(blobs_to_hurt.len, 1) // To hurt the blob that got hit.
 
 // A blob meant to be fought like a fire.
 /datum/blob_type/blazing_oil

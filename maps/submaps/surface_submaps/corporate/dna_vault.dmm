@@ -1,0 +1,50 @@
+"a" = (/turf/simulated/wall/r_wall,/area/submap/corporate/dna_vault)
+"b" = (/obj/effect/floor_decal/rust,/obj/effect/floor_decal/pavement_grit/edged,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"c" = (/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"d" = (/obj/effect/floor_decal/rust,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"e" = (/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/filth,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"f" = (/obj/structure/prop/tech/dna_vault{icon_state = "vault 0,2"},/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"g" = (/obj/structure/prop/tech/dna_vault{icon_state = "vault 1,2"},/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"h" = (/obj/structure/prop/tech/dna_vault{icon_state = "vault 2,2"},/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"i" = (/obj/effect/floor_decal/rust,/obj/effect/floor_decal/pavement_grit/centered,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"j" = (/obj/structure/prop/lab/pod_gibs,/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"k" = (/obj/effect/floor_decal/rust,/obj/effect/floor_decal/pavement_grit/edged,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"l" = (/obj/structure/prop/lab/pod_dead,/obj/effect/floor_decal/rust,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"m" = (/obj/structure/prop/tech/dna_vault{icon_state = "vault 0,1"},/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"n" = (/obj/structure/prop/tech/dna_vault{icon_state = "vault 1,1"},/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"o" = (/obj/structure/prop/tech/dna_vault{icon_state = "vault 2,1"},/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"p" = (/obj/structure/prop/lab/pod_gibs,/obj/effect/floor_decal/rust,/obj/effect/floor_decal/pavement_grit/edged,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"q" = (/obj/structure/prop/lab/pod_dead,/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/generic,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"r" = (/obj/structure/prop/tech/dna_vault,/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"s" = (/obj/structure/prop/tech/dna_vault{icon_state = "vault 2,0"},/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"t" = (/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/generic,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"u" = (/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/filth,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"v" = (/obj/structure/prop/lab/pod_dead,/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"w" = (/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/generic,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"x" = (/obj/structure/prop/lab/pod_gibs,/obj/effect/floor_decal/rust,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"y" = (/obj/structure/prop/lab/pod_experiment_1,/obj/effect/floor_decal/rust,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"z" = (/obj/structure/prop/lab/pod_dead,/obj/effect/floor_decal/rust,/obj/effect/floor_decal/pavement_grit/centered,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"A" = (/obj/effect/floor_decal/rust,/obj/effect/floor_decal/pavement_grit/centered,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"B" = (/obj/structure/prop/lab/pod_muscle,/obj/effect/floor_decal/rust,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"C" = (/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/generic,/obj/effect/floor_decal/pavement_grit/edged,/turf/simulated/floor/greengrid,/area/submap/corporate/dna_vault)
+"D" = (/obj/structure/prop/lab/pod_dead,/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/filth,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"E" = (/obj/structure/prop/lab/pod_gibs,/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/filth,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+"F" = (/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/generic,/obj/effect/floor_decal/pavement_grit/centered,/turf/simulated/floor/plating,/area/submap/corporate/dna_vault)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaa
+abccdeafghaccccda
+aijkldamnoacpcqca
+aceddcarisacdccca
+acddiccbicctdcuca
+abvwxdyddcjczdxia
+acidbcucddcddbcca
+acutcdciAddddtdca
+acjkBdvAcCzcxdDba
+acdddccdedccccAca
+aAtcdccccddAcccca
+adEcvdjdbdldxdBca
+adibdudcFdddcweca
+accdcccccccccdkda
+aaaaaaaacaaaaaaaa
+"}

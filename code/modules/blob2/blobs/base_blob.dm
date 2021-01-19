@@ -17,6 +17,7 @@ var/list/blobs = list()
 	var/heal_timestamp = 0 //we got healed when?
 	var/mob/observer/blob/overmind = null
 	var/base_name = "blob" // The name that gets appended along with the blob_type's name.
+	dont_save = TRUE
 
 /obj/structure/blob/New(var/newloc, var/new_overmind)
 	..(newloc)
@@ -180,6 +181,9 @@ var/list/blobs = list()
 	return null
 
 /obj/structure/blob/proc/consume_tile()
+	if(istype(loc, /area/lots)) //Don't damage lots!
+		return
+
 	for(var/atom/A in loc)
 		A.blob_act(src)
 	if(loc && loc.density)
