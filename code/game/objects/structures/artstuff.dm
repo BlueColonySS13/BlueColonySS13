@@ -61,6 +61,21 @@ var/global/list/globalBlankCanvases[AMT_OF_CANVASES]
 	var/pixX			//last X of click
 	var/pixY			//last Y of click
 
+	var/image_id
+
+	unique_save_vars = list("image_id") // makes the imagine persistent
+
+/obj/item/weapon/canvas/on_persistence_save()
+	if(!image_id) // If it already has an image_id, it got saved before, so don't make duplicates.
+		image_id = "[game_id]-[rand(34,299)]-[get_game_second()]"
+		SSpersistence.save_image(icon, image_id, PERSISTENT_PAINTINGS_DIRECTORY)
+	return ..()
+
+/obj/item/weapon/canvas/on_persistence_load()
+	if(image_id)
+		icon = SSpersistence.load_image(image_id, PERSISTENT_PAINTINGS_DIRECTORY)
+	return ..()
+
 /obj/item/weapon/canvas/nineteenXnineteen
 	name = "19px by 19px canvas"
 	icon_state = "19x19"

@@ -114,6 +114,13 @@
 	cost = 8000
 	containername = "greek bust"
 
+/datum/supply_pack/decoration/bust
+	name = "Marble Pillar"
+	contains = list(
+		/obj/structure/sculpting_block/sculpted/large/pillar)
+	cost = 8000
+	containername = "marble pillar"
+
 /datum/supply_pack/decoration/balloons
 	name = "Assorted Balloons"
 	contains = list(/obj/item/toy/colorballoon/random = 10)
