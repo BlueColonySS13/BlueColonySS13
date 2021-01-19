@@ -255,7 +255,28 @@
 	var/times_carved = 0
 	var/last_struck = 0
 
-//	unique_save_vars = list("sculpted")
+	var/apply_colors = list(
+					    0.35, 0.3, 0.25,
+					    0.35, 0.3, 0.25,
+					    0.35, 0.3, 0.25
+					)
+
+	var/image_id = ""
+
+	unique_save_vars = list("desc", "sculpted", "image_id") // colors should apply normally, i think
+
+/obj/structure/sculpting_block/on_persistence_save()
+	if(!image_id) // If it already has an image_id, it got saved before, so don't make duplicates.
+		image_id = "[game_id]-[T ? T.name : ""][rand(34,299)]-[get_game_second()]"
+		SSpersistence.save_image(icon, image_id, PERSISTENT_SCULPTURES_DIRECTORY)
+	return ..()
+
+/obj/structure/sculpting_block/on_persistence_load()
+	if(image_id)
+		icon = SSpersistence.load_image(image_id, PERSISTENT_SCULPTURES_DIRECTORY)
+
+	add_pedestal()
+	return ..()
 
 /obj/structure/sculpting_block/verb/rotate()
 	set name = "Rotate"
@@ -320,17 +341,10 @@
 					sculpted = 1
 					user.visible_message("<span class='notice'>[user] finishes sculpting their magnum opus!</span>",
 						"<span class='notice'>You finish sculpting a masterpiece.</span>")
-					src.appearance = T
-					src.color = list(
-					    0.35, 0.3, 0.25,
-					    0.35, 0.3, 0.25,
-					    0.35, 0.3, 0.25
-					)
-					src.pixel_y += 8
-					var/image/pedestal_underlay = image('icons/obj/mining.dmi', icon_state = "pedestal")
-					pedestal_underlay.appearance_flags = RESET_COLOR
-					pedestal_underlay.pixel_y -= 8
-					src.underlays += pedestal_underlay
+
+
+					make_statue(T)
+
 					var/title = sanitize(input(usr, "If you would like to name your art, do so here.", "Christen Your Sculpture", "") as text|null)
 					if(title)
 						name = title
@@ -345,6 +359,20 @@
 				last_struck = 0
 		return
 
+/obj/structure/sculpting_block/proc/make_statue(var/mob/living/T)
+	var/icon/img = getFlatIcon(T)
+	icon = img
+
+	color = apply_colors
+	pixel_y += 8
+
+	add_pedestal()
+
+/obj/structure/sculpting_block/proc/add_pedestal()
+	var/image/pedestal_underlay = image('icons/obj/mining.dmi', icon_state = "pedestal")
+	pedestal_underlay.appearance_flags = RESET_COLOR
+	pedestal_underlay.pixel_y -= 8
+	underlays += pedestal_underlay
 
 
 /obj/structure/sculpting_block/sculpted
