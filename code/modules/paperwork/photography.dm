@@ -309,48 +309,48 @@ var/global/photo_count = 0
 		icon_state = icon_on
 		on = 1
 
-/obj/item/device/camera/proc/can_capture_turf(turf/T, mob/user)
-	var/viewer = user
-	if(user.client)		//To make shooting through security cameras possible
-		viewer = user.client.eye
-	var/can_see = (T in view(viewer))
 
+//Proc for capturing check
+/mob/living/proc/can_capture_turf(turf/T)
+	var/viewer = src
+	if(src.client)		//To make shooting through security cameras possible
+		viewer = src.client.eye
+	var/can_see = (T in view(viewer))
 	return can_see
 
-/obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
 
-	var/sensationality
-	var/gruesomeness
-	var/scandal
-	var/scariness
-
+/obj/item/device/camera/proc/captureimage(atom/target, mob/living/user, flag)
+	var/sensationality = 0
+	var/gruesomeness = 0
+	var/scandal = 0
+	var/scariness = 0
 
 	var/x_c = target.x - (size-1)/2
 	var/y_c = target.y + (size-1)/2
 	var/z_c	= target.z
-	var/list/turfs = list()
 	var/mobs = ""
 	for(var/i = 1 to size)
 		for(var/j = 1 to size)
 			var/turf/T = locate(x_c, y_c, z_c)
-			if(can_capture_turf(T, user))
-				turfs.Add(T)
+			if(user.can_capture_turf(T))
 				mobs += get_mobs(T)
-
 				sensationality += get_sensationalist_value(T)
 				gruesomeness += get_gruesome_value(T)
 				scandal += get_scandalous_value(T)
 				scariness += get_scary_value(T)
-
 			x_c++
 		y_c--
 		x_c = x_c - size
 
-	var/obj/item/weapon/photo/p = createpicture(target, user, turfs, mobs, flag)
+
+
+	var/obj/item/weapon/photo/p = createpicture(target, user, mobs, flag)
+
 	p.sensational = sensationality
 	p.gruesome = gruesomeness
 	p.scandalous = scandal
 	p.scary = scariness
+
 
 	if(findtext(mobs, "Its stare makes you feel uneasy"))
 		p.cursed = 1
@@ -364,17 +364,20 @@ var/global/photo_count = 0
 
 	printpicture(user, p)
 
-/obj/item/device/camera/proc/createpicture(atom/target, mob/user, list/turfs, mobs, flag)
-	var/icon/photoimage = get_icon(turfs, target)
+
+/obj/item/device/camera/proc/createpicture(atom/target, mob/user, mobs, flag)
+	var/x_c = target.x - (size-1)/2
+	var/y_c = target.y - (size-1)/2
+	var/z_c	= target.z
+	var/icon/photoimage = generate_image(x_c, y_c, z_c, size, CAPTURE_MODE_REGULAR, user, 1)
 
 	var/obj/item/weapon/photo/p = new()
-	p.name = "photo"
 	p.img = photoimage
-	p.make_small_sprite()
 	p.desc = mobs
-	p.pixel_x = rand(-10, 10)
-	p.pixel_y = rand(-10, 10)
 	p.photo_size = size
+	p.make_small_sprite()
+	p.update_icon()
+
 	return p
 
 /obj/item/device/camera/proc/printpicture(mob/user, obj/item/weapon/photo/p)
