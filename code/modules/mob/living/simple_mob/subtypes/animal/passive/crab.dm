@@ -16,6 +16,8 @@
 	response_harm   = "stomps"
 	friendly = "pinches"
 
+	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/crab
+
 	say_list_type = /datum/say_list/crab
 
 //COFFEE! SQUEEEEEEEEE!
@@ -28,3 +30,18 @@
 	name = "mutant crab"
 	desc = "This crab has an oddly green color, you usually find these in sewers."
 	color = COLOR_GREEN
+
+/mob/living/simple_mob/animal/passive/crab/sif
+	icon = 'icons/mob/fish.dmi'
+	tt_desc = "S Ocypode glacian"
+
+/mob/living/simple_mob/animal/passive/crab/sif/New()
+	..()
+	adjust_scale(rand(5,15) / 10)
+
+// Meat!
+
+/obj/item/weapon/reagent_containers/food/snacks/meat/crab
+	name = "meat"
+	desc = "A chunk of meat."
+	icon_state = "crustacean-meat"

@@ -151,3 +151,17 @@
 	icon_living = "megacarp"
 	maxHealth = 230
 	health = 230
+
+/mob/living/simple_mob/animal/space/carp/baby
+	name = "baby carp"
+	desc = "How cute! Dangerous... but cute!"
+	health = 5
+	maxHealth = 5
+	melee_damage_lower = 1
+	melee_damage_upper = 2
+
+	ai_holder_type = /datum/ai_holder/simple_mob/passive
+
+/mob/living/simple_mob/animal/space/carp/baby/initialize()
+	adjust_scale(0.5)
+	..()

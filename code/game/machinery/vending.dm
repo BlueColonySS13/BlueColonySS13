@@ -2453,3 +2453,20 @@
 					)
 	vendor_department = DEPT_PUBLIC
 
+/obj/machinery/vending/fishing
+	name = "Fisherman's Chest"
+	desc = "Tell the kids I'm goin' fishing."
+	icon_state = "fishvendor"
+	vend_delay = 8
+	vend_reply = "Happy fishing!"
+	products = list(/obj/item/weapon/material/fishing_rod = 5,
+					/obj/item/weapon/material/fishing_rod/modern = 5,
+					/obj/item/weapon/material/fishing_rod/pro = 3,
+					/obj/item/stack/fishing_line = 10
+					)
+	prices = list(/obj/item/weapon/material/fishing_rod = 50,
+					/obj/item/weapon/material/fishing_rod/modern = 350,
+					/obj/item/weapon/material/fishing_rod/pro = 1250,
+					/obj/item/stack/fishing_line = 30
+					)
+	vendor_department = DEPT_PUBLIC
