@@ -183,3 +183,14 @@
 	secondary_color = "#FFFFFF"
 	tertiary_color = "#8CC6FF"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/under/polychromic/gown
+	name = "polychromic gown"
+	desc = "For those who enjoy the finer things in life."
+	icon_state = "polygown"
+	item_color = "polygown"
+	item_state = "rainbow"
+	primary_color = "#B53737"
+	secondary_color = "#666666"
+	tertiary_color = "#990000"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS

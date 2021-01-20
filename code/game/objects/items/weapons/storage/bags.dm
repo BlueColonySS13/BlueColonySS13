@@ -386,7 +386,7 @@
 	desc = "Allows you to store a large quantity of clothing."
 	max_storage_space = ITEMSIZE_COST_NORMAL * 25
 	max_w_class = ITEMSIZE_NORMAL
-	w_class = ITEMSIZE_SMALL
+	w_class = ITEMSIZE_LARGE
 	can_hold = list(/obj/item/clothing,/obj/item/stack/material/denim,/obj/item/stack/material/silk, /obj/item/stack/material/leather, \
 	/obj/item/stack/material/leather/synthetic, /obj/item/stack/material/cotton, /obj/item/stack/material/hairlesshide, \
 	/obj/item/stack/material/polychromatic_thread)
