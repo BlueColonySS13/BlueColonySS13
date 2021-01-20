@@ -12,6 +12,7 @@
 
 	holder_type = /obj/item/weapon/holder/fish
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/carpmeat/fish
+	var/return_timer = 0 // After a certain time underwater, fish will disappear.
 
 	// By default they can be in any water turf.  Subtypes might restrict to deep/shallow etc
 	var/global/list/suitable_turf_types =  list(
@@ -35,6 +36,17 @@
 		if(prob(50))
 			say(pick("Blub", "Glub", "Burble"))
 		adjustBruteLoss(unsuitable_atoms_damage)
+
+/mob/living/simple_mob/animal/passive/fish/process()
+	..()
+	if(istype(get_turf(src), suitable_turf_types))
+		return_timer++
+	else
+		return_timer = 0
+
+	if(return_timer == 5 MINUTES)
+		src.visible_message(span("notice", "\The [src] swims away into the water and vanishes beneath its surface."))
+		qdel(src)
 
 // Subtypes.
 /mob/living/simple_mob/animal/passive/fish/bass
