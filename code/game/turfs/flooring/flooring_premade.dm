@@ -576,3 +576,8 @@
 /turf/simulated/floor/stairs/stairsdark/west
 	dir = 8
 	icon_state = "rampbottom"
+
+/turf/simulated/floor/glass_bottom
+	icon_state = "glass_bottom"
+	icon = 'icons/turf/flooring/misc.dmi'
+	initial_flooring = /decl/flooring/glass_bottom

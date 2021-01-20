@@ -718,17 +718,34 @@
 	bitesize = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/carpmeat
-	name = "carp fillet"
-	desc = "A fillet of spess carp meat"
+	name = "fillet"
+	desc = "A fillet of carp meat."
 	icon_state = "fishfillet"
 	filling_color = "#FFDEFE"
 	center_of_mass = list("x"=17, "y"=13)
+	var/toxin_type = "carpotoxin"
+	var/toxin_amount = 3
 
 /obj/item/weapon/reagent_containers/food/snacks/carpmeat/New()
 	..()
 	reagents.add_reagent("protein", 3)
-	reagents.add_reagent("carpotoxin", 3)
+	reagents.add_reagent(toxin_type, toxin_amount)
 	src.bitesize = 6
+
+/obj/item/weapon/reagent_containers/food/snacks/carpmeat/sif
+	desc = "A fillet of Polluxian fish meat."
+	filling_color = "#2c2cff"
+	color = "#2c2cff"
+	toxin_type = "neurotoxic_protein"
+	toxin_amount = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/carpmeat/sif/murkfish
+	toxin_type = "murk_protein"
+
+/obj/item/weapon/reagent_containers/food/snacks/carpmeat/fish
+	desc = "A fillet of fish meat."
+	toxin_type = "neurotoxic_protein"
+	toxin_amount = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/fishfingers
 	name = "Fish Fingers"
