@@ -1,6 +1,9 @@
 /obj/item/weapon/material/fishing_net
 	name = "fishing net"
 	desc = "A crude fishing net."
+	description_info = "This object can be used to capture certain creatures easily, most commonly fish. \
+	It has a reach of two tiles, and can be emptied by activating it in-hand. \
+	This version will not keep creatures inside in stasis, and will be heavier if it contains a mob."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "net"
 	item_state = "net"
@@ -48,7 +51,7 @@
 			to_chat(user, "[A] can't be trapped in \the [src].")
 			return
 		var/mob/L = A
-		user.visible_message("<span class='notice'>[user] natches [L] with \the [src].</span>", "<span class='notice'>You snatch [L] with \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] snatches [L] with \the [src].</span>", "<span class='notice'>You snatch [L] with \the [src].</span>")
 		L.forceMove(src)
 		update_icon()
 		update_weight()
