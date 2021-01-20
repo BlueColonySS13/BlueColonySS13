@@ -242,6 +242,8 @@
 
 	var/pass_flags = 0
 
+	var/portal_vote_id = "voting_human" // determines voting identification
+
 /datum/species/New()
 	if(hud_type)
 		hud = new hud_type()

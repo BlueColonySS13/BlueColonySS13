@@ -71,9 +71,6 @@
 /datum/lot/proc/get_price()
 	return price
 
-/datum/lot/proc/get_tax()
-	return HOUSING_TAX
-
 // Rent procs
 
 /datum/lot/proc/get_default_rent()

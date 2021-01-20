@@ -14,6 +14,8 @@
 	active_power_usage = 2000
 	idle_power_usage = 1000
 
+	contraband_type = CONTRABAND_ARTIFACTSHARMFUL
+
 /obj/machinery/auto_cloner/New()
 	..()
 

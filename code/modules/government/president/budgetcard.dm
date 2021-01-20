@@ -5,6 +5,7 @@
 
 	var_to_edit = "value"
 	portal_category = "Spending And Budget"
+	value_is_money = TRUE
 
 // Gun Permits
 /datum/persistent_option/number_value/budgetcard/nanotrasen

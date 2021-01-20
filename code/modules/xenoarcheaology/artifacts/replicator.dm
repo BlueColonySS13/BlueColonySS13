@@ -19,6 +19,8 @@
 
 	var/fail_message
 
+	contraband_type = CONTRABAND_ARTIFACTSHARMFUL
+
 /obj/machinery/replicator/New()
 	..()
 

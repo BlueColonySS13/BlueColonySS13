@@ -264,7 +264,7 @@
 			return
 
 
-		if(!emagged && SSpersistent_options.get_persistent_option_value("inventory_box_control"))
+		if(!emagged && INVENTORY_BOX_CONTROL)
 			var/safety = 200
 			var/list/objects_to_search = list(I)
 			var/has_illegal_things = FALSE
@@ -275,8 +275,8 @@
 					return
 				var/atom/movable/AM = objects_to_search[1]
 
-				var/contraband_status = AM.is_contraband()
-				if(!(!contraband_status || contraband_status == LEGAL) )
+				var/contraband_status = AM.is_legal()
+				if(!contraband_status)
 					has_illegal_things = TRUE
 					break
 

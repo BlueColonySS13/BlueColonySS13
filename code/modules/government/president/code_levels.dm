@@ -5,6 +5,9 @@
 	value_type = 1
 	portal_category = "Emergency Procedures"
 
+	max_value_text = 1000
+	bbcode_value = TRUE
+
 /datum/persistent_option/value/code_level/code_green
 	name = "Code Green Announcement Text"
 	description = "You can set the message that displays the code green procedure."
@@ -20,7 +23,7 @@
 
 /datum/persistent_option/value/code_level/code_blue/down
 	name = "Code Blue De-escalation Announcement Text"
-	description = "When you de-escalate from code blue to code green, this message is shown."
+	description = "When you de-escalate from code blue to code red, this message is shown."
 	id = "code_blue_down"
 	value_text = "The immediate threat has passed. Police may no longer have weapons drawn at all times, \
 	but may continue to have them visible. Random searches are still allowed."

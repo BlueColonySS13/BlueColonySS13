@@ -676,7 +676,7 @@
 			return
 
 		var/paying = input(usr, "Please input funding amount to add to your account balance.", "Pay Balance") as num|null
-		
+
 		if(!paying || 0 > paying)
 			return
 
@@ -931,9 +931,9 @@
 					employee_list += R.fields["name"]
 
 				if(!employee_list)
-					error_msg = "No police records exist on the system to select from!"
+					error_msg = "No civilian records exist on the system to select from!"
 
-				var/employee = input(usr, "Please select a person to add to this job's listings.", "Edit Criminal Records") as null|anything in employee_list
+				var/employee = input(usr, "Please select a person to add to this job's listings.", "Edit Employees") as null|anything in employee_list
 
 				if(!employee)
 					return

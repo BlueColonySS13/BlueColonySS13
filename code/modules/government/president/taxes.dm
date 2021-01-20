@@ -3,11 +3,17 @@
 	min_value = 0		// 0%
 	max_value = 3		// 300%
 	portal_category = "Sales Taxes"
+	round_value = 0.01
 
 /datum/persistent_option/number_value/tax/income
 	min_value = 0		// 0%
 	max_value = 0.90	// 90%
 	portal_category = "Economic Bracket Taxes"
+
+
+/datum/persistent_option/number_value/tax/get_formatted_value() // for use in UIs
+	var/the_value = "[(get_value() * 100)]%"
+	return the_value
 
 // Economy Taxes
 
@@ -19,7 +25,8 @@
 /datum/persistent_option/number_value/tax/income/middle
 	name = "Middle Class Tax"
 	id = "middle_tax"
-	description = "An income tax affecting people who have between 10,000 to 79,999 in capital."
+	description = "An income tax affecting people who have between 10,000CR to 79,999CR in capital."
+
 
 /datum/persistent_option/number_value/tax/income/upper
 	name = "Upper Class Tax"
@@ -52,7 +59,7 @@
 /datum/persistent_option/number_value/tax/sales/drinks
 	name = "Drinks Tax"
 	description = "Taxes the earnings of non-alcoholic beverages in the colony."
-	id = "drink_tax"
+	id = "drinks_tax"
 
 /datum/persistent_option/number_value/tax/sales/agriculture
 	name = "Agriculture Tax"

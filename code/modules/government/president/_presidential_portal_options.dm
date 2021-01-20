@@ -18,14 +18,17 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	var/min_value = 0	// 0%
 	var/max_value = 1	// 100%
 
+	var/value_is_money = FALSE // if true, value is converted into cash format
+	var/round_value = 1 // if set above 0, value is rounded up to this amount
+
 	var/max_value_text = 100 // max length of a value_text
 
 	var/list/value_list = list()
 	var/list/value_options = list() // options to choose from, if empty, people can use text to add values
-
 	var/value_select = ""	// select a value from a list.
+	var/max_list_items = 0	// if set to any number above 0, this will be the max items that can be in value_list when sanitized
 
-	var/max_list_items = 0	// if set to a number, this will be the max items that can be in value_list
+	var/list/select_person = list() // selects a person from civilian records, saves their uid and name
 
 	var/department_cost = 0 // If this costs something per payroll, how much? (Works with toggle_status var)
 	var/charged_department = DEPT_COUNCIL // If this charges money, which department will it pull money from?
@@ -46,15 +49,15 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	var/allow_blank = TRUE // allow text values on this to be blank?
 
 	var/referendum_type = /datum/voting_ballot/referendum
+	var/create_log = TRUE
+	var/log_id = null //which persistent id it logs to
+
 
 	var/creation_text = "A new ballot for \"%NAME\" has been raised! \
 	This will change it from %VALUE to %PROPOSEDVALUE. \
 	Please go to your local ballot box to cast your votes. Your voice matters!"
 
 	var/on_ballot_pass = "The ballot for %NAME has passed! It has changed from %VALUE to %PROPOSEDVALUE, this will take place immediately."
-
-
-
 
 /datum/persistent_option/New()
 	..()
@@ -78,26 +81,42 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	on_ballot_pass = replacetext(on_ballot_pass, "%VALUE", get_formatted_value())
 	on_ballot_pass = replacetext(on_ballot_pass, "%PROPOSEDVALUE", SSpersistent_options.find_proposed_value_ballot(id))
 
+
+/datum/persistent_option/proc/on_option_change(skip = 0) // is called when an option is adjusted
+	if(skip)
+		return
+
+	return TRUE
+
 /datum/persistent_option/proc/get_option_values()
 	return value_options
 
 /datum/persistent_option/proc/sanitize_options()
+	if(round_value)
+		value = round(value, round_value)
+
 	sanitize_integer(value, min_value, max_value, initial(value))
 	sanitize_integer(toggle_status, FALSE, TRUE, initial(toggle_status))
 
 	sanitize(value_text)
 
-
 	if(!islist(value_options))
 		value_options = list()
 	if(!islist(value_list))
 		value_list = list()
+
+	value_options = SANITIZE_LIST(value_options)
+	value_list = SANITIZE_LIST(value_list)
+
 	if(!istext(value_text))
 		value_text = initial(value_text)
 
 	if(!isnum(department_cost))
 		department_cost = initial(department_cost)
 
+	if(max_list_items)
+		truncate_oldest(value_list, max_list_items)
+		truncate_oldest(select_person, max_list_items)
 
 	return 1
 
@@ -109,7 +128,11 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	return vars[var_to_edit]
 
 /datum/persistent_option/proc/get_formatted_value()
-	return get_value()
+	var/the_value = get_value()
+	if(bbcode_value)
+		the_value = pencode2html(the_value)
+	return the_value
+
 
 /datum/persistent_option/proc/get_proposed_value()
 	return SSpersistent_options.find_proposed_value_ballot(id)
@@ -124,9 +147,39 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 /datum/persistent_option/toggle/get_formatted_value() // for use in UIs
 	return (toggle_status ? "enable" : "disable")
 
+/datum/persistent_option/select_person
+	var_to_edit = "select_person"
+
 /datum/persistent_option/select_list
 	var_to_edit = "value_select"
 
+/datum/persistent_option/value_list
+	var_to_edit = "value_list"
+
+
+//formating
+/datum/persistent_option/number_value/get_formatted_value()
+	return ( value_is_money ? cash2text( value , FALSE, TRUE, TRUE ) : value )
+
+/datum/persistent_option/select_person/get_formatted_value() // for use in UIs
+	if(LAZYLEN(select_person))
+		var/text_list = ""
+		for(var/V in select_person)
+			text_list += "- [V] ([select_person[V]])<br>"
+
+		return text_list
+	else
+		return "None"
+
+/datum/persistent_option/toggle/get_formatted_value() // for use in UIs
+	return (toggle_status ? "Yes" : "No")
+
+/datum/persistent_option/value_list/get_formatted_value()
+	var/text_list = ""
+	for(var/V in value_list)
+		text_list += "- [V]<br>"
+
+	return text_list
 
 /datum/persistent_option/proc/show_value_updater(mob/user)
 	if(make_referendum)
@@ -162,7 +215,7 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		var/new_value = input(usr, "[edit_text ? edit_text : "Please enter a new value for [name]."] (Min: [min_value]. Max: [max_value].)", "[name]", value) as num|null
 
 		sanitize_integer(new_value, min_value, max_value, initial(value))
-		the_new_value = new_value
+		the_new_value = Clamp(new_value, min_value, max_value)
 
 		alert("value is [the_new_value]")
 
@@ -177,7 +230,6 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		sanitize_integer(the_new_value, FALSE, TRUE, initial(toggle_status))
 
 		alert("value is [the_new_value]")
-
 
 	if(var_to_edit == "value_list") // adds or removes a list from a set of values
 		var/list/the_list = value_list
@@ -231,12 +283,45 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		alert("value is [the_new_value]")
 
 
+	if(var_to_edit == "select_person") // updates the name and unique ID into a list
+		var/list/selected_person = list()
+
+		var/person_list = list()
+
+		for(var/datum/data/record/R in data_core.general)
+			if(!R.fields["name"])
+				continue
+			person_list += R.fields["name"]
+
+		if(!person_list)
+			alert("No civilian records exist on the system to select from!")
+			return
+
+		var/person = input(usr, "Please select a person to add to this job's listings.", "Add People") as null|anything in person_list
+
+		if(!person)
+			return
+
+		var/unique_id_empl = ""
+
+		for(var/datum/data/record/C in data_core.general)
+			if(C.fields["name"] == person)
+				unique_id_empl = C.fields["unique_id"]
+
+		selected_person[unique_id_empl] = person
+
+		the_new_value = selected_person
+
+		alert("value is [the_new_value]")
+
+
+
 	if(isnull(the_new_value))
 		alert("No value provided")
 		return FALSE
 
 	if(!make_referendum)
-		return SSpersistent_options.update_pesistent_option_value(id, the_new_value)
+		return SSpersistent_options.update_pesistent_option_value(id, the_new_value, user.real_name)
 
 	else
 		var/response = alert(user, "Would you like to submit the referendum for \"[name]\"?", "Final Referendum Confirmation", "Yes", "No")
@@ -253,8 +338,17 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		else
 			alert("There has been an issue with processing this referendum, please try again later or contact Nanotrasen technical support.")
 
+
+		SSpersistent_options.make_log(id, author = user.real_name, custom_text = "raised a referendum raised by [user.real_name].")
+
 		return new_referendum
 
 /datum/persistent_option/proc/edit_value(mob/user)
 	if(show_value_updater(user))
 		sanitize_options()
+
+/datum/persistent_option/proc/add_value(new_value)
+	if(!new_value)
+		return
+	value_list.Add(new_value)
+	sanitize_options()

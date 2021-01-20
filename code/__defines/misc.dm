@@ -53,6 +53,12 @@
 
 #define AREA_FLAG_IS_NOT_PERSISTENT 8 // SSpersistence will not track values from this area.
 
+//Camera capture modes
+#define CAPTURE_MODE_REGULAR 0 //Regular polaroid camera mode
+#define CAPTURE_MODE_ALL 1 //Admin camera mode
+#define CAPTURE_MODE_PARTIAL 3 //Simular to regular mode, but does not do dummy check
+
+
 //	Shuttles.
 
 // These define the time taken for the shuttle to get to the space station, and the time before it leaves again.

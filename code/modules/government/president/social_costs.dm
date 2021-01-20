@@ -2,6 +2,7 @@
 /datum/persistent_option/number_value/social_cost
 	var_to_edit = "value"
 	portal_category = "Social Costs"
+	value_is_money = TRUE
 
 /datum/persistent_option/number_value/social_cost/food_stamps_wage
 	name = "Food Stamp Eligibility Wage"
@@ -10,15 +11,6 @@
 	value = 25
 	min_value = 0
 	max_value = 9000
-
-/datum/persistent_option/number_value/social_cost/government_meals
-	name = "Food Stamps Allowance"
-	description = "This is the max amount of food stamps someone can redeem if they redeem a food stamp."
-	id = "food_stamps_wage"
-	value = 3
-	min_value = 1
-	max_value = 5
-
 
 /datum/persistent_option/number_value/social_cost/business_registration
 	name = "Business Registration Fee"

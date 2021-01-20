@@ -13,6 +13,12 @@
 	description = "Can people with non-Polluxian nationality vote?"
 	id = "voting_noncitizen"
 
+/datum/persistent_option/toggle/rights/voting/human
+	name = "Human Voting Rights"
+	description = "Can humans vote?"
+	id = "voting_human"
+	portal_grouping = PORTAL_HEAD_OFFICE
+
 /datum/persistent_option/toggle/rights/voting/synthetic
 	name = "Synthetic Voting Rights"
 	description = "Can synthetics vote?"
@@ -45,7 +51,7 @@
 /datum/persistent_option/number_value/minimum_age/voting
 	name = "Voting Age"
 	description = "Change the minimum voting age."
-	id = "voting_gambling"
+	id = "min_age_voting"
 
 /datum/persistent_option/number_value/minimum_age/drinking
 	name = "Minimum Drinking Age"
@@ -75,9 +81,31 @@
 // Discrimination
 
 /datum/persistent_option/toggle/discrimination
+	portal_category = "Discrimination Policies"
 
+/datum/persistent_option/toggle/discrimination/human
+	name = "Human Discrimination"
+	description = "Allows the ability to discriminate humans at jobs or services."
+	id = "discrim_human"
+	portal_grouping = PORTAL_HEAD_OFFICE
 
 /datum/persistent_option/toggle/discrimination/synth
 	name = "Synth Discrimination"
-	description = "Change the minimum age a person can be charged with a crime and convicted."
-	id = "min_age_sentencing"
+	description = "Allows the ability to discriminate synths at jobs or services."
+	id = "discrim_synth"
+
+/datum/persistent_option/toggle/discrimination/bvatborn
+	name = "Baseline Vatborn Discrimination"
+	description = "Allows the ability to discriminate baseline vatborn at jobs or services."
+	id = "discrim_bvatborn"
+
+/datum/persistent_option/toggle/discrimination/mpvatborn
+	name = "Mass Produced Vatborn Discrimination"
+	description = "Allows the ability to discriminate against mass produced vatborn at jobs or services."
+	id = "discrim_mpvatborn"
+
+/datum/persistent_option/toggle/discrimination/excon
+	name = "Ex-Convict Discrimination"
+	description = "Allows the ability to discriminate against ex-convicts at jobs or services."
+	id = "discrim_excon"
+

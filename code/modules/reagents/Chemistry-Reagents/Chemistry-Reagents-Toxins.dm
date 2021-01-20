@@ -444,8 +444,7 @@
 	overdose = REAGENTS_OVERDOSE
 	price_tag = 0.4
 
-	get_tax()
-		return DRUG_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/soporific/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)

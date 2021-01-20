@@ -17,8 +17,6 @@
 	var/list/icon_variety
 	price_tag = 5
 
-/obj/item/weapon/storage/firstaid/get_tax()
-	return MEDICAL_TAX
 
 /obj/item/weapon/storage/firstaid/initialize()
 	. = ..()

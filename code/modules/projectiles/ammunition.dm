@@ -16,12 +16,8 @@
 //	var/spent_icon = null
 	drop_sound = 'sound/items/drop/ring.ogg'
 
-	get_tax()
-		return WEAPONS_TAX
-
-	is_contraband()
-		return CONTRABAND_GUN
-
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_GUN
 
 /obj/item/ammo_casing/New()
 	..()
@@ -99,11 +95,8 @@
 	var/list/icon_keys = list()		//keys
 	var/list/ammo_states = list()	//values
 
-	get_tax()
-		return WEAPONS_TAX
-
-	is_contraband()
-		return CONTRABAND_GUN
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_GUN
 
 
 /obj/item/ammo_magazine/New()

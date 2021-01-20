@@ -146,8 +146,8 @@
 
 	else if(index == 3) // Manage Property Page
 		page_msg = "These are all the properties you own. You can choose to sell them to City Council, or put them back on the market for someone to buy them. \
-		<br><br>Please note that any lots you do sell to City Council can only be sold at their base price. <br><br>Part of the rent you recieve from tenants will go towards housing tax. \
-		<br>The current housing tax rate is [HOUSING_TAX * 100]% as set by the government.<br>"
+		<br><br>Please note that any lots you do sell to City Council can only be sold at their base price. <br><br>Part of the rent you recieve from tenants will go towards property tax. \
+		<br>The current property tax rate is [SSpersistent_options.get_persistent_formatted_value(PROPERTY_TAX)] as set by the government.<br>"
 
 		page_msg += "<fieldset style='border: 2px solid grey; display: inline; width: 80%'>"
 
@@ -587,10 +587,17 @@
 				if(!LOT)
 					return
 
-				var/lot_new_rent = input("Current lot price is [LOT.get_rent()]CR, input the new default rent for your lot. Warning: You should probably let your tenants know before doing this.", "Set Price", LOT.get_rent()) as num|null
+				var/max_rent = SSpersistent_options.get_persistent_option_value("maximum_rent")
+				var/lot_new_rent = input("Current lot price is [LOT.get_rent()]CR, input the new default rent for your lot. Warning: You should probably let your tenants know before doing this. Max Rent: [max_rent]CR", "Set Price", LOT.get_rent()) as num|null
 
 				if(!lot_new_rent || (0 > lot_new_rent))
 					return
+
+
+				if(lot_new_rent > max_rent)
+					alert("The maximum you may set the rent to is [max_rent]CR.")
+					return
+
 
 				if("No" == alert("Set the rent of [LOT.name] to [lot_new_rent]CR?", "Rent Lot", "No", "Yes"))
 					return
@@ -670,6 +677,12 @@
 				if(!landlord_email)
 					error_msg = "There is no email address associated with your citizen ID, please contact an administrator to rectify this."
 					return
+
+				var/max_lots = SSpersistent_options.get_persistent_option_value("maximum_lots")
+				if(LAZYLEN(SSlots.get_lots_by_owner_uid(unique_id)) >= max_lots)
+					error_msg = "You may have no more than [max_lots] properties."
+					return
+
 
 				var/datum/money_account/D = get_account(I.associated_account_number)
 				var/attempt_pin = ""
@@ -959,10 +972,15 @@
 
 				if(!LOT || !tenant)
 					return
-
-				var/new_rent = input("Please set a new unique rent amount for this tenant. Leave blank to set to lot default", "Set Unique Rent", tenant.get_rent()) as num|null
+				var/max_rent = SSpersistent_options.get_persistent_option_value("maximum_rent")
+				var/new_rent = input("Please set a new unique rent amount for this tenant. Leave blank to set to lot default. Max: [max_rent]CR.", "Set Unique Rent", tenant.get_rent()) as num|null
 
 				if(0 > new_rent)
+					return
+
+
+				if(new_rent > max_rent)
+					alert("The maximum you may set the rent to is [max_rent]CR.")
 					return
 
 				if("No" == alert("Set the unique rent of [tenant.name] to [new_rent]CR?", "Unique Rent", "No", "Yes"))
@@ -992,6 +1010,11 @@
 
 				if(!LOT.has_tenants())
 					error_msg = "This lot is not rented out to anyone."
+					return
+
+				var/min_arrears = SSpersistent_options.get_persistent_option_value("minimum_arrears_tenant")
+				if(tenant.get_balance() > min_arrears)
+					error_msg = "This tenant has not reached the minimum threshold for eviction which is currently [min_arrears]CR and under."
 					return
 
 				LOT.add_note(full_name, "Evicted [tenant.name] as a tenant from [LOT.name]",usr)

@@ -160,20 +160,9 @@
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette = 6)
 	var/brand = "\improper Trans-Stellar Duty-free"
 
-	get_tax()
-		return TOBACCO_TAX
+	tax_type = TOBACCO_TAX
+	contraband_type = CONTRABAND_NICOTINE
 
-/obj/item/weapon/storage/fancy/cigarettes/get_tax()
-	var/has_tobacco
-	for(var/obj/item/clothing/mask/smokable/cigarette/C in src)
-		if(C.nicotine_amt)
-			tax_type = TOBACCO_TAX
-			has_tobacco++
-
-	if(!has_tobacco)
-		tax_type = null
-
-	return tax_type
 
 /obj/item/weapon/storage/fancy/cigarettes/get_item_cost()
 	if(tagged_price)
@@ -300,8 +289,8 @@
 	icon_type = "cigar"
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar = 7)
 
-	get_tax()
-		return TOBACCO_TAX
+	tax_type = TOBACCO_TAX
+
 
 /obj/item/weapon/storage/fancy/cigar/initialize()
 	. = ..()
@@ -342,9 +331,6 @@
 	storage_slots = 14
 	can_hold = list(/obj/item/weapon/rollingpaper)
 	starts_with = list(/obj/item/weapon/rollingpaper = 14)
-
-	get_tax()
-		return TOBACCO_TAX
 
 
 /*

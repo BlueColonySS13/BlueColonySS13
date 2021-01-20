@@ -511,8 +511,9 @@
 	color = "#755202"
 	price_tag = 0.8
 
-	get_tax()
-		return DRUG_TAX
+	contraband_type = CONTRABAND_HEROIN
+	tax_type = DRUG_TAX
+
 
 /datum/reagent/coca
 	name = "coca extract"
@@ -523,8 +524,8 @@
 	color = "#755202"
 	price_tag = 0.9
 
-	get_tax()
-		return DRUG_TAX
+	contraband_type = CONTRABAND_COCAINE
+	tax_type = DRUG_TAX
 
 /datum/reagent/menthol
 	name = "Menthol"
@@ -547,8 +548,8 @@
 	color = "#755202"
 	price_tag = 1.8
 
-	get_tax()
-		return DRUG_TAX
+	contraband_type = CONTRABAND_CAAPI
+	tax_type = DRUG_TAX
 
 /datum/reagent/chacruna
 	name = "chacruna extract"
@@ -559,8 +560,8 @@
 	color = "#755202"
 	price_tag = 1.8
 
-	get_tax()
-		return DRUG_TAX
+	contraband_type = CONTRABAND_CHACRUNA
+	tax_type = DRUG_TAX
 
 /datum/reagent/wax
 	name = "Wax"

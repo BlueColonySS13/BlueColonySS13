@@ -9,11 +9,10 @@
 	attack_verb = list("jabbed","stabbed","ripped")
 	drop_sound = 'sound/items/drop/axe.ogg'
 
-	get_tax()
-		return WEAPONS_TAX
 
-	is_contraband()
-		return CONTRABAND_KNIFELARGE
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_KNIFELARGE
+
 
 
 /obj/item/weapon/material/knife/machete/hatchet
@@ -30,11 +29,8 @@
 	attack_verb = list("chopped", "torn", "cut")
 	applies_material_colour = 0
 
-	get_tax()
-		return WEAPONS_TAX
-
-	is_contraband()
-		return CONTRABAND_KNIFELARGE
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_KNIFELARGE
 
 
 /obj/item/weapon/material/knife/machete/hatchet/unathiknife
@@ -46,8 +42,8 @@
 	can_cleave = FALSE
 	var/hits = 0
 
-	get_tax()
-		return WEAPONS_TAX
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_KNIFELARGE
 
 /obj/item/weapon/material/knife/machete/hatchet/unathiknife/attack(mob/M as mob, mob/user as mob)
 	if(hits > 0)

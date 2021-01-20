@@ -18,6 +18,7 @@
 	value = 100
 	min_value = 1
 	max_value = 500
+	value_is_money = TRUE
 
 /datum/persistent_option/number_value/landlord/max_lots
 	name = "Maximum Properties Per Landlord"
@@ -34,3 +35,4 @@
 	value = 3
 	min_value = 0
 	max_value = -5000
+	value_is_money = TRUE

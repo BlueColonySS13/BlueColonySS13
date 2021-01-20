@@ -14,11 +14,8 @@
 	var/det_time = 50
 	var/loadable = 1
 
-	get_tax()
-		return WEAPONS_TAX
-
-	is_contraband()
-		return CONTRABAND_EXPLOSIVES
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_EXPLOSIVES
 
 
 /obj/item/weapon/grenade/proc/clown_check(var/mob/living/user)

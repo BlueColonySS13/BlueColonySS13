@@ -17,12 +17,15 @@ GLOBAL_LIST_EMPTY(all_voting_ballots)
 	var/creation_date = ""
 	var/days_until_expiry = 7
 
+	var/active = TRUE
+
 /datum/voting_ballot/proc/sanitize_ballot()
 	if(id && !GLOB.all_voting_ballots[id])
 		GLOB.all_voting_ballots[id] = src
 
 	if(!creation_date)
-		creation_date = full_real_time()
+		creation_date = full_game_time()
+
 
 	var/days_expiry = expiry_days()
 
@@ -30,14 +33,20 @@ GLOBAL_LIST_EMPTY(all_voting_ballots)
 		expire_ballot()
 
 /datum/voting_ballot/proc/expire_ballot()
-	return
+	active = FALSE
+
+/datum/voting_ballot/proc/get_status() // indicator of status
+	return active
+
+/datum/voting_ballot/proc/get_status_text() // indicator of status
+	return (active ? "Active" : "Expired")
+
 
 /datum/voting_ballot/referendum
 	name = "Referendum"
 
 /datum/voting_ballot/proc/expiry_days()
-	var/days_open = Days_Difference(creation_date, full_real_time())
-
+	var/days_open = Days_Difference(creation_date, full_game_time())
 	return days_until_expiry - days_open
 
 
@@ -77,3 +86,15 @@ GLOBAL_LIST_EMPTY(all_voting_ballots)
 
 	return current_winner
 
+
+/datum/voting_ballot/proc/get_persistent_option()
+	return get_persistent_option(persistent_option_id)
+
+
+/datum/voting_ballot/proc/apply_ballot_outcome() // if the ballot passes, it'll apply this outcome.
+	var/datum/persistent_option/PO = get_persistent_option()
+
+	if(!PO)
+		return
+
+	return SSpersistent_options.update_pesistent_option_value(PO.id, new_change, author)

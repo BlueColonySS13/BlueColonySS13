@@ -2,6 +2,10 @@
 /datum/persistent_option/value/procedure/department
 	portal_category = "Standard Operating Procedures"
 	var_to_edit = "value_text"
+	max_value_text = 9000
+
+	portal_grouping = PORTAL_HEAD_OFFICE
+
 
 // department SOP
 
@@ -33,7 +37,7 @@
 	name = "Prisoner Handling Procedures"
 	description = "This is the prisoner rights procedure, it must be followed by the police department at all time. Please view the charter \
 	before editing this to ensure that it does not violate it."
-	id = "prisoner_handling"
+	id = "prisoner_handling_sop"
 	value_text = "Placeholder."
 
 /datum/persistent_option/value/procedure/department/science
@@ -60,20 +64,6 @@
 	id = "execution_procedure"
 	value_text = "Placeholder."
 
-/datum/persistent_option/value/procedure/department/warrant_procedure
-	name = "Warrant Procedure"
-	description = "This is the formal process for raising and carrying out warrants."
-	id = "warrant_procedure"
-	value_text = "Placeholder."
-
-/datum/persistent_option/value/procedure/department/private_lot_search
-	name = "Private Property Search Procedure"
-	description = "This is the formal process for raising and carrying out warrants."
-	id = "lot_search_procedure"
-	value_text = "Placeholder."
-
-
-
 
 // Regulations
 
@@ -92,12 +82,19 @@
 /datum/persistent_option/value/procedure/regulation/anomalous
 	name = "Anomalous Material Handling"
 	description = "Regulations in the regards to handling anomalous materials and lab equipment."
-	id = "anomalous_material"
+	id = "regs_anomalous_material"
 	value_text = "Placeholder."
 
 /datum/persistent_option/value/procedure/regulation/private_security
 	name = "Private Security Regulations"
 	description = "Regulations in the regards to private security."
-	id = "private_security"
+	id = "regs_private_security"
 	value_text = "Placeholder."
+
+/datum/persistent_option/value/procedure/regulation/landlord
+	name = "Landlord Regulations"
+	description = "Regulations in the regards to landownership."
+	id = "regs_private_landlord"
+	value_text = "Placeholder."
+
 

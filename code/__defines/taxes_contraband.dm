@@ -1,46 +1,69 @@
-#define GENERAL_TAX persistent_economy.general_sales_tax
-#define BUSINESS_TAX persistent_economy.business_income_tax
 
-#define MEDICAL_TAX persistent_economy.medical_tax
-#define WEAPONS_TAX persistent_economy.weapons_tax
-#define ALCOHOL_TAX persistent_economy.alcoholic_tax
-#define TOBACCO_TAX persistent_economy.tobacco_tax
-#define DRUG_TAX persistent_economy.recreational_drug_tax
-#define GAMBLING_TAX persistent_economy.gambling_tax
-#define HOUSING_TAX persistent_economy.gambling_tax
+#define BUSINESS_TAX "business_tax"
+#define MEDICAL_TAX "medical_tax"
+#define WEAPONS_TAX "weapons_tax"
+#define FOOD_TAX "food_tax"
+#define DRINKS_TAX "drinks_tax"
+#define AGRICULTURE_TAX "agriculture_tax"
+#define ALCOHOL_TAX "alcohol_tax"
+#define TOBACCO_TAX "tobacco_tax"
+#define DRUG_TAX "recreational_drug_tax"
+#define CANNABIS_TAX "cannabis_tax"
+#define GAMBLING_TAX "gambling_tax"
+#define PHARMA_TAX "pharma_tax"
+#define HAZARD_CHEM_TAX "hazard_chem_tax"
+#define MINING_TAX "mining_tax"
+#define BANKING_TAX "banking_tax"
+#define PROPERTY_TAX "property_tax"
+#define XENO_TAX "xeno_tax"
+#define ELECTRONICS_TAX "electronics_tax"
+#define CLOTHING_TAX "clothing_tax"
 
-#define CONTRABAND_CANNABIS persistent_economy.law_CANNABIS
-#define CONTRABAND_ALCOHOL persistent_economy.law_ALCOHOL
-#define CONTRABAND_ECSTASY persistent_economy.law_ECSTASY
-#define CONTRABAND_PSILOCYBIN persistent_economy.law_PSILOCYBIN
-#define CONTRABAND_CRACK persistent_economy.law_CRACK
-#define CONTRABAND_COCAINE persistent_economy.law_COCAINE
-#define CONTRABAND_HEROIN persistent_economy.law_HEROIN
-#define CONTRABAND_METH persistent_economy.law_METH
-#define CONTRABAND_NICOTINE persistent_economy.law_NICOTINE
-#define CONTRABAND_STIMM persistent_economy.law_STIMM
-#define CONTRABAND_CYANIDE persistent_economy.law_CYANIDE
-#define CONTRABAND_CHLORAL persistent_economy.law_CHLORAL
-#define CONTRABAND_DMT persistent_economy.law_DMT
-#define CONTRABAND_LSD persistent_economy.law_LSD
-#define CONTRABAND_AYAHUASCA persistent_economy.law_AYAHUASCA
-#define CONTRABAND_BATHSALTS persistent_economy.law_BATHSALTS
-#define CONTRABAND_KROKODIL persistent_economy.law_KROKODIL
+#define SOL_IMPORT_TAX "sol_export_tax"
+#define ANDRO_IMPORT_TAX "andro_export_tax"
 
-#define CONTRABAND_GUN persistent_economy.law_GUNS
-#define CONTRABAND_KNIFESMALL persistent_economy.law_SMALLKNIVES
-#define CONTRABAND_KNIFELARGE persistent_economy.law_LARGEKNIVES
-#define CONTRABAND_EXPLOSIVES persistent_economy.law_EXPLOSIVES
+#define CONTRABAND_CANNABIS "contraband_cannabis"
+#define CONTRABAND_ALCOHOL "contraband_alcohol"
+#define CONTRABAND_ECSTASY "contraband_ecstasy"
+#define CONTRABAND_NICOTINE "contraband_nicotine"
+#define CONTRABAND_PSILOCYBIN "contraband_psilocybin"
+#define CONTRABAND_CRACK "contraband_crack"
+#define CONTRABAND_COCAINE "contraband_cocaine"
+#define CONTRABAND_HEROIN "contraband_heroin"
+#define CONTRABAND_METH "contraband_meth"
+#define CONTRABAND_STIMM "contraband_stimm"
+#define CONTRABAND_LSD "contraband_lsd"
+#define CONTRABAND_AYAHUASCA "contraband_ayahuasca"
+#define CONTRABAND_DMT "contraband_dmt"
+#define CONTRABAND_BATHSALTS "contraband_bath_salts"
+#define CONTRABAND_KROKODIL "contraband_krokodil"
+#define CONTRABAND_CAAPI "contraband_caapi"
+#define CONTRABAND_CHACRUNA "contraband_chacruna"
 
-#define FOODSTAMP_MEALS persistent_economy.foodstamp_meals
+#define CONTRABAND_CYANIDE "contraband_cyanide"
+#define CONTRABAND_CHLORAL "contraband_chloral"
+
+#define CONTRABAND_GUN "contraband_gun"
+#define CONTRABAND_KNIFESMALL "contraband_knife_small"
+#define CONTRABAND_KNIFELARGE "contraband_knife_large"
+#define CONTRABAND_EXPLOSIVES "contraband_explosives"
+
+#define CONTRABAND_BIOWEAPONRY "contraband_bioweaponry"
+#define CONTRABAND_ARTIFACTSBENIGN "contraband_benign_artifacts"
+#define CONTRABAND_ARTIFACTSHARMFUL "contraband_harmful_artifacts"
+
+#define INVENTORY_BOX_CONTROL SSpersistent_options.get_persistent_option_value("inventory_box_control")
+#define FOODSTAMP_MEALS SSpersistent_options.get_persistent_option_value("food_stamps_allowance")
+#define BUSINESS_COST SSpersistent_options.get_persistent_option_value("business_registration")
 
 #define ILLEGAL "Illegal"
 #define PROFESSIONAL_ONLY "Professional Use Only"
 #define PERMIT_SELLING "Selling permit needed"
 #define PERMIT_POSSESSION "Possession and creation permit needed"
 #define PROFESSIONAL_SALE "Possession permit needed. Illegal to sell privately."
-
 #define LEGAL "Legal"
+
+#define SECURITY_LEVEL SSpersistent_options.get_persistent_option_value("security_level")
 
 #define NORMAL_TRANSACTION_LIMIT 50
 #define DEPARTMENT_TRANSACTION_LIMIT 1000
@@ -50,31 +73,3 @@
 #define PORTAL_HEAD_OFFICE "Head Office Portal"
 #define PORTAL_COUNCIL "Council Portal"
 
-/proc/get_tax_price(tax, price)
-	var/tax_amt
-	tax_amt = tax * price
-	return price + tax_amt
-
-/proc/get_tax_amount(tax, price)
-	var/amt
-	amt = tax * price
-	return amt
-
-
-/proc/get_tax_rate(class)
-
-	switch(class)
-		if(CLASS_UPPER)
-			return persistent_economy.tax_rate_upper * 100
-		if(CLASS_MIDDLE)
-			return persistent_economy.tax_rate_middle * 100
-		if(CLASS_WORKING)
-			return persistent_economy.tax_rate_lower * 100
-
-/proc/get_economic_class(money)
-	switch(money)
-		if(0 to 9999)				return CLASS_WORKING
-		if(10000 to 79999)			return CLASS_MIDDLE
-		if(80000 to INFINITY)		return CLASS_UPPER
-
-		else 					return CLASS_WORKING	// this accounts for balances that are negative

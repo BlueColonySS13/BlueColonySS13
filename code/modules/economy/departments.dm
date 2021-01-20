@@ -7,7 +7,7 @@
 	var/has_bank = TRUE
 	var/starting_money = 0
 	var/datum/money_account/department/bank_account
-	var/business_taxed = FALSE                // no one is safe.
+	var/business_taxed = FALSE  // no one is safe.
 
 	var/dept_type = PUBLIC_DEPARTMENT
 
@@ -18,7 +18,9 @@
 	// paths of items types of what their department cards can buy (for heads)
 
 	var/allowed_buy_types = list()
-	var/card_spending_limit = 15000 // max you can spend from this card
+
+	var/portal_card_id = null // if set, instead of pulling costs from card_spending_limit var it will use the linked portal value here
+	var/card_spending_limit = 15000 // max you can spend from this card. only applies to private businesses
 
 	var/max_bounties = 15
 

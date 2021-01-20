@@ -303,12 +303,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	return total
 
 /obj/item/clothing/mask/smokable/cigarette/get_tax()
-	if(nicotine_amt)
-		tax_type = TOBACCO_TAX
-	else
-		tax_type = null
-
-	return tax_type
+	if(reagents && reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.reagent_list)
+			if(R.get_tax())
+				return R.get_tax()
 
 /obj/item/clothing/mask/smokable/cigarette/New()
 	..()

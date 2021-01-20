@@ -1,3 +1,37 @@
 
-/datum/persistent_option/number_value/head_office/
+/datum/persistent_option/value/procedure/head_office/
 	portal_grouping = PORTAL_HEAD_OFFICE
+
+
+// Charter is to be edited by Nanotrasen, not the president
+
+/datum/persistent_option/value/procedure/head_office/charter
+	name = "Polluxian Charter"
+	description = "The is the official charter provided by Nanotrasen, it cannot be directly edited by presidents but can have amendments suggested. \
+	It is used as reference for legal matters."
+	id = "pollux_charter"
+	value_text = "Placeholder."
+	value_type = 1
+	bbcode_value = TRUE
+
+	var_to_edit = "value_text"
+	portal_grouping = PORTAL_HEAD_OFFICE
+
+	max_value_text = 10000
+
+
+/*
+
+/datum/persistent_option/value/procedure/head_office/sol
+	name = "Sol Charter"
+	description = "The is the official charter provided by SolGov."
+	id = "sol_charter"
+	value_text = "Placeholder."
+
+/datum/persistent_option/value/procedure/head_office/andro
+	name = "Andromeda Charter"
+	description = "The is the official charter provided by AndroGov."
+	id = "andro_charter"
+	value_text = "Placeholder."
+
+*/

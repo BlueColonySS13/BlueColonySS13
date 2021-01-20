@@ -1,10 +1,8 @@
 /obj/machinery/modular_computer/console/preset/
 	// Can be changed to give devices specific hardware
-	var/_has_id_slot = 0
+	var/_has_id_slot = 1
 	var/_has_printer = 1
-	var/_has_battery = 0
-
-	dont_save = TRUE
+	var/_has_battery = 1
 
 /obj/machinery/modular_computer/console/preset/New()
 	. = ..()
@@ -145,5 +143,6 @@
 	cpu.hard_drive.store_file(new/datum/computer_file/program/email_administration())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/landlord_management())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/presidential_portal())
+	cpu.hard_drive.store_file(new/datum/computer_file/program/govportal())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/business_manager())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/crim_record())

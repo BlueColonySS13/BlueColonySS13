@@ -95,7 +95,7 @@
 	return cost
 
 /datum/medical_bill/proc/get_tax()
-	return MEDICAL_TAX
+	return SSpersistent_options.get_persistent_option_value(MEDICAL_TAX)
 
 ///////////////////
 //---Court---------//
@@ -118,8 +118,8 @@
 /datum/lot/proc/get_item_cost()
 	return price
 
-/datum/lot/get_tax()
-	return HOUSING_TAX
+/datum/lot/proc/get_tax()
+	return SSpersistent_options.get_persistent_option_value(PROPERTY_TAX)
 
 // Juices, soda and similar //
 
@@ -251,3 +251,9 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			if(R.get_tax())
 				return R.get_tax()
+
+
+// other taxes
+
+/obj/machinery/computer/betting_terminal/get_tax()
+	return SSpersistent_options.get_persistent_option_value(GAMBLING_TAX)

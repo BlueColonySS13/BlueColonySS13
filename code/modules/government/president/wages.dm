@@ -3,7 +3,9 @@
 	min_value = 0
 	max_value = 300
 	value = 10
-	portal_category = "Wages"
+	portal_category = "Minimum Wages"
+
+	value_is_money = TRUE
 
 /datum/persistent_option/number_value/wages/minimum_wage
 	name = "Minimum Wage"

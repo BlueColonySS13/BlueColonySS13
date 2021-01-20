@@ -3,6 +3,8 @@
 	bbcode_value = TRUE
 	value_type = 1
 	portal_category = "Broadcast and Communications"
+	max_value_text = 9000
+
 
 /datum/persistent_option/value/president/president_message
 	name = "President Message"

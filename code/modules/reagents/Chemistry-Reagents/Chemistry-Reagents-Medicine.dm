@@ -12,8 +12,7 @@
 	scannable = 1
 	price_tag = 0.5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/inaprovaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -32,8 +31,7 @@
 	scannable = 1
 
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/bicaridine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -67,8 +65,7 @@
 	scannable = 1
 	price_tag = 0.55
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/kelotane/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -86,8 +83,7 @@
 	scannable = 1
 	price_tag = 0.7
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/dermaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -104,8 +100,7 @@
 	scannable = 1
 	price_tag = 0.5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/dylovene/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -123,8 +118,7 @@
 	scannable = 1
 	price_tag = 0.7
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/carthatoline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -153,8 +147,7 @@
 	scannable = 1
 	price_tag = 0.5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/dexalin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -176,8 +169,7 @@
 	scannable = 1
 	price_tag = 0.8
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/dexalinp/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -198,8 +190,7 @@
 	scannable = 1
 	price_tag = 0.8
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/tricordrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -220,8 +211,7 @@
 	scannable = 1
 	price_tag = 1
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/cryoxadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -243,8 +233,7 @@
 	scannable = 1
 	price_tag = 2
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/clonexadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -269,8 +258,7 @@
 	mrate_static = TRUE
 	price_tag = 0.05
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/paracetamol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -293,8 +281,7 @@
 	mrate_static = TRUE
 	price_tag = 0.7
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/tramadol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.add_chemical_effect(CE_PAINKILLER, 80)
@@ -316,8 +303,7 @@
 	mrate_static = TRUE
 	price_tag = 0.9
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/oxycodone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.add_chemical_effect(CE_PAINKILLER, 200)
@@ -345,8 +331,7 @@
 
 	price_tag = 0.8
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/synaptizine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -371,8 +356,7 @@
 	price_tag = 1
 
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/hyperzine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -395,8 +379,7 @@
 	scannable = 1
 	price_tag = 0.8
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/alkysine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -415,9 +398,7 @@
 	scannable = 1
 	price_tag = 0.6
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/imidazoline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -445,9 +426,7 @@
 	scannable = 1
 	price_tag = 0.8
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/peridaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -473,9 +452,7 @@
 	scannable = 1
 	price_tag = 0.8
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/osteodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -502,9 +479,7 @@
 	var/repair_strength = 3
 	price_tag = 0.7
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/myelamine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -536,6 +511,8 @@
 	overdose = 10
 	overdose_mod = 1.75
 	scannable = 1
+
+	tax_type = PHARMA_TAX
 
 /datum/reagent/respirodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	var/repair_strength = 1 * M.species.chem_strength_heal
@@ -569,6 +546,8 @@
 	overdose_mod = 1.75
 	scannable = 1
 
+	tax_type = PHARMA_TAX
+
 /datum/reagent/gastirodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	var/repair_strength = 1 * M.species.chem_strength_heal
 	if(alien == IS_SLIME)
@@ -600,6 +579,8 @@
 	overdose = 10
 	overdose_mod = 1.75
 	scannable = 1
+
+	tax_type = PHARMA_TAX
 
 /datum/reagent/hepanephrodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	var/repair_strength = 1 * M.species.chem_strength_heal
@@ -635,6 +616,8 @@
 	overdose_mod = 1.75
 	scannable = 1
 
+	tax_type = PHARMA_TAX
+
 /datum/reagent/cordradaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	var/repair_strength = 1 * M.species.chem_strength_heal
 	if(alien == IS_SLIME)
@@ -662,8 +645,7 @@
 	overdose = REAGENTS_OVERDOSE
 	price_tag = 0.7
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/ryetalyn/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -688,8 +670,7 @@
 	overdose = REAGENTS_OVERDOSE
 	price_tag = 0.5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/ethylredoxrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -719,9 +700,7 @@
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 	price_tag = 0.4
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/hyronalin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -741,8 +720,7 @@
 	scannable = 1
 	price_tag = 0.4
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/arithrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -766,8 +744,7 @@
 	scannable = 1
 	price_tag = 0.3
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/penicillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -785,8 +762,7 @@
 	overdose = 10
 	scannable = 1
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/corophizine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -818,8 +794,7 @@
 	color = "#C8A5DC"
 	touch_met = 5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/sterilizine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
@@ -850,8 +825,8 @@
 	scannable = 1
 	price_tag = 0.7
 
-	get_tax()
-		return MEDICAL_TAX
+
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/leporazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -873,9 +848,7 @@
 	scannable = 1
 	price_tag = 0.3
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/rezadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -907,9 +880,7 @@
 	data = 0
 	price_tag = 0.7
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/methylphenidate/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -935,10 +906,7 @@
 	data = 0
 	price_tag = 0.4
 
-
-	get_tax()
-		return MEDICAL_TAX
-
+	tax_type = PHARMA_TAX
 
 /datum/reagent/citalopram/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -963,8 +931,7 @@
 	data = 0
 	price_tag = 0.3
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/paroxetine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -994,8 +961,7 @@
 	data = 0
 	price_tag = 0.5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/qerr_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -1021,8 +987,7 @@
 	scannable = 1
 	price_tag = 2
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/healing_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)

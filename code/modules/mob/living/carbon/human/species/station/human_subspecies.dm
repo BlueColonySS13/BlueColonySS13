@@ -57,6 +57,8 @@
 		O_INTESTINE =/obj/item/organ/internal/intestine
 		)
 
+	portal_vote_id = "voting_bvatborn"
+
 /datum/species/human/vatgrown/mpl
 	name = SPECIES_HUMAN_VATBORN_MPL
 	name_plural = "Mass-Produced Vatborn"
@@ -83,6 +85,8 @@
 		O_STOMACH =	 /obj/item/organ/internal/stomach,
 		O_INTESTINE =/obj/item/organ/internal/intestine
 		)
+
+	portal_vote_id = "voting_mpvatborn"
 /*
 // These guys are going to need full resprites of all the suits/etc so I'm going to
 // define them and commit the sprites, but leave the clothing for another day.

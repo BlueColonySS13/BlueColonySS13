@@ -68,8 +68,8 @@
 	data["state"] = current_status
 	data["isAI"] = issilicon(usr)
 	data["authenticated"] = get_authentication_level(user)
-	data["current_security_level"] = security_level
-	data["current_security_level_title"] = num2seclevel(security_level)
+	data["current_security_level"] = SECURITY_LEVEL
+	data["current_security_level_title"] = num2seclevel(SECURITY_LEVEL)
 
 	data["def_SEC_LEVEL_DELTA"] = SEC_LEVEL_DELTA
 	data["def_SEC_LEVEL_RED"] = SEC_LEVEL_RED
@@ -263,15 +263,15 @@
 				var/current_level = text2num(href_list["target"])
 				var/confirm = alert("Are you sure you want to change alert level to [num2seclevel(current_level)]?", name, "No", "Yes")
 				if(confirm == "Yes" && can_still_topic())
-					var/old_level = security_level
+					var/old_level = SECURITY_LEVEL
 					if(!current_level) current_level = SEC_LEVEL_GREEN
 					if(current_level < SEC_LEVEL_GREEN) current_level = SEC_LEVEL_GREEN
 					if(current_level > SEC_LEVEL_BLUE) current_level = SEC_LEVEL_BLUE //Cannot engage delta with this
 					set_security_level(current_level)
-					if(security_level != old_level)
+					if(SECURITY_LEVEL != old_level)
 						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-						switch(security_level)
+						switch(SECURITY_LEVEL)
 							if(SEC_LEVEL_GREEN)
 								feedback_inc("alert_comms_green",1)
 							if(SEC_LEVEL_RED)

@@ -13,8 +13,8 @@
 
 	price_tag = 0.2
 
-/datum/reagent/drug/get_tax()
-	return DRUG_TAX
+	tax_type = DRUG_TAX
+
 
 /datum/reagent/drug/affect_blood(var/mob/living/carbon/M)
 
@@ -41,9 +41,7 @@
 	"You feel... unsteady.")
 
 	price_tag = 0.9
-
-/datum/reagent/drug/ecstasy/is_contraband()
-	return CONTRABAND_ECSTASY
+	contraband_type = CONTRABAND_ECSTASY
 
 /datum/reagent/drug/ecstasy/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -88,11 +86,8 @@ datum/reagent/drug/ecstasy/overdose(var/mob/living/M as mob)
 	"You feel collected.")
 	price_tag = 0.09
 
-/datum/reagent/drug/nicotine/get_tax()
-	return TOBACCO_TAX
-
-/datum/reagent/drug/nicotine/is_contraband()
-	return CONTRABAND_NICOTINE
+	tax_type = TOBACCO_TAX
+	contraband_type = CONTRABAND_NICOTINE
 
 datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 	M.AdjustStunned(-1)
@@ -113,8 +108,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 2.2
 
-/datum/reagent/drug/meth/is_contraband()
-	return CONTRABAND_METH
+	contraband_type = CONTRABAND_METH
 
 /datum/reagent/drug/meth/affect_blood(var/mob/living/carbon/M)
 	M.AdjustParalysis(-2)
@@ -165,8 +159,8 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1
 
-/datum/reagent/drug/cannabis/is_contraband()
-	return CONTRABAND_CANNABIS
+	tax_type = CANNABIS_TAX
+	contraband_type = CONTRABAND_CANNABIS
 
 /datum/reagent/drug/cannabis/affect_blood(var/mob/living/carbon/M)
 	M.adjustToxLoss(-2)
@@ -200,8 +194,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1.5
 
-/datum/reagent/drug/heroin/is_contraband()
-	return CONTRABAND_HEROIN
+	contraband_type = CONTRABAND_HEROIN
 
 /datum/reagent/drug/heroin/affect_blood(var/mob/living/carbon/M)
 	M.add_chemical_effect(CE_PAINKILLER, 40)
@@ -238,8 +231,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 2
 
-/datum/reagent/drug/cocaine/is_contraband()
-	return CONTRABAND_COCAINE
+	contraband_type = CONTRABAND_COCAINE
 
 /datum/reagent/drug/cocaine/affect_blood(var/mob/living/carbon/M)
 	M.add_chemical_effect(CE_PAINKILLER,3)
@@ -273,8 +265,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1.5
 
-/datum/reagent/drug/crack/is_contraband()
-	return CONTRABAND_CRACK
+	contraband_type = CONTRABAND_CRACK
 
 /datum/reagent/drug/crack/affect_blood(var/mob/living/carbon/M)
 	M.add_chemical_effect(CE_PAINKILLER,1)
@@ -309,8 +300,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1.8
 
-/datum/reagent/drug/stimm/is_contraband()
-	return CONTRABAND_STIMM
+	contraband_type = CONTRABAND_STIMM
 
 /datum/reagent/drug/stimm/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_TAJARA)
@@ -336,8 +326,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1
 
-/datum/reagent/drug/dmt/is_contraband()
-	return CONTRABAND_DMT
+	contraband_type = CONTRABAND_DMT
 
 /datum/reagent/drug/dmt/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_TAJARA)
@@ -370,8 +359,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1
 
-/datum/reagent/drug/ayahuasca/is_contraband()
-	return CONTRABAND_AYAHUASCA
+	contraband_type = CONTRABAND_AYAHUASCA
 
 /datum/reagent/drug/ayahuasca/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_TAJARA)
@@ -404,8 +392,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1
 
-/datum/reagent/drug/bathsalts/is_contraband()
-	return CONTRABAND_BATHSALTS
+	contraband_type = CONTRABAND_BATHSALTS
 
 /datum/reagent/drug/bathsalts/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -449,8 +436,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1
 
-/datum/reagent/drug/lsd/is_contraband()
-	return CONTRABAND_LSD
+	contraband_type = CONTRABAND_LSD
 
 /datum/reagent/drug/lsd/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -497,8 +483,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 	"Your skin feels all rough and dry.",
 	"The feel too chill!")
 
-/datum/reagent/drug/krokodil/is_contraband()
-	return CONTRABAND_KROKODIL
+	contraband_type = CONTRABAND_KROKODIL
 
 /datum/reagent/drug/krokodil/affect_blood(var/mob/living/carbon/M)
 	M.drowsyness = max(M.drowsyness, 5)
