@@ -22,7 +22,7 @@
 
 /datum/gear/cyberware/tracking
 	display_name = "implant, tracking"
-	description = "An implant normally given to dangerous criminals. It ontinuously broadcasts your position to those with the proper equipment to track the signal."
+	description = "An implant normally given to dangerous criminals. It continuously broadcasts your position to those with the proper equipment to track the signal."
 	path = /obj/item/weapon/implant/tracking
 	cost = 1
 
