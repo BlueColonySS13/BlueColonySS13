@@ -3,6 +3,7 @@
 // When adding a new PoI, please add it to this list.
 #if MAP_TEST
 #include "attunement_field_generator.dmm"
+#include "attunement_field_generator_broken.dmm"
 #endif
 
 /datum/map_template/surface/redspace
