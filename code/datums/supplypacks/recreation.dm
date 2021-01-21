@@ -22,6 +22,21 @@
 	containertype = /obj/structure/closet/crate
 	containername = "foam weapon crate"
 
+
+/datum/supply_pack/recreation/fortune_teller
+	name = "Fortune Teller Set"
+	contains = list(
+			/obj/item/toy/crystal_ball,
+			/obj/item/clothing/head/skull,
+			/obj/item/weapon/flame/candle/black = 2,
+			/obj/item/weapon/flame/candle/candelabra/black = 1,
+
+
+			)
+	containertype = /obj/structure/closet/crate
+	containername = "Fortune Teller Set"
+	cost = 300
+
 /datum/supply_pack/recreation/lasertag
 	name = "Lasertag equipment"
 	contains = list(

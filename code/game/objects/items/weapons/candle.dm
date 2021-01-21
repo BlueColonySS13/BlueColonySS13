@@ -22,8 +22,11 @@
 	update_icon()
 
 /obj/item/weapon/flame/candle/random/New()
-	wax_color = pick(list(COLOR_WHITE, COLOR_DARK_GRAY, COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_GREEN, COLOR_BLUE, COLOR_VIOLET))
+	wax_color = pick(list(COLOR_WHITE, COLOR_BLACK, COLOR_DARK_GRAY, COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_GREEN, COLOR_BLUE, COLOR_VIOLET))
 	..()
+
+/obj/item/weapon/flame/candle/black
+	wax_color = COLOR_BLACK
 
 /obj/item/weapon/flame/candle/update_icon()
 	overlays.Cut()
@@ -120,8 +123,11 @@
 	candle_base = "candelabra_stand"
 
 /obj/item/weapon/flame/candle/candelabra/random/New()
-	wax_color = pick(list(COLOR_WHITE, COLOR_DARK_GRAY, COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_GREEN, COLOR_BLUE, COLOR_VIOLET))
+	wax_color = pick(list(COLOR_WHITE, COLOR_DARK_GRAY, COLOR_BLACK, COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_GREEN, COLOR_BLUE, COLOR_VIOLET))
 	..()
+
+/obj/item/weapon/flame/candle/candelabra/black
+	wax_color = COLOR_BLACK
 
 /obj/item/weapon/flame/candle/candelabra/update_icon()
 	overlays.Cut()
