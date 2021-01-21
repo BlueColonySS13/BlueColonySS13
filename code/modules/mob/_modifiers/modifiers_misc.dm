@@ -284,3 +284,16 @@ the artifact triggers the rage.
 	if(L.get_poison_protection() >= 1)
 		return FALSE
 	return TRUE
+
+/datum/modifier/loyalty
+	name = "loyalty"
+	desc = "You are under the effects of a potent brainwashing element."
+
+	on_created_text = "<span class='notice'>You feel a shift in your mental state.</span>"
+	on_expired_text = "<span class='notice'>You don't feel as loyal any more...</span>"
+	stacks = MODIFIER_STACK_EXTEND
+
+/datum/modifier/loyalty/can_apply(mob/living/L)
+	if(!L.is_sentient())
+		return FALSE // Cannot affect drones.
+	return TRUE

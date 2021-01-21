@@ -151,7 +151,7 @@ var/list/blobs = list()
 		T.blob_act(src) //hit the turf if it is
 
 	for(var/atom/A in T)
-		if(!A.CanPass(src, T)) //is anything in the turf impassable
+		if(!A.CanPass(src, T) || istype(T.loc, /area/lots)) //is anything in the turf impassable
 			make_blob = FALSE
 		A.blob_act(src) //also hit everything in the turf
 
