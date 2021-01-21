@@ -15,6 +15,14 @@
 	name = "Vice President"
 	id = "cabinet_vice"
 
+/datum/persistent_option/select_person/cabinet/governor
+	name = "Governor"
+	id = "cabinet_governor"
+
+/datum/persistent_option/select_person/cabinet/supreme_justice
+	name = "Supreme Justice"
+	id = "cabinet_supremejustice"
+
 /datum/persistent_option/select_person/cabinet/defense
 	name = "Advisor of Defense"
 	id = "cabinet_defense"

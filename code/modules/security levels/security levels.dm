@@ -64,16 +64,13 @@
 
 
 /proc/num2seclevel(var/num)
-	var/datum/code_level/CL = security_levels[num]
-
-	if(CL)
-		return CL.code
+	for(var/datum/code_level/CL in security_levels)
+		if(CL.level == num)
+			return CL.code
 
 /proc/seclevel2num(var/seclevel)
-
-	for(var/S in security_levels)
-		var/datum/code_level/CL = security_levels[S]
-		if(CL.code == lowertext(seclevel))
+	for(var/datum/code_level/CL in security_levels)
+		if(CL.level == lowertext(seclevel))
 			return CL.level
 
 

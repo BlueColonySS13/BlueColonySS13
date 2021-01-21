@@ -5,6 +5,7 @@
 	min_value = 0
 	max_value = 50000
 	portal_category = "Permit Pricing"
+	value_is_money = TRUE
 
 // Gun Permits
 /datum/persistent_option/number_value/permit/gun/tier_0

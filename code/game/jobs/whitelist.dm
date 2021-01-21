@@ -111,13 +111,17 @@ var/list/whitelist = list()
 		else
 			return FALSE
 
+	if(jobs.portal_whitelist)
+		return SSpersistent_options.get_persistent_option_value(jobs.portal_whitelist)
+
+
 	//If we have a loaded file, search it
 	if(jobs.hard_whitelisted)
 		for (var/s in hard_whitelist)
 			if(findtext(s,"[M.ckey] - [jobs.title]"))
-				return 1
+				return TRUE
 			if(findtext(s,"[M.ckey] - All"))
-				return 1
+				return TRUE
 
 
 

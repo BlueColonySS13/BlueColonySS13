@@ -5,6 +5,40 @@
 	max_value_text = 9000
 
 	portal_grouping = PORTAL_HEAD_OFFICE
+	value_type = 1
+
+	bbcode_value = FALSE
+
+// charter
+
+/datum/persistent_option/value/procedure/department/charter
+	name = "Polluxian Charter"
+	description = "The is the official charter provided by Nanotrasen, it cannot be directly edited by presidents but can have amendments suggested. \
+	It is used as reference for legal matters."
+	id = "pollux_charter"
+	value_text = "Placeholder."
+	value_type = 1
+	bbcode_value = TRUE
+
+	var_to_edit = "value_text"
+
+	max_value_text = 10000
+
+/*
+
+/datum/persistent_option/value/procedure/head_office/sol
+	name = "Sol Charter"
+	description = "The is the official charter provided by SolGov."
+	id = "sol_charter"
+	value_text = "Placeholder."
+
+/datum/persistent_option/value/procedure/head_office/andro
+	name = "Andromeda Charter"
+	description = "The is the official charter provided by AndroGov."
+	id = "andro_charter"
+	value_text = "Placeholder."
+
+*/
 
 
 // department SOP
@@ -28,7 +62,7 @@
 	description = "This is the police's standard operating procedure, it is expected to be followed at all times by police officers."
 	id = "police_sop"
 	value_text = "If you can, talk to suspect first - gauge their responses - attempt to get them to cooperate peacefully with you without \
-	resorting to a fight.<br> \
+	resorting to a fight.\[br\] \
 	If they are in a group, hostile, refuse to come with you, or run away, you are permitted to use non-lethals. \
 	If you are dealing with a group of hostiles or are dealing with synthetics or a mecha, a flashbang or EMP may be permitted. \
 	Lethals are permitted in a last case scenario if non-lethals are not adequate in subduing a resisting suspect. This is not an authorization to kill."

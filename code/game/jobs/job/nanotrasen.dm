@@ -44,14 +44,39 @@
 /datum/job/nanotrasen/get_access()
 	return get_all_centcom_access()
 
+/datum/job/nanotrasen/vice
+	title = "Vice President"
+	total_positions = 1
+	spawn_positions = 1 // This allows VP and Governor to be on at the same time without staff intervention.
+	flag = CEO
+	wage = 5000
+	outfit_type = /decl/hierarchy/outfit/job/heads/vpresident
+	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
+
+	description = "As vice president, your duty is to patiently wait in line for the president to be killed so you can succeed them. Otherwise you're \
+	there to help president do his daily tasks."
+
+	portal_whitelist = "cabinet_vice"
+
+/datum/job/nanotrasen/supreme_justice
+	title = "Supreme Justice"
+	total_positions = 1
+	spawn_positions = 1 // This allows VP and Governor to be on at the same time without staff intervention.
+	flag = CEO
+	wage = 4500
+	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/justice
+	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
+
+	description = "As supreme justice you control the supreme court, the ultimate judicial body of this colony."
+
+	portal_whitelist = "cabinet_supremejustice"
+
+
 /datum/job/nanotrasen/ceo
 	title = "Governor"
 	total_positions = 2
 	spawn_positions = 2 // This allows VP and Governor to be on at the same time without staff intervention.
 	flag = CEO
-	alt_titles = list("Advisor" = /decl/hierarchy/outfit/job/nanotrasen/minister,
-	 "Vice President" = /decl/hierarchy/outfit/job/heads/vpresident,
-	  "Supreme Justice" = /decl/hierarchy/outfit/job/nanotrasen/justice)
 	wage = 4500
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/governor
 	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
@@ -61,6 +86,7 @@
 
 	duties = list("Drain colony funds", "Pretend to be important", "Go home and roll in your money")
 
+	portal_whitelist = "cabinet_governor"
 
 /datum/job/nanotrasen/ceo/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.director_email

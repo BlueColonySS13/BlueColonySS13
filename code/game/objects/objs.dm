@@ -38,6 +38,12 @@
 	if(dont_save)
 		to_chat(user, "<b>You have a feeling this item is important or belongs to someone...</b>")
 
+	if(SSpersistent_options)
+		if(contraband_type)
+			to_chat(user, "<b>Contraband Classification:</b> [SSpersistent_options.get_persistent_option_name(contraband_type)] ([SSpersistent_options.get_persistent_formatted_value(contraband_type)])")
+		if(tax_type)
+			to_chat(user, "<b>Tax Band:</b> [SSpersistent_options.get_persistent_option_name(tax_type)] ([SSpersistent_options.get_persistent_formatted_value(tax_type)])")
+
 /obj/Topic(href, href_list, var/datum/topic_state/state = default_state)
 	if(usr && ..())
 		return 1

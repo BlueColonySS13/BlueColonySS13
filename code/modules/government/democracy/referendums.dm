@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(all_voting_ballots)
 	var/new_change = null
 
 	var/author = "Nanotrasen"
+	var/author_ckey = "Nanotrasen"
 
 	var/creation_date = ""
 	var/days_until_expiry = 7
@@ -34,6 +35,15 @@ GLOBAL_LIST_EMPTY(all_voting_ballots)
 
 /datum/voting_ballot/proc/expire_ballot()
 	active = FALSE
+	if(check_winner() == "Yes")
+		apply_ballot_outcome()
+
+
+/datum/voting_ballot/proc/delete_ballot()
+	GLOB.all_voting_ballots[id] = null
+	qdel(src)
+	listclearnulls(GLOB.all_voting_ballots)
+
 
 /datum/voting_ballot/proc/get_status() // indicator of status
 	return active
@@ -59,7 +69,7 @@ GLOBAL_LIST_EMPTY(all_voting_ballots)
 	if(!(option in options))
 		return
 
-	ckeys_voted[voter_client.ckey] = option
+	ckeys_voted[lowertext(voter_client.ckey)] = option
 
 /datum/voting_ballot/proc/add_vote_log(ckey, option) // This is an OOC vote log for admins to keep note of.
 	if(!ckey || !option)
@@ -69,8 +79,8 @@ GLOBAL_LIST_EMPTY(all_voting_ballots)
 
 /datum/voting_ballot/proc/get_option_amount(option)
 	var/count = 0
-	for(var/O in options)
-		if(options[O] == option)
+	for(var/O in ckeys_voted)
+		if(ckeys_voted[O] == option)
 			count++
 	return count
 
@@ -88,13 +98,29 @@ GLOBAL_LIST_EMPTY(all_voting_ballots)
 
 
 /datum/voting_ballot/proc/get_persistent_option()
-	return get_persistent_option(persistent_option_id)
+	return SSpersistent_options.get_persistent_option(persistent_option_id)
 
 
-/datum/voting_ballot/proc/apply_ballot_outcome() // if the ballot passes, it'll apply this outcome.
+/datum/voting_ballot/proc/get_formatted_proposed_value()
+	var/datum/persistent_option/PO = get_persistent_option()
+	if(!PO)
+		return
+	return PO.get_proposed_value_formatting()
+
+/datum/voting_ballot/proc/get_current_option_formatted_value() // gets the formatted status of the current option, not the proposed one
+	var/datum/persistent_option/PO = get_persistent_option()
+	if(!PO)
+		return
+	return PO.get_formatted_value()
+
+
+/datum/voting_ballot/proc/apply_ballot_outcome(silent = 0) // if the ballot passes, it'll apply this outcome.
 	var/datum/persistent_option/PO = get_persistent_option()
 
 	if(!PO)
 		return
+
+	if(!silent)
+		command_announcement.Announce(PO.on_ballot_pass, "[name]")
 
 	return SSpersistent_options.update_pesistent_option_value(PO.id, new_change, author)

@@ -8,3 +8,11 @@
 /datum/nano_module/program/govportal/ntportal
 	name = "NTPortal"
 	portal_type = PORTAL_HEAD_OFFICE
+	admin_edit = TRUE
+
+	available_groupings = list("Government" = list("Assign Cabinet"), \
+	"Law and Order" = list("Emergency Procedures", "Contraband and Restricted Materials", "Contraband Control Measures", "Standard Operating Procedures"), \
+	"Social Law" = list("Discrimination Policies", "Voting Rights", "Minimum Wages", "Leasehold and Tenancy"), \
+	"Economy and Taxes" = list("Spending And Budget", "Public Healthcare Pricing", "Public Legal Pricing", "Permit Pricing", "Social Costs", "Economic Bracket Taxes"), \
+	"Communications" = list("Broadcast and Communications"), \
+	)

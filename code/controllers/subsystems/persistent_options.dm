@@ -9,6 +9,10 @@ SUBSYSTEM_DEF(persistent_options)
 
 	var/list/all_voting_ballots = list()
 
+	wait = 1200 //Ticks once per 2 minutes
+	var/referendum_interval = 1 HOUR
+	var/next_referendum_check = 1 HOUR
+
 /datum/controller/subsystem/persistent_options/Initialize(timeofday)
 	for(var/instance in subtypesof(/datum/persistent_option))
 		new instance()
@@ -22,6 +26,17 @@ SUBSYSTEM_DEF(persistent_options)
 
 	. = ..()
 
+
+/datum/controller/subsystem/persistent_options/fire()
+	if (world.time >= next_referendum_check)
+		next_referendum_check = world.time + referendum_interval
+		check_all_ballots()
+
+
+/datum/controller/subsystem/persistent_options/proc/check_all_ballots()
+	for(var/datum/voting_ballot/VB in all_voting_ballots)
+		VB.sanitize_ballot()
+
 /datum/controller/subsystem/persistent_options/proc/check_ballot_exists(id)
 	if(all_voting_ballots[id])
 		return all_voting_ballots[id]
@@ -30,6 +45,13 @@ SUBSYSTEM_DEF(persistent_options)
 
 /datum/controller/subsystem/persistent_options/proc/get_persistent_option(id)
 	return GLOB.persistent_options[id]
+
+/datum/controller/subsystem/persistent_options/proc/get_persistent_option_name(id)
+	var/datum/persistent_option/PO = get_persistent_option(id)
+	if(!PO)
+		return
+
+	return PO.name
 
 /datum/controller/subsystem/persistent_options/proc/get_persistent_option_value(id)
 	var/datum/persistent_option/PO = get_persistent_option(id)
@@ -60,7 +82,7 @@ SUBSYSTEM_DEF(persistent_options)
 	return PO.vars[PO.var_to_edit]
 
 
-/datum/controller/subsystem/persistent_options/proc/make_new_option_ballot(option_id, proposed_change, list/custom_options, new_title, new_desc, new_author, new_ballot_type = /datum/voting_ballot/referendum)
+/datum/controller/subsystem/persistent_options/proc/make_new_option_ballot(option_id, proposed_change, list/custom_options, new_title, new_desc, new_author, new_author_ckey, new_ballot_type = /datum/voting_ballot/referendum)
 	var/datum/persistent_option/ps_option = SSpersistent_options.get_persistent_option(option_id)
 
 	if(!ps_option)
@@ -78,6 +100,9 @@ SUBSYSTEM_DEF(persistent_options)
 	if(new_author)
 		new_referendum.author = new_author
 
+	if(new_author_ckey)
+		new_referendum.author_ckey = new_author_ckey
+
 	if(new_desc)
 		new_referendum.desc = new_desc
 
@@ -88,7 +113,9 @@ SUBSYSTEM_DEF(persistent_options)
 		new_referendum.new_change = proposed_change
 
 
-	new_referendum.creation_date = full_real_time()
+	new_referendum.creation_date = full_game_time()
+
+	new_referendum.active = TRUE
 
 
 	new_referendum.sanitize_ballot()

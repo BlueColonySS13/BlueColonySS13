@@ -1796,7 +1796,6 @@
 #include "code\modules\government\president\taxes.dm"
 #include "code\modules\government\president\wages.dm"
 #include "code\modules\government\president\council\council_toggles.dm"
-#include "code\modules\government\president\headoffice\committee_settings.dm"
 #include "code\modules\government\president\headoffice\procedures.dm"
 #include "code\modules\holodeck\HolodeckControl.dm"
 #include "code\modules\holodeck\HolodeckObjects.dm"

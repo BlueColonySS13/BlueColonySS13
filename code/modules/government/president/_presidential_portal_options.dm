@@ -124,11 +124,11 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	return SSpersistent_options.check_ballot_exists(id)
 
 //proc wrappers
-/datum/persistent_option/proc/get_value()
-	return vars[var_to_edit]
+/datum/persistent_option/proc/get_value(fake_value)
+	return (fake_value ? fake_value : vars[var_to_edit])
 
-/datum/persistent_option/proc/get_formatted_value()
-	var/the_value = get_value()
+/datum/persistent_option/proc/get_formatted_value(fake_value)
+	var/the_value = get_value(fake_value)
 	if(bbcode_value)
 		the_value = pencode2html(the_value)
 	return the_value
@@ -137,6 +137,9 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 /datum/persistent_option/proc/get_proposed_value()
 	return SSpersistent_options.find_proposed_value_ballot(id)
 
+/datum/persistent_option/proc/get_proposed_value_formatting()
+	return get_formatted_value(SSpersistent_options.find_proposed_value_ballot(id))
+
 /datum/persistent_option/number_value
 	var_to_edit = "value"
 
@@ -144,8 +147,9 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	var_to_edit = "toggle_status"
 
 
-/datum/persistent_option/toggle/get_formatted_value() // for use in UIs
-	return (toggle_status ? "enable" : "disable")
+/datum/persistent_option/toggle/get_formatted_value(fake_value) // for use in UIs
+	var/the_value = (fake_value ? fake_value : toggle_status)
+	return (the_value ? "enable" : "disable")
 
 /datum/persistent_option/select_person
 	var_to_edit = "select_person"
@@ -165,7 +169,7 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	if(LAZYLEN(select_person))
 		var/text_list = ""
 		for(var/V in select_person)
-			text_list += "- [V] ([select_person[V]])<br>"
+			text_list += "- [select_person[V]] ([V])<br>"
 
 		return text_list
 	else
@@ -320,6 +324,10 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		alert("No value provided")
 		return FALSE
 
+	if(the_new_value == get_value())
+		alert("ERROR: Value is the same as current. No changes will be performed.")
+		return
+
 	if(!make_referendum)
 		return SSpersistent_options.update_pesistent_option_value(id, the_new_value, user.real_name)
 
@@ -332,7 +340,7 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 			alert("Cannot create ballot: This ballot already appears on the system.")
 			return FALSE
 
-		var/datum/voting_ballot/referendum/new_referendum = SSpersistent_options.make_new_option_ballot(id, the_new_value, null, "[name] Referendum", description, user.real_name, /datum/voting_ballot/referendum)
+		var/datum/voting_ballot/referendum/new_referendum = SSpersistent_options.make_new_option_ballot(id, the_new_value, null, "[name] Referendum", description, user.real_name, user.client.ckey, /datum/voting_ballot/referendum)
 		if(new_referendum && creation_text)
 			command_announcement.Announce(creation_text, "[name]")
 		else
