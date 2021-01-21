@@ -620,7 +620,7 @@
 /obj/item/clothing/under/wedding/regal_maidofhonor
 	name = "regal maid of honor dress"
 	desc = "A elegant regal peplum dress with a frilly red skirt."
-	icon_state = "regal_maidenhonor"
+	icon_state = "regal_maidofhonor"
 	index = 1
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 

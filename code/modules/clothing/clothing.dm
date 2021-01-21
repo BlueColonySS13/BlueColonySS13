@@ -6,9 +6,8 @@
 	burn_state = 0 //Burnable
 	burntime = 8
 	var/list/accessories = list()
-	var/list/valid_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_HOLSTER, ACCESSORY_SLOT_OVER, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DEPT, \
-	ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	var/list/restricted_accessory_slots = list(ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_HOLSTER)
+	var/list/valid_accessory_slots = list()
+	var/list/restricted_accessory_slots = list()
 	var/list/starting_accessories = list()
 
 	var/flash_protection = FLASH_PROTECTION_NONE

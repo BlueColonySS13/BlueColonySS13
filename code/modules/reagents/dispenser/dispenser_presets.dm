@@ -73,6 +73,7 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/coffee,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/cream,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/tea,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/decaf_tea,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/icetea,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/cola,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/smw,
@@ -128,6 +129,8 @@
 /obj/machinery/chemical_dispenser/bar_coffee/full
 	spawn_cartridges = list(
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/coffee,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/decaf_cof,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/espresso,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/cafe_latte,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/soy_latte,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/hot_coco,

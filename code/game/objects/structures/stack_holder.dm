@@ -34,6 +34,7 @@
 	/obj/item/stack/material/tritium,
 	/obj/item/stack/material/mhydrogen,
 	/obj/item/stack/material/aluminium,
+	/obj/item/stack/material/titanium,
 	/obj/item/stack/material/platinum,
 	/obj/item/stack/material/silver,
 	/obj/item/stack/material/gold,
@@ -152,13 +153,21 @@
 	. = ..()
 	update_icon()
 
+
+
 /obj/structure/stack_holder/proc/sanitize_stacks()
+
 	if(!stacks_held)
 		stacks_held = list()
 
-	if(LAZYLEN(stacks_held))
+	if(LAZYLEN(stacks_held)) 
 		for(var/S in stacks_held)
-			if(!(S in	stack_types_allowed))
+			var/is_stack_allowed = FALSE 
+			for(var/V in stack_types_allowed)
+				if(istype(S, V))
+					is_stack_allowed = TRUE
+					break
+			if(!is_stack_allowed)
 				remove_stack(S, stacks_held[S])
 
 

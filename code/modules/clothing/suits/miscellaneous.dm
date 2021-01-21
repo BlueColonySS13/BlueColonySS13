@@ -1159,7 +1159,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	flags_inv = HIDEHOLSTER
 
 /obj/item/clothing/suit/storage/toggle/synthleatherjacket
-	name = "synth-leather jacket"
+	name = "jacket"
 	desc = "A sleek jacket made of synth-leather. Eco-friendly and eternally in season."
 	icon_state = "neoleath_jacket"
 	body_parts_covered = UPPER_TORSO|ARMS
