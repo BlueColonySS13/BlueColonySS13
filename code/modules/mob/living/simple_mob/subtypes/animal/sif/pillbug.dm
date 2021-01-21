@@ -1,6 +1,6 @@
 /mob/living/simple_mob/animal/passive/pillbug
 	name = "fire bug"
-	desc = "A tiny plated bug found in Sif's volcanic regions."
+	desc = "A tiny plated bug found in Pollux's volcanic regions."
 	tt_desc = "S Armadillidiidae calidi"
 
 	icon_state = "pillbug"

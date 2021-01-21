@@ -175,6 +175,7 @@
 	recipes += new/datum/stack_recipe("umbrella", /obj/item/weapon/melee/umbrella, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("balloon", /obj/item/toy/balloon, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] friendship bracelet", /obj/item/clothing/accessory/bracelet/friendship, 2, on_floor = 1)
+	recipes += new/datum/stack_recipe("plastic net", /obj/item/weapon/material/fishing_net, 25, time = 1 MINUTE)
 
 
 
@@ -262,7 +263,7 @@
 		new/datum/stack_recipe("rolling pin", 		/obj/item/weapon/material/kitchen/rollingpin, 	2, time = 5, supplied_material = "[name]"),\
 		new/datum/stack_recipe("gavel hammer", 		/obj/item/weapon/gavelhammer, 							2, time = 5),\
 		new/datum/stack_recipe("gavel block", 		/obj/item/weapon/gavelblock, 							2, time = 3),\
-		new/datum/stack_recipe("fishing rod",		/obj/item/weapon/material/fishing_rod, 2, time = 5, supplied_material = "[name]"),\
+		new/datum/stack_recipe("crude fishing rod",		/obj/item/weapon/material/fishing_rod, 2, time = 5, supplied_material = "[name]"),\
 		))
 
 /material/wood/ebony/generate_recipes()
@@ -369,6 +370,7 @@
 	recipes += new/datum/stack_recipe("[display_name] dog bed", /obj/structure/dogbed, 10, time = 20, one_per_turf = 0, on_floor = 1)
 	recipes += new/datum/stack_recipe("[display_name] rag", /obj/item/weapon/reagent_containers/glass/rag, 2, time = 2, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] towel", /obj/item/clothing/suit/towel, 10, time = 20, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE, prefix = TRUE)
+	recipes += new/datum/stack_recipe("woven net", /obj/item/weapon/material/fishing_net, 10, time = 30 SECONDS, one_per_turf = 0, on_floor = 1, apply_material_color = TRUE)
 
 
 /material/silk/generate_recipes()

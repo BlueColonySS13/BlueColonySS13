@@ -633,7 +633,7 @@
 // shoes
 
 /datum/category_item/crafting/sewing_machine/cotton/shoes
-	force_matter = list("leather" = 900)
+	force_matter = list("cotton" = 900, "leather" = 200)
 	prefix = null
 
 /datum/category_item/crafting/sewing_machine/cotton/shoes/hitop

@@ -55,6 +55,10 @@
 	name = "polychromic skirt"
 	path = /obj/item/clothing/under/polychromic/skirt
 
+/datum/category_item/crafting/sewing_machine/polychromatic/gown
+	name = "polychromic gown"
+	path = /obj/item/clothing/under/polychromic/gown
+
 // accessories
 
 

@@ -11,27 +11,27 @@
 /datum/fish/goldfish
 	fish_name = "goldfish"
 	egg_item = /obj/item/fish_eggs/goldfish
-	fish_item = /obj/item/fish/goldfish
+	fish_item = /mob/living/simple_mob/animal/passive/fish/goldfish
 
 /datum/fish/glofish
-	fish_name = "glofish"
+	fish_name = "solarfish"
 	egg_item = /obj/item/fish_eggs/glofish
-	fish_item = /obj/item/fish/glofish
+	fish_item = /mob/living/simple_mob/animal/passive/fish/solarfish
 
 /datum/fish/clownfish
 	fish_name = "clownfish"
 	egg_item = /obj/item/fish_eggs/clownfish
-	fish_item = /obj/item/weapon/bananapeel/clownfish
+	fish_item = /mob/living/simple_mob/animal/passive/fish/clownfish
 
 /datum/fish/shark
-	fish_name = "shark"
+	fish_name = "javelin shark"
 	egg_item = /obj/item/fish_eggs/shark
-	fish_item = /obj/item/fish/shark
+	fish_item = /mob/living/simple_mob/animal/passive/fish/javelin
 
 /datum/fish/babycarp
 	fish_name = "baby space carp"
 	egg_item = /obj/item/fish_eggs/babycarp
-	fish_item = /obj/item/fish/babycarp
+	fish_item = /mob/living/simple_mob/animal/space/carp/baby
 
 /datum/fish/catfish
 	fish_name = "catfish"
@@ -47,7 +47,7 @@
 /datum/fish/salmon
 	fish_name = "salmon"
 	egg_item = /obj/item/fish_eggs/salmon
-	fish_item = /obj/item/fish/salmon
+	fish_item = /mob/living/simple_mob/animal/passive/fish/salmon
 
 /datum/fish/shrimp
 	fish_name = "shrimp"

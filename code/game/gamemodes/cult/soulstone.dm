@@ -13,7 +13,10 @@
 	origin_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 4)
 	var/imprinted = "empty"
 	var/possible_constructs = list("Juggernaut","Wraith","Artificer","Harvester")
-
+	light_color = "#d60909"
+	light_power = 5
+	light_range = 2
+	
 /obj/item/device/soulstone/cultify()
 	return
 

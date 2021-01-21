@@ -145,13 +145,14 @@
 			message = stars(message)
 
 	if(!(language && (language.flags & INNATE))) // skip understanding checks for INNATE languages
-		if(language)
-			message = language.scramble(message)
-		else
-			message = stars(message)
+		if(!say_understands(speaker,language))
+			if(language)
+				message = language.scramble(message)
+			else
+				message = stars(message)
 
-		if(hard_to_hear)
-			message = stars(message)
+			if(hard_to_hear)
+				message = stars(message)
 
 	var/speaker_name = speaker.name
 
