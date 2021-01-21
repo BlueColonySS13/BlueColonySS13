@@ -175,7 +175,7 @@
 	recipes += new/datum/stack_recipe("umbrella", /obj/item/weapon/melee/umbrella, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("balloon", /obj/item/toy/balloon, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("[display_name] friendship bracelet", /obj/item/clothing/accessory/bracelet/friendship, 2, on_floor = 1)
-	recipes += new/datum/stack_recipe("plastic net", /obj/item/weapon/material/fishing_net, 25, time = 1 MINUTE)
+	recipes += new/datum/stack_recipe("plastic net", /obj/item/weapon/material/fishing_net, 15, time = 1 MINUTE, on_floor = 1)
 
 
 

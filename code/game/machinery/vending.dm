@@ -2462,11 +2462,13 @@
 	products = list(/obj/item/weapon/material/fishing_rod = 5,
 					/obj/item/weapon/material/fishing_rod/modern = 5,
 					/obj/item/weapon/material/fishing_rod/pro = 3,
-					/obj/item/stack/fishing_line = 10
+					/obj/item/stack/fishing_line = 13,
+					/obj/item/weapon/material/fishing_net = 13
 					)
 	prices = list(/obj/item/weapon/material/fishing_rod = 50,
 					/obj/item/weapon/material/fishing_rod/modern = 350,
 					/obj/item/weapon/material/fishing_rod/pro = 1250,
-					/obj/item/stack/fishing_line = 30
+					/obj/item/stack/fishing_line = 30,
+					/obj/item/weapon/material/fishing_net = 50
 					)
 	vendor_department = DEPT_PUBLIC
