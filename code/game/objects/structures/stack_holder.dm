@@ -159,8 +159,14 @@
 
 	if(LAZYLEN(stacks_held))
 		for(var/S in stacks_held)
-			if(!(S in	stack_types_allowed))
+			var/is_allowed = FALSE
+			for(var/V in stack_types_allowed)
+				if(istype(S, V))
+					is_allowed = TRUE
+					break
+			if(!is_allowed)
 				remove_stack(S, stacks_held[S])
+
 
 
 /obj/structure/stack_holder/attack_hand(mob/user)
@@ -241,6 +247,10 @@
 
 		return
 		
+	if(I.dont_save)
+		to_chat(user,"<span class='notice'>\The [I] is protected from entering this unit.</span>")
+		return
+
 	if(I.dont_save)
 		to_chat(user,"<span class='notice'>\The [I] is protected from entering this unit.</span>")
 		return
