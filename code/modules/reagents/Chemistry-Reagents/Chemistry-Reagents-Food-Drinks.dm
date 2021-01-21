@@ -96,13 +96,6 @@
 	color = "#FFFFAA"
 	price_tag = 0.6
 
-/datum/reagent/nutriment/protein/murk
-	name = "murkfin protein"
-	id = "murk_protein"
-	taste_description = "mud"
-	color = "#664330"
-	price_tag = 0.4
-
 /datum/reagent/nutriment/honey
 	name = "Honey"
 	id = "honey"
@@ -320,6 +313,8 @@
 	M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 215)
 	if(prob(1))
 		M.emote("shiver")
+	if(istype(M, /mob/living/simple_animal/slime))
+		M.bodytemperature = max(M.bodytemperature - rand(10,20), 0)
 	holder.remove_reagent("capsaicin", 5)
 
 /datum/reagent/frostoil/cryotoxin //A longer lasting version of frost oil.
@@ -360,6 +355,8 @@
 		M.apply_effect(2, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+	if(istype(M, /mob/living/simple_animal/slime))
+		M.bodytemperature += rand(10, 25)
 	holder.remove_reagent("frostoil", 5)
 
 /datum/reagent/condensedcapsaicin
@@ -444,6 +441,8 @@
 		M.apply_effect(4, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+	if(istype(M, /mob/living/simple_animal/slime))
+		M.bodytemperature += rand(15, 30)
 	holder.remove_reagent("frostoil", 5)
 
 /* Drinks */
@@ -878,6 +877,75 @@
 		M.adjustToxLoss(4 * REM)
 		M.apply_effect(3, STUTTER)
 	M.make_jittery(5)
+
+
+/datum/reagent/drink/coffee/decafcoffee
+	name = "Decaffeinated Coffee"
+	id = "decafcoffee"
+	description = "Coffee but without the caffeine."
+	taste_description = "decaffeinated bitterness"
+	color = "#482000"
+
+	glass_name = "decaf coffee"
+
+/datum/reagent/drink/coffee/espresso
+	name = "Espresso"
+	id = "espresso"
+	description = "Extra strong coffee."
+	taste_description = "deluxe bitterness"
+	color = "#482000"
+
+	glass_name = "espresso"
+
+/datum/reagent/drink/coffee/americano
+	name = "Americano"
+	id = "americano"
+	description = "Diluted Espresso."
+	taste_description = "dark bitterness"
+	color = "#482000"
+
+	glass_name = "americano"
+	glass_desc = "Pa pa l' americano"
+
+/datum/reagent/drink/coffee/yuenyeung
+	name = "Yuenyeung"
+	id = "yuenyeung"
+	description = "Also known as Coffee with Tea."
+	taste_description = "refreshing and energising"
+	color = "#482000"
+
+	glass_name = "yeunyeung"
+	glass_desc = "Coffee with tea. Delicious."
+
+/datum/reagent/drink/coffee/iced/frappe
+	name = "Iced Frappe"
+	id = "icedfrappe"
+	description = "A cool coffee chilled with ice."
+	taste_description = "refreshing brainfreeze"
+	color = "#482000"
+
+	glass_name = "iced frappe"
+	glass_desc = "A cool coffee with ice."
+
+/datum/reagent/ethanol/coffee/carajillo
+	name = "Carajillo"
+	id = "icedfrappe"
+	description = "Just a regular coffee, hombre."
+	taste_description = "la voluntad de vivir"
+	color = "#482000"
+
+	glass_name = "iced frappe"
+	glass_desc = "A cool, milky coffee with ice... And Kahlua."
+
+/datum/reagent/drink/tea/decaf
+	name = "Decaffeinated Tea"
+	id = "decaf_tea"
+	description = "Tea, already with limited caffeine, now with even less."
+	taste_description = "bitter tea"
+	color = "#101000"
+
+	glass_name = "decaf tea"
+	glass_desc = "Tasty black tea, it has antioxidants, it's good for you!"
 
 /datum/reagent/drink/coffee/icecoffee
 	name = "Iced Coffee"
