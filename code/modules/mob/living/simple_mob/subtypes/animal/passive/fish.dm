@@ -48,6 +48,11 @@
 		src.visible_message(span("notice", "\The [src] swims away into the water and vanishes beneath its surface."))
 		qdel(src)
 
+/mob/living/simple_mob/animal/passive/fish/death()
+	layer = MOB_LAYER
+	plane = MOB_PLANE
+	..()
+
 // Subtypes.
 /mob/living/simple_mob/animal/passive/fish/bass
 	name = "bass"
