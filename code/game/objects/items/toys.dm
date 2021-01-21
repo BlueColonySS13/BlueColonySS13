@@ -150,7 +150,7 @@
 /obj/structure/balloon/random/New()
 	color = "#[get_random_colour()]"
 	..()
-	
+
 /obj/item/toy/colorballoon/random/New()
 	color = "#[get_random_colour()]"
 	..()
@@ -1491,3 +1491,47 @@
 
 /obj/item/toy/pet_rock/gold/attack_self(mob/user)
 	to_chat(user, "<span class='notice'>You caress \the [src] lovingly.</span>")
+
+/obj/item/toy/crystal_ball
+	name = "crystal ball"
+	desc = "A mystical crystal ball for predicting the fortune. Alt-click to change color."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "crystal-ball-base"
+	w_class = ITEMSIZE_TINY
+
+	var/crystal_color = "#77b39a"
+	var/crystal_type = "crystal-ball"
+
+	unique_save_vars = list("crystal_color")
+
+/obj/item/toy/crystal_ball/New()
+	..()
+	update_icon()
+
+/obj/item/toy/crystal_ball/AltClick(mob/living/user)
+	if(user.incapacitated() || !istype(user))
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		return
+	if(!in_range(src, user))
+		return
+
+	var/input_color = input(user, "Choose a dye color", "Dye Color") as color
+
+	if(user.incapacitated() || !istype(user) || !in_range(src, user))
+		return
+	if(input_color)
+		crystal_color = input_color
+		update_icon()
+
+/obj/item/toy/crystal_ball/update_icon()
+	overlays.Cut()
+
+	var/image/I = image(icon, "[crystal_type]")
+	I.color = crystal_color
+	overlays |= I
+
+	set_light(2, 2, crystal_color)
+
+/obj/item/toy/crystal_ball/random/New()
+	crystal_color = pick(list(COLOR_WHITE, COLOR_DARK_GRAY, COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_GREEN, COLOR_BLUE, COLOR_VIOLET))
+	..()
