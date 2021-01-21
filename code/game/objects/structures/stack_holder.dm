@@ -246,7 +246,7 @@
 			anchored = !anchored
 
 		return
-		
+
 	if(I.dont_save)
 		to_chat(user,"<span class='notice'>\The [I] is protected from entering this unit.</span>")
 		return
