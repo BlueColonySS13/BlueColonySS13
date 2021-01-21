@@ -252,6 +252,8 @@
 			M.Turn(90)
 			M.Translate(1,-6)
 			variable_product.transform = M
+			variable_product.icon = cooking_obj.icon
+			variable_product.icon_state = cooking_obj.icon_state
 	else
 		var/image/I = image(product.icon, "[product.icon_state]_filling")
 		if(istype(cooking_obj, /obj/item/weapon/reagent_containers/food/snacks))
