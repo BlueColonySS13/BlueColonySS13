@@ -153,20 +153,22 @@
 	. = ..()
 	update_icon()
 
+
+
 /obj/structure/stack_holder/proc/sanitize_stacks()
+
 	if(!stacks_held)
 		stacks_held = list()
 
-	if(LAZYLEN(stacks_held))
+	if(LAZYLEN(stacks_held)) 
 		for(var/S in stacks_held)
-			var/is_allowed = FALSE
+			var/is_stack_allowed = FALSE 
 			for(var/V in stack_types_allowed)
 				if(istype(S, V))
-					is_allowed = TRUE
+					is_stack_allowed = TRUE
 					break
-			if(!is_allowed)
+			if(!is_stack_allowed)
 				remove_stack(S, stacks_held[S])
-
 
 
 /obj/structure/stack_holder/attack_hand(mob/user)
@@ -246,7 +248,7 @@
 			anchored = !anchored
 
 		return
-
+		
 	if(I.dont_save)
 		to_chat(user,"<span class='notice'>\The [I] is protected from entering this unit.</span>")
 		return
