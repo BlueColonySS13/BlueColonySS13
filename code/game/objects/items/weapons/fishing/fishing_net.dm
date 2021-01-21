@@ -23,8 +23,8 @@
 	var/list/accepted_mobs = list(/mob/living/simple_mob/animal/passive/fish)
 
 /obj/item/weapon/material/fishing_net/New()
-	..()
 	update_icon()
+	..()
 
 /obj/item/weapon/material/fishing_net/afterattack(var/atom/A, var/mob/user, var/proximity)
 	if(get_dist(get_turf(src), A) > reach)
