@@ -744,7 +744,7 @@
 	M.adjustCloneLoss(2 * removed)
 	blob_timer++
 
-	if(blob_timer == 1 MINUTE)
+	if(blob_timer >= 1 MINUTE)
 		var/mob/living/carbon/human/H = M
 		burst_blob(H.mind, 0)
 

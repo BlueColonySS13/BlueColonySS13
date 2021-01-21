@@ -153,7 +153,8 @@ var/list/blobs = list()
 	for(var/atom/A in T)
 		if(!A.CanPass(src, T) || istype(T.loc, /area/lots)) //is anything in the turf impassable
 			make_blob = FALSE
-		A.blob_act(src) //also hit everything in the turf
+		else
+			A.blob_act(src) //also hit everything in the turf
 
 	if(make_blob) //well, can we?
 		var/obj/structure/blob/B = new /obj/structure/blob/normal(src.loc)
