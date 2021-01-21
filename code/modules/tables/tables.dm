@@ -17,6 +17,8 @@
 	var/clickedx = 0
 	var/clickedy = 0
 
+	var/has_base = TRUE
+
 	// For racks.
 	var/can_reinforce = 1
 	var/can_plate = 1
@@ -454,10 +456,11 @@
 
 		var/image/I
 
-		// Base frame shape. Mostly done for glass/diamond tables, where this is visible.
-		for(var/i = 1 to 4)
-			I = image(icon, dir = 1<<(i-1), icon_state = connections[i])
-			overlays += I
+		if(has_base)
+			// Base frame shape. Mostly done for glass/diamond tables, where this is visible.
+			for(var/i = 1 to 4)
+				I = image(icon, dir = 1<<(i-1), icon_state = connections[i])
+				overlays += I
 
 		// Standard table image
 		if(material)
