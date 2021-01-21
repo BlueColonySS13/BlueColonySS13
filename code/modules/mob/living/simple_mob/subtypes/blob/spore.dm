@@ -46,6 +46,16 @@
 	melee_damage_lower = 1
 	melee_damage_upper = 2
 
+/mob/living/simple_mob/blob/spore/nanite
+	name = "nanite swarm"
+	desc = "A loosely bound mass of nanomachines. Thankfully, they don't appear to be able to continue replicating."
+	health = 10
+	maxHealth = 10
+	attacktext = list("engulfs")
+	melee_damage_lower = 1
+	melee_damage_upper = 2
+	can_infest = TRUE
+
 /mob/living/simple_mob/blob/spore/initialize(mapload, var/obj/structure/blob/factory/my_factory)
 	if(istype(my_factory))
 		factory = my_factory

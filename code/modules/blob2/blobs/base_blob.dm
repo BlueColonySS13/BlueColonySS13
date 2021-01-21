@@ -17,6 +17,7 @@ var/list/blobs = list()
 	var/heal_timestamp = 0 //we got healed when?
 	var/mob/observer/blob/overmind = null
 	var/base_name = "blob" // The name that gets appended along with the blob_type's name.
+	dont_save = TRUE
 
 /obj/structure/blob/New(var/newloc, var/new_overmind)
 	..(newloc)
@@ -150,9 +151,10 @@ var/list/blobs = list()
 		T.blob_act(src) //hit the turf if it is
 
 	for(var/atom/A in T)
-		if(!A.CanPass(src, T)) //is anything in the turf impassable
+		if(!A.CanPass(src, T) || istype(T.loc, /area/lots)) //is anything in the turf impassable
 			make_blob = FALSE
-		A.blob_act(src) //also hit everything in the turf
+		else
+			A.blob_act(src) //also hit everything in the turf
 
 	if(make_blob) //well, can we?
 		var/obj/structure/blob/B = new /obj/structure/blob/normal(src.loc)
@@ -180,6 +182,9 @@ var/list/blobs = list()
 	return null
 
 /obj/structure/blob/proc/consume_tile()
+	if(istype(loc, /area/lots)) //Don't damage lots!
+		return
+
 	for(var/atom/A in loc)
 		A.blob_act(src)
 	if(loc && loc.density)

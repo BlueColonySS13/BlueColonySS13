@@ -15,4 +15,7 @@
 	if(blob.difficulty >= BLOB_DIFFICULTY_SUPERHARD)
 		lines += "Extreme caution is advised."
 
+	if(blob.difficulty >= BLOB_DIFFICULTY_MASSACRE)
+		lines += "Polluxian Defense Force intervention is highly recommended."
+
 	command_announcement.Announce(lines.Join("\n"), "Biohazard Alert", new_sound = 'sound/AI/outbreak7.ogg')

@@ -4,14 +4,6 @@
 	density = 1
 	anchored = 1
 
-/obj/structure/prop/redspace/attack_hand(mob/living/user) // Used to tell the player that this isn't useful for anything.
-	if(!istype(user))
-		return FALSE
-	if(!interaction_message)
-		return ..()
-	else
-		to_chat(user, interaction_message)
-
 /obj/structure/prop/redspace/containment_pylon
 	name = "enigmatic machine"
 	desc = "A towering pylon that hums with a strange energy. A thick, viscous fluid flows through massive cables at its center."

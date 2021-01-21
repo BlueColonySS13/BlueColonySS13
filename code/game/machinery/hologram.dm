@@ -230,9 +230,9 @@ Holographic project of everything else.
  */
 /obj/machinery/hologram/projector
 	name = "hologram projector"
-	desc = "It makes a hologram appear...with magnets or something..."
+	desc = "A device that projects holograms. Useful for conferences and parties."
 	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "hologram0"
+	icon_state = "holopad0"
 
 
 #undef RANGE_BASED
