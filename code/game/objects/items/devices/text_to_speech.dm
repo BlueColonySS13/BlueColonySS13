@@ -23,7 +23,7 @@
 		*/
 
 
-	visible_message("<span class='notice'>[user] begins to type on \the [src]...</span>")
+	visible_message(user, "<span class='notice'>[user] begins to type on \the [src]...</span>")
 	var/message = sanitize(input(user,"Choose a message to relay to those around you.") as text|null)
 
 	if(message)
