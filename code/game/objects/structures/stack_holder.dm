@@ -153,21 +153,13 @@
 	. = ..()
 	update_icon()
 
-
-
 /obj/structure/stack_holder/proc/sanitize_stacks()
-
 	if(!stacks_held)
 		stacks_held = list()
 
-	if(LAZYLEN(stacks_held)) 
+	if(LAZYLEN(stacks_held))
 		for(var/S in stacks_held)
-			var/is_stack_allowed = FALSE 
-			for(var/V in stack_types_allowed)
-				if(istype(S, V))
-					is_stack_allowed = TRUE
-					break
-			if(!is_stack_allowed)
+			if(!is_path_in_list(S, stack_types_allowed))
 				remove_stack(S, stacks_held[S])
 
 
@@ -239,7 +231,7 @@
 			return
 
 		playsound(src.loc, I.usesound, 50, 1)
-		to_chat(user,"<span class='notice'>You begin to [anchored ? "loosen" : "tighten"] loosen \the [src]'s fixtures...</span>")
+		to_chat(user,"<span class='notice'>You begin to [anchored ? "loosen" : "tighten"] \the [src]'s fixtures...</span>")
 		if (do_after(user, 40 * I.toolspeed))
 			user.visible_message( \
 				"[user] [anchored ? "loosens" : "tightens"] \the [src]'s casters.", \
@@ -248,7 +240,7 @@
 			anchored = !anchored
 
 		return
-		
+
 	if(I.dont_save)
 		to_chat(user,"<span class='notice'>\The [I] is protected from entering this unit.</span>")
 		return
@@ -261,20 +253,14 @@
 	if(!stack.stacktype)
 		return
 
-	if(LAZYLEN(stack_types_allowed))
-		var/exists_in_list = FALSE
-		for(var/V in stack_types_allowed)
-			if(istype(stack, V))
-				exists_in_list = TRUE
-				break
-		if(!exists_in_list)
-			to_chat(user,"<span class='notice'>\The [src] does not accept this kind of stack.</span>")
-			return
 
-	for(var/V in stacks_excluded)
-		if(istype(stack, V))
-			to_chat(user,"<span class='notice'>You cannot put \the [stack] in [src].</span>")
-			return
+	if(!is_type_in_list(stack, stack_types_allowed))
+		to_chat(user,"<span class='notice'>\The [src] does not accept this kind of stack.</span>")
+		return
+
+	if(is_type_in_list(stack, stacks_excluded))
+		to_chat(user,"<span class='notice'>You cannot put \the [stack] in [src].</span>")
+		return
 
 	if(istype(stack, /obj/item/stack) && add_stack(stack, user))
 		to_chat(user,"<span class='notice'>You add [stack] to \the [src].</span>")

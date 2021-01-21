@@ -61,9 +61,9 @@ SUBSYSTEM_DEF(persistence)
 // Make sure `image_id` is unique or else images will be overwritten.
 
 // Saves an image file to disk outside of the cache, so it gets perserved.
-/datum/controller/subsystem/persistence/proc/save_image(image, image_id, image_directory)
+/datum/controller/subsystem/persistence/proc/save_image(image, image_id, image_directory, forcedir = SOUTH)
 	var/full_path = "[image_directory][image_id].png"
-	var/icon/image_to_save = icon(image, dir = SOUTH, frame = 1)
+	var/icon/image_to_save = icon(image, forcedir, frame = 1)
 	fcopy(image_to_save, full_path)
 
 // Loads an image from disk to an icon object.
@@ -83,7 +83,7 @@ SUBSYSTEM_DEF(persistence)
 	if(fexists(full_path))
 		fdel(full_path)
 		return TRUE
-	CRASH("Asked to delete a nonexistent image file '[full_path]'.") 
+	CRASH("Asked to delete a nonexistent image file '[full_path]'.")
 
 // Checks if the full path actually exists.
 // Use if you're not sure if `load_image` or `delete_image` will succeed for whatever reason.

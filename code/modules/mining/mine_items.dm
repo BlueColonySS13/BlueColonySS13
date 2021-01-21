@@ -250,7 +250,8 @@
 	density = 1
 	opacity = 1
 	anchored = 0
-	var/sculpted = 0
+	var/sculpted = FALSE
+	var/presculpted = FALSE
 	var/mob/living/T
 	var/times_carved = 0
 	var/last_struck = 0
@@ -268,7 +269,9 @@
 /obj/structure/sculpting_block/on_persistence_save()
 	if(!image_id) // If it already has an image_id, it got saved before, so don't make duplicates.
 		image_id = "[game_id]-[T ? T.name : ""][rand(34,299)]-[get_game_second()]"
-		SSpersistence.save_image(icon, image_id, PERSISTENT_SCULPTURES_DIRECTORY)
+		remove_pedestal()
+		SSpersistence.save_image(getCompoundIcon(src), image_id, PERSISTENT_SCULPTURES_DIRECTORY, forcedir = null)
+		add_pedestal()
 	return ..()
 
 /obj/structure/sculpting_block/on_persistence_load()
@@ -297,7 +300,7 @@
 		anchored = !anchored
 
 	if (istype(C, /obj/item/weapon/pickaxe/autochisel))
-		if(!sculpted)
+		if(!sculpted || !presculpted)
 			if(last_struck)
 				return
 
@@ -360,23 +363,29 @@
 		return
 
 /obj/structure/sculpting_block/proc/make_statue(var/mob/living/T)
-	var/icon/img = getFlatIcon(T)
-	icon = img
-
+	appearance = T
 	color = apply_colors
 	pixel_y += 8
 
 	add_pedestal()
 
 /obj/structure/sculpting_block/proc/add_pedestal()
+	if(presculpted)
+		return
+
+	remove_pedestal()
+
 	var/image/pedestal_underlay = image('icons/obj/mining.dmi', icon_state = "pedestal")
 	pedestal_underlay.appearance_flags = RESET_COLOR
 	pedestal_underlay.pixel_y -= 8
 	underlays += pedestal_underlay
 
+/obj/structure/sculpting_block/proc/remove_pedestal()
+	underlays.Cut()
+
 
 /obj/structure/sculpting_block/sculpted
-	sculpted = TRUE
+	presculpted = TRUE
 	anchored = FALSE
 	icon = 'icons/obj/statue.dmi'
 
