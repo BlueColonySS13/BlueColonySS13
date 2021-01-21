@@ -1318,7 +1318,7 @@
 
 /obj/machinery/vending/security/warden
 	name = "Warden Equipment Vendotron"
-	req_access = list(access_forensics_lockers)
+	req_access = list(access_armory)
 	products = list(
 	/obj/item/device/retail_scanner/police = 2,
 	/obj/item/weapon/storage/backpack/security = 2,
