@@ -96,6 +96,13 @@
 	color = "#FFFFAA"
 	price_tag = 0.6
 
+/datum/reagent/nutriment/protein/murk
+	name = "murkfin protein"
+	id = "murk_protein"
+	taste_description = "mud"
+	color = "#664330"
+	price_tag = 0.4
+
 /datum/reagent/nutriment/honey
 	name = "Honey"
 	id = "honey"
