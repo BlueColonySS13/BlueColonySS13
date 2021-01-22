@@ -120,7 +120,7 @@
 
 /obj/item/weapon/ore/quartz/rose_quartz
 	name = "raw rose quartz"
-	icon_state = "ore_quartz"
+	icon_state = "rose_quartz"
 	material = "rose quartz"
 
 
