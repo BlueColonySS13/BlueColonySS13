@@ -267,6 +267,8 @@
 	unique_save_vars = list("desc", "sculpted", "image_id") // colors should apply normally, i think
 
 /obj/structure/sculpting_block/on_persistence_save()
+	if(presculpted)
+		return
 	if(!image_id) // If it already has an image_id, it got saved before, so don't make duplicates.
 		image_id = "[game_id]-[T ? T.name : ""][rand(34,299)]-[get_game_second()]"
 		remove_pedestal()
@@ -275,6 +277,8 @@
 	return ..()
 
 /obj/structure/sculpting_block/on_persistence_load()
+	if(presculpted)
+		return
 	if(image_id)
 		icon = SSpersistence.load_image(image_id, PERSISTENT_SCULPTURES_DIRECTORY)
 
