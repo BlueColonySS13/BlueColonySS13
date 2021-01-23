@@ -116,6 +116,18 @@
 	update_hair()
 	return 1
 
+/mob/living/carbon/human/proc/change_highlight_hair_color(var/red, var/green, var/blue, var/gradient_style)
+	if(red == r_facial && green == g_facial && blue == b_facial)
+		return
+
+	grad_style = gradient_style
+	r_grad = red
+	g_grad = green
+	b_grad = blue
+
+	update_hair()
+	return 1
+
 /mob/living/carbon/human/proc/change_skin_color(var/red, var/green, var/blue)
 	if(red == r_skin && green == g_skin && blue == b_skin || !(species.appearance_flags & HAS_SKIN_COLOR))
 		return

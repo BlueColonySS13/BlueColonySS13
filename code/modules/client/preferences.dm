@@ -49,6 +49,10 @@ datum/preferences
 	var/r_hair = 0						//Hair color
 	var/g_hair = 0						//Hair color
 	var/b_hair = 0						//Hair color
+	var/grad_style = "none"				//Gradient style
+	var/r_grad = 0						//Gradient color
+	var/g_grad = 0						//Gradient color
+	var/b_grad = 0						//Gradient color
 	var/f_style = "Shaved"				//Face hair type
 	var/lip_style						//Lips/Makeup Style
 	var/lip_color						//Color of the makeup/lips

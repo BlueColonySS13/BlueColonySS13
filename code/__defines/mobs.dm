@@ -101,6 +101,12 @@
 #define APPEARANCE_ALL_HAIR (APPEARANCE_HAIR|APPEARANCE_HAIR_COLOR|APPEARANCE_FACIAL_HAIR|APPEARANCE_FACIAL_HAIR_COLOR)
 #define APPEARANCE_ALL       0xFFFF
 
+//Hair lengths
+#define HAIR_BALD 0 //*rubs head*
+#define HAIR_SHORT 1
+#define HAIR_MEDIUM 2
+#define HAIR_LONG 3
+
 // Click cooldown
 #define DEFAULT_ATTACK_COOLDOWN 8 //Default timeout for aggressive actions
 #define DEFAULT_QUICK_COOLDOWN  4
