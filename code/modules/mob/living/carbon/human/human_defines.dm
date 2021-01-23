@@ -11,6 +11,12 @@
 	var/b_facial = 0
 	var/f_style = "Shaved"
 
+	// Hair gradients
+	var/r_grad = 0
+	var/g_grad = 0
+	var/b_grad = 0
+	var/grad_style = "none"
+
 	//Eye colour
 	var/r_eyes = 0
 	var/g_eyes = 0

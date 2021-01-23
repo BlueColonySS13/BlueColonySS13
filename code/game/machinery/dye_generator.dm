@@ -449,6 +449,8 @@
 		if(H.gender == MALE)
 			dye_list += "facial hair"
 
+		dye_list += "highlights"
+
 
 		var/what_to_dye = input(user, "Choose an area to apply the dye","Dye Application") in dye_list
 
@@ -467,7 +469,16 @@
 					var/b_facial = hex2num(copytext(dye_color, 6, 8))
 					if(H.change_facial_hair_color(r_facial, g_facial, b_facial))
 						H.update_dna()
+				if("highlights")
+					var/new_grad_style = input(user, "Choose a color pattern for your hair:", "Character Preference", H.grad_style)  as null|anything in GLOB.hair_gradients
 
+					var/r_grad = hex2num(copytext(dye_color, 2, 4))
+					var/g_grad = hex2num(copytext(dye_color, 4, 6))
+					var/b_grad = hex2num(copytext(dye_color, 6, 8))
+
+
+					if(H.change_highlight_hair_color(r_grad, g_grad, b_grad, new_grad_style))
+						H.update_dna()
 
 		user.visible_message("<span class='notice'>[user] finishes dying [M]'s [what_to_dye]!</span>", "<span class='notice'>You finish dying [M]'s [what_to_dye]!</span>")
 		use_dye()
