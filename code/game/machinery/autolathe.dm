@@ -1,5 +1,5 @@
 /obj/machinery/autolathe
-	name = "autolathe"
+	name = "Autolathe"
 	desc = "It produces items using metal and glass."
 	icon_state = "autolathe"
 	density = 1
@@ -12,7 +12,7 @@
 	var/category_type = /datum/category_collection/crafting/autolathe
 
 	var/list/stored_material =  list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "copper" = 0, "aluminium" = 0)
-	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 25000, "glass" = 12500, "plastic" = 22500, "copper" = 12500, "aluminium" = 12500)
+	var/list/storage_capacity = list(DEFAULT_WALL_MATERIAL = 35000, "glass" = 22500, "plastic" = 22500, "copper" = 22500, "aluminium" = 22500)
 	var/datum/category_group/current_category
 
 	var/hacked = 0
@@ -30,8 +30,31 @@
 	var/print_multiplier = 1
 	var/max_multiplier = 10
 
-	unique_save_vars = list("stored_material", "hacked")
+	var/commercial = FALSE
+	var/owner_name = null // name of the actual owner.
+	var/owner_uid = null // UID of the actual owner.
+	var/bank_id = null // Account ID that the autolathe will use to recieve money
 
+	var/datum/category_group/category_lock
+	var/datum/category_item/crafting/purchasing_item
+
+	unique_save_vars = list("stored_material", "hacked", "owner_name", "owner_uid", "bank_id")
+
+/obj/machinery/autolathe/examine(mob/user)
+	..()
+	if(owner_name)
+		to_chat(user, "[name] belongs to <b>[owner_name]</b>, report any issues with the machine to the owner.")
+	if(commercial)
+		to_chat(user, "<b>You can buy items from this unit.</b>")
+
+/obj/machinery/autolathe/commercial
+	name = "Fabri-Mate
+	desc = "A state-of-the-art automatic fabricator that prints on demand."
+	icon_state = "fabrimate"
+	commercial = TRUE
+	circuit = /obj/item/weapon/circuitboard/autolathe/commercial
+
+	storage_capacity = list(DEFAULT_WALL_MATERIAL = 135000, "glass" = 122500, "plastic" = 122500, "copper" = 122500, "aluminium" = 122500)
 
 /obj/machinery/autolathe/New()
 	..()
@@ -55,18 +78,16 @@
 			autolathe_recipes = new category_type()
 		machine_recipes = autolathe_recipes
 		current_category = machine_recipes.categories[1]
+		if(category_lock)
+			current_category = category_lock
 
-/obj/machinery/autolathe/interact(mob/user as mob)
-	update_recipe_list()
-
-	if(..() || (disabled && !panel_open))
-		user << "<span class='danger'>\The [src] is disabled!</span>"
-		return
-
-	if(shocked)
-		shock(user, 50)
+/obj/machinery/autolathe/proc/get_screen_data(mob/user as mob)
 	var/list/dat = list()
-	dat += "<center><h1>[capitalize(name)] Control Panel</h1><hr/>"
+	dat += "<center><h1>[capitalize(name)]</h1><hr/>"
+
+	if(commercial && (!owner_uid || !bank_id || !owner_name))
+		dat += "Please swipe your ID to claim ownership of this machine.<br>"
+		return dat
 
 	if(!disabled)
 		dat += "<table width = '100%'>"
@@ -77,16 +98,23 @@
 			material_top += "<td width = '25%' align = center><b>[material]</b></td>"
 			material_bottom += "<td width = '25%' align = center>[stored_material[material]]<b>/[storage_capacity[material]]</b></td>"
 
+
 		dat += "[material_top.Join()]</tr>[material_bottom.Join()]</tr></table><hr>"
-
-
 		dat += "<b>Print Multiplier</b>: <a href='?src=\ref[src];change_print_multiplier=1'>[print_multiplier]</a><br>"
+		dat += "<h2>Printable Designs</h2><h3>"
 
-		dat += "<h2>Printable Designs</h2><h3>Showing: <a href='?src=\ref[src];change_category=1'>[current_category]</a>.</h3></center><table width = '100%'>"
+		var/eligible_items = current_category.items
 
-		for(var/datum/category_item/crafting/R in current_category.items)
+		dat += "Showing: <a href='?src=\ref[src];change_category=1'>[current_category]</a>.</h3></center><table width = '100%'>"
+
+		for(var/datum/category_item/crafting/R in eligible_items)
 			if(R.hidden && !hacked)
 				continue
+
+			if(commercial && T/show_commercially)
+				continue
+
+			var/total_cost = R.get_pricing() * print_multiplier
 			var/can_make = 1
 			var/list/material_string = list()
 			var/list/multiplier_string = list()
@@ -117,9 +145,24 @@
 							multiplier_string  += "<a href='?src=\ref[src];make=\ref[R];multiplier=[i]'>\[x[i]\]</a>"
 						multiplier_string += "<a href='?src=\ref[src];make=\ref[R];multiplier=[max_sheets]'>\[x[max_sheets]\]</a>"
 
-			dat += "<tr><td width = 180>[R.hidden ? "<font color = 'red'>*</font>" : ""]<b>[can_make ? "<a href='?src=\ref[src];make=\ref[R];multiplier=1'>" : ""][R.name][can_make ? "</a>" : ""]</b>[R.hidden ? "<font color = 'red'>*</font>" : ""][multiplier_string.Join()]</td><td align = right>[material_string.Join()]</tr>"
+				dat += "<tr><td width = 180>[R.hidden ? "<font color = 'red'>*</font>" : ""]<b>[can_make ? "<a href='?src=\ref[src];make=\ref[R];multiplier=1'> <b>Cost:</b> [cash2text(R.get_pricing(), FALSE, TRUE, TRUE )]" : ""][R.name][can_make ? "</a>" : ""]</b>[R.hidden ? "<font color = 'red'>*</font>" : ""][multiplier_string.Join()]</td><td align = right>[material_string.Join()]</tr>"
 
 		dat += "</table><hr>"
+
+		return dat
+
+
+/obj/machinery/autolathe/interact(mob/user as mob)
+	update_recipe_list()
+
+	if(..() || (disabled && !panel_open))
+		to_chat(user, "<span class='danger'>\The [src] is disabled!</span>")
+		return
+
+	if(shocked)
+		shock(user, 50)
+
+	var/dat = get_screen_data(user)
 
 	var/datum/browser/popup = new(user, "autolathe", "[src]", 650, 650, src)
 	popup.set_content(jointext(dat,null))
@@ -127,10 +170,38 @@
 
 	onclose(user, "autolathe")
 
+/obj/machinery/autolathe/proc/set_new_owner(obj/item/weapon/card/id/I, custom_bank = null)
+	owner_name = I.registered_name
+	owner_uid = I.unique_ID
+	bank_id = (custom_bank ? custom_bank : I.associated_account_number)
+	visible_message("<span class='info'>New owner set to '[I.registered_name]'.</span>")
+	playsound(src, 'sound/machines/chime.ogg', 25)
+
+
 /obj/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(busy)
-		user << "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>"
+		to_chat(user, "<span class='notice'>\The [src] is busy. Please wait for completion of previous operation.</span>")
 		return
+
+	if(commercial)
+		var/obj/item/weapon/card/id/I = O.GetID()
+		if(I)
+			if(!I.unique_ID || !I.registered_name || !I.associated_account_number || !check_account_exists(I.associated_account_number))
+				visible_message("<span class='notice'>There is an issue with setting your ownership on this machine, it could be due to a lack of details on the card like \
+				a unique id, name, or valid bank details. Please contact a technician for more details.</span>")
+				return
+			else
+				var/datum/business/B = get_business_by_owner_uid(I.unique_ID)
+				var/biz_id = null
+				if(B)
+					if("Business" == alert("Would you like to link this to your business account or personal one?", "Bank Account Linking", "Business", "Personal"))
+
+						var/datum/money_account/department/department_account = B.get_bank()
+						if(department_account)
+							biz_id = department_account.account_number
+
+				set_new_owner(I, biz_id)
+				return
 
 	if(default_deconstruction_screwdriver(user, O))
 		updateUsrDialog()
@@ -267,6 +338,48 @@
 			return
 		if(!making.is_stack && multiplier != 1)
 			return
+
+		if(commercial && making.get_pricing())
+
+			var/transaction_amount = (making.get_pricing() * print_multiplier) * multiplier
+			var/obj/item/weapon/card/id/I = usr.GetIdCard()
+
+			if(!I || !I.associated_account_number)
+				src.visible_message("\icon[src]<span class='warning'>ALERT: No ID card found, please wear or hold an ID on hand to complete this purchase.</span>")
+				return
+
+			var/datum/money_account/D = get_account(I.associated_account_number)
+
+			var/attempt_pin = ""
+			if(D && D.security_level)
+				attempt_pin = input("Enter PIN", "Transaction") as num
+				D = null
+			D = attempt_account_access(I.associated_account_number, attempt_pin, 2)
+
+			if(!D)
+				src.visible_message("\icon[src]<span class='warning'>Unable to access account. Check security settings and try again.</span>")
+				return
+
+
+			if(D.suspended)
+				src.visible_message("\icon[src]<span class='warning'>Your account has been suspended.</span>")
+				return
+
+			if(transaction_amount > D.money)
+				src.visible_message("\icon[src]<span class='warning'>Not enough funds.</span>")
+				return
+
+			if("No" == alert("Confirm purchase of [making.name] for [cash2text( making.get_pricing(), FALSE, TRUE, TRUE )]?", "Purchase of [making.name]", "No", "Yes"))
+				return
+
+
+			// Transfer the money
+
+			charge_to_account(bank_id, "[D.owner_name]'s [name]", "[making.name] x[print_multiplier]", name, -transaction_amount)
+			charge_to_account(bank_id, "[D.owner_name]'s [name]", "[making.name] x[print_multiplier]", name, transaction_amount)
+
+
+
 		sanitize_integer(multiplier, 1, 100, 1)
 		sanitize_integer(print_multiplier, 1, max_multiplier, 1)
 

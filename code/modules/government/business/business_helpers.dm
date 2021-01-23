@@ -51,6 +51,13 @@ var/global/list/business_outfits = list(
 
 	return business_account.money
 
+
+
+/datum/business/proc/get_bank()
+	var/datum/money_account/business_account = dept_acc_by_id(department)
+	return business_account
+
+
 /datum/business/proc/try_auth_business(pass)
 	if(access_password == pass)
 		return 1

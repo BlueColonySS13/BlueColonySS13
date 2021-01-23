@@ -20,6 +20,20 @@ var/datum/category_collection/crafting/autolathe/autolathe_recipes
 		max_stack = IS.max_amount
 	qdel(I)
 
+
+
+/datum/category_item/crafting/proc/get_pricing()
+	var/price = 0
+	for(var/MAT in resources)
+		var/material/the_material = get_material_by_name(MAT)
+		if(!the_material)
+			continue
+
+		var/cost = (the_material.worth * resources[MAT]) / 5 // stuff's very expensive atm, so i'll set it to 5 until inflation hits Venezuela levels
+		price += cost
+
+	return round(price)
+
 /****************************
 * Category Collection Setup *
 ****************************/
@@ -81,6 +95,8 @@ var/datum/category_collection/crafting/autolathe/autolathe_recipes
 	var/force_matter = list()	// we're forcing how much this is going to be. an override
 
 	var/override_color
+	var/show_commercially = TRUE // if false, won't show on commercial units
+
 
 /datum/category_item/crafting/dd_SortValue()
 	return name
