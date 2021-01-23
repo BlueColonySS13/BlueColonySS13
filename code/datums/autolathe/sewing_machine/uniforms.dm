@@ -415,13 +415,14 @@
 /datum/category_item/crafting/sewing_machine/uniforms/short_shorts
 	name = "silk short shorts"
 	path = /obj/item/clothing/under/shorts/white/female
-	force_matter = list("silk" = 950)
+	force_matter = list("silk" = 150)
 
 // shorts and skirts
 
 /datum/category_item/crafting/sewing_machine/uniforms/daisydukes
 	name = "daisy dukes"
 	path = /obj/item/clothing/under/daisydukes
+	force_matter = list("silk" = 80)
 
 /datum/category_item/crafting/sewing_machine/uniforms/daisydukes/black
 	name = "black daisy dukes"

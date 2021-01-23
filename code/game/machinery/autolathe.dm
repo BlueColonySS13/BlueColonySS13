@@ -48,7 +48,7 @@
 		to_chat(user, "<b>You can buy items from this unit.</b>")
 
 /obj/machinery/autolathe/commercial
-	name = "Fabri-Mate
+	name = "Fabri-Mate"
 	desc = "A state-of-the-art automatic fabricator that prints on demand."
 	icon_state = "fabrimate"
 	commercial = TRUE
@@ -111,7 +111,7 @@
 			if(R.hidden && !hacked)
 				continue
 
-			if(commercial && T/show_commercially)
+			if(commercial && !R.show_commercially)
 				continue
 
 			var/total_cost = R.get_pricing() * print_multiplier
@@ -135,7 +135,7 @@
 					else
 						material_string += ", "
 					material_string += "[(round(R.resources[material] * mat_efficiency)) * print_multiplier] [material]"
-				material_string += ".<br></td>"
+				material_string += ".  <b>Cost:</b> [cash2text(total_cost, FALSE, TRUE, TRUE )" : ""]<br></td>"
 				//Build list of multipliers for sheets.
 				if(R.is_stack)
 					if(max_sheets && max_sheets > 0)
@@ -145,7 +145,7 @@
 							multiplier_string  += "<a href='?src=\ref[src];make=\ref[R];multiplier=[i]'>\[x[i]\]</a>"
 						multiplier_string += "<a href='?src=\ref[src];make=\ref[R];multiplier=[max_sheets]'>\[x[max_sheets]\]</a>"
 
-				dat += "<tr><td width = 180>[R.hidden ? "<font color = 'red'>*</font>" : ""]<b>[can_make ? "<a href='?src=\ref[src];make=\ref[R];multiplier=1'> <b>Cost:</b> [cash2text(R.get_pricing(), FALSE, TRUE, TRUE )]" : ""][R.name][can_make ? "</a>" : ""]</b>[R.hidden ? "<font color = 'red'>*</font>" : ""][multiplier_string.Join()]</td><td align = right>[material_string.Join()]</tr>"
+				dat += "<tr><td width = 180>[R.hidden ? "<font color = 'red'>*</font>" : ""]<b>[can_make ? "<a href='?src=\ref[src];make=\ref[R];multiplier=1'>[R.name][can_make ? "</a>" : ""]</b>[R.hidden ? "<font color = 'red'>*</font>" : ""] [multiplier_string.Join()]</td><td align = right>[material_string.Join()]</tr>"
 
 		dat += "</table><hr>"
 
