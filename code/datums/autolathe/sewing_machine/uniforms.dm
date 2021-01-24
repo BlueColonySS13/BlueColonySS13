@@ -472,7 +472,7 @@
 /datum/category_item/crafting/sewing_machine/uniforms/ladies
 	name = "ladies suit"
 	path = /obj/item/clothing/under/gentlesuit/skirt
-	force_matter = list("silk" = 3250)
+	force_matter = list("silk" = 2250)
 
 /datum/category_item/crafting/sewing_machine/uniforms/disheveled
 	name = "disheveled suit"
