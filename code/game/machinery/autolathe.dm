@@ -35,9 +35,6 @@
 	var/owner_uid = null // UID of the actual owner.
 	var/bank_id = null // Account ID that the autolathe will use to recieve money
 
-	var/datum/category_group/category_lock
-	var/datum/category_item/crafting/purchasing_item
-
 	unique_save_vars = list("stored_material", "hacked", "owner_name", "owner_uid", "bank_id")
 
 /obj/machinery/autolathe/examine(mob/user)
@@ -78,8 +75,6 @@
 			autolathe_recipes = new category_type()
 		machine_recipes = autolathe_recipes
 		current_category = machine_recipes.categories[1]
-		if(category_lock)
-			current_category = category_lock
 
 /obj/machinery/autolathe/proc/get_screen_data(mob/user as mob)
 	var/list/dat = list()
@@ -114,7 +109,7 @@
 			if(commercial && !R.show_commercially)
 				continue
 
-			var/total_cost = R.get_pricing() * print_multiplier
+			var/total_cost = (R.get_pricing() * print_multiplier)
 			var/can_make = 1
 			var/list/material_string = list()
 			var/list/multiplier_string = list()
@@ -123,6 +118,7 @@
 			if(!R.resources || !R.resources.len)
 				material_string += "No resources required.</td>"
 			else
+
 				//Make sure it's buildable and list requires resources.
 				for(var/material in R.resources)
 					var/sheets = round(stored_material[material]/round(R.resources[material]*mat_efficiency))
@@ -135,7 +131,9 @@
 					else
 						material_string += ", "
 					material_string += "[(round(R.resources[material] * mat_efficiency)) * print_multiplier] [material]"
-				material_string += ".  <b>Cost:</b> [cash2text(total_cost, FALSE, TRUE, TRUE )" : ""]<br></td>"
+
+				material_string += ".  <b>Cost:</b> [total_cost ? cash2text(total_cost, FALSE, TRUE, TRUE ) : ""]<br></td>"
+
 				//Build list of multipliers for sheets.
 				if(R.is_stack)
 					if(max_sheets && max_sheets > 0)
@@ -145,7 +143,7 @@
 							multiplier_string  += "<a href='?src=\ref[src];make=\ref[R];multiplier=[i]'>\[x[i]\]</a>"
 						multiplier_string += "<a href='?src=\ref[src];make=\ref[R];multiplier=[max_sheets]'>\[x[max_sheets]\]</a>"
 
-				dat += "<tr><td width = 180>[R.hidden ? "<font color = 'red'>*</font>" : ""]<b>[can_make ? "<a href='?src=\ref[src];make=\ref[R];multiplier=1'>[R.name][can_make ? "</a>" : ""]</b>[R.hidden ? "<font color = 'red'>*</font>" : ""] [multiplier_string.Join()]</td><td align = right>[material_string.Join()]</tr>"
+			dat += "<tr><td width = 180>[R.hidden ? "<font color = 'red'>*</font>" : ""]<b>[can_make ? "<a href='?src=\ref[src];make=\ref[R];multiplier=1'>" : ""][R.name][can_make ? "</a>" : ""]</b>[R.hidden ? "<font color = 'red'>*</font>" : ""][multiplier_string.Join()]</td><td align = right>[material_string.Join()]</tr>"
 
 		dat += "</table><hr>"
 
