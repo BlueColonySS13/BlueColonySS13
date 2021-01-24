@@ -130,26 +130,6 @@
 	name = "welding mask"
 	path =/obj/item/clothing/head/welding
 
-/datum/category_item/crafting/autolathe/general/metal
-	name = "steel sheets"
-	path =/obj/item/stack/material/steel
-	is_stack = 1
-
-/datum/category_item/crafting/autolathe/general/glass
-	name = "glass sheets"
-	path =/obj/item/stack/material/glass
-	is_stack = 1
-
-/datum/category_item/crafting/autolathe/general/rglass
-	name = "reinforced glass sheets"
-	path =/obj/item/stack/material/glass/reinforced
-	is_stack = 1
-
-/datum/category_item/crafting/autolathe/general/rods
-	name = "metal rods"
-	path =/obj/item/stack/rods
-	is_stack = 1
-
 /datum/category_item/crafting/autolathe/general/knife
 	name = "kitchen knife"
 	path =/obj/item/weapon/material/knife

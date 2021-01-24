@@ -1,11 +1,7 @@
+/datum/category_group/crafting/sewing_machine/polychromatic
+
 /datum/category_item/crafting/sewing_machine/polychromatic
 	force_matter = list("polychromatic thread" = 3000)
-
-
-/datum/category_item/crafting/sewing_machine/polychromatic/sheets
-	name = "polychromatic thread sheets"
-	path = /obj/item/stack/material/polychromatic_thread
-	is_stack = 1
 
 /datum/category_item/crafting/sewing_machine/polychromatic/suit
 	name = "polychromic suit"

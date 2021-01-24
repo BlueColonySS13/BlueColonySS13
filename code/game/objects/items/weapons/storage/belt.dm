@@ -430,7 +430,7 @@
  	item_state = "fannypack_red"
 
 /obj/item/weapon/storage/belt/fannypack/white
- 	name = "white fannypack"
+ 	name = "fannypack"
  	icon_state = "fannypack_white"
  	item_state = "fannypack_white"
 

@@ -45,6 +45,11 @@ obj/item/weapon/circuitboard/rdserver/attackby(obj/item/I as obj, mob/user as mo
 							/obj/item/weapon/stock_parts/manipulator = 1,
 							/obj/item/weapon/stock_parts/console_screen = 1)
 
+/obj/item/weapon/circuitboard/autolathe/commercial
+	name = T_BOARD("fabri-mate")
+	build_path = /obj/machinery/autolathe/commercial
+
+
 /obj/item/weapon/circuitboard/autolathe/sewing_machine
 	name = T_BOARD("Sewing Machine")
 	build_path = /obj/machinery/autolathe/sewing_machine
@@ -55,6 +60,11 @@ obj/item/weapon/circuitboard/rdserver/attackby(obj/item/I as obj, mob/user as mo
 							/obj/item/weapon/stock_parts/manipulator = 1,
 							/obj/item/weapon/stock_parts/console_screen = 1,
 							/obj/item/device/threadneedle = 1)
+
+
+/obj/item/weapon/circuitboard/autolathe/sewing_machine/commercial
+	name = T_BOARD("sew-mate")
+	build_path = /obj/machinery/autolathe/sewing_machine/commercial
 
 /obj/item/weapon/circuitboard/protolathe
 	name = T_BOARD("protolathe")

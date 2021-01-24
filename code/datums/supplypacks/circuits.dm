@@ -174,6 +174,22 @@
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Sewing Machine Circuit"
 
+/datum/supply_pack/circuits/autolathe/commercial
+	contains = list(/obj/item/weapon/circuitboard/autolathe/commercial)
+
+	name = "Fabri-Mate Circuit"
+	cost = 100000
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Fabri-Mate Circuit"
+
+/datum/supply_pack/circuits/sewing_machine/commercial
+	contains = list(/obj/item/weapon/circuitboard/autolathe/sewing_machine/commercial)
+
+	name = "Sew-Mate Circuit"
+	cost = 100000
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Sew-Mate Circuit"
+
 
 /datum/supply_pack/circuits/expense_manager
 	contains = list(/obj/item/weapon/circuitboard/expense_manager)
