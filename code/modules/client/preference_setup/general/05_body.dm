@@ -57,9 +57,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["facial_red"]			<< pref.r_facial
 	S["facial_green"]		<< pref.g_facial
 	S["facial_blue"]		<< pref.b_facial
-	S["grad_red"]			>> pref.r_grad
-	S["grad_green"]			>> pref.g_grad
-	S["grad_blue"]			>> pref.b_grad
+	S["grad_red"]			<< pref.r_grad
+	S["grad_green"]		<< pref.g_grad
+	S["grad_blue"]			<< pref.b_grad
 	S["skin_tone"]			<< pref.s_tone
 	S["skin_red"]			<< pref.r_skin
 	S["skin_green"]			<< pref.g_skin
