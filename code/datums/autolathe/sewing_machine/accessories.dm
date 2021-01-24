@@ -101,6 +101,12 @@
 	path = /obj/item/clothing/mask/veil
 	force_matter = list("silk" = 210)
 
+/datum/category_item/crafting/sewing_machine/accessories/cloak
+	name = "cloak"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak
+	force_matter = list("silk" = 900)
+
+
 // webbing / holsters
 /datum/category_item/crafting/sewing_machine/accessories/webbing
 	name = "webbing"
