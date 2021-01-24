@@ -220,7 +220,7 @@
 
 			if(CHICKEN)
 				win_value = 400 * get_spin_cost() //6000$
-				var/mob/living/simple_animal/chicken/C = new(src.loc)
+				var/mob/living/simple_mob/animal/passive/chicken/C = new(src.loc)
 				C.name = "Pomf chicken"
 				C.body_color = "white"
 				C.icon_state = "chicken_white"

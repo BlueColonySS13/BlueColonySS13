@@ -30,7 +30,7 @@
 
 /obj/item/weapon/melee/taurusblade/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/device/soulstone))
-		var/mob/living/simple_animal/shade/A = locate() in W
+		var/mob/living/simple_mob/construct/A = locate() in W
 		if(!A)
 			to_chat(user,"<span class='notice'>\The [W] does nothing to \the [src]</span>")
 		else

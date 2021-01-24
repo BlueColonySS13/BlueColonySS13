@@ -713,7 +713,7 @@ var/list/name_to_material
 	ignition_point = T0C+232
 	melting_point = T0C+300
 	protectiveness = 1 // 4%
-	worth = 5
+	worth = 9
 
 /material/carpet
 	name = "carpet"

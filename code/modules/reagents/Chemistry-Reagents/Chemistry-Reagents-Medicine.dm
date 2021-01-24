@@ -108,6 +108,8 @@
 		M.drowsyness = max(0, M.drowsyness - 6 * removed)
 		M.hallucination = max(0, M.hallucination - 9 * removed)
 		M.adjustToxLoss(-4 * removed)
+		if(prob(10))
+			M.remove_a_modifier_of_type(/datum/modifier/poisoned)
 
 /datum/reagent/carthatoline
 	name = "Carthatoline"
@@ -127,6 +129,8 @@
 	if(M.getToxLoss() && prob(10))
 		M.vomit(1)
 	M.adjustToxLoss(-8 * removed)
+	if(prob(30))
+		M.remove_a_modifier_of_type(/datum/modifier/poisoned)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/internal/liver/L = H.internal_organs_by_name[O_LIVER]
@@ -750,6 +754,63 @@
 /datum/reagent/penicillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
+
+/datum/reagent/immunosuprizine
+	name = "Immunosuprizine"
+	id = "immunosuprizine"
+	description = "An experimental medicine believed to have the ability to prevent any organ rejection."
+	taste_description = "flesh"
+	reagent_state = SOLID
+	color = "#7B4D4F"
+	overdose = 20
+	overdose_mod = 1.5
+	scannable = 1
+
+/datum/reagent/immunosuprizine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/strength_mod = 1 * M.species.chem_strength_heal
+
+	if(alien == IS_DIONA)	// It's a tree.
+		strength_mod = 0.25
+
+	if(alien == IS_SLIME)	// Diffculty bonding with internal cellular structure.
+		strength_mod = 0.75
+
+	if(alien == IS_SKRELL)	// Natural inclination toward toxins.
+		strength_mod = 1.5
+
+	if(alien == IS_UNATHI)	// Natural regeneration, robust biology.
+		strength_mod = 1.75
+
+	if(alien == IS_TAJARA)	// Highest metabolism.
+		strength_mod = 2
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(alien != IS_DIONA)
+			H.adjustToxLoss((30 / strength_mod) * removed)
+
+		var/list/organtotal = list()
+		organtotal |= H.organs
+		organtotal |= H.internal_organs
+
+		for(var/obj/item/organ/I in organtotal)	// Don't mess with robot bits, they don't reject.
+			if(I.robotic >= ORGAN_ROBOT)
+				organtotal -= I
+
+		if(dose >= 15)
+			for(var/obj/item/organ/I in organtotal)
+				if(I.transplant_data && prob(round(15 * strength_mod)))	// Reset the rejection process, toggle it to not reject.
+					I.rejecting = 0
+					I.can_reject = FALSE
+
+		if(H.reagents.has_reagent("spaceacillin") || H.reagents.has_reagent("corophizine"))	// Chemicals that increase your immune system's aggressiveness make this chemical's job harder.
+			for(var/obj/item/organ/I in organtotal)
+				if(I.transplant_data)
+					var/rejectmem = I.can_reject
+					I.can_reject = initial(I.can_reject)
+					if(rejectmem != I.can_reject)
+						H.adjustToxLoss((15 / strength_mod))
+						I.take_damage(1)
 
 /datum/reagent/corophizine
 	name = "Corophizine"

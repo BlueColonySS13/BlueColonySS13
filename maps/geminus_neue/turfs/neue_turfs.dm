@@ -170,4 +170,8 @@
 	icon_state = "basalt"
 	oxygen = MOLES_O2POLLUX
 	nitrogen = MOLES_N2POLLUX
-	temperature = 430
+	temperature = 361 //Uncomfortably warm
+
+/turf/simulated/floor/redspace/New()
+	..()
+	icon_state = "basalt[rand(0, 12)]"

@@ -54,6 +54,8 @@
 			var/list/baccesses = SSbusiness.business_access_list
 			for (var/datum/access/accb in baccesses)
 				var/bname = get_biz_access_name_id(accb.id)
+				if(!bname)
+					continue
 
 				if (!conf_access || !conf_access.len || !(accb.id in conf_access))
 					t1 += "<a href='?src=\ref[src];access=[accb.id]'>[bname]</a><br>"

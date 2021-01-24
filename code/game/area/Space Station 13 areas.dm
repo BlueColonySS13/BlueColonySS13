@@ -432,6 +432,9 @@ area/space/atmosalert()
 	name = "\improper The Marble Office" //Central Command Command totally isn't RAS Syndrome in action.
 	icon_state = "centcom_command"
 
+/area/centcom/ceo_office
+	name = "\improper NanoTrasen CEO's Office"
+	icon_state = "centcom_command"
 
 //SYNDICATES
 

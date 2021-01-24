@@ -56,6 +56,23 @@
 			paint_color = new_paint
 			update_icon()
 			return
+
+	var/obj/item/weapon/cell/ch_cell = get_cell() //get the current cell
+	if(ch_cell)
+		if(istype(W, /obj/item/weapon/car_charger))
+			var/obj/item/weapon/car_charger/charger = W
+			if(ch_cell.charge == ch_cell.maxcharge)
+				to_chat(user, "<b>You refrain from using [charger] as the [src] is already fully charged.</b>")
+				return
+
+			if(charger.full)
+				ch_cell.give(ch_cell.maxcharge)
+			else
+				ch_cell.give(charger.charge_amt)
+			playsound(loc, 'sound/effects/turret/move2.wav', 5, 1, 5)
+			to_chat(user, "You insert the [charger] - [src]'s charge is now <b>[cell? round(cell.percent(), 0.01) : 0]%.</b>")
+			update_icon()
+			qdel(charger)
 	..()
 
 /obj/vehicle/bike/verb/toggle()

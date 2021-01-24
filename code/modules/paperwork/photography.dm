@@ -36,7 +36,7 @@ var/global/photo_count = 0
 	var/image_id = null
 	var/scribble	//Scribble on the back.
 	var/icon/tiny
-	var/cursed = 0
+//	var/cursed = 0
 	var/photo_size = 3
 
 	var/sensational			//pictures of high ranking people, depending on rank
@@ -287,10 +287,11 @@ var/global/photo_count = 0
 		else
 			mob_detail += "You can also see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
 
+/*
 	for(var/mob/living/simple_animal/hostile/statue/S in the_turf)
 		if(S)
 		 mob_detail +=	"You can see \a [S] on the photo. Its stare makes you feel uneasy." //"That which holds the image of an angel, becomes itself an angel."
-
+*/
 	return mob_detail
 
 
@@ -352,6 +353,7 @@ var/global/photo_count = 0
 	p.scary = scariness
 
 
+/*
 	if(findtext(mobs, "Its stare makes you feel uneasy"))
 		p.cursed = 1
 		user.visible_message("<span class='userdanger'>Something starts to slowly manifest from the picture!</span>")
@@ -361,7 +363,7 @@ var/global/photo_count = 0
 			S.banishable = 1//At least you can get rid of those bastards
 			T.visible_message("<span class='userdanger'>The photo turns into \a [S]!</span>")
 			qdel(p)
-
+*/
 	printpicture(user, p)
 
 
@@ -397,6 +399,7 @@ var/global/photo_count = 0
 	p.pixel_y = pixel_y
 	p.photo_size = photo_size
 	p.scribble = scribble
+/*
 	p.cursed = cursed
 	if(p.cursed)
 		var/turf/T = get_turf(p)
@@ -407,7 +410,7 @@ var/global/photo_count = 0
 			S.banishable = 1//At least you can get rid of those bastards
 			T.visible_message("<span class='userdanger'>The photo turns into \a [S]!</span>")
 			qdel(p)
-
+*/
 	if(copy_id)
 		p.id = id
 

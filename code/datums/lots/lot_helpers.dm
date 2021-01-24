@@ -130,6 +130,9 @@
 
 	charge_to_account(tenant.bank_id, "Remaining Balance", "[name] Lot Remaining Balance", "Landlord Management", tenant.account_balance)
 
+	if(landlord && (0 > tenant.account_balance))
+		landlord.pay_balance(-tenant.account_balance)
+
 	tenants -= tenant
 	QDEL_NULL(tenant)
 	listclearnulls(tenants)

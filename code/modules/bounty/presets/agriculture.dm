@@ -1,6 +1,6 @@
 /datum/bounty/agriculture
 	category = CAT_FARM
-
+	days_until_expiry = 15
 
 /datum/bounty/agriculture/potato_famine
 	name = "Potato Famine"
@@ -9,12 +9,12 @@
 	but a potato blight somehow managed to get onto the ship. We need to speed up our acquisition, ASAP. \
 	It's not too much, since it's just seed stock, though."
 
-	grown_wanted = list("potato" = 40)
+	grown_wanted = list("potato" = 400)
 
-	department_reward = 130
-	individual_reward = 40
+	department_reward = 1300
+	individual_reward = 500
 
-	days_until_expiry = 1
+
 
 /datum/bounty/agriculture/catsup
 	name = "Make up Catsup"
@@ -23,24 +23,23 @@
 	the police think that there is a lot of blood. I know, I am a pretty original thinker. \
 	Don't copy that idea though, it's mine."
 
-	grown_wanted = list("tomato" = 20)
+	grown_wanted = list("tomato" = 200)
 
-	department_reward = 100
-	individual_reward = 20
+	department_reward = 1000
+	individual_reward = 300
 
-	days_until_expiry = 1
 
 /datum/bounty/agriculture/lemon_genes
 	name = "Weak Genes"
 	author = "Melvis Press"
 	description = "I eat cereal with lemonade."
 
-	grown_wanted = list("lemon" = 3)
+	grown_wanted = list("lemon" = 80)
 
-	department_reward = 80
-	individual_reward = 10
+	department_reward = 200
+	individual_reward = 200
 
-	days_until_expiry = 1
+
 
 /datum/bounty/agriculture/birthday_egg
 	name = "Birthday Egg Crisis"

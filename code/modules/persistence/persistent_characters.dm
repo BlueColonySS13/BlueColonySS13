@@ -44,6 +44,9 @@
 	mind.prefs.r_skin = r_skin
 	mind.prefs.g_skin = g_skin
 	mind.prefs.b_skin = b_skin
+	mind.prefs.r_grad = r_grad
+	mind.prefs.g_grad = g_grad
+	mind.prefs.b_grad = b_grad
 	mind.prefs.s_tone = s_tone
 	mind.prefs.h_style = h_style
 	mind.prefs.f_style = f_style

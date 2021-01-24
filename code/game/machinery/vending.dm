@@ -1318,7 +1318,7 @@
 
 /obj/machinery/vending/security/warden
 	name = "Warden Equipment Vendotron"
-	req_access = list(access_forensics_lockers)
+	req_access = list(access_armory)
 	products = list(
 	/obj/item/device/retail_scanner/police = 2,
 	/obj/item/weapon/storage/backpack/security = 2,
@@ -2453,3 +2453,22 @@
 					)
 	vendor_department = DEPT_PUBLIC
 
+/obj/machinery/vending/fishing
+	name = "Fisherman's Chest"
+	desc = "Tell the kids I'm goin' fishing."
+	icon_state = "fishvendor"
+	vend_delay = 8
+	vend_reply = "Happy fishing!"
+	products = list(/obj/item/weapon/material/fishing_rod = 5,
+					/obj/item/weapon/material/fishing_rod/modern = 5,
+					/obj/item/weapon/material/fishing_rod/pro = 3,
+					/obj/item/stack/fishing_line = 13,
+					/obj/item/weapon/material/fishing_net = 13
+					)
+	prices = list(/obj/item/weapon/material/fishing_rod = 50,
+					/obj/item/weapon/material/fishing_rod/modern = 350,
+					/obj/item/weapon/material/fishing_rod/pro = 1250,
+					/obj/item/stack/fishing_line = 30,
+					/obj/item/weapon/material/fishing_net = 50
+					)
+	vendor_department = DEPT_PUBLIC

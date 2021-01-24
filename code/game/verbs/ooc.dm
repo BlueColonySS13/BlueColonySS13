@@ -2,6 +2,12 @@
 /client/verb/ooc(msg as text)
 	set name = "OOC"
 	set category = "OOC"
+	
+	msg = sanitize(msg)
+	msg = emoji_parse(msg)
+	
+	if(!msg)
+		return
 
 	if(!can_speak_ooc(src, msg, "OOC", MUTE_OOC, /datum/client_preference/show_ooc, config.ooc_allowed))
 		return

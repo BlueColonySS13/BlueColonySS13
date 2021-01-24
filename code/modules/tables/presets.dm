@@ -62,6 +62,7 @@
 	burn_state = 0 //Burnable
 	burntime = MEDIUM_BURN
 	icon_state = "plain_preview"
+	has_base = FALSE
 
 /obj/structure/table/woodentable/New()
 	material = get_material_by_name("wood")

@@ -45,10 +45,6 @@
 ////////////////////////////
 */
 
-#define HAIR_BALD 0 //*rubs head*
-#define HAIR_SHORT 1
-#define HAIR_MEDIUM 2
-#define HAIR_LONG 3
 
 /datum/sprite_accessory/hair
 

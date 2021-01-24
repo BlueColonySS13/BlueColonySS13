@@ -1,5 +1,7 @@
 /datum/bounty/food
 	category = CAT_FOOD
+	days_until_expiry = 15
+	delete_upon_completion = FALSE
 
 /datum/bounty/food/hamburger_joint
 	name = "Fresh Frozen Foods"
@@ -8,12 +10,11 @@
 	Well, we send a lot of things to doors and we need some \"Like Mama Used to Make\" fast foods \
 	for our new Like-Mama-Used-To-Make(tm) delivery services. This order needs about five cheese burgers for a client."
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/cheeseburger = 5)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/cheeseburger = 100)
 
-	department_reward = 170
-	individual_reward = 80
+	department_reward = 1700
+	individual_reward = 800
 
-	days_until_expiry = 1
 
 /datum/bounty/food/army_marches
 	name = "An Army Marches on Its Stomach"
@@ -24,12 +25,11 @@
 	memos have passed my desk. Please send us 30 slime sandwiches and make it snappy. \
 	I fear our scientists are going to retaliate over my student�s cuisine soon with mechs and other sciencey devices"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/cherry = 5)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/cherry = 100)
 
-	department_reward = 350
-	individual_reward = 200
+	department_reward = 3500
+	individual_reward = 1600
 
-	days_until_expiry = 5
 
 /datum/bounty/food/subwhere_sandwiches
 	name = "For Want of a Loaf"
@@ -37,12 +37,11 @@
 	description = "Our meatbread supply is low. We are THE space sandwich shop and our Suez Meat Sub is our number one product! \
 	If we have no meatbread, we cannot sell our Suez subs to the masses. You get bread, we get money, deal?"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/meatbread = 1)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/meatbread = 60)
 
-	department_reward = 50
-	individual_reward = 50
+	department_reward = 500
+	individual_reward = 150
 
-	days_until_expiry = 2
 
 /datum/bounty/food/nibble_before_chew
 	name = "The Nibble Before the Chew"
@@ -50,12 +49,10 @@
 	description = "Another company BBQ is going to happen soon and all we have planned out are ribs and hotdogs. I need something \
 	out there to impress the boss and steal the show. Do you have anything edible on Pollux that I can throw on the grill?"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/xenomeat/spidermeat = 4)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/xenomeat/spidermeat = 40)
 
-	department_reward = 200
-	individual_reward = 60
-
-	days_until_expiry = 2
+	department_reward = 2000
+	individual_reward = 600
 
 /datum/bounty/food/doorsprint_00
 	name = "DoorSprint Order: Delicious Burgers"
@@ -63,12 +60,11 @@
 	description = "I'll take a double triple bossy deluxe, on a raft, four by four animal style, extra shingles with a shimmy and \
 	a squeeze, light axle grease, make it cry, burn it, and let it swim."
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger = 1)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger = 10)
 
-	department_reward = 40
-	individual_reward = 15
+	department_reward = 400
+	individual_reward = 150
 
-	days_until_expiry = 1
 
 /datum/bounty/food/doorsprint_01
 	name = "DoorSprint Order: Large Appetite"

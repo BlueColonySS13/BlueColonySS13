@@ -99,6 +99,14 @@
 	name = "Dark Gygax wreckage"
 	icon_state = "darkgygax-broken"
 
+/obj/effect/decal/mecha_wreckage/gygax/adv
+	name = "Advanced Dark Gygax wreckage"
+	icon_state = "darkgygax_adv-broken"
+
+/obj/effect/decal/mecha_wreckage/gygax/medgax
+	name = "Medgax wreckage"
+	icon_state = "medgax-broken"
+
 /obj/effect/decal/mecha_wreckage/marauder
 	name = "Marauder wreckage"
 	icon_state = "marauder-broken"
@@ -182,21 +190,24 @@
 	name = "Odysseus wreckage"
 	icon_state = "odysseus-broken"
 
-	New()
-		..()
-		var/list/parts = list(
-									/obj/item/mecha_parts/part/odysseus_torso,
-									/obj/item/mecha_parts/part/odysseus_head,
-									/obj/item/mecha_parts/part/odysseus_left_arm,
-									/obj/item/mecha_parts/part/odysseus_right_arm,
-									/obj/item/mecha_parts/part/odysseus_left_leg,
-									/obj/item/mecha_parts/part/odysseus_right_leg)
-		for(var/i=0;i<2;i++)
-			if(!isemptylist(parts) && prob(40))
-				var/part = pick(parts)
-				welder_salvage += part
-				parts -= part
-		return
+/obj/effect/decal/mecha_wreckage/odysseus/New()
+	..()
+	var/list/parts = list(
+								/obj/item/mecha_parts/part/odysseus_torso,
+								/obj/item/mecha_parts/part/odysseus_head,
+								/obj/item/mecha_parts/part/odysseus_left_arm,
+								/obj/item/mecha_parts/part/odysseus_right_arm,
+								/obj/item/mecha_parts/part/odysseus_left_leg,
+								/obj/item/mecha_parts/part/odysseus_right_leg)
+	for(var/i=0;i<2;i++)
+		if(!isemptylist(parts) && prob(40))
+			var/part = pick(parts)
+			welder_salvage += part
+			parts -= part
+	return
+
+/obj/effect/decal/mecha_wreckage/odysseus/murdysseus
+	icon_state = "murdysseus-broken"
 
 /obj/effect/decal/mecha_wreckage/hoverpod
 	name = "Hover pod wreckage"

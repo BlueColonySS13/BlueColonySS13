@@ -126,10 +126,9 @@
 			return
 		if(occupant)
 			to_chat(user,"<span class='warning'>\The [src] is already occupied by [occupant].</span>")
-		for(var/mob/living/simple_animal/slime/M in range(1,grab.affecting))
-			if(M.victim == grab.affecting)
-				usr << "[grab.affecting.name] will not fit into the cryo because they have a slime latched onto their head."
-				return
+		if(grab.affecting.has_buckled_mobs())
+			to_chat(user, span("warning", "\The [grab.affecting] has other entities attached to it. Remove them first."))
+			return
 		var/mob/M = grab.affecting
 		qdel(grab)
 		put_mob(M, user)

@@ -337,6 +337,29 @@
 	Because of the Five Points, these nanites cannot self-replicate."
 	filled_reagents = list("defective_nanites" = 15)
 
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/mutagenic_nanites
+	name = "mutagenic nanite injector"
+	desc = "A refined version of the standard autoinjector, allowing greater capacity. \
+	The injector stores a slurry of highly advanced and specialized nanomachines that \
+	modify the genetic structure of living organisms. \
+	Because of the Five Points, these nanites cannot self-replicate."
+	filled_reagents = list("mutagenic_nanites" = 15)
+
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/control_nanites
+	name = "control nanite injector"
+	desc = "A refined version of the standard autoinjector, allowing greater capacity. \
+	The injector stores a slurry of highly advanced and specialized nanomachines that \
+	modify a sapient organism's mental processes curing most forms of brainwashing and \
+	preventing further brainwashing. Because of the Five Points, these nanites cannot self-replicate."
+	filled_reagents = list("control_nanites" = 15)
+
+/obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/sentient_nanites
+	name = "self-replicating nanite injector"
+	desc = "A refined version of the standard autoinjector, allowing greater capacity. \
+	The injector stores a slurry of highly advanced and extremely illegal self-replicating \
+	nanomachines. Only bad things will come from injecting it."
+	filled_reagents = list("sentient_nanites" = 60)
+
 /obj/item/weapon/reagent_containers/hypospray/autoinjector/biginjector/contaminated
 	name = "contaminated injector"
 	desc = "A refined version of the standard autoinjector, allowing greater capacity. \

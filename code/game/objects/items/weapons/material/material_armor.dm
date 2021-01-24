@@ -170,6 +170,20 @@ Protectiveness | Armor %
 /obj/item/clothing/suit/armor/material
 	name = "armor"
 	default_material = DEFAULT_WALL_MATERIAL
+	
+/obj/item/clothing/suit/armor/material/get_persistent_metadata()
+	if(!material)
+		return
+
+	return material.name
+
+/obj/item/clothing/suit/armor/material/load_persistent_metadata(material_name)
+	if(!material_name)
+		return
+	set_material(material_name)
+	update_icon()
+	return TRUE
+
 
 /obj/item/clothing/suit/armor/material/makeshift
 	name = "sheet armor"
@@ -258,6 +272,20 @@ Protectiveness | Armor %
 	name = "helmet"
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
 	default_material = DEFAULT_WALL_MATERIAL
+	
+/obj/item/clothing/head/helmet/material/get_persistent_metadata()
+	if(!material)
+		return
+
+	return material.name
+
+/obj/item/clothing/head/helmet/material/load_persistent_metadata(material_name)
+	if(!material_name)
+		return
+	set_material(material_name)
+	update_icon()
+	return TRUE
+
 
 /obj/item/clothing/head/helmet/material/makeshift
 	name = "bucket"

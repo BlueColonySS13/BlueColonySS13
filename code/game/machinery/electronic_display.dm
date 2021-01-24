@@ -94,7 +94,7 @@ GLOBAL_LIST_INIT(display_case_icons, list(
 	     "Snacks - Green" = "snackgreen",
 	     "Snacks - Orange" = "snackorange",
 	     "Snacks - Teal" = "snackteal",
-	     "Cola - Black" = "black cola",
+	     "Cola - Black" = "cola_black",
 	     "Cola - Red" = "soda_red",
 	     "Coffee" = "coffee",
 	     "Cigarettes" = "cigs",
@@ -380,7 +380,7 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 
 	if(!owner_uid && I)
 		if(!I.unique_ID || !I.registered_name || !I.associated_account_number || !check_account_exists(I.associated_account_number))
-			visible_message("<span class='notice'>There is an issue with setting your ownership on this message, it could be due to a lack of details on the card like \
+			visible_message("<span class='notice'>There is an issue with setting your ownership on this machine, it could be due to a lack of details on the card like \
 			a unique id, name, or valid bank details. Please contact a technician for more details.</span>")
 			return
 		else

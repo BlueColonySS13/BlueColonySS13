@@ -371,7 +371,7 @@
 			S.dirt = 0
 		T.clean_blood()
 
-		for(var/mob/living/simple_animal/slime/M in T)
+		for(var/mob/living/simple_mob/slime/M in T)
 			M.adjustToxLoss(rand(5, 10))
 
 /datum/reagent/space_cleaner/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
@@ -587,6 +587,33 @@
 	reagent_state = LIQUID
 	color = "#DF9FBF"
 
+
+/*************
+	Nanites
+*************/
+
+// This exists to cut the number of chemicals a merc borg has to juggle on their hypo.
+/datum/reagent/healing_nanites
+	name = "Restorative Nanites"
+	id = "healing_nanites"
+	description = "Miniature medical robots that swiftly restore bodily damage."
+	taste_description = "metal"
+	reagent_state = SOLID
+	color = "#555555"
+	metabolism = REM * 4 // Nanomachines gotta go fast.
+	price_tag = 2
+
+	get_tax()
+		return MEDICAL_TAX
+
+
+/datum/reagent/healing_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.heal_organ_damage(2 * removed, 2 * removed)
+	M.adjustOxyLoss(-4 * removed)
+	M.adjustToxLoss(-2 * removed)
+	M.adjustCloneLoss(-2 * removed)
+
+
 // The opposite to healing nanites, exists to make unidentified hypos implied to have nanites not be 100% safe.
 /datum/reagent/defective_nanites
 	name = "Defective Nanites"
@@ -596,10 +623,154 @@
 	reagent_state = SOLID
 	color = "#333333"
 	metabolism = REM * 3 // Broken nanomachines go a bit slower.
-	scannable = 1
 
 /datum/reagent/defective_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.take_organ_damage(2 * removed, 2 * removed)
 	M.adjustOxyLoss(4 * removed)
 	M.adjustToxLoss(2 * removed)
 	M.adjustCloneLoss(2 * removed)
+
+//Unstable Mutagen but in nanite form.
+/datum/reagent/mutating_nanites
+	name = "Mutagenic Nanites"
+	id = "mutagenic_nanites"
+	description = "Miniature medical robots that modify a living organism's cells down to the genetic level."
+	taste_description = "metal"
+	reagent_state = SOLID
+	color = "#333333"
+	metabolism = REM * 4
+
+/datum/reagent/mutating_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+
+	if(M.isSynthetic())
+		return
+
+	var/mob/living/carbon/human/H = M
+	if(istype(H) && (H.species.flags & NO_SCAN))
+		return
+
+	if(M.dna)
+		if(prob(removed * 10))
+			randmuti(M)
+			if(prob(98))
+				randmutb(M)
+			else
+				randmutg(M)
+			domutcheck(M, null)
+			M.UpdateAppearance()
+		if(prob(removed * 40))
+			randmuti(M)
+			M << "<span class='warning'>You feel odd!</span>"
+	M.apply_effect(10 * removed, IRRADIATE, 0)
+
+//Unstable Mutagen but in nanite form.
+/datum/reagent/mutagenic_nanites
+	name = "Mutagenic Nanites"
+	id = "mutagenic_nanites"
+	description = "Miniature medical robots that modify a living organism's cells down to the genetic level."
+	taste_description = "metal"
+	reagent_state = SOLID
+	color = "#333333"
+	metabolism = REM * 4
+
+/datum/reagent/mutating_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+
+	if(M.isSynthetic())
+		return
+
+	var/mob/living/carbon/human/H = M
+	if(istype(H) && (H.species.flags & NO_SCAN))
+		return
+
+	if(M.dna)
+		if(prob(removed * 10))
+			randmuti(M)
+			if(prob(98))
+				randmutb(M)
+			else
+				randmutg(M)
+			domutcheck(M, null)
+			M.UpdateAppearance()
+		if(prob(removed * 40))
+			randmuti(M)
+			M << "<span class='warning'>You feel odd!</span>"
+	M.apply_effect(10 * removed, IRRADIATE, 0)
+
+//The nanobots found in loyalty implants.
+/datum/reagent/control_nanites
+	name = "Control Nanites"
+	id = "control_nanites"
+	description = "Miniature medical robots that modify a sapient organism's mental processes curing most forms of brainwashing and preventing further brainwashing."
+	taste_description = "metal"
+	reagent_state = SOLID
+	color = "#333333"
+	metabolism = REM * 0.5 // Metabolizes at 0.1 units per tick. A suitable replacement for loyalty implants but will eventually require further injections.
+	var/already_loyal = FALSE
+
+/datum/reagent/control_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(!M.is_sentient())  // Cannot affect drones.
+		return
+
+	if(!already_loyal)
+		var/mob/living/carbon/human/H = M
+		var/datum/antagonist/antag_data = get_antag_data(H.mind.special_role)
+
+		if(antag_data && (antag_data.flags & ANTAG_IMPLANT_IMMUNE))
+			H.visible_message("[H] seems to resist the effects of the nanites!", "You feel the corporate tendrils of [using_map.company_name] try to invade your mind!")
+			already_loyal = TRUE
+		else
+			clear_antag_roles(H.mind, 1)
+			var/expiration_time = volume / metabolism
+			H.add_modifier(/datum/modifier/loyalty, expiration_time)
+			to_chat(H, "<span class='notice'>You feel a surge of loyalty towards [using_map.company_name].</span>")
+			already_loyal = TRUE
+	else
+		return
+
+// Turns people into nanite swarm blobs.
+/datum/reagent/sentient_nanites
+	name = "Emergent Intelligence Nanites"
+	id = "sentient_nanites"
+	description = "Extremely dangerous and illegal malfunctioning nanites. They are able to self-replicate and have developed a measure of intelligence."
+	taste_description = "metal"
+	reagent_state = SOLID
+	color = "#333333"
+	metabolism = REM * 0.5 // 0.1 removed per tick.
+	var/blob_timer = 0
+
+/datum/reagent/sentient_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	M.take_organ_damage(2 * removed, 2 * removed)
+	M.adjustOxyLoss(4 * removed)
+	M.adjustToxLoss(2 * removed)
+	M.adjustCloneLoss(2 * removed)
+	blob_timer++
+
+	if(blob_timer >= 1 MINUTE)
+		var/mob/living/carbon/human/H = M
+		burst_blob(H.mind, 0)
+
+/datum/reagent/sentient_nanites/proc/burst_blob(var/datum/mind/blob, var/warned)
+	var/client/blob_client = null
+	var/turf/location = null
+
+	if(iscarbon(blob.current))
+		var/mob/living/carbon/C = blob.current
+		if(GLOB.directory[ckey(blob.key)])
+			blob_client = GLOB.directory[ckey(blob.key)]
+			location = get_turf(C)
+			if(istype(location, /turf/space) || istype(location.loc, /area/lots))
+				if(!warned)
+					to_chat(C, "<span class='warning'>You feel ready to burst, but this isn't an appropriate place!</span>")
+					message_admins("[key_name_admin(C)] could not burst into a blob as they are either in space or in a player lot.")
+					spawn(300)
+						burst_blob(blob, 1)
+				else
+					log_admin("[key_name(C)] was in space or in a lot when attempting to burst as a blob.")
+					message_admins("[key_name_admin(C)] was in space or in a lot when attempting to burst as a blob.")
+					C.gib()
+					new/mob/living/simple_mob/blob/spore/nanite(location)
+
+			else if(blob_client && location)
+				to_chat(blob_client, span("warning", "You feel the last vestiges of your consciousness being overwritten and slipping away..."))
+				C.gib()
+				new /obj/structure/blob/core/grey_goo(location, blob_client, 1, 0) //Come back to this and fix it. Mind not transferring properly.

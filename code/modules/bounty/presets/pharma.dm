@@ -1,6 +1,5 @@
 /datum/bounty/health_pharma
 	category = CAT_HEALTH
-	author_department = DEPT_FACTORY
 
 /datum/bounty/health_pharma/tricord_contractor
 	name = "Contractor Work"

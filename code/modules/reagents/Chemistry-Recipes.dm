@@ -456,6 +456,14 @@
 	catalysts = list("phoron" = 5)
 	result_amount = 2
 
+/datum/chemical_reaction/immunosuprizine
+	name = "Immunosuprizine"
+	id = "immunosuprizine"
+	result = "immunosuprizine"
+	required_reagents = list("corophizine" = 1, "tungsten" = 1, "sacid" = 1)
+	catalysts = list("phoron" = 5)
+	result_amount = 2
+
 /datum/chemical_reaction/imidazoline
 	name = "imidazoline"
 	id = "imidazoline"
@@ -2514,3 +2522,12 @@
 	required_reagents = list("peanutoil" = 2, "sugar" = 1, "sodiumchloride" = 1)
 	catalysts = list("enzyme" = 5)
 	result_amount = 3
+
+// Neutralization.
+
+/datum/chemical_reaction/neutralize_neurotoxic_protein
+	name = "Neutralize Toxic Proteins"
+	id = "neurotoxic_protein_neutral"
+	result = "protein"
+	required_reagents = list("anti_toxin" = 1, "neurotoxic_protein" = 2)
+	result_amount = 2

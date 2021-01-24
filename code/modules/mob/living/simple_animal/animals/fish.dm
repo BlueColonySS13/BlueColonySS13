@@ -58,7 +58,7 @@
 	icon_dead = "trout-dead"
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish/trout
 
-/mob/living/simple_animal/fish/salmon
+/mob/living/simple_mob/animal/passive/fish/salmon
 	name = "salmon"
 	tt_desc = "A salmon of some kind."
 	icon_state = "salmon-swim"
@@ -96,5 +96,6 @@
 	icon_state = "piranha-swim"
 	icon_living = "piranha-swim"
 	icon_dead = "piranha-dead"
+	faction = "piranha"
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/fish/piranha
 	hostile = TRUE

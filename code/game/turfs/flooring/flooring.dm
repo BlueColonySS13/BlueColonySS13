@@ -585,3 +585,7 @@ var/list/flooring_types
 /decl/flooring/padded
 	icon = 'icons/turf/flooring/decorative.dmi'
 	icon_base = "padded"
+
+/decl/flooring/glass_bottom
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "glass_bottom"

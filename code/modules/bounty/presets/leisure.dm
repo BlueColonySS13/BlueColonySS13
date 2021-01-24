@@ -1,6 +1,8 @@
 /datum/bounty/leisure
 	category = CAT_LEISURE
 
+	days_until_expiry = 10
+
 /datum/bounty/leisure/diva_dresses
 	name = "Sassy Dresses Needed!"
 	author = "Spotlight! Diva Catalogue"
@@ -35,12 +37,10 @@
 	description = "Right, it says here on the magazine that customers want silk beanies. So that's what we want. Any color, doesn't matter - they are \
 	into that avant garde stuff anyway. It has to be made out silk, you hear me?"
 
-	items_wanted = list(/obj/item/clothing/head/beanie = 10)
+	items_wanted = list(/obj/item/clothing/head/beanie = 200)
 
-	department_reward = 400
-	individual_reward = 170
-
-	days_until_expiry = 1
+	department_reward = 4000
+	individual_reward = 1700
 
 
 /datum/bounty/leisure/beanies/meets_standards(var/obj/O) // additional custom checks
@@ -58,12 +58,10 @@
 	Hurry! Angelo's foundation is melting! Our designer told us the perfect photo-finish hex color is \
 	%MAKEUPCOLOR, no other colors will be accepted."
 
-	items_wanted = list(/obj/item/weapon/lipstick = 8)
+	items_wanted = list(/obj/item/weapon/lipstick = 200)
 
-	department_reward = 150
-	individual_reward = 25
-
-	days_until_expiry = 1
+	department_reward = 15000
+	individual_reward = 2500
 
 	var/makeup_color = "#FF0000"
 
@@ -93,12 +91,10 @@
 	description = "We're doing makeup for a superhero themed photoshoot. For one of the villains we need an eyeshadow that's powerful \
 	and memorable. Our designer said an eyeshadow with %MAKEUPCOLOR would do the trick! You know what to do."
 
-	items_wanted = list(/obj/item/weapon/lipstick/eyeshadow = 8)
+	items_wanted = list(/obj/item/weapon/lipstick/eyeshadow = 200)
 
-	department_reward = 120
-	individual_reward = 25
-
-	days_until_expiry = 1
+	department_reward = 4200
+	individual_reward = 1700
 
 
 /datum/bounty/leisure/pucker_up/making_me_blush
@@ -107,12 +103,11 @@
 	description = "We're having an exciting romance based shoot in Blue Colony today for our internet portfolio. The rosey cheeks must \
 	be on point as that's what the competition judges mark for. Our designer insists blusher with the color %MAKEUPCOLOR would be the best choice."
 
-	items_wanted = list(/obj/item/weapon/lipstick/blusher = 8)
+	items_wanted = list(/obj/item/weapon/lipstick/blusher = 200)
 
-	department_reward = 120
-	individual_reward = 25
+	department_reward = 12000
+	individual_reward = 1700
 
-	days_until_expiry = 1
 
 /datum/bounty/leisure/jackening
 	name = "The Jackening"
@@ -154,11 +149,11 @@
 	Anyway, I plan to introduce many women to this concept by giving out these hats for free and dropping random knowledge like I did now. Hopefully \
 	it lands with at least one of them. Any color fedora is fine, truly."
 
-	items_wanted = list(/obj/item/clothing/head/fedora = 25)
+	items_wanted = list(/obj/item/clothing/head/fedora = 250)
 
-	department_reward = 720
-	individual_reward = 160
+	department_reward = 3500
+	individual_reward = 1600
 
-	days_until_expiry = 1
+	days_until_expiry = 10
 	allow_subtypes = TRUE
 
