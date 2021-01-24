@@ -178,7 +178,7 @@
 	contains = list(/obj/item/weapon/circuitboard/autolathe/commercial)
 
 	name = "Fabri-Mate Circuit"
-	cost = 10000
+	cost = 100000
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Fabri-Mate Circuit"
 
@@ -186,7 +186,7 @@
 	contains = list(/obj/item/weapon/circuitboard/autolathe/sewing_machine/commercial)
 
 	name = "Sew-Mate Circuit"
-	cost = 10000
+	cost = 100000
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Sew-Mate Circuit"
 
