@@ -1,4 +1,7 @@
 /datum/category_group/crafting/sewing_machine/hats
+
+
+/datum/category_item/crafting/sewing_machine/hats
 	force_matter = list("silk" = 210)
 
 // hats

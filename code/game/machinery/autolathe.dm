@@ -132,7 +132,7 @@
 						material_string += ", "
 					material_string += "[(round(R.resources[material] * mat_efficiency)) * print_multiplier] [material]"
 
-				material_string += ".  <b>Cost:</b> [total_cost ? cash2text(total_cost, FALSE, TRUE, TRUE ) : ""]<br></td>"
+				material_string += ".  [commercial ? "<b>Cost:</b> [total_cost ? cash2text(total_cost, FALSE, TRUE, TRUE ) : ""]" : ""]<br></td>"
 
 				//Build list of multipliers for sheets.
 				if(R.is_stack)
@@ -215,6 +215,8 @@
 	if(panel_open)
 		//Don't eat multitools or wirecutters used on an open lathe.
 		if(O.is_multitool() || O.is_wirecutter())
+			if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Opened \the [src] with \the [O]."))
+				return
 			wires.Interact(user)
 			return
 
