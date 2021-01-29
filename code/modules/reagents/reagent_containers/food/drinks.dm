@@ -11,7 +11,7 @@
 	volume = 50
 	var/shaken
 	price_tag = 5
-
+	tax_type = DRINKS_TAX
 	unique_save_vars = list("shaken")
 
 /obj/item/weapon/reagent_containers/food/drinks/on_reagent_change()

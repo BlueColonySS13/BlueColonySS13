@@ -1,7 +1,7 @@
 
 /proc/save_world()
 	//saves all political data - TODO: Move this into law subsystem
-	persistent_economy.save_economy()
+//	persistent_economy.save_economy()
 
 	//save economy and department money
 	SSeconomy.save_economy()

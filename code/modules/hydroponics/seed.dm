@@ -26,6 +26,9 @@
 
 	var/fruit_price = 3				// How much the grown produce costs.
 
+	var/tax_type = AGRICULTURE_TAX
+	var/contraband_type = null
+
 /datum/seed/New()
 
 	set_trait(TRAIT_IMMUTABLE,            0)            // If set, plant will never mutate. If -1, plant is highly mutable.

@@ -3,6 +3,7 @@
 	max_value = 50000
 	value = 10
 	portal_category = "Public Legal Pricing"
+	portal_grouping = "Economy Settings"
 	value_is_money = TRUE
 
 /datum/persistent_option/number_value/legal_pricing/minor_appeal

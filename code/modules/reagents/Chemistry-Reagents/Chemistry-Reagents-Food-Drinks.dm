@@ -13,6 +13,7 @@
 	var/injectable = 0
 	color = "#664330"
 	price_tag = 0.6
+	tax_type = FOOD_TAX
 
 /datum/reagent/nutriment/mix_data(var/list/newdata, var/newamount)
 
@@ -463,6 +464,8 @@
 	var/adj_temp = 0
 	calories_factor = 3
 	price_tag = 0.1
+
+	tax_type = DRINKS_TAX
 
 /datum/reagent/drink/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjustToxLoss(removed) // Probably not a good idea; not very deadly though

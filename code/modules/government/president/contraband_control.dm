@@ -1,6 +1,7 @@
 
 /datum/persistent_option/toggle/contraband_control
 	portal_category = "Contraband Control Measures"
+	portal_grouping = "Law and Order"
 
 /datum/persistent_option/toggle/contraband_control/inventory_boxes
 	name = "Inventory Box Monitoring"

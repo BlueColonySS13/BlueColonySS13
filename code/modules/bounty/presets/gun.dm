@@ -1,5 +1,6 @@
 /datum/bounty/gun
 	category = CAT_GUNS
+	tax_type = WEAPONS_TAX
 
 /datum/bounty/gun/smg_guards
 	name = "Get the Ultra Premium Care Plan: It Sounds Better"

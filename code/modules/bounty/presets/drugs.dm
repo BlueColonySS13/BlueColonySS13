@@ -1,6 +1,6 @@
 /datum/bounty/drugs
 	category = CAT_DRUGS
-
+	tax_type = DRUG_TAX
 /datum/bounty/drugs/vape_weed
 	name = "Vape Weed"
 	author = "Green eVape Pharma"

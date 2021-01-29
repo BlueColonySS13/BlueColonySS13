@@ -4,7 +4,7 @@
 	bbcode_value = TRUE
 	value_type = 1
 	portal_category = "Emergency Procedures"
-
+	portal_grouping = "Communications"
 	max_value_text = 1000
 	bbcode_value = TRUE
 

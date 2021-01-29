@@ -8,11 +8,9 @@
 	LEGAL
 	)
 
-	var/list/associated_items = list()
-	var/list/associated_reagents = list()
-
 	value_select = LEGAL
 	portal_category = "Contraband and Restricted Materials"
+	portal_grouping = "Law and Order"
 
 /datum/persistent_option/select_list/contraband/cannabis
 	name = "Cannabis Contraband Status"
@@ -112,7 +110,7 @@
 
 // Weapons
 
-/datum/persistent_option/select_list/select_list/contraband/guns
+/datum/persistent_option/select_list/contraband/guns
 	name = "Gun Contraband Status"
 	description = "This relates to any type of gun."
 	id = CONTRABAND_GUN

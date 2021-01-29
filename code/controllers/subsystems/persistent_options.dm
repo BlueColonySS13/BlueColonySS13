@@ -3,11 +3,10 @@ SUBSYSTEM_DEF(persistent_options)
 	init_order = INIT_ORDER_PERSISTENT_OPTIONS
 	flags = SS_NO_FIRE
 	var/list/all_portal_options = list()
-	var/list/all_generic_portal_options = list()
-	var/list/all_president_portal_options = list()
-	var/list/all_council_portal_options = list()
-
 	var/list/all_voting_ballots = list()
+
+	var/list/all_security_levels = list()
+
 
 	wait = 1200 //Ticks once per 2 minutes
 	var/referendum_interval = 1 HOUR
@@ -18,11 +17,10 @@ SUBSYSTEM_DEF(persistent_options)
 		new instance()
 
 	all_portal_options = GLOB.persistent_options
-	all_generic_portal_options = GLOB.generic_portal_options
-	all_president_portal_options = GLOB.president_portal_options
-	all_council_portal_options = GLOB.council_portal_options
 
 	all_voting_ballots = GLOB.all_voting_ballots
+
+	all_security_levels = security_levels
 
 	. = ..()
 
@@ -66,10 +64,12 @@ SUBSYSTEM_DEF(persistent_options)
 	return PO.get_formatted_value()
 
 
-/datum/controller/subsystem/persistent_options/proc/update_pesistent_option_value(id, new_value, author)
+/datum/controller/subsystem/persistent_options/proc/update_pesistent_option_value(id, new_value, author, skip = FALSE)
 	var/datum/persistent_option/PO = get_persistent_option(id)
 	if(!PO)
 		return
+
+	PO.on_option_change(new_value, skip)
 
 	PO.vars[PO.var_to_edit] = new_value
 
@@ -82,7 +82,7 @@ SUBSYSTEM_DEF(persistent_options)
 	return PO.vars[PO.var_to_edit]
 
 
-/datum/controller/subsystem/persistent_options/proc/make_new_option_ballot(option_id, proposed_change, list/custom_options, new_title, new_desc, new_author, new_author_ckey, new_ballot_type = /datum/voting_ballot/referendum)
+/datum/controller/subsystem/persistent_options/proc/make_new_option_ballot(option_id, proposed_change = null, list/custom_options, new_title, new_desc, new_author, new_author_ckey, new_ballot_type = /datum/voting_ballot/referendum)
 	var/datum/persistent_option/ps_option = SSpersistent_options.get_persistent_option(option_id)
 
 	if(!ps_option)
@@ -109,16 +109,14 @@ SUBSYSTEM_DEF(persistent_options)
 	if(custom_options)
 		new_referendum.options = custom_options
 
-	if(proposed_change)
-		new_referendum.new_change = proposed_change
-
+	new_referendum.new_change = proposed_change
 
 	new_referendum.creation_date = full_game_time()
 
 	new_referendum.active = TRUE
 
-
 	new_referendum.sanitize_ballot()
+	ps_option.sanitize_options()
 
 	return new_referendum
 
@@ -130,25 +128,28 @@ SUBSYSTEM_DEF(persistent_options)
 
 	return B.new_change
 
-/datum/controller/subsystem/persistent_options/proc/get_persistent_options(wanted_cat, wanted_type)
+/datum/controller/subsystem/persistent_options/proc/get_persistent_options(wanted_cat, list/access_list)
 	var/list/wanted_options = list()
 	for(var/P in GLOB.persistent_options)
 		var/datum/persistent_option/ps_option = all_portal_options[P]
 		if(!ps_option)
 			continue
-		if(ps_option.portal_category != wanted_cat)
+		if(wanted_cat && !(ps_option.portal_category == wanted_cat))
 			continue
-		if(ps_option.portal_grouping != wanted_type)
+		if(ps_option.required_access_view && !(ps_option.required_access_view in access_list))
 			continue
 		wanted_options += ps_option
 
 	return wanted_options
 
-/datum/controller/subsystem/persistent_options/proc/get_ballots()
+/datum/controller/subsystem/persistent_options/proc/get_ballots(active_only = FALSE)
 	var/list/fetched_ballots = list()
 	for(var/B in all_voting_ballots)
 		var/datum/voting_ballot/VB = all_voting_ballots[B]
 		if(!VB)
+			continue
+
+		if(active_only && !VB.get_status())
 			continue
 
 		fetched_ballots += VB
@@ -156,10 +157,10 @@ SUBSYSTEM_DEF(persistent_options)
 	return fetched_ballots
 
 
-/datum/controller/subsystem/persistent_options/proc/make_log(option_id, changed = "Undefined", author = "Unknown", custom_text = "", override_log_check = FALSE)
+/datum/controller/subsystem/persistent_options/proc/make_log(option_id, changed = "Update", author = "Unknown", custom_text = "", override_log_check = FALSE)
 	var/datum/persistent_option/ps_option = SSpersistent_options.get_persistent_option(option_id)
 
-	if(!ps_option || (!override_log_check && ps_option.create_log))
+	if(!ps_option || (!override_log_check && !ps_option.create_log))
 		return
 
 	var/datum/persistent_option/log_option = SSpersistent_options.get_persistent_option(ps_option.log_id)
@@ -172,65 +173,6 @@ SUBSYSTEM_DEF(persistent_options)
 	if(custom_text)
 		new_log_text += " [custom_text]"
 	else
-		new_log_text += "<b>[ps_option.name]</b>: was updated by [author].[changed ? " Change: [changed]" : ""]."
+		new_log_text += "Updated by [author].[changed ? " Change: [changed]" : ""] - [stationdate2text()] @ [stationtime2text()]."
 
 	log_option.add_value(new_log_text)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -31,13 +31,13 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	var/list/select_person = list() // selects a person from civilian records, saves their uid and name
 
 	var/department_cost = 0 // If this costs something per payroll, how much? (Works with toggle_status var)
-	var/charged_department = DEPT_COUNCIL // If this charges money, which department will it pull money from?
-	var/department_recieving = DEPT_NANOTRASEN // If this charges money, which department gets the money?
+	var/charged_department = DEPT_COUNCIL // If this charges money, which department will it pull money from? Do in negative numbers.
+	var/department_recieving = DEPT_NANOTRASEN // If this charges money, which department gets the money? Do in positive numbers.
 
 	var/make_referendum = FALSE // If this is enabled, it will require a referendum
 
-	var/portal_grouping = PORTAL_PRESIDENT
 	var/portal_category = "General"
+	var/portal_grouping = ""
 
 	var/var_to_edit = "value_text" // this points to the var we're editing in this datum
 
@@ -50,7 +50,11 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 
 	var/referendum_type = /datum/voting_ballot/referendum
 	var/create_log = TRUE
-	var/log_id = null //which persistent id it logs to
+	var/log_id = "president_logging" //which persistent id it logs to
+
+	var/override_changes = FALSE // use traditional input type or custom?
+
+	var/compact_listing = 400 // if this is set, it will shrink to text preview to this number. leave to 0 to disable
 
 
 	var/creation_text = "A new ballot for \"%NAME\" has been raised! \
@@ -59,30 +63,38 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 
 	var/on_ballot_pass = "The ballot for %NAME has passed! It has changed from %VALUE to %PROPOSEDVALUE, this will take place immediately."
 
+	var/required_access_view = null
+	var/required_access_edit = access_president
+
 /datum/persistent_option/New()
 	..()
 	if(id)
 		GLOB.persistent_options[id] = src
 
-		switch(portal_grouping)
-			if(PORTAL_GENERIC)
-				GLOB.generic_portal_options[id] = src
-			if(PORTAL_PRESIDENT)
-				GLOB.president_portal_options[id] = src
-			if(PORTAL_COUNCIL)
-				GLOB.council_portal_options[id] = src
+/datum/persistent_option/proc/can_edit(list/access_list)
+	if(required_access_edit && !(required_access_edit in access_list))
+		return FALSE
+
+	return TRUE
+
+/datum/persistent_option/proc/charge_department()
+	if(!department_cost || !toggle_status)
+		return FALSE
+
+	if(charged_department)
+		var/datum/money_account/M = dept_acc_by_id(charged_department)
+		if(M && !(department_cost > M.money))
+			charge_to_account(M.account_number, "Nanotrasen Fund Transfer", "[name] ([cash2text( department_cost, FALSE, TRUE, TRUE )] PH) expenses", "Government Expenses", department_cost)
+		else
+			toggle_status() // turn it off.
+
+	if(department_recieving)
+		var/datum/money_account/M = dept_acc_by_id(department_recieving)
+		if(M)
+			charge_to_account(M.account_number, "Nanotrasen Fund Transfer", "[name] ([cash2text( department_cost, FALSE, TRUE, TRUE )] PH) earnings", "Government Expenses", -department_cost)
 
 
-	creation_text = replacetext(creation_text, "%NAME", name)
-	creation_text = replacetext(creation_text, "%VALUE", get_formatted_value())
-	creation_text = replacetext(creation_text, "%PROPOSEDVALUE", SSpersistent_options.find_proposed_value_ballot(id))
-
-	on_ballot_pass = replacetext(on_ballot_pass, "%NAME", name)
-	on_ballot_pass = replacetext(on_ballot_pass, "%VALUE", get_formatted_value())
-	on_ballot_pass = replacetext(on_ballot_pass, "%PROPOSEDVALUE", SSpersistent_options.find_proposed_value_ballot(id))
-
-
-/datum/persistent_option/proc/on_option_change(skip = 0) // is called when an option is adjusted
+/datum/persistent_option/proc/on_option_change(newvalue, skip = 0) // is called when an option is adjusted
 	if(skip)
 		return
 
@@ -118,6 +130,11 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		truncate_oldest(value_list, max_list_items)
 		truncate_oldest(select_person, max_list_items)
 
+	if(SSpersistent_options.find_proposed_value_ballot(id))
+		on_ballot_pass = replacetext(on_ballot_pass, "%NAME", name)
+		on_ballot_pass = replacetext(on_ballot_pass, "%VALUE", get_formatted_value())
+		on_ballot_pass = replacetext(on_ballot_pass, "%PROPOSEDVALUE", SSpersistent_options.find_proposed_value_ballot(id))
+
 	return 1
 
 /datum/persistent_option/proc/get_linked_ballot()
@@ -131,7 +148,7 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	var/the_value = get_value(fake_value)
 	if(bbcode_value)
 		the_value = pencode2html(the_value)
-	return the_value
+	return "[the_value]"
 
 
 /datum/persistent_option/proc/get_proposed_value()
@@ -145,11 +162,6 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 
 /datum/persistent_option/toggle
 	var_to_edit = "toggle_status"
-
-
-/datum/persistent_option/toggle/get_formatted_value(fake_value) // for use in UIs
-	var/the_value = (fake_value ? fake_value : toggle_status)
-	return (the_value ? "enable" : "disable")
 
 /datum/persistent_option/select_person
 	var_to_edit = "select_person"
@@ -175,17 +187,20 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	else
 		return "None"
 
-/datum/persistent_option/toggle/get_formatted_value() // for use in UIs
-	return (toggle_status ? "Yes" : "No")
+/datum/persistent_option/toggle/get_formatted_value(fake_value) // for use in UIs
+	var/the_value = get_value()
+	if(fake_value)
+		the_value = fake_value
+	return (the_value ? "Yes" : "No")
 
 /datum/persistent_option/value_list/get_formatted_value()
 	var/text_list = ""
 	for(var/V in value_list)
-		text_list += "- [V]<br>"
+		text_list += "[V]<br>"
 
 	return text_list
 
-/datum/persistent_option/proc/show_value_updater(mob/user)
+/datum/persistent_option/proc/show_value_updater(mob/user, var/the_new_value = null, custom_override = FALSE)
 	if(make_referendum)
 		if(get_linked_ballot())
 			alert(user, "A referendum already exists for this option. Please withdraw it before proposing one again.")
@@ -195,129 +210,138 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		if(!response || response == "Cancel")
 			return FALSE
 
-	var/the_new_value = null
+	if(override_changes)
+		custom_override = TRUE
 
-	if(var_to_edit == "value_text") // updates a string text for text based values.
-		var/new_text_value = value_text
-		if(value_type == 0)
-
-			new_text_value = sanitize(input(user,"[edit_text ? edit_text : "Please enter a new value for [name]."] ([max_value_text] chars max) [bbcode_value ? "(BBcode Enabled)" : ""]","[name]", html_decode(value_text)) as text, max_value_text, extra = 0)
-
-		else
-			new_text_value = sanitize(input(user,"[edit_text ? edit_text : "Please enter a new value for [name]."] ([max_value_text] chars max) [bbcode_value ? "(BBcode Enabled)" : ""]","[name]", html_decode(value_text)) as message|null, max_value_text, extra = 0)
-
-
-		if(!new_text_value && !allow_blank)
+	if(custom_override)
+		the_new_value = custom_checks(user)
+		if(isnull(the_new_value))
 			return FALSE
 
-		the_new_value = new_text_value
+	if(!custom_override)
+		if(var_to_edit == "value_text") // updates a string text for text based values.
+			var/new_text_value = value_text
+			if(value_type == 0)
 
-		alert("value is [the_new_value]")
+				new_text_value = sanitize(input(user,"[edit_text ? edit_text : "Please enter a new value for [name]."] ([max_value_text] chars max) [bbcode_value ? "(BBcode Enabled)" : ""]","[name]", html_decode(value_text)) as text, max_value_text, extra = 0)
 
-
-	if(var_to_edit == "value") // updates the number for number based values
-		var/new_value = input(usr, "[edit_text ? edit_text : "Please enter a new value for [name]."] (Min: [min_value]. Max: [max_value].)", "[name]", value) as num|null
-
-		sanitize_integer(new_value, min_value, max_value, initial(value))
-		the_new_value = Clamp(new_value, min_value, max_value)
-
-		alert("value is [the_new_value]")
-
-
-	if(var_to_edit == "toggle_status") //updates the TRUE/FALSE or ON/OFF status
-		var/new_toggle = input(user, "This setting is currently [toggle_status ? "Enabled." : "Disabled."] [edit_text ? edit_text : "Please choose from the following options."]", "[name]") as null|anything in list("Yes", "No", "Cancel")
-
-		if(!new_toggle || new_toggle == "Cancel")
-			return FALSE
-
-		the_new_value = (new_toggle == "Yes") ? TRUE : FALSE
-		sanitize_integer(the_new_value, FALSE, TRUE, initial(toggle_status))
-
-		alert("value is [the_new_value]")
-
-	if(var_to_edit == "value_list") // adds or removes a list from a set of values
-		var/list/the_list = value_list
-		var/list/new_list = the_list.Copy()
-
-		var/removeadd = alert(user, "Would you like to remove from the list or add?", "[name]", "Add", "Remove", "Cancel")
-
-		if(!removeadd || removeadd == "Cancel")
-			return FALSE
-
-		if(removeadd == "Add")
-			if(max_list_items && (LAZYLEN(the_list) >= max_list_items))
-				alert("You may add no more than [max_list_items]")
-				return FALSE
-			if(LAZYLEN(get_option_values()))
-
-				var/to_add = input(user, "Which option would you like to add?", "[name]") as null|anything in get_option_values()
-				if(!to_add)
-					return FALSE
-
-				the_new_value = (new_list + to_add)
 			else
-				var/text_add = sanitize(input(user,"[edit_text ? edit_text : "Please enter a new list item for [name]."] ([max_value_text] chars max) [bbcode_value ? "(BBcode Enabled)" : ""]", "[name]", null), max_value_text)
+				new_text_value = sanitize(input(user,"[edit_text ? edit_text : "Please enter a new value for [name]."] ([max_value_text] chars max) [bbcode_value ? "(BBcode Enabled)" : ""]","[name]", html_decode(value_text)) as message|null, max_value_text, extra = 0)
 
-				if(!text_add)
-					return FALSE
 
-				the_new_value	= (new_list + text_add)
-
-		else
-			var/to_remove = input(user, "Which option would you like to remove", "[name]") as null|anything in value_list
-
-			if(!(to_remove in the_list))
+			if(!new_text_value && !allow_blank)
 				return FALSE
 
-			the_new_value = (new_list - to_remove)
+			the_new_value = new_text_value
 
-		alert("value is [the_new_value]")
-
-
-	if(var_to_edit == "value_select") // select a value from a list (sole option)
-		if(!LAZYLEN(get_option_values()))
-			return FALSE // shouldn't happen technically
-
-		var/to_change = input(user, "Which option would you like to update \"[name]\" to?", "[name]") as null|anything in get_option_values()
-		if(!to_change)
-			return FALSE
-
-		the_new_value = to_change
-
-		alert("value is [the_new_value]")
+			alert("value is [the_new_value]")
 
 
-	if(var_to_edit == "select_person") // updates the name and unique ID into a list
-		var/list/selected_person = list()
+		if(var_to_edit == "value") // updates the number for number based values
+			var/new_value = input(usr, "[edit_text ? edit_text : "Please enter a new value for [name]."] (Min: [min_value]. Max: [max_value].)", "[name]", value) as num|null
 
-		var/person_list = list()
+			sanitize_integer(new_value, min_value, max_value, initial(value))
+			the_new_value = Clamp(new_value, min_value, max_value)
 
-		for(var/datum/data/record/R in data_core.general)
-			if(!R.fields["name"])
-				continue
-			person_list += R.fields["name"]
+			alert("value is [the_new_value]")
 
-		if(!person_list)
-			alert("No civilian records exist on the system to select from!")
-			return
 
-		var/person = input(usr, "Please select a person to add to this job's listings.", "Add People") as null|anything in person_list
+		if(var_to_edit == "toggle_status") //updates the TRUE/FALSE or ON/OFF status
+			var/new_toggle = input(user, "This setting is currently [toggle_status ? "Enabled." : "Disabled."] [edit_text ? edit_text : "Please choose from the following options."]", "[name]") as null|anything in list("Yes", "No", "Cancel")
 
-		if(!person)
-			return
+			if(!new_toggle || new_toggle == "Cancel")
+				return FALSE
 
-		var/unique_id_empl = ""
+			the_new_value = (new_toggle == "Yes") ? TRUE : FALSE
+			sanitize_integer(the_new_value, FALSE, TRUE, initial(toggle_status))
 
-		for(var/datum/data/record/C in data_core.general)
-			if(C.fields["name"] == person)
-				unique_id_empl = C.fields["unique_id"]
+			alert("value is [the_new_value]")
 
-		selected_person[unique_id_empl] = person
+		if(var_to_edit == "value_list") // adds or removes a list from a set of values
+			var/list/the_list = value_list
+			var/list/new_list = the_list.Copy()
 
-		the_new_value = selected_person
+			var/removeadd = alert(user, "Would you like to remove from the list or add?", "[name]", "Add", "Remove", "Cancel")
 
-		alert("value is [the_new_value]")
+			if(!removeadd || removeadd == "Cancel")
+				return FALSE
 
+			if(removeadd == "Add")
+				if(max_list_items && (LAZYLEN(the_list) >= max_list_items))
+					alert("You may add no more than [max_list_items]")
+					return FALSE
+				if(LAZYLEN(get_option_values()))
+
+					var/to_add = input(user, "Which option would you like to add?", "[name]") as null|anything in get_option_values()
+					if(!to_add)
+						return FALSE
+
+					the_new_value = (new_list + to_add)
+				else
+					var/text_add = sanitize(input(user,"[edit_text ? edit_text : "Please enter a new list item for [name]."] ([max_value_text] chars max) [bbcode_value ? "(BBcode Enabled)" : ""]", "[name]", null), max_value_text)
+
+					if(!text_add)
+						return FALSE
+
+					the_new_value	= (new_list + text_add)
+
+			else
+				if(!LAZYLEN(value_list))
+					alert("Nothing to remove!")
+					return
+				var/to_remove = input(user, "Which option would you like to remove?", "[name]") as null|anything in value_list
+
+				if(!(to_remove in the_list))
+					return FALSE
+
+				the_new_value = (new_list - to_remove)
+
+			alert("value is [the_new_value]")
+
+
+		if(var_to_edit == "value_select") // select a value from a list (sole option)
+			if(!LAZYLEN(get_option_values()))
+				return FALSE // shouldn't happen technically
+
+			var/to_change = input(user, "Which option would you like to update \"[name]\" to?", "[name]") as null|anything in get_option_values()
+			if(!to_change)
+				return FALSE
+
+			the_new_value = to_change
+
+			alert("value is [the_new_value]")
+
+
+		if(var_to_edit == "select_person") // updates the name and unique ID into a list
+			var/list/selected_person = list()
+
+			var/person_list = list()
+
+			for(var/datum/data/record/R in data_core.general)
+				if(!R.fields["name"])
+					continue
+				person_list += R.fields["name"]
+
+			if(!LAZYLEN(person_list))
+				alert("No civilian records exist on the system to select from!")
+				return
+
+			var/person = input(usr, "Please select a person to add to this job's listings.", "Add People") as null|anything in person_list
+
+			if(!person)
+				return
+
+			var/unique_id_empl = ""
+
+			for(var/datum/data/record/C in data_core.general)
+				if(C.fields["name"] == person)
+					unique_id_empl = C.fields["unique_id"]
+
+			selected_person[unique_id_empl] = person
+
+			the_new_value = selected_person
+
+			alert("value is [the_new_value]")
 
 
 	if(isnull(the_new_value))
@@ -329,7 +353,7 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		return
 
 	if(!make_referendum)
-		return SSpersistent_options.update_pesistent_option_value(id, the_new_value, user.real_name)
+		return perform_edit_outcome(id, the_new_value, user)
 
 	else
 		var/response = alert(user, "Would you like to submit the referendum for \"[name]\"?", "Final Referendum Confirmation", "Yes", "No")
@@ -340,16 +364,29 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 			alert("Cannot create ballot: This ballot already appears on the system.")
 			return FALSE
 
+
+		return perform_edit_outcome(id, the_new_value, user)
+
+/datum/persistent_option/proc/perform_edit_outcome(id, the_new_value, mob/user)
+	if(!make_referendum)
+		return SSpersistent_options.update_pesistent_option_value(id, the_new_value, user.real_name)
+	else
 		var/datum/voting_ballot/referendum/new_referendum = SSpersistent_options.make_new_option_ballot(id, the_new_value, null, "[name] Referendum", description, user.real_name, user.client.ckey, /datum/voting_ballot/referendum)
 		if(new_referendum && creation_text)
+			creation_text = replacetext(creation_text, "%NAME", name)
+			creation_text = replacetext(creation_text, "%VALUE", get_formatted_value())
+			creation_text = replacetext(creation_text, "%PROPOSEDVALUE", get_proposed_value_formatting())
 			command_announcement.Announce(creation_text, "[name]")
+			creation_text = initial(creation_text)
 		else
 			alert("There has been an issue with processing this referendum, please try again later or contact Nanotrasen technical support.")
 
-
 		SSpersistent_options.make_log(id, author = user.real_name, custom_text = "raised a referendum raised by [user.real_name].")
-
 		return new_referendum
+
+/datum/persistent_option/proc/custom_checks()
+
+	return TRUE
 
 /datum/persistent_option/proc/edit_value(mob/user)
 	if(show_value_updater(user))
@@ -360,3 +397,6 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		return
 	value_list.Add(new_value)
 	sanitize_options()
+
+/datum/persistent_option/proc/toggle_status()
+	toggle_status = !toggle_status

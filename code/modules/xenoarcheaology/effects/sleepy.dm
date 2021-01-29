@@ -1,6 +1,7 @@
 //todo
 /datum/artifact_effect/sleepy
 	name = "sleepy"
+	contraband_level = CONTRABAND_ARTIFACTSHARMFUL
 
 /datum/artifact_effect/sleepy/New()
 	..()

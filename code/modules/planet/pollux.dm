@@ -679,7 +679,7 @@ var/datum/planet/pollux/planet_pollux = null
 	if(world.time < next_carpfall)
 		return // It's too soon to strike again.
 
-	if(persistent_economy && persistent_economy.carp_control)
+	if(SSpersistent_options && SSpersistent_options.get_persistent_option_value("protect_carpshield"))
 		var/datum/weather/W = pick(holder.allowed_weather_types)
 
 		holder.change_weather(W)
@@ -728,7 +728,7 @@ var/datum/planet/pollux/planet_pollux = null
 	if(world.time < next_carpfall)
 		return // It's too soon to strike again.
 
-	if(persistent_economy && persistent_economy.carp_control)
+	if(SSpersistent_options && SSpersistent_options.get_persistent_option_value("protect_carpshield"))
 		var/datum/weather/W = pick(holder.allowed_weather_types)
 
 		holder.change_weather(W)

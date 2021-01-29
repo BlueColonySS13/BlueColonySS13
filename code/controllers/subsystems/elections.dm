@@ -96,6 +96,13 @@ SUBSYSTEM_DEF(elections)
 
 	return info
 
+/datum/controller/subsystem/elections/proc/get_president_name()
+	if(!current_president)
+		return "Nanotrasen"
+
+	return current_president.name
+
+
 /datum/controller/subsystem/elections/proc/get_president()
 	var/prez
 	if(SSelections.current_president && current_president.ckey)
@@ -138,6 +145,13 @@ SUBSYSTEM_DEF(elections)
 	CheckNoConfidence()
 	SetNewPresident()
 
+/datum/controller/subsystem/elections/proc/update_prez()
+	if(!current_president)
+		return
+	var/list/president = list()
+	president[current_president.unique_id] = current_president.name
+	SSpersistent_options.update_pesistent_option_value("cabinet_president", president, "Nanotrasen")
+
 
 /datum/controller/subsystem/elections/proc/CheckNoConfidence()
 	if(!current_president) // This shouldn't happen except for when you start the same anew.
@@ -145,22 +159,27 @@ SUBSYSTEM_DEF(elections)
 		if(!vice_president)
 			current_president = new/datum/president_candidate()
 			current_president.name = "NanoTrasen"
+			update_prez()
 		else
 			current_president = vice_president
 			vice_president = null
+			update_prez()
 
 		return 1
 
-	if(current_president && current_president.no_confidence_votes)
+	else if(current_president && current_president.no_confidence_votes)
 		if(current_president.no_confidence_votes.len > 29)
 			snap_election = 1
 			former_presidents += current_president
 			if(!vice_president)
 				current_president = new/datum/president_candidate()
 				current_president.name = "NanoTrasen"
+				update_prez()
+
 			else
 				current_president = vice_president
 				vice_president = null
+				update_prez()
 			return 1
 
 /datum/controller/subsystem/elections/proc/getcandidatenames()
@@ -248,6 +267,8 @@ SUBSYSTEM_DEF(elections)
 
 	if(!current_president) // shouldn't happen, but just in case.
 		CheckNoConfidence()
+
+	update_prez()
 
 	postelection_news_article()
 

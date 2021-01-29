@@ -1,6 +1,7 @@
 /datum/artifact_effect/robohurt
 	name = "robotic harm"
 	var/last_message
+	contraband_level = CONTRABAND_ARTIFACTSHARMFUL
 
 /datum/artifact_effect/robohurt/New()
 	..()

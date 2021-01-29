@@ -4,12 +4,25 @@
 
 	var_to_edit = "select_person"
 	max_list_items = 1
+	portal_grouping = "Government"
+
+/datum/persistent_option/select_person/cabinet/ceo
+	name = "Nanotrasen CEO"
+	id = "cabinet_ceo"
+
+	required_access_edit = access_ceo
+
+/datum/persistent_option/select_person/cabinet/govrep
+	name = "Government Representative"
+	id = "cabinet_govrep"
+
+	required_access_edit = access_ceo
 
 /datum/persistent_option/select_person/cabinet/president
 	name = "President"
 	id = "cabinet_president"
 
-	portal_grouping = PORTAL_HEAD_OFFICE
+	required_access_edit = access_ceo
 
 /datum/persistent_option/select_person/cabinet/vice
 	name = "Vice President"

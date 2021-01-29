@@ -210,10 +210,10 @@
 	desc = "An ID for NanoTrasen representatives. You can smell the pompous."
 	job_access_type = /datum/job/nanotrasen
 
-/obj/item/weapon/card/id/nanotrasen/cbia
+/obj/item/weapon/card/id/nanotrasen/pdsi
 	name = "\improper CBIA Agent ID"
 	desc = "An ID straight from NanoTrasen for the CBIA."
-	job_access_type = /datum/job/nanotrasen/cbia
+	job_access_type = /datum/job/nanotrasen/pdsi
 
 /obj/item/weapon/card/id/nanotrasen/president
 	name = "\improper President's ID"
@@ -224,6 +224,11 @@
 	name = "\improper NanoTrasen CEO's ID"
 	desc = "The head honcho themselves. This has access to anything that exists under the colonies."
 	job_access_type = /datum/job/nanotrasen/ceo
+
+/obj/item/weapon/card/id/nanotrasen/advisor
+	name = "\improper Advisor's ID"
+	desc = "The president's advisors wear these, for whatever they actually do?"
+	job_access_type = /datum/job/nanotrasen/advisor
 
 
 // Emergency response team IDs

@@ -21,7 +21,6 @@
 		return
 
 	var/escalation = TRUE
-
 	if(current_sec_level > level_datum.level)
 		escalation = FALSE
 
@@ -65,12 +64,12 @@
 
 /proc/num2seclevel(var/num)
 	for(var/datum/code_level/CL in security_levels)
-		if(CL.level == num)
+		if(CL.level == text2num(num))
 			return CL.code
 
 /proc/seclevel2num(var/seclevel)
 	for(var/datum/code_level/CL in security_levels)
-		if(CL.level == lowertext(seclevel))
+		if(CL.code == lowertext(seclevel))
 			return CL.level
 
 
@@ -92,7 +91,7 @@ var/global/list/security_levels = list()
 	return 1
 
 /proc/instantiate_security_levels()
-	for(var/instance in subtypesof(/datum/code_level))
+	for(var/instance in typesof(/datum/code_level))
 		var/datum/code_level/J = new instance
 		security_levels[J.code] = J
 

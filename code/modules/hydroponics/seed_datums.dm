@@ -275,7 +275,7 @@
 	name = "poisonapple"
 	mutants = null
 	chems = list("cyanide" = list(1,5))
-	fruit_price	= 6
+	fruit_price = 6
 
 /datum/seed/apple/gold
 	name = "goldapple"
@@ -284,7 +284,7 @@
 	mutants = null
 	chems = list("nutriment" = list(1,10), "gold" = list(1,5))
 	kitchen_tag = "goldapple"
-	fruit_price	= 25
+	fruit_price = 25
 
 /datum/seed/apple/gold/New()
 	..()
@@ -303,6 +303,9 @@
 	chems = list("nutriment" = list(1), "cannabis" = list(3,8))
 	kitchen_tag = "cannabis"
 	fruit_price	= 20
+
+	tax_type = CANNABIS_TAX
+	contraband_type = CONTRABAND_CANNABIS
 
 /datum/seed/cannabis/New()
 	..()
@@ -340,7 +343,7 @@
 	chems = list("nutriment" = list(1,25))
 	splat_type = /obj/effect/plant
 	kitchen_tag = "mushroom"
-	fruit_price	= 9
+	fruit_price = 9
 
 /datum/seed/mushroom/New()
 	..()
@@ -1266,7 +1269,7 @@
 	seed_name = "coca"
 	display_name = "coca"
 	chems = list("coca" = list(3,5))
-	fruit_price	= 25
+	fruit_price = 25
 
 /datum/seed/coca/New()
 	..()
@@ -1286,6 +1289,7 @@
 	display_name = "tobacco"
 	chems = list("nicotine" = list(3,7))
 	fruit_price	= 10
+	tax_type = TOBACCO_TAX
 
 /datum/seed/tobacco/New()
 	..()
@@ -1340,6 +1344,8 @@
 	display_name = "caapi"
 	chems = list("caapi_extract" = list(3,5))
 	fruit_price	= 13
+	tax_type = DRUG_TAX
+	contraband_type = CONTRABAND_CAAPI
 
 /datum/seed/caapi/New()
 	..()
@@ -1359,6 +1365,8 @@
 	display_name = "chacruna"
 	chems = list("chacruna_extract" = list(3,5))
 	fruit_price	= 13
+	tax_type = DRUG_TAX
+	contraband_type = CONTRABAND_CHACRUNA
 
 /datum/seed/chacruna/New()
 	..()

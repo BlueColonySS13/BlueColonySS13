@@ -1,13 +1,18 @@
-
-/datum/persistent_option/value/procedure/department
+/datum/persistent_option/value/procedure
 	portal_category = "Standard Operating Procedures"
+	portal_grouping = "Records"
+	portal_category = "Procedures"
 	var_to_edit = "value_text"
-	max_value_text = 9000
+	max_value_text = 19000
 
-	portal_grouping = PORTAL_HEAD_OFFICE
+
 	value_type = 1
 
 	bbcode_value = FALSE
+
+	required_access_edit = access_ceo
+	log_id = "nanotrasen_logging"
+
 
 // charter
 
@@ -21,8 +26,6 @@
 	bbcode_value = TRUE
 
 	var_to_edit = "value_text"
-
-	max_value_text = 10000
 
 /*
 
@@ -100,6 +103,8 @@
 
 
 // Regulations
+/datum/persistent_option/value/procedure/regulation
+	portal_category = "Regulations"
 
 /datum/persistent_option/value/procedure/regulation/food_safety
 	name = "Food Health and Safety Regulations"

@@ -14,11 +14,15 @@
 	var/decay = 72 HOURS
 	var/decaytimer = 0
 	price_tag = 3
+	tax_type = AGRICULTURE_TAX
 
 	unique_save_vars = list("plantname", "potency", "bitecount", "decay", "decaytimer", "dry")
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/on_persistence_load()
 	update_plant_info(loc, plantname)
+
+	if(!seed)
+		qdel(src)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/get_item_cost()
 	if(seed)
@@ -72,6 +76,9 @@
 
 	name = "[seed.seed_name]"
 	trash = seed.get_trash_type()
+
+	tax_type = seed.tax_type
+	contraband_type = seed.contraband_type
 
 	update_icon()
 

@@ -76,6 +76,8 @@
 
 	var/allow_subtypes = FALSE // does this bounty search for strict types, or are subtypes allowed also? Only applies to item bounties.
 
+	var/tax_type = BUSINESS_TAX // portal id of the tax type this bounty pays out to.
+
 /datum/bounty/New(new_name, new_author, new_desc, new_author_department, new_items_wanted, \
 	new_stacks_wanted, new_reagents_wanted, new_grown_wanted, new_seeds_wanted, new_cash_wanted, add_active_bounty_list = TRUE)
 
@@ -251,7 +253,7 @@
 	if(!D || !D.bank_account)
 		return
 
-	var/tax_amt = persistent_economy.business_income_tax * department_reward
+	var/tax_amt = SSpersistent_options.get_persistent_option_value(tax_type) * department_reward
 	var/final_pay = department_reward
 
 	if(D.business_taxed)

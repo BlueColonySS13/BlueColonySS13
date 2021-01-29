@@ -11,6 +11,7 @@
 	burn_state = 0 //Burnable
 	burntime = 1
 	var/list/center_of_mass = list() // Used for table placement
+	tax_type = FOOD_TAX
 
 /obj/item/weapon/reagent_containers/food/New()
 	..()

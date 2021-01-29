@@ -33,6 +33,9 @@
 	if(effects["secondary_effect"])
 		secondary_effect = new effects["my_effect"]
 
+	if(my_effect.contraband_level == CONTRABAND_ARTIFACTSHARMFUL || secondary_effect.contraband_level ==  CONTRABAND_ARTIFACTSHARMFUL)
+		contraband_type = CONTRABAND_ARTIFACTSHARMFUL
+
 	return TRUE
 
 

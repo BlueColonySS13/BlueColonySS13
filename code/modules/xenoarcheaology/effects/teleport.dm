@@ -1,6 +1,7 @@
 /datum/artifact_effect/teleport
 	name = "teleport"
 	effect_type = EFFECT_BLUESPACE
+	contraband_level = CONTRABAND_ARTIFACTSHARMFUL
 
 /datum/artifact_effect/teleport/DoEffectTouch(var/mob/user)
 	var/weakness = GetAnomalySusceptibility(user)

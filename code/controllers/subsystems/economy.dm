@@ -15,8 +15,6 @@ SUBSYSTEM_DEF(economy)
 	setup_economy()
 	load_economy()
 	load_business_departments()
-	init_expenses()
-	persistent_economy.load_accounts()
 	link_economy_accounts()
 
 	all_departments = GLOB.departments
@@ -51,15 +49,6 @@ SUBSYSTEM_DEF(economy)
 		new instance
 
 	GLOB.current_date_string = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
-
-/datum/controller/subsystem/economy/proc/init_expenses()
-	for(var/E in subtypesof(/datum/expense/nanotrasen) - list(/datum/expense/nanotrasen/pest_control,
-	 /datum/expense/nanotrasen/tech_support, /datum/expense/nanotrasen/external_defense
-	 ))
-		var/datum/expense/new_expense = new E
-		persistent_economy.city_expenses += new_expense
-
-		new_expense.do_effect()
 
 /datum/controller/subsystem/economy/proc/link_economy_accounts()
 	for(var/obj/item/device/retail_scanner/RS in GLOB.transaction_devices)

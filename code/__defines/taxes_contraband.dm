@@ -1,4 +1,8 @@
 
+#define WORKING_TAX "working_tax"
+#define MIDDLE_TAX "middle_tax"
+#define UPPER_TAX "upper_tax"
+
 #define BUSINESS_TAX "business_tax"
 #define MEDICAL_TAX "medical_tax"
 #define WEAPONS_TAX "weapons_tax"

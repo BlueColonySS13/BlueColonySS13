@@ -43,7 +43,7 @@
 
 
 /datum/event/prison_break/start()
-	if(persistent_economy && persistent_economy.antivirus)
+	if(SSpersistent_options && SSpersistent_options.get_persistent_option_value("protect_network_antivirus"))
 		command_announcement.Announce("[pick("Gr3y.T1d3 virus","Malignant trojan")] was detected in [station_name()] [(eventDept == "Security")? "imprisonment":"containment"] and was subsequently terminated.", "[eventDept] Alert")
 
 		kill()

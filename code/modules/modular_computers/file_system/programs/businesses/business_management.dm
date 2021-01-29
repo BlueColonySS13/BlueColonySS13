@@ -248,6 +248,9 @@
 				page_msg += "<strong>Max Positions:</strong> [job_positions] <a href='?src=\ref[src];choice=modify_positions;job=\ref[job]'>Change</a><br>"
 				page_msg += "<strong>Wage:</strong> [job.wage] <a href='?src=\ref[src];choice=modify_wage;job=\ref[job]'>Change</a><br>"
 				page_msg += "<strong>Synth Wage:</strong> [job.synth_wage] <a href='?src=\ref[src];choice=modify_synth_wage;job=\ref[job]'>Change</a><br>"
+				page_msg += "<strong>Mass Produced Vatborn Wage:</strong> [job.mpv_wage] <a href='?src=\ref[src];choice=modify_vatborn_wage;job=\ref[job]'>Change</a><br>"
+				page_msg += "<strong>Non-National Wage:</strong> [job.nonnational_wage] <a href='?src=\ref[src];choice=modify_nonnational_wage;job=\ref[job]'>Change</a><br>"
+
 				page_msg += "<strong>Allow Synths?:</strong> [job.allows_synths ? "Yes" : "No"] <a href='?src=\ref[src];choice=synth_toggle;job=\ref[job]'>Toggle</a><br>"
 
 				page_msg += "<strong>Clean Criminal Record Required:</strong> [job.clean_record_required ? "Yes" : "No"] <a href='?src=\ref[src];choice=toggle_record_req;job=\ref[job]'>Toggle</a><br>"
@@ -822,7 +825,7 @@
 			reg_error = "You must select at least one category!"
 			return
 
-		if("No" == alert("Register [b_name] for [persistent_economy.business_registration] credits?", "Register Business", "No", "Yes"))
+		if("No" == alert("Register [b_name] for [SSpersistent_options.get_persistent_option_value("business_registration")] credits?", "Register Business", "No", "Yes"))
 			return
 
 		if(!I || !I.associated_account_number || !I.associated_pin_number)
@@ -843,11 +846,11 @@
 			reg_error = "There was an error charging your bank account. Please contact your bank's administrator."
 			return
 
-		if(persistent_economy.business_registration > D.money)
+		if(SSpersistent_options.get_persistent_option_value("business_registration") > D.money)
 			reg_error = "You have insufficient funds to make this transaction."
 			return
 
-		if(!charge_to_account(I.associated_account_number, "[b_name] Registration", "Business Registration Fee", "Business Management", -persistent_economy.business_registration ))
+		if(!charge_to_account(I.associated_account_number, "[b_name] Registration", "Business Registration Fee", "Business Management", SSpersistent_options.get_persistent_option_value("business_registration") ))
 			reg_error = "There was an error charging your bank account. Please contact your bank's administrator."
 			return
 
@@ -858,7 +861,7 @@
 			return
 
 		var/datum/department/council = dept_by_id(DEPT_COUNCIL)
-		council.adjust_funds(persistent_economy.business_registration, "Business Registration for [new_biz.name]")
+		council.adjust_funds(SSpersistent_options.get_persistent_option_value("business_registration"), "Business Registration for [new_biz.name]")
 		show_custom_page("Success, your business - [new_biz.name] has been created. An email has been sent with the full details.")
 
 
@@ -983,11 +986,12 @@
 				var/datum/job/job = E
 				if(!current_business || !job)
 					return
-				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [persistent_economy.minimum_wage])", "Select Positions", job.wage) as num
+				var/minimum_wage = SSpersistent_options.get_persistent_option_value("minimum_wage")
+				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [minimum_wage])", "Select Positions", job.wage) as num
 
 
-				if((0 > new_wage) || !new_wage || (persistent_economy.minimum_wage > new_wage))
-					job.wage = persistent_economy.minimum_wage
+				if((0 > new_wage) || !new_wage || (minimum_wage > new_wage))
+					job.wage = minimum_wage
 				else
 					job.wage = new_wage
 
@@ -999,6 +1003,7 @@
 				if(!current_business || !job)
 					return
 
+				var/minimum_wage = SSpersistent_options.get_persistent_option_value("synth_minimum_wage")
 				var/synth_option = alert("What would you like to do?", "Synth Wage", "Adjust Synth Wage", "Remove Synth Wage", "Cancel")
 
 				if(synth_option== "Cancel")
@@ -1008,19 +1013,79 @@
 					job.synth_wage = null
 					return
 
-				if(!persistent_economy.allow_synth_discrimination)
+				if(!SSpersistent_options.get_persistent_option_value("discrim_synth"))
 					alert("Synthetics are subjected to equal rights at this moment.")
 					job.synth_wage = null
 					return
 
-				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [persistent_economy.minimum_wage])", "Select Positions", job.wage) as num
+				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [minimum_wage])", "Select Positions", job.synth_wage) as num
 
 
-				if((0 > new_wage) || !new_wage || (persistent_economy.minimum_wage > new_wage))
-					job.synth_wage = persistent_economy.synth_minimum_wage
+				if((0 > new_wage) || !new_wage || (minimum_wage > new_wage))
+					job.synth_wage = minimum_wage
 				else
 					job.synth_wage = new_wage
 
+			if("modify_vatborn_wage")
+
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				if(!current_business || !job)
+					return
+
+				var/minimum_wage = SSpersistent_options.get_persistent_option_value("vatborn_minimum_wage")
+				var/synth_option = alert("What would you like to do?", "Mass Produced Vatborn Wage", "Adjust Mass Produced Vatborn Wage", "Remove Mass Produced Vatborn Wage", "Cancel")
+
+				if(synth_option== "Cancel")
+					return
+
+				if(synth_option== "Remove Mass Produced Vatborn Wage")
+					job.mpv_wage = null
+					return
+
+				if(!SSpersistent_options.get_persistent_option_value("discrim_bvatborn"))
+					alert("Mass Produced Vatborn are subjected to equal rights at this moment.")
+					job.mpv_wage = null
+					return
+
+				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [minimum_wage])", "Select Positions", job.mpv_wage) as num
+
+
+				if((0 > new_wage) || !new_wage || (minimum_wage > new_wage))
+					job.mpv_wage = minimum_wage
+				else
+					job.mpv_wage = new_wage
+
+
+			if("modify_nonnational_wage")
+
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				if(!current_business || !job)
+					return
+
+				var/minimum_wage = SSpersistent_options.get_persistent_option_value("nonnational_minimum_wage")
+				var/synth_option = alert("What would you like to do?", "Non-National Wage", "Adjust Non-National Wage", "Remove Non-National Wage", "Cancel")
+
+				if(synth_option== "Cancel")
+					return
+
+				if(synth_option== "Remove Non-National Wage")
+					job.nonnational_wage = null
+					return
+
+				if(!SSpersistent_options.get_persistent_option_value("discrim_nonnational"))
+					alert("Non-national citizens are subjected to equal rights at this moment.")
+					job.nonnational_wage = null
+					return
+
+				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [minimum_wage])", "Select Positions", job.nonnational_wage) as num
+
+
+				if((0 > new_wage) || !new_wage || (minimum_wage > new_wage))
+					job.nonnational_wage = minimum_wage
+				else
+					job.nonnational_wage = new_wage
 
 			if("toggle_record_req")
 
@@ -1028,6 +1093,11 @@
 				var/datum/job/job = E
 
 				if(!current_business || !job)
+					return
+
+				if(!SSpersistent_options.get_persistent_option_value("discrim_excon"))
+					alert("Ex-Convict citizens are subjected to equal rights at this moment.")
+					job.clean_record_required = FALSE
 					return
 
 				job.clean_record_required = !job.clean_record_required
@@ -1067,7 +1137,7 @@
 				if(!current_business || !job)
 					return
 
-				if(!persistent_economy.allow_synth_discrimination)
+				if(!SSpersistent_options.get_persistent_option_value("discrim_synth"))
 					alert("The government has not permitted the discrimination of synthetics in employment at this time.")
 					job.allows_synths = TRUE
 					return

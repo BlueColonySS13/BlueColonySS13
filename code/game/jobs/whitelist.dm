@@ -112,7 +112,11 @@ var/list/whitelist = list()
 			return FALSE
 
 	if(jobs.portal_whitelist)
-		return SSpersistent_options.get_persistent_option_value(jobs.portal_whitelist)
+		var/list/person = SSpersistent_options.get_persistent_option_value(jobs.portal_whitelist)
+
+		for(var/V in person)
+			if(M.client.prefs.unique_id == person)
+				return TRUE
 
 
 	//If we have a loaded file, search it

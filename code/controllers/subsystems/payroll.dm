@@ -25,6 +25,10 @@ SUBSYSTEM_DEF(payroll)
 	for(var/datum/lot/L in SSlots.all_lots)
 		L.add_balances()
 
+	for(var/datum/persistent_option/PS in GLOB.persistent_options)
+		if(!PS.department_cost)
+			continue
+
 	command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
 
 
@@ -83,12 +87,23 @@ SUBSYSTEM_DEF(payroll)
 			// don't pay the CEO if they toggled this option off
 			return
 
-	var/is_synth = FALSE
-	if(!isnull(job.synth_wage) && (braintype == FBP_DRONE || braintype == FBP_POSI))
-		wage = job.synth_wage
-		is_synth = TRUE
-	else
-		wage = job.wage
+	wage = job.get_wage()
+	var/special_rate = null
+
+	if(SSpersistent_options.get_persistent_option_value("discrim_synth"))
+		if(!isnull(job.synth_wage) && (braintype == FBP_DRONE || braintype == FBP_POSI))
+			wage = job.get_synth_wage()
+			special_rate = "Synth Rate"
+
+	if(SSpersistent_options.get_persistent_option_value("discrim_mpvatborn"))
+		if(linked_person.get_species() == SPECIES_HUMAN_VATBORN_MPL)
+			wage = job.get_mpv_wage()
+			special_rate = "Vatborn Rate"
+
+	if(SSpersistent_options.get_persistent_option_value("nonpollux_minimum_wage"))
+		if(linked_person.home_system != using_map.starsys_name)
+			wage = job.get_nonnational_wage()
+			special_rate = "Non-National Rate"
 
 //	message_admins("Wage set to [job.wage].", 1)
 
@@ -116,13 +131,18 @@ SUBSYSTEM_DEF(payroll)
 //		message_admins("ERROR: Not paid due to inactivity.", 1)
 		return		// person's not in the round? welp.
 
+
+	//dynamically figure out what tax bracket you're in based on business and current money. No more tax evasion by shifting money between accounts
+	if(bank_account && SSbusiness)
+		class = get_economic_class(bank_account.money, unique_id)
+
 	switch(class)
 		if(CLASS_UPPER)
-			tax = persistent_economy.tax_rate_upper
+			tax = SSpersistent_options.get_persistent_option_value(WORKING_TAX)
 		if(CLASS_MIDDLE)
-			tax = persistent_economy.tax_rate_middle
+			tax = SSpersistent_options.get_persistent_option_value(MIDDLE_TAX)
 		if(CLASS_WORKING)
-			tax = persistent_economy.tax_rate_lower
+			tax = SSpersistent_options.get_persistent_option_value(UPPER_TAX)
 
 
 	if(wage > department_account.get_balance())
@@ -139,7 +159,7 @@ SUBSYSTEM_DEF(payroll)
 	var/final_amount = (wage - calculated_tax)
 
 	//You get paid by your bank department's account.
-	department_account.direct_charge_money(bank_account.account_number, bank_account.owner_name, final_amount, "[department_account.name] Payroll: [name] ([calculated_tax] credit tax)[is_synth ? " Synth Rate" : ""]", "[department_account.name] Funding Account")
+	department_account.direct_charge_money(bank_account.account_number, bank_account.owner_name, final_amount, "[department_account.name] Payroll: [name] ([calculated_tax] credit tax)[special_rate ? " [special_rate]" : ""]", "[department_account.name] Funding Account")
 
 	//if you owe anything, let's deduct your ownings.
 	for(var/datum/expense/E in bank_account.expenses)
