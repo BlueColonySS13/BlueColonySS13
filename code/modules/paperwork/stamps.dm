@@ -167,7 +167,10 @@
 	var/owner_uid = I.unique_ID
 
 	if(!business_name)
-		var/biz = get_business_by_owner_uid(owner_uid).name
+		var/datum/business/business = get_business_by_owner_uid(owner_uid)
+		if(!business)
+			return
+		var/biz = business.name
 		if(biz)
 			playsound(src, 'sound/machines/chime.ogg', 25)
 			name = "[biz] rubber stamp"
