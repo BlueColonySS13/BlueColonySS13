@@ -673,12 +673,17 @@ SUBSYSTEM_DEF(jobs)
 			C = new job.idtype(H)
 			C.access += job.get_access()
 
-		//business access compatibility? why. don't ask me.
-		if(job.business)
-			var/obj/item/weapon/card/id/ID = locate(/obj/item/weapon/card/id/, H.GetAllContents())
-			if(ID)
-				ID.access |= job.access
+		var/obj/item/weapon/card/id/ID = locate(/obj/item/weapon/card/id/, H.GetAllContents())
+		if(ID)
+			//if you're a business owner, you get all the accesses your business has no matter what job you choose.
+			var/datum/business/B = get_business_by_owner_uid(H.mind.prefs.unique_id)
+			if(B)
+				for(var/V in B.business_accesses)
+					ID.access |= V
 
+			//business access compatibility? why. don't ask me.
+			if(job.business)
+				ID.access |= job.access
 	else
 		C = new /obj/item/weapon/card/id(H)
 	if(C)

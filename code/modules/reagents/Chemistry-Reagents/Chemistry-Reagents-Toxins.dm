@@ -12,6 +12,9 @@
 	filtered_organs = list(O_LIVER, O_KIDNEYS)
 	var/strength = 4 // How much damage it deals per unit
 
+	tax_type = HAZARD_CHEM_TAX
+	contraband_type = CONTRABAND_HARMFUL_CHEMS
+
 /datum/reagent/toxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(strength && alien != IS_DIONA)
 		if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
@@ -111,6 +114,9 @@
 	touch_met = 5
 
 	price_tag = 5
+
+	tax_type = MINING_TAX
+	contraband_type = null
 
 /datum/reagent/toxin/phoron/touch_mob(var/mob/living/L, var/amount)
 	if(istype(L))
@@ -250,6 +256,8 @@
 	reagent_state = LIQUID
 	strength = 0.5 // It's not THAT poisonous.
 	color = "#664330"
+	contraband_type = null
+	tax_type = AGRICULTURE_TAX
 
 /datum/reagent/toxin/fertilizer/eznutrient
 	name = "EZ Nutrient"
@@ -316,6 +324,8 @@
 	color = "#664330"
 	power = 2
 	meltdose = 30
+	contraband_type = null
+	tax_type = null
 
 /datum/reagent/thermite/venom
 	name = "Pyrotoxin"
@@ -463,8 +473,8 @@
 	overdose = REAGENTS_OVERDOSE
 	price_tag = 0.4
 
-	get_tax()
-		return DRUG_TAX
+	tax_type = PHARMA_TAX
+	contraband_type = null
 
 /datum/reagent/soporific/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -514,8 +524,7 @@
 	overdose_mod = 5	//For that good, lethal feeling
 	price_tag = 4
 
-/datum/reagent/chloralhydrate/is_contraband()
-	return CONTRABAND_CHLORAL
+	contraband_type = CONTRABAND_CHLORAL
 
 /datum/reagent/chloralhydrate/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -567,6 +576,8 @@
 	glass_name = "beer"
 	glass_desc = "A freezing pint of beer"
 	price_tag = 0.5
+	contraband_type = null
+	tax_type = ALCOHOL_TAX
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"
@@ -669,54 +680,6 @@
 
 	M.hallucination = max(M.hallucination, drug_strength)
 
-/datum/reagent/psilocybin
-	name = "Psilocybin"
-	id = "psilocybin"
-	description = "A strong psychotropic derived from certain species of mushroom."
-	taste_description = "mushroom"
-	color = "#E700E7"
-	overdose = REAGENTS_OVERDOSE
-	metabolism = REM * 0.5
-	price_tag = 0.8
-
-/datum/reagent/psilocybin/is_contraband()
-	return CONTRABAND_PSILOCYBIN
-
-/datum/reagent/psilocybin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_DIONA)
-		return
-
-	var/threshold = 1
-	if(alien == IS_SKRELL)
-		threshold = 1.2
-
-	if(alien == IS_SLIME)
-		threshold = 0.8
-
-	M.druggy = max(M.druggy, 30)
-
-	var/effective_dose = dose
-	if(issmall(M)) effective_dose *= 2
-	if(effective_dose < 1 * threshold)
-		M.apply_effect(3, STUTTER)
-		M.make_dizzy(5)
-		if(prob(5))
-			M.emote(pick("twitch", "giggle"))
-	else if(effective_dose < 2 * threshold)
-		M.apply_effect(3, STUTTER)
-		M.make_jittery(5)
-		M.make_dizzy(5)
-		M.druggy = max(M.druggy, 35)
-		if(prob(10))
-			M.emote(pick("twitch", "giggle"))
-	else
-		M.apply_effect(3, STUTTER)
-		M.make_jittery(10)
-		M.make_dizzy(10)
-		M.druggy = max(M.druggy, 40)
-		if(prob(15))
-			M.emote(pick("twitch", "giggle"))
-
 
 
 /datum/reagent/talum_quem
@@ -786,6 +749,8 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	reagent_state = LIQUID
 	color = "#FF69B4"
 
+	tax_type = XENO_TAX
+
 /datum/reagent/aslimetoxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed) // TODO: check if there's similar code anywhere else
 	if(M.isSynthetic())
 		return
@@ -833,6 +798,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	strength = 1
 	metabolism = REM
 	affects_dead = TRUE
+	contraband_type = CONTRABAND_BIOWEAPONRY
 
 /datum/reagent/toxin/trioxin/affect_blood(var/mob/living/carbon/M, var/removed)
 	..()

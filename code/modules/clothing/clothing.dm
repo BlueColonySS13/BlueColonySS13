@@ -35,6 +35,8 @@
 
 	unique_save_vars = list("matter") // clothing matter can vary now
 
+	tax_type = CLOTHING_TAX
+
 //Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
 	return

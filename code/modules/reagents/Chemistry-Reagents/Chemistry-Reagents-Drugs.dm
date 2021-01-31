@@ -13,8 +13,8 @@
 
 	price_tag = 0.2
 
-/datum/reagent/drug/get_tax()
-	return DRUG_TAX
+	tax_type = DRUG_TAX
+
 
 /datum/reagent/drug/affect_blood(var/mob/living/carbon/M)
 
@@ -41,9 +41,7 @@
 	"You feel... unsteady.")
 
 	price_tag = 0.9
-
-/datum/reagent/drug/ecstasy/is_contraband()
-	return CONTRABAND_ECSTASY
+	contraband_type = CONTRABAND_ECSTASY
 
 /datum/reagent/drug/ecstasy/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -88,11 +86,8 @@ datum/reagent/drug/ecstasy/overdose(var/mob/living/M as mob)
 	"You feel collected.")
 	price_tag = 0.09
 
-/datum/reagent/drug/nicotine/get_tax()
-	return TOBACCO_TAX
-
-/datum/reagent/drug/nicotine/is_contraband()
-	return CONTRABAND_NICOTINE
+	tax_type = TOBACCO_TAX
+	contraband_type = CONTRABAND_NICOTINE
 
 datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 	M.AdjustStunned(-1)
@@ -113,8 +108,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 2.2
 
-/datum/reagent/drug/meth/is_contraband()
-	return CONTRABAND_METH
+	contraband_type = CONTRABAND_METH
 
 /datum/reagent/drug/meth/affect_blood(var/mob/living/carbon/M)
 	M.AdjustParalysis(-2)
@@ -127,6 +121,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 	if(prob(5))
 		M.emote(pick("twitch", "shiver"))
 	..()
+
 
 /datum/reagent/drug/meth/overdose(var/mob/living/carbon/human/M as mob)
 	if(M.canmove && !istype(M.loc, /atom/movable))
@@ -145,6 +140,17 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 	M.adjustBrainLoss(pick(0.5, 0.6, 0.7, 0.8, 0.9, 1))
 	..()
 
+/datum/reagent/drug/meth/hyperzine
+	name = "Hyperzine"
+	id = "hyperzine"
+	description = "A refined and altered meth-based chemical, used for motor-enhancement, manufactured and Licensed by Nanotrasen primarily for the PDF. \
+	This restricted strand allows for higher dosages to be administered by the user, allowing a longer period of usage.Hyperzine is a highly effective, \
+	long lasting, muscle stimulant. It is a purified form of meth licensed for use by PDF."
+	taste_description = "bitterness"
+	reagent_state = LIQUID
+	color = "#FF3300"
+	overdose = REAGENTS_OVERDOSE * 0.5
+	price_tag = 4
 
 /datum/reagent/drug/cannabis
 	name = "Cannabis"
@@ -165,8 +171,8 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1
 
-/datum/reagent/drug/cannabis/is_contraband()
-	return CONTRABAND_CANNABIS
+	tax_type = CANNABIS_TAX
+	contraband_type = CONTRABAND_CANNABIS
 
 /datum/reagent/drug/cannabis/affect_blood(var/mob/living/carbon/M)
 	M.adjustToxLoss(-2)
@@ -200,8 +206,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1.5
 
-/datum/reagent/drug/heroin/is_contraband()
-	return CONTRABAND_HEROIN
+	contraband_type = CONTRABAND_HEROIN
 
 /datum/reagent/drug/heroin/affect_blood(var/mob/living/carbon/M)
 	M.add_chemical_effect(CE_PAINKILLER, 40)
@@ -238,8 +243,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 2
 
-/datum/reagent/drug/cocaine/is_contraband()
-	return CONTRABAND_COCAINE
+	contraband_type = CONTRABAND_COCAINE
 
 /datum/reagent/drug/cocaine/affect_blood(var/mob/living/carbon/M)
 	M.add_chemical_effect(CE_PAINKILLER,3)
@@ -273,8 +277,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1.5
 
-/datum/reagent/drug/crack/is_contraband()
-	return CONTRABAND_CRACK
+	contraband_type = CONTRABAND_CRACK
 
 /datum/reagent/drug/crack/affect_blood(var/mob/living/carbon/M)
 	M.add_chemical_effect(CE_PAINKILLER,1)
@@ -309,8 +312,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1.8
 
-/datum/reagent/drug/stimm/is_contraband()
-	return CONTRABAND_STIMM
+	contraband_type = CONTRABAND_STIMM
 
 /datum/reagent/drug/stimm/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_TAJARA)
@@ -336,8 +338,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1
 
-/datum/reagent/drug/dmt/is_contraband()
-	return CONTRABAND_DMT
+	contraband_type = CONTRABAND_DMT
 
 /datum/reagent/drug/dmt/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_TAJARA)
@@ -370,8 +371,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1
 
-/datum/reagent/drug/ayahuasca/is_contraband()
-	return CONTRABAND_AYAHUASCA
+	contraband_type = CONTRABAND_AYAHUASCA
 
 /datum/reagent/drug/ayahuasca/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_TAJARA)
@@ -404,8 +404,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1
 
-/datum/reagent/drug/bathsalts/is_contraband()
-	return CONTRABAND_BATHSALTS
+	contraband_type = CONTRABAND_BATHSALTS
 
 /datum/reagent/drug/bathsalts/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -449,8 +448,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 
 	price_tag = 1
 
-/datum/reagent/drug/lsd/is_contraband()
-	return CONTRABAND_LSD
+	contraband_type = CONTRABAND_LSD
 
 /datum/reagent/drug/lsd/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -497,8 +495,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 	"Your skin feels all rough and dry.",
 	"The feel too chill!")
 
-/datum/reagent/drug/krokodil/is_contraband()
-	return CONTRABAND_KROKODIL
+	contraband_type = CONTRABAND_KROKODIL
 
 /datum/reagent/drug/krokodil/affect_blood(var/mob/living/carbon/M)
 	M.drowsyness = max(M.drowsyness, 5)
@@ -532,3 +529,49 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 		M.Weaken(8)
 		M.emote("faint")
 		..()
+
+/datum/reagent/drug/psilocybin
+	name = "Psilocybin"
+	id = "psilocybin"
+	description = "A strong psychotropic derived from certain species of mushroom."
+	taste_description = "mushroom"
+	color = "#E700E7"
+	metabolism = REM * 0.5
+	price_tag = 0.8
+	contraband_type = CONTRABAND_PSILOCYBIN
+
+/datum/reagent/drug/psilocybin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_DIONA)
+		return
+
+	var/threshold = 1
+	if(alien == IS_SKRELL)
+		threshold = 1.2
+
+	if(alien == IS_SLIME)
+		threshold = 0.8
+
+	M.druggy = max(M.druggy, 30)
+
+	var/effective_dose = dose
+	if(issmall(M)) effective_dose *= 2
+	if(effective_dose < 1 * threshold)
+		M.apply_effect(3, STUTTER)
+		M.make_dizzy(5)
+		if(prob(5))
+			M.emote(pick("twitch", "giggle"))
+	else if(effective_dose < 2 * threshold)
+		M.apply_effect(3, STUTTER)
+		M.make_jittery(5)
+		M.make_dizzy(5)
+		M.druggy = max(M.druggy, 35)
+		if(prob(10))
+			M.emote(pick("twitch", "giggle"))
+	else
+		M.apply_effect(3, STUTTER)
+		M.make_jittery(10)
+		M.make_dizzy(10)
+		M.druggy = max(M.druggy, 40)
+		if(prob(15))
+			M.emote(pick("twitch", "giggle"))
+

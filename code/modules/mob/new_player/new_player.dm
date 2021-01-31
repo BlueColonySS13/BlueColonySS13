@@ -60,7 +60,9 @@
 
 	if(news_data.city_newspaper)
 		output += "<a href='byond://?src=\ref[src];open_city_news=1'>Show [using_map.station_name] News</A>"
-
+	if(SSpersistent_options)
+		var/ballot_no = LAZYLEN(SSpersistent_options.get_ballots(active_only = TRUE))
+		output += "<a href='byond://?src=\ref[src];show_referendums=1'>Show Referendums[ballot_no ? " ([ballot_no] Active)" : ""]</A>"
 	if(client.check_for_new_server_news())
 		output += "<b><a href='byond://?src=\ref[src];shownews=1'>Game Updates</A> (NEW!)</b>"
 	else
@@ -83,13 +85,19 @@
 
 	output += "<hr>Current character: <b>[client.prefs.real_name]</b>, [client.prefs.economic_status]<br>"
 	output += "Money: <b>[cash2text( client.prefs.money_balance, FALSE, TRUE, TRUE )]</b><br>"
-
+	if(SSbusiness)
+		var/datum/business/B = get_business_by_owner_uid(client.prefs.unique_id)
+		if(B)
+			output += "<b>Business Funds:</b> [cash2text( B.get_funds(), FALSE, TRUE, TRUE )] credits<br>"
+	if(SSpersistent_options && SSpersistent_options.get_persistent_formatted_value("president_msg"))
+		output += "<b>President Broadcast:</b><br>"
+		output += "<div class='statusDisplay'>[SSpersistent_options.get_persistent_formatted_value("president_msg")]</div><br>"
 	output += "</div>"
 
 	if(news_data.city_newspaper && !client.seen_news)
 		show_latest_news(news_data.city_newspaper)
 
-	panel = new(src, "Welcome","Welcome, [client.prefs.real_name]", 530, 480, src)
+	panel = new(src, "Welcome","Welcome, [client.prefs.real_name]", 600, 580, src)
 	panel.set_window_options("can_close=0")
 	panel.set_content(output)
 	panel.open()
@@ -155,6 +163,10 @@
 	if(href_list["ready"])
 		ready = !ready
 		new_player_panel_proc()
+
+	if(href_list["show_referendums"])
+		ShowReferendums()
+		return
 
 	if(href_list["refresh"])
 		//src << browse(null, "window=playersetup") //closes the player setup window
@@ -385,6 +397,54 @@
 	if(href_list["shownews"])
 		handle_server_news()
 		return
+
+	switch(href_list["action"])
+		if("add_vote")
+			. = 1
+
+			var/datum/voting_ballot/VO = locate(href_list["ballot"])
+			var/vote = href_list["vote"]
+
+			if(!VO || !VO.active || (lowertext(usr.ckey) in VO.ckeys_voted))
+				return
+
+			var/response = alert(usr, "Please confirm that you want to vote [vote] on \"[VO.name]\"? This cannot be undone.", "Final Referendum Confirmation", "Yes", "No")
+			if(!response || response == "No")
+				return FALSE
+
+			VO.add_vote(vote, usr)
+			ShowReferendums()
+
+		if("view_full")
+
+			var/O = locate(href_list["option"])
+			var/datum/persistent_option/PO = O
+
+			if(!O)
+				return
+
+			var/dat = PO.get_formatted_value()
+
+			var/datum/browser/popup = new(usr, "option_view", "[PO.name]", 350, 500, src)
+			popup.set_content(jointext(dat,null))
+			popup.open()
+
+			onclose(usr, "option_view")
+
+		if("view_ref_full")
+
+			var/datum/voting_ballot/VO = locate(href_list["ballot"])
+
+			if(!VO)
+				return
+
+			var/dat = VO.get_formatted_proposed_value()
+
+			var/datum/browser/popup = new(usr, "option_ref_view", "[src]", 350, 500, src)
+			popup.set_content(jointext(dat,null))
+			popup.open()
+
+			onclose(usr, "option_ref_view")
 
 /mob/new_player/proc/handle_server_news()
 	if(!client)

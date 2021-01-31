@@ -11,10 +11,36 @@
 	var/predefined = 0
 	var/composition = ""
 
+	contraband_type = CONTRABAND_ARTIFACTSBENIGN
+	tax_type = XENO_TAX
 
-/obj/machinery/artifact/New()
-	..()
+	unique_save_vars = list("contraband_type")
 
+
+/obj/machinery/artifact/get_persistent_metadata()
+	var/list/effects = list(
+	"my_effect" = (my_effect ? my_effect.type : null),
+	"secondary_effect" = (my_effect ? my_effect.type : null),
+	)
+
+	return effects
+
+/obj/machinery/artifact/load_persistent_metadata(list/effects)
+	if(!effects || !islist(effects))
+		return
+
+	if(effects["my_effect"])
+		my_effect = new effects["my_effect"]
+	if(effects["secondary_effect"])
+		secondary_effect = new effects["my_effect"]
+
+	if(my_effect.contraband_level == CONTRABAND_ARTIFACTSHARMFUL || secondary_effect.contraband_level ==  CONTRABAND_ARTIFACTSHARMFUL)
+		contraband_type = CONTRABAND_ARTIFACTSHARMFUL
+
+	return TRUE
+
+
+/obj/machinery/artifact/proc/set_effects()
 	var/effecttype = pick(typesof(/datum/artifact_effect) - /datum/artifact_effect)
 	my_effect = new effecttype(src)
 
@@ -23,6 +49,15 @@
 		secondary_effect = new effecttype(src)
 		if(prob(75))
 			secondary_effect.ToggleActivate(0)
+
+/obj/machinery/artifact/New()
+	..()
+
+	if(!persistence_loaded)
+		set_effects()
+
+	if(my_effect.contraband_level == CONTRABAND_ARTIFACTSHARMFUL || secondary_effect ==  CONTRABAND_ARTIFACTSHARMFUL)
+		contraband_type = CONTRABAND_ARTIFACTSHARMFUL
 
 	icon_num = rand(0, 11)
 	composition = pick("an unknown alloy","a hyper-dense crystalline matrix","adamantium","ERROR - Material analysis failure","aluminium","a ferritic-alloy","electrum","duranium","vanadium","iridium")

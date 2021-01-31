@@ -1,6 +1,7 @@
 /datum/artifact_effect/emp
 	name = "emp"
 	effect_type = EFFECT_ELECTRO
+	contraband_level = CONTRABAND_ARTIFACTSHARMFUL
 
 /datum/artifact_effect/emp/New()
 	..()

@@ -3,6 +3,7 @@
 	name = "dnaswitch"
 	effect_type = EFFECT_ORGANIC
 	var/severity
+	contraband_level = CONTRABAND_ARTIFACTSHARMFUL
 
 /datum/artifact_effect/dnaswitch/New()
 	..()

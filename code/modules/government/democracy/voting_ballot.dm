@@ -44,13 +44,15 @@
 				dat += "<h4>A snap election is in progress.</h4>"
 
 			if(!eligible)
+
 				dat += "<br><i>You currently do not qualify for voting as you do not possess the legal rights to do so.</i>"
 				dat += "<br><b>Reason:</b> [is_voting_ineligible(H) ? "[is_voting_ineligible(H)]" : ""]<br><br>"
 				dat += "<br><b><u>Current Critera:</u></b>"
-				dat += "<br><b>Minimum age:</b> [persistent_economy.voting_age]"
-				dat += "<br><b>Synthetics:</b> [persistent_economy.synth_vote ? "Can Vote" : "Cannot Vote"]"
-				dat += "<br><b>Non-[using_map.starsys_name] Citizens:</b> [persistent_economy.citizenship_vote ? "Can Vote" : "Cannot Vote"]"
-				dat += "<br><b>Citizens with a Criminal Record:<b> </b>[persistent_economy.criminal_vote ? "Can Vote" : "Cannot Vote"]"
+				dat += "<br><b>Minimum age:</b> [SSpersistent_options.get_persistent_formatted_value("min_age_voting")]"
+				dat += "<br><b>Synthetics:</b> [SSpersistent_options.get_persistent_formatted_value("voting_synthetic")]"
+				dat += "<br><b>Mass Produced Vatborn:</b> [SSpersistent_options.get_persistent_formatted_value("voting_mpvatborn")]"
+				dat += "<br><b>Non-[using_map.starsys_name] Citizens:</b> [SSpersistent_options.get_persistent_formatted_value("voting_nonnational")]"
+				dat += "<br><b>Citizens with a Criminal Record:<b> </b>[SSpersistent_options.get_persistent_formatted_value("voting_excon")]"
 
 			if(SSelections.is_registration_days(get_game_day()))
 				dat += "<br>Registration period is in effect, people can register to be a candidate via the \"Presidential Candidate Registration\" program available on public and private computers."

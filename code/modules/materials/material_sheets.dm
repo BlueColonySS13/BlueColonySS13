@@ -17,6 +17,7 @@
 	var/perunit = SHEET_MATERIAL_AMOUNT
 	var/apply_colour //temp pending icon rewrite
 	drop_sound = 'sound/items/drop/axe.ogg'
+	tax_type = MINING_TAX
 
 /obj/item/stack/material/New()
 	..()
@@ -427,6 +428,7 @@
 	dyeable = TRUE
 	stack_color = COLOR_BROWN
 	drop_sound = 'sound/items/drop/clothing.ogg'
+	tax_type = CLOTHING_TAX
 
 /obj/item/stack/material/leather/synthetic
 	name = "synthetic leather"
@@ -444,6 +446,7 @@
 	associated_reagents = list("protein")
 	dyeable = TRUE
 	drop_sound = 'sound/items/drop/clothing.ogg'
+	tax_type = CLOTHING_TAX
 
 /obj/item/stack/material/cotton
 	name = "cotton"
@@ -457,6 +460,7 @@
 	dyeable = TRUE
 	drop_sound = 'sound/items/drop/clothing.ogg'
 	stacktype = /obj/item/stack/material/cotton
+	tax_type = CLOTHING_TAX
 
 /obj/item/stack/material/cotton/black
 	stack_color = COLOR_BLACK
@@ -497,6 +501,7 @@
 	dyeable = TRUE
 	stack_color = COLOR_DENIM
 	drop_sound = 'sound/items/drop/clothing.ogg'
+	tax_type = CLOTHING_TAX
 
 /obj/item/stack/material/wool
 	name = "wool"
@@ -509,6 +514,7 @@
 	associated_reagents = list("protein")
 	dyeable = TRUE
 	drop_sound = 'sound/items/drop/clothing.ogg'
+	tax_type = CLOTHING_TAX
 
 /obj/item/stack/material/polychromatic_thread
 	name = "polychromatic thread"
@@ -521,6 +527,7 @@
 	associated_reagents = list("protein")
 	dyeable = TRUE
 	drop_sound = 'sound/items/drop/clothing.ogg'
+	tax_type = CLOTHING_TAX
 
 /obj/item/stack/material/glass
 	name = "glass"

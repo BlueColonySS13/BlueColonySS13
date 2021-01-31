@@ -34,13 +34,12 @@ var/global/list/business_outfits = list(
 			return B
 
 /proc/get_business_by_owner_uid(uid)
-	RETURN_TYPE(/datum/business)
 	for(var/datum/business/B in GLOB.all_businesses)
 		if(!B.owner)
 			continue
 		if(B.owner.unique_id == uid)
-
 			return B
+
 
 
 /datum/business/proc/get_funds()

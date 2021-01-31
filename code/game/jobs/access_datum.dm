@@ -488,6 +488,30 @@
 	desc = "PDSI Agent"
 	access_type = ACCESS_TYPE_CENTCOM
 
+/var/const/access_vice_president = 112
+/datum/access/vice_president
+	id = access_vice_president
+	desc = "Vice President"
+	access_type = ACCESS_TYPE_CENTCOM
+
+/var/const/access_advisor = 112
+/datum/access/advisor
+	id = access_advisor
+	desc = "Advisor"
+	access_type = ACCESS_TYPE_CENTCOM
+
+/var/const/access_governor = 113
+/datum/access/governor
+	id = access_governor
+	desc = "Governor"
+	access_type = ACCESS_TYPE_CENTCOM
+
+/var/const/access_ceo = 114
+/datum/access/ceo
+	id = access_ceo
+	desc = "Nanotrasen CEO"
+	access_type = ACCESS_TYPE_CENTCOM
+
 /***************
 * Antag access *
 ***************/

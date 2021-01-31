@@ -24,9 +24,6 @@ MRE Stuff
 
 	price_tag = 30
 
-/obj/item/weapon/storage/mre/get_tax()
-	return GENERAL_TAX
-
 /obj/item/weapon/storage/mre/examine(mob/user)
 	. = ..()
 	to_chat(user, meal_desc)

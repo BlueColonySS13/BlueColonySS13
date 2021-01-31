@@ -4,7 +4,7 @@
 // The item price in credits. atom/movable so we can also assign a price to animals and other things.
 /atom/movable/var/price_tag = null
 /atom/movable/var/tagged_price = null
-/atom/movable/var/tax_type = null
+/atom/movable/var/tax_type = null // put the portal id of the tax we're charging here.
 
 // The proc that is called when the price is being asked for. Use this to refer to another object if necessary.
 /atom/movable/proc/get_item_cost(skip_tag = FALSE)
@@ -23,10 +23,10 @@
 // TAXES
 
 /atom/movable/proc/get_tax()
-	return tax_type
+	return SSpersistent_options.get_persistent_option_value(tax_type)
 
 /datum/reagent/proc/get_tax()
-	return
+	return SSpersistent_options.get_persistent_option_value(tax_type)
 
 /datum/reagent/proc/get_item_cost()
 	return round(price_tag)
@@ -88,10 +88,14 @@
 /datum/medical_bill/var/price_tag = null
 
 /datum/medical_bill/proc/get_item_cost()
+	var/pres_portal_cost = SSpersistent_options.get_persistent_option_value(portal_id)
+	if(!isnull(pres_portal_cost))
+		return pres_portal_cost
+
 	return cost
 
 /datum/medical_bill/proc/get_tax()
-	return MEDICAL_TAX
+	return SSpersistent_options.get_persistent_option_value(MEDICAL_TAX)
 
 ///////////////////
 //---Court---------//
@@ -114,8 +118,8 @@
 /datum/lot/proc/get_item_cost()
 	return price
 
-/datum/lot/get_tax()
-	return HOUSING_TAX
+/datum/lot/proc/get_tax()
+	return SSpersistent_options.get_persistent_option_value(PROPERTY_TAX)
 
 // Juices, soda and similar //
 
@@ -247,3 +251,9 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			if(R.get_tax())
 				return R.get_tax()
+
+
+// other taxes
+
+/obj/machinery/computer/betting_terminal/get_tax()
+	return SSpersistent_options.get_persistent_option_value(GAMBLING_TAX)

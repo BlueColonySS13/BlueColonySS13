@@ -71,9 +71,6 @@
 /datum/lot/proc/get_price()
 	return price
 
-/datum/lot/proc/get_tax()
-	return HOUSING_TAX
-
 // Rent procs
 
 /datum/lot/proc/get_default_rent()
@@ -192,9 +189,10 @@
 		return 0
 
 	var/full_charge = 0
+	var/base_service_charge = SSpersistent_options.get_persistent_option_value("hourly_service_charge")
 
-	if(persistent_economy && persistent_economy.base_service_charge)
-		full_charge = persistent_economy.base_service_charge * tile_count
+	if(base_service_charge)
+		full_charge = base_service_charge * tile_count
 
 	// to be expanded. services could be added here in future.
 

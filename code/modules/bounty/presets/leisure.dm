@@ -2,6 +2,7 @@
 	category = CAT_LEISURE
 
 	days_until_expiry = 10
+	tax_type = CLOTHING_TAX
 
 /datum/bounty/leisure/diva_dresses
 	name = "Sassy Dresses Needed!"

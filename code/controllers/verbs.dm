@@ -66,7 +66,7 @@
 
 /client/proc/debug_controller(controller in list("Master","Ticker","Ticker Process","Air","Jobs","Sun","Economy","Payroll", \
 	"Laws","Emails","Lots","Radio","Supply","Shuttles","Emergency Shuttle","Configuration","pAI", "Cameras", "Transfer Controller", \
-	"Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets", "Websites", "Businesses", "Bounties"))
+	"Gas Data","Event","Plants","Alarm","Nano","Chemistry","Vote","Xenobio","Planets", "Persistent Options", "Websites", "Businesses", "Bounties"))
 
 	set category = "Debug"
 	set name = "Debug Controller"
@@ -134,6 +134,9 @@
 		if("Planets")
 			debug_variables(SSplanets)
 			feedback_add_details("admin_verb", "DPlanets")
+		if("Persistent Options")
+			debug_variables(SSpersistent_options)
+			feedback_add_details("admin_verb", "DPersistent_options")
 		if("Lots")
 			debug_variables(SSlots)
 			feedback_add_details("admin_verb", "DLots")

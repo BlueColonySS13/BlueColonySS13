@@ -2,7 +2,7 @@
 	category = CAT_MINING
 	bounty_expires = FALSE
 	allow_subtypes = TRUE
-
+	tax_type = MINING_TAX
 /* Mining bounties utilize a simple 1-to-10 ratio for rewards.
    For every 10 credits in the department reward, an individual
    receives 1 credit. Prices determined by the ore's chance of

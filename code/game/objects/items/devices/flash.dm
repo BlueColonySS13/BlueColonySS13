@@ -18,6 +18,7 @@
 	var/halloss_per_flash = 30
 
 	var/synthetic_only = FALSE
+	tax_type = WEAPONS_TAX
 
 /obj/item/device/flash/proc/clown_check(var/mob/user)
 	if(user && (CLUMSY in user.mutations) && prob(50))

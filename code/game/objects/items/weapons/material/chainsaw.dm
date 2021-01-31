@@ -14,11 +14,8 @@ obj/item/weapon/chainsaw
 
 	price_tag = 450
 
-	get_tax()
-		return WEAPONS_TAX
-
-	is_contraband()
-		return CONTRABAND_KNIFELARGE
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_KNIFELARGE
 
 obj/item/weapon/chainsaw/New()
 	var/datum/reagents/R = new/datum/reagents(max_fuel)

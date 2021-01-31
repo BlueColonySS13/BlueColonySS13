@@ -102,24 +102,23 @@ var/list/whitelist = list()
 	if(!jobs.hard_whitelisted)
 		return TRUE
 
-	if(jobs.title == "President") // Only the player who is president and their allotted character can be president
-		if(!SSelections.current_president || !SSelections.current_president.ckey || !SSelections.current_president.name) //Just in case. Also prevents runtimes in local testing
-			return FALSE
+	if(jobs.portal_whitelist)
+		var/list/person = SSpersistent_options.get_persistent_option_value(jobs.portal_whitelist)
 
+		if(M.client.prefs.unique_id in person)
+			return TRUE
+
+	if(jobs.title == "President" && SSelections && SSelections.current_president) // Only the player who is president and their allotted character can be president
 		if(M.ckey == SSelections.current_president.ckey && M.client.prefs.real_name == SSelections.current_president.name)
 			return TRUE
-		else
-			return FALSE
 
 	//If we have a loaded file, search it
 	if(jobs.hard_whitelisted)
 		for (var/s in hard_whitelist)
 			if(findtext(s,"[M.ckey] - [jobs.title]"))
-				return 1
+				return TRUE
 			if(findtext(s,"[M.ckey] - All"))
-				return 1
-
-
+				return TRUE
 
 /proc/get_available_classes(client/C)
 

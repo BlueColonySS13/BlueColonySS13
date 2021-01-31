@@ -17,7 +17,7 @@
 	days_until_expiry = 6
 
 /datum/bounty/politics_revolutionary/eat_the_rich/check_for_completion()
-	if(persistent_economy && (persistent_economy.tax_rate_upper >= 0.40))
+	if(SSpersistent_options.get_persistent_option_value(UPPER_TAX) >= 0.40)
 		return TRUE
 
 	return FALSE
@@ -39,7 +39,7 @@
 
 
 /datum/bounty/politics_revolutionary/eat_landlords/check_for_completion()
-	if(persistent_economy && (0.15 >= persistent_economy.housing_tax))
+	if(0.15 >= SSpersistent_options.get_persistent_option_value(PROPERTY_TAX))
 		return TRUE
 
 	return FALSE
@@ -61,7 +61,7 @@
 
 
 /datum/bounty/politics_revolutionary/eat_landlords/check_for_completion()
-	if(persistent_economy && (persistent_economy.tobacco_tax >= 0.40))
+	if(SSpersistent_options.get_persistent_option_value(TOBACCO_TAX) >= 0.40)
 		return TRUE
 
 	return FALSE
@@ -87,7 +87,7 @@
 
 
 /datum/bounty/politics_revolutionary/health_issues/check_for_completion()
-	if(persistent_economy && (0.15 >= persistent_economy.medical_tax))
+	if(0.15 >= SSpersistent_options.get_persistent_option_value(MEDICAL_TAX))
 		return TRUE
 
 	return FALSE
@@ -109,39 +109,8 @@
 	days_until_expiry = 6
 
 /datum/bounty/politics_revolutionary/minimum_wage/check_for_completion()
-	if(persistent_economy.minimum_wage >= 50)
+	if(SSpersistent_options.get_persistent_option_value("minimum_wage") >= 50)
 		return TRUE
 
 	return FALSE
 
-/datum/bounty/politics_revolutionary/drugs_legal
-	name = "End The Drug War"
-	author = "Micheal Dover"
-	description = "Drugs are nothing but an excuse for the elites to put harmless people in prison. Prison labour generates revenue for the corrupt police \
-	force and released ex-convicts lose the opportunity to get a job. Ending the drug war is the only way to ensure this corruption ends."
-
-	custom_requirement = "Have someone in power and make cannabis, ecstasy, crack, cocaine, heroin, meth, lsd, dmt, ayahuasca, bath salts, and krokodil all legal."
-
-	department_reward = 4500
-	individual_reward = 850
-
-	days_until_expiry = 6
-
-/datum/bounty/politics_revolutionary/drugs_legal/check_for_completion()
-	var/list/substance_laws = list(persistent_economy.law_CANNABIS, \
-	persistent_economy.law_ECSTASY, \
-	persistent_economy.law_CRACK, \
-	persistent_economy.law_COCAINE, \
-	persistent_economy.law_HEROIN, \
-	persistent_economy.law_METH, \
-	persistent_economy.law_LSD, \
-	persistent_economy.law_BATHSALTS, \
-	persistent_economy.law_DMT, \
-	persistent_economy.law_AYAHUASCA, \
-	persistent_economy.law_KROKODIL)
-
-	for(var/V in substance_laws)
-		if(V != LEGAL)
-			return FALSE
-
-	return TRUE

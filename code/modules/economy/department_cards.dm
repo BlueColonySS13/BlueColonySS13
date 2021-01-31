@@ -29,7 +29,13 @@
 	update_icon()
 	update_name()
 
-	spending_limit = D.card_spending_limit
+	var/dept_spending_limit = D.card_spending_limit
+	var/portal_value = SSpersistent_options.get_persistent_option_value(D.portal_card_id)
+
+	if(!isnull(portal_value))
+		spending_limit = portal_value
+	else
+		spending_limit = dept_spending_limit
 
 	GLOB.department_cards += src
 

@@ -1,6 +1,7 @@
 /datum/artifact_effect/berserk
 	name = "berserk"
 	effect_type = EFFECT_PSIONIC
+	contraband_level = CONTRABAND_ARTIFACTSHARMFUL
 
 /datum/artifact_effect/berserk/proc/apply_berserk(var/mob/living/L)
 	if(!istype(L))

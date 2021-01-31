@@ -336,7 +336,7 @@
 
 		var/mob/living/carbon/human/H = usr
 
-		var/obj/item/weapon/card/id/I = H?.GetIdCard()
+		var/obj/item/weapon/card/id/I = H.GetIdCard()
 
 		if(!I)
 			return

@@ -162,9 +162,6 @@
 	holder = null
 	. = ..()
 
-/datum/reagent/proc/is_contraband()
-	return
-
 /* DEPRECATED - TODO: REMOVE EVERYWHERE */
 
 /datum/reagent/proc/reaction_turf(var/turf/target)

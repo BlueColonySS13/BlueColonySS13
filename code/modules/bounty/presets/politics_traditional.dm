@@ -16,7 +16,7 @@
 	days_until_expiry = 6
 
 /datum/bounty/politics_traditional/gambling/check_for_completion()
-	if(persistent_economy && (0.10 >= persistent_economy.gambling_tax))
+	if(0.10 >= SSpersistent_options.get_persistent_option_value(GAMBLING_TAX))
 		return TRUE
 
 	return FALSE
@@ -37,7 +37,7 @@
 	days_until_expiry = 6
 
 /datum/bounty/politics_traditional/rich_tax/check_for_completion()
-	if(persistent_economy && (0.20 >= persistent_economy.tax_rate_upper))
+	if(0.20 >= SSpersistent_options.get_persistent_option_value(UPPER_TAX))
 		return TRUE
 
 	return FALSE
@@ -59,42 +59,11 @@
 
 
 /datum/bounty/politics_traditional/property_values/check_for_completion()
-	if(persistent_economy && (0.20 >= persistent_economy.housing_tax))
+	if(0.20 >= SSpersistent_options.get_persistent_option_value(PROPERTY_TAX))
 		return TRUE
 
 	return FALSE
 
-/datum/bounty/politics_traditional/drugs_illegal
-	name = "Make Drugs Illegal Again"
-	author = "Earl Pennington"
-	description = "There's a general issue facing our society today - drugs. Namely recreational ones that provide nothing but lunacy. Make sure they \
-	are illegal - think about it. Not only do we get the scum of society locked away, but it's so much profit for the state. "
-
-	custom_requirement = "Have someone in power and make cannabis, ecstasy, crack, cocaine, heroin, meth, lsd, dmt, ayahuasca, bath salts, and krokodil all illegal."
-
-	department_reward = 4500
-	individual_reward = 850
-
-	days_until_expiry = 6
-
-/datum/bounty/politics_traditional/drugs_illegal/check_for_completion()
-	var/list/substance_laws = list(persistent_economy.law_CANNABIS, \
-	persistent_economy.law_ECSTASY, \
-	persistent_economy.law_CRACK, \
-	persistent_economy.law_COCAINE, \
-	persistent_economy.law_HEROIN, \
-	persistent_economy.law_METH, \
-	persistent_economy.law_LSD, \
-	persistent_economy.law_BATHSALTS, \
-	persistent_economy.law_DMT, \
-	persistent_economy.law_AYAHUASCA, \
-	persistent_economy.law_KROKODIL)
-
-	for(var/V in substance_laws)
-		if(V != ILLEGAL)
-			return FALSE
-
-	return TRUE
 
 /datum/bounty/politics_traditional/minimum_wage
 	name = "Unsustainable Wages"
@@ -110,7 +79,7 @@
 	days_until_expiry = 6
 
 /datum/bounty/politics_traditional/minimum_wage/check_for_completion()
-	if(10 >= persistent_economy.minimum_wage)
+	if(10 >= SSpersistent_options.get_persistent_option_value("minimum_wage"))
 		return TRUE
 
 	return FALSE

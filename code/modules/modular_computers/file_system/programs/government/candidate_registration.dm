@@ -78,8 +78,8 @@
 
 		page_msg += "<br><br><b><u>Current Critera:</u></b>"
 		page_msg += "<br><b>Minimum President age:</b> [presjob.minimum_character_age]"
-		page_msg += "<br><b>Synthetics:</b> [persistent_economy.synth_vote ? "Can Vote" : "Cannot Vote"]"
-		page_msg += "<br><b>Non-[using_map.starsys_name] Citizens:</b> [persistent_economy.citizenship_vote ? "Can Vote" : "Cannot Vote"]"
+		page_msg += "<br><b>Synthetics:</b> [SSpersistent_options.get_persistent_option_value("voting_nonnational") ? "Can Vote" : "Cannot Vote"]"
+		page_msg += "<br><b>Non-[using_map.starsys_name] Citizens:</b> [SSpersistent_options.get_persistent_option_value("voting_synthetic") ? "Can Vote" : "Cannot Vote"]"
 
 
 		if(is_voting_ineligible(user))

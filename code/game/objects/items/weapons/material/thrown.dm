@@ -9,11 +9,8 @@
 	sharp = 1
 	edge =  1
 
-	get_tax()
-		return WEAPONS_TAX
-
-	is_contraband()
-		return CONTRABAND_KNIFESMALL
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_KNIFESMALL
 
 
 /obj/item/weapon/material/star/New()

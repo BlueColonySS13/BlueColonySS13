@@ -10,11 +10,9 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 
-	get_tax()
-		return WEAPONS_TAX
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_KNIFELARGE
 
-	is_contraband()
-		return CONTRABAND_EXPLOSIVES
 
 /obj/item/weapon/material/sword/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 

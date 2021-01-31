@@ -78,16 +78,16 @@
 
 		if("swipeidseclevel")
 			if(src.authenticated) //Let heads change the alert level.
-				var/old_level = security_level
+				var/old_level = SECURITY_LEVEL
 				if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 				if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
 				if(tmp_alertlevel > SEC_LEVEL_BLUE) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
 				set_security_level(tmp_alertlevel)
-				if(security_level != old_level)
+				if(SECURITY_LEVEL != old_level)
 					//Only notify the admins if an actual change happened
 					log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 					message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-					switch(security_level)
+					switch(SECURITY_LEVEL)
 						if(SEC_LEVEL_GREEN)
 							feedback_inc("alert_comms_green",1)
 						if(SEC_LEVEL_BLUE)
@@ -354,7 +354,7 @@
 			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR><HR>"
 		if(STATE_ALERT_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
-			if(security_level == SEC_LEVEL_DELTA)
+			if(SECURITY_LEVEL == SEC_LEVEL_DELTA)
 				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
 			else
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"

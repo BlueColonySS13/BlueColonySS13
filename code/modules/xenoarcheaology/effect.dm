@@ -11,6 +11,8 @@
 	var/effect_type = 0
 	var/omegalevel //How different from baseline reality is this object? 1 is baseline, 0 is completely unreal. No object will ever meet the extremes. 1 is suspiciously real and warrants investigation, 0 is reality-ending bad.
 
+	var/contraband_level = CONTRABAND_ARTIFACTSBENIGN
+
 /datum/artifact_effect/New(var/atom/location)
 	..()
 	holder = location

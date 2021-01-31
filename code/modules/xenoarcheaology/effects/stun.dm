@@ -1,5 +1,6 @@
 /datum/artifact_effect/stun
 	name = "stun"
+	contraband_level = CONTRABAND_ARTIFACTSHARMFUL
 
 /datum/artifact_effect/stun/New()
 	..()

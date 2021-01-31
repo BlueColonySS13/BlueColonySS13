@@ -135,9 +135,9 @@
 	data["unique_id"] = unique_id
 	data["error_msg"] = error_msg
 
-	var/wc = (persistent_economy.tax_rate_lower * 100)
-	var/mc = (persistent_economy.tax_rate_middle * 100)
-	var/uc = (persistent_economy.tax_rate_upper * 100)
+	var/wc = SSpersistent_options.get_persistent_formatted_value(WORKING_TAX)
+	var/mc = SSpersistent_options.get_persistent_formatted_value(MIDDLE_TAX)
+	var/uc = SSpersistent_options.get_persistent_formatted_value(UPPER_TAX)
 
 	//current president stuff
 	data["current_president"] = SSelections.current_president.name

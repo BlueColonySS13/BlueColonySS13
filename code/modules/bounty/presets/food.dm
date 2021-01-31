@@ -2,6 +2,7 @@
 	category = CAT_FOOD
 	days_until_expiry = 15
 	delete_upon_completion = FALSE
+	tax_type = FOOD_TAX
 
 /datum/bounty/food/hamburger_joint
 	name = "Fresh Frozen Foods"

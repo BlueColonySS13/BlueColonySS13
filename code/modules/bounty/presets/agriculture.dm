@@ -1,6 +1,7 @@
 /datum/bounty/agriculture
 	category = CAT_FARM
 	days_until_expiry = 15
+	tax_type = AGRICULTURE_TAX
 
 /datum/bounty/agriculture/potato_famine
 	name = "Potato Famine"

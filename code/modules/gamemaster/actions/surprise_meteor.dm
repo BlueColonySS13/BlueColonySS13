@@ -12,7 +12,7 @@
 
 /datum/gm_action/surprise_meteors/start()
 	..()
-	if(persistent_economy && persistent_economy.meteor_proof)
+	if(SSpersistent_options && SSpersistent_options.get_persistent_option_value("protect_meteor_proofing"))
 		return
 	spawn(1)
 		spawn_meteors(rand(4, 8), meteors_normal, pick(cardinal))

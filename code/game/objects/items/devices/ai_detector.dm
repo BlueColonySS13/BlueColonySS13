@@ -12,6 +12,7 @@
 	var/range_warning = 14		// Will turn yellow if the AI's eye is near the holder.
 	var/detect_state = PROXIMITY_NONE
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2, TECH_ILLEGAL = 2)
+	tax_type = ELECTRONICS_TAX
 
 /obj/item/device/multitool/ai_detector/New()
 	// It's really really unlikely for the view range to change.  But why not be futureproof anyways?

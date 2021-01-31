@@ -25,6 +25,7 @@
 	hard_drive.store_file(new/datum/computer_file/program/nt_explorer())
 	hard_drive.store_file(new/datum/computer_file/program/landlord_management())
 	hard_drive.store_file(new/datum/computer_file/program/business_manager())
+	hard_drive.store_file(new/datum/computer_file/program/govportal())
 
 /obj/item/modular_computer/communicator_internal/New(obj/item/device/communicator/parent_communicator)
 	communicator = parent_communicator

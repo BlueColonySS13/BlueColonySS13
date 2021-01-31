@@ -98,11 +98,8 @@
 
 	unique_save_vars = list("uses")
 
-/obj/item/weapon/gun/get_tax()
-	return WEAPONS_TAX
-
-/obj/item/weapon/gun/is_contraband()
-	return CONTRABAND_GUN
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_GUN
 
 /obj/item/weapon/gun/New()
 	..()

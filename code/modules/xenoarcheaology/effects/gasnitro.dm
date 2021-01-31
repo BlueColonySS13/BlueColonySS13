@@ -1,5 +1,6 @@
 /datum/artifact_effect/gasnitro
 	name = "N2 creation"
+	contraband_level = CONTRABAND_ARTIFACTSHARMFUL
 
 /datum/artifact_effect/gasnitro/New()
 	..()

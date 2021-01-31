@@ -28,8 +28,8 @@
 	w_class = ITEMSIZE_NORMAL
 	var/open = FALSE
 
-	is_contraband()
-		return 0
+	tax_type = null
+	contraband_type = null
 
 /obj/item/weapon/melee/umbrella/New()
 	..()

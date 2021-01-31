@@ -19,8 +19,8 @@
 	var/flash_range = 5
 	var/size = "small"  /*Used for the icon, this one will make c-4small_0 for the off state.*/
 
-	get_tax()
-		return WEAPONS_TAX
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_EXPLOSIVES
 
 /obj/item/weapon/syndie/c4explosive/heavy
 	icon_state = "c-4large_0"
