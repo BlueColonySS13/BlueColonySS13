@@ -8,6 +8,12 @@
 	max_value_text = 1000
 	bbcode_value = TRUE
 
+	creation_text = "A new ballot for \"%NAME\" has been raised! \
+	Please go to your local ballot box to cast your votes. Your voice matters!"
+
+	on_ballot_pass = "The ballot for %NAME has passed! The changes will take place immediately."
+
+
 /datum/persistent_option/value/code_level/code_green
 	name = "Code Green Announcement Text"
 	description = "You can set the message that displays the code green procedure."
@@ -35,7 +41,7 @@
 	value_text = "There is an immediate serious threat to the city. Police may have weapons unholstered at all times. \
 	Random searches are allowed and advised."
 
- /datum/persistent_option/value/code_level/code_red/down
+/datum/persistent_option/value/code_level/code_red/down
 	name = "Code Red De-escalation Announcement Text"
 	description = "This is the message that shows when you de-escalate code red down from delta."
 	id = "code_red_down"

@@ -43,7 +43,7 @@
 #define CONTRABAND_KROKODIL "contraband_krokodil"
 #define CONTRABAND_CAAPI "contraband_caapi"
 #define CONTRABAND_CHACRUNA "contraband_chacruna"
-
+#define CONTRABAND_HARMFUL_CHEMS "contraband_harmful_chems"
 #define CONTRABAND_CYANIDE "contraband_cyanide"
 #define CONTRABAND_CHLORAL "contraband_chloral"
 

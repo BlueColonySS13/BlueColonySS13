@@ -122,6 +122,7 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 		M.emote(pick("twitch", "shiver"))
 	..()
 
+
 /datum/reagent/drug/meth/overdose(var/mob/living/carbon/human/M as mob)
 	if(M.canmove && !istype(M.loc, /atom/movable))
 		for(var/i = 0, i < 4, i++)
@@ -139,6 +140,17 @@ datum/reagent/drug/nicotine/affect_blood(var/mob/living/carbon/M)
 	M.adjustBrainLoss(pick(0.5, 0.6, 0.7, 0.8, 0.9, 1))
 	..()
 
+/datum/reagent/drug/meth/hyperzine
+	name = "Hyperzine"
+	id = "hyperzine"
+	description = "A refined and altered meth-based chemical, used for motor-enhancement, manufactured and Licensed by Nanotrasen primarily for the PDF. \
+	This restricted strand allows for higher dosages to be administered by the user, allowing a longer period of usage.Hyperzine is a highly effective, \
+	long lasting, muscle stimulant. It is a purified form of meth licensed for use by PDF."
+	taste_description = "bitterness"
+	reagent_state = LIQUID
+	color = "#FF3300"
+	overdose = REAGENTS_OVERDOSE * 0.5
+	price_tag = 4
 
 /datum/reagent/drug/cannabis
 	name = "Cannabis"

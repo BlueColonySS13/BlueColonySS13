@@ -8,9 +8,9 @@
 /var/datum/announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/misc/notice1.ogg'))
 /var/datum/announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1)
 
-/proc/set_security_level(var/level)
+/proc/set_security_level(var/level, change_persistent_option = TRUE)
 
-	var/datum/code_level/level_datum = security_levels[level]
+	var/datum/code_level/level_datum = fetch_seclevel_by_code(level)
 
 	if(!level_datum)
 		return
@@ -36,7 +36,8 @@
 	else
 		security_announcement_down.Announce( SSpersistent_options.get_persistent_option_value(level_datum.downto), "Attention! City Security Lowered to [level_datum.name]")
 
-	SSpersistent_options.update_pesistent_option_value("security_level", level_datum.level)
+	if(change_persistent_option)
+		SSpersistent_options.update_pesistent_option_value("security_level", level_datum.level)
 
 	var/newlevel = level_datum.level
 	for(var/obj/machinery/firealarm/FA in machines)
@@ -52,25 +53,40 @@
 	else
 		atc.reroute_traffic(yes = 0)
 
+	return TRUE
+
 
 /proc/get_security_level()
-	var/current_sec_level = SSpersistent_options.get_persistent_option_value("security_level")
+	return num2seclevel(SSpersistent_options.get_persistent_option_value("security_level"))
 
-	for(var/S in security_levels)
-		var/datum/code_level/CL = security_levels[S]
-		if(CL.level == current_sec_level)
-			return CL.code
+
+/proc/fetch_seclevel_by_code(var/code)
+	for(var/datum/code_level/CL in get_all_security_levels())
+		if(CL.code == lowertext(code))
+			return CL
+
+/proc/fetch_seclevel_by_num(var/num)
+	for(var/datum/code_level/CL in get_all_security_levels())
+		if(CL.level == text2num(num))
+			return CL
 
 
 /proc/num2seclevel(var/num)
-	for(var/datum/code_level/CL in security_levels)
+	for(var/datum/code_level/CL in get_all_security_levels())
 		if(CL.level == text2num(num))
 			return CL.code
 
-/proc/seclevel2num(var/seclevel)
-	for(var/datum/code_level/CL in security_levels)
-		if(CL.code == lowertext(seclevel))
+/proc/seclevel2num(var/code)
+	for(var/datum/code_level/CL in get_all_security_levels())
+		if(CL.code == lowertext(code))
 			return CL.level
+
+/proc/get_all_security_levels()
+	var/list/levels = list()
+	for(var/SL in security_levels)
+		levels += security_levels[SL]
+
+	return levels
 
 
 /*DEBUG

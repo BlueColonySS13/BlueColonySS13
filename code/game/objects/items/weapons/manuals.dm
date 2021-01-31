@@ -9,7 +9,9 @@
 /obj/item/weapon/book/manual/New()
 	..()
 	if(portal_id)
-		dat = SSpersistent_options.get_persistent_formatted_value(portal_id)
+		dat = "<html><body>"
+		dat += SSpersistent_options.get_persistent_formatted_value(portal_id)
+		dat += "</body></html>"
 
 /obj/item/weapon/book/manual/engineering_construction
 	name = "City Repairs and Construction"

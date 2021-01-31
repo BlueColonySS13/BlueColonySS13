@@ -13,6 +13,7 @@
 	var/strength = 4 // How much damage it deals per unit
 
 	tax_type = HAZARD_CHEM_TAX
+	contraband_type = CONTRABAND_HARMFUL_CHEMS
 
 /datum/reagent/toxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(strength && alien != IS_DIONA)
@@ -115,6 +116,7 @@
 	price_tag = 5
 
 	tax_type = MINING_TAX
+	contraband_type = null
 
 /datum/reagent/toxin/phoron/touch_mob(var/mob/living/L, var/amount)
 	if(istype(L))
@@ -254,6 +256,8 @@
 	reagent_state = LIQUID
 	strength = 0.5 // It's not THAT poisonous.
 	color = "#664330"
+	contraband_type = null
+	tax_type = AGRICULTURE_TAX
 
 /datum/reagent/toxin/fertilizer/eznutrient
 	name = "EZ Nutrient"
@@ -320,6 +324,8 @@
 	color = "#664330"
 	power = 2
 	meltdose = 30
+	contraband_type = null
+	tax_type = null
 
 /datum/reagent/thermite/venom
 	name = "Pyrotoxin"
@@ -468,6 +474,7 @@
 	price_tag = 0.4
 
 	tax_type = PHARMA_TAX
+	contraband_type = null
 
 /datum/reagent/soporific/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -517,8 +524,7 @@
 	overdose_mod = 5	//For that good, lethal feeling
 	price_tag = 4
 
-/datum/reagent/chloralhydrate/is_contraband()
-	return CONTRABAND_CHLORAL
+	contraband_type = CONTRABAND_CHLORAL
 
 /datum/reagent/chloralhydrate/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -570,6 +576,8 @@
 	glass_name = "beer"
 	glass_desc = "A freezing pint of beer"
 	price_tag = 0.5
+	contraband_type = null
+	tax_type = ALCOHOL_TAX
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"

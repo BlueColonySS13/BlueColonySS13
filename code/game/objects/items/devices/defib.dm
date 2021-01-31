@@ -18,6 +18,7 @@
 
 	var/obj/item/weapon/shockpaddles/linked/paddles
 	var/obj/item/weapon/cell/bcell = null
+	tax_type = ELECTRONICS_TAX
 
 /obj/item/device/defib_kit/get_cell()
 	return bcell

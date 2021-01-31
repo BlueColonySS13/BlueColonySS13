@@ -2,6 +2,7 @@
 /datum/persistent_option/number_value/landlord
 	portal_category = "Leasehold and Tenancy"
 	portal_grouping = "Social Services"
+	compact_listing = 0
 
 /datum/persistent_option/number_value/landlord/service_charge	// charges this much per tile in the lot.
 	name = "Hourly Service Charge Per Tile"
@@ -12,6 +13,7 @@
 	min_value = 0
 	max_value = 1
 	value_is_money = TRUE
+	make_referendum = TRUE
 
 /datum/persistent_option/number_value/landlord/maximum_rent
 	name = "Maximum Rent Per Tenant"
@@ -35,7 +37,7 @@
 	name = "Minimum Arrears For Tenant Eviction"
 	description = "In negative numbers, how low must the tenant fall into arrears before their landlord can evict them?"
 	id = "min_arrears_tenant"
-	value = 3
-	max_value = 0
-	min_value = -5000
+	value = -5000
+	max_value = -1000
+	min_value = -10000
 	value_is_money = TRUE

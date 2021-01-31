@@ -33,10 +33,18 @@ GLOBAL_LIST_EMPTY(all_voting_ballots)
 	if(0 >= days_expiry)
 		expire_ballot()
 
-/datum/voting_ballot/proc/expire_ballot()
+/datum/voting_ballot/proc/expire_ballot(silent = FALSE)
+	var/datum/persistent_option/PO = get_persistent_option()
 	active = FALSE
 	if(check_winner() == "Yes")
 		apply_ballot_outcome()
+		if(!silent && PO)
+			command_announcement.Announce(PO.on_ballot_pass, "[name]")
+	else
+		if(!silent && PO)
+			command_announcement.Announce(PO.on_ballot_fail, "[name]")
+
+	return TRUE
 
 
 /datum/voting_ballot/proc/delete_ballot()
@@ -114,13 +122,10 @@ GLOBAL_LIST_EMPTY(all_voting_ballots)
 	return PO.get_formatted_value()
 
 
-/datum/voting_ballot/proc/apply_ballot_outcome(silent = 0) // if the ballot passes, it'll apply this outcome.
+/datum/voting_ballot/proc/apply_ballot_outcome() // if the ballot passes, it'll apply this outcome.
 	var/datum/persistent_option/PO = get_persistent_option()
 
 	if(!PO)
 		return
-
-	if(!silent)
-		command_announcement.Announce(PO.on_ballot_pass, "[name]")
 
 	return SSpersistent_options.update_pesistent_option_value(PO.id, new_change, author)

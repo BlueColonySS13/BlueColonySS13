@@ -15,6 +15,7 @@
 	var/saved_icon = 'icons/obj/clothing/masks.dmi'
 	var/saved_icon_state = "cigbutt"
 	var/saved_overlays
+	tax_type = ELECTRONICS_TAX
 
 /obj/item/device/chameleon/dropped()
 	disrupt()

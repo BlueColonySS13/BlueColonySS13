@@ -5,9 +5,6 @@ SUBSYSTEM_DEF(persistent_options)
 	var/list/all_portal_options = list()
 	var/list/all_voting_ballots = list()
 
-	var/list/all_security_levels = list()
-
-
 	wait = 1200 //Ticks once per 2 minutes
 	var/referendum_interval = 1 HOUR
 	var/next_referendum_check = 1 HOUR
@@ -20,10 +17,19 @@ SUBSYSTEM_DEF(persistent_options)
 
 	all_voting_ballots = GLOB.all_voting_ballots
 
-	all_security_levels = security_levels
+	load_all_options()
+	load_ballots()
 
 	. = ..()
 
+/datum/controller/subsystem/persistent_options/proc/save_all_options()
+	for(var/datum/persistent_option/PO in get_persistent_options())
+		PO.save_option()
+	return TRUE
+
+/datum/controller/subsystem/persistent_options/proc/load_all_options()
+	for(var/datum/persistent_option/PO in get_persistent_options())
+		PO.load_option()
 
 /datum/controller/subsystem/persistent_options/fire()
 	if (world.time >= next_referendum_check)
@@ -32,8 +38,9 @@ SUBSYSTEM_DEF(persistent_options)
 
 
 /datum/controller/subsystem/persistent_options/proc/check_all_ballots()
-	for(var/datum/voting_ballot/VB in all_voting_ballots)
+	for(var/datum/voting_ballot/VB in get_ballots(active_only = TRUE))
 		VB.sanitize_ballot()
+
 
 /datum/controller/subsystem/persistent_options/proc/check_ballot_exists(id)
 	if(all_voting_ballots[id])
@@ -173,6 +180,12 @@ SUBSYSTEM_DEF(persistent_options)
 	if(custom_text)
 		new_log_text += " [custom_text]"
 	else
-		new_log_text += "Updated by [author].[changed ? " Change: [changed]" : ""] - [stationdate2text()] @ [stationtime2text()]."
+		if(length(changed) > 100)
+			new_log_text += "Updated by [author]. Updated - [stationdate2text()] @ [stationtime2text()]."
+		else
+			new_log_text += "Updated by [author].[changed ? " Change: [changed]" : ""] - [stationdate2text()] @ [stationtime2text()]."
 
 	log_option.add_value(new_log_text)
+
+
+

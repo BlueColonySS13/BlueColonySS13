@@ -97,7 +97,7 @@
 	if(news_data.city_newspaper && !client.seen_news)
 		show_latest_news(news_data.city_newspaper)
 
-	panel = new(src, "Welcome","Welcome, [client.prefs.real_name]", 600, 480, src)
+	panel = new(src, "Welcome","Welcome, [client.prefs.real_name]", 600, 580, src)
 	panel.set_window_options("can_close=0")
 	panel.set_content(output)
 	panel.open()

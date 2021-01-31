@@ -111,6 +111,7 @@
 			page_msg += "<b>Status:</b> [VO.get_status_text()][admin_edit ? " <a href='?src=\ref[src];action=referendum_toggle;ballot=\ref[VO]'> Toggle</a><br>" : ""]<br> "
 			page_msg += "<b>Author:</b> [VO.author] [admin_edit ? VO.author_ckey : ""]<br>"
 
+
 			var/preview_text_one = VO.get_current_option_formatted_value()
 
 			if(PO.compact_listing)
@@ -119,12 +120,13 @@
 			else
 				page_msg += "<b>Current Value:</b><br> <div class='statusDisplay'>[preview_text_one]</div><br><br>"
 
-			var/preview_text_two = PO.get_proposed_value_formatting()
-			if(PO.compact_listing)
-				page_msg += "<b>Proposed Value:</b><br> <div class='statusDisplay'>[TextPreview(preview_text_two,PO.compact_listing)] \
-				[(length(preview_text_two) > PO.compact_listing) ? " <a href='?src=\ref[src];action=view_ref_full;ballot=\ref[VO]'>View Full</a>" : ""]</div><br><br>"
-			else
-				page_msg += "<b>Proposed Value:</b><br> <div class='statusDisplay'>[preview_text_two]</div><br><br>"
+			if(VO.get_status())
+				var/preview_text_two = PO.get_proposed_value_formatting()
+				if(PO.compact_listing)
+					page_msg += "<b>Proposed Value:</b><br> <div class='statusDisplay'>[TextPreview(preview_text_two,PO.compact_listing)] \
+					[(length(preview_text_two) > PO.compact_listing) ? " <a href='?src=\ref[src];action=view_ref_full;ballot=\ref[VO]'>View Full</a>" : ""]</div><br><br>"
+				else
+					page_msg += "<b>Proposed Value:</b><br> <div class='statusDisplay'>[preview_text_two]</div><br><br>"
 
 
 			if(status)
@@ -143,8 +145,11 @@
 
 			page_msg += "</ul>"
 
-			if(admin_edit || !VO.get_status())
+			if(admin_edit)
 				page_msg += " <a href='?src=\ref[src];action=conclude_ballot;ballot=\ref[VO]'>Conclude Early</a>"
+
+			if(!VO.get_status() || admin_edit)
+
 				page_msg += " <a href='?src=\ref[src];action=delete_ballot;ballot=\ref[VO]'>Delete Ballot</a>"
 				page_msg += "<br>"
 

@@ -12,6 +12,12 @@
 
 	value = 10
 
+	creation_text = "A new ballot for \"%NAME\" has been raised! \
+	Please go to your local ballot box to cast your votes. Your voice matters!"
+
+	on_ballot_pass = "The ballot for %NAME has passed! The changes will take place immediately."
+	compact_listing = 0
+
 /datum/persistent_option/value_list/public_wages/get_formatted_value()
 	var/text_list = ""
 	for(var/V in value_list)

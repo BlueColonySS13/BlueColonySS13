@@ -13,6 +13,11 @@
 	required_access_edit = access_ceo
 	log_id = "nanotrasen_logging"
 
+	creation_text = "A new ballot for \"%NAME\" has been raised! \
+	Please go to your local ballot box to cast your votes. Your voice matters!"
+
+	on_ballot_pass = "The ballot for %NAME has passed! The changes will take place immediately."
+
 
 // charter
 

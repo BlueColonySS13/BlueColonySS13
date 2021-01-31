@@ -9,9 +9,7 @@
 
 // Voting Rights
 /datum/persistent_option/toggle/rights/voting/get_formatted_value(fake_value) // for use in UIs
-	var/the_value = get_value()
-	if(fake_value)
-		the_value = fake_value
+	var/the_value = (!isnull(fake_value) ? fake_value : get_value())
 	return (the_value ? "Can Vote" : "Cannot Vote")
 
 /datum/persistent_option/toggle/rights/voting/nonnational
@@ -30,11 +28,13 @@
 	name = "Synthetic Voting Rights"
 	description = "Can synthetics vote?"
 	id = "voting_synthetic"
+	toggle_status = FALSE
 
 /datum/persistent_option/toggle/rights/voting/mpvatborn
 	name = "Mass-Produced Vatborn Voting Rights"
 	description = "Can mass produced vatborn vote?"
 	id = "voting_mpvatborn"
+	toggle_status = FALSE
 
 /datum/persistent_option/toggle/rights/voting/baseline
 	name = "Baseline Vatborn Voting Rights"
@@ -60,8 +60,8 @@
 	make_referendum = TRUE
 
 /datum/persistent_option/number_value/minimum_age/get_formatted_value(fake_value) // for use in UIs
-	var/the_value = (fake_value ? fake_value : toggle_status)
-	return "[the_value] years"
+	var/the_value = (fake_value ? fake_value : value)
+	return "[the_value] year(s)"
 
 
 /datum/persistent_option/number_value/minimum_age/voting

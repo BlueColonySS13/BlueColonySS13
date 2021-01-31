@@ -6,6 +6,8 @@
 	var/scan_sound = 'sound/effects/checkout.ogg'
 	var/on = TRUE
 
+	tax_type = ELECTRONICS_TAX
+
 /obj/item/device/calories_scanner/attack_self(mob/user)
 	if(user.incapacitated())
 		return

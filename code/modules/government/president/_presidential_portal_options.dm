@@ -57,14 +57,19 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	var/compact_listing = 400 // if this is set, it will shrink to text preview to this number. leave to 0 to disable
 
 
-	var/creation_text = "A new ballot for \"%NAME\" has been raised! \
+	var/creation_text = "A new referendum for \"%NAME\" has been raised! \
 	This will change it from %VALUE to %PROPOSEDVALUE. \
 	Please go to your local ballot box to cast your votes. Your voice matters!"
 
-	var/on_ballot_pass = "The ballot for %NAME has passed! It has changed from %VALUE to %PROPOSEDVALUE, this will take place immediately."
+	var/on_ballot_pass = "The referendum for %NAME has passed! It has changed from %VALUE to %PROPOSEDVALUE, this will take place immediately."
+	var/on_ballot_fail = "The referendum for %NAME has failed. Check the GovPortal for more details."
 
 	var/required_access_view = null
 	var/required_access_edit = access_president
+
+	var/saveable = TRUE
+
+	var/path = "data/persistent/persistent_options/govportal/"
 
 /datum/persistent_option/New()
 	..()
@@ -91,8 +96,9 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 	if(department_recieving)
 		var/datum/money_account/M = dept_acc_by_id(department_recieving)
 		if(M)
-			charge_to_account(M.account_number, "Nanotrasen Fund Transfer", "[name] ([cash2text( department_cost, FALSE, TRUE, TRUE )] PH) earnings", "Government Expenses", -department_cost)
+			charge_to_account(M.account_number, "Nanotrasen Fund Transfer", "[name]", "Government Expenses", -department_cost)
 
+	return TRUE
 
 /datum/persistent_option/proc/on_option_change(newvalue, skip = 0) // is called when an option is adjusted
 	if(skip)
@@ -134,7 +140,9 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		on_ballot_pass = replacetext(on_ballot_pass, "%NAME", name)
 		on_ballot_pass = replacetext(on_ballot_pass, "%VALUE", get_formatted_value())
 		on_ballot_pass = replacetext(on_ballot_pass, "%PROPOSEDVALUE", SSpersistent_options.find_proposed_value_ballot(id))
-
+		on_ballot_fail = replacetext(on_ballot_pass, "%NAME", name)
+		on_ballot_fail = replacetext(on_ballot_pass, "%VALUE", get_formatted_value())
+		on_ballot_fail = replacetext(on_ballot_pass, "%PROPOSEDVALUE", SSpersistent_options.find_proposed_value_ballot(id))
 	return 1
 
 /datum/persistent_option/proc/get_linked_ballot()
@@ -162,9 +170,11 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 
 /datum/persistent_option/toggle
 	var_to_edit = "toggle_status"
+	compact_listing = 0
 
 /datum/persistent_option/select_person
 	var_to_edit = "select_person"
+	compact_listing = 0
 
 /datum/persistent_option/select_list
 	var_to_edit = "value_select"
@@ -174,8 +184,8 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 
 
 //formating
-/datum/persistent_option/number_value/get_formatted_value()
-	return ( value_is_money ? cash2text( value , FALSE, TRUE, TRUE ) : value )
+/datum/persistent_option/number_value/get_formatted_value(fake_value)
+	return ( value_is_money ? cash2text( get_value(fake_value) , FALSE, TRUE, TRUE ) : get_value(fake_value) )
 
 /datum/persistent_option/select_person/get_formatted_value() // for use in UIs
 	if(LAZYLEN(select_person))
@@ -188,9 +198,7 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		return "None"
 
 /datum/persistent_option/toggle/get_formatted_value(fake_value) // for use in UIs
-	var/the_value = get_value()
-	if(fake_value)
-		the_value = fake_value
+	var/the_value = (!isnull(fake_value) ? fake_value : get_value())
 	return (the_value ? "Yes" : "No")
 
 /datum/persistent_option/value_list/get_formatted_value()
@@ -234,16 +242,12 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 
 			the_new_value = new_text_value
 
-			alert("value is [the_new_value]")
-
 
 		if(var_to_edit == "value") // updates the number for number based values
 			var/new_value = input(usr, "[edit_text ? edit_text : "Please enter a new value for [name]."] (Min: [min_value]. Max: [max_value].)", "[name]", value) as num|null
 
 			sanitize_integer(new_value, min_value, max_value, initial(value))
 			the_new_value = Clamp(new_value, min_value, max_value)
-
-			alert("value is [the_new_value]")
 
 
 		if(var_to_edit == "toggle_status") //updates the TRUE/FALSE or ON/OFF status
@@ -255,7 +259,6 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 			the_new_value = (new_toggle == "Yes") ? TRUE : FALSE
 			sanitize_integer(the_new_value, FALSE, TRUE, initial(toggle_status))
 
-			alert("value is [the_new_value]")
 
 		if(var_to_edit == "value_list") // adds or removes a list from a set of values
 			var/list/the_list = value_list
@@ -296,8 +299,6 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 
 				the_new_value = (new_list - to_remove)
 
-			alert("value is [the_new_value]")
-
 
 		if(var_to_edit == "value_select") // select a value from a list (sole option)
 			if(!LAZYLEN(get_option_values()))
@@ -308,8 +309,6 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 				return FALSE
 
 			the_new_value = to_change
-
-			alert("value is [the_new_value]")
 
 
 		if(var_to_edit == "select_person") // updates the name and unique ID into a list
@@ -341,11 +340,8 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 
 			the_new_value = selected_person
 
-			alert("value is [the_new_value]")
-
 
 	if(isnull(the_new_value))
-		alert("No value provided")
 		return FALSE
 
 	if(the_new_value == get_value())
@@ -353,7 +349,7 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		return
 
 	if(!make_referendum)
-		return perform_edit_outcome(id, the_new_value, user)
+		return perform_edit_outcome(the_new_value, user)
 
 	else
 		var/response = alert(user, "Would you like to submit the referendum for \"[name]\"?", "Final Referendum Confirmation", "Yes", "No")
@@ -365,9 +361,9 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 			return FALSE
 
 
-		return perform_edit_outcome(id, the_new_value, user)
+		return perform_edit_outcome(the_new_value, user)
 
-/datum/persistent_option/proc/perform_edit_outcome(id, the_new_value, mob/user)
+/datum/persistent_option/proc/perform_edit_outcome(the_new_value, mob/user)
 	if(!make_referendum)
 		return SSpersistent_options.update_pesistent_option_value(id, the_new_value, user.real_name)
 	else
@@ -381,7 +377,7 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		else
 			alert("There has been an issue with processing this referendum, please try again later or contact Nanotrasen technical support.")
 
-		SSpersistent_options.make_log(id, author = user.real_name, custom_text = "raised a referendum raised by [user.real_name].")
+		SSpersistent_options.make_log(id, author = user.real_name, custom_text = "Referendum raised by [user.real_name]. - [stationdate2text()] @ [stationtime2text()]")
 		return new_referendum
 
 /datum/persistent_option/proc/custom_checks()

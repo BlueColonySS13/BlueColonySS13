@@ -12,6 +12,7 @@
 	var/composition = ""
 
 	contraband_type = CONTRABAND_ARTIFACTSBENIGN
+	tax_type = XENO_TAX
 
 	unique_save_vars = list("contraband_type")
 

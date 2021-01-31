@@ -28,6 +28,7 @@ SUBSYSTEM_DEF(payroll)
 	for(var/datum/persistent_option/PS in GLOB.persistent_options)
 		if(!PS.department_cost)
 			continue
+		PS.charge_department()
 
 	command_announcement.Announce("Hourly payroll has been processed. Please check your bank accounts for your latest payment.", "Payroll")
 
