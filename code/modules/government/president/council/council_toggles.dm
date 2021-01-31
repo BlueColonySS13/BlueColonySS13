@@ -73,10 +73,3 @@
 	id = "protect_meteor_proofing"
 	charged_department = DEPT_COUNCIL
 	department_cost = -2000
-
-/datum/persistent_option/toggle/council/protection/meteor_proof
-	name = "Meteor Proofing"
-	description = "This will protect the city from meteor attacks that consistently affect the colony. Helps protect properties."
-	id = "protect_meteor_proofing"
-	charged_department = DEPT_COUNCIL
-	department_cost = -2000

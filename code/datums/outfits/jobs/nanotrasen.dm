@@ -59,10 +59,11 @@
 	r_hand = /obj/item/weapon/clipboard
 	id_pda_assignment = "Governor"
 
-/decl/hierarchy/outfit/job/heads/vpresident
+/decl/hierarchy/outfit/job/nanotrasen/vpresident
 	name = OUTFIT_JOB_NAME("Vice President")
 	glasses = /obj/item/clothing/glasses/sunglasses
 	uniform = /obj/item/clothing/under/rank/president
+	suit = /obj/item/clothing/suit/storage/toggle/lawyer/whitejacket/vice_president
 	belt = /obj/item/weapon/gun/energy/pulse_rifle/M1911
 	suit = /obj/item/clothing/suit/storage/toggle/presidential_jacket
 	l_ear = /obj/item/device/radio/headset/headset_com
@@ -129,20 +130,21 @@
 	id_pda_assignment = "Advisor"
 	id_type = /obj/item/weapon/card/id/nanotrasen/advisor
 
-/decl/hierarchy/outfit/job/heads/president
+/decl/hierarchy/outfit/job/nanotrasen/president
 	name = OUTFIT_JOB_NAME("President")
 	glasses = /obj/item/clothing/glasses/sunglasses
 	uniform = /obj/item/clothing/under/rank/president
 	suit = /obj/item/clothing/suit/storage/toggle/presidential_jacket
 	l_ear = /obj/item/device/radio/headset/headset_com
 	shoes = /obj/item/clothing/shoes/leather
+	belt = /obj/item/weapon/gun/energy/pulse_rifle/M1911
 	backpack = /obj/item/weapon/storage/backpack
 	satchel_one = /obj/item/weapon/storage/backpack/satchel
 	messenger_bag = /obj/item/weapon/storage/backpack/messenger/com
 	id_type = /obj/item/weapon/card/id/nanotrasen/president
 	pda_type = /obj/item/device/pda/captain
 
-/decl/hierarchy/outfit/job/heads/president/post_equip(var/mob/living/carbon/human/H)
+/decl/hierarchy/outfit/job/nanotrasen/president/post_equip(var/mob/living/carbon/human/H)
 	..()
 	var/obj/item/clothing/uniform = H.w_uniform
 	if(uniform)

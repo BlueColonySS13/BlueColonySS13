@@ -68,7 +68,7 @@
 
 	minimum_character_age = 30
 	ideal_character_age = 50
-	outfit_type = /decl/hierarchy/outfit/job/heads/president
+	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/president
 
 	portal_whitelist = "cabinet_president"
 
@@ -82,7 +82,7 @@
 	spawn_positions = 1
 	flag = VICEPRESIDENT
 	wage = 5000
-	outfit_type = /decl/hierarchy/outfit/job/heads/vpresident
+	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/vpresident
 	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
 	access = list(access_vice_president, access_cent_general, access_cent_thunder, access_cent_medical, access_cent_living, access_cent_storage, access_cent_teleporter) 			//See get_access()
 	minimal_access = list(access_vice_president, access_cent_living, access_cent_storage)

@@ -946,6 +946,13 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	flags_inv = HIDEHOLSTER
 	open = 1
 
+/obj/item/clothing/suit/storage/toggle/lawyer/whitejacket/vice_president
+	name = "vice president jacket"
+	desc = "A sleek jacket made of cotton. Made for the vice president."
+	color = "#2b7a76"
+
+
+
 /*
  * Department Jackets
  */
@@ -1164,6 +1171,7 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	icon_state = "neoleath_jacket"
 	body_parts_covered = UPPER_TORSO|ARMS
 	flags_inv = HIDEHOLSTER
+
 
 /obj/item/clothing/suit/storage/toggle/hivisjacket
 	name = "high visibility jacket"
