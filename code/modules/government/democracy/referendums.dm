@@ -36,12 +36,15 @@ GLOBAL_LIST_EMPTY(all_voting_ballots)
 /datum/voting_ballot/proc/expire_ballot(silent = FALSE)
 	var/datum/persistent_option/PO = get_persistent_option()
 	active = FALSE
+
 	if(check_winner() == "Yes")
 		apply_ballot_outcome()
 		if(!silent && PO)
+			PO.sanitize_options()
 			command_announcement.Announce(PO.on_ballot_pass, "[name]")
 	else
 		if(!silent && PO)
+			PO.sanitize_options()
 			command_announcement.Announce(PO.on_ballot_fail, "[name]")
 
 	return TRUE
