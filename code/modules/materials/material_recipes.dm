@@ -127,7 +127,12 @@
 		new/datum/stack_recipe("chest drawer", /obj/structure/filingcabinet/chestdrawer, 4, time = 20, one_per_turf = 1, on_floor = 1), \
 		))
 
-
+	recipes += new/datum/stack_recipe_list("vehicle bed", list( \
+		new/datum/stack_recipe("race car bed", /obj/structure/bed/racecar, 20, time = 10, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("classic race car bed", /obj/structure/bed/racecar/classic, 20, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("shuttle bed", /obj/structure/bed/racecar/shuttle,20, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("fire truck bed",/obj/structure/bed/racecar/firetruck,20, one_per_turf = 1, on_floor = 1), \
+		))
 
 /material/plasteel/generate_recipes()
 	..()
@@ -199,11 +204,14 @@
 	if(!is_reinforced())
 		recipes += new/datum/stack_recipe("basic window", /obj/structure/window/basic, 1, time = 1, supplied_material = "[name]")
 		recipes += new/datum/stack_recipe("full window", /obj/structure/window/basic/full, 1, time = 1, supplied_material = "[name]", ignore_direction = TRUE)
+
 	else
 		recipes += new/datum/stack_recipe("reinforced basic window", /obj/structure/window/reinforced, 1, time = 1, supplied_material = "[name]")
 		recipes += new/datum/stack_recipe("reinforced full window", /obj/structure/window/reinforced/full, 1, time = 1, supplied_material = "[name]", ignore_direction = TRUE)
+		recipes += new/datum/stack_recipe("tinted window", /obj/structure/window/reinforced/tinted , 1, time = 1, supplied_material = "[name]")
+		recipes += new/datum/stack_recipe("tinted full window", /obj/structure/window/reinforced/tinted/full , 1, time = 1, supplied_material = "[name]")
 
-	recipes += new/datum/stack_recipe("framed window", /obj/structure/window/framed, 1, time = 1, supplied_material = "[name]")
+	recipes += new/datum/stack_recipe("framed window", /obj/structure/window/framed, 4, time = 1, supplied_material = "[name]")
 
 	recipes += new/datum/stack_recipe_list("windoor assemblies", list( \
 		new/datum/stack_recipe("standard windoor assembly", /obj/structure/windoor_assembly, 4, time = 50, one_per_turf = 1, on_floor = 1), \
