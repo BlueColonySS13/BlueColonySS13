@@ -384,3 +384,33 @@
 
 	if(armrest_icon && !has_buckled_mobs())
 		overlays -= stool_cache["[armrest_icon]-padding-[padding_material.name]"]
+
+
+/obj/structure/bed/racecar
+	name = "race car bed"
+	desc = "Vroom Vroom!"
+	icon_state = "racecarbed"
+	base_icon = "racecarbed"
+	applies_material_colour = FALSE
+	anchored = FALSE
+
+/obj/structure/bed/racecar/classic
+	name = "race car bed"
+	desc = "Only fits one driver."
+	icon_state = "racecarclassic"
+	base_icon = "racecarclassic"
+	applies_material_colour = FALSE
+
+/obj/structure/bed/racecar/shuttle
+	name = "shuttle bed"
+	desc = "The Emergency Shuttle has docked with dreamland."
+	icon_state = "eshuttle"
+	base_icon = "eshuttle"
+	applies_material_colour = FALSE
+
+/obj/structure/bed/racecar/firetruck
+	name = "fire truck bed"
+	desc = "Excellent at stopping oven fires."
+	icon_state = "firetruck"
+	base_icon = "firetruck"
+	applies_material_colour = FALSE
