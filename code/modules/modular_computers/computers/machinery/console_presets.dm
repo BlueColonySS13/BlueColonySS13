@@ -37,7 +37,7 @@
 	cpu.hard_drive.store_file(new/datum/computer_file/program/wordprocessor())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/email_client())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/nt_explorer())
-
+	cpu.hard_drive.store_file(new/datum/computer_file/program/govportal())
 // Administrator
 
 /obj/machinery/modular_computer/console/preset/sysadmin/install_programs()
@@ -46,7 +46,7 @@
 	cpu.hard_drive.store_file(new/datum/computer_file/program/email_client())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/email_administration())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/nt_explorer())
-
+	cpu.hard_drive.store_file(new/datum/computer_file/program/govportal())
 // ===== MEDICAL CONSOLE =====
 /obj/machinery/modular_computer/console/preset/medical
 	 console_department = "Medbay"
@@ -57,6 +57,7 @@
 	cpu.hard_drive.store_file(new/datum/computer_file/program/wordprocessor())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/email_client())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/nt_explorer())
+	cpu.hard_drive.store_file(new/datum/computer_file/program/govportal())
 
 // ===== RESEARCH CONSOLE =====
 /obj/machinery/modular_computer/console/preset/research
@@ -70,6 +71,7 @@
 	cpu.hard_drive.store_file(new/datum/computer_file/program/wordprocessor())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/email_client())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/nt_explorer())
+	cpu.hard_drive.store_file(new/datum/computer_file/program/govportal())
 
 // ===== COMMAND CONSOLE =====
 /obj/machinery/modular_computer/console/preset/command
@@ -91,7 +93,7 @@
 	cpu.hard_drive.store_file(new/datum/computer_file/program/landlord_management())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/business_manager())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/crim_record())
-
+	cpu.hard_drive.store_file(new/datum/computer_file/program/govportal())
 
 // ===== SECURITY CONSOLE =====
 /obj/machinery/modular_computer/console/preset/security
@@ -107,6 +109,7 @@
 	cpu.hard_drive.store_file(new/datum/computer_file/program/email_client())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/nt_explorer())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/crim_record())
+	cpu.hard_drive.store_file(new/datum/computer_file/program/govportal())
 
 // ===== CIVILIAN CONSOLE =====
 /obj/machinery/modular_computer/console/preset/civilian
@@ -123,6 +126,7 @@
 	cpu.hard_drive.store_file(new/datum/computer_file/program/candidate_registration())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/landlord_management())
 	cpu.hard_drive.store_file(new/datum/computer_file/program/business_manager())
+	cpu.hard_drive.store_file(new/datum/computer_file/program/govportal())
 
 // ===== GOVERNMENT CONSOLE =====
 /obj/machinery/modular_computer/console/preset/government
