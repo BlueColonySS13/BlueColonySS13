@@ -140,9 +140,9 @@ GLOBAL_LIST_EMPTY(president_portal_ids)
 		on_ballot_pass = replacetext(on_ballot_pass, "%NAME", name)
 		on_ballot_pass = replacetext(on_ballot_pass, "%VALUE", get_formatted_value())
 		on_ballot_pass = replacetext(on_ballot_pass, "%PROPOSEDVALUE", SSpersistent_options.find_proposed_value_ballot(id))
-		on_ballot_fail = replacetext(on_ballot_pass, "%NAME", name)
-		on_ballot_fail = replacetext(on_ballot_pass, "%VALUE", get_formatted_value())
-		on_ballot_fail = replacetext(on_ballot_pass, "%PROPOSEDVALUE", SSpersistent_options.find_proposed_value_ballot(id))
+		on_ballot_fail = replacetext(on_ballot_fail, "%NAME", name)
+		on_ballot_fail = replacetext(on_ballot_fail, "%VALUE", get_formatted_value())
+		on_ballot_fail = replacetext(on_ballot_fail, "%PROPOSEDVALUE", SSpersistent_options.find_proposed_value_ballot(id))
 	return 1
 
 /datum/persistent_option/proc/get_linked_ballot()
