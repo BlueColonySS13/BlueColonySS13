@@ -108,6 +108,11 @@
 	description = "This relates to chloral hydrate that is in any form."
 	id = CONTRABAND_CHLORAL
 
+/datum/persistent_option/select_list/contraband/harmful_chems
+	name = "Harmful Chemical Contraband Status"
+	description = "This relates to harmful chemicals that are not used for medical purpose."
+	id = CONTRABAND_HARMFUL_CHEMS
+
 // Weapons
 
 /datum/persistent_option/select_list/contraband/guns

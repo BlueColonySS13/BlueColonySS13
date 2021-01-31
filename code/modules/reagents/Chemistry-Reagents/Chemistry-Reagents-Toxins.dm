@@ -798,6 +798,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	strength = 1
 	metabolism = REM
 	affects_dead = TRUE
+	contraband_type = CONTRABAND_BIOWEAPONRY
 
 /datum/reagent/toxin/trioxin/affect_blood(var/mob/living/carbon/M, var/removed)
 	..()

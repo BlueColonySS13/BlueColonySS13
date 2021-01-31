@@ -44,6 +44,38 @@
 /datum/job/nanotrasen/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.rep_email
 
+/datum/job/nanotrasen/president
+	title = "President"
+	flag = PRESIDENT
+	department_flag = GOVLAW
+	faction = "City"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "NanoTrasen"
+	subordinates = "the Governor"
+
+	selection_color = "#1D1D4F"
+	idtype = /obj/item/weapon/card/id/nanotrasen/president
+	req_admin_notify = 1
+	access = list(access_president, access_vice_president, access_advisor, access_governor, access_cent_general, access_cent_thunder, \
+	access_cent_medical, access_cent_living, access_cent_storage, access_cent_teleporter)
+
+	minimal_access = list(access_president, access_vice_president, access_advisor, access_governor)
+	minimal_player_age = 14
+
+	wage = 9000
+	alt_titles = list()
+
+	minimum_character_age = 30
+	ideal_character_age = 50
+	outfit_type = /decl/hierarchy/outfit/job/heads/president
+
+	portal_whitelist = "cabinet_president"
+
+/datum/job/nanotrasen/president/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
+	return using_map.president_email
+
+
 /datum/job/nanotrasen/vice
 	title = "Vice President"
 	total_positions = 1
@@ -76,22 +108,8 @@
 
 /datum/job/nanotrasen/ceo/get_access()
 	return get_all_centcom_access()
-
-/datum/job/nanotrasen/supreme_justice
-	title = "Supreme Justice"
-	total_positions = 1
-	spawn_positions = 1
-	flag = SUPREMEJUSTICE
-	wage = 4500
-	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/justice
-	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
-	access = list(access_cent_general)
-	minimal_access = list(access_cent_general)
-
-	description = "As supreme justice you control the supreme court, the ultimate judicial body of this colony."
-
-	portal_whitelist = "cabinet_supremejustice"
-
+/datum/job/nanotrasen/ceo/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
+	return using_map.director_email
 
 /datum/job/nanotrasen/governor
 	title = "Governor"
@@ -113,8 +131,25 @@
 
 	portal_whitelist = "cabinet_governor"
 
-/datum/job/nanotrasen/ceo/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
-	return using_map.director_email
+
+
+
+/datum/job/nanotrasen/supreme_justice
+	title = "Supreme Justice"
+	total_positions = 1
+	spawn_positions = 1
+	flag = SUPREMEJUSTICE
+	wage = 4500
+	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/justice
+	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
+	access = list(access_cent_general)
+	minimal_access = list(access_cent_general)
+
+	description = "As supreme justice you control the supreme court, the ultimate judicial body of this colony."
+
+	portal_whitelist = "cabinet_supremejustice"
+
+
 
 /datum/job/nanotrasen/pdsi
 	title = "PDSI Agent"
@@ -150,36 +185,6 @@
 /datum/job/nanotrasen/pdsi/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.investigation_email
 
-/datum/job/nanotrasen/president
-	title = "President"
-	flag = PRESIDENT
-	department_flag = GOVLAW
-	faction = "City"
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = "NanoTrasen"
-	subordinates = "the Governor"
-
-	selection_color = "#1D1D4F"
-	idtype = /obj/item/weapon/card/id/nanotrasen/president
-	req_admin_notify = 1
-	access = list(access_president, access_vice_president, access_advisor, access_governor, access_cent_general, access_cent_thunder, \
-	access_cent_medical, access_cent_living, access_cent_storage, access_cent_teleporter)
-
-	minimal_access = list(access_president, access_vice_president, access_advisor, access_governor)
-	minimal_player_age = 14
-
-	wage = 9000
-	alt_titles = list()
-
-	minimum_character_age = 30
-	ideal_character_age = 50
-	outfit_type = /decl/hierarchy/outfit/job/heads/president
-
-	portal_whitelist = "cabinet_president"
-
-/datum/job/nanotrasen/president/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
-	return using_map.president_email
 
 /datum/job/nanotrasen/advisor
 	flag = 0
