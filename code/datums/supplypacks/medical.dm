@@ -33,6 +33,13 @@
 	containertype = /obj/structure/closet/crate/medical
 	containername = "BloodPack crate"
 
+/datum/supply_pack/med/synthplas
+	name = "Synthblood crate"
+	contains = list(/obj/item/weapon/reagent_containers/blood/synthplas = 6)
+	cost = 4500 // synthblood is expensiver yo
+	containertype = /obj/structure/closet/crate/medical
+	containername = "SynthPlas crate"
+
 /datum/supply_pack/med/bodybag
 	name = "Body bag crate"
 	contains = list(/obj/item/weapon/storage/box/bodybags = 3)

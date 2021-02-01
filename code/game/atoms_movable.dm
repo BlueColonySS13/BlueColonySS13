@@ -303,3 +303,8 @@
 	if(new_scale_y != 0)
 		icon_scale_y = new_scale_y
 	update_transform()
+
+
+// Called when touching a lava tile.
+/atom/movable/proc/lava_act()
+	fire_act(null, 10000, 1000)
