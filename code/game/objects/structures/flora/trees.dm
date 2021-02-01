@@ -246,6 +246,7 @@
 	return "[base_state][light_shift]"
 
 /obj/structure/flora/tree/sif/New()
+	. = ..()
 	update_icon()
 
 /obj/structure/flora/tree/sif/update_icon()

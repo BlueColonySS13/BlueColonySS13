@@ -99,6 +99,7 @@
 	log_message("[src.name] created.")
 	loc.Entered(src)
 	mechas_list += src //global mech list
+	update_transform()
 	return
 
 /obj/mecha/Destroy()
