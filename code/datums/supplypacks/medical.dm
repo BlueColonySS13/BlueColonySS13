@@ -334,17 +334,3 @@
 	cost = 10000 //bruh
 	containertype = /obj/structure/closet/crate/medical
 	containername = "Biomass Crate"
-
-/datum/supply_pack/med/distillery
-	name = "Chemical distiller crate"
-	contains = list(/obj/machinery/portable_atmospherics/powered/reagent_distillery = 1)
-	cost = 2500
-	containertype = /obj/structure/largecrate
-	containername = "Chemical distiller crate"
-
-/datum/supply_pack/med/advdistillery
-	name = "Industrial Chemical distiller crate"
-	contains = list(/obj/machinery/portable_atmospherics/powered/reagent_distillery/industrial = 1)
-	cost = 5000
-	containertype = /obj/structure/largecrate
-	containername = "Industrial Chemical distiller crate"
