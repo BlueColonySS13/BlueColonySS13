@@ -199,3 +199,9 @@
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Business Expense Manager Circuit"
 
+/datum/supply_pack/med/distillery
+	name = "Chemical Distiller Circuit"
+	contains = list(/obj/item/weapon/circuitboard/distiller = 1)
+	cost = 7500
+	containertype = /obj/structure/largecrate
+	containername = "Chemical Distiller Circuit crate"

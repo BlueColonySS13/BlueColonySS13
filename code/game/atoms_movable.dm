@@ -297,3 +297,7 @@
 /atom/movable/proc/adjust_scale(new_scale)
 	icon_scale = new_scale
 	update_transform()
+
+// Called when touching a lava tile.
+/atom/movable/proc/lava_act()
+	fire_act(null, 10000, 1000)

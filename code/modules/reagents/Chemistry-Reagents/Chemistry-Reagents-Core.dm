@@ -74,7 +74,7 @@
 	remove_self(volume)
 
 /datum/reagent/blood/synthblood
-	name = "Synthetic blood"
+	name = "synthetic blood"
 	id = "synthblood"
 	color = "#999966"
 	volume_mod = 2
@@ -83,7 +83,15 @@
 	..()
 	if(data && !data["blood_type"])
 		data["blood_type"] = "O-"
+	if(data && data["species"])
+		data["species"] = null
 	return
+
+/datum/reagent/blood/synthblood/dilute
+	name = "synthetic plasma"
+	id = "synthblood_dilute"
+	color = "#cacaaf"
+	volume_mod = 1.2
 
 // pure concentrated antibodies
 /datum/reagent/antibodies
