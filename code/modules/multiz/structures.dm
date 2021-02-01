@@ -44,10 +44,20 @@
 	return ..()
 
 /obj/structure/ladder/attackby(obj/item/C as obj, mob/user as mob)
+	if(istype(C, /obj/item/weapon/grab))
+		var/obj/item/weapon/grab/G = C
+		var/grabbed = G.affecting
+		if(!user.Adjacent(grabbed)) //If you somehow manage to have a grab on someone but you're not near them, don't go up or down the ladder with them.
+			attack_hand(user)
+			return
+		else
+			attack_hand(user, grabbed)
+			return
+
 	attack_hand(user)
 	return
 
-/obj/structure/ladder/attack_hand(var/mob/M)
+/obj/structure/ladder/attack_hand(var/mob/M, var/mob/grabbed)
 	if(!M.may_climb_ladders(src))
 		return
 
@@ -68,6 +78,7 @@
 
 	if(do_after(M, climb_time, src))
 		climbLadder(M, target_ladder)
+		climbLadder(grabbed, target_ladder)
 
 /obj/structure/ladder/attack_ghost(var/mob/M)
 	var/target_ladder = getTargetLadder(M)
