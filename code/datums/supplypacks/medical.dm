@@ -33,6 +33,13 @@
 	containertype = /obj/structure/closet/crate/medical
 	containername = "BloodPack crate"
 
+/datum/supply_pack/med/synthplas
+	name = "Synthblood crate"
+	contains = list(/obj/item/weapon/reagent_containers/blood/synthplas = 6)
+	cost = 4500 // synthblood is expensiver yo
+	containertype = /obj/structure/closet/crate/medical
+	containername = "SynthPlas crate"
+
 /datum/supply_pack/med/bodybag
 	name = "Body bag crate"
 	contains = list(/obj/item/weapon/storage/box/bodybags = 3)
@@ -327,3 +334,17 @@
 	cost = 10000 //bruh
 	containertype = /obj/structure/closet/crate/medical
 	containername = "Biomass Crate"
+
+/datum/supply_pack/med/distillery
+	name = "Chemical distiller crate"
+	contains = list(/obj/machinery/portable_atmospherics/powered/reagent_distillery = 1)
+	cost = 2500
+	containertype = /obj/structure/largecrate
+	containername = "Chemical distiller crate"
+
+/datum/supply_pack/med/advdistillery
+	name = "Industrial Chemical distiller crate"
+	contains = list(/obj/machinery/portable_atmospherics/powered/reagent_distillery/industrial = 1)
+	cost = 5000
+	containertype = /obj/structure/largecrate
+	containername = "Industrial Chemical distiller crate"

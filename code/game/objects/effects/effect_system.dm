@@ -239,6 +239,15 @@ steam.start() -- spawns the effect
 	if(prob(25))
 		M.emote("cough")
 
+/obj/effect/effect/smoke/bad/noxious
+	opacity = 0
+
+/obj/effect/effect/smoke/bad/noxious/affect(var/mob/living/L)
+	if (!..())
+		return 0
+	if(L.needs_to_breathe())
+		L.adjustToxLoss(1)
+
 /* Not feasile until a later date
 /obj/effect/effect/smoke/bad/Crossed(atom/movable/M as mob|obj)
 	..()
@@ -254,6 +263,87 @@ steam.start() -- spawns the effect
 /obj/effect/effect/smoke/bad/proc/on_projectile_delete(obj/item/projectile/beam/proj)
 	projectiles -= proj
 */
+
+// Burnt Food Smoke (Specialty for Cooking Failures)
+/obj/effect/effect/smoke/bad/burntfood
+	color = "#000000"
+	time_to_live = 600
+
+/obj/effect/effect/smoke/bad/burntfood/process()
+	for(var/mob/living/L in get_turf(src))
+		affect(L)
+
+/obj/effect/effect/smoke/bad/burntfood/affect(var/mob/living/L) // This stuff is extra-vile.
+	if (!..())
+		return 0
+	if(L.needs_to_breathe())
+		L.emote("cough")
+
+/////////////////////////////////////////////
+// 'Elemental' smoke
+/////////////////////////////////////////////
+
+/obj/effect/effect/smoke/elemental
+	name = "cloud"
+	desc = "A cloud of some kind that seems really generic and boring."
+	opacity = FALSE
+	var/strength = 5 // How much damage to do inside each affect()
+
+/obj/effect/effect/smoke/elemental/initialize()
+	START_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/effect/effect/smoke/elemental/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/effect/effect/smoke/elemental/Moved(atom/old_loc, direction, forced = FALSE)
+	. = ..()
+	for(var/mob/living/L in range(1, src))
+		affect(L)
+
+/obj/effect/effect/smoke/elemental/process()
+	for(var/mob/living/L in range(1, src))
+		affect(L)
+
+
+/obj/effect/effect/smoke/elemental/fire
+	name = "burning cloud"
+	desc = "A cloud of something that is on fire."
+	color = "#FF9933"
+	light_color = "#FF0000"
+	light_range = 2
+	light_power = 5
+
+/obj/effect/effect/smoke/elemental/fire/affect(mob/living/L)
+	L.inflict_heat_damage(strength)
+	L.add_modifier(/datum/modifier/fire, 6 SECONDS) // Around 15 damage per stack.
+
+/obj/effect/effect/smoke/elemental/frost
+	name = "freezing cloud"
+	desc = "A cloud filled with brutally cold mist."
+	color = "#00CCFF"
+
+/obj/effect/effect/smoke/elemental/frost/affect(mob/living/L)
+	L.inflict_cold_damage(strength)
+
+/obj/effect/effect/smoke/elemental/shock
+	name = "charged cloud"
+	desc = "A cloud charged with electricity."
+	color = "#4D4D4D"
+
+/obj/effect/effect/smoke/elemental/shock/affect(mob/living/L)
+	L.inflict_shock_damage(strength)
+
+/obj/effect/effect/smoke/elemental/mist
+	name = "misty cloud"
+	desc = "A cloud filled with water vapor."
+	color = "#CCFFFF"
+	alpha = 128
+	strength = 1
+
+/obj/effect/effect/smoke/elemental/mist/affect(mob/living/L)
+	L.water_act(strength)
 
 /////////////////////////////////////////////
 // Smoke spread
@@ -303,6 +393,25 @@ steam.start() -- spawns the effect
 
 /datum/effect/effect/system/smoke_spread/bad
 	smoke_type = /obj/effect/effect/smoke/bad
+
+
+/datum/effect/effect/system/smoke_spread/bad/burntfood
+	smoke_type = /obj/effect/effect/smoke/bad/burntfood
+
+/datum/effect/effect/system/smoke_spread/noxious
+	smoke_type = /obj/effect/effect/smoke/bad/noxious
+
+/datum/effect/effect/system/smoke_spread/fire
+	smoke_type = /obj/effect/effect/smoke/elemental/fire
+
+/datum/effect/effect/system/smoke_spread/frost
+	smoke_type = /obj/effect/effect/smoke/elemental/frost
+
+/datum/effect/effect/system/smoke_spread/shock
+	smoke_type = /obj/effect/effect/smoke/elemental/shock
+
+/datum/effect/effect/system/smoke_spread/mist
+	smoke_type = /obj/effect/effect/smoke/elemental/mist
 
 /////////////////////////////////////////////
 //////// Attach an Ion trail to any object, that spawns when it moves (like for the jetpack)
