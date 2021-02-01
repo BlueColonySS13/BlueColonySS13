@@ -71,7 +71,7 @@
 			label_text = tmp_label
 			update_iv_label()
 
-/obj/item/weapon/reagent_containers/blood/vproc/update_iv_label()
+/obj/item/weapon/reagent_containers/blood/proc/update_iv_label()
 	if(label_text == "")
 		name = base_name
 	else if(length(label_text) > 10)
