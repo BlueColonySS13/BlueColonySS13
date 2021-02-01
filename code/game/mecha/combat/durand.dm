@@ -14,6 +14,8 @@
 	var/defence = 0
 	var/defence_deflect = 35
 	wreckage = /obj/effect/decal/mecha_wreckage/durand
+	icon_scale_x = 1.5
+	icon_scale_y = 1.5
 
 /*
 /obj/mecha/combat/durand/New()

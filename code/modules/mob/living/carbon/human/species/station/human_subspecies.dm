@@ -110,8 +110,8 @@
 	bandages_icon = 'icons/mob/bandage.dmi'
 	total_health = 85
 	additional_wage = 20
-	icon_scale = 0.9
-	icon_width = 1
+	icon_scale_y = 0.9
+	icon_scale_x = 1
 	brute_mod = 0.5
 	male_scream_sound	= 'sound/voice/human/boy_scream.ogg'
 	female_scream_sound	= 'sound/voice/human/girl_scream.ogg'
@@ -143,8 +143,8 @@
 	total_health = 50
 	brute_mod = 0.2
 	additional_wage = 10
-	icon_scale = 0.75
-	icon_width = 0.75
+	icon_scale_y = 0.75
+	icon_scale_x = 0.75
 	male_scream_sound		= 'sound/voice/human/boy_scream.ogg'
 	female_scream_sound	= 'sound/voice/human/girl_scream.ogg'
 	can_drive = 0

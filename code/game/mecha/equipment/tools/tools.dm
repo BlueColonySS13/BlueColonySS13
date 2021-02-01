@@ -641,9 +641,10 @@
 		pr_repair_droid = null
 		..()
 
-	attach(obj/mecha/M as obj)
+	add_equip_overlay(obj/mecha/M as obj)
 		..()
-		droid_overlay = new(src.icon, icon_state = "repair_droid")
+		if(!droid_overlay)
+			droid_overlay = new(src.icon, icon_state = "repair_droid")
 		M.overlays += droid_overlay
 		return
 
