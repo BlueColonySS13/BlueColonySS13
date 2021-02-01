@@ -50,6 +50,9 @@
 		if(!user.Adjacent(grabbed)) //If you somehow manage to have a grab on someone but you're not near them, don't go up or down the ladder with them.
 			attack_hand(user)
 			return
+		else if(G.state < GRAB_AGGRESSIVE)
+			to_chat(user, span("warning", "You need a better grab on [grabbed] to climb the ladder with them!"))
+			return
 		else
 			attack_hand(user, grabbed)
 			return
