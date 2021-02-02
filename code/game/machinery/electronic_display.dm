@@ -764,6 +764,7 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 				if(required_tier)
 					requesting_permit = TRUE
 					currently_vending = O
+					updateDialog()
 					return
 
 				else
