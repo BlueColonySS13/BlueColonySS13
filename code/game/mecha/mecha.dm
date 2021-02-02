@@ -99,6 +99,7 @@
 	log_message("[src.name] created.")
 	loc.Entered(src)
 	mechas_list += src //global mech list
+	update_transform()
 	return
 
 /obj/mecha/Destroy()
@@ -894,7 +895,7 @@
 		src.verbs += /obj/mecha/verb/eject
 		src.Entered(mmi_as_oc)
 		src.Move(src.loc)
-		src.icon_state = src.reset_icon()
+		update_icon()
 		set_dir(dir_in)
 		src.log_message("[mmi_as_oc] moved in as pilot.")
 		if(!hasInternalDamage())
@@ -1140,7 +1141,7 @@
 		src.forceMove(src.loc)
 		src.verbs += /obj/mecha/verb/eject
 		src.log_append_to_last("[H] moved in as pilot.")
-		src.icon_state = src.reset_icon()
+		update_icon()
 		set_dir(dir_in)
 		playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
 		if(!hasInternalDamage())
@@ -1228,7 +1229,7 @@
 			mmi.mecha = null
 			src.occupant.canmove = 0
 		src.occupant = null
-		src.icon_state = src.reset_icon()+"-open"
+		update_icon()
 		src.set_dir(dir_in)
 		src.verbs -= /obj/mecha/verb/eject
 	return
@@ -1773,13 +1774,6 @@
 		cell.give(amount)
 		return 1
 	return 0
-
-/obj/mecha/proc/reset_icon()
-	if (initial_icon)
-		icon_state = initial_icon
-	else
-		icon_state = initial(icon_state)
-	return icon_state
 
 /obj/mecha/attack_generic(var/mob/user, var/damage, var/attack_message)
 
