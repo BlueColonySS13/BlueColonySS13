@@ -402,24 +402,26 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 			return
 
 	if(currently_vending)
-		var/paid = FALSE
+		if(!requesting_permit)
+			var/paid = FALSE
 
-		if(I) //for IDs and PDAs and wallets with IDs
-			if(pay_with_card(I,user))
-				paid = TRUE
+			if(I) //for IDs and PDAs and wallets with IDs
+				if(pay_with_card(I,user))
+					paid = TRUE
 
-		if(istype(W, /obj/item/weapon/spacecash/ewallet))
-			var/obj/item/weapon/spacecash/ewallet/C = W
-			if(pay_with_ewallet(C, user))
-				paid = TRUE
+			if(istype(W, /obj/item/weapon/spacecash/ewallet))
+				var/obj/item/weapon/spacecash/ewallet/C = W
+				if(pay_with_ewallet(C, user))
+					paid = TRUE
 
-		if(istype(W, /obj/item/weapon/spacecash))
-			var/obj/item/weapon/spacecash/C = W
-			if(pay_with_cash(C, user))
-				paid = TRUE
+			if(istype(W, /obj/item/weapon/spacecash))
+				var/obj/item/weapon/spacecash/C = W
+				if(pay_with_cash(C, user))
+					paid = TRUE
 
-		if(paid)
-			vend(currently_vending, user)
+			if(paid)
+				vend(currently_vending, user)
+			return
 		return
 
 	if(maint_mode)
@@ -762,6 +764,8 @@ GLOBAL_LIST_INIT(display_case_hacked_icons, list(
 				if(required_tier)
 					requesting_permit = TRUE
 					currently_vending = O
+					return
+
 				else
 					if(!O.get_item_cost())
 						vend(O, usr)
