@@ -326,11 +326,25 @@ other types of metals and chemistry for reagents).
 	build_path = /obj/item/clothing/glasses/hud/health
 	sort_string = "GAAAA"
 
+/datum/design/item/hud/health/prescription
+	name = "prescription health scanner"
+	id = "health_hud"
+	req_tech = list(TECH_BIO = 2, TECH_MAGNET = 3)
+	build_path = /obj/item/clothing/glasses/hud/health/prescription
+	sort_string = "GAAAA"
+
 /datum/design/item/hud/security
 	name = "security records"
 	id = "security_hud"
 	req_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 2)
 	build_path = /obj/item/clothing/glasses/hud/security
+	sort_string = "GAAAB"
+
+/datum/design/item/hud/security/prescription
+	name = "prescription security records"
+	id = "security_hud"
+	req_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 2)
+	build_path = /obj/item/clothing/glasses/hud/security/prescription
 	sort_string = "GAAAB"
 
 /datum/design/item/hud/mesons
@@ -340,6 +354,15 @@ other types of metals and chemistry for reagents).
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50, "copper" = 100)
 	build_path = /obj/item/clothing/glasses/meson
+	sort_string = "GAAAC"
+
+/datum/design/item/hud/mesons/prescription
+	name = "prescription optical meson scanners design"
+	desc = "Using the meson-scanning technology those glasses allow you to see through walls, floor or anything else."
+	id = "mesons"
+	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50, "copper" = 100)
+	build_path = /obj/item/clothing/glasses/meson/prescription
 	sort_string = "GAAAC"
 
 /datum/design/item/weapon/mining/AssembleDesignName()
