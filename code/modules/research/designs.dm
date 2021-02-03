@@ -331,21 +331,21 @@ other types of metals and chemistry for reagents).
 	id = "health_hud"
 	req_tech = list(TECH_BIO = 2, TECH_MAGNET = 3)
 	build_path = /obj/item/clothing/glasses/hud/health/prescription
-	sort_string = "GAAAA"
+	sort_string = "GAAAB"
 
 /datum/design/item/hud/security
 	name = "security records"
 	id = "security_hud"
 	req_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 2)
 	build_path = /obj/item/clothing/glasses/hud/security
-	sort_string = "GAAAB"
+	sort_string = "GAAAC"
 
 /datum/design/item/hud/security/prescription
 	name = "prescription security records"
 	id = "security_hud"
 	req_tech = list(TECH_MAGNET = 3, TECH_COMBAT = 2)
 	build_path = /obj/item/clothing/glasses/hud/security/prescription
-	sort_string = "GAAAB"
+	sort_string = "GAAAD"
 
 /datum/design/item/hud/mesons
 	name = "Optical meson scanners design"
@@ -354,7 +354,7 @@ other types of metals and chemistry for reagents).
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50, "copper" = 100)
 	build_path = /obj/item/clothing/glasses/meson
-	sort_string = "GAAAC"
+	sort_string = "GAAAE"
 
 /datum/design/item/hud/mesons/prescription
 	name = "prescription optical meson scanners design"
@@ -363,7 +363,7 @@ other types of metals and chemistry for reagents).
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50, "copper" = 100)
 	build_path = /obj/item/clothing/glasses/meson/prescription
-	sort_string = "GAAAC"
+	sort_string = "GAAAF"
 
 /datum/design/item/weapon/mining/AssembleDesignName()
 	..()
