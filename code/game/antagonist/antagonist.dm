@@ -8,6 +8,7 @@
 
 	// Strings.
 	var/welcome_text = "Cry havoc and let slip the dogs of war!"
+	var/antag_sound = 'sound/effects/antag_notice/general_baddie_alert.ogg' // The sound file to play when someone gets this role. Only they can hear it.
 	var/leader_welcome_text                 // Text shown to the leader, if any.
 	var/victory_text                        // World output at roundend for victory.
 	var/loss_text                           // As above for loss.
@@ -67,7 +68,10 @@
 	var/list/candidates =          list()   // Potential candidates.
 	var/list/faction_members =     list()   // Semi-antags (in-round revs, borer thralls)
 
-	var/allow_latejoin = 0					//Determines whether or not the game mode will allow for the template to spawn try_latespawn
+	var/allow_latejoin = 0				//Determines whether or not the game mode will allow for the template to spawn try_latespawn
+
+	var/allow_lobbyjoin = FALSE			//If this antagonist type can join from the lobby or not.
+	var/police_per_antag = 1				//If it is a lobby join antag, how many police needed per antag?
 
 	// ID card stuff.
 	var/default_access = list()
@@ -97,6 +101,11 @@
 			hud_icon_reference = list()
 		if(role_text) hud_icon_reference[role_text] = antaghud_indicator
 		if(faction_role_text) hud_icon_reference[faction_role_text] = antaghud_indicator
+
+	if(allow_lobbyjoin)
+		GLOB.lobbyjoin_antagonists += src
+
+
 
 /datum/antagonist/proc/tick()
 	return 1

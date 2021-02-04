@@ -41,8 +41,8 @@ var/prison_shuttle_timeleft = 0
 			dat = src.temp
 		else
 			dat += {"<BR><B>Prison Shuttle</B><HR>
-			\nLocation: [prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison ? "Moving to station ([prison_shuttle_timeleft] Secs.)":prison_shuttle_at_station ? "Station":"Dock"]<BR>
-			[prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison ? "\n*Shuttle already called*<BR>\n<BR>":prison_shuttle_at_station ? "\n<A href='?src=\ref[src];sendtodock=1'>Send to Dock</A><BR>\n<BR>":"\n<A href='?src=\ref[src];sendtostation=1'>Send to station</A><BR>\n<BR>"]
+			\nLocation: [prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison ? "Moving to city ([prison_shuttle_timeleft] Secs.)":prison_shuttle_at_station ? "City":"Dock"]<BR>
+			[prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison ? "\n*Shuttle already called*<BR>\n<BR>":prison_shuttle_at_station ? "\n<A href='?src=\ref[src];sendtodock=1'>Send to Dock</A><BR>\n<BR>":"\n<A href='?src=\ref[src];sendtostation=1'>Send to City</A><BR>\n<BR>"]
 			\n<A href='?src=\ref[user];mach_close=computer'>Close</A>"}
 
 		user << browse(dat, "window=computer;size=575x450")
@@ -201,7 +201,7 @@ var/prison_shuttle_timeleft = 0
 				for(var/mob/living/carbon/bug in end_location) // If someone somehow is still in the shuttle's docking area...
 					bug.gib()
 
-				for(var/mob/living/simple_animal/pest in end_location) // And for the other kind of bug...
+				for(var/mob/living/simple_mob/pest in end_location) // And for the other kind of bug...
 					pest.gib()
 
 				start_location.move_contents_to(end_location)

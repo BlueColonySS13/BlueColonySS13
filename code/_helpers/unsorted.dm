@@ -19,11 +19,9 @@
 
 	if (!( istext(HTMLstring) ))
 		CRASH("Given non-text argument!")
-		return
 	else
 		if (length(HTMLstring) != 7)
 			CRASH("Given non-HTML argument!")
-			return
 	var/textr = copytext(HTMLstring, 2, 4)
 	var/textg = copytext(HTMLstring, 4, 6)
 	var/textb = copytext(HTMLstring, 6, 8)
@@ -40,7 +38,6 @@
 	if (length(textb) < 2)
 		textr = text("0[]", textb)
 	return text("#[][][]", textr, textg, textb)
-	return
 
 //Returns the middle-most value
 /proc/dd_range(var/low, var/high, var/num)
@@ -528,7 +525,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		moblist.Add(M)
 	for(var/mob/new_player/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/simple_animal/M in sortmob)
+	for(var/mob/living/simple_mob/M in sortmob)
 		moblist.Add(M)
 //	for(var/mob/living/silicon/hivebot/M in world)
 //		mob_list.Add(M)
@@ -1178,7 +1175,7 @@ proc/is_hot(obj/item/W as obj)
 		else
 			return 0
 
-	return 0
+
 
 //Whether or not the given item counts as sharp in terms of dealing damage
 /proc/is_sharp(obj/O as obj)
@@ -1220,12 +1217,19 @@ proc/is_hot(obj/item/W as obj)
 
 // check if mob is lying down on something we can operate him on.
 // The RNG with table/rollerbeds comes into play in do_surgery() so that fail_step() can be used instead.
-/proc/can_operate(mob/living/carbon/M)
-	return M.lying
+/proc/can_operate(mob/living/carbon/M, mob/living/user)
+	. = M.lying
+
+	if(user && M == user && user.allow_self_surgery && user.a_intent == I_HELP)	// You can, technically, always operate on yourself after standing still. Inadvised, but you can.
+
+		if(!M.isSynthetic())
+			. = TRUE
+
+	return .
 
 // Returns an instance of a valid surgery surface.
-/mob/living/proc/get_surgery_surface()
-	if(!lying)
+/mob/living/proc/get_surgery_surface(mob/living/user)
+	if(!lying && user != src)
 		return null // Not lying down means no surface.
 	var/obj/surface = null
 	for(var/obj/O in loc) // Looks for the best surface.

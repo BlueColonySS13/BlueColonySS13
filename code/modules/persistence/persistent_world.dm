@@ -1,7 +1,8 @@
 
 /proc/save_world()
 	//saves all political data - TODO: Move this into law subsystem
-	persistent_economy.save_economy()
+	SSpersistent_options.save_all_options()
+	SSpersistent_options.save_ballots()
 
 	//save economy and department money
 	SSeconomy.save_economy()
@@ -35,13 +36,11 @@
 		handle_jail(H)	// make sure the pesky criminals get what's coming to them.
 		H.save_mob_to_prefs()
 
-	if(config.lot_saving)
-		to_chat(world, "<h3>Saving all lots...</h3>")
-		SSlots.save_all_lots()
-
 	for(var/datum/persistent_inventory/PI in GLOB.persistent_inventories)
 		PI.save_inventory()
 
-
+	if(config.lot_saving)
+		to_chat(world, "<h3>Saving all lots... Note: This might lag the world for a short while.</h3>")
+		SSlots.save_all_lots()
 
 	return 1

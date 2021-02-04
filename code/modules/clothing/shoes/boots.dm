@@ -33,7 +33,7 @@
 
 /obj/item/clothing/shoes/boots/jackboots/toeless
 	name = "toe-less jackboots"
-	desc = "Modified pair of jackboots, particularly friendly to those species whose toes hold claws."
+	desc = "Modified pair of jackboots. Not very practical for a planet as cold as Pollux."
 	icon_state = "digiboots"
 	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
 	species_restricted = null
@@ -47,7 +47,7 @@
 
 /obj/item/clothing/shoes/boots/workboots/toeless
 	name = "toe-less workboots"
-	desc = "A pair of toeless work boots designed for use in industrial settings. Modified for species whose toes have claws."
+	desc = "A pair of toeless work boots designed for use in industrial settings. Safety last."
 	icon_state = "workbootstoeless"
 	item_state_slots = list(slot_r_hand_str = "workboots", slot_l_hand_str = "workboots")
 	species_restricted = null
@@ -115,6 +115,13 @@
 	icon_state = "explorer"
 	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
 
+// Allows the wearer to climb cliffs, which could allow for shortcuts or sequence-breaking.
+/obj/item/clothing/shoes/boots/winter/climbing
+	name = "climbing winter boots"
+	desc = "A pair of winter boots, with metal bracing attached to assist in climbing rocky terrain."
+	icon_state = "climbing_boots"
+	rock_climbing = TRUE
+
 /obj/item/clothing/shoes/boots/tactical
 	name = "tactical boots"
 	desc = "Tan boots with extra padding and armor."
@@ -177,28 +184,20 @@
 
 /obj/item/clothing/shoes/boots/stylish/red
 	name = "stylish boots"
-	desc = "A pair of stylish, yet functional, leather boots."
 	icon_state = "stylish_boots_red"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 10, rad = 0)
-	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/stylish/navy
 	name = "stylish boots"
-	desc = "A pair of stylish, yet functional, leather boots."
 	icon_state = "stylish_boots_navy"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 10, rad = 0)
-	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/stylish/charcoal
 	name = "stylish boots"
-	desc = "A pair of stylish, yet functional, leather boots."
 	icon_state = "stylish_boots_charcoal"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 10, rad = 0)
-	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/boots/stylish/silver
 	name = "stylish boots"
-	desc = "A pair of stylish, yet functional, leather boots."
 	icon_state = "stylish_boots_silver"
-	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 10, rad = 0)
-	siemens_coefficient = 0.7
+
+/obj/item/clothing/shoes/boots/stylish/recolorable
+	name = "stylish boots"
+	icon_state = "stylish_boots_white"

@@ -1,0 +1,35 @@
+[small][center]Geminus City Hall
+Universal Permit Application Form[/center][hr]
+[b]Applicant Information[/b]
+Name: [field]
+Age: [field]
+Occupation: [field]
+Currently Owned Permits: [field]
+
+Reason for Permit Application:
+[field]
+
+[b]Permit Information[/b]
+Permit(s) Requested:
+[i]*List all that apply. The permits you are request must match a corresponding chemical, item or non-weapon permit object marked as requiring a sales, or possession permit under the contraband laws[/i].
+
+Sales Permits[*][field]
+[*][field]
+[*][field]
+[*][field][/list]
+
+Possession Permits
+[*][field]
+[*][field]
+[*][field]
+[*][field][/list]
+[b]NOTICE[/b]
+In the event the President has not declared specific pricing for a permit under the Universal Permit Application Form, the Geminus City Hall shall be empowered at their discretion to apply an appropriate price for the process of this application. The price should be high enough to provide a reasonable barrier to the permit lacking value, and low enough as to not discourage applicants from pursuing the permits at all.
+
+[hr][center]FOR OFFICE USE ONLY[/center]Reviewing Authority: [field]
+Signature: [field]
+
+Application Decision:
+[[field]] Accepted
+[[field]] Denied
+[center]STAMP BELOW TO NOTARIZE[/center]

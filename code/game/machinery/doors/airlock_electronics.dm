@@ -54,6 +54,8 @@
 			var/list/baccesses = SSbusiness.business_access_list
 			for (var/datum/access/accb in baccesses)
 				var/bname = get_biz_access_name_id(accb.id)
+				if(!bname)
+					continue
 
 				if (!conf_access || !conf_access.len || !(accb.id in conf_access))
 					t1 += "<a href='?src=\ref[src];access=[accb.id]'>[bname]</a><br>"
@@ -86,7 +88,8 @@
 					I = pda.id
 				if (I && src.check_access(I))
 					src.locked = 0
-					src.last_configurator = I:registered_name
+					if("registered_name" in I.vars)	// some check_access things don't have this.
+						last_configurator = I:registered_name
 
 		if (locked)
 			return

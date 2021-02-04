@@ -36,6 +36,8 @@
 	var/data
 
 /proc/save_map(var/id, var/path, var/save_obj = 1)
+	set background = 1
+
 	var/area/map_area
 
 	for(var/area/A in return_sorted_areas())
@@ -60,6 +62,8 @@
 
 
 /proc/get_object_data(obj/O)
+	set background = 1
+
 	if(!O)
 		return FALSE
 
@@ -81,22 +85,24 @@
 			if(islist(O.vars[V]))
 				var/list/M = O.vars[V]
 				for(var/P in M)
-					if(!istext(P) && !isnum(P))
+					if(!istext(P) && !isnum(P) && !ispath(P))
 						save_var = FALSE
 						continue
 					if(listgetindex(M,P))
 						var/asso_var = listgetindex(M,P)
-						if(asso_var && (!istext(asso_var) && !isnum(asso_var)) )
+						if(asso_var && (!istext(asso_var) && !isnum(asso_var) && !ispath(asso_var)) )
 							save_var = FALSE
 							continue
 
 			else
-				if(!istext(O.vars[V]) && !isnum(O.vars[V]))	// make sure all references to mobs/objs/turfs etc, are fully cut!
+				if(!istext(O.vars[V]) && !isnum(O.vars[V]) && !ispath(O.vars[V]))	// make sure all references to mobs/objs/turfs etc, are fully cut!
 					save_var = FALSE
 					continue
 
 		if(save_var)
 			MO.object_vars[V] = O.vars[V]
+
+		CHECK_TICK
 
 
 	if(O.save_reagents && O.reagents)
@@ -104,9 +110,10 @@
 
 	var/turf/obj_turf = get_turf(O)
 
-	MO.x = obj_turf.x
-	MO.y = obj_turf.y
-	MO.z = obj_turf.z
+	if(obj_turf)
+		MO.x = obj_turf.x
+		MO.y = obj_turf.y
+		MO.z = obj_turf.z
 
 	// forensic data has to be stored independently because lists don't typically save
 	if(O.save_forensics)
@@ -119,6 +126,8 @@
 	return MO
 
 /proc/full_item_save(obj/O)
+	set background = 1
+
 // get all objects in a area. I hate the method that's about to follow, but after finding exploits and potential shitcode that's in the game right now
 // actually worried we'd get the bad reference juju happening (like syringes containing blood and that blood having the actual mob reference in its data
 // which caused an infinite loop) - or items non-existing causing broken loading. because of this, the saving process has to be manually filtered for all the loops.
@@ -126,6 +135,8 @@
 	if(O.dont_save) return
 	var/datum/map_object/MO = get_object_data(O)
 	if(!MO) return
+
+	CHECK_TICK
 
 
 	for(var/obj/A in O.get_saveable_contents())
@@ -139,6 +150,8 @@
 
 		MO.contents += MO_2
 
+		CHECK_TICK
+
 		for(var/obj/B in A.get_saveable_contents())
 			if(!A.save_contents) continue
 			if(B.dont_save) continue
@@ -147,6 +160,8 @@
 
 			MO_2.contents += MO_3
 
+			CHECK_TICK
+
 			for(var/obj/C in B.get_saveable_contents())
 				if(!B.save_contents) continue
 				if(C.dont_save) continue
@@ -154,6 +169,10 @@
 				if(!MO_4) continue
 
 				MO_3.contents += MO_4
+
+				CHECK_TICK
+
+		CHECK_TICK
 
 	return MO
 
@@ -176,6 +195,8 @@
 		MD.unpack_object_data(A)
 		A.forceMove(O)
 
+		CHECK_TICK
+
 		for(var/datum/map_object/MF in MD.contents)
 			if(!ispath(MF.savedtype))
 				error("Undefined save type [MF.savedtype]")
@@ -185,6 +206,8 @@
 			CHECK_TICK
 			MF.unpack_object_data(B)
 			B.forceMove(A)
+
+			CHECK_TICK
 
 			for(var/datum/map_object/MG in MF.contents)
 				if(!ispath(MG.savedtype))
@@ -196,12 +219,17 @@
 				MG.unpack_object_data(C)
 				C.forceMove(B)
 
+				CHECK_TICK
+
 	return O
 
 
 
 
 /datum/map_object/proc/unpack_object_data(obj/O, obj/containing_obj)
+	if(!O || QDELETED(O))
+		return
+
 	O.x = x
 	O.y = y
 	O.z = z
@@ -209,7 +237,7 @@
 	if(containing_obj)
 		O.forceMove(containing_obj)
 
-	if(!O.initialized)
+	if(!O.initialized && !QDELETED(O))
 		O.initialize()
 
 	clearlist(O.contents)
@@ -228,7 +256,7 @@
 		O.fingerprintshidden = forensic_data["fingerprintshidden"]
 		O.suit_fibers = forensic_data["suit_fibers"]
 
-	CHECK_TICK
+
 	O.load_persistent_metadata(metadata)
 	O.on_persistence_load()
 
@@ -236,9 +264,13 @@
 	if(turfmoveto && (turfmoveto != get_turf(O)) )
 		O.forceMove(turfmoveto)
 
+	O.persistence_loaded = TRUE
+
 	return TRUE
 
 /proc/map_write(var/area/map_area, var/save_obj)
+	set background = 1
+
 	var/list/full_map = list()
 
 	var/list/all_turfs = get_area_turfs(map_area)
@@ -312,10 +344,14 @@
 
 				all_objs += O
 
+		CHECK_TICK
+
 	return full_map
 
 
 /proc/get_map_data(var/list/full_map)
+	set background = 1
+
 	if(!full_map) return 0
 
 	for(var/datum/map_turf/MT in full_map)
@@ -358,6 +394,8 @@
 					if(!decal_type || !ispath(decal_type))
 						continue
 					new decal_type(newturf, L["dir"], L["color"])
+
+					CHECK_TICK
 
 		for(var/datum/map_object/MO in MT.map_objects)
 			if(!ispath(MO.savedtype))
@@ -410,7 +448,7 @@
 
 
 /proc/map_to_file(var/list/full_map, var/path, var/map_name)
-
+	set background = 1
 	if(!full_map)
 		CRASH("No full map provided.")
 

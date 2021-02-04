@@ -13,6 +13,7 @@
 #define WEATHER_RADSTORM				"radiation storm"
 #define WEATHER_CARPFALL				"carpfall"
 #define WEATHER_CARPNADO				"carpnado"
+#define WEATHER_EARTHQUAKE			"earthquake"
 #define WEATHER_EMBERFALL			"emberfall" // More adminbuse, from TG. Harmless.
 #define WEATHER_ASH_STORM			"ash storm" // Ripped from TG, like the above. Less harmless.
 #define WEATHER_FALLOUT				"fallout" // Modified emberfall, actually harmful. Admin only.

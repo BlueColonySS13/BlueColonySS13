@@ -61,6 +61,21 @@ var/global/list/globalBlankCanvases[AMT_OF_CANVASES]
 	var/pixX			//last X of click
 	var/pixY			//last Y of click
 
+	var/image_id
+
+	unique_save_vars = list("image_id", "desc") // makes the imagine persistent
+
+/obj/item/weapon/canvas/on_persistence_save()
+	if(!image_id) // If it already has an image_id, it got saved before, so don't make duplicates.
+		image_id = "[game_id]-[rand(34,299)]-[get_game_second()]"
+	SSpersistence.save_image(build_composite_icon(src), image_id, PERSISTENT_PAINTINGS_DIRECTORY)
+	return ..()
+
+/obj/item/weapon/canvas/on_persistence_load()
+	if(image_id)
+		icon = SSpersistence.load_image(image_id, PERSISTENT_PAINTINGS_DIRECTORY)
+	return ..()
+
 /obj/item/weapon/canvas/nineteenXnineteen
 	name = "19px by 19px canvas"
 	icon_state = "19x19"
@@ -100,9 +115,28 @@ var/global/list/globalBlankCanvases[AMT_OF_CANVASES]
 	if(mouse_control["icon-y"])
 		pixY = text2num(mouse_control["icon-y"])
 
+/obj/item/weapon/canvas/attack_hand(mob/user)
+	if(anchored)
+		return
+
+	..()
+
 
 //One pixel increments
 /obj/item/weapon/canvas/attackby(var/obj/item/I, var/mob/user)
+
+	if (istype(I, /obj/item/weapon/wrench))
+		if(trigger_lot_security_system(user, /datum/lot_security_option/theft, "Attempted to unwrench [src] with \the [I]."))
+			return
+
+		playsound(src.loc, I.usesound, 50, 1)
+		to_chat(user,"<span class='notice'>You begin to [anchored ? "loosen" : "tighten"] \the [src] to the wall...</span>")
+		if (do_after(user, 40 * I.toolspeed))
+			user.visible_message( \
+				"[user] [anchored ? "loosens" : "tightens"] \the [src]'s casters.", \
+				"<span class='notice'>You have [anchored ? "loosened" : "tightened"] \the [src]. It is [anchored ? "now secured" : "moveable"].</span>", \
+				"You hear ratchet.")
+			anchored = !anchored
 
 	//Should always be true, otherwise you didn't click the object, but let's check because SS13~
 	if(!pixY || !pixX)
@@ -138,10 +172,46 @@ var/global/list/globalBlankCanvases[AMT_OF_CANVASES]
 /obj/item/weapon/canvas/attack_self(var/mob/user)
 	if(!user)
 		return
+	var/confirm = alert(src, "Would you like to clear the canvas?.", "Clear Canvas", "Yes", "No")
+	if(confirm != "Yes")
+		return
+
 	var/icon/blank = getGlobalBackup()
 	if(blank)
 		//it's basically a giant etch-a-sketch
 		icon = blank
 		user.visible_message("<span class='notice'>[user] cleans the canvas.</span>","<span class='notice'>You clean the canvas.</span>")
+
+
+/obj/item/weapon/canvas/afterattack(var/turf/A, var/mob/user, var/flag, var/params)
+
+	if(!iswall(A))
+		return
+
+	var/turf/target_turf = A
+	var/turf/source_turf = get_turf(user)
+
+	var/dir_offset = 0
+	if(target_turf != source_turf)
+		dir_offset = get_dir(source_turf, target_turf)
+		if(!(dir_offset in GLOB.cardinal))
+			to_chat(user, SPAN_WARNING("You cannot reach that from here."))
+			return
+
+	if(user.unEquip(src, source_turf))
+		if(params)
+			var/list/mouse_control = params2list(params)
+			if(mouse_control["icon-x"])
+				pixel_x = text2num(mouse_control["icon-x"]) - 16
+				if(dir_offset & EAST)
+					pixel_x += 32
+				else if(dir_offset & WEST)
+					pixel_x -= 32
+			if(mouse_control["icon-y"])
+				pixel_y = text2num(mouse_control["icon-y"]) - 16
+				if(dir_offset & NORTH)
+					pixel_y += 32
+				else if(dir_offset & SOUTH)
+					pixel_y -= 32
 
 #undef AMT_OF_CANVASES

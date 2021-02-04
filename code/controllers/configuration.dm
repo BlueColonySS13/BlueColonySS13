@@ -84,6 +84,8 @@ var/list/gamemode_cache = list()
 	var/jobs_have_minimal_access = 0		//determines whether jobs use minimal access or expanded access.
 	var/mechanical_skill_system = FALSE		// If true, the new skill system will use in-game mechanics instead of the honor system.
 
+	var/allow_exports = 0				//allow factory exports?
+
 	var/cult_ghostwriter = 1                //Allows ghosts to write in blood in cult rounds...
 	var/cult_ghostwriter_req_cultists = 10  //...so long as this many cultists are active.
 
@@ -143,12 +145,12 @@ var/list/gamemode_cache = list()
 	var/mapurl
 
 	//Alert level description
-	var/alert_desc_green = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
-	var/alert_desc_blue_upto = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted."
-	var/alert_desc_blue_downto = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
-	var/alert_desc_red_upto = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
-	var/alert_desc_red_downto = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
-	var/alert_desc_delta = "The station's self-destruct mechanism has been engaged. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
+	var/alert_desc_green = "All threats to the city have passed. Police Officials may not have weapons visible, privacy laws are once again fully enforced."
+	var/alert_desc_blue_upto = "The city has received reliable information about possible hostile activity in the city. Police Officials may have weapons visible, random searches are permitted."
+	var/alert_desc_blue_downto = "The immediate threat has passed. Police Officials may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
+	var/alert_desc_red_upto = "There is an immediate serious threat to the city. Police Officials may have weapons unholstered at all times. Random searches are allowed and advised."
+	var/alert_desc_red_downto = "The self-destruct mechanism has been deactivated, there is still however an immediate serious threat to the city. Police Officials may have weapons unholstered at all times, random searches are allowed and advised."
+	var/alert_desc_delta = "The city's self-destruct mechanism has been engaged. All residents are instructed to obey all instructions given by members of City Council. Any violations of these orders can be punished by death. This is not a drill."
 
 	var/forbid_singulo_possession = 0
 
@@ -271,9 +273,18 @@ var/list/gamemode_cache = list()
 	// can lots be saved? if this is set to false, this disables lots. it will auto-toggle if lot loading is borked in process to prevent data corruption.
 	var/lot_saving = FALSE
 
-	// allow businesses to be made?
-	var/allow_businesses = FALSE
+	var/allow_businesses = FALSE // allow businesses to be made?
+	var/allow_business_bounties = FALSE // allow bounties for businesses?
 
+	// redbot settings
+	var/comms_key = ""
+	var/bot_ip = ""
+
+	// can antagonists join from the lobby?
+	var/allow_lobby_antagonists = FALSE
+
+	var/defib_timer = 30 // How long until someone can't be defibbed anymore, in minutes.
+	var/defib_braindamage_timer = 2 // How long until someone will get brain damage when defibbed, in minutes. The closer to the end of the above timer, the more brain damage they get.
 
 
 /datum/configuration/New()
@@ -367,6 +378,18 @@ var/list/gamemode_cache = list()
 
 				if("allow_businesses")
 					config.allow_businesses = 1
+
+				if("allow_business_bounties")
+					config.allow_business_bounties = 1
+
+				if("comms_key")
+					config.comms_key = text2num(value)
+
+				if("bot_ip")
+					config.bot_ip = text2num(value)
+
+				if("allow_lobby_antagonists")
+					config.allow_lobby_antagonists = 1
 
 				if ("log_say")
 					config.log_say = 1
@@ -748,6 +771,9 @@ var/list/gamemode_cache = list()
 
 				if("use_overmap")
 					config.use_overmap = 1
+
+				if("allow_exports")
+					config.allow_exports = 1
 /*
 				if("station_levels")
 					using_map.station_levels = text2numlist(value, ";")
@@ -802,7 +828,7 @@ var/list/gamemode_cache = list()
 					config.allow_repeat_ooc_messages = 1
 
 				if("ssd_protect")
-					config.ssd_protect = text2num(value)
+					config.ssd_protect = 1
 
 				if("expected_round_length")
 					config.expected_round_length = MinutesToTicks(text2num(value))
@@ -877,6 +903,12 @@ var/list/gamemode_cache = list()
 
 				if("radiation_decay_rate")
 					radiation_decay_rate = text2num(value)
+
+				if("defib_timer")
+					config.defib_timer = text2num(value)
+
+				if("defib_braindamage_timer")
+					config.defib_braindamage_timer = text2num(value)
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")

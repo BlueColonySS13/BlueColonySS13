@@ -64,6 +64,9 @@
 	icon = 'icons/obj/power.dmi'
 	icon_state = "crema_switch"
 
+/obj/machinery/button/holosign/on_persistence_load()
+	icon_state = "light[active]"
+
 /obj/machinery/button/holosign/attack_hand(mob/user as mob)
 	if(..())
 		return

@@ -5,13 +5,13 @@
 	just your hands, due to the integrated monitor and keyboard.  Synthetic units can interface with it as well, just like most other machines."
 
 	description_fluff = "This is one of many nodes that make up the Exonet, which services trillions of devices across space.  This particular node \
-	is referred to as a terminal node, servicing the station.<br>\
+	is referred to as a terminal node, servicing the city.<br>\
 	<br>\
 	In the beginning of humanity's ascend into space, the Exonet didn't exist.  Instead, the Exonet is the evolution to a network called the Interplanetary \
 	Internet (sometimes referred to as the InterPlaNet), which was conceived and developed due to the limitations of the terrestrial Internet, mainly because \
 	the IP protocol was unsuitable for long range communications in space, due to the massive delays associated with lightspeed being unable to overcome \
 	the massive distances between planets in a timely manner.  It was a store-and-forward network of smaller internets, distributed between various nodes, \
-	and was designed to be error, fault, and delay tolerant.  The first nodes were put into space around the time when colonization had begun, to service humanity’s \
+	and was designed to be error, fault, and delay tolerant.  The first nodes were put into space around the time when colonization had begun, to service humanityï¿½s \
 	close holdings, such as Luna and Mars.<br>\
 	<br>\
 	By 2104, the Interplanetary Internet had coverage within most of Sol, but the network of networks were limited by the speed of light, and due \
@@ -30,7 +30,7 @@
 	Exonets at the root node(s), and is typically arranged in a tree structure.  The root node(s) are generally government-owned and are very secure \
 	and resilient to failure.<br>\
 	<br>\
-	This node is privately owned and maintained by NanoTrasen, and allows the crew of the station to have access to the Exonet."
+	This node is privately owned and maintained by NanoTrasen, and allows the residents of the city to have access to the Exonet."
 
 	description_antag = "An EMP will disable this device for a short period of time.  A longer downage can be achieved by turning it off, or rigging \
 	the APC it uses to turn off remotely, such as with a signaler in the right wire."

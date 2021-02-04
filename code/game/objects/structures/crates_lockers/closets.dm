@@ -111,7 +111,9 @@
 	else if(opened)
 		playsound(src.loc, close_sound, 15, 1, -3)
 	src.opened = !src.opened
-	src.density = !src.density
+
+	if(initial(density))
+		src.density = !src.density
 
 /obj/structure/closet/proc/close()
 	if(!src.opened)
@@ -352,8 +354,8 @@
 	else
 		icon_state = icon_opened
 
-/obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys", var/wallbreaker)
-	if(!damage || !wallbreaker)
+/obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys")
+	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		return
 	user.do_attack_animation(src)
 	visible_message("<span class='danger'>[user] [attack_message] the [src]!</span>")

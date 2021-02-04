@@ -30,13 +30,13 @@
 				this point.</span>"
 				return 0
 			user << "<span class='notice'>You stab \the [L] with a hidden integrated hypo, attempting to bring them back...</span>"
-			if(istype(L, /mob/living/simple_animal))
-				var/mob/living/simple_animal/SM = L
+			if(istype(L, /mob/living/simple_mob))
+				var/mob/living/simple_mob/SM = L
 				SM.health = SM.getMaxHealth() / 3
 				SM.stat = CONSCIOUS
 				dead_mob_list -= SM
 				living_mob_list += SM
-				SM.icon_state = SM.icon_living
+				SM.update_icon()
 				adjust_instability(15)
 			else if(ishuman(L))
 				var/mob/living/carbon/human/H = L
@@ -44,9 +44,8 @@
 				if(!H.client && H.mind) //Don't force the dead person to come back if they don't want to.
 					for(var/mob/observer/dead/ghost in player_list)
 						if(ghost.mind == H.mind)
-							ghost << "<b><font color = #330033><font size = 3>The Technomancer [user.real_name] is trying to \
-							revive you. Return to your body if you want to be resurrected!</b> \
-							(Verbs -> Ghost -> Re-enter corpse)</font></font>"
+							ghost.notify_revive("The Technomancer [user.real_name] is trying to revive you. \
+							Re-enter your body if you want to be revived!", 'sound/effects/genetics.ogg')
 							break
 
 				H.adjustBruteLoss(-40)

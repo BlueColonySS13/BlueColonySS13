@@ -323,7 +323,8 @@
 	var/owner_name = ""
 
 	unique_save_vars = list("owner_uid", "owner_name", "anchored")
-
+	dont_save = FALSE
+	
 /obj/machinery/r_n_d/server/business/verb/set_anchors()
 	set name = "Set Anchors"
 	set desc = "Set the anchors of the machine."

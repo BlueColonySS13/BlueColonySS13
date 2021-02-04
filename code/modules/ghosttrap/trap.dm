@@ -79,8 +79,8 @@ proc/populate_ghost_traps()
 // Fluff!
 /datum/ghosttrap/proc/welcome_candidate(var/mob/target)
 	target << "<b>You are a positronic brain, brought into existence on [station_name()].</b>"
-	target << "<b>As a synthetic intelligence, you answer to all crewmembers, as well as the AI.</b>"
-	target << "<b>Remember, the purpose of your existence is to serve the crew and the station. Above all else, do no harm.</b>"
+	target << "<b>As a synthetic intelligence, you answer to all city residents, as well as the AI.</b>"
+	target << "<b>Remember, the purpose of your existence is to serve the residents and the city. Above all else, do no harm.</b>"
 	target << "<b>Use say #b to speak to other artificial intelligences.</b>"
 	var/turf/T = get_turf(target)
 	T.visible_message("<span class='notice'>\The [src] chimes quietly.</span>")

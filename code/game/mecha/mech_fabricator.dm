@@ -13,8 +13,8 @@
 
 	var/speed = 1
 	var/mat_efficiency = 1
-	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "diamond" = 0, "phoron" = 0, "uranium" = 0)
-	var/res_max_amount = 200000
+	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, "diamond" = 0, "phoron" = 0, "uranium" = 0, "copper" = 0, "titanium" = 0, "aluminium" = 0)
+	var/res_max_amount = 230000
 
 	var/datum/research/files
 	var/list/datum/design/queue = list()
@@ -265,6 +265,10 @@
 
 /obj/machinery/mecha_part_fabricator/proc/update_categories()
 	categories = list()
+
+	if(!files)
+		files = new /datum/research(src) //Setup the research data holder.
+
 	for(var/datum/design/D in files.known_designs)
 		if(!D.build_path || !(D.build_type & MECHFAB))
 			continue

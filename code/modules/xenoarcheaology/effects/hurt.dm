@@ -1,6 +1,7 @@
 /datum/artifact_effect/hurt
 	name = "hurt"
 	effect_type = EFFECT_ORGANIC
+	contraband_level = CONTRABAND_ARTIFACTSHARMFUL
 
 /datum/artifact_effect/hurt/DoEffectTouch(var/mob/toucher)
 	if(toucher)

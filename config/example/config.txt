@@ -475,6 +475,9 @@ ALLOW_URL_LINKS
 ## Comment out to disallow businesses
 ALLOW_BUSINESSES
 
+## Comment out to disable business bounties
+#ALLOW_BUSINESS_BOUNTIES
+
 ## IP Reputation Checking
 # Enable/disable IP reputation checking (present/nonpresent)
 #IP_REPUTATION
@@ -493,3 +496,9 @@ IPR_ALLOW_EXISTING
 
 # And what that age is (number)
 IPR_MINIMUM_AGE 5
+
+# Allows antagonists to join from the lobby
+ALLOW_LOBBY_ANTAGONISTS
+
+# Allows people to sell things via exports in the factory
+#ALLOW_EXPORTS

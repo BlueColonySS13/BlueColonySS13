@@ -99,6 +99,10 @@ var/list/slot_equipment_priority = list( \
 /mob/proc/is_holding_item_of_type(typepath)
 	return FALSE
 
+// Override for your specific mob's hands or lack thereof.
+/mob/proc/get_all_held_items()
+	return list()
+
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(var/obj/item/W)
 	if(lying || !istype(W))
@@ -154,12 +158,22 @@ var/list/slot_equipment_priority = list( \
 	var/obj/item/item_dropped = null
 	if (hand)
 		item_dropped = l_hand
-		. = drop_l_hand(Target)
+		if(item_dropped && item_dropped.nodrop)
+			return
+		else
+			. = drop_l_hand(Target)
 	else
 		item_dropped = r_hand
-		. = drop_r_hand(Target)
+		if(item_dropped && item_dropped.nodrop)
+			return
+		else
+			. = drop_r_hand(Target)
+
 	if (istype(item_dropped) && !QDELETED(item_dropped))
 		make_item_drop_sound(item_dropped)
+
+	return TRUE
+
 
 /mob/proc/make_item_drop_sound(obj/item/I)
     if(QDELETED(I))

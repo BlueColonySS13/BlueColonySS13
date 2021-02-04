@@ -111,25 +111,13 @@
 					dat += "Food:<BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=milk;cost=20'>10 milk</A> <FONT COLOR=blue>([round(20/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=milk5;cost=95'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=cream;cost=30'>10 cream</A> <FONT COLOR=blue>([round(20/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=cream5;cost=120'>x5</A><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=meat;cost=50'>Slab of meat</A> <FONT COLOR=blue>([round(50/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=meat5;cost=24s0'>x5</A><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=meat;cost=50'>Slab of Synthetic Meat</A> <FONT COLOR=blue>([round(50/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=meat5;cost=250'>x5</A><BR>"
 					dat += "Nutrient:<BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=ez;cost=60'>E-Z-Nutrient</A> <FONT COLOR=blue>([round(60/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=ez5;cost=300'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=l4z;cost=120'>Left 4 Zed</A> <FONT COLOR=blue>([round(120/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=l4z5;cost=600'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=rh;cost=150'>Robust Harvest</A> <FONT COLOR=blue>([round(150/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=rh5;cost=750'>x5</A><BR>"
 					dat += "Leather:<BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=wallet;cost=100'>Wallet</A> <FONT COLOR=blue>([round(100/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=gloves;cost=250'>Botanical gloves</A> <FONT COLOR=blue>([round(250/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=tbelt;cost=300'>Utility belt</A> <FONT COLOR=blue>([round(300/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=satchel;cost=400'>Leather Satchel</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=cashbag;cost=400'>Cash Bag</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=chembag;cost=400'>Chemistry Bag</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=workboots;cost=400'>Workboots</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=leathershoes;cost=400'>Leather Shoes</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
-
-					dat += "<A href='?src=\ref[src];action=create;item=leatherchaps;cost=400'>Leather Chaps</A> <FONT COLOR=blue>([round(400/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=leathercoat;cost=500'>Leather Coat</A> <FONT COLOR=blue>([round(500/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=leatherjacket;cost=500'>Leather Jacket</A> <FONT COLOR=blue>([round(500/build_eff)])</FONT><BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=wintercoat;cost=500'>Winter Coat</A> <FONT COLOR=blue>([round(500/build_eff)])</FONT><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=synthleather;cost=10'>Synthetic Leather</A> <FONT COLOR=blue>([round(100/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=synthleather5;cost=500'>x5</A><BR>"
 					dat += "Cardboard:<BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=cardboard;cost=20'>Cardboard</A> <FONT COLOR=blue>([round(20/build_eff)])</FONT><BR>"
 
@@ -233,39 +221,14 @@
 			new/obj/item/weapon/reagent_containers/glass/bottle/robustharvest(loc)
 			new/obj/item/weapon/reagent_containers/glass/bottle/robustharvest(loc)
 			new/obj/item/weapon/reagent_containers/glass/bottle/robustharvest(loc)
-		if("wallet")
-			new/obj/item/weapon/storage/wallet(loc)
-		if("gloves")
-			new/obj/item/clothing/gloves/botanic_leather(loc)
-		if("plantbag")
-			new/obj/item/weapon/storage/bag/plants(loc)
-		if("plantbaglarge")
-			new/obj/item/weapon/storage/bag/plants/large(loc)
-		if("tbelt")
-			new/obj/item/weapon/storage/belt/utility(loc)
-		if("satchel")
-			new/obj/item/weapon/storage/backpack/satchel(loc)
-		if("cashbag")
-			new/obj/item/weapon/storage/bag/cash(loc)
-		if("chembag")
-			new/obj/item/weapon/storage/bag/chemistry(loc)
-// no more. please.
-/*
-		if("monkey")
-			new/mob/living/carbon/human/monkey(loc)
-*/
-		if("workboots")
-			new/obj/item/clothing/shoes/boots/workboots(loc)
-		if("leathershoes")
-			new/obj/item/clothing/shoes/leather(loc)
-		if("leatherchaps")
-			new/obj/item/clothing/under/pants/chaps
-		if("leathercoat")
-			new/obj/item/clothing/suit/leathercoat(loc)
-		if("leatherjacket")
-			new/obj/item/clothing/suit/storage/toggle/brown_jacket(loc)
-		if("wintercoat")
-			new/obj/item/clothing/suit/storage/hooded/wintercoat(loc)
+		if("synthleather")
+			new/obj/item/stack/material/leather/synthetic(loc)
+		if("synthleather5")
+			new/obj/item/stack/material/leather/synthetic(loc)
+			new/obj/item/stack/material/leather/synthetic(loc)
+			new/obj/item/stack/material/leather/synthetic(loc)
+			new/obj/item/stack/material/leather/synthetic(loc)
+			new/obj/item/stack/material/leather/synthetic(loc)
 		if("cardboard")
 			new/obj/fiftyspawner/cardboard(loc)
 	processing = 0

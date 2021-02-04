@@ -288,7 +288,7 @@
 		/obj/item/weapon/storage/fancy/cigarettes/jerichos = 5,
 		/obj/item/weapon/storage/fancy/cigarettes/menthols = 5,
 		)
-	cost = 250
+	cost = 50
 	containertype = /obj/structure/closet/crate
 	containername = "Standard Cigarettes (Bulk)"
 	spend_type = SPEND_TOBACCO
@@ -300,7 +300,7 @@
 				/obj/item/weapon/storage/box/matches = 10,
 				/obj/item/weapon/flame/lighter/random = 5,
 				)
-	cost = 2
+	cost = 10
 	containertype = /obj/structure/closet/crate
 	containername = "Tobacco Paraphernalia Set"
 	spend_type = SPEND_HOSPITALITY
@@ -309,8 +309,33 @@
 	name = "Deluxe Cigarettes (Bulk)"
 	contains = list(/obj/item/weapon/storage/fancy/cigar = 5,
 				/obj/item/weapon/storage/fancy/cigarettes/carcinomas = 5,
-				/obj/item/weapon/storage/fancy/cigarettes/professionals = 5)
-	cost = 300
+				/obj/item/weapon/storage/fancy/cigarettes/professionals = 5,
+				/obj/item/weapon/storage/fancy/cigarettes/nightshade = 5)
+	cost = 150
 	containertype = /obj/structure/closet/crate
 	containername = "Deluxe Cigarettes set"
 	spend_type = SPEND_TOBACCO
+
+/datum/supply_pack/hospitality/bingo_machine
+	name = "Bingo Machine"
+	contains = list(/obj/machinery/bingo_machine)
+	cost = 500
+	containertype = /obj/structure/closet/crate
+	containername = "Bingo Machine"
+	spend_type = SPEND_HOSPITALITY
+
+/datum/supply_pack/hospitality/daubers
+	name = "Bingo Daubers"
+	contains = list(/obj/item/weapon/pen/crayon/marker/red/dauber = 10)
+	cost = 100
+	containertype = /obj/structure/closet/crate
+	containername = "Bingo Daubers"
+	spend_type = SPEND_HOSPITALITY
+
+
+/datum/supply_pack/hospitality/trickbag
+	name = "Halloween Trick O' Treat Bags (Bulk of 10)"
+	contains = list(/obj/item/weapon/storage/spooky = 10)
+	cost = 150
+	containertype = /obj/structure/closet/crate
+	containername = "Halloween Trick O' Treat Bags"

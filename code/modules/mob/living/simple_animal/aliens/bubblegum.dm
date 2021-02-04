@@ -1,6 +1,7 @@
 /mob/living/simple_animal/hostile/flesh_golem
 	name = "creature"
 	desc = "A massive creature with exposed musculature and sinew."
+	tt_desc = "A massive creature with exposed musculature and sinew."
 	icon = 'icons/mob/96x96megafauna.dmi'
 	icon_state = "bubblegum"
 	icon_living = "bubblegum"

@@ -8,7 +8,18 @@ var/global/list/business_outfits = list(
 	"Chaplain" = list("path" = /decl/hierarchy/outfit/job/business/priest),
 	"Explorer" = list("path" = /decl/hierarchy/outfit/job/business/explorer),
 	"Barber" = list("path" = /decl/hierarchy/outfit/job/business/barber),
-	"Mailman" = list("path" = /decl/hierarchy/outfit/job/business/mailman)
+	"Mailman" = list("path" = /decl/hierarchy/outfit/job/business/mailman),
+	"Doctor" = list("path" = /decl/hierarchy/outfit/job/business/doctor),
+	"Nurse" = list("path" = /decl/hierarchy/outfit/job/business/nurse),
+	"Scientist" = list("path" = /decl/hierarchy/outfit/job/business/scientist),
+	"Engineer" = list("path" = /decl/hierarchy/outfit/job/business/engineer),
+	"Business Casual" = list("path" = /decl/hierarchy/outfit/job/business/casual),
+	"High End Waiter (Red)" = list("path" = /decl/hierarchy/outfit/job/business/bartender/waiter/red),
+	"High End Waiter (Grey)" = list("path" = /decl/hierarchy/outfit/job/business/bartender/waiter/grey),
+	"High End Waiter (Brown)" = list("path" = /decl/hierarchy/outfit/job/business/bartender/waiter/brown),
+	"Clown" = list("path" = /decl/hierarchy/outfit/job/business/clown),
+	"Mime" = list("path" = /decl/hierarchy/outfit/job/business/mime)
+
 
 )
 
@@ -28,6 +39,23 @@ var/global/list/business_outfits = list(
 			continue
 		if(B.owner.unique_id == uid)
 			return B
+
+
+
+/datum/business/proc/get_funds()
+	var/datum/money_account/business_account = dept_acc_by_id(department)
+
+	if(!business_account)
+		return 0
+
+	return business_account.money
+
+
+
+/datum/business/proc/get_bank()
+	var/datum/money_account/business_account = dept_acc_by_id(department)
+	return business_account
+
 
 /datum/business/proc/try_auth_business(pass)
 	if(access_password == pass)
@@ -49,6 +77,11 @@ var/global/list/business_outfits = list(
 /datum/business/proc/get_owner()
 	return owner
 
+/datum/business/proc/get_owner_uid()
+	if(!owner)
+		return
+	return owner.unique_id
+
 /datum/business/proc/get_status()
 	if(suspended)
 		return BUSINESS_SUSPENDED
@@ -57,6 +90,11 @@ var/global/list/business_outfits = list(
 
 /datum/business/proc/get_department()
 	return dept_by_id(department)
+
+/datum/business/proc/get_department_id()
+	var/datum/department/D = get_department()
+	if(D)
+		return D.id
 
 /proc/businesses_by_category(cat)
 	var/list/biz = list()

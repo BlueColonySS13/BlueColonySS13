@@ -1,5 +1,6 @@
 /datum/bounty/recycling
 	category = CAT_JANITOR
+	bounty_expires = FALSE
 
 /datum/bounty/recycling/packet_curtains
 	name = "Packets for Curtains!"
@@ -7,10 +8,10 @@
 	description = "Plastic recycling is so important for our economy and planet. If you please, send us some bread tube packets. \
 	We'll use it for the Ando-shower curtain company that needs it. God bless."
 
-	items_wanted = list(/obj/item/trash/tastybread = 5)
+	items_wanted = list(/obj/item/trash/tastybread = 100)
 
-	department_reward = 30
-	individual_reward = 10
+	department_reward = 100
+	individual_reward = 200
 
 	days_until_expiry = 5
 
@@ -23,8 +24,8 @@
 
 	items_wanted = list(/obj/item/stack/material/cardboard = 30)
 
-	department_reward = 150
-	individual_reward = 50
+	department_reward = 300
+	individual_reward = 500
 
 /datum/bounty/recycling/dont_box
 	name = "Don't Put Me In A Box"
@@ -32,10 +33,10 @@
 	description = "As we struggle with the highly capitalistic and materialistic reality of our world I will be making an art exhibit to liberate \
 	the minds of people in Cascington. Boxes, that is all this one needs."
 
-	items_wanted = list(/obj/item/weapon/storage/box = 8)
+	items_wanted = list(/obj/item/weapon/storage/box = 100)
 
-	department_reward = 70
-	individual_reward = 50
+	department_reward = 200
+	individual_reward = 300
 
 /datum/bounty/recycling/boneman
 	name = "Spooky Scary Skeletons"
@@ -88,3 +89,40 @@
 
 	department_reward = 90
 	individual_reward = 50
+
+
+/datum/bounty/recycling/toy_for_christmas
+	name = "A Toy For Christmas"
+	author = "Collectables R Us"
+	description = "Over here, it's always Christmas - considering the convienience of the holiday. Yes, we need a toy for sick Tommy over here, he's very \
+	specific but we don't mind because he's going to make us the sweet, sweet PR. We can't wait!"
+
+	random_items_wanted = list(/obj/item/weapon/storage/box/snappops,
+				/obj/item/toy/blink,
+				/obj/item/toy/sword,
+				/obj/item/weapon/gun/projectile/revolver/capgun,
+				/obj/item/toy/crossbow,
+				/obj/item/toy/sword,
+				/obj/item/toy/balloon,
+				/obj/item/toy/crossbow,
+				/obj/item/toy/blink,
+				/obj/item/toy/waterflower,
+				/obj/item/toy/eight_ball,
+				/obj/item/toy/eight_ball/conch,
+				/obj/item/toy/prize/ripley,
+				/obj/item/toy/prize/fireripley,
+				/obj/item/toy/prize/deathripley,
+				/obj/item/toy/prize/gygax,
+				/obj/item/toy/prize/durand,
+				/obj/item/toy/prize/honk,
+				/obj/item/toy/prize/marauder,
+				/obj/item/toy/prize/seraph,
+				/obj/item/toy/prize/mauler,
+				/obj/item/toy/prize/odysseus,
+				/obj/item/toy/prize/phazon,
+				/obj/item/toy/stickhorse)
+
+	department_reward = 145
+	individual_reward = 95
+
+	days_until_expiry = 5

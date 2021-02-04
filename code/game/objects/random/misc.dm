@@ -677,4 +677,15 @@
 				/obj/structure/flora/pottedplant/tropical,
 				/obj/structure/flora/pottedplant/dead,
 				/obj/structure/flora/pottedplant/decorative,
-				/obj/structure/flora/pottedplant/xmas)
+				/obj/structure/flora/pottedplant/xmas,
+				/obj/structure/flora/pottedplant/blueflower,
+				/obj/structure/flora/pottedplant/redflower,
+				/obj/structure/flora/pottedplant/bigleafy,
+				/obj/structure/flora/pottedplant/fernyplant,
+				/obj/structure/flora/pottedplant/winepalm,
+				/obj/structure/flora/pottedplant/lily,
+				/obj/structure/flora/pottedplant/greensakura,
+				/obj/structure/flora/pottedplant/brownsakura,
+				/obj/structure/flora/pottedplant/pinksakura,
+				/obj/structure/flora/pottedplant/purple,
+				)

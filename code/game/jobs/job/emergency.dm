@@ -13,7 +13,9 @@
 	idtype = /obj/item/weapon/card/id/engineering/head
 	req_admin_notify = 1
 
-	wage = 330
+	wage = 350
+	allows_synths = FALSE
+
 
 	minimum_character_age = 25
 	ideal_character_age = 50
@@ -22,11 +24,11 @@
 	access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
 			            access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
 			            access_heads, access_construction, access_sec_doors,
-			            access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload, access_medical, access_medical_equip)
+			            access_ce, access_janitor, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload, access_medical, access_medical_equip)
 	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
 			            access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
 			            access_heads, access_construction, access_sec_doors,
-			            access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload, access_medical, access_medical_equip)
+			            access_ce, access_janitor, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload, access_medical, access_medical_equip)
 	alt_titles = list("Public Works Director", "Chief Engineer")
 	minimal_player_age = 7
 
@@ -69,7 +71,9 @@
 	supervisors = "the maintenance director"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/engineering/atmos
-	wage = 100
+	wage = 50
+	synth_wage = 25
+
 	access = list(access_engine, access_engine_equip, access_janitor, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_eva, access_maint_tunnels, access_external_airlocks)
 	minimal_access = list(access_engine, access_engine_equip, access_janitor, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 
@@ -85,7 +89,7 @@
 	title = "Sanitation Technician"
 	flag = JANITOR
 	faction = "City"
-	department_flag = ENGSEC
+	department_flag = CIVILIAN
 	department = DEPT_MAINTENANCE
 	total_positions = 2
 	spawn_positions = 2
@@ -96,6 +100,8 @@
 	access = list(access_engine, access_engine_equip, access_external_airlocks, access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
 	minimum_character_age = 16 //Not making it any younger because being a janitor requires a lot of labor, or maybe it just means I'm very lazy? Oh well
-	wage = 50
+	wage = 40
+	synth_wage = 25
+
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
 	alt_titles = list("Recycling Technician", "Sanitation Engineer")

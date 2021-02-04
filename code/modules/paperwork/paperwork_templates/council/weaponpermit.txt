@@ -18,10 +18,10 @@ Permit(s) Requested:
 [[field]] Tier 3
 [[field]] Tier 4
 
-[i]If requesting a Tier 2 to 4 Permit, please fill out the 'Additional Requirements' Section of this form.[/i]
+[i]If requesting a Tier 1 to 4 Permit, please fill out the 'Additional Requirements' Section of this form.[/i]
 
 [b]Additional Requirements[/b]
-[i]Pursuant to the Permit Structuring Act, there are additional requirements for achieving a Tier 2, Tier 3 or Tier 4 Permit. For a Tier 2 Application, you must have at least a psychological assessment denoted and attached to this application. For a Tier 3 or 4 Permit, you must have both a psychological evaluation and the written permission of the Chief of Police.[/i]
+*[i]Pursuant to the Civil Code, there may be additional requirements for achieving a Tier 1, Tier 2, Tier 3 or Tier 4 Permit. Please consult the civil code for further information.[/i]
 
 Attached Supporting Documents:[i] *Submitted documents must be signed and stamped by the issuing persons[/i]
 [[field]] Positive Psychological Assessment

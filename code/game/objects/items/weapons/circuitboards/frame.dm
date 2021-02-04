@@ -105,7 +105,7 @@
 /obj/item/weapon/circuitboard/photocopier
 	name = T_BOARD("photocopier")
 	build_path = /obj/machinery/photocopier/
-	board_type = "machine"
+	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_MATERIAL =1, TECH_DATA = 1)
 	req_components = list(
 							/obj/item/weapon/stock_parts/matter_bin = 2,
@@ -162,10 +162,19 @@
 							/obj/item/weapon/stock_parts/gear = 1,
 							/obj/item/weapon/reagent_containers/glass/beaker/large = 1)
 
+/obj/item/weapon/circuitboard/distiller
+	build_path = /obj/machinery/portable_atmospherics/powered/reagent_distillery
+	board_type = new /datum/frame/frame_types/reagent_distillery
+	req_components = list(
+							/obj/item/weapon/stock_parts/capacitor = 1,
+							/obj/item/weapon/stock_parts/micro_laser = 1,
+							/obj/item/weapon/stock_parts/motor = 2,
+							/obj/item/weapon/stock_parts/gear = 1)
+
 /obj/item/weapon/circuitboard/teleporter_hub
 	name = T_BOARD("teleporter hub")
 	build_path = /obj/machinery/teleport/hub
-	board_type = "teleporter_hub"
+	board_type = new /datum/frame/frame_types/machine
 //	origin_tech = list(TECH_DATA = 2, TECH_BLUESPACE = 4)
 	req_components = list(
 							/obj/item/weapon/stock_parts/scanning_module = 4,
@@ -175,7 +184,7 @@
 /obj/item/weapon/circuitboard/teleporter_station
 	name = T_BOARD("teleporter station")
 	build_path = /obj/machinery/teleport/station
-	board_type = "teleporter_station"
+	board_type = new /datum/frame/frame_types/machine
 //	origin_tech = list(TECH_DATA = 2, TECH_BLUESPACE = 3)
 	req_components = list(
 							/obj/item/weapon/stock_parts/console_screen = 1,

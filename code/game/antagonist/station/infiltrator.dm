@@ -11,8 +11,13 @@ var/datum/antagonist/traitor/infiltrator/infiltrators
 	role_text = "Infiltrator"
 	role_text_plural = "Infiltrators"
 	welcome_text = "To speak on your team's private channel, use :t."
-	protected_jobs = list("Police Officer", "Prison Warden", "Detective", "Judge", "Chief of Police", "Mayor")
+	restricted_jobs = list("Prisoner", "AI", "Cyborg","Mayor","City Clerk", "Chief of Police","Police Officer",\
+	"Prison Warden","Detective","Medical Director","Maintenance Director","Research Director","Judge")
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
+
+	antag_text = "As a infiltrator, you are in a group of other infiltraitors with shared objectives - you are loyal to your objectives and team at all costs. \
+	You are still expected to escalate accordingly <b>with no murderboning</b>. Try to make sure other players have fun! AOOC is enabled, but please do not metagame. \
+	<b>This role has uplink items.</b>"
 
 /datum/antagonist/traitor/infiltrator/New()
 	..()

@@ -17,7 +17,7 @@
 		//OTHER//
 		/////////
 	var/datum/preferences/prefs = null
-	var/move_delay		= 1
+//	var/move_delay		= 1
 	var/moving			= null
 	var/adminobs		= null
 	var/area			= null
@@ -64,3 +64,5 @@
 	var/last_ping_time = 0 // Stores the last time this cilent pinged someone in OOC, to protect against spamming pings
 
 	var/ip_reputation = 0 //Do we think they're using a proxy/vpn? Only if IP Reputation checking is enabled in config.
+
+	var/lobby_joined = FALSE // Have they already joined as a lobby join antag?

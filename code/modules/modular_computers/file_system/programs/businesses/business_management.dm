@@ -21,6 +21,7 @@
 	var/full_name
 
 	var/datum/business/current_business
+	var/datum/business/selected_business
 
 
 /*****************************
@@ -125,8 +126,9 @@
 			page_msg += "<a href='?src=\ref[src];rename_business=1'>Rename Business</a>"
 			page_msg += "<a href='?src=\ref[src];edit_biz_desc=1'>Edit Description</a>"
 			page_msg += "<a href='?src=\ref[src];modify_category=1'>Modify Categories</a>"
-			page_msg += "<a href='?src=\ref[src];change_password=1'>Change Access Password</a>"
+			page_msg += "<a href='?src=\ref[src];change_password=1'>Change Access Password</a><br>"
 			page_msg += "<a href='?src=\ref[src];edit_biz_color=1'>Edit Business Color</a>"
+			page_msg += "<a href='?src=\ref[src];toggle_ceo_pay=1'>[current_business.pay_CEO ? "CEO Recieves Wages" : "CEO Doesn't Recieve Wages"]</a>"
 
 			// : Employment
 			page_msg += "<br><br><b>Employment: </b><br>"
@@ -211,9 +213,17 @@
 			page_msg = "<h2>[current_business]</h2><hr>"
 			page_msg += "Welcome to your jobs portal. You can add or modify your business specific jobs here.<br><br>"
 
-			page_msg += "<br><a href='?src=\ref[src];add_new_job=1'>Add Job</a><hr>"
+			page_msg += "<br><a href='?src=\ref[src];add_new_job=1'>Add Job</a>"
+
+			var/obj/item/weapon/card/id/id_card
+
+			if(program && program.computer && program.computer.card_slot)
+				id_card = program.computer.card_slot.stored_card
+
+			page_msg += "[id_card ? "<b>Current ID:</b> [id_card.name] <a href='?src=\ref[src];choice=eject'>Eject</a>" : "<b>To modify access, please insert an ID</b>"]<br>"
 
 			for(var/datum/job/job in current_business.get_jobs())
+
 
 				page_msg += "<fieldset style='border: 2px solid grey; display: inline; width: 80%'>"
 				page_msg += "<legend align='center' style='color: #fff'>[job.title]</legend>"
@@ -225,12 +235,24 @@
 				page_msg += "<a href='?src=\ref[src];choice=set_job_desc;job=\ref[job]'>Change Description</a>"
 				page_msg += "<a href='?src=\ref[src];choice=delete_job;job=\ref[job]'>Delete Job</a>"
 
+				if(id_card)
+					if(job.title == id_card.rank)
+						page_msg += "<a href='?src=\ref[src];choice=demote_job;job=\ref[job];card=\ref[id_card]'>Demote From Job</a>"
+					else
+						page_msg += "<a href='?src=\ref[src];choice=promote_job;job=\ref[job];card=\ref[id_card]'>Promote to Job</a>"
+
 				page_msg += "<br><br>"
 				var/job_positions = job.total_positions
 				if(0 > job.total_positions)
 					job_positions = "Unlimited"
 				page_msg += "<strong>Max Positions:</strong> [job_positions] <a href='?src=\ref[src];choice=modify_positions;job=\ref[job]'>Change</a><br>"
 				page_msg += "<strong>Wage:</strong> [job.wage] <a href='?src=\ref[src];choice=modify_wage;job=\ref[job]'>Change</a><br>"
+				page_msg += "<strong>Synth Wage:</strong> [job.synth_wage] <a href='?src=\ref[src];choice=modify_synth_wage;job=\ref[job]'>Change</a><br>"
+				page_msg += "<strong>Mass Produced Vatborn Wage:</strong> [job.mpv_wage] <a href='?src=\ref[src];choice=modify_vatborn_wage;job=\ref[job]'>Change</a><br>"
+				page_msg += "<strong>Non-National Wage:</strong> [job.nonnational_wage] <a href='?src=\ref[src];choice=modify_nonnational_wage;job=\ref[job]'>Change</a><br>"
+
+				page_msg += "<strong>Allow Synths?:</strong> [job.allows_synths ? "Yes" : "No"] <a href='?src=\ref[src];choice=synth_toggle;job=\ref[job]'>Toggle</a><br>"
+
 				page_msg += "<strong>Clean Criminal Record Required:</strong> [job.clean_record_required ? "Yes" : "No"] <a href='?src=\ref[src];choice=toggle_record_req;job=\ref[job]'>Toggle</a><br>"
 				page_msg += "<strong>Minimum Employee Age:</strong> [job.minimum_character_age] <a href='?src=\ref[src];choice=adjust_minimum_age;job=\ref[job]'>Adjust</a><br>"
 				page_msg += "<strong>Exploitable Job*:</strong> [job.minimal_player_age ? "Yes" : "No"] <a href='?src=\ref[src];choice=exploitable_job_toggle;job=\ref[job]'>Toggle</a><br>"
@@ -305,12 +327,43 @@
 		else
 			page_msg += "Something went wrong trying to display the job page, please try again!"
 
+	else if(index == 6) // Business List Page
+		page_msg = "<h2>Business Directory</h2><hr>"
+		page_msg += "Here is a list of active businesses that exist, please select one to continue:<br>"
 
+		for(var/datum/business/B in GLOB.all_businesses)
+			page_msg += " <a href='?src=\ref[src];choice=select_business;biz=\ref[B]'>[B.name]</a><br>"
+
+
+	else if(index == 7) // Business Viewer
+		page_msg = "<h2>Business Directory</h2><hr>"
+		if(selected_business)
+			page_msg += "<h2>[selected_business.name]</h2><hr>"
+			page_msg += "<b>Name:</b> [selected_business.name]<br>"
+			if(selected_business.description)
+				page_msg += "<b>Description:</b> [selected_business.description]<br>"
+			page_msg += "<b>Unique ID:</b> [selected_business.business_uid]<br>"
+			page_msg += "<b>Suspended:</b> [selected_business.suspended ? "Yes" : "No"]<br>"
+			if(selected_business.suspended)
+				page_msg += "<b>Suspended Reason: [selected_business.suspended_reason]<br>"
+			page_msg += "<b>Created:</b> [selected_business.creation_date]<br>"
+			page_msg += "<b>Owner:</b> [selected_business.get_owner_name()]<br>"
+
+			var/datum/department/biz_dept = dept_by_id(selected_business.department)
+
+			if(biz_dept && biz_dept.has_bank)
+				page_msg += "<b>Net Worth:</b> [cash2text( biz_dept.get_balance(), FALSE, TRUE, TRUE )]<br>"
+				page_msg += "<b>Bank ID:</b> [biz_dept.bank_account.account_number]<br>"
+				page_msg += "<b>Taxed:</b> [biz_dept.business_taxed ? "Yes" : "No"]<br>"
+
+			page_msg += " <a href='?src=\ref[src];business_transactions=1'>Print Transaction History</a><br>"
+		else
+			page_msg += "This business does not exist, please try again."
 	data["index"] = index
 	data["page_msg"] = page_msg
 	data["full_name"] = full_name
 	data["error_msg"] = error_msg
-	data["current_business"] = current_business
+	data["current_business"] = (current_business || selected_business)
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
@@ -322,6 +375,46 @@
 		ui.open()
 
 
+
+///
+/datum/computer_file/program/business_manager/proc/print_business_transaction(mob/user)
+	var/datum/nano_module/program/business_manager/biz_mgr = NM
+	if(!biz_mgr)
+		return
+
+	to_chat(usr, span("notice", "Printing transaction balance..."))
+
+	var/datum/department/biz_dept = dept_by_id(biz_mgr.selected_business.department)
+	if(!biz_dept || !biz_dept.bank_account)
+		return
+
+	var/R
+	R += "<b>Transaction logs</b>: [biz_dept.name]<br>"
+	R += "<i>Account holder:</i> [biz_dept.bank_account.owner_name]<br>"
+	R += "<i>Account ID:</i> [biz_dept.bank_account.account_number]<br>"
+	R += "<i>Date and time:</i> [stationtime2text()], [GLOB.current_date_string]<br><br>"
+	R += "<table border=1 style='width:100%'>"
+	R += "<tr>"
+	R += "<td><b>Date</b></td>"
+	R += "<td><b>Time</b></td>"
+	R += "<td><b>Target</b></td>"
+	R += "<td><b>Purpose</b></td>"
+	R += "<td><b>Value</b></td>"
+	R += "</tr>"
+	for(var/datum/transaction/T in biz_dept.bank_account.transaction_log)
+		R += "<tr>"
+		R += "<td>[T.date]</td>"
+		R += "<td>[T.time]</td>"
+		R += "<td>[T.target_name]</td>"
+		R += "<td>[T.purpose]</td>"
+		R += "<td>[T.amount]</td>"
+		R += "</tr>"
+		CHECK_TICK
+	R += "</table>"
+
+	if(!computer.nano_printer.print_text(R, "Business Transation Data: [biz_dept.name]"))
+		to_chat(user, "Hardware error: Printer was unable to print the file. It may be out of paper.")
+		return
 
 
 /datum/nano_module/program/business_manager/Topic(href, href_list)
@@ -341,6 +434,9 @@
 		. = 1
 		if(current_business)
 			index = 2
+		else if(selected_business)
+			selected_business = null
+			index = 6
 		else
 			index = 1
 			reset_fields()
@@ -421,6 +517,9 @@
 			return
 
 		var/new_job = sanitize_name(copytext(input(usr, "Enter a new job title. (Max 40 letters)", "Business Management Utility", b_pass)  as text,1,40))
+
+		if(!new_job)
+			return
 
 		if(!(LAZYLEN(current_business.business_jobs) >= MAX_BUSINESS_JOBS))
 			current_business.create_new_job(new_job)
@@ -503,6 +602,14 @@
 
 		alert("Business renamed to [biz_name].")
 
+	if(href_list["toggle_ceo_pay"])
+
+		if(!current_business)
+			return
+
+		current_business.pay_CEO = !current_business.pay_CEO
+
+
 
 	if(href_list["transfer_money"])
 		if(!current_business)
@@ -526,6 +633,16 @@
 			error_msg = "This account does not appear to exist."
 			return
 
+		var/datum/money_account/D = get_account(current_business.owner.bank_id)
+		var/attempt_pin = ""
+		if(D && D.security_level)
+			attempt_pin = input("Enter your personal bank account PIN (Verification Purposes Only)", "Transaction") as num
+
+
+		if(!attempt_account_access(current_business.owner.bank_id, attempt_pin, 2) )
+			error_msg = "There was an error with authenticating your bank account. Please contact your bank's administrator."
+			return
+
 
 		var/amount = input(usr, "How much would you like to transfer?.", "Transfer Amount")  as num
 
@@ -542,6 +659,11 @@
 		alert("[cash2text( amount, FALSE, TRUE, TRUE )] successfully sent to account id #[account_id] ([account_to_send.owner_name])")
 
 
+	if(href_list["business_transactions"])
+		if(!selected_business)
+			return
+		var/datum/computer_file/program/business_manager/printprog = program
+		printprog.print_business_transaction(usr)
 
 	if(href_list["add_funds"])
 		if(!current_business)
@@ -557,6 +679,9 @@
 			return
 
 		var/paying = input(usr, "Please input funding amount to add to your account balance.", "Pay Balance") as num|null
+
+		if(!paying || 0 > paying)
+			return
 
 		var/datum/money_account/D = get_account(current_business.owner.bank_id)
 		var/attempt_pin = ""
@@ -700,7 +825,7 @@
 			reg_error = "You must select at least one category!"
 			return
 
-		if("No" == alert("Register [b_name] for [persistent_economy.business_registration] credits?", "Register Business", "No", "Yes"))
+		if("No" == alert("Register [b_name] for [SSpersistent_options.get_persistent_option_value("business_registration")] credits?", "Register Business", "No", "Yes"))
 			return
 
 		if(!I || !I.associated_account_number || !I.associated_pin_number)
@@ -721,11 +846,11 @@
 			reg_error = "There was an error charging your bank account. Please contact your bank's administrator."
 			return
 
-		if(persistent_economy.business_registration > D.money)
+		if(SSpersistent_options.get_persistent_option_value("business_registration") > D.money)
 			reg_error = "You have insufficient funds to make this transaction."
 			return
 
-		if(!charge_to_account(I.associated_account_number, "[b_name] Registration", "Business Registration Fee", "Business Management", -persistent_economy.business_registration ))
+		if(!charge_to_account(I.associated_account_number, "[b_name] Registration", "Business Registration Fee", "Business Management", SSpersistent_options.get_persistent_option_value("business_registration") ))
 			reg_error = "There was an error charging your bank account. Please contact your bank's administrator."
 			return
 
@@ -736,13 +861,24 @@
 			return
 
 		var/datum/department/council = dept_by_id(DEPT_COUNCIL)
-		council.adjust_funds(persistent_economy.business_registration, "Business Registration for [new_biz.name]")
+		council.adjust_funds(SSpersistent_options.get_persistent_option_value("business_registration"), "Business Registration for [new_biz.name]")
 		show_custom_page("Success, your business - [new_biz.name] has been created. An email has been sent with the full details.")
 
 
 	// Choices menus
 	if(href_list["choice"])
 		switch(href_list["choice"])
+
+			if("select_business")
+				var/B = locate(href_list["biz"])
+				var/datum/business/biz = B
+
+				if(!biz)
+					return
+
+				selected_business = biz
+				index = 7
+
 
 			if("remove_access")
 				var/C = locate(href_list["access"])
@@ -798,9 +934,9 @@
 					employee_list += R.fields["name"]
 
 				if(!employee_list)
-					error_msg = "No police records exist on the system to select from!"
+					error_msg = "No civilian records exist on the system to select from!"
 
-				var/employee = input(usr, "Please select a person to add to this job's listings.", "Edit Criminal Records") as null|anything in employee_list
+				var/employee = input(usr, "Please select a person to add to this job's listings.", "Edit Employees") as null|anything in employee_list
 
 				if(!employee)
 					return
@@ -850,14 +986,106 @@
 				var/datum/job/job = E
 				if(!current_business || !job)
 					return
-				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [persistent_economy.minimum_wage])", "Select Positions", job.wage) as num
+				var/minimum_wage = SSpersistent_options.get_persistent_option_value("minimum_wage")
+				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [minimum_wage])", "Select Positions", job.wage) as num
 
 
-				if(!new_wage || (persistent_economy.minimum_wage > new_wage))
-					job.wage = persistent_economy.minimum_wage
+				if((0 > new_wage) || !new_wage || (minimum_wage > new_wage))
+					job.wage = minimum_wage
 				else
 					job.wage = new_wage
 
+
+			if("modify_synth_wage")
+
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				if(!current_business || !job)
+					return
+
+				var/minimum_wage = SSpersistent_options.get_persistent_option_value("synth_minimum_wage")
+				var/synth_option = alert("What would you like to do?", "Synth Wage", "Adjust Synth Wage", "Remove Synth Wage", "Cancel")
+
+				if(synth_option== "Cancel")
+					return
+
+				if(synth_option== "Remove Synth Wage")
+					job.synth_wage = null
+					return
+
+				if(!SSpersistent_options.get_persistent_option_value("discrim_synth"))
+					alert("Synthetics are subjected to equal rights at this moment.")
+					job.synth_wage = null
+					return
+
+				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [minimum_wage])", "Select Positions", job.synth_wage) as num
+
+
+				if((0 > new_wage) || !new_wage || (minimum_wage > new_wage))
+					job.synth_wage = minimum_wage
+				else
+					job.synth_wage = new_wage
+
+			if("modify_vatborn_wage")
+
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				if(!current_business || !job)
+					return
+
+				var/minimum_wage = SSpersistent_options.get_persistent_option_value("vatborn_minimum_wage")
+				var/synth_option = alert("What would you like to do?", "Mass Produced Vatborn Wage", "Adjust Mass Produced Vatborn Wage", "Remove Mass Produced Vatborn Wage", "Cancel")
+
+				if(synth_option== "Cancel")
+					return
+
+				if(synth_option== "Remove Mass Produced Vatborn Wage")
+					job.mpv_wage = null
+					return
+
+				if(!SSpersistent_options.get_persistent_option_value("discrim_bvatborn"))
+					alert("Mass Produced Vatborn are subjected to equal rights at this moment.")
+					job.mpv_wage = null
+					return
+
+				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [minimum_wage])", "Select Positions", job.mpv_wage) as num
+
+
+				if((0 > new_wage) || !new_wage || (minimum_wage > new_wage))
+					job.mpv_wage = minimum_wage
+				else
+					job.mpv_wage = new_wage
+
+
+			if("modify_nonnational_wage")
+
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				if(!current_business || !job)
+					return
+
+				var/minimum_wage = SSpersistent_options.get_persistent_option_value("nonnational_minimum_wage")
+				var/synth_option = alert("What would you like to do?", "Non-National Wage", "Adjust Non-National Wage", "Remove Non-National Wage", "Cancel")
+
+				if(synth_option== "Cancel")
+					return
+
+				if(synth_option== "Remove Non-National Wage")
+					job.nonnational_wage = null
+					return
+
+				if(!SSpersistent_options.get_persistent_option_value("discrim_nonnational"))
+					alert("Non-national citizens are subjected to equal rights at this moment.")
+					job.nonnational_wage = null
+					return
+
+				var/new_wage = input("Enter the new wage for this role. Please note it is hourly. (Minimum [minimum_wage])", "Select Positions", job.nonnational_wage) as num
+
+
+				if((0 > new_wage) || !new_wage || (minimum_wage > new_wage))
+					job.nonnational_wage = minimum_wage
+				else
+					job.nonnational_wage = new_wage
 
 			if("toggle_record_req")
 
@@ -865,6 +1093,11 @@
 				var/datum/job/job = E
 
 				if(!current_business || !job)
+					return
+
+				if(!SSpersistent_options.get_persistent_option_value("discrim_excon"))
+					alert("Ex-Convict citizens are subjected to equal rights at this moment.")
+					job.clean_record_required = FALSE
 					return
 
 				job.clean_record_required = !job.clean_record_required
@@ -896,6 +1129,20 @@
 					job.minimal_player_age = 0
 				else
 					job.minimal_player_age = 14
+
+			if("synth_toggle")	// to prevent grief, makes jobs a min of two weeks old
+
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				if(!current_business || !job)
+					return
+
+				if(!SSpersistent_options.get_persistent_option_value("discrim_synth"))
+					alert("The government has not permitted the discrimination of synthetics in employment at this time.")
+					job.allows_synths = TRUE
+					return
+
+				job.allows_synths = !job.allows_synths
 
 
 			if("set_supervisors")
@@ -976,6 +1223,64 @@
 						job.access |= A.id
 						job.minimal_access |= A.id
 						break
+
+			if("demote_job")
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				var/G = locate(href_list["card"])
+				var/obj/item/weapon/card/id/id = G
+
+				if(!current_business || !job || !id)
+					return
+
+				id.rank = "Civilian"
+				id.assignment = "Civilian"
+
+				for(var/V in job.access)
+					id.access -= V
+
+				var/datum/data/record/R = gen_record_by_uid(unique_id)
+
+				if(R)
+					R.fields["rank"] = "Civilian"
+					R.fields["real_rank"] = "Civilian"
+
+				alert("You have removed [job.title] to the ID card.")
+
+
+			if("promote_job")
+				var/E = locate(href_list["job"])
+				var/datum/job/job = E
+				var/G = locate(href_list["card"])
+				var/obj/item/weapon/card/id/id = G
+
+				if(!current_business || !job || !id)
+					return
+
+				id.rank = job.title
+				id.assignment = job.title
+
+				var/datum/data/record/R = gen_record_by_uid(unique_id)
+
+				var/new_title
+
+				if(LAZYLEN(job.alt_titles))
+					var/choices = list(job.title) + job.alt_titles
+					new_title = input("Choose a new job title for this ID.", "Choose Title", job.title) as anything in choices|null
+
+				if(R)
+					R.fields["rank"] = (new_title ? new_title : job.title)
+					R.fields["real_rank"] = job.title
+
+				if(id.registered_name)
+					id.name = "[id.registered_name]'s ID Card ([new_title ? new_title : job.title])"
+
+				for(var/V in job.access)
+					id.access += V
+
+				alert("You have added [job.title] to the ID card.")
+
+
 
 			if("add_alt_title")
 				var/E = locate(href_list["job"])

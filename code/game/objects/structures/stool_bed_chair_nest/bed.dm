@@ -128,6 +128,8 @@
 
 /obj/structure/bed/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/weapon/wrench))
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to deassemble \the [src] with [W]."))
+			return
 		playsound(src, W.usesound, 50, 1)
 		dismantle()
 		qdel(src)
@@ -161,6 +163,8 @@
 	else if (istype(W, /obj/item/weapon/wirecutters))
 		if(!padding_material)
 			to_chat(user, "\The [src] has no padding to remove.")
+			return
+		if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to remove padding from \the [src] with [W]."))
 			return
 		to_chat(user, "You remove the padding from \the [src].")
 		playsound(src.loc, W.usesound, 100, 1)
@@ -275,6 +279,7 @@
 	w_class = ITEMSIZE_LARGE
 	var/rollertype = /obj/item/roller
 	var/bedtype = /obj/structure/bed/roller
+	matter = list(DEFAULT_WALL_MATERIAL = 2750)
 
 /obj/item/roller/attack_self(mob/user)
 	var/obj/structure/bed/roller/R = new bedtype(user.loc)
@@ -300,6 +305,7 @@
 	w_class = ITEMSIZE_NORMAL
 	rollertype = /obj/item/roller/adv
 	bedtype = /obj/structure/bed/roller/adv
+	matter = list(DEFAULT_WALL_MATERIAL = 3750)
 
 /obj/item/roller_holder
 	name = "roller bed rack"
@@ -307,6 +313,7 @@
 	icon = 'icons/obj/rollerbed.dmi'
 	icon_state = "rollerbed"
 	var/obj/item/roller/held
+	matter = list(DEFAULT_WALL_MATERIAL = 2850)
 
 /obj/item/roller_holder/New()
 	..()
@@ -377,3 +384,33 @@
 
 	if(armrest_icon && !has_buckled_mobs())
 		overlays -= stool_cache["[armrest_icon]-padding-[padding_material.name]"]
+
+
+/obj/structure/bed/racecar
+	name = "race car bed"
+	desc = "Vroom Vroom!"
+	icon_state = "racecarbed"
+	base_icon = "racecarbed"
+	applies_material_colour = FALSE
+	anchored = FALSE
+
+/obj/structure/bed/racecar/classic
+	name = "race car bed"
+	desc = "Only fits one driver."
+	icon_state = "racecarclassic"
+	base_icon = "racecarclassic"
+	applies_material_colour = FALSE
+
+/obj/structure/bed/racecar/shuttle
+	name = "shuttle bed"
+	desc = "The Emergency Shuttle has docked with dreamland."
+	icon_state = "eshuttle"
+	base_icon = "eshuttle"
+	applies_material_colour = FALSE
+
+/obj/structure/bed/racecar/firetruck
+	name = "fire truck bed"
+	desc = "Excellent at stopping oven fires."
+	icon_state = "firetruck"
+	base_icon = "firetruck"
+	applies_material_colour = FALSE

@@ -300,6 +300,15 @@
 	. = ..()
 	reagents.add_reagent("coffeepowder", 5)
 
+/obj/item/weapon/reagent_containers/food/condiment/small/packet/decafcoffee
+	name = "decaf coffee powder packet"
+	desc = "Contains 5u of decaffeinated coffee powder. Mix with 25u of water and heat."
+
+/obj/item/weapon/reagent_containers/food/condiment/small/packet/decafcoffee/New()
+	. = ..()
+	reagents.add_reagent("decafcoffee", 5)
+
+
 /obj/item/weapon/reagent_containers/food/condiment/small/packet/tea
 	name = "tea powder packet"
 	desc = "Contains 5u of black tea powder. Mix with 25u of water and heat."

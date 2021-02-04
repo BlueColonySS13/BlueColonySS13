@@ -26,7 +26,7 @@
 	blend_objects = list(/obj/machinery/door) // Objects which to blend with
 	noblend_objects = list(/obj/machinery/door/window)
 
-	unique_save_vars = list("health", "material_color", "on_frame")
+	unique_save_vars = list("health", "material_color", "on_frame", "silicate")
 
 /obj/structure/window/examine(mob/user)
 	. = ..(user)
@@ -52,6 +52,9 @@
 			user << "<span class='notice'>There is a thick layer of silicate covering it.</span>"
 
 /obj/structure/window/proc/take_damage(var/damage = 0,  var/sound_effect = 1)
+	if(!damage)
+		return 0
+
 	var/initialhealth = health
 
 	if(silicate)
@@ -73,7 +76,7 @@
 		else if(health < maxhealth * 3/4 && initialhealth >= maxhealth * 3/4)
 			visible_message("Cracks begin to appear in [src]!" )
 			update_icon()
-	return
+	return 1
 
 /obj/structure/window/proc/apply_silicate(var/amount)
 	if(health < maxhealth) // Mend the damage
@@ -112,6 +115,8 @@
 
 	var/proj_damage = Proj.get_structure_damage()
 	if(!proj_damage) return
+	if(proj_damage > 0)
+		trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "\The [src] was hit by \the [Proj].")
 
 	..()
 	take_damage(proj_damage)
@@ -159,7 +164,7 @@
 	return 1
 
 
-/obj/structure/window/hitby(AM as mob|obj)
+/obj/structure/window/hitby(var/atom/movable/AM)
 	..()
 	visible_message("<span class='danger'>[src] was hit by [AM].</span>")
 	var/tforce = 0
@@ -175,6 +180,8 @@
 		update_nearby_icons()
 		step(src, get_dir(AM, src))
 	take_damage(tforce)
+	if(tforce > 0)
+		trigger_lot_security_system(AM.thrower, /datum/lot_security_option/vandalism, "Threw \the [AM] at \the [src].")
 
 /obj/structure/window/attack_tk(mob/user as mob)
 	user.visible_message("<span class='notice'>Something knocks on [src].</span>")
@@ -183,10 +190,13 @@
 /obj/structure/window/attack_hand(mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed())
 	if(HULK in user.mutations)
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Smashed \the [src]."))
+			return
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
 		user.visible_message("<span class='danger'>[user] smashes through [src]!</span>")
 		user.do_attack_animation(src)
 		shatter()
+
 
 	else if (usr.a_intent == I_HURT)
 
@@ -216,16 +226,21 @@
 	var/harmless = 0
 
 	if(isanimal(user))
-		var/mob/living/simple_animal/A = user
-		playsound(src, A.attack_sound, 75, 1)
-		if(!A.can_destroy_structures())
+		var/mob/living/simple_mob/M = user
+		playsound(src, M.attack_sound, 75, 1)
+		if(!M.can_destroy_structures())
 			damage = 0
 			harmless = TRUE
-	if(damage >= 10)
+
+	if(damage && trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "Attempted to break \the [src]."))
+		return
+
+	if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		visible_message("<span class='danger'>[user] smashes into [src]!</span>")
 		if(reinf)
 			damage = damage / 2
 		take_damage(damage)
+
 	else
 		if(!harmless)
 			visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
@@ -283,11 +298,14 @@
 					M.Weaken(5)
 					M.apply_damage(20)
 					hit(50)
+			trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Slamming \the [M] against \the [src].")
 			return
 
 	if(W.flags & NOBLUDGEON) return
 
 	if(istype(W, /obj/item/weapon/screwdriver))
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [W] to modify \the [src]."))
+			return
 		if(reinf && state >= 1)
 			state = 3 - state
 			update_nearby_icons()
@@ -306,6 +324,9 @@
 			playsound(src, W.usesound, 75, 1)
 			user << (anchored ? "<span class='notice'>You have fastened the window to the floor.</span>" : "<span class='notice'>You have unfastened the window.</span>")
 	else if(istype(W, /obj/item/weapon/crowbar) && reinf && state <= 1)
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [W] to modify \the [src]."))
+			return
+
 		state = 1 - state
 		playsound(src, W.usesound, 75, 1)
 		user << (state ? "<span class='notice'>You have pried the window into the frame.</span>" : "<span class='notice'>You have pried the window out of the frame.</span>")
@@ -313,6 +334,9 @@
 		if(!glasstype)
 			user << "<span class='notice'>You're not sure how to dismantle \the [src] properly.</span>"
 		else
+			if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [W] to dismantle \the [src]."))
+				return
+
 			playsound(src, W.usesound, 75, 1)
 			visible_message("<span class='notice'>[user] dismantles \the [src].</span>")
 			var/obj/item/stack/material/mats = new glasstype(loc)
@@ -327,6 +351,7 @@
 		if(W.damtype == BRUTE || W.damtype == BURN)
 			user.do_attack_animation(src)
 			hit(W.force)
+			trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Damaging \the [src] with \a [W].")
 			if(health <= 7)
 				anchored = 0
 				update_nearby_icons()
@@ -475,6 +500,9 @@
 				overlays += I
 	return
 
+	/*
+	// Unreachable code. Left incase it is needed later.
+
 	// Damage overlays.
 	var/ratio = health / maxhealth
 	ratio = Ceiling(ratio * 4) * 25
@@ -485,6 +513,7 @@
 	overlays += I
 
 	return
+	*/
 
 /obj/structure/window/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > maximal_heat)

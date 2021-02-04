@@ -14,7 +14,7 @@
 		T.dirt += rand(0,10)
 	T.update_dirt()
 
-	if(prob(2))
+	if(prob(6))
 		var/lootpile = loot_pile()
 		if(lootpile)
 			new lootpile(T)
@@ -82,7 +82,7 @@ var/global/list/random_junk
 		return pick(lootpiles)
 
 /datum/turf_initializer/maintenance/proc/mob_spawn()
-	return /mob/living/simple_animal/mouse
+	return /mob/living/simple_mob/animal/passive/mouse
 
 /datum/turf_initializer/maintenance/proc/dirty_neighbors(var/list/cardinal_turfs)
 	var/how_dirty = 0

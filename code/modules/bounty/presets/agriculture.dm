@@ -1,18 +1,7 @@
 /datum/bounty/agriculture
 	category = CAT_FARM
-
-/datum/bounty/agriculture/vape_weed
-	name = "Vape Weed"
-	author = "Green eVape Pharma"
-	description = "Yes, we vape. We're looking to sell THC and CBD vape fluid, we're lacking in both at the moment and plan to make more. \
-	We'll shoot a decent sum if you send us 30 cannabis plants so we can make the stoners happy. Peace and, no deus strains, please."
-
-	grown_wanted = list("cannabis" = 30)
-
-	department_reward = 260
-	individual_reward = 40
-
-	days_until_expiry = 1
+	days_until_expiry = 15
+	tax_type = AGRICULTURE_TAX
 
 /datum/bounty/agriculture/potato_famine
 	name = "Potato Famine"
@@ -21,12 +10,12 @@
 	but a potato blight somehow managed to get onto the ship. We need to speed up our acquisition, ASAP. \
 	It's not too much, since it's just seed stock, though."
 
-	grown_wanted = list("potato" = 40)
+	grown_wanted = list("potato" = 400)
 
-	department_reward = 250
-	individual_reward = 40
+	department_reward = 1300
+	individual_reward = 500
 
-	days_until_expiry = 1
+
 
 /datum/bounty/agriculture/catsup
 	name = "Make up Catsup"
@@ -35,24 +24,23 @@
 	the police think that there is a lot of blood. I know, I am a pretty original thinker. \
 	Don't copy that idea though, it's mine."
 
-	grown_wanted = list("tomato" = 20)
+	grown_wanted = list("tomato" = 200)
 
-	department_reward = 100
-	individual_reward = 20
+	department_reward = 1000
+	individual_reward = 300
 
-	days_until_expiry = 1
 
 /datum/bounty/agriculture/lemon_genes
 	name = "Weak Genes"
 	author = "Melvis Press"
 	description = "I eat cereal with lemonade."
 
-	grown_wanted = list("lemon" = 3)
+	grown_wanted = list("lemon" = 80)
 
-	department_reward = 80
-	individual_reward = 10
+	department_reward = 200
+	individual_reward = 200
 
-	days_until_expiry = 1
+
 
 /datum/bounty/agriculture/birthday_egg
 	name = "Birthday Egg Crisis"
@@ -62,7 +50,7 @@
 
 	items_wanted = list(/obj/item/weapon/storage/fancy/egg_box = 1)
 
-	department_reward = 140
+	department_reward = 60
 	individual_reward = 50
 
 	days_until_expiry = 1
@@ -88,9 +76,9 @@
 	wheat before I tear this whole bloody kitchen apart. I can't believe it. Next they'll tell me the ice is frozen too? End speech transcription. \
 	You! Over there, come here! Where's the lamb saaaaauce!? What the... is this thing still recording?"
 
-	grown_wanted = list("wheat" = 42)
+	grown_wanted = list("wheat" = 30)
 
-	department_reward = 255
+	department_reward = 120
 	individual_reward = 50
 
 	days_until_expiry = 1
@@ -103,7 +91,7 @@
 
 	grown_wanted = list("soybean" = 80)
 
-	department_reward = 400
+	department_reward = 200
 	individual_reward = 90
 
 	days_until_expiry = 1
@@ -116,7 +104,7 @@
 
 	grown_wanted = list("soybean" = 50)
 
-	department_reward = 250
+	department_reward = 130
 	individual_reward = 65
 
 /datum/bounty/agriculture/renewable_fuels_corn
@@ -127,7 +115,7 @@
 
 	grown_wanted = list("corn" = 40)
 
-	department_reward = 300
+	department_reward = 90
 	individual_reward = 75
 
 /datum/bounty/agriculture/cabbages
@@ -138,6 +126,6 @@
 
 	grown_wanted = list("cabbage" = 30)
 
-	department_reward = 250
+	department_reward = 70
 	individual_reward = 75
 

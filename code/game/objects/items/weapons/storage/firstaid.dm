@@ -17,8 +17,6 @@
 	var/list/icon_variety
 	price_tag = 5
 
-/obj/item/weapon/storage/firstaid/get_tax()
-	return MEDICAL_TAX
 
 /obj/item/weapon/storage/firstaid/initialize()
 	. = ..()
@@ -180,6 +178,8 @@
 	var/label_text = ""
 	var/base_name = " "
 	var/base_desc = " "
+
+	matter = list("plastic" = 400)
 
 /obj/item/weapon/storage/pill_bottle/New()
 	..()

@@ -54,7 +54,12 @@
 	if(!has_tenants())
 		return 0
 
-	var/earnings = (tenants.len * get_rent()) - get_service_charge()
+	var/tenant_rent = 0
+	for(var/datum/tenant/T in tenants)
+		tenant_rent += get_rent(T)
+
+	var/earnings = tenant_rent - get_service_charge()
+
 
 	return earnings
 
@@ -66,22 +71,24 @@
 /datum/lot/proc/get_price()
 	return price
 
-/datum/lot/proc/get_tax()
-	return HOUSING_TAX
-
 // Rent procs
 
 /datum/lot/proc/get_default_rent()
 	return initial(rent)
 
-/datum/lot/proc/get_rent()
+/datum/lot/proc/get_rent(var/datum/tenant/T)
+	if(T && !isnull(T.get_rent()))
+		return T.get_rent(T)
+
 	return rent
 
-/datum/lot/proc/get_rent_tax_amount()
-	return (get_rent() * get_tax())
+/datum/lot/proc/get_rent_tax_amount(var/datum/tenant/T)
+	return (get_rent(T) * get_tax())
 
-/datum/lot/proc/get_rent_after_tax()
-	return (get_rent() - get_rent_tax_amount())
+/datum/lot/proc/get_rent_after_tax(var/datum/tenant/T)
+	var/rent = get_rent(T)
+
+	return (rent - get_rent_tax_amount(T))
 
 /datum/lot/proc/get_landlord_balance()
 	return landlord.get_balance()
@@ -121,10 +128,14 @@
 /datum/lot/proc/remove_tenant(uid)
 	var/datum/tenant/tenant = get_tenant_by_uid(uid)
 
-	charge_to_account(landlord.bank_id, "Remaining Balance", "[name] Lot Remaining Balance", "Landlord Management", tenant.account_balance)
+	charge_to_account(tenant.bank_id, "Remaining Balance", "[name] Lot Remaining Balance", "Landlord Management", tenant.account_balance)
+
+	if(landlord && (0 > tenant.account_balance))
+		landlord.pay_balance(-tenant.account_balance)
 
 	tenants -= tenant
 	QDEL_NULL(tenant)
+	listclearnulls(tenants)
 
 	return TRUE
 
@@ -178,9 +189,10 @@
 		return 0
 
 	var/full_charge = 0
+	var/base_service_charge = SSpersistent_options.get_persistent_option_value("hourly_service_charge")
 
-	if(persistent_economy && persistent_economy.base_service_charge)
-		full_charge = persistent_economy.base_service_charge * tile_count
+	if(base_service_charge)
+		full_charge = base_service_charge * tile_count
 
 	// to be expanded. services could be added here in future.
 
@@ -189,12 +201,15 @@
 
 // Application helps
 
-/datum/lot/proc/add_applicant(uid, t_name, bank_id, email, offered_deposit)
+/datum/lot/proc/add_applicant(uid, t_name, bank_id, email, offered_deposit, reason)
 	var/datum/tenant/applicant = make_tenant(uid, t_name, bank_id, email)
 
 	applicant.agreed_deposit = offered_deposit
+	applicant.application_note = reason
 
 	applied_tenants += applicant
+
+	return applicant
 
 /datum/lot/proc/remove_applicant(applicant)
 	if(!applicant || !(applicant in applied_tenants))
@@ -202,6 +217,7 @@
 
 	applied_tenants -= applicant
 	QDEL_NULL(applicant)
+	listclearnulls(applied_tenants)
 
 /datum/lot/proc/get_applicant_by_uid(uid)
 	for(var/datum/tenant/applicant in applied_tenants)
@@ -215,3 +231,29 @@
 	log_lots(user, action)
 
 	truncate_oldest(notes, MAX_LANDLORD_LOGS)
+
+/datum/lot/proc/accept_rentee(var/datum/tenant/applicant)
+	if(!(applicant in applied_tenants))
+		return
+	var/datum/computer_file/data/email_account/council_email = get_email(using_map.council_email)
+	var/datum/computer_file/data/email_message/message = new/datum/computer_file/data/email_message()
+	var/eml_cnt = "Dear [applicant.name], \[br\]"
+	eml_cnt += "Congratulations, you been successful for your application for renting the property '[name]'. \
+	You will now be able to start using the lot commencing onwards. \[br\] \
+	Your rent will be [cash2text( get_rent(), FALSE, TRUE, TRUE )] per payroll. Your landlord is [get_landlord_name()] may contact them on [landlord.email] \
+	for any enquiries. Best wishes,\[br\] City Council \[br\] Do not reply: This is an automated email."
+
+	message.stored_data = eml_cnt
+	message.title = "Your New Property: [name] - Acceptance"
+	message.source = "noreply@nanotrasen.gov.nt"
+
+	council_email.send_mail(applicant.email, message)
+
+	tenants += applicant
+	applied_tenants -= applicant
+
+	applicant.account_balance = applicant.agreed_deposit
+
+	tenants_wanted = FALSE
+
+	add_note(landlord.name, "Accepted [name]'s tenancy application for [applicant.name]",usr)

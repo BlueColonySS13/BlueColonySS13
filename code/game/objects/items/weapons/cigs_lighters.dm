@@ -289,15 +289,24 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	weldermes = "<span class='notice'>USER casually lights the NAME with FLAME.</span>"
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME.</span>"
 
-	price_tag = 1
+
+/obj/item/clothing/mask/smokable/cigarette/get_item_cost()
+	if(tagged_price)
+		return tagged_price
+
+	var/total = 0
+
+	if(reagents && reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.reagent_list)
+			total += R.get_item_cost()
+
+	return total
 
 /obj/item/clothing/mask/smokable/cigarette/get_tax()
-	if(nicotine_amt)
-		tax_type = TOBACCO_TAX
-	else
-		tax_type = null
-
-	return tax_type
+	if(reagents && reagents.reagent_list)
+		for(var/datum/reagent/R in reagents.reagent_list)
+			if(R.get_tax())
+				return R.get_tax()
 
 /obj/item/clothing/mask/smokable/cigarette/New()
 	..()
@@ -308,6 +317,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		reagents.add_reagent("menthol", menthol_amt)
 
 /obj/item/clothing/mask/smokable/cigarette/menthol
+	desc = "A roll of tobacco and nicotine. It smells faintly of menthol."
+	menthol_amt = 5
+	nicotine_amt = 10
+
+/obj/item/clothing/mask/smokable/cigarette/nightshade
+	desc = "A roll of tobacco and nicotine. It smells faintly of menthol. This particularly brand has a purple filter!"
+	icon_state = "pcig"
+	item_state = "pcig"
 	menthol_amt = 5
 	nicotine_amt = 10
 
@@ -427,6 +444,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME with the power of science.</span>"
 	is_pipe = 1
 
+	matter = list("copper" = 800, DEFAULT_WALL_MATERIAL = 30)
+
 /obj/item/clothing/mask/smokable/pipe/New()
 	..()
 	name = "empty [initial(name)]"
@@ -520,6 +539,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			G.reagents.trans_to_obj(J, G.reagents.total_volume)
 		J.name = "[G.name] joint"
 		J.desc = "A joint lovingly rolled and filled with [G.name]. Blaze it."
+		qdel(G)
 		qdel(src)
 
 //adding drugs from baggies

@@ -1,5 +1,6 @@
 /decl/hierarchy/outfit/job/business
 	name = OUTFIT_JOB_NAME("business")
+	pda_slot = slot_belt
 
 /decl/hierarchy/outfit/job/business/formal
 	name = OUTFIT_COSTUME("Formal")
@@ -39,11 +40,28 @@
 	uniform = /obj/item/clothing/under/waiter
 	backpack_contents = null
 
+/decl/hierarchy/outfit/job/business/bartender/waiter/red
+	name = OUTFIT_JOB_NAME("High End Waiter (Red)")
+	uniform = /obj/item/clothing/under/sl_suit{ starting_accessories=list(/obj/item/clothing/accessory/wcoat/red) }
+	shoes = /obj/item/clothing/shoes/dress
+	gloves = /obj/item/clothing/gloves/white
+	
+/decl/hierarchy/outfit/job/business/bartender/waiter/grey
+	name = OUTFIT_JOB_NAME("High End Waiter (Grey)")
+	uniform = /obj/item/clothing/under/sl_suit{ starting_accessories=list(/obj/item/clothing/accessory/wcoat/grey) }
+	shoes = /obj/item/clothing/shoes/dress
+	gloves = /obj/item/clothing/gloves/white
+
+/decl/hierarchy/outfit/job/business/bartender/waiter/brown
+	name = OUTFIT_JOB_NAME("High End Waiter (Brown)")
+	uniform = /obj/item/clothing/under/sl_suit{ starting_accessories=list(/obj/item/clothing/accessory/wcoat/brown) }
+	shoes = /obj/item/clothing/shoes/dress
+	gloves = /obj/item/clothing/gloves/white
+
 /decl/hierarchy/outfit/job/business/barber
 	name = OUTFIT_JOB_NAME("Barber")
 	uniform = /obj/item/clothing/under/rank/barber
 	r_pocket = /obj/item/weapon/scissors/barber
-
 
 /decl/hierarchy/outfit/job/business/journalist
 	name = OUTFIT_JOB_NAME("Journalist")
@@ -58,7 +76,6 @@
 	suit = /obj/item/clothing/suit/storage/hooded/explorer
 	gloves = /obj/item/clothing/gloves/black
 	l_ear = /obj/item/device/radio/headset
-	id_pda_assignment = "Explorer"
 
 /decl/hierarchy/outfit/job/business/priest
 	name = OUTFIT_JOB_NAME("Priest")
@@ -70,7 +87,6 @@
 	name = OUTFIT_JOB_NAME("Janitor")
 	uniform = /obj/item/clothing/under/rank/janitor
 
-
 /decl/hierarchy/outfit/job/business/gardener
 	name = OUTFIT_JOB_NAME("Gardener")
 	uniform = /obj/item/clothing/under/rank/hydroponics
@@ -79,3 +95,63 @@
 	backpack = /obj/item/weapon/storage/backpack/hydroponics
 	satchel_one = /obj/item/weapon/storage/backpack/satchel/hyd
 	messenger_bag = /obj/item/weapon/storage/backpack/messenger/hyd
+
+/decl/hierarchy/outfit/job/business/engineer
+	name = OUTFIT_JOB_NAME("Engineer")
+	head = /obj/item/clothing/head/hardhat
+	uniform = /obj/item/clothing/under/rank/engineer
+	suit = /obj/item/clothing/suit/storage/toggle/hivisjacket
+	pda_type = /obj/item/device/pda/engineering
+	shoes = /obj/item/clothing/shoes/boots/workboots
+	backpack = /obj/item/weapon/storage/backpack/industrial
+	satchel_one = /obj/item/weapon/storage/backpack/satchel/eng
+	messenger_bag = /obj/item/weapon/storage/backpack/messenger/engi
+	pda_slot = slot_l_store
+
+/decl/hierarchy/outfit/job/business/scientist
+	name = OUTFIT_JOB_NAME("Scientist")
+	uniform = /obj/item/clothing/under/rank/scientist
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat
+	shoes = /obj/item/clothing/shoes/white
+	pda_type = /obj/item/device/pda/science
+	backpack = /obj/item/weapon/storage/backpack/toxins
+	satchel_one = /obj/item/weapon/storage/backpack/satchel/tox
+	messenger_bag = /obj/item/weapon/storage/backpack/messenger/tox
+
+/decl/hierarchy/outfit/job/business/doctor
+	name = OUTFIT_JOB_NAME("Doctor")
+	uniform = /obj/item/clothing/under/rank/medical
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat
+	shoes = /obj/item/clothing/shoes/white
+	pda_type = /obj/item/device/pda/medical
+	backpack = /obj/item/weapon/storage/backpack/medic
+	satchel_one = /obj/item/weapon/storage/backpack/satchel/med
+	messenger_bag = /obj/item/weapon/storage/backpack/messenger/med
+
+/decl/hierarchy/outfit/job/business/nurse
+	name = OUTFIT_JOB_NAME("Nurse")
+	uniform = /obj/item/clothing/under/rank/medical/scrubs
+	shoes = /obj/item/clothing/shoes/white
+	pda_type = /obj/item/device/pda/medical
+	backpack = /obj/item/weapon/storage/backpack/medic
+	satchel_one = /obj/item/weapon/storage/backpack/satchel/med
+	messenger_bag = /obj/item/weapon/storage/backpack/messenger/med
+
+/decl/hierarchy/outfit/job/business/casual
+	name = OUTFIT_JOB_NAME("Business Casual")
+	uniform = /obj/item/clothing/under/sl_suit
+	shoes = /obj/item/clothing/shoes/laceup
+	
+/decl/hierarchy/outfit/job/business/clown
+	name = OUTFIT_JOB_NAME("Clown")
+	uniform = /obj/item/clothing/under/rank/clown
+	shoes = /obj/item/clothing/shoes/clown_shoes
+	backpack = /obj/item/weapon/storage/backpack/clown
+	head = /obj/item/clothing/mask/gas/clown_hat
+	r_pocket = /obj/item/weapon/bikehorn
+	
+/decl/hierarchy/outfit/job/business/mime
+	name = OUTFIT_JOB_NAME("Mime")
+	uniform = /obj/item/clothing/under/mime
+	shoes = /obj/item/clothing/shoes/mime
+	head = /obj/item/clothing/head/beret

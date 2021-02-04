@@ -48,6 +48,8 @@
 			R = new/obj/item/device/radio/headset/syndicate(player)
 		if(RAID_FREQ)
 			R = new/obj/item/device/radio/headset/raider(player)
+		if(PAX_FREQ)
+			R = new/obj/item/device/radio/headset/pax_synthetica(player)
 		else
 			R = new/obj/item/device/radio/headset(player)
 			R.set_frequency(freq)
@@ -95,6 +97,10 @@
 	return code
 
 /datum/antagonist/proc/greet(var/datum/mind/player)
+	// Makes it harder to miss if you're alt-tabbed or not paying attention.
+	if(antag_sound)
+		SEND_SOUND(player.current, sound(antag_sound))
+	window_flash(player.current.client)
 
 	// Basic intro text.
 	player.current << "<span class='danger'><font size=3>You are a [role_text]!</font></span>"

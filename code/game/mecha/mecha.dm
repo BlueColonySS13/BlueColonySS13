@@ -69,6 +69,8 @@
 	var/max_equip = 3
 	var/datum/events/events
 
+	unique_save_vars = list("health", "icon_state")
+
 /obj/mecha/drain_power(var/drain_check)
 
 	if(drain_check)
@@ -97,6 +99,7 @@
 	log_message("[src.name] created.")
 	loc.Entered(src)
 	mechas_list += src //global mech list
+	update_transform()
 	return
 
 /obj/mecha/Destroy()
@@ -400,6 +403,12 @@
 	if(result)
 		playsound(src,"mechstep",40,1)
 	return result
+
+/obj/mecha/proc/do_after(delay as num)
+    sleep(delay)
+    if(src)
+        return 1
+    return 0
 
 /obj/mecha/Bump(var/atom/obstacle)
 //	src.inertia_dir = null
@@ -886,7 +895,7 @@
 		src.verbs += /obj/mecha/verb/eject
 		src.Entered(mmi_as_oc)
 		src.Move(src.loc)
-		src.icon_state = src.reset_icon()
+		update_icon()
 		set_dir(dir_in)
 		src.log_message("[mmi_as_oc] moved in as pilot.")
 		if(!hasInternalDamage())
@@ -1099,10 +1108,12 @@
 		to_chat(usr,"<span class='warning'>Access denied</span>")
 		src.log_append_to_last("Permission denied.")
 		return
-	for(var/mob/living/simple_animal/slime/M in range(1,usr))
-		if(M.victim == usr)
-			to_chat(usr,"You're too busy getting your life sucked out of you.")
+	if(isliving(usr))
+		var/mob/living/L = usr
+		if(L.has_buckled_mobs())
+			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
 			return
+
 //	usr << "You start climbing into [src.name]"
 
 	visible_message("<span class='notice'>\The [usr] starts to climb into [src.name]</span>")
@@ -1130,7 +1141,7 @@
 		src.forceMove(src.loc)
 		src.verbs += /obj/mecha/verb/eject
 		src.log_append_to_last("[H] moved in as pilot.")
-		src.icon_state = src.reset_icon()
+		update_icon()
 		set_dir(dir_in)
 		playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
 		if(!hasInternalDamage())
@@ -1218,7 +1229,7 @@
 			mmi.mecha = null
 			src.occupant.canmove = 0
 		src.occupant = null
-		src.icon_state = src.reset_icon()+"-open"
+		update_icon()
 		src.set_dir(dir_in)
 		src.verbs -= /obj/mecha/verb/eject
 	return
@@ -1626,7 +1637,7 @@
 		var/mob/occupant = P.occupant
 
 		user.visible_message("<span class='notice'>\The [user] begins opening the hatch on \the [P]...</span>", "<span class='notice'>You begin opening the hatch on \the [P]...</span>")
-		if (!do_after(user, 40, needhand=0))
+		if (!do_after(user, 40, 0))
 			return
 
 		user.visible_message("<span class='notice'>\The [user] opens the hatch on \the [P] and removes [occupant]!</span>", "<span class='notice'>You open the hatch on \the [P] and remove [occupant]!</span>")
@@ -1763,13 +1774,6 @@
 		cell.give(amount)
 		return 1
 	return 0
-
-/obj/mecha/proc/reset_icon()
-	if (initial_icon)
-		icon_state = initial_icon
-	else
-		icon_state = initial(icon_state)
-	return icon_state
 
 /obj/mecha/attack_generic(var/mob/user, var/damage, var/attack_message)
 

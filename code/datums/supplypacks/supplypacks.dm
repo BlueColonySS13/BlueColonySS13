@@ -24,7 +24,9 @@ var/list/all_supply_groups = list("Clothing",
 								  "Science",
 								  "Security",
 								  "Supplies",
-								  "Business Circuits")
+								  "Business Circuits"
+								  //,"Military Surplus"
+								  )
 
 /datum/supply_pack
 	var/name = null

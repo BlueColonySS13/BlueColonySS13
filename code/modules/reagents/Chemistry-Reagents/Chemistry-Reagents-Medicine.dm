@@ -12,13 +12,34 @@
 	scannable = 1
 	price_tag = 0.5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/inaprovaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE, 15)
 		M.add_chemical_effect(CE_PAINKILLER, 10)
+
+/datum/reagent/inaprovaline/topical
+	name = "Inaprovalaze"
+	id = "inaprovalaze"
+	description = "Inaprovalaze is a topical variant of Inaprovaline."
+	taste_description = "bitterness"
+	reagent_state = LIQUID
+	color = "#00BFFF"
+	overdose = REAGENTS_OVERDOSE * 2
+	metabolism = REM * 0.5
+	scannable = 1
+	touch_met = REM * 0.75
+
+/datum/reagent/inaprovaline/topical/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien != IS_DIONA)
+		..()
+		M.adjustToxLoss(2 * removed)
+
+/datum/reagent/inaprovaline/topical/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien != IS_DIONA)
+		M.add_chemical_effect(CE_STABLE, 20)
+		M.add_chemical_effect(CE_PAINKILLER, 12)
 
 /datum/reagent/bicaridine
 	name = "Bicaridine"
@@ -32,8 +53,7 @@
 	scannable = 1
 
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/bicaridine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -56,6 +76,33 @@
 					if(W.damage <= 0)
 						O.wounds -= W
 
+/datum/reagent/bicaridine/topical
+	name = "Bicaridaze"
+	id = "bicaridaze"
+	description = "Bicaridaze is a topical variant of the chemical Bicaridine."
+	taste_description = "bitterness"
+	taste_mult = 3
+	reagent_state = LIQUID
+	color = "#BF0000"
+	overdose = REAGENTS_OVERDOSE * 0.75
+	scannable = 1
+	touch_met = REM * 0.75
+
+/datum/reagent/bicaridine/topical/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	if(alien != IS_DIONA)
+		..(M, alien, removed * chem_effective)
+		M.adjustToxLoss(2 * removed)
+
+/datum/reagent/bicaridine/topical/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	if(alien != IS_DIONA)
+		M.heal_organ_damage(6 * removed * chem_effective, 0)
+
 /datum/reagent/kelotane
 	name = "Kelotane"
 	id = "kelotane"
@@ -67,8 +114,7 @@
 	scannable = 1
 	price_tag = 0.55
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/kelotane/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
@@ -86,13 +132,38 @@
 	scannable = 1
 	price_tag = 0.7
 
-	get_tax()
-		return MEDICAL_TAX
-
+	tax_type = PHARMA_TAX
 
 /datum/reagent/dermaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(0, 12 * removed)
+
+/datum/reagent/dermaline/topical
+	name = "Dermalaze"
+	id = "dermalaze"
+	description = "Dermalaze is a topical variant of the chemical Dermaline."
+	taste_description = "bitterness"
+	taste_mult = 1.5
+	reagent_state = LIQUID
+	color = "#FF8000"
+	overdose = REAGENTS_OVERDOSE * 0.4
+	scannable = 1
+	touch_met = REM * 0.75
+
+/datum/reagent/dermaline/topical/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	if(alien != IS_DIONA)
+		..(M, alien, removed * chem_effective)
+		M.adjustToxLoss(2 * removed)
+
+/datum/reagent/dermaline/topical/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	var/chem_effective = 1
+	if(alien == IS_SLIME)
+		chem_effective = 0.75
+	if(alien != IS_DIONA)
+		M.heal_organ_damage(0, 12 * removed * chem_effective)
 
 /datum/reagent/dylovene
 	name = "Dylovene"
@@ -104,8 +175,7 @@
 	scannable = 1
 	price_tag = 0.5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/dylovene/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -113,6 +183,8 @@
 		M.drowsyness = max(0, M.drowsyness - 6 * removed)
 		M.hallucination = max(0, M.hallucination - 9 * removed)
 		M.adjustToxLoss(-4 * removed)
+		if(prob(10))
+			M.remove_a_modifier_of_type(/datum/modifier/poisoned)
 
 /datum/reagent/carthatoline
 	name = "Carthatoline"
@@ -123,8 +195,7 @@
 	scannable = 1
 	price_tag = 0.7
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/carthatoline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -133,6 +204,8 @@
 	if(M.getToxLoss() && prob(10))
 		M.vomit(1)
 	M.adjustToxLoss(-8 * removed)
+	if(prob(30))
+		M.remove_a_modifier_of_type(/datum/modifier/poisoned)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/internal/liver/L = H.internal_organs_by_name[O_LIVER]
@@ -153,8 +226,7 @@
 	scannable = 1
 	price_tag = 0.5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/dexalin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -176,8 +248,7 @@
 	scannable = 1
 	price_tag = 0.8
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/dexalinp/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -198,15 +269,17 @@
 	scannable = 1
 	price_tag = 0.8
 
-	get_tax()
-		return MEDICAL_TAX
-
+	tax_type = PHARMA_TAX
 
 /datum/reagent/tricordrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
 		M.adjustOxyLoss(-3 * removed)
 		M.heal_organ_damage(1.5 * removed, 1.5 * removed)
 		M.adjustToxLoss(-1.5 * removed)
+
+/datum/reagent/tricordrazine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien != IS_DIONA)
+		affect_blood(M, alien, removed * 0.4)
 
 /datum/reagent/cryoxadone
 	name = "Cryoxadone"
@@ -220,8 +293,7 @@
 	scannable = 1
 	price_tag = 1
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/cryoxadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -243,8 +315,7 @@
 	scannable = 1
 	price_tag = 2
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/clonexadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -269,8 +340,7 @@
 	mrate_static = TRUE
 	price_tag = 0.05
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/paracetamol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -293,8 +363,7 @@
 	mrate_static = TRUE
 	price_tag = 0.7
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/tramadol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.add_chemical_effect(CE_PAINKILLER, 80)
@@ -316,8 +385,7 @@
 	mrate_static = TRUE
 	price_tag = 0.9
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/oxycodone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.add_chemical_effect(CE_PAINKILLER, 200)
@@ -345,8 +413,7 @@
 
 	price_tag = 0.8
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/synaptizine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -360,19 +427,6 @@
 	M.adjustToxLoss(5 * removed) // It used to be incredibly deadly due to an oversight. Not anymore!
 	M.add_chemical_effect(CE_PAINKILLER, 20)
 
-/datum/reagent/hyperzine
-	name = "Hyperzine"
-	id = "hyperzine"
-	description = "Hyperzine is a highly effective, long lasting, muscle stimulant."
-	taste_description = "bitterness"
-	reagent_state = LIQUID
-	color = "#FF3300"
-	overdose = REAGENTS_OVERDOSE * 0.5
-	price_tag = 1
-
-
-	get_tax()
-		return MEDICAL_TAX
 
 
 /datum/reagent/hyperzine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -395,8 +449,7 @@
 	scannable = 1
 	price_tag = 0.8
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 /datum/reagent/alkysine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -415,9 +468,7 @@
 	scannable = 1
 	price_tag = 0.6
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/imidazoline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -445,9 +496,7 @@
 	scannable = 1
 	price_tag = 0.8
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/peridaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -473,9 +522,7 @@
 	scannable = 1
 	price_tag = 0.8
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/osteodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -502,9 +549,7 @@
 	var/repair_strength = 3
 	price_tag = 0.7
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/myelamine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -525,6 +570,141 @@
 					if(W.damage <= 0)
 						O.wounds -= W
 
+/datum/reagent/respirodaxon
+	name = "Respirodaxon"
+	id = "respirodaxon"
+	description = "Used to repair the tissue of the lungs and similar organs."
+	taste_description = "metallic"
+	reagent_state = LIQUID
+	color = "#4444FF"
+	metabolism = REM * 1.5
+	overdose = 10
+	overdose_mod = 1.75
+	scannable = 1
+
+	tax_type = PHARMA_TAX
+
+/datum/reagent/respirodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/repair_strength = 1 * M.species.chem_strength_heal
+	if(alien == IS_SLIME)
+		repair_strength = 0.6
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		for(var/obj/item/organ/I in H.internal_organs)
+			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LUNGS, O_VOICE, O_GBLADDER)))
+				continue
+			if(I.damage > 0)
+				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				H.Confuse(2)
+		if(M.reagents.has_reagent("gastirodaxon") || M.reagents.has_reagent("peridaxon"))
+			if(H.losebreath >= 15 && prob(H.losebreath))
+				H.Stun(2)
+			else
+				H.losebreath = CLAMP(H.losebreath + 3, 0, 20)
+		else
+			H.losebreath = max(H.losebreath - 4, 0)
+
+/datum/reagent/gastirodaxon
+	name = "Gastirodaxon"
+	id = "gastirodaxon"
+	description = "Used to repair the tissues of the digestive system."
+	taste_description = "chalk"
+	reagent_state = LIQUID
+	color = "#8B4513"
+	metabolism = REM * 1.5
+	overdose = 10
+	overdose_mod = 1.75
+	scannable = 1
+
+	tax_type = PHARMA_TAX
+
+/datum/reagent/gastirodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/repair_strength = 1 * M.species.chem_strength_heal
+	if(alien == IS_SLIME)
+		repair_strength = 0.6
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		for(var/obj/item/organ/I in H.internal_organs)
+			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_APPENDIX, O_STOMACH, O_INTESTINE, O_NUTRIENT, O_PLASMA, O_POLYP)))
+				continue
+			if(I.damage > 0)
+				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				H.Confuse(2)
+		if(M.reagents.has_reagent("hepanephrodaxon") || M.reagents.has_reagent("peridaxon"))
+			if(prob(10))
+				H.vomit(1)
+			else if(H.nutrition > 30)
+				M.adjust_nutrition(-removed * 30)
+		else
+			H.adjustToxLoss(-10 * removed) // Carthatoline based, considering cost.
+
+/datum/reagent/hepanephrodaxon
+	name = "Hepanephrodaxon"
+	id = "hepanephrodaxon"
+	description = "Used to repair the common tissues involved in filtration."
+	taste_description = "glue"
+	reagent_state = LIQUID
+	color = "#D2691E"
+	metabolism = REM * 1.5
+	overdose = 10
+	overdose_mod = 1.75
+	scannable = 1
+
+	tax_type = PHARMA_TAX
+
+/datum/reagent/hepanephrodaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/repair_strength = 1 * M.species.chem_strength_heal
+	if(alien == IS_SLIME)
+		repair_strength = 0.4
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		for(var/obj/item/organ/I in H.internal_organs)
+			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_LIVER, O_KIDNEYS, O_APPENDIX, O_ACID, O_HIVE)))
+				continue
+			if(I.damage > 0)
+				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				H.Confuse(2)
+		if(M.reagents.has_reagent("cordradaxon") || M.reagents.has_reagent("peridaxon"))
+			if(prob(5))
+				H.vomit(1)
+			else if(prob(5))
+				to_chat(H, "<span class='danger'>Something churns inside you.</span>")
+				H.adjustToxLoss(10 * removed)
+				H.vomit(0, 1)
+		else
+			H.adjustToxLoss(-12 * removed) // Carthatoline based, considering cost.
+
+/datum/reagent/cordradaxon
+	name = "Cordradaxon"
+	id = "cordradaxon"
+	description = "Used to repair the specialized tissues involved in the circulatory system."
+	taste_description = "rust"
+	reagent_state = LIQUID
+	color = "#FF4444"
+	metabolism = REM * 1.5
+	overdose = 10
+	overdose_mod = 1.75
+	scannable = 1
+
+	tax_type = PHARMA_TAX
+
+/datum/reagent/cordradaxon/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/repair_strength = 1 * M.species.chem_strength_heal
+	if(alien == IS_SLIME)
+		repair_strength = 0.6
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		for(var/obj/item/organ/I in H.internal_organs)
+			if(I.robotic >= ORGAN_ROBOT || !(I.organ_tag in list(O_HEART, O_SPLEEN, O_RESPONSE, O_ANCHOR, O_EGG)))
+				continue
+			if(I.damage > 0)
+				I.damage = max(I.damage - 4 * removed * repair_strength, 0)
+				H.Confuse(2)
+		if(M.reagents.has_reagent("respirodaxon") || M.reagents.has_reagent("peridaxon"))
+			H.losebreath = CLAMP(H.losebreath + 1, 0, 10)
+		else
+			H.adjustOxyLoss(-30 * removed) // Deals with blood oxygenation.
+
 /datum/reagent/ryetalyn
 	name = "Ryetalyn"
 	id = "ryetalyn"
@@ -535,8 +715,7 @@
 	overdose = REAGENTS_OVERDOSE
 	price_tag = 0.7
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/ryetalyn/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -561,8 +740,7 @@
 	overdose = REAGENTS_OVERDOSE
 	price_tag = 0.5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/ethylredoxrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -592,9 +770,7 @@
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
 	price_tag = 0.4
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/hyronalin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -614,8 +790,7 @@
 	scannable = 1
 	price_tag = 0.4
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/arithrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -639,13 +814,71 @@
 	scannable = 1
 	price_tag = 0.3
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
+/datum/reagent/penicillin/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	affect_blood(M, alien, removed * 0.8) // Not 100% as effective as injections, though still useful.
 
 /datum/reagent/penicillin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
+
+/datum/reagent/immunosuprizine
+	name = "Immunosuprizine"
+	id = "immunosuprizine"
+	description = "An experimental medicine believed to have the ability to prevent any organ rejection."
+	taste_description = "flesh"
+	reagent_state = SOLID
+	color = "#7B4D4F"
+	overdose = 20
+	overdose_mod = 1.5
+	scannable = 1
+
+/datum/reagent/immunosuprizine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	var/strength_mod = 1 * M.species.chem_strength_heal
+
+	if(alien == IS_DIONA)	// It's a tree.
+		strength_mod = 0.25
+
+	if(alien == IS_SLIME)	// Diffculty bonding with internal cellular structure.
+		strength_mod = 0.75
+
+	if(alien == IS_SKRELL)	// Natural inclination toward toxins.
+		strength_mod = 1.5
+
+	if(alien == IS_UNATHI)	// Natural regeneration, robust biology.
+		strength_mod = 1.75
+
+	if(alien == IS_TAJARA)	// Highest metabolism.
+		strength_mod = 2
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(alien != IS_DIONA)
+			H.adjustToxLoss((30 / strength_mod) * removed)
+
+		var/list/organtotal = list()
+		organtotal |= H.organs
+		organtotal |= H.internal_organs
+
+		for(var/obj/item/organ/I in organtotal)	// Don't mess with robot bits, they don't reject.
+			if(I.robotic >= ORGAN_ROBOT)
+				organtotal -= I
+
+		if(dose >= 15)
+			for(var/obj/item/organ/I in organtotal)
+				if(I.transplant_data && prob(round(15 * strength_mod)))	// Reset the rejection process, toggle it to not reject.
+					I.rejecting = 0
+					I.can_reject = FALSE
+
+		if(H.reagents.has_reagent("penicillin") || H.reagents.has_reagent("corophizine"))	// Chemicals that increase your immune system's aggressiveness make this chemical's job harder.
+			for(var/obj/item/organ/I in organtotal)
+				if(I.transplant_data)
+					var/rejectmem = I.can_reject
+					I.can_reject = initial(I.can_reject)
+					if(rejectmem != I.can_reject)
+						H.adjustToxLoss((15 / strength_mod))
+						I.take_damage(1)
 
 /datum/reagent/corophizine
 	name = "Corophizine"
@@ -658,8 +891,7 @@
 	overdose = 10
 	scannable = 1
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/corophizine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -691,8 +923,7 @@
 	color = "#C8A5DC"
 	touch_met = 5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/sterilizine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
@@ -723,8 +954,8 @@
 	scannable = 1
 	price_tag = 0.7
 
-	get_tax()
-		return MEDICAL_TAX
+
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/leporazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -746,9 +977,7 @@
 	scannable = 1
 	price_tag = 0.3
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/rezadone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -766,7 +995,7 @@
 
 /* Antidepressants */
 
-#define ANTIDEPRESSANT_MESSAGE_DELAY 5*60*10
+#define ANTIDEPRESSANT_MESSAGE_DELAY 50*600*100
 
 /datum/reagent/methylphenidate
 	name = "Methylphenidate"
@@ -780,9 +1009,7 @@
 	data = 0
 	price_tag = 0.7
 
-
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/methylphenidate/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -808,10 +1035,7 @@
 	data = 0
 	price_tag = 0.4
 
-
-	get_tax()
-		return MEDICAL_TAX
-
+	tax_type = PHARMA_TAX
 
 /datum/reagent/citalopram/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -836,8 +1060,7 @@
 	data = 0
 	price_tag = 0.3
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/paroxetine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -867,8 +1090,7 @@
 	data = 0
 	price_tag = 0.5
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/qerr_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -894,8 +1116,7 @@
 	scannable = 1
 	price_tag = 2
 
-	get_tax()
-		return MEDICAL_TAX
+	tax_type = PHARMA_TAX
 
 
 /datum/reagent/healing_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)

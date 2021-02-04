@@ -223,6 +223,13 @@ var/list/flooring_types
 	icon_base = "tealcarpet"
 	build_type = /obj/item/stack/tile/carpet/teal
 
+/decl/flooring/carpet/blackcarpet
+	name = "black carpet"
+	icon_base = "blackcarpet"
+	build_type = /obj/item/stack/tile/carpet/blackcarpet
+
+
+
 /decl/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
@@ -578,3 +585,7 @@ var/list/flooring_types
 /decl/flooring/padded
 	icon = 'icons/turf/flooring/decorative.dmi'
 	icon_base = "padded"
+
+/decl/flooring/glass_bottom
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "glass_bottom"

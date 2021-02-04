@@ -12,6 +12,8 @@
 	density = FALSE
 	plane = ABOVE_PLANE
 
+	wall_drag = TRUE
+
 	var/sign_text = "Sign Here"
 	var/sign_desc = "This is a preset sign that needs a description."
 
@@ -53,6 +55,9 @@
 
 /obj/machinery/modular_sign/on_persistence_load()
 	update_sign()
+
+/obj/machinery/modular_sign/ex_act(severity)
+	return // no more deleted signs by lightning
 
 /obj/machinery/modular_sign/proc/update_sign()
 	update_icon()

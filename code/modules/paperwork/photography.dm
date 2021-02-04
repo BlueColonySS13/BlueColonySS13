@@ -33,9 +33,10 @@ var/global/photo_count = 0
 	w_class = ITEMSIZE_SMALL
 	var/id
 	var/icon/img	//Big photo image
+	var/image_id = null
 	var/scribble	//Scribble on the back.
 	var/icon/tiny
-	var/cursed = 0
+//	var/cursed = 0
 	var/photo_size = 3
 
 	var/sensational			//pictures of high ranking people, depending on rank
@@ -45,10 +46,36 @@ var/global/photo_count = 0
 
 	drop_sound = 'sound/items/drop/paper.ogg'
 
-	dont_save = 1
+	unique_save_vars = list("image_id", "scribble", "photo_size", "sensational", "gruesome", "scandalous", "scary")
 
-/obj/item/weapon/photo/New()
+/obj/item/weapon/photo/initialize(mapload, ...)
 	id = photo_count++
+	return ..()
+
+/obj/item/weapon/photo/on_persistence_save()
+	if(!image_id) // If it already has an image_id, it got saved before, so don't make duplicates.
+		image_id = "[game_id]-[id]"
+		SSpersistence.save_image(img, image_id, PERSISTENT_PHOTO_DIRECTORY)
+	return ..()
+
+/obj/item/weapon/photo/on_persistence_load()
+	if(image_id)
+		img = SSpersistence.load_image(image_id, PERSISTENT_PHOTO_DIRECTORY)
+		make_small_sprite() // So the tiny sprite isn't a black square.
+	return ..()
+
+/obj/item/weapon/photo/proc/make_small_sprite()
+	var/icon/small_img = icon(img)
+	var/icon/tiny_img = icon(img)
+	var/icon/ic = icon('icons/obj/items.dmi',"photo")
+	var/icon/pc = icon('icons/obj/bureaucracy.dmi', "photo")
+	small_img.Scale(8, 8)
+	tiny_img.Scale(4, 4)
+	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
+	pc.Blend(tiny_img,ICON_OVERLAY, 12, 19)
+
+	icon = ic
+	tiny = pc
 
 /obj/item/weapon/photo/attack_self(mob/user as mob)
 	user.examinate(src)
@@ -260,10 +287,11 @@ var/global/photo_count = 0
 		else
 			mob_detail += "You can also see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
 
+/*
 	for(var/mob/living/simple_animal/hostile/statue/S in the_turf)
 		if(S)
 		 mob_detail +=	"You can see \a [S] on the photo. Its stare makes you feel uneasy." //"That which holds the image of an angel, becomes itself an angel."
-
+*/
 	return mob_detail
 
 
@@ -282,49 +310,50 @@ var/global/photo_count = 0
 		icon_state = icon_on
 		on = 1
 
-/obj/item/device/camera/proc/can_capture_turf(turf/T, mob/user)
-	var/viewer = user
-	if(user.client)		//To make shooting through security cameras possible
-		viewer = user.client.eye
-	var/can_see = (T in view(viewer))
 
+//Proc for capturing check
+/mob/living/proc/can_capture_turf(turf/T)
+	var/viewer = src
+	if(src.client)		//To make shooting through security cameras possible
+		viewer = src.client.eye
+	var/can_see = (T in view(viewer))
 	return can_see
 
-/obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
 
-	var/sensationality
-	var/gruesomeness
-	var/scandal
-	var/scariness
-
+/obj/item/device/camera/proc/captureimage(atom/target, mob/living/user, flag)
+	var/sensationality = 0
+	var/gruesomeness = 0
+	var/scandal = 0
+	var/scariness = 0
 
 	var/x_c = target.x - (size-1)/2
 	var/y_c = target.y + (size-1)/2
 	var/z_c	= target.z
-	var/list/turfs = list()
 	var/mobs = ""
 	for(var/i = 1 to size)
 		for(var/j = 1 to size)
 			var/turf/T = locate(x_c, y_c, z_c)
-			if(can_capture_turf(T, user))
-				turfs.Add(T)
+			if(user.can_capture_turf(T))
 				mobs += get_mobs(T)
-
 				sensationality += get_sensationalist_value(T)
 				gruesomeness += get_gruesome_value(T)
 				scandal += get_scandalous_value(T)
 				scariness += get_scary_value(T)
-
 			x_c++
 		y_c--
 		x_c = x_c - size
 
-	var/obj/item/weapon/photo/p = createpicture(target, user, turfs, mobs, flag)
+
+
+	var/obj/item/weapon/photo/p = createpicture(target, user, mobs, flag)
+
 	p.sensational = sensationality
 	p.gruesome = gruesomeness
 	p.scandalous = scandal
 	p.scary = scariness
 
+
+/*
 	if(findtext(mobs, "Its stare makes you feel uneasy"))
 		p.cursed = 1
 		user.visible_message("<span class='userdanger'>Something starts to slowly manifest from the picture!</span>")
@@ -334,30 +363,23 @@ var/global/photo_count = 0
 			S.banishable = 1//At least you can get rid of those bastards
 			T.visible_message("<span class='userdanger'>The photo turns into \a [S]!</span>")
 			qdel(p)
-
+*/
 	printpicture(user, p)
 
-/obj/item/device/camera/proc/createpicture(atom/target, mob/user, list/turfs, mobs, flag)
-	var/icon/photoimage = get_icon(turfs, target)
 
-	var/icon/small_img = icon(photoimage)
-	var/icon/tiny_img = icon(photoimage)
-	var/icon/ic = icon('icons/obj/items.dmi',"photo")
-	var/icon/pc = icon('icons/obj/bureaucracy.dmi', "photo")
-	small_img.Scale(8, 8)
-	tiny_img.Scale(4, 4)
-	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
-	pc.Blend(tiny_img,ICON_OVERLAY, 12, 19)
+/obj/item/device/camera/proc/createpicture(atom/target, mob/user, mobs, flag)
+	var/x_c = target.x - (size-1)/2
+	var/y_c = target.y - (size-1)/2
+	var/z_c	= target.z
+	var/icon/photoimage = generate_image(x_c, y_c, z_c, size, CAPTURE_MODE_REGULAR, user, FALSE)
 
 	var/obj/item/weapon/photo/p = new()
-	p.name = "photo"
-	p.icon = ic
-	p.tiny = pc
 	p.img = photoimage
 	p.desc = mobs
-	p.pixel_x = rand(-10, 10)
-	p.pixel_y = rand(-10, 10)
 	p.photo_size = size
+	p.make_small_sprite()
+	p.update_icon()
+
 	return p
 
 /obj/item/device/camera/proc/printpicture(mob/user, obj/item/weapon/photo/p)
@@ -377,6 +399,7 @@ var/global/photo_count = 0
 	p.pixel_y = pixel_y
 	p.photo_size = photo_size
 	p.scribble = scribble
+/*
 	p.cursed = cursed
 	if(p.cursed)
 		var/turf/T = get_turf(p)
@@ -387,7 +410,7 @@ var/global/photo_count = 0
 			S.banishable = 1//At least you can get rid of those bastards
 			T.visible_message("<span class='userdanger'>The photo turns into \a [S]!</span>")
 			qdel(p)
-
+*/
 	if(copy_id)
 		p.id = id
 

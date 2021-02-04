@@ -31,6 +31,8 @@
 	sprite_sheets = null	//To prevent alternate species sprite sheets from popping up
 	ispolychromic = 1
 
+	matter = list("polychromatic thread" = 3000)
+
 	unique_save_vars = list("primary_color", "secondary_color", "tertiary_color")
 	/* Stuff from Cit
 	mutantrace_variation = NO_MUTANTRACE_VARIATION // because I'm too lazy to port these to digi-compatible and to prove a point from /tg/ whining - Pooj
@@ -181,3 +183,14 @@
 	secondary_color = "#FFFFFF"
 	tertiary_color = "#8CC6FF"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/under/polychromic/gown
+	name = "polychromic gown"
+	desc = "For those who enjoy the finer things in life."
+	icon_state = "polygown"
+	item_color = "polygown"
+	item_state = "rainbow"
+	primary_color = "#B53737"
+	secondary_color = "#666666"
+	tertiary_color = "#990000"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS

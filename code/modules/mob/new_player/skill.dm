@@ -62,7 +62,7 @@ var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKI
 /datum/skill/knowledge/law
 	ID = "law"
 	name = "Corporate Law"
-	desc = "Your knowledge of corporate law and procedures. This includes Corporate Regulations, as well as general station rulings and procedures. A low level in this skill is typical for security officers, a high level in this skill is typical for Colony Directors."
+	desc = "Your knowledge of corporate law and procedures. This includes Corporate Regulations, as well as general city rulings and procedures. A low level in this skill is typical for security officers, a high level in this skill is typical for Colony Directors."
 	field = "Security"
 	secondary = 1
 
@@ -106,7 +106,7 @@ var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKI
 /datum/skill/medical
 	ID = "medical"
 	name = "Medicine"
-	desc = "Covers an understanding of the human body and medicine. At a low level, this skill gives a basic understanding of applying common types of medicine, and a rough understanding of medical devices like the health analyzer. At a high level, this skill grants exact knowledge of all the medicine available on the station, as well as the ability to use complex medical devices like the body scanner or mass spectrometer."
+	desc = "Covers an understanding of the human body and medicine. At a low level, this skill gives a basic understanding of applying common types of medicine, and a rough understanding of medical devices like the health analyzer. At a high level, this skill grants exact knowledge of all the medicine available on the city, as well as the ability to use complex medical devices like the body scanner or mass spectrometer."
 	field = "Medical"
 
 /datum/skill/anatomy

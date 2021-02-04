@@ -30,6 +30,8 @@
 	/obj/item/weapon/storage/pill_bottle/dice_nerd,
 	/obj/item/weapon/deck/cah,
 	/obj/item/weapon/deck/cah/black,
+	/obj/item/weapon/deck/tarot,
+	/obj/item/weapon/deck/cards,
 	)
 
 	cost = 50
@@ -60,7 +62,7 @@
 			/obj/item/weapon/storage/backpack/cultpack,
 			/obj/item/weapon/storage/box/candle_box = 3
 			)
-	cost = 10
+	cost = 250
 	containertype = "/obj/structure/closet/crate"
 	containername = "Chaplain equipment crate"
 
@@ -76,7 +78,7 @@
 			/obj/item/clothing/accessory/storage/white_drop_pouches,
 			/obj/item/clothing/accessory/storage/webbing
 			)
-	cost = 30
+	cost = 120
 	containertype = "/obj/structure/closet/crate"
 	containername = "Webbing crate"
 	spend_type = SPEND_WEAPONS
@@ -95,7 +97,7 @@
 	name = "Camera Film Refills"
 	contains = list(
 	/obj/item/device/camera_film = 5)
-	cost = 15
+	cost = 25
 	containertype = /obj/structure/closet/crate
 	containername = "Camera Film Refills"
 	spend_type = SPEND_OFFICE
@@ -205,7 +207,7 @@
 	name = "Hair Trinket Set"
 	containername = "Hair Trinket Set"
 	containertype = "/obj/structure/closet/crate"
-	cost = 30
+	cost = 600
 	contains = list(
 			/obj/item/clothing/head/pin = 3,
 			/obj/item/clothing/head/pin/bow = 3,
@@ -230,7 +232,7 @@
 	name = "Umbrella crate"
 	containername = "Umbrella crate"
 	containertype = "/obj/structure/closet/crate"
-	cost = 15
+	cost = 45
 	contains = list(
 				/obj/item/weapon/melee/umbrella/random = 5
 				)
@@ -258,7 +260,7 @@
 	name = "calories scanners"
 	contains = list(/obj/item/device/calories_scanner = 5)
 
-	cost = 10
+	cost = 40
 	containertype = /obj/structure/closet/crate
 	containername = "calories scanners"
 

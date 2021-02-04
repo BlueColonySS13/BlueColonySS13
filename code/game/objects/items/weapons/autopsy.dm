@@ -46,10 +46,9 @@
 			*/
 
 			// Buffing this stuff up for now!
-			if(1)
-				W.pretend_weapon = W.weapon
-			else
-				W.pretend_weapon = pick("mechanical toolbox", "wirecutters", "revolver", "crowbar", "fire extinguisher", "tomato soup", "oxygen tank", "emergency oxygen tank", "laser", "bullet")
+			W.pretend_weapon = W.weapon
+//			else
+//				W.pretend_weapon = pick("mechanical toolbox", "wirecutters", "revolver", "crowbar", "fire extinguisher", "tomato soup", "oxygen tank", "emergency oxygen tank", "laser", "bullet")
 
 
 		var/datum/autopsy_data_scanner/D = wdata[V]
@@ -162,9 +161,6 @@
 	if(!istype(M))
 		return 0
 
-//	if (user.a_intent == I_HELP)
-//		return ..()
-
 	if(target_name != M.name)
 		target_name = M.name
 		src.wdata = list()
@@ -175,14 +171,18 @@
 	src.timeofdeath = M.timeofdeath
 
 	var/obj/item/organ/external/S = M.get_organ(user.zone_sel.selecting)
-	if(!S)
-		to_chat(user, "<span class='warning'>You can't scan this body part.</span>")
-		return
-	if(!S.open)
-		to_chat(user, "<span class='warning'>You have to cut [S] open first!</span>")
-		return
-	M.visible_message("<span class='notice'>\The [user] scans the wounds on [M]'s [S.name] with [src]</span>")
+	if (S.open == 2)
+		return ..()
+	else
+		if(!S)
+			to_chat(user, "<span class='warning'>You can't scan this body part.</span>")
+			return
+		if(!S.open)
+			to_chat(user, "<span class='warning'>You have to cut [S] open first!</span>")
+			return
+		M.visible_message("<span class='notice'>\The [user] scans the wounds on [M]'s [S.name] with [src]</span>")
 
-	src.add_data(S)
+		src.add_data(S)
 
-	return 1
+		return 1
+

@@ -46,7 +46,7 @@
 	/obj/item/device/radio/borg,
 	/obj/item/weapon/holder,
 	/obj/machinery/camera,
-	/mob/living/simple_animal/borer,
+	/mob/living/simple_mob/animal/borer,
 	/obj/item/device/mmi,
 	)
 
@@ -252,7 +252,7 @@
 	held_item = null
 	return 1
 
-	return
+
 
 /mob/living/simple_animal/spiderbot/verb/get_item()
 	set name = "Pick up item"

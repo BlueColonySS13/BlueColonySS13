@@ -32,11 +32,15 @@ HALOGEN COUNTER	- Radcount on mobs
 		verbs += /obj/item/device/healthanalyzer/proc/toggle_adv
 	..()
 
-/obj/item/device/healthanalyzer/do_surgery(mob/living/M, mob/living/user)
-//	if(user.a_intent != I_HELP) //in case it is ever used as a surgery tool
-//		return ..()
-	scan_mob(M, user) //default surgery behaviour is just to scan as usual
-	return 1
+
+/obj/item/device/healthanalyzer/do_surgery(mob/living/carbon/human/M, mob/living/user)
+	var/obj/item/organ/external/S = M.get_organ(user.zone_sel.selecting)
+	if(S.open)
+		return ..()
+
+	else
+		scan_mob(M, user)
+
 
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
 	scan_mob(M, user)
@@ -411,25 +415,29 @@ HALOGEN COUNTER	- Radcount on mobs
 	var/details = 0
 	var/recent_fail = 0
 
-/obj/item/device/reagent_scanner/afterattack(obj/O, mob/user as mob, proximity)
+/obj/item/device/reagent_scanner/afterattack(obj/O, mob/living/user, proximity)
 	if(!proximity || user.stat || !istype(O))
 		return
-	if (!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+
+	if(!istype(user))
 		return
 
 	if(!isnull(O.reagents))
+		if(!(O.flags & OPENCONTAINER)) // The idea is that the scanner has to touch the reagents somehow. This is done to prevent cheesing unidentified autoinjectors.
+			to_chat(user, span("warning", "\The [O] is sealed, and cannot be scanned by \the [src] until unsealed."))
+			return
+
 		var/dat = ""
 		if(O.reagents.reagent_list.len > 0)
 			var/one_percent = O.reagents.total_volume / 100
 			for (var/datum/reagent/R in O.reagents.reagent_list)
-				dat += "\n \t <span class='notice'>[R][details ? ": [R.volume / one_percent]%" : ""]</span>"
+				dat += "\n \t " + span("notice", "[R][details ? ": [R.volume / one_percent]%" : ""]")
 		if(dat)
-			to_chat(user, "<span class='notice'>Chemicals found: [dat]</span>")
+			to_chat(user, span("notice", "Chemicals found: [dat]</span>"))
 		else
-			to_chat(user, "<span class='notice'>No active chemical agents found in [O].</span>")
+			to_chat(user, span("notice", "No active chemical agents found in [O]."))
 	else
-		to_chat(user, "<span class='notice'>No significant chemical agents found in [O].</span>")
+		to_chat(user, span("notice", "No significant chemical agents found in [O]."))
 
 	return
 
@@ -452,15 +460,15 @@ HALOGEN COUNTER	- Radcount on mobs
 	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 20)
 
 /obj/item/device/slime_scanner/attack(mob/living/M as mob, mob/living/user as mob)
-	if(!isslime(M))
-		to_chat(user, "<B>This device can only scan slimes!</B>")
+	if(!istype(M, /mob/living/simple_mob/slime/xenobio))
+		to_chat(user, "<B>This device can only scan lab-grown slimes!</B>")
 		return
-	var/mob/living/simple_animal/slime/S = M
+	var/mob/living/simple_mob/slime/xenobio/S = M
 	user.show_message("Slime scan results:<br>[S.slime_color] [S.is_adult ? "adult" : "baby"] slime<br>Health: [S.health]<br>Mutation Probability: [S.mutation_chance]")
 
 	var/list/mutations = list()
 	for(var/potential_color in S.slime_mutation)
-		var/mob/living/simple_animal/slime/slime = potential_color
+		var/mob/living/simple_mob/slime/xenobio/slime = potential_color
 		mutations.Add(initial(slime.slime_color))
 	user.show_message("Potental to mutate into [english_list(mutations)] colors.<br>Extract potential: [S.cores]<br>Nutrition: [S.nutrition]/[S.get_max_nutrition()]")
 
@@ -470,12 +478,14 @@ HALOGEN COUNTER	- Radcount on mobs
 		user.show_message("<span class='warning'>Warning: Subject is hungry.</span>")
 	user.show_message("Electric change strength: [S.power_charge]")
 
-	if(S.resentment)
-		user.show_message("<span class='warning'>Warning: Subject is harboring resentment.</span>")
-	if(S.docile)
+	if(S.has_AI())
+		var/datum/ai_holder/simple_mob/xenobio_slime/AI = S.ai_holder
+		if(AI.resentment)
+			user.show_message("<span class='warning'>Warning: Subject is harboring resentment.</span>")
+		if(AI.rabid)
+			user.show_message("<span class='danger'>Subject is enraged and extremely dangerous!</span>")
+	if(S.harmless)
 		user.show_message("Subject has been pacified.")
-	if(S.rabid)
-		user.show_message("<span class='danger'>Subject is enraged and extremely dangerous!</span>")
 	if(S.unity)
 		user.show_message("Subject is friendly to other slime colors.")
 

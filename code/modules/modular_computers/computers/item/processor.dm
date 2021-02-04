@@ -10,6 +10,28 @@
 
 	var/obj/machinery/modular_computer/machinery_computer = null
 
+/obj/item/modular_computer/processor/on_persistence_load()
+	// adds battery modules
+	var/B = locate(/obj/item/weapon/computer_hardware/battery_module) in src
+	if(B)
+		battery_module = B
+
+	// add network cards
+	var/N = locate(/obj/item/weapon/computer_hardware/network_card) in src
+	if(N)
+		network_card = N
+
+	// add hard drives
+	var/H = locate(/obj/item/weapon/computer_hardware/hard_drive) in src
+	if(H)
+		hard_drive = H
+
+	// add printers
+	var/P = locate(/obj/item/weapon/computer_hardware/nano_printer) in src
+	if(P)
+		nano_printer = P
+
+
 /obj/item/modular_computer/processor/Destroy()
 	if(machinery_computer && (machinery_computer.cpu == src))
 		machinery_computer.cpu = null
@@ -33,7 +55,6 @@
 /obj/item/modular_computer/processor/New(var/comp)
 	if(!comp || !istype(comp, /obj/machinery/modular_computer))
 		CRASH("Inapropriate type passed to obj/item/modular_computer/processor/New()! Aborting.")
-		return
 	// Obtain reference to machinery computer
 	machinery_computer = comp
 	machinery_computer.cpu = src

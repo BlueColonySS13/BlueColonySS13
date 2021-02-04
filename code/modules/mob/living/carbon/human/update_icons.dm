@@ -90,7 +90,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #define R_HAND_LAYER			28		//Right-hand item
 #define MODIFIER_EFFECTS_LAYER	29		//Effects drawn by modifiers
 #define FIRE_LAYER				30		//'Mob on fire' overlay layer
-#define WATER_LAYER				31		//'Mob submerged' overlay layer
+#define SUBMERGE_LAYER			31		//'Mob submerged' overlay layer
 #define TARGETED_LAYER			32		//'Aimed at' overlay layer
 #define TOTAL_LAYERS			32//<---- KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
 
@@ -124,18 +124,17 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 /mob/living/carbon/human/update_transform()
 	// First, get the correct size.
-	var/desired_scale = icon_scale
-	var/desired_width = icon_scale
+	var/desired_scale_x = icon_scale_x
+	var/desired_scale_y = icon_scale_y
 
-	desired_scale *= species.icon_scale
-	desired_width *= species.icon_width
+	desired_scale_x *= species.icon_scale_x
+	desired_scale_y *= species.icon_scale_y
 
 	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.icon_scale_percent))
-			desired_scale *= M.icon_scale_percent
-
-		if(!isnull(M.icon_width_percent))
-			desired_width *= M.icon_width_percent
+		if(!isnull(M.icon_scale_x_percent))
+			desired_scale_x *= M.icon_scale_x_percent
+		if(!isnull(M.icon_scale_y_percent))
+			desired_scale_y *= M.icon_scale_y_percent
 
 	// Regular stuff again.
 	var/matrix/M = matrix()
@@ -147,12 +146,12 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	if(lying && !species.prone_icon) //Only rotate them if we're not drawing a specific icon for being prone.
 		M.Turn(90)
-		M.Translate(desired_width, 16*(desired_scale-1))
-		M.Scale(desired_width, desired_scale)
+		M.Scale(desired_scale_x, desired_scale_y)
+		M.Translate(1,-6)
 		layer = MOB_LAYER -0.01 // Fix for a byond bug where turf entry order no longer matters
 	else
-		M.Translate(desired_width, 16*(desired_scale-1))
-		M.Scale(desired_width, desired_scale)
+		M.Scale(desired_scale_x, desired_scale_y)
+		M.Translate(0, 16*(desired_scale_y-1))
 		layer = MOB_LAYER // Fix for a byond bug where turf entry order no longer matters
 
 	animate(src, transform = M, time = anim_time)
@@ -242,10 +241,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	//Create a new, blank icon for our mob to use.
 	var/icon/stand_icon = new(species.icon_template ? species.icon_template : 'icons/mob/human.dmi', icon_state = "blank")
 
-	var/g = "male"
-	if(gender == FEMALE)
-		g = "female"
-
+	var/g = (gender == MALE ? "male" : "female")
 	var/icon_key = "[species.get_race_key(src)][g][s_tone][r_skin][g_skin][b_skin]"
 
 	var/obj/item/organ/internal/eyes/eyes = internal_organs_by_name[O_EYES]
@@ -421,24 +417,32 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	//base icons
 	var/icon/face_standing = icon(icon = 'icons/mob/human_face.dmi', icon_state = "bald_s")
-
 	if(f_style)
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
 		if(facial_hair_style && facial_hair_style.species_allowed && (src.species.get_bodytype(src) in facial_hair_style.species_allowed))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
 				facial_s.Blend(rgb(r_facial, g_facial, b_facial), ICON_ADD)
-
 			face_standing.Blend(facial_s, ICON_OVERLAY)
-
-	if(h_style && !(head && (head.flags_inv & BLOCKHEADHAIR)))
+	if(h_style)
 		var/datum/sprite_accessory/hair/hair_style = hair_styles_list[h_style]
+		if(head && (head.flags_inv & BLOCKHEADHAIR))
+			if(!(hair_style.hair_type == HAIR_SHORT))
+				hair_style = hair_styles_list["Short Hair"]
+
 		if(hair_style && (src.species.get_bodytype(src) in hair_style.species_allowed))
+			var/icon/grad_s = null
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			var/icon/hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration)
+				if(grad_style)
+					grad_s = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_style])
+					grad_s.Blend(hair_s, ICON_AND)
+					grad_s.Blend(rgb(r_grad, g_grad, b_grad), ICON_MULTIPLY)
 				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
 				hair_s.Blend(hair_s_add, ICON_ADD)
+				if(!isnull(grad_s))
+					hair_s.Blend(grad_s, ICON_OVERLAY)
 
 			face_standing.Blend(hair_s, ICON_OVERLAY)
 
@@ -512,9 +516,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			if(underlay)
 				standing.underlays += underlay
 
-	for(var/mut in mutations)
-		if(LASER)
-			standing.overlays += "lasereyes_s" //TODO
+	if(LASER in mutations)
+		standing.overlays += "lasereyes_s" //TODO
 
 	overlays_standing[MUTATIONS_LAYER]	= standing
 	apply_layer(MUTATIONS_LAYER)
@@ -989,15 +992,15 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(QDESTROYING(src))
 		return
 
-	remove_layer(WATER_LAYER)
+	remove_layer(SUBMERGE_LAYER)
 
 	var/depth = check_submerged()
 	if(!depth || lying)
 		return
 
-	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
+	overlays_standing[SUBMERGE_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+SUBMERGE_LAYER) //TODO: Improve
 
-	apply_layer(WATER_LAYER)
+	apply_layer(SUBMERGE_LAYER)
 
 /mob/living/carbon/human/proc/update_surgery()
 	if(QDESTROYING(src))
@@ -1083,6 +1086,6 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #undef R_HAND_LAYER
 #undef MODIFIER_EFFECTS_LAYER
 #undef FIRE_LAYER
-#undef WATER_LAYER
+#undef SUBMERGE_LAYER
 #undef TARGETED_LAYER
 #undef TOTAL_LAYERS

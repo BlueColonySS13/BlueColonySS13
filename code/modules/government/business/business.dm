@@ -14,6 +14,7 @@
 	var/list/blacklisted_ckeys = list()		// uses ckeys
 
 	var/datum/business_person/owner
+	var/pay_CEO = FALSE	// does the CEO get paid. QoL feature.
 
 	var/access_password = " "
 
@@ -71,7 +72,7 @@
 		categories += CAT_RETAIL
 
 	for(var/V in categories) // remove anything that's not meant to be there
-		if(!(V in GLOB.business_categories))
+		if(!(V in GLOB.business_categories+GLOB.license_business_categories))
 			categories -= V
 
 	refresh_business_support_list()

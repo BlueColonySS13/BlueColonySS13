@@ -42,6 +42,16 @@
 			if(cloaker.active)
 				cloaker.deactivate()
 
+/mob/living/carbon/human/is_cloaked()
+	if(mind && mind.changeling && mind.changeling.cloaked) // Ling camo.
+		return TRUE
+	else if(istype(back, /obj/item/weapon/rig)) //Ninja cloak
+		var/obj/item/weapon/rig/suit = back
+		for(var/obj/item/rig_module/stealth_field/cloaker in suit.installed_modules)
+			if(cloaker.active)
+				return TRUE
+	return ..()
+
 /mob/living/carbon/human/get_ear_protection()
 	var/sum = 0
 	if(istype(l_ear, /obj/item/clothing/ears))
@@ -166,6 +176,18 @@
 
 /proc/isLivingSSD(mob/living/M)
 	return istype(M) && !M.client || !M.key && M.stat != DEAD
+
+/mob/living/carbon/human/proc/can_use_cyberware()
+	if(isSynthetic())
+		return TRUE
+
+	else
+		var/obj/item/organ/external/H = organs_by_name["head"]
+
+		if(locate(/obj/item/weapon/implant/neural) in H.contents)
+			return TRUE
+		else
+			return FALSE
 
 #undef HUMAN_EATING_NO_ISSUE
 #undef HUMAN_EATING_NO_MOUTH

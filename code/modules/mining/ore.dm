@@ -83,6 +83,47 @@
 	icon_state = "slag"
 	material = null
 
+/obj/item/weapon/ore/copper
+	name = "raw copper"
+	icon_state = "ore_copper"
+	material = "copper"
+
+/obj/item/weapon/ore/tin
+	name = "raw tin"
+	icon_state = "ore_tin"
+	material = "tin"
+
+/obj/item/weapon/ore/bauxite
+	name = "raw bauxite"
+	icon_state = "ore_bauxite"
+	material = "bauxite"
+
+/obj/item/weapon/ore/rutile
+	name = "raw rutile"
+	icon_state = "ore_rutile"
+	material = "rutile"
+
+/obj/item/weapon/ore/void_opal
+	name = "raw void opal"
+	icon_state = "ore_void_opal"
+	material = "void opal"
+
+/obj/item/weapon/ore/painite
+	name = "raw painite"
+	icon_state = "ore_painite"
+	material = "painite"
+
+/obj/item/weapon/ore/quartz
+	name = "raw quartz"
+	icon_state = "ore_quartz"
+	material = "quartz"
+
+/obj/item/weapon/ore/quartz/rose_quartz
+	name = "raw rose quartz"
+	icon_state = "rose_quartz"
+	material = "rose quartz"
+
+
 /obj/item/weapon/ore/New()
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8

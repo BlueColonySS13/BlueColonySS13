@@ -5,7 +5,103 @@
  */
 
 /*
- * Gifts
+ * Wrapping Paper
+ */
+/obj/item/weapon/wrapping_paper
+	name = "wrapping paper"
+	desc = "You can use this to wrap items in."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "wrap_paper"
+	var/amount = 20.0
+
+/obj/item/weapon/wrapping_paper/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
+	..()
+	if (!( locate(/obj/structure/table, src.loc) ))
+		user << "<span class='warning'>You MUST put the paper on a table!</span>"
+		return
+	if (W.w_class < ITEMSIZE_LARGE)
+		if (user.get_type_in_hands(/obj/item/weapon/scissors))
+			var/a_used = 2 ** (src.w_class - 1)
+			if (src.amount < a_used)
+				user << "<span class='warning'>You need more paper!</span>"
+				return
+			else
+				if(istype(W, /obj/item/smallDelivery) || istype(W, /obj/item/weapon/gift)) //No gift wrapping gifts!
+					return
+
+				src.amount -= a_used
+				user.drop_item()
+				var/obj/item/weapon/gift/G = new /obj/item/weapon/gift(loc)
+				G.size = W.w_class
+				G.w_class = G.size + 1
+				G.icon_state = text("gift[]", G.size)
+				W.forceMove(G)
+				G.add_fingerprint(user)
+				W.add_fingerprint(user)
+				src.add_fingerprint(user)
+			if (src.amount <= 0)
+				new /obj/item/weapon/c_tube(loc)
+				qdel(src)
+				return
+		else
+			user << "<span class='warning'>You need scissors!</span>"
+	else
+		user << "<span class='warning'>The object is FAR too large!</span>"
+	return
+
+
+/obj/item/weapon/wrapping_paper/examine(mob/user)
+	if(..(user, 1))
+		user << text("There is about [] square units of paper left!", src.amount)
+
+/obj/item/weapon/wrapping_paper/attack(mob/target as mob, mob/user as mob)
+	if (!istype(target, /mob/living/carbon/human)) return
+	var/mob/living/carbon/human/H = target
+
+	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket) || H.stat)
+		if (src.amount > 2)
+			var/obj/effect/spresent/present = new /obj/effect/spresent (H.loc)
+			src.amount -= 2
+
+			if (H.client)
+				H.client.perspective = EYE_PERSPECTIVE
+				H.client.eye = present
+
+			H.loc = present
+
+			add_attack_logs(user,H,"Wrapped with [src]")
+		else
+			user << "<span class='warning'>You need more paper.</span>"
+	else
+		user << "They are moving around too much. A straightjacket would help."
+
+///Player wrapped gifts
+
+/obj/item/weapon/gift
+	name = "gift"
+	desc = "A wrapped item."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "gift3"
+	var/size = 3.0
+	item_state = "gift"
+	w_class = ITEMSIZE_LARGE
+	burn_state = 0 //Burnable
+	burntime = SHORT_BURN
+
+/obj/item/weapon/gift/attack_self(mob/user as mob)
+	user.drop_item()
+	playsound(src.loc, 'sound/items/package_unwrap.ogg', 50,1)
+	if(LAZYLEN(src.contents))
+		for(var/obj/O in contents)
+			user.put_in_active_hand(O)
+			O.add_fingerprint(user)
+	else
+		user << "<span class='warning'>The gift was empty!</span>"
+	qdel(src)
+	return
+
+/*
+ * Christmas Tree gifts
  */
 /obj/item/weapon/a_gift
 	name = "gift"
@@ -23,17 +119,6 @@
 		icon_state = "gift[w_class]"
 	else
 		icon_state = "gift[pick(1, 2, 3)]"
-	return
-
-/obj/item/weapon/gift/attack_self(mob/user as mob)
-	user.drop_item()
-	playsound(src.loc, 'sound/items/package_unwrap.ogg', 50,1)
-	if(src.gift)
-		user.put_in_active_hand(gift)
-		src.gift.add_fingerprint(user)
-	else
-		user << "<span class='warning'>The gift was empty!</span>"
-	qdel(src)
 	return
 
 /obj/item/weapon/a_gift/ex_act()
@@ -112,74 +197,3 @@
 	I.add_fingerprint(M)
 	qdel(src)
 	return
-
-/*
- * Wrapping Paper
- */
-/obj/item/weapon/wrapping_paper
-	name = "wrapping paper"
-	desc = "You can use this to wrap items in."
-	icon = 'icons/obj/items.dmi'
-	icon_state = "wrap_paper"
-	var/amount = 20.0
-
-/obj/item/weapon/wrapping_paper/attackby(obj/item/weapon/W as obj, mob/living/user as mob)
-	..()
-	if (!( locate(/obj/structure/table, src.loc) ))
-		user << "<span class='warning'>You MUST put the paper on a table!</span>"
-	if (W.w_class < ITEMSIZE_LARGE)
-		if (user.get_type_in_hands(/obj/item/weapon/scissors))
-			var/a_used = 2 ** (src.w_class - 1)
-			if (src.amount < a_used)
-				user << "<span class='warning'>You need more paper!</span>"
-				return
-			else
-				if(istype(W, /obj/item/smallDelivery) || istype(W, /obj/item/weapon/gift)) //No gift wrapping gifts!
-					return
-
-				src.amount -= a_used
-				user.drop_item()
-				var/obj/item/weapon/gift/G = new /obj/item/weapon/gift( src.loc )
-				G.size = W.w_class
-				G.w_class = G.size + 1
-				G.icon_state = text("gift[]", G.size)
-				G.gift = W
-				W.loc = G
-				G.add_fingerprint(user)
-				W.add_fingerprint(user)
-				src.add_fingerprint(user)
-			if (src.amount <= 0)
-				new /obj/item/weapon/c_tube( src.loc )
-				qdel(src)
-				return
-		else
-			user << "<span class='warning'>You need scissors!</span>"
-	else
-		user << "<span class='warning'>The object is FAR too large!</span>"
-	return
-
-
-/obj/item/weapon/wrapping_paper/examine(mob/user)
-	if(..(user, 1))
-		user << text("There is about [] square units of paper left!", src.amount)
-
-/obj/item/weapon/wrapping_paper/attack(mob/target as mob, mob/user as mob)
-	if (!istype(target, /mob/living/carbon/human)) return
-	var/mob/living/carbon/human/H = target
-
-	if (istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket) || H.stat)
-		if (src.amount > 2)
-			var/obj/effect/spresent/present = new /obj/effect/spresent (H.loc)
-			src.amount -= 2
-
-			if (H.client)
-				H.client.perspective = EYE_PERSPECTIVE
-				H.client.eye = present
-
-			H.loc = present
-
-			add_attack_logs(user,H,"Wrapped with [src]")
-		else
-			user << "<span class='warning'>You need more paper.</span>"
-	else
-		user << "They are moving around too much. A straightjacket would help."

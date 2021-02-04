@@ -24,12 +24,18 @@
 
 /obj/item/weapon/card/department/New()
 	..()
-	update_icon()
-	var/datum/department/D = get_department()
-	if(D.dept_type != HIDDEN_DEPARTMENT)
-		name = "[D.name] [initial(name)]"
 
-	spending_limit = D.card_spending_limit
+	var/datum/department/D = get_department()
+	update_icon()
+	update_name()
+
+	var/dept_spending_limit = D.card_spending_limit
+	var/portal_value = SSpersistent_options.get_persistent_option_value(D.portal_card_id)
+
+	if(!isnull(portal_value))
+		spending_limit = portal_value
+	else
+		spending_limit = dept_spending_limit
 
 	GLOB.department_cards += src
 
@@ -47,6 +53,17 @@
 		var/image/I =  image(icon, "[initial(icon_state)]_overlay")
 		I.color = D.dept_color
 		overlays |= I
+
+/obj/item/weapon/card/department/proc/update_name()
+	var/datum/department/D = get_department()
+
+	if(owner_name)
+		name = "[owner_name]'s [D.name] [initial(name)]"
+
+	if(D.dept_type == HIDDEN_DEPARTMENT)
+		name = "[D.name] [initial(name)]"
+
+
 
 /obj/item/weapon/card/department/proc/can_spend(num, type)
 	// returns null if there's no department or department bank account. returns -1 if dept suspended. returns -2 if wrong type.

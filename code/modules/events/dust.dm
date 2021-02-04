@@ -3,6 +3,10 @@
 	endWhen		= 30
 
 /datum/event/dust/announce()
+	if(SSpersistent_options && SSpersistent_options.get_persistent_option_value("protect_meteor_proofing"))
+		command_announcement.Announce("Debris resulting from activity on another nearby asteroid have been destroyed pre-emptively.", "Dust Alert")
+		kill()
+		return
 	command_announcement.Announce("Debris resulting from activity on another nearby asteroid is approaching your colony.", "Dust Alert")
 
 /datum/event/dust/start()

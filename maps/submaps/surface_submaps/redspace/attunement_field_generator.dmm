@@ -1,0 +1,34 @@
+"a" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 0,8"},/turf/template_noop,/area/template_noop)
+"b" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 1,8"},/turf/template_noop,/area/template_noop)
+"c" = (/turf/template_noop,/area/template_noop)
+"d" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 0,7"},/turf/template_noop,/area/template_noop)
+"e" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 1,7"},/turf/template_noop,/area/template_noop)
+"f" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 0,6"},/turf/template_noop,/area/template_noop)
+"g" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 1,6"},/turf/template_noop,/area/template_noop)
+"h" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 0,5"},/turf/template_noop,/area/template_noop)
+"i" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 1,5"},/turf/template_noop,/area/template_noop)
+"j" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 0,4"},/turf/template_noop,/area/template_noop)
+"k" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 1,4"},/turf/template_noop,/area/template_noop)
+"l" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 0,3"},/turf/template_noop,/area/template_noop)
+"m" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 1,3"},/turf/template_noop,/area/template_noop)
+"n" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 2,3"},/turf/template_noop,/area/template_noop)
+"o" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 0,2"},/turf/template_noop,/area/template_noop)
+"p" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 1,2"},/turf/template_noop,/area/template_noop)
+"q" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 2,2"},/turf/template_noop,/area/template_noop)
+"r" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 0,1"},/turf/template_noop,/area/template_noop)
+"s" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 1,1"},/turf/template_noop,/area/template_noop)
+"t" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 2,1"},/turf/template_noop,/area/template_noop)
+"u" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 0,0"},/turf/template_noop,/area/template_noop)
+"v" = (/obj/structure/prop/redspace/containment_pylon{icon_state = "pylon_active 1,0"},/turf/template_noop,/area/template_noop)
+
+(1,1,1) = {"
+abc
+dec
+fgc
+hic
+jkc
+lmn
+opq
+rst
+uvc
+"}

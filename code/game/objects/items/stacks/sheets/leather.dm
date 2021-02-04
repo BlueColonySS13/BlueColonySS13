@@ -1,5 +1,7 @@
 /obj/item/stack/material/animalhide
+	name = "animal hide"
 	drop_sound = 'sound/items/drop/clothing.ogg'
+	tax_type = CLOTHING_TAX
 
 /obj/item/stack/material/animalhide/human
 	name = "human skin"

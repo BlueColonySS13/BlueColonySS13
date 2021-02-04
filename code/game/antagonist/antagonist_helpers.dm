@@ -46,3 +46,32 @@
 
 /datum/antagonist/proc/is_latejoin_template()
 	return (flags & (ANTAG_OVERRIDE_MOB|ANTAG_OVERRIDE_JOB))
+
+/datum/antagonist/proc/get_needed_police() // how many police are needed for this antag type?
+	var/playing_antags = get_antag_count()
+	if(!playing_antags)
+		return police_per_antag
+
+	return (police_per_antag * get_antag_count())
+
+/datum/antagonist/proc/meets_police_lobby_join() // can we get one (or more) for lobby join?
+	if(!get_needed_police())
+		return TRUE
+
+	var/police_needed = get_needed_police() + police_per_antag
+
+	if(SSjobs.get_active_police() >= police_needed)
+		return TRUE
+
+/proc/get_lobbyjoin_antag_count()
+	var/count = 0
+	for(var/datum/antagonist/antag in GLOB.lobbyjoin_antagonists)
+		count += antag.get_antag_count()
+
+	return count
+
+
+
+GLOBAL_LIST_EMPTY(lobbyjoin_antagonists)
+
+

@@ -47,6 +47,7 @@
 /obj/item/weapon/reagent_containers/food/snacks/meat/fish/pike
 /obj/item/weapon/reagent_containers/food/snacks/meat/fish/koi
 /obj/item/weapon/reagent_containers/food/snacks/meat/fish/carp	// sigh
+/obj/item/weapon/reagent_containers/food/snacks/meat/fish/piranha
 
 /obj/item/weapon/reagent_containers/food/snacks/meat/monkey
 	//same as plain meat

@@ -718,17 +718,34 @@
 	bitesize = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/carpmeat
-	name = "carp fillet"
-	desc = "A fillet of spess carp meat"
+	name = "fillet"
+	desc = "A fillet of carp meat."
 	icon_state = "fishfillet"
 	filling_color = "#FFDEFE"
 	center_of_mass = list("x"=17, "y"=13)
+	var/toxin_type = "carpotoxin"
+	var/toxin_amount = 3
 
 /obj/item/weapon/reagent_containers/food/snacks/carpmeat/New()
 	..()
 	reagents.add_reagent("protein", 3)
-	reagents.add_reagent("carpotoxin", 3)
+	reagents.add_reagent(toxin_type, toxin_amount)
 	src.bitesize = 6
+
+/obj/item/weapon/reagent_containers/food/snacks/carpmeat/sif
+	desc = "A fillet of Polluxian fish meat."
+	filling_color = "#2c2cff"
+	color = "#2c2cff"
+	toxin_type = "neurotoxic_protein"
+	toxin_amount = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/carpmeat/sif/murkfish
+	toxin_type = "murk_protein"
+
+/obj/item/weapon/reagent_containers/food/snacks/carpmeat/fish
+	desc = "A fillet of fish meat."
+	toxin_type = "neurotoxic_protein"
+	toxin_amount = 1
 
 /obj/item/weapon/reagent_containers/food/snacks/fishfingers
 	name = "Fish Fingers"
@@ -931,7 +948,7 @@
 	desc = "The cheese adds a good flavor."
 	icon_state = "cheeseburger"
 	center_of_mass = list("x"=16, "y"=11)
-	nutriment_amt = 2
+	nutriment_amt = 6
 	nutriment_desc = list("cheese" = 2, "bun" = 2)
 
 /obj/item/weapon/reagent_containers/food/snacks/cheeseburger/New()
@@ -944,7 +961,7 @@
 	icon_state = "hburger"
 	filling_color = "#D63C3C"
 	center_of_mass = list("x"=16, "y"=11)
-	nutriment_amt = 2
+	nutriment_amt = 6
 	nutriment_desc = list("bun" = 2)
 
 /obj/item/weapon/reagent_containers/food/snacks/monkeyburger/New()
@@ -971,7 +988,7 @@
 	icon_state = "tofuburger"
 	filling_color = "#FFFEE0"
 	center_of_mass = list("x"=16, "y"=10)
-	nutriment_amt = 2
+	nutriment_amt = 4
 	nutriment_desc = list("bun" = 2, "pseudo-soy meat" = 3)
 
 /obj/item/weapon/reagent_containers/food/snacks/tofuburger/New()
@@ -1096,7 +1113,7 @@
 	icon_state = "berryclafoutis"
 	trash = /obj/item/trash/plate
 	center_of_mass = list("x"=16, "y"=13)
-	nutriment_amt = 4
+	nutriment_amt = 5
 	nutriment_desc = list("sweetness" = 2, "pie" = 3)
 
 /obj/item/weapon/reagent_containers/food/snacks/berryclafoutis/New()
@@ -1554,6 +1571,10 @@
 	reagents.add_reagent("toxin", 1)
 	reagents.add_reagent("carbon", 3)
 	bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/badrecipe/rot
+	name = "rotten goop"
+	desc = "This was food once. Not good for much else now."
 
 /obj/item/weapon/reagent_containers/food/snacks/meatsteak
 	name = "Meat steak"
@@ -3257,6 +3278,16 @@
 	var/list/boxes = list() // If the boxes are stacked, they come here
 	var/boxtag = ""
 	drop_sound = 'sound/items/drop/box.ogg'
+
+/obj/item/pizzabox/on_persistence_load()
+	var/pizza_inside = locate(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza) in contents
+
+	if(!pizza_inside)
+		if(pizza)
+			qdel(pizza)
+			pizza = null
+	else
+		pizza = pizza_inside
 
 /obj/item/pizzabox/update_icon()
 

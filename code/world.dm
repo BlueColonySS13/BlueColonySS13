@@ -198,6 +198,11 @@ var/world_topic_spam_protect_time = world.timeofday
 		s["stationtime"] = stationtime2text()
 		s["roundduration"] = roundduration2text()
 		s["stationname"] = station_name()
+		if(ticker && ticker.mode)
+			s["round_type"] = capitalize(ticker.mode.name)
+		else
+			s["round_type"] = "No Data"
+		s["security_level"] = get_security_level()
 
 		if(input["status"] == "2")
 			var/list/players = list()
@@ -628,10 +633,11 @@ var/failed_old_db_connections = 0
 		world.log << "Feedback database connection established."
 	return 1
 
-proc/setup_database_connection()
+proc/setup_database_connection(override_check = FALSE)
 
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
-		return 0
+	if(!override_check)
+		if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
+			return 0
 
 	if(!dbcon)
 		dbcon = new()

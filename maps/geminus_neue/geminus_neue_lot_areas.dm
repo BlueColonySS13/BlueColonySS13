@@ -45,6 +45,40 @@
 	name = "Business Lot 11"
 	lot_id = "bizlot11"
 
+/area/lots/business/business_lot_twelve
+	name = "Business Lot 12"
+	lot_id = "bizlot12"
+
+// stalls
+
+/area/lots/stall/one
+	name = "Stall 1"
+	lot_id = "stall1"
+
+/area/lots/stall/two
+	name = "Stall 2"
+	lot_id = "stall2"
+
+/area/lots/stall/three
+	name = "Stall 3"
+	lot_id = "stall3"
+
+/area/lots/stall/four
+	name = "Stall 4"
+	lot_id = "stall4"
+
+/area/lots/stall/five
+	name = "Stall 5"
+	lot_id = "stall5"
+
+/area/lots/stall/six
+	name = "Stall 6"
+	lot_id = "stall6"
+
+/area/lots/stall/seven
+	name = "Stall 7"
+	lot_id = "stall7"
+
 // Shopping mall lots
 
 /area/lots/shopping/shopping_lot_one

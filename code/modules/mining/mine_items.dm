@@ -27,7 +27,7 @@
 	var/drill_sound = 'sound/weapons/Genhit.ogg'
 	var/drill_verb = "drilling"
 	sharp = 1
-
+	price_tag = 200
 	var/excavation_amount = 200
 
 /obj/item/weapon/pickaxe/hammer
@@ -110,6 +110,15 @@
 	desc = "Cracks rocks with sonic blasts. This one seems like an improved design."
 	drill_verb = "hammering"
 
+/obj/item/weapon/pickaxe/steel
+	name = "pickaxe"
+	desc = "A pickaxe with a reinforced steel head."
+	drill_verb = "picking"
+	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
+	icon_state = "stpickaxe"
+	item_state = "syringe_0"
+	digspeed = 45
+
 /*****************************Shovel********************************/
 
 /obj/item/weapon/shovel
@@ -129,6 +138,7 @@
 	sharp = 0
 	edge = 1
 	digspeed = 40
+	price_tag = 100
 
 /obj/item/weapon/shovel/spade
 	name = "spade"
@@ -139,6 +149,7 @@
 	throwforce = 7.0
 	w_class = ITEMSIZE_SMALL
 	digspeed = 60
+	price_tag = 60
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
 
@@ -239,12 +250,40 @@
 	density = 1
 	opacity = 1
 	anchored = 0
-	var/sculpted = 0
+	var/sculpted = FALSE
+	var/presculpted = FALSE
 	var/mob/living/T
 	var/times_carved = 0
 	var/last_struck = 0
 
-//	unique_save_vars = list("sculpted")
+	var/apply_colors = list(
+					    0.35, 0.3, 0.25,
+					    0.35, 0.3, 0.25,
+					    0.35, 0.3, 0.25
+					)
+
+	var/image_id = ""
+
+	unique_save_vars = list("desc", "sculpted", "image_id") // colors should apply normally, i think
+
+/obj/structure/sculpting_block/on_persistence_save()
+	if(presculpted)
+		return
+	if(!image_id) // If it already has an image_id, it got saved before, so don't make duplicates.
+		image_id = "[game_id]-[T ? T.name : ""][rand(34,299)]-[get_game_second()]"
+		remove_pedestal()
+		SSpersistence.save_image(getCompoundIcon(src), image_id, PERSISTENT_SCULPTURES_DIRECTORY, forcedir = null)
+		add_pedestal()
+	return ..()
+
+/obj/structure/sculpting_block/on_persistence_load()
+	if(presculpted)
+		return
+	if(image_id)
+		icon = SSpersistence.load_image(image_id, PERSISTENT_SCULPTURES_DIRECTORY)
+
+	add_pedestal()
+	return ..()
 
 /obj/structure/sculpting_block/verb/rotate()
 	set name = "Rotate"
@@ -265,7 +304,7 @@
 		anchored = !anchored
 
 	if (istype(C, /obj/item/weapon/pickaxe/autochisel))
-		if(!sculpted)
+		if(!sculpted || !presculpted)
 			if(last_struck)
 				return
 
@@ -309,17 +348,10 @@
 					sculpted = 1
 					user.visible_message("<span class='notice'>[user] finishes sculpting their magnum opus!</span>",
 						"<span class='notice'>You finish sculpting a masterpiece.</span>")
-					src.appearance = T
-					src.color = list(
-					    0.35, 0.3, 0.25,
-					    0.35, 0.3, 0.25,
-					    0.35, 0.3, 0.25
-					)
-					src.pixel_y += 8
-					var/image/pedestal_underlay = image('icons/obj/mining.dmi', icon_state = "pedestal")
-					pedestal_underlay.appearance_flags = RESET_COLOR
-					pedestal_underlay.pixel_y -= 8
-					src.underlays += pedestal_underlay
+
+
+					make_statue(T)
+
 					var/title = sanitize(input(usr, "If you would like to name your art, do so here.", "Christen Your Sculpture", "") as text|null)
 					if(title)
 						name = title
@@ -334,10 +366,30 @@
 				last_struck = 0
 		return
 
+/obj/structure/sculpting_block/proc/make_statue(var/mob/living/T)
+	appearance = T
+	color = apply_colors
+	pixel_y += 8
+
+	add_pedestal()
+
+/obj/structure/sculpting_block/proc/add_pedestal()
+	if(presculpted)
+		return
+
+	remove_pedestal()
+
+	var/image/pedestal_underlay = image('icons/obj/mining.dmi', icon_state = "pedestal")
+	pedestal_underlay.appearance_flags = RESET_COLOR
+	pedestal_underlay.pixel_y -= 8
+	underlays += pedestal_underlay
+
+/obj/structure/sculpting_block/proc/remove_pedestal()
+	underlays.Cut()
 
 
 /obj/structure/sculpting_block/sculpted
-	sculpted = TRUE
+	presculpted = TRUE
 	anchored = FALSE
 	icon = 'icons/obj/statue.dmi'
 

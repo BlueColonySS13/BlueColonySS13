@@ -24,9 +24,30 @@
 	var/table_drag = FALSE // Can this be click dragged onto a table?
 	var/table_shift = 14	// If dragged onto a table, what's the pixel y of this?
 
+	var/wall_drag = FALSE
+	var/wall_shift = 0	// If dragged onto a wall, what's the pixel y of this?
+	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
+
+/obj/New()
+	if(register_as_dangerous_object)
+		register_dangerous_to_step()
+	return ..()
+
 /obj/Destroy()
 	processing_objects -= src
+	if(register_as_dangerous_object)
+		unregister_dangerous_to_step()
 	return ..()
+
+/obj/Moved(atom/oldloc)
+	. = ..()
+	if(register_as_dangerous_object)
+		var/turf/old_turf = get_turf(oldloc)
+		var/turf/new_turf = get_turf(src)
+
+		if(old_turf != new_turf)
+			old_turf.unregister_dangerous_object(src)
+			new_turf.register_dangerous_object(src)
 
 /obj/examine(mob/user)
 	. = ..()
@@ -34,6 +55,12 @@
 		to_chat(user, "There is a price tag marking [src] to be <b>[cash2text( tagged_price, FALSE, TRUE, TRUE )]</b>.")
 	if(dont_save)
 		to_chat(user, "<b>You have a feeling this item is important or belongs to someone...</b>")
+
+	if(SSpersistent_options)
+		if(contraband_type)
+			to_chat(user, "<b>Contraband Classification:</b> [SSpersistent_options.get_persistent_option_name(contraband_type)] ([SSpersistent_options.get_persistent_formatted_value(contraband_type)])")
+		if(tax_type)
+			to_chat(user, "<b>Tax Band:</b> [SSpersistent_options.get_persistent_option_name(tax_type)] ([SSpersistent_options.get_persistent_formatted_value(tax_type)])")
 
 /obj/Topic(href, href_list, var/datum/topic_state/state = default_state)
 	if(usr && ..())
@@ -221,3 +248,18 @@
 		user << "<span class='notice'>This looks incredibly alien to you, and doesn't have brains.</span>"
 		return
 	..()
+
+// Used to mark a turf as containing objects that are dangerous to step onto.
+/obj/proc/register_dangerous_to_step()
+	var/turf/T = get_turf(src)
+	if(T)
+		T.register_dangerous_object(src)
+
+/obj/proc/unregister_dangerous_to_step()
+	var/turf/T = get_turf(src)
+	if(T)
+		T.unregister_dangerous_object(src)
+
+// Test for if stepping on a tile containing this obj is safe to do, used for things like landmines and cliffs.
+/obj/proc/is_safe_to_step(mob/living/L)
+	return TRUE

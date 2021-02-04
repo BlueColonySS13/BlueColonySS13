@@ -47,6 +47,7 @@
 	var/check_synth	 = 0 	//if active, will shoot at anything not an AI or cyborg
 	var/check_all = 0		//If active, will fire on anything, including synthetics.
 	var/ailock = 0 			// AI cannot use this
+	var/faction = null		//if set, will not fire at people in the same faction for any reason.
 
 	var/attacked = 0		//if set to 1, the turret gets pissed off and shoots at people nearby (unless they have sec access!)
 
@@ -79,6 +80,11 @@
 	ailock = 1
 	lethal = 1
 	installation = /obj/item/weapon/gun/energy/laser
+
+/obj/machinery/porta_turret/stationary/syndie // Generic turrets for POIs that need to not shoot their buddies.
+	enabled = TRUE
+	check_all = TRUE
+	faction = "syndicate" // Make sure this equals the faction that the mobs in the POI have or they will fight each other.
 
 /obj/machinery/porta_turret/ai_defense
 	name = "defense turret"
@@ -393,16 +399,16 @@ var/list/turret_icons
 					attacked = 0
 		..()
 
-/obj/machinery/porta_turret/attack_generic(mob/user as mob, var/damage)
-	if(isanimal(user))
-		var/mob/living/simple_animal/S = user
-		if(damage >= 10)
+/obj/machinery/porta_turret/attack_generic(mob/living/L, damage)
+	if(isanimal(L))
+		var/mob/living/simple_mob/S = L
+		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 			var/incoming_damage = round(damage - (damage / 5)) //Turrets are slightly armored, assumedly.
 			visible_message("<span class='danger'>\The [S] [pick(S.attacktext)] \the [src]!</span>")
 			take_damage(incoming_damage)
 			S.do_attack_animation(src)
 			return 1
-		visible_message("<span class='notice'>\The [user] bonks \the [src]'s casing!</span>")
+		visible_message("<span class='notice'>\The [L] bonks \the [src]'s casing!</span>")
 	return ..()
 
 /obj/machinery/porta_turret/emag_act(var/remaining_charges, var/mob/user)
@@ -543,6 +549,9 @@ var/list/turret_icons
 		return TURRET_NOT_TARGET
 
 	if(!L)
+		return TURRET_NOT_TARGET
+
+	if(faction && L.faction == faction)
 		return TURRET_NOT_TARGET
 
 	if(!emagged && issilicon(L) && check_all == 0)	// Don't target silica, unless told to neutralize everything.

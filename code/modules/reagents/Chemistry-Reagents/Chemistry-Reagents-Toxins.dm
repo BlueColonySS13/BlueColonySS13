@@ -9,7 +9,12 @@
 	reagent_state = LIQUID
 	color = "#CF3600"
 	metabolism = REM * 0.25 // 0.05 by default. Hopefully enough to get some help, or die horribly, whatever floats your boat
+	filtered_organs = list(O_LIVER, O_KIDNEYS)
 	var/strength = 4 // How much damage it deals per unit
+	var/skin_danger = 0.2 // The multiplier for how effective the toxin is when making skin contact.
+
+	tax_type = HAZARD_CHEM_TAX
+	contraband_type = CONTRABAND_HARMFUL_CHEMS
 
 /datum/reagent/toxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(strength && alien != IS_DIONA)
@@ -18,6 +23,9 @@
 			removed *= 0.25 // Results in half the standard tox as normal. Prometheans are 'Small' for flaps.
 			M.nutrition += strength * removed
 		M.adjustToxLoss(strength * removed)
+
+/datum/reagent/toxin/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	affect_blood(M, alien, removed * 0.2)
 
 /datum/reagent/toxin/plasticide
 	name = "Plasticide"
@@ -45,6 +53,26 @@
 	reagent_state = LIQUID
 	color = "#003333"
 	strength = 10
+
+/datum/reagent/toxin/neurotoxic_protein
+	name = "toxic protein"
+	id = "neurotoxic_protein"
+	description = "A weak neurotoxic chemical commonly found in Polluxian fish meat."
+	taste_description = "fish"
+	reagent_state = LIQUID
+	color = "#005555"
+	strength = 8
+	skin_danger = 0.4
+
+/datum/reagent/toxin/neurotoxic_protein/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(alien != IS_DIONA)
+		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
+			step(M, pick(cardinal))
+		if(prob(5))
+			M.emote(pick("twitch", "drool", "moan"))
+		if(prob(20))
+			M.adjustBrainLoss(0.1)
 
 //R-UST port
 // Produced during deuterium synthesis. Super poisonous, SUPER flammable (doesn't need oxygen to burn).
@@ -89,8 +117,12 @@
 	color = "#9D14DB"
 	strength = 30
 	touch_met = 5
+	skin_danger = 1
 
 	price_tag = 5
+
+	tax_type = MINING_TAX
+	contraband_type = null
 
 /datum/reagent/toxin/phoron/touch_mob(var/mob/living/L, var/amount)
 	if(istype(L))
@@ -159,6 +191,7 @@
 	color = "#FFFFFF"
 	strength = 0
 	overdose = REAGENTS_OVERDOSE
+	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
 
 /datum/reagent/toxin/potassium_chloride/overdose(var/mob/living/carbon/M, var/alien)
 	..()
@@ -179,6 +212,7 @@
 	color = "#FFFFFF"
 	strength = 10
 	overdose = 20
+	filtered_organs = list(O_SPLEEN, O_KIDNEYS)
 
 /datum/reagent/toxin/potassium_chlorophoride/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -199,6 +233,7 @@
 	color = "#669900"
 	metabolism = REM
 	strength = 3
+	mrate_static = TRUE
 
 	price_tag = 1
 
@@ -227,6 +262,8 @@
 	reagent_state = LIQUID
 	strength = 0.5 // It's not THAT poisonous.
 	color = "#664330"
+	contraband_type = null
+	tax_type = AGRICULTURE_TAX
 
 /datum/reagent/toxin/fertilizer/eznutrient
 	name = "EZ Nutrient"
@@ -293,6 +330,8 @@
 	color = "#664330"
 	power = 2
 	meltdose = 30
+	contraband_type = null
+	tax_type = null
 
 /datum/reagent/thermite/venom
 	name = "Pyrotoxin"
@@ -440,8 +479,8 @@
 	overdose = REAGENTS_OVERDOSE
 	price_tag = 0.4
 
-	get_tax()
-		return DRUG_TAX
+	tax_type = PHARMA_TAX
+	contraband_type = null
 
 /datum/reagent/soporific/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -491,8 +530,7 @@
 	overdose_mod = 5	//For that good, lethal feeling
 	price_tag = 4
 
-/datum/reagent/chloralhydrate/is_contraband()
-	return CONTRABAND_CHLORAL
+	contraband_type = CONTRABAND_CHLORAL
 
 /datum/reagent/chloralhydrate/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -544,6 +582,8 @@
 	glass_name = "beer"
 	glass_desc = "A freezing pint of beer"
 	price_tag = 0.5
+	contraband_type = null
+	tax_type = ALCOHOL_TAX
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"
@@ -609,6 +649,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	overdose = REAGENTS_OVERDOSE
+	filtered_organs = list(O_SPLEEN)
 
 /datum/reagent/impedrezene/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
@@ -644,54 +685,6 @@
 		drug_strength *= 1.2
 
 	M.hallucination = max(M.hallucination, drug_strength)
-
-/datum/reagent/psilocybin
-	name = "Psilocybin"
-	id = "psilocybin"
-	description = "A strong psychotropic derived from certain species of mushroom."
-	taste_description = "mushroom"
-	color = "#E700E7"
-	overdose = REAGENTS_OVERDOSE
-	metabolism = REM * 0.5
-	price_tag = 0.8
-
-/datum/reagent/psilocybin/is_contraband()
-	return CONTRABAND_PSILOCYBIN
-
-/datum/reagent/psilocybin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_DIONA)
-		return
-
-	var/threshold = 1
-	if(alien == IS_SKRELL)
-		threshold = 1.2
-
-	if(alien == IS_SLIME)
-		threshold = 0.8
-
-	M.druggy = max(M.druggy, 30)
-
-	var/effective_dose = dose
-	if(issmall(M)) effective_dose *= 2
-	if(effective_dose < 1 * threshold)
-		M.apply_effect(3, STUTTER)
-		M.make_dizzy(5)
-		if(prob(5))
-			M.emote(pick("twitch", "giggle"))
-	else if(effective_dose < 2 * threshold)
-		M.apply_effect(3, STUTTER)
-		M.make_jittery(5)
-		M.make_dizzy(5)
-		M.druggy = max(M.druggy, 35)
-		if(prob(10))
-			M.emote(pick("twitch", "giggle"))
-	else
-		M.apply_effect(3, STUTTER)
-		M.make_jittery(10)
-		M.make_dizzy(10)
-		M.druggy = max(M.druggy, 40)
-		if(prob(15))
-			M.emote(pick("twitch", "giggle"))
 
 
 
@@ -762,6 +755,8 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	reagent_state = LIQUID
 	color = "#FF69B4"
 
+	tax_type = XENO_TAX
+
 /datum/reagent/aslimetoxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed) // TODO: check if there's similar code anywhere else
 	if(M.isSynthetic())
 		return
@@ -783,3 +778,64 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 			randmuti(M)
 			M << "<span class='warning'>You feel odd!</span>"
 	M.apply_effect(6 * removed, IRRADIATE, 0)
+
+/datum/reagent/toxin/expired_medicine
+	name = "Expired Medicine"
+	id = "expired_medicine"
+	description = "Some form of liquid medicine that is well beyond its shelf date. Administering it now would cause illness."
+	taste_description = "bitterness"
+	reagent_state = LIQUID
+	strength = 5
+
+/datum/reagent/toxin/expired_medicine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(prob(5))
+		M.vomit()
+
+/datum/reagent/toxin/expired_medicine/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	affect_blood(M, alien, removed * 0.66)
+
+/datum/reagent/toxin/trioxin
+	name = "Trioxin"
+	id = "trioxin"
+	description = "A synthetic compound of unknown origins, designated originally as a performance enhancing substance."
+	reagent_state = LIQUID
+	color = "#E7E146"
+	strength = 1
+	metabolism = REM
+	affects_dead = TRUE
+	contraband_type = CONTRABAND_BIOWEAPONRY
+
+/datum/reagent/toxin/trioxin/affect_blood(var/mob/living/carbon/M, var/removed)
+	..()
+	if(istype(M,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = M
+
+		if(H.reagents.has_reagent("penicillin", 15))
+			return
+
+		if(H.stat == DEAD)
+			H.zombify()
+			playsound(H.loc, 'sound/hallucinations/far_noise.ogg', 50, 1)
+			to_chat(H,"<font size='3'><span class='cult'>You return back to life as the undead, all that is left is the hunger to consume the living and the will to spread the infection.</font></span>")
+		if(H.internal_organs_by_name[O_ZOMBIE])
+			return
+
+		if(!isemptylist(H.search_contents_for(/obj/item/organ/internal/parasite/zombie)))
+			return
+		else
+			if(!H.internal_organs_by_name[O_ZOMBIE])
+				var/obj/item/organ/external/head/affected = H.get_organ(BP_HEAD)
+				var/obj/item/organ/internal/parasite/zombie/infest = new(affected)
+				infest.replaced(H,affected)
+
+		if(ishuman(H))
+			if(!H.internal_organs_by_name[O_ZOMBIE])	//destroying the brain stops trioxin from bringing the dead back to life
+				return
+
+			if(H && H.stat != DEAD)
+				return
+
+			for(var/datum/language/L in H.languages)
+				H.remove_language(L.name)
+

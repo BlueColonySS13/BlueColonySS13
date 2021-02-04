@@ -16,6 +16,9 @@
 		if(!action_checks(target)) return
 		if(!cargo_holder) return
 
+		if(chassis.occupant && trigger_lot_security_system(chassis.occupant, /datum/lot_security_option/theft, "Attempted to load \the [target] onto \the [chassis]."))
+			return
+
 		//loading
 		if(istype(target,/obj))
 			var/obj/O = target
@@ -82,6 +85,10 @@
 		if(isobj(target))
 			var/obj/target_obj = target
 			if(!target_obj.vars.Find("unacidable") || target_obj.unacidable)	return
+
+		if(chassis.occupant && trigger_lot_security_system(chassis.occupant, /datum/lot_security_option/intrusion, "Attempted to drill \the [target] with \the [chassis]."))
+			return
+
 		set_ready_state(0)
 		chassis.use_power(energy_drain)
 		chassis.visible_message("<span class='danger'>[chassis] starts to drill [target]</span>", "<span class='warning'>You hear the drill.</span>")
@@ -133,6 +140,10 @@
 		if(isobj(target))
 			var/obj/target_obj = target
 			if(target_obj.unacidable)	return
+
+		if(chassis.occupant && trigger_lot_security_system(chassis.occupant, /datum/lot_security_option/intrusion, "Attempted to drill \the [target] with \the [chassis]."))
+			return
+
 		set_ready_state(0)
 		chassis.use_power(energy_drain)
 		chassis.visible_message("<span class='danger'>[chassis] starts to drill [target]</span>", "<span class='warning'>You hear the drill.</span>")
@@ -252,6 +263,10 @@
 			disabled = 0
 		if(!istype(target, /turf) && !istype(target, /obj/machinery/door/airlock))
 			target = get_turf(target)
+
+		if(chassis.occupant && trigger_lot_security_system(chassis.occupant, /datum/lot_security_option/intrusion, "Attempted to drill \the [target] with \the [chassis]."))
+			return
+
 		if(!action_checks(target) || disabled || get_dist(chassis, target)>3) return
 		playsound(chassis, 'sound/machines/click.ogg', 50, 1)
 		//meh
@@ -626,9 +641,10 @@
 		pr_repair_droid = null
 		..()
 
-	attach(obj/mecha/M as obj)
+	add_equip_overlay(obj/mecha/M as obj)
 		..()
-		droid_overlay = new(src.icon, icon_state = "repair_droid")
+		if(!droid_overlay)
+			droid_overlay = new(src.icon, icon_state = "repair_droid")
 		M.overlays += droid_overlay
 		return
 
@@ -997,6 +1013,10 @@
 	action(atom/target)
 		if(!action_checks(target)) return
 		if(!cargo_holder) return
+
+		if(chassis.occupant && trigger_lot_security_system(chassis.occupant, /datum/lot_security_option/theft, "Attempted to load \the [target] onto \the [chassis]."))
+			return
+
 		if(istype(target,/obj))
 			var/obj/O = target
 			if(!O.anchored)
@@ -1155,9 +1175,10 @@
 			usr << "<span class='danger'>Kinda hard to climb in while handcuffed don't you think?</span>"
 			return
 
-	for(var/mob/living/simple_animal/slime/M in range(1,usr))
-		if(M.victim == usr)
-			usr << "<span class='danger'>You're too busy getting your life sucked out of you.</span>"
+	if(isliving(usr))
+		var/mob/living/L = usr
+		if(L.has_buckled_mobs())
+			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
 			return
 
 	//search for a valid passenger compartment

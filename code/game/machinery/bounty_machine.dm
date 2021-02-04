@@ -23,11 +23,12 @@
 	var/business = TRUE
 
 	var/atom/stored_thing
-	var/starting_department = null
+	var/starting_department = "" // no more private bounties was fun while it was a thing
 
-	unique_save_vars = list("starting_department")
+	unique_save_vars = list("starting_department")	// removing player owned bounties being unique
 
 	var/restrict_bounty_for_business = FALSE
+	var/accept_nonpersistent = FALSE
 
 
 /obj/machinery/bounty_machine/attackby(obj/item/I, mob/user, params)
@@ -43,12 +44,32 @@
 
 	var/bank_id = ID.associated_account_number
 
+
+	if (istype(I, /obj/item/weapon/wrench)) // you can now move bounty machines around
+		if(trigger_lot_security_system(user, /datum/lot_security_option/theft, "Attempted to unwrench [src] with \the [I]."))
+			return
+		playsound(src.loc, I.usesound, 50, 1)
+		to_chat(user,"<span class='notice'>You begin to [anchored ? "loosen" : "tighten"] loosen \the [src]'s fixtures...</span>")
+		if (do_after(user, 40 * I.toolspeed))
+			user.visible_message( \
+				"[user] [anchored ? "loosens" : "tightens"] \the [src]'s casters.", \
+				"<span class='notice'>You have [anchored ? "loosened" : "tightened"] \the [src]. It is [anchored ? "now secured" : "moveable"].</span>", \
+				"You hear ratchet.")
+			anchored = !anchored
+
+	if(current_bounty)
+		current_bounty.sanitize_bounty() // give it a chance to expire
+
 	if(!current_bounty)
 		to_chat(user,"<span class='notice'>You need to select a bounty first!</span>")
 		return
 
 	if(current_bounty.check_for_completion())
 		to_chat(user,"<span class='notice'>This bounty is already complete, please select \"Confirm Completion\" to redeem the reward!</span>")
+		return
+
+	if(!accept_nonpersistent && I.dont_save && !istype(I,/obj/item/weapon/photo))
+		to_chat(user,"<span class='notice'>This appears to be tagged to belong to an establishment or individual, please try another one.</span>")
 		return
 
 	if(current_bounty.check_item(I, bank_id))
@@ -85,7 +106,10 @@
 	var/dat
 
 	if(!current_department && starting_department && dept_by_id(starting_department))
-		current_department = dept_by_id(starting_department)
+		if(config.allow_business_bounties || !business)
+			current_department = dept_by_id(starting_department)
+		else
+			current_department = dept_by_id(DEPT_FACTORY) // lol
 
 	if(!current_department)
 		dat += "Welcome to [name], this allows you to trade with businesses all over the world."
@@ -154,11 +178,17 @@
 
 		dat += {"
 		<center><h1 style = "color: #ecebdd;">[current_bounty.name]</h1><br>[current_bounty.get_author()]</center><br />
-		<div class='statusDisplay' style= "padding: 9px;"><p>[current_bounty.get_description()]</p>"}
+		<div class='statusDisplay' style= "padding: 9px;"><p>[current_bounty.get_description()]</p><br>"}
 
-		dat += "<br>Expires in [current_bounty.expiry_days()] day(s).</div><br>"
+		if(LAZYLEN(current_bounty.contributors_bankids))
+			dat += "[LAZYLEN(current_bounty.contributors_bankids)] contributor(s).<br>"
 
-		dat += "<span style=\"color:yellow\"><strong>Required:</strong></span>"
+		if(current_bounty.bounty_expires)
+			dat += "Expires in [current_bounty.expiry_days()] day(s)."
+		else
+			dat += "No expiry."
+
+		dat += "</div><br><span style=\"color:yellow\"><strong>Required:</strong></span>"
 
 		if(current_bounty.custom_requirement)
 			dat += "<br>[current_bounty.custom_requirement]<br> "
@@ -175,8 +205,7 @@
 		if(LAZYLEN(current_bounty.stacks_wanted))
 			dat += "<br><strong>Materials wanted:</strong><br>"
 			for(var/V in current_bounty.stacks_wanted)
-				var/atom/tmp = V
-				dat += "<ol> - <b>[initial(tmp.name)]</b> "
+				dat += "<ol> - <b>[capitalize(V)]</b> "
 				dat += "([current_bounty.stacks_given[V]] out of"
 				dat += " [current_bounty.stacks_wanted[V]] stacks)"
 				dat += "</ol>"
@@ -254,6 +283,7 @@
 
 /obj/machinery/bounty_machine/preset
 	icon_state = "bounty_nanotrasen"
+	business = FALSE
 
 /obj/machinery/bounty_machine/preset/colony
 	starting_department = DEPT_COLONY
@@ -275,6 +305,7 @@
 
 /obj/machinery/bounty_machine/preset/police
 	starting_department = DEPT_POLICE
+	accept_nonpersistent = TRUE
 
 /obj/machinery/bounty_machine/preset/healthcare
 	starting_department = DEPT_HEALTHCARE
@@ -307,10 +338,8 @@
 	if(..())
 		return 1
 
-
 	if(href_list["connect_business"])
 		var/obj/item/weapon/card/id/ID = usr.GetIdCard()
-
 		if(!ID || !ID.unique_ID)
 			to_chat(usr,"<span class='notice'>Please wear a valid citizen ID card that is linked to your citizen details.</span>")
 			return
@@ -331,6 +360,7 @@
 				if(!bounty || !current_department || (!(bounty in current_department.bounties)))
 					return
 
+				bounty.sanitize_bounty() // just in case
 				current_bounty = bounty
 
 			if("complete_bounty")
@@ -341,7 +371,7 @@
 
 				var/bounty_name = bounty.name
 
-				if(bounty.complete_bounty(item_spawn_location = get_turf(src)))
+				if(bounty.complete_bounty(FALSE, get_turf(src), usr))
 					playsound(src, 'sound/machines/chime.ogg', 25)
 					to_chat(usr, "\icon[src] <b>[bounty_name]</b> has been completed!")
 

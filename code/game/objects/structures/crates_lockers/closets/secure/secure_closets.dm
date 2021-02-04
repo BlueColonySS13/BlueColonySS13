@@ -16,6 +16,11 @@
 	wall_mounted = 0 //never solid (You can always pass over it)
 	health = 200
 
+/obj/structure/closet/secure_closet/New()
+	..()
+	if(dont_save)
+		make_nonpersistent()
+
 /obj/structure/closet/secure_closet/can_open()
 	if(src.locked)
 		return 0

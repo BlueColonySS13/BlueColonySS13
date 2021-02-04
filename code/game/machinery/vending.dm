@@ -86,6 +86,9 @@
 
 	var/block_persistence = FALSE
 
+	unique_save_vars = list("vendor_department", "charge_free_department", "charge_paid_department")
+
+
 /obj/machinery/vending/examine(mob/user)
 	..()
 
@@ -594,7 +597,7 @@
 	spawn(vend_delay)
 		var/obj/I = R.get_product(get_turf(src))
 		if(block_persistence)
-			I.dont_save = TRUE
+			I.make_nonpersistent()
 		if(has_logs)
 			do_logging(R, user, 1)
 		if(prob(1))
@@ -794,6 +797,7 @@
 					/obj/item/weapon/reagent_containers/food/drinks/glass2/pitcher = 2,
 					/obj/item/weapon/reagent_containers/food/drinks/metaglass = 10,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/gin = 5,
+					/obj/item/weapon/reagent_containers/food/drinks/bottle/champagne = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/absinthe = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/bluecuracao = 5,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/cognac = 5,
@@ -836,7 +840,7 @@
 	contraband = list()
 	vend_delay = 15
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
-	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty on this station?"
+	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty in this city?"
 	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
 //	req_access = list(access_bar)
 //	req_log_access = access_bar
@@ -847,6 +851,7 @@
 //	block_persistence = TRUE
 
 	dont_save = FALSE
+	save_contents = FALSE // to stop hoarding since this regens the contents anyway
 
 
 /obj/machinery/vending/assist
@@ -1161,13 +1166,14 @@
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/stack/medical/bruise_pack = 2,/obj/item/stack/medical/ointment = 2,/obj/item/weapon/reagent_containers/hypospray/autoinjector = 4,/obj/item/device/healthanalyzer = 1)
+	products = list(/obj/item/stack/medical/bruise_pack = 2,/obj/item/stack/medical/ointment = 2,/obj/item/weapon/reagent_containers/hypospray/autoinjector = 4,/obj/item/device/healthanalyzer = 1, /obj/item/device/defib_kit/loaded = 5)
 	contraband = list(/obj/item/weapon/reagent_containers/syringe/antitoxin = 4,/obj/item/weapon/reagent_containers/syringe/antiviral = 4,/obj/item/weapon/reagent_containers/pill/tox = 1)
 	req_log_access = access_cmo
 	has_logs = 1
 
 	charge_free_department = DEPT_HEALTHCARE
 	block_persistence = TRUE
+	req_access = list(access_medical)
 
 /obj/machinery/vending/wallmed1/gcch
 	vendor_department = DEPT_HEALTHCARE
@@ -1179,16 +1185,16 @@
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
 	products = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 10,/obj/item/weapon/reagent_containers/syringe/antitoxin = 10,/obj/item/stack/medical/bruise_pack = 10,
-					/obj/item/stack/medical/ointment = 10, /obj/item/device/healthanalyzer = 2)
+					/obj/item/stack/medical/ointment = 10, /obj/item/device/healthanalyzer = 2, /obj/item/device/defib_kit/loaded = 5)
 	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 3)
 	req_log_access = access_cmo
 	has_logs = 1
 
 	prices = list(/obj/item/weapon/reagent_containers/hypospray/autoinjector = 15, /obj/item/weapon/reagent_containers/syringe/antitoxin = 10,/obj/item/stack/medical/bruise_pack = 15,
-					/obj/item/stack/medical/ointment = 15,/obj/item/device/healthanalyzer = 10)
+					/obj/item/stack/medical/ointment = 15,/obj/item/device/healthanalyzer = 10, /obj/item/device/defib_kit/loaded = 200)
 
 	vendor_department = DEPT_HEALTHCARE
-	block_persistence = TRUE
+	block_persistence = FALSE
 
 /obj/machinery/vending/security
 	name = "SecTech"
@@ -1209,12 +1215,16 @@
 	/obj/item/weapon/melee/baton/loaded = 6,
 	/obj/item/taperoll/police = 6,
 	/obj/item/device/flashlight/flare = 6,
+	/obj/item/device/flashlight/maglight =6,
 	/obj/item/device/camera = 6,
 	/obj/item/device/camera_film = 6,
 	/obj/item/device/taperecorder = 6,
 	/obj/item/device/tape = 4,
 	/obj/item/device/hailer = 6,
-	/obj/item/device/holowarrant = 8
+	/obj/item/device/holowarrant = 8,
+	/obj/item/device/breathalyzer = 8,
+	/obj/item/device/retail_scanner/police = 8,
+	/obj/item/device/radio = 6
 	)
 
 
@@ -1233,24 +1243,33 @@
 	products = list(
 	/obj/item/weapon/storage/belt/security = 6,
 	/obj/item/device/radio/headset/headset_sec = 6,
+	/obj/item/device/radio/headset/headset_sec/alt = 6,
 	/obj/item/clothing/glasses/sunglasses/sechud = 6,
 	/obj/item/clothing/glasses/sunglasses = 6,
-	/obj/item/clothing/under/rank/security = 6,
-	/obj/item/clothing/under/rank/security/skirt = 6,
+	/obj/item/clothing/under/rank/policeofficeralt = 6,
+	/obj/item/clothing/under/rank/policecadetalt = 6,
+	/obj/item/clothing/under/rank/policetrafficalt = 6,
+	/obj/item/clothing/head/police/policeofficercap = 6,
+	/obj/item/clothing/head/police/policecadetcap = 6,
+	/obj/item/clothing/head/police/policetrafficcap = 6,
 	/obj/item/clothing/shoes/boots/jackboots = 6,
-	/obj/item/clothing/head/soft/sec = 6,
-	/obj/item/clothing/head/beret/sec = 6,
-	/obj/item/clothing/head/beret/sec/corporate/officer = 6,
-	/obj/item/clothing/mask/bandana/red = 6,
+	/obj/item/clothing/head/soft/police = 6,
+	/obj/item/clothing/head/soft/policecadet = 6,
+	/obj/item/clothing/head/soft/policetraffic = 6,
+	/obj/item/clothing/head/beret/police = 6,
+	/obj/item/clothing/suit/armor/pcarrier/medium/police = 6,
+	/obj/item/clothing/head/helmet/police = 6,
 	/obj/item/clothing/suit/storage/hooded/wintercoat/security = 6,
-	/obj/item/clothing/accessory/armband/red = 6,
 	/obj/item/clothing/accessory/holster/waist = 6,
 	/obj/item/clothing/accessory/holster/armpit = 6,
 	/obj/item/clothing/accessory/holster/hip = 6,
 	/obj/item/clothing/accessory/holster/leg = 6,
 	/obj/item/weapon/storage/backpack/security = 6,
-	/obj/item/weapon/storage/backpack/satchel/sec = 6
-
+	/obj/item/weapon/storage/backpack/satchel/sec = 6,
+	/obj/item/clothing/suit/storage/toggle/policejacket = 6,
+	/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen = 6,
+	/obj/item/clothing/accessory/badge/holo/police = 6,
+	/obj/item/device/retail_scanner/police = 8
 	)
 
 /obj/machinery/vending/security/detective
@@ -1258,8 +1277,10 @@
 	desc = "A government refurbished SecTech vendor, recent additions include an overwhelming amount of red tape and a critical lack of funding."
 	req_access = list(access_forensics_lockers)
 	products = list(
+	/obj/item/weapon/storage/bag/forensics = 5,
 	/obj/item/weapon/storage/box/csi_markers = 3,
 	/obj/item/weapon/storage/box/evidence = 6,
+	/obj/item/weapon/storage/briefcase/crimekit = 2,
 	/obj/item/device/flash = 5,
 	/obj/item/weapon/reagent_containers/spray/luminol = 2,
 	/obj/item/device/uv_light = 5,
@@ -1270,15 +1291,87 @@
 	/obj/item/weapon/storage/belt/detective = 2,
 	/obj/item/clothing/glasses/sunglasses/sechud = 2,
 	/obj/item/clothing/glasses/sunglasses = 2,
-	/obj/item/clothing/suit/storage/vest/detective = 2,
+	/obj/item/clothing/suit/armor/pcarrier/medium/police = 2,
+	/obj/item/clothing/head/helmet/police =2,
 	/obj/item/clothing/accessory/holster/hip = 6,
 	/obj/item/taperoll/police = 6,
 	/obj/item/device/flashlight/flare = 6,
 	/obj/item/device/camera = 6,
 	/obj/item/device/camera_film = 6,
 	/obj/item/device/taperecorder = 6,
-	/obj/item/weapon/reagent_containers/food/drinks/flask/detflask = 2
+	/obj/item/device/flashlight/maglight = 2,
+	/obj/item/weapon/reagent_containers/food/drinks/flask/detflask = 2,
+	/obj/item/device/breathalyzer = 2,
+	/obj/item/clothing/under/rank/policedetectivealt = 4,
+	/obj/item/clothing/head/police/policedetectivecap = 4,
+	/obj/item/clothing/head/soft/policecdetective = 4,
+	/obj/item/clothing/head/beret/policered = 4,
+	/obj/item/clothing/suit/storage/toggle/policejacket = 4,
+	/obj/item/clothing/under/det = 2,
+	/obj/item/clothing/under/det/grey = 2,
+	/obj/item/clothing/under/det/black = 2,
+	/obj/item/clothing/under/det/waistcoat = 2,
+	/obj/item/clothing/under/det/grey/waistcoat = 2,
+	/obj/item/clothing/under/det/skirt = 2,
+	/obj/item/clothing/suit/storage/toggle/hazardvest/brightgreen = 4,
 	)
+
+/obj/machinery/vending/security/warden
+	name = "Warden Equipment Vendotron"
+	req_access = list(access_armory)
+	products = list(
+	/obj/item/device/retail_scanner/police = 2,
+	/obj/item/weapon/storage/backpack/security = 2,
+	/obj/item/weapon/storage/backpack/satchel/sec = 2,
+	/obj/item/weapon/storage/backpack/dufflebag/sec = 2,
+	/obj/item/clothing/suit/armor/pcarrier/medium/police = 2,
+	/obj/item/clothing/head/beret/policegold = 2,
+	/obj/item/clothing/head/soft/policewarden = 2,
+	/obj/item/clothing/head/police/policewardencap = 2,
+	/obj/item/clothing/under/rank/wardenalt = 2,
+	/obj/item/clothing/suit/storage/vest/wardencoat = 2,
+	/obj/item/clothing/suit/storage/vest/wardencoat/alt = 2,
+	/obj/item/clothing/suit/storage/toggle/policejacket = 2,
+	/obj/item/clothing/head/helmet/dermal = 2,
+	/obj/item/clothing/head/helmet/police = 2,
+	/obj/item/weapon/cartridge/security = 2,
+	/obj/item/device/radio/headset/headset_sec = 2,
+	/obj/item/device/radio/headset/headset_sec/alt = 2,
+	/obj/item/clothing/glasses/sunglasses/sechud = 2,
+	/obj/item/taperoll/police = 2,
+	/obj/item/weapon/bodycam = 2,
+	/obj/item/clothing/accessory/badge/holo/warden = 2,
+	/obj/item/weapon/storage/box/flashbangs = 2,
+	/obj/item/weapon/storage/belt/security = 2,
+	/obj/item/weapon/reagent_containers/spray/pepper = 2,
+	/obj/item/weapon/melee/baton/loaded = 2,
+	/obj/item/weapon/gun/energy/gun = 2,
+	/obj/item/weapon/cell/device/weapon = 2,
+	/obj/item/weapon/storage/box/holobadge,
+	/obj/item/clothing/shoes/boots/winter/security = 2,
+	/obj/item/device/flashlight/maglight = 2,
+	/obj/item/device/megaphone = 2,
+	/obj/item/clothing/mask/gas/half = 2,
+	/obj/item/weapon/grenade/flashbang/clusterbang/geminus = 2)
+
+
+/obj/machinery/vending/security/prisoner
+	name = "Prisoner Equipment"
+	desc = "A clothing vendor for prisoner supplies."
+	icon_state = "prisoner_vend"
+	icon_deny = "prisoner_vend-deny"
+	products = list(
+	/obj/item/clothing/under/color/orange/prisoneralt = 10,
+	/obj/item/clothing/under/color/white/prisoner = 10,
+	/obj/item/clothing/shoes/orange = 10,
+	/obj/item/clothing/shoes/black = 10,
+	/obj/item/weapon/handcuffs = 10,
+	/obj/item/weapon/handcuffs/legcuffs = 5,
+	/obj/item/weapon/handcuffs/legcuffs/ballchain = 3,
+	/obj/item/weapon/implantcase/tracking = 8,
+	/obj/item/weapon/implanter = 3
+	)
+
 
 
 /obj/machinery/vending/hydronutrients
@@ -1297,7 +1390,7 @@
 /obj/machinery/vending/hydroseeds
 	name = "MegaSeed Servitor"
 	desc = "When you need seeds fast!"
-	product_slogans = "THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!;Hands down the best seed selection on the station!;Also certain mushroom varieties available, more for experts! Get certified today!"
+	product_slogans = "THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!;Hands down the best seed selection in the city!;Also certain mushroom varieties available, more for experts! Get certified today!"
 	product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
 	icon_state = "seeds"
 
@@ -1347,7 +1440,7 @@
 	product_slogans = "Sling spells the proper way with MagiVend!;Be your own Houdini! Use MagiVend!"
 	vend_delay = 15
 	vend_reply = "Have an enchanted evening!"
-	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Destroy the station!;Admin conspiracies since forever!;Space-time bending hardware!"
+	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Destroy the City!;Admin conspiracies since forever!;Space-time bending hardware!"
 	products = list(/obj/item/clothing/head/wizard = 1,/obj/item/clothing/suit/wizrobe = 1,/obj/item/clothing/head/wizard/red = 1,/obj/item/clothing/suit/wizrobe/red = 1,/obj/item/clothing/shoes/sandal = 1,/obj/item/weapon/staff = 2)
 
 /obj/machinery/vending/dinnerware
@@ -1381,6 +1474,7 @@
 //	charge_free_department = DEPT_BAR
 
 	dont_save = FALSE
+	save_contents = FALSE
 
 /obj/machinery/vending/sovietsoda
 	name = "BODA"
@@ -1409,6 +1503,30 @@
 
 	vendor_department = DEPT_MAINTENANCE
 
+/obj/machinery/vending/mining
+	name = "Mining Supplies Vendor"
+	icon_state = "minvendor"
+	desc = "A mining supplies vendor, useful for the amateur miner."
+	products = list(/obj/item/weapon/storage/backpack/industrial = 5,
+					/obj/item/weapon/storage/backpack/satchel/eng = 5,
+					/obj/item/clothing/under/rank/miner = 5,
+					/obj/item/device/analyzer = 5,
+					/obj/item/weapon/storage/bag/ore = 5,
+					/obj/item/device/flashlight/lantern = 5,
+					/obj/item/weapon/shovel = 5,
+					/obj/item/weapon/pickaxe = 5,
+					/obj/item/clothing/glasses/material = 5,
+					/obj/item/clothing/suit/storage/hooded/wintercoat/miner = 5,
+					/obj/item/clothing/shoes/boots/winter/mining = 5,
+					/obj/item/stack/marker_beacon/thirty = 5
+					)
+	auto_price = TRUE
+	vendor_department = DEPT_PUBLIC
+
+/obj/machinery/vending/mining/police
+	auto_price = FALSE
+	block_persistence = TRUE
+
 /obj/machinery/vending/materials
 	name = "Material Supply Vendor"
 	icon_state = "minvendor"
@@ -1433,7 +1551,10 @@
 	products = list(/obj/item/stack/material/glass/full = 5,
 					/obj/item/stack/material/glass/reinforced/full = 3,
 					/obj/item/stack/material/steel/full = 6,
-					/obj/item/stack/material/phoron/full = 2
+					/obj/item/stack/material/phoron/full = 2,
+					/obj/item/stack/material/copper/full = 2,
+					/obj/item/stack/material/aluminium/full = 2,
+					/obj/item/stack/material/titanium/full = 2
 					)
 
 /obj/machinery/vending/materials/factory
@@ -1447,8 +1568,8 @@
 
 /obj/machinery/vending/materials/maintenance
 	name = "Maintenance Materials Supply Vendor"
-	req_access = list(access_ce)
-	req_log_access = access_qm
+	req_access = list(access_engine)
+	req_log_access = access_ce
 	block_persistence = TRUE
 	charge_free_department = DEPT_MAINTENANCE
 	charge_paid_department = DEPT_MAINTENANCE
@@ -1524,7 +1645,7 @@
 
 /obj/machinery/vending/engineering
 	name = "Robco Tool Maker"
-	desc = "Everything you need for do-it-yourself station repair."
+	desc = "Everything you need for do-it-yourself city repair."
 	icon_state = "engi"
 	icon_deny = "engi-deny"
 	req_access = list(access_engine_equip)
@@ -1693,8 +1814,8 @@
 						/obj/item/clothing/under/dress/dress_hr = 10,
 						/obj/item/clothing/under/dress/dress_green = 10,
 						/obj/item/clothing/under/dress/black_corset = 10,
-						/obj/item/clothing/under/sundress = 10,
-						/obj/item/clothing/under/sundress_white = 10,
+						/obj/item/clothing/under/dress/sundress = 10,
+						/obj/item/clothing/under/dress/sundress/sundress_white = 10,
 						/obj/item/clothing/under/skirt = 10,
 						/obj/item/clothing/under/skirt/khaki = 10,
 						/obj/item/clothing/under/skirt/blue = 10,
@@ -1787,8 +1908,8 @@
 						/obj/item/clothing/under/dress/dress_hr = 40,
 						/obj/item/clothing/under/dress/dress_green = 40,
 						/obj/item/clothing/under/dress/black_corset = 60,
-						/obj/item/clothing/under/sundress = 60,
-						/obj/item/clothing/under/sundress_white = 50,
+						/obj/item/clothing/under/dress/sundress = 60,
+						/obj/item/clothing/under/dress/sundress/sundress_white = 50,
 						/obj/item/clothing/under/skirt = 40,
 						/obj/item/clothing/under/skirt/khaki = 60,
 						/obj/item/clothing/under/skirt/blue = 50,
@@ -2231,6 +2352,7 @@
 	name = "BlastTech Defense Solutions Ballistics Vendor"
 	req_access = list(3)
 	products = list(/obj/item/weapon/gun/projectile/police = 6,
+					/obj/item/weapon/gun/launcher/grenade = 3,
 					/obj/item/ammo_magazine/m45 = 12,
 					/obj/item/weapon/gun/projectile/shotgun/pump/combat = 4,
 					/obj/item/weapon/storage/box/beanbags = 2,
@@ -2247,16 +2369,17 @@
 	products = list(/obj/item/weapon/gun/energy/gun = 4,
 					/obj/item/weapon/gun/energy/taser/carbine = 4,
 					/obj/item/weapon/gun/energy/laser = 2,
+					/obj/item/weapon/gun/energy/ionrifle = 2,
 					/obj/item/weapon/cell/device/weapon = 20
 					)
 
 /obj/machinery/vending/armory/gcpd/ppe
 	name = "BlastTech Defense Solution PPE Vendor"
 	req_access = list(3)
-	products = list(/obj/item/clothing/head/helmet/combat = 4,
-					/obj/item/clothing/suit/armor/combat = 4,
-					/obj/item/clothing/gloves/arm_guard/combat = 4,
-					/obj/item/clothing/shoes/leg_guard/combat = 4,
+	products = list(//obj/item/clothing/head/helmet/combat = 4,
+					//obj/item/clothing/suit/armor/combat = 4,
+					//obj/item/clothing/gloves/arm_guard/combat = 4,
+					//obj/item/clothing/shoes/leg_guard/combat = 4,
 					/obj/item/clothing/head/helmet/bulletproof = 2,
 					/obj/item/clothing/suit/armor/bulletproof/alt = 2,
 					/obj/item/clothing/gloves/arm_guard/bulletproof = 2,
@@ -2272,7 +2395,10 @@
 					/obj/item/weapon/shield/riot = 4,
 					/obj/item/weapon/melee/baton = 4,
 					/obj/item/clothing/glasses/sunglasses/sechud/tactical = 6,
-					/obj/item/clothing/mask/gas/half = 6
+					/obj/item/clothing/mask/gas/half = 6,
+					/obj/item/clothing/head/helmet/tacnav = 8,
+					/obj/item/clothing/suit/armor/pcarrier/navy/policetactical = 8,
+					/obj/item/clothing/under/rank/security = 8
 					)
 
 
@@ -2327,3 +2453,22 @@
 					)
 	vendor_department = DEPT_PUBLIC
 
+/obj/machinery/vending/fishing
+	name = "Fisherman's Chest"
+	desc = "Tell the kids I'm goin' fishing."
+	icon_state = "fishvendor"
+	vend_delay = 8
+	vend_reply = "Happy fishing!"
+	products = list(/obj/item/weapon/material/fishing_rod = 5,
+					/obj/item/weapon/material/fishing_rod/modern = 5,
+					/obj/item/weapon/material/fishing_rod/pro = 3,
+					/obj/item/stack/fishing_line = 13,
+					/obj/item/weapon/material/fishing_net = 13
+					)
+	prices = list(/obj/item/weapon/material/fishing_rod = 50,
+					/obj/item/weapon/material/fishing_rod/modern = 350,
+					/obj/item/weapon/material/fishing_rod/pro = 1250,
+					/obj/item/stack/fishing_line = 30,
+					/obj/item/weapon/material/fishing_net = 50
+					)
+	vendor_department = DEPT_PUBLIC

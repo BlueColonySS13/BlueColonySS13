@@ -1,0 +1,15 @@
+[table][row][cell][center][logo][cell][b]Government of Pollux
+Registrar General's Department[cell][b][center]Form DTHCER
+Rev. 2564.3[row][cell][b]Deceased's First Name[/b]
+[field][cell][b]Deceased's Middle Name[/b]
+[field][cell][b]Deceased's Last Name[/b]
+[field][row][cell][b]Date of Birth[/b]
+[field][cell][b]Date of Death[/b]
+[field][cell][b]Time of Death[/b]
+[field][row][cell][b]Place of Death[/b]
+[field][cell][b]District of Death[/b]
+[field][cell][b]
+[row][cell][b]Cause of Death[/b]
+[field][cell][b]Date of Registration[/b]
+[date][cell][b]Place of Registration[/b]
+[field][/table]

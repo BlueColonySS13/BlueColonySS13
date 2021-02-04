@@ -209,6 +209,40 @@
 	var/list/req_components = null
 	var/list/req_component_names = null
 
+/obj/structure/frame/get_persistent_metadata()
+	var/list/parts = list()
+	if(circuit)
+		parts["circuit"] = circuit.type
+	if(LAZYLEN(components))
+		var/list/compos = list()
+		for(var/obj/O in components)
+			compos += O.type
+		if(LAZYLEN(compos))
+			parts["components"] = compos
+
+	return parts
+
+
+/obj/structure/frame/load_persistent_metadata(part_data)
+	if(!LAZYLEN(part_data))
+		return FALSE
+
+	if(ispath(part_data["circuit"]))
+		circuit = new part_data["circuit"]
+	else if(islist(part_data["circuit"]))
+		for(var/C in islist(part_data["circuit"]))
+			circuit = new C
+
+	if(LAZYLEN(part_data["components"]))
+		for(var/A in part_data["components"])
+			var/obj/O = new A
+			components += O
+
+	update_icon()
+
+	return TRUE
+
+
 /obj/structure/frame/computer //used for maps
 	frame_type = new /datum/frame/frame_types/computer
 	anchored = TRUE

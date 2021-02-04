@@ -80,6 +80,7 @@
 	job.department_flag = CIVILIAN
 	job.faction = "City"
 	job.business = business_uid
+	job.outfit_type = /decl/hierarchy/outfit/job/business/casual
 	if(owner)
 		job.supervisors = "[owner.name]"
 

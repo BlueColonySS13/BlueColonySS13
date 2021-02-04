@@ -1,5 +1,6 @@
 /datum/artifact_effect/gasphoron
 	name = "phoron creation"
+	contraband_level = CONTRABAND_ARTIFACTSHARMFUL
 
 /datum/artifact_effect/gasphoron/New()
 	..()

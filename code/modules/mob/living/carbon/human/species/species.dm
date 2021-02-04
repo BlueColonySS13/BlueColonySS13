@@ -32,8 +32,8 @@
 	var/tail_animation										// If set, the icon to obtain tail animation states from.
 	var/tail_hair
 
-	var/icon_scale = 1										// Makes the icon larger/smaller. (taller)
-	var/icon_width = 1										// Makes the icon larger/smaller. (wider)
+	var/icon_scale_x = 1										// Makes the icon wider/thinner.
+	var/icon_scale_y = 1										// Makes the icon taller/shorter.
 
 	var/race_key = 0										// Used for mob icon cache string.
 	var/icon/icon_template									// Used for mob icon generation for non-32x32 species.
@@ -89,6 +89,10 @@
 	var/toxins_mod =		1								// Toxloss modifier
 	var/radiation_mod =		1								// Radiation modifier
 	var/flash_mod =			1								// Stun from blindness modifier.
+	var/chem_strength_heal =	1						// Multiplier to most beneficial chem strength
+	var/chem_strength_pain =	1						// Multiplier to painkiller strength (could be used in a negative trait to simulate long-term addiction reducing effects, etc.)
+	var/chem_strength_tox =		1						// Multiplier to toxic chem strength (inc. chloral/sopo/mindbreaker/etc. thresholds)
+	var/chemOD_threshold =		1						// Multiplier to overdose threshold; lower = easier overdosing
 	var/chemOD_mod =		1								// Damage modifier for overdose
 	var/vision_flags = SEE_SELF								// Same flags as glasses.
 
@@ -244,6 +248,7 @@
 	var/skill_curve_highest_age = 2							// Determines which age the curve will peak at. Can be before max_age.
 	var/skill_curve_minimum_points = SKILL_POINT_CEILING	// How many skill points this species will have when at or before the lowest age.
 	var/skill_curve_maximum_points = SKILL_POINT_CEILING	// How many skill points this species will have when at or beyond the highest age.
+	var/portal_vote_id = "voting_human" // determines voting identification
 
 /datum/species/New()
 	if(hud_type)

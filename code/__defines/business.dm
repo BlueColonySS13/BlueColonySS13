@@ -9,7 +9,8 @@
 #define CAT_EDU "Education"
 #define CAT_EMPLOY "Recruitment/Employment Agency"
 #define CAT_ENTERTAINMENT "Entertainment/Music"
-#define CAT_FOOD "Food and Drink"
+#define CAT_FOOD "Food"
+#define CAT_DRINKS "Drinks"
 #define CAT_HOSPITALITY "Hospitality"
 #define CAT_LEGAL "Legal"
 #define CAT_LEISURE "Leisure/Fitness"
@@ -24,6 +25,7 @@
 #define CAT_XENOBIO "Xeno Biology/Archeology/Flora"
 #define CAT_SOCIAL "Community/Social"
 #define CAT_MINING "Mining"
+#define CAT_PRISON_MINING "Prison Mining"
 #define CAT_GUNS "Guns and Ammunition"
 
 //black market categories

@@ -53,6 +53,12 @@
 
 #define AREA_FLAG_IS_NOT_PERSISTENT 8 // SSpersistence will not track values from this area.
 
+//Camera capture modes
+#define CAPTURE_MODE_REGULAR 0 //Regular polaroid camera mode
+#define CAPTURE_MODE_ALL 1 //Admin camera mode
+#define CAPTURE_MODE_PARTIAL 3 //Simular to regular mode, but does not do dummy check
+
+
 //	Shuttles.
 
 // These define the time taken for the shuttle to get to the space station, and the time before it leaves again.
@@ -309,3 +315,10 @@ var/global/list/##LIST_NAME = list();\
 
 #define MAX_WARRANTS 50
 #define MAX_FINGERPRINTS 20
+
+// Lot Security machine settings.
+#define LOT_SECURITY_STOP_VANDALISM		1 // Deconstructing walls, smashing airlocks, breaking windows.
+#define LOT_SECURITY_STOP_THEFT			2 // Opening cash registers.
+#define LOT_SECURITY_STOP_GRAFFITI		4 // Covers actual graffiti and painting walls.
+#define LOT_SECURITY_STOP_INTRUSION		8 // Hacking airlocks, brute forcing PINs.
+#define LOT_SECURITY_STOP_EVERYTHING	(LOT_SECURITY_STOP_VANDALISM|LOT_SECURITY_STOP_THEFT|LOT_SECURITY_STOP_GRAFFITI|LOT_SECURITY_STOP_INTRUSION)

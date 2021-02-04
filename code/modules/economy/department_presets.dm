@@ -8,6 +8,7 @@
 	starting_money = 8000
 	dept_color = "#1D1D4F"
 	categories = list(CAT_POLITICSSTATE)
+	portal_card_id = "budgetcard_colony"
 
 /datum/department/city_council
 	name = "City Council"
@@ -18,6 +19,7 @@
 	dept_color = "#1D1D4F"
 
 	allowed_buy_types = list(SPEND_OFFICE)
+	portal_card_id = "budgetcard_council"
 
 /datum/department/public
 	name = "Public"
@@ -26,6 +28,7 @@
 	desc = "The public funding account. This pays welfare to unemployed, disabled or providing vacation pay to off-duty coucil members, also may fund any jobs that are government supported."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_HOSPITALITY, SPEND_FOODDRINK, SPEND_ALCOHOL, SPEND_TOBACCO, SPEND_GROOMING)
 	dept_color = "#468047"
+	portal_card_id = "budgetcard_public"
 
 /datum/department/law
 	name = "Legal"
@@ -35,6 +38,7 @@
 	allowed_buy_types = list(SPEND_OFFICE)
 	dept_color = "#78164f"
 	categories = list(CAT_LEGAL)
+	portal_card_id = "budgetcard_legal"
 
 /datum/department/maintenance
 	name = "Maintenance"
@@ -45,6 +49,8 @@
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_MAINTENANCE, SPEND_ENGINEERING, SPEND_CLEANING, SPEND_MATERIALS)
 	dept_color = "#9c6c2d"
 	categories = list(CAT_JANITOR, CAT_MANUFACTURE, CAT_BUILDING)
+	portal_card_id = "budgetcard_maintenance"
+
 
 /datum/department/research
 	name = "Research"
@@ -54,7 +60,8 @@
 	desc = "Science and research employees are paid from this account. Any money made by Research is paid into this account."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_SCIENCE, SPEND_ROBOTICS, SPEND_MATERIALS)
 	dept_color = "#633D63"
-	categories = list(CAT_MANUFACTURE, CAT_TECH, CAT_MOTOR, CAT_XENOBIO)
+	categories = list(CAT_MANUFACTURE, CAT_TECH, CAT_MOTOR, CAT_XENOBIO, CAT_GUNS)
+	portal_card_id = "budgetcard_research"
 
 /datum/department/police
 	name = "Police"
@@ -63,7 +70,8 @@
 	desc = "The police department is funded by this account. Money made from fines are paid into this account."
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_SECURITYSUPPLIES, SPEND_WEAPONS)
 	dept_color = "#7a2a2a"
-	categories = list(CAT_SEC)
+	categories = list(CAT_SEC, CAT_PRISON_MINING)
+	portal_card_id = "budgetcard_police"
 
 /datum/department/healthcare
 	name = "Healthcare"
@@ -73,6 +81,7 @@
 	allowed_buy_types = list(SPEND_OFFICE, SPEND_MEDICAL, SPEND_CHEMISTRY)
 	dept_color = "#457c7d"
 	categories = list(CAT_HEALTH)
+	portal_card_id = "budgetcard_police"
 
 /datum/department/pdf
 	name = "Pollux Defense Force"
@@ -80,18 +89,23 @@
 	desc = "Nanotrasen's Pollux Defense Force - the city pays a staggering amount of money to call for this department. "
 	starting_money = 5000
 	dept_color = "#3F823F"
+	portal_card_id = "budgetcard_pdf"
 
-// ## Private Presets ## //
 
+// Factory is now a public department.
 /datum/department/factory
 	name = "Factory"
 	id = DEPT_FACTORY
 	desc = "The factory and its employees are paid from this account."
 	starting_money = 500
-	dept_type = PRIVATE_DEPARTMENT
-	allowed_buy_types = list(SPEND_OFFICE, SPEND_MATERIALS, SPEND_MININGSUPPLIES)
+//	dept_type = PRIVATE_DEPARTMENT
+	allowed_buy_types = list(SPEND_OFFICE)
 	dept_color = "#7a4f33"
-	categories = list(CAT_MANUFACTURE, CAT_MINING)
+	categories = list(CAT_MANUFACTURE, CAT_RETAIL, CAT_JANITOR, CAT_BUILDING, CAT_MINING, CAT_DRINKS, CAT_FOOD, CAT_FARM, CAT_NEWS)
+	max_bounties = 80
+
+// ## Private Presets ## //
+
 
 // ## External Presets
 

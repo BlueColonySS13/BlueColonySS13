@@ -71,6 +71,10 @@
 	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = ITEMSIZE_COST_NORMAL * 100 // can store a ton of shit!
 	item_state_slots = null
+	matter = list("leather" = 3000)
+
+/obj/item/weapon/storage/backpack/santabag/normal // you know, one for in-game purposes. fuck.
+	max_storage_space = INVENTORY_STANDARD_SPACE
 
 /obj/item/weapon/storage/backpack/cultpack
 	name = "trophy rack"

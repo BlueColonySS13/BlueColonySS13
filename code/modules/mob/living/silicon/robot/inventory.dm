@@ -94,7 +94,8 @@
 		return 1
 	else
 		return 0
-	updateicon()
+// Unreachable code.
+//	updateicon()
 
 // This one takes an object's type instead of an instance, as above.
 /mob/living/silicon/robot/proc/has_active_type(var/type_to_compare)
@@ -262,3 +263,13 @@
 		if(istype(I, typepath))
 			return I
 	return FALSE
+
+// Returns a list of all held items in a borg's 'hands'.
+/mob/living/silicon/robot/get_all_held_items()
+	. = list()
+	if(module_state_1)
+		. += module_state_1
+	if(module_state_2)
+		. += module_state_2
+	if(module_state_3)
+		. += module_state_3

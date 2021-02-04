@@ -82,13 +82,18 @@ var/list/airlock_overlays = list()
 
 	var/adjust_dir = TRUE
 
+/obj/machinery/door/airlock/knock(mob/user)
+	if(!issilicon(usr) && try_zap(user))
+		return
 
+	..()
 
-/obj/machinery/door/airlock/attack_generic(var/mob/user, var/damage)
+/obj/machinery/door/airlock/attack_generic(var/mob/living/user, var/damage)
 	if(stat & (BROKEN|NOPOWER))
-		if(damage >= 10)
+		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 			if(src.locked || src.welded)
 				visible_message("<span class='danger'>\The [user] begins breaking into \the [src] internals!</span>")
+				user.set_AI_busy(TRUE) // If the mob doesn't have an AI attached, this won't do anything.
 				if(do_after(user,10 SECONDS,src))
 					src.locked = 0
 					src.welded = 0
@@ -96,6 +101,7 @@ var/list/airlock_overlays = list()
 					open(1)
 					if(prob(25))
 						src.shock(user, 100)
+				user.set_AI_busy(FALSE)
 			else if(src.density)
 				visible_message("<span class='danger'>\The [user] forces \the [src] open!</span>")
 				open(1)
@@ -204,11 +210,17 @@ var/list/airlock_overlays = list()
 	name = "External Airlock"
 	stripe_color = COLOR_NT_RED
 
+/obj/machinery/door/airlock/external/ex_act(severity)
+	return // no more shuttle doors being jammed due to thunder
+
 /obj/machinery/door/airlock/glass_external
 	name = "External Airlock"
 	assembly_type = /obj/structure/door_assembly/door_assembly_ext
 	opacity = 0
 	glass = 1
+
+/obj/machinery/door/airlock/glass_external/ex_act(severity)
+	return // no more shuttle doors being jammed due to thunder
 
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
@@ -544,25 +556,21 @@ About the new airlock wires panel:
 *		one wire for controlling door speed.  When active, dor closes at normal rate.  When cut, door does not close manually.  When pulsed, door attempts to close every tick.
 */
 
-
-
-/obj/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
-	if(!issilicon(usr))
-		if(src.isElectrified())
-			if(!src.justzap)
-				if(src.shock(user, 100))
-					src.justzap = 1
-					spawn (10)
-						src.justzap = 0
-					return
-			else /*if(src.justzap)*/
-				return
-		else if(user.hallucination > 50 && prob(10) && src.operating == 0)
-			to_chat(user,"<span class='danger'>You feel a powerful shock course through your body!</span>")
-			user.halloss += 10
-			user.stunned += 10
+/obj/machinery/door/airlock/proc/try_zap(mob/living/user) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
+	if(src.isElectrified())
+		if(!src.justzap)
+			if(src.shock(user, 100))
+				src.justzap = 1
+				spawn (10)
+					src.justzap = 0
+				return TRUE
+		else /*if(src.justzap)*/
 			return
-	..(user)
+	else if(user.hallucination > 50 && prob(10) && src.operating == 0)
+		to_chat(user,"<span class='danger'>You feel a powerful shock course through your body!</span>")
+		user.halloss += 10
+		user.stunned += 10
+		return TRUE
 
 /obj/machinery/door/airlock/bumpopen(mob/living/simple_animal/user as mob)
 	..(user)
@@ -1164,6 +1172,8 @@ About the new airlock wires panel:
 		return
 	if(!repairing && (istype(C, /obj/item/weapon/weldingtool) && !( src.operating > 0 ) && src.density))
 		var/obj/item/weapon/weldingtool/W = C
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [W] on \the [src]."))
+			return
 		if(W.remove_fuel(0,user))
 			if(!src.welded)
 				src.welded = 1
@@ -1182,6 +1192,8 @@ About the new airlock wires panel:
 				src.p_open = 0
 				playsound(src, C.usesound, 50, 1)
 		else
+			if(trigger_lot_security_system(user, /datum/lot_security_option/intrusion, "Using \the [C] on \the [src] to open the panel."))
+				return
 			src.p_open = 1
 			playsound(src, C.usesound, 50, 1)
 		src.update_icon()
@@ -1211,6 +1223,8 @@ About the new airlock wires panel:
 		if(can_remove_electronics())
 			playsound(src, C.usesound, 75, 1)
 			user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
+			if(trigger_lot_security_system(user, /datum/lot_security_option/intrusion, "Using \the [C] on \the [src] to uninstall the electronics."))
+				return
 			if(do_after(user,40 * C.toolspeed))
 				to_chat(user,"<span class='notice'>You removed the airlock electronics!</span>")
 

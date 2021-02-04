@@ -65,10 +65,7 @@
 			src.state = STATE_DEFAULT
 		if("login")
 			var/mob/M = usr
-			var/obj/item/weapon/card/id/I = M.get_active_hand()
-			if (istype(I, /obj/item/device/pda))
-				var/obj/item/device/pda/pda = I
-				I = pda.id
+			var/obj/item/weapon/card/id/I = M.GetIdCard()
 			if (I && istype(I))
 				if(src.check_access(I))
 					authenticated = 1
@@ -81,16 +78,16 @@
 
 		if("swipeidseclevel")
 			if(src.authenticated) //Let heads change the alert level.
-				var/old_level = security_level
+				var/old_level = SECURITY_LEVEL
 				if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 				if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
 				if(tmp_alertlevel > SEC_LEVEL_BLUE) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
 				set_security_level(tmp_alertlevel)
-				if(security_level != old_level)
+				if(SECURITY_LEVEL != old_level)
 					//Only notify the admins if an actual change happened
 					log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 					message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-					switch(security_level)
+					switch(SECURITY_LEVEL)
 						if(SEC_LEVEL_GREEN)
 							feedback_inc("alert_comms_green",1)
 						if(SEC_LEVEL_BLUE)
@@ -103,7 +100,7 @@
 				if(message_cooldown)
 					usr << "Please allow at least one minute to pass between announcements"
 					return
-				var/input = input(usr, "Please write a message to announce to the city.", "Priority Announcement")
+				var/input = input(usr, "Please write a message to announce to the city residents.", "Priority Announcement") as null|message
 				if(!input || !(usr in view(1,src)))
 					return
 				crew_announcement.Announce(input)
@@ -182,7 +179,10 @@
 				if(centcomm_message_cooldown)
 					usr << "<font color='red'>Arrays recycling.  Please stand by.</font>"
 					return
-				var/input = sanitize(input("Please choose a message to transmit to [using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
+				var/input = sanitize(input("Please choose a message to transmit to [using_map.boss_short] via quantum entanglement. \
+				Please be aware that this process is very expensive, and abuse will lead to... termination.  \
+				Transmission does not guarantee a response. \
+				There is a 30 second delay before you may send another message, be clear, full and concise.", "Central Command Quantum Messaging") as null|message)
 				if(!input || !(usr in view(1,src)))
 					return
 				CentCom_announce(input, usr)
@@ -343,7 +343,7 @@
 		if(STATE_STATUSDISPLAY)
 			dat += "Set Status Displays<BR>"
 			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=blank'>Clear</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=time'>Station Time</A> \]<BR>"
+			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=time'>City Time</A> \]<BR>"
 			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=shuttle'>Shuttle ETA</A> \]<BR>"
 			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=message'>Message</A> \]"
 			dat += "<ul><li> Line 1: <A HREF='?src=\ref[src];operation=setmsg1'>[ stat_msg1 ? stat_msg1 : "(none)"]</A>"
@@ -354,7 +354,7 @@
 			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR><HR>"
 		if(STATE_ALERT_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
-			if(security_level == SEC_LEVEL_DELTA)
+			if(SECURITY_LEVEL == SEC_LEVEL_DELTA)
 				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
 			else
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
@@ -405,7 +405,7 @@
 		if(STATE_STATUSDISPLAY)
 			dat += "Set Status Displays<BR>"
 			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=blank'>Clear</A> \]<BR>"
-			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=time'>Station Time</A> \]<BR>"
+			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=time'>City Time</A> \]<BR>"
 			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=shuttle'>Shuttle ETA</A> \]<BR>"
 			dat += "\[ <A HREF='?src=\ref[src];operation=setstat;statdisp=message'>Message</A> \]"
 			dat += "<ul><li> Line 1: <A HREF='?src=\ref[src];operation=setmsg1'>[ stat_msg1 ? stat_msg1 : "(none)"]</A>"

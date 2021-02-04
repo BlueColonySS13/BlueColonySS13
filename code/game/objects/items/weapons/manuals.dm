@@ -4,7 +4,14 @@
 	icon = 'icons/obj/library.dmi'
 	due_date = 0 // Game time in 1/10th seconds
 	unique = 1   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
+	var/portal_id = null // if set to a portal id, it will replace the output with the pre-formatted value of that persistent option
 
+/obj/item/weapon/book/manual/New()
+	..()
+	if(portal_id)
+		dat = "<html><body>"
+		dat += SSpersistent_options.get_persistent_formatted_value(portal_id)
+		dat += "</body></html>"
 
 /obj/item/weapon/book/manual/engineering_construction
 	name = "City Repairs and Construction"
@@ -302,7 +309,7 @@
 
 				<h2>Power outage</h2>
 
-				A power problem has made the entire station lose power? Could be station-wide wiring problems or syndicate power sinks. In any case follow these steps:
+				A power problem has made the entire city lose power? Could be city-wide wiring problems or syndicate power sinks. In any case follow these steps:
 
 				<ol>
 					<li><b><font color='red'>PANIC!</font></b></li>
@@ -817,7 +824,7 @@
 /obj/item/weapon/book/manual/security_space_law
 	name = "Pollux Law Book"
 	desc = "A official law book designed to keep law and order within the colony."
-	icon_state = "bookSpaceLaw"
+	icon_state = "bookpolluxlaw"
 	author = "NanoTrasen"
 	title = "Pollux Law"
 
@@ -830,30 +837,94 @@
 	icon_state = "bookSOPSec"
 	author = "NanoTrasen"
 	title = "Policing: Standard Operating Procedure"
+	portal_id = "police_sop"
 
-/obj/item/weapon/book/manual/sop/New()
-	..()
-	dat = {"
+/obj/item/weapon/book/manual/charter
+	name = "The Charter"
+	icon_state = "charter"
+	author = "Nanotrasen Corporation"
+	title = "The Charter"
+	portal_id = "pollux_charter"
 
-		<html><head>
-		</head>
+/obj/item/weapon/book/manual/sop_prisoner
+	name =  "Prisoner Handling: Standard Operating Procedure"
+	icon_state = "bookSOPprisoner"
+	author = "Nanotrasen"
+	title = "Prisoner Handling: Standard Operating Procedure"
+	portal_id = "prisoner_handling_sop"
 
-		<body>
-		<iframe width='100%' height='97%' src="[config.wikiurl]doku.php?id=guide_to_policing" frameborder="0" id="main_frame"></iframe>
-		</body>
+/obj/item/weapon/book/manual/researchsop
+	name = "Research: Standard Operating Procedure"
+	icon_state = "bookresearchsop"
+	author = "Nanotrasen Corporation"
+	title = "Research: Standard Operating Procedure"
+	portal_id = "research_sop"
 
-		</html>
+/obj/item/weapon/book/manual/medicalsop
+	name = "Medical: Standard Operating Procedure"
+	icon_state = "medical_sop"
+	author = "Nanotrasen Corporation"
+	title = "Medical: Standard Operating Procedure"
+	portal_id = "medical_sop"
 
-		"}
+/obj/item/weapon/book/manual/execution
+	name = "Judicial Executions: Standard Operating Procedure"
+	icon_state = "bookexecution"
+	author = "Nanotrasen Corporation"
+	title = "Judicial Executions: Standard Operating Procedure"
+	portal_id = "execution_procedure"
+
+/obj/item/weapon/book/manual/courtsop
+	name = "Courtroom: Standard Operating Procedure"
+	icon_state = "bookcourtSOP"
+	author = "Nanotrasen Corporation"
+	title = "Courtroom: Standard Operating Procedure"
+	portal_id = "legal_sop"
+
+// regulations
+/obj/item/weapon/book/manual/foodhealthandsafety_regs
+	name = "Food Health and Safety Regulations"
+	icon_state = "bookhealth_and_safety"
+	author = "Nanotrasen Corporation"
+	title = "Food Health and Safety Regulations"
+	portal_id = "regs_food_safety"
+
+/obj/item/weapon/book/manual/weaponsales_regs
+	name = "Weapon Sales Regulations"
+	icon_state = "bookweaponssales"
+	author = "Nanotrasen Corporation"
+	title = "Weapon Sales Regulations"
+	portal_id = "regs_weapon_sales"
+
+/obj/item/weapon/book/manual/anomalous_regs
+	name = "Anomalous Material Handling Regulations"
+	icon_state = "bookanomalysop"
+	author = "Nanotrasen Corporation"
+	title = "Anomalous Material Handling Regulations"
+	portal_id = "regs_anomalous_material"
 
 
+/obj/item/weapon/book/manual/anomalous_regs
+	name = "Anomalous Material Handling Regulations"
+	icon_state = "bookanomalysop"
+	author = "Nanotrasen Corporation"
+	title = "Anomalous Material Handling Regulations"
+	portal_id = "regs_anomalous_material"
 
-/obj/item/weapon/book/manual/medical_diagnostics_manual
-	name = "Medical Diagnostics Manual"
-	desc = "First, do no harm. A detailed medical practitioner's guide."
-	icon_state = "bookMedical"
-	author = "Medical Department"
-	title = "Medical Diagnostics Manual"
+/obj/item/weapon/book/manual/private_sec_regs
+	name = "Security Company Regulations"
+	icon_state = "bookprivate_sec"
+	author = "Nanotrasen Corporation"
+	title = "Security Company Regulations"
+	portal_id = "regs_private_security"
+
+/obj/item/weapon/book/manual/landlord_regs
+	name = "Landlord Regulations"
+	icon_state = "booklandlord"
+	author = "Nanotrasen Corporation"
+	title = "Landlord Regulations"
+	portal_id = "regs_private_landlord"
+
 
 /obj/item/weapon/book/manual/medical_diagnostics_manual/New()
 	..()
@@ -1029,6 +1100,7 @@
 				</body>
 			</html>
 			"}
+
 
 
 /obj/item/weapon/book/manual/detective
@@ -1267,7 +1339,7 @@
 				<br>
 
 				EVA gear. Wonderful to use. It's useful for mining, engineering, and occasionally just surviving, if things are that bad. Most people have EVA training,
-				but apparently there are some on a space station who don't. This guide should give you a basic idea of how to use this gear, safely. It's split into three main sections:
+				but apparently there are some in a city who don't. This guide should give you a basic idea of how to use this gear, safely. It's split into three main sections:
 				softsuits, voidsuits, and hardsuits. General advice and instructions for modification are present as well.<BR><BR>
 
 				One important point for synthetics and people using full-body prosthetics: You obviously don't need oxygen, but you do run the risk of overheating in vacuum.
@@ -1348,7 +1420,7 @@
 					<li>If you have modified it manually, is absolutely everything sealed perfectly?</li>
 					<li>Do you either have shoes on under the suit, or magnetic boots on over it?</li>
 					<li>Do you have internals connected and activated?</li>
-					<li>Do you have a way to communicate with the station in case something goes wrong?</li>
+					<li>Do you have a way to communicate with the city in case something goes wrong?</li>
 					<li>Do you have a second person watching if this is a training session?</li><BR>
 				</ul>
 

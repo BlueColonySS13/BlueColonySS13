@@ -14,6 +14,7 @@
 	var/copies = 1	//how many copies to print!
 	var/toner = 30 //how much toner is left! woooooo~
 	var/maxcopies = 10	//how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
+	unique_save_vars = list("toner") //you thought you could get away with free toner every round? I think not. --redd
 
 /obj/machinery/photocopier/New()
 	..()
@@ -79,6 +80,10 @@
 				playsound(loc, "sound/machines/copier.ogg", 100, 1)
 				var/obj/item/weapon/paper_bundle/B = bundlecopy(copyitem)
 				sleep(11*B.pages.len)
+			else if (istype(copyitem,/obj/item/weapon/paper/card/business))
+				playsound(loc, "sound/machines/copier.ogg", 100, 1)
+				sleep(11)
+				copy(copyitem)
 			else
 				usr << "<span class='warning'>\The [copyitem] can't be copied by \the [src].</span>"
 				break
@@ -122,15 +127,19 @@
 
 /obj/machinery/photocopier/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/weapon/paper) || istype(O, /obj/item/weapon/photo) || istype(O, /obj/item/weapon/paper_bundle))
-		if(!copyitem)
-			user.drop_item()
-			copyitem = O
-			O.loc = src
-			user << "<span class='notice'>You insert \the [O] into \the [src].</span>"
-			playsound(loc, "sound/machines/click.ogg", 100, 1)
-			flick(insert_anim, src)
+		//DO NOT let sticky notes be put into printer. It WILL dupe.
+		if (!istype(O,/obj/item/weapon/paper/sticky))
+			if(!copyitem)
+				user.drop_item()
+				copyitem = O
+				O.loc = src
+				user << "<span class='notice'>You insert \the [O] into \the [src].</span>"
+				playsound(loc, "sound/machines/click.ogg", 100, 1)
+				flick(insert_anim, src)
+			else
+				user << "<span class='notice'>There is already something in \the [src].</span>"
 		else
-			user << "<span class='notice'>There is already something in \the [src].</span>"
+			user << "<span class='notice'>You cannot put that in \the [src].</span>"
 	else if(istype(O, /obj/item/device/toner))
 		if(toner <= 10) //allow replacing when low toner is affecting the print darkness
 			user.drop_item()
@@ -169,14 +178,57 @@
 					new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
 					toner = 0
 	return
-
+//hacky code time by yours truly
 /obj/machinery/photocopier/proc/copy(var/obj/item/weapon/paper/copy, var/need_toner=1)
-	var/obj/item/weapon/paper/c = new /obj/item/weapon/paper (loc)
+	//a check to determine paper type please end me -redd
+	// I WISH I COULD USE A GODDAMN SWITCH HERE -redd
+	var/obj/item/weapon/paper/c
+	//thanks cassie, very cool -redd
+	//tl;dr sticky cards have their color var set -redd
+	//it is now 2 am -redd
+	var/is_sticky = 0
+	if (istype(copy,/obj/item/weapon/paper/card/business))
+		c = new /obj/item/weapon/paper/card/business (loc)
+		//i forgot about color for this -redd
+		is_sticky = 1
+	//happy card -redd
+	else if (istype(copy,/obj/item/weapon/paper/card/smile))
+		c = new /obj/item/weapon/paper/card/smile (loc)
+	//cat card -redd
+	else if (istype(copy,/obj/item/weapon/paper/card/cat))
+		c = new /obj/item/weapon/paper/card/cat (loc)
+	//flower -redd
+	else if (istype(copy,/obj/item/weapon/paper/card/flower))
+		c = new /obj/item/weapon/paper/card/flower (loc)
+	//heart card -redd
+	else if (istype(copy,/obj/item/weapon/paper/card/heart))
+		c = new /obj/item/weapon/paper/card/heart (loc)
+	//invitation card -redd
+	else if (istype(copy,/obj/item/weapon/paper/card/invitation))
+		c = new /obj/item/weapon/paper/card/invitation (loc)
+		//i forgot about color for this -redd
+		is_sticky = 1
+	//poster card -redd
+	else if (istype(copy,/obj/item/weapon/paper/card/poster))
+		c = new /obj/item/weapon/paper/card/poster (loc)
+	//blank card -redd
+	else if (istype(copy,/obj/item/weapon/paper/card))
+		c = new /obj/item/weapon/paper/card (loc)
+	//do not enable until /obj/item/sticky_pad/attack_hand(var/mob/user) gets a check <- PLEASE CASSIE, GIVE IT A CHECK I ACCIDENTALLY STUMBLED ON A BUG -redd
+	// else if (istype(copy,/obj/item/weapon/paper/sticky/poster))
+	// 	c = new /obj/item/weapon/paper/sticky/poster (loc)
+	// 	is_sticky = 1
+	//regular goddamn paper. -redd
+	else if (istype(copy,/obj/item/weapon/paper))
+		c = new /obj/item/weapon/paper (loc)
 	if(toner > 10)	//lots of toner, make it dark
 		c.info = "<font color = #101010>"
 	else			//no toner? shitty copies for you!
 		c.info = "<font color = #808080>"
 	var/copied = html_decode(copy.info)
+	// there is no use for this until the sticky poster bs gets updated <- jk. Business cards and invitation cards can have different colors. -redd
+	if (is_sticky == 1)
+		c.color = copy.color
 	copied = replacetext(copied, "<font face=\"[c.deffont]\" color=", "<font face=\"[c.deffont]\" nocolor=")	//state of the art techniques in action
 	copied = replacetext(copied, "<font face=\"[c.crayonfont]\" color=", "<font face=\"[c.crayonfont]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
 	c.info += copied

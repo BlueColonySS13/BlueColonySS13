@@ -27,6 +27,7 @@ var/list/organ_cache = list()
 	var/min_bruised_damage = 10       // Damage before considered bruised
 	var/min_broken_damage = 30        // Damage before becoming broken
 	var/max_damage                    // Damage cap
+	var/can_reject = 1				  // Can this organ reject?
 	var/rejecting                     // Is this organ already being rejected?
 	var/preserved = 0                 // If this is 1, prevents organ decay.
 
@@ -40,6 +41,7 @@ var/list/organ_cache = list()
 	var/forgiving_class = TRUE	// Will the organ give its verbs when it isn't a perfect match? I.E., assisted in organic, synthetic in organic.
 
 	drop_sound = 'sound/items/drop/flesh.ogg'
+	unique_save_vars = list("robotic", "damage", "preserved", "germ_level")
 
 /obj/item/organ/Destroy()
 
@@ -201,7 +203,7 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/handle_rejection()
 	// Process unsuitable transplants. TODO: consider some kind of
 	// immunosuppressant that changes transplant data to make it match.
-	if(dna)
+	if(dna && can_reject)
 		if(!rejecting)
 			if(blood_incompatible(dna.b_type, owner.dna.b_type, species, owner.species))
 				rejecting = 1

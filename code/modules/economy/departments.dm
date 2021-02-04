@@ -7,7 +7,7 @@
 	var/has_bank = TRUE
 	var/starting_money = 0
 	var/datum/money_account/department/bank_account
-	var/business_taxed = FALSE                // no one is safe.
+	var/business_taxed = FALSE  // no one is safe.
 
 	var/dept_type = PUBLIC_DEPARTMENT
 
@@ -18,7 +18,9 @@
 	// paths of items types of what their department cards can buy (for heads)
 
 	var/allowed_buy_types = list()
-	var/card_spending_limit = 1500 // max you can spend from this card
+
+	var/portal_card_id = null // if set, instead of pulling costs from card_spending_limit var it will use the linked portal value here
+	var/card_spending_limit = 15000 // max you can spend from this card. only applies to private businesses
 
 	var/max_bounties = 15
 
@@ -56,20 +58,8 @@
 		starting_money = d_starting_money
 
 	make_bank_account()
-	GLOB.departments += src
 
-	switch(dept_type)
-		if(PUBLIC_DEPARTMENT)
-			GLOB.public_departments += src
-		if(PRIVATE_DEPARTMENT)
-			GLOB.private_departments += src
-		if(EXTERNAL_DEPARTMENT)
-			GLOB.external_departments += src
-		if(HIDDEN_DEPARTMENT)
-			GLOB.hidden_departments += src
-		if(BUSINESS_DEPARTMENT)
-			GLOB.business_departments += src
-			business_taxed = TRUE
+	sanitize_values()
 
 /datum/department/proc/sanitize_values()	// juuuust in case shittery happens.
 	if(!blacklisted_employees)
@@ -86,6 +76,46 @@
 
 	if(!bounties)
 		bounties = list()
+
+	if(get_business())
+		dept_type = BUSINESS_DEPARTMENT
+
+	GLOB.departments |= src
+
+	switch(dept_type)
+		if(PUBLIC_DEPARTMENT)
+			GLOB.public_departments |= src
+		if(PRIVATE_DEPARTMENT)
+			GLOB.private_departments |= src
+		if(EXTERNAL_DEPARTMENT)
+			GLOB.external_departments |= src
+		if(HIDDEN_DEPARTMENT)
+			GLOB.hidden_departments |= src
+		if(BUSINESS_DEPARTMENT)
+			GLOB.business_departments |= src
+			business_taxed = TRUE
+
+	if(bank_account)
+		switch(dept_type)
+			if(PUBLIC_DEPARTMENT)
+				GLOB.public_department_accounts |= bank_account
+			if(PRIVATE_DEPARTMENT)
+				GLOB.private_department_accounts |= bank_account
+			if(EXTERNAL_DEPARTMENT)
+				GLOB.external_department_accounts |= bank_account
+			if(HIDDEN_DEPARTMENT)
+				GLOB.hidden_department_accounts |= bank_account
+				bank_account.hidden = TRUE
+			if(BUSINESS_DEPARTMENT)
+				GLOB.business_department_accounts |= bank_account
+
+		if(!(bank_account in GLOB.department_accounts))
+			GLOB.department_accounts |= bank_account
+
+		if(!(bank_account in GLOB.all_money_accounts))
+			GLOB.all_money_accounts.Add(bank_account)
+
+
 
 	return TRUE
 
@@ -139,19 +169,8 @@
 		return FALSE
 
 	bank_account = create_account(name, starting_money, null, department = TRUE)
-	bank_account.department = src
-	GLOB.department_accounts += bank_account
+	bank_account.department = id
 
-	switch(dept_type)
-		if(PUBLIC_DEPARTMENT)
-			GLOB.public_department_accounts += bank_account
-		if(PRIVATE_DEPARTMENT)
-			GLOB.private_department_accounts += bank_account
-		if(EXTERNAL_DEPARTMENT)
-			GLOB.external_department_accounts += bank_account
-		if(HIDDEN_DEPARTMENT)
-			GLOB.hidden_department_accounts += bank_account
-			bank_account.hidden = TRUE
 
 	return bank_account
 
@@ -173,7 +192,7 @@
 /datum/department/proc/get_account()
 	return bank_account
 
-/datum/department/proc/adjust_funds(amount, purpose)	//hard editing mostly. don't use in most circumstances. Use direct_charge_money() instead for trans logs
+/datum/department/proc/adjust_funds(amount, purpose)
 	if(!bank_account)
 		return FALSE
 

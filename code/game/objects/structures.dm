@@ -3,9 +3,11 @@
 	w_class = ITEMSIZE_NO_CONTAINER
 
 	var/climbable
+	var/climb_delay = 3.5 SECONDS
 	var/breakable
 	var/parts
 	var/list/climbers = list()
+	var/block_turf_edges = FALSE // If true, turf edge icons will not be made on the turf this occupies.
 
 	var/list/connections = list("0", "0", "0", "0")
 	var/list/other_connections = list("0", "0", "0", "0")
@@ -158,7 +160,7 @@
 	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
-	if(!do_after(user,(issmall(user) ? 20 : 34)))
+	if(!do_after(user,(issmall(user) ? climb_delay * 0.6 : climb_delay)))
 		climbers -= user
 		return
 
@@ -235,8 +237,8 @@
 		return 0
 	return 1
 
-/obj/structure/attack_generic(var/mob/user, var/damage, var/attack_verb, var/wallbreaker)
-	if(!breakable || !damage || !wallbreaker)
+/obj/structure/attack_generic(var/mob/user, var/damage, var/attack_verb)
+	if(!breakable || damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
 		return 0
 	visible_message("<span class='danger'>[user] [attack_verb] the [src] apart!</span>")
 	user.do_attack_animation(src)

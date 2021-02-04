@@ -46,7 +46,15 @@ var/list/mining_overlay_cache = list()
 		"osmium" = /obj/item/weapon/ore/osmium,
 		"hydrogen" = /obj/item/weapon/ore/hydrogen,
 		"silicates" = /obj/item/weapon/ore/glass,
-		"carbon" = /obj/item/weapon/ore/coal
+		"carbon" = /obj/item/weapon/ore/coal,
+		"copper" = /obj/item/weapon/ore/copper,
+		"tin" = /obj/item/weapon/ore/tin,
+		"bauxite" = /obj/item/weapon/ore/bauxite,
+		"void opals" = /obj/item/weapon/ore/void_opal,
+		"painite" = /obj/item/weapon/ore/painite,
+		"rutile" = /obj/item/weapon/ore/rutile,
+		"quartz" = /obj/item/weapon/ore/quartz,
+		"rose quartz" = /obj/item/weapon/ore/quartz/rose_quartz,
 	)
 
 	has_resources = 1
@@ -381,14 +389,14 @@ var/list/mining_overlay_cache = list()
 
 			//handle any archaeological finds we might uncover
 			var/fail_message = ""
-			if(finds && finds.len)
+			if(finds && LAZYLEN(finds))
 				var/datum/find/F = finds[1]
 				if(newDepth > F.excavation_required) // Digging too deep can break the item. At least you won't summon a Balrog (probably)
 					fail_message = ". <b>[pick("There is a crunching noise","[W] collides with some different rock","Part of the rock face crumbles away","Something breaks under [W]")]</b>"
 
 			to_chat(user, "<span class='notice'>You start [P.drill_verb][fail_message].</span>")
 
-			if(fail_message && prob(90))
+			if(fail_message && prob(90) && LAZYLEN(finds))
 				if(prob(25))
 					excavate_find(prob(5), finds[1])
 				else if(prob(50))
@@ -398,7 +406,7 @@ var/list/mining_overlay_cache = list()
 
 			if(do_after(user,P.digspeed))
 
-				if(finds && finds.len)
+				if(finds && LAZYLEN(finds))
 					var/datum/find/F = finds[1]
 					if(newDepth == F.excavation_required) // When the pick hits that edge just right, you extract your find perfectly, it's never confined in a rock
 						excavate_find(1, F)
@@ -431,13 +439,13 @@ var/list/mining_overlay_cache = list()
 				var/updateIcon = 0
 
 				//archaeo overlays
-				if(!archaeo_overlay && finds && finds.len)
+				if(!archaeo_overlay && finds && LAZYLEN(finds))
 					var/datum/find/F = finds[1]
 					if(F.excavation_required <= excavation_level + F.view_range)
 						archaeo_overlay = "overlay_archaeo[rand(1,3)]"
 						updateIcon = 1
 
-				else if(archaeo_overlay && (!finds || !finds.len))
+				else if(archaeo_overlay && (!finds || !LAZYLEN(finds)))
 					archaeo_overlay = null
 					updateIcon = 1
 
@@ -520,7 +528,7 @@ var/list/mining_overlay_cache = list()
 				if(prob(50))
 					M.Stun(5)
 //			SSradiation.flat_radiate(src, 25, 100)
-			if(prob(25))
+			if(prob(25) && LAZYLEN(finds))
 				excavate_find(prob(5), finds[1])
 	else if(rand(1,500) == 1)
 		visible_message("<span class='notice'>An old dusty crate was buried within!</span>")
@@ -588,10 +596,10 @@ var/list/mining_overlay_cache = list()
 
 	var/mineral_name
 	if(rare_ore)
-		mineral_name = pickweight(list("uranium" = 10, "platinum" = 10, "hematite" = 20, "carbon" = 20, "diamond" = 2, "gold" = 10, "silver" = 10, "phoron" = 20))
+		mineral_name = pickweight(list("uranium" = 15, "platinum" = 15, "hematite" = 15, "carbon" = 15, "diamond" = 5, "gold" = 25, "silver" = 25, "phoron" = 10, "rose quartz" = 10, "void opal" = 2, "painite" = 7, "quartz" = 15, "bauxite" = 18, "rutile" = 13, "copper" = 18, "tin" = 18))
 
 	else
-		mineral_name = pickweight(list("uranium" = 5, "platinum" = 5, "hematite" = 35, "carbon" = 35, "diamond" = 1, "gold" = 5, "silver" = 5, "phoron" = 10))
+		mineral_name = pickweight(list("uranium" = 5, "platinum" = 5, "hematite" = 35, "carbon" = 35, "diamond" = 3, "gold" = 5, "silver" = 5, "phoron" = 5, "rose quartz" = 5, "void opal" = 2, "painite" = 5, "quartz" = 8, "bauxite" = 30, "rutile" = 30, "copper" = 30, "tin" = 30))
 
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]

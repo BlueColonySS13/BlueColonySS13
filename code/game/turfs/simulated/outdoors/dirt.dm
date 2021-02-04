@@ -30,9 +30,8 @@
 	if(grass_chance && prob(grass_chance))
 		var/has_grass = FALSE
 
-		for(var/obj/structure/flora/grass in src)
+		if (locate(/obj/structure/flora) in contents)
 			has_grass = TRUE
-			break
 
 		if(!has_grass)
 			var/grass_type = pick(grass_types)

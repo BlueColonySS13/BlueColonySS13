@@ -29,11 +29,11 @@
 			if(A.mind.prefs)
 				if(A.mind.prefs.economic_status == CLASS_UPPER)
 					sensational += 5
-					
+
 			// If this person is unimportant, we don't care if they were arrested
 			// If they're in an important role or upper class, check to see if they look arrested.
-			
-			if(sensational > 0) 
+
+			if(sensational > 0)
 				if(A.w_uniform)
 					var/obj/item/clothing/C = A.w_uniform
 					if (istype(C, /obj/item/clothing/under/color/orange))
@@ -102,18 +102,15 @@
 	for(var/obj/item/weapon/bone/B in the_turf)
 		scary += 2	// spoopy spoopy skeletons
 
-	for(var/mob/living/simple_animal/A in the_turf)
-		if(istype(A, /mob/living/simple_animal/construct))
+	for(var/mob/living/simple_mob/M in the_turf)
+		if(istype(M, /mob/living/simple_mob/construct))
 			scary += 40	// constructs are very spoopy!
 
-		if(istype(A, /mob/living/simple_animal/shade))
-			scary += 25	// literally living ghost demons.
-
-		if(istype(A, /mob/living/simple_animal/hostile/clown))
+		if(istype(M, /mob/living/simple_mob/humanoid/clown))
 			scary += 80	// SWEET JESUS
 
-		if(istype(A, /mob/living/simple_animal/hostile/giant_spider))
-			var/mob/living/simple_animal/hostile/giant_spider/S = A
+		if(istype(M, /mob/living/simple_mob/animal/giant_spider))
+			var/mob/living/simple_mob/animal/giant_spider/S = M
 			scary += S.melee_damage_lower	// I don't care what you say, these fucks are always scary.
 
 	for(var/obj/singularity/narsie/N in the_turf)

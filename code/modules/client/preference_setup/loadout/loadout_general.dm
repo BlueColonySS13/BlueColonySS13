@@ -46,6 +46,10 @@
 	display_name = "Spaceball booster pack"
 	path = /obj/item/weapon/pack/spaceball
 
+/datum/gear/dummy
+	display_name = "ventriloquist puppet"
+	path = /obj/item/toy/dummy
+
 /datum/gear/plushie
 	display_name = "plushie selection"
 	path = /obj/item/toy/plushie/
@@ -88,7 +92,6 @@
 		if(!initial(lunchbox.filled))
 			lunchboxes[initial(lunchbox.name)] = lunchbox_type
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(lunchboxes))
-	gear_tweaks += new/datum/gear_tweak/contents(lunchables_lunches(), lunchables_snacks(), lunchables_drinks())
 
 /datum/gear/towel
 	display_name = "towel"

@@ -185,6 +185,8 @@
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
+			if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Smashing against \the [src]."))
+				return
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 			visible_message("<span class='danger'>[user] smashes against the [src.name].</span>", 1)
 			user.do_attack_animation(src)
@@ -224,6 +226,9 @@
 
 	//Emags and ninja swords? You may pass.
 	if (istype(I, /obj/item/weapon/melee/energy/blade))
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using [I] against \the [src]."))
+			return
+
 		if(emag_act(10, user))
 			var/datum/effect/effect/system/spark_spread/spark_system = new /datum/effect/effect/system/spark_spread()
 			spark_system.set_up(5, 0, src.loc)
@@ -235,6 +240,9 @@
 
 	//If it's opened/emagged, crowbar can pry it out of its frame.
 	if (!density && istype(I, /obj/item/weapon/crowbar))
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using [I] to pry out \the [src]."))
+			return
+
 		playsound(src, I.usesound, 50, 1)
 		user.visible_message("[user] begins prying the windoor out of the frame.", "You start to pry the windoor out of the frame.")
 		if (do_after(user,40 * I.toolspeed))
@@ -273,6 +281,9 @@
 
 	//If it's a weapon, smash windoor. Unless it's an id card, agent card, ect.. then ignore it (Cards really shouldnt damage a door anyway)
 	if(src.density && istype(I, /obj/item/weapon) && !istype(I, /obj/item/weapon/card))
+		if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using the [I] to smash against \the [src]."))
+			return
+
 		user.setClickCooldown(user.get_attack_speed(I))
 		var/aforce = I.force
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)

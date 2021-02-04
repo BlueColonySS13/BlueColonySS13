@@ -7,6 +7,7 @@
 	icon_opened = "secureresopen"
 	icon_broken = "secureresbroken"
 	icon_off = "secureresoff"
+	dont_save = TRUE
 
 	New()
 		..()
@@ -24,7 +25,6 @@
 			new /obj/item/weapon/storage/backpack/dufflebag/sci(src)
 		else
 			new /obj/item/weapon/storage/backpack/toxins(src)
-		return
 
 
 
@@ -37,6 +37,7 @@
 	icon_opened = "rdsecureopen"
 	icon_broken = "rdsecurebroken"
 	icon_off = "rdsecureoff"
+	dont_save = TRUE
 
 	New()
 		..()
@@ -57,4 +58,4 @@
 		new /obj/item/device/flash(src)
 		new /obj/item/clothing/suit/storage/hooded/wintercoat/science(src)
 		new /obj/item/clothing/shoes/boots/winter/science(src)
-		return
+

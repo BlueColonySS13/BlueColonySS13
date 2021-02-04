@@ -577,7 +577,13 @@
 			if (!src.restrained())
 				message = "raises a hand."
 			m_type = 1
-
+			
+		if("crack")
+			if(!restrained())
+				message = "cracks [T.his] knuckles."
+				playsound(src, 'sound/voice/knuckles.ogg', 50, 1)
+				m_type = 1
+				
 		if("shake")
 			message = "shakes [T.his] head."
 			m_type = 1
@@ -855,7 +861,7 @@
 		if("flip")
 			m_type = 1
 			if (!src.restrained())
-				message = "performs an amazing, gravity-defying backflip before landing skillfully back to the ground."
+//				message = "performs an amazing, gravity-defying backflip before landing skillfully back to the ground."
 				playsound(src.loc, 'sound/effects/bodyfall4.ogg', 50, 1)
 				src.SpinAnimation(7,1)
 			else
@@ -864,7 +870,7 @@
 		if("spin")
 			m_type = 1
 			if (!src.restrained())
-				message = "spins in a dance smoothly on their feet. Wow!"
+//				message = "spins in a dance smoothly on their feet. Wow!"
 				src.spin(20, 1)
 			else
 				to_chat(usr, "You can't quite do something as difficult as a spin while so... restricted.")
@@ -872,7 +878,7 @@
 		if("floorspin")
 			m_type = 1
 			if (!src.restrained())
-				message = "gets down on the floor and spins their entire body around!"
+//				message = "gets down on the floor and spins their entire body around!"
 				spawn(0)
 					for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
 						set_dir(i)
@@ -884,15 +890,15 @@
 		if("sidestep")
 			m_type = 1
 			if (!src.restrained())
-				message = "steps rhymatically and conservatively as they move side to side."
+//				message = "steps rhymatically and conservatively as they move side to side."
 				var/default_pixel_x = initial(pixel_x)
 				var/default_pixel_y = initial(pixel_y)
 				default_pixel_x = src.default_pixel_x
 				default_pixel_y = src.default_pixel_y
 
-				animate(src, pixel_x = 5, time = 20)
+				animate(src, pixel_x = 5, time = 5)
 				sleep(3)
-				animate(src, pixel_x = -5, time = 20)
+				animate(src, pixel_x = -5, time = 5)
 				animate(pixel_x = default_pixel_x, pixel_y = default_pixel_y, time = 2)
 			else
 				to_chat(usr, "Sidestepping sure seems unachieveable when you're this restricted.")

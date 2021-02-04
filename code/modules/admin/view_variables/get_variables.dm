@@ -54,6 +54,7 @@
 				VV_TEXT,
 				VV_MESSAGE,
 				VV_ICON,
+				VV_COLOR,
 				VV_ATOM_REFERENCE,
 				VV_DATUM_REFERENCE,
 				VV_MOB_REFERENCE,
@@ -193,6 +194,12 @@
 
 		if (VV_ICON)
 			.["value"] = input("Pick icon:", "Icon") as null|icon
+			if (.["value"] == null)
+				.["class"] = null
+				return
+
+		if (VV_COLOR)
+			.["value"] = input("Pick color:", "Icon") as color
 			if (.["value"] == null)
 				.["class"] = null
 				return

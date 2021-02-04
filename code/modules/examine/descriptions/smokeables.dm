@@ -24,6 +24,9 @@
 /obj/item/weapon/storage/fancy/cigarettes/professionals
 	description_fluff = "Decades ago, probably before you were born, Gilthari Exports created the Professional 120s.  They wanted to make a fancy cigarette that would be considered a luxury.  Nowadays, they are generally concidered an emblem of the nouveau riche and the elderly.  They are, however, very high-quality and made from the very best Solar tobacco."
 
+/obj/item/weapon/storage/fancy/cigarettes/nightshade
+	description_fluff = "Darlene's is enjoyed by those that suffer from the kind of tired that sleep doesn't fix and misanthropes. Despite the name, Darlene's cigarettes are no more harmful than any other cigarette on the market and contain no trace of nightshade. Darlene's cigarette are often sought out for their trademark purple and black appearance."
+
 /obj/item/clothing/mask/smokable/cigarette/cigar
 	description_fluff = "While the label does say that this is a 'premium cigar', it really cannot match other types of cigars on the market.  Is it a quality cigarette?  Perhaps.  Was it hand-made with care?  No.  This is what differentiates between quality products that Gilthari puts out and NanoTrasen 'premium' cigars like this one."
 

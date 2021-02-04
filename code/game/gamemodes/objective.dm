@@ -427,11 +427,11 @@ datum/objective/steal
 	var/target_name
 
 	var/global/possible_items[] = list(
-		"the Colony Director's antique laser gun" = /obj/item/weapon/gun/energy/captain,
+		"the mayor's antique laser gun" = /obj/item/weapon/gun/energy/captain,
 		"a hand teleporter" = /obj/item/weapon/hand_tele,
 		"an RCD" = /obj/item/weapon/rcd,
 		"a jetpack" = /obj/item/weapon/tank/jetpack,
-		"a colony director's jumpsuit" = /obj/item/clothing/under/rank/captain,
+		"a mayor's jumpsuit" = /obj/item/clothing/under/rank/captain,
 		"a functional AI" = /obj/item/device/aicard,
 		"a pair of magboots" = /obj/item/clothing/shoes/magboots,
 		"the city blueprints" = /obj/item/blueprints,
@@ -441,11 +441,11 @@ datum/objective/steal
 		"a piece of corgi meat" = /obj/item/weapon/reagent_containers/food/snacks/meat/corgi,
 		"a research director's jumpsuit" = /obj/item/clothing/under/rank/research_director,
 		"a chief engineer's jumpsuit" = /obj/item/clothing/under/rank/chief_engineer,
-		"a chief medical officer's jumpsuit" = /obj/item/clothing/under/rank/chief_medical_officer,
-		"a head of security's jumpsuit" = /obj/item/clothing/under/rank/head_of_security,
-		"a head of personnel's jumpsuit" = /obj/item/clothing/under/rank/head_of_personnel,
+		"a medical director's jumpsuit" = /obj/item/clothing/under/rank/chief_medical_officer,
+		"a chief of police's jumpsuit" = /obj/item/clothing/under/rank/head_of_security,
+		"a city clerk's jumpsuit" = /obj/item/clothing/under/rank/head_of_personnel,
 		"the hypospray" = /obj/item/weapon/reagent_containers/hypospray/vial,
-		"the colony director's pinpointer" = /obj/item/weapon/pinpointer,
+		"the mayor's pinpointer" = /obj/item/weapon/pinpointer,
 		"an ablative armor vest" = /obj/item/clothing/suit/armor/laserproof,
 	)
 
@@ -808,7 +808,7 @@ datum/objective/heist/salvage
 
 /datum/objective/borer_survive/check_completion()
 	if(owner)
-		var/mob/living/simple_animal/borer/B = owner
+		var/mob/living/simple_mob/animal/borer/B = owner
 		if(istype(B) && B.stat < 2 && B.host && B.host.stat < 2) return 1
 	return 0
 
@@ -817,7 +817,7 @@ datum/objective/heist/salvage
 
 /datum/objective/borer_reproduce/check_completion()
 	if(owner && owner.current)
-		var/mob/living/simple_animal/borer/B = owner.current
+		var/mob/living/simple_mob/animal/borer/B = owner.current
 		if(istype(B) && B.has_reproduced) return 1
 	return 0
 

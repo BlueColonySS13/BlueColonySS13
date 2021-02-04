@@ -84,6 +84,9 @@ SUBSYSTEM_DEF(jobs)
 			return 0
 		if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner")
 			return 0
+		if(player.client.prefs.is_synth() && !job.allows_synths)
+			return 0
+
 		var/position_limit = job.total_positions
 		if(!latejoin)
 			position_limit = job.spawn_positions
@@ -129,9 +132,16 @@ SUBSYSTEM_DEF(jobs)
 		if(flag && (!player.client.prefs.be_special & flag))
 			Debug("FOC flag failed, Player: [player], Flag: [flag], ")
 			continue
+
+		if(player.client.prefs.is_synth() && !job.allows_synths)
+			Debug("FOC job does not allow synths, Player: [player]")
+			continue
+
 		if(player.client.prefs.GetJobDepartment(job, level) & job.flag)
 			Debug("FOC pass, Player: [player], Level:[level]")
 			candidates += player
+
+
 
 	return candidates
 
@@ -165,6 +175,11 @@ SUBSYSTEM_DEF(jobs)
 		if(!is_hard_whitelisted(player, job))
 			Debug("GRJ not hard whitelisted failed, Player: [player]")
 			continue
+
+		if(player.client.prefs.is_synth() && !job.allows_synths)
+			Debug("GRJ job does not allow synths, Player: [player]")
+			continue
+
 		if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
 			Debug("GRJ Random job given, Player: [player], Job: [job]")
 			AssignRole(player, job.title)
@@ -318,6 +333,11 @@ SUBSYSTEM_DEF(jobs)
 				if((player.client.prefs.criminal_status == "Incarcerated") && job.title != "Prisoner") //CASSJUMP
 					Debug("DO player is prisoner, Player: [player], Job:[job.title]")
 					continue
+
+				if(player.client.prefs.is_synth() && !job.allows_synths)
+					Debug("DO job does not allow synths, Player: [player]")
+					continue
+
 				// If the player wants that job on this level, then try give it to him.
 				if(player.client.prefs.GetJobDepartment(job, level) & job.flag)
 
@@ -422,20 +442,22 @@ SUBSYSTEM_DEF(jobs)
 						to_chat(H, "<span class='warning'>Your current species, job or whitelist status does not permit you to spawn with [thing]!</span>")
 						continue
 
-					if(G.slot == "implant")
+					// Implants get special treatment
+					if(G.sort_category == "Cyberware")
 						var/obj/item/weapon/implant/I = G.spawn_item(H)
+						I.invisibility = 100
 						I.implant_loadout(H)
 						continue
 
+					// Try desperately (and sorta poorly) to equip the item. Now with increased desperation!
 					if(G.slot && !(G.slot in custom_equip_slots))
-						// This is a miserable way to fix the loadout overwrite bug, but the alternative requires
-						// adding an arg to a bunch of different procs. Will look into it after this merge. ~ Z
 						var/metadata = H.client.prefs.gear[G.display_name]
 						if(G.slot == slot_wear_mask || G.slot == slot_wear_suit || G.slot == slot_head)
 							custom_equip_leftovers += thing
 						else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
 							to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
-							custom_equip_slots.Add(G.slot)
+							if(G.slot != slot_tie)
+								custom_equip_slots.Add(G.slot)
 						else
 							custom_equip_leftovers.Add(thing)
 					else
@@ -447,8 +469,15 @@ SUBSYSTEM_DEF(jobs)
 		job.apply_fingerprints(H)
 
 		equip_passport(H)
+		equip_permits(H)
 		if(job.title != "Cyborg" && job.title != "AI")
 			H.equip_post_job()
+
+		//Robolimb Control
+		if(H.client.prefs.cyber_control)
+			var/obj/item/weapon/implant/neural/N = new /obj/item/weapon/implant/neural
+			N.invisibility = 100
+			N.implant_loadout(H)
 
 		//If some custom items could not be equipped before, try again now.
 		for(var/thing in custom_equip_leftovers)
@@ -480,12 +509,17 @@ SUBSYSTEM_DEF(jobs)
 			if("AI")
 				return H
 			if("Mayor")
-				var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
-				captain_announcement.Announce("The [alt_title ? alt_title : "Mayor"] [H.real_name] has arrived to the city.", new_sound=announce_sound)
+				if(!H.mind.prefs.silent_join)
+					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
+					captain_announcement.Announce("The [alt_title ? alt_title : "Mayor"] [H.real_name] has arrived to the city.", new_sound=announce_sound)
 			if("President")
-				var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/fanfare_prez.ogg', volume=20)
-				captain_announcement.Announce("[alt_title ? alt_title : "President"] [H.real_name] is visiting the city!", new_sound=announce_sound)
-
+				if(!H.mind.prefs.silent_join)
+					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/fanfare_prez.ogg', volume=20)
+					captain_announcement.Announce("[alt_title ? alt_title : "President"] [H.real_name] is visiting the city!", new_sound=announce_sound)
+			if("Governor")
+				if(!H.mind.prefs.silent_join)
+					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
+					captain_announcement.Announce("[alt_title ? alt_title : "Governor"] [H.real_name] is visiting the city!", new_sound=announce_sound)
 
 			if("Prisoner")
 				is_prisoner = TRUE
@@ -640,14 +674,9 @@ SUBSYSTEM_DEF(jobs)
 			C = new job.idtype(H)
 			C.access += job.get_access()
 
-		//business access compatibility? why. don't ask me.
-		if(job.business)
-			var/obj/item/weapon/card/id/ID = locate(/obj/item/weapon/card/id/, H.GetAllContents())
-			if(ID)
-				ID.access |= job.access
-
 	else
 		C = new /obj/item/weapon/card/id(H)
+
 	if(C)
 		C.rank = rank
 		C.assignment = title ? title : rank
@@ -660,6 +689,20 @@ SUBSYSTEM_DEF(jobs)
 				C.associated_pin_number = H.mind.initial_account.remote_access_pin
 
 		H.equip_to_slot_or_del(C, slot_wear_id)
+
+
+		//if you're a business owner, you get all the accesses your business has no matter what job you choose.
+		var/datum/business/B = get_business_by_owner_uid(H.mind.prefs.unique_id)
+		if(B)
+			for(var/V in B.business_accesses)
+				if(!(V in C.access))
+					C.access += V
+
+		//business access compatibility? why. don't ask me.
+		if(job.business)
+			for(var/V in job.access)
+				if(!(V in C.access))
+					C.access += V
 
 	return 1
 
@@ -777,3 +820,56 @@ SUBSYSTEM_DEF(jobs)
 	H.update_passport(pass)
 	H.equip_to_slot_or_del(pass, slot_in_backpack)
 
+/datum/controller/subsystem/jobs/proc/equip_permits(var/mob/living/carbon/human/H)
+	if(!H.mind || !H.mind.prefs) return
+
+	var/synth_type = H.get_FBP_type()
+	var/is_mpl_vatborn = (H.get_species() == SPECIES_HUMAN_VATBORN_MPL)
+	var/obj/item/clothing/uniform = H.w_uniform
+	var/obj/item/clothing/accessory/permit/permit
+
+	switch(synth_type)
+		if(FBP_NONE)
+			return
+
+		if(FBP_DRONE)
+			permit = new/obj/item/clothing/accessory/permit/drone(get_turf(H))
+
+		if(FBP_POSI)
+			permit = new/obj/item/clothing/accessory/permit/synth(get_turf(H))
+
+		if(FBP_CYBORG)
+			permit = new/obj/item/clothing/accessory/permit/fbp(get_turf(H))
+
+
+	if(permit)
+		permit.set_name(H.real_name)
+
+		if(uniform && uniform.can_attach_accessory(permit)) // attaches permit to uniform
+			uniform.attach_accessory(null, permit)
+		else
+			H.equip_to_slot_or_del(permit, slot_in_backpack) // otherwise puts it in your backpack
+
+	if(is_mpl_vatborn)
+		permit = new/obj/item/clothing/accessory/permit/vatborn
+
+		permit.set_name(H.real_name)
+		if(uniform && uniform.can_attach_accessory(permit)) // attaches permit to uniform
+			uniform.attach_accessory(null, permit)
+		else
+			H.equip_to_slot_or_del(permit, slot_in_backpack) // otherwise puts it in your backpack
+
+
+/datum/controller/subsystem/jobs/proc/get_active_police()
+
+	var/active_popo = 0
+
+	for(var/J in security_positions)
+		var/datum/job/police_officer = SSjobs.GetJob(J)
+
+		if(!police_officer)
+			continue
+
+		active_popo += police_officer.get_active()
+
+	return active_popo

@@ -4,6 +4,7 @@
 	price = 100000
 	rent = 5
 	licenses = list(LICENSE_LANDLORD_COMMERCIAL)
+	max_tenants = 6
 
 /datum/lot/business/one
 	name = "Business Lot 1"
@@ -75,14 +76,67 @@
 	id = "bizlot10"
 	price = 120000
 	desc = "A very old lot that requires refurbishment - is it two floors and worth investment."
-	max_tenants = 4
+	max_tenants = 6
 	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
+
 /datum/lot/business/eleven
 	name = "Business Lot 11"
 	id = "bizlot11"
 	desc = "An old lot in need of refurbishment, is it currently in disrepair after the previous landowner's tenants used it for illegal purposes."
 	price = 90000
 	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
+	max_tenants = 6
+
+/datum/lot/business/twelve
+	name = "Business Lot 12"
+	id = "bizlot12"
+	price = 130000
+	desc = "A business lot located on the east side of the hospital, modern, unfurnished and medium sized and suitable for many uses.."
+	max_tenants = 6
+	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
+
+//stalls
+/datum/lot/stall
+	price = 2500
+	desc = "A tiny set of tiny stalls intended for a small business."
+	max_tenants = 1
+
+/datum/lot/stall/one
+	name = "Stall 1"
+	id = "stall1"
+	desc = "A tiny stall next to the factory. It is located on the upper top right."
+
+/datum/lot/stall/two
+	name = "Stall 2"
+	id = "stall2"
+	desc = "A tiny stall next to the factory. It is located on the upper top left."
+
+/datum/lot/stall/three
+	name = "Stall 3"
+	id = "stall3"
+	desc = "A tiny stall next to the factory. It is located on the middle left."
+
+/datum/lot/stall/four
+	name = "Stall 4"
+	id = "stall4"
+	desc = "A tiny stall next to the factory. It is located on the middle right."
+
+/datum/lot/stall/five
+	name = "Stall 5"
+	id = "stall5"
+	desc = "A tiny stall next to the factory. It is located on the bottom left."
+
+/datum/lot/stall/six
+	name = "Stall 6"
+	id = "stall6"
+	desc = "A tiny stall next to the factory. It is located on the bottom right."
+
+/datum/lot/stall/seven
+	name = "Stall 7"
+	id = "stall7"
+	desc = "A tiny stall right next to the arrival bus."
+
+
 // shopping lots
 
 /datum/lot/shopping

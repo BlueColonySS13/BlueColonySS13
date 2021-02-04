@@ -1,6 +1,6 @@
 /datum/expense
   var/name = "Generic Expense"
-  var/cost_per_payroll = 1          // per payroll
+  var/cost_per_payroll = 20          // per payroll
   var/department = DEPT_COUNCIL
   var/purpose = "Bill"
 
@@ -10,7 +10,7 @@
 
   var/initial_cost				//how much it cost in the beginning
 
-  var/amount_left
+  var/amount_left = 0
 
   var/active = TRUE		               // If this is currently active, or not.
 
@@ -28,6 +28,8 @@
 
   var/can_remove = TRUE
 
+  var/reverse = FALSE
+
 /datum/expense/proc/do_effect()	// this is actually does something, it'll trigger here.
 	return
 
@@ -38,6 +40,9 @@
 		return 0
 
 	var/charge
+
+	if(cost_per_payroll > amount_left)
+		cost_per_payroll = amount_left
 
 	if(num > amount_left)
 		charge += amount_left
@@ -50,7 +55,10 @@
 	amount_left -= charge
 
 	if(department)
-		adjust_dept_funds(department, charge)
+		if(reverse)
+			adjust_dept_funds(department, -charge)
+		else
+			adjust_dept_funds(department, charge)
 
 	return charge
 
@@ -59,32 +67,6 @@
 /datum/expense/proc/payroll_expense(var/datum/money_account/bank_account)
 	charge_expense(src, bank_account, cost_per_payroll)
 
-// If you want to charge a department.
-
-/datum/expense/proc/charge_department(num)
-	if(!charge_department || !department) return
-
-	var/negative = FALSE
-
-	if(0 > num)
-		negative = TRUE
-
-	//the department getting charged.
-	var/datum/money_account/bank_acc = dept_acc_by_id(charge_department)
-	// department recieving the money.
-	var/datum/money_account/dept_bank_acc = dept_acc_by_id(department)
-
-	if(!bank_acc || !dept_bank_acc) return
-
-	if(negative)
-		charge_expense(src, bank_acc, num)
-		charge_expense(src, dept_bank_acc, -num)
-	else
-		charge_expense(src, bank_acc, -num)
-		charge_expense(src, dept_bank_acc, num)
-
-	return TRUE
-
 
 //This if for if you have a expense, and a bank account.
 
@@ -92,10 +74,18 @@
 	if(!E.is_active())
 		return 0
 
-	E.process_charge(num)
-	bank_account.money -= num
+	if(E.cost_per_payroll > E.amount_left)
+		E.cost_per_payroll = E.amount_left
+		num = E.amount_left
 
-	bank_account.add_transaction_log(bank_account.owner_name, "Debt Payment: [E.name]", -num, "[E.department] Funding Account")
+	E.process_charge(num)
+
+	if(E.reverse)
+		bank_account.money += num
+		bank_account.add_transaction_log(bank_account.owner_name, "Payment: [E.name]", num, "[E.department] Funding Account")
+	else
+		bank_account.money -= num
+		bank_account.add_transaction_log(bank_account.owner_name, "Debt Payment: [E.name]", -num, "[E.department] Funding Account")
 
 	E.do_effect()
 
@@ -132,6 +122,14 @@
 
 	department = DEPT_LEGAL
 
+	color = COLOR_OLIVE
+
+/datum/expense/inheritence
+	name = "Court Injunction"
+	cost_per_payroll = 100
+
+	department = DEPT_PUBLIC
+	reverse = TRUE
 	color = COLOR_OLIVE
 
 // This proc is just a default proc for paying expenses per payroll.

@@ -1,5 +1,6 @@
 /datum/bounty/gun
 	category = CAT_GUNS
+	tax_type = WEAPONS_TAX
 
 /datum/bounty/gun/smg_guards
 	name = "Get the Ultra Premium Care Plan: It Sounds Better"
@@ -36,7 +37,7 @@
 
 	items_wanted = list(/obj/item/weapon/gun/magnetic/fuelrod = 1)
 
-	department_reward = 5000
+	department_reward = 3000
 	individual_reward = 1000
 
 	days_until_expiry = 2
@@ -75,3 +76,29 @@
 
 	department_reward = 900
 	individual_reward = 250
+
+/datum/bounty/gun/dont_taze_me_bro
+	name = "Don't Taze Me Bro!"
+	author = "Hammerdown"
+
+	description = "We’re in need of equipment for our next run. It's gonna be a milk run this time, I can feel it. This one’s gotta stay lowkey so \
+	we’re going with non-lethal weapons - Twitchers, specifically. Get us 3 stun revolvers to outfit the crew and we’ll send some credits your way."
+
+	items_wanted = list(/obj/item/weapon/gun/energy/stunrevolver = 3)
+
+	department_reward = 2200
+	individual_reward = 850
+
+/*
+/datum/bounty/gun/low_demand
+	name = "UNAVAILABLE"
+	author = "UNAVAILABLE"
+
+	description = "The Firearms and Ammunition manufacturing subsytem of the Boun-T is currently down for maintenance. We apologize for any inconvenience."
+
+	items_wanted = list(/obj/item/bounty_holder = 999)
+
+	department_reward = 0
+	individual_reward = 0
+
+*/

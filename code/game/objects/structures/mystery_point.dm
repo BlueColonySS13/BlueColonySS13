@@ -81,19 +81,19 @@
 						var/friend_type = rand(1,4)
 						switch(friend_type)
 							if(1)
-								var/mob/living/simple_animal/corgi/C = new /mob/living/simple_animal/corgi(loc)
+								var/mob/living/simple_mob/animal/passive/dog/corgi/C = new /mob/living/simple_mob/animal/passive/dog/corgi(loc)
 								C.name = "Friend"
 								C.desc = "He looks like he's been wandering for a few days."
 							if(2)
-								var/mob/living/simple_animal/cow/C = new /mob/living/simple_animal/cow(loc)
+								var/mob/living/simple_mob/animal/passive/cow/C = new /mob/living/simple_mob/animal/passive/cow(loc)
 								C.name = "Wonder Cow"
 								C.desc = "A cow with a strange brand on its flank. You have the slightest suspicion that it can talk."
 							if(3)
-								var/mob/living/simple_animal/cat/C = new /mob/living/simple_animal/cat(loc)
+								var/mob/living/simple_mob/animal/passive/cat/C = new /mob/living/simple_mob/animal/passive/cat(loc)
 								C.name = "Stray"
 								C.desc = "This feline radiates authority. Be aware - You didn't find it. It found you."
 							if(4)
-								var/mob/living/simple_animal/mouse/M = new /mob/living/simple_animal/mouse(loc)
+								var/mob/living/simple_mob/animal/passive/mouse/M = new /mob/living/simple_mob/animal/passive/mouse(loc)
 								M.name = "Stu"
 								M.desc = "The most loyal of rodents."
 					if("Love")

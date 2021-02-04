@@ -120,10 +120,19 @@
 	if(!istype(loc, /turf))
 		reset_persistence_tracking()
 
+/obj/item/weapon/paper/sticky/proc/track_value()
+	SSpersistence.track_value(src, /datum/persistent/paper/sticky)
+
+var/global/list/disallowed_sticky_items = list(/obj/item/weapon/storage, /obj/machinery/inventory_machine, /obj/machinery/door)
+
 /obj/item/weapon/paper/sticky/afterattack(var/A, var/mob/user, var/flag, var/params)
 
-	if(!in_range(user, A) || istype(A, /obj/machinery/door) || istype(A, /obj/item/weapon/storage) || icon_state == scrap_state)
+	if(!in_range(user, A) || icon_state == scrap_state)
 		return
+
+	for(var/V in disallowed_sticky_items)
+		if(istype(A, V))
+			return
 
 	var/turf/target_turf = get_turf(A)
 	var/turf/source_turf = get_turf(user)
@@ -136,7 +145,7 @@
 			return
 
 	if(user.unEquip(src, source_turf))
-		SSpersistence.track_value(src, /datum/persistent/paper/sticky)
+		track_value()
 		if(params)
 			var/list/mouse_control = params2list(params)
 			if(mouse_control["icon-x"])
@@ -160,3 +169,10 @@
 	icon_state = "poster"
 	color = COLOR_WHITE
 	scrap_state = "scrap_poster"
+
+
+/obj/item/weapon/paper/sticky/poster/reset_persistence_tracking()
+	SSpersistence.forget_value(src, /datum/persistent/paper/sticky/sticky_posters)
+
+/obj/item/weapon/paper/sticky/poster/track_value()
+	SSpersistence.track_value(src, /datum/persistent/paper/sticky/sticky_posters)

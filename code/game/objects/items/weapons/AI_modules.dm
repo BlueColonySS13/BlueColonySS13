@@ -23,7 +23,7 @@ AI MODULES
 
 /obj/item/weapon/aiModule/proc/install(var/atom/movable/AM, var/mob/living/user)
 	if(!user.IsAdvancedToolUser() && isanimal(user))
-		var/mob/living/simple_animal/S = user
+		var/mob/living/simple_mob/S = user
 		if(!S.IsHumanoidToolUser(src))
 			return 0
 
@@ -107,6 +107,7 @@ AI MODULES
 
 	if(laws)
 		laws.sync(target, 0)
+		target.notify_of_law_change()
 	addAdditionalLaws(target, sender)
 
 	to_chat(target, "\The [sender] has uploaded a change to the laws you must follow, using \an [src]. From now on: ")

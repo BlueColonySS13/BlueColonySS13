@@ -42,26 +42,18 @@
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_overground_hospital
-	name = "lift (hospital overground - asylum)"
-	lift_floor_label = "Floor 1"
-	lift_floor_name = "Geminus City Hospital - Asylum"
-	lift_announce_str = "Lift arriving at Geminus City - Asylum, please stand clear of the doors."
-	base_turf = /turf/simulated/floor/tiled/steel_ridged
-
-/area/turbolift/geminus_ground_hospital
 	name = "lift (city hospital)"
 	lift_floor_label = "Ground Floor"
 	lift_floor_name = "Geminus City Hospital - Hospital"
 	lift_announce_str = "Lift arriving at Geminus City - Hospital, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
-/area/turbolift/geminus_underground_hospital
-	name = "lift (hospital underground - Asylum)"
-	lift_floor_label = "Lower Ground (LG) Floor"
+/area/turbolift/geminus_ground_hospital
+	name = "lift (hospital overground - asylum)"
+	lift_floor_label = "Floor 1"
 	lift_floor_name = "Geminus City Hospital - Asylum"
 	lift_announce_str = "Lift arriving at Geminus City - Asylum, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
-
 
 /area/turbolift/geminus_court_top
 	name = "lift (court offices)"
@@ -93,16 +85,23 @@
 
 /area/turbolift/police_top
 	name = "lift (upper police station)"
-	lift_floor_label = "Floor 2"
+	lift_floor_label = "Floor 1"
 	lift_floor_name = "Upper Police Station"
 	lift_announce_str = "Lift arriving at the upper police station, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/police_ground
 	name = "lift (police station main)"
-	lift_floor_label = "Floor 1"
-	lift_floor_name = "Lower Police Station"
+	lift_floor_label = "Ground"
+	lift_floor_name = "Ground Police Station"
 	lift_announce_str = "Lift arriving at the lower police station, please stand clear of the doors."
+	base_turf = /turf/simulated/floor/tiled/steel_ridged
+
+/area/turbolift/police_lower_ground
+	name = "lift (prison mines)"
+	lift_floor_label = "Lower Ground"
+	lift_floor_name = "Prison Mines"
+	lift_announce_str = "Lift arriving at the prison mines, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 //shuttle areas
@@ -443,27 +442,61 @@
 	name = "\improper Residential Area - Masonette Two"
 
 /area/centcom/president_office_geminus
-	name = "\improper President's Geminus City HQ" //Central Command Command totally isn't RAS Syndrome in action.
+	name = "\improper Government HQ - Geminus City" //Central Command Command totally isn't RAS Syndrome in action.
 	icon_state = "centcom_command"
 
 /area/centcom/president_office_geminus/office
-	name = "\improper President's Office - Geminus" //Central Command Command totally isn't RAS Syndrome in action.
+	name = "\improper Government HQ - President's Office" //Central Command Command totally isn't RAS Syndrome in action.
 	icon_state = "centcom_command"
 
-/area/redspace/outpost
-	name = "Parascience Outpost Exterior"
+/area/centcom/president_office_geminus/governor
+	name = "\improper Government HQ - Governor's Office" //Central Command Command totally isn't RAS Syndrome in action.
+	icon_state = "yellow"
 
-/area/redspace/outpost/toilets
-	name = "Parascience Outpost - Toilets"
+/area/centcom/president_office_geminus/ceo
+	name = "\improper Government HQ - CEO's Office" //Central Command Command totally isn't RAS Syndrome in action.
+	icon_state = "blue"
 
-/area/redspace/outpost/dorms
-	name = "Parascience Outpost - Dorms"
+/area/centcom/president_office_geminus/advisor/defense
+	name = "\improper Advisor of Defense's Offices"
+	icon_state = "red"
 
-/area/redspace/outpost/kitchen
-	name = "Parascience Outpost - Kitchen"
+/area/centcom/president_office_geminus/advisor/finance
+	name = "\improper Advisor of Finance's Offices"
+	icon_state = "green"
 
-/area/redspace/outpost/maintenance
-	name = "Parascience Outpost - Maintenance"
+/area/centcom/president_office_geminus/advisor/health
+	name = "\improper Advisor of Health's Offices"
+	icon_state = "blue"
 
-/area/redspace/outpost/lab
-	name = "Parascience Outpost - Laboratory"
+/area/centcom/president_office_geminus/advisor/innovation
+	name = "\improper Advisor of Innovation's Offices"
+	icon_state = "yellow"
+
+/area/centcom/president_office_geminus/advisor/justice
+	name = "\improper Advisor of Justice's Offices"
+	icon_state = "darkred"
+
+/area/centcom/president_office_geminus/meeting
+	name = "\improper Government HQ - Meeting Room"
+	icon_state = "yellow"
+
+/area/abandoned_lab
+	name = "\improper NSS Abendrot"
+	sound_env = TUNNEL_ENCLOSED
+	icon_state = "blue"
+	requires_power = 0
+	dynamic_lighting = 1
+	base_turf = /turf/simulated/floor/plating
+
+/area/abandoned_lab/laboratory
+	name = "\improper NSS Abendrot - Laboratory"
+	icon_state = "yellow"
+
+/area/abandoned_lab/gateway
+	name = "\improper NSS Abendrot - Gateway"
+	icon_state = "green"
+
+/area/abandoned_lab/bridge
+	name = "\improper NSS Abendrot - Bridge"
+	icon_state = "bridge"

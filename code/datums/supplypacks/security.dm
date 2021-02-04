@@ -42,7 +42,7 @@
 			/obj/item/clothing/suit/storage/vest/heavy/hos,
 			/obj/item/clothing/suit/storage/vest/heavy/pcrc
 			)
-	cost = 140
+	cost = 1400
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Armor crate"
 
@@ -56,7 +56,7 @@
 			/obj/item/weapon/storage/box/beanbags,
 			/obj/item/weapon/storage/box/handcuffs
 			)
-	cost = 140
+	cost = 1400
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Riot gear crate"
 	access = access_armory
@@ -69,7 +69,7 @@
 			/obj/item/clothing/gloves/arm_guard/riot,
 			/obj/item/clothing/shoes/leg_guard/riot
 			)
-	cost = 130
+	cost = 1300
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Riot armor crate"
 	access = access_armory
@@ -82,7 +82,7 @@
 			/obj/item/clothing/gloves/arm_guard/laserproof,
 			/obj/item/clothing/shoes/leg_guard/laserproof
 			)
-	cost = 140
+	cost = 1400
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Ablative armor crate"
 	access = access_armory
@@ -95,7 +95,7 @@
 			/obj/item/clothing/gloves/arm_guard/bulletproof,
 			/obj/item/clothing/shoes/leg_guard/bulletproof
 			)
-	cost = 140
+	cost = 1400
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Ballistic armor crate"
 	access = access_armory
@@ -108,7 +108,7 @@
 			/obj/item/clothing/gloves/arm_guard/combat,
 			/obj/item/clothing/shoes/leg_guard/combat
 			)
-	cost = 140
+	cost = 1400
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Combat armor crate"
 	access = access_armory
@@ -117,7 +117,7 @@
 	name = "Armor - Tactical"
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Tactical armor crate"
-	cost = 140
+	cost = 3500
 	access = access_armory
 	contains = list(
 			/obj/item/clothing/under/tactical,
@@ -141,7 +141,7 @@
 /datum/supply_pack/security/securitybarriers
 	name = "Misc - Security Barriers"
 	contains = list(/obj/machinery/deployable/barrier = 4)
-	cost = 120
+	cost = 250
 	containertype = /obj/structure/largecrate
 	containername = "Security barrier crate"
 	access = null
@@ -149,7 +149,7 @@
 /datum/supply_pack/security/securityshieldgen
 	name = "Misc - Wall shield generators"
 	contains = list(/obj/machinery/shieldwallgen = 4)
-	cost = 120
+	cost = 400
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Wall shield generators crate"
 	access = access_teleporter
@@ -175,7 +175,7 @@
 			/obj/item/device/radio/headset/headset_sec/alt = 3,
 			/obj/item/clothing/suit/storage/hooded/wintercoat/security = 3
 			)
-	cost = 110
+	cost = 200
 	containertype = /obj/structure/closet/crate
 	containername = "Security surplus equipment"
 
@@ -249,7 +249,8 @@
 			/obj/item/device/flashlight/flare,
 			/obj/item/clothing/accessory/storage/black_vest,
 			/obj/item/clothing/head/soft/sec/corp,
-			/obj/item/clothing/under/rank/security/corp,
+			/obj/item/clothing/under/rank/policeofficeralt,
+			/obj/item/clothing/head/police/policeofficercap,
 			/obj/item/weapon/gun/energy/taser,
 			/obj/item/device/flashlight/maglight
 			)

@@ -258,7 +258,7 @@
 	// Have the customer punch in the PIN before checking if there's enough money. Prevents people from figuring out acct is
 	// empty at high security levels
 	if(customer_account.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
-		var/attempt_pin = input("Enter pin code", "VR Sleeper Fee") as num
+		var/attempt_pin = input("Enter pin code", "Dye Machine Bottle Purchase") as num
 		customer_account = attempt_account_access(I.associated_account_number, attempt_pin, 2)
 
 		if(!customer_account)
@@ -413,6 +413,12 @@
 		use_dye()
 		return
 
+	var/obj/structure/curtain/CU = A
+	if(istype(CU))
+		CU.color = dye_color
+		use_dye()
+		return
+
 	var/obj/item/stack/S = A
 	if(istype(S))
 		if(!S.dyeable)
@@ -443,6 +449,8 @@
 		if(H.gender == MALE)
 			dye_list += "facial hair"
 
+		dye_list += "highlights"
+
 
 		var/what_to_dye = input(user, "Choose an area to apply the dye","Dye Application") in dye_list
 
@@ -461,7 +469,16 @@
 					var/b_facial = hex2num(copytext(dye_color, 6, 8))
 					if(H.change_facial_hair_color(r_facial, g_facial, b_facial))
 						H.update_dna()
+				if("highlights")
+					var/new_grad_style = input(user, "Choose a color pattern for your hair:", "Character Preference", H.grad_style)  as null|anything in GLOB.hair_gradients
 
+					var/r_grad = hex2num(copytext(dye_color, 2, 4))
+					var/g_grad = hex2num(copytext(dye_color, 4, 6))
+					var/b_grad = hex2num(copytext(dye_color, 6, 8))
+
+
+					if(H.change_highlight_hair_color(r_grad, g_grad, b_grad, new_grad_style))
+						H.update_dna()
 
 		user.visible_message("<span class='notice'>[user] finishes dying [M]'s [what_to_dye]!</span>", "<span class='notice'>You finish dying [M]'s [what_to_dye]!</span>")
 		use_dye()

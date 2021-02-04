@@ -18,6 +18,7 @@
 	var/power_use = 1
 
 	unique_save_vars = list("on")
+	tax_type = ELECTRONICS_TAX
 
 /obj/item/device/flashlight/on_persistence_load()
 	update_icon()

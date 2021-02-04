@@ -40,6 +40,11 @@ var/global/list/additional_antag_types = list()
 	var/event_delay_mod_major                // As above.
 	var/antag_text = ""
 
+	var/allow_late_antag = FALSE
+
+	var/show_antag_print = FALSE			// show antag print at round end?
+	var/max_antags = 8					// maximum cap for antags in a round for lobby latejoin. Note: Still limited by how many police are online.
+
 /datum/game_mode/New()
 	..()
 
@@ -241,7 +246,6 @@ var/global/list/additional_antag_types = list()
 		"hostile raiders",
 		"derelict station debris",
 		"REDACTED",
-		"ancient alien artillery",
 		"solar magnetic storms",
 		"sentient time-travelling killbots",
 		"gravitational anomalies",
@@ -256,8 +260,7 @@ var/global/list/additional_antag_types = list()
 		"malfunctioning von Neumann probe swarms",
 		"shadowy interlopers",
 		"a stranded alien arkship",
-		"haywire IPC constructs",
-		"rogue Unathi exiles",
+		"deviant synthetics",
 		"artifacts of eldritch horror",
 		"a brain slug infestation",
 		"killer bugs that lay eggs in the husks of the living",
@@ -288,7 +291,7 @@ var/global/list/additional_antag_types = list()
 /datum/game_mode/proc/declare_completion()
 	var/is_antag_mode = (antag_templates && antag_templates.len)
 	check_victory()
-	if(is_antag_mode)
+	if(show_antag_print || is_antag_mode)
 		sleep(10)
 		for(var/datum/antagonist/antag in antag_templates)
 			sleep(10)

@@ -13,6 +13,8 @@
 	var/show_above_suit = 0
 	drop_sound = 'sound/items/drop/leather.ogg'
 
+	matter = list("leather" = 2500)
+
 /obj/item/weapon/storage/belt/verb/toggle_layer()
 	set name = "Switch Belt Layer"
 	set category = "Object"
@@ -428,7 +430,7 @@
  	item_state = "fannypack_red"
 
 /obj/item/weapon/storage/belt/fannypack/white
- 	name = "white fannypack"
+ 	name = "fannypack"
  	icon_state = "fannypack_white"
  	item_state = "fannypack_white"
 

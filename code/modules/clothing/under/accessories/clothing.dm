@@ -3,11 +3,6 @@
 	desc = "Slick black suit vest."
 	icon_state = "det_vest"
 
-/obj/item/clothing/accessory/poshblazer
-	name = "women's posh blazer"
-	desc = "This is a bit fancy, like the new recruit in a news office who is trying too hard to impress the managers."
-	icon_state = "poshblazer"
-
 /obj/item/clothing/accessory/jacket
 	name = "tan suit jacket"
 	desc = "Cozy suit jacket."
@@ -60,7 +55,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
-	slot = "over"
+	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
 		"Teshari" = 'icons/mob/species/seromi/suit.dmi'
@@ -124,27 +119,27 @@
  * Cloak
  */
 /obj/item/clothing/accessory/poncho/roles/cloak
-	name = "brown cloak"
-	desc = "An elaborate brown cloak."
-	icon_state = "qmcloak"
-	item_state = "qmcloak"
+	name = "cloak"
+	desc = "An elaborate cloak."
+	icon_state = "cloak"
+	item_state = "cloak"
 	body_parts_covered = null
 
 /obj/item/clothing/accessory/poncho/roles/cloak/ce
-	name = "chief engineer's cloak"
-	desc = "An elaborate cloak worn by the chief engineer."
+	name = "maintenance director's cloak"
+	desc = "An elaborate cloak worn by the maintenance director."
 	icon_state = "cecloak"
 	item_state = "cecloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/cmo
-	name = "chief medical officer's cloak"
-	desc = "An elaborate cloak meant to be worn by the chief medical officer."
+	name = "medical director's cloak"
+	desc = "An elaborate cloak meant to be worn by the medical director."
 	icon_state = "cmocloak"
 	item_state = "cmocloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/hop
-	name = "head of personnel's cloak"
-	desc = "An elaborate cloak meant to be worn by the head of personnel."
+	name = "city clerk's cloak"
+	desc = "An elaborate cloak meant to be worn by the city clerk."
 	icon_state = "hopcloak"
 	item_state = "hopcloak"
 
@@ -155,14 +150,14 @@
 	item_state = "rdcloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/qm
-	name = "quartermaster's cloak"
-	desc = "An elaborate cloak meant to be worn by the quartermaster."
+	name = "factory manager's cloak"
+	desc = "An elaborate cloak meant to be worn by the factory manager."
 	icon_state = "qmcloak"
 	item_state = "qmcloak"
 
 /obj/item/clothing/accessory/poncho/roles/cloak/hos
-	name = "head of security's cloak"
-	desc = "An elaborate cloak meant to be worn by the head of security."
+	name = "chief of police's cloak"
+	desc = "An elaborate cloak meant to be worn by the chief of police."
 	icon_state = "hoscloak"
 	item_state = "hoscloak"
 
@@ -263,6 +258,8 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
+
+	matter = list("wool" = 2000)
 
 /obj/item/clothing/accessory/sweater/pink
 	name = "pink sweater"

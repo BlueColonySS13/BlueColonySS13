@@ -56,7 +56,8 @@ the artifact triggers the rage.
 	outgoing_melee_damage_percent = 1.5		// 50% more damage from melee.
 	max_health_percent = 1.5				// More health as a buffer, however the holder might fall into crit after this expires if they're mortally wounded.
 	disable_duration_percent = 0.25			// Disables only last 25% as long.
-	icon_scale_percent = 1.2				// Look scarier.
+	icon_scale_x_percent = 1.2				// Look scarier.
+	icon_scale_y_percent = 1.2
 	pain_immunity = TRUE					// Avoid falling over from shock (at least until it expires).
 
 	// The less good stuff.
@@ -204,3 +205,99 @@ the artifact triggers the rage.
 	accuracy = -75				// Aiming requires focus.
 	accuracy_dispersion = 3		// Ditto.
 	evasion = -45				// Too angry to dodge.
+
+
+// Pulse modifier.
+/datum/modifier/false_pulse
+	name = "false pulse"
+	desc = "Your blood flows, despite all other factors."
+
+	on_created_text = "<span class='notice'>You feel alive.</span>"
+	on_expired_text = "<span class='notice'>You feel.. different.</span>"
+	stacks = MODIFIER_STACK_EXTEND
+
+	pulse_set_level = PULSE_NORM
+
+
+
+
+
+// Ignition, but confined to the modifier system.
+// This makes it more predictable and thus, easier to balance.
+/datum/modifier/fire
+	name = "on fire"
+	desc = "You are on fire! You will be harmed until the fire goes out or you extinguish it with water."
+	mob_overlay_state = "on_fire"
+
+	on_created_text = "<span class='danger'>You combust into flames!</span>"
+	on_expired_text = "<span class='warning'>The fire starts to fade.</span>"
+	stacks = MODIFIER_STACK_ALLOWED // Multiple instances will hurt a lot.
+	var/damage_per_tick = 5
+
+/datum/modifier/fire/tick()
+	holder.inflict_heat_damage(damage_per_tick)
+
+/datum/modifier/fire/intense
+	mob_overlay_state = "on_fire_intense"
+	damage_per_tick = 10
+
+// Applied when near something very cold.
+// Reduces mobility, attack speed.
+/datum/modifier/chilled
+	name = "chilled"
+	desc = "You feel yourself freezing up. Its hard to move."
+	mob_overlay_state = "chilled"
+
+	on_created_text = "<span class='danger'>You feel like you're going to freeze! It's hard to move.</span>"
+	on_expired_text = "<span class='warning'>You feel somewhat warmer and more mobile now.</span>"
+	stacks = MODIFIER_STACK_EXTEND
+
+	slowdown = 2
+	evasion = -40
+	attack_speed_percent = 1.4
+	disable_duration_percent = 1.2
+
+
+// Similar to being on fire, except poison tends to be more long term.
+// Antitoxins will remove stacks over time.
+// Synthetics can't receive this.
+/datum/modifier/poisoned
+	name = "poisoned"
+	desc = "You have poison inside of you. It will cause harm over a long span of time if not cured."
+	mob_overlay_state = "poisoned"
+
+	on_created_text = "<span class='warning'>You feel sick...</span>"
+	on_expired_text = "<span class='notice'>You feel a bit better.</span>"
+	stacks = MODIFIER_STACK_ALLOWED // Multiple instances will hurt a lot.
+	var/damage_per_tick = 1
+
+/datum/modifier/poisoned/weak
+	damage_per_tick = 0.5
+
+/datum/modifier/poisoned/strong
+	damage_per_tick = 2
+
+/datum/modifier/poisoned/tick()
+	if(holder.stat == DEAD)
+		expire(silent = TRUE)
+	holder.inflict_poison_damage(damage_per_tick)
+
+/datum/modifier/poisoned/can_apply(mob/living/L)
+	if(L.isSynthetic())
+		return FALSE
+	if(L.get_poison_protection() >= 1)
+		return FALSE
+	return TRUE
+
+/datum/modifier/loyalty
+	name = "loyalty"
+	desc = "You are under the effects of a potent brainwashing element."
+
+	on_created_text = "<span class='notice'>You feel a shift in your mental state.</span>"
+	on_expired_text = "<span class='notice'>You don't feel as loyal any more...</span>"
+	stacks = MODIFIER_STACK_EXTEND
+
+/datum/modifier/loyalty/can_apply(mob/living/L)
+	if(!L.is_sentient())
+		return FALSE // Cannot affect drones.
+	return TRUE

@@ -76,16 +76,13 @@
 	var/targ_temp = 310
 	var/halluci = 0
 
-	price_tag = 0.3
+	price_tag = 0.2
 
 	glass_name = "ethanol"
 	glass_desc = "A well-known alcohol with a variety of applications."
 
-/datum/reagent/ethanol/get_tax()
-	return ALCOHOL_TAX
-
-/datum/reagent/ethanol/is_contraband()
-	return CONTRABAND_ALCOHOL
+	tax_type = ALCOHOL_TAX
+	contraband_type = CONTRABAND_ALCOHOL
 
 /datum/reagent/ethanol/touch_mob(var/mob/living/L, var/amount)
 	if(istype(L))

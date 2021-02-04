@@ -432,6 +432,9 @@ area/space/atmosalert()
 	name = "\improper The Marble Office" //Central Command Command totally isn't RAS Syndrome in action.
 	icon_state = "centcom_command"
 
+/area/centcom/ceo_office
+	name = "\improper NanoTrasen CEO's Office"
+	icon_state = "centcom_command"
 
 //SYNDICATES
 
@@ -1990,6 +1993,10 @@ area/space/atmosalert()
 	for(var/obj/machinery/door_timer/temp_timer in src)
 		temp_timer.releasetime = 1
 	..()
+
+/area/security/mine
+	name = "\improper Prison Mining Area"
+	icon_state = "security"
 
 /area/security/warden
 	name = "\improper Police Station - Warden's Office"

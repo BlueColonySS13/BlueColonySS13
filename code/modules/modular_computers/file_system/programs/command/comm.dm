@@ -68,8 +68,8 @@
 	data["state"] = current_status
 	data["isAI"] = issilicon(usr)
 	data["authenticated"] = get_authentication_level(user)
-	data["current_security_level"] = security_level
-	data["current_security_level_title"] = num2seclevel(security_level)
+	data["current_security_level"] = SECURITY_LEVEL
+	data["current_security_level_title"] = num2seclevel(SECURITY_LEVEL)
 
 	data["def_SEC_LEVEL_DELTA"] = SEC_LEVEL_DELTA
 	data["def_SEC_LEVEL_RED"] = SEC_LEVEL_RED
@@ -91,23 +91,6 @@
 			data["have_shuttle_called"] = 0
 	else
 		data["have_shuttle"] = 0
-
-	//council options
-	data["city_council_control"] = persistent_economy.city_council_control
-
-	data["carp_control"] = "[persistent_economy.carp_control ? "Enabled" : "Disabled"]"
-	data["antivirus"] = "[persistent_economy.antivirus ? "Enabled" : "Disabled"]"
-	data["meteor_proof"] = "[persistent_economy.meteor_proof ? "Enabled" : "Disabled"]"
-
-
-	//council option costs
-	var/datum/expense/nanotrasen/carp = locate(/datum/expense/nanotrasen/pest_control/carp) in persistent_economy.city_expenses
-	var/datum/expense/nanotrasen/antivirus = locate(/datum/expense/nanotrasen/tech_support/prison_break) in persistent_economy.city_expenses
-	var/datum/expense/nanotrasen/meteor_proof = locate(/datum/expense/nanotrasen/external_defense/meteor_proof) in persistent_economy.city_expenses
-
-	data["carp_control_cost"] = "[carp.cost_per_payroll]PH (per hour)"
-	data["antivirus_cost"] = "[antivirus.cost_per_payroll]PH (per hour)"
-	data["meteor_proof_cost"] = "[meteor_proof.cost_per_payroll]PH (per hour)"
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
@@ -142,34 +125,6 @@
 			. = 1
 			current_status = text2num(href_list["target"])
 
-		if("edit_service_expenses")
-			. = 1
-
-			var/list/potential_services = list("Carp Control", "Gr3y.T1d3 Firewall", "Meteor Proofing") // this can be optimised
-
-			var/service = input(usr, "Please select which service you'd like to edit.", "Select Service") as null|anything in potential_services
-			if(!service) return
-
-			var/status = input(usr, "What status are we editing \"[service]\" to?", "Select Service Status") as null|anything in list("Enabled","Disabled")
-			if(!status) return
-
-			var/status_num = 0
-
-			switch(status)
-				if("Enabled")
-					status_num = 1
-				else
-					status_num = 0
-
-			switch(service)
-				if("Carp Control")
-					persistent_economy.carp_control = status_num
-				if("Gr3y.T1d3 Firewall")
-					persistent_economy.antivirus = status_num
-				if("Meteor Proofing")
-					persistent_economy.meteor_proof = status_num
-
-
 		if("announce")
 			. = 1
 			if(get_authentication_level(user) == 2 && !issilicon(usr) && ntn_comm)
@@ -181,7 +136,7 @@
 				if(announcment_cooldown)
 					to_chat(usr, "Please allow at least one minute to pass between announcements")
 					return TRUE
-				var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement") as null|text
+				var/input = input(usr, "Please write a message to announce to the city residents.", "Priority Announcement") as null|message
 				if(!input || !can_still_topic())
 					return 1
 				crew_announcement.Announce(input)
@@ -215,7 +170,10 @@
 					if(!is_relay_online())//Contact Centcom has a check, Syndie doesn't to allow for Traitor funs.
 						to_chat(usr, "<span class='warning'>No Emergency Bluespace Relay detected. Unable to transmit message.</span>")
 						return 1
-					var/input = sanitize(input("Please choose a message to transmit to Centcomm via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", "") as null|text)
+					var/input = sanitize(input("Please choose a message to transmit to CentComm via quantum entanglement. \
+					Please be aware that this process is very expensive, and abuse will lead to... termination. \
+					Transmission does not guarantee a response. There is a 30 second delay before you may send another message, \
+					be clear, full and concise.", "Central Command Quantum Messaging") as null|message)
 					if(!input || !can_still_topic())
 						return 1
 					CentCom_announce(input, usr)
@@ -260,15 +218,15 @@
 				var/current_level = text2num(href_list["target"])
 				var/confirm = alert("Are you sure you want to change alert level to [num2seclevel(current_level)]?", name, "No", "Yes")
 				if(confirm == "Yes" && can_still_topic())
-					var/old_level = security_level
+					var/old_level = SECURITY_LEVEL
 					if(!current_level) current_level = SEC_LEVEL_GREEN
 					if(current_level < SEC_LEVEL_GREEN) current_level = SEC_LEVEL_GREEN
 					if(current_level > SEC_LEVEL_BLUE) current_level = SEC_LEVEL_BLUE //Cannot engage delta with this
 					set_security_level(current_level)
-					if(security_level != old_level)
+					if(SECURITY_LEVEL != old_level)
 						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-						switch(security_level)
+						switch(SECURITY_LEVEL)
 							if(SEC_LEVEL_GREEN)
 								feedback_inc("alert_comms_green",1)
 							if(SEC_LEVEL_RED)

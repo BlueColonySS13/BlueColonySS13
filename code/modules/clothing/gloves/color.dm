@@ -92,6 +92,8 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
+	matter = list("silk" = 850)
+
 obj/item/clothing/gloves/fingerless
 	desc = "A pair of gloves that don't actually cover the fingers."
 	name = "fingerless gloves"

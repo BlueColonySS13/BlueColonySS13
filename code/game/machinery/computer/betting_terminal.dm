@@ -41,8 +41,7 @@
 /obj/machinery/computer/betting_terminal/get_item_cost()
 	return bet_cost
 
-/obj/machinery/computer/betting_terminal/get_tax()
-	return GAMBLING_TAX
+
 
 /obj/machinery/computer/betting_terminal/update_icon()
 	..()

@@ -51,7 +51,7 @@
 	name = "cautery"
 	desc = "This stops bleeding."
 	icon_state = "cautery"
-	matter = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500)
+	matter = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500, "copper" = 250)
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	attack_verb = list("burnt")
 
@@ -63,7 +63,7 @@
 	desc = "You can drill using this item. You dig?"
 	icon_state = "drill"
 	hitsound = 'sound/weapons/circsawhit.ogg'
-	matter = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 10000)
+	matter = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 10000, "copper" = 500)
 	force = 15.0
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
@@ -107,14 +107,14 @@
  * Researchable Scalpels
  */
 /obj/item/weapon/surgical/scalpel/laser1
-	name = "laser scalpel"
+	name = "improved laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks basic and could be improved."
 	icon_state = "scalpel_laser1_on"
 	damtype = "fire"
 	hitsound = 'sound/weapons/saw/circsawhit.ogg'
 
 /obj/item/weapon/surgical/scalpel/laser2
-	name = "laser scalpel"
+	name = "advanced laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks somewhat advanced."
 	icon_state = "scalpel_laser2_on"
 	damtype = "fire"
@@ -122,7 +122,7 @@
 	drop_sound = 'sound/items/drop/accessory.ogg'
 
 /obj/item/weapon/surgical/scalpel/laser3
-	name = "laser scalpel"
+	name = "superior laser scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field.  This one looks to be the pinnacle of precision energy cutlery!"
 	icon_state = "scalpel_laser3_on"
 	damtype = "fire"
@@ -148,7 +148,7 @@
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 20000,"glass" = 10000)
+	matter = list(DEFAULT_WALL_MATERIAL = 20000,"glass" = 10000, "copper" = 1000)
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
 	sharp = 1
 	edge = 1

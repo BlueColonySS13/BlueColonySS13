@@ -96,9 +96,9 @@
 	for(var/obj/item/weapon/storage/S in src)
 		L += S.return_inv()
 	for(var/obj/item/weapon/gift/G in src)
-		L += G.gift
-		if (istype(G.gift, /obj/item/weapon/storage))
-			L += G.gift:return_inv()
+		for(var/obj/O in G.contents)
+			if(istype(O, /obj/item/weapon/storage))
+				L += O:return_inv()
 	return L
 
 /obj/item/weapon/storage/proc/show_to(mob/user as mob)
@@ -690,6 +690,8 @@
 		)
 	var/open_state
 	var/closed_state
+
+	matter = list("silk" = 950)
 
 /obj/item/weapon/storage/trinketbox/update_icon()
 	overlays.Cut()

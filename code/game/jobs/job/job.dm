@@ -23,7 +23,6 @@
 	var/minimum_character_age = 18
 	var/ideal_character_age = 30
 	var/account_allowed = 1		  		// Does this job type come with a station account?
-	var/wage = 20					    // Per Hour
 	var/outfit_type
 
 	var/hard_whitelisted = 0 			// jobs that are hard whitelisted need players to be added to hardjobwhitelist.txt with the format [ckey] - [job] in order to work.
@@ -38,6 +37,14 @@
 	var/list/exclusive_employees = list()	// if this job has uids in it, only people of these UIDs can become employees.
 
 	var/list/skill_templates = list()
+	var/wage = 20					    // Per Hour
+	var/synth_wage = null				// if set to null, it defaults synth pay to normal wage. if 0 and over, they are paid this wage
+	var/mpv_wage = null					// if set to null, it defaults mass produced vatborn pay to normal wage. if 0 and over, they are paid this wage
+	var/nonnational_wage = null			// if set to null, it defaults non-polluxians pay to normal wage. if 0 and over, they are paid this wage
+
+	var/allows_synths = TRUE
+
+	var/portal_whitelist = null // id of persistent option. only works if hard_whitelisted and this id is valid to a select_person portal option
 
 /datum/job/proc/sanitize_job()
 	if(!exclusive_employees)
@@ -53,6 +60,33 @@
 
 	return
 
+/datum/job/proc/get_wage()
+	var/list/portal_wages = SSpersistent_options.get_persistent_option_value("public_wages")
+	if(title in portal_wages)
+		return portal_wages[title]
+
+	return wage
+
+/datum/job/proc/get_synth_wage()
+	var/list/portal_wages = SSpersistent_options.get_persistent_option_value("public_synth_wages")
+	if(title in portal_wages)
+		return portal_wages[title]
+
+	return synth_wage
+
+/datum/job/proc/get_mpv_wage()
+	var/list/portal_wages = SSpersistent_options.get_persistent_option_value("public_mpv_wages")
+	if(title in portal_wages)
+		return portal_wages[title]
+
+	return mpv_wage
+
+/datum/job/proc/get_nonnational_wage()
+	var/list/portal_wages = SSpersistent_options.get_persistent_option_value("public_nonnational_wages")
+	if(title in portal_wages)
+		return portal_wages[title]
+
+	return nonnational_wage
 
 /datum/job/proc/get_job_email()			// whatever this is set to will be the job's communal email. should be persistent.
 	return
@@ -205,13 +239,30 @@
 		for(var/V in duties)
 			dat += "     - [V].<br>"
 	if(wage)
-		dat += "<br><br><b>Wage:</b> [cash2text( wage, FALSE, TRUE, TRUE )] PH (per hour)"
+		dat += "<br><br><b>Wage:</b> [cash2text( get_wage(), FALSE, TRUE, TRUE )] PH (per hour)"
+
+	if(!SSpersistent_options.get_persistent_option_value("discrim_synth"))
+		if(allows_synths && !isnull(synth_wage) && (synth_wage != get_wage()))
+			dat += "<br><b>Synthetic Wage Rate:</b> [cash2text(synth_wage, FALSE, TRUE, TRUE )].</b>"
+
+	if(!SSpersistent_options.get_persistent_option_value("discrim_mpvatborn"))
+		if(!isnull(mpv_wage) && (mpv_wage != get_wage()))
+			dat += "<br><b>Mass Produced Vatborn Wage Rate:</b> [cash2text(mpv_wage, FALSE, TRUE, TRUE )].</b>"
+
+	if(!SSpersistent_options.get_persistent_option_value("discrim_nonnational"))
+		if(!isnull(nonnational_wage) && (nonnational_wage != get_wage()))
+			dat += "<br><b>Non-National Rate:</b> [cash2text(nonnational_wage, FALSE, TRUE, TRUE )].</b>"
+
+
 	if(head_position && subordinates)
 		dat += "<br><br>You are in charge of <b>[subordinates].</b>"
 	if(supervisors)
 		dat += "<br><br>You follow the orders of <b>[supervisors].</b>"
 	if(clean_record_required)
 		dat += "<br>You need a <b>clean criminal record</b> to work in this job.</b>"
+
+	dat += "<br>Synthetics <b>[allows_synths ? "may" : "may not"]</b> apply to work in this job.</b>"
+
 	return dat
 
 /datum/job/proc/get_active()
@@ -222,3 +273,4 @@
 			active++
 
 	return active
+

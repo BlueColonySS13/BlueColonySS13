@@ -54,7 +54,7 @@
 		var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(source_db.loc)
 
 		var/obj/item/weapon/paper/R = new /obj/item/weapon/paper(P)
-		P.wrapped = R
+		R.forceMove(P)
 		R.name = "Account information: [M.owner_name]"
 		R.info = "<b>Account details (confidential)</b><br><hr><br>"
 		R.info += "<i>Account holder:</i> [M.owner_name]<br>"
@@ -197,6 +197,7 @@
 	money = Clamp(money, -MAX_MONEY, MAX_MONEY)
 	if(!transaction_log)
 		transaction_log = list()
+
 	truncate_oldest(transaction_log, max_transaction_logs)
 
 /proc/all_public_accounts(show_hidden = FALSE)

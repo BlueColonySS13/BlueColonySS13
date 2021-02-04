@@ -14,7 +14,7 @@
 /var/const/access_security = 1
 /datum/access/security
 	id = access_security
-	desc = "Security Equipment"
+	desc = "Police"
 	region = ACCESS_REGION_SECURITY
 
 /var/const/access_brig = 2 // Brig timers and permabrig
@@ -284,7 +284,7 @@
 /var/const/access_network = 46
 /datum/access/network
 	id = access_network
-	desc = "Station Network"
+	desc = "City Network"
 	region = ACCESS_REGION_RESEARCH
 
 /var/const/access_research = 47
@@ -486,6 +486,30 @@
 /datum/access/cbia
 	id = access_cbia
 	desc = "PDSI Agent"
+	access_type = ACCESS_TYPE_CENTCOM
+
+/var/const/access_vice_president = 112
+/datum/access/vice_president
+	id = access_vice_president
+	desc = "Vice President"
+	access_type = ACCESS_TYPE_CENTCOM
+
+/var/const/access_advisor = 112
+/datum/access/advisor
+	id = access_advisor
+	desc = "Advisor"
+	access_type = ACCESS_TYPE_CENTCOM
+
+/var/const/access_governor = 113
+/datum/access/governor
+	id = access_governor
+	desc = "Governor"
+	access_type = ACCESS_TYPE_CENTCOM
+
+/var/const/access_ceo = 114
+/datum/access/ceo
+	id = access_ceo
+	desc = "Nanotrasen CEO"
 	access_type = ACCESS_TYPE_CENTCOM
 
 /***************

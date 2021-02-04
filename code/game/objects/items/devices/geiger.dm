@@ -10,6 +10,7 @@
 	w_class = ITEMSIZE_SMALL
 	var/scanning = 0
 	var/radiation_count = 0
+	tax_type = ELECTRONICS_TAX
 
 /obj/item/device/geiger/New()
 	processing_objects |= src

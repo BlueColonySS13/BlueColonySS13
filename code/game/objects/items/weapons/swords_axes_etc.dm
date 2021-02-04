@@ -17,12 +17,8 @@
 	slot_flags = SLOT_BELT
 	force = 10
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
-
-	get_tax()
-		return WEAPONS_TAX
-
-	is_contraband()
-		return CONTRABAND_KNIFELARGE
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_KNIFELARGE
 
 /obj/item/weapon/melee/classic_baton
 	name = "police baton"

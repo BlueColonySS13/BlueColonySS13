@@ -28,22 +28,29 @@
 
 /datum/supply_pack/med/bloodpack
 	name = "BloodPack crate"
-	contains = list(/obj/item/weapon/storage/box/bloodpacks = 3)
-	cost = 10
+	contains = list(/obj/item/weapon/storage/box/bloodpacks = 5)
+	cost = 2000 // blood is expensive yo
 	containertype = /obj/structure/closet/crate/medical
 	containername = "BloodPack crate"
+
+/datum/supply_pack/med/synthplas
+	name = "Synthblood crate"
+	contains = list(/obj/item/weapon/reagent_containers/blood/synthplas = 6)
+	cost = 4500 // synthblood is expensiver yo
+	containertype = /obj/structure/closet/crate/medical
+	containername = "SynthPlas crate"
 
 /datum/supply_pack/med/bodybag
 	name = "Body bag crate"
 	contains = list(/obj/item/weapon/storage/box/bodybags = 3)
-	cost = 10
+	cost = 120
 	containertype = /obj/structure/closet/crate/medical
 	containername = "Body bag crate"
 
 /datum/supply_pack/med/cryobag
 	name = "Stasis bag crate"
 	contains = list(/obj/item/bodybag/cryobag = 3)
-	cost = 40
+	cost = 150
 	containertype = /obj/structure/closet/crate/medical
 	containername = "Stasis bag crate"
 
@@ -62,7 +69,7 @@
 			/obj/item/weapon/surgical/bonesetter,
 			/obj/item/weapon/surgical/circular_saw
 			)
-	cost = 25
+	cost = 250
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Surgery crate"
 
@@ -72,7 +79,7 @@
 			/obj/item/weapon/storage/box/cdeathalarm_kit,
 			/obj/item/weapon/storage/box/cdeathalarm_kit
 			)
-	cost = 40
+	cost = 5000
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Death Alarm crate"
 
@@ -81,7 +88,7 @@
 	contains = list(
 			/obj/item/weapon/storage/firstaid/clotting
 			)
-	cost = 100
+	cost = 500
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Clotting Medicine crate"
 
@@ -94,7 +101,7 @@
 			/obj/item/weapon/storage/box/gloves,
 			/obj/item/weapon/storage/belt/medical = 3
 			)
-	cost = 30
+	cost = 400
 	containertype = "/obj/structure/closet/crate"
 	containername = "Sterile equipment crate"
 
@@ -106,7 +113,7 @@
 			/obj/item/device/radio/headset/headset_med/alt = 3,
 			/obj/item/clothing/suit/storage/hooded/wintercoat/medical = 3
 			)
-	cost = 30
+	cost = 600
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Medical surplus equipment"
 
@@ -123,13 +130,12 @@
 			/obj/item/clothing/suit/storage/toggle/labcoat/cmoalt,
 			/obj/item/clothing/mask/surgical,
 			/obj/item/clothing/shoes/white,
-			/obj/item/weapon/cartridge/cmo,
 			/obj/item/clothing/gloves/sterile/latex,
 			/obj/item/device/healthanalyzer,
 			/obj/item/device/flashlight/pen,
 			/obj/item/weapon/reagent_containers/syringe
 			)
-	cost = 50
+	cost = 2500
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Chief medical officer equipment"
 
@@ -151,7 +157,7 @@
 			/obj/item/device/flashlight/pen,
 			/obj/item/weapon/reagent_containers/syringe
 			)
-	cost = 40
+	cost = 1200
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Medical Doctor equipment"
 
@@ -173,7 +179,7 @@
 			/obj/item/weapon/storage/box/pillbottles,
 			/obj/item/weapon/reagent_containers/syringe
 			)
-	cost = 80
+	cost = 1200
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Chemist equipment"
 
@@ -200,7 +206,7 @@
 			/obj/item/weapon/reagent_containers/syringe,
 			/obj/item/clothing/accessory/storage/white_vest
 			)
-	cost = 90
+	cost = 1200
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Paramedic equipment"
 
@@ -218,7 +224,7 @@
 			/obj/item/weapon/pen,
 			/obj/item/weapon/cartridge/medical
 			)
-	cost = 50
+	cost = 800
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Psychiatrist equipment"
 
@@ -238,7 +244,7 @@
 			/obj/item/weapon/storage/box/masks,
 			/obj/item/weapon/storage/box/gloves
 			)
-	cost = 40
+	cost = 900
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Medical scrubs crate"
 
@@ -254,7 +260,7 @@
 			/obj/item/weapon/storage/box/gloves,
 			/obj/item/weapon/pen
 			)
-	cost = 30
+	cost = 230
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Autopsy equipment crate"
 
@@ -280,7 +286,7 @@
 			/obj/item/weapon/storage/box/masks,
 			/obj/item/weapon/storage/box/gloves
 			)
-	cost = 40
+	cost = 800
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Medical uniform crate"
 
@@ -297,34 +303,34 @@
 			/obj/item/weapon/storage/box/masks,
 			/obj/item/weapon/storage/box/gloves
 			)
-	cost = 40
+	cost = 1500
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Medical biohazard equipment"
 
 /datum/supply_pack/med/portablefreezers
 	name = "Portable freezers crate"
 	contains = list(/obj/item/weapon/storage/box/freezer = 7)
-	cost = 45
+	cost = 315
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Portable freezers"
 
 /datum/supply_pack/med/virus
 	name = "Virus sample crate"
 	contains = list(/obj/item/weapon/virusdish/random = 4)
-	cost = 45
+	cost = 2000
 	containertype = "/obj/structure/closet/crate/secure"
 	containername = "Virus sample crate"
 
 /datum/supply_pack/med/defib
 	name = "Defibrillator crate"
 	contains = list(/obj/item/device/defib_kit = 2)
-	cost = 40
+	cost = 500
 	containertype = /obj/structure/closet/crate/medical
 	containername = "Defibrillator crate"
 
 /datum/supply_pack/med/biomass
-	name = "Biomass Crate"
+	name = "Biomass Crate"	// limbs should be more scarce
 	contains = list(/obj/item/weapon/reagent_containers/glass/bottle/biomass = 10)
-	cost = 4000
+	cost = 10000 //bruh
 	containertype = /obj/structure/closet/crate/medical
 	containername = "Biomass Crate"

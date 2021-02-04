@@ -1,0 +1,68 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"b" = (/turf/simulated/wall/titanium{color = "#666666"},/area/submap/corporate/ceo_office)
+"c" = (/obj/structure/wall_frame/titanium,/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/machinery/door/blast/regular/open{id = "ceo_outer_window"; name = "Blastproof Shutter"},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"d" = (/obj/item/weapon/banner/nt,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"e" = (/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"f" = (/obj/machinery/modular_computer/console/preset/sysadmin,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"g" = (/obj/structure/safe/floor,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"h" = (/obj/machinery/light/colored/blue{dir = 1},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"i" = (/obj/machinery/hologram/projector,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"j" = (/obj/structure/table/woodentable_reinforced/walnut,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"k" = (/obj/structure/bed/chair/bosschair/black,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"l" = (/obj/structure/table/marble,/obj/machinery/light/floor{color = "#99ccff"; light_color = "#99ccff"; name = "blue light fixture"},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"m" = (/obj/structure/table/marble,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"n" = (/obj/structure/bed/chair/bosschair/black{icon_state = "capchair"; dir = 8},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"o" = (/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"p" = (/obj/machinery/disposal,/obj/structure/disposalpipe/trunk,/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"q" = (/obj/structure/toilet,/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"r" = (/obj/structure/table/marble,/obj/machinery/light/colored/blue{dir = 1},/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"s" = (/obj/structure/sink{step_y = 11},/obj/structure/table/marble,/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"t" = (/obj/machinery/light/colored/blue{tag = "icon-blue1 (WEST)"; icon_state = "blue1"; dir = 8},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"u" = (/obj/machinery/light/colored/blue{dir = 4; icon_state = "blue1"; tag = "icon-blue1 (EAST)"},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"v" = (/obj/structure/disposalpipe/segment,/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"w" = (/obj/structure/mirror{step_y = 29; pixel_y = 32},/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"x" = (/obj/structure/bed/chair/comfy/black{icon_state = "comfychair"; dir = 1},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"y" = (/obj/machinery/door/airlock/multi_tile/glass/command{icon_state = "closed"; dir = 8},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"z" = (/obj/machinery/light/colored/blue{dir = 8},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"A" = (/obj/structure/window/reinforced/polarized{icon_state = "rwindow"; dir = 1},/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"B" = (/obj/structure/window/reinforced/polarized{icon_state = "rwindow"; dir = 4},/obj/machinery/door/window/northright,/obj/structure/disposalpipe/segment,/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"C" = (/obj/structure/wall_frame/titanium,/obj/structure/window/basic/full,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"D" = (/obj/machinery/computer/drone_control{icon_state = "computer"; dir = 8},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"E" = (/obj/machinery/shower{icon_state = "shower"; dir = 4},/obj/effect/floor_decal/techfloor/corner{icon_state = "techfloor_corners"; dir = 8},/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"F" = (/obj/structure/window/reinforced/polarized{icon_state = "rwindow"; dir = 4},/obj/structure/disposalpipe/segment,/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"G" = (/obj/machinery/light/colored/blue,/turf/simulated/floor/tiled/white,/area/submap/corporate/ceo_office)
+"H" = (/obj/structure/bed/chair/sofa/black/left{icon_state = "sofaend_left"; dir = 4},/turf/simulated/floor/carpet/blackcarpet,/area/submap/corporate/ceo_office)
+"I" = (/turf/simulated/floor/carpet/blackcarpet,/area/submap/corporate/ceo_office)
+"J" = (/obj/machinery/computer/communications{icon_state = "computer"; dir = 8},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"K" = (/obj/structure/disposalpipe/segment,/turf/simulated/wall/titanium{color = "#666666"},/area/submap/corporate/ceo_office)
+"L" = (/obj/structure/bed/chair/sofa/black{icon_state = "sofamiddle"; dir = 4},/turf/simulated/floor/carpet/blackcarpet,/area/submap/corporate/ceo_office)
+"M" = (/obj/structure/table/glass/black,/turf/simulated/floor/carpet/blackcarpet,/area/submap/corporate/ceo_office)
+"N" = (/obj/structure/bed/chair/office/dark{icon_state = "officechair_dark"; dir = 1},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"O" = (/obj/machinery/computer/station_alert/all{icon_state = "computer"; dir = 8},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"P" = (/obj/machinery/computer/telecomms/monitor{icon_state = "computer"; dir = 8},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"Q" = (/obj/structure/flora/pottedplant/mysterious,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"R" = (/obj/item/weapon/banner/nt,/obj/machinery/light/colored/blue,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"S" = (/obj/structure/flora/pottedplant/crystal,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"T" = (/obj/structure/bed/chair/sofa/black/corner{icon_state = "sofacorner"; dir = 4},/turf/simulated/floor/carpet/blackcarpet,/area/submap/corporate/ceo_office)
+"U" = (/obj/structure/bed/chair/sofa/black{icon_state = "sofamiddle"; dir = 1},/turf/simulated/floor/carpet/blackcarpet,/area/submap/corporate/ceo_office)
+"V" = (/obj/structure/bed/chair/sofa/black/left{icon_state = "sofaend_left"; dir = 1},/turf/simulated/floor/carpet/blackcarpet,/area/submap/corporate/ceo_office)
+"W" = (/obj/structure/flora/pottedplant/unusual,/turf/simulated/floor/carpet/blackcarpet,/area/submap/corporate/ceo_office)
+"X" = (/obj/machinery/light/colored/blue,/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"Y" = (/obj/machinery/computer/aiupload{icon_state = "computer"; dir = 8},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+"Z" = (/obj/machinery/door/airlock/glass_command{name = "NanoTrasen CEO's Office"},/turf/simulated/floor/tiled/dark,/area/submap/corporate/ceo_office)
+
+(1,1,1) = {"
+aaaaaaabbcccbbbbccccccccbbb
+aaaaaaabdefegbeheeeeeeeeheb
+aaaaaaabeeeeebeeiiiiiiiieeb
+bbbbbbbbejkjebeilmmmmmmlneb
+bopqrsrbejjjtbueiiiiiiiieeb
+bovoowobuxexeeeeeeeeeeeeeeb
+bovooooeeeeeeyeeeeeeeeeeezb
+bABoooobueeetbCCCCCeeeeeeDb
+bEFGooobeeeeeCHIIIIeeeeeeJb
+bbKbbbbbeeeeeCLMMIIeeeeeNOb
+aaaaaaabeeeeeCLMMIIeeeeeePb
+aaaaaaabQReRSCTUUVWXeeeeXYb
+aaaaaaabbbZbbbbbbbbbbbbbbbb
+"}

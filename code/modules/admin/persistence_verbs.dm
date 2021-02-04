@@ -84,15 +84,7 @@
 
 	SSeconomy.load_economy()
 	message_admins("Admin [key_name_admin(usr)] has loaded all dept accs through verb.", 1)
-
 	return 1
-
-/client/proc/department_account_view()
-	set name = "View/Edit Economy Vars"
-	set desc = "View all department accounts, edit vars, edit taxes, etc."
-	set category = "Persistence"
-
-	debug_variables(persistent_economy)
 
 
 /client/proc/debug_politics()

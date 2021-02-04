@@ -12,20 +12,16 @@
 	minimum_character_age = 1
 	hide_on_manifest = 0
 	wage = 5 // Ha-ha poor people (tm)
+	synth_wage = 0 // no payment for you
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
 	outfit_type = /decl/hierarchy/outfit/job/assistant
-	alt_titles = list("Tourist",
+	alt_titles = list(
+					"Tourist",
 					"Expat",
-					"Asylum Seeker",
-					"Migrant",
 					"Socialite",
-					"Job Seeker",
-					"Business Owner",
 					"Investor",
 					"Traveller",
-					"Unemployed",
-					"Homeless",
 					"Entrepreneur",
 					"Visitor" = /decl/hierarchy/outfit/job/assistant/visitor,
 					"Resident" = /decl/hierarchy/outfit/job/assistant/resident)

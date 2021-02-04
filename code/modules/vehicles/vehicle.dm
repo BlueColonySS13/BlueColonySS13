@@ -76,6 +76,8 @@
 
 /obj/vehicle/unbuckle_mob(mob/living/buckled_mob, force = FALSE)
 	. = ..(buckled_mob, force)
+	if(!buckled_mob)
+		return
 	buckled_mob.update_water()
 	if(riding_datum)
 		riding_datum.restore_position(buckled_mob)
@@ -180,6 +182,10 @@
 	healthcheck()
 	..()
 	return
+
+/obj/vehicle/proc/adjust_health(amount)
+	health = between(0, health + amount, maxhealth)
+	healthcheck()
 
 /obj/vehicle/ex_act(severity)
 	switch(severity)

@@ -25,7 +25,7 @@ var/global/list/default_medbay_channels = list(
 
 /obj/item/device/radio
 	icon = 'icons/obj/radio.dmi'
-	name = "station bounced radio"
+	name = "city bounced radio"
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
 	item_state = "radio"
@@ -51,7 +51,7 @@ var/global/list/default_medbay_channels = list(
 	w_class = ITEMSIZE_SMALL
 	show_messages = 1
 
-	matter = list("glass" = 25,DEFAULT_WALL_MATERIAL = 75)
+	matter = list("glass" = 25, DEFAULT_WALL_MATERIAL = 75, "copper" = 25)
 	var/const/FREQ_LISTENING = 1
 	var/list/internal_channels
 

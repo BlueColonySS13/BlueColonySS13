@@ -54,15 +54,15 @@
 		if(!M.cost)
 			info += "<b>Cost:</b> <i>FREE</i>"
 		else
-			info += "<b>Cost:</b> [M.cost] credits"
+			info += "<b>Cost:</b> [SSpersistent_options.get_persistent_option_value(M.portal_id)] credits"
 		info += "<p>"
 		info += "<b>Insurance Coverage: </b>"
 		switch(M.insurance_coverage)
 			if(INSURANCE_BASIC)
 				info += "Basic Insurance and above."
-			else if(INSURANCE_INTERMEDIATE)
+			if(INSURANCE_INTERMEDIATE)
 				info += "Intermediate Insurance and above."
-			else if(INSURANCE_HIGH)
+			if(INSURANCE_HIGH)
 				info += "High tier Insurance required."
 			else
 				info += "Not on insurance."

@@ -37,7 +37,7 @@ var/datum/lore/numbers_station/numbers = new/datum/lore/numbers_station
 	if(force_mystery > 45)
 		message_type = 4
 	else
-		message_type = rand(1,5)
+		message_type = rand(1,4)
 
 	switch(message_type)
 		if(1)//Numbers broadcast
@@ -77,8 +77,6 @@ var/datum/lore/numbers_station/numbers = new/datum/lore/numbers_station
 				     "The museum pieces are wonderful. Careful observation is all one really needs, hm?",
 				     "I still hear the beating beneath the floorboards. Skittering all the damn time.",
 				     "You have to do some digging. Dig deep in its belly and pull it out. Ah, there you go. Just like that.",
-				     "!flaps its wings and squeaks.",
-				     "!skitters and sloshes. It echoes as if in a cavern.",
 				     "Uranium fever got you down? Rave!"))
 /*		if(5)//emotions
 			msg(pick("!makes a sound but it is obscured by heavy static.",

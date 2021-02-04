@@ -24,7 +24,7 @@
 	use_to_pickup = 1
 	slot_flags = SLOT_BELT
 	drop_sound = 'sound/items/drop/backpack.ogg'
-
+	matter = list("leather" = 4000)
 // -----------------------------
 //          Trash bag
 // -----------------------------
@@ -62,8 +62,10 @@
 	icon = 'icons/obj/trash.dmi'
 	icon_state = "plasticbag"
 
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_SMALL
+	max_w_class = ITEMSIZE_LARGE	// this allows clothing to be placed in plastic bags so groceries can be a thing.
+	max_storage_space = INVENTORY_STANDARD_SPACE
+	w_class = ITEMSIZE_NORMAL
+
 	can_hold = list() // any
 	cant_hold = list(/obj/item/weapon/disk/nuclear)
 	drop_sound = 'sound/items/drop/wrapper.ogg'
@@ -87,7 +89,7 @@
 	can_hold = list(/obj/item/weapon/ore)
 	var/stored_ore = list()
 	var/last_update = 0
-
+	matter = list("leather" = 4000)
 /obj/item/weapon/storage/bag/ore/remove_from_storage(obj/item/W as obj, atom/new_location)
 	if(!istype(W)) return 0
 
@@ -372,3 +374,33 @@
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_SMALL
 	can_hold = list(/obj/item/slime_extract, /obj/item/weapon/reagent_containers/food/snacks/monkeycube, /obj/item/slimepotion)
+
+
+	// -----------------------------
+	//           Clothing Bag
+	// -----------------------------
+/obj/item/weapon/storage/bag/clothing
+	name = "cloth bag"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "foodbag"
+	desc = "Allows you to store a large quantity of clothing."
+	max_storage_space = ITEMSIZE_COST_NORMAL * 25
+	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEMSIZE_LARGE
+	can_hold = list(/obj/item/clothing,/obj/item/stack/material/denim,/obj/item/stack/material/silk, /obj/item/stack/material/leather, \
+	/obj/item/stack/material/leather/synthetic, /obj/item/stack/material/cotton, /obj/item/stack/material/hairlesshide, \
+	/obj/item/stack/material/polychromatic_thread)
+
+	// -----------------------------
+	//           Clothing Bag
+	// -----------------------------
+/obj/item/weapon/storage/bag/forensics
+	name = "forensics bag"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "forensicsbag"
+	desc = "Allows forensic techs to hold a large amount of evidence on the go."
+	max_storage_space = ITEMSIZE_COST_NORMAL * 25
+	max_w_class = ITEMSIZE_NORMAL
+	w_class = ITEMSIZE_SMALL
+	can_hold = list(/obj/item/weapon/forensics, /obj/item/weapon/evidencebag, /obj/item/weapon/sample, /obj/item/weapon/csi_marker, \
+	/obj/item/weapon/storage/photo_album, /obj/item/weapon/photo)

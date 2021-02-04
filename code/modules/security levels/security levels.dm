@@ -1,4 +1,4 @@
-/var/security_level = 0
+//var/security_level = 0
 //0 = code green
 //1 = code blue
 //2 = code red
@@ -8,86 +8,85 @@
 /var/datum/announcement/priority/security/security_announcement_up = new(do_log = 0, do_newscast = 1, new_sound = sound('sound/misc/notice1.ogg'))
 /var/datum/announcement/priority/security/security_announcement_down = new(do_log = 0, do_newscast = 1)
 
-/proc/set_security_level(var/level)
-	switch(level)
-		if("green")
-			level = SEC_LEVEL_GREEN
-		if("blue")
-			level = SEC_LEVEL_BLUE
-		if("red")
-			level = SEC_LEVEL_RED
-		if("delta")
-			level = SEC_LEVEL_DELTA
+/proc/set_security_level(var/level, change_persistent_option = TRUE)
 
-	//Will not be announced if you try to set to the same level as it already is
-	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_DELTA && level != security_level)
-		switch(level)
-			if(SEC_LEVEL_GREEN)
-				security_announcement_down.Announce("[config.alert_desc_green]", "Attention! Security level lowered to green")
-				security_level = SEC_LEVEL_GREEN
-			if(SEC_LEVEL_BLUE)
-				if(security_level < SEC_LEVEL_BLUE)
-					security_announcement_up.Announce("[config.alert_desc_blue_upto]", "Attention! Security level elevated to blue")
-				else
-					security_announcement_down.Announce("[config.alert_desc_blue_downto]", "Attention! Security level lowered to blue")
-				security_level = SEC_LEVEL_BLUE
-			if(SEC_LEVEL_RED)
-				if(security_level < SEC_LEVEL_RED)
-					security_announcement_up.Announce("[config.alert_desc_red_upto]", "Attention! Code red!")
-				else
-					security_announcement_down.Announce("[config.alert_desc_red_downto]", "Attention! Code red!")
-				security_level = SEC_LEVEL_RED
-				/*	- At the time of commit, setting status displays didn't work properly
-				var/obj/machinery/computer/communications/CC = locate(/obj/machinery/computer/communications,world)
-				if(CC)
-					CC.post_status("alert", "redalert")*/
-			if(SEC_LEVEL_DELTA)
-				security_announcement_up.Announce("[config.alert_desc_delta]", "Attention! Delta security level reached!", new_sound = 'sound/effects/siren.ogg')
-				security_level = SEC_LEVEL_DELTA
+	var/datum/code_level/level_datum = fetch_seclevel_by_code(level)
 
-		var/newlevel = get_security_level()
-		for(var/obj/machinery/firealarm/FA in machines)
-			if(FA.z in using_map.contact_levels)
-				FA.set_security_level(newlevel)
+	if(!level_datum)
+		return
 
-		if(level >= SEC_LEVEL_RED)
-			atc.reroute_traffic(yes = 1) // Tell them fuck off we're busy.
-		else
-			atc.reroute_traffic(yes = 0)
+	var/current_sec_level = SSpersistent_options.get_persistent_option_value("security_level") // check what level we're on atm, if it's the same, disregard
+
+	if(current_sec_level == level_datum.level)
+		return
+
+	var/escalation = TRUE
+	if(current_sec_level > level_datum.level)
+		escalation = FALSE
+
+	// checks done, let's announce
+
+	var/new_sound = sound('sound/misc/notice1.ogg')
+
+	if(level_datum.level == SEC_LEVEL_DELTA)
+		new_sound = sound('sound/effects/siren.ogg')
+
+	if(escalation)
+		security_announcement_up.Announce( SSpersistent_options.get_persistent_option_value(level_datum.upto), "Attention! City Security Elevated to [level_datum.name]", new_sound)
+	else
+		security_announcement_down.Announce( SSpersistent_options.get_persistent_option_value(level_datum.downto), "Attention! City Security Lowered to [level_datum.name]")
+
+	if(change_persistent_option)
+		SSpersistent_options.update_pesistent_option_value("security_level", level_datum.level)
+
+	var/newlevel = level_datum.level
+	for(var/obj/machinery/firealarm/FA in machines)
+		if(FA.z in using_map.contact_levels)
+			FA.set_security_level(newlevel)
+
+	for(var/obj/machinery/status_display/FA in machines)
+		if(FA.z in using_map.contact_levels)
+			FA.on_alert_changed(newlevel)
+
+	if(newlevel >= SEC_LEVEL_RED)
+		atc.reroute_traffic(yes = 1) // Tell them fuck off we're busy.
+	else
+		atc.reroute_traffic(yes = 0)
+
+	return TRUE
 
 
 /proc/get_security_level()
-	switch(security_level)
-		if(SEC_LEVEL_GREEN)
-			return "green"
-		if(SEC_LEVEL_BLUE)
-			return "blue"
-		if(SEC_LEVEL_RED)
-			return "red"
-		if(SEC_LEVEL_DELTA)
-			return "delta"
+	return num2seclevel(SSpersistent_options.get_persistent_option_value("security_level"))
+
+
+/proc/fetch_seclevel_by_code(var/code)
+	for(var/datum/code_level/CL in get_all_security_levels())
+		if(CL.code == lowertext(code))
+			return CL
+
+/proc/fetch_seclevel_by_num(var/num)
+	for(var/datum/code_level/CL in get_all_security_levels())
+		if(CL.level == text2num(num))
+			return CL
+
 
 /proc/num2seclevel(var/num)
-	switch(num)
-		if(SEC_LEVEL_GREEN)
-			return "green"
-		if(SEC_LEVEL_BLUE)
-			return "blue"
-		if(SEC_LEVEL_RED)
-			return "red"
-		if(SEC_LEVEL_DELTA)
-			return "delta"
+	for(var/datum/code_level/CL in get_all_security_levels())
+		if(CL.level == text2num(num))
+			return CL.code
 
-/proc/seclevel2num(var/seclevel)
-	switch( lowertext(seclevel) )
-		if("green")
-			return SEC_LEVEL_GREEN
-		if("blue")
-			return SEC_LEVEL_BLUE
-		if("red")
-			return SEC_LEVEL_RED
-		if("delta")
-			return SEC_LEVEL_DELTA
+/proc/seclevel2num(var/code)
+	for(var/datum/code_level/CL in get_all_security_levels())
+		if(CL.code == lowertext(code))
+			return CL.level
+
+/proc/get_all_security_levels()
+	var/list/levels = list()
+	for(var/SL in security_levels)
+		levels += security_levels[SL]
+
+	return levels
 
 
 /*DEBUG
@@ -100,3 +99,48 @@
 /mob/verb/set_thing3()
 	set_security_level(3)
 */
+
+var/global/list/security_levels = list()
+
+/hook/startup/proc/populate_security_levels()
+	instantiate_security_levels()
+	return 1
+
+/proc/instantiate_security_levels()
+	for(var/instance in typesof(/datum/code_level))
+		var/datum/code_level/J = new instance
+		security_levels[J.code] = J
+
+
+/datum/code_level
+	var/name = "Green"
+	var/code = CODE_LEVEL_GREEN
+	var/level = SEC_LEVEL_GREEN
+
+	var/upto = "code_green"
+	var/downto = "code_blue_down"
+
+/datum/code_level/blue
+	name = "Blue"
+	code = CODE_LEVEL_BLUE
+	level = SEC_LEVEL_BLUE
+
+	upto = "code_blue"
+	downto = "code_blue_down"
+
+/datum/code_level/red
+	name = "Red"
+	code = CODE_LEVEL_RED
+	level = SEC_LEVEL_RED
+
+	upto = "code_red"
+	downto = "code_red_down"
+
+
+/datum/code_level/delta
+	name = "Delta"
+	code = CODE_LEVEL_DELTA
+	level = SEC_LEVEL_DELTA
+
+	upto = "code_delta"
+	downto = "code_delta"

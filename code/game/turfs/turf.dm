@@ -31,6 +31,7 @@
 	var/list/footstep_sounds = null
 
 	var/block_tele = FALSE      // If true, most forms of teleporting to or from this turf tile will fail.
+	var/list/dangerous_objects // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
 
 /turf/New()
 	..()
@@ -317,6 +318,30 @@ var/const/enterloopsanity = 100
 /turf/AllowDrop()
 	return TRUE
 
+// Returns false if stepping into a tile would cause harm (e.g. open space while unable to fly, water tile while a slime, lava, etc).
+/turf/proc/is_safe_to_enter(mob/living/L)
+	if(LAZYLEN(dangerous_objects))
+		for(var/obj/O in dangerous_objects)
+			if(!O.is_safe_to_step(L))
+				return FALSE
+	return TRUE
+
+// Tells the turf that it currently contains something that automated movement should consider if planning to enter the tile.
+// This uses lazy list macros to reduce memory footprint, since for 99% of turfs the list would've been empty anyways.
+/turf/proc/register_dangerous_object(obj/O)
+	if(!istype(O))
+		return FALSE
+	LAZYADD(dangerous_objects, O)
+//	color = "#FF0000"
+
+// Similar to above, for when the dangerous object stops being dangerous/gets deleted/moved/etc.
+/turf/proc/unregister_dangerous_object(obj/O)
+	if(!istype(O))
+		return FALSE
+	LAZYREMOVE(dangerous_objects, O)
+	UNSETEMPTY(dangerous_objects) // This nulls the list var if it's empty.
+//	color = "#00FF00"
+
 /turf/proc/can_engrave()
 	return FALSE
 
@@ -344,6 +369,8 @@ var/const/enterloopsanity = 100
 		return FALSE
 
 	vandal.visible_message("<span class='warning'>\The [vandal] begins carving something into \the [src].</span>")
+
+	trigger_lot_security_system(vandal, /datum/lot_security_option/graffiti, "Attempting to carve graffiti into \the [src] with \a [tool].")
 
 	if(!do_after(vandal, max(20, length(message)), src))
 		return FALSE

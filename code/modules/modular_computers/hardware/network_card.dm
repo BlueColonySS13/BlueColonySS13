@@ -19,7 +19,7 @@ var/global/ntnet_card_uid = 1
 
 /obj/item/weapon/computer_hardware/network_card/advanced
 	name = "advanced NTNet network card"
-	desc = "An advanced network card for usage with standard NTNet frequencies. It's transmitter is strong enough to connect even off-station."
+	desc = "An advanced network card for usage with standard NTNet frequencies. It's transmitter is strong enough to connect even outside of the city."
 	long_range = 1
 	power_usage = 100 // Better range but higher power usage.
 	icon_state = "netcard_advanced"

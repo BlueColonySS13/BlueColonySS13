@@ -4,15 +4,26 @@ SUBSYSTEM_DEF(economy)
 	flags = SS_NO_FIRE
 
 	var/list/all_departments = list()
+	var/list/all_department_accounts = list()
+	var/list/all_public_depts = list()
+	var/list/all_private_depts = list()
+	var/list/all_hidden_depts = list()
+	var/list/all_business_depts = list()
+	var/list/all_money_accounts_list = list()
 
 /datum/controller/subsystem/economy/Initialize(timeofday)
 	setup_economy()
-	all_departments = GLOB.departments
 	load_economy()
 	load_business_departments()
-	init_expenses()
-	persistent_economy.load_accounts()
 	link_economy_accounts()
+
+	all_departments = GLOB.departments
+	all_department_accounts = GLOB.department_accounts
+	all_public_depts = GLOB.public_departments
+	all_private_depts = GLOB.private_departments
+	all_hidden_depts = GLOB.hidden_departments
+	all_business_depts = GLOB.business_departments
+	all_money_accounts_list = GLOB.all_money_accounts
 	. = ..()
 
 /datum/controller/subsystem/economy/proc/get_all_nonbusiness_departments()
@@ -39,15 +50,6 @@ SUBSYSTEM_DEF(economy)
 
 	GLOB.current_date_string = "[get_game_day()] [get_month_from_num(get_game_month())], [get_game_year()]"
 
-/datum/controller/subsystem/economy/proc/init_expenses()
-	for(var/E in subtypesof(/datum/expense/nanotrasen) - list(/datum/expense/nanotrasen/pest_control,
-	 /datum/expense/nanotrasen/tech_support, /datum/expense/nanotrasen/external_defense
-	 ))
-		var/datum/expense/new_expense = new E
-		persistent_economy.city_expenses += new_expense
-
-		new_expense.do_effect()
-
 /datum/controller/subsystem/economy/proc/link_economy_accounts()
 	for(var/obj/item/device/retail_scanner/RS in GLOB.transaction_devices)
 		if(RS.account_to_connect)
@@ -55,10 +57,7 @@ SUBSYSTEM_DEF(economy)
 
 	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
 		if(CR.account_to_connect)
-			var/datum/money_account/M = dept_acc_by_id(CR.account_to_connect)
-			if(!M)
-				continue
-			CR.linked_account = M.account_number
+			CR.connect_to_dept()
 
 	for(var/obj/machinery/status_display/money_display/MD in GLOB.money_displays)
 		MD.link_to_account()

@@ -1,6 +1,7 @@
 /mob/living/simple_animal/hostile/clown
 	name = "clown"
 	desc = "A denizen of clown planet"
+	tt_desc = "Homo Ridiculam" //funny man
 	icon_state = "clown"
 	icon_living = "clown"
 	icon_dead = "clown_dead"

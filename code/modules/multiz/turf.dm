@@ -109,6 +109,7 @@
 
 // Straight copy from space.
 /turf/simulated/open/attackby(obj/item/C as obj, mob/user as mob)
+/*
 	if (istype(C, /obj/item/stack/rods))
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(L)
@@ -119,7 +120,7 @@
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 			ReplaceWithLattice()
 		return
-
+*/
 	if (istype(C, /obj/item/stack/tile/floor))
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(L)
@@ -148,6 +149,12 @@
 /turf/simulated/open/is_space()
 	var/turf/below = GetBelow(src)
 	return !below || below.is_space()
+
+/turf/simulated/open/is_safe_to_enter(mob/living/L)
+	if(L.can_fall())
+		if(!locate(/obj/structure/stairs) in GetBelow(src))
+			return FALSE
+	return ..()
 
 /turf/simulated/open/is_open()
 	return TRUE

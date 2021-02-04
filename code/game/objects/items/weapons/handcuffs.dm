@@ -214,6 +214,14 @@ var/last_chew = 0
 	sprite_sheets = list("Teshari" = 'icons/mob/species/seromi/handcuffs.dmi')
 	elastic = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
+	price_tag = 20
+
+/obj/item/weapon/handcuffs/legcuffs/ballchain
+	name = "ball and chain"
+	desc = "Solution to those prisoners who think it's funny to run away."
+	price_tag = 200
+	breakouttime = 600	//Deciseconds = 30s = 0.5 minute
+	icon_state = "ballchain"
 
 /obj/item/weapon/handcuffs/legcuffs/bola
 	name = "bola"

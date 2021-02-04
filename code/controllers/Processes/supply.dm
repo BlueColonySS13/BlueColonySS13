@@ -44,10 +44,6 @@ var/datum/controller/supply/supply_controller = new()
 	//shuttle movement
 	var/movetime = 1200
 	var/datum/shuttle/ferry/supply/shuttle
-	var/list/material_points_conversion = list( // Any materials not named in this list are worth 0 points
-			"phoron" = 5,
-			"platinum" = 5
-		)
 
 
 /datum/controller/supply/New()
@@ -82,6 +78,9 @@ var/datum/controller/supply/supply_controller = new()
 	if(!area_shuttle)
 		return
 
+	if(!config.allow_exports)
+		return
+
 	callHook("sell_shuttle", list(area_shuttle));
 
 	for(var/atom/movable/MA in area_shuttle)
@@ -109,7 +108,7 @@ var/datum/controller/supply/supply_controller = new()
 
 
 				var/obj/sold = A
-				EC.contents[EC.contents.len]["value"] = sold.get_item_cost()
+				EC.contents[EC.contents.len]["value"] = sold.get_item_cost(TRUE)
 				EC.contents[EC.contents.len]["quantity"] = 1
 				EC.value += EC.contents[EC.contents.len]["value"]
 
@@ -281,7 +280,8 @@ var/datum/controller/supply/supply_controller = new()
 
 	// Deduct cost
 	adjust_dept_funds(DEPT_FACTORY, O.object.cost, "[O.ordernum]: [O.object.name] | Ordered by: [O.ordered_by] | Approved by: [O.approved_by]")
-	DC.spending_limit -= O.object.cost
+	if(DC)
+		DC.spending_limit -= O.object.cost
 
 	return TRUE
 

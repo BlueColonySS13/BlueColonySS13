@@ -109,10 +109,6 @@
 	name = "stack of cardboard"
 	type_to_spawn = /obj/item/stack/material/cardboard
 
-/obj/fiftyspawner/leather
-	name = "stack of leather"
-	type_to_spawn = /obj/item/stack/material/leather
-
 /obj/fiftyspawner/glass
 	name = "stack of glass"
 	type_to_spawn = /obj/item/stack/material/glass
@@ -129,7 +125,68 @@
 	name = "stack of reinforced borosilicate glass"
 	type_to_spawn = /obj/item/stack/material/glass/phoronrglass
 
+// cloth
+
+/obj/fiftyspawner/silk
+	name = "stack of silk"
+	type_to_spawn = /obj/item/stack/material/silk
+
+/obj/fiftyspawner/cotton
+	name = "stack of cotton"
+	type_to_spawn = /obj/item/stack/material/cotton
+
+/obj/fiftyspawner/denim
+	name = "stack of denim"
+	type_to_spawn = /obj/item/stack/material/denim
+
+/obj/fiftyspawner/wool
+	name = "stack of wool"
+	type_to_spawn = /obj/item/stack/material/wool
+
+/obj/fiftyspawner/leather
+	name = "stack of leather"
+	type_to_spawn = /obj/item/stack/material/leather
+
+/obj/fiftyspawner/polychrome
+	name = "stack of polychromatic thread"
+	type_to_spawn = /obj/item/stack/material/polychromatic_thread
+
 //R-UST port
 /obj/fiftyspawner/deuterium
 	name = "stack of deuterium"
 	type_to_spawn = /obj/item/stack/material/deuterium
+
+/obj/fiftyspawner/void_opal
+	name = "stack of void opals"
+	type_to_spawn = /obj/item/stack/material/void_opal
+
+/obj/fiftyspawner/painite
+	name = "stack of painite"
+	type_to_spawn = /obj/item/stack/material/painite
+/obj/fiftyspawner/aluminium
+	name = "stack of aluminium"
+	type_to_spawn = /obj/item/stack/material/aluminium
+
+/obj/fiftyspawner/titanium
+	name = "stack of titanium"
+	type_to_spawn = /obj/item/stack/material/titanium
+
+/obj/fiftyspawner/tin
+	name = "stack of tin"
+	type_to_spawn = /obj/item/stack/material/tin
+
+/obj/fiftyspawner/copper
+	name = "stack of copper"
+	type_to_spawn = /obj/item/stack/material/copper
+
+/obj/fiftyspawner/bronze
+	name = "stack of bronze"
+	type_to_spawn = /obj/item/stack/material/bronze
+
+/obj/fiftyspawner/quartz
+	name = "stack of quartz"
+	type_to_spawn = /obj/item/stack/material/quartz
+
+/obj/fiftyspawner/quartz/rose_quartz
+	name = "stack of rose quartz"
+	type_to_spawn = /obj/item/stack/material/quartz/rose_quartz

@@ -148,10 +148,7 @@
 
 	return 1
 
-	for(var/obj/machinery/door/blast/gate/Z in targets)
-		if(!Z.density)	continue
-		spawn(0)
-			Z.open()
+
 
 // Check for releasetime timeleft
 /obj/machinery/door_timer/proc/timeleft()

@@ -76,7 +76,6 @@
 	if(ingested) ingested.metabolize()
 	if(bloodstr) bloodstr.metabolize()
 
-	AdjustConfused(-1)
 	// decrement dizziness counter, clamped to 0
 	if(resting)
 		dizziness = max(0, dizziness - 5)
@@ -221,7 +220,8 @@
 				reset_view(null)
 
 	return 1
-
+/*
+	// Unreachable code.
 	if (stat != 2)
 		if (machine)
 			if (machine.check_eye(src) < 0)
@@ -229,3 +229,4 @@
 		else
 			if(client && !client.adminobs)
 				reset_view(null)
+*/

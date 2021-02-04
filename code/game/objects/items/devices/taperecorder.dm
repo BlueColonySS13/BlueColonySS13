@@ -385,7 +385,7 @@
 	price_tag = 5
 
 	unique_save_vars = list("storedinfo", "timestamp", "ruined")
-
+	matter = list("plastic" = 130)
 
 /obj/item/device/tape/update_icon()
 	overlays.Cut()

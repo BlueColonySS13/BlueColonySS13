@@ -34,8 +34,8 @@
 	var/usable = 0
 	if(user.Adjacent(T) && user.get_active_hand() == src && !user.stat && !user.restrained())
 		usable = 1
-	if(!user.IsAdvancedToolUser() && istype(user, /mob/living/simple_animal))
-		var/mob/living/simple_animal/S = user
+	if(!user.IsAdvancedToolUser() && istype(user, /mob/living/simple_mob))
+		var/mob/living/simple_mob/S = user
 		if(!S.IsHumanoidToolUser(src))
 			usable = 0
 	return usable
@@ -152,6 +152,9 @@
 
 	working = 0
 	if(build_delay && !can_use(user,T))
+		return 0
+
+	if(trigger_lot_security_system(null, /datum/lot_security_option/vandalism, "[(deconstruct ? "Deconstructing the" : "Building on")] [T] with [src]."))
 		return 0
 
 	if(build_turf)

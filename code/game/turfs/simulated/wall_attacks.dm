@@ -54,9 +54,9 @@
 	var/damage_lower = 25
 	var/damage_upper = 75
 	if(isanimal(user))
-		var/mob/living/simple_animal/S = user
+		var/mob/living/simple_mob/S = user
 		playsound(src, S.attack_sound, 75, 1)
-		if(!(S.melee_damage_upper >= 10))
+		if(!(S.melee_damage_upper >= STRUCTURE_MIN_DAMAGE_THRESHOLD * 2))
 			to_chat(user, "<span class='notice'>You bounce against the wall.</span>")
 			return FALSE
 		damage_lower = S.melee_damage_lower
@@ -68,8 +68,9 @@
 /turf/simulated/wall/proc/success_smash(var/mob/user)
 	to_chat(user, "<span class='danger'>You smash through the wall!</span>")
 	user.do_attack_animation(src)
+	trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Smashed \the [src].")
 	if(isanimal(user))
-		var/mob/living/simple_animal/S = user
+		var/mob/living/simple_mob/S = user
 		playsound(src, S.attack_sound, 75, 1)
 	spawn(1)
 		dismantle_wall(1)
@@ -107,12 +108,12 @@
 
 	try_touch(user, rotting)
 
-/turf/simulated/wall/attack_generic(var/mob/user, var/damage, var/attack_message, var/wallbreaker)
+/turf/simulated/wall/attack_generic(var/mob/user, var/damage, var/attack_message)
 
 	radiate()
 	user.setClickCooldown(user.get_attack_speed())
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
-	if(!damage || !wallbreaker)
+	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD * 2)
 		try_touch(user, rotting)
 		return
 
@@ -120,7 +121,7 @@
 		return success_smash(user)
 
 	if(reinf_material)
-		if((wallbreaker == 2) || (damage >= max(material.hardness,reinf_material.hardness)))
+		if(damage >= max(material.hardness, reinf_material.hardness) )
 			return success_smash(user)
 	else if(damage >= material.hardness)
 		return success_smash(user)
@@ -193,18 +194,28 @@
 		if(user.IsAntiGrief())
 			to_chat(user, "<span class='notice'>You don't want to do this.</span>")
 			return
+
 		if( istype(W, /obj/item/weapon/weldingtool) )
 			var/obj/item/weapon/weldingtool/WT = W
+
+			if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [WT] on \the [src] covered in thermite."))
+				return
+
 			if( WT.remove_fuel(0,user) )
 				thermitemelt(user)
 				return
 
 		else if(istype(W, /obj/item/weapon/pickaxe/plasmacutter))
+			if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [W] on \the [src] covered in thermite."))
+				return
 			thermitemelt(user)
 			return
 
 		else if( istype(W, /obj/item/weapon/melee/energy/blade) )
 			var/obj/item/weapon/melee/energy/blade/EB = W
+
+			if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Using \the [EB] on \the [src] covered in thermite."))
+				return
 
 			EB.spark_system.start()
 			to_chat(user, "<span class='notice'>You slash \the [src] with \the [EB]; the thermite ignites!</span>")
@@ -269,6 +280,9 @@
 			if(dismantle_sound)
 				playsound(src, dismantle_sound, 100, 1)
 
+			if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempting to [dismantle_verb] \the [src]."))
+				return
+
 			if(cut_delay<0)
 				cut_delay = 0
 
@@ -288,6 +302,8 @@
 					if(user.IsAntiGrief())
 						to_chat(user, "<span class='notice'>You don't want to do this.</span>")
 						return
+					if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempting to deconstruct \the [src]."))
+						return
 					playsound(src, W.usesound, 100, 1)
 					construction_stage = 5
 					user.update_examine_panel(src)
@@ -298,6 +314,8 @@
 				if (istype(W, /obj/item/weapon/screwdriver))
 					if(user.IsAntiGrief())
 						to_chat(user, "<span class='notice'>You don't want to do this.</span>")
+						return
+					if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempting to deconstruct \the [src]."))
 						return
 					to_chat(user, "<span class='notice'>You begin removing the support lines.</span>")
 					playsound(src, W.usesound, 100, 1)
@@ -324,6 +342,8 @@
 					if(user.IsAntiGrief())
 						to_chat(user, "<span class='notice'>You don't want to do this.</span>")
 						return
+					if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempting to deconstruct \the [src]."))
+						return
 					if(WT.remove_fuel(0,user))
 						cut_cover=1
 					else
@@ -334,6 +354,8 @@
 				if(cut_cover)
 					if(user.IsAntiGrief())
 						to_chat(user, "<span class='notice'>You don't want to do this.</span>")
+						return
+					if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempting to deconstruct \the [src]."))
 						return
 					to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
 					playsound(src, W.usesound, 100, 1)
@@ -359,6 +381,8 @@
 					if(user.IsAntiGrief())
 						to_chat(user, "<span class='notice'>You don't want to do this.</span>")
 						return
+					if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempting to deconstruct \the [src]."))
+						return
 					to_chat(user, "<span class='notice'>You struggle to pry off the cover.</span>")
 					playsound(src, W.usesound, 100, 1)
 					if(!do_after(user,100 * W.toolspeed) || !istype(src, /turf/simulated/wall) || construction_stage != 3)
@@ -373,6 +397,8 @@
 					if(user.IsAntiGrief())
 						to_chat(user, "<span class='notice'>You don't want to do this.</span>")
 						return
+					if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempting to deconstruct \the [src]."))
+						return
 					to_chat(user, "<span class='notice'>You start loosening the anchoring bolts which secure the support rods to their frame.</span>")
 					playsound(src, W.usesound, 100, 1)
 					if(!do_after(user,40 * W.toolspeed) || !istype(src, /turf/simulated/wall) || construction_stage != 2)
@@ -386,6 +412,8 @@
 				var/cut_cover
 				if(user.IsAntiGrief())
 					to_chat(user, "<span class='notice'>You don't want to do this.</span>")
+					return
+				if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempting to deconstruct \the [src]."))
 					return
 				if(istype(W, /obj/item/weapon/weldingtool))
 					var/obj/item/weapon/weldingtool/WT = W
@@ -409,6 +437,8 @@
 			if(0)
 				if(user.IsAntiGrief())
 					to_chat(user, "<span class='notice'>You don't want to do this.</span>")
+					return
+				if(trigger_lot_security_system(user, /datum/lot_security_option/vandalism, "Attempting to deconstruct \the [src]."))
 					return
 				if(istype(W, /obj/item/weapon/crowbar))
 					to_chat(user, "<span class='notice'>You struggle to pry off the outer sheath.</span>")

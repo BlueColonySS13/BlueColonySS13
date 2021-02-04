@@ -479,8 +479,8 @@
 //		ATACK PROCS			//
 //////////////////////////////
 
-/obj/machinery/fishtank/attack_hand(mob/living/simple_animal/M)
-	if(istype(M, /mob/living/simple_animal/cat))
+/obj/machinery/fishtank/attack_hand(mob/living/simple_mob/M)
+	if(istype(M, /mob/living/simple_mob/animal/passive/cat))
 		if(M.a_intent == "help")							//Cats can try to fish in open tanks on help intent
 			if(lid_switch)									//Can't fish in a closed tank. Fishbowls are ALWAYS open.
 				M.visible_message("<span class='notice'>[M.name] stares at into [src] while sitting perfectly still.</span>", "<span class='notice'>The lid is closed, so you stare into [src] intently.</span>")
@@ -499,7 +499,7 @@
 					to_chat(M, "<span class='warning'>There are no fish in [src]!</span>")
 		else
 			return ..()
-	else if(istype(M, /mob/living/simple_animal/hostile/bear))
+	else if(istype(M, /mob/living/simple_mob/animal/space/bear))
 		if(M.a_intent == "help")							//Bears can try to fish in open tanks on help intent
 			if(lid_switch)									//Can't fish in a closed tank. Fishbowls are ALWAYS open.
 				M.visible_message("<span class='notice'>[M.name] scrapes it's claws along [src]'s lid.</span>", "<span class='notice'>The lid is closed, so you scrape your claws against [src]'s lid.</span>")

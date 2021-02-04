@@ -16,11 +16,14 @@
 	dsma.blend_mode = BLEND_ADD
 	dsoverlay.appearance = dsma
 
+	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
+
 /mob/living/Destroy()
 	dsoverlay.loc = null //I'll take my coat with me
 	dsoverlay = null
 	if(buckled)
 		buckled.unbuckle_mob(src, TRUE)
+	qdel(selected_image)
 	return ..()
 
 //mob verbs are faster than object verbs. See mob/verb/examine.
@@ -499,6 +502,36 @@ default behaviour is:
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
 
+// Applies direct "cold" damage while checking protection against the cold.
+/mob/living/proc/inflict_cold_damage(amount)
+	amount *= 1 - get_cold_protection(50) // Within spacesuit protection.
+	if(amount > 0)
+		adjustFireLoss(amount)
+
+// Ditto, but for "heat".
+/mob/living/proc/inflict_heat_damage(amount)
+	amount *= 1 - get_heat_protection(10000) // Within firesuit protection.
+	if(amount > 0)
+		adjustFireLoss(amount)
+
+// and one for electricity because why not
+/mob/living/proc/inflict_shock_damage(amount)
+	electrocute_act(amount, null, 1 - get_shock_protection())
+
+// also one for water (most things resist it entirely, except for slimes)
+/mob/living/proc/inflict_water_damage(amount)
+	amount *= 1 - get_water_protection()
+	if(amount > 0)
+		adjustToxLoss(amount)
+
+// one for abstracted away ""poison"" (mostly because simplemobs shouldn't handle reagents)
+/mob/living/proc/inflict_poison_damage(amount)
+	if(isSynthetic())
+		return
+	amount *= 1 - get_poison_protection()
+	if(amount > 0)
+		adjustToxLoss(amount)
+
 /mob/proc/get_contents()
 
 
@@ -514,14 +547,15 @@ default behaviour is:
 		//	L += get_contents(S)
 
 		for(var/obj/item/weapon/gift/G in Storage.return_inv()) //Check for gift-wrapped items
-			L += G.gift
-			if(istype(G.gift, /obj/item/weapon/storage))
-				L += get_contents(G.gift)
+			for(var/obj/O in G.contents)
+				if(istype(O, /obj/item/weapon/storage))
+					L+= get_contents(O)
 
 		for(var/obj/item/smallDelivery/D in Storage.return_inv()) //Check for package wrapped items
-			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/weapon/storage)) //this should never happen
-				L += get_contents(D.wrapped)
+			for(var/obj/O in D.contents)
+				if(istype(O, /obj/item/weapon/storage)) //this should never happen
+					L += get_contents(O)
+
 		return L
 
 	else
@@ -531,14 +565,14 @@ default behaviour is:
 			L += get_contents(S)
 
 		for(var/obj/item/weapon/gift/G in src.contents) //Check for gift-wrapped items
-			L += G.gift
-			if(istype(G.gift, /obj/item/weapon/storage))
-				L += get_contents(G.gift)
+			for(var/obj/O in G.contents)
+				if(istype(O, /obj/item/weapon/storage))
+					L+= get_contents(O)
 
 		for(var/obj/item/smallDelivery/D in src.contents) //Check for package wrapped items
-			L += D.wrapped
-			if(istype(D.wrapped, /obj/item/weapon/storage)) //this should never happen
-				L += get_contents(D.wrapped)
+			for(var/obj/O in D.contents)
+				if(istype(O, /obj/item/weapon/storage)) //this should never happen
+					L += get_contents(O)
 		return L
 
 /mob/living/proc/check_contents_for(A)
@@ -612,6 +646,8 @@ default behaviour is:
 	BITSET(hud_updateflag, LIFE_HUD)
 	ExtinguishMob()
 	fire_stacks = 0
+	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
+		ai_holder.go_wake()
 
 /mob/living/proc/rejuvenate()
 	if(reagents)
@@ -844,7 +880,7 @@ default behaviour is:
 
 		// Update whether or not this mob needs to pass emotes to contents.
 		for(var/atom/A in M.contents)
-			if(istype(A,/mob/living/simple_animal/borer) || istype(A,/obj/item/weapon/holder))
+			if(istype(A,/mob/living/simple_mob/animal/borer) || istype(A,/obj/item/weapon/holder))
 				return
 
 	else if(istype(H.loc,/obj/item/clothing/accessory/holster))
@@ -1024,10 +1060,11 @@ default behaviour is:
 					pixel_y = V.mob_offset_y
 		else if(buckled)
 			anchored = 1
-			canmove = 0
+			canmove = 1 //The line above already makes the chair not swooce away if the sitter presses a button. No need to incapacitate them as a criminally large amount of mechanics read this var as a type of stun.
 			if(istype(buckled))
 				if(buckled.buckle_lying != -1)
 					lying = buckled.buckle_lying
+					canmove = buckled.buckle_movable
 				if(buckled.buckle_movable)
 					anchored = 0
 					canmove = 1
@@ -1081,15 +1118,18 @@ default behaviour is:
 
 /mob/living/update_transform()
 	// First, get the correct size.
-	var/desired_scale = icon_scale
+	var/desired_scale_x = icon_scale_x
+	var/desired_scale_y = icon_scale_y
 	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.icon_scale_percent))
-			desired_scale *= M.icon_scale_percent
+		if(!isnull(M.icon_scale_x_percent))
+			desired_scale_x *= M.icon_scale_x_percent
+		if(!isnull(M.icon_scale_y_percent))
+			desired_scale_y *= M.icon_scale_y_percent
 
 	// Now for the regular stuff.
 	var/matrix/M = matrix()
-	M.Scale(desired_scale)
-	M.Translate(0, 16*(desired_scale-1))
+	M.Scale(desired_scale_x, desired_scale_y)
+	M.Translate(0, 16*(desired_scale_y-1))
 	animate(src, transform = M, time = 10)
 
 // This handles setting the client's color variable, which makes everything look a specific color.
@@ -1178,6 +1218,7 @@ default behaviour is:
 			var/turf/end_T = get_turf(target)
 			if(end_T)
 				add_attack_logs(src,M,"Thrown via grab to [end_T.x],[end_T.y],[end_T.z]")
+			src.drop_from_inventory(G)
 
 	src.drop_from_inventory(item)
 	if(!item || !isturf(item.loc))
@@ -1257,33 +1298,3 @@ default behaviour is:
 		"}
 
 // ++++ROCKDTBEN++++ MOB PROCS //END
-
-// Applies direct "cold" damage while checking protection against the cold.
-/mob/living/proc/inflict_cold_damage(amount)
-	amount *= 1 - get_cold_protection(50) // Within spacesuit protection.
-	if(amount > 0)
-		adjustFireLoss(amount)
-
-// Ditto, but for "heat".
-/mob/living/proc/inflict_heat_damage(amount)
-	amount *= 1 - get_heat_protection(10000) // Within firesuit protection.
-	if(amount > 0)
-		adjustFireLoss(amount)
-
-// and one for electricity because why not
-/mob/living/proc/inflict_shock_damage(amount)
-	electrocute_act(amount, null, 1 - get_shock_protection(), pick(BP_HEAD, BP_TORSO, BP_GROIN))
-
-// also one for water (most things resist it entirely, except for slimes)
-/mob/living/proc/inflict_water_damage(amount)
-	amount *= 1 - get_water_protection()
-	if(amount > 0)
-		adjustToxLoss(amount)
-
-// one for abstracted away ""poison"" (mostly because simplemobs shouldn't handle reagents)
-/mob/living/proc/inflict_poison_damage(amount)
-	if(isSynthetic())
-		return
-	amount *= 1 - get_poison_protection()
-	if(amount > 0)
-		adjustToxLoss(amount)

@@ -169,6 +169,7 @@
 
 	else
 		var/attackamt = rand(3,6)
+		playsound(src, 'sound/arcade/explo.ogg', 50, 1, extrarange = -3, falloff = 10)
 		temp = "[enemy_name] attacks for [attackamt] damage!"
 		player_hp -= attackamt
 

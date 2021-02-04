@@ -77,7 +77,7 @@
 	// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
 
-	unique_save_vars = list("model")
+	unique_save_vars = list("model", "robotic", "damage", "preserved", "germ_level", "sabotaged")
 
 /obj/item/organ/external/Destroy()
 
@@ -492,6 +492,7 @@ This function completely restores a damaged organ to perfect condition.
 
 /obj/item/organ/external/proc/createwound(var/type = CUT, var/damage)
 	if(damage == 0) return
+	if(!owner) return
 
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Possibly trigger an internal wound, too.
@@ -1089,6 +1090,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 			R = basic_robolimb
 		if(R)
 			force_icon = R.icon
+			brute_mod *= R.robo_brute_mod
+			burn_mod *= R.robo_burn_mod
 			if(R.lifelike)
 				robotic = ORGAN_LIFELIKE
 				name = "[initial(name)]"
@@ -1143,6 +1146,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 	return 0
 
 /obj/item/organ/external/proc/is_usable()
+	if(robotic >= ORGAN_ROBOT && (owner.can_use_cyberware() == FALSE))
+		return FALSE
+
 	return !(status & (ORGAN_MUTATED|ORGAN_DEAD))
 
 /obj/item/organ/external/proc/is_malfunctioning()

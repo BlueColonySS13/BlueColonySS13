@@ -184,7 +184,8 @@
 				cooking_obj = new /obj/item/weapon/reagent_containers/food/snacks/badrecipe(src)
 				// Produce nasty smoke.
 				visible_message("<span class='danger'>\The [src] vomits a gout of rancid smoke!</span>")
-				var/datum/effect/effect/system/smoke_spread/bad/smoke = new /datum/effect/effect/system/smoke_spread/bad()
+				var/datum/effect/effect/system/smoke_spread/bad/burntfood/smoke = new /datum/effect/effect/system/smoke_spread/bad/burntfood
+				playsound(src, 'sound/effects/smoke.ogg', 20, 1)
 				smoke.attach(src)
 				smoke.set_up(10, 0, usr.loc)
 				smoke.start()
@@ -235,16 +236,25 @@
 
 /obj/machinery/cooker/proc/change_product_appearance(var/obj/item/weapon/reagent_containers/food/snacks/product)
 	if(product.type == /obj/item/weapon/reagent_containers/food/snacks/variable) // Base type, generic.
-		product.appearance = cooking_obj
-		product.color = food_color
-		product.filling_color = food_color
+		var/obj/item/weapon/reagent_containers/food/snacks/variable/variable_product = product
+		if(!istype(cooking_obj, variable_product))
+			variable_product.original_item = cooking_obj.type
+		else
+			var/obj/item/weapon/reagent_containers/food/snacks/variable/cooking_product = cooking_obj
+			variable_product.original_item = cooking_product.original_item
+
+		variable_product.filling_color = food_color
+		variable_product.update_icon()
+		variable_product.color = food_color
 
 		// Make 'em into a corpse.
 		if(istype(cooking_obj, /obj/item/weapon/holder))
 			var/matrix/M = matrix()
 			M.Turn(90)
 			M.Translate(1,-6)
-			product.transform = M
+			variable_product.transform = M
+			variable_product.icon = cooking_obj.icon
+			variable_product.icon_state = cooking_obj.icon_state
 	else
 		var/image/I = image(product.icon, "[product.icon_state]_filling")
 		if(istype(cooking_obj, /obj/item/weapon/reagent_containers/food/snacks))

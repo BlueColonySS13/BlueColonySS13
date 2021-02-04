@@ -569,12 +569,6 @@
 	if(act)
 		..(act, type, desc)
 
-/mob/living/simple_animal/proc/visible_emote(var/act_desc)
-	custom_emote(1, act_desc)
-
-/mob/living/simple_animal/proc/audible_emote(var/act_desc)
-	custom_emote(2, act_desc)
-
 /mob/living/simple_animal/bullet_act(var/obj/item/projectile/Proj)
 	ai_log("bullet_act() I was shot by: [Proj.firer]",2)
 
@@ -688,9 +682,9 @@
 
 //SA vs SA basically
 /mob/living/simple_animal/attack_generic(var/mob/attacker)
-	..()
 	if(attacker)
 		react_to_attack(attacker)
+	return ..()
 
 /mob/living/simple_animal/movement_delay()
 	var/tally = 0 //Incase I need to add stuff other than "speed" later
@@ -1256,8 +1250,11 @@
 /mob/living/simple_animal/proc/PunchTarget()
 	if(!Adjacent(target_mob))
 		return
-	if(!client)
-		sleep(rand(melee_attack_minDelay, melee_attack_maxDelay))
+	if(!canClick())
+		return
+	setClickCooldown(get_attack_speed())
+//	if(!client)
+//		sleep(rand(melee_attack_minDelay, melee_attack_maxDelay))
 	if(isliving(target_mob))
 		var/mob/living/L = target_mob
 
@@ -1298,13 +1295,18 @@
 
 //The actual top-level ranged attack proc
 /mob/living/simple_animal/proc/ShootTarget()
+	if(!canClick())
+		return FALSE
+
+	setClickCooldown(get_attack_speed())
+
 	var/target = target_mob
 	var/tturf = get_turf(target)
 
 	if((firing_lines && !client) && !CheckFiringLine(tturf))
 		step_rand(src)
 		face_atom(tturf)
-		return 0
+		return FALSE
 
 	visible_message("<span class='danger'><b>[src]</b> fires at [target]!</span>")
 	if(rapid)
@@ -1325,7 +1327,7 @@
 		if(casingtype)
 			new casingtype
 
-	return 1
+	return TRUE
 
 //Check firing lines for faction_friends (if we're not cooperative, we don't care)
 /mob/living/simple_animal/proc/CheckFiringLine(var/turf/tturf) //Man this code is bad but I don't have it in me to rewrite it
@@ -1473,6 +1475,7 @@
 //Check for shuttle bumrush
 /mob/living/simple_animal/proc/check_horde()
 	return 0
+	/*
 	if(emergency_shuttle.shuttle.location)
 		if(!enroute && !target_mob)	//The shuttle docked, all monsters rush for the escape hallway
 			if(!shuttletarget && escape_list.len) //Make sure we didn't already assign it a target, and that there are targets to pick
@@ -1486,6 +1489,7 @@
 		if(get_dist(src, shuttletarget) <= 2)		//The monster reached the escape hallway
 			enroute = 0
 			stop_automated_movement = 0
+	*/
 
 //Shuttle bumrush
 /mob/living/simple_animal/proc/horde()
@@ -1557,12 +1561,13 @@
 	else
 		return armorval
 
+/*
 // Force it to target something
 /mob/living/simple_animal/proc/taunt(var/mob/living/new_target, var/forced = FALSE)
 	if(intelligence_level == SA_HUMANOID && !forced)
 		return
 	set_target(new_target)
-
+*/
 /mob/living/simple_animal/is_sentient()
 	return intelligence_level != SA_PLANT && intelligence_level != SA_ROBOTIC
 

@@ -4,7 +4,7 @@
 	var/radio_desc = ""
 	icon_state = "headset"
 	item_state = null //To remove the radio's state
-	matter = list(DEFAULT_WALL_MATERIAL = 75)
+	matter = list(DEFAULT_WALL_MATERIAL = 75, "copper" = 50)
 	subspace_transmission = 1
 	canhear_range = 0 // can't hear headsets from very far away
 	slot_flags = SLOT_EARS
@@ -83,6 +83,11 @@
 	origin_tech = list(TECH_ILLEGAL = 3)
 	syndie = 1
 	ks1type = /obj/item/device/encryptionkey/syndicate
+
+/obj/item/device/radio/headset/pax_synthetica
+	origin_tech = list(TECH_ILLEGAL = 3)
+	syndie = 1
+	ks1type = /obj/item/device/encryptionkey/pax_synthetica
 
 /obj/item/device/radio/headset/syndicate/alt
 	icon_state = "syndie_headset"
@@ -229,37 +234,37 @@
 	ks2type = /obj/item/device/encryptionkey/heads/hos
 
 /obj/item/device/radio/headset/heads/ce
-	name = "chief engineer's headset"
+	name = "maintenance director's headset"
 	desc = "The headset of the guy who is in charge of morons"
 	icon_state = "com_headset"
 	ks2type = /obj/item/device/encryptionkey/heads/ce
 
 /obj/item/device/radio/headset/heads/ce/alt
-	name = "chief engineer's bowman headset"
+	name = "maintenance director's bowman headset"
 	desc = "The headset of the guy who is in charge of morons"
 	icon_state = "com_headset_alt"
 	ks2type = /obj/item/device/encryptionkey/heads/ce
 
 /obj/item/device/radio/headset/heads/cmo
-	name = "chief medical officer's headset"
+	name = "medical director's headset"
 	desc = "The headset of the highly trained medical chief."
 	icon_state = "com_headset"
 	ks2type = /obj/item/device/encryptionkey/heads/cmo
 
 /obj/item/device/radio/headset/heads/cmo/alt
-	name = "chief medical officer's bowman headset"
+	name = "medical director's bowman headset"
 	desc = "The headset of the highly trained medical chief."
 	icon_state = "com_headset_alt"
 	ks2type = /obj/item/device/encryptionkey/heads/cmo
 
 /obj/item/device/radio/headset/heads/hop
-	name = "head of personnel's headset"
+	name = "city clerk's headset"
 	desc = "The headset of the guy who will one day be Mayor."
 	icon_state = "com_headset"
 	ks2type = /obj/item/device/encryptionkey/heads/hop
 
 /obj/item/device/radio/headset/heads/hop/alt
-	name = "head of personnel's bowman headset"
+	name = "city clerk's bowman headset"
 	desc = "The headset of the guy who will one day be Mayor."
 	icon_state = "com_headset_alt"
 	ks2type = /obj/item/device/encryptionkey/heads/hop
@@ -272,14 +277,14 @@
 	ks2type = /obj/item/device/encryptionkey/headset_cargo
 
 /obj/item/device/radio/headset/headset_cargo
-	name = "manager's radio headset"
-	desc = "A headset used by the FM and his slaves."
+	name = "factory manager's radio headset"
+	desc = "A headset used by the factory manager and his slaves."
 	icon_state = "cargo_headset"
 	ks2type = /obj/item/device/encryptionkey/headset_cargo
 
 /obj/item/device/radio/headset/headset_cargo/alt
-	name = "supply bowman headset"
-	desc = "A bowman headset used by the QM and his slaves."
+	name = "factory manager's bowman headset"
+	desc = "A bowman headset used by the factory manager and his slaves."
 	icon_state = "cargo_headset_alt"
 	ks2type = /obj/item/device/encryptionkey/headset_cargo
 
@@ -320,7 +325,7 @@
 	ks2type = /obj/item/device/encryptionkey/omni
 
 /obj/item/device/radio/headset/ia
-	name = "internal affair's headset"
+	name = "PDSI's headset"
 	desc = "The headset of your worst enemy."
 	icon_state = "com_headset"
 	ks2type = /obj/item/device/encryptionkey/heads/hos

@@ -230,7 +230,7 @@
 										<td>[T.date] [T.time]</td>
 										<td>[T.target_name]</td>
 										<td>[T.purpose]</td>
-										<td>[cash2text(T.amount, FALSE, TRUE, TRUE )]</td>
+										<td>[T.amount]</td>
 										<td>[T.source_terminal]</td>
 									</tr>
 							"}

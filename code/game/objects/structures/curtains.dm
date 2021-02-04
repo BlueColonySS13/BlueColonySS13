@@ -8,12 +8,20 @@
 	density = 0
 	var/open_state = "open"
 	var/closed_state = "closed"
+	var/open = FALSE
 	var/sheet_material = /obj/item/stack/material/cotton
 
+	unique_save_vars = list("open")
+
+/obj/structure/curtain/New()
+	..()
+	update_icon()
+
+/obj/structure/curtain/on_persistence_load()
+	update_icon()
+
 /obj/structure/curtain/open
-	icon_state = "open"
-	layer = SHOWER_CLOSED_LAYER
-	opacity = 0
+	open = TRUE
 
 /obj/structure/curtain/bullet_act(obj/item/projectile/P, def_zone)
 	if(!P.nodamage)
@@ -28,11 +36,16 @@
 	..()
 
 /obj/structure/curtain/proc/toggle()
-	set_opacity(!opacity)
-	if(opacity)
+	open = !open
+	update_icon()
+
+/obj/structure/curtain/update_icon()
+	if(open)
+		set_opacity(1)
 		icon_state = closed_state
 		layer = SHOWER_CLOSED_LAYER
 	else
+		set_opacity(0)
 		icon_state = open_state
 		layer = SHOWER_OPEN_LAYER
 
@@ -161,7 +174,7 @@
 /obj/structure/curtain/blinds/open
 	icon_state = "blinds_open"
 	layer = SHOWER_CLOSED_LAYER
-	opacity = 0
+	open = TRUE
 
 
 #undef SHOWER_OPEN_LAYER

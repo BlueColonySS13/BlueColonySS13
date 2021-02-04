@@ -17,7 +17,7 @@
 	days_until_expiry = 6
 
 /datum/bounty/politics_revolutionary/eat_the_rich/check_for_completion()
-	if(persistent_economy && (persistent_economy.tax_rate_upper >= 0.40))
+	if(SSpersistent_options.get_persistent_option_value(UPPER_TAX) >= 0.40)
 		return TRUE
 
 	return FALSE
@@ -39,7 +39,7 @@
 
 
 /datum/bounty/politics_revolutionary/eat_landlords/check_for_completion()
-	if(persistent_economy && (0.15 >= persistent_economy.housing_tax))
+	if(0.15 >= SSpersistent_options.get_persistent_option_value(PROPERTY_TAX))
 		return TRUE
 
 	return FALSE
@@ -54,14 +54,14 @@
 	custom_requirement = "Have someone in power change tobacco tax to be 40% and over, once that is done this bounty will be a passive \
 	source of income to claim at any time."
 
-	department_reward = 600
-	individual_reward = 150
+	department_reward = 2600
+	individual_reward = 450
 
 	days_until_expiry = 6
 
 
 /datum/bounty/politics_revolutionary/eat_landlords/check_for_completion()
-	if(persistent_economy && (persistent_economy.tobacco_tax >= 0.40))
+	if(SSpersistent_options.get_persistent_option_value(TOBACCO_TAX) >= 0.40)
 		return TRUE
 
 	return FALSE
@@ -79,7 +79,7 @@
 	source of income to claim at any time."
 
 
-	department_reward = 600
+	department_reward = 1600
 	individual_reward = 150
 
 	days_until_expiry = 6
@@ -87,10 +87,30 @@
 
 
 /datum/bounty/politics_revolutionary/health_issues/check_for_completion()
-	if(persistent_economy && (0.15 >= persistent_economy.medical_tax))
+	if(0.15 >= SSpersistent_options.get_persistent_option_value(MEDICAL_TAX))
 		return TRUE
 
 	return FALSE
 
 
+
+/datum/bounty/politics_revolutionary/minimum_wage
+	name = "Unsustainable Wages"
+	author = "Micheal Dover"
+
+	description = "Business owners and the public sector continue to make things difficult for the workers, raise the minimum wage to ensure people \
+	can feed themselves and their families."
+
+	custom_requirement = "Have someone in power set the minimum wage to 50 credits and over."
+
+	department_reward = 700
+	individual_reward = 450
+
+	days_until_expiry = 6
+
+/datum/bounty/politics_revolutionary/minimum_wage/check_for_completion()
+	if(SSpersistent_options.get_persistent_option_value("minimum_wage") >= 50)
+		return TRUE
+
+	return FALSE
 

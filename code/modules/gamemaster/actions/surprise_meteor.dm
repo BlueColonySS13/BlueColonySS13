@@ -12,6 +12,8 @@
 
 /datum/gm_action/surprise_meteors/start()
 	..()
+	if(SSpersistent_options && SSpersistent_options.get_persistent_option_value("protect_meteor_proofing"))
+		return
 	spawn(1)
 		spawn_meteors(rand(4, 8), meteors_normal, pick(cardinal))
 	message_admins("Surprise meteors event has ended.")

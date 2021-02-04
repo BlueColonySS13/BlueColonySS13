@@ -3,11 +3,9 @@
 	name_plural = "Humans"
 	primitive_form = SPECIES_MONKEY
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	blurb = "Humanity originated in the Sol system, and over the last five centuries has spread \
-	colonies across a wide swathe of space. They hold a wide range of forms and creeds.<br/><br/> \
-	While the central Sol government maintains control of its far-flung people, powerful corporate \
-	interests, rampant cyber and bio-augmentation and secretive factions make life on most human \
-	worlds tumultous at best."
+	blurb = "A grotesque race that has allowed consumerism and money to overtake all other desires, Their for clay have led to class strife and ethical decay. \
+	Their strict caste systems allowing them to slight and sneer at each other even as they oppress their servants that they create en-masse.<br><br> \
+	And why not? Rightfully so, they rule the known universe."
 	num_alternate_languages = 3
 	species_language = LANGUAGE_SOL_COMMON
 	secondary_langs = list(LANGUAGE_SOL_COMMON, LANGUAGE_TERMINUS)

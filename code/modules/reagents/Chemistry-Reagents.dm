@@ -21,6 +21,7 @@
 	var/list/data = null
 	var/volume = 0
 	var/metabolism = REM // This would be 0.2 normally
+	var/list/filtered_organs = list()	// Organs that will slow the processing of this chemical.
 	var/mrate_static = FALSE	//If the reagent should always process at the same speed, regardless of species, make this TRUE
 	var/ingest_met = 0
 	var/touch_met = 0
@@ -37,7 +38,7 @@
 	var/hydration_factor = 0 // Per unit
 	var/calories_factor = 0 // Per unit
 
-	price_tag = 0.1
+	price_tag = 0.3
 
 	var/color = "#000000"
 	var/color_weight = 1
@@ -81,6 +82,22 @@
 		removed *= M.species.metabolic_rate
 		// Metabolism
 		removed *= active_metab.metabolism_speed
+
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.species.has_organ[O_HEART])
+				var/obj/item/organ/internal/heart/Pump = H.internal_organs_by_name[O_HEART]
+				if(!Pump)
+					removed *= 0.1
+				else if(Pump.standard_pulse_level == PULSE_NONE)	// No pulse normally means chemicals process a little bit slower than normal.
+					removed *= 0.8
+				else	// Otherwise, chemicals process as per percentage of your current pulse, or, if you have no pulse but are alive, by a miniscule amount.
+					removed *= max(0.1, H.pulse / Pump.standard_pulse_level)
+			if(filtered_organs && filtered_organs.len)
+				for(var/organ_tag in filtered_organs)
+					var/obj/item/organ/internal/O = H.internal_organs_by_name[organ_tag]
+					if(O && !O.is_broken() && prob(max(0, O.max_damage - O.damage)))
+						removed *= 0.8
 
 	if(ingest_met && (active_metab.metabolism_class == CHEM_INGEST))
 		removed = ingest_met
@@ -144,9 +161,6 @@
 /datum/reagent/Destroy() // This should only be called by the holder, so it's already handled clearing its references
 	holder = null
 	. = ..()
-
-/datum/reagent/proc/is_contraband()
-	return
 
 /* DEPRECATED - TODO: REMOVE EVERYWHERE */
 

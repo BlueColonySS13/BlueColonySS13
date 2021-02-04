@@ -292,6 +292,42 @@
 	inhibitors = list("clonexadone" = 1) // Messes with cryox
 	result_amount = 2
 
+/datum/chemical_reaction/respirodaxon
+	name = "Respirodaxon"
+	id = "respirodaxon"
+	result = "respirodaxon"
+	required_reagents = list("dexalinp" = 2, "biomass" = 2, "phoron" = 1)
+	catalysts = list("phoron" = 5)
+	inhibitors = list("dexalin" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/gastirodaxon
+	name = "Gastirodaxon"
+	id = "gastirodaxon"
+	result = "gastirodaxon"
+	required_reagents = list("carthatoline" = 1, "biomass" = 2, "tungsten" = 2)
+	catalysts = list("phoron" = 5)
+	inhibitors = list("lithium" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/hepanephrodaxon
+	name = "Hepanephrodaxon"
+	id = "hepanephrodaxon"
+	result = "hepanephrodaxon"
+	required_reagents = list("carthatoline" = 2, "biomass" = 2, "lithium" = 1)
+	catalysts = list("phoron" = 5)
+	inhibitors = list("tungsten" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/cordradaxon
+	name = "Cordradaxon"
+	id = "cordradaxon"
+	result = "cordradaxon"
+	required_reagents = list("potassium_chlorophoride" = 1, "biomass" = 2, "bicaridine" = 2)
+	catalysts = list("phoron" = 5)
+	inhibitors = list("clonexadone" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/virus_food
 	name = "Virus Food"
 	id = "virusfood"
@@ -417,6 +453,14 @@
 	id = "corophizine"
 	result = "corophizine"
 	required_reagents = list("penicillin" = 1, "carbon" = 1, "phoron" = 0.1)
+	catalysts = list("phoron" = 5)
+	result_amount = 2
+
+/datum/chemical_reaction/immunosuprizine
+	name = "Immunosuprizine"
+	id = "immunosuprizine"
+	result = "immunosuprizine"
+	required_reagents = list("corophizine" = 1, "tungsten" = 1, "sacid" = 1)
 	catalysts = list("phoron" = 5)
 	result_amount = 2
 
@@ -2478,3 +2522,12 @@
 	required_reagents = list("peanutoil" = 2, "sugar" = 1, "sodiumchloride" = 1)
 	catalysts = list("enzyme" = 5)
 	result_amount = 3
+
+// Neutralization.
+
+/datum/chemical_reaction/neutralize_neurotoxic_protein
+	name = "Neutralize Toxic Proteins"
+	id = "neurotoxic_protein_neutral"
+	result = "protein"
+	required_reagents = list("anti_toxin" = 1, "neurotoxic_protein" = 2)
+	result_amount = 2

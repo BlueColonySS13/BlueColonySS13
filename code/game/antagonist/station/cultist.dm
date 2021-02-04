@@ -18,6 +18,7 @@ var/datum/antagonist/cultist/cult
 	feedback_tag = "cult_objective"
 	antag_indicator = "cult"
 	welcome_text = "You have a talisman in your possession; one that will help you start the cult in this city. Use it well and remember - there are others."
+	antag_sound = 'sound/effects/antag_notice/cult_alert.ogg'
 	victory_text = "The cult wins! It has succeeded in serving its dark masters!"
 	loss_text = "The staff managed to stop the cult!"
 	victory_feedback_tag = "win - cult win"
@@ -111,12 +112,12 @@ var/datum/antagonist/cultist/cult
 	. = ..()
 	if(.)
 		player << "You catch a glimpse of the Realm of Nar-Sie, the Geometer of Blood. You now see how flimsy the world is, you see that it should be open to the knowledge of That Which Waits. Assist your new compatriots in their dark dealings. Their goals are yours, and yours are theirs. You serve the Dark One above all else. Bring It back."
-		if(player.current && !istype(player.current, /mob/living/simple_animal/construct))
+		if(player.current && !istype(player.current, /mob/living/simple_mob/construct))
 			player.current.add_language(LANGUAGE_CULT)
 
 /datum/antagonist/cultist/remove_antagonist(var/datum/mind/player, var/show_message, var/implanted)
 	. = ..()
-	if(. && player.current && !istype(player.current, /mob/living/simple_animal/construct))
+	if(. && player.current && !istype(player.current, /mob/living/simple_mob/construct))
 		player.current.remove_language(LANGUAGE_CULT)
 
 /datum/antagonist/cultist/can_become_antag(var/datum/mind/player)

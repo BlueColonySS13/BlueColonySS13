@@ -4,13 +4,18 @@
 // The item price in credits. atom/movable so we can also assign a price to animals and other things.
 /atom/movable/var/price_tag = null
 /atom/movable/var/tagged_price = null
-/atom/movable/var/tax_type = null
+/atom/movable/var/tax_type = null // put the portal id of the tax we're charging here.
 
 // The proc that is called when the price is being asked for. Use this to refer to another object if necessary.
-/atom/movable/proc/get_item_cost()
+/atom/movable/proc/get_item_cost(skip_tag = FALSE)
+	if(skip_tag)
+		return round(price_tag)
+
 	if(!isnull(tagged_price))
 		return round(tagged_price)
+
 	return round(price_tag)
+
 
 /atom/movable/proc/get_full_cost()	// with tax
 	return (get_item_cost() + post_tax_cost())
@@ -18,10 +23,10 @@
 // TAXES
 
 /atom/movable/proc/get_tax()
-	return tax_type
+	return SSpersistent_options.get_persistent_option_value(tax_type)
 
 /datum/reagent/proc/get_tax()
-	return
+	return SSpersistent_options.get_persistent_option_value(tax_type)
 
 /datum/reagent/proc/get_item_cost()
 	return round(price_tag)
@@ -83,10 +88,14 @@
 /datum/medical_bill/var/price_tag = null
 
 /datum/medical_bill/proc/get_item_cost()
+	var/pres_portal_cost = SSpersistent_options.get_persistent_option_value(portal_id)
+	if(!isnull(pres_portal_cost))
+		return pres_portal_cost
+
 	return cost
 
 /datum/medical_bill/proc/get_tax()
-	return MEDICAL_TAX
+	return SSpersistent_options.get_persistent_option_value(MEDICAL_TAX)
 
 ///////////////////
 //---Court---------//
@@ -109,8 +118,8 @@
 /datum/lot/proc/get_item_cost()
 	return price
 
-/datum/lot/get_tax()
-	return HOUSING_TAX
+/datum/lot/proc/get_tax()
+	return SSpersistent_options.get_persistent_option_value(PROPERTY_TAX)
 
 // Juices, soda and similar //
 
@@ -213,16 +222,26 @@
 // -- Minerals -- //
 ////////////////////
 
-/obj/item/stack/get_item_cost()
+/obj/item/stack/get_item_cost(skip_tag = FALSE)
+	var/total_price
+
+	if(skip_tag)
+		if(istype(src, /obj/item/stack/material))
+			var/obj/item/stack/material/mat = src
+			total_price = mat.amount * mat.material.get_worth()
+			return round(total_price)
+
+		if(!isemptylist(associated_reagents))
+			var/divider = amount / associated_reagents.len
+			for(var/R in associated_reagents)
+				var/datum/reagent/rgnt = chemical_reagents_list[R]
+				total_price += (rgnt.price_tag * divider) * reagent_multiplier
+				return round(total_price)
+
+
+
 	if(!isnull(tagged_price))
 		return round(tagged_price)
-
-	var/total_price
-	if(!isemptylist(associated_reagents))
-		var/divider = amount / associated_reagents.len
-		for(var/R in associated_reagents)
-			var/datum/reagent/rgnt = chemical_reagents_list[R]
-			total_price += (rgnt.price_tag * divider) * reagent_multiplier
 
 	return round(total_price)
 
@@ -232,3 +251,9 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			if(R.get_tax())
 				return R.get_tax()
+
+
+// other taxes
+
+/obj/machinery/computer/betting_terminal/get_tax()
+	return SSpersistent_options.get_persistent_option_value(GAMBLING_TAX)

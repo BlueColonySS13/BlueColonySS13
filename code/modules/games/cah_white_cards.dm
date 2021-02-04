@@ -67,6 +67,6 @@
 	"Unnecessary surgery",
 	"My addiction to spiders",
 	"DOCTOR MAXMAN!",
-	"Enough soporific to put the entire station down",
+	"Enough soporific to put the entire city down",
 	"Delicious Vietnamese cuisine"
 	)

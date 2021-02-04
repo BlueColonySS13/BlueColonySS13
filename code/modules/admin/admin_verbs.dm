@@ -260,7 +260,7 @@ var/list/admin_verbs_hideable = list(
 	/datum/admins/proc/announce,
 	/client/proc/colorooc,
 	/client/proc/toggle_canon,
-	/client/proc/department_account_view,
+//	/client/proc/department_account_view,
 	/client/proc/debug_politics,
 	/client/proc/debug_news,
 	/client/proc/backup_all_lots,
@@ -405,7 +405,7 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/roll_dices,
 	/client/proc/toggle_canon,
 	/client/proc/save_all_characters,
-	/client/proc/department_account_view,
+//	/client/proc/department_account_view,
 	/client/proc/debug_politics,
 	/client/proc/debug_news,
 	/client/proc/backup_all_lots,
@@ -906,7 +906,7 @@ var/list/admin_verbs_event_manager = list(
 
 /client/proc/change_security_level()
 	set name = "Set security level"
-	set desc = "Sets the station security level"
+	set desc = "Sets the city security level"
 	set category = "Admin"
 
 	if(!check_rights(R_ADMIN))	return

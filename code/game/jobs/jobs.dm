@@ -57,9 +57,16 @@ var/const/GOVLAW				=(1<<3)
 
 var/const/PRESIDENT				=(1<<0)
 var/const/NANOTRASEN			=(1<<1)
-var/const/CBIA					=(1<<2)
+var/const/PDSI					=(1<<2)
 var/const/CEO					=(1<<3)
-
+var/const/GOVERNOR				=(1<<4)
+var/const/VICEPRESIDENT			=(1<<5)
+var/const/SUPREMEJUSTICE			=(1<<6)
+var/const/ADVISORDEFENSE			=(1<<7)
+var/const/ADVISORJUSTICE			=(1<<8)
+var/const/ADVISORINNOVATION		=(1<<9)
+var/const/ADVISORHEALTH			=(1<<10)
+var/const/ADVISORFINANCE			=(1<<11)
 
 var/list/assistant_occupations = list(
 	"Civilian"
@@ -70,7 +77,16 @@ var/list/gov_positions = list(
 	"Governor",
 	"Government Representative",
 	"PDSI Agent",
-	"President"
+	"President",
+	"Vice President",
+	"Nanotrasen CEO",
+	"Supreme Justice",
+	"Advisor of Defense",
+	"Advisor of Justice",
+	"Advisor of Innovation",
+	"Advisor of Health",
+	"Advisor of Finance"
+
 )
 
 var/list/command_positions = list(
@@ -93,7 +109,7 @@ var/list/engineering_positions = list(
 
 var/list/medical_positions = list(
 	"Medical Director",
-	"Physician",
+	"Doctor",
 	"Geneticist",
 	"Psychiatrist",
 	"Chemist",
@@ -108,8 +124,7 @@ var/list/science_positions = list(
 	"Geneticist",	//Part of both medical and science
 	"Roboticist",
 	"Xenobiologist",
-	"Research Assistant",
-	"Research Security"
+	"Research Assistant"
 )
 
 //BS12 EDIT
@@ -122,16 +137,11 @@ var/list/cargo_positions = list(
 var/list/civilian_positions = list(
 	"City Clerk",
 	"Judge",
-	"Bartender",
-	"Botanist",
-	"Chef",
-	"Journalist",
 	"Defense Attorney",
 	"Chaplain",
 	"Civilian",
-	"Barber",
+	"City Hall Guard",
 	"City Hall Secretary",
-	"Bar Manager"
 )
 
 
@@ -140,7 +150,6 @@ var/list/security_positions = list(
 	"Prison Warden",
 	"Detective",
 	"Police Officer",
-	"City Hall Guard",
 	"District Prosecutor"
 )
 

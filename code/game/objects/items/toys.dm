@@ -113,6 +113,58 @@
 	icon_state = "ntballoon"
 	w_class = ITEMSIZE_LARGE
 
+/obj/item/toy/colorballoon /// To color it, VV the 'color' var with a hex color code with the # included.
+	name = "balloon"
+	desc = "It's a plain little balloon. Comes in many colors!"
+	throwforce = 0
+	throw_speed = 4
+	throw_range = 20
+	force = 0
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "colorballoon"
+	w_class = ITEMSIZE_LARGE
+	drop_sound = 'sound/items/drop/rubber.ogg'
+
+/// Balloon structures
+
+/obj/structure/balloon
+	name = "generic balloon"
+	desc = "A generic balloon. How boring."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "ghostballoon"
+	anchored = 0
+	density = 0
+
+/obj/structure/balloon/attack_hand(mob/user)
+	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+
+	if(user.a_intent == I_HELP)
+		user.visible_message("<span class='notice'><b>\The [user]</b> pokes [src]!</span>","<span class='notice'>You poke [src]!</span>")
+	else if (user.a_intent == I_HURT)
+		user.visible_message("<span class='warning'><b>\The [user]</b> punches [src]!</span>","<span class='warning'>You punch [src]!</span>")
+	else if (user.a_intent == I_GRAB)
+		user.visible_message("<span class='warning'><b>\The [user]</b> attempts to pop [src]!</span>","<span class='warning'>You attempt to pop [src]!</span>")
+	else
+		user.visible_message("<span class='notice'><b>\The [user]</b> lightly bats the [src].</span>","<span class='notice'>You lightly bat the [src].</span>")
+
+/obj/structure/balloon/random/New()
+	color = "#[get_random_colour()]"
+	..()
+
+/obj/item/toy/colorballoon/random/New()
+	color = "#[get_random_colour()]"
+	..()
+
+/obj/structure/balloon/bat
+	name = "giant bat balloon"
+	desc = "A large balloon in the shape of a spooky bat with orange eyes."
+	icon_state = "batballoon"
+
+/obj/structure/balloon/ghost
+	name = "giant ghost balloon"
+	desc = "Oh no, it's a ghost! Oh wait, it's just a balloon. Phew!"
+	icon_state = "ghostballoon"
+
 /*
  * Fake telebeacon
  */
@@ -539,7 +591,7 @@
 	name = "Assistant action figure"
 	desc = "A \"Space Life\" brand Assistant action figure."
 	icon_state = "assistant"
-	toysay = "Grey tide station wide!"
+	toysay = "Grey tide city wide!"
 
 /obj/item/toy/figure/atmos
 	name = "Atmospheric Technician action figure"
@@ -1439,3 +1491,47 @@
 
 /obj/item/toy/pet_rock/gold/attack_self(mob/user)
 	to_chat(user, "<span class='notice'>You caress \the [src] lovingly.</span>")
+
+/obj/item/toy/crystal_ball
+	name = "crystal ball"
+	desc = "A mystical crystal ball for predicting the fortune. Alt-click to change color."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "crystal-ball-base"
+	w_class = ITEMSIZE_TINY
+
+	var/crystal_color = "#77b39a"
+	var/crystal_type = "crystal-ball"
+
+	unique_save_vars = list("crystal_color")
+
+/obj/item/toy/crystal_ball/New()
+	..()
+	update_icon()
+
+/obj/item/toy/crystal_ball/AltClick(mob/living/user)
+	if(user.incapacitated() || !istype(user))
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		return
+	if(!in_range(src, user))
+		return
+
+	var/input_color = input(user, "Choose a dye color", "Dye Color") as color
+
+	if(user.incapacitated() || !istype(user) || !in_range(src, user))
+		return
+	if(input_color)
+		crystal_color = input_color
+		update_icon()
+
+/obj/item/toy/crystal_ball/update_icon()
+	overlays.Cut()
+
+	var/image/I = image(icon, "[crystal_type]")
+	I.color = crystal_color
+	overlays |= I
+
+	set_light(2, 2, crystal_color)
+
+/obj/item/toy/crystal_ball/random/New()
+	crystal_color = pick(list(COLOR_WHITE, COLOR_DARK_GRAY, COLOR_RED, COLOR_ORANGE, COLOR_YELLOW, COLOR_GREEN, COLOR_BLUE, COLOR_VIOLET))
+	..()

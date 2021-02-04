@@ -85,6 +85,17 @@
 	var/poster_type		//So mappers can specify a desired poster
 	var/ruined = 0
 
+	unique_save_vars = list("ruined", "desc", "name", "icon_state", "serial_number")
+
+/obj/structure/sign/poster/on_persistence_load()
+	var/datum/poster/design = poster_designs[serial_number]
+	set_poster(design)
+
+	if(ruined)
+		icon_state = "poster_ripped"
+		name = "ripped poster"
+		desc = "You can't make out anything from the poster's original print. It's ruined."
+
 /obj/structure/sign/poster/New(var/newloc, var/placement_dir=null, var/serial=null)
 	..(newloc)
 

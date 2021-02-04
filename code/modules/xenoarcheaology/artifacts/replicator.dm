@@ -19,6 +19,8 @@
 
 	var/fail_message
 
+	contraband_type = CONTRABAND_ARTIFACTSHARMFUL
+
 /obj/machinery/replicator/New()
 	..()
 
@@ -26,9 +28,8 @@
 	/obj/item/roller,
 	/obj/structure/closet/crate,
 	/obj/structure/closet/acloset,
-	/mob/living/simple_animal/hostile/mimic,
-	/mob/living/simple_animal/hostile/viscerator,
-	/mob/living/simple_animal/hostile/hivebot,
+	/mob/living/simple_mob/mechanical/viscerator,
+	/mob/living/simple_mob/mechanical/hivebot,
 	/obj/item/device/analyzer,
 	/obj/item/device/camera,
 	/obj/item/device/flash,

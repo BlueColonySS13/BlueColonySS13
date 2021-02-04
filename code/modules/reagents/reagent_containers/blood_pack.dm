@@ -27,6 +27,7 @@
 	var/label_text = ""
 
 	var/blood_type = null
+	var/reag_id = "blood"
 
 /obj/item/weapon/reagent_containers/blood/can_empty()
 	return TRUE
@@ -38,7 +39,7 @@
 	if(blood_type != null)
 		label_text = "[blood_type]"
 		update_iv_label()
-		reagents.add_reagent("blood", 200, list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=blood_type,"resistances"=null,"trace_chem"=null))
+		reagents.add_reagent(reag_id, 200, list("donor"=null,"viruses"=null,"blood_DNA"=null,"blood_type"=blood_type,"resistances"=null,"trace_chem"=null))
 		update_icon()
 
 /obj/item/weapon/reagent_containers/blood/on_reagent_change()
@@ -101,8 +102,16 @@
 	blood_type = "O+"
 
 /obj/item/weapon/reagent_containers/blood/OMinus
-	name= "Blood Pack (A-)"
+	name= "Blood Pack (O-)"
 	blood_type = "O-"
+
+/obj/item/weapon/reagent_containers/blood/synthplas
+	blood_type = "O-"
+	reag_id = "synthblood_dilute"
+
+/obj/item/weapon/reagent_containers/blood/synthblood
+	blood_type = "O-"
+	reag_id = "synthblood"
 
 /obj/item/weapon/reagent_containers/blood/empty
 	name = "Empty Blood Pack"

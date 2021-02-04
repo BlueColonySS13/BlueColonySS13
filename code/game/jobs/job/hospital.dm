@@ -12,7 +12,9 @@
 	selection_color = "#026865"
 	idtype = /obj/item/weapon/card/id/medical/head
 	req_admin_notify = 1
-	wage = 300
+	wage = 425
+	allows_synths = FALSE
+
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_external_airlocks, access_maint_tunnels)
@@ -33,7 +35,7 @@
 	return using_map.council_email
 
 /datum/job/doctor
-	title = "Physician"
+	title = "Doctor"
 
 	flag = DOCTOR
 	department_flag = MEDSCI
@@ -44,7 +46,9 @@
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/doctor
-	wage = 120
+	wage = 260
+	synth_wage = 120
+
 	minimum_character_age = 25
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
@@ -53,7 +57,8 @@
 		"Surgeon" = /decl/hierarchy/outfit/job/medical/doctor/surgeon,
 		"Emergency Physician" = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician,
 		"Nurse" = /decl/hierarchy/outfit/job/medical/doctor/nurse,
-		"Coroner" = /decl/hierarchy/outfit/job/medical/doctor/surgeon)
+		"Coroner" = /decl/hierarchy/outfit/job/medical/doctor/surgeon,
+		"Physician")
 
 	clean_record_required = TRUE
 
@@ -71,7 +76,9 @@
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/chemist
-	wage = 80
+	wage = 120
+	synth_wage = 80
+
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology)
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
 	alt_titles = list("Pharmacist")
@@ -93,7 +100,9 @@
 	supervisors = "your private company director"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/geneticist
-	wage = 60
+	wage = 160
+	synth_wage = 80
+
 	access = list(access_genetics)
 	minimal_access = list(access_genetics)
 
@@ -108,7 +117,9 @@
 	faction = "City"
 	total_positions = 4
 	spawn_positions = 1
-	wage = 70
+	wage = 170
+	synth_wage = 80
+
 	minimum_character_age = 25
 	supervisors = "the medical director"
 	selection_color = "#013D3B"
@@ -116,7 +127,7 @@
 	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
 	minimal_access = list(access_medical, access_medical_equip, access_psychiatrist)
 	outfit_type = /decl/hierarchy/outfit/job/medical/psychiatrist
-	alt_titles = list("Daycare Worker", "Therapist", "Social Worker", "Psychologist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist)
+	alt_titles = list("Psychotherapist", "Daycare Worker", "Therapist", "Social Worker", "Psychologist" = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist)
 
 	clean_record_required = TRUE
 
@@ -132,7 +143,9 @@
 	supervisors = "the medical director"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/intern
-	wage = 60
+	wage = 120
+	synth_wage = 60
+
 	minimum_character_age = 20
 	access = list(access_medical)
 	minimal_access = list(access_medical, access_maint_tunnels)
@@ -151,7 +164,9 @@
 	supervisors = "the medical director"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/medical/paramedic
-	wage = 90
+	wage = 220
+	synth_wage = 100
+
 	minimum_character_age = 20
 
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva)

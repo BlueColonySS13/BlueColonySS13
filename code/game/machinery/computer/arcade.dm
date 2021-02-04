@@ -34,6 +34,10 @@
 							/obj/item/toy/stickhorse						= 2
 							)
 	var/token_inserted = 0
+	var/requires_token = TRUE
+
+/obj/machinery/computer/arcade/free
+	requires_token = FALSE
 
 /obj/machinery/computer/arcade/New()
 	..()
@@ -42,7 +46,8 @@
 	if(!circuit)
 		var/choice = pick(typesof(/obj/item/weapon/circuitboard/arcade) - /obj/item/weapon/circuitboard/arcade)
 		var/obj/item/weapon/circuitboard/CB = new choice()
-		new CB.build_path(loc, CB)
+		var/obj/machinery/computer/arcade/new_arcade = new CB.build_path(loc, CB)
+		new_arcade.requires_token = requires_token
 		qdel(src)
 
 /obj/machinery/computer/arcade/proc/prizevend()
@@ -125,7 +130,7 @@
 /obj/machinery/computer/arcade/battle/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if(!token_inserted)
+	if(!token_inserted && requires_token)
 		to_chat(usr, "<span class='notice'>You cannot play \the [src] until you insert a token!</span>")
 	else
 		user.set_machine(src)

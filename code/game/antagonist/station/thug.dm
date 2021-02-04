@@ -1,4 +1,3 @@
-var/datum/antagonist/thug/thugs
 
 /datum/antagonist/thug
 	id = MODE_THUG
@@ -6,15 +5,12 @@ var/datum/antagonist/thug/thugs
 	role_text = "Thug"
 	role_text_plural = "Thugs"
 	bantype = "renegade"
-	restricted_jobs = list("AI", "Cyborg","Mayor","Chief of Police","Police Officer",\
-	"Prison Warden","Detective","Chief Medical Officer","Chief Engineer","Research Director","Judge")
-	welcome_text = "Sometimes, people just need to get messed up.Luckily, that's what you're here to do."
-	antag_text = "You are a <b>thug</b>! Within the server rules, do whatever it is \
-		that you came to the city to do, be it violence, drug dealing, theft, or \
-		just extreme self-defense. Try to make sure other players have <i>fun</i>! \
-		This role is for <b>crime breaking gang antics not murderboning.</b><br> \
-		<br>This is a <b>teamwork role</b>, roleplay with your fellow gang members \
-		and brainstorm what you will do. <b>AOOC</b> may be used."
+	restricted_jobs = list("Prisoner", "AI", "Cyborg","Mayor","City Clerk", "Chief of Police","Police Officer",\
+	"Prison Warden","Detective","Medical Director","Maintenance Director","Research Director","Judge")
+	welcome_text = "Sometimes, people just need to get messed up. Luckily, that's what you're here to do."
+	antag_text = "You are a <b>thug</b>! You work with other thugs who work together to do what thugs do, be it violence, drug dealing, theft, or \
+	just extreme self-defense. Try to make sure other players have fun! <b>This role is for crime breaking gang antics not murderboning.</b> \
+	This is a <b>teamwork role</b>, roleplay with your fellow gang members and brainstorm what you will do. AOOC may be used."
 	flags = ANTAG_SUSPICIOUS | ANTAG_IMPLANT_IMMUNE | ANTAG_RANDSPAWN | ANTAG_VOTABLE
 	can_speak_aooc = TRUE
 	can_hear_aooc = TRUE
@@ -22,6 +18,9 @@ var/datum/antagonist/thug/thugs
 	antag_indicator = "thug"
 	initial_spawn_req = 2
 	initial_spawn_target = 4
+	hard_cap = 8
+	police_per_antag = 2
+	minimum_player_age = 1
 
 	//Thugs get their own universal outfit, each round.
 	var/gang_gimmick = "biker_gang"
@@ -35,6 +34,10 @@ var/datum/antagonist/thug/thugs
 	var/accessory
 	var/weapon
 
+	allow_lobbyjoin = TRUE
+
+	var/list/all_thugs = list()
+
 /datum/antagonist/thug/New()
 	..()
 	pick_outfit()
@@ -43,12 +46,9 @@ var/datum/antagonist/thug/thugs
 	var/msg
 
 	msg += "<b>Your gang:</b><br>"
-	for (var/mob/living/carbon/human/C in mob_list)
+	for (var/mob/living/carbon/human/C in all_thugs)
 		if(C.mind.special_role == "Thug")
-			msg += "[nick] <b>[C.name]</b>, the [C.job]. <br>"
-
-	gang_mob << "[msg]"
-
+			to_chat(gang_mob, "[nick] <b>[C.name]</b>, the [C.job].")
 
 /datum/antagonist/thug/proc/pick_outfit()
 	//Picks a random outfit each round, so thugs have their identity.
@@ -91,9 +91,14 @@ var/datum/antagonist/thug/thugs
 	if(!..())
 		return
 
-	player << "<span class='danger'>You remember that you brought your uniform and weapons in a box with you - as discussed from a meeting with your gang...</span>"
+	all_thugs += player
+
+	get_gang(player)
+
+	to_chat(player, "<span class='danger'>You remember that you brought your uniform and weapons in a box with you - as discussed from a meeting with your gang...</span>")
 
 	var/obj/item/weapon/storage/box/kit = new(get_turf(player))
+	kit.make_nonpersistent() // box contents should be non-persistent, not just the box haha. no free gun for you.
 	kit.max_storage_space = 35
 	kit.max_w_class = 8
 	kit.name = "large strange kit"
@@ -119,3 +124,10 @@ var/datum/antagonist/thug/thugs
 
 
 
+/datum/antagonist/thug/unequip(var/mob/living/carbon/human/player)
+	if(!istype(player))
+		return 0
+
+	all_thugs -= player
+
+	return 1

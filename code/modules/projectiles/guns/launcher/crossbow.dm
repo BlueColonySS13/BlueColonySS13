@@ -11,12 +11,8 @@
 	sharp = 1
 	edge = 0
 
-
-	get_tax()
-		return WEAPONS_TAX
-
-	is_contraband()
-		return CONTRABAND_KNIFELARGE
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_KNIFELARGE
 
 
 /obj/item/weapon/arrow/proc/removed() //Helper for metal rods falling apart.
@@ -34,12 +30,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "metal-rod"
 	item_state = "bolt"
-
-	get_tax()
-		return WEAPONS_TAX
-
-	is_contraband()
-		return CONTRABAND_KNIFELARGE
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_KNIFELARGE
 
 
 /obj/item/weapon/arrow/quill
@@ -55,11 +47,8 @@
 	desc = "Don't cry for me, Orithena."
 	icon_state = "metal-rod"
 
-	get_tax()
-		return WEAPONS_TAX
-
-	is_contraband()
-		return CONTRABAND_KNIFELARGE
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_KNIFELARGE
 
 
 /obj/item/weapon/arrow/rod/removed(mob/user)
@@ -228,12 +217,8 @@
 
 	var/buildstate = 0
 
-	get_tax()
-		return WEAPONS_TAX
-
-	is_contraband()
-		return CONTRABAND_KNIFELARGE
-
+	tax_type = WEAPONS_TAX
+	contraband_type = CONTRABAND_KNIFELARGE
 
 /obj/item/weapon/crossbowframe/update_icon()
 	icon_state = "crossbowframe[buildstate]"

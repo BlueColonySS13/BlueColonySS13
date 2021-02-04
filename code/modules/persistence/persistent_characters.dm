@@ -44,6 +44,9 @@
 	mind.prefs.r_skin = r_skin
 	mind.prefs.g_skin = g_skin
 	mind.prefs.b_skin = b_skin
+	mind.prefs.r_grad = r_grad
+	mind.prefs.g_grad = g_grad
+	mind.prefs.b_grad = b_grad
 	mind.prefs.s_tone = s_tone
 	mind.prefs.h_style = h_style
 	mind.prefs.f_style = f_style
@@ -62,6 +65,29 @@
 	mind.prefs.weight = calories_to_weight(calories)
 	mind.prefs.nutrition = nutrition
 	mind.prefs.hydration = hydration
+
+	//ROBOLIMBS
+	for(var/limb in BP_ALL)
+		var/obj/item/organ/external/current_limb = organs_by_name[limb]
+
+		if(limb == "head")
+			//check for neural framework implant
+			if(!mind.prefs.cyber_control)
+				if(current_limb.contents.Find(/obj/item/weapon/implant/neural)) //If one was added during this round, save it
+					mind.prefs.cyber_control = TRUE
+
+		if(isnull(current_limb))
+			if((limb == "groin") || (limb == "head"))
+				//do nothing
+			else
+				mind.prefs.organ_data[limb] = "amputated"
+		else
+			if(current_limb.robotic)
+				if(istype(current_limb, /obj/item/organ/external/head))
+					if(!isSynthetic())
+						mind.prefs.organ_data[O_BRAIN] = "assisted"
+				mind.prefs.rlimb_data[current_limb.icon_name] = current_limb.model
+				mind.prefs.organ_data[current_limb.icon_name] = "cyborg"
 
 	if(police_record)
 		mind.prefs.crime_record = police_record.fields["crim_record"]

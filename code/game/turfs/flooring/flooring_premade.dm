@@ -53,7 +53,12 @@
 /turf/simulated/floor/carpet/tealcarpet
 	name = "teal carpet"
 	icon_state = "tealcarpet"
-	initial_flooring = /decl/flooring/carpet/oracarpet
+	initial_flooring = /decl/flooring/carpet/tealcarpet
+
+/turf/simulated/floor/carpet/blackcarpet
+	name = "black carpet"
+	icon_state = "blackcarpet"
+	initial_flooring = /decl/flooring/carpet/blackcarpet
 
 /turf/simulated/floor/bluegrid
 	name = "mainframe floor"
@@ -571,3 +576,8 @@
 /turf/simulated/floor/stairs/stairsdark/west
 	dir = 8
 	icon_state = "rampbottom"
+
+/turf/simulated/floor/glass_bottom
+	icon_state = "glass_bottom"
+	icon = 'icons/turf/flooring/misc.dmi'
+	initial_flooring = /decl/flooring/glass_bottom

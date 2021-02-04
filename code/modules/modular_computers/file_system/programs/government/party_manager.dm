@@ -12,7 +12,6 @@
 	name = "Official Party Management"
 	var/index = 0
 	var/page_msg
-	var/
 
 	var/user_uid
 	var/can_login
@@ -337,7 +336,7 @@
 
 		var/mob/living/carbon/human/H = usr
 
-		var/obj/item/weapon/card/id/I = H?.GetIdCard()
+		var/obj/item/weapon/card/id/I = H.GetIdCard()
 
 		if(!I)
 			return

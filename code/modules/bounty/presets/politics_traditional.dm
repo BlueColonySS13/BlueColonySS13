@@ -16,7 +16,7 @@
 	days_until_expiry = 6
 
 /datum/bounty/politics_traditional/gambling/check_for_completion()
-	if(persistent_economy && (0.10 >= persistent_economy.gambling_tax))
+	if(0.10 >= SSpersistent_options.get_persistent_option_value(GAMBLING_TAX))
 		return TRUE
 
 	return FALSE
@@ -37,7 +37,49 @@
 	days_until_expiry = 6
 
 /datum/bounty/politics_traditional/rich_tax/check_for_completion()
-	if(persistent_economy && (0.20 >= persistent_economy.tax_rate_upper))
+	if(0.20 >= SSpersistent_options.get_persistent_option_value(UPPER_TAX))
+		return TRUE
+
+	return FALSE
+
+
+/datum/bounty/politics_traditional/property_values
+	name = "Property Values"
+	author = "Carl Capiton"
+	description = "Property is the lifeblood ot profit, unfortunately some communinists believe it is their life's duty to tax and squat any hard-working \
+	person who dares to own and maintain land, we need to keep the housing tax low."
+
+	custom_requirement = "Have someone in power change the housing tax to be at or under 20%, once that is done this bounty will be a passive \
+	source of income to claim at any time."
+
+	department_reward = 1500
+	individual_reward = 450
+
+	days_until_expiry = 6
+
+
+/datum/bounty/politics_traditional/property_values/check_for_completion()
+	if(0.20 >= SSpersistent_options.get_persistent_option_value(PROPERTY_TAX))
+		return TRUE
+
+	return FALSE
+
+
+/datum/bounty/politics_traditional/minimum_wage
+	name = "Unsustainable Wages"
+	author = "Earl Pennington"
+	description = "The biggest issue when running an enterprise is paying your employees. Imagine Sol finger waggling us to keep their people coming here. Ha! \
+	Let's lower the minimum wage, Solarians do and will work for literally anything."
+
+	custom_requirement = "Have someone in power set the minimum wage to 10 credits and under."
+
+	department_reward = 700
+	individual_reward = 450
+
+	days_until_expiry = 6
+
+/datum/bounty/politics_traditional/minimum_wage/check_for_completion()
+	if(10 >= SSpersistent_options.get_persistent_option_value("minimum_wage"))
 		return TRUE
 
 	return FALSE

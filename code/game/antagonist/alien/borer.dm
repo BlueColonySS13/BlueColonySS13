@@ -5,7 +5,7 @@ var/datum/antagonist/borer/borers
 	role_type = BE_ALIEN
 	role_text = "Cortical Borer"
 	role_text_plural = "Cortical Borers"
-	mob_path = /mob/living/simple_animal/borer
+	mob_path = /mob/living/simple_mob/animal/borer
 	bantype = "Borer"
 	welcome_text = "Use your Infest power to crawl into the ear of a host and fuse with their brain. You can only take control temporarily, and at risk of hurting your host, so be clever and careful; your host is encouraged to help you however they can. Talk to your fellow borers with :x."
 	antag_indicator = "brainworm"
@@ -20,7 +20,7 @@ var/datum/antagonist/borer/borers
 	initial_spawn_req = 3
 	initial_spawn_target = 5
 
-	spawn_announcement = "Unidentified lifesigns detected coming aboard the station. Secure any exterior access, including ducting and ventilation."
+	spawn_announcement = "Unidentified lifesigns detected entering the city. Secure any exterior access, including ducting and ventilation."
 	spawn_announcement_title = "Lifesign Alert"
 	spawn_announcement_sound = 'sound/AI/aliens.ogg'
 	spawn_announcement_delay = 5000
@@ -40,7 +40,7 @@ var/datum/antagonist/borer/borers
 	player.objectives += new /datum/objective/escape()
 
 /datum/antagonist/borer/place_mob(var/mob/living/mob)
-	var/mob/living/simple_animal/borer/borer = mob
+	var/mob/living/simple_mob/animal/borer/borer = mob
 	if(istype(borer))
 		var/mob/living/carbon/human/host
 		for(var/mob/living/carbon/human/H in mob_list)

@@ -8,6 +8,8 @@
 	health = 200
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley
 	cargo_capacity = 10
+	icon_scale_x = 1.2
+	icon_scale_y = 1.2
 
 /obj/mecha/working/ripley/Destroy()
 	for(var/atom/movable/A in src.cargo)
@@ -67,4 +69,23 @@
 	for(var/obj/item/mecha_parts/mecha_tracking/B in src.contents)//Deletes the beacon so it can't be found easily
 		qdel (B)
 
+/obj/mecha/working/ripley/antique
+	name = "APLU \"Geiger\""
+	desc = "You can't beat the classics."
+	icon_state = "ripley-old"
+	initial_icon = "ripley-old"
 
+	show_pilot = TRUE
+	pilot_lift = 5
+
+	icon_scale_x = 1
+	icon_scale_y = 1
+
+//Meant for random spawns.
+/obj/mecha/working/ripley/mining/old
+	desc = "An old, dusty mining ripley."
+/obj/mecha/working/ripley/mining/old/New()
+	..()
+	health = 190
+	take_damage(165, "brute")
+	cell.charge = rand(0, cell.charge)

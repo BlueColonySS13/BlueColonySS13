@@ -11,13 +11,18 @@
 	var/datum/seed/seed
 	var/potency = -1
 	drop_sound = 'sound/items/drop/herb.ogg'
-
+	var/decay = 72 HOURS
+	var/decaytimer = 0
 	price_tag = 3
+	tax_type = AGRICULTURE_TAX
 
-	unique_save_vars = list("plantname", "potency", "bitecount")
+	unique_save_vars = list("plantname", "potency", "bitecount", "decay", "decaytimer", "dry")
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/on_persistence_load()
 	update_plant_info(loc, plantname)
+
+	if(!seed)
+		qdel(src)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/get_item_cost()
 	if(seed)
@@ -28,6 +33,21 @@
 /obj/item/weapon/reagent_containers/food/snacks/grown/New(newloc,planttype)
 	..()
 	update_plant_info(newloc,planttype)
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/process()
+	spawn(600) //golly, i hope i didn't have to sleep() it instead
+		if(decay)
+			if(decaytimer < decay)
+				if(istype(loc, /obj/machinery/smartfridge) || /obj/structure/closet/secure_closet/freezer)
+					decaytimer += 300
+				else if(isturf(loc))
+					decaytimer += 1200
+				else
+					decaytimer += 600
+
+			if(decaytimer >= decay)
+				new/obj/item/weapon/reagent_containers/food/snacks/badrecipe/rot(get_turf(src))
+				qdel(src)
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/proc/update_plant_info(newloc,planttype)
 	if(!dried_type)
@@ -56,6 +76,9 @@
 
 	name = "[seed.seed_name]"
 	trash = seed.get_trash_type()
+
+	tax_type = seed.tax_type
+	contraband_type = seed.contraband_type
 
 	update_icon()
 
@@ -250,7 +273,7 @@
 					user << "You slice up \the [src]."
 					var/slices = rand(3,5)
 					var/reagents_to_transfer = round(reagents.total_volume/slices)
-					for(var/i=i;i<=slices;i++)
+					for(var/i = 1 to slices)
 						var/obj/item/weapon/reagent_containers/food/snacks/fruit_slice/F = new(get_turf(src),seed)
 						if(reagents_to_transfer) reagents.trans_to_obj(F,reagents_to_transfer)
 					qdel(src)

@@ -1,5 +1,6 @@
 /datum/artifact_effect/gasco2
 	name = "CO2 creation"
+	contraband_level = CONTRABAND_ARTIFACTSHARMFUL
 
 /datum/artifact_effect/gasco2/New()
 	..()

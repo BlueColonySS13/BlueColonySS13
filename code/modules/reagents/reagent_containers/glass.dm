@@ -37,14 +37,15 @@
 		/obj/machinery/iv_drip,
 		/obj/machinery/disease2/incubator,
 		/obj/machinery/disposal,
-		/mob/living/simple_animal/cow,
-		/mob/living/simple_animal/retaliate/goat,
+		/mob/living/simple_mob/animal/passive/cow,
+		/mob/living/simple_mob/animal/goat,
 		/obj/machinery/computer/centrifuge,
 		/obj/machinery/sleeper,
 		/obj/machinery/smartfridge/,
 		/obj/machinery/biogenerator,
 		/obj/structure/frame,
-		/obj/machinery/radiocarbon_spectrometer
+		/obj/machinery/radiocarbon_spectrometer,
+		/obj/machinery/portable_atmospherics/powered/reagent_distillery
 		)
 
 /obj/item/weapon/reagent_containers/glass/New()
@@ -234,12 +235,15 @@
 	flags = OPENCONTAINER
 
 /obj/item/weapon/reagent_containers/glass/beaker/cryoxadone
+	name = "beaker (cryoxadone)"
 	prefill = list("cryoxadone" = 30)
 
 /obj/item/weapon/reagent_containers/glass/beaker/sulphuric
+	name = "beaker (sulphuric acid)"
 	prefill = list("sacid" = 60)
 
 /obj/item/weapon/reagent_containers/glass/beaker/radium
+	name = "beaker (radium)"
 	prefill = list("radium" = 60)
 
 /obj/item/weapon/reagent_containers/glass/bucket
