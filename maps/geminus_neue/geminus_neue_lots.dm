@@ -97,7 +97,7 @@
 
 //stalls
 /datum/lot/stall
-	price = 2500
+	price = 9000
 	desc = "A tiny set of tiny stalls intended for a small business."
 	max_tenants = 1
 
