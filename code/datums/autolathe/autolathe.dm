@@ -29,10 +29,18 @@ var/datum/category_collection/crafting/autolathe/autolathe_recipes
 		if(!the_material)
 			continue
 
-		var/cost = (the_material.worth * resources[MAT]) / 8 // stuff's a tiny bit expensive to curb inflation, so i'll set it to 8 until inflation hits Venezuela levels
+		var/cost = (the_material.worth * resources[MAT]) / 9 // stuff's a tiny bit expensive to curb inflation, so i'll set it to 9 until inflation hits Venezuela levels
 		price += cost
 
 	return round(price)
+
+/datum/category_item/crafting/proc/get_tax()
+	var/obj/tmp = path
+	var/the_tax = initial(tmp.tax_type)
+
+	return the_tax
+
+
 
 /****************************
 * Category Collection Setup *
@@ -92,10 +100,11 @@ var/datum/category_collection/crafting/autolathe/autolathe_recipes
 	var/prefix = ""
 	var/suffix = ""
 
-	var/force_matter = list()	// we're forcing how much this is going to be. an override
+	var/force_matter = list()		// we're forcing how much this is going to be. an override
+	var/material_id = ""			 // if you put an id of a material, it will try to override the material of the object
 
 	var/override_color
-	var/show_commercially = TRUE // if false, won't show on commercial units
+	var/show_commercially = TRUE 		// if false, won't show on commercial units
 
 
 /datum/category_item/crafting/dd_SortValue()

@@ -156,7 +156,7 @@ proc/random_outfit(var/mob/living/carbon/human/M)
 
 		if ("white")
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/blue(M), slot_shoes)
-			M.equip_to_slot_or_del(new /obj/item/clothing/under/sundress_white(M), slot_w_uniform)
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/dress/sundress/sundress_white(M), slot_w_uniform)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(M), slot_glasses)
 
 		if ("azn")
@@ -203,7 +203,7 @@ proc/random_outfit(var/mob/living/carbon/human/M)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/prescription(M), slot_glasses)
 		if ("floral_dress_woman")
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/purple(M), slot_shoes)
-			M.equip_to_slot_or_del(new /obj/item/clothing/under/sundress_white(M), slot_w_uniform)
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/dress/sundress/sundress_white(M), slot_w_uniform)
 			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/toggle/hoodie/yellow(M), slot_wear_suit)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/prescription(M), slot_glasses)
 

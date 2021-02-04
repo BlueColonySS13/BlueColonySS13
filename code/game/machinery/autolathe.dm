@@ -375,9 +375,14 @@
 
 			// Transfer the money
 
-			charge_to_account(bank_id, "[D.owner_name]'s [name]", "[making.name] x[print_multiplier]", name, -transaction_amount)
-			charge_to_account(bank_id, "[D.owner_name]'s [name]", "[making.name] x[print_multiplier]", name, transaction_amount)
+			var/tax_amount = SSpersistent_options.get_persistent_option_value(making.get_tax())
+			var/tax_subtract = (transaction_amount * tax_amount)
+			var/post_tax_amount = transaction_amount - tax_subtract
 
+			SSeconomy.charge_main_department(tax_subtract, "[D.owner_name]'s [src] Tax Transfer: [making.name]")
+
+			charge_to_account(D.account_number, "[D.owner_name]'s [name]", "[making.name] x[print_multiplier]", name, -transaction_amount)
+			charge_to_account(bank_id, "[D.owner_name]'s [name]", "[making.name] x[print_multiplier][tax_amount ? " (After [tax_amount * 100]% tax)" : ""]", name, post_tax_amount)
 
 
 		sanitize_integer(multiplier, 1, 100, 1)
@@ -418,12 +423,18 @@
 			if(LAZYLEN(making.force_matter))			// forces the matter list to be something else.
 				I.matter = making.force_matter
 
+
 			if(making.prefix)
 				I.name = "[making.prefix] [I.name]"
 			if(making.suffix)
 				I.name = "[I.name] [making.suffix]"
 			if(making.override_color)
 				I.color = making.override_color
+
+			if(istype(I, /obj/item/weapon/material) && making.material_id)
+				var/obj/item/weapon/material/mat_item = I
+				mat_item.material = get_material_by_name(making.material_id)
+				mat_item.update_icon()
 
 			if(multiplier > 1 && istype(I, /obj/item/stack))
 				var/obj/item/stack/S = I
