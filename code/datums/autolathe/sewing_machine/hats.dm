@@ -91,3 +91,9 @@
 	path = /obj/item/clothing/head/blackngoldheaddress
 	force_matter = list("silk" = 410)
 
+/datum/category_item/crafting/sewing_machine/hats/darkhelmet
+	name = "dark helmet"
+	path = /obj/item/clothing/head/helmet/darkhelmet
+	force_matter = list("cotton" = 1810)
+
+
