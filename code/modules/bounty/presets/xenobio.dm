@@ -126,7 +126,6 @@
 
 	days_until_expiry = 2
 
-/*
 /datum/bounty/xenobio/uranium_fever
 	name = "Uranium Fever"
 	author = "Goop LLC."
@@ -139,7 +138,7 @@
 	individual_reward = 430
 
 	days_until_expiry = 2
-*/
+
 /datum/bounty/xenobio/healing_goop
 	name = "Healing Goop"
 	author = "Goop LLC."
@@ -166,7 +165,6 @@
 
 	days_until_expiry = 2
 
-/*
 /datum/bounty/xenobio/slime_snax
 	name = "Slime Snax"
 	author = "Goop LLC."
@@ -179,7 +177,6 @@
 	individual_reward = 510
 
 	days_until_expiry = 2
-*/
 
 /datum/bounty/xenobio/project_promethean
 	name = "Project Promethean"
