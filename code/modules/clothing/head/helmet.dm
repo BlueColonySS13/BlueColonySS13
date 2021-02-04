@@ -54,7 +54,7 @@
 	icon_state = "helmet_tac"
 	armor = list(melee = 50, bullet = 60, laser = 60, energy = 45, bomb = 30, bio = 0, rad = 0)
 	siemens_coefficient = 0.6
-	
+
 /obj/item/clothing/head/helmet/tacnav
 	name = "tactical helmet"
 	desc = "A navy helmet made from advanced ceramic. Comfortable and robust."
@@ -157,6 +157,12 @@
 	item_state_slots = list(slot_r_hand_str = "vhelmet", slot_l_hand_str = "vhelmet")
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES
+	siemens_coefficient = 1
+	valid_accessory_slots = null
+
+/obj/item/clothing/head/helmet/darkhelmet
+	name = "dark helmet"
+	icon_state = "darkhelmet"
 	siemens_coefficient = 1
 	valid_accessory_slots = null
 

@@ -18,6 +18,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["facial_red"]			>> pref.r_facial
 	S["facial_green"]		>> pref.g_facial
 	S["facial_blue"]		>> pref.b_facial
+	S["grad_style"]			>> pref.grad_style
 	S["grad_red"]			>> pref.r_grad
 	S["grad_green"]			>> pref.g_grad
 	S["grad_blue"]			>> pref.b_grad
@@ -57,6 +58,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["facial_red"]			<< pref.r_facial
 	S["facial_green"]		<< pref.g_facial
 	S["facial_blue"]		<< pref.b_facial
+	S["grad_style"]		<< pref.grad_style
 	S["grad_red"]			<< pref.r_grad
 	S["grad_green"]		<< pref.g_grad
 	S["grad_blue"]			<< pref.b_grad
@@ -95,6 +97,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.r_facial = null
 	pref.g_facial = null
 	pref.b_facial = null
+	pref.grad_style = null
 	pref.r_grad = null
 	pref.g_grad = null
 	pref.b_grad = null
@@ -136,6 +139,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.r_facial			= sanitize_integer(pref.r_facial, 0, 255, initial(pref.r_facial))
 	pref.g_facial			= sanitize_integer(pref.g_facial, 0, 255, initial(pref.g_facial))
 	pref.b_facial			= sanitize_integer(pref.b_facial, 0, 255, initial(pref.b_facial))
+	pref.grad_style		= sanitize_inlist(pref.grad_style, GLOB.hair_gradients, initial(pref.grad_style))
 	pref.r_grad			= sanitize_integer(pref.r_grad, 0, 255, initial(pref.r_grad))
 	pref.g_grad			= sanitize_integer(pref.g_grad, 0, 255, initial(pref.g_grad))
 	pref.b_grad			= sanitize_integer(pref.b_grad, 0, 255, initial(pref.b_grad))
@@ -180,6 +184,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.r_facial	= pref.r_facial
 	character.g_facial	= pref.g_facial
 	character.b_facial	= pref.b_facial
+	character.grad_style	= pref.grad_style
 	character.r_grad	= pref.r_grad
 	character.g_grad	= pref.g_grad
 	character.b_grad	= pref.b_grad
@@ -191,7 +196,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.s_tone	= pref.s_tone
 	character.h_style	= pref.h_style
 	character.f_style	= pref.f_style
-	character.grad_style = pref.grad_style
 	character.b_type	= pref.b_type
 	character.synth_color = pref.synth_color
 	character.r_synth	= pref.r_synth

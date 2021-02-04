@@ -3,7 +3,7 @@
 /datum/category_item/crafting/sewing_machine/suits
 	force_matter = list("leather" = 2400)
 
-// suits
+// jackets
 
 /datum/category_item/crafting/sewing_machine/suits/coat
 	name = "leather coat"
@@ -100,6 +100,11 @@
 	override_color = COLOR_BROWN
 	force_matter = list("cotton" = 3850)
 
+/datum/category_item/crafting/sewing_machine/suits/greatcoat
+	name = "great coat"
+	path = /obj/item/clothing/suit/greatcoat
+	force_matter = list("cotton" = 4000)
+
 /datum/category_item/crafting/sewing_machine/suits/jacket
 	name = "denim jacket"
 	path = /obj/item/clothing/suit/storage/toggle/denim_jacket
@@ -117,6 +122,17 @@
 	name = "denim nanotrasen sleeveless jacket"
 	path = /obj/item/clothing/suit/storage/toggle/denim_jacket/nanotrasen/sleeveless
 
+// coats
+
+/datum/category_item/crafting/sewing_machine/suits/puffer
+	name = "puffer jacket"
+	path = /obj/item/clothing/suit/jacket/puffer
+	force_matter = list("cotton" = 300, "silk" = 600)
+
+/datum/category_item/crafting/sewing_machine/suits/puffer/vest
+	name = "puffer jacket vest"
+	path = /obj/item/clothing/suit/jacket/puffer/vest
+	force_matter = list("cotton" = 100, "silk" = 300)
 
 // suits
 

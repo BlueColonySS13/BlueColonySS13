@@ -94,6 +94,108 @@
 	name = "gown"
 	path = /obj/item/clothing/under/wedding/whitegown
 
+// dresses
+/datum/category_item/crafting/sewing_machine/dresses/sundress/redcoat
+	name = "red coat"
+	path = /obj/item/clothing/under/redcoat
+
+/datum/category_item/crafting/sewing_machine/dresses/black_corset
+	name = "black corset"
+	path = /obj/item/clothing/under/dress/black_corset
+
+/datum/category_item/crafting/sewing_machine/dresses/blacktango
+	name = "black tango dress"
+	path = /obj/item/clothing/under/dress/blacktango
+
+/datum/category_item/crafting/sewing_machine/dresses/blacktango/alt
+	name = "alternative black tango dress"
+	path = /obj/item/clothing/under/dress/blacktango/alt
+
+/datum/category_item/crafting/sewing_machine/dresses/bluedress
+	name = "blue dress"
+	path = /obj/item/clothing/under/dress/bluedress
+
+/datum/category_item/crafting/sewing_machine/dresses/club
+	name = "club dress"
+	path = /obj/item/clothing/under/dress/club
+
+/datum/category_item/crafting/sewing_machine/dresses/cropdress
+	name = "crop dress"
+	path = /obj/item/clothing/under/dress/cropdress
+
+/datum/category_item/crafting/sewing_machine/dresses/darkred
+	name = "dark red dress"
+	path = /obj/item/clothing/under/dress/darkred
+
+/datum/category_item/crafting/sewing_machine/dresses/diva
+	name = "diva dress"
+	path = /obj/item/clothing/under/dress/diva
+
+/datum/category_item/crafting/sewing_machine/dresses/fire
+	name = "fire dress"
+	path = /obj/item/clothing/under/dress/dress_fire
+
+/datum/category_item/crafting/sewing_machine/dresses/green
+	name = "green dress"
+	path = /obj/item/clothing/under/dress/dress_green
+
+/datum/category_item/crafting/sewing_machine/dresses/dress_hr
+	name = "human resources dress"
+	path = /obj/item/clothing/under/dress/dress_hr
+
+/datum/category_item/crafting/sewing_machine/dresses/dress_orange
+	name = "orange dress"
+	path = /obj/item/clothing/under/dress/dress_orange
+
+/datum/category_item/crafting/sewing_machine/dresses/dress_pink
+	name = "pink dress"
+	path = /obj/item/clothing/under/dress/dress_pink
+
+/datum/category_item/crafting/sewing_machine/dresses/dress_saloon
+	name = "saloon dress"
+	path = /obj/item/clothing/under/dress/dress_saloon
+
+/datum/category_item/crafting/sewing_machine/dresses/dress_yellow
+	name = "yellow dress"
+	path = /obj/item/clothing/under/dress/dress_yellow
+
+/datum/category_item/crafting/sewing_machine/dresses/dress_festive
+	name = "festive dress"
+	path = /obj/item/clothing/under/dress/festivedress
+
+/datum/category_item/crafting/sewing_machine/dresses/dress_flamenco
+	name = "flamenco dress"
+	path = /obj/item/clothing/under/dress/flamenco
+
+/datum/category_item/crafting/sewing_machine/dresses/flower_dress
+	name = "flower dress"
+	path = /obj/item/clothing/under/dress/flower_dress
+
+/datum/category_item/crafting/sewing_machine/dresses/lilacdress
+	name = "lilac dress"
+	path = /obj/item/clothing/under/dress/lilacdress
+
+/datum/category_item/crafting/sewing_machine/dresses/littleblackdress
+	name = "little black dress"
+	path = /obj/item/clothing/under/dress/littleblackdress
+
+/datum/category_item/crafting/sewing_machine/dresses/polka
+	name = "polka dress"
+	path = /obj/item/clothing/under/dress/polka
+
+/datum/category_item/crafting/sewing_machine/dresses/sailordress
+	name = "sailor dress"
+	path = /obj/item/clothing/under/dress/sailordress
+
+/datum/category_item/crafting/sewing_machine/dresses/westernbustle
+	name = "western bustle"
+	path = /obj/item/clothing/under/dress/westernbustle
+
+/datum/category_item/crafting/sewing_machine/dresses/haltertop
+	name = "halter top"
+	path = /obj/item/clothing/under/haltertop
+
+
 // preset dresses
 /datum/category_item/crafting/sewing_machine/dresses/wench
 	name = "wench dress"
@@ -141,9 +243,14 @@
 	name = "black victorian dress"
 	path = /obj/item/clothing/under/victorian/dress
 	force_matter = list("silk" = 4230)
+
 /datum/category_item/crafting/sewing_machine/dresses/victorian_dress/red
 	name = "red victorian dress"
 	path = /obj/item/clothing/under/victorian/dress/red
+
+/datum/category_item/crafting/sewing_machine/dresses/victorian_dress/spider
+	name = "spider victorian dress"
+	path = /obj/item/clothing/under/victorian/dress/spider
 
 
 /datum/category_item/crafting/sewing_machine/dresses/sari
@@ -182,6 +289,67 @@
 	name = "black and gold gown"
 	path = /obj/item/clothing/under/blackngold
 
+/datum/category_item/crafting/sewing_machine/dresses/sundress
+	name = "sundress"
+	path = /obj/item/clothing/under/dress/sundress
+
+/datum/category_item/crafting/sewing_machine/dresses/sundress/plain
+	name = "sundress (plain)"
+	path = /obj/item/clothing/under/dress/sundress/sundress_plain
+
+/datum/category_item/crafting/sewing_machine/dresses/sundress/pink
+	name = "sundress (pink)"
+	path = /obj/item/clothing/under/dress/sundress/sundress_pink
+
+/datum/category_item/crafting/sewing_machine/dresses/sundress/pink_bow
+	name = "sundress (bowed pink)"
+	path = /obj/item/clothing/under/dress/sundress/sundress_pinkbow
+
+/datum/category_item/crafting/sewing_machine/dresses/sundress/blue
+	name = "sundress (blue)"
+	path = /obj/item/clothing/under/dress/sundress/sundress_blue
+
+/datum/category_item/crafting/sewing_machine/dresses/sundress/pinkshort
+	name = "sundress (short pink)"
+	path = /obj/item/clothing/under/dress/sundress/sundress_pinkshort
+
+
+/datum/category_item/crafting/sewing_machine/dresses/gothic2
+	name = "lacey gothic dress"
+	path = /obj/item/clothing/under/dress/gothic2
+
+/datum/category_item/crafting/sewing_machine/dresses/cheongsam
+	name = "cheongsam"
+	path = /obj/item/clothing/under/cheongsam
+	force_matter = list("silk" = 3550)
+
+/datum/category_item/crafting/sewing_machine/dresses/cheongsam/red
+	name = "cheongsam (red)"
+	path = /obj/item/clothing/under/cheongsam/red
+
+/datum/category_item/crafting/sewing_machine/dresses/cheongsam/blue
+	name = "cheongsam (blue)"
+	path = /obj/item/clothing/under/cheongsam/blue
+
+/datum/category_item/crafting/sewing_machine/dresses/cheongsam/black
+	name = "cheongsam (black)"
+	path = /obj/item/clothing/under/cheongsam/black
+
+/datum/category_item/crafting/sewing_machine/dresses/cheongsam/darkred
+	name = "cheongsam (dark red)"
+	path = /obj/item/clothing/under/cheongsam/darkred
+
+/datum/category_item/crafting/sewing_machine/dresses/cheongsam/green
+	name = "cheongsam (green)"
+	path = /obj/item/clothing/under/cheongsam/green
+
+/datum/category_item/crafting/sewing_machine/dresses/cheongsam/purple
+	name = "cheongsam (purple)"
+	path = /obj/item/clothing/under/cheongsam/purple
+
+/datum/category_item/crafting/sewing_machine/dresses/cheongsam/darkblue
+	name = "cheongsam (dark blue)"
+	path = /obj/item/clothing/under/cheongsam/darkblue
 
 // skirts
 
@@ -211,3 +379,28 @@
 /datum/category_item/crafting/sewing_machine/dresses/pleated_skirt
 	name = "pleated skirt"
 	path = /obj/item/clothing/under/skirt/pleated
+
+// crops
+/datum/category_item/crafting/sewing_machine/dresses/twopiece
+	name = "two-piece dress"
+	path = /obj/item/clothing/under/dress/twopiece
+
+/datum/category_item/crafting/sewing_machine/dresses/croptop
+	name = "crop top"
+	path = /obj/item/clothing/under/croptop
+
+/datum/category_item/crafting/sewing_machine/dresses/croptop/red
+	name = "crop top (red)"
+	path = /obj/item/clothing/under/croptop/red
+
+/datum/category_item/crafting/sewing_machine/dresses/croptop/grey
+	name = "crop top (grey)"
+	path = /obj/item/clothing/under/croptop/grey
+
+/datum/category_item/crafting/sewing_machine/dresses/cuttop
+	name = "cut top"
+	path = /obj/item/clothing/under/cuttop
+
+/datum/category_item/crafting/sewing_machine/dresses/cuttop/red
+	name = "cut top (red)"
+	path = /obj/item/clothing/under/cuttop/red

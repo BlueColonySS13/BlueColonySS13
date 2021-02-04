@@ -16,7 +16,6 @@
 	slime_mutation = list(
 			/mob/living/simple_mob/slime/xenobio/dark_purple,
 			/mob/living/simple_mob/slime/xenobio/dark_blue,
-			/mob/living/simple_mob/slime/xenobio/green,
 			/mob/living/simple_mob/slime/xenobio
 		)
 
@@ -146,7 +145,8 @@
 			/mob/living/simple_mob/slime/xenobio/bluespace,
 			/mob/living/simple_mob/slime/xenobio/bluespace,
 			/mob/living/simple_mob/slime/xenobio/metal,
-			/mob/living/simple_mob/slime/xenobio/orange
+			/mob/living/simple_mob/slime/xenobio/orange,
+			/mob/living/simple_mob/slime/xenobio/green
 		)
 
 /mob/living/simple_mob/slime/xenobio/yellow/apply_melee_effects(atom/A)
@@ -287,8 +287,6 @@
 	slime_mutation = list(
 			/mob/living/simple_mob/slime/xenobio/metal,
 			/mob/living/simple_mob/slime/xenobio/blue,
-			/mob/living/simple_mob/slime/xenobio/amber,
-			/mob/living/simple_mob/slime/xenobio/amber
 		)
 
 /mob/living/simple_mob/slime/xenobio/silver/bullet_act(var/obj/item/projectile/P, var/def_zone)
@@ -450,7 +448,7 @@
 			continue
 		if(istype(L, /mob/living/simple_mob/slime/xenobio))
 			var/mob/living/simple_mob/slime/xenobio/X = L
-			X.adjust_nutrition(rand(15, 25))
+			X.adjust_nutrition(rand(2, 5))
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
 			if(H.isSynthetic())
@@ -507,9 +505,9 @@
 	coretype = /obj/item/slime_extract/green
 	glow_toggle = TRUE
 	reagent_injected = "radium"
-	var/rads = 25
+	var/rads = 1
 
-	description_info = "This slime will irradiate anything nearby passively, and will inject radium on attack.  \
+	description_info = "This slime will cause plants to randomly mutate, and will inject radium on attack.  \
 	A radsuit or other thick and radiation-hardened armor can protect from this.  It will only radiate while alive."
 	player_msg = "You <b>passively irradiate your surroundings</b>.<br>\
 	You also inject radium on attack."
@@ -528,6 +526,9 @@
 
 /mob/living/simple_mob/slime/xenobio/green/proc/irradiate()
 	SSradiation.radiate(src, rads)
+	for(var/obj/machinery/portable_atmospherics/hydroponics/G in range(7,src))
+		G.mutation_level++
+		G.toxins += 0.1
 
 
 
@@ -599,7 +600,8 @@
 			/mob/living/simple_mob/slime/xenobio/metal,
 			/mob/living/simple_mob/slime/xenobio/gold,
 			/mob/living/simple_mob/slime/xenobio/sapphire,
-			/mob/living/simple_mob/slime/xenobio/sapphire
+			/mob/living/simple_mob/slime/xenobio/sapphire,
+			/mob/living/simple_mob/slime/xenobio/amber
 		)
 
 /mob/living/simple_mob/slime/xenobio/gold/slimebatoned(mob/living/user, amount)
@@ -709,8 +711,6 @@
 	description_info = "This slime will make everything around it, and itself, faster for a few seconds, if close by."
 
 	slime_mutation = list(
-		/mob/living/simple_mob/slime/xenobio/green,
-		/mob/living/simple_mob/slime/xenobio/green,
 		/mob/living/simple_mob/slime/xenobio/emerald,
 		/mob/living/simple_mob/slime/xenobio/emerald
 	)

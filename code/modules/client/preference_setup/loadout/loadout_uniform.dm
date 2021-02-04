@@ -264,14 +264,6 @@
 	display_name = "old woman attire"
 	path = /obj/item/clothing/under/oldwoman
 
-/datum/gear/uniform/sundress
-	display_name = "sundress"
-	path = /obj/item/clothing/under/sundress
-
-/datum/gear/uniform/sundress/white
-	display_name = "sundress, white"
-	path = /obj/item/clothing/under/sundress_white
-
 /datum/gear/uniform/dress_fire
 	display_name = "flame dress"
 	path = /obj/item/clothing/under/dress/dress_fire
@@ -388,6 +380,31 @@
 		var/obj/item/clothing/under/victorian/victorian_type = victorian
 		victorians[initial(victorian_type.name)] = victorian_type
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(victorians))
+
+
+/datum/gear/uniform/orangedress
+	display_name = "orange dress"
+	path = /obj/item/clothing/under/dress/dress_orange
+
+/datum/gear/uniform/sundress
+	display_name = "sundress collection"
+	path = /obj/item/clothing/under/dress/sundress
+
+/datum/gear/uniform/sundress/New()
+	..()
+	var/list/sundresses = list()
+	for(var/sundress in typesof(/obj/item/clothing/under/dress/sundress))
+		var/obj/item/clothing/under/dress/sundress/sundress_type = sundress
+		sundresses[initial(sundress_type.name)] = sundress_type
+	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(sundresses))
+
+/datum/gear/uniform/twopiece
+	display_name = "two-piece dress"
+	path = /obj/item/clothing/under/dress/twopiece
+
+/datum/gear/uniform/gothic2
+	display_name = "lacey gothic dress"
+	path = /obj/item/clothing/under/dress/gothic2
 
 /datum/gear/uniform/utility
 	display_name = "utility, black"
