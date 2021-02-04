@@ -505,7 +505,7 @@
 	coretype = /obj/item/slime_extract/green
 	glow_toggle = TRUE
 	reagent_injected = "radium"
-	var/rads = 5
+	var/rads = 1
 
 	description_info = "This slime will cause plants to randomly mutate, and will inject radium on attack.  \
 	A radsuit or other thick and radiation-hardened armor can protect from this.  It will only radiate while alive."
