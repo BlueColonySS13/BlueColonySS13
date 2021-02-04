@@ -62,9 +62,8 @@ var/global/list/globalBlankCanvases[AMT_OF_CANVASES]
 	var/pixY			//last Y of click
 
 	var/image_id
-	var/allow_upload = FALSE // admin mod var for alt-click to upload pictures.
 
-	unique_save_vars = list("image_id") // makes the imagine persistent
+	unique_save_vars = list("image_id", "desc") // makes the imagine persistent
 
 /obj/item/weapon/canvas/on_persistence_save()
 	if(!image_id) // If it already has an image_id, it got saved before, so don't make duplicates.
@@ -173,34 +172,15 @@ var/global/list/globalBlankCanvases[AMT_OF_CANVASES]
 /obj/item/weapon/canvas/attack_self(var/mob/user)
 	if(!user)
 		return
+	var/confirm = alert(src, "Would you like to clear the canvas?.", "Clear Canvas", "Yes", "No")
+	if(confirm != "Yes")
+		return
+
 	var/icon/blank = getGlobalBackup()
 	if(blank)
 		//it's basically a giant etch-a-sketch
 		icon = blank
 		user.visible_message("<span class='notice'>[user] cleans the canvas.</span>","<span class='notice'>You clean the canvas.</span>")
-
-/obj/item/weapon/canvas/proc/upload_image(img as file, mob/uploader)
-	if(!allow_upload)
-		return
-
-	if (isnull(img))
-		return
-
-	var/icon/I = img
-
-	icon = I.Crop(1,1,32,32)
-
-/obj/item/weapon/canvas/AltClick(mob/living/user)
-	if(!allow_upload)
-		return
-	if(user.incapacitated() || !istype(user))
-		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
-		return
-	if(!in_range(src, user))
-		return
-
-	upload_image(uploader = user)
-	allow_upload = FALSE
 
 
 /obj/item/weapon/canvas/afterattack(var/turf/A, var/mob/user, var/flag, var/params)

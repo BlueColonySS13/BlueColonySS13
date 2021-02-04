@@ -190,7 +190,7 @@
 
 /obj/item/weapon/card/id/centcom/initialize()
 	. = ..()
-	access = get_all_centcom_access()
+	access += get_all_centcom_access()
 
 /obj/item/weapon/card/id/centcom/station/initialize()
 	. = ..()
@@ -202,34 +202,52 @@
 
 /obj/item/weapon/card/id/nanotrasen/initialize()
 	. = ..()
-	access += get_all_centcom_access()
-	access += get_all_station_access()
+	access |= get_all_station_access()
 
 /obj/item/weapon/card/id/nanotrasen/ntrep
-	name = "\improper NanoTrasen Representative ID"
-	desc = "An ID for NanoTrasen representatives. You can smell the pompous."
+	name = "\improper Government Representative ID"
+	desc = "An ID for Government Representative. You can smell the pompous."
 	job_access_type = /datum/job/nanotrasen
+	rank = "Government Representative"
 
 /obj/item/weapon/card/id/nanotrasen/pdsi
-	name = "\improper CBIA Agent ID"
-	desc = "An ID straight from NanoTrasen for the CBIA."
+	name = "\improper PDSI Agent ID"
+	desc = "An ID straight from NanoTrasen for the PDSI."
 	job_access_type = /datum/job/nanotrasen/pdsi
+	rank = "Government Representative"
 
 /obj/item/weapon/card/id/nanotrasen/president
 	name = "\improper President's ID"
 	desc = "An ID that reeks of appointed entitlement. For the president, naturally."
 	job_access_type = /datum/job/nanotrasen/president
+	rank = "President"
 
 /obj/item/weapon/card/id/nanotrasen/ceo
 	name = "\improper NanoTrasen CEO's ID"
 	desc = "The head honcho themselves. This has access to anything that exists under the colonies."
 	job_access_type = /datum/job/nanotrasen/ceo
+	rank = "Nanotrasen CEO"
+
+/obj/item/weapon/card/id/nanotrasen/governor
+	name = "\improper Governor's ID"
+	desc = "An ID for the city cler- assigned Governor of the colony."
+	job_access_type = /datum/job/nanotrasen/governor
+	rank = "Governor"
 
 /obj/item/weapon/card/id/nanotrasen/advisor
 	name = "\improper Advisor's ID"
 	desc = "The president's advisors wear these, for whatever they actually do?"
 	job_access_type = /datum/job/nanotrasen/advisor
 
+/obj/item/weapon/card/id/nanotrasen/advisor/initialize()
+	. = ..()
+	access |= list(access_advisor, access_cent_general)
+
+/obj/item/weapon/card/id/nanotrasen/justice
+	name = "\improper Supreme Justice's ID"
+	desc = "The high decider."
+	job_access_type = /datum/job/nanotrasen/supreme_justice
+	rank = "Supreme Justice"
 
 // Emergency response team IDs
 

@@ -88,7 +88,7 @@
 	if(SSbusiness)
 		var/datum/business/B = get_business_by_owner_uid(client.prefs.unique_id)
 		if(B)
-			output += "<b>Business Funds:</b> [cash2text( B.get_funds(), FALSE, TRUE, TRUE )] credits<br>"
+			output += "Business Funds: <b>[cash2text( B.get_funds(), FALSE, TRUE, TRUE )]</b><br>"
 	if(SSpersistent_options && SSpersistent_options.get_persistent_formatted_value("president_msg"))
 		output += "<b>President Broadcast:</b><br>"
 		output += "<div class='statusDisplay'>[SSpersistent_options.get_persistent_formatted_value("president_msg")]</div><br>"

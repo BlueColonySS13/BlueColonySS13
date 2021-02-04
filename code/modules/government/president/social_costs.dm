@@ -2,9 +2,11 @@
 /datum/persistent_option/number_value/social_cost
 	var_to_edit = "value"
 	portal_category = "Social Costs"
-	value_is_money = TRUE
 	portal_grouping = "Social Services"
 
+	min_value = 0
+	max_value = 10000
+	value_is_money = TRUE
 
 /datum/persistent_option/number_value/social_cost/food_stamps_wage
 	name = "Food Stamp Eligibility Wage"

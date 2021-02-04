@@ -128,9 +128,9 @@ var/datum/planet/pollux/planet_pollux = null
 		WEATHER_CARPNADO 	= new /datum/weather/pollux/carpnado(),
 		WEATHER_BLOOD_MOON	= new /datum/weather/pollux/blood_moon(),
 		WEATHER_EARTHQUAKE	= new /datum/weather/pollux/earthquake(),
-//		WEATHER_EMBERFALL	= new /datum/weather/pollux/emberfall(),
-//		WEATHER_ASH_STORM	= new /datum/weather/pollux/ash_storm(),
-//		WEATHER_FALLOUT	= new /datum/weather/pollux/fallout()
+		WEATHER_EMBERFALL	= new /datum/weather/pollux/emberfall(),
+		WEATHER_ASH_STORM	= new /datum/weather/pollux/ash_storm(),
+		WEATHER_FALLOUT	= new /datum/weather/pollux/fallout()
 		)
 	roundstart_weather_chances = list(
 		WEATHER_CLEAR		= 30,
@@ -506,6 +506,17 @@ var/datum/planet/pollux/planet_pollux = null
 //	outdoor_sounds_type = /datum/looping_sound/weather/wind
 //	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
 
+/datum/weather/pollux/emberfall/process_effects()
+	..()
+	for(var/thing in living_mob_list)
+		var/mob/living/L = thing
+		if(L.z in holder.our_planet.expected_z_levels)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // They're indoors, so no need to burn them with ash.
+			if(prob(1))
+				L.fire_act(3)
+
 // Like the above but a lot more harmful.
 /datum/weather/pollux/ash_storm
 	name = "ash storm"
@@ -536,6 +547,9 @@ var/datum/planet/pollux/planet_pollux = null
 				continue // They're indoors, so no need to burn them with ash.
 
 			L.inflict_heat_damage(rand(1, 3))
+
+			if(prob(3))
+				L.fire_act(3)
 
 
 // Totally radical.
