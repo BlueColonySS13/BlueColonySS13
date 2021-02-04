@@ -16,7 +16,6 @@
 	slime_mutation = list(
 			/mob/living/simple_mob/slime/xenobio/dark_purple,
 			/mob/living/simple_mob/slime/xenobio/dark_blue,
-			/mob/living/simple_mob/slime/xenobio/green,
 			/mob/living/simple_mob/slime/xenobio
 		)
 
@@ -287,8 +286,6 @@
 	slime_mutation = list(
 			/mob/living/simple_mob/slime/xenobio/metal,
 			/mob/living/simple_mob/slime/xenobio/blue,
-			/mob/living/simple_mob/slime/xenobio/amber,
-			/mob/living/simple_mob/slime/xenobio/amber
 		)
 
 /mob/living/simple_mob/slime/xenobio/silver/bullet_act(var/obj/item/projectile/P, var/def_zone)
@@ -709,8 +706,6 @@
 	description_info = "This slime will make everything around it, and itself, faster for a few seconds, if close by."
 
 	slime_mutation = list(
-		/mob/living/simple_mob/slime/xenobio/green,
-		/mob/living/simple_mob/slime/xenobio/green,
 		/mob/living/simple_mob/slime/xenobio/emerald,
 		/mob/living/simple_mob/slime/xenobio/emerald
 	)
