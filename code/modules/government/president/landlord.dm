@@ -12,7 +12,8 @@
 	value = 0.05
 	min_value = 0
 	max_value = 1
-	value_is_money = TRUE
+	round_value = 0.01
+
 	make_referendum = TRUE
 
 /datum/persistent_option/number_value/landlord/maximum_rent

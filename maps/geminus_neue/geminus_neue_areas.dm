@@ -442,12 +442,44 @@
 	name = "\improper Residential Area - Masonette Two"
 
 /area/centcom/president_office_geminus
-	name = "\improper President's Geminus City HQ" //Central Command Command totally isn't RAS Syndrome in action.
+	name = "\improper Government HQ - Geminus City" //Central Command Command totally isn't RAS Syndrome in action.
 	icon_state = "centcom_command"
 
 /area/centcom/president_office_geminus/office
-	name = "\improper President's Office - Geminus" //Central Command Command totally isn't RAS Syndrome in action.
+	name = "\improper Government HQ - President's Office" //Central Command Command totally isn't RAS Syndrome in action.
 	icon_state = "centcom_command"
+
+/area/centcom/president_office_geminus/governor
+	name = "\improper Government HQ - Governor's Office" //Central Command Command totally isn't RAS Syndrome in action.
+	icon_state = "yellow"
+
+/area/centcom/president_office_geminus/ceo
+	name = "\improper Government HQ - CEO's Office" //Central Command Command totally isn't RAS Syndrome in action.
+	icon_state = "blue"
+
+/area/centcom/president_office_geminus/advisor/defense
+	name = "\improper Advisor of Defense's Offices"
+	icon_state = "red"
+
+/area/centcom/president_office_geminus/advisor/finance
+	name = "\improper Advisor of Finance's Offices"
+	icon_state = "green"
+
+/area/centcom/president_office_geminus/advisor/health
+	name = "\improper Advisor of Health's Offices"
+	icon_state = "blue"
+
+/area/centcom/president_office_geminus/advisor/innovation
+	name = "\improper Advisor of Innovation's Offices"
+	icon_state = "yellow"
+
+/area/centcom/president_office_geminus/advisor/justice
+	name = "\improper Advisor of Justice's Offices"
+	icon_state = "darkred"
+
+/area/centcom/president_office_geminus/meeting
+	name = "\improper Government HQ - Meeting Room"
+	icon_state = "yellow"
 
 /area/abandoned_lab
 	name = "\improper NSS Abendrot"

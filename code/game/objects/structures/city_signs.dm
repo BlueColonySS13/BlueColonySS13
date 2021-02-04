@@ -209,15 +209,41 @@
 
 /obj/structure/sign/neon/big
 	icon = 'icons/obj/signs_large.dmi'
+	light_range = 6
+	light_power = 8
 
 /obj/structure/sign/neon/big/casino
 	name = "casino sign"
 	desc = "A neon yellow airbus sign that says CASINO in big letters."
 	icon_state = "casino"
 	light_color = "#ffff99"
-	light_range = 6
-	light_power = 8
+
 	plane = 25
+
+/obj/structure/sign/neon/big/aeoiu
+	name = "large blue sign"
+	desc = "A neon blue sign in cryptic letters."
+	icon_state = "aeoiu"
+	light_color = "#006fff"
+	light_power = 20
+	light_range = 2
+
+/obj/structure/sign/neon/big/luckystar
+	name = "luckystar sign"
+	desc = "A luckystar sign in cryptic letters."
+	icon_state = "luckystar"
+	light_color = "#de0000"
+	light_power = 8
+	light_range = 3
+
+/obj/structure/sign/neon/big/ianhi
+	name = "cryptic wall sign"
+	desc = "A luckystar sign in cryptic letters that is pinned to a wall."
+	icon_state = "ianhi"
+	light_color = "#ab00ff"
+	light_power = 11
+	light_range = 2
+
 
 /obj/structure/sign/neon/big/inn
 	name = "inn sign"

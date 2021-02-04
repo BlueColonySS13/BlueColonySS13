@@ -60,7 +60,7 @@
 	access = list(access_president, access_vice_president, access_advisor, access_governor, access_cent_general, access_cent_thunder, \
 	access_cent_medical, access_cent_living, access_cent_storage, access_cent_teleporter)
 
-	minimal_access = list(access_president, access_vice_president, access_advisor, access_governor)
+	minimal_access = list(access_cent_general, access_president, access_vice_president, access_advisor, access_governor)
 	minimal_player_age = 14
 
 	wage = 9000
@@ -85,7 +85,7 @@
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/vpresident
 	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
 	access = list(access_vice_president, access_cent_general, access_cent_thunder, access_cent_medical, access_cent_living, access_cent_storage, access_cent_teleporter) 			//See get_access()
-	minimal_access = list(access_vice_president, access_cent_living, access_cent_storage)
+	minimal_access = list(access_cent_general, access_vice_president, access_cent_living, access_cent_storage)
 
 	description = "As vice president, your duty is to patiently wait in line for the president to be killed so you can succeed them. Otherwise you're \
 	there to help president do his daily tasks."
@@ -105,9 +105,14 @@
 	there to help president do his daily tasks."
 
 	portal_whitelist = "cabinet_ceo"
+	access = list(access_ceo, access_advisor, access_cent_general, access_cent_thunder, access_cent_medical, access_cent_living, access_cent_storage, access_cent_teleporter) 			//See get_access()
+	minimal_access = list(access_ceo, access_advisor, access_cent_general, access_cent_thunder, access_cent_medical, access_cent_living, access_cent_storage, access_cent_teleporter) 	//See get_access()
+
+
 
 /datum/job/nanotrasen/ceo/get_access()
-	return get_all_centcom_access()
+	return get_all_centcom_access()+get_all_station_access()
+
 /datum/job/nanotrasen/ceo/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.director_email
 
@@ -118,7 +123,7 @@
 	flag = GOVERNOR
 	wage = 4500
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/governor
-	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
+	idtype = /obj/item/weapon/card/id/nanotrasen/governor
 
 	access = list(access_cent_general, access_governor)
 	minimal_access = list(access_cent_general, access_governor)
@@ -132,8 +137,6 @@
 	portal_whitelist = "cabinet_governor"
 
 
-
-
 /datum/job/nanotrasen/supreme_justice
 	title = "Supreme Justice"
 	total_positions = 1
@@ -141,7 +144,7 @@
 	flag = SUPREMEJUSTICE
 	wage = 4500
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/justice
-	idtype = /obj/item/weapon/card/id/nanotrasen/ceo
+	idtype = /obj/item/weapon/card/id/nanotrasen/justice
 	access = list(access_cent_general)
 	minimal_access = list(access_cent_general)
 
@@ -180,7 +183,7 @@
 	duties = list("Get police reports instead of corruption reports", "Drink coffee", "Roll eyes at reports")
 
 /datum/job/nanotrasen/pdsi/get_access()
-	return get_all_centcom_access()
+	return get_all_centcom_access()+get_all_station_access()
 
 /datum/job/nanotrasen/pdsi/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.investigation_email
@@ -189,9 +192,11 @@
 /datum/job/nanotrasen/advisor
 	flag = 0
 	faction = null
-	access = list(access_advisor)
+	access = list(access_advisor, access_cent_general)
+	minimal_access = list(access_advisor, access_cent_general)
 	outfit_type = /decl/hierarchy/outfit/job/nanotrasen/advisor
 	idtype = /obj/item/weapon/card/id/nanotrasen/advisor
+	alt_titles = list()
 	wage = 500
 	description = "As an advisor, your goal is to advise the president. Yep, that's it."
 
@@ -201,6 +206,7 @@
 	spawn_positions = 1
 	flag = ADVISORDEFENSE
 	faction = "City"
+	alt_titles = list("Advisor of Defense")
 
 	portal_whitelist = "cabinet_defense"
 
@@ -209,6 +215,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	flag = ADVISORJUSTICE
+	alt_titles = list("Advisor of Justice")
 
 	faction = "City"
 
@@ -219,6 +226,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	flag = ADVISORINNOVATION
+	alt_titles = list("Advisor of Innovation")
 
 	faction = "City"
 
@@ -229,7 +237,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	flag = ADVISORHEALTH
-
+	alt_titles = list("Advisor of Health")
 	faction = "City"
 
 	portal_whitelist = "cabinet_health"
@@ -240,5 +248,6 @@
 	spawn_positions = 1
 	flag = ADVISORFINANCE
 	faction = "City"
+	alt_titles = list("Advisor of Finance")
 
 	portal_whitelist = "cabinet_finance"

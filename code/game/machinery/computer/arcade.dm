@@ -46,7 +46,8 @@
 	if(!circuit)
 		var/choice = pick(typesof(/obj/item/weapon/circuitboard/arcade) - /obj/item/weapon/circuitboard/arcade)
 		var/obj/item/weapon/circuitboard/CB = new choice()
-		new CB.build_path(loc, CB)
+		var/obj/machinery/computer/arcade/new_arcade = new CB.build_path(loc, CB)
+		new_arcade.requires_token = requires_token
 		qdel(src)
 
 /obj/machinery/computer/arcade/proc/prizevend()

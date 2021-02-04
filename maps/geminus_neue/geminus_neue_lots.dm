@@ -95,6 +95,48 @@
 	max_tenants = 6
 	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
 
+//stalls
+/datum/lot/stall
+	price = 2500
+	desc = "A tiny set of tiny stalls intended for a small business."
+	max_tenants = 1
+
+/datum/lot/stall/one
+	name = "Stall 1"
+	id = "stall1"
+	desc = "A tiny stall next to the factory. It is located on the upper top right."
+
+/datum/lot/stall/two
+	name = "Stall 2"
+	id = "stall2"
+	desc = "A tiny stall next to the factory. It is located on the upper top left."
+
+/datum/lot/stall/three
+	name = "Stall 3"
+	id = "stall3"
+	desc = "A tiny stall next to the factory. It is located on the middle left."
+
+/datum/lot/stall/four
+	name = "Stall 4"
+	id = "stall4"
+	desc = "A tiny stall next to the factory. It is located on the middle right."
+
+/datum/lot/stall/five
+	name = "Stall 5"
+	id = "stall5"
+	desc = "A tiny stall next to the factory. It is located on the bottom left."
+
+/datum/lot/stall/six
+	name = "Stall 6"
+	id = "stall6"
+	desc = "A tiny stall next to the factory. It is located on the bottom right."
+
+/datum/lot/stall/seven
+	name = "Stall 7"
+	id = "stall7"
+	desc = "A tiny stall right next to the arrival bus."
+
+
 // shopping lots
 
 /datum/lot/shopping

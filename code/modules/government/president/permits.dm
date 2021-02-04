@@ -5,6 +5,7 @@
 	min_value = 0
 	max_value = 50000
 	portal_category = "Permit Pricing"
+	portal_grouping = "Economy Settings"
 	value_is_money = TRUE
 
 // Gun Permits
