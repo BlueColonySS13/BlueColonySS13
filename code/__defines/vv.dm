@@ -2,6 +2,7 @@
 #define VV_TEXT "Text"
 #define VV_MESSAGE "Mutiline Text"
 #define VV_ICON "Icon"
+#define VV_COLOR "Color"
 #define VV_ATOM_REFERENCE "Atom Reference"
 #define VV_DATUM_REFERENCE "Datum Reference"
 #define VV_MOB_REFERENCE "Mob Reference"
