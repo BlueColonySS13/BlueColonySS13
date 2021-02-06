@@ -167,9 +167,6 @@ var/global/list/SKILL_PRE = list("Engineer" = SKILL_ENGINEER, "Roboticist" = SKI
 				L += S
 
 
-/mob/living/carbon/human/proc/GetSkillClass(points)
-	return CalculateSkillClass(points, age)
-
 /proc/show_skill_window(var/mob/user, var/mob/living/carbon/human/M)
 	if(!istype(M)) return
 	if(SKILLS == null)

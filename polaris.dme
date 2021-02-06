@@ -2305,7 +2305,6 @@
 #include "code\modules\mob\new_player\poll.dm"
 #include "code\modules\mob\new_player\preferences_setup.dm"
 #include "code\modules\mob\new_player\referendum_voting.dm"
-#include "code\modules\mob\new_player\skill.dm"
 #include "code\modules\mob\new_player\sprite_accessories.dm"
 #include "code\modules\modular_computers\_description.dm"
 #include "code\modules\modular_computers\laptop_vendor.dm"

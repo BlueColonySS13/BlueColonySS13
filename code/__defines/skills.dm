@@ -22,6 +22,7 @@
 // Thirdly, they are also used for savefile purposes (so try to avoid changing it if possible).
 
 #define SKILL_CRAFTING		"Crafting"
+#define SKILL_CONSTRUCTION	"Construction"
 #define SKILL_COMBAT		"Combat"
 #define SKILL_WEAPONS		"Weapons"
 #define SKILL_VEHICLES		"Vehicles"
