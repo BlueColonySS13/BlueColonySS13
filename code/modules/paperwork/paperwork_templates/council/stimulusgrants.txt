@@ -1,0 +1,17 @@
+[center][h1]Stimulus Grant Application Template[/h1]
+[logo][/center]
+[hr]
+[small]
+[b]Name of Applicant: [/b] [field]
+[b]Name of Buisiness: [/b] [field]
+
+[b]Product or Service of the Buisiness: [/b] [field]
+
+[b]Estimated Expenses: [/b] [field]
+
+[b]Requested Funds: [/b] [field]
+[hr]
+
+[b]City Clerk's Signature: [/b] [field]
+[b]Applicant's Signature: [/b] [field]
+[/small]

@@ -1,0 +1,15 @@
+[center][h1]Loan Application[/h1]
+[logo][/center]
+[hr]
+[small]
+
+[b]Applicant Name: [/b][field]
+[b]Reason for Loan: [/b][field]
+
+[b]Ammount Requested: [/b][field]
+[b]Requested Montly Interest: [/b][field]
+[hr]
+
+[b]Clerk's Signature: [/b][field]
+[b]Applicants Signature: [/b][field]
+[/small]
