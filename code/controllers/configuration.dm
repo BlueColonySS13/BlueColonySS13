@@ -285,6 +285,9 @@ var/list/gamemode_cache = list()
 	var/defib_timer = 30 // How long until someone can't be defibbed anymore, in minutes.
 	var/defib_braindamage_timer = 2 // How long until someone will get brain damage when defibbed, in minutes. The closer to the end of the above timer, the more brain damage they get.
 
+	var/paic_webhook_address = ""
+	var/paic_role_id = ""
+
 
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
@@ -905,6 +908,12 @@ var/list/gamemode_cache = list()
 
 				if("defib_braindamage_timer")
 					config.defib_braindamage_timer = text2num(value)
+
+				if("paic_webhook_address")
+					config.paic_webhook_address = value
+
+				if("paic_role_id")
+					config.paic_role_id = value
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
