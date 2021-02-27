@@ -92,6 +92,9 @@ var/global/datum/global_init/init = new ()
 		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
 
 	callHook("startup")
+	if (config.serverstart_webhook_address != "")
+		send_post_request(config.paic_webhook_address, " { \"embeds\" : \[ { \"title\" : \"Server Starting...\", \"description\" : \"[config.serverstart_webhook_message]\", \"color\" : 1007776 } ] } ", " { \"Content-Type\" : \"application/json\" } ")
+	
 	//Emergency Fix
 	load_mods()
 	//end-emergency fix
