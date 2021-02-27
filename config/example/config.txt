@@ -503,8 +503,13 @@ ALLOW_LOBBY_ANTAGONISTS
 # Allows people to sell things via exports in the factory
 #ALLOW_EXPORTS
 
-# Set the Discord Webhook address for sending PAI Candidate pings
+# Set the Discord Webhook address for sending server start and PAI Candidate pings
+#SERVERSTART_WEBHOOK_ADDRESS
 #PAIC_WEBHOOK_ADDRESS
 
-# Set the Discord Role ID for PAI Candidates (only use the numeric value)
+# Set the messages sent to Discord via webhook (if enabled)
+SERVERSTART_WEBHOOK_MESSAGE A new round is starting soon!
+PAIC_WEBHOOK_MESSAGE A Personal AI is being requested!
+
+# Set the Discord Role ID for PAI Candidates (only use the numeric value). This will be sent if enabled.
 #PAIC_ROLE_ID
