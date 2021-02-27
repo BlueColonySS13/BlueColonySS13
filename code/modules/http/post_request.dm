@@ -51,35 +51,22 @@
  * the HTTP response code is always returned as long as it is not 0.
  *
  */
+
+// ByondPOST replaced by ByHTTP for post requests. See https://github.com/Lohikar/byhttp
 /proc/send_post_request()
 	if (args.len < 2)
 		return -1
 
-	var/result = call("ByondPOST.dll", "send_post_request")(arglist(args))
+	var/list/result = json_decode(call("lib/byhttp.dll", "send_post_request")(arglist(args)))
 
 	if (!result)
-		log_debug("ByondPOST POST: No result returned from external library.")
+		log_debug("ByHTTP POST: No result returned from external library.")
 		return -1
-
-	var/list/A = params2list(result)
-
-	if (!isnull(A["proc"]))
-		// Log the proc error. It should be reviewed by coders ASAP.
-		switch (A["proc"])
-			if ("1")
-				log_debug("ByondPOST POST: Proc error: Too few arguments sent to function.")
-			if ("2")
-				log_debug("ByondPOST POST: Proc error: Unable to initialize curl object.")
-			if ("3")
-				log_debug("ByondPOST POST: Proc error: General exception caught and logged.")
-			else
-				log_debug("ByondPOST POST: Proc error: Unknown error.")
-		return -1
-
-	// Curl oriented errors should leave the HTTP response code at 0, as no request was executed.
-	// All HTTP oriented errors will definately return a response code other than 0, so prioritize that.
-	// Fallback is a curl error code (0 - 92).
-	return text2num(A["http"]) != 0 ? text2num(A["http"]) : text2num(A["curl"])
+	
+	if (result["status_code"] != 0)
+		log_debug("ByHTTP POST: Request returned with status code [result["status_code"]] and body \"[result["body"]]\"")
+	if (result["error_code"] != 0)
+		log_debug("ByHTTP POST: Request errored with error code [result["error_code"]] and error \"[result["error"]]\"")
 
 /*
  * A generic proc for sending a header equipped get requests with the aforementioned .DLL files.

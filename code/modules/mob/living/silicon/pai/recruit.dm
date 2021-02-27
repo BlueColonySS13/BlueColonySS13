@@ -3,6 +3,7 @@
 // Recruiting observers to play as pAIs
 
 var/datum/paiController/paiController			// Global handler for pAI candidates
+var/webhook_sent_this_round = 0
 
 /datum/paiCandidate
 	var/name
@@ -239,6 +240,10 @@ var/datum/paiController/paiController			// Global handler for pAI candidates
 			if(found)
 				available.Add(c)
 	var/dat = ""
+
+	if (config.paic_webhook_address != "" && webhook_sent_this_round == 0)
+		send_post_request(config.paic_webhook_address, " { \"content\" : \"[config.paic_role_id]\", \"embeds\" : \[ { \"title\" : \"PAI Requested\", \"description\" : \"[config.paic_webhook_message]\", \"color\" : 1282905 } ] } ", " { \"Content-Type\" : \"application/json\" } ")
+		webhook_sent_this_round = 1
 
 	dat += {"
 		<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
