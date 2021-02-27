@@ -15,7 +15,7 @@ var/list/dreams = list(
 	"a bird-like creature", "a plant-like creature","the supermatter","Major Bill","a Morpheus ship with a ridiculous name","the Exodus","a star",
 	"a Dionaea gestalt","the chapel","a distant scream","endless chittering noises","glowing eyes in the shadows","an empty glass",
 	"a disoriented slime man","towers of plastic","a Gygax","a synthetic","a Man-Machine Interface","maintenance drones",
-	"unintelligible writings","a Fleet ship", "tower in the dark", "red skies", "Atlus City", "Pollux", "Earth", "Mars", "teeth"
+	"unintelligible writings","a Fleet ship", "tower in the dark", "red skies", "Atlus City", "Pollux", "Earth", "Mars", "teeth",
 	"cannibals", "nuclear war", "swarms of bald men", "black beady eyes", "lightning"
 	)
 
