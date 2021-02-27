@@ -6,4 +6,7 @@
 ######################################################################
 
 # not_a_user - Admin
-cassyjenelle - Host
+artofwasd - Host
+slayingcreepers - Host
+maveriknight - Head Admin 
+theflagbearer - Code Wizard
