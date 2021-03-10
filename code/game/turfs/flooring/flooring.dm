@@ -589,3 +589,7 @@ var/list/flooring_types
 /decl/flooring/glass_bottom
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "glass_bottom"
+
+/decl/flooring/maglev
+	icon = 'icons/turf/floors.dmi'
+	icon_base = "maglev"

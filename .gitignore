@@ -15,8 +15,20 @@ maps/Geminus/backup/geminus-3.dmm
 maps/Geminus/backup/geminus-2.dmm
 maps/Geminus/backup/geminus-1.dmm                                                                                                                                                                                                              
 maps/Geminus/backup/geminus-2.dmm
-config/admin_ranks.txt
 /config/*	
 !/config/*/*
 config/config.txt
 config/admins.txt
+config/access levels.txt
+config/alienwhitelist.txt
+config/custom_items.txt
+config/custom_sprites.txt
+config/dbconfig.txt
+config/forumdbconfig.txt
+config/game_options.txt
+config/mentors.txt
+config/jobs.txt
+config/moderators.txt
+config/motd.txt
+config/rules.html
+config/svndir.txt

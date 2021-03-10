@@ -133,6 +133,11 @@
 	nitrogen	= MOLES_N2POLLUX
 	temperature	= TEMPERATURE_POLLUX
 
+/turf/simulated/floor/plating/maglev
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "maglev"
+	initial_flooring = /decl/flooring/maglev
+
 /turf/simulated/sky
 	oxygen		= MOLES_O2POLLUX
 	nitrogen	= MOLES_N2POLLUX
