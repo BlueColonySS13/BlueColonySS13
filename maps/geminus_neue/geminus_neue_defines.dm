@@ -9,7 +9,7 @@
 	path = "geminus"
 
 	lobby_icon = 'icons/misc/title.dmi'
-	lobby_screens = list("pollux")
+	lobby_screens = list("bluecolony")
 
 	zlevel_datum_type = /datum/map_z_level/geminus_neue
 
