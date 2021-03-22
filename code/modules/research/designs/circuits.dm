@@ -1,7 +1,3 @@
-/*
-CIRCUITS BELOW
-*/
-
 /datum/design/circuit
 	build_type = IMPRINTER
 	req_tech = list(TECH_DATA = 2)
@@ -30,58 +26,66 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 1)
 	build_path = /obj/item/weapon/circuitboard/arcade/battle
 	sort_string = "MAAAA"
+	protected = TRUE
 
 /datum/design/circuit/oriontrail
 	name = "orion trail arcade machine"
 	id = "oriontrail"
 	req_tech = list(TECH_DATA = 1)
 	build_path = /obj/item/weapon/circuitboard/arcade/orion_trail
-	sort_string = "MAAAZ"		// Duplicate string, really need to redo this whole thing
+	sort_string = "MAAAA"
+	protected = TRUE
 
 /datum/design/circuit/jukebox
 	name = "jukebox"
 	id = "jukebox"
 	req_tech = list(TECH_MAGNET = 2, TECH_DATA = 1)
 	build_path = /obj/item/weapon/circuitboard/jukebox
-	sort_string = "MAAAB"
+	sort_string = "MAAAB" //used to be MAAAZ	
+	protected = TRUE
 
 /datum/design/circuit/seccamera
 	name = "security camera monitor"
 	id = "seccamera"
 	build_path = /obj/item/weapon/circuitboard/security
-	sort_string = "DAAAZ"	// Duplicate string, really need to redo this whole thing
+	sort_string = "DAAAA" // used to be DAAAZ
+	protected = TRUE
 
 /datum/design/circuit/secdata
 	name = "security records console"
 	id = "sec_data"
 	build_path = /obj/item/weapon/circuitboard/secure_data
 	sort_string = "DABAA"
+	protected = TRUE
 
 /datum/design/circuit/prisonmanage
 	name = "prisoner management console"
 	id = "prisonmanage"
 	build_path = /obj/item/weapon/circuitboard/prisoner
 	sort_string = "DACAA"
+	protected = TRUE
 
 /datum/design/circuit/med_data
 	name = "medical records console"
 	id = "med_data"
 	build_path = /obj/item/weapon/circuitboard/med_data
 	sort_string = "FAAAA"
+	protected = TRUE
 
 /datum/design/circuit/operating
 	name = "patient monitoring console"
 	id = "operating"
 	build_path = /obj/item/weapon/circuitboard/operating
 	sort_string = "FACAA"
+	protected = TRUE
 
 /*
-
 /datum/design/circuit/scan_console
 	name = "DNA machine"
 	id = "scan_console"
 	build_path = /obj/item/weapon/circuitboard/scan_consolenew
 	sort_string = "FAGAA"
+	protected = TRUE
 
 /datum/design/circuit/clonecontrol
 	name = "cloning control console"
@@ -89,6 +93,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	build_path = /obj/item/weapon/circuitboard/cloning
 	sort_string = "FAGAC"
+	protected = TRUE
 
 /datum/design/circuit/clonepod
 	name = "clone pod"
@@ -96,6 +101,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	build_path = /obj/item/weapon/circuitboard/clonepod
 	sort_string = "FAGAE"
+	protected = TRUE
 
 /datum/design/circuit/clonescanner
 	name = "cloning scanner"
@@ -103,7 +109,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	build_path = /obj/item/weapon/circuitboard/clonescanner
 	sort_string = "FAGAG"
-
+	protected = TRUE
 */
 
 /datum/design/circuit/crewconsole
@@ -119,6 +125,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 2)
 	build_path = /obj/item/weapon/circuitboard/teleporter
 	sort_string = "HAAAA"
+	protected = TRUE
 
 /datum/design/circuit/robocontrol
 	name = "robotics control console"
@@ -126,6 +133,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/weapon/circuitboard/robotics
 	sort_string = "HAAAB"
+	protected = TRUE
 
 /datum/design/circuit/mechacontrol
 	name = "exosuit control console"
@@ -133,6 +141,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/weapon/circuitboard/mecha_control
 	sort_string = "HAAAC"
+	protected = TRUE
 
 /datum/design/circuit/rdconsole
 	name = "R&D control console"
@@ -140,6 +149,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/weapon/circuitboard/rdconsole
 	sort_string = "HAAAE"
+	protected = TRUE
 
 /datum/design/circuit/aifixer
 	name = "AI integrity restorer"
@@ -154,6 +164,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/weapon/circuitboard/comm_monitor
 	sort_string = "HAACA"
+	protected = TRUE
 
 /datum/design/circuit/comm_server
 	name = "telecommunications server monitoring console"
@@ -161,6 +172,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/weapon/circuitboard/comm_server
 	sort_string = "HAACB"
+	protected = TRUE
 
 /datum/design/circuit/message_monitor
 	name = "messaging monitor console"
@@ -168,6 +180,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 5)
 	build_path = /obj/item/weapon/circuitboard/message_monitor
 	sort_string = "HAACC"
+	protected = TRUE
 
 /datum/design/circuit/aiupload
 	name = "AI upload console"
@@ -182,6 +195,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/weapon/circuitboard/borgupload
 	sort_string = "HAABB"
+	protected = TRUE
 
 /datum/design/circuit/destructive_analyzer
 	name = "destructive analyzer"
@@ -189,6 +203,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 2, TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/weapon/circuitboard/destructive_analyzer
 	sort_string = "HABAA"
+	protected = TRUE
 
 /datum/design/circuit/protolathe
 	name = "protolathe"
@@ -196,6 +211,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/weapon/circuitboard/protolathe
 	sort_string = "HABAB"
+	protected = TRUE
 
 /datum/design/circuit/circuit_imprinter
 	name = "circuit imprinter"
@@ -203,6 +219,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/weapon/circuitboard/circuit_imprinter
 	sort_string = "HABAC"
+	protected = TRUE
 
 /datum/design/circuit/autolathe
 	name = "autolathe board"
@@ -210,6 +227,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/weapon/circuitboard/autolathe
 	sort_string = "HABAD"
+	protected = TRUE
 
 /datum/design/circuit/rdservercontrol
 	name = "R&D server control console"
@@ -217,6 +235,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/weapon/circuitboard/rdservercontrol
 	sort_string = "HABBA"
+	protected = TRUE
 
 /datum/design/circuit/rdserver
 	name = "R&D server"
@@ -224,6 +243,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/weapon/circuitboard/rdserver
 	sort_string = "HABBB"
+	protected = TRUE
 
 /datum/design/circuit/mechfab
 	name = "exosuit fabricator"
@@ -231,6 +251,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	build_path = /obj/item/weapon/circuitboard/mechfab
 	sort_string = "HABAE"
+	protected = TRUE
 
 /datum/design/circuit/prosfab
 	name = "prosthetics fabricator"
@@ -238,6 +259,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	build_path = /obj/item/weapon/circuitboard/prosthetics
 	sort_string = "HABAF"
+	protected = TRUE
 
 /datum/design/circuit/mech_recharger
 	name = "mech recharger"
@@ -245,6 +267,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 2, TECH_POWER = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/weapon/circuitboard/mech_recharger
 	sort_string = "HACAA"
+	protected = TRUE
 
 /datum/design/circuit/recharge_station
 	name = "cyborg recharge station"
@@ -252,6 +275,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 2)
 	build_path = /obj/item/weapon/circuitboard/recharge_station
 	sort_string = "HACAC"
+	protected = TRUE
 
 /datum/design/circuit/atmosalerts
 	name = "atmosphere alert console"
@@ -278,6 +302,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/weapon/circuitboard/drone_control
 	sort_string = "JAAAD"
+	protected = TRUE
 
 /datum/design/circuit/powermonitor
 	name = "power monitoring console"
@@ -297,6 +322,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_PHORON = 3, TECH_POWER = 3, TECH_ENGINEERING = 3)
 	build_path = /obj/item/weapon/circuitboard/pacman
 	sort_string = "JBAAA"
+	protected = TRUE
 
 /datum/design/circuit/superpacman
 	name = "SUPERPACMAN-type generator"
@@ -304,6 +330,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_POWER = 4, TECH_ENGINEERING = 4)
 	build_path = /obj/item/weapon/circuitboard/pacman/super
 	sort_string = "JBAAB"
+	protected = TRUE
 
 /datum/design/circuit/mrspacman
 	name = "MRSPACMAN-type generator"
@@ -311,6 +338,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_POWER = 5, TECH_ENGINEERING = 5)
 	build_path = /obj/item/weapon/circuitboard/pacman/mrs
 	sort_string = "JBAAC"
+	protected = TRUE
 
 /datum/design/circuit/batteryrack
 	name = "cell rack PSU"
@@ -318,6 +346,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_POWER = 3, TECH_ENGINEERING = 2)
 	build_path = /obj/item/weapon/circuitboard/batteryrack
 	sort_string = "JBABA"
+	protected = TRUE
 
 /datum/design/circuit/smes_cell
 	name = "'SMES' superconductive magnetic energy storage"
@@ -364,19 +393,22 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/weapon/airlock_electronics/secure
 	sort_string = "JDAAA"
+	protected = TRUE
 
+/*
 /datum/design/circuit/ordercomp
 	name = "supply ordering console"
 	id = "ordercomp"
-	build_path = /obj/item/weapon/circuitboard/supplycomp
-	sort_string = "KAAAY"	// Duplicate string, really need to redo this whole thing
-
+	build_path = /obj/item/weapon/circuitboard/ordercomp
+	sort_string = "KAAAA"
+*/
 /datum/design/circuit/supplycomp
 	name = "supply control console"
 	id = "supplycomp"
 	req_tech = list(TECH_DATA = 3)
-	build_path = /obj/item/weapon/circuitboard/supplycomp/control
-	sort_string = "KAAAZ"	// Duplicate string, really need to redo this whole thing
+	build_path = /obj/item/weapon/circuitboard/supplycomp // used to be /obj/item/weapon/circuitboard/supplycomp/control
+	sort_string = "KAAAB" // used to be KAAAZ
+	protected = TRUE
 
 /datum/design/circuit/biogenerator
 	name = "biogenerator"
@@ -384,6 +416,31 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 2)
 	build_path = /obj/item/weapon/circuitboard/biogenerator
 	sort_string = "KBAAA"
+	protected = TRUE
+
+/datum/design/circuit/botany_extractor
+	name = "lysis-isolation centrifuge"
+	id = "lysis"
+	req_tech = list (TECH_DATA = 2, TECH_BIO = 2)
+	build_path = /obj/item/weapon/circuitboard/botany_extractor
+	sort_string = "KBAAB"
+	protected = TRUE
+
+/datum/design/circuit/botany_editor
+	name = "bioballistic delivery system"
+	id = "bioball"
+	req_tech = list (TECH_DATA = 2, TECH_BIO = 2)
+	build_path = /obj/item/weapon/circuitboard/botany_editor
+	sort_string = "KBAAC"
+	protected = TRUE
+
+/datum/design/circuit/slimeprocessor
+	name = "slime processor"
+	id = "slimeprocessor"
+	req_tech = list (TECH_DATA = 2, TECH_BIO = 2)
+	build_path = /obj/item/weapon/circuitboard/processor
+	sort_string = "KBAAD"
+	protected = TRUE
 
 /datum/design/circuit/miningdrill
 	name = "mining drill head"
@@ -391,6 +448,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 	build_path = /obj/item/weapon/circuitboard/miningdrill
 	sort_string = "KCAAA"
+	protected = TRUE
 
 /datum/design/circuit/miningdrillbrace
 	name = "mining drill brace"
@@ -398,12 +456,15 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 	build_path = /obj/item/weapon/circuitboard/miningdrillbrace
 	sort_string = "KCAAB"
+	protected = TRUE
 
 /datum/design/circuit/comconsole
 	name = "communications console"
 	id = "comconsole"
 	build_path = /obj/item/weapon/circuitboard/communications
 	sort_string = "LAAAA"
+	protected = TRUE
+
 /*
 /datum/design/circuit/idcardconsole
 	name = "ID card modification console"
@@ -416,9 +477,11 @@ CIRCUITS BELOW
 	id = "emp_data"
 	build_path = /obj/item/weapon/circuitboard/skills
 	sort_string = "LAAAC"
+	protected = TRUE
 
 /datum/design/circuit/mecha
 	req_tech = list(TECH_DATA = 3)
+	protected = TRUE
 
 /datum/design/circuit/mecha/AssembleDesignName()
 	name = "Exosuit module circuit design ([name])"
@@ -430,12 +493,14 @@ CIRCUITS BELOW
 	id = "ripley_main"
 	build_path = /obj/item/weapon/circuitboard/mecha/ripley/main
 	sort_string = "NAAAA"
+	price = 750
 
 /datum/design/circuit/mecha/ripley_peri
 	name = "APLU 'Ripley' peripherals control"
 	id = "ripley_peri"
 	build_path = /obj/item/weapon/circuitboard/mecha/ripley/peripherals
 	sort_string = "NAAAB"
+	price = 750
 
 /datum/design/circuit/mecha/odysseus_main
 	name = "'Odysseus' central control"
@@ -443,6 +508,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3,TECH_BIO = 2)
 	build_path = /obj/item/weapon/circuitboard/mecha/odysseus/main
 	sort_string = "NAABA"
+	price = 900
 
 /datum/design/circuit/mecha/odysseus_peri
 	name = "'Odysseus' peripherals control"
@@ -450,6 +516,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3,TECH_BIO = 2)
 	build_path = /obj/item/weapon/circuitboard/mecha/odysseus/peripherals
 	sort_string = "NAABB"
+	price = 900
 
 /datum/design/circuit/mecha/gygax_main
 	name = "'Gygax' central control"
@@ -457,6 +524,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/weapon/circuitboard/mecha/gygax/main
 	sort_string = "NAACA"
+	price = 1500
 
 /datum/design/circuit/mecha/gygax_peri
 	name = "'Gygax' peripherals control"
@@ -464,6 +532,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/weapon/circuitboard/mecha/gygax/peripherals
 	sort_string = "NAACB"
+	price = 1500
 
 /datum/design/circuit/mecha/gygax_targ
 	name = "'Gygax' weapon control and targeting"
@@ -471,6 +540,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2)
 	build_path = /obj/item/weapon/circuitboard/mecha/gygax/targeting
 	sort_string = "NAACC"
+	price = 1500
 
 /datum/design/circuit/mecha/durand_main
 	name = "'Durand' central control"
@@ -478,6 +548,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/weapon/circuitboard/mecha/durand/main
 	sort_string = "NAADA"
+	price = 5000
 
 /datum/design/circuit/mecha/durand_peri
 	name = "'Durand' peripherals control"
@@ -485,6 +556,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/weapon/circuitboard/mecha/durand/peripherals
 	sort_string = "NAADB"
+	price = 5000
 
 /datum/design/circuit/mecha/durand_targ
 	name = "'Durand' weapon control and targeting"
@@ -492,9 +564,11 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2)
 	build_path = /obj/item/weapon/circuitboard/mecha/durand/targeting
 	sort_string = "NAADC"
+	price = 5000
 
 /datum/design/circuit/tcom
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)
+	protected = TRUE
 
 /datum/design/circuit/tcom/AssembleDesignName()
 	name = "Telecommunications machinery circuit design ([name])"
@@ -555,7 +629,8 @@ CIRCUITS BELOW
 
 /datum/design/circuit/shield
 	req_tech = list(TECH_BLUESPACE = 4, TECH_PHORON = 3)
-	materials = list("glass" = 2000, "copper" = 2000, "aluminium" = 1000, "gold" = 1000)
+	materials = list("glass" = 2000, "gold" = 1000, "copper" = 1000) // previosuly 2k glass, 2k copper, 1k aluminium, 1k gold
+	protected = TRUE
 
 /datum/design/circuit/shield/AssembleDesignName()
 	name = "Shield generator circuit design ([name])"
@@ -567,7 +642,7 @@ CIRCUITS BELOW
 	name = "bubble"
 	id = "shield_gen"
 	build_path = /obj/item/weapon/circuitboard/shield_gen
-	sort_string = "VAAAZ"	// Duplicate string, really need to redo this whole thing
+	sort_string = "VAAAA" // previously VAAAZ
 
 /datum/design/circuit/shield/hull
 	name = "hull"
@@ -589,6 +664,8 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_BIO = 3)
 	build_path = /obj/item/weapon/circuitboard/aicore
 	sort_string = "XAAAA"
+	protected = TRUE
+	price = 10000
 
 /datum/design/circuit/chem_master
 	name = "ChemMaster 3000"
@@ -596,7 +673,7 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3, TECH_MAGNET = 2)
 	build_path = /obj/item/weapon/circuitboard/chem_master
 	sort_string = "FAGAH"
-
+	protected = TRUE
 
 /* I have no idea how this was even running before, but it doesn't seem to be necessary.
 ///////////////////////////////////
