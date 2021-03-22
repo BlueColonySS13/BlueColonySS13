@@ -20,7 +20,7 @@
 			/obj/item/clothing/shoes/sandal,
 			/obj/item/clothing/head/wizard/fake
 			)
-	cost = 300
+	cost = 3000
 	containertype = /obj/structure/closet/crate
 	containername = "Wizard costume crate"
 
@@ -47,7 +47,7 @@
 			/obj/item/clothing/head/collectable/petehat
 			)
 	name = "Collectable hat crate!"
-	cost = 200
+	cost = 2000
 	containertype = /obj/structure/closet/crate
 	containername = "Collectable hats crate! Brought to you by Bass.inc!"
 
@@ -83,7 +83,7 @@
 			/obj/item/clothing/under/kilt
 			)
 	name = "Costumes crate"
-	cost = 120
+	cost = 1200
 	containertype = /obj/structure/closet/crate
 	containername = "Actor Costumes"
 
@@ -93,7 +93,7 @@ datum/supply_pack/clothing/witch
 	name = "Witch costume"
 	containername = "Witch costume"
 	containertype = /obj/structure/closet
-	cost = 200
+	cost = 2000
 	contains = list(
 			/obj/item/clothing/suit/wizrobe/marisa/fake,
 			/obj/item/clothing/shoes/sandal,
@@ -105,7 +105,7 @@ datum/supply_pack/clothing/witch
 	name = "Costume hats"
 	containername = "Actor hats crate"
 	containertype = /obj/structure/closet/crate
-	cost = 120
+	cost = 1200
 	num_contained = 3
 	contains = list(
 			/obj/item/clothing/head/redcoat,
@@ -132,7 +132,7 @@ datum/supply_pack/clothing/track_pants
 	name = "Track Pants Collection"
 	containername = "Track Pants Collection"
 	containertype = /obj/structure/closet
-	cost = 240
+	cost = 2400
 	contains = list(
 			/obj/item/clothing/under/pants/track,
 			/obj/item/clothing/under/pants/track/blue,
@@ -147,7 +147,7 @@ datum/supply_pack/clothing/bag_collection
 	name = "Various Bags (Bulk)"
 	containername = "Various Bags (Bulk)"
 	containertype = /obj/structure/closet
-	cost = 600
+	cost = 6000
 	contains = list(
 			/obj/item/weapon/storage/backpack/satchel = 5,
 			/obj/item/weapon/storage/backpack/dufflebag = 5,
@@ -159,7 +159,7 @@ datum/supply_pack/clothing/polychromatic
 	name = "Polychromatic Clothes Collection"
 	containername = "Polychromatic Clothes Collection"
 	containertype = /obj/structure/closet
-	cost = 5000
+	cost = 50000
 	contains = list(
 			/obj/item/clothing/under/polychromic/shimatank,
 			/obj/item/clothing/under/polychromic/bottomless,
@@ -178,7 +178,7 @@ datum/supply_pack/clothing/castor_import_clothing
 	name = "Castor Imported Clothing"
 	containername = "Castor Imported Clothing"
 	containertype = /obj/structure/closet
-	cost = 6400
+	cost = 64000
 	contains = list(
 			/obj/item/clothing/under/aristocrat = 5,
 			/obj/item/clothing/accessory/tie/cravat = 5,
@@ -196,7 +196,7 @@ datum/supply_pack/clothing/cascington_import_clothing
 	name = "Cascington Imported Clothing"
 	containername = "Cascington Imported Clothing"
 	containertype = /obj/structure/closet
-	cost = 2000
+	cost = 20000
 	contains = list(
 			/obj/item/clothing/suit/storage/toggle/peacoat = 3,
 			/obj/item/clothing/suit/storage/toggle/dress = 3,
@@ -211,7 +211,7 @@ datum/supply_pack/clothing/cascington_import_bags
 	name = "Cascington Imported Bags"
 	containername = "Cascington Imported Bags"
 	containertype = /obj/structure/closet
-	cost = 10000
+	cost = 100000
 	contains = list(
 			/obj/item/weapon/storage/briefcase/clutch/obsidienne = 5,
 			/obj/item/weapon/storage/wallet/obsidienne = 5,
@@ -225,7 +225,7 @@ datum/supply_pack/clothing/swimsuits
 	name = "Swimsuits"
 	containername = "Swimsuits Collection"
 	containertype = /obj/structure/closet
-	cost = 300
+	cost = 3000
 	contains = list(
 				/obj/item/clothing/under/swimsuit/black,
 				/obj/item/clothing/under/swimsuit/blue,
@@ -242,7 +242,7 @@ datum/supply_pack/clothing/croptops
 	name = "Croptops Collection"
 	containername = "Croptops Collection"
 	containertype = /obj/structure/closet
-	cost = 200
+	cost = 2000
 	contains = list(
 	/obj/item/clothing/under/croptop,
 	/obj/item/clothing/under/croptop/grey,
@@ -256,7 +256,7 @@ datum/supply_pack/clothing/halloween
 	name = "Halloween Costume Bundle"
 	containername = "Halloween Costume Bundle"
 	containertype = /obj/structure/closet
-	cost = 1000
+	cost = 10000
 	contains = list(
 			/obj/item/clothing/head/collectable/pirate,
 			/obj/item/clothing/head/collectable/wizard,

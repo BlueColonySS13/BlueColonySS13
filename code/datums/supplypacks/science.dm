@@ -9,10 +9,10 @@
 /datum/supply_pack/sci/coolanttank
 	name = "Coolant tank crate"
 	contains = list(/obj/structure/reagent_dispensers/coolanttank)
-	cost = 15
+	cost = 150
 	containertype = /obj/structure/largecrate
 	containername = "coolant tank crate"
-
+/*
 /datum/supply_pack/sci/phoron
 	name = "Phoron research crate"
 	contains = list(
@@ -24,11 +24,11 @@
 			/obj/item/device/assembly/signaler = 3,
 			/obj/item/device/transfer_valve = 3
 			)
-	cost = 420
+	cost = 4200
 	containertype = /obj/structure/closet/crate/secure/phoron
 	containername = "Phoron assembly crate"
 	access = access_tox_storage
-
+*/
 /datum/supply_pack/sci/exoticseeds
 	name = "Exotic seeds crate"
 	contains = list(
@@ -39,7 +39,7 @@
 			/obj/item/seeds/random = 6,
 			/obj/item/seeds/kudzuseed
 			)
-	cost = 500
+	cost = 50000
 	containertype = /obj/structure/closet/crate/hydroponics
 	containername = "Exotic Seeds crate"
 	access = access_hydroponics
@@ -58,14 +58,14 @@
 	contains = list(
 			/obj/item/weapon/storage/box/monkeycubes = 5
 			)
-	cost = 500
+	cost = 5000
 	containertype = /obj/structure/closet/crate/science
 	containername = "Compressed Living Lifeforms crate"
 
 /datum/supply_pack/sci/integrated_circuit_printer
 	name = "Integrated circuit printer"
 	contains = list(/obj/item/device/integrated_circuit_printer)
-	cost = 7500 //to curb the current meta of using an IC printer to instantly raise tech levels
+	cost = 75000 //to curb the current meta of using an IC printer to instantly raise tech levels
 	containertype = /obj/structure/closet/crate
 	containername = "Integrated circuit crate"
 

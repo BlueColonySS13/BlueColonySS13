@@ -18,7 +18,7 @@
 			/obj/item/weapon/material/twohanded/spear/foam = 2,
 			/obj/item/weapon/material/twohanded/fireaxe/foam = 2
 			)
-	cost = 50
+	cost = 500
 	containertype = /obj/structure/closet/crate
 	containername = "foam weapon crate"
 
@@ -35,7 +35,7 @@
 			)
 	containertype = /obj/structure/closet/crate
 	containername = "Fortune Teller Set"
-	cost = 300
+	cost = 3000
 
 /datum/supply_pack/recreation/lasertag
 	name = "Lasertag equipment"
@@ -47,7 +47,7 @@
 			)
 	containertype = /obj/structure/closet
 	containername = "Lasertag Closet"
-	cost = 40
+	cost = 400
 
 /datum/supply_pack/recreation/artscrafts
 	name = "Arts and Crafts supplies"
@@ -68,13 +68,13 @@
 			/obj/item/weapon/contraband/poster,
 			/obj/item/weapon/wrapping_paper = 3
 			)
-	cost = 10
+	cost = 100
 	containertype = "/obj/structure/closet/crate"
 	containername = "Arts and Crafts crate"
 
 /datum/supply_pack/recreation/painters
 	name = "City Painting Supplies"
-	cost = 30
+	cost = 300
 	containername = "city painting supplies crate"
 	containertype = /obj/structure/closet/crate
 	contains = list(
@@ -85,7 +85,7 @@
 
 /datum/supply_pack/recreation/gym_equipment
 	name = "Gym Equipment"
-	cost = 1200
+	cost = 12000
 	containername = "gym equipment crate"
 	containertype = /obj/structure/largecrate
 	contains = list(

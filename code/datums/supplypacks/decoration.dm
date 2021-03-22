@@ -10,7 +10,7 @@
 
 /datum/supply_pack/decoration/painters
 	name = "Painting Supplies"
-	cost = 300
+	cost = 3000
 	containername = "city painting supplies crate"
 	containertype = /obj/structure/closet/crate
 	contains = list(
@@ -26,13 +26,13 @@
 	contains = list(
 			/obj/item/weapon/pen/crayon/spraycan = 5
 			)
-	cost = 125
+	cost = 1250
 	containername = "Spraycan Set"
 
 /datum/supply_pack/decoration/holoplant
 	name = "Holoplant Pot"
 	contains = list(/obj/machinery/holoplant/shipped)
-	cost = 100
+	cost = 1000
 	containertype = /obj/structure/closet/crate
 	containername = "Holoplant crate"
 
@@ -48,7 +48,7 @@
 	/obj/structure/flora/pottedplant/lily,
 	/obj/structure/flora/pottedplant/pinksakura
 	)
-	cost = 900
+	cost = 9000
 	containertype = /obj/structure/closet/crate/large
 	containername = "Assorted Flowering Plants"
 
@@ -64,7 +64,7 @@
 	/obj/structure/flora/pottedplant/brownsakura,
 	/obj/structure/flora/pottedplant/purple
 	)
-	cost = 900
+	cost = 9000
 	containertype = /obj/structure/closet/crate/large
 	containername = "Assorted Leafy Plants"
 
@@ -80,7 +80,7 @@
 					/obj/item/device/flashlight/lamp/lava/purple = 3,
 					/obj/item/device/flashlight/lamp/lava/pink = 3)
 	name = "Set of Lava lamps"
-	cost = 250
+	cost = 2500
 	containername = "lava lamp crate"
 
 /datum/supply_pack/decoration/candles
@@ -90,41 +90,41 @@
 		/obj/item/weapon/storage/box/candle_box/random,
 		/obj/item/weapon/storage/box/candle_box/candelabra,
 		/obj/item/weapon/storage/box/candle_box/candelabra/random)
-	cost = 100
+	cost = 1000
 	containername = "candles crate"
 
 /datum/supply_pack/decoration/venus_statue
 	name = "Venus Statue"
 	contains = list(
 		/obj/structure/sculpting_block/sculpted/large/venus)
-	cost = 20000
+	cost = 200000
 	containername = "venus statue"
 
 /datum/supply_pack/decoration/lion_statue
 	name = "Lion Statue"
 	contains = list(
 		/obj/structure/sculpting_block/sculpted/large/lion)
-	cost = 25000
+	cost = 250000
 	containername = "lion statue"
 
 /datum/supply_pack/decoration/bust
 	name = "Greek Bust"
 	contains = list(
 		/obj/structure/sculpting_block/sculpted/bust)
-	cost = 8000
+	cost = 80000
 	containername = "greek bust"
 
 /datum/supply_pack/decoration/bust
 	name = "Marble Pillar"
 	contains = list(
 		/obj/structure/sculpting_block/sculpted/large/pillar)
-	cost = 8000
+	cost = 80000
 	containername = "marble pillar"
 
 /datum/supply_pack/decoration/balloons
 	name = "Assorted Balloons"
 	contains = list(/obj/item/toy/colorballoon/random = 10)
-	cost = 30
+	cost = 300
 	containertype = /obj/structure/closet/crate
 	containername = "Assorted Balloons"
 
@@ -133,25 +133,25 @@
 	contains = list(/obj/structure/balloon/bat = 5,
 	/obj/structure/balloon/ghost = 5,
 	/obj/structure/balloon/random = 5)
-	cost = 40
+	cost = 400
 	containername = "Halloween Balloons"
 
 /datum/supply_pack/decoration/christmas_tree
 	name = "Large Christmas Tree"
 	contains = list(/obj/structure/flora/pottedplant/xmas/large)
-	cost = 1000
+	cost = 10000
 	containername = "Large Christmas Tree"
 
 /datum/supply_pack/decoration/christmas_tree_mini
 	name = "Mini Christmas Tree"
 	contains = list(/obj/structure/flora/pottedplant/xmas)
-	cost = 200
+	cost = 2000
 	containername = "Mini Christmas Tree"
 
 /datum/supply_pack/decoration/mistletoe
 	name = "Mistletoe"
 	contains = list(/obj/structure/flora/pottedplant/mistletoe)
-	cost = 80
+	cost = 800
 	containername = "Mistletoe"
 
 

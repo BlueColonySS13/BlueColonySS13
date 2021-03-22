@@ -16,7 +16,7 @@
 			/obj/item/weapon/reagent_containers/food/drinks/shaker,
 			/obj/item/weapon/reagent_containers/food/drinks/flask/barflask
 			)
-	cost = 100
+	cost = 1000
 	containertype = /obj/structure/closet/crate
 	containername = "Party equipment"
 	spend_type = SPEND_HOSPITALITY
@@ -28,7 +28,7 @@
 			/obj/item/weapon/material/kitchen/utensil/spoon = 8,
 			/obj/item/weapon/material/knife = 8
 			)
-	cost = 30
+	cost = 300
 	containertype = /obj/structure/closet/crate
 	containername = "Standard Cutlery"
 	spend_type = SPEND_HOSPITALITY
@@ -49,7 +49,7 @@
 			/obj/item/weapon/storage/box/glass_extras/straws,
 			/obj/item/weapon/storage/box/glass_extras/sticks
 			)
-	cost = 100
+	cost = 1000
 	containertype = /obj/structure/closet/crate
 	containername = "crate of bar supplies"
 	spend_type = SPEND_HOSPITALITY
@@ -68,7 +68,7 @@
 			/obj/item/pizzabox/vegetable
 			)
 	name = "Surprise pack of five pizzas"
-	cost = 50
+	cost = 500
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "Pizza crate"
 
@@ -81,7 +81,7 @@
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/serpentspirit = 3,
 		/obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose = 3
 		)
-	cost = 900
+	cost = 9000
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Cascington Alcoholic Imports"
 	spend_type = SPEND_ALCOHOL
@@ -94,7 +94,7 @@
 		/obj/item/weapon/storage/box/tobacco_box = 3,
 		/obj/item/clothing/mask/smokable/pipe = 6
 		)
-	cost = 300
+	cost = 3000
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Cascington Smoking Imports"
 	spend_type = SPEND_TOBACCO
@@ -108,7 +108,7 @@
 		/obj/item/weapon/storage/box/caviar = 3,
 		/obj/item/weapon/reagent_containers/food/snacks/sliceable/cheesewheel/pule = 2
 		)
-	cost = 500
+	cost = 5000
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Cascington Confectionaries"
 
@@ -125,10 +125,10 @@
 		/obj/item/weapon/reagent_containers/food/snacks/nachos = 2,
 		/obj/item/weapon/reagent_containers/food/snacks/baguette = 2
 		)
-	cost = 150
+	cost = 1500
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Sol Confectionaries"
-
+/*
 /datum/supply_pack/hospitality/baking_supplies
 	name = "Baking Supplies"
 	contains = list(
@@ -146,20 +146,99 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate
 	containername = "Baking Supplies"
+*/
+/datum/supply_pack/hospitality/condiments
+	name = "Condiments"
+	contains = list(
+		/obj/item/weapon/reagent_containers/food/condiment/sugar = 5,
+		/obj/item/weapon/reagent_containers/food/condiment/cornoil = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/hotsauce = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/soysauce = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/ketchup = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/small/peppermill = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/small/saltshaker = 1,
+		/obj/item/weapon/reagent_containers/food/condiment/small/sugar = 1
+		)
+	cost = 500
+	containertype = /obj/structure/closet/crate
+	containername = "Baking Supplies"
+
+/datum/supply_pack/hospitality/bulk_flour
+	name = "Bulk Flour"
+	contains = list(
+		/obj/item/weapon/reagent_containers/food/condiment/flour = 6,
+				)
+	cost = 1000
+	containertype = /obj/structure/closet/crate
+	containername = "Bulk Flour"
+
+/datum/supply_pack/hospitality/bulk_meat
+	name = "Bulk meat"
+	contains = list(
+		/obj/item/weapon/reagent_containers/food/snacks/meat = 10,
+				)
+	cost = 400
+	containertype = /obj/structure/closet/crate
+	containername = "Bulk meat"
+
+/datum/supply_pack/hospitality/bulk_eggs
+	name = "Bulk Eggs"
+	contains = list(
+		/obj/item/weapon/storage/fancy/egg_box = 2,
+				)
+	cost = 300
+	containertype = /obj/structure/closet/crate
+	containername = "Bulk eggs"
+
+/datum/supply_pack/hospitality/bulk_milk
+	name = "Bulk milk"
+	contains = list(
+		/obj/item/weapon/reagent_containers/food/drinks/milk = 8,
+				)
+	cost = 300
+	containertype = /obj/structure/closet/crate
+	containername = "Bulk Milk"
+
+/datum/supply_pack/hospitality/bulk_soymilk
+	name = "Bulk soymilk"
+	contains = list(
+		/obj/item/weapon/reagent_containers/food/drinks/soymilk = 8,
+				)
+	cost = 200
+	containertype = /obj/structure/closet/crate
+	containername = "Bulk soymilk"
+
+/datum/supply_pack/hospitality/bulk_tofu
+	name = "Bulk Tofu"
+	contains = list(
+		/obj/item/weapon/reagent_containers/food/snacks/tofu = 6,
+				)
+	cost = 100
+	containertype = /obj/structure/closet/crate
+	containername = "Bulk Tofu"
+
+/datum/supply_pack/hospitality/bulk_rollingpapers
+	name = "Bulk Rolling Paper"
+	contains = list(
+		/obj/item/weapon/storage/rollingpapers = 5,
+				)
+	cost = 300
+	containertype = /obj/structure/closet/crate
+	containername = "Bulk Rolling Paper"
 
 /datum/supply_pack/hospitality/beer_keg
 	name = "Beer Keg"
 	contains = list(
 		/obj/structure/reagent_dispensers/beerkeg = 1,
 		)
-	cost = 100
+	cost = 1000
 	containertype = /obj/structure/closet/crate/large
 	containername = "Beer Keg"
 	spend_type = SPEND_ALCOHOL
 
 /datum/supply_pack/hospitality/alcohol_set
 	name = "Standard Alcohol Set"
-	cost = 700
+	cost = 7000
 	containertype = /obj/structure/closet/crate/large
 	containername = "Standard Alcohol Set"
 
@@ -193,7 +272,7 @@
 
 /datum/supply_pack/hospitality/soft_drinks
 	name = "Soft Drinks Set"
-	cost = 100	// high resell value!
+	cost = 1000	// high resell value!
 	containertype = /obj/structure/closet/crate/large
 	containername = "Soft Drinks Set"
 
@@ -204,7 +283,7 @@
 					/obj/item/weapon/reagent_containers/food/drinks/cans/gingerale, /obj/item/weapon/reagent_containers/food/drinks/bottle/cola
 					)
 
-
+/*
 /datum/supply_pack/hospitality/animal_produce
 	name = "Animal Produce"
 	contains = list(
@@ -226,7 +305,7 @@
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "Vegan Produce"
 
-
+*/
 /datum/supply_pack/hospitality/bouquet
 	name = "Bouquets Crate"
 	contains = list(
@@ -234,7 +313,7 @@
 		/obj/item/toy/bouquet/fake = 3,
 
 		)
-	cost = 20
+	cost = 200
 	containertype = /obj/structure/closet/crate
 	containername = "crate of bouquets"
 	spend_type = SPEND_HOSPITALITY
@@ -245,7 +324,7 @@
 	contains = list(
 		/obj/item/weapon/storage/fancy/heartbox = 5,
 		)
-	cost = 40
+	cost = 400
 	containertype = /obj/structure/closet/crate
 	containername = "crate of chocolates"
 
@@ -272,7 +351,7 @@
 		/obj/item/weapon/flame/lighter/zippo/clown,
 		/obj/item/weapon/flame/lighter/zippo/fox
 		)
-	cost = 100
+	cost = 1000
 	containertype = /obj/structure/closet/crate/gold
 	containername = "Zippo Collection"
 	spend_type = SPEND_HOSPITALITY
@@ -288,23 +367,22 @@
 		/obj/item/weapon/storage/fancy/cigarettes/jerichos = 5,
 		/obj/item/weapon/storage/fancy/cigarettes/menthols = 5,
 		)
-	cost = 50
+	cost = 500
 	containertype = /obj/structure/closet/crate
 	containername = "Standard Cigarettes (Bulk)"
 	spend_type = SPEND_TOBACCO
 
 /datum/supply_pack/hospitality/tobacco_paraphernalia
-	name = "Tobacco Paraphernalia Set"
+	name = "Lighter Set"
 	contains = list(
-				/obj/item/weapon/storage/rollingpapers = 5,
 				/obj/item/weapon/storage/box/matches = 10,
 				/obj/item/weapon/flame/lighter/random = 5,
 				)
 	cost = 10
 	containertype = /obj/structure/closet/crate
-	containername = "Tobacco Paraphernalia Set"
+	containername = "Lighter Set"
 	spend_type = SPEND_HOSPITALITY
-
+/*
 /datum/supply_pack/hospitality/deluxe_cigarettes
 	name = "Deluxe Cigarettes (Bulk)"
 	contains = list(/obj/item/weapon/storage/fancy/cigar = 5,
@@ -315,11 +393,11 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Deluxe Cigarettes set"
 	spend_type = SPEND_TOBACCO
-
+*/
 /datum/supply_pack/hospitality/bingo_machine
 	name = "Bingo Machine"
 	contains = list(/obj/machinery/bingo_machine)
-	cost = 500
+	cost = 5000
 	containertype = /obj/structure/closet/crate
 	containername = "Bingo Machine"
 	spend_type = SPEND_HOSPITALITY
@@ -327,7 +405,7 @@
 /datum/supply_pack/hospitality/daubers
 	name = "Bingo Daubers"
 	contains = list(/obj/item/weapon/pen/crayon/marker/red/dauber = 10)
-	cost = 100
+	cost = 1000
 	containertype = /obj/structure/closet/crate
 	containername = "Bingo Daubers"
 	spend_type = SPEND_HOSPITALITY
@@ -336,6 +414,6 @@
 /datum/supply_pack/hospitality/trickbag
 	name = "Halloween Trick O' Treat Bags (Bulk of 10)"
 	contains = list(/obj/item/weapon/storage/spooky = 10)
-	cost = 150
+	cost = 1500
 	containertype = /obj/structure/closet/crate
 	containername = "Halloween Trick O' Treat Bags"
