@@ -22,7 +22,7 @@
 	id = "maximum_rent"
 	value = 100
 	min_value = 1
-	max_value = 500
+	max_value = 5000
 	value_is_money = TRUE
 
 /datum/persistent_option/number_value/landlord/max_lots
@@ -38,7 +38,7 @@
 	name = "Minimum Arrears For Tenant Eviction"
 	description = "In negative numbers, how low must the tenant fall into arrears before their landlord can evict them?"
 	id = "min_arrears_tenant"
-	value = -5000
+	value = -50000
 	max_value = -1000
-	min_value = -10000
+	min_value = -100000
 	value_is_money = TRUE
