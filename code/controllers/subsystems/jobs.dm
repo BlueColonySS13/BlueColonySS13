@@ -694,14 +694,12 @@ SUBSYSTEM_DEF(jobs)
 		var/datum/business/B = get_business_by_owner_uid(H.mind.prefs.unique_id)
 		if(B)
 			for(var/V in B.business_accesses)
-				if(!(V in C.access))
-					C.access += V
+				C.access |= V
 
 		//business access compatibility? why. don't ask me.
 		if(job.business)
 			for(var/V in job.access)
-				if(!(V in C.access))
-					C.access += V
+				C.access |= job.access
 
 	return 1
 

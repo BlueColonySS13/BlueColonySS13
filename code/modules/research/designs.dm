@@ -74,7 +74,7 @@ other types of metals and chemistry for reagents).
 	req_tech = list(TECH_DATA = 1)
 	materials = list(DEFAULT_WALL_MATERIAL = 10, "plastic" = 30)
 	build_path = /obj/item/weapon/disk/design_disk
-	sort_string = "GAAAA"
+	sort_string = "AAAAA"
 
 /datum/design/item/tech_disk
 	name = "Technology Data Storage Disk"
@@ -83,9 +83,7 @@ other types of metals and chemistry for reagents).
 	req_tech = list(TECH_DATA = 1)
 	materials = list(DEFAULT_WALL_MATERIAL = 10, "plastic" = 30)
 	build_path = /obj/item/weapon/disk/tech_disk
-	sort_string = "GAAAB"
-
-	sort_string = "GAAAB"
+	sort_string = "AAAAB"
 
 /datum/design/item/stock_part
 	build_type = PROTOLATHE

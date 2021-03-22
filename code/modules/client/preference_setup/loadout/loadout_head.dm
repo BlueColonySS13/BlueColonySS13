@@ -87,27 +87,27 @@
 
 /datum/gear/head/cap/policecadet
 	display_name = "Police cadet's ballcap"
-	/obj/item/clothing/head/soft/policecadet
+	path = /obj/item/clothing/head/soft/policecadet
 	allowed_roles = list("Police Officer")
 
 /datum/gear/head/cap/policedetective
 	display_name = "Police investigator's ballcap"
-	/obj/item/clothing/head/soft/policedetective
+	path = /obj/item/clothing/head/soft/policedetective
 	allowed_roles = list("Detective")
 
 /datum/gear/head/cap/policedetective
 	display_name = "Police Sergeant's ballcap"
-	/obj/item/clothing/head/soft/policewarden
+	path = /obj/item/clothing/head/soft/policewarden
 	allowed_roles = list("Prison Warden")
 
 /datum/gear/head/cap/policetraffic
 	display_name = "Traffic officer's ballcap"
-	/obj/item/clothing/head/soft/policetraffic
+	path = /obj/item/clothing/head/soft/policetraffic
 	allowed_roles = list("Prison Officer")
 
 /datum/gear/head/cap/policechief
 	display_name = "Police Chief's ballcap"
-	/obj/item/clothing/head/soft/policechief
+	path = /obj/item/clothing/head/soft/policechief
 	allowed_roles = list("Chief of Police")
 
 /datum/gear/head/cap/green
