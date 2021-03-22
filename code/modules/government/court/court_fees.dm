@@ -46,12 +46,12 @@ var/global/list/court_fees = list()
 /datum/court_fee/court_fine
 	name = "Court Fine"
 	description = "A administrative fine issued by the Judge or Magistrate to counsel or a litigant for misconduct."
-	cost = 100
+	cost = 1000
 	portal_id = "court_fine"
 
 /datum/court_fee/high_court_appeal
 	name = "High Court of Pollux Appeal Fee"
 	description = "A fee to cover the cost inccured by the High Court of the Republic of Pollux to hear an appeal."
-	cost = 1000
+	cost = 10000
 
 	portal_id = "high_court_appeal"
