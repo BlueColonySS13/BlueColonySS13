@@ -18,7 +18,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
 	minimal_player_age = 14
-	wage = 500
+	wage = 4500
 
 	allows_synths = FALSE
 
@@ -68,7 +68,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	idtype = /obj/item/weapon/card/id/silver/hop
 	req_admin_notify = 1
 	minimal_player_age = 10
-	wage = 350
+	wage = 3000
 
 	allows_synths = FALSE
 
@@ -108,8 +108,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	supervisors = "the City Clerk"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/secretary
-	wage = 100
-	synth_wage = 50
+	wage = 1500
+	synth_wage = 750
 
 	access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
 	minimal_access = list(access_heads, access_hop, access_maint_tunnels, access_legal)
@@ -137,8 +137,8 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	selection_color = "#601C1C"
 	idtype = /obj/item/weapon/card/id/silver/secretary
 	minimal_player_age = 5
-	wage = 100
-	synth_wage = 60
+	wage = 2000
+	synth_wage = 1000
 
 	minimum_character_age = 21
 	access = list(access_heads, access_bodyguard, access_keycard_auth, access_security, access_legal)
