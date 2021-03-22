@@ -109,6 +109,39 @@
 	name = "Shopping Lot 6"
 	lot_id = "shoplot6"
 
+/area/lots/shopping/shopping_lot_seven
+	name = "Shopping Lot 7"
+	lot_id = "shoplot7"
+
+/area/lots/shopping/shopping_lot_eight
+	name = "Shopping Lot 8"
+	lot_id = "shoplot8"
+
+/area/lots/shopping/shopping_lot_nine
+	name = "Shopping Lot 9"
+	lot_id = "shoplot9"
+
+/area/lots/shopping/shopping_lot_ten
+	name = "Shopping Lot 10"
+	lot_id = "shoplot10"
+
+/area/lots/shopping/shopping_lot_eleven
+	name = "Shopping Lot 11"
+	lot_id = "shoplot11"
+
+/area/lots/shopping/shopping_lot_twelve
+	name = "Shopping Lot 12"
+	lot_id = "shoplot12"
+
+/area/lots/shopping/shopping_lot_thirteen
+	name = "Shopping Lot13"
+	lot_id = "shoplot13"
+
+/area/lots/shopping/shopping_lot_fourteen
+	name = "Shopping Lot 14"
+	lot_id = "shoplot14"
+
+
 // Office Lot
 
 /area/lots/office/multi/office_complex_one
@@ -128,3 +161,5 @@
 /area/lots/farm/farm_lot_one
 	name = "Farm Lot 1"
 	lot_id = "farmlot1"
+
+// Event Hall

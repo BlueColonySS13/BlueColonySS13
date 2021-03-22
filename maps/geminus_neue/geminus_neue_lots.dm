@@ -95,6 +95,14 @@
 	max_tenants = 6
 	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
 
+/datum/lot/business/thirteen
+	name = "Business Lot 13"
+	id = "bizlot13"
+	price = 130000
+	desc = "A business lot located on the west side of the chapel,in the middle of the city, unfurnished and medium sized and suitable for many uses"
+	max_tenants = 6
+	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
+
 //stalls
 /datum/lot/stall
 	price = 9000
@@ -151,7 +159,6 @@
 	price = 40000
 	desc = "A small lot located on the ground floor of the shopping mall - left hand side."
 
-
 /datum/lot/shopping/two
 	name = "Shopping Lot 2"
 	id = "shoplot2"
@@ -162,7 +169,6 @@
 	name = "Shopping Lot 3"
 	id = "shoplot3"
 	desc = "A medium-small lot located on the top floor and top left of the shopping mall."
-
 
 /datum/lot/shopping/four
 	name = "Shopping Lot 4"
@@ -181,6 +187,55 @@
 	id = "shoplot6"
 	price = 61200
 	desc = "A medium lot located on the top floor and bottom right of the shopping mall."
+
+/datum/lot/shopping/seven
+	name = "Shopping Lot 7"
+	id = "shoplot7"
+	price = 61200
+	desc = "A medium lot located on the top floor and bottom right of the shopping mall."
+
+/datum/lot/shopping/eight
+	name = "Shopping Lot 8"
+	id = "shoplot8"
+	price = 61200
+	desc = "A medium lot located on the top floor and bottom right of the shopping mall."
+
+/datum/lot/shopping/nine
+	name = "Shopping Lot 9"
+	id = "shoplot9"
+	price = 61200
+	desc = "A medium lot located on the top floor and bottom right of the shopping mall."
+
+/datum/lot/shopping/ten
+	name = "Shopping Lot 10"
+	id = "shoplot10"
+	price = 61200
+	desc = "A medium lot located on the top floor and bottom right of the shopping mall."
+
+/datum/lot/shopping/eleven
+	name = "Shopping Lot 11"
+	id = "shoplot11"
+	price = 61200
+	desc = "A medium lot located on the top floor and bottom right of the shopping mall."
+
+/datum/lot/shopping/twelve
+	name = "Shopping Lot 12"
+	id = "shoplot12"
+	price = 61200
+	desc = "A medium lot located on the top floor and bottom right of the shopping mall."
+
+/datum/lot/shopping/thirteen
+	name = "Shopping Lot 13"
+	id = "shoplot13"
+	price = 61200
+	desc = "A medium lot located on the top floor and bottom right of the shopping mall."
+
+/datum/lot/shopping/fourteen
+	name = "Shopping Lot 14"
+	id = "shoplot14"
+	price = 61200
+	desc = "A medium lot located on the top floor and bottom right of the shopping mall."
+
 
 // office lots
 
