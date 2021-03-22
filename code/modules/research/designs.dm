@@ -107,7 +107,7 @@ other types of metals and chemistry for reagents).
 /datum/design/item/stock_part/adv_capacitor
 	id = "adv_capacitor"
 	req_tech = list(TECH_POWER = 3)
-	materials = list("plastic" = 50, "aluminium", "silver" = 50)
+	materials = list("plastic" = 50, "aluminium" = 50, "silver" = 50)
 	build_path = /obj/item/weapon/stock_parts/capacitor/adv
 	sort_string = "CAAAB"
 	price = 100
