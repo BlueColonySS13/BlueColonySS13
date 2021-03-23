@@ -4,7 +4,7 @@
 	name = "Threat of Death or Bodily Harm"
 	description = "To threaten a person's life or well-being."
 
-	fine = 300
+	fine = 3000
 
 	notes = "The threat does not necessarily have to be verbal. \
 	Pointing a gun at people for example would also fit this charge."
@@ -15,7 +15,7 @@
 	description = "To willfully and repeatedly follow and/or harass another person."
 	notes = "A victim of this can seek a restraining order."
 	cell_time = 10
-	fine = 400
+	fine = 4000
 
 /datum/law/misdemeanor/defamation
 	name = "Defamation"
@@ -29,7 +29,7 @@
 	name = "Battery"
 	description = "To initiate an unwanted physical contact with another person."
 	cell_time = 10
-	fine = 750
+	fine = 7500
 
 	notes = "Slapping, pushing, disarming, repeatedly bumping into someone can be considered \
 	battery. Anything more serious is to be charged with assault"
@@ -39,7 +39,7 @@
 	name = "Vandalism"
 	description = "To desecrate or deface public or private property."
 
-	fine = 200
+	fine = 2000
 
 	notes = "Vandalism covers only cosmetic alterations like graffiti. For anything serious \
 	see \"Property Damage\"."
@@ -50,7 +50,7 @@
 	description = "To dishonestly appropriate property of collective estimated value of \
 	no more than 400 credits belonging to another person or organisation."
 
-	fine = 400
+	fine = 4000
 
 	notes = "Note that taking items that are meant for public use all for yourself \
 	is also considered theft even if you normally have access to them. For example \
@@ -61,7 +61,7 @@
 	name = "Trespassing"
 	description = "To enter the area one does not have access to or permission to be in."
 
-	fine = 400
+	fine = 4000
 
 	notes = "Make sure the person really doesn’t have access to the are or wasn’t let there \
 	by other personnel. Trespassing often goes hand to hand with other crimes like damage \
@@ -73,6 +73,6 @@
 	noncontact actions. If there is actually sexual activity, see Sexual Assault."
 
 	cell_time = 10
-	fine = 1000
+	fine = 10000
 
 	notes = "Clearly unwanted means that it's been made clear that the advances aren't welcome."
