@@ -149,7 +149,7 @@
 /datum/lot/stall/six
 	name = "Stall 6"
 	id = "stall6"
-	prive = 42050
+	price = 42050
 	desc = "A tiny stall next to the factory. It is located on the bottom right."
 
 /datum/lot/stall/seven
