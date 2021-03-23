@@ -95,7 +95,7 @@
 /datum/supply_pack/business/security_system
 	contains = list(/obj/machinery/lot_security_system/factory_ordered)
 	name = "Z.E.U.S. Security System" // 'Security System' is redundant since the S in the name stands for security, but it needs to be obvious in the menu.
-	cost = 100000
+	cost = 50000
 	containertype = /obj/structure/largecrate
 	containername = "Z.E.U.S. System"
 

@@ -10,8 +10,8 @@
 
 	items_wanted = list(/obj/item/trash/tastybread = 100)
 
-	department_reward = 100
-	individual_reward = 200
+	department_reward = 1000
+	individual_reward = 2000
 
 	days_until_expiry = 5
 
@@ -24,8 +24,8 @@
 
 	items_wanted = list(/obj/item/stack/material/cardboard = 30)
 
-	department_reward = 300
-	individual_reward = 500
+	department_reward = 3000
+	individual_reward = 5000
 
 /datum/bounty/recycling/dont_box
 	name = "Don't Put Me In A Box"
@@ -35,8 +35,8 @@
 
 	items_wanted = list(/obj/item/weapon/storage/box = 100)
 
-	department_reward = 200
-	individual_reward = 300
+	department_reward = 2000
+	individual_reward = 3000
 
 /datum/bounty/recycling/boneman
 	name = "Spooky Scary Skeletons"
@@ -52,8 +52,8 @@
 
 	)
 
-	department_reward = 100
-	individual_reward = 75
+	department_reward = 1000
+	individual_reward = 750
 
 	allow_subtypes = TRUE
 
@@ -87,8 +87,8 @@
 	/obj/item/trash/waffles
 	)
 
-	department_reward = 90
-	individual_reward = 50
+	department_reward = 900
+	individual_reward = 500
 
 
 /datum/bounty/recycling/toy_for_christmas
@@ -122,7 +122,7 @@
 				/obj/item/toy/prize/phazon,
 				/obj/item/toy/stickhorse)
 
-	department_reward = 145
-	individual_reward = 95
+	department_reward = 1450
+	individual_reward = 950
 
 	days_until_expiry = 5

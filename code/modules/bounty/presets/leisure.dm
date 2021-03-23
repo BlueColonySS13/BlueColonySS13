@@ -25,8 +25,8 @@
 	/obj/item/clothing/under/dress/festivedress = 1
 	)
 
-	department_reward = 150
-	individual_reward = 50
+	department_reward = 1500
+	individual_reward = 500
 
 	days_until_expiry = 2
 
@@ -40,8 +40,8 @@
 
 	items_wanted = list(/obj/item/clothing/head/beanie = 200)
 
-	department_reward = 4000
-	individual_reward = 1700
+	department_reward = 40000
+	individual_reward = 17000
 
 
 /datum/bounty/leisure/beanies/meets_standards(var/obj/O) // additional custom checks
@@ -61,8 +61,8 @@
 
 	items_wanted = list(/obj/item/weapon/lipstick = 200)
 
-	department_reward = 15000
-	individual_reward = 2500
+	department_reward = 150000
+	individual_reward = 25000
 
 	var/makeup_color = "#FF0000"
 
@@ -94,8 +94,8 @@
 
 	items_wanted = list(/obj/item/weapon/lipstick/eyeshadow = 200)
 
-	department_reward = 4200
-	individual_reward = 1700
+	department_reward = 42000
+	individual_reward = 17000
 
 
 /datum/bounty/leisure/pucker_up/making_me_blush
@@ -106,8 +106,8 @@
 
 	items_wanted = list(/obj/item/weapon/lipstick/blusher = 200)
 
-	department_reward = 12000
-	individual_reward = 1700
+	department_reward = 120000
+	individual_reward = 17000
 
 
 /datum/bounty/leisure/jackening
@@ -123,8 +123,8 @@
 
 	)
 
-	department_reward = 140
-	individual_reward = 25
+	department_reward = 1400
+	individual_reward = 250
 
 	days_until_expiry = 1
 
@@ -137,8 +137,8 @@
 
 	items_wanted = list(/obj/item/clothing/under/wedding = 1)
 
-	department_reward = 300
-	individual_reward = 170
+	department_reward = 3000
+	individual_reward = 1700
 
 	days_until_expiry = 1
 	allow_subtypes = TRUE
@@ -152,8 +152,8 @@
 
 	items_wanted = list(/obj/item/clothing/head/fedora = 250)
 
-	department_reward = 3500
-	individual_reward = 1600
+	department_reward = 35000
+	individual_reward = 16000
 
 	days_until_expiry = 10
 	allow_subtypes = TRUE
