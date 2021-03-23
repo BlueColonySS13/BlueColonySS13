@@ -1304,7 +1304,7 @@
 	/obj/item/device/breathalyzer = 2,
 	/obj/item/clothing/under/rank/policedetectivealt = 4,
 	/obj/item/clothing/head/police/policedetectivecap = 4,
-	/obj/item/clothing/head/soft/policecdetective = 4,
+	/obj/item/clothing/head/soft/policedetective = 4,
 	/obj/item/clothing/head/beret/policered = 4,
 	/obj/item/clothing/suit/storage/toggle/policejacket = 4,
 	/obj/item/clothing/under/det = 2,

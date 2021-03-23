@@ -7,6 +7,7 @@
 	name = "Mapping Prop"
 	desc = "Hey! You shouldn't be seeing this!"
 	var/interaction_message = "Congratulations! Absolutely nothing has occured." // Used by the attack_hand prop for messages
+	density = TRUE
 
 /obj/structure/prop/attack_hand(mob/living/user) // Used to tell the player that this isn't useful for anything.
 	if(!istype(user))

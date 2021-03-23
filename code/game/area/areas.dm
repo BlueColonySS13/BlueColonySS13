@@ -44,6 +44,8 @@
 	var/uid
 	var/there_can_be_many = FALSE
 	var/lot_id
+	var/soundproofed = FALSE // If true, blocks sounds from other areas and prevents hearers on other areas from hearing the sounds within.
+
 	dont_save = TRUE
 
 /area/New()

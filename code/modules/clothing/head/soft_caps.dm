@@ -113,7 +113,7 @@
 	icon_state = "policecadetsoft"
 	item_state_slots = list(slot_r_hand_str = "bluesoft", slot_l_hand_str = "bluesoft")
 
-/obj/item/clothing/head/soft/policecdetective
+/obj/item/clothing/head/soft/policedetective
 	name = "Investigator baseball cap"
 	desc = "a blue baseball cap for a police Investigator."
 	icon_state = "policedetectivesoft"

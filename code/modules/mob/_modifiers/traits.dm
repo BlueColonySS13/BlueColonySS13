@@ -62,7 +62,7 @@
 /datum/modifier/trait/taller
 	name = "Taller"
 	desc = "Your body is taller than average."
-	icon_scale_y_percent = 1.1
+	icon_scale_y_percent = 1.15
 	icon_scale_x_percent = 1
 
 /datum/modifier/trait/tall

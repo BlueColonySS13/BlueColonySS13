@@ -29,8 +29,12 @@ GLOBAL_LIST_INIT(permit_types, list(
 /obj/item/clothing/accessory/permit/New()
 	..()
 	update_icon()
+
+/obj/item/clothing/accessory/permit/get_item_cost()
 	if(permit_portal_id)
-		price_tag = SSpersistent_options.get_persistent_option_value(permit_portal_id) // takes the permit id from the portal and uses the price there.
+		return SSpersistent_options.get_persistent_option_value(permit_portal_id) // takes the permit id from the portal and uses the price there.
+
+	return price_tag
 
 /obj/item/clothing/accessory/permit/attack_self(mob/user as mob)
 	if(isliving(user))
