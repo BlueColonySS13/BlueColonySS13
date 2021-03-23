@@ -116,7 +116,7 @@
 
 //stalls
 /datum/lot/stall
-	price = 9000
+	price = 43050
 	desc = "A tiny set of tiny stalls intended for a small business."
 	max_tenants = 1
 
@@ -138,7 +138,7 @@
 /datum/lot/stall/four
 	name = "Stall 4"
 	id = "stall4"
-	price = 8500
+	price = 43000
 	desc = "A tiny stall next to the factory. It is located on the middle right."
 /*
 /datum/lot/stall/five
@@ -149,7 +149,7 @@
 /datum/lot/stall/six
 	name = "Stall 6"
 	id = "stall6"
-	prive = 8000
+	prive = 42050
 	desc = "A tiny stall next to the factory. It is located on the bottom right."
 
 /datum/lot/stall/seven
