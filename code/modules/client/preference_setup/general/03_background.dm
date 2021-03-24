@@ -91,9 +91,9 @@
 		. += "Geminus City is on the planet Pollux, and is located in Blue Colony, in the Vetra star system. You may choose a different background. Social class and the system you are born in cannot be changed once set.</br><br>"
 
 		. += "There are the minimum days required to start each class:<br><br>"
-		. += "Working Class Minimum: 0 days (200CR inheritance)<br>"
-		. += "Middle Class Minimum: [config.middle_class_age] days (4000CR inheritance)<br>"
-		. += "Upper Class Minimum: [config.upper_class_age] day (10000CR inheritance)<br><br>"
+		. += "Working Class Minimum: 0 days (2000CR inheritance)<br>"
+		. += "Middle Class Minimum: [config.middle_class_age] days (40000CR inheritance)<br>"
+		. += "Upper Class Minimum: [config.upper_class_age] day (100000CR inheritance)<br><br>"
 
 		. += "<b>Economic Class:</b> [pref.economic_status]<br>"
 		. += "<b>Social Class:</b> <a href='?src=\ref[src];soc_class=1'>[pref.social_class]</a><br/>"
