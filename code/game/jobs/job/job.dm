@@ -138,13 +138,13 @@
 	if(!H.mind.prefs.played)
 		switch(H.mind.prefs.social_class)
 			if(CLASS_UPPER)
-				income = 10000
+				income = 100000
 
 			if(CLASS_MIDDLE)
-				income = 4000
+				income = 40000
 
 			if(CLASS_WORKING)
-				income = 200
+				income = 2000
 
 		M.money += income
 
