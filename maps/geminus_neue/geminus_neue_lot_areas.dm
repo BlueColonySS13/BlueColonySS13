@@ -53,6 +53,9 @@
 	name = "Business Lot 13"
 	lot_id = "bizlot13"
 
+/area/lots/business/business_lot_fourteen
+	name = "Business Lot 14"
+	lot_id = "bizlot14"
 // stalls
 
 /area/lots/stall/one
