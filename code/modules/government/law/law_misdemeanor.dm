@@ -22,7 +22,7 @@
 	description = "To spread false information about a person or organization \
 	with an intention of damaging the reputation of thereof."
 
-	fine = 300
+	fine = 3000
 
 
 /datum/law/misdemeanor/battery

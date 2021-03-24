@@ -807,7 +807,7 @@
 "pA" = (/obj/machinery/lot_security_system/centcom/president,/turf/simulated/floor/tiled/yellow,/area/centcom/president_office_geminus)
 "pB" = (/turf/simulated/wall/titanium,/area/centcom/president_office_geminus/governor)
 "pC" = (/obj/machinery/door/airlock/centcom{name = "ZEUS storage"; req_access = list(101)},/turf/simulated/floor/tiled/yellow,/area/centcom/president_office_geminus)
-"pD" = (/obj/machinery/transportpod/president,/obj/effect/landmark/transport_location{id = "president"; name = "president transport location marker"},/turf/simulated/floor/tiled/yellow,/area/centcom/president_office_geminus)
+"pD" = (/obj/effect/landmark/transport_location{id = "president"; name = "president transport location marker"},/obj/machinery/transportpod,/turf/simulated/floor/tiled/yellow,/area/centcom/president_office_geminus)
 "pE" = (/turf/simulated/floor/tiled/neutral,/area/centcom/president_office_geminus/governor)
 "pF" = (/turf/simulated/floor/plating,/area/planets/Geminus/outdoor/sky)
 "pG" = (/obj/machinery/light/colored,/turf/simulated/floor/tiled/yellow,/area/centcom/president_office_geminus)
