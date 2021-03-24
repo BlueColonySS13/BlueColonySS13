@@ -54,7 +54,7 @@
 	owner_name = "Nanotrasen"
 	bank_id = nt_dep.account_number
 	owner_uid = "Nanotrasen"
-	charge = 3000
+	charge = 30000
 	staff_pin = 10000	// you can't enter a pin over 9999, so this is unhackable.
 
 
