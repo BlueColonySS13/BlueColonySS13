@@ -40,3 +40,7 @@
 
 /turf/simulated/floor/outdoors/dirt/indoors
 	outdoors = 0
+
+/turf/simulated/floor/outdoors/dirt/nogrowth
+	tree_chance = 0
+	grass_chance = 0

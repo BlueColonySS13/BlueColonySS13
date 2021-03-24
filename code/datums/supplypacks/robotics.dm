@@ -21,7 +21,7 @@
 			/obj/item/device/flash = 4,
 			/obj/item/weapon/cell/high = 2
 			)
-	cost = 250
+	cost = 2500
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robotics assembly"
 	access = access_robotics
@@ -59,7 +59,7 @@
 	contains = list(/obj/item/weapon/disk/limb/morpheus,
 					/obj/item/weapon/disk/limb/morpheus/zenith,
 					/obj/item/weapon/disk/limb/morpheus/skeletoncrew,)
-	cost = 2000
+	cost = 20000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Morpheus)"
 
@@ -68,7 +68,7 @@
 	contains = list(/obj/item/weapon/disk/limb/cybersolutions,
 					/obj/item/weapon/disk/limb/cybersolutions/array,
 					/obj/item/weapon/disk/limb/cybersolutions/wight)
-	cost = 6000
+	cost = 60000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Cyber Solutions)"
 
@@ -79,7 +79,7 @@
 					/obj/item/weapon/disk/limb/xion/whiteout,
 					/obj/item/weapon/disk/limb/xion/breach,
 					/obj/item/weapon/disk/limb/xion/breach_whiteout)
-	cost = 8000
+	cost = 80000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Xion)"
 
@@ -88,7 +88,7 @@
 	contains = list(/obj/item/weapon/disk/limb/grayson,
 					/obj/item/weapon/disk/limb/grayson/reinforced,
 					/obj/item/weapon/disk/limb/grayson/monitor)
-	cost = 9000
+	cost = 90000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Grayson)"
 
@@ -98,7 +98,7 @@
 					/obj/item/weapon/disk/limb/hephaestus/athena,
 					/obj/item/weapon/disk/limb/hephaestus/frontier,
 					/obj/item/weapon/disk/limb/hephaestus/monitor)
-	cost = 14000
+	cost = 140000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Hephaestus)"
 
@@ -108,14 +108,14 @@
 					/obj/item/weapon/disk/limb/wardtakahashi/shroud,
 					/obj/item/weapon/disk/limb/wardtakahashi/spirit,
 					/obj/item/weapon/disk/limb/wardtakahashi/monitor)
-	cost = 14000
+	cost = 140000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Ward-Takahashi)"
 
 /datum/supply_pack/robotics/robolimbs/zenghu
 	name = "Zeng Hu robolimb blueprints"
 	contains = list(/obj/item/weapon/disk/limb/zenghu)
-	cost = 4000
+	cost = 40000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Zeng Hu)"
 
@@ -124,17 +124,17 @@
 	contains = list(/obj/item/weapon/disk/limb/bishop,
 					/obj/item/weapon/disk/limb/bishop/rook,
 					/obj/item/weapon/disk/limb/bishop/rook_red)
-	cost = 21000
+	cost = 210000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Bishop)"
-
+/*
 /datum/supply_pack/robotics/robolimbs/veymed
 	name = "Veymed robolimb blueprints + Installation Licensing"
 	contains = list(/obj/item/weapon/disk/limb/veymed)
-	cost = 1000000
+	cost = 10000000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Veymed)"
-
+*/
 /datum/supply_pack/robotics/mecha_ripley
 	name = "Circuit Crate (\"Ripley\" APLU)"
 	contains = list(
@@ -142,7 +142,7 @@
 			/obj/item/weapon/circuitboard/mecha/ripley/main,
 			/obj/item/weapon/circuitboard/mecha/ripley/peripherals
 			)
-	cost = 35000
+	cost = 350000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "APLU \"Ripley\" Circuit Crate"
 	access = access_robotics
@@ -153,7 +153,7 @@
 			/obj/item/weapon/circuitboard/mecha/odysseus/peripherals,
 			/obj/item/weapon/circuitboard/mecha/odysseus/main
 			)
-	cost = 30000
+	cost = 300000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "\"Odysseus\" Circuit Crate"
 	access = access_robotics
@@ -167,7 +167,7 @@
 			/obj/item/device/kit/paint/ripley/flames_blue
 			)
 	name = "Random APLU modkit"
-	cost = 1000
+	cost = 10000
 	containertype = /obj/structure/closet/crate/science
 	containername = "heavy crate"
 
@@ -192,7 +192,7 @@
 	contains = list(
 			/obj/item/device/defib_kit/jumper_kit = 2
 			)
-	cost = 500
+	cost = 5000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Jumper kit crate"
 	access = access_robotics
@@ -201,6 +201,6 @@
 /datum/supply_pack/robotics/hoverpod
 	name = "Hoverpod Shipment"
 	contains = list()
-	cost = 45000
+	cost = 450000
 	containertype = /obj/structure/largecrate/hoverpod
 	containername = "Hoverpod Crate"

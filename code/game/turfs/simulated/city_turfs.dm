@@ -10,6 +10,9 @@
 	icon_state = "pave_empty"
 	initial_flooring = /decl/flooring/pavement/empty
 
+/turf/simulated/floor/pavement/empty/indoors
+	outdoors = 0
+
 /turf/simulated/floor/pavement/corner
 	icon_state = "pave_corner"
 	initial_flooring = /decl/flooring/pavement/corner

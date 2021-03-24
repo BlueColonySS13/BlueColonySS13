@@ -17,8 +17,8 @@
 
 	stacks_wanted = list("diamond" = 500)
 
-	department_reward = 13000
-	individual_reward = 1300
+	department_reward = 55000
+	individual_reward = 5500
 
 
 /datum/bounty/mining/spaceboogle
@@ -29,8 +29,8 @@
 
 	stacks_wanted = list("plastic" = 1000)
 
-	department_reward = 1000
-	individual_reward = 200
+	department_reward = 11000
+	individual_reward = 1100
 
 /datum/bounty/mining/sister_rust
 	name = "Mekhanikal Hands"
@@ -41,8 +41,8 @@
 
 	stacks_wanted = list("iron" = 1000)
 
-	department_reward = 1500
-	individual_reward = 250
+	department_reward = 550
+	individual_reward = 55
 
 
 /datum/bounty/mining/steel_here
@@ -53,8 +53,8 @@
 
 	stacks_wanted = list("steel" = 2000)
 
-	department_reward = 3000
-	individual_reward = 400
+	department_reward = 1100
+	individual_reward = 110
 
 
 /datum/bounty/mining/back_to_the_future
@@ -66,8 +66,8 @@
 
 	stacks_wanted = list("uranium" = 1500)
 
-	department_reward = 7500
-	individual_reward = 750
+	department_reward = 99000
+	individual_reward = 9900
 
 /datum/bounty/mining/minting
 	name = "Commemerative Minting"
@@ -78,8 +78,8 @@
 
 	stacks_wanted = list("gold" = 1000)
 
-	department_reward = 9000
-	individual_reward = 1000
+	department_reward = 55000
+	individual_reward = 5500
 
 /datum/bounty/mining/better_than_gold
 	name = "Better Than Gold"
@@ -90,8 +90,8 @@
 
 	stacks_wanted = list("platinum" = 500)
 
-	department_reward = 10000
-	individual_reward = 1000
+	department_reward = 13750
+	individual_reward = 1375
 
 
 /datum/bounty/mining/phoron_slime
@@ -102,8 +102,8 @@
 
 	stacks_wanted = list("phoron" = 1000)
 
-	department_reward = 5500
-	individual_reward = 1000
+	department_reward = 55000
+	individual_reward = 5500
 
 
 /datum/bounty/mining/gorilla_warfare
@@ -114,8 +114,8 @@
 
 	stacks_wanted = list("durasteel" = 500)
 
-	department_reward = 8000
-	individual_reward = 1500
+	department_reward = 27500
+	individual_reward = 2750
 
 
 /datum/bounty/mining/plasteel_hearts
@@ -127,8 +127,8 @@
 
 	stacks_wanted = list("plasteel" = 500)
 
-	department_reward = 5750
-	individual_reward = 1180
+	department_reward = 11000
+	individual_reward = 1100
 
 
 /datum/bounty/mining/stargazing
@@ -141,8 +141,8 @@
 
 	stacks_wanted = list("osmium" = 500)
 
-	department_reward = 9000
-	individual_reward = 1000
+	department_reward = 13750
+	individual_reward = 1375
 
 
 /*
@@ -169,8 +169,8 @@
 
 	stacks_wanted = list("void opal" = 500)
 
-	department_reward = 15000
-	individual_reward = 2500
+	department_reward = 110000
+	individual_reward = 11000
 
 
 /datum/bounty/mining/thirty_pieces
@@ -182,8 +182,8 @@
 
 	stacks_wanted = list("silver" = 1000)
 
-	department_reward = 8000
-	individual_reward = 1000
+	department_reward = 55000
+	individual_reward = 5500
 
 /datum/bounty/mining/wires_everywhere
 	name = "Wires Everywhere"
@@ -193,8 +193,8 @@
 
 	stacks_wanted = list("copper" = 2000)
 
-	department_reward = 2000
-	individual_reward = 350
+	department_reward = 2200
+	individual_reward = 220
 
 /datum/bounty/mining/can_you_can_can
 	name = "Can You Can-Can?"
@@ -204,8 +204,8 @@
 
 	stacks_wanted = list("aluminium" = 2000)
 
-	department_reward = 2500
-	individual_reward = 350
+	department_reward = 2200
+	individual_reward = 220
 
 /datum/bounty/mining/contemporary_art
 	name = "Contemporary Art Piece"
@@ -216,8 +216,8 @@
 
 	stacks_wanted = list("bronze" = 1000)
 
-	department_reward = 2500
-	individual_reward = 350
+	department_reward = 1100
+	individual_reward = 110
 
 /datum/bounty/mining/superconductor
 	name = "Superconductor Trials"
@@ -228,8 +228,8 @@
 
 	stacks_wanted = list("tin" = 2000)
 
-	department_reward = 3000
-	individual_reward = 350
+	department_reward = 2200
+	individual_reward = 220
 
 /datum/bounty/mining/mechatronic_dreams
 	name = "Mechatronic Dreams"
@@ -239,8 +239,8 @@
 
 	stacks_wanted = list("titanium" = 2000)
 
-	department_reward = 4000
-	individual_reward = 600
+	department_reward = 11000
+	individual_reward = 1100
 
 /datum/bounty/mining/jay_jewellers
 	name = "Every Joyful Moment Begins With Jay"
@@ -250,8 +250,8 @@
 
 	stacks_wanted = list("painite" = 500)
 
-	department_reward = 3750
-	individual_reward = 680
+	department_reward = 16500
+	individual_reward = 1650
 
 
 /* Mass Extraction Contracts
@@ -268,8 +268,8 @@
 
 	stacks_wanted = list("plasteel" = 12500)
 
-	department_reward = 125000
-	individual_reward = 4000
+	department_reward = 275000
+	individual_reward = 27500
 
 /datum/bounty/mining/industrial_supplies
 	name = "Open Contract: Industrial & Commercial Supplies"
@@ -280,8 +280,8 @@
 
 	stacks_wanted = list("sandstone" = 15000)
 
-	department_reward = 75000
-	individual_reward = 3000
+	department_reward = 16500
+	individual_reward = 1650
 
 
 /datum/bounty/mining/final_frontier
@@ -292,8 +292,8 @@
 
 	stacks_wanted = list("titanium" = 15000)
 
-	department_reward = 100000
-	individual_reward = 3000
+	department_reward = 82500
+	individual_reward = 82500
 
 
 /datum/bounty/mining/ultraconductor
@@ -304,8 +304,8 @@
 
 	stacks_wanted = list("aluminium" = 12500)
 
-	department_reward = 100000
-	individual_reward = 4000
+	department_reward = 13750
+	individual_reward = 8250
 
 
 /datum/bounty/mining/praise_the_sun
@@ -316,7 +316,7 @@
 
 	stacks_wanted = list("reinforced glass" = 3000)
 
-	department_reward = 80000
-	individual_reward = 3250
+	department_reward = 33000
+	individual_reward = 3300
 
 

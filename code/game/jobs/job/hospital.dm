@@ -12,7 +12,7 @@
 	selection_color = "#026865"
 	idtype = /obj/item/weapon/card/id/medical/head
 	req_admin_notify = 1
-	wage = 425
+	wage = 4250
 	allows_synths = FALSE
 
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
@@ -46,8 +46,8 @@
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/doctor
-	wage = 260
-	synth_wage = 120
+	wage = 1750
+	synth_wage = 875
 
 	minimum_character_age = 25
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_eva)
@@ -76,8 +76,8 @@
 	supervisors = "the chief medical officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/chemist
-	wage = 120
-	synth_wage = 80
+	wage = 1200
+	synth_wage = 600
 
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology)
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
@@ -100,8 +100,8 @@
 	supervisors = "your private company director"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/geneticist
-	wage = 160
-	synth_wage = 80
+	wage = 1600
+	synth_wage = 800
 
 	access = list(access_genetics)
 	minimal_access = list(access_genetics)
@@ -117,8 +117,8 @@
 	faction = "City"
 	total_positions = 4
 	spawn_positions = 1
-	wage = 170
-	synth_wage = 80
+	wage = 1600
+	synth_wage = 800
 
 	minimum_character_age = 25
 	supervisors = "the medical director"
@@ -143,8 +143,8 @@
 	supervisors = "the medical director"
 	selection_color = "#013D3B"
 	idtype = /obj/item/weapon/card/id/medical/intern
-	wage = 120
-	synth_wage = 60
+	wage = 700
+	synth_wage = 350
 
 	minimum_character_age = 20
 	access = list(access_medical)
@@ -164,8 +164,8 @@
 	supervisors = "the medical director"
 	selection_color = "#5B4D20"
 	idtype = /obj/item/weapon/card/id/medical/paramedic
-	wage = 220
-	synth_wage = 100
+	wage = 2200
+	synth_wage = 1000
 
 	minimum_character_age = 20
 

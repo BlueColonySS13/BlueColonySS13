@@ -21,7 +21,7 @@
 			/obj/item/clothing/gloves/forensic = 2,
 			/obj/item/weapon/storage/briefcase/crimekit = 2
 			)
-	cost = 340
+	cost = 3400
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Forensics - Forensics Kit"
 	access = null
@@ -42,7 +42,7 @@
 			/obj/item/clothing/suit/storage/vest/heavy/hos,
 			/obj/item/clothing/suit/storage/vest/heavy/pcrc
 			)
-	cost = 1400
+	cost = 14000
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Armor crate"
 
@@ -56,7 +56,7 @@
 			/obj/item/weapon/storage/box/beanbags,
 			/obj/item/weapon/storage/box/handcuffs
 			)
-	cost = 1400
+	cost = 14000
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Riot gear crate"
 	access = access_armory
@@ -69,7 +69,7 @@
 			/obj/item/clothing/gloves/arm_guard/riot,
 			/obj/item/clothing/shoes/leg_guard/riot
 			)
-	cost = 1300
+	cost = 13000
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Riot armor crate"
 	access = access_armory
@@ -82,7 +82,7 @@
 			/obj/item/clothing/gloves/arm_guard/laserproof,
 			/obj/item/clothing/shoes/leg_guard/laserproof
 			)
-	cost = 1400
+	cost = 14000
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Ablative armor crate"
 	access = access_armory
@@ -95,7 +95,7 @@
 			/obj/item/clothing/gloves/arm_guard/bulletproof,
 			/obj/item/clothing/shoes/leg_guard/bulletproof
 			)
-	cost = 1400
+	cost = 14000
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Ballistic armor crate"
 	access = access_armory
@@ -108,7 +108,7 @@
 			/obj/item/clothing/gloves/arm_guard/combat,
 			/obj/item/clothing/shoes/leg_guard/combat
 			)
-	cost = 1400
+	cost = 14000
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Combat armor crate"
 	access = access_armory
@@ -117,7 +117,7 @@
 	name = "Armor - Tactical"
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Tactical armor crate"
-	cost = 3500
+	cost = 35000
 	access = access_armory
 	contains = list(
 			/obj/item/clothing/under/tactical,
@@ -141,7 +141,7 @@
 /datum/supply_pack/security/securitybarriers
 	name = "Misc - Security Barriers"
 	contains = list(/obj/machinery/deployable/barrier = 4)
-	cost = 250
+	cost = 2500
 	containertype = /obj/structure/largecrate
 	containername = "Security barrier crate"
 	access = null
@@ -149,7 +149,7 @@
 /datum/supply_pack/security/securityshieldgen
 	name = "Misc - Wall shield generators"
 	contains = list(/obj/machinery/shieldwallgen = 4)
-	cost = 400
+	cost = 4000
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Wall shield generators crate"
 	access = access_teleporter
@@ -163,7 +163,7 @@
 			/obj/item/clothing/accessory/holster/waist,
 			/obj/item/clothing/accessory/holster/hip
 			)
-	cost = 115
+	cost = 1150
 	containertype = /obj/structure/closet/crate
 	containername = "Holster crate"
 
@@ -175,7 +175,7 @@
 			/obj/item/device/radio/headset/headset_sec/alt = 3,
 			/obj/item/clothing/suit/storage/hooded/wintercoat/security = 3
 			)
-	cost = 200
+	cost = 2000
 	containertype = /obj/structure/closet/crate
 	containername = "Security surplus equipment"
 
@@ -201,7 +201,7 @@
 			/obj/item/device/flashlight/maglight,
 			/obj/item/weapon/storage/briefcase/crimekit
 			)
-	cost = 420
+	cost = 4200
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Forensic equipment"
 	access = access_forensics_lockers
@@ -223,7 +223,7 @@
 			/obj/item/clothing/accessory/badge/holo/detective = 2,
 			/obj/item/clothing/gloves/black = 2
 			)
-	cost = 110
+	cost = 1100
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Investigation clothing"
 	access = access_forensics_lockers
@@ -254,7 +254,7 @@
 			/obj/item/weapon/gun/energy/taser,
 			/obj/item/device/flashlight/maglight
 			)
-	cost = 420
+	cost = 4200
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Officer equipment"
 	access = access_brig
@@ -283,7 +283,7 @@
 			/obj/item/clothing/head/beret/sec/corporate/warden,
 			/obj/item/device/flashlight/maglight
 			)
-	cost = 420
+	cost = 4200
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Warden equipment"
 	access = access_armory
@@ -310,7 +310,7 @@
 			/obj/item/clothing/head/beret/sec/corporate/hos,
 			/obj/item/device/flashlight/maglight
 			)
-	cost = 450
+	cost = 4500
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Head of security equipment"
 	access = access_hos
@@ -330,7 +330,7 @@
 			/obj/item/clothing/gloves/black = 4,
 			/obj/item/weapon/storage/box/holobadge
 			)
-	cost = 110
+	cost = 1100
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Security uniform crate"
 
@@ -351,7 +351,7 @@
 			/obj/item/clothing/gloves/black = 4,
 			/obj/item/weapon/storage/box/holobadge
 			)
-	cost = 110
+	cost = 1100
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Navy blue security uniform crate"
 
@@ -371,7 +371,7 @@
 			/obj/item/clothing/gloves/black = 4,
 			/obj/item/weapon/storage/box/holobadge
 			)
-	cost = 110
+	cost = 1100
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Corporate security uniform crate"
 
@@ -387,7 +387,7 @@
 			/obj/item/clothing/gloves/sterile/latex,
 			/obj/item/weapon/storage/box/gloves
 			)
-	cost = 225
+	cost = 2250
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Security biohazard gear"
 	access = access_security

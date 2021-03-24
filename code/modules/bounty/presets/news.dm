@@ -10,8 +10,8 @@
 
 	items_wanted = list(/obj/item/weapon/newspaper = 20)
 
-	department_reward = 50
-	individual_reward = 20
+	department_reward = 500
+	individual_reward = 200
 
 	days_until_expiry = 2
 
@@ -23,8 +23,8 @@
 
 	items_wanted = list(/obj/item/weapon/photo = 5)
 
-	department_reward = 200
-	individual_reward = 30
+	department_reward = 2000
+	individual_reward = 300
 
 	days_until_expiry = 3
 
@@ -47,8 +47,8 @@
 
 	items_wanted = list(/obj/item/weapon/photo = 3)
 
-	department_reward = 300
-	individual_reward = 150
+	department_reward = 3000
+	individual_reward = 1500
 
 	days_until_expiry = 5
 

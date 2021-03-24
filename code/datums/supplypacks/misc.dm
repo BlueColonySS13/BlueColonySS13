@@ -19,7 +19,7 @@
 			/obj/item/weapon/deck/holder
 			)
 	name = "Trading Card Crate"
-	cost = 20
+	cost = 200
 	containertype = /obj/structure/closet/crate
 	containername = "cards crate"
 
@@ -34,7 +34,7 @@
 	/obj/item/weapon/deck/cards,
 	)
 
-	cost = 50
+	cost = 500
 	containertype = /obj/structure/closet/crate
 	containername = "Tabletop Game and Card Set"
 
@@ -45,7 +45,7 @@
 	/obj/item/weapon/paper/card/business/random = 5,
 	/obj/item/weapon/paper/card/invitation = 5,
 	/obj/item/weapon/paper/card/invitation/random = 5)
-	cost = 25
+	cost = 250
 	containername = "Business and invitation cards"
 
 /datum/supply_pack/misc/chaplaingear
@@ -62,7 +62,7 @@
 			/obj/item/weapon/storage/backpack/cultpack,
 			/obj/item/weapon/storage/box/candle_box = 3
 			)
-	cost = 250
+	cost = 2500
 	containertype = "/obj/structure/closet/crate"
 	containername = "Chaplain equipment crate"
 
@@ -78,7 +78,7 @@
 			/obj/item/clothing/accessory/storage/white_drop_pouches,
 			/obj/item/clothing/accessory/storage/webbing
 			)
-	cost = 120
+	cost = 1200
 	containertype = "/obj/structure/closet/crate"
 	containername = "Webbing crate"
 	spend_type = SPEND_WEAPONS
@@ -88,7 +88,7 @@
 	contains = list(
 	/obj/item/device/camera,
 	/obj/item/device/tvcamera = 1)
-	cost = 230
+	cost = 2300
 	containertype = /obj/structure/closet/crate
 	containername = "Journalism Kit"
 	spend_type = SPEND_OFFICE
@@ -97,7 +97,7 @@
 	name = "Camera Film Refills"
 	contains = list(
 	/obj/item/device/camera_film = 5)
-	cost = 25
+	cost = 250
 	containertype = /obj/structure/closet/crate
 	containername = "Camera Film Refills"
 	spend_type = SPEND_OFFICE
@@ -108,7 +108,7 @@
 	/obj/structure/sculpting_block = 2,
 	/obj/item/weapon/pickaxe/autochisel = 1
 	)
-	cost = 80
+	cost = 800
 	containertype = /obj/structure/largecrate
 	containername = "Sculpting Kit"
 
@@ -143,7 +143,7 @@
 				/obj/item/toy/plushie/tuxedo_cat,
 				/obj/item/toy/plushie/white_cat
 				)
-	cost = 300
+	cost = 3000
 	containertype = "/obj/structure/closet/crate/large"
 	containername = "Wholesale Plushie crate"
 
@@ -151,7 +151,7 @@
 	name = "Cosmetics Set"
 	containername = "Cosmetics Set"
 	containertype = "/obj/structure/closet/crate"
-	cost = 50
+	cost = 500
 	contains = list(
 				/obj/item/weapon/lipstick/red,
 				/obj/item/weapon/lipstick/purple,
@@ -183,7 +183,7 @@
 	name = "Grooming Set"
 	containername = "Grooming Set"
 	containertype = "/obj/structure/closet/crate"
-	cost = 30
+	cost = 300
 	contains = list(
 				/obj/item/weapon/haircomb/random = 5,
 				/obj/item/weapon/haircomb/brush = 5
@@ -194,7 +194,7 @@
 	name = "Barber Set"
 	containername = "Barber Set"
 	containertype = "/obj/structure/closet/crate"
-	cost = 100
+	cost = 1000
 	contains = list(
 				/obj/item/weapon/razor = 1,
 				/obj/item/weapon/razor/blade = 1,
@@ -207,7 +207,7 @@
 	name = "Hair Trinket Set"
 	containername = "Hair Trinket Set"
 	containertype = "/obj/structure/closet/crate"
-	cost = 600
+	cost = 6000
 	contains = list(
 			/obj/item/clothing/head/pin = 3,
 			/obj/item/clothing/head/pin/bow = 3,
@@ -232,7 +232,7 @@
 	name = "Umbrella crate"
 	containername = "Umbrella crate"
 	containertype = "/obj/structure/closet/crate"
-	cost = 45
+	cost = 450
 	contains = list(
 				/obj/item/weapon/melee/umbrella/random = 5
 				)
@@ -252,7 +252,7 @@
 					/obj/item/weapon/storage/mre/menu8,
 					/obj/item/weapon/storage/mre/menu9,
 					/obj/item/weapon/storage/mre/menu10)
-	cost = 400
+	cost = 4000
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "ready to eat rations"
 
@@ -260,7 +260,7 @@
 	name = "calories scanners"
 	contains = list(/obj/item/device/calories_scanner = 5)
 
-	cost = 40
+	cost = 400
 	containertype = /obj/structure/closet/crate
 	containername = "calories scanners"
 

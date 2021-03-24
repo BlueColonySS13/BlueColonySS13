@@ -15,7 +15,7 @@
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_bar)
 	minimum_character_age = 18
-	wage = 45
+	wage = 450
 //	outfit_type = /decl/hierarchy/outfit/job/service/bartender
 	alt_titles = list("Waiting Staff","Barkeep","Mixologist","Barista")
 
@@ -35,7 +35,7 @@
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_kitchen)
 	minimum_character_age = 15 //Those kids better serve some good burgers or I'll ask for the manager
-	wage = 45
+	wage = 450
 //	outfit_type = /decl/hierarchy/outfit/job/service/chef
 	alt_titles = list("Restaurant Cashier","Cook","Restaurant Host")
 
@@ -54,7 +54,7 @@
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_hydroponics)
 	minimum_character_age = 16 //Eh, I can see it happening
-	wage = 29
+	wage = 290
 //	outfit_type = /decl/hierarchy/outfit/job/service/gardener
 	alt_titles = list("Hydroponicist", "Gardener","Farmer")
 
@@ -73,7 +73,7 @@
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_hydroponics)
 	minimum_character_age = 23 // They have some standards
-	wage = 50
+	wage = 500
 	outfit_type = /decl/hierarchy/outfit/job/service/bartender
 	alt_titles = list("Executive Chef", "Diner Manager", "Bar Supervisor")
 
@@ -95,7 +95,7 @@
 	access = list(access_library, access_maint_tunnels)
 	minimal_access = list(access_library)
 	minimum_character_age = 16
-	wage = 36
+	wage = 360
 //	outfit_type = /decl/hierarchy/outfit/job/civilian/journalist
 	alt_titles = list("Archivist", "Librarian", "Radio Host")
 
@@ -110,8 +110,8 @@
 	supervisors = "the Judge"
 	selection_color = "#515151"
 	idtype = /obj/item/weapon/card/id/civilian/defense
-	wage = 100
-	synth_wage = 50
+	wage = 1000
+	synth_wage = 500
 
 	req_admin_notify = 1
 	access = list(access_lawyer, access_sec_doors, access_maint_tunnels, access_heads, access_legal)
@@ -138,7 +138,7 @@
 	minimum_character_age = 16
 	access = list(access_barber, access_maint_tunnels)
 	minimal_access = list(access_barber)
-	wage = 47
+	wage = 470
 //	outfit_type = /decl/hierarchy/outfit/job/civilian/barber
 	alt_titles = list("Hairdresser", "Stylist", "Beautician")
 
@@ -155,7 +155,7 @@
 	subordinates = "the factory workers"
 	selection_color = "#7a4f33"
 	idtype = /obj/item/weapon/card/id/cargo/head
-	wage = 150
+	wage = 1500
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimum_character_age = 20
@@ -178,8 +178,8 @@
 	supervisors = "the factory manager"
 	selection_color = "#9b633e"
 	idtype = /obj/item/weapon/card/id/cargo/cargo_tech
-	wage = 70
-	synth_wage = 40
+	wage = 500
+	synth_wage = 250
 
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
@@ -200,8 +200,8 @@
 
 	selection_color = "#9b633e"
 	idtype = /obj/item/weapon/card/id/cargo/mining
-	wage = 40
-	synth_wage = 20
+	wage = 400
+	synth_wage = 200
 
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)

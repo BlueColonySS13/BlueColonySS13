@@ -4,7 +4,7 @@
 	name = "Fleeing & Eluding"
 	description = "To non-violently flee from or elude a lawful arrest."
 
-	fine = 500
+	fine = 5000
 	cell_time = 6
 
 	notes = "Running, hiding and other nonviolent forms of resisting arrest \
@@ -17,7 +17,7 @@
 	name = "Disorderly Conduct"
 	description = "To act in a way that creates public disturbance or nuisance."
 
-	fine = 800
+	fine = 8000
 	cell_time = 5
 
 	notes = "A catch all charge for minor crimes such as littering, \
@@ -30,14 +30,14 @@
 	name = "Procedure Violation (Green)"
 	description = "When the code green procedure is not respected."
 
-	fine = 500
+	fine = 5000
 	cell_time = 20
-	
+
 /datum/law/criminal/property
 	name = "Property Damage"
 	description = "To damage or destroy public or private property."
 
-	fine = 2500
+	fine = 25000
 	cell_time = 20
 
 	notes = "A step up from vandalism, this covers any actual damage done to the \
@@ -48,14 +48,14 @@
 	name = "Disrespect to the Dead"
 	description = "To abuse or desecrate a corpse. This also includes digging up graves or removing grave markers."
 
-	fine = 2000
+	fine = 20000
 	cell_time = 25
 
 /datum/law/criminal/animal
 	name = "Animal Cruelty"
 	description = "To willingly and knowingly cause unnecessary death or suffering of an animal."
 
-	fine = 1800
+	fine = 18000
 	cell_time = 8
 
 	notes = "This charge applies only to unnecessary harm and death. People that kill animals \
@@ -67,7 +67,7 @@
 	name = "Violation of Privacy Laws"
 	description = "To invade a person's privacy, share or access personal \
 	information protected by privacy laws without a proper reason."
-	fine = 4000
+	fine = 40000
 	cell_time = 15
 
 	notes = "Your personal records (security, medical and employment), confidential \
@@ -82,7 +82,7 @@
 /datum/law/criminal/injuction
 	name = "Injunction"
 	description = " To violate the terms of a legally filed injunction."
-	fine = 1500
+	fine = 15000
 	cell_time = 15
 
 	notes = "The injunction should be authorized by the judged and handed in \
@@ -92,8 +92,8 @@
 /datum/law/criminal/theft
 	name = "Theft"
 	description = "To dishonestly appropriate property of estimated collective value \
-	over 400 credits belonging to another person or organisation."
-	fine = 2000
+	over 4000 credits belonging to another person or organisation."
+	fine = 20000
 	cell_time = 24
 
 	notes = "Note that taking items that are meant for public use all for yourself \
@@ -103,7 +103,7 @@
 /datum/law/criminal/traffic
 	name = "General Traffic Violation"
 	description = "To disregard traffic safety guidelines."
-	fine = 50
+	fine = 500
 	cell_time = 30
 
 	notes = "Speeding, driving on the opposite side of the road, blowing red lights, \
@@ -114,7 +114,7 @@
 	name = "Grand Theft Auto"
 	description = "To steal or otherwise unlawfully acquire a vehicle one does not \
 	have the ownership right to."
-	fine = 4000
+	fine = 40000
 	cell_time = 16
 
 	notes = "Make sure the car wasn't handed to the suspect before you charge them with GTA."
@@ -124,7 +124,7 @@
 	name = "Failure to Produce Identification"
 	description = "To fail to present a valid form of identification upon a lawful request a \
 	representative of local or federal authorities."
-	fine = 250
+	fine = 2500
 	cell_time = 5
 
 	notes = "An officer asking you to produce your identification should provide a \
@@ -135,7 +135,7 @@
 /datum/law/criminal/force
 	name = "Excessive Use of Force"
 	description = "To use more than a necessary amount of force in self defense."
-	fine = 3000
+	fine = 30000
 	cell_time = 20
 
 	notes = "It applies instead of \"Assault\" or \"Assault with a Deadly Weapon\" when a suspect \
@@ -146,7 +146,7 @@
 /datum/law/criminal/contraband
 	name = "Possession of Contraband"
 	description = "To be in possession of items controlled or banned by law without proper authorization."
-	fine = 1500
+	fine = 15000
 	cell_time = 15
 
 	notes = "The exceptions are items that the person is required to be in posession of due to the \
@@ -157,7 +157,7 @@
 	name = "Contraband with Intent to Distribute"
 	description = "To be in possession of items controlled or banned by law without proper authorization \
 	with intent to distribute"
-	fine = 2500
+	fine = 25000
 	cell_time = 20
 
 	notes = "To be in possession of items controlled or banned by law without proper authorization \
@@ -168,7 +168,7 @@
 /datum/law/criminal/fraud
 	name = "Fraud & Embezzlement"
 	description = "To use deliberate deception in order to take advantage of other person or organization."
-	fine = 4500
+	fine = 45000
 	cell_time = 28
 
 	notes = "This includes breaking a written contract and abusing government resources for private gain, \
@@ -177,7 +177,7 @@
 /datum/law/criminal/justice
 	name = "Obstruction of Justice"
 	description = "To pervert, impede or obstruct the due administration of justice."
-	fine = 2000
+	fine = 20000
 	cell_time = 20
 
 	notes = "Lying to law enforcement officers, tampering with evidence, trespassing on crime scenes, \
@@ -189,11 +189,11 @@
 	name = "Reckless Endangerment"
 	description = "To act in a way that creates a risk of potential serious physical injury to another \
 	person while disregarding the foreseeable consequences of one's actions."
-	fine = 1500
+	fine = 15000
 
 /datum/law/criminal/inciting
 	name = "Inciting an Unlawful Demonstration"
-	fine = 2000
+	fine = 20000
 	cell_time = 30
 
 	description = "Inciting, or attempting to incite, an unlawful demonstration."
@@ -206,7 +206,7 @@
 	description = "To unlawfully access a high security area, including police property, government facilities, or high value storage."
 
 	notes= "Entering the armory, mayor's office, government buildings, prison, or the vault, etc. falls under this."
-	fine = 3000
+	fine = 30000
 	cell_time = 30
 
 /datum/law/criminal/misconduct
@@ -214,35 +214,35 @@
 	description = "Any citizen of Pollux with a valid weapon permit found to be committing a crime with it or not following proper concealment protocol for said weapon can be charged for this. \
 	After three strikes, counting repeat offender price/timer modifiers, the weapon permit shall be hereby null and the weapon confiscated."
 
-	fine = 4000
+	fine = 40000
 	cell_time = 30
 
 /datum/law/criminal/impersonating_city
 	name = "Impersonating City Officials"
 	description = "To impersonate a member of city council, law enforcement, or health personnel."
 
-	fine = 12000
+	fine = 120000
 	cell_time = 30
 
 /datum/law/criminal/contempt
 	name = "Contempt of Court"
 	description = "To be disrespectful towards the Court of law, in the form of \
 	behaviour that defies the authority, justice and dignity of the Court."
-	
+
 	notes = "Only applies in within court."
 
-	fine = 1000
+	fine = 10000
 	cell_time = 20
 
 /datum/law/criminal/hate_speech
 	name = "Hate Speech"
 	description = "To engage in speech that causes an environment of panic or danger regarding a group of citizens, including calling for violence against them."
 
-	fine = 2000
+	fine = 20000
 	notes = "This law only covers discriminatory language that is designed to incite violence towards innate traits that are protected. \
 	This covers star system nationality or origin, baseline vatborns, any social background, people who have full prosethetic bodies or \
 	robotic limbs, but does not qualify for non-humans, such as synthetics or robots."
-	
+
 /datum/law/criminal/tax_evasion
     name = "Tax Evasion"
     description = "To delibrately evade tax where it usually applies through electronic and non-electronic mediums. \
@@ -253,15 +253,15 @@
     notes = "For a business owner to be charged with this, there needs to be evidence that they were aware this was taking place. Business owners who are \
     aware of this occuring due to technical errors or employee misconduct are required to notify authorities as soon as possible and refund the tax losses \
     to prevent prosecution."
-    
-    fine = 3000
+
+    fine = 30000
     cell_time = 25
-    
+
 /datum/law/criminal/resisting
 	name = "Resisting Arrest"
 	description = "To resist a lawful arrest in a non-violent manner."
 	cell_time = 30
-	fine = 100
+	fine = 1000
 
 	notes = "This usually includes resisting cuffs, \
 	this does not qualify if no harm was caused to officers. If this suspect has harmed people, please see \
@@ -271,7 +271,7 @@
 	name = "Public Insubordination"
 	description = "To publicly challenge, defy, interfere with or engage in the derision of the operations, policies or actions of the government while holding a publicly funded position."
 	cell_time = 15
-	fine = 3000
+	fine = 30000
 
 	notes = "This includes participating in political activities, events or campaigning while being paid by the government, \
 	encouraging others to vote a specific way in any vote, and publicly challenging senior government officials without a legal basis. \
