@@ -34,6 +34,7 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/engineering/chief_engineer
 	clean_record_required = TRUE
+	hard_whitelisted = 1
 
 /datum/job/chief_engineer/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email

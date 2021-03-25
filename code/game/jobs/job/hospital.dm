@@ -30,6 +30,7 @@
 	alt_titles = list(
 		"Chief of Medicine", "Hospital Administrator")
 	clean_record_required = TRUE
+	hard_whitelisted = 1
 
 /datum/job/cmo/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email

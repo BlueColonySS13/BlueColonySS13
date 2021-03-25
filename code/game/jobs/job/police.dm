@@ -34,6 +34,7 @@
 	not breaking SOP. You authorize warrants and make sure that the police departments runs like a well-oiled cog."
 
 	duties = list("Keep the police officers in line", "Communicate with the warden", "Try not to get caught drinking")
+	hard_whitelisted = 1
 
 /datum/job/hos/get_job_email()
 	return using_map.police_email

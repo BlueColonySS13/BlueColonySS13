@@ -42,6 +42,7 @@
 	"Make sure the anomaly lab doesn't release aliens, robots, alien robots, interdimensional horrors, or anything else",
 	"Make sure the R&D staff don't sell contraband to people",
 	"Secure important artifacts and specimens")
+	hard_whitelisted = 1
 
 /datum/job/rd/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email
