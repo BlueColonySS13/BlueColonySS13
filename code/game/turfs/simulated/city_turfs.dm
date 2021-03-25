@@ -30,6 +30,9 @@
 	icon_state = "pave_tiling"
 	initial_flooring = /decl/flooring/pavement/pave_tiling
 
+/turf/simulated/floor/pavement/pave_tiling/indoors
+	outdoors = 0
+
 /turf/simulated/floor/pavement/brick_paving
 	name = "brick paving"
 	icon_state = "brick_paving"
