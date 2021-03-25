@@ -34,7 +34,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	Alternatively, you can just disable carp control and thin the herd."
 
 	duties = list("Fire council members for incompetence", "Smoke cigars", "Get arrested for corruption")
-
+	hard_whitelisted = 1
 
 /datum/job/captain/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email
@@ -92,6 +92,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 			            access_hop, access_RC_announce, access_keycard_auth, access_gateway)
 
 	clean_record_required = TRUE
+	hard_whitelisted = 1
 
 /datum/job/hop/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email
