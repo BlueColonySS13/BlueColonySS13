@@ -1,6 +1,6 @@
 /datum/expense
   var/name = "Generic Expense"
-  var/cost_per_payroll = 20          // per payroll
+  var/cost_per_payroll = 200         // per payroll
   var/department = DEPT_COUNCIL
   var/purpose = "Bill"
 
@@ -98,7 +98,7 @@
 
 /datum/expense/police
 	name = "Police Fine"
-	cost_per_payroll = 30
+	cost_per_payroll = 300
 	var/datum/law/fine
 
 	department = DEPT_POLICE
@@ -108,7 +108,7 @@
 
 /datum/expense/hospital
 	name = "Hospital Bill"
-	cost_per_payroll = 30
+	cost_per_payroll = 300
 	var/datum/medical_bill
 
 	department = DEPT_HEALTHCARE
@@ -118,7 +118,7 @@
 
 /datum/expense/law
 	name = "Court Injunction"
-	cost_per_payroll = 50
+	cost_per_payroll = 500
 
 	department = DEPT_LEGAL
 
@@ -126,7 +126,7 @@
 
 /datum/expense/inheritence
 	name = "Court Injunction"
-	cost_per_payroll = 100
+	cost_per_payroll = 1000
 
 	department = DEPT_PUBLIC
 	reverse = TRUE
