@@ -27,8 +27,8 @@
 		total_money += B.get_funds()
 
 	switch(money)
-		if(0 to 9999)				return CLASS_WORKING
-		if(10000 to 79999)			return CLASS_MIDDLE
-		if(80000 to INFINITY)		return CLASS_UPPER
+		if(0 to 99999)				return CLASS_WORKING
+		if(100000 to 799999)		return CLASS_MIDDLE
+		if(800000 to INFINITY)		return CLASS_UPPER
 
 		else 					return CLASS_WORKING	// this accounts for balances that are negative

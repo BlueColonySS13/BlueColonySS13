@@ -2478,6 +2478,7 @@
 #include "code\modules\persistence\persistent_business.dm"
 #include "code\modules\persistence\persistent_characters.dm"
 #include "code\modules\persistence\persistent_departments.dm"
+#include "code\modules\persistence\persistent_economy.dm"
 #include "code\modules\persistence\persistent_emails.dm"
 #include "code\modules\persistence\persistent_inventory.dm"
 #include "code\modules\persistence\persistent_jobs.dm"
