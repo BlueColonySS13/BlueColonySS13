@@ -10,3 +10,4 @@ artofwasd - Host
 slayingcreepers - Host
 maveriknight - Head Admin 
 theflagbearer - Code Wizard
+herma - Developer
