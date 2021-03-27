@@ -6,8 +6,16 @@
 ######################################################################
 
 # not_a_user - Admin
-artofwasd - Host
-slayingcreepers - Host
+
 maveriknight - Head Admin 
-theflagbearer - Code Wizard
+gio27 - Head Admin
+
+shadowkiller104 - Moderator
+monos - Trial Moderator
+
+valzargaming - Host
+
+slayingcreepers - Code Wizard
 herma - Code Wizard
+theflagbearer - Code Wizard
+artofwasd - Code Wizard
