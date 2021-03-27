@@ -29,6 +29,7 @@
 
 Admin Observer
 Moderator		+MOD
+Trial Moderator +MOD
 Mentor                  +MENTOR
 
 Admin Candidate	+ADMIN
