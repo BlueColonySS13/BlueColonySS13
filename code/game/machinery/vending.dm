@@ -1173,7 +1173,7 @@
 
 	charge_free_department = DEPT_HEALTHCARE
 	block_persistence = TRUE
-	req_access = list(access_medical)
+	req_access = list(access_medical, access_security)
 
 /obj/machinery/vending/wallmed1/gcch
 	vendor_department = DEPT_HEALTHCARE
