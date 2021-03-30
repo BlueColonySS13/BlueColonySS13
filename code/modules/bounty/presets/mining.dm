@@ -216,8 +216,8 @@
 
 	stacks_wanted = list("bronze" = 1000)
 
-	department_reward = 1100
-	individual_reward = 110
+	department_reward = 2500
+	individual_reward = 350
 
 /datum/bounty/mining/superconductor
 	name = "Superconductor Trials"
@@ -314,7 +314,7 @@
 	description = "We have just won the bid on constructing a super solar array on Castor and require reinforced glass for our photovoltaic cells. A supplementary contract has also been \
 	created to supply the Company with the required conductive elements."
 
-	stacks_wanted = list("reinforced glass" = 3000)
+	stacks_wanted = list("rglass" = 3000)
 
 	department_reward = 33000
 	individual_reward = 3300
