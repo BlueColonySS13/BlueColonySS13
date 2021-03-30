@@ -138,6 +138,7 @@ obj/machinery/recharger
 	/obj/item/weapon/melee/baton,
 	/obj/item/device/flashlight,
 	/obj/item/weapon/cell/device,
+	/obj/item/weapon/cell/device/weapon,
 	/obj/item/device/communicator,
 	/obj/item/device/defib_kit)
 	icon_state_charged = "wrecharger2"
