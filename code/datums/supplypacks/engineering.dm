@@ -30,13 +30,6 @@
 	containertype = /obj/structure/closet/crate/engineering
 	containername = "shield capacitor crate"
 
-/datum/supply_pack/eng/flood_light
-	name = "Flood light "
-	contains = list(/obj/machinery/floodlight)
-	cost =7500
-	containertype = /obj/structure/largecrate
-	containername = "flood light crate"
-
 /datum/supply_pack/eng/shield_capacitor/advanced
 	name = "Advanced Shield Capacitor"
 	contains = list(/obj/machinery/shield_capacitor/advanced)

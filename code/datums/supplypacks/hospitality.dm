@@ -204,7 +204,7 @@
 	contains = list(
 		/obj/item/weapon/reagent_containers/food/drinks/soymilk = 8,
 				)
-	cost = 2000
+	cost = 200
 	containertype = /obj/structure/closet/crate
 	containername = "Bulk soymilk"
 
@@ -213,18 +213,9 @@
 	contains = list(
 		/obj/item/weapon/reagent_containers/food/snacks/tofu = 6,
 				)
-	cost = 18000
+	cost = 100
 	containertype = /obj/structure/closet/crate
 	containername = "Bulk Tofu"
-
-/datum/supply_pack/hospitality/bulk_enzyme
-	name = "Bulk Enzyme"
-	contains = list(
-		/obj/item/weapon/reagent_containers/food/condiment/enzyme = 3,
-				)
-	cost = 600
-	containertype = /obj/structure/closet/crate
-	containername = "Bulk Enzyme"
 
 /datum/supply_pack/hospitality/bulk_rollingpapers
 	name = "Bulk Rolling Paper"
@@ -376,7 +367,7 @@
 		/obj/item/weapon/storage/fancy/cigarettes/jerichos = 5,
 		/obj/item/weapon/storage/fancy/cigarettes/menthols = 5,
 		)
-	cost = 100
+	cost = 500
 	containertype = /obj/structure/closet/crate
 	containername = "Standard Cigarettes (Bulk)"
 	spend_type = SPEND_TOBACCO
@@ -387,7 +378,7 @@
 				/obj/item/weapon/storage/box/matches = 10,
 				/obj/item/weapon/flame/lighter/random = 5,
 				)
-	cost = 100
+	cost = 10
 	containertype = /obj/structure/closet/crate
 	containername = "Lighter Set"
 	spend_type = SPEND_HOSPITALITY
