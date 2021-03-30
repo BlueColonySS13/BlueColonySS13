@@ -1203,5 +1203,5 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/floodwater
 	name = "flood water"
-	icon = 'icon/turf/outdoors.dmi'
+	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "water_shallow"
