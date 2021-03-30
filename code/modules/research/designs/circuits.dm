@@ -41,7 +41,7 @@
 	id = "jukebox"
 	req_tech = list(TECH_MAGNET = 2, TECH_DATA = 1)
 	build_path = /obj/item/weapon/circuitboard/jukebox
-	sort_string = "MAAAB" //used to be MAAAZ	
+	sort_string = "MAAAB" //used to be MAAAZ
 	protected = TRUE
 
 /datum/design/circuit/seccamera
@@ -441,7 +441,7 @@
 	build_path = /obj/item/weapon/circuitboard/processor
 	sort_string = "KBAAD"
 	protected = TRUE
-
+/*
 /datum/design/circuit/miningdrill
 	name = "mining drill head"
 	id = "mining drill head"
@@ -457,7 +457,7 @@
 	build_path = /obj/item/weapon/circuitboard/miningdrillbrace
 	sort_string = "KCAAB"
 	protected = TRUE
-
+*/
 /datum/design/circuit/comconsole
 	name = "communications console"
 	id = "comconsole"
