@@ -55,6 +55,11 @@
 		dna.real_name = real_name
 		sync_organ_dna()
 
+	//One last check for null name
+	if(!name)
+		name = mind.prefs.real_name
+		real_name = name
+
 	verbs |= /mob/living/proc/toggle_selfsurgery
 
 /mob/living/carbon/human/Destroy()
