@@ -23,9 +23,9 @@
 	var/business = TRUE
 
 	var/atom/stored_thing
-	var/starting_department = "" // no more private bounties was fun while it was a thing
+	var/starting_department = null
 
-	unique_save_vars = list("starting_department")	// removing player owned bounties being unique
+	unique_save_vars = list("starting_department")
 
 	var/restrict_bounty_for_business = FALSE
 	var/accept_nonpersistent = FALSE
@@ -106,10 +106,7 @@
 	var/dat
 
 	if(!current_department && starting_department && dept_by_id(starting_department))
-		if(config.allow_business_bounties || !business)
-			current_department = dept_by_id(starting_department)
-		else
-			current_department = dept_by_id(DEPT_FACTORY) // lol
+		current_department = dept_by_id(starting_department)
 
 	if(!current_department)
 		dat += "Welcome to [name], this allows you to trade with businesses all over the world."

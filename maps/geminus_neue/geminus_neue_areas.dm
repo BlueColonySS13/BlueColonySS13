@@ -16,8 +16,8 @@
 /area/turbolift/geminus_top_mining
 	name = "lift (geminus city)"
 	lift_floor_label = "Floor 2"
-	lift_floor_name = "Geminus City - Mining Office"
-	lift_announce_str = "Lift arriving at Geminus City Mining Office, please stand clear of the doors."
+	lift_floor_name = "Geminus City - East End"
+	lift_announce_str = "Lift arriving at Geminus City East End, please stand clear of the doors."
 	base_turf = /turf/simulated/floor/tiled/steel_ridged
 
 /area/turbolift/geminus_ground_mining
