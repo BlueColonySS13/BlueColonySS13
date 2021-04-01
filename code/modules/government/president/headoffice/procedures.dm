@@ -69,13 +69,13 @@
 	name = "Police Standard Operating Procedure"
 	description = "This is the police's standard operating procedure, it is expected to be followed at all times by police officers."
 	id = "police_sop"
-	value_text = "<html>
-<head>
-</head>
-<body>
-<iframe width='100%' height='97%' src="https://bluewiki.herma.moe/index.php/Police_Standard_Operating_Procedure" frameborder="0" id="main_frame"></iframe>
-</body>
-</html>"
+	value_text = "<html> \
+	<head> \
+	</head> \
+	<body> \
+	<iframe width='100%' height='97%' src=\"https://bluewiki.herma.moe/index.php?title=Police_Standard_Operating_Procedure&printable=yes\" frameborder=\"0\" id=\"main_frame\"></iframe> \
+	</body> \
+	</html>"
 
 /datum/persistent_option/value/procedure/department/prisoner_handling
 	name = "Prisoner Handling Procedures"
