@@ -172,7 +172,7 @@
 	contains = list(/obj/item/weapon/circuitboard/autolathe/sewing_machine)
 
 	name = "Sewing Machine Circuit"
-	cost = 30000
+	cost = 50000
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Sewing Machine Circuit"
 
