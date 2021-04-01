@@ -175,7 +175,7 @@ datum/supply_pack/food_drinks/condiments
 
 datum/supply_pack/food_drinks/universal_enzyme
 	name = "Universal Enzyme Pack"
-	containts = list(/obj/item/weapon/reagent_containers/food/condiment/enzyme = 2)
+	contains = list(/obj/item/weapon/reagent_containers/food/condiment/enzyme = 2)
 	cost = 5000
 	containertype = /obj/structure/closet/crate
 	containername = "Universal Enzyme Pack"
