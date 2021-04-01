@@ -106,10 +106,7 @@
 	var/dat
 
 	if(!current_department && starting_department && dept_by_id(starting_department))
-		if(config.allow_business_bounties || !business)
-			current_department = dept_by_id(starting_department)
-		else
-			current_department = dept_by_id(DEPT_FACTORY) // lol
+		current_department = dept_by_id(starting_department)
 
 	if(!current_department)
 		dat += "Welcome to [name], this allows you to trade with businesses all over the world."
