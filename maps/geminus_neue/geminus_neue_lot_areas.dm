@@ -165,4 +165,8 @@
 	name = "Farm Lot 1"
 	lot_id = "farmlot1"
 
+/area/lots/farm/farm_lot_two
+	name = "Farm Lot 2"
+	lot_id = "farmlot2"
+
 // Event Hall

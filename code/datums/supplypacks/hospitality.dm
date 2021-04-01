@@ -102,7 +102,6 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Baking Supplies"
 */
-/
 
 /datum/supply_pack/hospitality/bulk_rollingpapers
 	name = "Bulk Rolling Paper"
