@@ -376,6 +376,7 @@
 #include "code\datums\supplypacks\contraband.dm"
 #include "code\datums\supplypacks\decoration.dm"
 #include "code\datums\supplypacks\engineering.dm"
+#include "code\datums\supplypacks\food.dm"
 #include "code\datums\supplypacks\hospitality.dm"
 #include "code\datums\supplypacks\hydroponics.dm"
 #include "code\datums\supplypacks\materials.dm"
