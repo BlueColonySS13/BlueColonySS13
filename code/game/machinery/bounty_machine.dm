@@ -23,9 +23,9 @@
 	var/business = TRUE
 
 	var/atom/stored_thing
-	var/starting_department = "" // no more private bounties was fun while it was a thing
+	var/starting_department = null
 
-	unique_save_vars = list("starting_department")	// removing player owned bounties being unique
+	unique_save_vars = list("starting_department")
 
 	var/restrict_bounty_for_business = FALSE
 	var/accept_nonpersistent = FALSE
