@@ -95,7 +95,7 @@
 	contains = list(
 		/obj/item/weapon/reagent_containers/food/snacks/tofu = 6,
 				)
-	cost = 100
+	cost = 200
 	containertype = /obj/structure/closet/crate/refrigerated
 	containername = "Bulk Tofu"
 
