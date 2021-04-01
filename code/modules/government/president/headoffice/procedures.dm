@@ -69,11 +69,13 @@
 	name = "Police Standard Operating Procedure"
 	description = "This is the police's standard operating procedure, it is expected to be followed at all times by police officers."
 	id = "police_sop"
-	value_text = "If you can, talk to suspect first - gauge their responses - attempt to get them to cooperate peacefully with you without \
-	resorting to a fight.\[br\] \
-	If they are in a group, hostile, refuse to come with you, or run away, you are permitted to use non-lethals. \
-	If you are dealing with a group of hostiles or are dealing with synthetics or a mecha, a flashbang or EMP may be permitted. \
-	Lethals are permitted in a last case scenario if non-lethals are not adequate in subduing a resisting suspect. This is not an authorization to kill."
+	value_text = "<html> \
+	<head> \
+	</head> \
+	<body> \
+	<iframe width='100%' height='97%' src=\"https://bluewiki.herma.moe/index.php?title=Police_Standard_Operating_Procedure&printable=yes\" frameborder=\"0\" id=\"main_frame\"></iframe> \
+	</body> \
+	</html>"
 
 /datum/persistent_option/value/procedure/department/prisoner_handling
 	name = "Prisoner Handling Procedures"
