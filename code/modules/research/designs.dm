@@ -1493,6 +1493,7 @@ CIRCUITS BELOW
 	sort_string = "KBAAD"
 	protected = TRUE
 
+/*
 /datum/design/circuit/miningdrill
 	name = "mining drill head"
 	id = "mining drill head"
@@ -1508,6 +1509,7 @@ CIRCUITS BELOW
 	build_path = /obj/item/weapon/circuitboard/miningdrillbrace
 	sort_string = "KCAAB"
 	protected = TRUE
+*/
 
 /datum/design/circuit/comconsole
 	name = "communications console"

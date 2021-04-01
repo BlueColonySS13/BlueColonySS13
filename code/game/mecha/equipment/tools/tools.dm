@@ -105,10 +105,14 @@
 						log_message("Drilled through [target]")
 						target.ex_act(2)
 				else if(istype(target, /turf/simulated/mineral))
-					for(var/turf/simulated/mineral/M in range(chassis,1))
-						if(get_dir(chassis,M)&chassis.dir)
-							M.GetDrilled()
-					log_message("Drilled through [target]")
+					var/turf/simulated/mineral/mine = target
+					if(mine.impassable)
+						occupant_message("<span class='warning'>[target] is too durable to drill through.</span>")
+					else
+						for(var/turf/simulated/mineral/M in range(chassis,1))
+							if(get_dir(chassis,M)&chassis.dir)
+								M.GetDrilled()
+						log_message("Drilled through [target]")
 					if(locate(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp) in chassis.equipment)
 						var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in chassis:cargo
 						if(ore_box)

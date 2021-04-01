@@ -478,6 +478,13 @@
 	icon_opened = "hydrocrateopen"
 	icon_closed = "hydrocrate"
 
+/obj/structure/closet/crate/refrigerated
+	name = "refrigerated crate"
+	desc = "A crate designed to preserve temperature-dependent items."
+	icon_state = "fridgecrate"
+	icon_opened = "fridgecrateopen"
+	icon_closed = "fridgecrate"
+
 /obj/structure/closet/crate/hydroponics/prespawned
 	//This exists so the prespawned hydro crates spawn with their contents.
 

@@ -35,6 +35,7 @@ var/list/mining_overlay_cache = list()
 	var/obj/item/weapon/last_find
 	var/datum/artifact_find/artifact_find
 	var/ignore_mapgen = 1
+	var/impassable = FALSE // used by mech drills, quick fix for now
 
 	var/ore_types = list(
 		"hematite" = /obj/item/weapon/ore/iron,
@@ -262,6 +263,7 @@ var/list/mining_overlay_cache = list()
 	ignore_mapgen = 1
 	density = 1
 	has_resources = FALSE
+	impassable = TRUE
 
 /turf/simulated/mineral/impassable/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	to_chat(user, "<span class='warning'>The rock here seems a bit too hard to break...</span>")
