@@ -133,7 +133,7 @@
 /datum/supply_pack/circuits/inventory_box
 	contains = list(/obj/item/weapon/circuitboard/inventory_box)
 	name = "Inventory box Circuit"
-	cost = 100000
+	cost = 80000
 	containertype = /obj/structure/closet/crate
 	containername = "Inventory Box Circuit"
 
@@ -158,6 +158,7 @@
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robotics Circuits"
 
+/*
 /datum/supply_pack/circuits/autolathe
 	contains = list(/obj/item/weapon/circuitboard/autolathe)
 
@@ -165,12 +166,13 @@
 	cost = 75000
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Autolathe Circuit"
+*/
 
 /datum/supply_pack/circuits/sewing_machine
 	contains = list(/obj/item/weapon/circuitboard/autolathe/sewing_machine)
 
 	name = "Sewing Machine Circuit"
-	cost = 30000
+	cost = 50000
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Sewing Machine Circuit"
 

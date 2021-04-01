@@ -95,7 +95,7 @@
 	contains = list(
 		/obj/item/weapon/reagent_containers/food/snacks/tofu = 6,
 				)
-	cost = 100
+	cost = 200
 	containertype = /obj/structure/closet/crate/refrigerated
 	containername = "Bulk Tofu"
 
@@ -172,3 +172,10 @@ datum/supply_pack/food_drinks/condiments
 	cost = 500
 	containertype = /obj/structure/closet/crate
 	containername = "Baking Supplies"
+
+datum/supply_pack/food_drinks/universal_enzyme
+	name = "Universal Enzyme Pack"
+	contains = list(/obj/item/weapon/reagent_containers/food/condiment/enzyme = 2)
+	cost = 5000
+	containertype = /obj/structure/closet/crate
+	containername = "Universal Enzyme Pack"
