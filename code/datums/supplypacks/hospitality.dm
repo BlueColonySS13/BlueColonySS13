@@ -196,7 +196,7 @@
 		/obj/item/weapon/storage/fancy/cigarettes/jerichos = 5,
 		/obj/item/weapon/storage/fancy/cigarettes/menthols = 5,
 		)
-	cost = 500
+	cost = 1000
 	containertype = /obj/structure/closet/crate
 	containername = "Standard Cigarettes (Bulk)"
 	spend_type = SPEND_TOBACCO

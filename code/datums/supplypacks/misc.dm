@@ -264,5 +264,9 @@
 	containertype = /obj/structure/closet/crate
 	containername = "calories scanners"
 
-
-
+/datum/supply_pack/misc/floodlights
+	name = "Floodlight"
+	contains = list(/obj/machinery/floodlight = 1)
+	cost = 350
+	containertype = /obj/structure/closet/crate
+	containername = "floodlight"
