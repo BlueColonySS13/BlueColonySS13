@@ -280,7 +280,7 @@ datum/track/New(var/title_name, var/audio)
 
 	var/area/main_area = get_area(src)
 	if(freq)
-		var/sound/new_song = sound(current_track.sound, channel = 1, repeat = 1, volume = 25)
+		var/sound/new_song = sound(current_track.sound, channel = 1, repeat = 1, volume = 15,)
 		new_song.frequency = freq
 		main_area.forced_ambience = list(new_song)
 	else
