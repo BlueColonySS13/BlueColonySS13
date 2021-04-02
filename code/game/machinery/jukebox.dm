@@ -49,11 +49,6 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("Syn", 'sound/music/disco/Syn.ogg'),
 		new/datum/track("System Collapse", 'sound/music/disco/System_Collapse.ogg'),
 		new/datum/track("This is Rain", 'sound/music/disco/This is Rain.ogg'),
-		new/datum/track("Chippin In-2022 Version", 'sound/music/disco/Chippin In-2022.ogg'),
-		new/datum/track("Chippin In", 'sound/music/disco/Chippin In.ogg'),
-		new/datum/track("A Like Supreme", 'sound/music/disco/Like A Supreme.ogg'),
-		new/datum/track("Never Fade Away", 'sound/music/disco/Never Fade Away.ogg'),
-		new/datum/track("The Ballad of Buck Ravers", 'sound/music/disco/The Ballad of Buck Ravers.ogg'),
 		new/datum/track("VHS Dreams", 'sound/music/disco/vhsdreams.ogg'),
 		new/datum/track("Spacedman", 'sound/music/disco/spacedman.ogg'),
 		new/datum/track("Phortitude", 'sound/music/disco/phortitude.ogg'),
@@ -319,3 +314,28 @@ datum/track/New(var/title_name, var/audio)
 	if(playing)
 		StartPlaying()
 	updateDialog()
+
+/obj/machinery/media/jukebox/cyberpunk
+	name = "Punkmaster 9077 jukebox"
+	desc = "An immense, standalone touchscreen on a swiveling base, equipped with phased array speakers. Embossed on one corner of the ultrathin bezel is the brand name, 'Punkmaster 9077'."
+	//description_info = "Click the jukebox and then select a track on the interface. You can choose to play or stop the track, or set the volume. Use a wrench to attach or detach the jukebox to the floor. The room it is installed in must have power for it to operate!"
+	description_fluff = "The Punkmaster 9077, putting a modern spin on the ancient retro curved plasmascreen design."
+	//description_antag = "Slide a cryptographic sequencer into the jukebox to overload its speakers. Instead of music, it'll produce a hellish blast of noise and explode!"
+	//icon = 'icons/obj/jukebox_new.dmi'
+	//icon_state = "jukebox3-nopower"
+	//var/state_base = "jukebox3"
+	circuit = /obj/item/weapon/circuitboard/jukebox/cyberpunk
+
+	var/list/datum/track/tracks += new/datum/track("Chippin In-2022 Version", 'sound/music/disco/Chippin In-2022.ogg')
+	var/list/datum/track/tracks += new/datum/track("Chippin In", 'sound/music/disco/Chippin In.ogg')
+	var/list/datum/track/tracks += new/datum/track("A Like Supreme", 'sound/music/disco/Like A Supreme.ogg')
+	var/list/datum/track/tracks += new/datum/track("Never Fade Away", 'sound/music/disco/Never Fade Away.ogg')
+	var/list/datum/track/tracks += new/datum/track("The Ballad of Buck Ravers", 'sound/music/disco/The Ballad of Buck Ravers.ogg')
+	var/list/datum/track/tracks += new/datum/track("Bells of Laguna Bend", 'sound/music/disco/Bells of Laguna Bend.ogg')
+	var/list/datum/track/tracks += new/datum/track("Cyberwildlife Park", 'sound/music/disco/Cyberwildlife Park.ogg')
+	var/list/datum/track/tracks += new/datum/track("Code Red Initiated", 'sound/music/disco/Code Red Initiated.ogg')
+	var/list/datum/track/tracks += new/datum/track("Hole in the Sun", 'sound/music/disco/Hole in the Sun.ogg')
+	var/list/datum/track/tracks += new/datum/track("I Really Want to Stay at Your House", 'sound/music/disco/I Really Want to Stay at Your House.ogg')
+	var/list/datum/track/tracks += new/datum/track("GR4VES", 'sound/music/disco/GR4VES.ogg')
+	var/list/datum/track/tracks += new/datum/track("Dinero", 'sound/music/disco/Dinero.ogg')
+	var/list/datum/track/tracks += new/datum/track("Major Crimes", 'sound/music/disco/Major Crimes.ogg')
