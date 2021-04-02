@@ -200,7 +200,7 @@
 /mob/living/simple_animal/cat/fluff/silverpaw
 	name = "Johnny Silverpaw"
 	desc = "He sways his tail rythmically and steadily, never wavering... /
-	His shades never come off and his silver leg never stops shining... /
+	His collar never come off and his silver leg never stops shining... /
 	Wake up, samurai... we have a city to purr..."
 	tt_desc = "Felis mirabile"
 	gender = MALE
