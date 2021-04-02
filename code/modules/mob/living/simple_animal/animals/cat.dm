@@ -201,7 +201,7 @@
 	name = "Johnny Silverpaw"
 	desc = "He sways his tail rythmically and steadily, never wavering... /
 	His collar never come off and his silver leg never stops shining... /
-	Wake up, samurai... we have a city to purr..."
+	Wake up, bluepunk... we have a city to purr..."
 	tt_desc = "Felis mirabile"
 	gender = MALE
 	icon_state = "catsp"
