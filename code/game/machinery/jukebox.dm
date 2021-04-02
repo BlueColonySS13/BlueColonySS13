@@ -326,6 +326,7 @@ datum/track/New(var/title_name, var/audio)
 	circuit = /obj/item/weapon/circuitboard/jukebox/cyberpunk
 
 	tracks = list(
+		// STANDARD SONGS
 		new/datum/track("Bluespace Ocean", 'sound/music/disco/Bluespace Ocean.ogg'),
 		new/datum/track("Cyber Revolt", 'sound/music/disco/Cyber_Revolt.ogg'),
 		new/datum/track("Displaced", 'sound/music/disco/Displaced.ogg'),
@@ -350,7 +351,23 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("The Bounty Hunter", 'sound/music/disco/The Mandalorian OST - Main Theme.ogg'),
 		new/datum/track("The Rebel Path", 'sound/music/disco/The Rebel Path.ogg'),
 		new/datum/track("Yacht Song", 'sound/music/disco/Yacht Song.ogg'),
-
+		// 'RAVE' SONGS
+		new/datum/track("Adrenalized", 'sound/music/disco/Adrenalized.ogg'),
+		new/datum/track("All That I Need", 'sound/music/disco/All That I Need.ogg'),
+		new/datum/track("Dopamine", 'sound/music/disco/Dopamine.ogg'),
+		new/datum/track("It Went", 'sound/music/disco/It Went.ogg'),
+		new/datum/track("Jurassic Park", 'sound/music/disco/Jurassic Park.ogg'),
+		new/datum/track("Mr Vain", 'sound/music/disco/Mr Vain.ogg'),
+		new/datum/track("Party With Us", 'sound/music/disco/Party With Us.ogg'),
+		new/datum/track("Pit Stop", 'sound/music/disco/Pit Stop.ogg'),
+		new/datum/track("Punch the Gas", 'sound/music/disco/Punch the Gas.ogg'),
+		new/datum/track("Request", 'sound/music/disco/Request.ogg'),
+		new/datum/track("Schadenfreude", 'sound/music/disco/Schadenfreude.ogg'),
+		new/datum/track("Speechless", 'sound/music/disco/Speechless.ogg'),
+		new/datum/track("Waifu", 'sound/music/disco/Waifu.ogg'),
+		new/datum/track("When I Die", 'sound/music/disco/When I Die.ogg'),
+		new/datum/track("You're My Superhero", 'sound/music/disco/You\'re My Superhero.ogg'),
+		// CYBERPUNK 2077 OST SONGS
 		new/datum/track("Chippin In-2022 Version", 'sound/music/disco/Chippin In-2022.ogg'),
 		new/datum/track("Chippin In", 'sound/music/disco/Chippin In.ogg'),
 		new/datum/track("A Like Supreme", 'sound/music/disco/Like A Supreme.ogg'),
