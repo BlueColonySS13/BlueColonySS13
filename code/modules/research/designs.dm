@@ -1095,6 +1095,14 @@ CIRCUITS BELOW
 	sort_string = "MAAAB"
 	protected = TRUE
 
+/datum/design/circuit/jukebox/cyberpunk
+	name = "cyberpunk jukebox"
+	id = "cyberpunkjukebox"
+	req_tech = list(TECH_MAGNET = 2, TECH_DATA = 1)
+	build_path = /obj/item/weapon/circuitboard/jukebox/cyberpunk
+	sort_string = "MAAAC"
+	protected = TRUE
+
 /datum/design/circuit/seccamera
 	name = "security camera monitor"
 	id = "seccamera"
