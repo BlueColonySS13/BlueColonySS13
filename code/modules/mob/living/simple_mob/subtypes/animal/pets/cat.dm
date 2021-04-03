@@ -128,8 +128,8 @@
 
 /mob/living/simple_mob/animal/passive/cat/silverpaw
 	name = "Johnny Silverpaw"
-	desc = "He sways his tail rythmically and steadily, never wavering... /
-	His collar never come off and his silver leg never stops shining... /
+	desc = "He sways his tail rythmically and steadily, never wavering... \
+	His collar never come off and his silver leg never stops shining... \
 	Wake up, bluepunk... we have a city to purr..."
 	tt_desc = "Felis mirabile"
 	gender = MALE
