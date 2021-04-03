@@ -49,11 +49,6 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("Syn", 'sound/music/disco/Syn.ogg'),
 		new/datum/track("System Collapse", 'sound/music/disco/System_Collapse.ogg'),
 		new/datum/track("This is Rain", 'sound/music/disco/This is Rain.ogg'),
-		new/datum/track("Chippin In-2022 Version", 'sound/music/disco/Chippin In-2022.ogg'),
-		new/datum/track("Chippin In", 'sound/music/disco/Chippin In.ogg'),
-		new/datum/track("A Like Supreme", 'sound/music/disco/Like A Supreme.ogg'),
-		new/datum/track("Never Fade Away", 'sound/music/disco/Never Fade Away.ogg'),
-		new/datum/track("The Ballad of Buck Ravers", 'sound/music/disco/The Ballad of Buck Ravers.ogg'),
 		new/datum/track("VHS Dreams", 'sound/music/disco/vhsdreams.ogg'),
 		new/datum/track("Spacedman", 'sound/music/disco/spacedman.ogg'),
 		new/datum/track("Phortitude", 'sound/music/disco/phortitude.ogg'),
@@ -66,7 +61,6 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("The Bounty Hunter", 'sound/music/disco/The Mandalorian OST - Main Theme.ogg'),
 		new/datum/track("The Rebel Path", 'sound/music/disco/The Rebel Path.ogg'),
 		new/datum/track("Yacht Song", 'sound/music/disco/Yacht Song.ogg'),
-
 	)
 
 	// Only visible if hacked
@@ -286,7 +280,7 @@ datum/track/New(var/title_name, var/audio)
 
 	var/area/main_area = get_area(src)
 	if(freq)
-		var/sound/new_song = sound(current_track.sound, channel = 1, repeat = 1, volume = 25)
+		var/sound/new_song = sound(current_track.sound, channel = 1, repeat = 1, volume = 15,)
 		new_song.frequency = freq
 		main_area.forced_ambience = list(new_song)
 	else
@@ -319,3 +313,72 @@ datum/track/New(var/title_name, var/audio)
 	if(playing)
 		StartPlaying()
 	updateDialog()
+
+/obj/machinery/media/jukebox/cyberpunk
+	name = "Punkmaster 9077 jukebox"
+	desc = "An immense, standalone touchscreen on a swiveling base, equipped with phased array speakers. Embossed on one corner of the ultrathin bezel is the brand name, 'Punkmaster 9077'."
+	//description_info = "Click the jukebox and then select a track on the interface. You can choose to play or stop the track, or set the volume. Use a wrench to attach or detach the jukebox to the floor. The room it is installed in must have power for it to operate!"
+	description_fluff = "The Punkmaster 9077, putting a modern spin on the ancient retro curved plasmascreen design."
+	//description_antag = "Slide a cryptographic sequencer into the jukebox to overload its speakers. Instead of music, it'll produce a hellish blast of noise and explode!"
+	//icon = 'icons/obj/jukebox_new.dmi'
+	//icon_state = "jukebox3-nopower"
+	//var/state_base = "jukebox3"
+	circuit = /obj/item/weapon/circuitboard/jukebox/cyberpunk
+
+	tracks = list(
+		// STANDARD SONGS
+		new/datum/track("Bluespace Ocean", 'sound/music/disco/Bluespace Ocean.ogg'),
+		new/datum/track("Cyber Revolt", 'sound/music/disco/Cyber_Revolt.ogg'),
+		new/datum/track("Displaced", 'sound/music/disco/Displaced.ogg'),
+		new/datum/track("Electrified", 'sound/music/disco/Electrified.ogg'),
+		new/datum/track("Hack or be Hacked", 'sound/music/disco/Hack_or_be_hacked.ogg'),
+		new/datum/track("Hyper", 'sound/music/disco/Hyper.ogg'),
+		new/datum/track("Psionic Souls", 'sound/music/disco/Psionic_souls.ogg'),
+		new/datum/track("Scavenger Hideout", 'sound/music/disco/Scavenger_hideout.ogg'),
+		new/datum/track("Sunyo", 'sound/music/disco/Sunyo.ogg'),
+		new/datum/track("Syn", 'sound/music/disco/Syn.ogg'),
+		new/datum/track("System Collapse", 'sound/music/disco/System_Collapse.ogg'),
+		new/datum/track("This is Rain", 'sound/music/disco/This is Rain.ogg'),
+		new/datum/track("VHS Dreams", 'sound/music/disco/vhsdreams.ogg'),
+		new/datum/track("Spacedman", 'sound/music/disco/spacedman.ogg'),
+		new/datum/track("Phortitude", 'sound/music/disco/phortitude.ogg'),
+		new/datum/track("Nightchaser", 'sound/music/disco/nightchaser.ogg'),
+		new/datum/track("The Man Who Sold the World", 'sound/music/disco/The Man Who Sold the World.ogg'),
+		new/datum/track("Space Oddity", 'sound/music/disco/Space Oddity.ogg'),
+		new/datum/track("The Place Where There Is No Darkness", 'sound/music/disco/The Place Where There Is No Darkness.ogg'),
+		new/datum/track("Hikings Song", 'sound/music/disco/1984 The Hiking Song.ogg'),
+		new/datum/track("Duel of the Fates", 'sound/music/disco/Duel of the Fates.ogg'),
+		new/datum/track("The Bounty Hunter", 'sound/music/disco/The Mandalorian OST - Main Theme.ogg'),
+		new/datum/track("The Rebel Path", 'sound/music/disco/The Rebel Path.ogg'),
+		new/datum/track("Yacht Song", 'sound/music/disco/Yacht Song.ogg'),
+		// 'RAVE' SONGS
+		new/datum/track("Adrenalized", 'sound/music/disco/Adrenalized.ogg'),
+		new/datum/track("All That I Need", 'sound/music/disco/All That I Need.ogg'),
+		new/datum/track("Dopamine", 'sound/music/disco/Dopamine.ogg'),
+		new/datum/track("It Went", 'sound/music/disco/It Went.ogg'),
+		new/datum/track("Jurassic Park", 'sound/music/disco/Jurassic Park.ogg'),
+		new/datum/track("Mr Vain", 'sound/music/disco/Mr Vain.ogg'),
+		new/datum/track("Party With Us", 'sound/music/disco/Party With Us.ogg'),
+		new/datum/track("Pit Stop", 'sound/music/disco/Pit Stop.ogg'),
+		new/datum/track("Punch the Gas", 'sound/music/disco/Punch the Gas.ogg'),
+		new/datum/track("Request", 'sound/music/disco/Request.ogg'),
+		new/datum/track("Schadenfreude", 'sound/music/disco/Schadenfreude.ogg'),
+		new/datum/track("Speechless", 'sound/music/disco/Speechless.ogg'),
+		new/datum/track("Waifu", 'sound/music/disco/Waifu.ogg'),
+		new/datum/track("When I Die", 'sound/music/disco/When I Die.ogg'),
+		new/datum/track("You're My Superhero", 'sound/music/disco/You\'re My Superhero.ogg'),
+		// CYBERPUNK 2077 OST SONGS
+		new/datum/track("Chippin In-2022 Version", 'sound/music/disco/Chippin In-2022.ogg'),
+		new/datum/track("Chippin In", 'sound/music/disco/Chippin In.ogg'),
+		new/datum/track("A Like Supreme", 'sound/music/disco/Like A Supreme.ogg'),
+		new/datum/track("Never Fade Away", 'sound/music/disco/Never Fade Away.ogg'),
+		new/datum/track("The Ballad of Buck Ravers", 'sound/music/disco/The Ballad of Buck Ravers.ogg'),
+		new/datum/track("Bells of Laguna Bend", 'sound/music/disco/Bells of Laguna Bend.ogg'),
+		new/datum/track("Cyberwildlife Park", 'sound/music/disco/Cyberwildlife Park.ogg'),
+		new/datum/track("Code Red Initiated", 'sound/music/disco/Code Red Initiated.ogg'),
+		new/datum/track("Hole in the Sun", 'sound/music/disco/Hole in the Sun.ogg'),
+		new/datum/track("I Really Want to Stay at Your House", 'sound/music/disco/I Really Want to Stay at Your House.ogg'),
+		new/datum/track("GR4VES", 'sound/music/disco/GR4VES.ogg'),
+		new/datum/track("Dinero", 'sound/music/disco/Dinero.ogg'),
+		new/datum/track("Major Crimes", 'sound/music/disco/Major Crimes.ogg')
+	)
