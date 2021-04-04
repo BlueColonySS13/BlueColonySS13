@@ -287,7 +287,7 @@
 	id = "farmlot1"
 	desc = "A farmlot that is located next to the park, it has facilities provided for agricultural supply."
 
-/datum/lot/farm/one
+/datum/lot/farm/two
 	name = "Farmlot 2"
 	id = "farmlot1"
 	desc = "A farmlot that is located next to the metro station."
