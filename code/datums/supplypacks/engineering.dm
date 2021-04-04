@@ -299,5 +299,5 @@
 	name = "Heavy duty cell charger circuit crate"
 	cost = 3500
 	containername = "Heavy duty cell charger circuit crate"
-	containertpye = /obj/structure/closet/crate
+	containertype = /obj/structure/closet/crate
 	contains = list(/obj/item/weapon/circuitboard/cell_charger)
