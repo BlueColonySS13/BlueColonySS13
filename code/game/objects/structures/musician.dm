@@ -359,7 +359,7 @@
 			var/newline = html_encode(input("Enter your line: ", "Piano") as text|null)
 			if(!newline)
 				return
-			if(song.lines.len > 50)
+			if(song.lines.len > 150)
 				return
 			if(length(newline) > 50)
 				newline = copytext(newline, 1, 50)
@@ -398,11 +398,11 @@
 				if (!in_range(src, usr))
 					return
 
-				if(length(t) >= 5563)
+				if(length(t) >= 9216)
 					var/cont = input(usr, "Your message is too long! Would you like to continue editing it?", "", "yes") in list("yes", "no")
 					if(cont == "no")
 						break
-			while(length(t) > 5563)
+			while(length(t) > 9216)
 
 
 			//split into lines

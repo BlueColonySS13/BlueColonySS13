@@ -319,7 +319,7 @@
 			var/newline = html_encode(input("Enter your line: ", "violin") as text|null)
 			if(!newline)
 				return
-			if(song.lines.len > 50)
+			if(song.lines.len > 150)
 				return
 			if(length(newline) > 50)
 				newline = copytext(newline, 1, 50)
@@ -358,11 +358,11 @@
 				if(!in_range(src, usr))
 					return
 
-				if(length(t) >= 3072)
+				if(length(t) >= 9216)
 					var/cont = input(usr, "Your message is too long! Would you like to continue editing it?", "", "yes") in list("yes", "no")
 					if(cont == "no")
 						break
-			while(length(t) > 3072)
+			while(length(t) > 9216)
 
 			//split into lines
 			spawn()
@@ -371,9 +371,9 @@
 				if(copytext(lines[1],1,6) == "BPM: ")
 					tempo = 600 / text2num(copytext(lines[1],6))
 					lines.Cut(1,2)
-				if(lines.len > 50)
+				if(lines.len > 150)
 					usr << "Too many lines!"
-					lines.Cut(51)
+					lines.Cut(151)
 				var/linenum = 1
 				for(var/l in lines)
 					if(length(l) > 50)
@@ -384,8 +384,10 @@
 				song = new()
 				song.lines = lines
 				song.tempo = tempo
+				updateUsrDialog()
 
 	add_fingerprint(usr)
+	updateUsrDialog()
 	for(var/mob/M in viewers(1, loc))
 		if((M.client && M.machine == src))
 			attack_self(M)
