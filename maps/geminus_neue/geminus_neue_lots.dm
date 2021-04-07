@@ -289,5 +289,5 @@
 
 /datum/lot/farm/two
 	name = "Farmlot 2"
-	id = "farmlot1"
+	id = "farmlot2"
 	desc = "A farmlot that is located next to the metro station."
