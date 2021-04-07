@@ -4807,6 +4807,7 @@
 	pixel_x = 0;
 	pixel_y = 25
 	},
+/obj/item/weapon/deck/cards,
 /turf/simulated/floor/tiled/dark,
 /area/security/holding)
 "anW" = (
@@ -4822,7 +4823,6 @@
 /area/security/holding)
 "anZ" = (
 /obj/machinery/recharge_station,
-/obj/item/weapon/deck/cards,
 /turf/simulated/floor/tiled/dark,
 /area/security/holding)
 "aoa" = (
@@ -6195,7 +6195,7 @@
 	charge_free_department = "police";
 	name = "NanoTrasen-Provided Emergency Medical Dispenser";
 	pixel_y = 32;
-	req_access = list()
+	req_access = list(63)
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/main)
@@ -6259,7 +6259,7 @@
 	charge_free_department = "police";
 	name = "NanoTrasen-Provided Emergency Medical Dispenser";
 	pixel_y = 32;
-	req_access = list(0);
+	req_access = list(63);
 	vendor_department = "medical"
 	},
 /turf/simulated/floor/tiled,
@@ -7650,7 +7650,8 @@
 	charge_free_department = "police";
 	dir = 8;
 	name = "NanoTrasen-Provided Emergency Medical Dispenser";
-	pixel_x = 21
+	pixel_x = 21;
+	req_access = list(63)
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/security_aid_station)
@@ -7728,8 +7729,8 @@
 /obj/machinery/door/airlock/glass_security{
 	id_tag = "CellsFoyer";
 	layer = 2.8;
-	name = "Police Station Foyer";
-	req_access = list(63)
+	name = "Briefing Room";
+	req_access = list(1)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/main)
@@ -8726,6 +8727,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/machinery/light/floor,
 /turf/simulated/floor/tiled/dark,
 /area/security/prison)
 "azu" = (
@@ -10024,7 +10026,7 @@
 	dir = 8;
 	name = "NanoTrasen-Provided Emergency Medical Dispenser";
 	pixel_x = 21;
-	req_access = list(0)
+	req_access = list(1)
 	},
 /turf/simulated/floor/tiled,
 /area/security/main)
@@ -23208,6 +23210,14 @@
 /obj/effect/floor_decal/pavement_grit/rough,
 /turf/simulated/floor/tiled,
 /area/constructionsite/maintenance)
+"mUS" = (
+/obj/machinery/light/colored/blue{
+	dir = 4;
+	icon_state = "blue1";
+	tag = "icon-blue1 (EAST)"
+	},
+/turf/simulated/floor/tiled,
+/area/security/main)
 "nfK" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -41272,7 +41282,7 @@ aqJ
 avk
 aim
 ark
-ain
+aub
 abW
 aim
 aDE
@@ -41436,7 +41446,7 @@ ain
 ark
 ain
 atJ
-ain
+mUS
 aHP
 aGq
 aGq
