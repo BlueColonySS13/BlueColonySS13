@@ -1537,7 +1537,6 @@
 					/obj/item/stack/material/plastic/full = 3,
 					/obj/item/stack/material/steel/full = 6,
 					/obj/item/stack/material/plasteel/full = 3,
-					/obj/item/stack/material/durasteel/full = 3
 					)
 
 /obj/machinery/vending/materials/science

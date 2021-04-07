@@ -65,11 +65,13 @@
 /obj/item/clothing/head/bomb_hood/security
 	icon_state = "bombsuitsec"
 	body_parts_covered = HEAD
+	dont_save = TRUE
 
 /obj/item/clothing/suit/bomb_suit/security
 	icon_state = "bombsuitsec"
 	allowed = list(/obj/item/weapon/gun/energy,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	dont_save = TRUE
 
 /*
  * Radiation protection
