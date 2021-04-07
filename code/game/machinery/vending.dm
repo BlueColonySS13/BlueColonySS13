@@ -1536,7 +1536,7 @@
 					/obj/item/stack/material/cardboard/full = 5,
 					/obj/item/stack/material/plastic/full = 3,
 					/obj/item/stack/material/steel/full = 6,
-					/obj/item/stack/material/plasteel/full = 3,
+					/obj/item/stack/material/plasteel/full = 3
 					)
 
 /obj/machinery/vending/materials/science
