@@ -12,3 +12,4 @@ gio27 - Judge
 gio27 - Chief of Police
 theflagbearer - City Clerk
 robinkhaliq - Chief Medical Officer
+herma - Maintenance Director
