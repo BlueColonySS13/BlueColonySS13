@@ -720,3 +720,11 @@
 /datum/gear/uniform/yellowswoop
 	display_name = "yellow swooped dress"
 	path = /obj/item/clothing/under/dress/yellowswoop
+
+/datum/gear/uniform/de/aerostatic
+	display_name = "aerostatic suit"
+	path = /obj/item/clothing/under/de/aerostatic
+
+/datum/gear/uniform/de/jamrock
+	display_name = "jamrock suit"
+	path = /obj/item/clothing/under/de/jamrock

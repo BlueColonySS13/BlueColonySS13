@@ -1272,3 +1272,12 @@ Uniforms and stuff
 	icon_state = "disheveled"
 	index = 1
 
+/obj/item/clothing/under/de/aerostatic
+	name = "aerostatic suit"
+	desc = "A crisp and well-pressed suit; professional, comfortable and curiously authoritative."
+	icon_state = "aerostatic_suit"
+
+/obj/item/clothing/under/de/jamrock
+	name = "jamrock suit"
+	desc = "This white satin shirt being adorned used to be fancy. It used to really catch the light. While the golden brown trousers with the ensemble are flare-cut. Normal bell-bottom trousers would be boot-cut, but these are far from normal. They are someone's party pants."
+	icon_state = "jamrock_suit"

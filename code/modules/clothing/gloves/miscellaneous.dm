@@ -134,3 +134,7 @@
 	tax_type = WEAPONS_TAX
 	contraband_type = CONTRABAND_KNIFESMALL
 
+/obj/item/clothing/gloves/de/aerostatic
+	desc = "Vivid red gloves that exude mysterious style."
+	name = "aerostatic gloves"
+	icon_state = "aerostatic_gloves"
