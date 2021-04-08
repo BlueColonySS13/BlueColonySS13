@@ -1,14 +1,14 @@
-Shadowkiller104 - Research Director
-Redfield5 - Chief of Police
-Nope63 - City Clerk
-APsychonaut - Chief Medical Officer
+shadowkiller104 - Research Director
+redfield5 - Chief of Police
+nope63 - City Clerk
+apsychonaut - Chief Medical Officer
 ooglepunk - Research Director
-Coroneljones - Chief Medical Officer
-Coroneljones - City Clerk
+coroneljones - Chief Medical Officer
+coroneljones - City Clerk
 hako01 - Research Director
 oddbomber3768 - Chief Medical Officer
-Maveriknight - Research Director
-Gio27 - Judge
-Gio27 - Chief of Police
+maveriknight - Research Director
+gio27 - Judge
+gio27 - Chief of Police
 theflagbearer - City Clerk
-Robinkhaliq - Chief Medical Officer
+robinkhaliq - Chief Medical Officer
