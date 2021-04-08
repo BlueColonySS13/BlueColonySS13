@@ -254,6 +254,5 @@
 	cost = 2
 
 /datum/gear/shoes/boots/de/lizardskin
-	display_name = "lizardskin selection"
+	display_name = "lizardskin boots"
 	path = /obj/item/clothing/shoes/de/lizardskin
-	cost = 2
