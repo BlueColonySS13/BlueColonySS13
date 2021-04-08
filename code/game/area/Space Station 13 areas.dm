@@ -78,6 +78,8 @@ area/space/atmosalert()
 
 /area/shuttle/arrival/pre_game
 	icon_state = "shuttle2"
+	base_turf = /turf/simulated/floor/tiled/techmaint
+	flags = RAD_SHIELDED || AREA_FLAG_IS_NOT_PERSISTENT
 
 /area/shuttle/arrival/station
 	icon_state = "shuttle"
