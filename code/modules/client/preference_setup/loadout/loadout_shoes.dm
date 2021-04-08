@@ -248,3 +248,12 @@
 	stylish_boots["silver stylish boots"] = /obj/item/clothing/shoes/boots/stylish/silver
 	gear_tweaks += new/datum/gear_tweak/path(sortAssoc(stylish_boots))
 
+/datum/gear/shoes/boots/de/aerostatic
+	display_name = "aerostatic boots"
+	path = /obj/item/clothing/shoes/de/aerostatic
+	cost = 2
+
+/datum/gear/shoes/boots/de/lizardskin
+	display_name = "lizardskin selection"
+	path = /obj/item/clothing/shoes/de/lizardskin
+	cost = 2

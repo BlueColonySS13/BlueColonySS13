@@ -145,3 +145,7 @@
 	display_name = "iPatch, Material"
 	path = /obj/item/clothing/glasses/eyepatch/hud/material
 	cost = 2
+
+/datum/gear/eyes/glasses/de/binoclard
+	display_name = "Binoclard lenses"
+	path = /obj/item/clothing/glasses/de/binoclard
