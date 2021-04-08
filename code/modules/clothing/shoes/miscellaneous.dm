@@ -162,3 +162,13 @@
 	force = 0
 	w_class = ITEMSIZE_SMALL
 	species_restricted = null
+
+/obj/item/clothing/shoes/de/aerostatic
+	desc = "Sharp and comfortable looking boots crafted from tough brown leather."
+	name = "aerostatic boots"
+	icon_state = "aerostatic_boots"
+
+/obj/item/clothing/shoes/de/lizardskin
+	desc = "They may have lost some of their lustre over the years, but these green crocodile leather shoes fit you perfectly."
+	name = "lizardskin boots"
+	icon_state = "lizardskin_boots"

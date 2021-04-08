@@ -1219,3 +1219,13 @@ obj/item/clothing/suit/storage/toggle/peacoat
 	icon_state = "peterpanblazer"
 	body_parts_covered = UPPER_TORSO
 	index = 1
+
+obj/item/clothing/suit/de/aerostatic
+	name = "aerostatic bomber jacket"
+	desc = "Unquestionably gaudy and peculiar yet also curiously flattering; emanates a strange air of authority."
+	icon_state = "aerostatic_bomber_jacket"
+
+obj/item/clothing/suit/de/jamrock
+	name = "jamrock blazer"
+	desc = "Looks like someone skinned this blazer off some unknown animal. It has a white rectangle on the back and the right sleeve."
+	icon_state = "jamrock_blazer"

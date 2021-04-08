@@ -556,3 +556,8 @@ BLIND     // can't see anything
 	off_state = "holovisor"
 	toggleable = 1
 	action_button_name = "Toggle Holovisor"
+
+/obj/item/clothing/glasses/de/binoclard
+	name = "binoclard lenses"
+	desc = "Stylish round lenses subtly shaded for your protection and criminal discomfort."
+	icon_state = "binoclard_lenses"
