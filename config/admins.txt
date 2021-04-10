@@ -7,14 +7,12 @@
 
 # not_a_user - Admin
 
-maveriknight - Head Admin 
 gio27 - Head Admin
-artofwasd - Head Admin
-slayingcreepers - Head Admin
-
+maverikknight - Game Admin 
 monos - Trial Moderator
 
 valzargaming - Host
-
 herma - Code Wizard
 theflagbearer - Code Wizard
+artofwasd - Code Wizard
+slayingcreepers - Code Wizard
