@@ -7456,13 +7456,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters)
-"avD" = (
-/mob/living/simple_mob/animal/sif/sakimm/intelligent{
-	desc = "The local sakimm miscreant.";
-	name = "Rodney Raccoon"
-	},
-/turf/simulated/floor/outdoors/grass/nogrowth,
-/area/planets/Geminus/outdoor/park)
 "avE" = (
 /obj/machinery/light/colored{
 	dir = 8;
@@ -33044,7 +33037,7 @@ aqw
 arH
 arL
 arL
-avD
+arL
 aut
 aus
 arL
