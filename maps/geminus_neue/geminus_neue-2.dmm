@@ -22973,12 +22973,19 @@
 /obj/random/junk,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/south)
-"cYu" = (
-/obj/machinery/door/airlock/multi_tile/glass/engineering{
-	name = "Maintenance Storage Area"
+"dhs" = (
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/obj/effect/floor_decal/corner/yellow/border{
+	dir = 4;
+	icon_state = "bordercolor"
+	},
+/obj/structure/reagent_dispensers/watertank,
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/dark,
-/area/engineering/locker_room)
+/area/engineering/storage)
 "dID" = (
 /obj/machinery/disposal,
 /turf/simulated/floor/tiled/dark,
@@ -23049,15 +23056,6 @@
 /obj/vehicle/car/random,
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
-"eVj" = (
-/obj/structure/table/glass,
-/obj/random/tool/powermaint,
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/engineering/workshop)
 "fcW" = (
 /obj/structure/table/glass,
 /obj/machinery/button/windowtint{
@@ -23107,6 +23105,12 @@
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
+"gDH" = (
+/obj/machinery/door/airlock/multi_tile/glass/engineering{
+	name = "Maintenance Storage Area"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/locker_room)
 "gIa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/junk,
@@ -23163,19 +23167,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
-"hSR" = (
-/obj/effect/floor_decal/corner/yellow/diagonal,
-/obj/effect/floor_decal/corner/yellow/border{
-	dir = 4;
-	icon_state = "bordercolor"
-	},
-/obj/structure/reagent_dispensers/watertank,
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/engineering/storage)
 "iex" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23442,6 +23433,19 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/storage)
+"lxK" = (
+/obj/effect/floor_decal/corner/yellow/diagonal,
+/obj/effect/floor_decal/corner/yellow/border{
+	dir = 4;
+	icon_state = "bordercolor"
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/storage)
 "lFT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -23574,7 +23578,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
 "onH" = (
-/obj/effect/wingrille_spawn/reinforced/tinted,
+/obj/effect/wingrille_spawn/reinforced/polarized{
+	id = "cetint"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
 "osm" = (
@@ -23590,6 +23596,15 @@
 "pfI" = (
 /turf/simulated/wall/iron,
 /area/engineering/engine_monitoring)
+"prx" = (
+/obj/structure/table/glass,
+/obj/random/tool/powermaint,
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/workshop)
 "pvy" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23679,12 +23694,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/dark,
 /area/engineering)
-"rly" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/engineering/engine_monitoring)
 "rqM" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23844,6 +23853,12 @@
 /obj/random/junk,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/central)
+"vfp" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_monitoring)
 "viQ" = (
 /obj/machinery/modular_computer/console/preset/engineering{
 	dir = 8
@@ -23920,19 +23935,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/wall/iron,
 /area/planets/Geminus/indoor)
-"wpW" = (
-/obj/effect/floor_decal/corner/yellow/diagonal,
-/obj/effect/floor_decal/corner/yellow/border{
-	dir = 4;
-	icon_state = "bordercolor"
-	},
-/obj/structure/reagent_dispensers/fueltank,
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/engineering/storage)
 "wGm" = (
 /obj/structure/table/woodentable/ebony,
 /obj/item/weapon/paper_bin,
@@ -30246,7 +30248,7 @@ iex
 miQ
 pfI
 dID
-rly
+vfp
 vsN
 vsN
 sAY
@@ -30487,7 +30489,7 @@ ljO
 rJV
 rJV
 jme
-cYu
+gDH
 npo
 kUY
 pfI
@@ -30813,14 +30815,14 @@ bgc
 bgW
 aGS
 omv
-hSR
+dhs
 dUu
 fSY
-wpW
+lxK
 jrZ
 trj
 iLb
-eVj
+prx
 jhD
 iCI
 aEs
