@@ -4659,13 +4659,11 @@
 /turf/simulated/floor/bluegeo,
 /area/planets/Geminus/indoor/city_hall)
 "anE" = (
-/obj/effect/spawner/conditional_spawn/council/sec_bots,
-/turf/simulated/floor/wood/walnut{
-	desc = "Water resistant wooden planks. Watch out for nails!";
-	name = "wooden dock planks";
-	outdoors = 1
+/obj/machinery/door/airlock/multi_tile/glass/engineering{
+	name = "Maintenance Storage Area"
 	},
-/area/planets/Geminus/outdoor/park)
+/turf/simulated/floor/tiled/dark,
+/area/engineering/locker_room)
 "anF" = (
 /obj/item/weapon/paper_bin,
 /obj/structure/table/glass/black,
@@ -9641,13 +9639,6 @@
 /obj/effect/floor_decal/plaque,
 /turf/simulated/floor/tiled/dark,
 /area/security/lobby)
-"aBR" = (
-/obj/effect/floor_decal/corner/blue{
-	dir = 9
-	},
-/mob/living/bot/secbot/beepsky,
-/turf/simulated/floor/tiled/dark,
-/area/security/lobby)
 "aBS" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 6
@@ -10622,11 +10613,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
-"aEH" = (
-/obj/machinery/light/small,
-/obj/effect/spawner/conditional_spawn/council/cleaning_bots,
-/turf/simulated/floor/plating,
-/area/maintenance/fpmaint)
 "aEI" = (
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
@@ -23381,7 +23367,7 @@
 /area/engineering/engine_waste)
 "lvC" = (
 /obj/machinery/door/airlock/multi_tile/glass/engineering{
-	name = "Maintenance Area"
+	name = "Maintenance Locker Room"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
@@ -23505,7 +23491,8 @@
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border,
 /obj/machinery/door/window/westleft{
-	dir = 2
+	dir = 2;
+	name = "Maintenance Workshop"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
@@ -28092,7 +28079,7 @@ aaa
 aaa
 aap
 aas
-aEH
+aaE
 aap
 aaI
 aaZ
@@ -30410,7 +30397,7 @@ ljO
 rJV
 rJV
 jme
-lvC
+anE
 npo
 kUY
 pfI
@@ -32647,7 +32634,7 @@ abA
 amT
 aoe
 aoe
-anE
+aoe
 aoe
 arG
 asn
@@ -40518,7 +40505,7 @@ aWK
 avd
 azy
 aBb
-aBR
+aCK
 aCK
 aCK
 aNg
