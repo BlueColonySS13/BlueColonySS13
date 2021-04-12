@@ -9,6 +9,7 @@
 
 gio27 - Head Admin
 maverikknight - Game Admin 
+shadowkiller104 - Game Admin
 monos - Trial Moderator
 
 valzargaming - Host
@@ -16,3 +17,4 @@ herma - Code Wizard
 theflagbearer - Code Wizard
 artofwasd - Code Wizard
 slayingcreepers - Code Wizard
+n8toe - Developer
