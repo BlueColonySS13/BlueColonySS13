@@ -23019,7 +23019,7 @@
 "fcW" = (
 /obj/structure/table/glass,
 /obj/machinery/button/windowtint{
-	id = cetint;
+	id = "cetint";
 	pixel_x = 5;
 	pixel_y = 26
 	},
