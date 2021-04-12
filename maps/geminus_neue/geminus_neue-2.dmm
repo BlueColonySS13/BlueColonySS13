@@ -23024,7 +23024,7 @@
 	pixel_y = 26
 	},
 /obj/machinery/button/remote/blast_door{
-	id = garage;
+	id = "garage";
 	name = "garage door control";
 	pixel_x = -5;
 	pixel_y = 26
@@ -23437,6 +23437,10 @@
 /obj/machinery/mineral/processing_unit_console,
 /turf/simulated/wall/plastic/green,
 /area/quartermaster/storage)
+"nkT" = (
+/obj/vehicle/bike/random,
+/turf/simulated/floor/road/garage,
+/area/engineering)
 "nns" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/structure/disposalpipe/segment{
@@ -23884,7 +23888,7 @@
 /area/engineering)
 "xRz" = (
 /obj/machinery/mech_recharger,
-/obj/vehicle/bike/random,
+/obj/mecha/working/ripley/firefighter,
 /turf/simulated/floor/road/garage,
 /area/engineering)
 "xYH" = (
@@ -30461,7 +30465,7 @@ rqM
 tVd
 ekP
 vvC
-nXq
+nkT
 nXq
 tJO
 mqr
