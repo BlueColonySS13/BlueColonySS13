@@ -1949,9 +1949,17 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "janitor_downstairs"
+	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/planets/Geminus/indoor/sewer/central)
 "gG" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "janitor_downstairs"
+	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/planets/Geminus/indoor/sewer/central)
 "gH" = (
@@ -1960,6 +1968,10 @@
 	icon_state = "up"
 	},
 /obj/structure/disposalpipe/up,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "janitor_downstairs"
+	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/planets/Geminus/indoor/sewer/central)
 "gI" = (
@@ -1997,6 +2009,10 @@
 /area/planets/Geminus/indoor/sewer/central)
 "gO" = (
 /obj/structure/disposalpipe/segment,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "janitor_downstairs"
+	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/planets/Geminus/indoor/sewer/central)
 "gP" = (
@@ -2037,6 +2053,10 @@
 /area/planets/Geminus/indoor/sewer/south)
 "gX" = (
 /obj/structure/disposalpipe/segment,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "janitor_downstairs"
+	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/planets/Geminus/indoor/sewer/south)
 "gY" = (
@@ -4300,12 +4320,15 @@
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/west)
 "wj" = (
-/obj/structure/fence{
-	dir = 4;
-	icon_state = "straight"
+/obj/machinery/light/small{
+	dir = 1
 	},
+/obj/machinery/conveyor{
+	id = "janitor_downstairs"
+	},
+/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Geminus/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/central)
 "wL" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -4326,6 +4349,13 @@
 	outdoors = 0
 	},
 /area/planets/Geminus/indoor/arrivalbus)
+"xc" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8;
+	icon_state = "warning_dust"
+	},
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor/sewer/south)
 "xj" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
@@ -4378,6 +4408,12 @@
 	outdoors = 0
 	},
 /area/planets/Geminus/indoor/arrivalbus)
+"Cz" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/planets/Geminus/indoor/sewer/south)
 "CI" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/machinery/light/floor,
@@ -4397,15 +4433,21 @@
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/south)
 "DJ" = (
-/obj/structure/closet/crate/trashcart,
+/obj/machinery/conveyor{
+	id = "janitor_downstairs"
+	},
+/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Geminus/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/central)
 "DK" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/south)
 "DR" = (
-/obj/structure/fence/door,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "janitor_downstairs"
+	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/planets/Geminus/indoor/sewer/south)
 "EH" = (
@@ -4424,8 +4466,10 @@
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/west)
 "GV" = (
-/obj/machinery/light/small,
-/obj/structure/closet/crate/trashcart,
+/obj/machinery/conveyor{
+	id = "janitor_downstairs"
+	},
+/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/planets/Geminus/indoor/sewer/south)
 "Hg" = (
@@ -4515,6 +4559,14 @@
 /obj/structure/disposaloutlet{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4;
+	icon_state = "warning"
+	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/planets/Geminus/indoor/sewer/south)
 "OH" = (
@@ -4564,6 +4616,15 @@
 "TV" = (
 /turf/simulated/floor/tiled/external,
 /area/planets/Geminus/indoor/sewer/east)
+"Ur" = (
+/obj/machinery/conveyor_switch{
+	id = "janitor_downstairs"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/planets/Geminus/indoor/sewer/south)
 "UM" = (
 /obj/random/trash,
 /obj/effect/floor_decal/rust,
@@ -4580,6 +4641,17 @@
 	outdoors = 0
 	},
 /area/planets/Geminus/indoor/sewer/north)
+"Vr" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4;
+	icon_state = "warning"
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/planets/Geminus/indoor/sewer/south)
 "VM" = (
 /obj/structure/boulder,
 /turf/simulated/floor/water/sewer,
@@ -4632,6 +4704,16 @@
 	outdoors = 0
 	},
 /area/planets/Geminus/indoor/sewer/north)
+"Zh" = (
+/obj/structure/closet/crate/trashcart{
+	icon_state = "trashcartopen";
+	opened = 1
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/planets/Geminus/indoor/sewer/south)
 "Zi" = (
 /obj/random/junk,
 /obj/random/trash,
@@ -11592,11 +11674,11 @@ kz
 gw
 gF
 gG
+DR
+Ur
 gW
 gW
-gW
-wj
-GV
+hB
 gV
 kI
 ic
@@ -11673,11 +11755,11 @@ fs
 gw
 gG
 gG
+DR
+Cz
 gW
 gW
 gW
-wj
-DJ
 hU
 gY
 gY
@@ -11755,9 +11837,9 @@ gw
 gH
 gO
 gX
-gX
+Vr
 Ou
-gV
+gW
 hw
 hU
 gY
@@ -11835,10 +11917,10 @@ fs
 gw
 gG
 gG
-gW
-gW
-gW
 DR
+Cz
+gW
+gW
 gW
 hU
 gY
@@ -11914,12 +11996,12 @@ fs
 fs
 kz
 gw
-gF
-gG
+wj
+DJ
+GV
+Zh
 gW
 gW
-gW
-DR
 hB
 gV
 kI
@@ -12241,11 +12323,11 @@ fs
 fs
 fn
 gZ
-xX
-xX
-xX
-xX
-xX
+xc
+xc
+xc
+xc
+xc
 gZ
 gZ
 gZ

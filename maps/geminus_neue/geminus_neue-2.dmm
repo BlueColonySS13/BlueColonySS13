@@ -3731,11 +3731,11 @@
 /turf/simulated/floor/water,
 /area/planets/Geminus/outdoor/west)
 "akY" = (
-/mob/living/bot/secbot/beepsky/pipsqueak{
-	will_patrol = 0
+/obj/machinery/holosign/exit{
+	id = "engieexit"
 	},
-/turf/simulated/floor/bluegeo,
-/area/planets/Geminus/indoor/city_hall)
+/turf/simulated/floor/tiled/dark,
+/area/engineering)
 "akZ" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/lino,
@@ -10627,7 +10627,8 @@
 /area/crew_quarters/fitness)
 "aEF" = (
 /obj/machinery/door/airlock/glass_engineering{
-	name = "Janitorial Area"
+	name = "Janitorial Area";
+	req_access = list(26)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
@@ -10637,12 +10638,10 @@
 	dir = 8;
 	icon_state = "bordercolor"
 	},
-/obj/structure/bed/chair/office/light{
-	dir = 4
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/table/glass,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
 "aEI" = (
@@ -11055,7 +11054,7 @@
 /turf/simulated/wall/iron,
 /area/engineering)
 "aFW" = (
-/obj/effect/wallframe_spawn/electric,
+/obj/effect/wingrille_spawn/reinforced/electric,
 /turf/simulated/floor/tiled/dark,
 /area/engineering)
 "aFX" = (
@@ -11074,6 +11073,12 @@
 /area/planets/Geminus/indoor/science)
 "aGa" = (
 /obj/machinery/modular_computer/console/preset/engineering,
+/obj/machinery/button/holosign{
+	id = "engieexit";
+	name = "passive-aggressive exit sign switch";
+	pixel_x = 28;
+	pixel_y = 7
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering)
 "aGb" = (
@@ -11086,10 +11091,9 @@
 /area/engineering/engine_waste)
 "aGc" = (
 /obj/effect/floor_decal/corner/mauve/diagonal,
-/obj/structure/bed/chair/office/light{
-	dir = 8;
-	icon_state = "officechair_white";
-	tag = "icon-officechair_white (WEST)"
+/obj/machinery/conveyor_switch{
+	id = "janitor_upstairs";
+	pixel_y = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
@@ -14921,6 +14925,9 @@
 "aPY" = (
 /obj/machinery/door/airlock/multi_tile/glass/engineering{
 	name = "Maintenance Department"
+	},
+/obj/machinery/holosign/exit{
+	id = "engieexit"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering)
@@ -19599,7 +19606,6 @@
 	dir = 4;
 	icon_state = "pipe-t"
 	},
-/obj/machinery/disposal,
 /obj/effect/floor_decal/corner/mauve/diagonal,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1;
@@ -19608,6 +19614,9 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8;
 	icon_state = "bordercolor"
+	},
+/obj/machinery/disposal/deliveryChute{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
@@ -19627,6 +19636,11 @@
 	dir = 1;
 	icon_state = "bordercolor"
 	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "janitor_upstairs"
+	},
+/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
 "bdz" = (
@@ -19667,6 +19681,14 @@
 	},
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "mining_internal"
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "janitor_upstairs"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
@@ -20827,7 +20849,7 @@
 "bhV" = (
 /obj/effect/floor_decal/corner/mauve/diagonal,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/structure/reagent_dispensers/cleanertank,
+/obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
 "bhW" = (
@@ -22986,8 +23008,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"dxx" = (
+/obj/effect/floor_decal/corner/mauve/diagonal,
+/obj/structure/bed/chair/office/light,
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_waste)
 "dID" = (
 /obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
 "dMw" = (
@@ -23061,13 +23089,15 @@
 /obj/machinery/button/windowtint{
 	id = "cetint";
 	pixel_x = 5;
-	pixel_y = 26
+	pixel_y = 26;
+	req_access = list(56)
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "garage";
 	name = "garage door control";
 	pixel_x = -5;
-	pixel_y = 26
+	pixel_y = 26;
+	req_access = list(56)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
@@ -23087,6 +23117,13 @@
 /obj/random/junk,
 /turf/simulated/floor/pavement/brick_paving,
 /area/planets/Geminus/outdoor/central)
+"fEX" = (
+/obj/effect/floor_decal/corner/mauve/diagonal,
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_waste)
 "fSY" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23107,7 +23144,8 @@
 /area/engineering/workshop)
 "gDH" = (
 /obj/machinery/door/airlock/multi_tile/glass/engineering{
-	name = "Maintenance Storage Area"
+	name = "Maintenance Storage Area";
+	req_access = list(10)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
@@ -23222,7 +23260,8 @@
 /area/engineering/workshop)
 "iNy" = (
 /obj/machinery/door/airlock/glass_engineering{
-	name = "Maintenance Reception"
+	name = "Maintenance Reception";
+	req_access = list(10)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
@@ -23376,6 +23415,9 @@
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = -32
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
 "kYZ" = (
@@ -23422,7 +23464,8 @@
 /area/engineering/engine_waste)
 "lvC" = (
 /obj/machinery/door/airlock/multi_tile/glass/engineering{
-	name = "Maintenance Locker Room"
+	name = "Maintenance Locker Room";
+	req_access = list(10)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
@@ -23560,7 +23603,8 @@
 /obj/effect/floor_decal/corner/yellow/border,
 /obj/machinery/door/window/westleft{
 	dir = 2;
-	name = "Maintenance Workshop"
+	name = "Maintenance Workshop";
+	req_access = list(10)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
@@ -23593,6 +23637,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/pavement,
 /area/planets/Geminus/outdoor/east)
+"oNv" = (
+/obj/effect/floor_decal/corner/mauve/diagonal,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8;
+	icon_state = "bordercolor"
+	},
+/obj/structure/reagent_dispensers/cleanertank,
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_waste)
 "pfI" = (
 /turf/simulated/wall/iron,
 /area/engineering/engine_monitoring)
@@ -23602,6 +23655,12 @@
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "garage";
+	pixel_x = 26;
+	req_access = list(10)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/workshop)
@@ -23623,7 +23682,11 @@
 "pJn" = (
 /obj/machinery/door/airlock/engineering{
 	dir = 4;
-	name = "Maintenance Director's Office"
+	name = "Maintenance Director's Office";
+	req_access = list(56)
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
@@ -23648,7 +23711,10 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner{
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
 "qsW" = (
@@ -23716,12 +23782,21 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	pixel_x = -26
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/workshop)
 "rJV" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"rSC" = (
+/obj/effect/floor_decal/corner/mauve/diagonal,
+/obj/structure/closet/crate/trashcart,
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_waste)
 "sdh" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/plating,
@@ -23775,6 +23850,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"tqJ" = (
+/obj/effect/floor_decal/corner/mauve/diagonal,
+/obj/structure/bed/chair/office/light{
+	dir = 8;
+	icon_state = "officechair_white";
+	tag = "icon-officechair_white (WEST)"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_waste)
 "trj" = (
 /turf/simulated/wall/iron,
 /area/engineering/storage)
@@ -23835,7 +23919,8 @@
 "uGb" = (
 /obj/machinery/door/airlock/multi_tile/glass/engineering{
 	dir = 8;
-	name = "Recycling Area"
+	name = "Recycling Area";
+	req_access = list(26)
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -23856,6 +23941,10 @@
 "vfp" = (
 /obj/machinery/light/small{
 	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
@@ -23972,6 +24061,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"wWb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_monitoring)
 "wYR" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4;
@@ -24002,7 +24097,9 @@
 /area/engineering/locker_room)
 "xRz" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/working/ripley/firefighter,
+/obj/mecha/working/ripley/firefighter{
+	req_access = list(10)
+	},
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
 "xYH" = (
@@ -24024,6 +24121,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor)
+"ykr" = (
+/obj/effect/floor_decal/corner/mauve/diagonal,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8;
+	icon_state = "bordercolor"
+	},
+/obj/structure/bed/chair/office/light,
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_waste)
 "yli" = (
 /obj/effect/floor_decal/corner/mauve/diagonal,
 /obj/effect/floor_decal/corner/purple/border{
@@ -24031,7 +24137,7 @@
 	icon_state = "bordercolor"
 	},
 /obj/structure/bed/chair/office/light{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
@@ -30329,7 +30435,7 @@ rJV
 ixu
 pfI
 kfp
-vsN
+wWb
 weW
 hIs
 vWU
@@ -30561,7 +30667,7 @@ aaA
 aBG
 biB
 aBG
-izS
+akY
 izS
 izS
 uJZ
@@ -30970,11 +31076,11 @@ aFv
 bdx
 aGb
 bdV
-aGb
+ykr
 aEH
 yli
-yli
 aGb
+oNv
 bhh
 aTa
 aWU
@@ -31049,13 +31155,13 @@ biB
 aaA
 aFv
 bdy
-bdL
+aGc
 lqw
+dxx
+bfB
+fEX
 bdL
-bfB
-bfB
-bfB
-bdL
+rSC
 bhV
 aTa
 aNU
@@ -31133,8 +31239,8 @@ bdE
 bjC
 mGp
 bjJ
+tqJ
 bdL
-aGc
 bdL
 bdL
 bkI
@@ -37994,7 +38100,7 @@ ahK
 aln
 aju
 aiO
-akY
+ahZ
 alA
 anA
 abp
