@@ -4214,10 +4214,26 @@
 	outdoors = 0
 	},
 /area/planets/Geminus/indoor/arrivalbus)
-"qk" = (
-/obj/machinery/constructable_frame/machine_frame,
-/turf/simulated/floor/plating,
+"pv" = (
+/obj/structure/closet/crate/trashcart{
+	icon_state = "trashcartopen";
+	opened = 1
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/planets/Geminus/indoor/sewer/south)
+"qk" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/conveyor{
+	id = "janitor_downstairs"
+	},
+/obj/structure/plasticflaps/mining,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/planets/Geminus/indoor/sewer/central)
 "qy" = (
 /obj/effect/decal/cleanable/graffiti{
 	pixel_y = 30
@@ -4242,6 +4258,17 @@
 	},
 /turf/simulated/floor/water/sewer,
 /area/planets/Geminus/indoor/sewer/north)
+"rd" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4;
+	icon_state = "warning"
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/planets/Geminus/indoor/sewer/south)
 "rg" = (
 /obj/machinery/light/colored/green{
 	dir = 1
@@ -4320,9 +4347,6 @@
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/west)
 "wj" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
 /obj/machinery/conveyor{
 	id = "janitor_downstairs"
 	},
@@ -4349,13 +4373,6 @@
 	outdoors = 0
 	},
 /area/planets/Geminus/indoor/arrivalbus)
-"xc" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8;
-	icon_state = "warning_dust"
-	},
-/turf/simulated/floor/plating,
-/area/planets/Geminus/indoor/sewer/south)
 "xj" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
@@ -4408,12 +4425,6 @@
 	outdoors = 0
 	},
 /area/planets/Geminus/indoor/arrivalbus)
-"Cz" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Geminus/indoor/sewer/south)
 "CI" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/machinery/light/floor,
@@ -4434,20 +4445,20 @@
 /area/planets/Geminus/indoor/sewer/south)
 "DJ" = (
 /obj/machinery/conveyor{
+	dir = 4;
 	id = "janitor_downstairs"
 	},
-/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Geminus/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/south)
 "DK" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/south)
 "DR" = (
 /obj/machinery/conveyor{
-	dir = 4;
 	id = "janitor_downstairs"
 	},
+/obj/structure/plasticflaps/mining,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/planets/Geminus/indoor/sewer/south)
 "EH" = (
@@ -4457,6 +4468,12 @@
 	outdoors = 0
 	},
 /area/planets/Geminus/indoor/sewer/north)
+"Fj" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/planets/Geminus/indoor/sewer/south)
 "FS" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/tiled/steel_ridged,
@@ -4466,10 +4483,12 @@
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/west)
 "GV" = (
-/obj/machinery/conveyor{
+/obj/machinery/conveyor_switch{
 	id = "janitor_downstairs"
 	},
-/obj/structure/plasticflaps/mining,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/planets/Geminus/indoor/sewer/south)
 "Hg" = (
@@ -4616,15 +4635,6 @@
 "TV" = (
 /turf/simulated/floor/tiled/external,
 /area/planets/Geminus/indoor/sewer/east)
-"Ur" = (
-/obj/machinery/conveyor_switch{
-	id = "janitor_downstairs"
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Geminus/indoor/sewer/south)
 "UM" = (
 /obj/random/trash,
 /obj/effect/floor_decal/rust,
@@ -4641,17 +4651,6 @@
 	outdoors = 0
 	},
 /area/planets/Geminus/indoor/sewer/north)
-"Vr" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4;
-	icon_state = "warning"
-	},
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Geminus/indoor/sewer/south)
 "VM" = (
 /obj/structure/boulder,
 /turf/simulated/floor/water/sewer,
@@ -4692,6 +4691,13 @@
 	outdoors = 0
 	},
 /area/planets/Geminus/indoor/arrivalbus)
+"Xo" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8;
+	icon_state = "warning_dust"
+	},
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor/sewer/south)
 "Xx" = (
 /obj/structure/lattice,
 /turf/simulated/floor/plating/external,
@@ -4704,16 +4710,6 @@
 	outdoors = 0
 	},
 /area/planets/Geminus/indoor/sewer/north)
-"Zh" = (
-/obj/structure/closet/crate/trashcart{
-	icon_state = "trashcartopen";
-	opened = 1
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Geminus/indoor/sewer/south)
 "Zi" = (
 /obj/random/junk,
 /obj/random/trash,
@@ -11674,8 +11670,8 @@ kz
 gw
 gF
 gG
-DR
-Ur
+DJ
+GV
 gW
 gW
 hB
@@ -11755,8 +11751,8 @@ fs
 gw
 gG
 gG
-DR
-Cz
+DJ
+Fj
 gW
 gW
 gW
@@ -11837,7 +11833,7 @@ gw
 gH
 gO
 gX
-Vr
+rd
 Ou
 gW
 hw
@@ -11917,8 +11913,8 @@ fs
 gw
 gG
 gG
-DR
-Cz
+DJ
+Fj
 gW
 gW
 gW
@@ -11982,7 +11978,7 @@ dt
 af
 af
 af
-ax
+ak
 ax
 ax
 ax
@@ -11996,10 +11992,10 @@ fs
 fs
 kz
 gw
+qk
 wj
-DJ
-GV
-Zh
+DR
+pv
 gW
 gW
 hB
@@ -12063,8 +12059,8 @@ af
 af
 af
 af
-ax
-ax
+ak
+ak
 ax
 ax
 ax
@@ -12145,7 +12141,7 @@ af
 af
 af
 af
-ax
+ak
 ax
 ax
 ax
@@ -12226,7 +12222,7 @@ af
 af
 af
 af
-ax
+ak
 ax
 ax
 ax
@@ -12306,13 +12302,13 @@ dt
 dt
 af
 af
-ax
+ak
 ax
 ax
 ax
 ax
 fs
-fs
+fn
 fn
 fn
 fn
@@ -12323,11 +12319,11 @@ fs
 fs
 fn
 gZ
-xc
-xc
-xc
-xc
-xc
+Xo
+Xo
+Xo
+Xo
+Xo
 gZ
 gZ
 gZ
@@ -12387,13 +12383,13 @@ dt
 dt
 af
 af
-ax
+ak
 ax
 ax
 ax
 ax
 fs
-fs
+fn
 fn
 fn
 fn
@@ -12473,8 +12469,8 @@ ax
 ax
 ax
 ax
-fs
-fs
+fn
+fn
 fn
 fn
 fn
@@ -12486,7 +12482,7 @@ fn
 fn
 gZ
 Wc
-qk
+xX
 xX
 xX
 xL
@@ -12715,7 +12711,7 @@ ak
 ax
 ax
 ax
-ax
+ak
 fn
 fn
 fn
@@ -12780,7 +12776,6 @@ ai
 ai
 cy
 ax
-ax
 ak
 ak
 ak
@@ -12793,10 +12788,11 @@ ak
 ak
 ak
 ak
-ax
-ax
+ak
 ax
 ax
+ax
+ak
 fn
 fn
 fn
@@ -13038,7 +13034,7 @@ ak
 ax
 ax
 ax
-ax
+ak
 ak
 fn
 fn
@@ -13119,7 +13115,7 @@ ak
 ax
 ax
 ax
-ax
+ak
 ak
 fn
 fn
@@ -13200,7 +13196,7 @@ ax
 ax
 ax
 ax
-ax
+ak
 ak
 fn
 fn
@@ -13593,7 +13589,7 @@ ax
 af
 af
 af
-cO
+ak
 cO
 cO
 ax
@@ -13758,7 +13754,7 @@ ak
 ak
 ak
 ak
-ax
+ak
 ax
 ax
 ax
@@ -13839,7 +13835,7 @@ ak
 ak
 ak
 ak
-ax
+ak
 ax
 ax
 ax
@@ -13922,7 +13918,7 @@ ak
 ak
 ak
 ak
-ax
+ak
 ax
 ax
 ax
@@ -14004,7 +14000,7 @@ ak
 ak
 ak
 ak
-ax
+ak
 ax
 ax
 ax
@@ -14085,11 +14081,11 @@ ak
 ak
 ak
 ak
+ak
 ax
 ax
 ax
-ax
-ax
+ak
 ak
 ak
 ak
@@ -14336,7 +14332,7 @@ ax
 ax
 ak
 ak
-fs
+fn
 fs
 fs
 fs
@@ -21000,7 +20996,7 @@ gY
 gY
 gY
 gY
-iX
+gV
 hc
 hd
 hd
@@ -21080,8 +21076,8 @@ hc
 hc
 hc
 hc
+hc
 bk
-gV
 hc
 hd
 hd
@@ -21162,8 +21158,8 @@ hd
 hd
 hd
 hd
-hc
-hc
+hd
+hd
 hd
 hd
 hd
@@ -21404,8 +21400,8 @@ hc
 hc
 hc
 hc
-bk
 hc
+bk
 hc
 hd
 hd
@@ -23641,8 +23637,8 @@ dg
 dl
 dl
 dg
-dg
 fm
+dg
 dg
 dg
 cQ
@@ -23884,8 +23880,8 @@ dg
 dl
 dl
 dg
-dg
 fm
+dg
 cg
 cg
 cg
@@ -24937,7 +24933,7 @@ dg
 dl
 dl
 dg
-dz
+fO
 cQ
 cg
 cg
@@ -25018,8 +25014,8 @@ dg
 dl
 dl
 dg
-dg
 fm
+dg
 dg
 dg
 cQ
@@ -25261,8 +25257,8 @@ dg
 dl
 dl
 dg
-dg
 fm
+dg
 dg
 dg
 dg
