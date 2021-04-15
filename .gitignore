@@ -6,8 +6,12 @@ Thumbs.db
 *.dmb
 *.lk
 *.backup
+*.before
 data/
 cfg/
+
+#ignore other misc files
+*.pyc
 
 maps/Geminus/backup/*
 .vscode/tasks.json
