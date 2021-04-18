@@ -7,10 +7,11 @@
 
 # not_a_user - Admin
 
-gio27 - Head Admin
-maverikknight - Game Admin 
+maverikknight - Head Admin
 shadowkiller104 - Game Admin
+ncranger21 - Moderator
 monos - Trial Moderator
+fighterslam - Trial Moderator
 
 valzargaming - Host
 herma - Code Wizard
