@@ -9,6 +9,7 @@ Thumbs.db
 *.before
 data/
 cfg/
+sensitive.dm
 
 #ignore other misc files
 *.pyc
@@ -37,3 +38,5 @@ maps/Geminus/backup/geminus-2.dmm
 #config/rules.html
 #config/svndir.txt
 !config/hardwhitelist.txt
+code/_global_vars/sensitive.dm
+code/_global_vars/sensitive.dm
