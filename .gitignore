@@ -40,3 +40,4 @@ maps/Geminus/backup/geminus-2.dmm
 !config/hardwhitelist.txt
 code/_global_vars/sensitive.dm
 code/_global_vars/sensitive.dm
+code/_global_vars/sensitive.dm
