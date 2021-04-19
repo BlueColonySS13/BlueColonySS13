@@ -76,6 +76,10 @@
 	display_name = "fingerless gloves"
 	path = /obj/item/clothing/gloves/fingerless
 
+/datum/gear/gloves/de/aerostatic
+	display_name = "aerostatic gloves"
+	path = /obj/item/clothing/gloves/de/aerostatic
+
 /datum/gear/gloves/ring
 	display_name = "ring selection"
 	description = "Choose from a number of rings."

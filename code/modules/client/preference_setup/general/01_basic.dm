@@ -125,8 +125,6 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	character.birth_year = pref.birth_year
 	character.birth_month = pref.birth_month
 
-F
-
 /datum/category_item/player_setup_item/general/basic/content()
 	. = list()
 	. += "<h1>Basic Information:</h1><hr>"

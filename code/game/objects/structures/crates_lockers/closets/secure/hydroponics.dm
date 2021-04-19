@@ -1,6 +1,7 @@
 /obj/structure/closet/secure_closet/hydroponics
 	name = "botanist's locker"
 	req_access = list(access_hydroponics)
+	req_one_access = list(access_rd, access_tox_storage)
 	icon_state = "hydrosecure1"
 	icon_closed = "hydrosecure"
 	icon_locked = "hydrosecure1"

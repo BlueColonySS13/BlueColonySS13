@@ -35,9 +35,6 @@ SUBSYSTEM_DEF(bounties)
 
 /datum/controller/subsystem/bounties/proc/distribute_bounties()
 	for(var/datum/department/D in GLOB.departments)
-		if(config.allow_business_bounties && D.get_business())
-			continue
-
 		assign_new_bounty(D)
 
 	return TRUE
@@ -117,5 +114,3 @@ SUBSYSTEM_DEF(bounties)
 
 
 	return all_bounties_types
-
-

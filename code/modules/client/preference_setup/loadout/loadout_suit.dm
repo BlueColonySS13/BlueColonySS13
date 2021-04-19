@@ -547,3 +547,11 @@
 /datum/gear/suit/colorsuit/New()
 	..()
 	gear_tweaks = list(gear_tweak_free_color_choice)
+
+/datum/gear/suit/de/aerostatic
+	display_name = "aerostatic bomber jacket"
+	path = /obj/item/clothing/suit/de/aerostatic
+
+/datum/gear/suit/de/jamrock
+	display_name = "jamrock blazer"
+	path = /obj/item/clothing/suit/de/jamrock

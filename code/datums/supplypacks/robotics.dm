@@ -92,16 +92,6 @@
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Grayson)"
 
-/datum/supply_pack/robotics/robolimbs/hephaestus
-	name = "Hephaestus robolimb blueprints"
-	contains = list(/obj/item/weapon/disk/limb/hephaestus,
-					/obj/item/weapon/disk/limb/hephaestus/athena,
-					/obj/item/weapon/disk/limb/hephaestus/frontier,
-					/obj/item/weapon/disk/limb/hephaestus/monitor)
-	cost = 140000
-	containertype = /obj/structure/closet/crate/secure/science
-	containername = "Robolimb blueprints (Hephaestus)"
-
 /datum/supply_pack/robotics/robolimbs/wardtakahashi
 	name = "Ward-Takahashi robolimb blueprints"
 	contains = list(/obj/item/weapon/disk/limb/wardtakahashi,
@@ -112,10 +102,20 @@
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Ward-Takahashi)"
 
+/datum/supply_pack/robotics/robolimbs/hephaestus
+	name = "Hephaestus robolimb blueprints"
+	contains = list(/obj/item/weapon/disk/limb/hephaestus,
+					/obj/item/weapon/disk/limb/hephaestus/athena,
+					/obj/item/weapon/disk/limb/hephaestus/frontier,
+					/obj/item/weapon/disk/limb/hephaestus/monitor)
+	cost = 180000
+	containertype = /obj/structure/closet/crate/secure/science
+	containername = "Robolimb blueprints (Hephaestus)"
+
 /datum/supply_pack/robotics/robolimbs/zenghu
 	name = "Zeng Hu robolimb blueprints"
 	contains = list(/obj/item/weapon/disk/limb/zenghu)
-	cost = 40000
+	cost = 180000
 	containertype = /obj/structure/closet/crate/secure/science
 	containername = "Robolimb blueprints (Zeng Hu)"
 

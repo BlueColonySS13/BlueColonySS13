@@ -6,8 +6,13 @@ Thumbs.db
 *.dmb
 *.lk
 *.backup
+*.before
 data/
 cfg/
+sensitive.dm
+
+#ignore other misc files
+*.pyc
 
 maps/Geminus/backup/*
 .vscode/tasks.json
@@ -17,18 +22,24 @@ maps/Geminus/backup/geminus-1.dmm
 maps/Geminus/backup/geminus-2.dmm
 /config/*	
 !/config/*/*
-config/config.txt
-config/admins.txt
-config/access levels.txt
-config/alienwhitelist.txt
-config/custom_items.txt
-config/custom_sprites.txt
-config/dbconfig.txt
+!config/config.txt
+#config/admins.txt
+#config/access levels.txt
+#config/alienwhitelist.txt
+!config/custom_items.txt
+#config/custom_sprites.txt
+#config/dbconfig.txt
+#config/forumdbconfig.txt
+#config/game_options.txt
+#config/mentors.txt
+#config/jobs.txt
+#config/moderators.txt
+#config/motd.txt
+#config/rules.html
+#config/svndir.txt
+!config/hardwhitelist.txt
+code/_global_vars/sensitive.dm
+code/_global_vars/sensitive.dm
+code/_global_vars/sensitive.dm
 config/forumdbconfig.txt
-config/game_options.txt
-config/mentors.txt
-config/jobs.txt
-config/moderators.txt
-config/motd.txt
-config/rules.html
-config/svndir.txt
+config/dbconfig.txt

@@ -978,27 +978,27 @@
 	premium = list(/obj/item/weapon/storage/fancy/cigar = 5,
 					/obj/item/weapon/storage/fancy/cigarettes/carcinomas = 5,
 					/obj/item/weapon/storage/fancy/cigarettes/professionals = 5)
-	prices = list(/obj/item/weapon/storage/fancy/cigarettes = 120,
-					/obj/item/weapon/storage/fancy/cigarettes/dromedaryco = 150,
-					/obj/item/weapon/storage/fancy/cigarettes/killthroat = 170,
-					/obj/item/weapon/storage/fancy/cigarettes/luckystars = 170,
-					/obj/item/weapon/storage/fancy/cigarettes/jerichos = 220,
-					/obj/item/weapon/storage/fancy/cigarettes/menthols = 180,
-					/obj/item/weapon/storage/rollingpapers = 100,
+	prices = list(/obj/item/weapon/storage/fancy/cigarettes = 240,
+					/obj/item/weapon/storage/fancy/cigarettes/dromedaryco = 300,
+					/obj/item/weapon/storage/fancy/cigarettes/killthroat = 340,
+					/obj/item/weapon/storage/fancy/cigarettes/luckystars = 340,
+					/obj/item/weapon/storage/fancy/cigarettes/jerichos = 440,
+					/obj/item/weapon/storage/fancy/cigarettes/menthols = 360,
+					/obj/item/weapon/storage/rollingpapers = 200,
 					/obj/item/weapon/storage/box/matches = 10,
 					/obj/item/weapon/flame/lighter/random = 20,
-					/obj/item/clothing/mask/smokable/ecig/util = 1000,
-					///obj/item/clothing/mask/smokable/ecig/deluxe = 300,
-					/obj/item/clothing/mask/smokable/ecig/simple = 1500,
-					/obj/item/weapon/reagent_containers/ecig_cartridge/med_nicotine = 100,
-					/obj/item/weapon/reagent_containers/ecig_cartridge/high_nicotine = 150,
-					/obj/item/weapon/reagent_containers/ecig_cartridge/orange = 150,
-					/obj/item/weapon/reagent_containers/ecig_cartridge/mint = 150,
-					/obj/item/weapon/reagent_containers/ecig_cartridge/watermelon = 150,
-					/obj/item/weapon/reagent_containers/ecig_cartridge/grape = 150,
-					/obj/item/weapon/reagent_containers/ecig_cartridge/lemonlime = 150,
-					/obj/item/weapon/reagent_containers/ecig_cartridge/coffee = 150,
-					/obj/item/weapon/reagent_containers/ecig_cartridge/blanknico = 150)
+					/obj/item/clothing/mask/smokable/ecig/util = 2000,
+					/obj/item/clothing/mask/smokable/ecig/simple = 3000,
+					///obj/item/clothing/mask/smokable/ecig/deluxe = 4000,
+					/obj/item/weapon/reagent_containers/ecig_cartridge/med_nicotine = 200,
+					/obj/item/weapon/reagent_containers/ecig_cartridge/high_nicotine = 300,
+					/obj/item/weapon/reagent_containers/ecig_cartridge/orange = 300,
+					/obj/item/weapon/reagent_containers/ecig_cartridge/mint = 300,
+					/obj/item/weapon/reagent_containers/ecig_cartridge/watermelon = 300,
+					/obj/item/weapon/reagent_containers/ecig_cartridge/grape = 300,
+					/obj/item/weapon/reagent_containers/ecig_cartridge/lemonlime = 300,
+					/obj/item/weapon/reagent_containers/ecig_cartridge/coffee = 300,
+					/obj/item/weapon/reagent_containers/ecig_cartridge/blanknico = 300)
 
 	vendor_department = DEPT_PUBLIC
 	auto_price = TRUE
@@ -1536,8 +1536,7 @@
 					/obj/item/stack/material/cardboard/full = 5,
 					/obj/item/stack/material/plastic/full = 3,
 					/obj/item/stack/material/steel/full = 6,
-					/obj/item/stack/material/plasteel/full = 3,
-					/obj/item/stack/material/durasteel/full = 3
+					/obj/item/stack/material/plasteel/full = 3
 					)
 
 /obj/machinery/vending/materials/science

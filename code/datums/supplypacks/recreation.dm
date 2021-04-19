@@ -92,3 +92,12 @@
 			/obj/item/frame/plastic/punchingbag = 2,
 			/obj/item/frame/weightlifter = 2
 			)
+
+/datum/supply_pack/recreation/acoustic_guitar
+	name = "Acoustic Guitar"
+	cost = 1000
+	containername = "acoustic guitar crate"
+	containertype = /obj/structure/largecrate
+	contains = list(
+			/obj/item/device/guitar = 1
+			)

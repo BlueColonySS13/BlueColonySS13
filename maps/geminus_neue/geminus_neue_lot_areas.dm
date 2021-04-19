@@ -49,9 +49,14 @@
 	name = "Business Lot 12"
 	lot_id = "bizlot12"
 
+/*
 /area/lots/business/business_lot_thirteen
 	name = "Business Lot 13"
 	lot_id = "bizlot13"
+*/
+
+/area/bridge/business_lot_thirteen // REPLACEMENT AREA
+	name = "\improper Business Lot 13"
 
 /area/lots/business/business_lot_fourteen
 	name = "Business Lot 14"
@@ -164,5 +169,9 @@
 /area/lots/farm/farm_lot_one
 	name = "Farm Lot 1"
 	lot_id = "farmlot1"
+
+/area/lots/farm/farm_lot_two
+	name = "Farm Lot 2"
+	lot_id = "farmlot2"
 
 // Event Hall

@@ -126,6 +126,19 @@
 	icon_rest = "cat3_rest"
 	holder_type = /obj/item/weapon/holder/cat/fluff/bones
 
+/mob/living/simple_mob/animal/passive/cat/silverpaw
+	name = "Johnny Silverpaw"
+	desc = "He sways his tail rythmically and steadily, never wavering... \
+	His collar never come off and his silver leg never stops shining... \
+	Wake up, bluepunk... we have a city to purr..."
+	tt_desc = "Felis mirabile"
+	gender = MALE
+	icon_state = "catsp"
+	item_state = "cat"
+	icon_living = "catsp"
+	icon_dead = "catsp_dead"
+	icon_rest = "catsp_rest"
+	holder_type = /obj/item/weapon/holder/cat/fluff/bones
 
 /datum/say_list/cat
 	speak = list("Meow!","Esp!","Purr!","HSSSSS")

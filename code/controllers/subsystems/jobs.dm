@@ -673,6 +673,18 @@ SUBSYSTEM_DEF(jobs)
 			C = new job.idtype(H)
 			C.access += job.get_access()
 
+		var/obj/item/weapon/card/id/ID = locate(/obj/item/weapon/card/id/, H.GetAllContents())
+		if(ID)
+			//if you're a business owner, you get all the accesses your business has no matter what job you choose.
+			var/datum/business/B = get_business_by_owner_uid(H.mind.prefs.unique_id)
+			if(B)
+				for(var/V in B.business_accesses)
+					ID.access |= V
+
+			//business access compatibility? why. don't ask me.
+			if(job.business)
+				ID.access |= job.access
+
 	else
 		C = new /obj/item/weapon/card/id(H)
 
@@ -686,19 +698,6 @@ SUBSYSTEM_DEF(jobs)
 			if(H.mind.initial_account)
 				C.associated_account_number = H.mind.initial_account.account_number
 				C.associated_pin_number = H.mind.initial_account.remote_access_pin
-
-		//if you're a business owner, you get all the accesses your business has no matter what job you choose.
-		var/datum/business/B = get_business_by_owner_uid(H.mind.prefs.unique_id)
-		if(B)
-			for(var/V in B.business_accesses)
-				C.access |= V
-
-		//business access compatibility? why. don't ask me.
-		if(job.business)
-			for(var/V in job.access)
-				C.access |= job.access
-
-		H.equip_to_slot_or_del(C, slot_wear_id)
 
 	return 1
 
