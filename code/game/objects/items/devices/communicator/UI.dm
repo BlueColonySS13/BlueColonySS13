@@ -25,6 +25,11 @@
 	for(var/mob/observer/dead/O in known_devices)
 		if(O.client && O.client.prefs.communicator_visibility == 1 && O.exonet)
 			communicators[++communicators.len] = list("name" = sanitize("[O.client.prefs.real_name]'s communicator"), "address" = O.exonet.address, "ref" = "\ref[O]")
+	
+	//EPv2 circuits
+	for(var/obj/item/integrated_circuit/input/EPv2/circuit in known_devices)
+		if(circuit.exonet)
+			communicators[++communicators.len] = list("name" = "Unknown", "address" = circuit.exonet.address)
 
 	//Lists all the other communicators that we invited.
 	for(var/obj/item/device/communicator/comm in voice_invites)
@@ -58,6 +63,11 @@
 	for(var/obj/item/device/communicator/comm in im_contacts)
 		if(comm.exonet)
 			im_contacts_ui[++im_contacts_ui.len] = list("name" = sanitize(comm.name), "address" = comm.exonet.address, "ref" = "\ref[comm]")
+	
+	//Special case for EPv2 Integrated Circuits that've messaged this device.
+	for(var/obj/item/integrated_circuit/input/EPv2/circuit in im_contacts)
+		if(circuit.exonet)
+			im_contacts_ui[++im_contacts_ui.len] = list("name" = "Unknown", "address" = circuit.exonet.address, "ref" = "\ref[circuit]")
 
 	for(var/mob/observer/dead/ghost in im_contacts)
 		if(ghost.exonet)
@@ -202,7 +212,13 @@
 		var/text = sanitizeSafe(input(usr,"Enter your message.","Text Message"))
 		if(text)
 			exonet.send_message(their_address, "text", text)
+			var/their_atom = exonet.get_atom_from_address(their_address)
 			im_list += list(list("address" = exonet.address, "to_address" = their_address, "im" = text))
+			// EPv2 circuits are invisible to communicators until they message or are messaged by them.
+			if(istype(their_atom, /obj/item/integrated_circuit/input/EPv2))
+				var/obj/item/integrated_circuit/input/EPv2/circuit = their_atom
+				im_contacts |= circuit
+				known_devices |= circuit
 			log_pda("(COMM: [src]) sent \"[text]\" to [exonet.get_atom_from_address(their_address)]", usr)
 			for(var/mob/M in player_list)
 				if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))

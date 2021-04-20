@@ -59,14 +59,20 @@
 		var/mob/observer/dead/ghost = candidate
 		who = ghost
 		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
+		im_contacts |= candidate
 	else if(istype(candidate, /obj/item/device/communicator))
 		var/obj/item/device/communicator/comm = candidate
 		who = comm.owner
 		comm.im_contacts |= src
 		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
+		im_contacts |= candidate
+	else if(istype(candidate, /obj/item/integrated_circuit/input/EPv2))
+		var/obj/item/integrated_circuit/input/EPv2/circuit = candidate
+		who = "Unknown"
+		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
+		im_contacts |= circuit
+		known_devices |= circuit
 	else return
-
-	im_contacts |= candidate
 
 	if(!who)
 		return
