@@ -98,6 +98,7 @@
 	max_tenants = 6
 	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
 
+/*
 /datum/lot/business/thirteen
 	name = "Business Lot 13"
 	id = "bizlot13"
@@ -105,6 +106,7 @@
 	desc = "A business lot located on the west side of the hospital, unfurnished and medium sized and suitable for many uses"
 	max_tenants = 6
 	licenses = list(LICENSE_LANDLORD_COMMERCIAL, LICENSE_LANDLORD_OFFICE)
+*/
 
 /datum/lot/business/fourteen
 	name = "Business Lot 14"
@@ -269,12 +271,13 @@
 	price = 154980
 	desc = "A small office lot next to the courtroom."
 
+/*
 /datum/lot/office/two
 	name = "Office Lot 2"
 	id = "office2"
 	price = 206640
 	desc = "A secluded office off the high street, located top left of the city."
-
+*/
 
 // office lots
 
