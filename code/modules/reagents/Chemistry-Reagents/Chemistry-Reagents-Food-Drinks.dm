@@ -1479,6 +1479,15 @@
 	glass_name = "Love Potion"
 	glass_desc = "Love me tender, love me sweet."
 
+/datum/reagent/drink/eggnog
+	name = "Eggnog"
+	id = "eggnog"
+	description = "An incredibly fatty drink made of eggs, dairy and sugar."
+	taste_description = "heavy, creamy sweetness"
+	color = "#fff3d2" // rgb(255,243,210)
+
+	glass_name = "Eggnog"
+	glass_desc = "How festive!"
 
 /* Alcohol */
 
