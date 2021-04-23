@@ -1632,6 +1632,17 @@
 	glass_desc = "A widely known, Mexican coffee-flavored liqueur. In production since 1936!"
 //	glass_desc = "DAMN, THIS THING LOOKS ROBUST" //If this isn't what our players should talk like, it isn't what our game should say to them.
 
+/datum/reagent/ethanol/jager // Made by Doctress!
+	name = "Schuss Konig"
+	id = "jager"
+	description = "A complex alcohol that leaves you feeling all warm inside."
+	taste_description = "complex, rich alcohol"
+	color = "#7f6906"
+	strength = 25
+
+	glass_name = "schusskonig"
+	glass_desc = "A glass of schusskonig digestif. Good for shooting or mixing."
+
 /datum/reagent/ethanol/melonliquor
 	name = "Melon Liquor"
 	id = "melonliquor"
