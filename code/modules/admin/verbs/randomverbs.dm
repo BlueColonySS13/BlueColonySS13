@@ -545,6 +545,42 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		alert("Admin revive disabled")
 	feedback_add_details("admin_verb","REJU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/cmd_sate(mob/living/carbon/M as mob in human_mob_list)
+	set category = "Admin"
+	set name = "Sate their needs"
+	set desc = "Sate their hunger and thirst."
+	if(!holder)
+		to_chat(src, "Only administrators may use this command.")
+		return
+	if(!mob)
+		to_chat(src, "There are currently no valid mobs in the world.")
+		return
+	if(!istype(M))
+		alert("You can only sate a carbon's needs.")
+		return
+	var/custom_value = alert("Customize or just set it to 400\nCurrently:\nNutrition: [M.nutrition]\nHydration: [M.hydration]", "Modifying nutrition and hydration", "400", "Custom", "Cancel")
+	switch(custom_value)
+		if("400")
+			M.set_nutrition(400)
+			M.set_hydration(400)
+			log_admin("[key_name(usr)] has sated [key_name(M)]'s needs.")
+			message_admins("<font color='red'>Admin [key_name_admin(usr)] has sated [key_name_admin(M)]'s needs!</font>", 1)
+			feedback_add_details("admin_verb", "SATE")
+		if("Custom")
+			var/nutrition = input(usr, "How much nutrition (current:[M.nutrition])\nSetting to 0 or cancelling out won't modify it", "Setting nutrition") as null|num
+			var/hydration = input(usr, "How much hydration (current:[M.hydration])\nSetting to 0 or cancelling out won't modify it", "Setting hydration") as null|num
+			if(nutrition)
+				M.set_nutrition(nutrition)
+			if(hydration)
+				M.set_hydration(hydration)
+			if(!nutrition && !hydration)
+				return
+			log_admin("[key_name(usr)] has modified [key_name(usr)]'s sate, nutrition: [nutrition ? nutrition : M.nutrition] and hydration: [hydration ? hydration : M.hydration].")
+			message_admins("<font color='red'>Admin [key_name_admin(usr)] has modified [key_name_admin(usr)]'s sate, nutrition: [nutrition ? nutrition : M.nutrition] and hydration: [hydration ? hydration : M.hydration]</font>")
+			feedback_add_details("admin_verb", "SATE")
+		else
+			return
+
 /client/proc/cmd_admin_create_centcom_report()
 	set category = "Special Verbs"
 	set name = "Create Command Report"
