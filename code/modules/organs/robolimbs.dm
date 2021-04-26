@@ -204,6 +204,11 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 	robo_burn_mod = 0.9
 	unavailable_at_chargen = 1
 
+/datum/robolimb/hephaestus_alt2/alt
+	company = "Hephaestus - Athena (aftermarket chrome)"
+	desc = "A limb coated in suprachrome plating"
+	icon = 'icons/mob/human_races/cyberlimbs/hephaestus/hephaestus_alt3.dmi'
+
 /datum/robolimb/hephaestus_monitor
 	company = "Hephaestus Monitor"
 	desc = "Hephaestus' unique spin on a popular prosthetic head model. It looks rugged and sturdy."
@@ -406,6 +411,9 @@ var/const/standard_monitor_styles = "blank=ipc_blank;\
 
 /obj/item/weapon/disk/limb/hephaestus/athena
 	company = "Hephaestus - Athena"
+
+/obj/item/weapon/disk/limb/hephaestus/athena/alt
+	company = "Hephaestus - Athena (aftermarket chrome)"
 
 /obj/item/weapon/disk/limb/hephaestus/frontier
 	company = "Hephaestus - Frontier"
