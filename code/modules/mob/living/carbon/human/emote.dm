@@ -21,8 +21,24 @@
 
 	if(src.stat == 2.0 && (act != "deathgasp"))
 		return
-	switch(act)
 
+	//Emote Cooldown System (it's so simple!)
+	//handle_emote_CD() located in [code\modules\mob\emote.dm]
+	var/on_CD = FALSE
+	act = lowertext(act)
+
+	switch(act)
+		if("ping", "buzz", "beep", "yes", "no", "scream", "giggle", "laugh", "cough", "flip", "gasp", "dwoop", "rcough", "rsneeze", "sneeze", "snore")
+			on_CD = handle_emote_CD()			//proc located in code\modules\mob\emote.dm
+		else
+			on_CD = FALSE	//If it doesn't induce the cooldown, we won't check for the cooldown
+
+	if(on_CD == 1)		// Check if we need to suppress the emote attempt.
+		return			// Suppress emote, you're still cooling off.
+
+
+
+	switch(act)
 		if ("airguitar")
 			if (!src.restrained())
 				message = "is strumming the air and headbanging like a safari chimp."
@@ -577,13 +593,13 @@
 			if (!src.restrained())
 				message = "raises a hand."
 			m_type = 1
-			
+
 		if("crack")
 			if(!restrained())
 				message = "cracks [T.his] knuckles."
 				playsound(src, 'sound/voice/knuckles.ogg', 50, 1)
 				m_type = 1
-				
+
 		if("shake")
 			message = "shakes [T.his] head."
 			m_type = 1

@@ -8,6 +8,23 @@
 	if(findtext(act,"s",-1) && !findtext(act,"_",-2))//Removes ending s's unless they are prefixed with a '_'
 		act = copytext(act,1,length(act))
 
+	//Emote Cooldown System (it's so simple!)
+	//handle_emote_CD() located in [code\modules\mob\emote.dm]
+	var/on_CD = FALSE
+	act = lowertext(act)
+	switch(act)
+		//Cooldown-inducing emotes
+		if("law","beep","buzz","halt","Dwoop","halt","fanfare","sad","ping","yes","no")		//halt is exempt because it's used to stop criminal scum //WHOEVER THOUGHT THAT WAS A GOOD IDEA IS GOING TO GET SHOT.
+			on_CD = handle_emote_CD()			//proc located in code\modules\mob\emote.dm
+		//Everything else, including typos of the above emotes
+		else
+			on_CD = 0	//If it doesn't induce the cooldown, we won't check for the cooldown
+
+	if(on_CD == 1)		// Check if we need to suppress the emote attempt.
+		return			// Suppress emote, you're still cooling off.
+	//--FalseIncarnate
+
+
 	switch(act)
 		if ("me")
 			if (src.client)
