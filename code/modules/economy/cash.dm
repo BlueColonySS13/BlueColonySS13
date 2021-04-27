@@ -83,7 +83,8 @@
 
 	add_overlay(ovr)
 	compile_overlays()	// The delay looks weird, so we force an update immediately.
-	src.desc = "They are worth [cash2text( worth, FALSE, TRUE, TRUE )] credits."
+	name = "[cash2text( worth, FALSE, FALSE, TRUE)] credit chip"
+	desc = "They are worth [cash2text( worth, FALSE, TRUE, TRUE )] credits."
 
 /obj/item/weapon/spacecash/bundle/attack_self(mob/user as mob)
 	var/amount = input(user, "How many credits do you want to take? (0 to [src.worth])", "Take Money", 20) as num
