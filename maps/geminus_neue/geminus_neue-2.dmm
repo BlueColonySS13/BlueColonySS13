@@ -1620,7 +1620,7 @@
 /obj/structure/sign/securearea{
 	pixel_x = -32
 	},
-/turf/simulated/floor/pavement/brick_paving,
+/turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
 "aeX" = (
 /obj/machinery/light/colored{
@@ -2174,9 +2174,6 @@
 	},
 /turf/simulated/floor/wood/walnut,
 /area/security/detectives_office)
-"agy" = (
-/turf/simulated/floor/pavement/corner_invert,
-/area/planets/Geminus/outdoor/west)
 "agz" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/wood/walnut,
@@ -2275,6 +2272,9 @@
 "agS" = (
 /obj/machinery/door/airlock/engineering{
 	locked = 1
+	},
+/obj/item/tape/engineering{
+	icon_state = "police_h_0"
 	},
 /turf/unsimulated/wall/planetary/pollux,
 /area/planets/Geminus/indoor)
@@ -2682,12 +2682,8 @@
 /turf/simulated/wall/iron/pink,
 /area/lots/shopping/shopping_lot_eight)
 "ahU" = (
-/obj/effect/floor_decal/pavement_grit/edged,
-/turf/simulated/floor/pavement{
-	dir = 4;
-	icon_state = "pavement";
-	tag = "icon-pavement (EAST)"
-	},
+/obj/effect/floor_decal/pavement_grit/rough,
+/turf/simulated/floor/pavement/brick_paving,
 /area/planets/Geminus/outdoor/west)
 "ahV" = (
 /obj/machinery/light/colored{
@@ -3473,7 +3469,7 @@
 	pixel_x = -32
 	},
 /obj/effect/floor_decal/pavement_grit/edged,
-/turf/simulated/floor/pavement/brick_paving,
+/turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
 "akr" = (
 /obj/structure/railing{
@@ -3537,13 +3533,6 @@
 	outdoors = 0
 	},
 /area/security/prison)
-"akD" = (
-/turf/simulated/floor/pavement{
-	dir = 8;
-	icon_state = "pavement";
-	tag = "icon-pavement (WEST)"
-	},
-/area/planets/Geminus/outdoor/west)
 "akE" = (
 /obj/structure/railing,
 /turf/simulated/floor/pavement/corner{
@@ -4694,12 +4683,13 @@
 	},
 /area/planets/Geminus/outdoor/north)
 "anI" = (
+/obj/effect/floor_decal/pavement_grit/rough,
 /obj/machinery/light/colored{
 	dir = 4;
 	icon_state = "yellow1";
 	tag = "icon-yellow1 (EAST)"
 	},
-/turf/simulated/floor/pavement/brick_paving,
+/turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
 "anJ" = (
 /obj/structure/table/woodentable,
@@ -4725,15 +4715,6 @@
 /obj/item/weapon/storage/fancy/crayons,
 /turf/simulated/floor/carpet,
 /area/chapel/office)
-"anM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/floor_decal/pavement_grit/rough,
-/turf/simulated/floor/pavement/corner_invert{
-	dir = 1;
-	icon_state = "pave_invert_corner";
-	tag = "icon-pave_invert_corner (NORTH)"
-	},
-/area/planets/Geminus/outdoor/west)
 "anN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -4937,11 +4918,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/turf/simulated/floor/pavement{
-	dir = 1;
-	icon_state = "pavement";
-	tag = "icon-pavement (NORTH)"
-	},
+/turf/simulated/floor/pavement/brick_paving,
 /area/planets/Geminus/outdoor/west)
 "aov" = (
 /obj/structure/railing,
@@ -5079,14 +5056,6 @@
 	},
 /turf/simulated/floor/wood/ebony,
 /area/bridge/meeting_room)
-"aoK" = (
-/obj/machinery/light/street,
-/turf/simulated/floor/pavement/corner_invert{
-	dir = 8;
-	icon_state = "pave_invert_corner";
-	tag = "icon-pave_invert_corner (WEST)"
-	},
-/area/planets/Geminus/outdoor/west)
 "aoL" = (
 /obj/machinery/recharger{
 	pixel_x = 7;
@@ -5593,14 +5562,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/nogrowth,
 /area/planets/Geminus/outdoor/west)
-"aqf" = (
-/obj/machinery/light/colored{
-	dir = 1;
-	icon_state = "yellow1";
-	tag = "icon-yellow1 (NORTH)"
-	},
-/turf/simulated/floor/pavement/brick_paving,
-/area/planets/Geminus/outdoor/west)
 "aqg" = (
 /obj/machinery/camera/network/civilian{
 	dir = 8;
@@ -5636,11 +5597,7 @@
 "aql" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/bench/steel,
-/turf/simulated/floor/pavement{
-	dir = 1;
-	icon_state = "pavement";
-	tag = "icon-pavement (NORTH)"
-	},
+/turf/simulated/floor/pavement/brick_paving,
 /area/planets/Geminus/outdoor/west)
 "aqm" = (
 /obj/effect/wallframe_spawn,
@@ -9491,6 +9448,7 @@
 "aBs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/info_terminal{
+	anchored = 1;
 	interaction_message = "<span class = 'notice'>The Rent-a-Scooter terminal displays a warning message and flashes before abruptly shutting off. Guess those scooters are free!</span>";
 	name = "Rent-a-Scooter terminal"
 	},
@@ -9513,6 +9471,7 @@
 /turf/simulated/floor/road/empty,
 /area/planets/Geminus/outdoor/central)
 "aBu" = (
+/obj/machinery/vending/fuelstop,
 /turf/simulated/floor/pavement{
 	dir = 1;
 	icon_state = "pavement";
@@ -20719,7 +20678,6 @@
 "bhs" = (
 /obj/effect/floor_decal/pavement_grit/rough_edged,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/vending/fuelstop,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
 "bhx" = (
@@ -23121,6 +23079,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/arrivals)
+"fzM" = (
+/obj/effect/wallframe_spawn/basic,
+/turf/simulated/wall/iron,
+/area/planets/Geminus/outdoor/east)
 "fEz" = (
 /obj/random/junk,
 /turf/simulated/floor/pavement/brick_paving,
@@ -23226,6 +23188,10 @@
 /obj/random/junk,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/east)
+"ikM" = (
+/obj/effect/floor_decal/pavement_grit/rough,
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
 "ixu" = (
 /obj/machinery/vending/engivend,
 /obj/effect/floor_decal/corner/yellow/diagonal,
@@ -23237,6 +23203,15 @@
 /obj/effect/gibspawner/robot,
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/arrivalbus)
+"iyv" = (
+/obj/effect/floor_decal/pavement_grit/edged,
+/obj/machinery/light/colored{
+	dir = 4;
+	icon_state = "yellow1";
+	tag = "icon-yellow1 (EAST)"
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
 "izS" = (
 /turf/simulated/floor/tiled/dark,
 /area/engineering)
@@ -23346,6 +23321,17 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"jvg" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/structure/sign/neon/airbus{
+	desc = "There's an image of a bus on the sign but the Geminus Transportation Authority would like to remind all passengers that there is indeed a train downstairs.";
+	name = "Metro Station"
+	},
+/turf/simulated/wall/iron,
+/area/planets/Geminus/indoor)
 "jGg" = (
 /obj/machinery/status_display/money_display/factory{
 	pixel_y = -25
@@ -23510,6 +23496,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/constructionsite/maintenance)
+"lNs" = (
+/obj/effect/floor_decal/pavement_grit/centered,
+/obj/machinery/light/colored{
+	dir = 1;
+	icon_state = "yellow1";
+	tag = "icon-yellow1 (NORTH)"
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
 "lTg" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
@@ -23620,6 +23615,11 @@
 	},
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
+"ofo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/pavement_grit/rough,
+/turf/simulated/floor/pavement/brick_paving,
+/area/planets/Geminus/outdoor/west)
 "ohu" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border,
@@ -23702,9 +23702,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
-"pNG" = (
+"pRz" = (
+/obj/effect/floor_decal/pavement_grit/centered,
 /obj/machinery/light/colored,
-/turf/simulated/floor/pavement/brick_paving,
+/turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
 "pVw" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -24070,12 +24071,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/wall/iron,
 /area/planets/Geminus/indoor)
+"wlp" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/main)
 "wGm" = (
 /obj/structure/table/woodentable/ebony,
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen,
 /turf/simulated/floor/carpet/browcarpet,
 /area/security/detectives_office)
+"wIE" = (
+/turf/simulated/floor/wood/ebony,
+/area/planets/Geminus/outdoor/east)
 "wJY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/pavement_grit/rough,
@@ -24304,7 +24314,7 @@ axo
 axo
 axo
 axo
-axo
+afv
 afv
 afv
 afv
@@ -24383,9 +24393,9 @@ afv
 boa
 afv
 afv
+axo
+axo
 afv
-axo
-axo
 afv
 afv
 afv
@@ -24464,9 +24474,9 @@ lTg
 aud
 tKC
 fTf
+axo
+axo
 afv
-axo
-axo
 afv
 afv
 afv
@@ -24545,9 +24555,9 @@ lTg
 aud
 afv
 boa
-afv
 axo
 axo
+arb
 arb
 arb
 arb
@@ -24625,7 +24635,7 @@ boa
 tKC
 lTg
 afv
-axo
+boa
 axo
 axo
 axo
@@ -24636,7 +24646,7 @@ axo
 sYA
 avL
 avL
-aFd
+jvg
 axo
 axo
 axo
@@ -24707,17 +24717,17 @@ lTg
 axo
 axo
 axo
-aCR
-aCR
-aCR
+axo
+aHs
+axn
 aeW
 aCR
 akq
-aCR
+aaA
 anI
 ayh
 aCR
-axn
+iyv
 biP
 boa
 aud
@@ -24787,9 +24797,9 @@ aud
 boa
 lTg
 afv
+boa
 biP
-aCR
-aCR
+ikM
 aCR
 aCR
 aCR
@@ -24868,18 +24878,18 @@ tKC
 boa
 lTg
 aud
-biP
-aCR
-aCR
+boa
+axo
+lNs
 ayh
-ayi
+aCR
 ahU
-abe
-abe
-anM
 aCR
 aCR
-nYp
+ofo
+aCR
+aCR
+pRz
 axo
 boa
 lTg
@@ -24949,11 +24959,11 @@ lTg
 lTg
 aud
 afv
+afv
 jnH
 aCR
 aCR
 aCR
-aaF
 ajG
 akr
 anc
@@ -25031,17 +25041,17 @@ axo
 wgf
 axo
 axo
-aqf
+axo
+aBE
 aCR
 aCR
-aaF
 ajI
 akw
 ang
 aql
 aCR
 aCR
-pNG
+nYp
 axo
 afv
 aud
@@ -25111,9 +25121,9 @@ afv
 aud
 tKC
 aud
+afv
 biP
-aCR
-aCR
+ikM
 aCR
 aaF
 ajI
@@ -25122,7 +25132,7 @@ ang
 aql
 aCR
 aCR
-aaA
+axn
 axo
 boa
 lTg
@@ -25192,18 +25202,18 @@ afv
 lTg
 lTg
 sTP
+boa
 biP
+aaA
 aCR
 aCR
-aCR
-aaF
 ajW
 ami
 aqe
 aou
 ayt
 azk
-aaA
+axn
 biP
 sdh
 aud
@@ -25273,15 +25283,15 @@ boa
 boa
 afv
 afv
+boa
 axo
-aCR
-aCR
+axn
 ayh
-agy
-akD
-akD
-akD
-aoK
+aCR
+aCR
+ahU
+aCR
+aCR
 ayh
 aCk
 aaA
@@ -25357,7 +25367,7 @@ ayR
 ayR
 ayR
 ayR
-ayh
+ofo
 ayh
 ayh
 aCR
@@ -25446,7 +25456,7 @@ aAM
 aBs
 aCR
 aCk
-aCR
+axn
 amd
 aAy
 aAy
@@ -25608,7 +25618,7 @@ aCm
 ald
 aCR
 aCk
-aCR
+aaA
 amd
 aAy
 aBx
@@ -41635,7 +41645,7 @@ arW
 ark
 ain
 abW
-aim
+wlp
 aWG
 aWG
 aWG
@@ -41959,7 +41969,7 @@ asm
 ark
 ain
 abW
-aim
+wlp
 aWG
 aWG
 aWG
@@ -49717,16 +49727,16 @@ abf
 abf
 azQ
 ate
-ach
-ach
-ach
+wIE
+wIE
+wIE
 ate
 abf
 abf
 ate
-ach
-ach
-ach
+wIE
+wIE
+wIE
 ate
 abf
 abf
@@ -49798,17 +49808,17 @@ abf
 abf
 azQ
 ate
-ach
-ach
-ach
-ate
+wIE
+wIE
+wIE
+fzM
 abf
 abf
 ate
-ach
-ach
-ach
-ate
+wIE
+wIE
+wIE
+fzM
 abf
 abf
 ach
@@ -49879,16 +49889,16 @@ abf
 abf
 azQ
 ate
-ach
-ach
-ach
+wIE
+wIE
+wIE
 ate
 abf
 abf
 ate
-ach
-ach
-ach
+wIE
+wIE
+wIE
 ate
 abf
 abf
@@ -49961,14 +49971,14 @@ abf
 azQ
 ate
 ate
-ach
+wIE
 ate
 ate
 abf
 abf
 ate
 ate
-ach
+wIE
 ate
 ate
 abf
