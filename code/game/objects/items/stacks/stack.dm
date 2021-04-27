@@ -374,6 +374,10 @@
 		if(!N || (0 > N) || (N > amount))
 			return
 
+		if(loc != user)	//If we don't have it with us, we probably should not be doing this
+			to_chat(user, "<span class='warning'>You don't have that anymore!</span>")
+			return
+
 		var/obj/item/stack/F = src.split(N)
 		if (F)
 			user.put_in_hands(F)

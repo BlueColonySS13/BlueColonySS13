@@ -648,3 +648,13 @@
 /obj/item/weapon/reagent_containers/food/drinks/bottle/blackrose/New()
 	. = ..()
 	reagents.add_reagent("blackrose", 100)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/jager // Made by Doctress!
+	name = "Schusskonig"
+	desc = "A complex digestif, only possible on Pollux due to Solarian trade laws not applying."
+	icon_state = "jager_bottle"
+	center_of_mass = list("x"=16, "y"=3)
+
+/obj/item/weapon/reagent_containers/food/drinks/bottle/jager/New()
+	. = ..()
+	reagents.add_reagent("jager", 100)

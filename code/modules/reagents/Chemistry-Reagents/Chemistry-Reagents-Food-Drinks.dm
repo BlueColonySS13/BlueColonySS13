@@ -1479,6 +1479,15 @@
 	glass_name = "Love Potion"
 	glass_desc = "Love me tender, love me sweet."
 
+/datum/reagent/drink/eggnog
+	name = "Eggnog"
+	id = "eggnog"
+	description = "An incredibly fatty drink made of eggs, dairy and sugar."
+	taste_description = "heavy, creamy sweetness"
+	color = "#fff3d2" // rgb(255,243,210)
+
+	glass_name = "Eggnog"
+	glass_desc = "How festive!"
 
 /* Alcohol */
 
@@ -1622,6 +1631,17 @@
 	glass_name = "RR coffee liquor"
 	glass_desc = "A widely known, Mexican coffee-flavored liqueur. In production since 1936!"
 //	glass_desc = "DAMN, THIS THING LOOKS ROBUST" //If this isn't what our players should talk like, it isn't what our game should say to them.
+
+/datum/reagent/ethanol/jager // Made by Doctress!
+	name = "Schuss Konig"
+	id = "jager"
+	description = "A complex alcohol that leaves you feeling all warm inside."
+	taste_description = "complex, rich alcohol"
+	color = "#7f6906"
+	strength = 25
+
+	glass_name = "schusskonig"
+	glass_desc = "A glass of schusskonig digestif. Good for shooting or mixing."
 
 /datum/reagent/ethanol/melonliquor
 	name = "Melon Liquor"
