@@ -735,6 +735,8 @@
 	},
 /obj/structure/table/standard,
 /obj/item/device/detective_scanner,
+/obj/item/device/mass_spectrometer,
+/obj/item/device/reagent_scanner,
 /turf/simulated/floor/tiled/white,
 /area/security/forensic_lab)
 "acw" = (
@@ -743,12 +745,12 @@
 	pixel_y = 28
 	},
 /obj/structure/table/standard,
-/obj/item/weapon/hand_labeler,
 /obj/machinery/camera/network/security{
 	dir = 4;
 	icon_state = "camera"
 	},
-/obj/item/weapon/storage/box/bodybags,
+/obj/item/weapon/storage/fancy/vials,
+/obj/item/weapon/reagent_containers/dropper,
 /turf/simulated/floor/tiled/white,
 /area/security/forensic_lab)
 "acx" = (
@@ -765,7 +767,10 @@
 	},
 /area/planets/Geminus/outdoor/south)
 "acz" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/table/standard,
+/obj/item/weapon/storage/box/syringes,
+/obj/item/weapon/storage/box/bodybags,
+/obj/item/weapon/storage/box/beakers,
 /turf/simulated/floor/tiled/white,
 /area/security/forensic_lab)
 "acA" = (
@@ -1261,11 +1266,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/forensic_lab)
-"adW" = (
-/obj/machinery/computer/secure_data/laptop,
-/obj/structure/table/standard,
-/turf/simulated/floor/tiled/white,
-/area/security/forensic_lab)
 "adX" = (
 /obj/machinery/light/colored{
 	dir = 4;
@@ -1289,9 +1289,10 @@
 /turf/simulated/floor/tiled/lime,
 /area/lots/farm/farm_lot_two)
 "aea" = (
-/obj/machinery/computer/operating{
-	dir = 4;
-	icon_state = "computer"
+/obj/structure/table/standard,
+/obj/machinery/computer/secure_data/laptop{
+	step_x = 0;
+	step_y = 0
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/forensic_lab)
@@ -1485,7 +1486,8 @@
 /turf/simulated/floor/lino,
 /area/lots/office/multi/office_complex_one)
 "aeC" = (
-/obj/machinery/optable,
+/obj/structure/table/standard,
+/obj/item/weapon/hand_labeler,
 /turf/simulated/floor/tiled/white,
 /area/security/forensic_lab)
 "aeD" = (
@@ -5041,9 +5043,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/city_hall)
 "aoG" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/disposalpipe/junction/yjunction{
 	dir = 4;
-	icon_state = "pipe-c"
+	icon_state = "pipe-y"
 	},
 /turf/simulated/floor/wood/walnut,
 /area/security/detectives_office)
@@ -10630,6 +10632,7 @@
 	name = "Janitorial Area";
 	req_access = list(26)
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
 "aEH" = (
@@ -19599,13 +19602,13 @@
 	dir = 1;
 	icon_state = "bordercolor"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
 "bdx" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 4;
-	icon_state = "pipe-t"
-	},
 /obj/effect/floor_decal/corner/mauve/diagonal,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1;
@@ -19615,6 +19618,7 @@
 	dir = 8;
 	icon_state = "bordercolor"
 	},
+/obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal/deliveryChute{
 	dir = 4
 	},
@@ -19629,9 +19633,6 @@
 	pixel_y = 21
 	},
 /obj/effect/floor_decal/corner/mauve/diagonal,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1;
 	icon_state = "bordercolor"
@@ -19673,22 +19674,21 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/workshop)
 "bdE" = (
-/obj/structure/disposalpipe/junction,
 /obj/effect/floor_decal/corner/mauve/diagonal,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1;
 	icon_state = "bordercolor"
 	},
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "mining_internal"
-	},
 /obj/machinery/conveyor{
 	dir = 8;
 	id = "janitor_upstairs"
+	},
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
@@ -19792,8 +19792,9 @@
 	dir = 8;
 	icon_state = "bordercolor"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
@@ -23142,6 +23143,12 @@
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
+"gpg" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/security/main)
 "gDH" = (
 /obj/machinery/door/airlock/multi_tile/glass/engineering{
 	name = "Maintenance Storage Area";
@@ -23457,6 +23464,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"llR" = (
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/disposal,
+/turf/simulated/floor/wood/walnut,
+/area/security/detectives_office)
 "lnY" = (
 /turf/simulated/wall/iron/pink,
 /area/maintenance/fpmaint)
@@ -23813,6 +23825,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
+"rWk" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/machinery/smartfridge{
+	name = "forensic evidence fridge"
+	},
+/turf/simulated/floor/tiled/white,
+/area/security/forensic_lab)
 "sdh" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/plating,
@@ -23976,6 +23997,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/constructionsite/maintenance)
+"vqe" = (
+/obj/effect/floor_decal/corner/mauve/diagonal,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8;
+	icon_state = "bordercolor"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/dark,
+/area/engineering/engine_waste)
 "vsN" = (
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
@@ -31089,7 +31119,7 @@ biB
 aaA
 aFv
 bdx
-aGb
+vqe
 bdV
 qTX
 aEH
@@ -31247,8 +31277,8 @@ amC
 amC
 aBI
 aBG
-biE
-biv
+biB
+aaA
 aFv
 bdE
 bjC
@@ -31328,8 +31358,8 @@ bhZ
 aKV
 aaA
 aBG
-biB
-aaA
+biE
+biv
 aEF
 bdw
 bdL
@@ -39967,8 +39997,8 @@ abx
 abx
 abQ
 abO
-adF
-adF
+llR
+agz
 aoG
 agz
 boq
@@ -40062,7 +40092,7 @@ alq
 alq
 alq
 alq
-ain
+gpg
 ark
 aub
 aBf
@@ -40131,7 +40161,7 @@ abQ
 abS
 act
 adm
-adW
+adm
 aea
 abS
 apQ
@@ -40210,7 +40240,7 @@ abx
 abx
 abQ
 abS
-act
+rWk
 adm
 adm
 aeC
