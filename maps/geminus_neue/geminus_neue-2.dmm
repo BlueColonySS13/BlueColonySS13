@@ -472,10 +472,6 @@
 /obj/machinery/photocopier,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/captain)
-"abF" = (
-/obj/machinery/light/street,
-/turf/simulated/floor/pavement/empty,
-/area/planets/Geminus/outdoor/east)
 "abG" = (
 /obj/machinery/light/street,
 /turf/simulated/floor/pavement{
@@ -1290,10 +1286,7 @@
 /area/lots/farm/farm_lot_two)
 "aea" = (
 /obj/structure/table/standard,
-/obj/machinery/computer/secure_data/laptop{
-	step_x = 0;
-	step_y = 0
-	},
+/obj/machinery/computer/secure_data/laptop,
 /turf/simulated/floor/tiled/white,
 /area/security/forensic_lab)
 "aeb" = (
@@ -3233,6 +3226,7 @@
 	icon_state = "railing0";
 	tag = "icon-railing0 (WEST)"
 	},
+/obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass/nogrowth,
 /area/planets/Geminus/outdoor/west)
 "ajH" = (
@@ -3244,6 +3238,7 @@
 	dir = 1;
 	icon_state = "railing0"
 	},
+/obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/outdoors/grass/nogrowth,
 /area/planets/Geminus/outdoor/west)
 "ajJ" = (
@@ -3336,6 +3331,7 @@
 	icon_state = "railing0";
 	tag = "icon-railing0 (EAST)"
 	},
+/obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass/nogrowth,
 /area/planets/Geminus/outdoor/west)
 "ajY" = (
@@ -4471,6 +4467,7 @@
 	icon_state = "railing0";
 	tag = "icon-railing0 (WEST)"
 	},
+/obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass/nogrowth,
 /area/planets/Geminus/outdoor/west)
 "and" = (
@@ -4508,6 +4505,7 @@
 /area/security/lobby)
 "ang" = (
 /obj/structure/railing,
+/obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/outdoors/grass/nogrowth,
 /area/planets/Geminus/outdoor/west)
 "anh" = (
@@ -4683,12 +4681,12 @@
 	},
 /area/planets/Geminus/outdoor/north)
 "anI" = (
-/obj/effect/floor_decal/pavement_grit/rough,
 /obj/machinery/light/colored{
 	dir = 4;
 	icon_state = "yellow1";
 	tag = "icon-yellow1 (EAST)"
 	},
+/obj/effect/floor_decal/pavement_grit/centered,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
 "anJ" = (
@@ -5560,6 +5558,7 @@
 	icon_state = "railing0";
 	tag = "icon-railing0 (EAST)"
 	},
+/obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass/nogrowth,
 /area/planets/Geminus/outdoor/west)
 "aqg" = (
@@ -5920,6 +5919,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/storage)
 "aqZ" = (
+/obj/machinery/light/street,
 /turf/simulated/floor/pavement/corner_invert{
 	dir = 4;
 	icon_state = "pave_invert_corner";
@@ -5927,7 +5927,7 @@
 	},
 /area/planets/Geminus/outdoor/east)
 "ara" = (
-/obj/machinery/light/street,
+/obj/structure/grille/smallfence,
 /turf/simulated/floor/pavement/corner{
 	dir = 4;
 	icon_state = "pave_corner";
@@ -6377,10 +6377,6 @@
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters)
-"asv" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/wall/iron,
-/area/planets/Geminus/indoor/arrivalbus)
 "asw" = (
 /obj/machinery/camera/network/command{
 	c_tag = "COM - City Hall Lobby";
@@ -8227,15 +8223,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/pavement/empty/indoors,
 /area/planets/Geminus/outdoor/east)
-"axT" = (
-/obj/machinery/vending/wallmed1{
-	layer = 3.3;
-	name = "Emergency NanoMed";
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/turf/simulated/wall/iron,
-/area/planets/Geminus/indoor)
 "axU" = (
 /obj/effect/floor_decal/corner/lime{
 	dir = 5
@@ -8868,14 +8855,6 @@
 	tag = "icon-pavement (NORTH)"
 	},
 /area/planets/Geminus/outdoor/east)
-"azS" = (
-/obj/machinery/street/traffic,
-/turf/simulated/floor/pavement{
-	dir = 1;
-	icon_state = "pavement";
-	tag = "icon-pavement (NORTH)"
-	},
-/area/planets/Geminus/outdoor/east)
 "azT" = (
 /obj/machinery/firealarm{
 	pixel_y = 25
@@ -8883,7 +8862,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/courtroom)
 "azU" = (
-/obj/machinery/street/pedestrian,
+/obj/structure/grille/smallfence{
+	icon_state = "fence";
+	tag = "icon-fence2"
+	},
 /turf/simulated/floor/pavement/corner{
 	dir = 1;
 	icon_state = "pave_corner";
@@ -9667,6 +9649,10 @@
 /obj/structure/bookcase/metal,
 /obj/item/weapon/book/manual/security_space_law,
 /obj/item/weapon/book/manual/sop,
+/obj/item/weapon/book/manual/sop,
+/obj/item/weapon/book/manual/sop,
+/obj/item/weapon/book/manual/security_space_law,
+/obj/item/weapon/book/manual/security_space_law,
 /turf/simulated/floor/tiled,
 /area/security/main)
 "aBY" = (
@@ -9819,13 +9805,6 @@
 "aCq" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/pavement/pave_tiling,
-/area/planets/Geminus/outdoor/east)
-"aCr" = (
-/obj/structure/fence/corner{
-	dir = 1;
-	icon_state = "corner"
-	},
-/turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/east)
 "aCs" = (
 /obj/structure/fence/door,
@@ -10233,6 +10212,7 @@
 /area/security/lobby)
 "aDw" = (
 /obj/structure/table/standard,
+/obj/item/weapon/book/manual/sop,
 /turf/simulated/floor/tiled/dark,
 /area/security/main)
 "aDx" = (
@@ -10478,13 +10458,6 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/pavement/empty/indoors,
-/area/planets/Geminus/outdoor/east)
-"aEi" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/neon/airbus{
-	pixel_x = -5
-	},
-/turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/east)
 "aEj" = (
 /obj/machinery/light/small{
@@ -11512,6 +11485,10 @@
 "aHs" = (
 /obj/effect/floor_decal/pavement_grit/rough,
 /obj/effect/floor_decal/pavement_grit/edged,
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = 32
+	},
+/obj/random/trash,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
 "aHu" = (
@@ -12377,6 +12354,7 @@
 	dir = 8;
 	icon_state = "rwindow"
 	},
+/obj/item/weapon/reagent_containers/spray/cleaner,
 /turf/simulated/floor/tiled/dark,
 /area/medical/reception)
 "aJu" = (
@@ -13192,7 +13170,6 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/planets/Geminus/outdoor/east)
 "aLu" = (
-/obj/machinery/light/floor,
 /obj/structure/fence{
 	dir = 4;
 	icon_state = "straight"
@@ -21101,21 +21078,12 @@
 /obj/effect/wallframe_spawn/basic/blue/hospital,
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor)
-"biR" = (
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/pavement/empty,
-/area/planets/Geminus/outdoor/west)
 "biS" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/central)
 "biT" = (
-/obj/item/tape/engineering{
-	icon_state = "police_h_0"
-	},
-/obj/machinery/door/airlock/engineering{
-	locked = 1
-	},
+/obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor)
 "biU" = (
@@ -21306,10 +21274,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/lots/stall/three)
-"bjE" = (
-/obj/machinery/vending/fuelstop,
-/turf/simulated/floor/pavement/empty,
-/area/planets/Geminus/outdoor/east)
 "bjI" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -22662,11 +22626,6 @@
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/storage)
-"box" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/planets/Geminus/indoor)
 "boy" = (
 /obj/machinery/street/pedestrian,
 /turf/simulated/floor/pavement{
@@ -22935,6 +22894,21 @@
 /obj/random/junk,
 /turf/simulated/floor/plating,
 /area/constructionsite/maintenance)
+"bEh" = (
+/obj/effect/floor_decal/pavement_grit/centered,
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
+"bKk" = (
+/obj/machinery/light/colored{
+	dir = 1;
+	icon_state = "yellow1";
+	tag = "icon-yellow1 (NORTH)"
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = 32
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
 "bKN" = (
 /obj/machinery/vending/wallmed2{
 	dir = 4;
@@ -22942,6 +22916,21 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
+"bOl" = (
+/obj/structure/table/rack,
+/obj/structure/disposalconstruct,
+/turf/simulated/mineral/floor/pollux,
+/area/planets/Geminus/outdoor/east)
+"bPn" = (
+/obj/structure/table/rack,
+/obj/item/stack/cable_coil/purple,
+/turf/simulated/mineral/floor/pollux,
+/area/planets/Geminus/outdoor/east)
+"bVG" = (
+/obj/effect/floor_decal/pavement_grit/edged,
+/obj/structure/closet/crate/trashcart,
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
 "bZp" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8;
@@ -22963,10 +22952,50 @@
 	},
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
+"cwK" = (
+/obj/structure/holohoop{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/blue/borderfull,
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "cFp" = (
 /obj/random/junk,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/south)
+"cKA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/pavement{
+	dir = 4;
+	icon_state = "pavement";
+	tag = "icon-pavement (EAST)"
+	},
+/area/planets/Geminus/outdoor/east)
+"cME" = (
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/simulated/floor/outdoors/grass/nogrowth,
+/area/planets/Geminus/outdoor/west)
+"cNb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/planets/Geminus/outdoor/east)
+"ddl" = (
+/obj/structure/sink{
+	dir = 8;
+	icon_state = "sink";
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/structure/mirror/raider{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/planets/Geminus/indoor)
 "dhs" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -22979,6 +23008,32 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"dim" = (
+/obj/random/junk,
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
+"dnW" = (
+/obj/effect/decal/cleanable/graffiti{
+	pixel_x = -30
+	},
+/turf/simulated/floor/pavement/pave_tiling/indoors,
+/area/planets/Geminus/indoor/arrivalbus)
+"dGJ" = (
+/obj/structure/flora/ausbushes/grassybush,
+/turf/simulated/floor/outdoors/grass/nogrowth,
+/area/planets/Geminus/outdoor/east)
+"dGX" = (
+/obj/effect/floor_decal/corner/blue/border,
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4;
+	icon_state = "bordercolor";
+	tag = "icon-bordercolor (EAST)"
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "dID" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -22988,6 +23043,19 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"dRU" = (
+/obj/structure/fence,
+/turf/simulated/mineral/floor/pollux,
+/area/planets/Geminus/outdoor/east)
+"dSX" = (
+/obj/effect/decal/cleanable/graffiti{
+	pixel_x = -32
+	},
+/obj/structure/urinal{
+	pixel_x = -24
+	},
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor)
 "dUu" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23018,6 +23086,10 @@
 /obj/item/weapon/inflatable_dispenser,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"erb" = (
+/obj/structure/flora/rock,
+/turf/simulated/floor/outdoors/grass/nogrowth,
+/area/planets/Geminus/outdoor/east)
 "esL" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/light/colored{
@@ -23046,10 +23118,36 @@
 /obj/random/junk,
 /turf/simulated/floor/pavement/brick_paving,
 /area/planets/Geminus/outdoor/south)
+"eHo" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "eQN" = (
 /obj/vehicle/car/random,
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
+"eSR" = (
+/obj/structure/holohoop{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4;
+	icon_state = "bordercolor"
+	},
+/obj/effect/floor_decal/corner/red/borderfull,
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
+"eYN" = (
+/obj/machinery/floodlight,
+/turf/simulated/mineral/floor/pollux,
+/area/planets/Geminus/outdoor/east)
+"eYV" = (
+/obj/effect/floor_decal/corner/red/border,
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "fcW" = (
 /obj/structure/table/glass,
 /obj/machinery/button/windowtint{
@@ -23067,6 +23165,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
+"fqQ" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8;
+	icon_state = "bordercolor"
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "fre" = (
 /obj/effect/spawner/conditional_spawn/council/water_coolers,
 /turf/simulated/floor/tiled/dark,
@@ -23079,14 +23187,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/arrivals)
-"fzM" = (
-/obj/effect/wallframe_spawn/basic,
-/turf/simulated/wall/iron,
-/area/planets/Geminus/outdoor/east)
 "fEz" = (
 /obj/random/junk,
 /turf/simulated/floor/pavement/brick_paving,
 /area/planets/Geminus/outdoor/central)
+"fHn" = (
+/obj/structure/fence,
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/east)
 "fSY" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23101,6 +23212,16 @@
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor)
+"ghf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/graffiti{
+	pixel_x = -32
+	},
+/obj/structure/urinal{
+	pixel_x = -24
+	},
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor)
 "glg" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/road/garage,
@@ -23111,6 +23232,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/main)
+"gsv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/billboard,
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/east)
 "gDH" = (
 /obj/machinery/door/airlock/multi_tile/glass/engineering{
 	name = "Maintenance Storage Area";
@@ -23139,6 +23265,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+"gQQ" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/pavement_grit/rough,
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "gRH" = (
 /obj/machinery/mineral/stacking_unit_console,
 /turf/simulated/wall/plastic/green,
@@ -23148,11 +23281,69 @@
 /obj/item/weapon/car_charger/full,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/workshop)
+"gXe" = (
+/obj/effect/floor_decal/corner/blue/border,
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
+"gXl" = (
+/obj/effect/wallframe_spawn/basic,
+/turf/space,
+/area/planets/Geminus/outdoor/east)
 "hby" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/constructionsite/maintenance)
+"hdh" = (
+/obj/machinery/vending/wallmed2{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor)
+"hpo" = (
+/obj/structure/table/steel,
+/obj/item/clothing/head/hardhat{
+	pixel_y = 4
+	},
+/obj/item/weapon/book/manual/engineering_construction{
+	pixel_y = 12
+	},
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/turf/simulated/mineral/floor/pollux,
+/area/planets/Geminus/outdoor/east)
+"hrB" = (
+/obj/effect/floor_decal/pavement_grit/edged,
+/obj/structure/sign/double/map/left{
+	pixel_y = -32
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
+"htR" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/planets/Geminus/outdoor/east)
+"huS" = (
+/obj/structure/fence{
+	dir = 4;
+	icon_state = "straight"
+	},
+/turf/simulated/floor/outdoors/grass,
+/area/planets/Geminus/outdoor/east)
+"hDL" = (
+/obj/item/stack/material/steel/full,
+/obj/structure/closet/crate/trashcart,
+/turf/simulated/floor/plating,
+/area/planets/Geminus/outdoor/east)
 "hGq" = (
 /obj/structure/closet/secure_closet/cargotech,
 /obj/item/weapon/storage/belt/utility,
@@ -23166,6 +23357,16 @@
 /obj/structure/table/glass,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
+"hIZ" = (
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/vomit,
+/obj/structure/urinal{
+	pixel_x = -24
+	},
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor)
 "hMz" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -23174,6 +23375,36 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+"hVn" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/outdoors/grass,
+/area/planets/Geminus/outdoor/east)
+"hXq" = (
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_x = 32
+	},
+/obj/effect/decal/cleanable/vomit,
+/obj/machinery/light/colored/purple{
+	dir = 8;
+	icon_state = "purple1";
+	light_color = "#6d2eea";
+	tag = "icon-purple1 (WEST)"
+	},
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor)
+"hYO" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/outdoors/grass/nogrowth,
+/area/planets/Geminus/outdoor/east)
 "iex" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23192,6 +23423,18 @@
 /obj/effect/floor_decal/pavement_grit/rough,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
+"iog" = (
+/obj/effect/floor_decal/corner/red/borderfull,
+/obj/item/weapon/beach_ball/holoball,
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
+"ivv" = (
+/obj/structure/fence/door{
+	dir = 8;
+	icon_state = "door_closed"
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/east)
 "ixu" = (
 /obj/machinery/vending/engivend,
 /obj/effect/floor_decal/corner/yellow/diagonal,
@@ -23199,6 +23442,21 @@
 /obj/machinery/light/built,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"ixB" = (
+/obj/structure/sink{
+	dir = 8;
+	icon_state = "sink";
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_x = -30
+	},
+/obj/structure/mirror{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/planets/Geminus/indoor)
 "ixV" = (
 /obj/effect/gibspawner/robot,
 /turf/simulated/floor/plating,
@@ -23209,6 +23467,9 @@
 	dir = 4;
 	icon_state = "yellow1";
 	tag = "icon-yellow1 (EAST)"
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
 	},
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
@@ -23251,10 +23512,24 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/constructionsite/maintenance)
+"iPM" = (
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/turf/simulated/wall/iron,
+/area/planets/Geminus/indoor)
 "iSd" = (
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 8
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/machinery/light/colored/purple{
+	dir = 8;
+	icon_state = "purple1";
+	light_color = "#6d2eea";
+	tag = "icon-purple1 (WEST)"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor)
@@ -23277,6 +23552,11 @@
 /obj/structure/bed/chair/office/light,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
+"jeX" = (
+/obj/structure/table/rack,
+/obj/item/weapon/pickaxe/steel,
+/turf/simulated/mineral/floor/pollux,
+/area/planets/Geminus/outdoor/east)
 "jgQ" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/pavement_grit/edged,
@@ -23321,6 +23601,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"jut" = (
+/obj/structure/fence/corner{
+	dir = 9;
+	icon_state = "corner"
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/east)
 "jvg" = (
 /obj/structure/railing{
 	dir = 1;
@@ -23338,6 +23625,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+"jMo" = (
+/obj/structure/fence/corner,
+/obj/structure/fence/corner{
+	dir = 8;
+	icon_state = "corner"
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/east)
 "jQI" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -23347,6 +23642,11 @@
 /obj/machinery/disposal,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
+"jTk" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/east)
 "keg" = (
 /obj/structure/table/glass,
 /obj/machinery/cell_charger,
@@ -23403,6 +23703,12 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"kKs" = (
+/obj/structure/sign/warning/caution{
+	name = "\improper CAUTION CONSTRUCTION AREA"
+	},
+/turf/simulated/wall/iron,
+/area/planets/Geminus/outdoor/east)
 "kUY" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23438,10 +23744,25 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"leH" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/floor_decal/pavement_grit/rough,
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/east)
 "lfl" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/constructionsite/maintenance)
+"lft" = (
+/obj/structure/railing,
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/outdoors/grass/nogrowth,
+/area/planets/Geminus/outdoor/west)
+"ljf" = (
+/obj/structure/fence/corner,
+/obj/structure/billboard,
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/east)
 "ljO" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23450,6 +23771,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"lky" = (
+/obj/structure/fence,
+/obj/structure/fence/door{
+	dir = 8;
+	icon_state = "door_closed"
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/east)
 "llR" = (
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal,
@@ -23465,6 +23794,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
+"lqQ" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4;
+	icon_state = "bordercolor"
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "lvC" = (
 /obj/machinery/door/airlock/multi_tile/glass/engineering{
 	name = "Maintenance Locker Room";
@@ -23491,11 +23830,24 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"lCY" = (
+/obj/random/trash,
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor)
 "lFT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/constructionsite/maintenance)
+"lHO" = (
+/obj/structure/sign/double/map/right{
+	pixel_y = -32
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
 "lNs" = (
 /obj/effect/floor_decal/pavement_grit/centered,
 /obj/machinery/light/colored{
@@ -23525,12 +23877,32 @@
 	},
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/south)
+"mtg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4;
+	icon_state = "bordercolor"
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "mwu" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"myJ" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8;
+	icon_state = "bordercolor"
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
+"mDj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/wall/iron,
+/area/planets/Geminus/indoor)
 "mGp" = (
 /obj/effect/floor_decal/corner/mauve/diagonal,
 /obj/structure/disposalpipe/junction,
@@ -23541,6 +23913,14 @@
 /obj/machinery/light/colored,
 /turf/simulated/floor/pavement/pave_tiling/indoors,
 /area/planets/Geminus/indoor/arrivalbus)
+"mJu" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/dark,
+/area/planets/Geminus/indoor)
+"mKU" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/outdoors/grass,
+/area/planets/Geminus/outdoor/east)
 "mOF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/floor_decal/pavement_grit/rough,
@@ -23550,6 +23930,19 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/arrivals)
+"ngi" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1;
+	icon_state = "bordercolor";
+	tag = "icon-bordercolor (NORTH)"
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8;
+	icon_state = "bordercolor";
+	tag = "icon-bordercolor (WEST)"
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "nkj" = (
 /obj/machinery/mineral/processing_unit_console,
 /turf/simulated/wall/plastic/green,
@@ -23579,6 +23972,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"nqD" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/outdoors/grass/nogrowth,
+/area/planets/Geminus/outdoor/east)
 "nBk" = (
 /obj/item/weapon/handcuffs/fuzzy,
 /turf/simulated/floor/plating,
@@ -23598,6 +23995,10 @@
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/storage)
+"nVw" = (
+/obj/structure/fence/corner,
+/turf/simulated/mineral/floor/pollux,
+/area/planets/Geminus/outdoor/east)
 "nXq" = (
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
@@ -23655,13 +24056,51 @@
 /obj/random/junk,
 /turf/simulated/floor/tiled,
 /area/constructionsite/maintenance)
+"oKD" = (
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/turf/simulated/floor/plating,
+/area/planets/Geminus/outdoor/east)
+"oLt" = (
+/obj/effect/floor_decal/pavement_grit/rough,
+/obj/effect/floor_decal/pavement_grit/edged,
+/obj/machinery/newscaster{
+	pixel_y = -32
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
 "oMI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/pavement,
 /area/planets/Geminus/outdoor/east)
+"oSN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8;
+	icon_state = "bordercolor";
+	tag = "icon-bordercolor (WEST)"
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
+"oYm" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/pavement/brick_paving,
+/area/planets/Geminus/outdoor/west)
+"peS" = (
+/turf/simulated/mineral/floor/pollux,
+/area/planets/Geminus/outdoor/east)
 "pfI" = (
 /turf/simulated/wall/iron,
 /area/engineering/engine_monitoring)
+"pow" = (
+/obj/structure/grille/smallfence,
+/turf/simulated/floor/pavement,
+/area/planets/Geminus/outdoor/east)
 "prx" = (
 /obj/structure/table/glass,
 /obj/random/tool/powermaint,
@@ -23702,9 +24141,27 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
+"pPr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/mirror{
+	pixel_x = -32
+	},
+/obj/structure/sink{
+	dir = 8;
+	icon_state = "sink";
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_x = -30
+	},
+/turf/simulated/floor/tiled/dark,
+/area/planets/Geminus/indoor)
 "pRz" = (
-/obj/effect/floor_decal/pavement_grit/centered,
 /obj/machinery/light/colored,
+/obj/structure/sign/neon/bathrooms{
+	pixel_y = -28
+	},
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
 "pVw" = (
@@ -23730,6 +24187,24 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"qif" = (
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor)
+"qmD" = (
+/obj/effect/floor_decal/corner/red/border,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8;
+	icon_state = "bordercolor"
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "qsW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -23751,6 +24226,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/main)
+"qSR" = (
+/obj/structure/sink/puddle,
+/turf/simulated/floor/outdoors/grass/nogrowth,
+/area/planets/Geminus/outdoor/east)
 "qSV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -23766,6 +24245,23 @@
 /obj/structure/bed/chair/office/light,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
+"qVf" = (
+/obj/effect/floor_decal/corner/blue/border,
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 8;
+	icon_state = "bordercolor";
+	tag = "icon-bordercolor (WEST)"
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/obj/effect/floor_decal/pavement_grit/rough,
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
+"qWE" = (
+/obj/structure/billboard,
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/east)
 "qYp" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
@@ -23778,6 +24274,13 @@
 /obj/machinery/light/built,
 /turf/simulated/floor/tiled/dark,
 /area/engineering)
+"ray" = (
+/obj/structure/fence/door{
+	dir = 8;
+	icon_state = "door_closed"
+	},
+/turf/simulated/floor/road/empty,
+/area/planets/Geminus/outdoor/east)
 "rjs" = (
 /obj/effect/floor_decal/corner/mauve/diagonal,
 /obj/structure/bed/chair/office/light{
@@ -23785,6 +24288,18 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
+"rnC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/graffiti{
+	pixel_x = 32
+	},
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor)
 "rqM" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23802,6 +24317,13 @@
 /obj/random/junk,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/south)
+"rDz" = (
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4;
+	icon_state = "bordercolor"
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "rGY" = (
 /obj/structure/table/glass,
 /obj/machinery/button/remote/blast_door{
@@ -23826,6 +24348,17 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
+"rVY" = (
+/obj/effect/floor_decal/corner/red/border,
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4;
+	icon_state = "bordercolor"
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "rWk" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
@@ -23835,8 +24368,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/forensic_lab)
+"scq" = (
+/obj/item/weapon/storage/toolbox/lunchbox/nt/filled,
+/turf/simulated/floor/plating,
+/area/planets/Geminus/outdoor/east)
 "sdh" = (
-/obj/structure/loot_pile/maint/junk,
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor)
 "sfi" = (
@@ -23844,6 +24384,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/arrivals)
+"sfu" = (
+/obj/structure/table/steel,
+/obj/item/weapon/storage/toolbox/mechanical,
+/turf/simulated/mineral/floor/pollux,
+/area/planets/Geminus/outdoor/east)
 "syY" = (
 /obj/item/tape/engineering{
 	icon_state = "police_h_0"
@@ -23870,11 +24415,25 @@
 /obj/structure/reagent_dispensers/cleanertank,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_waste)
+"sJf" = (
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/obj/item/weapon/reagent_containers/syringe/drugs,
+/turf/simulated/floor/tiled/dark,
+/area/planets/Geminus/indoor)
 "sTP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor)
+"sVn" = (
+/obj/structure/fence{
+	dir = 4;
+	icon_state = "straight"
+	},
+/turf/simulated/mineral/floor/pollux,
+/area/planets/Geminus/outdoor/east)
 "sYA" = (
 /obj/structure/railing,
 /obj/structure/sign/neon/airbus{
@@ -23897,9 +24456,26 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"tiz" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/east)
+"tnI" = (
+/obj/structure/catwalk,
+/obj/structure/bigDelivery,
+/turf/simulated/floor/plating,
+/area/planets/Geminus/outdoor/east)
 "trj" = (
 /turf/simulated/wall/iron,
 /area/engineering/storage)
+"tzU" = (
+/obj/machinery/vending/fuelstop,
+/turf/simulated/floor/pavement{
+	dir = 4;
+	icon_state = "pavement";
+	tag = "icon-pavement (EAST)"
+	},
+/area/planets/Geminus/outdoor/east)
 "tJO" = (
 /obj/machinery/door/blast/shutters{
 	id = "garage";
@@ -23920,6 +24496,26 @@
 	},
 /turf/simulated/floor/pavement/pave_tiling,
 /area/planets/Geminus/indoor/arrivalbus)
+"tSL" = (
+/obj/effect/floor_decal/pavement_grit/edged,
+/obj/effect/decal/cleanable/graffiti{
+	pixel_x = -30
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
+"tTJ" = (
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 1;
+	icon_state = "bordercolor";
+	tag = "icon-bordercolor (NORTH)"
+	},
+/obj/effect/floor_decal/corner/blue/border{
+	dir = 4;
+	icon_state = "bordercolor";
+	tag = "icon-bordercolor (EAST)"
+	},
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "tUb" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
@@ -23949,6 +24545,10 @@
 /obj/effect/floor_decal/pavement_grit/rough,
 /turf/simulated/floor/tiled,
 /area/constructionsite/maintenance)
+"uqJ" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor)
 "uFW" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/structure/disposalpipe/segment,
@@ -23972,10 +24572,35 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering)
+"uVv" = (
+/obj/effect/decal/cleanable/graffiti{
+	pixel_y = -32
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/west)
+"uXl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/graffiti{
+	pixel_x = 32
+	},
+/obj/machinery/light/colored/purple{
+	dir = 8;
+	icon_state = "purple1";
+	light_color = "#6d2eea";
+	tag = "icon-purple1 (WEST)"
+	},
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor)
 "uXW" = (
 /obj/random/junk,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/central)
+"uZz" = (
+/turf/simulated/floor/plating,
+/area/planets/Geminus/outdoor/east)
 "vfp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -24025,6 +24650,10 @@
 /obj/effect/gibspawner/robot,
 /turf/simulated/floor/pavement/pave_tiling/indoors,
 /area/planets/Geminus/indoor/arrivalbus)
+"vxU" = (
+/obj/structure/fence/door,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/planets/Geminus/outdoor/east)
 "vAE" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -24049,6 +24678,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering)
+"vYG" = (
+/obj/machinery/vending/wallmed1{
+	layer = 3.3;
+	name = "Emergency NanoMed";
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/simulated/floor/pavement/pave_tiling/indoors,
+/area/planets/Geminus/indoor/arrivalbus)
 "weW" = (
 /obj/structure/bed/chair/office/light,
 /turf/simulated/floor/tiled/dark,
@@ -24071,12 +24709,22 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/wall/iron,
 /area/planets/Geminus/indoor)
+"wgA" = (
+/obj/effect/floor_decal/corner/blue/borderfull,
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "wlp" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/main)
+"wpc" = (
+/obj/structure/urinal{
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/planets/Geminus/indoor)
 "wGm" = (
 /obj/structure/table/woodentable/ebony,
 /obj/item/weapon/paper_bin,
@@ -24084,7 +24732,9 @@
 /turf/simulated/floor/carpet/browcarpet,
 /area/security/detectives_office)
 "wIE" = (
-/turf/simulated/floor/wood/ebony,
+/obj/structure/table/rack,
+/obj/item/stack/material/glass/full,
+/turf/simulated/mineral/floor/pollux,
 /area/planets/Geminus/outdoor/east)
 "wJY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24128,6 +24778,15 @@
 	},
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
+"xfj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/planets/Geminus/outdoor/east)
+"xge" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/tiled/techmaint/outdoors,
+/area/planets/Geminus/outdoor/east)
 "xgZ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -24137,6 +24796,20 @@
 	},
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
+"xll" = (
+/obj/structure/flora/ausbushes/grassybush,
+/turf/simulated/floor/outdoors/grass,
+/area/planets/Geminus/outdoor/east)
+"xzI" = (
+/obj/effect/decal/cleanable/graffiti{
+	pixel_x = 32
+	},
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 0
+	},
+/turf/simulated/floor/tiled/dark,
+/area/planets/Geminus/indoor)
 "xFl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/gibspawner/robot,
@@ -24176,14 +24849,20 @@
 /obj/random/junk,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/east)
-"yhu" = (
-/obj/machinery/light/small{
-	brightness_color = "#DA0205";
-	brightness_power = 1;
-	brightness_range = 5;
-	dir = 8
+"yem" = (
+/obj/structure/fence,
+/turf/simulated/floor/pavement{
+	dir = 4;
+	icon_state = "pavement";
+	tag = "icon-pavement (EAST)"
 	},
-/turf/simulated/floor/plating,
+/area/planets/Geminus/outdoor/east)
+"yhu" = (
+/obj/random/trash,
+/obj/structure/urinal{
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor)
 "yli" = (
 /obj/effect/floor_decal/corner/mauve/diagonal,
@@ -24389,7 +25068,7 @@ axo
 afv
 afv
 afv
-afv
+axo
 boa
 afv
 afv
@@ -24551,7 +25230,7 @@ axo
 afv
 aud
 boa
-lTg
+wgf
 aud
 afv
 boa
@@ -24629,10 +25308,10 @@ abx
 ann
 aeQ
 axo
-boa
+lTg
 tKC
 boa
-tKC
+mDj
 lTg
 afv
 boa
@@ -24713,27 +25392,27 @@ axo
 aud
 aGC
 aud
-lTg
+wgf
 axo
 axo
 axo
 axo
 aHs
-axn
+tSL
 aeW
-aCR
+oYm
 akq
-aaA
+bEh
 anI
 ayh
-aCR
+ahU
 iyv
-biP
-boa
-aud
+axo
+wpc
+ghf
 yhu
-afv
-afv
+dSX
+hIZ
 axo
 avL
 avL
@@ -24808,11 +25487,11 @@ aCR
 aCR
 aCR
 aCR
-aHs
-biP
-afv
-box
-afv
+oLt
+axo
+lCY
+tKC
+qif
 lTg
 afv
 axo
@@ -24873,9 +25552,9 @@ abQ
 att
 axo
 afv
-lTg
 tKC
-boa
+tKC
+lTg
 lTg
 aud
 boa
@@ -24892,10 +25571,10 @@ aCR
 pRz
 axo
 boa
-lTg
-sTP
-lTg
-lTg
+axo
+axo
+iPM
+axo
 axo
 aAy
 ayF
@@ -24972,11 +25651,11 @@ aCR
 aCR
 aCR
 biT
-boa
-boa
-tKC
 lTg
-boa
+pPr
+ddl
+ixB
+ddl
 axo
 aAy
 aAy
@@ -25034,15 +25713,15 @@ abx
 abQ
 aaI
 axo
-lTg
-boa
-boa
-axo
 wgf
 axo
+lTg
 axo
+wgf
+afv
+afv
 axo
-aBE
+bKk
 aCR
 aCR
 ajI
@@ -25053,11 +25732,11 @@ aCR
 aCR
 nYp
 axo
+hdh
+xzI
 afv
-aud
-tKC
-lTg
-afv
+rnC
+boa
 axo
 asF
 aAy
@@ -25119,26 +25798,26 @@ lTg
 aud
 afv
 aud
-tKC
+mDj
 aud
 afv
-biP
+axo
 ikM
 aCR
 aaF
-ajI
+cME
 abN
-ang
+lft
 aql
 aCR
 aCR
 axn
 axo
-boa
-lTg
-aud
-tKC
-afv
+biT
+axo
+uqJ
+axo
+uqJ
 axo
 ayy
 aAy
@@ -25200,11 +25879,11 @@ afv
 sTP
 afv
 lTg
-lTg
+wgf
 sTP
 boa
 biP
-aaA
+dim
 aCR
 aCR
 ajW
@@ -25213,13 +25892,13 @@ aqe
 aou
 ayt
 azk
-axn
-biP
+hrB
+axo
 sdh
-aud
-aud
-fTf
-lTg
+axo
+mJu
+axo
+sJf
 axo
 tOt
 aAy
@@ -25281,11 +25960,11 @@ afv
 afv
 boa
 boa
-afv
+axo
 afv
 boa
 axo
-axn
+bVG
 ayh
 aCR
 aCR
@@ -25294,15 +25973,15 @@ aCR
 aCR
 ayh
 aCk
-aaA
-biP
-afv
-afv
+lHO
+axo
+uXl
+axo
 iSd
-boa
-aud
-axT
-aAy
+axo
+hXq
+axo
+vYG
 aAy
 aAy
 apz
@@ -25375,7 +26054,7 @@ ayh
 aCR
 aCR
 aCk
-aaA
+uVv
 amd
 amd
 amd
@@ -25459,9 +26138,9 @@ aCk
 axn
 amd
 aAy
-aAy
+dnW
 aBx
-aAy
+dnW
 xFl
 aAy
 aAy
@@ -25705,7 +26384,7 @@ amd
 amd
 amd
 amd
-asv
+amd
 amd
 amd
 amd
@@ -29506,7 +30185,7 @@ awr
 aaA
 aBG
 biC
-biR
+biv
 biW
 bjk
 bjk
@@ -31774,7 +32453,7 @@ aMF
 aaA
 aBG
 aak
-biR
+biv
 acr
 aEJ
 aEJ
@@ -31855,7 +32534,7 @@ awi
 aaA
 aBG
 biB
-aaA
+aBG
 aFc
 aFc
 aFc
@@ -47894,7 +48573,7 @@ aBq
 aCq
 aCq
 aBq
-aEi
+aBq
 aaB
 aBq
 aaB
@@ -49438,15 +50117,15 @@ ajh
 ahQ
 ajh
 aKs
-aLs
+vxU
 aMt
 aaB
 aaB
+aBq
+aBq
+aCs
 aaB
-aaB
-aaB
-aaB
-aaB
+aUM
 aaB
 aaB
 aaB
@@ -49520,11 +50199,11 @@ ajP
 aJe
 aJe
 aLu
-aBq
-aaB
-aaB
-aBq
-aaB
+ngi
+ahO
+cwK
+oSN
+qVf
 ate
 ate
 ate
@@ -49532,10 +50211,10 @@ ate
 ate
 ate
 ate
-aaB
+leH
 aMu
 aBq
-aBq
+gsv
 aaN
 abf
 abf
@@ -49564,7 +50243,27 @@ abq
 abf
 abf
 azQ
-aCu
+jMo
+adL
+adL
+adL
+adL
+yem
+yem
+adL
+adL
+adL
+adL
+adL
+adL
+adL
+adL
+adL
+adL
+adL
+adL
+ivv
+ivv
 adL
 adL
 adL
@@ -49579,33 +50278,13 @@ adL
 adL
 adL
 adL
-adL
-adL
-adL
-adL
-adL
-adL
-adL
-adL
-adL
-adL
-adL
-adL
-adL
-aCr
-aaB
-aaB
-aaB
-aaB
-aBq
-aBq
-aaB
-aCt
-aaB
-aBq
-aBq
-aMu
-aaB
+jut
+aLv
+afK
+eHo
+eHo
+xge
+gXe
 ate
 atQ
 atQ
@@ -49645,11 +50324,11 @@ abf
 abf
 abf
 azQ
-ate
-ate
-ate
-ate
-ate
+sVn
+bPn
+peS
+peS
+eYN
 abf
 abf
 ate
@@ -49657,36 +50336,36 @@ ate
 ate
 ate
 ate
-abf
-abf
-acg
-acg
-acg
-acg
-acg
-acg
-acg
-acg
-acg
-acg
-acg
-acg
-acg
-acg
-aCs
-aBq
-aBq
-aBq
+ate
+ate
 aaB
 aaB
 aaB
 aaB
-aCs
 aaB
 aaB
-aBq
-qSV
-aBq
+aaB
+aaB
+aaB
+aaB
+aaB
+aaB
+dGJ
+nqD
+ach
+xll
+ach
+mKU
+ach
+hVn
+xll
+huS
+tiz
+tTJ
+ahQ
+wgA
+ahQ
+dGX
 ate
 atQ
 atQ
@@ -49726,48 +50405,48 @@ abf
 abf
 abf
 azQ
-ate
+sVn
 wIE
-wIE
-wIE
-ate
+peS
+peS
+peS
 abf
 abf
+tnI
+uZz
+uZz
+uZz
+uZz
+hDL
 ate
-wIE
-wIE
-wIE
-ate
-abf
-abf
-ach
+aaB
 aqZ
 aAL
 aAL
+tzU
 aAL
 aAL
-aAL
-aAL
+tzU
 aAL
 aAL
 azP
+aaB
 acg
 acg
+mKU
+ach
+erb
 acg
-aCt
-aBq
-aBq
-aBq
-aaB
-bjE
-bjE
-aaB
-aCt
-aaB
-aaB
-aBq
-qSV
-aBq
+acg
+ach
+ach
+huS
+tiz
+fqQ
+myJ
+iog
+myJ
+qmD
 ate
 atQ
 atQ
@@ -49775,7 +50454,7 @@ atQ
 atQ
 atQ
 aaB
-aaB
+aBq
 aaB
 aBq
 aMu
@@ -49807,48 +50486,48 @@ abf
 abf
 abf
 azQ
-ate
-wIE
-wIE
-wIE
-fzM
+sVn
+bOl
+peS
+peS
+peS
 abf
 abf
-ate
-wIE
-wIE
-wIE
-fzM
+cNb
+uZz
+xfj
+uZz
+uZz
+xfj
+gXl
+aaB
+pow
 abf
 abf
+atH
+abf
+abf
+atH
+abf
+abf
+azR
+aaB
+acg
+acg
 ach
-aaN
-abf
-abf
-atH
-abf
-abf
-atH
-abf
-abf
-azQ
+ach
+qSR
 acg
-acg
-acg
-aCu
-adL
-adL
-adL
-adL
-adL
-adL
-adL
-aLv
-aBq
-aBq
-aBq
-aMu
-aaB
+xll
+ach
+ach
+huS
+tiz
+gQQ
+eHo
+eHo
+xge
+eYV
 ate
 atQ
 atQ
@@ -49856,7 +50535,7 @@ atQ
 atQ
 atQ
 aaB
-aaB
+aBq
 aaB
 aBq
 aaB
@@ -49888,22 +50567,22 @@ abq
 abf
 abf
 azQ
-ate
-wIE
-wIE
-wIE
-ate
+sVn
+jeX
+peS
+sfu
+hpo
 abf
 abf
+oKD
+htR
+htR
+uZz
+uZz
+scq
 ate
-wIE
-wIE
-wIE
-ate
-abf
-abf
-ach
-aaN
+aaB
+pow
 abf
 asD
 atH
@@ -49913,23 +50592,23 @@ atH
 abf
 asD
 azR
-acg
-acg
-acg
-ach
-ach
-ach
-ach
-ach
-ach
-ach
-ach
-ach
 aaB
-aaB
-aaB
-aBq
-aaB
+hYO
+dGJ
+ach
+mKU
+xll
+hVn
+ach
+ach
+mKU
+huS
+jTk
+lqQ
+rDz
+eSR
+mtg
+rVY
 ate
 atQ
 atQ
@@ -49940,7 +50619,7 @@ ate
 aaB
 aaB
 aaB
-aaB
+qWE
 aaN
 abf
 abf
@@ -49969,22 +50648,22 @@ abq
 abf
 abf
 azQ
+nVw
+dRU
+dRU
+dRU
+kKs
+ray
+ray
+ate
+dRU
+dRU
+dRU
 ate
 ate
-wIE
 ate
-ate
-abf
-abf
-ate
-ate
-wIE
-ate
-ate
-abf
-abf
-ach
-aaN
+aaB
+pow
 abf
 abf
 atH
@@ -49993,34 +50672,34 @@ abf
 atH
 abf
 abf
-azS
-acg
-acg
-acg
-ach
-ach
-ach
-ach
-ach
-ach
-ach
-ach
-ach
+azR
+aaB
+aaB
+qWE
 aaB
 aaB
 aaB
-abF
-aaB
-ate
-ate
-ate
-ate
-ate
-ate
-ate
+qWE
 aaB
 aaB
-abF
+aaB
+ljf
+adL
+lky
+adL
+adL
+adL
+fHn
+ate
+ate
+ate
+ate
+ate
+ate
+ate
+aUM
+aaB
+aaB
 aaB
 bpj
 abf
@@ -50054,16 +50733,16 @@ aAL
 aAL
 aAL
 aAL
-aAL
+aaN
 abf
 abf
+abU
 aAL
 aAL
 aAL
 aAL
 aAL
-abf
-abf
+aAL
 aAL
 ara
 abf
@@ -50090,13 +50769,13 @@ aAL
 aAL
 aAL
 aAL
+cKA
 aAL
 aAL
+cKA
 aAL
 aAL
-aAL
-aAL
-aAL
+cKA
 aAL
 aAL
 aAL
@@ -50701,7 +51380,7 @@ aap
 aap
 aap
 aap
-aap
+awZ
 aap
 aap
 aap
@@ -50740,7 +51419,7 @@ apN
 apN
 apN
 apN
-apN
+awZ
 apN
 apN
 apN
@@ -50820,8 +51499,8 @@ apO
 apO
 apO
 apO
-apO
 auh
+apO
 apO
 apO
 apO

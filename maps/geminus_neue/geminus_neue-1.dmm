@@ -762,9 +762,6 @@
 "cQ" = (
 /turf/simulated/mineral/floor/pollux,
 /area/planets/Geminus/indoor/sewer/east)
-"cR" = (
-/turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Geminus/indoor/sewer/west)
 "cS" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -831,14 +828,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/west)
-"db" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 4;
-	icon_state = "danger";
-	tag = "icon-danger (EAST)"
-	},
-/turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Geminus/indoor/sewer/west)
 "dc" = (
 /turf/simulated/wall/iron,
 /area/planets/Geminus/indoor/sewer/north)
@@ -853,6 +842,7 @@
 /obj/machinery/light/colored/green{
 	dir = 1
 	},
+/obj/structure/table/bench/wooden,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
@@ -1086,6 +1076,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/table/bench/wooden,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
@@ -1384,14 +1375,6 @@
 /obj/structure/frame,
 /turf/simulated/mineral/floor/pollux,
 /area/planets/Geminus/indoor/sewer/north)
-"eR" = (
-/obj/machinery/light/colored/green{
-	dir = 4;
-	icon_state = "green1";
-	tag = "icon-green1 (EAST)"
-	},
-/turf/simulated/wall/iron,
-/area/planets/Geminus/indoor/arrivalbus)
 "eS" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/mineral/floor/pollux,
@@ -1513,10 +1496,6 @@
 "fo" = (
 /turf/simulated/floor/water/sewer,
 /area/planets/Geminus/indoor/sewer/west)
-"fq" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/wall/iron,
-/area/planets/Geminus/indoor/arrivalbus)
 "fr" = (
 /obj/structure/railing{
 	dir = 1;
@@ -2255,6 +2234,9 @@
 "iC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tech/console/nanotrasen,
+/obj/machinery/light/colored/green{
+	dir = 1
+	},
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
@@ -2274,14 +2256,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/planets/Geminus/indoor/sewer/rooms)
-"iF" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 4;
-	icon_state = "danger";
-	tag = "icon-danger (EAST)"
-	},
-/turf/simulated/mineral/floor/pollux,
-/area/planets/Geminus/indoor/sewer/west)
 "iG" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -2343,10 +2317,6 @@
 	icon_state = "straight"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Geminus/indoor/sewer/west)
-"iP" = (
-/obj/structure/fence/door,
-/turf/simulated/floor/tiled/steel_ridged,
 /area/planets/Geminus/indoor/sewer/west)
 "iQ" = (
 /obj/structure/prop/tech/console/broken,
@@ -2465,7 +2435,7 @@
 /obj/machinery/light/colored/green{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/planets/Geminus/indoor/sewer/west)
 "jg" = (
 /obj/effect/floor_decal/industrial/danger{
@@ -2492,19 +2462,7 @@
 	dir = 9;
 	icon_state = "corner"
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Geminus/indoor/sewer/west)
-"jj" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger";
-	tag = "icon-danger (NORTH)"
-	},
-/obj/structure/fence{
-	dir = 4;
-	icon_state = "straight"
-	},
-/turf/simulated/mineral/floor/ignore_mapgen/pollux,
+/turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/west)
 "jk" = (
 /obj/structure/mirror/raider,
@@ -2985,16 +2943,12 @@
 	tag = "icon-danger (WEST)"
 	},
 /obj/structure/fence,
-/turf/simulated/mineral/floor/ignore_mapgen/pollux,
+/turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/west)
 "kq" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/north)
-"kr" = (
-/obj/effect/floor_decal/industrial/danger,
-/turf/simulated/mineral/floor/pollux,
-/area/planets/Geminus/indoor/sewer/west)
 "ks" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -3017,22 +2971,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/north)
-"ku" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger";
-	tag = "icon-danger (NORTH)"
-	},
-/turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Geminus/indoor/sewer/west)
 "kv" = (
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 8;
 	icon_state = "dangercorner";
 	tag = "icon-dangercorner (WEST)"
 	},
-/obj/structure/fence,
-/turf/simulated/mineral/floor/ignore_mapgen/pollux,
+/obj/structure/fence/door{
+	dir = 8;
+	icon_state = "door_closed"
+	},
+/turf/simulated/floor/plating,
 /area/planets/Geminus/indoor/sewer/west)
 "kw" = (
 /obj/machinery/light/colored/green{
@@ -4210,6 +4159,9 @@
 "oJ" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/prop/tech/console/off,
+/obj/machinery/light/colored/green{
+	dir = 1
+	},
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
@@ -4274,6 +4226,24 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/pavement_grit/rough_edged,
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/pavement/pave_tiling{
+	outdoors = 0
+	},
+/area/planets/Geminus/indoor/arrivalbus)
+"rj" = (
+/obj/structure/fence{
+	dir = 4;
+	icon_state = "straight"
+	},
+/turf/simulated/floor/tiled/steel_ridged,
+/area/planets/Geminus/indoor/sewer/west)
+"rl" = (
+/obj/machinery/light/colored/green{
+	dir = 4;
+	icon_state = "green1";
+	tag = "icon-green1 (EAST)"
+	},
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
@@ -4545,6 +4515,15 @@
 "Mn" = (
 /turf/simulated/wall,
 /area/planets/Geminus/indoor/sewer/east)
+"Mt" = (
+/obj/structure/sign/neon/exit{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/simulated/floor/pavement/pave_tiling{
+	outdoors = 0
+	},
+/area/planets/Geminus/indoor/arrivalbus)
 "Mw" = (
 /obj/structure/firedoor_assembly,
 /obj/structure/grille,
@@ -4606,6 +4585,17 @@
 /obj/structure/firedoor_assembly,
 /turf/simulated/floor/plating/external,
 /area/planets/Geminus/indoor/sewer/west)
+"QL" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 1;
+	icon_state = "railing0"
+	},
+/obj/structure/sign/neon/exit{
+	pixel_y = -32
+	},
+/turf/simulated/floor/plating,
+/area/planets/Geminus/indoor/arrivalbus)
 "Rl" = (
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/tiled/external,
@@ -4721,6 +4711,13 @@
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/tiled/external,
 /area/planets/Geminus/indoor/sewer/east)
+"ZA" = (
+/obj/machinery/light/colored/green,
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/pavement/pave_tiling{
+	outdoors = 0
+	},
+/area/planets/Geminus/indoor/arrivalbus)
 "ZW" = (
 /obj/structure/fence{
 	density = 0;
@@ -4820,34 +4817,34 @@ aa
 aa
 ae
 ae
-cR
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-db
-cR
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+aq
+am
 eu
 aa
 eu
@@ -4928,7 +4925,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5009,7 +5006,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5018,12 +5015,12 @@ bC
 bO
 bO
 bO
-ec
+QL
 bg
 bL
 bL
-fq
-bL
+bg
+Mt
 eg
 bM
 bM
@@ -5090,7 +5087,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5171,7 +5168,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5252,7 +5249,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5262,10 +5259,10 @@ bO
 bO
 bO
 dC
-eR
+bg
 dO
 dO
-eR
+bg
 dw
 fw
 bM
@@ -5333,7 +5330,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5343,10 +5340,10 @@ bO
 bO
 bO
 cu
+rl
 bL
 bL
-bL
-bL
+rl
 bL
 eh
 bM
@@ -5414,7 +5411,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5495,7 +5492,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5576,7 +5573,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5657,7 +5654,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5738,7 +5735,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5819,7 +5816,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5900,7 +5897,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5981,7 +5978,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -5992,7 +5989,7 @@ bO
 bO
 cu
 bL
-dD
+ZA
 bg
 df
 fg
@@ -6062,7 +6059,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -6143,7 +6140,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -6224,7 +6221,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -6235,7 +6232,7 @@ bO
 bO
 bL
 bL
-dD
+ZA
 bg
 df
 bL
@@ -6305,7 +6302,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -6386,7 +6383,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -6467,7 +6464,7 @@ cW
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -6548,7 +6545,7 @@ an
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -6625,11 +6622,11 @@ fl
 fl
 ae
 fl
-kr
+an
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -6706,11 +6703,11 @@ ae
 ae
 ae
 ae
-kr
+an
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -6787,11 +6784,11 @@ ae
 ae
 ae
 fl
-kr
+an
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -6872,7 +6869,7 @@ an
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -6883,7 +6880,7 @@ bO
 bO
 eq
 bL
-dD
+ZA
 bg
 rg
 bL
@@ -6953,7 +6950,7 @@ an
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -7034,7 +7031,7 @@ an
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -7115,7 +7112,7 @@ an
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -7126,7 +7123,7 @@ bO
 bO
 ec
 bL
-dD
+ZA
 bg
 dR
 bL
@@ -7185,10 +7182,10 @@ cN
 am
 am
 am
-iF
-iF
-iF
-iF
+aq
+aq
+aq
+aq
 aq
 aq
 aq
@@ -7196,7 +7193,7 @@ dm
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -7277,7 +7274,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -7358,7 +7355,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 eu
@@ -7439,7 +7436,7 @@ fo
 fo
 fo
 fo
-ku
+do
 eu
 aa
 aa
@@ -7551,11 +7548,11 @@ Xm
 bL
 fa
 bg
-eu
-eu
-dd
-eu
-eu
+fh
+cN
+cN
+cN
+fh
 hp
 aV
 aV
@@ -7593,7 +7590,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 fh
 fh
@@ -7604,8 +7601,8 @@ fh
 fh
 fh
 fh
-cN
-cN
+fh
+iO
 fh
 bg
 bE
@@ -7674,7 +7671,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -7686,8 +7683,8 @@ cN
 cN
 cN
 cN
-cN
-cN
+rj
+fh
 bg
 bg
 bg
@@ -7755,7 +7752,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -7767,6 +7764,12 @@ cN
 cN
 cN
 cN
+rj
+cA
+eu
+cA
+cN
+rj
 cN
 cN
 cN
@@ -7788,12 +7791,6 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-iP
 cN
 cN
 cN
@@ -7836,46 +7833,46 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
 fh
 fh
-fh
-fh
+eP
 fh
 eP
 fh
 fh
 fh
-fh
-fh
-fh
-fh
-fh
-fh
-fh
-jf
-fh
-jf
-fh
-fh
-fh
-fh
-fh
-fh
-fh
-fh
-fh
-fh
-jf
-fh
-fh
-fh
-fh
 iO
-fh
+cA
+cA
+cA
+cA
+iO
+cN
+cN
+jf
+cN
+jf
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+jf
+cN
+cN
+cN
+cN
+cN
+cN
 cN
 cN
 cN
@@ -7917,14 +7914,14 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
 fh
 eu
 eu
-cA
+fl
 eu
 eu
 cA
@@ -7998,14 +7995,14 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
 fh
 eu
 cA
-cA
+fl
 cA
 cA
 cA
@@ -8083,11 +8080,11 @@ cS
 fh
 cN
 cN
-cP
+fh
 eu
 cA
-cA
-cA
+fl
+fl
 cA
 cA
 cA
@@ -8167,9 +8164,9 @@ cN
 fh
 eu
 cA
-cA
-cA
-cA
+fl
+fl
+fl
 cA
 cA
 cA
@@ -8249,9 +8246,9 @@ fh
 eu
 cA
 cA
-cA
-cA
-cA
+fl
+fl
+fl
 cA
 cA
 cA
@@ -8322,7 +8319,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -8331,9 +8328,9 @@ eu
 cA
 cA
 cA
-cA
-cA
-cA
+fl
+fl
+fl
 cA
 cA
 cA
@@ -8403,7 +8400,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -8413,9 +8410,9 @@ cA
 cA
 cA
 cA
-cA
-cA
-cA
+fl
+fl
+fl
 cA
 cA
 cA
@@ -8484,7 +8481,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -8495,12 +8492,12 @@ cA
 cA
 cA
 cA
+fl
+fl
+fl
 cA
 cA
-cA
-cA
-cA
-cA
+fl
 fl
 cA
 cA
@@ -8565,7 +8562,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -8577,10 +8574,10 @@ cA
 cA
 cA
 cA
-cA
-cA
-cA
-cA
+fl
+fl
+fl
+fl
 fl
 fl
 cA
@@ -8646,7 +8643,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -8659,8 +8656,8 @@ cA
 cA
 cA
 cA
-cA
-cA
+fl
+fl
 fl
 fl
 fl
@@ -8727,7 +8724,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -8741,7 +8738,7 @@ cA
 cA
 cA
 cA
-cA
+fl
 fl
 fl
 fl
@@ -8808,7 +8805,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -8889,7 +8886,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -8970,7 +8967,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9051,7 +9048,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9132,7 +9129,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9213,7 +9210,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9294,7 +9291,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9375,7 +9372,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9456,7 +9453,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9537,7 +9534,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9618,7 +9615,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9699,7 +9696,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9780,7 +9777,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9794,7 +9791,7 @@ cA
 cA
 fl
 fl
-cA
+fl
 fl
 fl
 cA
@@ -9861,7 +9858,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -9942,7 +9939,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -10023,7 +10020,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -10104,7 +10101,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 cN
 cN
@@ -10185,7 +10182,7 @@ an
 fo
 fo
 fo
-jj
+cS
 fh
 fh
 fh
@@ -10355,8 +10352,8 @@ do
 eu
 cA
 cA
-cA
-cA
+fl
+fl
 cA
 cA
 cA
@@ -10436,8 +10433,8 @@ do
 eu
 cA
 cA
-cA
-cA
+fl
+fl
 cA
 cA
 cA
@@ -10517,8 +10514,8 @@ do
 eu
 cA
 cA
-cA
-cA
+fl
+fl
 cA
 cA
 cA
@@ -10598,8 +10595,8 @@ do
 eu
 cA
 cA
-cA
-cA
+fl
+fl
 cA
 cA
 cA
@@ -10679,8 +10676,8 @@ ks
 eu
 cA
 cA
-cA
-cA
+fl
+fl
 cA
 cA
 cA
@@ -10760,9 +10757,9 @@ do
 eu
 cA
 cA
-cA
-cA
-cA
+fl
+fl
+fl
 cA
 cA
 cA
@@ -10841,9 +10838,9 @@ do
 eu
 cA
 cA
-cA
-cA
-cA
+fl
+fl
+fl
 cA
 cA
 cA
@@ -10922,9 +10919,9 @@ do
 eu
 cA
 cA
-cA
-cA
-cA
+fl
+fl
+fl
 cA
 cA
 cA

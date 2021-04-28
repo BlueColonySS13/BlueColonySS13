@@ -7271,8 +7271,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
+"HE" = (
+/obj/structure/reagent_dispensers/water_cooler/full,
+/turf/simulated/floor/tiled/dark,
+/area/security/security_equiptment_storage)
 "MS" = (
 /obj/structure/closet/secure_closet/wall{
+	density = 0;
 	pixel_y = 28;
 	req_access = list(3)
 	},
@@ -7321,6 +7326,13 @@
 /obj/machinery/deployable/barrier,
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/police_station)
+"QY" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/machinery/photocopier,
+/turf/simulated/floor/tiled/dark,
+/area/security/warden)
 "Tn" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/light/colored/blue{
@@ -7334,10 +7346,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/security/armoury)
 "Uf" = (
-/turf/simulated/floor/tiled/dark,
-/area/security/warden)
-"Uo" = (
-/obj/machinery/photocopier,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
 "Wb" = (
@@ -25180,7 +25188,7 @@ jj
 js
 jj
 nq
-jl
+HE
 jl
 jl
 jl
@@ -25895,7 +25903,7 @@ gp
 Xm
 gp
 ix
-Uo
+Qd
 Uf
 YE
 ix
@@ -25976,7 +25984,7 @@ gp
 Xm
 gp
 ix
-Qd
+QY
 Uf
 Uf
 ix
