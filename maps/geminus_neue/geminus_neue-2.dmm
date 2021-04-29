@@ -485,9 +485,11 @@
 	},
 /area/planets/Geminus/outdoor/north)
 "abH" = (
-/obj/effect/wallframe_spawn/electric,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
+/obj/structure/sign/electricshock{
+	pixel_y = -28
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/central)
 "abI" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
@@ -575,9 +577,11 @@
 	},
 /area/planets/Geminus/outdoor/east)
 "abV" = (
-/obj/effect/wallframe_spawn/electric,
-/turf/simulated/floor/tiled,
-/area/rnd/xenobiology/xenoflora)
+/obj/structure/sign/double/city/museum/left{
+	pixel_y = -30
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/central)
 "abW" = (
 /turf/simulated/wall/iron/silver_paint,
 /area/security/main)
@@ -5131,9 +5135,12 @@
 /turf/simulated/floor/tiled/paleblue,
 /area/security/processing_one)
 "aoR" = (
-/obj/effect/wallframe_spawn/electric,
-/turf/simulated/floor/tiled,
-/area/teleporter)
+/obj/structure/sign/double/city/museum/left{
+	icon_state = "museum2";
+	pixel_y = -30
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/central)
 "aoS" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/dark,
@@ -5146,10 +5153,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/shoppingarea)
-"aoU" = (
-/obj/effect/wallframe_spawn/electric,
-/turf/simulated/floor/tiled,
-/area/rnd/xenobiology)
 "aoV" = (
 /obj/effect/floor_decal/corner/paleblue/full{
 	dir = 8
@@ -6882,13 +6885,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/courtroom)
 "atS" = (
-/obj/machinery/shower{
-	dir = 4;
-	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = -8
-	},
-/turf/simulated/floor/tiled/white,
+/obj/structure/table/steel_reinforced,
+/obj/item/weapon/grenade/chem_grenade/metalfoam,
+/obj/item/weapon/grenade/chem_grenade/metalfoam,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology)
 "atT" = (
 /obj/machinery/light/colored{
@@ -7288,16 +7288,23 @@
 	},
 /area/planets/Geminus/outdoor/north)
 "avh" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
+/obj/structure/table/woodentable,
+/obj/item/weapon/canvas/twentythreeXtwentythree,
+/obj/item/weapon/canvas/twentythreeXtwentythree,
+/obj/item/weapon/canvas/twentythreeXnineteen,
+/obj/item/weapon/canvas/nineteenXnineteen,
+/obj/item/weapon/canvas/nineteenXnineteen,
+/obj/item/weapon/canvas/nineteenXnineteen,
+/obj/structure/painting/random,
+/obj/item/weapon/reagent_containers/glass/rag,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
 	},
-/obj/effect/wallframe_spawn/reinforced,
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1;
+	icon_state = "bordercolor"
+	},
+/turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "avi" = (
 /obj/machinery/disposal,
@@ -7713,15 +7720,6 @@
 "awl" = (
 /turf/simulated/floor/tiled/dark,
 /area/lots/shopping/shopping_lot_thirteen)
-"awm" = (
-/obj/machinery/optable{
-	name = "Robotics Operating Table"
-	},
-/obj/machinery/oxygen_pump/anesthetic{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/white,
-/area/planets/Geminus/indoor/science)
 "awn" = (
 /obj/structure/noticeboard{
 	dir = 8;
@@ -8516,11 +8514,9 @@
 /turf/simulated/floor/wood/ebony,
 /area/bridge/meeting_room)
 "ayH" = (
-/obj/structure/sign/double/city/museum/left{
-	pixel_y = -30
-	},
-/turf/simulated/floor/pavement/empty,
-/area/planets/Geminus/outdoor/central)
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/research/anomaly)
 "ayI" = (
 /obj/structure/painting/random,
 /turf/simulated/floor/tiled/dark,
@@ -8568,12 +8564,9 @@
 /turf/simulated/floor/tiled/red,
 /area/crew_quarters)
 "ayP" = (
-/obj/structure/sign/double/city/museum/left{
-	icon_state = "museum2";
-	pixel_y = -30
-	},
-/turf/simulated/floor/pavement/empty,
-/area/planets/Geminus/outdoor/central)
+/obj/effect/wallframe_spawn/reinforced,
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/research/anomaly)
 "ayQ" = (
 /obj/machinery/cryopod/robot,
 /turf/simulated/floor/tiled/dark,
@@ -10853,7 +10846,18 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "aFn" = (
-/obj/effect/wallframe_spawn/reinforced/electric,
+/obj/item/weapon/deskbell,
+/obj/machinery/door/window/northleft{
+	name = "Research and Development Desk";
+	req_access = list(7);
+	req_one_access = list(29)
+	},
+/obj/machinery/door/blast/gate/thin{
+	dir = 1;
+	id = "rndgates";
+	name = "r&d lab gate";
+	req_access = list(7)
+	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -10861,7 +10865,15 @@
 	name = "Research Lockdown";
 	opacity = 0
 	},
-/turf/simulated/floor/tiled,
+/obj/structure/table/glass/white,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "rlockd";
+	name = "Research Lockdown";
+	opacity = 0
+	},
+/turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "aFo" = (
 /obj/effect/spawner/conditional_spawn/council/water_coolers,
@@ -11174,26 +11186,21 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
-"aGm" = (
-/obj/machinery/power/emitter{
-	dir = 8;
-	icon_state = "emitter"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"aGn" = (
-/turf/simulated/floor/tiled/steel_grid,
-/area/outpost/research/anomaly)
-"aGo" = (
-/turf/simulated/floor/tiled/monotile,
-/area/outpost/research/anomaly)
 "aGp" = (
-/obj/item/weapon/archaeological_find{
-	pixel_y = 10
+/obj/structure/table/woodentable,
+/obj/item/weapon/storage/fancy/markers,
+/obj/item/weapon/storage/fancy/markers,
+/obj/item/weapon/storage/fancy/markers,
+/obj/structure/painting/random,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9;
+	icon_state = "borderfloor"
 	},
-/obj/structure/table/glass,
-/turf/simulated/floor/tiled/steel_grid,
-/area/outpost/research/anomaly)
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "aGq" = (
 /obj/structure/closet/walllocker{
 	pixel_x = -30
@@ -11223,31 +11230,12 @@
 /obj/machinery/bounty_machine/preset/police,
 /turf/simulated/floor/tiled,
 /area/security/main)
-"aGu" = (
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
 "aGv" = (
 /obj/machinery/door/window/southright{
 	req_access = list(63)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/courtroom)
-"aGw" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 4;
-	icon_state = "pipe-t"
-	},
-/obj/structure/disposaloutlet{
-	density = 0;
-	name = "slime disposal outlet";
-	pixel_y = 25
-	},
-/obj/machinery/flasher{
-	id = "xenoflash1";
-	name = "Xeno Floor Mounted flash"
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
 "aGx" = (
 /obj/machinery/door/window/northleft,
 /obj/machinery/button/remote/blast_door{
@@ -11281,21 +11269,33 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/main)
 "aGB" = (
-/obj/machinery/smartfridge/secure/extract,
+/obj/machinery/door/blast/gate/thin{
+	dir = 2;
+	id = "rndgates2";
+	name = "robotics mech gate";
+	req_access = list(29,47)
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
+/area/planets/Geminus/indoor/science)
 "aGC" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor)
-"aGD" = (
-/obj/machinery/processor,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "aGE" = (
-/obj/machinery/bounty_machine/preset/research,
+/obj/machinery/door/blast/gate/thin{
+	dir = 2;
+	id = "rndgates2";
+	name = "robotics mech gate";
+	req_access = list(29,47)
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
+/area/planets/Geminus/indoor/science)
 "aGF" = (
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology)
@@ -11345,12 +11345,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/courtroom)
-"aGL" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/planets/Geminus/indoor/science)
 "aGN" = (
 /obj/structure/sign/warning/nosmoking_2{
 	pixel_y = 25
@@ -11359,24 +11353,20 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "aGO" = (
-/obj/machinery/r_n_d/protolathe,
-/obj/effect/floor_decal/industrial/danger{
-	dir = 9;
-	icon_state = "danger"
+/obj/machinery/r_n_d/circuit_imprinter,
+/obj/item/weapon/reagent_containers/glass/beaker/sulphuric,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 5
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/road/garage,
 /area/planets/Geminus/indoor/science)
 "aGP" = (
-/obj/machinery/computer/rdconsole/core,
-/turf/simulated/floor/tiled,
-/area/planets/Geminus/indoor/science)
-"aGQ" = (
-/obj/machinery/r_n_d/circuit_imprinter,
-/obj/effect/floor_decal/industrial/danger{
-	dir = 5;
-	icon_state = "danger"
+/obj/machinery/button/remote/blast_door{
+	id = "rndgates";
+	name = "research shutters";
+	pixel_x = 0;
+	pixel_y = 26
 	},
-/obj/item/weapon/reagent_containers/glass/beaker/sulphuric,
 /turf/simulated/floor/tiled,
 /area/planets/Geminus/indoor/science)
 "aGR" = (
@@ -11418,20 +11408,8 @@
 /turf/simulated/floor/wood/ebony,
 /area/crew_quarters/heads/hor)
 "aGY" = (
-/obj/machinery/vending/wallmed1{
-	charge_free_department = "research";
-	name = "NanoTrasen-Provided Emergency Medical Dispenser";
-	pixel_y = 32;
-	req_access = list();
-	vendor_department = "medical"
-	},
-/obj/effect/spawner/conditional_spawn/council/cleaning_bots,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
-"aGZ" = (
-/obj/structure/sink/kitchen{
-	name = "kitchen washing sink";
-	pixel_y = 32
+/obj/machinery/camera/network/research{
+	c_tag = "SCI - Research Exterior 2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology)
@@ -11448,8 +11426,12 @@
 	},
 /area/planets/Geminus/outdoor/central)
 "aHb" = (
-/obj/structure/flora/pottedplant/lily,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/computer/rdconsole/core,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1;
+	icon_state = "bordercolor"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/planets/Geminus/indoor/science)
 "aHc" = (
 /turf/simulated/floor/tiled,
@@ -11695,15 +11677,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/processing_two)
 "aHN" = (
-/obj/item/device/radio/intercom{
-	broadcasting = 0;
-	dir = 2;
-	listening = 0;
-	name = "Common Channel";
-	pixel_y = 21
+/obj/machinery/computer/rdconsole/core,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1;
+	icon_state = "bordercolor"
 	},
-/obj/structure/flora/pottedplant/lily,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/road/garage,
 /area/planets/Geminus/indoor/science)
 "aHO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -11718,13 +11697,12 @@
 /turf/simulated/floor/stairs,
 /area/security/main)
 "aHQ" = (
-/obj/machinery/button/remote/blast_door{
-	id = "rndgates";
-	name = "research shutters";
-	pixel_x = 0;
-	pixel_y = 26
+/obj/machinery/light_switch{
+	dir = 2;
+	name = "light switch ";
+	pixel_x = 32;
+	pixel_y = 4
 	},
-/obj/structure/flora/pottedplant/lily,
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "aHR" = (
@@ -11788,7 +11766,7 @@
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/central)
 "aHX" = (
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/steel_grid,
 /area/outpost/research/anomaly)
 "aHY" = (
 /obj/effect/floor_decal/borderfloor{
@@ -11821,13 +11799,10 @@
 /turf/simulated/floor/pavement/pave_tiling/indoors,
 /area/planets/Geminus/indoor/arrivalbus)
 "aIc" = (
-/obj/machinery/shower{
-	dir = 8;
-	icon_state = "shower";
-	pixel_x = 5;
-	pixel_y = -8
+/obj/structure/bed/chair/office/dark{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology)
 "aId" = (
 /obj/effect/wallframe_spawn,
@@ -11841,12 +11816,11 @@
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/north)
 "aIf" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 8;
-	icon_state = "danger";
-	tag = "icon-danger (WEST)"
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4;
+	icon_state = "bordercolor"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/road/garage,
 /area/planets/Geminus/indoor/science)
 "aIg" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -11888,19 +11862,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/planets/Geminus/indoor/city_hall)
-"aIl" = (
-/obj/effect/landmark/start{
-	name = "Scientist"
-	},
-/turf/simulated/floor/tiled,
-/area/planets/Geminus/indoor/science)
 "aIm" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 4;
-	icon_state = "danger";
-	tag = "icon-danger (EAST)"
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8;
+	icon_state = "bordercolor"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/road/garage,
 /area/planets/Geminus/indoor/science)
 "aIn" = (
 /obj/machinery/light/small{
@@ -12046,17 +12013,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/chemistry)
-"aIF" = (
-/obj/machinery/shower{
-	color = "grey";
-	dir = 4;
-	icon_state = "shower";
-	id = "xeno1";
-	name = "xeno shower";
-	pixel_x = -2
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
 "aIG" = (
 /mob/living/bot/medbot,
 /turf/simulated/floor/tiled/dark,
@@ -12312,15 +12268,11 @@
 /turf/simulated/floor/water/deep/pool,
 /area/crew_quarters/fitness)
 "aJl" = (
-/obj/machinery/light_switch{
-	dir = 2;
-	name = "light switch ";
-	pixel_x = 32;
-	pixel_y = 4
+/obj/machinery/door/window{
+	dir = 4
 	},
-/obj/structure/flora/pottedplant/lily,
 /turf/simulated/floor/tiled/dark,
-/area/planets/Geminus/indoor/science)
+/area/rnd/xenobiology)
 "aJm" = (
 /obj/machinery/status_display/money_display/rnd{
 	pixel_y = 32
@@ -12428,10 +12380,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
-"aJv" = (
-/obj/structure/anomaly_container,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
 "aJw" = (
 /obj/structure/sign/kiddieplaque{
 	desc = "Jenelle Park was made possible by generous contributions to Geminus City.  -CJDFBMTY 2563-";
@@ -12440,63 +12388,27 @@
 /turf/simulated/floor/pavement/pave_tiling,
 /area/planets/Geminus/outdoor/park)
 "aJx" = (
-/obj/machinery/light/colored/purple{
-	dir = 4;
-	icon_state = "purple1";
-	tag = "icon-purple1 (EAST)"
+/obj/item/weapon/archaeological_find{
+	pixel_y = 10
 	},
+/obj/structure/table/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/research/anomaly)
 "aJy" = (
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+/obj/structure/table/glass,
+/obj/item/weapon/archaeological_find{
+	pixel_y = 10
 	},
-/obj/machinery/power/emitter{
-	dir = 8;
-	icon_state = "emitter"
-	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/steel_grid,
 /area/outpost/research/anomaly)
 "aJA" = (
 /obj/structure/table/glass,
 /turf/simulated/floor/tiled/dark,
 /area/lots/office/multi/office_complex_one)
-"aJB" = (
-/obj/effect/floor_decal/industrial/danger/corner,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
-"aJC" = (
-/obj/machinery/door/window{
-	dir = 8;
-	icon_state = "right";
-	name = "Xeno Containment 1";
-	req_access = list(55)
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "xeno1shutters";
-	name = "Cell 1 Shutters"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
-	},
-/obj/effect/floor_decal/corner/pink/border{
-	dir = 4;
-	icon_state = "bordercolor"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "aJD" = (
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/structure/bed/chair/wood{
 	dir = 1;
-	icon_state = "dangercorner";
-	tag = "icon-dangercorner (NORTH)"
+	icon_state = "wooden_chair"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology)
@@ -12519,10 +12431,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/reception)
 "aJG" = (
-/obj/machinery/light/colored/purple{
-	dir = 8;
-	icon_state = "purple1";
-	tag = "icon-purple1 (WEST)"
+/obj/structure/closet/secure_closet/guncabinet/bodyguard{
+	name = "research security locker";
+	req_access = list(8);
+	req_one_access = list(8)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology)
@@ -12542,12 +12454,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
-"aJI" = (
-/obj/structure/sign/electricshock{
-	pixel_y = 30
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/outpost/research/anomaly)
 "aJJ" = (
 /obj/machinery/light/colored,
 /turf/simulated/floor/pavement/pave_tiling/indoors,
@@ -12567,7 +12473,7 @@
 	},
 /obj/machinery/lapvend,
 /turf/simulated/floor/tiled,
-/area/rnd/xenobiology)
+/area/rnd/research_foyer)
 "aJL" = (
 /turf/simulated/wall/iron,
 /area/lots/business/business_lot_one)
@@ -12795,14 +12701,9 @@
 /turf/simulated/floor/tiled,
 /area/lots/farm/farm_lot_one)
 "aKq" = (
-/obj/structure/closet/l3closet/scientist/double,
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb1"
-	},
-/obj/item/weapon/tank/air,
-/turf/simulated/floor/tiled/white,
-/area/rnd/xenobiology)
+/obj/machinery/door/airlock/research,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_foyer)
 "aKr" = (
 /obj/effect/floor_decal/corner/lightgrey/border,
 /turf/simulated/floor/tiled/techmaint/outdoors,
@@ -12841,19 +12742,7 @@
 	},
 /area/security/prison)
 "aKx" = (
-/obj/machinery/oxygen_pump/anesthetic{
-	pixel_y = 32
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 4;
-	icon_state = "danger";
-	tag = "icon-danger (EAST)"
-	},
-/obj/structure/railing{
-	dir = 4;
-	icon_state = "railing0";
-	tag = "icon-railing0 (EAST)"
-	},
+/obj/machinery/pros_fabricator,
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "aKy" = (
@@ -12952,24 +12841,14 @@
 	},
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/central)
-"aKH" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 4;
-	icon_state = "danger";
-	tag = "icon-danger (EAST)"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "aKI" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/tiled/red,
 /area/crew_quarters)
 "aKJ" = (
-/obj/structure/table/standard,
-/obj/item/device/slime_scanner,
-/obj/item/device/slime_scanner,
-/turf/simulated/floor/tiled,
-/area/rnd/xenobiology)
+/obj/machinery/bounty_machine/preset/research,
+/turf/simulated/floor/tiled/dark,
+/area/planets/Geminus/indoor/science)
 "aKK" = (
 /obj/effect/wallframe_spawn/basic/blue/hospital,
 /turf/simulated/floor/tiled/white,
@@ -12978,14 +12857,6 @@
 /obj/effect/wallframe_spawn/basic/blue/hospital,
 /turf/simulated/floor/tiled/white,
 /area/lots/shopping/shopping_lot_thirteen)
-"aKM" = (
-/obj/machinery/autolathe,
-/obj/effect/floor_decal/industrial/danger{
-	dir = 10;
-	icon_state = "danger"
-	},
-/turf/simulated/floor/tiled,
-/area/planets/Geminus/indoor/science)
 "aKN" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
@@ -12997,17 +12868,14 @@
 	},
 /obj/machinery/holoplant,
 /turf/simulated/floor/tiled,
-/area/planets/Geminus/indoor/science)
+/area/rnd/research_foyer)
 "aKO" = (
-/obj/machinery/r_n_d/destructive_analyzer,
-/obj/effect/floor_decal/industrial/danger{
-	dir = 6
+/obj/machinery/autolathe,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10;
+	icon_state = "bordercolor"
 	},
-/turf/simulated/floor/tiled,
-/area/planets/Geminus/indoor/science)
-"aKP" = (
-/obj/effect/floor_decal/industrial/danger,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/road/garage,
 /area/planets/Geminus/indoor/science)
 "aKQ" = (
 /obj/structure/table/glass/white,
@@ -13015,7 +12883,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/heads/hor)
 "aKR" = (
-/obj/structure/table/glass/white,
+/obj/structure/bed/chair/frilly/black,
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/heads/hor)
 "aKS" = (
@@ -13273,45 +13141,18 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/fitness)
-"aLy" = (
-/obj/machinery/door/window{
-	dir = 8;
-	icon_state = "right";
-	name = "Xeno Containment 2";
-	req_access = list(55)
+"aLz" = (
+/obj/machinery/button/remote/driver{
+	id = "rndgates2";
+	name = "research mech gates button";
+	pixel_x = 32;
+	req_access = list(7)
 	},
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "xeno2shutters";
-	name = "Cell 2 Shutters"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
-	},
-/obj/effect/floor_decal/corner/red/border{
+/obj/effect/floor_decal/corner/purple/border{
 	dir = 4;
 	icon_state = "bordercolor"
 	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
-"aLz" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 4;
-	icon_state = "danger";
-	tag = "icon-danger (EAST)"
-	},
-/obj/structure/railing{
-	dir = 4;
-	icon_state = "railing0";
-	tag = "icon-railing0 (EAST)"
-	},
-/obj/structure/railing,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/road/garage,
 /area/planets/Geminus/indoor/science)
 "aLA" = (
 /obj/structure/bed/chair/general{
@@ -13416,17 +13257,10 @@
 /turf/simulated/floor/tiled/lime,
 /area/lots/farm/farm_lot_one)
 "aLI" = (
-/obj/item/weapon/deskbell,
 /obj/machinery/door/window/northleft{
 	name = "Research and Development Desk";
 	req_access = list(7);
 	req_one_access = list(29)
-	},
-/obj/machinery/door/blast/gate/thin{
-	dir = 1;
-	id = "rndgates";
-	name = "r&d lab gate";
-	req_access = list(7)
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -13443,37 +13277,26 @@
 	name = "Research Lockdown";
 	opacity = 0
 	},
+/obj/machinery/door/blast/gate/thin{
+	dir = 1;
+	id = "rndgates";
+	name = "r&d lab gate";
+	req_access = list(7)
+	},
+/obj/machinery/cash_register/science,
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
-"aLK" = (
-/obj/machinery/door/window{
-	dir = 4;
-	icon_state = "right";
-	name = "Xeno Containment 3";
-	req_access = list(55)
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "xeno3shutters";
-	name = "Cell 3 Shutters"
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 8;
-	icon_state = "bordercolor";
-	tag = "icon-bordercolor (WEST)"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "aLL" = (
 /obj/effect/wallframe_spawn/basic/blue/hospital,
 /turf/simulated/floor/tiled/white,
 /area/lots/business/business_lot_two)
 "aLM" = (
-/turf/simulated/floor/stairs{
+/obj/structure/window/reinforced{
 	dir = 4;
-	icon_state = "ramptop"
+	health = 1e+006
 	},
-/area/planets/Geminus/indoor/science)
+/turf/simulated/floor/tiled/dark,
+/area/rnd/xenobiology)
 "aLN" = (
 /obj/machinery/light/colored/purple{
 	dir = 1;
@@ -13550,11 +13373,17 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/courtroom)
 "aLU" = (
-/obj/structure/reagent_dispensers/acid{
-	pixel_x = 32
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/window{
+	dir = 8;
+	icon_state = "right";
+	req_access = list(55)
+	},
+/obj/machinery/door/window{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/planets/Geminus/indoor/science)
+/area/rnd/research_foyer)
 "aLV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -13592,23 +13421,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/reception)
 "aMa" = (
-/obj/machinery/vending/snack,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/research_breakroom)
-"aMb" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/effect/landmark/start{
+	name = "Scientist"
 	},
-/obj/machinery/shower{
-	color = "grey";
-	dir = 8;
-	icon_state = "shower";
-	id = "xeno1";
-	name = "xeno shower";
-	pixel_x = 2
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
+/turf/simulated/floor/road/garage,
+/area/planets/Geminus/indoor/science)
 "aMc" = (
 /obj/structure/cryofeed{
 	dir = 4
@@ -13619,14 +13436,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters)
 "aMd" = (
-/obj/structure/table/standard,
-/obj/item/weapon/storage/box/monkeycubes{
-	dont_save = 1
-	},
-/obj/item/weapon/storage/box/monkeycubes{
-	dont_save = 1
-	},
-/turf/simulated/floor/tiled,
+/obj/machinery/smartfridge/food/research,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "aMe" = (
 /obj/structure/disposalpipe/segment{
@@ -13639,13 +13450,14 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/stairs{
-	dir = 4;
-	icon_state = "ramptop"
-	},
+/obj/machinery/vending/materials/science,
+/turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "aMg" = (
-/turf/simulated/floor/stairs,
+/obj/effect/landmark/start{
+	name = "Research Assistant"
+	},
+/turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "aMh" = (
 /obj/effect/floor_decal/pavement_grit/edged,
@@ -13698,34 +13510,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/lots/office/office_lot_one)
-"aMr" = (
-/obj/machinery/door/airlock/research{
-	id_tag = "researchdoor";
-	name = "Research Xenoarch Office";
-	req_access = list(65)
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/outpost/research/anomaly)
-"aMs" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/wallframe_spawn/reinforced/electric,
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "xeno1shutters";
-	name = "Cell 1 Shutters"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "aMt" = (
 /obj/effect/floor_decal/pavement_grit/rough,
 /obj/effect/decal/cleanable/dirt,
@@ -13737,24 +13521,17 @@
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/east)
 "aMw" = (
-/obj/machinery/light/colored{
-	dir = 4;
-	icon_state = "yellow1";
-	tag = "icon-yellow1 (EAST)"
-	},
-/obj/structure/bed/chair/frilly/black{
-	dir = 4;
-	icon_state = "frillychair"
-	},
-/turf/simulated/floor/carpet/purcarpet,
-/area/crew_quarters/heads/hor)
-"aMx" = (
-/obj/structure/bed/chair/frilly/black{
+/obj/machinery/light/colored/purple{
 	dir = 8;
-	icon_state = "frillychair"
+	icon_state = "purple1";
+	tag = "icon-purple1 (WEST)"
 	},
-/turf/simulated/floor/carpet/purcarpet,
-/area/crew_quarters/heads/hor)
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4;
+	icon_state = "bordercolor"
+	},
+/turf/simulated/floor/road/garage,
+/area/planets/Geminus/indoor/science)
 "aMy" = (
 /obj/structure/bed/chair/frilly/purp{
 	dir = 1;
@@ -14007,10 +13784,9 @@
 /turf/simulated/wall/iron,
 /area/lots/business/business_lot_two)
 "aNq" = (
-/obj/structure/closet/l3closet/scientist/double,
-/obj/item/weapon/tank/air,
-/turf/simulated/floor/tiled/white,
-/area/rnd/xenobiology)
+/obj/structure/table/glass,
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/research/anomaly)
 "aNt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14116,23 +13892,6 @@
 "aNF" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay2)
-"aNG" = (
-/obj/effect/wallframe_spawn/reinforced/electric,
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "xeno1shutters";
-	name = "Cell 1 Shutters"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
 "aNI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -14145,11 +13904,6 @@
 "aNJ" = (
 /turf/simulated/wall/plastic/hospital,
 /area/medical/medbay2)
-"aNK" = (
-/obj/structure/table/standard,
-/obj/machinery/reagentgrinder,
-/turf/simulated/floor/tiled,
-/area/rnd/xenobiology)
 "aNL" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -14166,8 +13920,11 @@
 	},
 /area/planets/Geminus/outdoor/central)
 "aNN" = (
-/obj/structure/closet/secure_closet/scientist,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/r_n_d/protolathe,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 9
+	},
+/turf/simulated/floor/road/garage,
 /area/planets/Geminus/indoor/science)
 "aNO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14190,9 +13947,16 @@
 /turf/simulated/wall/iron/silver_paint,
 /area/lots/business/business_lot_twelve)
 "aNS" = (
-/obj/machinery/bounty_machine/preset/research,
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 1e+006
+	},
+/obj/structure/bed/chair/wood{
+	dir = 1;
+	icon_state = "wooden_chair"
+	},
 /turf/simulated/floor/tiled/dark,
-/area/planets/Geminus/indoor/science)
+/area/rnd/xenobiology)
 "aNT" = (
 /obj/item/weapon/circuitboard/aicore{
 	pixel_x = -2;
@@ -14245,50 +14009,30 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/reception)
 "aOa" = (
-/obj/machinery/door/window/northleft{
-	name = "Research and Development Desk";
-	req_access = list(7);
-	req_one_access = list(29)
+/obj/structure/table/steel_reinforced,
+/obj/item/device/flash/synthetic,
+/obj/item/device/flash/synthetic,
+/obj/item/weapon/handcuffs/cyborg,
+/obj/item/weapon/handcuffs/cyborg,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/xenobiology)
+"aOb" = (
+/obj/effect/landmark/start{
+	name = "Roboticist"
 	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
-	},
-/obj/structure/table/glass/white,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
-	},
-/obj/machinery/door/blast/gate/thin{
-	dir = 1;
-	id = "rndgates";
-	name = "r&d lab gate";
-	req_access = list(7)
-	},
-/obj/machinery/cash_register/science,
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
-"aOb" = (
-/turf/simulated/floor/tiled/white,
-/area/planets/Geminus/indoor/science)
 "aOc" = (
-/obj/structure/table/reinforced,
-/obj/item/device/mmi,
-/obj/item/device/mmi,
-/obj/item/device/mmi,
-/turf/simulated/floor/tiled/white,
+/obj/machinery/camera/network/research{
+	dir = 4;
+	icon_state = "camera"
+	},
+/obj/machinery/cell_charger,
+/obj/structure/table/glass/white,
+/turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "aOd" = (
-/obj/machinery/computer/operating{
-	name = "Robotics Operating Computer"
-	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/road/garage,
 /area/planets/Geminus/indoor/science)
 "aOf" = (
 /obj/machinery/status_display/money_display/nanotrasen,
@@ -14298,13 +14042,6 @@
 	outdoors = 1
 	},
 /area/planets/Geminus/outdoor/central)
-"aOg" = (
-/obj/structure/bed/chair/frilly/black{
-	dir = 4;
-	icon_state = "frillychair"
-	},
-/turf/simulated/floor/carpet/purcarpet,
-/area/crew_quarters/heads/hor)
 "aOh" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/wood/ebony,
@@ -14397,16 +14134,19 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/fitness)
 "aOA" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
+/obj/structure/table/steel_reinforced,
+/obj/item/weapon/melee/baton/slime/loaded,
+/obj/item/weapon/extinguisher,
+/obj/machinery/light/colored{
+	dir = 8;
+	icon_state = "yellow1";
+	tag = "icon-yellow1 (WEST)"
 	},
-/obj/effect/wallframe_spawn,
-/turf/simulated/floor/tiled,
-/area/rnd/xenobiology/xenoflora)
+/obj/structure/table/steel_reinforced,
+/obj/structure/table/steel_reinforced,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/xenobiology)
 "aOB" = (
 /turf/simulated/floor/stairs,
 /area/teleporter)
@@ -14423,15 +14163,6 @@
 "aOF" = (
 /turf/simulated/floor/tiled,
 /area/lots/business/business_lot_nine)
-"aOG" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/item/weapon/reagent_containers/dropper{
-	pixel_y = -4
-	},
-/obj/item/weapon/storage/toolbox/mechanical,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
 "aOH" = (
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -14500,24 +14231,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay2)
-"aOL" = (
-/obj/machinery/light/colored/purple{
-	dir = 1;
-	icon_state = "purple1";
-	tag = "icon-purple1 (NORTH)"
-	},
-/obj/structure/table/steel_reinforced,
-/obj/item/stack/nanopaste,
-/obj/item/stack/nanopaste,
-/obj/item/weapon/anobattery,
-/obj/item/weapon/anobattery,
-/obj/item/weapon/anobattery,
-/obj/item/weapon/melee/baton/loaded{
-	dont_save = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
 "aOM" = (
+/obj/machinery/light/colored/purple{
+	dir = 4;
+	icon_state = "purple1";
+	tag = "icon-purple1 (EAST)"
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
 	icon_state = "borderfloor"
@@ -14525,11 +14244,6 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8;
 	icon_state = "bordercolor"
-	},
-/obj/machinery/light/colored/purple{
-	dir = 4;
-	icon_state = "purple1";
-	tag = "icon-purple1 (EAST)"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
@@ -14543,29 +14257,6 @@
 "aOR" = (
 /turf/simulated/floor/tiled/dark,
 /area/lots/business/business_lot_nine)
-"aOS" = (
-/obj/structure/table/standard,
-/obj/item/weapon/storage/pill_bottle/rezadone,
-/obj/item/weapon/storage/pill_bottle/rezadone,
-/turf/simulated/floor/tiled,
-/area/rnd/xenobiology)
-"aOT" = (
-/obj/effect/wallframe_spawn/reinforced/electric,
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "xeno1shutters";
-	name = "Cell 1 Shutters"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "aOU" = (
 /turf/simulated/floor/tiled/white,
 /area/lots/business/business_lot_two)
@@ -14578,48 +14269,32 @@
 /turf/simulated/floor/tiled/dark,
 /area/lots/business/business_lot_five)
 "aOX" = (
-/obj/machinery/firealarm{
-	pixel_y = 30
-	},
-/obj/structure/table/steel_reinforced,
-/obj/item/weapon/weldingtool,
-/obj/item/clothing/head/welding,
-/obj/item/device/xenoarch_multi_tool,
-/obj/item/clothing/glasses/science,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"aOY" = (
-/obj/machinery/shower{
-	color = "grey";
-	dir = 8;
-	icon_state = "shower";
-	id = "xeno1";
-	name = "xeno shower";
-	pixel_x = 2
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
-"aOZ" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/cell_charger,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
+/obj/effect/floor_decal/corner/purple/border,
+/turf/simulated/floor/road/garage,
+/area/planets/Geminus/indoor/science)
 "aPa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/pavement/pave_tiling,
 /area/planets/Geminus/outdoor/east)
 "aPb" = (
-/obj/structure/table/standard,
-/obj/item/device/defib_kit/jumper_kit/loaded,
 /obj/machinery/light/colored/purple{
 	dir = 8;
 	icon_state = "purple1";
 	tag = "icon-purple1 (WEST)"
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "aPc" = (
+/obj/machinery/light/colored{
+	dir = 4;
+	icon_state = "yellow1";
+	tag = "icon-yellow1 (EAST)"
+	},
+/obj/structure/bed/chair/frilly/black{
+	dir = 4;
+	icon_state = "frillychair"
+	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/heads/hor)
 "aPd" = (
@@ -14724,17 +14399,14 @@
 /turf/simulated/floor/tiled/white,
 /area/lots/business/business_lot_eleven)
 "aPy" = (
-/obj/item/device/radio/intercom{
-	broadcasting = 0;
-	dir = 2;
-	listening = 0;
-	name = "Common Channel";
-	pixel_y = 21
+/obj/machinery/door/airlock/research{
+	dir = 1;
+	icon_state = "closed";
+	name = "Geminus Laboratories";
+	req_access = list(47)
 	},
-/obj/structure/disposalpipe/trunk,
-/obj/machinery/disposal,
 /turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
+/area/planets/Geminus/indoor/science)
 "aPz" = (
 /obj/machinery/light/colored{
 	dir = 4;
@@ -14856,40 +14528,20 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/fitness)
-"aPR" = (
-/obj/machinery/smartfridge/food/research,
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
-"aPS" = (
-/obj/machinery/botany/editor,
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
 "aPT" = (
-/obj/machinery/botany/extractor,
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
+/obj/machinery/light/small{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/freezer,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "aPU" = (
-/obj/machinery/seed_storage/xenobotany{
-	save_contents = 0;
-	save_reagents = 0
+/obj/machinery/mech_recharger,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8;
+	icon_state = "bordercolor"
 	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
+/turf/simulated/floor/road/garage,
+/area/planets/Geminus/indoor/science)
 "aPV" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1;
@@ -14950,10 +14602,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay2)
-"aQc" = (
-/obj/machinery/power/port_gen/pacman,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
 "aQd" = (
 /obj/structure/girder,
 /turf/simulated/floor/tiled/freezer,
@@ -14983,41 +14631,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay2)
-"aQj" = (
-/obj/machinery/light/colored/purple,
-/obj/machinery/flasher{
-	id = "xenoflash1";
-	name = "Xeno Floor Mounted flash"
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
 "aQk" = (
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 4;
-	icon_state = "dangercorner";
-	tag = "icon-dangercorner (EAST)"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
-"aQl" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger";
-	tag = "icon-danger (NORTH)"
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/structure/closet/secure_closet/hydroponics,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "aQm" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/security/vacantoffice)
-"aQn" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb1"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "aQo" = (
 /obj/structure/table/glass,
 /obj/item/weapon/newspaper,
@@ -15031,13 +14652,18 @@
 /turf/simulated/floor/tiled/white,
 /area/lots/business/business_lot_eleven)
 "aQq" = (
-/obj/effect/floor_decal/industrial/danger,
-/turf/simulated/floor/tiled/white,
+/obj/structure/bed/chair/office/light,
+/obj/effect/landmark/start{
+	name = "Roboticist"
+	},
+/turf/simulated/floor/road/garage,
 /area/planets/Geminus/indoor/science)
 "aQs" = (
-/obj/structure/table/glass/white,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
-/turf/simulated/floor/wood/ebony,
+/obj/structure/bed/chair/frilly/black{
+	dir = 4;
+	icon_state = "frillychair"
+	},
+/turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/heads/hor)
 "aQt" = (
 /obj/machinery/door/window/westleft{
@@ -15214,26 +14840,12 @@
 /obj/effect/wallframe_spawn/basic/blue,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
-"aQQ" = (
-/obj/machinery/vending/hydronutrients{
-	categories = 3;
-	save_contents = 0;
-	save_reagents = 0
-	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
 "aQR" = (
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled/freezer,
+/turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "aQS" = (
 /obj/structure/disposalpipe/segment{
@@ -15335,9 +14947,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/medbay2)
 "aRj" = (
-/obj/effect/floor_decal/corner/lime{
-	dir = 5
-	},
 /obj/item/device/radio/intercom{
 	broadcasting = 0;
 	dir = 2;
@@ -15345,14 +14954,11 @@
 	name = "Common Channel";
 	pixel_y = 21
 	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/freezer,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "aRk" = (
 /obj/effect/floor_decal/corner/paleblue{
@@ -15436,23 +15042,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/storage)
 "aRx" = (
-/obj/machinery/computer/rdconsole/robotics{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/planets/Geminus/indoor/science)
-"aRy" = (
-/obj/machinery/r_n_d/circuit_imprinter,
-/turf/simulated/floor/tiled/dark,
-/area/planets/Geminus/indoor/science)
-"aRz" = (
-/obj/machinery/vending/robotics,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/light/colored/purple,
+/obj/structure/table/reinforced,
+/obj/item/device/defib_kit/jumper_kit/loaded,
+/turf/simulated/floor/tiled/white,
 /area/planets/Geminus/indoor/science)
 "aRA" = (
-/obj/structure/table/glass/white,
-/obj/random/tech_supply,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/light/colored/purple,
+/turf/simulated/floor/tiled/white,
 /area/planets/Geminus/indoor/science)
 "aRC" = (
 /obj/item/weapon/material/shard,
@@ -15505,16 +15102,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/courtroom)
 "aRJ" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4;
-	icon_state = "borderfloor"
-	},
+/obj/machinery/mech_recharger,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 4;
 	icon_state = "bordercolor"
 	},
-/turf/simulated/floor/tiled,
-/area/rnd/xenobiology)
+/turf/simulated/floor/road/garage,
+/area/planets/Geminus/indoor/science)
 "aRK" = (
 /obj/effect/floor_decal/corner/lightgrey{
 	dir = 9;
@@ -15525,29 +15119,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/courtroom)
 "aRL" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8;
-	icon_state = "borderfloor"
+/obj/machinery/camera/network/research{
+	dir = 1;
+	icon_state = "camera"
 	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
-	},
-/turf/simulated/floor/tiled,
-/area/planets/Geminus/indoor/science)
+/obj/machinery/light/colored/purple,
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/research/anomaly)
 "aRM" = (
-/obj/machinery/keycard_auth{
-	pixel_x = 0;
-	pixel_y = -24
-	},
-/obj/machinery/light/colored{
-	dir = 4;
-	icon_state = "yellow1";
-	tag = "icon-yellow1 (EAST)"
-	},
-/obj/structure/table/glass/white,
-/obj/item/weapon/storage/box/glasses/meta,
-/turf/simulated/floor/wood/ebony,
+/turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/heads/hor)
 "aRN" = (
 /obj/machinery/holosign/surgery{
@@ -15709,6 +15289,9 @@
 /turf/simulated/floor/tiled/freezer,
 /area/lots/business/business_lot_eleven)
 "aSl" = (
+/obj/random/plushie{
+	dont_save = 1
+	},
 /turf/simulated/floor/grass,
 /area/crew_quarters/heads/hor)
 "aSm" = (
@@ -15890,13 +15473,6 @@
 	},
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/east)
-"aSM" = (
-/obj/machinery/chem_master,
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
 "aSN" = (
 /obj/effect/floor_decal/corner/blue/full{
 	dir = 8
@@ -15980,35 +15556,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "aSY" = (
-/obj/machinery/reagentgrinder,
-/obj/structure/table/glass,
-/obj/machinery/light/colored/green{
-	dir = 1;
-	icon_state = "green1";
-	tag = "icon-green1 (NORTH)"
-	},
-/obj/effect/floor_decal/corner/lime{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/freezer,
+/obj/structure/bookcase/manuals/xenoarchaeology,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "aSZ" = (
-/obj/structure/table/glass,
-/obj/item/weapon/storage/box/beakers{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/weapon/storage/box/botanydisk,
-/obj/effect/floor_decal/corner/purple{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/freezer,
+/obj/structure/bookcase/manuals/research_and_development,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "aTa" = (
 /turf/simulated/wall/iron,
@@ -16182,16 +15735,18 @@
 /turf/simulated/wall/plastic/science,
 /area/rnd/xenobiology)
 "aTw" = (
-/obj/effect/wallframe_spawn,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
+/obj/structure/easel,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10;
+	icon_state = "borderfloor"
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10;
+	icon_state = "bordercolor"
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/xenobiology)
+/area/rnd/research_foyer)
 "aTx" = (
 /obj/machinery/vending/medical/hospital/gcchgms,
 /turf/simulated/floor/tiled/white,
@@ -16271,17 +15826,22 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "aTG" = (
-/obj/machinery/light/colored/purple{
-	dir = 8;
-	icon_state = "purple1";
-	tag = "icon-purple1 (WEST)"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/planets/Geminus/indoor/science)
-"aTH" = (
-/obj/effect/wallframe_spawn,
+/obj/structure/easel,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled,
-/area/planets/Geminus/indoor/science)
+/area/rnd/research_foyer)
+"aTH" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 8;
+	icon_state = "borderfloorcorner"
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner{
+	dir = 8;
+	icon_state = "bordercolorcorner"
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer)
 "aTI" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
@@ -16434,15 +15994,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "aUd" = (
-/obj/effect/floor_decal/corner/purple{
-	dir = 9
-	},
-/obj/structure/sink/kitchen{
-	dir = 4;
-	icon_state = "sink_alt";
-	pixel_x = -10
-	},
-/turf/simulated/floor/tiled/freezer,
+/obj/structure/table/rack,
+/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/weapon/reagent_containers/glass/bucket,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "aUe" = (
 /turf/simulated/floor/tiled/dark,
@@ -16672,20 +16228,21 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay2)
 "aUE" = (
-/obj/structure/reagent_dispensers/coolanttank,
-/turf/simulated/floor/tiled/dark,
+/obj/structure/table/glass,
+/obj/item/weapon/archaeological_find{
+	pixel_y = 10
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/outpost/research/anomaly)
 "aUF" = (
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "aUG" = (
-/obj/machinery/light/colored/purple{
-	dir = 1;
-	icon_state = "purple1";
-	tag = "icon-purple1 (NORTH)"
+/obj/structure/reagent_dispensers/acid{
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/dark,
-/area/rnd/research_foyer)
+/area/planets/Geminus/indoor/science)
 "aUH" = (
 /obj/effect/floor_decal/pavement_grit,
 /obj/effect/decal/cleanable/dirt,
@@ -16714,14 +16271,12 @@
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/east)
 "aUN" = (
-/obj/machinery/status_display{
-	density = 0;
-	layer = 4;
-	pixel_x = 0;
-	pixel_y = 25
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10;
+	icon_state = "bordercolor"
 	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/research_foyer)
+/turf/simulated/floor/road/garage,
+/area/planets/Geminus/indoor/science)
 "aUO" = (
 /obj/machinery/button/remote/blast_door{
 	id = "stall1button";
@@ -16731,11 +16286,16 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/lots/stall/one)
 "aUP" = (
-/obj/structure/sign/xenobio{
-	pixel_y = 25
+/obj/machinery/camera/network/research{
+	dir = 10;
+	icon_state = "camera"
 	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/research_foyer)
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 6;
+	icon_state = "bordercolor"
+	},
+/turf/simulated/floor/road/garage,
+/area/planets/Geminus/indoor/science)
 "aUQ" = (
 /obj/machinery/light/small{
 	dir = 1;
@@ -16886,20 +16446,7 @@
 /area/quartermaster/storage)
 "aVp" = (
 /obj/effect/wallframe_spawn/reinforced/electric,
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "xeno2shutters";
-	name = "Cell 2 Shutters"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	dir = 4;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
-	},
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "aVq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17041,9 +16588,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/constructionsite/maintenance)
-"aVM" = (
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
 "aVN" = (
 /obj/machinery/vending/medical/hospital/gcch,
 /turf/simulated/floor/tiled/white,
@@ -17064,13 +16608,11 @@
 /turf/simulated/floor/wood/ebony,
 /area/lots/office/multi/office_complex_one)
 "aVQ" = (
-/obj/machinery/light/colored/purple{
-	dir = 4;
-	icon_state = "purple1";
-	tag = "icon-purple1 (EAST)"
+/obj/machinery/camera/network/research{
+	dir = 10
 	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/research_foyer)
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/research/anomaly)
 "aVS" = (
 /obj/effect/wallframe_spawn/basic/blue/hospital,
 /turf/simulated/floor/lino,
@@ -17122,12 +16664,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/cult,
 /area/planets/Geminus/outdoor/central)
-"aVY" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
 "aVZ" = (
 /obj/machinery/computer/med_data/laptop,
 /obj/effect/floor_decal/corner/paleblue/full,
@@ -17325,25 +16861,6 @@
 	},
 /turf/simulated/wall/iron/silver_paint,
 /area/lots/business/business_lot_twelve)
-"aWw" = (
-/obj/structure/table/glass,
-/obj/machinery/requests_console{
-	department = "Science";
-	departmentType = 2;
-	name = "Science Requests Console";
-	pixel_x = 30;
-	pixel_y = 0
-	},
-/obj/item/weapon/paper_bin{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/weapon/pen,
-/obj/effect/floor_decal/corner/purple{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
 "aWx" = (
 /obj/effect/wallframe_spawn/basic/blue/hospital,
 /turf/simulated/floor/tiled/dark,
@@ -17365,12 +16882,6 @@
 	},
 /turf/simulated/floor/wood/walnut,
 /area/lots/business/business_lot_twelve)
-"aWA" = (
-/obj/structure/table/standard,
-/obj/item/weapon/storage/box/syringes,
-/obj/item/weapon/storage/box/beakers,
-/turf/simulated/floor/tiled,
-/area/rnd/xenobiology)
 "aWB" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/storage/firstaid/surgery,
@@ -17481,7 +16992,11 @@
 /turf/simulated/open,
 /area/planets/Geminus/indoor)
 "aWT" = (
-/obj/structure/bookcase/manuals/research_and_development,
+/obj/machinery/light/colored/purple{
+	dir = 4;
+	icon_state = "purple1";
+	tag = "icon-purple1 (EAST)"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "aWU" = (
@@ -17532,32 +17047,20 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/medical/reception)
-"aXa" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/wall/plastic/science,
-/area/rnd/xenobiology)
-"aXb" = (
-/obj/effect/floor_decal/corner/purple{
-	dir = 9
-	},
-/obj/machinery/biogenerator,
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
 "aXc" = (
-/obj/structure/closet/l3closet/scientist/double,
-/obj/item/weapon/tank/air,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/reagentgrinder,
+/obj/structure/table/glass,
+/obj/machinery/light/colored/green{
+	dir = 1;
+	icon_state = "green1";
+	tag = "icon-green1 (NORTH)"
+	},
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "aXd" = (
 /obj/effect/wallframe_spawn,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research_breakroom)
-"aXe" = (
-/obj/structure/sign/nosmoking_1,
-/turf/simulated/wall/plastic/science,
-/area/rnd/xenobiology)
 "aXf" = (
 /obj/structure/disposalpipe/junction,
 /turf/simulated/floor/tiled/dark,
@@ -17607,22 +17110,28 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/quartermaster/storage)
 "aXo" = (
-/obj/structure/reagent_dispensers/watertank,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/turf/simulated/floor/tiled/freezer,
+/obj/machinery/modular_computer/console/preset/research{
+	dir = 4
+	},
+/obj/machinery/light/colored/purple{
+	dir = 4;
+	icon_state = "purple1";
+	tag = "icon-purple1 (EAST)"
+	},
+/turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "aXp" = (
-/obj/machinery/chem_master,
-/obj/effect/floor_decal/corner/purple{
-	dir = 6
+/obj/machinery/modular_computer/console/preset/research{
+	dir = 8;
+	icon_state = "console"
 	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
-"aXq" = (
-/obj/structure/table/standard,
-/obj/item/slime_extract/grey,
+/obj/machinery/light/colored/purple{
+	dir = 8;
+	icon_state = "purple1";
+	tag = "icon-purple1 (WEST)"
+	},
 /turf/simulated/floor/tiled,
-/area/rnd/xenobiology)
+/area/rnd/xenobiology/xenoflora)
 "aXr" = (
 /obj/machinery/camera/network/medbay{
 	dir = 6;
@@ -17682,73 +17191,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "aXx" = (
-/obj/structure/bed/chair/office/light,
-/obj/effect/landmark/start{
-	name = "Xenobiologist"
-	},
-/turf/simulated/floor/tiled/white,
-/area/rnd/research_breakroom)
-"aXy" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb1"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"aXz" = (
-/obj/effect/floor_decal/corner/purple{
-	dir = 9
-	},
-/obj/machinery/seed_extractor,
+/obj/machinery/botany/extractor,
 /turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
-"aXA" = (
-/obj/structure/bookcase/manuals/xenoarchaeology,
-/obj/effect/floor_decal/spline/fancy{
-	dir = 9;
-	icon_state = "spline_fancy"
-	},
-/obj/effect/floor_decal/spline/fancy{
-	dir = 8;
-	icon_state = "spline_fancy"
-	},
-/turf/simulated/floor/wood/ebony,
-/area/outpost/research/anomaly)
-"aXB" = (
-/obj/machinery/photocopier,
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1;
-	icon_state = "spline_fancy"
-	},
-/obj/machinery/light/colored/purple{
-	dir = 1;
-	icon_state = "purple1";
-	tag = "icon-purple1 (NORTH)"
-	},
-/turf/simulated/floor/wood/ebony,
-/area/outpost/research/anomaly)
-"aXC" = (
-/obj/machinery/papershredder,
-/obj/effect/floor_decal/spline/fancy{
-	dir = 5;
-	icon_state = "spline_fancy"
-	},
-/obj/machinery/camera/network/research{
-	c_tag = "SCI - Research Directors Office";
-	dir = 8;
-	icon_state = "camera"
-	},
-/turf/simulated/floor/wood/ebony,
-/area/outpost/research/anomaly)
-"aXD" = (
-/obj/machinery/light/colored/purple{
-	dir = 4;
-	icon_state = "purple1";
-	tag = "icon-purple1 (EAST)"
-	},
-/obj/structure/anomaly_container,
+/area/rnd/xenobiology)
+"aXz" = (
 /turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
+/area/rnd/xenobiology/xenoflora)
 "aXE" = (
 /obj/machinery/r_n_d/server/robotics,
 /turf/simulated/floor/bluegrid{
@@ -17789,12 +17237,18 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research_breakroom)
 "aXJ" = (
-/obj/machinery/vending/cola,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/research_breakroom)
+/obj/structure/table/glass,
+/obj/item/weapon/storage/box/beakers{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/weapon/storage/box/botanydisk,
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
 "aXK" = (
-/turf/simulated/floor/tiled/white,
-/area/rnd/research_breakroom)
+/obj/structure/closet/secure_closet/scientist,
+/turf/simulated/floor/tiled/dark,
+/area/planets/Geminus/indoor/science)
 "aXM" = (
 /obj/structure/fence,
 /obj/effect/decal/cleanable/dirt,
@@ -17856,20 +17310,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "aYa" = (
-/obj/machinery/vending/materials/science,
-/turf/simulated/floor/tiled/dark,
+/obj/structure/sink/kitchen,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "aYb" = (
-/obj/structure/table/glass,
-/obj/machinery/newscaster{
-	pixel_x = 28;
-	pixel_y = 0
-	},
-/obj/machinery/reagentgrinder,
-/obj/effect/floor_decal/corner/purple{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/freezer,
+/obj/structure/table/glass/white,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen/fountain,
+/turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "aYc" = (
 /obj/structure/table/reinforced,
@@ -17927,27 +17375,27 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/reception)
 "aYg" = (
-/obj/machinery/radiocarbon_spectrometer,
+/obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
+/area/rnd/research_breakroom)
 "aYh" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 8;
-	icon_state = "spline_fancy"
+/obj/structure/reagent_dispensers/acid{
+	pixel_x = 0;
+	pixel_y = -32
 	},
-/turf/simulated/floor/wood/ebony,
-/area/outpost/research/anomaly)
+/obj/structure/closet/secure_closet/scientist,
+/turf/simulated/floor/tiled/dark,
+/area/planets/Geminus/indoor/science)
 "aYi" = (
-/obj/structure/bed/chair/office/dark,
-/turf/simulated/floor/wood/ebony,
-/area/outpost/research/anomaly)
+/turf/simulated/floor/stairs,
+/area/planets/Geminus/indoor/science)
 "aYj" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 4;
-	icon_state = "spline_fancy"
+/obj/structure/bed/chair/office/dark{
+	dir = 4
 	},
-/turf/simulated/floor/wood/ebony,
-/area/outpost/research/anomaly)
+/obj/machinery/light/floor,
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
 "aYk" = (
 /obj/effect/landmark{
 	name = "Observer-Start"
@@ -17984,6 +17432,7 @@
 	icon_state = "purple1";
 	tag = "icon-purple1 (EAST)"
 	},
+/obj/structure/reagent_dispensers/cleanertank,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research_breakroom)
 "aYp" = (
@@ -18101,13 +17550,13 @@
 	},
 /area/planets/Geminus/outdoor/south)
 "aYH" = (
-/obj/effect/floor_decal/corner/purple{
-	dir = 10
+/obj/structure/table/steel_reinforced,
+/obj/item/weapon/grenade/chem_grenade/cleaner,
+/obj/machinery/camera/network/research{
+	c_tag = "SCI - Research Foyer West";
+	dir = 1
 	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/freezer,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "aYI" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -18120,17 +17569,9 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/white,
 /area/lots/business/business_lot_five)
-"aYK" = (
-/obj/structure/table/standard,
-/obj/machinery/recharger,
-/turf/simulated/floor/tiled,
-/area/rnd/xenobiology)
 "aYL" = (
-/obj/machinery/portable_atmospherics/hydroponics/map,
-/obj/effect/floor_decal/corner/purple{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/freezer,
+/obj/structure/closet/crate/trashcart,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "aYM" = (
 /obj/machinery/light/colored,
@@ -18180,14 +17621,10 @@
 	tag = "icon-road_marking (WEST)"
 	},
 /area/planets/Geminus/outdoor/central)
-"aYT" = (
-/obj/effect/floor_decal/industrial/danger/corner,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
 "aYU" = (
-/obj/effect/floor_decal/industrial/danger,
+/obj/structure/anomaly_container,
 /turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
+/area/rnd/research_breakroom)
 "aYV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -18195,32 +17632,27 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/lobby)
-"aYW" = (
-/obj/structure/filingcabinet,
-/obj/effect/floor_decal/spline/fancy{
-	dir = 10;
-	icon_state = "spline_fancy"
-	},
-/turf/simulated/floor/wood/ebony,
-/area/outpost/research/anomaly)
 "aYX" = (
-/obj/machinery/modular_computer/console/preset/research{
-	dir = 1;
-	icon_state = "console"
-	},
-/obj/effect/floor_decal/spline/fancy,
-/turf/simulated/floor/wood/ebony,
-/area/outpost/research/anomaly)
+/obj/structure/table/rack,
+/obj/structure/table/rack,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "aYY" = (
-/obj/structure/table/woodentable,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/fountain,
-/obj/effect/floor_decal/spline/fancy{
-	dir = 6;
-	icon_state = "spline_fancy"
+/obj/structure/table/glass,
+/obj/machinery/requests_console{
+	department = "Science";
+	departmentType = 2;
+	name = "Science Requests Console";
+	pixel_x = 30;
+	pixel_y = 0
 	},
-/turf/simulated/floor/wood/ebony,
-/area/outpost/research/anomaly)
+/obj/item/weapon/paper_bin{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/weapon/pen,
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
 "aYZ" = (
 /obj/item/weapon/reagent_containers/syringe{
 	desc = "Probably has at least five incurable STDs.";
@@ -18244,9 +17676,12 @@
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/west)
 "aZe" = (
-/obj/structure/bed/chair/office/light,
+/obj/machinery/computer/operating,
+/obj/machinery/light/colored/purple{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
-/area/rnd/research_breakroom)
+/area/planets/Geminus/indoor/science)
 "aZf" = (
 /obj/structure/closet/cabinet,
 /turf/simulated/floor/tiled/old_tile/gray,
@@ -18304,7 +17739,7 @@
 	tag = "icon-purple1 (WEST)"
 	},
 /turf/simulated/floor/tiled,
-/area/planets/Geminus/indoor/science)
+/area/rnd/research_foyer)
 "aZn" = (
 /obj/machinery/vending/materials/factory,
 /turf/simulated/floor/tiled,
@@ -18377,35 +17812,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "aZy" = (
-/obj/machinery/light/colored/green,
-/obj/machinery/portable_atmospherics/hydroponics/map,
-/obj/effect/floor_decal/corner/purple{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
-"aZz" = (
-/obj/effect/floor_decal/corner/lime{
-	dir = 10
-	},
-/obj/machinery/portable_atmospherics/hydroponics/map,
-/obj/effect/floor_decal/corner/purple{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
-"aZA" = (
-/obj/effect/floor_decal/corner/lime{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/lime{
-	dir = 10
-	},
-/obj/machinery/portable_atmospherics/hydroponics/map,
-/obj/effect/floor_decal/corner/purple{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/freezer,
+/obj/structure/closet/crate/science,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "aZB" = (
 /obj/machinery/light/colored{
@@ -18494,29 +17902,21 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "aZK" = (
-/obj/structure/closet/secure_closet/xenoarchaeologist,
+/obj/machinery/portable_atmospherics/canister/empty/oxygen,
 /turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"aZL" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 4;
-	icon_state = "danger";
-	tag = "icon-danger (EAST)"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"aZM" = (
-/obj/machinery/artifact_analyser,
-/turf/simulated/floor/tiled/techfloor,
-/area/outpost/research/anomaly)
+/area/rnd/research_breakroom)
 "aZN" = (
-/obj/machinery/artifact_scanpad,
-/turf/simulated/floor/tiled/techfloor,
-/area/outpost/research/anomaly)
+/turf/simulated/floor/tiled,
+/area/rnd/research_breakroom)
 "aZO" = (
-/obj/machinery/artifact_harvester,
-/turf/simulated/floor/tiled/techfloor,
-/area/outpost/research/anomaly)
+/obj/machinery/optable{
+	name = "Robotics Operating Table"
+	},
+/obj/machinery/oxygen_pump/anesthetic{
+	pixel_y = 27
+	},
+/turf/simulated/floor/tiled/white,
+/area/planets/Geminus/indoor/science)
 "aZP" = (
 /obj/effect/floor_decal/corner/pink/diagonal,
 /obj/structure/disposalpipe/segment,
@@ -18552,10 +17952,10 @@
 	icon_state = "bordercolor"
 	},
 /turf/simulated/floor/tiled,
-/area/planets/Geminus/indoor/science)
+/area/rnd/research_foyer)
 "aZW" = (
-/obj/structure/table/glass/white,
-/turf/simulated/floor/tiled/white,
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/research_breakroom)
 "aZX" = (
 /obj/machinery/disposal,
@@ -18604,20 +18004,6 @@
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/quartermaster/office)
-"baf" = (
-/obj/structure/table/glass,
-/obj/item/weapon/tape_roll,
-/obj/item/device/analyzer/plant_analyzer,
-/obj/effect/floor_decal/corner/lime{
-	dir = 10
-	},
-/obj/item/device/analyzer/plant_analyzer,
-/obj/item/device/analyzer/plant_analyzer,
-/obj/effect/floor_decal/corner/purple{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
 "bag" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1;
@@ -18660,27 +18046,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/fitness)
 "ban" = (
-/obj/structure/table/glass,
-/obj/item/weapon/clipboard,
-/obj/item/weapon/folder/white,
-/obj/item/weapon/pen,
-/obj/item/weapon/paper_bin{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/purple{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/rnd/xenobiology/xenoflora)
-"baq" = (
-/obj/structure/table/standard,
-/obj/item/weapon/melee/baton/slime/loaded,
+/obj/structure/table/glass/white,
 /turf/simulated/floor/tiled,
-/area/rnd/xenobiology)
+/area/rnd/xenobiology/xenoflora)
 "bar" = (
 /turf/simulated/floor/road/garage,
 /area/medical/first_aid_station)
@@ -18724,13 +18092,12 @@
 /turf/simulated/floor/road/garage,
 /area/medical/first_aid_station)
 "baw" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 1;
-	icon_state = "danger";
-	tag = "icon-danger (NORTH)"
+/obj/machinery/power/emitter{
+	dir = 8;
+	icon_state = "emitter"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
+/area/rnd/research_breakroom)
 "bax" = (
 /obj/item/device/radio/intercom{
 	broadcasting = 0;
@@ -18855,18 +18222,21 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/patient_a)
 "baW" = (
-/obj/machinery/camera/network/research{
-	dir = 1;
-	icon_state = "camera"
+/obj/machinery/door/blast/regular{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "rlockd";
+	name = "Research Lockdown";
+	opacity = 0
 	},
+/obj/effect/wallframe_spawn/reinforced,
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/research/anomaly)
 "baX" = (
-/obj/machinery/camera/network/research{
-	dir = 10;
-	icon_state = "camera"
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/structure/table/reinforced,
+/obj/item/weapon/storage/firstaid/surgery,
+/turf/simulated/floor/tiled/white,
 /area/planets/Geminus/indoor/science)
 "baZ" = (
 /obj/structure/fence/corner{
@@ -19207,26 +18577,6 @@
 "bbY" = (
 /turf/simulated/wall/iron,
 /area/lots/business/business_lot_ten)
-"bbZ" = (
-/obj/machinery/button/remote/sprinker{
-	id = "xeno1";
-	name = "xeno cell 1 sprinkler control";
-	pixel_x = -25
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "xeno1shutters";
-	name = "xeno cell 1 blast door-control";
-	pixel_x = -25;
-	pixel_y = 10
-	},
-/obj/machinery/button/flasher{
-	id = "xenoflash1";
-	name = "xeno flasher button 1";
-	pixel_x = -25;
-	pixel_y = -10
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "bca" = (
 /obj/machinery/light/colored{
 	dir = 8;
@@ -19488,17 +18838,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/lots/business/business_lot_ten)
-"bde" = (
-/obj/machinery/shower{
-	color = "grey";
-	dir = 4;
-	icon_state = "shower";
-	id = "xeno2";
-	name = "xeno shower";
-	pixel_x = -2
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
 "bdf" = (
 /obj/effect/landmark/lotsign,
 /turf/simulated/wall/iron,
@@ -19575,24 +18914,20 @@
 /turf/simulated/wall/ebony,
 /area/lots/office/office_lot_one)
 "bdr" = (
-/obj/machinery/light/colored/purple,
-/turf/simulated/floor/tiled/dark,
+/obj/structure/table/reinforced,
+/obj/machinery/light/colored/purple{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
 /area/planets/Geminus/indoor/science)
 "bds" = (
 /obj/effect/landmark/lotsign,
 /turf/simulated/wall/iron,
 /area/lots/office/multi/office_complex_one)
 "bdv" = (
-/obj/effect/wallframe_spawn/electric,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "rlockd";
-	name = "Research Lockdown";
-	opacity = 0
-	},
-/turf/simulated/floor/tiled/white,
-/area/rnd/research_breakroom)
+/obj/structure/table/glass/white,
+/turf/simulated/floor/carpet/purcarpet,
+/area/crew_quarters/heads/hor)
 "bdw" = (
 /obj/effect/floor_decal/corner/mauve/diagonal,
 /obj/effect/floor_decal/corner/purple/border{
@@ -19652,9 +18987,12 @@
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "bdB" = (
-/obj/structure/filingcabinet,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/workshop)
+/obj/structure/bed/chair/frilly/black{
+	dir = 8;
+	icon_state = "frillychair"
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/crew_quarters/heads/hor)
 "bdC" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -19670,8 +19008,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/courtroom)
 "bdD" = (
+/obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/dark,
-/area/rnd/workshop)
+/area/rnd/research_breakroom)
 "bdE" = (
 /obj/structure/disposalpipe/junction,
 /obj/effect/floor_decal/corner/mauve/diagonal,
@@ -19752,13 +19091,6 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/courtroom)
-"bdN" = (
-/obj/machinery/modular_computer/console/preset/research{
-	dir = 8;
-	icon_state = "console"
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/workshop)
 "bdP" = (
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
@@ -19769,16 +19101,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
-"bdR" = (
-/obj/structure/bed/chair/frilly/black,
-/turf/simulated/floor/tiled,
-/area/rnd/workshop)
-"bdS" = (
-/obj/structure/table/glass/white,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/fountain,
-/turf/simulated/floor/tiled,
-/area/rnd/workshop)
 "bdU" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4;
@@ -19803,8 +19125,8 @@
 	name = "Research Xenoarch Office";
 	req_access = list(65)
 	},
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
+/turf/simulated/floor/tiled/steel_grid,
+/area/rnd/research_breakroom)
 "bdX" = (
 /obj/effect/wallframe_spawn/basic/blue/hospital,
 /obj/machinery/door/blast/gate/open{
@@ -19871,10 +19193,6 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/fitness)
-"bei" = (
-/obj/structure/table/glass/white,
-/turf/simulated/floor/tiled,
-/area/rnd/workshop)
 "bej" = (
 /obj/effect/floor_decal/corner/paleblue/full{
 	dir = 8;
@@ -19887,11 +19205,6 @@
 "bek" = (
 /turf/simulated/floor/tiled/steel_ridged,
 /area/turbolift/geminus_mall_ground)
-"bem" = (
-/obj/effect/floor_decal/industrial/danger,
-/mob/living/bot/secbot/slime/slimesky,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "ben" = (
 /obj/structure/sign/neon/cubed,
 /turf/simulated/wall/plastic/science,
@@ -19921,8 +19234,11 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/lots/business/business_lot_eleven)
 "bet" = (
-/obj/machinery/light/colored,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/seed_storage/xenobotany{
+	save_contents = 0;
+	save_reagents = 0
+	},
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "beu" = (
 /turf/simulated/wall/disco,
@@ -20159,8 +19475,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/spawner/conditional_spawn/council/water_coolers,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/wall/plastic/science,
 /area/rnd/research_breakroom)
 "bfq" = (
 /obj/machinery/door/blast/gate/open{
@@ -20171,17 +19486,23 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/lots/stall/one)
 "bfr" = (
-/obj/machinery/vending/materials/science,
-/turf/simulated/floor/tiled/dark,
+/obj/structure/curtain/medical,
+/turf/simulated/floor/stairs{
+	dir = 8;
+	icon_state = "ramptop"
+	},
 /area/planets/Geminus/indoor/science)
 "bfs" = (
 /obj/effect/spawner/conditional_spawn/council/cleaning_bots,
 /turf/simulated/floor/tiled/dark,
 /area/medical/first_aid_station)
 "bft" = (
-/obj/effect/spawner/conditional_spawn/council/water_coolers,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/workshop)
+/obj/structure/bed/chair/office/light,
+/obj/effect/landmark/start{
+	name = "Xenobiologist"
+	},
+/turf/simulated/floor/tiled/white,
+/area/rnd/research_breakroom)
 "bfu" = (
 /obj/structure/dogbed,
 /mob/living/simple_mob/animal/passive/cat{
@@ -20270,15 +19591,6 @@
 	},
 /turf/simulated/floor/wood/walnut,
 /area/lots/business/business_lot_nine)
-"bfO" = (
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 4;
-	icon_state = "dangercorner";
-	tag = "icon-dangercorner (EAST)"
-	},
-/obj/machinery/light/small,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
 "bfP" = (
 /obj/effect/floor_decal/corner/green/border{
 	dir = 4;
@@ -20321,28 +19633,34 @@
 /turf/simulated/floor,
 /area/constructionsite/maintenance)
 "bfV" = (
-/turf/simulated/wall/plastic/science,
-/area/rnd/workshop)
-"bfX" = (
-/obj/effect/wallframe_spawn,
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
-/area/rnd/workshop)
+/area/rnd/research_breakroom)
+"bfX" = (
+/obj/machinery/vending/hydronutrients{
+	categories = 3;
+	save_contents = 0;
+	save_reagents = 0
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
 "bfY" = (
 /obj/structure/table/glass,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/courtroom)
 "bfZ" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8;
-	icon_state = "borderfloor"
+/obj/structure/disposalpipe/trunk{
+	dir = 8
 	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
-	},
-/turf/simulated/floor/tiled,
-/area/teleporter)
+/obj/machinery/disposal,
+/obj/machinery/light/colored/purple,
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
 "bga" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/white,
@@ -20402,14 +19720,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/teleporter)
+/area/rnd/research_foyer)
 "bgg" = (
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/workshop)
+/obj/structure/table/reinforced,
+/obj/item/device/mmi,
+/obj/item/device/mmi,
+/obj/item/device/mmi,
+/turf/simulated/floor/tiled/white,
+/area/planets/Geminus/indoor/science)
 "bgi" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1;
@@ -20420,7 +19738,7 @@
 	icon_state = "bordercolorcorner"
 	},
 /turf/simulated/floor/tiled,
-/area/teleporter)
+/area/rnd/research_foyer)
 "bgj" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/carpet/oracarpet,
@@ -20818,23 +20136,8 @@
 /turf/simulated/floor/lino,
 /area/lots/office/office_lot_one)
 "bhT" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/machinery/light/colored{
-	dir = 1;
-	icon_state = "yellow1";
-	tag = "icon-yellow1 (NORTH)"
-	},
-/obj/item/device/radio/intercom{
-	broadcasting = 0;
-	dir = 2;
-	listening = 0;
-	name = "Common Channel";
-	pixel_y = 21
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/portable_atmospherics/hydroponics/map,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bhU" = (
 /obj/effect/floor_decal/corner/blue{
@@ -21234,7 +20537,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/flora/pottedplant/lily,
+/obj/machinery/portable_atmospherics/canister/empty/oxygen,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research_breakroom)
 "bjn" = (
@@ -21243,10 +20546,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "bjo" = (
-/obj/machinery/door/airlock/multi_tile/research{
-	name = "Xenobiology Lab";
-	req_access = list(55)
-	},
+/obj/effect/wallframe_spawn,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -21254,7 +20554,7 @@
 	name = "Research Lockdown";
 	opacity = 0
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "bjp" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -21313,7 +20613,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/lots/business/business_lot_nine)
 "bjz" = (
-/obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/multi_tile/research{
+	name = "Xenobiology Lab";
+	req_access = list(55)
+	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -21321,19 +20624,23 @@
 	name = "Research Lockdown";
 	opacity = 0
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bjA" = (
-/obj/machinery/pros_fabricator,
-/turf/simulated/floor/tiled/dark,
-/area/planets/Geminus/indoor/science)
-"bjB" = (
-/obj/machinery/camera/network/research{
-	dir = 4;
-	icon_state = "camera"
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "rlockd";
+	name = "Research Lockdown";
+	opacity = 0
 	},
-/turf/simulated/floor/tiled/dark,
-/area/planets/Geminus/indoor/science)
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
+"bjB" = (
+/obj/machinery/seed_extractor,
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
 "bjC" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/corner/mauve/diagonal,
@@ -21382,34 +20689,32 @@
 /turf/simulated/floor/diamond,
 /area/crew_quarters/fitness)
 "bjM" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor/tiled/white,
+/obj/machinery/mecha_part_fabricator,
+/turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "bjP" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 8;
-	icon_state = "danger";
-	tag = "icon-danger (WEST)"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+/obj/machinery/vending/wallmed1{
+	dir = 1;
+	pixel_y = -29
 	},
 /turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
+/area/planets/Geminus/indoor/science)
 "bjQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
+/obj/machinery/computer/rdconsole/robotics{
+	dir = 1
+	},
+/turf/simulated/floor/road/garage,
+/area/planets/Geminus/indoor/science)
 "bjR" = (
 /obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
+/obj/machinery/vending/robotics,
+/turf/simulated/floor/road/garage,
+/area/planets/Geminus/indoor/science)
 "bjS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -21462,10 +20767,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/diamond,
 /area/crew_quarters/fitness)
-"bka" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
 "bkb" = (
 /obj/structure/table/steel,
 /obj/machinery/door/blast/gate/open{
@@ -21475,13 +20776,8 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/lots/stall/four)
 "bkc" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 8;
-	icon_state = "danger";
-	tag = "icon-danger (WEST)"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/botany/editor,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bke" = (
 /obj/machinery/disposal,
@@ -21622,24 +20918,21 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled,
 /area/planets/Geminus/indoor/science)
 "bkM" = (
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 8;
-	icon_state = "dangercorner";
-	tag = "icon-dangercorner (WEST)"
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
 	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bkN" = (
-/obj/machinery/portable_atmospherics/canister/empty/oxygen,
-/turf/simulated/floor/tiled/dark,
+/obj/structure/table/glass,
+/turf/simulated/floor/tiled/monotile,
 /area/outpost/research/anomaly)
 "bkO" = (
-/obj/structure/dispenser/oxygen,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/monotile,
 /area/outpost/research/anomaly)
 "bkP" = (
 /obj/structure/railing,
@@ -21657,28 +20950,27 @@
 	},
 /area/rnd/research_foyer)
 "bkR" = (
-/obj/structure/sign/hydro,
-/turf/simulated/wall/plastic/science,
-/area/rnd/xenobiology/xenoflora)
+/obj/structure/bed/chair/frilly/black{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/crew_quarters/heads/hor)
 "bkT" = (
 /obj/effect/landmark/lotsign,
 /turf/simulated/wall/concrete,
 /area/lots/stall/six)
-"bkV" = (
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "bkW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled,
 /area/planets/Geminus/indoor/science)
 "bkX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/r_n_d/circuit_imprinter,
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "bkY" = (
@@ -21686,6 +20978,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/table/glass/white,
+/obj/random/tech_supply,
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "bkZ" = (
@@ -21740,30 +21034,18 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
-"blo" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/shower{
-	color = "grey";
-	dir = 8;
-	icon_state = "shower";
-	id = "xeno2";
-	name = "xeno shower";
-	pixel_x = -2
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
 "blq" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay2)
 "blr" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
+/obj/machinery/status_display{
+	density = 0;
+	layer = 4;
+	pixel_x = 0;
+	pixel_y = 25
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/research_foyer)
 "bls" = (
 /obj/structure/disposalpipe/segment{
@@ -21772,9 +21054,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "blt" = (
-/obj/structure/disposalpipe/junction{
+/obj/structure/disposalpipe/segment{
 	dir = 4;
-	icon_state = "pipe-j1"
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
@@ -21832,10 +21114,9 @@
 	tag = "icon-railing0 (EAST)"
 	},
 /turf/simulated/floor/stairs,
-/area/teleporter)
+/area/rnd/research_foyer)
 "blE" = (
-/obj/structure/closet/secure_closet/hydroponics,
-/turf/simulated/floor/tiled/freezer,
+/turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "blF" = (
 /obj/structure/disposalpipe/segment{
@@ -21844,53 +21125,20 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/lots/stall/six)
-"blG" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8;
-	icon_state = "borderfloor"
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
-	},
-/obj/machinery/camera/network/research{
-	c_tag = "SCI - Research Directors Office";
-	dir = 8;
-	icon_state = "camera"
-	},
-/turf/simulated/floor/tiled,
-/area/planets/Geminus/indoor/science)
 "blH" = (
-/obj/structure/reagent_dispensers/acid{
-	pixel_x = 0;
-	pixel_y = -32
+/obj/structure/sign/hydro{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/dark,
-/area/planets/Geminus/indoor/science)
+/area/rnd/research_foyer)
 "blI" = (
 /obj/effect/landmark/lotsign,
 /turf/simulated/wall/iron,
 /area/lots/stall/seven)
-"blJ" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 4;
-	icon_state = "pipe-t"
-	},
-/obj/structure/disposaloutlet{
-	density = 0;
-	name = "slime disposal outlet";
-	pixel_y = 25
-	},
-/obj/machinery/flasher{
-	id = "xenoflash2";
-	name = "Xeno Floor Mounted flash"
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
 "blK" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/closet/secure_closet/scientist,
 /turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
+/area/rnd/research_breakroom)
 "blL" = (
 /obj/machinery/button/remote/blast_door{
 	id = "stall3button";
@@ -21914,7 +21162,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/research_breakroom)
 "blP" = (
 /obj/structure/railing,
@@ -21926,65 +21174,52 @@
 /turf/simulated/floor/tiled,
 /area/teleporter)
 "blR" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light/colored/purple{
+	dir = 4;
+	icon_state = "purple1";
+	tag = "icon-purple1 (EAST)"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/rnd/workshop)
+/area/rnd/research_breakroom)
 "blS" = (
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled,
-/area/rnd/workshop)
+/turf/simulated/floor/tiled/white,
+/area/rnd/research_breakroom)
 "blT" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+/obj/machinery/light/colored/purple{
+	dir = 4;
+	icon_state = "purple1";
+	tag = "icon-purple1 (EAST)"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
+/area/rnd/research_foyer)
 "blU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"blX" = (
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/machinery/light/colored/purple{
 	dir = 1;
-	icon_state = "dangercorner";
-	tag = "icon-dangercorner (NORTH)"
+	icon_state = "purple1";
+	tag = "icon-purple1 (NORTH)"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"blZ" = (
-/obj/machinery/light/colored{
-	dir = 4;
-	icon_state = "yellow1";
-	tag = "icon-yellow1 (EAST)"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/workshop)
+/area/rnd/research_foyer)
+"blX" = (
+/obj/structure/table/rack,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "bma" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/workshop)
+/obj/structure/table/glass/white,
+/turf/simulated/floor/tiled/white,
+/area/rnd/research_breakroom)
 "bmb" = (
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
 	name = "Research Xenoarch Office";
 	req_access = list(65)
 	},
-/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/dark,
+/area/outpost/research/anomaly)
+"bmc" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -21992,54 +21227,27 @@
 	name = "Research Lockdown";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"bmc" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 8;
-	icon_state = "danger";
-	tag = "icon-danger (WEST)"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"bmd" = (
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 8
-	},
-/obj/machinery/light/colored/purple,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"bme" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"bmf" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
-"bmg" = (
-/obj/machinery/button/windowtint{
-	id = "ro1";
-	pixel_x = -32
-	},
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 1;
-	icon_state = "pipe-t"
+/obj/machinery/door/airlock/research{
+	name = "Research Storage"
 	},
 /turf/simulated/floor/tiled,
-/area/rnd/workshop)
+/area/rnd/research_breakroom)
+"bme" = (
+/obj/machinery/power/port_gen/pacman,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
+"bmf" = (
+/obj/machinery/door/airlock/research{
+	name = "Research Storage"
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology/xenoflora)
+"bmg" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/rnd/research_breakroom)
 "bmj" = (
 /obj/machinery/door/airlock,
 /obj/item/tape/engineering{
@@ -22097,18 +21305,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/server)
-"bmy" = (
-/obj/effect/wallframe_spawn/reinforced/electric,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/door/blast/shutters{
-	dir = 4;
-	id = "xeno3shutters";
-	name = "Cell 3 Shutters"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "bmz" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/plushie,
@@ -22132,24 +21328,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/server)
-"bmE" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
-"bmF" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
 "bmG" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 1;
-	icon_state = "pipe-t"
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/chem_master,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bmH" = (
 /obj/machinery/status_display/money_display/rnd{
@@ -22191,10 +21372,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/city_hall)
 "bmL" = (
-/obj/machinery/door/airlock/research{
-	name = "Xenoflora Storage";
-	req_access = list(55)
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -22204,37 +21381,22 @@
 	opacity = 0
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/research{
+	name = "Research Storage"
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
-"bmM" = (
-/obj/structure/disposaloutlet{
-	density = 0;
-	name = "slime disposal outlet";
-	pixel_y = 25
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/machinery/shower{
-	color = "grey";
-	dir = 4;
-	icon_state = "shower";
-	id = "xeno3";
-	name = "xeno shower";
-	pixel_x = -2
-	},
-/turf/simulated/floor/tiled/steel_ridged,
-/area/rnd/xenobiology)
 "bmN" = (
-/obj/machinery/shower{
-	color = "grey";
+/obj/machinery/chem_master,
+/obj/item/device/radio/intercom{
+	broadcasting = 0;
 	dir = 8;
-	icon_state = "shower";
-	id = "xeno3";
-	name = "xeno shower";
-	pixel_x = -2
+	listening = 1;
+	name = "Common Channel";
+	pixel_x = 21;
+	pixel_y = 0
 	},
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bmP" = (
 /obj/structure/window/framed{
@@ -22245,66 +21407,31 @@
 /turf/simulated/floor/plating,
 /area/lots/business/business_lot_ten)
 "bmQ" = (
-/obj/machinery/shower{
-	color = "grey";
-	dir = 8;
-	icon_state = "shower";
-	id = "xeno2";
-	name = "xeno shower";
-	pixel_x = -2
-	},
-/turf/simulated/floor/tiled/steel_ridged,
+/obj/structure/reagent_dispensers/watertank,
+/obj/item/weapon/reagent_containers/glass/bucket,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bmS" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "xeno2shutters";
-	name = "xeno cell 2 blast door-control";
-	pixel_x = -25;
-	pixel_y = 10
-	},
-/obj/machinery/button/remote/sprinker{
-	id = "xeno2";
-	name = "xeno cell 2 sprinkler control";
-	pixel_x = -25
-	},
-/obj/machinery/button/flasher{
-	id = "xenoflash2";
-	name = "xeno flasher button 2";
-	pixel_x = -25;
-	pixel_y = -10
-	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bmT" = (
-/obj/machinery/shower{
-	color = "grey";
-	dir = 4;
-	icon_state = "shower";
-	id = "xeno3";
-	name = "xeno shower";
-	pixel_x = -2
-	},
-/turf/simulated/floor/tiled/steel_ridged,
+/obj/structure/table/glass,
+/obj/item/weapon/tape_roll,
+/obj/item/device/analyzer/plant_analyzer,
+/obj/item/device/analyzer/plant_analyzer,
+/obj/item/device/analyzer/plant_analyzer,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bmU" = (
-/obj/machinery/light/colored/purple{
-	dir = 8;
-	icon_state = "purple1";
-	tag = "icon-purple1 (WEST)"
+/obj/structure/table/glass,
+/obj/item/weapon/clipboard,
+/obj/item/weapon/folder/white,
+/obj/item/weapon/pen,
+/obj/item/weapon/paper_bin{
+	pixel_x = 1;
+	pixel_y = 9
 	},
-/obj/machinery/shower{
-	color = "grey";
-	dir = 8;
-	icon_state = "shower";
-	id = "xeno3";
-	name = "xeno shower";
-	pixel_x = -2
-	},
-/turf/simulated/floor/tiled/steel_ridged,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bmV" = (
 /obj/effect/floor_decal/rust,
@@ -22321,52 +21448,21 @@
 /turf/simulated/floor/plating,
 /area/lots/business/business_lot_ten)
 "bmY" = (
-/obj/machinery/shower{
-	color = "grey";
-	dir = 8;
-	icon_state = "shower";
-	id = "xeno3";
-	name = "xeno shower";
-	pixel_x = -2
+/obj/structure/table/glass,
+/obj/machinery/newscaster{
+	pixel_x = 28;
+	pixel_y = 0
 	},
-/obj/machinery/flasher{
-	id = "xenoflash3";
-	name = "Xeno Floor Mounted flash"
-	},
-/turf/simulated/floor/tiled/steel_ridged,
+/obj/machinery/reagentgrinder,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bmZ" = (
-/obj/machinery/light/colored/purple,
-/obj/machinery/flasher{
-	id = "xenoflash2";
-	name = "Xeno Floor Mounted flash"
-	},
-/turf/simulated/floor/tiled/steel_ridged,
+/obj/effect/wallframe_spawn,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bna" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 1;
-	icon_state = "pipe-t"
-	},
-/obj/machinery/button/remote/sprinker{
-	id = "xeno3";
-	name = "xeno cell 3 sprinkler control";
-	pixel_x = 25
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "xeno3shutters";
-	name = "xeno cell 3 blast door-control";
-	pixel_x = 25;
-	pixel_y = 10
-	},
-/obj/machinery/button/flasher{
-	id = "xenoflash3";
-	name = "xeno flasher button 2";
-	pixel_x = 25;
-	pixel_y = -10
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/biogenerator,
+/turf/simulated/floor/tiled/freezer,
 /area/rnd/xenobiology)
 "bnc" = (
 /obj/machinery/computer/mecha{
@@ -22386,10 +21482,12 @@
 /turf/simulated/floor/wood/ebony,
 /area/crew_quarters/heads/hor)
 "bnf" = (
-/obj/effect/landmark/start{
-	name = "Research Assistant"
+/obj/machinery/r_n_d/destructive_analyzer,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 6;
+	icon_state = "bordercolor"
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/road/garage,
 /area/planets/Geminus/indoor/science)
 "bng" = (
 /obj/machinery/modular_computer/console/preset/research{
@@ -22405,11 +21503,7 @@
 /turf/simulated/floor/wood/ebony,
 /area/crew_quarters/heads/hor)
 "bnj" = (
-/obj/structure/bed/chair/office/light,
-/obj/effect/landmark/start{
-	name = "Roboticist"
-	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/white,
 /area/planets/Geminus/indoor/science)
 "bnk" = (
 /obj/structure/table/standard,
@@ -22440,19 +21534,13 @@
 	},
 /area/planets/Geminus/outdoor/east)
 "bnr" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/simulated/floor/tiled/dark,
 /area/rnd/research_breakroom)
 "bns" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8;
-	icon_state = "officechair_white";
-	tag = "icon-officechair_white (WEST)"
-	},
-/turf/simulated/floor/tiled/white,
-/area/rnd/research_breakroom)
+/obj/structure/closet/jcloset,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/xenobiology/xenoflora)
 "bnu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock,
@@ -22470,6 +21558,10 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/lots/stall/six)
 "bnw" = (
+/obj/machinery/camera/network/research{
+	dir = 1;
+	icon_state = "camera"
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
 	icon_state = "borderfloor"
@@ -22478,19 +21570,13 @@
 	dir = 8;
 	icon_state = "bordercolor"
 	},
-/obj/machinery/camera/network/research{
-	dir = 1;
-	icon_state = "camera"
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
 "bnx" = (
-/obj/machinery/camera/network/research{
-	dir = 10;
-	icon_state = "camera"
-	},
+/obj/structure/janitorialcart,
+/obj/item/weapon/mop,
 /turf/simulated/floor/tiled/dark,
-/area/rnd/xenobiology)
+/area/rnd/xenobiology/xenoflora)
 "bny" = (
 /obj/machinery/vending/wallmed1{
 	charge_free_department = "research";
@@ -22501,9 +21587,7 @@
 	req_access = list();
 	vendor_department = "medical"
 	},
-/obj/effect/floor_decal/industrial/danger,
-/obj/structure/reagent_dispensers/cleanertank,
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "bnB" = (
 /obj/machinery/vending/cola,
@@ -22558,11 +21642,11 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/research_breakroom)
 "bnJ" = (
-/obj/machinery/door/airlock/research,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/rnd/workshop)
+/obj/machinery/door/airlock/research{
+	name = "Break Room"
+	},
+/turf/simulated/floor/tiled/white,
+/area/rnd/research_breakroom)
 "bnQ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8;
@@ -22578,14 +21662,11 @@
 	icon_state = "camera"
 	},
 /turf/simulated/floor/tiled,
-/area/teleporter)
+/area/rnd/research_foyer)
 "bnU" = (
-/obj/machinery/camera/network/research{
-	dir = 1;
-	icon_state = "camera"
-	},
+/obj/structure/reagent_dispensers/coolanttank,
 /turf/simulated/floor/tiled/dark,
-/area/outpost/research/anomaly)
+/area/rnd/research_breakroom)
 "bnZ" = (
 /obj/machinery/camera/network/civilian{
 	dir = 5;
@@ -22633,23 +21714,24 @@
 /turf/simulated/floor/tiled/dark,
 /area/quartermaster/storage)
 "bof" = (
-/obj/machinery/light/colored/purple,
-/obj/machinery/mech_recharger,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled,
 /area/planets/Geminus/indoor/science)
 "bog" = (
-/obj/machinery/mech_recharger,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/camera/network/research{
+	dir = 10;
+	icon_state = "camera"
+	},
+/turf/simulated/floor/tiled,
 /area/planets/Geminus/indoor/science)
 "boh" = (
-/obj/machinery/light/colored{
-	dir = 1;
-	icon_state = "yellow1";
-	tag = "icon-yellow1 (NORTH)"
+/obj/machinery/light/colored/purple{
+	dir = 8;
+	icon_state = "purple1";
+	tag = "icon-purple1 (WEST)"
 	},
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/portable_atmospherics/canister/empty/oxygen,
 /turf/simulated/floor/tiled/dark,
-/area/planets/Geminus/indoor/science)
+/area/rnd/research_breakroom)
 "boj" = (
 /obj/machinery/camera/network/civilian{
 	dir = 5;
@@ -22734,8 +21816,6 @@
 	},
 /area/planets/Geminus/outdoor/south)
 "boC" = (
-/obj/structure/table/standard,
-/obj/item/weapon/storage/firstaid/surgery,
 /obj/item/device/radio/intercom{
 	broadcasting = 0;
 	dir = 2;
@@ -22743,7 +21823,7 @@
 	name = "Common Channel";
 	pixel_y = 21
 	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor/science)
 "boF" = (
 /obj/machinery/atmospherics/unary/freezer,
@@ -22760,7 +21840,7 @@
 	},
 /area/server)
 "boG" = (
-/obj/machinery/computer/security/wooden_tv/entertainment,
+/obj/structure/reagent_dispensers/cleanertank,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research_breakroom)
 "boM" = (
@@ -22824,20 +21904,22 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/vacantoffice)
 "boW" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8;
-	icon_state = "borderfloor"
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
-	},
 /obj/item/device/radio/intercom{
 	broadcasting = 0;
 	dir = 2;
 	listening = 0;
 	name = "Common Channel";
 	pixel_y = 21
+	},
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1;
+	icon_state = "bordercolor"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer)
@@ -22983,6 +22065,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
+"bMm" = (
+/obj/structure/bed/chair/frilly/black,
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology/xenoflora)
 "bZp" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8;
@@ -22990,6 +22076,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+"chd" = (
+/obj/machinery/light/colored/purple{
+	dir = 1;
+	icon_state = "purple1";
+	tag = "icon-purple1 (NORTH)"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "cnl" = (
 /obj/machinery/light/colored{
 	dir = 4;
@@ -23008,6 +22102,14 @@
 /obj/random/junk,
 /turf/simulated/floor/pavement/empty,
 /area/planets/Geminus/outdoor/south)
+"cSU" = (
+/obj/structure/sink/kitchen{
+	dir = 8;
+	icon_state = "sink_alt";
+	pixel_x = 10
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/xenobiology/xenoflora)
 "dhs" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23020,6 +22122,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"dwn" = (
+/obj/machinery/power/apc{
+	cell_type = /obj/item/weapon/cell/super;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/xenobiology/xenoflora)
 "dID" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -23087,10 +22198,26 @@
 /obj/random/junk,
 /turf/simulated/floor/pavement/brick_paving,
 /area/planets/Geminus/outdoor/south)
+"eHN" = (
+/obj/structure/closet/radiation,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/xenobiology/xenoflora)
+"eJN" = (
+/obj/effect/wallframe_spawn/electric,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "eQN" = (
 /obj/vehicle/car/random,
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
+"eRQ" = (
+/obj/machinery/power/emitter{
+	dir = 8;
+	icon_state = "emitter"
+	},
+/obj/machinery/light/colored/purple,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "fcW" = (
 /obj/structure/table/glass,
 /obj/machinery/button/windowtint{
@@ -23112,6 +22239,12 @@
 /obj/effect/spawner/conditional_spawn/council/water_coolers,
 /turf/simulated/floor/tiled/dark,
 /area/engineering)
+"fsi" = (
+/obj/structure/table/rack,
+/obj/structure/table/rack,
+/obj/machinery/light/colored/purple,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "fwA" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -23124,6 +22257,22 @@
 /obj/random/junk,
 /turf/simulated/floor/pavement/brick_paving,
 /area/planets/Geminus/outdoor/central)
+"fEE" = (
+/obj/machinery/light/colored/purple{
+	dir = 8;
+	icon_state = "purple1";
+	tag = "icon-purple1 (WEST)"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
+"fOS" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8;
+	icon_state = "officechair_white";
+	tag = "icon-officechair_white (WEST)"
+	},
+/turf/simulated/floor/tiled/white,
+/area/rnd/research_breakroom)
 "fSY" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23149,6 +22298,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"gFC" = (
+/obj/machinery/light/colored/purple{
+	dir = 4;
+	icon_state = "purple1";
+	tag = "icon-purple1 (EAST)"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "gIa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/junk,
@@ -23170,6 +22327,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
+"gQc" = (
+/obj/structure/flora/pottedplant/lily,
+/turf/simulated/floor/tiled/white,
+/area/rnd/research_breakroom)
 "gRH" = (
 /obj/machinery/mineral/stacking_unit_console,
 /turf/simulated/wall/plastic/green,
@@ -23184,6 +22345,23 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/constructionsite/maintenance)
+"hiT" = (
+/obj/machinery/light/colored/purple{
+	dir = 1
+	},
+/turf/simulated/floor/pavement/empty,
+/area/planets/Geminus/outdoor/south)
+"hul" = (
+/obj/machinery/light/small{
+	dir = 8;
+	pixel_x = 0
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/xenobiology/xenoflora)
+"hGl" = (
+/obj/structure/filingcabinet,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/xenobiology/xenoflora)
 "hGq" = (
 /obj/structure/closet/secure_closet/cargotech,
 /obj/item/weapon/storage/belt/utility,
@@ -23410,6 +22588,10 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"kLu" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "kUY" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -23498,10 +22680,29 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/constructionsite/maintenance)
+"lNe" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/rnd/research_breakroom)
 "lTg" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/planets/Geminus/indoor)
+"lWp" = (
+/obj/structure/reagent_dispensers/cleanertank,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/xenobiology/xenoflora)
+"lWF" = (
+/obj/machinery/portable_atmospherics/hydroponics/map,
+/obj/machinery/light/colored/purple{
+	dir = 4;
+	icon_state = "purple1";
+	tag = "icon-purple1 (EAST)"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
 "miQ" = (
 /obj/machinery/vending/tool,
 /obj/effect/floor_decal/corner/yellow/diagonal,
@@ -23524,6 +22725,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"mDr" = (
+/obj/structure/dispenser/oxygen,
+/obj/machinery/light/colored/purple{
+	dir = 1;
+	icon_state = "purple1";
+	tag = "icon-purple1 (NORTH)"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "mGp" = (
 /obj/effect/floor_decal/corner/mauve/diagonal,
 /obj/structure/disposalpipe/junction,
@@ -23572,6 +22782,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"nqL" = (
+/obj/structure/table/glass/white,
+/obj/machinery/chemical_dispenser/bar_coffee/full,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "nBk" = (
 /obj/item/weapon/handcuffs/fuzzy,
 /turf/simulated/floor/plating,
@@ -23643,10 +22858,49 @@
 /obj/random/junk,
 /turf/simulated/floor/tiled,
 /area/constructionsite/maintenance)
+"oxV" = (
+/obj/structure/table/glass/white,
+/obj/item/weapon/storage/box/glasses/meta,
+/obj/machinery/light/colored{
+	dir = 8;
+	icon_state = "yellow1";
+	tag = "icon-yellow1 (WEST)"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
+"oKw" = (
+/obj/structure/bed/chair/office/light,
+/turf/simulated/floor/tiled/white,
+/area/rnd/research_breakroom)
 "oMI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/pavement,
 /area/planets/Geminus/outdoor/east)
+"oPQ" = (
+/obj/item/weapon/archaeological_find{
+	pixel_y = 10
+	},
+/obj/structure/table/glass,
+/obj/machinery/light/colored/purple{
+	dir = 1;
+	icon_state = "purple1";
+	tag = "icon-purple1 (NORTH)"
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/research/anomaly)
+"oPT" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
+"oYp" = (
+/obj/machinery/light/colored/purple{
+	dir = 8;
+	icon_state = "purple1";
+	tag = "icon-purple1 (WEST)"
+	},
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "pfI" = (
 /turf/simulated/wall/iron,
 /area/engineering/engine_monitoring)
@@ -23690,6 +22944,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
+"pKI" = (
+/obj/machinery/light/colored/purple{
+	dir = 4;
+	icon_state = "purple1";
+	tag = "icon-purple1 (EAST)"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/outpost/research/anomaly)
 "pNG" = (
 /obj/machinery/light/colored,
 /turf/simulated/floor/pavement/brick_paving,
@@ -23706,6 +22968,10 @@
 /obj/effect/gibspawner/robot,
 /turf/simulated/floor/pavement/pave_tiling/indoors,
 /area/planets/Geminus/indoor/arrivalbus)
+"qdW" = (
+/obj/machinery/light/floor,
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
 "qek" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/bordercorner{
@@ -23717,6 +22983,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/storage)
+"qlz" = (
+/obj/structure/closet/secure_closet/scientist,
+/obj/machinery/light/colored/purple{
+	dir = 1;
+	icon_state = "purple1";
+	tag = "icon-purple1 (NORTH)"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "qsW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -23765,6 +23040,10 @@
 /obj/machinery/light/built,
 /turf/simulated/floor/tiled/dark,
 /area/engineering)
+"rhF" = (
+/obj/machinery/computer/security/wooden_tv/entertainment,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "rjs" = (
 /obj/effect/floor_decal/corner/mauve/diagonal,
 /obj/structure/bed/chair/office/light{
@@ -23800,6 +23079,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/workshop)
+"rHx" = (
+/obj/structure/bookcase/manuals/xenoarchaeology,
+/obj/machinery/light/colored/purple{
+	dir = 1;
+	icon_state = "purple1";
+	tag = "icon-purple1 (NORTH)"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rnd/xenobiology/xenoflora)
 "rJV" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /turf/simulated/floor/tiled/dark,
@@ -23817,11 +23105,30 @@
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/plating,
 /area/planets/Geminus/indoor)
+"sdw" = (
+/obj/structure/reagent_dispensers/coolanttank,
+/obj/machinery/light/colored/purple,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
 "sfi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/arrivals)
+"sfu" = (
+/obj/machinery/light/colored/purple{
+	dir = 4;
+	icon_state = "purple1";
+	tag = "icon-purple1 (EAST)"
+	},
+/obj/structure/reagent_dispensers/watertank/high,
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/research_breakroom)
+"snn" = (
+/obj/machinery/light/colored/purple,
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
 "syY" = (
 /obj/item/tape/engineering{
 	icon_state = "police_h_0"
@@ -23875,6 +23182,14 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"tmp" = (
+/obj/item/weapon/archaeological_find{
+	pixel_y = 10
+	},
+/obj/structure/table/glass,
+/obj/machinery/light/colored/purple,
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/research/anomaly)
 "trj" = (
 /turf/simulated/wall/iron,
 /area/engineering/storage)
@@ -23970,6 +23285,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_monitoring)
+"vlH" = (
+/obj/machinery/portable_atmospherics/hydroponics/map,
+/obj/machinery/light/colored/purple{
+	dir = 8;
+	icon_state = "purple1";
+	tag = "icon-purple1 (WEST)"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/rnd/xenobiology)
 "vpe" = (
 /obj/effect/decal/cleanable/graffiti{
 	pixel_y = 30
@@ -24097,11 +23421,20 @@
 	},
 /turf/simulated/floor/road/garage,
 /area/engineering/workshop)
+"xhP" = (
+/obj/machinery/light/colored/purple,
+/turf/simulated/floor/tiled,
+/area/planets/Geminus/indoor/science)
 "xFl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/gibspawner/robot,
 /turf/simulated/floor/pavement/pave_tiling/indoors,
 /area/planets/Geminus/indoor/arrivalbus)
+"xFX" = (
+/obj/structure/table/glass/white,
+/obj/machinery/light/colored/purple,
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology/xenoflora)
 "xHH" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
 /obj/effect/floor_decal/corner/yellow/border{
@@ -34814,26 +34147,26 @@ aiu
 biG
 aag
 aES
+ayH
 aES
+ayH
+ayH
 aES
+ayH
+ayH
 aES
+ayH
+ayH
 aES
-aES
-aES
-aES
-aES
-aES
-aES
-aES
-aES
-aES
-aES
-aES
-aES
-aES
-aES
-aES
-aES
+ayH
+ayH
+beK
+beK
+beK
+beK
+beK
+beK
+beK
 aEs
 bbv
 aEu
@@ -34894,27 +34227,27 @@ aag
 aiu
 biH
 aKt
-aES
-aGm
-aQc
-aJv
-aJv
-aJv
-aJv
-aXD
-aJv
-aJv
+ayH
 aUE
-aUE
-aUE
+pKI
 bkN
-aES
-aXy
-aYg
+bkN
+pKI
+bkN
+bkN
+pKI
+bkN
+aUE
+pKI
+bkN
+bkN
+beK
+mDr
 aYg
 aZK
 aZK
-aES
+sdw
+beK
 aEs
 bbv
 aEu
@@ -34975,10 +34308,10 @@ aag
 aiu
 biG
 aGU
-aES
-aGm
+ayP
+aJy
 aHX
-aHX
+aNq
 aHX
 aHX
 aHX
@@ -34990,12 +34323,12 @@ aHX
 aHX
 aHX
 bdW
-aHX
-aHX
-aHX
-aHX
+aZN
+aZN
+aZN
+aZN
 bnU
-aES
+beK
 aEs
 bbv
 aEu
@@ -35055,28 +34388,28 @@ axK
 aag
 aiu
 biG
-aag
+abH
 aES
-aGm
-aHX
-aHX
-aHX
-aHX
-aHX
-aHX
-aHX
-aHX
-aHX
-bka
-bka
+bkN
 bkO
-aES
-aOG
-aHX
-aYT
-aZL
-bfO
-aES
+aUE
+bkO
+aVQ
+bkO
+bkO
+bkO
+bkO
+bkO
+bkO
+bkO
+bkO
+beK
+aYU
+aYU
+aYU
+aZN
+bnU
+beK
 aEs
 bbv
 aEu
@@ -35137,11 +34470,11 @@ aag
 aiu
 biG
 aag
-aES
+ayP
 aJy
 aHX
 aHX
-aQc
+aRL
 aES
 aES
 aES
@@ -35149,15 +34482,15 @@ aES
 aES
 aES
 aES
+bmb
 aES
-aES
-aES
-aOL
-aHX
+beK
 aYU
-aZM
+aYU
+aYU
+aZN
 baw
-abH
+beK
 aEs
 bbv
 aEu
@@ -35218,27 +34551,27 @@ aag
 aiu
 biG
 aag
-aES
-aES
-aES
-aMr
-aES
+ayH
+aUE
+bkO
+bkO
+bkO
 aES
 aWl
 aWl
 aWl
 aWl
 aZT
+blT
 aER
-aVQ
-aER
-aES
-aOX
-aHX
-aYU
+blT
+beK
+chd
+aXI
+aXI
 aZN
 baw
-abH
+beK
 aEs
 bbv
 aEu
@@ -35298,28 +34631,28 @@ adi
 aag
 aiu
 biG
-aag
+abV
 aES
+oPQ
 aJx
-aGn
-aGn
-aGn
+aJx
+tmp
 aES
 aWl
 aWl
 aWl
 aWl
 aix
-aER
-aER
-aER
-aES
-aOZ
-aHX
-aYU
+aUF
+aUF
+aUF
+bmc
 aZN
-baw
-abH
+aZN
+aZN
+aZN
+eRQ
+beK
 aEs
 bbv
 aEu
@@ -35379,11 +34712,11 @@ adi
 aGT
 aiu
 biG
-aag
+aoR
 aES
-aJI
-aGo
-aGo
+baW
+baW
+baW
 baW
 aES
 aWl
@@ -35391,16 +34724,16 @@ aWl
 aWl
 aWl
 aix
+aUF
+aUF
 aER
-blr
-bln
-bmb
-blK
-blT
-aYU
-aZO
+beK
+qlz
+aXI
+aXI
+aXI
 baw
-abH
+beK
 aEs
 bbv
 aEu
@@ -35460,12 +34793,12 @@ atK
 aag
 aiu
 biG
-ayH
-aES
+aag
+aFa
 aGp
-aGp
-aGp
-aGp
+aGr
+aGr
+aTw
 aES
 aWl
 aWl
@@ -35473,15 +34806,15 @@ aWl
 aWl
 aZT
 aER
-bls
+aUF
 aER
-aES
-aHX
-blU
+beK
+blK
+aXI
 blX
-bmc
-bmd
-aES
+aXI
+bme
+beK
 aEs
 bbv
 aEu
@@ -35541,12 +34874,12 @@ aVS
 aag
 aiu
 biG
-ayP
+aag
 aFa
 avh
-avh
-avh
-avh
+aGs
+aGs
+aTG
 aFa
 aFa
 aFa
@@ -35554,15 +34887,15 @@ aFa
 aFa
 aFa
 aER
-bls
+aUF
 aWL
-aES
-aXA
-aYh
-aYW
-aHX
+beK
+blK
+aXI
+aYX
+aXI
 bme
-abH
+beK
 aEs
 bbv
 aEu
@@ -35625,9 +34958,9 @@ biG
 aag
 bcW
 boW
-aGr
-aGr
-aGr
+aGs
+aGs
+aTH
 aGr
 aGr
 aOM
@@ -35635,15 +34968,15 @@ aGr
 bnw
 bcW
 aER
-bls
+aUF
 aER
-aES
-aXB
-aYi
+beK
+blX
+aXI
 aYX
-aHX
-bme
-abH
+aXI
+blX
+beK
 aEs
 bbv
 aEu
@@ -35716,15 +35049,15 @@ aGs
 aGs
 bgb
 aUF
-bls
+aUF
 aER
-aES
-aXC
-aYj
-aYY
-aHX
-bme
-abH
+beK
+blX
+aXI
+aXI
+aXI
+fsi
+beK
 aEs
 bbv
 aEu
@@ -35797,15 +35130,15 @@ aGs
 aGs
 bnD
 aUF
-bls
+aUF
 bnH
-aES
-aPy
-blK
-blK
-blK
-bmf
-abH
+beK
+beK
+beK
+beK
+beK
+beK
+beK
 aEs
 bbv
 aEu
@@ -35866,26 +35199,26 @@ aag
 aiu
 biG
 aag
-ben
+bcW
 aJK
-aRJ
-aRJ
-aRJ
-aRJ
-aRJ
-aRJ
-aRJ
-aRJ
+aHY
+aHY
+aHY
+aHY
+aHY
+aHY
+aHY
+aHY
 ben
 aER
-bls
+aUF
 aER
 beC
-beC
-beC
-beC
-beC
-beC
+aXz
+bns
+dwn
+hul
+lWp
 beC
 bbp
 bbv
@@ -35949,25 +35282,25 @@ biG
 aGU
 aFl
 aFl
-aNG
-aNG
-aNG
+aVp
+aVp
+aVp
 aTv
 aVp
 aVp
-aVp
 aFl
 aFl
-aER
-bls
+aFl
+blU
+aUF
 aER
 beC
-aPR
+aPT
 aUd
-aXb
+aXz
 aXz
 aYH
-abV
+beC
 aEs
 bbv
 aEu
@@ -36028,27 +35361,27 @@ aBJ
 aiu
 biG
 aag
-aFl
-aIF
-aIF
-aIF
-aIF
-aFl
-bde
-bde
-bde
-bde
-aFl
-aUG
-bls
+aVp
+bhT
+bmS
+bhT
+bmS
+lWF
+bmS
+bmS
+bet
+bmZ
 aER
-beH
-aPS
-aVM
-aVM
-aVM
+aER
+aUF
+aUF
+bmf
+aXz
+aXz
+aXz
+aXz
 aYL
-abV
+beC
 aEs
 bbv
 aEu
@@ -36109,27 +35442,27 @@ aag
 aiu
 biG
 aag
-aFl
-aGw
-aGu
-aGu
-aQj
-aFl
-blJ
-aGu
-aGu
+aVp
+bhT
+bmS
+bhT
+bmS
+bhT
+bmS
+bmS
+bfX
 bmZ
-aFl
 aER
-bls
 aER
-beH
+aUF
+aER
+beC
 aPT
-aVM
-aVM
-aVM
+bnx
+cSU
+eHN
 aZy
-abV
+beC
 aEs
 bbv
 aEu
@@ -36190,26 +35523,26 @@ aag
 aiu
 biG
 aag
-aFl
-aMb
-aOY
-aGu
-aOY
-aFl
-blo
-aGu
+aVp
+bhT
+bmS
+bhT
+bmS
+bhT
+bmS
+bmS
 bmQ
-bmQ
-aFl
+bmZ
 aER
-bls
 aER
-aOA
-aPU
-aVM
-blE
-aVM
-aZz
+aUF
+aER
+beC
+beC
+beC
+beC
+beC
+beC
 beC
 aEs
 bbv
@@ -36270,28 +35603,28 @@ bdX
 aag
 aiu
 biG
-aag
+aGU
 aFl
-aMs
-aOT
-aJC
+qdW
+bmS
+qdW
+bmS
+qdW
+bmS
+bmS
+bmQ
 aFl
-aFl
-aXa
-aLy
-aVp
-aVp
-aFl
-aUN
-bls
+blr
 aER
-bkR
-aQQ
-aVM
+aUF
+aER
+beC
+rHx
+aXz
 aXo
-aVM
-aZz
-abV
+ban
+ban
+beC
 aEs
 bbv
 aEu
@@ -36352,27 +35685,27 @@ auA
 bhA
 biI
 aag
-aFl
+aVp
 bhT
-aGF
-aGF
-bbZ
-aQn
 bmS
-bkV
-bkV
-bmG
-aTw
+bhT
+bmS
+bhT
+bmS
+bmS
+aQk
+bjo
+aER
 aER
 blt
 bln
 bmL
 aQR
-aVM
-aXo
-aVM
-aZA
-abV
+blE
+blE
+bMm
+xFX
+beC
 aEs
 bbv
 aEu
@@ -36432,27 +35765,27 @@ atg
 aag
 aiu
 biG
-aGU
-aFl
-aGZ
-aGF
-aJB
-aKH
-aKH
-aKH
-aKH
+aag
+aVp
+bhT
+bmS
+bhT
+bmS
+bhT
+bmS
+bmS
 aQk
-aGF
-aTw
+bjo
+aER
 aER
 bls
 aER
 beC
 aRj
-aVM
+aXz
 blE
-aVM
-aZz
+aXz
+hGl
 beC
 aEs
 bbv
@@ -36514,27 +35847,27 @@ bhA
 bhA
 biI
 aag
-aoU
-aGD
-aGF
-bem
-aWA
-aXq
-aNK
-baq
-aQl
-bet
+aVp
+vlH
+bmS
+bhT
+fEE
+bhT
+bmS
+bmS
+snn
 aFl
-aUP
+blH
+aER
 bls
 aER
 beH
-aSM
-aVM
-aVM
-aVM
-aZz
-abV
+aSZ
+aXz
+blE
+aXz
+hGl
+beC
 bon
 bbv
 aEu
@@ -36595,27 +35928,27 @@ aag
 aiu
 biG
 aag
-aoU
-aGB
-aGF
-bem
-aKJ
+aFl
+aFl
+aFl
+aFl
+aFl
 aMd
-aYK
-aOS
-aQl
-aGF
-bjo
+bmS
+bmS
+bmS
+bjz
+aUF
 aUF
 bls
 aER
 beH
 aSY
-aVY
-aVM
-aVY
-baf
-abV
+aXz
+blE
+bMm
+xFX
+beC
 aEs
 bbv
 aEu
@@ -36676,27 +36009,27 @@ aag
 aiu
 biG
 aag
-aoU
-aGE
+aFl
+aGF
 aGF
 aJD
-bjP
+aFl
 bkc
-bkc
-bkc
+bmS
+bmS
 bkM
-bkV
-bjz
+bjA
+bln
 bln
 blu
 aER
 beH
 aSZ
-aWw
+aXz
 aXp
 aYb
 ban
-abV
+beC
 aEs
 bbv
 aEu
@@ -36757,16 +36090,16 @@ aag
 aiu
 biG
 aag
-aoU
-aGF
-aGF
-aGF
-bjQ
-aGF
-aGF
-aGF
-aGF
-bnx
+aFl
+aJl
+aLM
+aNS
+aFl
+aXx
+bmS
+bmS
+bfZ
+aFl
 aFl
 aUQ
 bls
@@ -36842,11 +36175,11 @@ aFl
 aGY
 aGF
 aJG
-bjQ
+aFl
 aYa
-bmE
-bmF
-bkV
+bmS
+bmS
+bmS
 bna
 aFl
 bmm
@@ -36920,15 +36253,15 @@ aiu
 biG
 aGy
 aFl
+aGF
+aGF
+aOa
 aFl
-aFl
-aFl
-bjR
 bmG
-aXe
-bmy
-aLK
-aFl
+bmS
+bmS
+bmS
+bjB
 aFl
 aER
 bls
@@ -37001,14 +36334,14 @@ aiu
 biG
 aag
 aFl
-aKq
-atS
-atS
 aGF
-aXc
+aGF
+atS
 aFl
-bmM
-aGu
+aXc
+aYj
+bmS
+aYj
 bmT
 aFl
 aER
@@ -37082,12 +36415,12 @@ aiu
 biG
 aag
 aFl
-aNq
-aIc
-aIc
 aGF
-aXc
+aIc
+aOA
 aFl
+aXJ
+aYY
 bmN
 bmY
 bmU
@@ -37163,8 +36496,8 @@ aiu
 biG
 aag
 bcW
-aFa
-aFa
+aKq
+aLU
 aFa
 aFa
 aFa
@@ -37486,27 +36819,27 @@ aag
 aiu
 biG
 aag
-aFn
+aFm
 aKN
-aRL
-aRL
-aRL
-blG
-aRL
-aRL
-aRL
+aGr
+aGr
+aGr
+bnQ
+aGr
+aGr
+aGr
 aZm
 aZU
 aER
 bls
 aER
 blD
-bfZ
-bfZ
+aGr
+aGr
 bnQ
 bgf
 bgi
-aoR
+aci
 aEs
 bbv
 aEu
@@ -37650,15 +36983,15 @@ biG
 aag
 aHZ
 aNN
-aNN
-aNN
+aIm
+aKO
 aWT
+aMg
 aHZ
-bjA
-aGR
+aZe
 bnj
 aRx
-aTH
+aHZ
 aER
 bls
 aER
@@ -37729,17 +37062,17 @@ aag
 aiu
 biG
 aag
-aHZ
+aKS
 aHb
+aMa
+aOX
 aGR
-aGR
-bdr
+aXK
 aHZ
-boh
-aGR
-aGR
-aRy
-aTH
+aZO
+bnj
+bnj
+aId
 aER
 bls
 aER
@@ -37813,14 +37146,14 @@ aag
 aKS
 aGO
 aIf
-aKM
-blH
+bnf
+aGR
+aYh
 aHZ
-bjB
-aGR
-aGR
-aRz
-aTH
+baX
+bnj
+bnj
+aId
 aER
 bls
 aWM
@@ -37891,17 +37224,17 @@ arF
 aiu
 biG
 aag
-aKS
+aHZ
 aGP
-aIl
-aKP
-aGR
+bof
+bof
+bof
 aMg
-aGR
-aGR
-aGR
+aHZ
+bdr
+bgg
 aRA
-aTH
+aHZ
 aER
 bls
 aUF
@@ -37972,20 +37305,20 @@ arF
 aiu
 biG
 aGU
-aKS
-aGQ
+aHZ
+aNN
 aIm
 aKO
-aGR
-aMg
-aGR
-aGR
-aGR
+xhP
+aHZ
+aHZ
+aId
+aId
 bfr
 aHZ
-aER
-bls
-aER
+bki
+aNt
+bkP
 beJ
 bdA
 bdA
@@ -38053,16 +37386,16 @@ arF
 aiu
 biG
 aag
-aHZ
+aFn
 aHN
+aMa
+aOX
+bof
+aYi
 aGR
 aGR
 aGR
-aHZ
-aNS
-aGR
-aGR
-aGR
+bjP
 aHZ
 aUR
 bls
@@ -38074,7 +37407,7 @@ beK
 beK
 beK
 beK
-aEs
+hiT
 bbv
 aEu
 aEu
@@ -38135,14 +37468,14 @@ aiu
 biG
 aag
 aLI
-aGL
-aGR
+aGO
+aIf
 bnf
 bof
-aHZ
-aGR
-aGR
-aGR
+aYi
+bof
+bof
+bof
 bkW
 bkL
 bln
@@ -38151,9 +37484,9 @@ aER
 aXd
 boG
 aYo
-aXI
-aXI
-aXI
+kLu
+kLu
+sfu
 beK
 aEs
 bbv
@@ -38215,27 +37548,27 @@ aag
 aiu
 biG
 aag
-aOa
-aGR
-aGR
-bnf
-bog
 aHZ
+aKJ
+aGR
+bof
+bog
+aId
 aKx
-aLz
-aLM
+aGR
+aGR
 aMf
 aHZ
 aUQ
 bls
 aER
 aXd
-aMa
 aXI
-aXK
+aXI
+aXI
+aXI
 bnr
-bnr
-bdv
+beK
 aEs
 bbv
 aEu
@@ -38298,25 +37631,25 @@ biG
 aag
 aHZ
 aHQ
-aGR
-aGR
-aGR
+aPb
+bof
+aUG
 aMl
 bjM
 aOb
-aQq
+aGR
 bkY
 aHZ
 bmH
 bls
 aER
 beK
-aXJ
 aXI
-aXx
+aXI
+aXI
+aXI
 aZW
-aZW
-bdv
+beK
 aEs
 bbv
 aEu
@@ -38377,15 +37710,15 @@ aag
 aiu
 biG
 aGU
-aKS
-aGO
-aIf
-aKM
-aGR
-aMl
+aHZ
+aHZ
+aHZ
+aPy
+aHZ
+aHZ
 aOc
-aOb
-aQq
+aGR
+aGR
 bkX
 aHZ
 aER
@@ -38393,11 +37726,11 @@ blx
 bln
 bnI
 blO
-aXK
-aZe
+aXI
+aXI
+aXI
 aZW
-aZW
-bdv
+beK
 aEs
 bbv
 aEu
@@ -38457,28 +37790,28 @@ aag
 aag
 aiu
 biG
-aag
-aKS
-aGP
-aIl
-aKP
-aGR
-aMl
+aiu
+aGB
+aIm
+aIm
+aPU
+aUN
+aYi
 aOd
-aOb
+aOd
 aQq
-bkX
+bjQ
 aMl
 aER
 bls
 aWM
 beK
 bjm
+boh
 aXI
-aXx
-aZW
-aZW
-bdv
+aXI
+oYp
+beK
 aEs
 bbv
 aEu
@@ -38538,28 +37871,28 @@ aiu
 aiu
 aiu
 biG
-aag
-aKS
-aGQ
-aIm
-aKO
-aGR
-aHZ
-awm
-aOb
-aQq
-bkX
+aiu
+aGE
+aLz
+aMw
+aRJ
+aUP
+aYi
+aOd
+aOd
+aOd
+bjR
 aMl
 aER
 bls
 aER
-aXd
+beK
 bfp
-aXI
-aXK
-bns
-bns
-bdv
+beK
+beK
+beK
+beK
+beK
 aEs
 bbv
 aEu
@@ -38621,10 +37954,10 @@ bhA
 biI
 aPr
 aHZ
-aJl
-aTG
-aLU
-baX
+aHZ
+aHZ
+aHZ
+aHZ
 aHZ
 boC
 aPb
@@ -38634,14 +37967,14 @@ aMl
 aER
 bls
 aER
-bfX
+aXd
 blR
-bdD
-bdD
-bgg
-bdD
-bfV
-aEs
+aXI
+aXI
+aXI
+gFC
+beK
+hiT
 bbv
 aEu
 aEu
@@ -38715,14 +38048,14 @@ aLW
 aER
 bls
 aER
+beK
 bfV
-bfV
-bfV
-bfV
-bfV
-bfV
-bfV
-bbp
+blS
+lNe
+lNe
+blS
+eJN
+aEs
 bbv
 aEu
 aEu
@@ -38787,8 +38120,8 @@ bnc
 bnd
 bng
 aLW
-aMw
-aOg
+aIq
+aRM
 aPc
 aQs
 aRM
@@ -38796,13 +38129,13 @@ aLW
 aUQ
 bls
 bnH
-bfV
-bdB
-bdD
-blZ
-blS
+beK
+aXI
+bft
+bma
+bma
 bmg
-bfV
+eJN
 aEs
 bbv
 aEu
@@ -38868,22 +38201,22 @@ aGV
 aIq
 bor
 aLW
-aKR
-aKR
-aPc
 aIq
-aIq
+aKR
+bdv
+bdv
+bkR
 aLW
 aER
-blx
-bln
+bls
+aUF
 bnJ
 blS
-blS
+oKw
 bma
-bdR
-bei
-bfV
+bma
+bmg
+eJN
 aEs
 bbv
 aEu
@@ -38949,22 +38282,22 @@ aGW
 aIq
 aJS
 aLW
-aMx
-aMx
-aPc
 aIq
-aIq
+aRM
+bdB
+bdB
+aRM
 aNm
 bki
 aNt
 bkQ
-bfV
-bdD
+beK
+aXI
 bft
-bdN
-bdS
-bei
-bfV
+bma
+bma
+bmg
+eJN
 aEs
 bbv
 aEu
@@ -39039,13 +38372,13 @@ ble
 bln
 blw
 aER
-bfV
-bfV
-bfV
-bfV
-bfV
-bfV
-bfV
+beK
+aXI
+blS
+fOS
+fOS
+gQc
+eJN
 aEs
 bbv
 aEu
@@ -39120,14 +38453,14 @@ aNm
 aER
 bls
 aER
-bfV
-bdB
-bdD
-blZ
-blS
-bmg
-bfV
-aEs
+beK
+aXI
+aXI
+aXI
+aXI
+aXI
+beK
+hiT
 bbv
 aEu
 aEu
@@ -39199,15 +38532,15 @@ aQt
 aSh
 aTK
 aER
-blx
-bln
-bnJ
-blS
-blS
-bma
-bdR
-bei
-bfV
+bls
+aUF
+beK
+aXI
+aXI
+aXI
+aXI
+aXI
+beK
 aEs
 bbv
 aEu
@@ -39282,13 +38615,13 @@ aTK
 aVb
 bly
 aOp
-bfV
+beK
 bdD
-bft
-bdN
-bdS
-bei
-bfV
+rhF
+oPT
+nqL
+oxV
+beK
 aEs
 bbv
 aEu
@@ -39363,13 +38696,13 @@ aLW
 aFa
 aFa
 aFa
-aFa
-bfV
-bfV
-bfV
-bfV
-bfV
-bfV
+beK
+beK
+beK
+beK
+beK
+beK
+beK
 aEs
 bbv
 aEu
