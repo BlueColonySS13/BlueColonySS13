@@ -258,6 +258,7 @@
 			visible_message("<b>[src]</b> beeps, \"<span class='danger'>I'm sorry! I'm unable to accept this item!</span>\" ")
 			flick("inv-tri_warn",src)
 			return
+		check_disallowed_items(I)
 		if(current_inventory.max_possible_items <= length(current_inventory.stored_items))
 			visible_message("<b>[src]</b> beeps, \"<span class='danger'>I'm sorry! You've reached your inventory limit!</span>\" ")
 			flick("inv-tri_warn",src)
@@ -323,6 +324,15 @@
 			updateDialog()
 			update_icon()
 
+///Just drop whatever is disallowed to the floor and store everything else
+/obj/machinery/inventory_machine/proc/check_disallowed_items(atom/movable/target)
+	for(var/atom/movable/item in target.contents)
+		if(item.dont_save)
+			item.forceMove(src.loc)
+			visible_message("<b>[src]</b> beeps, \"<span class='danger'>I'm sorry, i cannot accept \the [item] that was inside \the [target]!</span>\"")
+			visible_message("[src] drops \the [item].")
+		else if(item.contents)
+			check_disallowed_items(item) //This could end up in a recursion, hopefully it doesn't
 
 /obj/machinery/inventory_machine/proc/pay_with_card(obj/item/weapon/card/id/I, mob/user)
 	if(!I)
