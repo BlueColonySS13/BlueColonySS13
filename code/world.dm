@@ -703,8 +703,14 @@ proc/setup_old_database_connection()
 	else
 		failed_old_db_connections++		//If it failed, increase the failed connections counter.
 		world.log << dbcon.ErrorMsg()
+		world.log "ERROR: Could not connect to mysql server (old db). Error: [dbcon.ErrorMsg()] - Details: [db]:[address]:[port]","[user]","[pass]", 1
 
 	return .
+
+//This proc is still needed to allow troubleshooting from in-game
+proc/reset_db_chances()
+	failed_old_db_connections = 0
+	return 1
 
 //This proc ensures that the connection to the feedback database (global variable dbcon) is established
 proc/establish_old_db_connection()
