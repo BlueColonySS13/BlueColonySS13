@@ -42,7 +42,7 @@
 /datum/job/engineer
 	title = "Firefighter"
 	email_domain = "fire.cityworks.gov.nt"
-	flag = ENGINEER
+	flag = ATMOSTECH
 	department_flag = ENGSEC
 	faction = "City"
 	department = "Emergency and Maintenance"
@@ -50,28 +50,27 @@
 	spawn_positions = 5
 	supervisors = "the fire chief"
 	selection_color = "#5B4D20"
-	idtype = /obj/item/weapon/card/id/engineering/engineer
+	idtype = /obj/item/weapon/card/id/engineering/atmos
 	wage = 60
 	access = list(access_engine, access_engine_equip, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_construction, access_atmospherics, access_external_airlocks, access_medical, access_medical_equip, access_morgue, access_eva, access_maint_tunnels, access_external_airlocks)
 	alt_titles = list("Firefighter/EMT")
 	minimum_character_age = 18
 	minimal_player_age = 3
-	outfit_type = /decl/hierarchy/outfit/job/engineering/engineer
+	outfit_type = /decl/hierarchy/outfit/job/engineering/atmos
 */
 /datum/job/atmos
 	title = "Maintenance Worker"
 
-	flag = ATMOSTECH
+	flag = ENGINEER
 	department_flag = ENGSEC
 	faction = "City"
-
 	department = DEPT_MAINTENANCE
 	total_positions = 3
 	spawn_positions = 2
 	supervisors = "the maintenance director"
 	selection_color = "#5B4D20"
-	idtype = /obj/item/weapon/card/id/engineering/atmos
+	idtype = /obj/item/weapon/card/id/engineering/engineer
 	wage = 500
 	synth_wage = 250
 
@@ -81,10 +80,8 @@
 	minimal_player_age = 3
 	minimum_character_age = 18
 
-	outfit_type = /decl/hierarchy/outfit/job/engineering/atmos
+	outfit_type = /decl/hierarchy/outfit/job/engineering/engineer
 	alt_titles = list("Civil Engineer", "Public Works Staff", "Electrician")
-
-// Popping Paramedic In right here.
 
 /datum/job/janitor
 	title = "Sanitation Technician"
@@ -100,7 +97,7 @@
 	idtype = /obj/item/weapon/card/id/civilian/janitor
 	access = list(access_engine, access_engine_equip, access_external_airlocks, access_janitor, access_maint_tunnels)
 	minimal_access = list(access_janitor, access_maint_tunnels)
-	minimum_character_age = 16 //Not making it any younger because being a janitor requires a lot of labor, or maybe it just means I'm very lazy? Oh well
+	minimum_character_age = 16
 	wage = 400
 	synth_wage = 200
 
