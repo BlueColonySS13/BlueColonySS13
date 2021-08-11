@@ -6,5 +6,8 @@ theflagbearer - City Clerk
 robinkhaliq - Chief Medical Officer
 herma - Maintenance Director
 APsychonaut - President
-Slaying_creepers - Nanotrasen CEO
+slayingcreepers - Nanotrasen CEO
 ooglepunk - Research Director
+ooglepunk - Advisor of Innovation
+Gomezash - Judge
+nope63 - Mayor
