@@ -570,10 +570,10 @@ var/world_topic_spam_protect_time = world.timeofday
 	if (config && config.server_name)
 		s += "<b>[config.server_name]</b> &#8212; "
 
-	s += "<b>Official World Server | Roleplaying</b>";
-	s += " | Persistent money, partial map saving, elections."
+	s += "<b>Official Blue Colony | Heavy Roleplaying, With less bombings </b>";
+	s += " | Persistent money, own a business, conspire against your friends."
 
-	s += "(<a href=\"https://discord.gg/4KUpvnJ\">" //Change this to wherever you want the hub to link to.
+	s += "(<a href=\"https://discord.gg/hJdcSRF4\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
 	s += "DISCORD"
 	s += "</a>"
