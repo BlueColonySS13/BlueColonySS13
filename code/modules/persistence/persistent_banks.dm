@@ -21,7 +21,7 @@
 		account_number = H.mind.prefs.bank_account
 
 	if(H.mind.prefs.expenses)
-		expenses = ind.prefs.expenses
+		expenses = H.mind.prefs.expenses
 
 	transaction_log = get_persistent_acc_logs(account_number)
 
