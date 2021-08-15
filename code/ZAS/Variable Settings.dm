@@ -193,7 +193,7 @@ var/global/vs_control/vsc = new
 
 /vs_control/proc/SetDefault(var/mob/user)
 	var/list/setting_choices = list("Phoron - Standard", "Phoron - Low Hazard", "Phoron - High Hazard", "Phoron - Oh Shit!",\
-	"ZAS - Normal", "ZAS - Forgiving", "ZAS - Dangerous", "ZAS - Hellish", "ZAS/Phoron - Initial")
+	"ZAS - Normal", "ZAS - Forgiving", "ZAS - Very Slow", "ZAS - Dangerous", "ZAS - Hellish", "ZAS/Phoron - Initial")
 	var/def = input(user, "Which of these presets should be used?") as null|anything in setting_choices
 	if(!def)
 		return
@@ -261,7 +261,21 @@ var/global/vs_control/vsc = new
 			airflow_speed_decay = 1.5
 			airflow_delay = 50
 			airflow_mob_slowdown = 0
-
+			
+		if("ZAS - Very Slow")
+			airflow_lightest_pressure = 45
+			airflow_light_pressure = 60
+			airflow_medium_pressure = 120
+			airflow_heavy_pressure = 110
+			airflow_dense_pressure = 200
+			airflow_stun_pressure = 150
+			airflow_stun_cooldown = 90
+			airflow_stun = 0.15
+			airflow_damage = 0.15
+			airflow_speed_decay = 1.5
+			airflow_delay = 2000
+			airflow_mob_slowdown = 0
+			
 		if("ZAS - Dangerous")
 			airflow_lightest_pressure = 15
 			airflow_light_pressure = 30
