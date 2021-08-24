@@ -498,7 +498,7 @@
 
 		var/new_access = sanitize(copytext(input(usr, "Enter a new access name (Max 50 letters)", "Business Management Utility")  as text,1,50))
 
-		if(!new_access | !current_business)
+		if(!new_access || !current_business)
 			return
 
 		if(LAZYLEN(current_business.business_accesses) >= MAX_BUSINESS_ACCESSES)	// nice try

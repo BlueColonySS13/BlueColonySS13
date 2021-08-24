@@ -68,11 +68,12 @@
 	if(isemptylist(pref.expenses))
 		. += "<i>You have no recorded debts.</i>"
 	else
-		for(var/datum/expense/E in pref.expenses)
+		var/expenses = pref.expenses
+		for(var/datum/expense/E in expenses)
 			var/purpose_name
 			if(E.purpose)
 				purpose_name = " ([E.purpose])"
 				. += "<b>[E.name][purpose_name]:</b> [E.amount_left] credits. ([E.cost_per_payroll] per payroll.)<br>"
 
 
-	. = jointext(.,null)
+	. = jointext(., null)
