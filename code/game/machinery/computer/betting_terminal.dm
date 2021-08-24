@@ -74,7 +74,7 @@
 	return
 
 /// If win = -1 or a value that's not here, the result is pure randomness. If win=0, you NEVER win. If win is 1, you either get third place or just lose.
-/obj/machinery/computer/betting_terminal/proc/cast_bet(game_state = ABSOLUTELY_RANDOM)
+/obj/machinery/computer/betting_terminal/proc/cast_bet(game_state = RANDOM)
 	while(betting)
 		horse_position = rand(1, 7)
 
