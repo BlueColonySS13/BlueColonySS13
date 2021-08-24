@@ -202,14 +202,14 @@
 				speak("[chosen] came in first place!")
 			if(2)
 				switch(bet_type)
-					if(BET_TYPE_WIN)
-						win_value = 0
-					else
+					if(BET_TYPE_PLACE to BET_TYPE_SHOW)
 						win_value = round(1.25 * bet_cost)
+					else
+						win_value = 0
 				speak("[chosen] came in second place!")
 			if(3)
 				switch(bet_type)
-					if(bet_type <= BET_TYPE_SHOW)
+					if(BET_TYPE_SHOW)
 						win_value = round(1.1 * bet_cost)
 					else
 						win_value = 0
