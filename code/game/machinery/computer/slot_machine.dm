@@ -3,6 +3,11 @@
 	#warn Slot machines are being debugged! Turn this off in code/game/machinery/computer/slot_machine.dm
 #endif
 
+/// Used for the random chance
+#define RANDOM -1
+/// Used for always losing
+#define LOSE 0
+
 #define SEVEN		1
 #define DIAMOND		2
 #define CHERRY		3
@@ -48,7 +53,7 @@
 	var/obj/item/device/radio/radio
 
 /obj/machinery/computer/slot_machine/New()
-	.=..()
+	. = ..()
 
 	id = rand(1,99999)
 
@@ -90,7 +95,7 @@
 	//which would be impossible if they were in the overlays list
 
 /obj/machinery/computer/slot_machine/update_icon()
-	..()
+	. = ..()
 	var/initial_icon = initial(icon_state)
 
 	if(stat & BROKEN)
@@ -105,28 +110,30 @@
 
 		icon_state = initial_icon
 
-/obj/machinery/computer/slot_machine/proc/spin_wheels(win = -1) //If win=-1, the result is pure randomness. If win=0, you NEVER win. If win is 1 to 10, you win.
-	while(1)
+//If win = -1 or a value that's not here, the result is pure randomness. If win=0, you NEVER win. If win is 1 to 10, you win.
+/obj/machinery/computer/slot_machine/proc/spin_wheels(game_state = RANDOM)
+	while(spinning)
 		value_1 = rand(1,10)
 		value_2 = rand(1,10)
 		value_3 = rand(1,10)
 
-		switch(win)
-			if(-1)
+		switch(game_state)
+			if(RANDOM)
 				return //Pure randomness!
-			if(0)
+			if(LOSE)
 				if(!(value_1 == value_2 && value_2 == value_3)) //If we're NOT winning
 					return //Else, run the loop again until the three values no longer match
 			if(1 to 10)
-				value_1 = win
-				value_2 = win
-				value_3 = win
+				value_1 = game_state
+				value_2 = game_state
+				value_3 = game_state
 				return
 			else
-				return
+				return //Admins abusing.
 
 /obj/machinery/computer/slot_machine/proc/spin(mob/user)
-	if(spinning) return
+	if(spinning)
+		return
 
 	//Charge money:
 	if(stored_money >= get_spin_cost()) //If there's cash in the machine
@@ -150,17 +157,19 @@
 		rigged = 0
 
 	else
-		var/victory = rand(1,30)
+		var/game_state = rand(1, 60)
 
 		#ifdef DEBUG_SLOT_MACHINES
-		user << "Rolled [victory]!"
+		to_chat(user, "Rolled [game_state]!")
 		#endif
 
-		switch(victory)
+		switch(game_state)
 			if(1) //1 in 10 for a guaranteed small reward
-				spin_wheels(win = pick(BELL, MUSHROOM, TREE))
+				spin_wheels(pick(BELL, MUSHROOM, TREE))
 			if(2 to 30) //Otherwise, a fully random spin (1/1000 to get jackpot, 1/100 to get other reward)
-				spin_wheels(win = -1)
+				spin_wheels(RANDOM)
+			if(31 to 60) //Losing is part of the game
+				spin_wheels(LOSE)
 
 	//If there's only one icon_state for spinning, everything looks weird
 	var/list/spin_states = list("spin1","spin2","spin3")
@@ -220,7 +229,7 @@
 
 			if(CHICKEN)
 				win_value = 400 * get_spin_cost() //6000$
-				var/mob/living/simple_mob/animal/passive/chicken/C = new(src.loc)
+				var/mob/living/simple_mob/animal/passive/chicken/C = new(get_turf(src))
 				C.name = "Pomf chicken"
 				C.body_color = "white"
 				C.icon_state = "chicken_white"
@@ -252,13 +261,13 @@
 			win_value = min(win_value, our_money_account.money)
 
 			spawn(10)
-				if(our_money_account.charge(win_value,null,"Victory","one-armed bandit #[id]"))
-					spawn_money(win_value,src.loc,usr)
+				if(our_money_account.charge(win_value, null, "Victory", "one-armed bandit #[id]"))
+					spawn_money(win_value, get_turf(src), usr)
 					playsound(get_turf(src), "polaroid", 50, 1)
 
-					user << "<span class='notice'>You win $[win_value]!</span>"
+					to_chat(user, "<span class='notice'>You win $[win_value]!</span>")
 				else
-					src.visible_message("<span class='danger'>[src]'s screen flashes red.</span>")
+					visible_message("<span class='danger'>[src]'s screen flashes red.</span>")
 
 		sleep(50)
 
@@ -268,7 +277,7 @@
 /obj/machinery/computer/slot_machine/proc/broadcast(var/message)
 	if(!message) return
 
-	Broadcast_Message(radio, all_languages[LANGUAGE_SOL_COMMON], null, radio, message, "[capitalize(src.name)]", "Money Snatcher", "Slot machine #[id]", 0, 0, list(0,1), 1459)
+	Broadcast_Message(radio, all_languages[LANGUAGE_SOL_COMMON], null, radio, message, "[capitalize(name)]", "Money Snatcher", "Slot machine #[id]", 0, 0, list(0,1), 1459)
 
 
 /obj/machinery/computer/slot_machine/proc/hit_animation()
@@ -323,14 +332,14 @@
 		return
 
 	if(href_list["reclaim"])
-		spawn_money(stored_money,src.loc,usr)
+		spawn_money(stored_money, loc,usr)
 		stored_money = 0
 
 	else if(href_list["spin"])
 		if((stored_money >= get_spin_cost()) && can_play())
 			spin(usr)
 
-	src.updateUsrDialog()
+	updateUsrDialog()
 
 
 /obj/machinery/computer/slot_machine/attackby(obj/item/I as obj, mob/user as mob)
@@ -338,7 +347,7 @@
 
 	if(istype(I,/obj/item/weapon/spacecash))
 		if(!can_play())
-			user << "<span class='notice'>[src] rejects your money.</span>"
+			to_chat(user, "<span class='notice'>[src] rejects your money.</span>")
 			return
 
 		var/obj/item/weapon/spacecash/S = I
@@ -347,8 +356,8 @@
 		user.drop_item(I)
 		qdel(I)
 
-		src.stored_money += money_add
-		src.updateUsrDialog()
+		stored_money += money_add
+		updateUsrDialog()
 
 /obj/machinery/computer/slot_machine/proc/can_play() //If no money in OUR account, return 0
 	if(!our_money_account)
@@ -358,8 +367,8 @@
 
 	return 1
 
-#undef MINIMUM_WIN_TO_BROADCAST
-#undef MINIMUM_MONEY_TO_PLAY
+#undef RANDOM
+#undef LOSE
 
 #undef SEVEN
 #undef DIAMOND
@@ -371,3 +380,6 @@
 #undef MUSHROOM
 #undef CHICKEN
 #undef TREE
+
+#undef MINIMUM_WIN_TO_BROADCAST
+#undef MINIMUM_MONEY_TO_PLAY

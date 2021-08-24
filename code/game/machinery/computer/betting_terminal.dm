@@ -1,3 +1,18 @@
+/// Used for the random chance
+#define RANDOM -1
+/// Used for always losing
+#define LOSE 0
+
+//*****
+// *		BET TYPES:
+// *	1 - WIN - The chosen horse must come in first place to win.
+#define BET_TYPE_WIN 1
+// *	2 - PLACE - The chosen horse muse come in first or second place to win.
+#define BET_TYPE_PLACE 2
+// *	3 - SHOW - The chosen horse must come in first, second, or third place to win.
+#define BET_TYPE_SHOW 3
+//*****
+
 /obj/machinery/computer/betting_terminal
 	name = "horse racing terminal"
 	desc = "A betting terminal synced to the Horse Racing Association's database."
@@ -11,23 +26,16 @@
 	var/rigged = 0
 	var/betting = 0
 	var/bet_cost = 100
-	var/bet_type = 1
-/*****
- *		BET TYPES:
- *	1 - WIN - The chosen horse must come in first place to win.
- *	2 - PLACE - The chosen horse muse come in first or second place to win.
- *	3 - SHOW - The chosen horse must come in first, second, or third place to win.
- *****/
-
+	var/bet_type = BET_TYPE_WIN
 
 	var/stored_money = 0 //Cash
 
-	var/value_1 = 1
+	var/horse_position = 1
 	var/chosen = ""
 
 
 /obj/machinery/computer/betting_terminal/New()
-	.=..()
+	. = ..()
 
 	id = rand(1,99999)
 
@@ -65,21 +73,25 @@
 		O.show_message("<span class='game say'><span class='name'>\The [src]</span> beeps, \"[message]\"</span>",2)
 	return
 
-/obj/machinery/computer/betting_terminal/proc/cast_bet(win = -1) //If win=-1, the result is pure randomness. If win=0, you NEVER win. If win is 1 to 10, you win.
-	while(1)
-		value_1 = rand(1,7)
+/// If win = -1 or a value that's not here, the result is pure randomness. If win=0, you NEVER win. If win is 1, you either get third place or just lose.
+/obj/machinery/computer/betting_terminal/proc/cast_bet(game_state = ABSOLUTELY_RANDOM)
+	while(betting)
+		horse_position = rand(1, 7)
 
-		switch(win)
-			if(-1)
-				return //Pure randomness!
-			if(3 to 7)
-				value_1 = win
+		switch(game_state)
+			if(RANDOM) //Pure randomness!
 				return
-			else
+			if(LOSE) // You lose!
+				horse_position = rand(4, 7)
+			if(1) // 20% chance of getting third place.
+				horse_position = rand(3, 7)
+				return
+			else // Abusing admin, random as well.
 				return
 
 /obj/machinery/computer/betting_terminal/proc/bet(mob/user)
-	if(betting) return
+	if(betting)
+		return
 
 	//Charge money:
 	if(stored_money >= bet_cost) //If there's cash in the machine
@@ -114,11 +126,11 @@
 	//Set bet type
 	switch(alert("Which type of bet would you like to place?\nWIN - The chosen horse must come in first place to win.\nPLACE - The chosen horse must come in first or second place to win.\nSHOW - The chosen horse must come in first, second, or third place to win.", "Bet Type", "Win", "Place", "Show"))
 		if("Win")
-			bet_type = 1
+			bet_type = BET_TYPE_WIN
 		if("Place")
-			bet_type = 2
+			bet_type = BET_TYPE_PLACE
 		if("Show")
-			bet_type = 3
+			bet_type = BET_TYPE_SHOW
 
 	//Set amount to bet
 	var/new_bet_cost = input(user,"How many credits would you like to place on this bet?", "Bet Amount", bet_cost) as null|num
@@ -135,24 +147,26 @@
 
 	//Pre-calculate results
 	if(rigged)
-		value_1 = 1
+		horse_position = 1
 		rigged = 0
 
 	else
-		var/victory = rand(1,50)
+		var/game_state = rand(1, 100)
 
-		switch(victory)
-			if(1) //1 in 20 for a guaranteed small reward
-				cast_bet(win = rand(3,7))
-			if(2 to 50) //Otherwise, a fully random bet (1/1000 to get jackpot, 1/100 to get other reward)
-				cast_bet(win = -1)
+		switch(game_state)
+			if(1) //1 in 20 for a chance of guaranteed small reward
+				cast_bet(1)
+			if(2 to 50) //Straight up random
+				cast_bet()
+			if(51 to 100) //Hardmode engaged: if it gets this far, you've already lost
+				cast_bet(LOSE)
 
-	playsound(get_turf(src),'sound/effects/horse_race.ogg',30,-4)
+	playsound(get_turf(src), 'sound/effects/horse_race.ogg',30,-4)
 	speak(pick("The horses are out of the gate at lightning speed!", "We're off to a good start! Look at those fine stallions move!",
 	"The crowd is riled up! This is sure to be a race for the history books!", "The horses are out! The crowd is chanting [horse_name]'s name!"))
 	sleep(50)
 
-	playsound(get_turf(src),'sound/effects/horses_running.ogg',50,-4)
+	playsound(get_turf(src), 'sound/effects/horses_running.ogg',50,-4)
 	speak(pick("Look at them go! It's sure to be a photo-finish!", "Wow! [horse_name] is barrelling through the lanes!", "Such speed! This is going to be a good race!",
 	"[horse_name] just might have a chance at placing in the top three!", "It looks like some of the observers are nervous... It looks like their pick isn't doing so well!",
 	"They're half-way around the bend now! It's almost over!", "The tension is so thick you could cut it with a knife!"))
@@ -171,31 +185,34 @@
 	if(!our_money_account)
 		return
 
-	if(value_1 <= 7)
+	if(horse_position <= 7)
 
 		var/win_value = 0
 
-		switch(value_1)
+		switch(horse_position)
 
 			if(1)
-				if(bet_type == 1)
-					win_value = round(2 * bet_cost)
-				else if(bet_type == 2)
-					win_value = round(1.75 * bet_cost)
-				else
-					win_value = round(1.5 * bet_cost)
+				switch(bet_type)
+					if(BET_TYPE_WIN)
+						win_value = round(2 * bet_cost)
+					if(BET_TYPE_PLACE)
+						win_value = round(1.75 * bet_cost)
+					if(BET_TYPE_SHOW)
+						win_value = round(1.5 * bet_cost)
 				speak("[chosen] came in first place!")
 			if(2)
-				if(bet_type == 1)
-					win_value = 0
-				else
-					win_value = round(1.25 * bet_cost)
+				switch(bet_type)
+					if(BET_TYPE_WIN)
+						win_value = 0
+					else
+						win_value = round(1.25 * bet_cost)
 				speak("[chosen] came in second place!")
 			if(3)
-				if(bet_type < 3)
-					win_value = 0
-				else
-					win_value = round(1.1 * bet_cost)
+				switch(bet_type)
+					if(bet_type <= BET_TYPE_SHOW)
+						win_value = round(1.1 * bet_cost)
+					else
+						win_value = 0
 				speak("[chosen] came in third place!")
 			if(4)
 				win_value = 0
@@ -215,12 +232,12 @@
 
 			spawn(10)
 				if(our_money_account.charge(win_value,null,"Payout","horse racing terminal #[id]"))
-					spawn_money(win_value,src.loc,usr)
+					spawn_money(win_value, loc, usr)
 					playsound(get_turf(src), "polaroid", 50, 1)
 
-					user << "<span class='notice'>You win $[win_value]!</span>"
+					to_chat(user, "<span class='notice'>You win $[win_value]!</span>")
 				else
-					src.visible_message("<span class='danger'>[src]'s screen flashes red.</span>")
+					visible_message("<span class='danger'>[src]'s screen flashes red.</span>")
 
 		sleep(50)
 
@@ -276,14 +293,14 @@
 		return
 
 	if(href_list["reclaim"])
-		spawn_money(stored_money,src.loc,usr)
+		spawn_money(stored_money, loc, usr)
 		stored_money = 0
 
 	else if(href_list["bet"])
 		if((stored_money >= 100) && can_play())
 			bet(usr)
 
-	src.updateUsrDialog()
+	updateUsrDialog()
 
 
 /obj/machinery/computer/betting_terminal/attackby(obj/item/I as obj, mob/user as mob)
@@ -291,7 +308,7 @@
 
 	if(istype(I,/obj/item/weapon/spacecash))
 		if(!can_play())
-			user << "<span class='notice'>[src] rejects your money.</span>"
+			to_chat(user, "<span class='notice'>[src] rejects your money.</span>")
 			return
 
 		var/obj/item/weapon/spacecash/S = I
@@ -300,16 +317,16 @@
 		user.drop_item(I)
 		qdel(I)
 
-		src.stored_money += money_add
-		src.updateUsrDialog()
+		stored_money += money_add
+		updateUsrDialog()
 
 /obj/machinery/computer/betting_terminal/proc/can_play() //If no money in OUR account, return 0
 	if(!our_money_account)
-		return 0
+		return FALSE
 	if(our_money_account.money < 1000)
-		return 0
+		return FALSE
 
-	return 1
+	return TRUE
 
 /obj/machinery/computer/betting_terminal/emag_act(var/remaining_charges, var/mob/user)
 	if(!rigged)
@@ -320,3 +337,9 @@
 
 	if(rigged)
 		to_chat(user, "<span class='warning'>You have already emagged \the [src]!")
+
+#undef RANDOM
+#undef LOSE
+#undef BET_TYPE_WIN
+#undef BET_TYPE_PLACE
+#undef BET_TYPE_SHOW
