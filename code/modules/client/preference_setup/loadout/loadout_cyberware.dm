@@ -9,8 +9,8 @@
 	exploitable = 1
 
 /datum/gear/cyberware/neural
-	display_name = "implant, neural assistance web"
-	description = "A complex web implanted into the subject, medically in order to compensate for neurological disease."
+	display_name = "implant, neural framework"
+	description = "A complex web implanted into the subject, medically in order to add ability to control prostheses."
 	path = /obj/item/weapon/implant/neural
 	cost = 0
 
