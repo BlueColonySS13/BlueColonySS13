@@ -55,6 +55,24 @@
 		H.add_language(LANGUAGE_EAL)
 		return H
 
+/// implanter and implant for prosthetics ///
+/datum/design/item/prosfab/implants
+	category = "Prosthetics"
+
+/datum/design/item/prosfab/implants/implanter
+	name = "Implanter"
+	id = "implanter"
+	build_path = /obj/item/weapon/implanter
+	time = 15
+	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
+
+/datum/design/item/prosfab/implants/neural_implant
+	name = "Neural Framework Implant"
+	id = "neural_implant"
+	build_path = /obj/item/weapon/implant/neural
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 7500, "copper" = 1250, "aluminium" = 1250)
+
 //////////////////// Prosthetics ////////////////////
 /datum/design/item/prosfab/pros/torso
 	time = 35
