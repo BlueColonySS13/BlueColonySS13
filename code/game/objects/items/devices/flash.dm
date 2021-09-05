@@ -121,6 +121,7 @@
 					if(shield.active)
 						shield.adjust_flash_count(R, 1)
 						flashfail = 1
+
 	else if(isanimal(M))
 		flashfail = 0
 		
