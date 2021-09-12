@@ -44,4 +44,3 @@ code/_global_vars/sensitive.dm
 config/forumdbconfig.txt
 config/dbconfig.txt
 config/webhooks.json
-polaris.dme
