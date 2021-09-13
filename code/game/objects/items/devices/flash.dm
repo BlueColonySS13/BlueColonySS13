@@ -124,7 +124,7 @@
 
 	else if(isanimal(M))
 		flashfail = 0
-		if(!O.blinded && isliving(M))
+		if(!M.blinded && isliving(M))
 			var/mob/living/L = M
 			L.flash_eyes()
 		M.Weaken(flash_time)
