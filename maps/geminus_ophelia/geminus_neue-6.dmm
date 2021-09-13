@@ -1,0 +1,54 @@
+"a" = (/turf/simulated/floor/grass,/area/space)
+"b" = (/turf/simulated/wall/plastic,/area/space)
+"c" = (/obj/structure/railing,/turf/simulated/floor/pavement/empty,/area/space)
+"d" = (/obj/effect/floor_decal/rust,/obj/structure/railing,/turf/simulated/floor/pavement/empty,/area/space)
+"e" = (/obj/effect/floor_decal/industrial/warning/dust,/obj/structure/railing,/turf/simulated/floor/pavement/empty,/area/space)
+"f" = (/obj/effect/floor_decal/industrial/warning/dust,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/pavement/empty,/area/space)
+"g" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/pavement/empty,/area/space)
+"h" = (/obj/effect/floor_decal/pavement_grit/centered,/obj/effect/floor_decal/industrial/warning/dust,/turf/simulated/floor/pavement/empty,/area/space)
+"i" = (/obj/effect/floor_decal/industrial/warning/dust,/obj/structure/railing,/obj/effect/floor_decal/industrial/warning/dust,/turf/simulated/floor/pavement/empty,/area/space)
+"j" = (/obj/effect/floor_decal/industrial/warning/dust,/obj/structure/railing,/obj/effect/floor_decal/industrial/warning/dust,/obj/structure/railing,/turf/simulated/floor/pavement/empty,/area/space)
+"k" = (/turf/simulated/floor/plating/maglev{icon_state = "maglev"; dir = 8},/area/space)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+cdeffeffegeeeeehfeffeeeeeeeeijeeeeeeeeee
+kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+"}
