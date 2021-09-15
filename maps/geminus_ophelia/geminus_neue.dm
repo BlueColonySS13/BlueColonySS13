@@ -8,7 +8,7 @@
 	#include "geminus_neue_shuttles.dm"
 	#include "geminus_neue_areas.dm"
 	#include "geminus_neue_lot_areas.dm"
-	//#include "geminus_neue_lots.dm" // forces the lot datums to work - yeah, dirty fix
+	#include "geminus_neue_lots.dm" // forces the lot datums to work - yeah, dirty fix
 	#include "geminus_neue_elevator.dm"
 
 	#define USING_MAP_DATUM /datum/map/geminus_neue
