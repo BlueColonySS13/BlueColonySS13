@@ -363,8 +363,6 @@
 "ht" = (/obj/structure/catwalk,/turf/simulated/floor/tiled/steel_ridged,/area/planets/Geminus/indoor/sewer/west)
 "hu" = (/obj/machinery/door/airlock{name = "Recycling Area"; req_access = list(26)},/turf/simulated/floor/holofloor/tiled/dark,/area/planets/Geminus/indoor/sewer/south)
 "hw" = (/obj/structure/ladder/up,/turf/simulated/floor/holofloor/tiled/dark,/area/planets/Geminus/indoor/sewer/south)
-ophilla-map-1
-
 "hA" = (/turf/simulated/floor/tiled,/area/turbolift/geminus_ground_mining)
 "hB" = (/obj/machinery/light/small,/turf/simulated/floor/holofloor/tiled/dark,/area/planets/Geminus/indoor/sewer/south)
 "hH" = (/obj/machinery/door/airlock/glass_research{name = "Xenoarchaeology"; req_access = list(65)},/turf/simulated/floor/wood/ebony,/area/outpost/research/anomaly_analysis)
