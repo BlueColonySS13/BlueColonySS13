@@ -57,7 +57,7 @@
 	alt_titles = list("Firefighter/EMT")
 	minimum_character_age = 18
 	minimal_player_age = 3
-	outfit_type = /decl/hierarchy/outfit/job/engineering/engineer
+	outfit_type = /decl/hierarchy/outfit/job/engineering/atmos
 */
 /datum/job/atmos
 	title = "Maintenance Worker"
@@ -71,7 +71,7 @@
 	spawn_positions = 2
 	supervisors = "the maintenance director"
 	selection_color = "#5B4D20"
-	idtype = /obj/item/weapon/card/id/engineering/atmos
+	idtype = /obj/item/weapon/card/id/engineering/engineer
 	wage = 500
 	synth_wage = 250
 
