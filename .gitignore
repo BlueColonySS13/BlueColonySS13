@@ -14,12 +14,12 @@ sensitive.dm
 #ignore other misc files
 *.pyc
 
-maps/Geminus/backup/*
+maps/Ophelia/backup/*
 .vscode/tasks.json
-maps/Geminus/backup/geminus-3.dmm
-maps/Geminus/backup/geminus-2.dmm
-maps/Geminus/backup/geminus-1.dmm                                                                                                                                                                                                              
-maps/Geminus/backup/geminus-2.dmm
+maps/Ophelia/backup/ophelia-3.dmm
+maps/Ophelia/backup/ophelia-2.dmm
+maps/Ophelia/backup/ophelia-1.dmm                                                                                                                                                                                                              
+maps/Ophelia/backup/ophelia-2.dmm
 /config/*	
 !/config/*/*
 !config/config.txt

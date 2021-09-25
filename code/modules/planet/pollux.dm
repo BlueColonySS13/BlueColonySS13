@@ -7,7 +7,7 @@ var/datum/planet/pollux/planet_pollux = null
 	name = "Pollux"
 	desc = "Pollux is a terrestrial planet in the Vir system. It is somewhat earth-like, in that it has oceans, a \
 	breathable atmosphere, a magnetic field, weather, and similar gravity to Earth. It is currently the capital planet of Vetra. \
-	Its center of government is the equatorial city and site of first settlement, Geminus City." // Ripped straight from the wiki.
+	Its center of government is the equatorial city and site of first settlement, Ophelia City." // Ripped straight from the wiki.
 	current_time = new /datum/time/pollux() // 32 hour clocks are nice.
 //	expected_z_levels = list(1) // To be changed when real map is finished.
 	planetary_wall_type = /turf/unsimulated/wall/planetary/pollux

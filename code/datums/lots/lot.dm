@@ -1,4 +1,4 @@
-// Persistent lots are saved to /maps/Geminus_neue/Geminus_neue_lots by default, the id is the filename	~ Cassie
+// Persistent lots are saved to /maps/Ophelia_neue/Ophelia_neue_lots by default, the id is the filename	~ Cassie
 
 /datum/lot
 	var/name = "Empty Lot"

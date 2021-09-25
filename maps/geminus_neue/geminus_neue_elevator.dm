@@ -6,11 +6,11 @@
 	icon = 'icons/obj/turbolift_preview_5x5.dmi'
 
 	areas_to_use = list(
-		/area/turbolift/geminus_subway_ground,
-		/area/turbolift/geminus_subway_top
+		/area/turbolift/ophelia_subway_ground,
+		/area/turbolift/ophelia_subway_top
 		)
 
-/obj/turbolift_map_holder/geminusmining
+/obj/turbolift_map_holder/opheliamining
 	name = "Mining Elevator"
 	depth = 2
 	lift_size_x = 4
@@ -18,11 +18,11 @@
 	icon = 'icons/obj/turbolift_preview_5x5.dmi'
 
 	areas_to_use = list(
-		/area/turbolift/geminus_ground_mining,
-		/area/turbolift/geminus_top_mining
+		/area/turbolift/ophelia_ground_mining,
+		/area/turbolift/ophelia_top_mining
 		)
 
-/obj/turbolift_map_holder/geminushospital
+/obj/turbolift_map_holder/opheliahospital
 	name = "City Hospital Elevator"
 	depth = 2
 	lift_size_x = 3
@@ -30,12 +30,12 @@
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 
 	areas_to_use = list(
-		/area/turbolift/geminus_overground_hospital,
-		/area/turbolift/geminus_ground_hospital
+		/area/turbolift/ophelia_overground_hospital,
+		/area/turbolift/ophelia_ground_hospital
 		)
 
 
-/obj/turbolift_map_holder/geminuscourt
+/obj/turbolift_map_holder/opheliacourt
 	name = "Courtroom Elevator"
 	depth = 2
 	lift_size_x = 3
@@ -46,8 +46,8 @@
 	floor_type = /turf/simulated/floor/wood
 
 	areas_to_use = list(
-		/area/turbolift/geminus_court_top,
-		/area/turbolift/geminus_court_ground
+		/area/turbolift/ophelia_court_top,
+		/area/turbolift/ophelia_court_ground
 		)
 
 
@@ -62,8 +62,8 @@
 	floor_type = /turf/simulated/floor/tiled/dark
 
 	areas_to_use = list(
-		/area/turbolift/geminus_mall_ground,
-		/area/turbolift/geminus_mall_top
+		/area/turbolift/ophelia_mall_ground,
+		/area/turbolift/ophelia_mall_top
 		)
 
 
@@ -75,8 +75,8 @@
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 
 	areas_to_use = list(
-		/area/turbolift/geminus_ground_science,
-		/area/turbolift/geminus_top_science
+		/area/turbolift/ophelia_ground_science,
+		/area/turbolift/ophelia_top_science
 		)
 
 /obj/turbolift_map_holder/police

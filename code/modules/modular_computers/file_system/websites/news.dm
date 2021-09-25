@@ -2,11 +2,11 @@
 /datum/website/news
 	var/datum/feed_channel/news_source
 
-/datum/website/news/geminus_standard
-	title = "Geminus Standard"
-	name = "geminus-standard.nt"
+/datum/website/news/ophelia_standard
+	title = "Ophelia Standard"
+	name = "ophelia-standard.nt"
 
-/datum/website/news/geminus_standard/New()
+/datum/website/news/ophelia_standard/New()
 	..()
 
 	if(!news_source && news_data)

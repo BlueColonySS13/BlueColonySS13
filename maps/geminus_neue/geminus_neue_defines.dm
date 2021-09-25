@@ -3,19 +3,19 @@
 #define Z_LEVEL_THIRD_GEMINUS						3
 #define Z_LEVEL_FOURTH_GEMINUS					4
 
-/datum/map/geminus_neue
-	name = "Geminus"
-	full_name = "Geminus City"
-	path = "geminus"
+/datum/map/ophelia_neue
+	name = "Ophelia"
+	full_name = "Ophelia City"
+	path = "ophelia"
 
 	lobby_icon = 'icons/misc/title.dmi'
 	lobby_screens = list("bluecolony")
 
-	zlevel_datum_type = /datum/map_z_level/geminus_neue
+	zlevel_datum_type = /datum/map_z_level/ophelia_neue
 
-	station_name  = "Geminus City"
-	station_short = "Geminus"
-	dock_name     = "Geminus City Airbus"
+	station_name  = "Ophelia City"
+	station_short = "Ophelia"
+	dock_name     = "Ophelia City Airbus"
 	boss_name     = "Central Polluxian Government"
 	boss_short    = "Pollux Gov"
 	company_name  = "Nanotrasen"
@@ -56,7 +56,7 @@
 //							NETWORK_INTERROGATION
 							)
 
-	council_email = "city-council@geminus.nt"
+	council_email = "city-council@ophelia.nt"
 
 // For making the 6-in-1 holomap, we calculate some offsets
 #define GEMINUS_MAP_SIZE 332 // Width and height of compiled in Southern Cross z levels.
@@ -65,7 +65,7 @@
 #define GEMINUS_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*GEMINUS_MAP_SIZE)) / 2) // 60
 
 
-/datum/map/geminus_neue/perform_map_generation()
+/datum/map/ophelia_neue/perform_map_generation()
 
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_FIRST_GEMINUS, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_FIRST_GEMINUS, world.maxx, world.maxy)         // Create the mining ore distribution map.
@@ -74,7 +74,7 @@
 
 	return 1
 
-/datum/map_z_level/geminus_neue/first
+/datum/map_z_level/ophelia_neue/first
 	z = Z_LEVEL_FIRST_GEMINUS
 	name = "Underground Sewers"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
@@ -83,9 +83,9 @@
 //	holomap_legend_x = 220
 //	holomap_legend_y = 200
 
-/datum/map_z_level/geminus_neue/second
+/datum/map_z_level/ophelia_neue/second
 	z = Z_LEVEL_SECOND_GEMINUS
-	name = "Geminus City"
+	name = "Ophelia City"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	transit_chance = 50
 	base_turf = /turf/simulated/floor/outdoors/dirt
@@ -93,7 +93,7 @@
 //	holomap_offset_y = GEMINUS_HOLOMAP_MARGIN_Y + GEMINUS_MAP_SIZE*1
 
 
-/datum/map_z_level/geminus_neue/third
+/datum/map_z_level/ophelia_neue/third
 	z = Z_LEVEL_THIRD_GEMINUS
 	name = "Sky"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
@@ -102,9 +102,9 @@
 //	holomap_offset_x = GEMINUS_HOLOMAP_MARGIN_X - 40
 //	holomap_offset_y = GEMINUS_HOLOMAP_MARGIN_Y + GEMINUS_MAP_SIZE*0
 
-/datum/map_z_level/geminus_neue/fourth
+/datum/map_z_level/ophelia_neue/fourth
 	z = Z_LEVEL_FOURTH_GEMINUS
-	name = "Geminus Residenial Area"
+	name = "Ophelia Residenial Area"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_SEALED
 	transit_chance = 50
 	base_turf = /turf/simulated/floor/outdoors/dirt
@@ -116,11 +116,11 @@
 		Z_LEVEL_FOURTH_GEMINUS,
 	)
 
-/datum/map/geminus_neue/get_map_info()
+/datum/map/ophelia_neue/get_map_info()
 	. = list()
 	. +=  "[full_name] is a very well-known metropolitan city in Blue Colony located on the planet Pollux.<br>"
 	. +=  "Pollux exists in the Vetra star system which is entirely monopolized by NanoTrasen acting as a quasi-corporate government."
-	. +=  "Being one of the first cities and initially a mining colony, Geminus has a rich history and is home to many descendants of the first prospectors.<br> "
+	. +=  "Being one of the first cities and initially a mining colony, Ophelia has a rich history and is home to many descendants of the first prospectors.<br> "
 	. +=  "There's a definite class struggle, as working class Geminians feel pushed out by the richer colonists who wish to further gentrify the city and make it... <i>more profitable, more corporate, more <b>chic</b></i>."
 	return jointext(., "<br>")
 

@@ -165,7 +165,7 @@
 	..()
 
 
-/obj/item/weapon/grenade/flashbang/clusterbang/geminus
+/obj/item/weapon/grenade/flashbang/clusterbang/ophelia
 	desc = "The pinnacle of non-lethal grenade weaponry, the Corusco model grenade is designed to deploy 6 additional flashbangs upon detonation."
 	name = "corusco grenade"
 	icon = 'icons/obj/grenade.dmi'

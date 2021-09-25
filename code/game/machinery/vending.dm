@@ -1352,7 +1352,7 @@
 	/obj/item/device/flashlight/maglight = 2,
 	/obj/item/device/megaphone = 2,
 	/obj/item/clothing/mask/gas/half = 2,
-	/obj/item/weapon/grenade/flashbang/clusterbang/geminus = 2)
+	/obj/item/weapon/grenade/flashbang/clusterbang/ophelia = 2)
 
 
 /obj/machinery/vending/security/prisoner
