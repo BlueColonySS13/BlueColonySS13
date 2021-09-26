@@ -1,7 +1,7 @@
 /datum/bounty/prison_mining
 	category = CAT_PRISON_MINING
 	author_department = DEPT_FACTORY	// Yes, the factory buys their raw materials from prison labour, just like many irl factories do. :)
-	author = "Ophelia City Factory"
+	author = "Geminus City Factory"
 
 	individual_reward = 0
 	bounty_expires = FALSE
@@ -42,7 +42,7 @@
 /datum/bounty/prison_mining/phoron // yes science is on it too
 	name = "Research Phoron Stock"
 	author_department = DEPT_RESEARCH
-	description = "Ophelia City laboratories requires phoron deposits for research purposes, please send a supply when you can."
+	description = "Geminus City laboratories requires phoron deposits for research purposes, please send a supply when you can."
 
 	items_wanted = list(/obj/item/weapon/ore/phoron = 50)
 
@@ -50,7 +50,7 @@
 
 /datum/bounty/prison_mining/phoron_healthcare // yes even the hospital
 	name = "Chemistry Phoron Stock"
-	description = "Ophelia City hospital's pharmacist sector requires large amounts of phoron to keep productivity running, please send supplies."
+	description = "Geminus City hospital's pharmacist sector requires large amounts of phoron to keep productivity running, please send supplies."
 	author_department = DEPT_HEALTHCARE
 	items_wanted = list(/obj/item/weapon/ore/phoron = 100)
 

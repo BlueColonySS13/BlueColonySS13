@@ -84,7 +84,7 @@
 
 /obj/item/clothing/head/soft/sec/corp
 	name = "police cap"
-	desc = "It's field cap in Ophelia City Police Department colors."
+	desc = "It's field cap in Geminus City Police Department colors."
 	icon_state = "corpsoft"
 	item_state_slots = list(slot_r_hand_str = "corpsoft", slot_l_hand_str = "corpsoft")
 

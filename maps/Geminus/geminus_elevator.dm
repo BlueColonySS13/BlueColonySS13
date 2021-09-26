@@ -1,4 +1,4 @@
-/obj/turbolift_map_holder/opheliaspaceport
+/obj/turbolift_map_holder/geminusspaceport
 	name = "Abandoned Subway Elevator"
 	depth = 2
 	lift_size_x = 4
@@ -6,11 +6,11 @@
 	icon = 'icons/obj/turbolift_preview_5x5.dmi'
 
 	areas_to_use = list(
-		/area/turbolift/ophelia_ground,
-		/area/turbolift/ophelia_top
+		/area/turbolift/geminus_ground,
+		/area/turbolift/geminus_top
 		)
 
-/obj/turbolift_map_holder/opheliamining
+/obj/turbolift_map_holder/geminusmining
 	name = "Mining Elevator"
 	depth = 2
 	lift_size_x = 4
@@ -18,11 +18,11 @@
 	icon = 'icons/obj/turbolift_preview_5x5.dmi'
 
 	areas_to_use = list(
-		/area/turbolift/ophelia_ground_mining,
-		/area/turbolift/ophelia_top_mining
+		/area/turbolift/geminus_ground_mining,
+		/area/turbolift/geminus_top_mining
 		)
 
-/obj/turbolift_map_holder/opheliahospital
+/obj/turbolift_map_holder/geminushospital
 	name = "City Hospital Elevator"
 	depth = 2
 	lift_size_x = 3
@@ -30,12 +30,12 @@
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 
 	areas_to_use = list(
-		/area/turbolift/ophelia_ground_hospital,
-		/area/turbolift/ophelia_top_hospital
+		/area/turbolift/geminus_ground_hospital,
+		/area/turbolift/geminus_top_hospital
 		)
 
 
-/obj/turbolift_map_holder/opheliacourt
+/obj/turbolift_map_holder/geminuscourt
 	name = "Courtroom Elevator"
 	depth = 2
 	lift_size_x = 3
@@ -46,8 +46,8 @@
 	floor_type = /turf/simulated/floor/wood
 
 	areas_to_use = list(
-		/area/turbolift/ophelia_court_ground,
-		/area/turbolift/ophelia_court_top
+		/area/turbolift/geminus_court_ground,
+		/area/turbolift/geminus_court_top
 		)
 
 
@@ -62,6 +62,6 @@
 	floor_type = /turf/simulated/floor/tiled/dark
 
 	areas_to_use = list(
-		/area/turbolift/ophelia_mall_ground,
-		/area/turbolift/ophelia_mall_top
+		/area/turbolift/geminus_mall_ground,
+		/area/turbolift/geminus_mall_top
 		)

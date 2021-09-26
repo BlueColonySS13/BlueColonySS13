@@ -1,7 +1,7 @@
 /client/verb/trapped()
 	set name = "I'm Trapped!"
 	set category = "OOC"
-	set desc = "Teleports you back to Ophelia if you end up in Nullspace."
+	set desc = "Teleports you back to Geminus if you end up in Nullspace."
 
 	var/voided = usr.loc
 	if(istype(usr, /mob/living))

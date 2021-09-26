@@ -1,10 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/unsimulated/wall/planetary/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "ab" = (
 /turf/unsimulated/wall/planetary/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ac" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -13,19 +13,19 @@
 	},
 /obj/machinery/light/floor,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "ad" = (
 /turf/unsimulated/wall/planetary/pollux,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "ae" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "af" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ag" = (
 /turf/simulated/mineral/impassable,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ah" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -33,10 +33,10 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ai" = (
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aj" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -44,26 +44,26 @@
 	tag = "icon-danger (WEST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ak" = (
 /turf/simulated/mineral/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "al" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "am" = (
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "an" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "ao" = (
 /turf/simulated/mineral/impassable,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "ap" = (
 /turf/simulated/wall/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aq" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -71,7 +71,7 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "ar" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -79,57 +79,57 @@
 	tag = "icon-danger (WEST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "as" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "at" = (
 /obj/effect/spider/cocoon,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "au" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/spider/stickyweb,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "av" = (
 /obj/effect/spider/stickyweb{
 	icon_state = "stickyweb2"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aw" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/spider/stickyweb{
 	icon_state = "stickyweb2"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ax" = (
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ay" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/wall/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "az" = (
 /obj/effect/spider/stickyweb,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aB" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aC" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aD" = (
 /obj/effect/decal/cleanable/cobweb2{
 	icon_state = "cobweb1"
@@ -137,29 +137,29 @@
 /obj/effect/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aE" = (
 /obj/effect/spider/cocoon{
 	icon_state = "cocoon_large1"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aF" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood{
 	icon_state = "wood3"
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aG" = (
 /obj/effect/spider/cocoon,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/head/hardhat/orange,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aI" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/spider/cocoon{
@@ -172,83 +172,83 @@
 	name = "dirty syringe"
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aJ" = (
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aK" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aL" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aM" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/spider/stickyweb,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "aN" = (
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/pickaxe/steel,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aQ" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aR" = (
 /obj/structure/loot_pile/maint/technical,
 /obj/effect/decal/cleanable/cobweb2{
 	icon_state = "cobweb1"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "aS" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aT" = (
 /obj/effect/decal/remains/lizard,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aU" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "aV" = (
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "aX" = (
 /obj/machinery/light/flamp/shadeless,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aY" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "aZ" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "ba" = (
 /obj/machinery/light/colored/green{
 	dir = 8
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "bb" = (
 /obj/machinery/light/colored/green{
 	dir = 4;
@@ -256,36 +256,36 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "bc" = (
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "bd" = (
 /obj/structure/table/rack,
 /obj/item/weapon/storage/toolbox/emergency,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "be" = (
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bf" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bg" = (
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "bh" = (
 /obj/machinery/light/flamp/shadeless,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "bi" = (
 /obj/structure/table/rack,
 /obj/effect/decal/cleanable/cobweb2{
 	icon_state = "cobweb1"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bj" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -298,15 +298,15 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "bk" = (
 /obj/machinery/light/flamp/shadeless,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "bl" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bm" = (
 /turf/simulated/wall/wood,
 /area/outpost/mining_north)
@@ -316,11 +316,11 @@
 	icon_state = "bulb1"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bo" = (
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bp" = (
 /obj/structure/sink{
 	dir = 8;
@@ -329,7 +329,7 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "bq" = (
 /obj/item/weapon/tank/oxygen,
 /obj/item/clothing/mask/gas,
@@ -379,30 +379,30 @@
 "bu" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/optable,
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bw" = (
 /obj/structure/table/rack,
 /obj/random/toolbox,
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bx" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "by" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "bz" = (
 /obj/machinery/optable,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "bA" = (
 /turf/simulated/floor/tiled/steel_ridged,
 /area/outpost/mining_north)
@@ -413,20 +413,20 @@
 	tag = "icon-green1 (NORTH)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "bC" = (
 /turf/simulated/floor/plating/maglev{
 	dir = 8;
 	icon_state = "maglev"
 	},
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "bD" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "bE" = (
 /turf/unsimulated/wall/planetary/pollux,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "bF" = (
 /obj/machinery/light/colored/green{
 	dir = 1;
@@ -437,11 +437,11 @@
 	dir = 8;
 	icon_state = "maglev"
 	},
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "bG" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "bH" = (
 /turf/simulated/wall/plastic/science,
 /area/teleporter)
@@ -450,19 +450,19 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "bJ" = (
 /obj/structure/boulder,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "bK" = (
 /turf/simulated/floor/tiled/steel_ridged,
-/area/turbolift/ophelia_top_science)
+/area/turbolift/geminus_top_science)
 "bL" = (
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "bM" = (
 /turf/simulated/floor/plating/maglev{
 	dir = 8;
@@ -477,58 +477,58 @@
 	dir = 8;
 	icon_state = "maglev"
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "bP" = (
 /obj/turbolift_map_holder/science,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/turbolift/ophelia_top_science)
+/area/turbolift/geminus_top_science)
 "bQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bR" = (
 /obj/structure/table/rack,
 /obj/item/weapon/storage/toolbox/electrical,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bS" = (
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bT" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bU" = (
 /obj/structure/table/rack,
 /obj/item/weapon/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bV" = (
 /obj/structure/table/rack,
 /obj/random/ammo,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bW" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "bX" = (
 /obj/structure/barricade,
 /obj/structure/inflatable,
 /obj/item/tape/police,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "bY" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "ca" = (
 /turf/simulated/mineral/impassable,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "cb" = (
 /turf/simulated/mineral,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cc" = (
 /obj/effect/decal/cleanable/graffiti{
 	pixel_y = 30
@@ -536,30 +536,30 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "cd" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ce" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cf" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 10;
 	icon_state = "danger"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cg" = (
 /turf/simulated/mineral,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "ch" = (
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ci" = (
 /turf/simulated/wall/plastic/science,
 /area/outpost/research/anomaly_analysis)
@@ -572,14 +572,14 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "ck" = (
 /turf/simulated/wall/iron/silver_paint,
 /area/security/mine)
 "cl" = (
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "cm" = (
 /obj/machinery/light/colored{
 	dir = 4;
@@ -587,16 +587,16 @@
 	tag = "icon-yellow1 (EAST)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "cn" = (
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "co" = (
 /obj/structure/closet/crate,
 /obj/random/firstaid,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "cp" = (
 /obj/machinery/light/colored{
 	dir = 8;
@@ -604,21 +604,21 @@
 	tag = "icon-yellow1 (WEST)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "cq" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "cr" = (
 /obj/machinery/light/colored/red,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cs" = (
 /turf/simulated/floor/tiled/techfloor,
-/area/turbolift/ophelia_subway_ground)
+/area/turbolift/geminus_subway_ground)
 "ct" = (
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cu" = (
 /obj/structure/railing{
 	dir = 1;
@@ -627,23 +627,23 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "cv" = (
 /obj/structure/closet/crate/large,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "cw" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "cx" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 9;
 	icon_state = "danger"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cy" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -651,10 +651,10 @@
 	tag = "icon-danger (NORTH)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cA" = (
 /turf/simulated/mineral/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "cB" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -662,7 +662,7 @@
 	tag = "icon-danger (NORTH)"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cC" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -671,14 +671,14 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cD" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 5;
 	icon_state = "danger"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cF" = (
 /obj/structure/cryofeed{
 	dir = 4;
@@ -722,14 +722,14 @@
 	amount = 50
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "cJ" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/steel{
 	amount = 50
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "cK" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -737,34 +737,34 @@
 	tag = "icon-danger (WEST)"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cL" = (
 /obj/effect/wallframe_spawn/basic,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "cM" = (
 /obj/structure/closet/crate,
 /obj/item/stack/material/wood{
 	amount = 24
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "cN" = (
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "cO" = (
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cP" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "cQ" = (
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "cR" = (
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "cS" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -776,7 +776,7 @@
 	icon_state = "straight"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "cT" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -785,7 +785,7 @@
 	},
 /obj/structure/fence/door,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "cU" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 5;
@@ -793,7 +793,7 @@
 	},
 /obj/structure/fence/corner,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "cV" = (
 /turf/simulated/wall/plastic/science,
 /area/outpost/research/anomaly_storage)
@@ -803,10 +803,10 @@
 	icon_state = "danger"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "cX" = (
 /turf/simulated/wall/ebony,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "cY" = (
 /obj/structure/sink/kitchen{
 	name = "holding cell sink";
@@ -821,7 +821,7 @@
 "cZ" = (
 /obj/structure/stairs/east,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "da" = (
 /obj/structure/fence,
 /obj/effect/floor_decal/industrial/danger{
@@ -830,7 +830,7 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "db" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -838,17 +838,17 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "dc" = (
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "dd" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "de" = (
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "df" = (
 /obj/machinery/light/colored/green{
 	dir = 1
@@ -856,10 +856,10 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dg" = (
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "dh" = (
 /obj/machinery/light/colored{
 	dir = 1;
@@ -867,38 +867,38 @@
 	tag = "icon-yellow1 (NORTH)"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "di" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8;
 	icon_state = "warning_dust"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "dj" = (
 /obj/structure/ladder/up,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "dk" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4;
 	icon_state = "warning_dust"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "dl" = (
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "dm" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 6
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "dn" = (
 /obj/structure/fence,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "do" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -906,11 +906,11 @@
 	tag = "icon-danger (NORTH)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "dp" = (
 /obj/structure/stairs/east,
 /turf/simulated/floor/stairs/east,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dq" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10;
@@ -918,74 +918,74 @@
 	tag = "icon-warning_dust (NORTHEAST)"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "dr" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ds" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6;
 	icon_state = "warning_dust"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "dt" = (
 /turf/simulated/mineral/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "dv" = (
 /obj/random/trash,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dw" = (
 /obj/effect/floor_decal/pavement_grit/centered,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dx" = (
 /obj/structure/table/woodentable,
 /obj/item/device/flashlight/lantern,
 /obj/item/device/flashlight/lantern,
 /obj/item/device/flashlight/lantern,
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "dy" = (
 /obj/structure/table/woodentable,
 /obj/item/device/flashlight/lantern,
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "dz" = (
 /obj/structure/fence{
 	dir = 4;
 	icon_state = "straight"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "dA" = (
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "dB" = (
 /obj/effect/floor_decal/pavement_grit/rough,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dC" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dD" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dE" = (
 /obj/effect/floor_decal/corner/purple{
 	dir = 10
@@ -997,7 +997,7 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dG" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -1008,7 +1008,7 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dH" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microscope,
@@ -1058,7 +1058,7 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dP" = (
 /obj/random/trash,
 /obj/structure/railing{
@@ -1068,7 +1068,7 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dQ" = (
 /obj/machinery/gateway{
 	dir = 9;
@@ -1089,7 +1089,7 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "dS" = (
 /turf/simulated/floor/wood/ebony,
 /area/outpost/research/anomaly_analysis)
@@ -1126,12 +1126,12 @@
 /area/outpost/research/anomaly_analysis)
 "dY" = (
 /turf/simulated/wall/iron,
-/area/turbolift/ophelia_subway_ground)
+/area/turbolift/geminus_subway_ground)
 "dZ" = (
 /obj/structure/billboard/city,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "ea" = (
 /obj/machinery/gateway{
 	dir = 1;
@@ -1150,33 +1150,33 @@
 	icon_state = "railing0"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "ed" = (
 /obj/turbolift_map_holder/subway,
 /turf/simulated/wall/iron,
-/area/turbolift/ophelia_subway_ground)
+/area/turbolift/geminus_subway_ground)
 "ee" = (
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "ef" = (
 /obj/effect/floor_decal/pavement_grit/centered,
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eg" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eh" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/railing,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "ei" = (
 /obj/effect/decal/cleanable/graffiti{
 	pixel_x = 32
@@ -1184,18 +1184,18 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "ej" = (
 /obj/structure/fence{
 	dir = 4;
 	icon_state = "straight"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ek" = (
 /obj/structure/fence/door,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "el" = (
 /obj/structure/fence{
 	dir = 4;
@@ -1206,22 +1206,22 @@
 	icon_state = "straight"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "em" = (
 /obj/structure/fence/corner{
 	dir = 6;
 	icon_state = "corner"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "eo" = (
 /obj/structure/sign/double/map/left,
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "ep" = (
 /obj/structure/sign/double/map/right,
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eq" = (
 /obj/effect/floor_decal/pavement_grit/centered,
 /obj/structure/railing{
@@ -1231,27 +1231,27 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "er" = (
 /obj/structure/device/piano,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "es" = (
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "et" = (
 /obj/structure/fence,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "eu" = (
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "ev" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/pavement_grit/rough_edged,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "ew" = (
 /obj/effect/floor_decal/pavement_grit/rough,
 /obj/structure/railing{
@@ -1261,7 +1261,7 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "ex" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/graffiti{
@@ -1270,19 +1270,19 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "ey" = (
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ez" = (
 /obj/structure/fitness/punchingbag,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "eA" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "eB" = (
 /obj/structure/railing{
 	dir = 1;
@@ -1295,19 +1295,19 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eC" = (
 /obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eD" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "eE" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/item/tape/engineering{
@@ -1316,7 +1316,7 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eF" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/random/trash,
@@ -1325,38 +1325,38 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eG" = (
 /obj/effect/decal/cleanable/graffiti{
 	pixel_y = 30
 	},
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eH" = (
 /obj/structure/largecrate,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "eI" = (
 /obj/structure/girder,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "eJ" = (
 /obj/structure/railing,
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eK" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eL" = (
 /obj/random/trash,
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eM" = (
 /obj/structure/sign/neon/airbus{
 	desc = "Wow NT wouldnt even get a train sign.";
@@ -1365,25 +1365,25 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eN" = (
 /obj/structure/girder/displaced,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "eO" = (
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "eP" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "eQ" = (
 /obj/structure/frame,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "eR" = (
 /obj/machinery/light/colored/green{
 	dir = 4;
@@ -1391,32 +1391,32 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eS" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "eT" = (
 /obj/structure/door_assembly,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "eU" = (
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "eV" = (
 /obj/effect/floor_decal/pavement_grit/centered,
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eW" = (
 /obj/machinery/light/small{
 	dir = 1;
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "eX" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/steel_ridged,
@@ -1427,25 +1427,25 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "eZ" = (
 /obj/random/junk,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fa" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fb" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "fc" = (
 /turf/simulated/floor/stairs/east,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fd" = (
 /obj/structure/showcase/sign{
 	desc = "This area of the metro station is under heavy construction. Please make your way to the surface via the stairs.";
@@ -1454,14 +1454,14 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fe" = (
 /obj/effect/floor_decal/pavement_grit/rough,
 /obj/effect/wallframe_spawn/basic,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "ff" = (
 /turf/simulated/mineral/floor/pollux,
 /area/security/mine)
@@ -1470,10 +1470,10 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fh" = (
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "fi" = (
 /obj/structure/closet/crate/bin,
 /obj/effect/floor_decal/pavement_grit/rough_edged,
@@ -1483,14 +1483,14 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fj" = (
 /obj/effect/floor_decal/pavement_grit/rough_edged,
 /obj/effect/decal/cleanable/greenglow,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fk" = (
 /obj/structure/closet/crate/bin,
 /obj/random/junk,
@@ -1499,24 +1499,24 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fl" = (
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "fm" = (
 /obj/machinery/light/flamp/shadeless,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "fn" = (
 /turf/simulated/mineral/pollux,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fo" = (
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "fq" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fr" = (
 /obj/structure/railing{
 	dir = 1;
@@ -1524,17 +1524,17 @@
 	},
 /obj/structure/sign/double/map/left,
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fs" = (
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "ft" = (
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fu" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fv" = (
 /obj/structure/table/bench/wooden,
 /obj/random/plushie{
@@ -1543,14 +1543,14 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fw" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fx" = (
 /obj/machinery/light/colored/red{
 	dir = 4;
@@ -1559,13 +1559,13 @@
 	},
 /obj/effect/decal/cleanable/ash,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fy" = (
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fz" = (
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fA" = (
 /obj/machinery/light/colored/red{
 	dir = 8;
@@ -1574,10 +1574,10 @@
 	},
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fB" = (
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "fC" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -1585,10 +1585,10 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fD" = (
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fE" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -1596,10 +1596,10 @@
 	tag = "icon-danger (WEST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fF" = (
 /turf/simulated/mineral/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fG" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -1607,24 +1607,24 @@
 	tag = "icon-danger (WEST)"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fH" = (
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fI" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fJ" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fK" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fL" = (
 /obj/structure/railing{
 	dir = 1;
@@ -1632,7 +1632,7 @@
 	},
 /obj/structure/sign/double/map/right,
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fM" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/dirt,
@@ -1640,46 +1640,46 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "fN" = (
 /obj/structure/table/steel,
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fO" = (
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "fP" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fQ" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fR" = (
 /obj/structure/bed/chair,
 /obj/machinery/light/colored/red{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fS" = (
 /obj/structure/closet/boxinggloves,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fT" = (
 /obj/structure/railing,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fU" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fV" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "fW" = (
 /obj/structure/curtain/black,
 /obj/machinery/shower{
@@ -1689,13 +1689,13 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fX" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fY" = (
 /obj/structure/curtain/black,
 /obj/machinery/shower{
@@ -1706,7 +1706,7 @@
 	},
 /obj/random/contraband,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "fZ" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1717,7 +1717,7 @@
 	tag = "icon-red1 (EAST)"
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "ga" = (
 /obj/structure/railing{
 	dir = 4;
@@ -1725,7 +1725,7 @@
 	tag = "icon-railing0 (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gb" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -1734,13 +1734,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gc" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gd" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -1750,7 +1750,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "ge" = (
 /obj/structure/railing{
 	dir = 8;
@@ -1758,7 +1758,7 @@
 	tag = "icon-railing0 (WEST)"
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gf" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -1769,20 +1769,20 @@
 	tag = "icon-red1 (WEST)"
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gg" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "gh" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gi" = (
 /obj/structure/railing{
 	dir = 4;
@@ -1790,24 +1790,24 @@
 	tag = "icon-railing0 (EAST)"
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gj" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gk" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gl" = (
 /obj/structure/window/reinforced{
 	dir = 4;
 	health = 1e+006
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gm" = (
 /obj/structure/railing{
 	dir = 8;
@@ -1815,7 +1815,7 @@
 	tag = "icon-railing0 (WEST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gn" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -1824,15 +1824,15 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "go" = (
 /obj/structure/fence,
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "gp" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/wall,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "gq" = (
 /obj/structure/curtain/black,
 /obj/machinery/shower{
@@ -1843,7 +1843,7 @@
 	},
 /obj/item/weapon/soap/syndie,
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gr" = (
 /obj/structure/curtain/black,
 /obj/machinery/shower{
@@ -1853,15 +1853,15 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gs" = (
 /obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gt" = (
 /obj/structure/fence,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gu" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -1869,27 +1869,27 @@
 	tag = "icon-danger (NORTH)"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "gv" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 5;
 	icon_state = "danger"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "gw" = (
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gx" = (
 /obj/machinery/light/colored/green{
 	dir = 8
 	},
 /turf/simulated/wall,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "gy" = (
 /obj/random/junk,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gz" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1900,7 +1900,7 @@
 	tag = "icon-red1 (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gA" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -1910,14 +1910,14 @@
 	health = null
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gB" = (
 /obj/structure/window/reinforced{
 	dir = 5;
 	health = null
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gC" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -1928,7 +1928,7 @@
 	health = null
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gD" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -1936,7 +1936,7 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "gE" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -1944,7 +1944,7 @@
 	tag = "icon-danger (WEST)"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "gF" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -1954,14 +1954,14 @@
 	id = "janitor_downstairs"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gG" = (
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "janitor_downstairs"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gH" = (
 /obj/machinery/atmospherics/pipe/zpipe/up{
 	dir = 4;
@@ -1973,7 +1973,7 @@
 	id = "janitor_downstairs"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gI" = (
 /obj/structure/barricade,
 /obj/machinery/door/airlock/lift,
@@ -1985,28 +1985,28 @@
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gK" = (
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 8
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gL" = (
 /obj/structure/railing{
 	dir = 1;
 	icon_state = "railing0"
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gM" = (
 /obj/structure/railing{
 	dir = 1;
 	icon_state = "railing0"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gO" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/conveyor{
@@ -2014,15 +2014,15 @@
 	id = "janitor_downstairs"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gP" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "gQ" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/wall,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "gR" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/mine)
@@ -2033,10 +2033,10 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "gT" = (
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "gU" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -2044,13 +2044,13 @@
 	tag = "icon-danger (WEST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "gV" = (
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "gW" = (
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "gX" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/conveyor{
@@ -2058,13 +2058,13 @@
 	id = "janitor_downstairs"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "gY" = (
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "gZ" = (
 /turf/simulated/mineral/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "ha" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -2072,16 +2072,16 @@
 	tag = "icon-danger (WEST)"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hb" = (
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hc" = (
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hd" = (
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "he" = (
 /obj/machinery/light/colored/green{
 	dir = 4;
@@ -2089,7 +2089,7 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/floor/tiled/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "hf" = (
 /obj/structure/sink{
 	dir = 8;
@@ -2098,90 +2098,90 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hg" = (
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hh" = (
 /obj/structure/closet/wardrobe/mixed,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hi" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/tiled/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "hj" = (
 /obj/structure/fitness/punchingbag,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hk" = (
 /obj/structure/fitness/punchingbag,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hl" = (
 /obj/machinery/light/colored/red,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hm" = (
 /obj/structure/fitness/weightlifter,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hn" = (
 /obj/structure/fence,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "ho" = (
 /obj/machinery/token_machine{
 	pixel_y = 20
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "hp" = (
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "hs" = (
 /obj/machinery/light/small/emergency{
 	dir = 4;
 	icon_state = "bulb1"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "ht" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "hu" = (
 /obj/machinery/door/airlock{
 	name = "Recycling Area";
 	req_access = list(26)
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hw" = (
 /obj/structure/ladder/up,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hz" = (
 /obj/machinery/light/colored/green{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "hA" = (
 /turf/simulated/floor/tiled,
-/area/turbolift/ophelia_ground_mining)
+/area/turbolift/geminus_ground_mining)
 "hB" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hU" = (
 /obj/effect/wallframe_spawn,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "hV" = (
-/obj/turbolift_map_holder/opheliamining,
+/obj/turbolift_map_holder/geminusmining,
 /turf/simulated/wall/iron,
-/area/turbolift/ophelia_ground_mining)
+/area/turbolift/geminus_ground_mining)
 "hY" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/colored/red{
@@ -2193,20 +2193,20 @@
 /area/security/mine)
 "ic" = (
 /turf/simulated/mineral/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "ig" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "ii" = (
 /obj/effect/decal/cleanable/graffiti{
 	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "in" = (
 /turf/simulated/wall/iron,
-/area/turbolift/ophelia_ground_mining)
+/area/turbolift/geminus_ground_mining)
 "it" = (
 /obj/machinery/gateway{
 	dir = 5;
@@ -2221,44 +2221,44 @@
 "iu" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "iw" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "ix" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access = list(12)
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "iy" = (
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "iz" = (
 /obj/machinery/light/small{
 	dir = 1;
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "iA" = (
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "iB" = (
 /obj/machinery/light/small{
 	dir = 1;
 	pixel_y = 0
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "iC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tech/console/nanotrasen,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "iD" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/machinery/light/colored/green{
@@ -2267,13 +2267,13 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "iE" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access = list(12)
 	},
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "iF" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -2281,7 +2281,7 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "iG" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -2294,7 +2294,7 @@
 	tag = "icon-green1 (WEST)"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "iH" = (
 /obj/machinery/light/small{
 	brightness_color = "#DA0205";
@@ -2303,13 +2303,13 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "iI" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "iJ" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8;
@@ -2320,11 +2320,11 @@
 "iL" = (
 /obj/structure/noticeboard,
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "iM" = (
 /obj/structure/fence,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "iN" = (
 /obj/effect/landmark/transport_location{
 	id = "president";
@@ -2336,28 +2336,28 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "iO" = (
 /obj/structure/fence{
 	dir = 4;
 	icon_state = "straight"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "iP" = (
 /obj/structure/fence/door,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "iQ" = (
 /obj/structure/prop/tech/console/broken,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "iR" = (
 /obj/structure/ladder/up,
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "iS" = (
 /obj/structure/fence{
 	dir = 4;
@@ -2369,7 +2369,7 @@
 	tag = "icon-dangercorner (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "iT" = (
 /obj/structure/fence{
 	dir = 4;
@@ -2381,7 +2381,7 @@
 	tag = "icon-danger (NORTH)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "iU" = (
 /obj/structure/fence{
 	dir = 4;
@@ -2393,39 +2393,39 @@
 	tag = "icon-dangercorner (WEST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "iV" = (
 /obj/structure/fence{
 	dir = 4;
 	icon_state = "straight"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "iW" = (
 /obj/structure/fence/door,
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "iX" = (
 /obj/structure/fence{
 	dir = 4;
 	icon_state = "straight"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "iY" = (
 /obj/structure/fence/corner{
 	dir = 4;
 	icon_state = "corner"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "iZ" = (
 /obj/structure/fence/corner{
 	dir = 8;
 	icon_state = "corner"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "ja" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -2433,11 +2433,11 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jb" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jc" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -2445,7 +2445,7 @@
 	tag = "icon-danger (WEST)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jd" = (
 /obj/machinery/light/small{
 	brightness_color = "#DA0205";
@@ -2454,19 +2454,19 @@
 	dir = 8
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "je" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jf" = (
 /obj/machinery/light/colored/green{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jg" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -2474,7 +2474,7 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jh" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -2482,7 +2482,7 @@
 	tag = "icon-danger (WEST)"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "ji" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 9;
@@ -2493,7 +2493,7 @@
 	icon_state = "corner"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jj" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -2505,11 +2505,11 @@
 	icon_state = "straight"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jk" = (
 /obj/structure/mirror/raider,
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "jl" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -2517,7 +2517,7 @@
 	tag = "icon-danger (NORTH)"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jm" = (
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 8;
@@ -2525,28 +2525,28 @@
 	tag = "icon-dangercorner (WEST)"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jn" = (
 /obj/machinery/light/small/emergency,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jo" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jp" = (
 /obj/structure/mirror,
 /turf/simulated/wall/iron,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jq" = (
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "jr" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "js" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/structure/fence{
@@ -2554,7 +2554,7 @@
 	icon_state = "straight"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jt" = (
 /obj/structure/fence{
 	dir = 4;
@@ -2566,7 +2566,7 @@
 	},
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jv" = (
 /obj/machinery/shieldwallgen,
 /turf/simulated/floor/tiled/dark,
@@ -2577,7 +2577,7 @@
 "jx" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jy" = (
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 1;
@@ -2585,7 +2585,7 @@
 	tag = "icon-dangercorner (NORTH)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jz" = (
 /obj/item/device/radio/intercom{
 	pixel_y = 25
@@ -2600,7 +2600,7 @@
 	tag = "icon-purple1 (EAST)"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jB" = (
 /obj/structure/closet/excavation,
 /obj/item/weapon/pickaxe/excavationdrill,
@@ -2622,11 +2622,11 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jF" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jG" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -2634,7 +2634,7 @@
 	tag = "icon-danger (WEST)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jH" = (
 /obj/machinery/light/colored/purple{
 	dir = 1;
@@ -2642,7 +2642,7 @@
 	tag = "icon-purple1 (NORTH)"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jI" = (
 /obj/structure/fence,
 /obj/machinery/light/colored/purple{
@@ -2651,7 +2651,7 @@
 	tag = "icon-purple1 (NORTH)"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jJ" = (
 /obj/machinery/light/colored/green{
 	dir = 1;
@@ -2659,7 +2659,7 @@
 	tag = "icon-green1 (NORTH)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jK" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -2667,7 +2667,7 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "jL" = (
 /obj/machinery/door/airlock/external{
 	frequency = 1380;
@@ -2689,7 +2689,7 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jM" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
@@ -2702,7 +2702,7 @@
 	icon_state = "warningcee"
 	},
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jN" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
@@ -2730,7 +2730,7 @@
 	icon_state = "warningcee"
 	},
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4;
@@ -2753,7 +2753,7 @@
 	pixel_y = 21
 	},
 /turf/simulated/floor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jP" = (
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 4;
@@ -2766,13 +2766,13 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "jQ" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access = list(12)
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "jR" = (
 /obj/machinery/light/colored/green{
 	dir = 8;
@@ -2780,32 +2780,32 @@
 	tag = "icon-green1 (WEST)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jS" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "jT" = (
 /obj/item/weapon/stool/padded,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "jU" = (
 /obj/random/coin,
 /obj/item/weapon/stool/padded,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "jV" = (
 /obj/machinery/computer/arcade,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "jW" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "jX" = (
 /obj/machinery/light/small/flicker,
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "jY" = (
 /turf/simulated/floor/water/sewer,
 /area/shuttle/specops/station)
@@ -2820,14 +2820,14 @@
 	icon_state = "straight"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "ka" = (
 /obj/structure/fence{
 	dir = 4;
 	icon_state = "straight"
 	},
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "kb" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -2839,7 +2839,7 @@
 	icon_state = "straight"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "kc" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -2851,14 +2851,14 @@
 	icon_state = "straight"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kd" = (
 /obj/structure/fence{
 	dir = 4;
 	icon_state = "straight"
 	},
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "ke" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -2870,7 +2870,7 @@
 	icon_state = "straight"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kf" = (
 /obj/machinery/door/airlock/external{
 	frequency = 1380;
@@ -2892,7 +2892,7 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kg" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
@@ -2905,7 +2905,7 @@
 	icon_state = "warningcee"
 	},
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kh" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
@@ -2933,7 +2933,7 @@
 	icon_state = "warningcee"
 	},
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "ki" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4;
@@ -2949,35 +2949,35 @@
 	req_access = list(13)
 	},
 /turf/simulated/floor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kj" = (
 /turf/unsimulated/wall/planetary/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kk" = (
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kl" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "km" = (
 /obj/structure/table/steel,
 /obj/random/action_figure,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kn" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "ko" = (
 /obj/effect/wallframe_spawn,
 /turf/simulated/floor/tiled,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kp" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -2986,15 +2986,15 @@
 	},
 /obj/structure/fence,
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "kq" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "kr" = (
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "ks" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -3003,7 +3003,7 @@
 	},
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "kt" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -3016,7 +3016,7 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ku" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -3024,7 +3024,7 @@
 	tag = "icon-danger (NORTH)"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "kv" = (
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 8;
@@ -3033,7 +3033,7 @@
 	},
 /obj/structure/fence,
 /turf/simulated/mineral/floor/ignore_mapgen/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "kw" = (
 /obj/machinery/light/colored/green{
 	dir = 4;
@@ -3041,21 +3041,21 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kx" = (
 /obj/machinery/light/colored/green{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "ky" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kz" = (
 /obj/machinery/light/small,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "kA" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -3068,7 +3068,7 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "kB" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -3081,18 +3081,18 @@
 	tag = "icon-green1 (WEST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "kC" = (
 /obj/random/trash,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "kD" = (
 /obj/machinery/light/small/flicker{
 	dir = 8;
 	icon_state = "bulb1"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kE" = (
 /obj/machinery/light/small{
 	brightness_color = "#DA0205";
@@ -3101,11 +3101,11 @@
 	dir = 8
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kG" = (
 /obj/machinery/light/small/flicker,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kH" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -3118,20 +3118,20 @@
 	tag = "icon-green1 (WEST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kI" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kJ" = (
 /obj/machinery/light/small/flicker{
 	dir = 4;
 	icon_state = "bulb1"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kK" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -3144,26 +3144,26 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kL" = (
 /obj/machinery/light/small/flicker{
 	dir = 1;
 	icon_state = "bulb1"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "kM" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "kN" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "kO" = (
 /obj/machinery/light/small/flicker,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "kP" = (
 /obj/machinery/light/colored/green{
 	dir = 1;
@@ -3171,37 +3171,37 @@
 	tag = "icon-green1 (NORTH)"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kQ" = (
 /obj/machinery/light/small{
 	dir = 1;
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kR" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kS" = (
 /obj/machinery/light/colored/green{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kT" = (
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kU" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kV" = (
 /obj/machinery/light/colored/green{
 	dir = 4;
@@ -3209,11 +3209,11 @@
 	tag = "icon-green1 (EAST)"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kW" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "kX" = (
 /obj/machinery/computer/teleporter,
 /obj/structure/window/reinforced{
@@ -3519,32 +3519,32 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "lQ" = (
 /obj/machinery/light/small{
 	dir = 8;
 	icon_state = "bulb1"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "lR" = (
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "lS" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "lT" = (
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_y = 0
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/rooms)
+/area/planets/Geminus/indoor/sewer/rooms)
 "lX" = (
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
@@ -3655,7 +3655,7 @@
 "mt" = (
 /obj/structure/fence,
 /turf/simulated/floor/tiled/steel_grid,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "mu" = (
 /obj/machinery/light/colored/red{
 	dir = 4;
@@ -3688,16 +3688,16 @@
 /area/security/mine)
 "mA" = (
 /turf/simulated/mineral/pollux,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "mB" = (
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "mC" = (
 /obj/structure/closet/cabinet,
 /obj/random/ammo,
 /obj/random/contraband,
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "mD" = (
 /turf/simulated/floor/tiled/steel_ridged,
 /area/turbolift/police_lower_ground)
@@ -3708,11 +3708,11 @@
 "mG" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "mK" = (
 /obj/structure/door_assembly,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "mL" = (
 /obj/machinery/metal_detector,
 /turf/simulated/floor/tiled/dark,
@@ -3793,31 +3793,31 @@
 "nb" = (
 /obj/effect/spider/stickyweb,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "nc" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/accessory/holster/armpit,
 /obj/item/device/binoculars,
 /obj/item/device/camera,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "nd" = (
 /obj/item/weapon/bedsheet,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "ne" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "nf" = (
 /obj/machinery/light/small/flicker,
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "ng" = (
 /obj/structure/table/steel,
 /obj/random/toolbox,
 /turf/simulated/floor/tiled/steel,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "nj" = (
 /obj/turbolift_map_holder/police,
 /turf/simulated/floor/tiled/steel_ridged,
@@ -3828,7 +3828,7 @@
 	},
 /mob/living/simple_mob/animal/giant_spider/tunneler,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "no" = (
 /obj/machinery/light/small/emergency{
 	dir = 4;
@@ -3838,31 +3838,31 @@
 /turf/simulated/floor/wood{
 	icon_state = "wood3"
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "np" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood{
 	icon_state = "wood1"
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/sosjerky,
 /obj/item/clothing/suit/armor/material/makeshift/durasteel,
 /obj/item/ammo_casing/spent,
 /turf/simulated/floor/tiled/old_tile/beige,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nr" = (
 /obj/effect/spider/stickyweb,
 /mob/living/simple_mob/animal/giant_spider/nurse,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ns" = (
 /obj/effect/spider/cocoon{
 	icon_state = "cocoon3"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nt" = (
 /obj/effect/spider/stickyweb{
 	icon_state = "stickyweb2"
@@ -3870,13 +3870,13 @@
 /obj/effect/decal/cleanable/filth,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nu" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/spider/stickyweb,
 /obj/effect/spider/eggcluster,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "nv" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/spider/stickyweb,
@@ -3886,26 +3886,26 @@
 	},
 /obj/item/trash/liquidfood,
 /turf/simulated/floor/tiled/old_tile/beige,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nw" = (
 /obj/effect/spider/stickyweb{
 	icon_state = "stickyweb2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nx" = (
 /obj/effect/decal/cleanable/filth,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ny" = (
 /obj/effect/decal/cleanable/filth,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood{
 	icon_state = "wood3"
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nz" = (
 /obj/effect/spider/stickyweb{
 	icon_state = "stickyweb2"
@@ -3914,20 +3914,20 @@
 /turf/simulated/floor/wood{
 	icon_state = "wood3"
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nA" = (
 /obj/effect/decal/cleanable/filth,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nB" = (
 /mob/living/simple_mob/animal/giant_spider/tunneler,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nD" = (
 /obj/effect/decal/remains/lizard,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nE" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/spider/stickyweb{
@@ -3935,11 +3935,11 @@
 	},
 /obj/effect/decal/remains/human,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nF" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nG" = (
 /obj/machinery/light/small/emergency{
 	dir = 4;
@@ -3947,12 +3947,12 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/projectile/bullet/rifle/a545/hunter,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nI" = (
 /obj/machinery/light/small/flicker{
 	dir = 1;
@@ -3961,7 +3961,7 @@
 /obj/effect/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nJ" = (
 /obj/machinery/light/small/emergency{
 	dir = 1;
@@ -3969,14 +3969,14 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nK" = (
 /obj/effect/spider/cocoon{
 	icon_state = "cocoon_large1"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nL" = (
 /obj/machinery/light/small/emergency{
 	dir = 1;
@@ -3987,50 +3987,50 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/broken_bottle,
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/old_tile/beige,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nN" = (
 /obj/effect/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nO" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/plating/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nP" = (
 /obj/effect/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood{
 	icon_state = "wood1"
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nQ" = (
 /obj/effect/decal/remains/mouse,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "nR" = (
 /obj/effect/spider/stickyweb,
 /obj/effect/decal/remains/lizard,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nS" = (
 /obj/machinery/light/flicker,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/projectile/bullet/rifle/a545/hunter,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nT" = (
 /obj/effect/decal/remains/mouse,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nU" = (
 /obj/effect/spider/stickyweb{
 	icon_state = "stickyweb2"
@@ -4043,39 +4043,39 @@
 /turf/simulated/floor/wood{
 	icon_state = "wood3"
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nV" = (
 /obj/effect/spider/stickyweb{
 	icon_state = "stickyweb2"
 	},
 /obj/item/clothing/head/hardhat/orange,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/liquidfood,
 /mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/tiled/old_tile/beige,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/old_tile/beige,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "nZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "oa" = (
 /obj/item/projectile/bullet/rifle/a545/hunter,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ob" = (
 /obj/machinery/light/small/emergency{
 	dir = 4;
@@ -4087,11 +4087,11 @@
 	icon_state = "cocoon_large1"
 	},
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "oc" = (
 /obj/item/clothing/head/hardhat/orange,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "od" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed,
@@ -4101,7 +4101,7 @@
 /turf/simulated/floor/wood{
 	icon_state = "wood1"
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "oe" = (
 /obj/structure/fence{
 	dir = 4;
@@ -4111,25 +4111,25 @@
 	name = "CONDEMNED: DO NOT ENTER"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "of" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/shoes/boots/winter/explorer,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "og" = (
 /obj/item/clothing/shoes/boots/winter/explorer,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "oh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/shoes/boots/winter/explorer,
 /turf/simulated/floor/plating/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "oi" = (
 /mob/living/simple_mob/animal/giant_spider/nurse,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "oj" = (
 /obj/effect/decal/cleanable/filth,
 /obj/effect/decal/cleanable/dirt,
@@ -4138,22 +4138,22 @@
 	info = "radio dead out of water. too many of them outside. i just want to go home. one bullet left"
 	},
 /turf/simulated/floor/plating/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ok" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/mop,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ol" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/material/wood,
 /obj/item/stack/material/wood,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "om" = (
 /obj/structure/grille,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "on" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sink{
@@ -4165,14 +4165,14 @@
 /obj/item/weapon/lipstick/red,
 /obj/item/trash/liquidfood,
 /turf/simulated/floor/tiled/old_tile/beige,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "oo" = (
 /obj/machinery/light/small/flicker,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/medical/crude_pack,
 /obj/item/trash/liquidfood,
 /turf/simulated/floor/tiled/old_tile/beige,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "op" = (
 /obj/machinery/camera/network/research{
 	dir = 10;
@@ -4184,7 +4184,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "or" = (
 /obj/effect/spider/cocoon{
 	icon_state = "cocoon_large1"
@@ -4192,28 +4192,28 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "os" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/material/wood,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ot" = (
 /obj/item/weapon/pickaxe/hand,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "ou" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/shovel,
 /turf/simulated/floor/wood,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "oJ" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/prop/tech/console/off,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "pv" = (
 /obj/structure/closet/crate/trashcart{
 	icon_state = "trashcartopen";
@@ -4223,7 +4223,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "qk" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -4233,31 +4233,31 @@
 	},
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "qy" = (
 /obj/effect/decal/cleanable/graffiti{
 	pixel_y = 30
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "qK" = (
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "qP" = (
 /obj/random/junk,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "qS" = (
 /obj/structure/fence{
 	dir = 4;
 	icon_state = "straight"
 	},
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "rd" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/industrial/warning{
@@ -4268,7 +4268,7 @@
 	icon_state = "warning"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "rg" = (
 /obj/machinery/light/colored/green{
 	dir = 1
@@ -4277,40 +4277,40 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "ro" = (
 /obj/structure/lattice,
 /obj/structure/boulder,
 /turf/simulated/floor/outdoors/rocks,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "rB" = (
 /turf/simulated/wall,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "sS" = (
 /obj/structure/lattice,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "tI" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "tJ" = (
 /obj/structure/firedoor_assembly,
 /obj/structure/grille,
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "uw" = (
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "ux" = (
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "uN" = (
 /obj/structure/grille,
 /turf/simulated/floor/outdoors/rocks,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "uP" = (
 /obj/item/weapon/ore/coal,
 /obj/item/weapon/ore/coal,
@@ -4323,11 +4323,11 @@
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "uT" = (
 /obj/structure/boulder,
 /turf/simulated/floor/outdoors/rocks,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "vH" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/graffiti{
@@ -4336,7 +4336,7 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "vT" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1;
@@ -4345,14 +4345,14 @@
 	},
 /obj/machinery/light/floor,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "wj" = (
 /obj/machinery/conveyor{
 	id = "janitor_downstairs"
 	},
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/central)
+/area/planets/Geminus/indoor/sewer/central)
 "wL" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4;
@@ -4364,7 +4364,7 @@
 	icon_state = "straight"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "wX" = (
 /obj/machinery/light/colored/green{
 	dir = 8
@@ -4372,25 +4372,25 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "xj" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "xL" = (
 /obj/structure/table/standard,
 /obj/item/device/flashlight/lantern,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "xX" = (
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "yq" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "zg" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/folder/blue,
@@ -4400,7 +4400,7 @@
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "zL" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/lipstick,
@@ -4409,13 +4409,13 @@
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "AX" = (
 /obj/machinery/light/flicker{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "Cb" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/decal/cleanable/graffiti{
@@ -4424,12 +4424,12 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "CI" = (
 /obj/effect/floor_decal/industrial/danger,
 /obj/machinery/light/floor,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "CW" = (
 /obj/effect/decal/cleanable/graffiti{
 	pixel_x = -30
@@ -4437,51 +4437,51 @@
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "Dd" = (
 /obj/structure/table/standard,
 /obj/item/weapon/stock_parts/capacitor,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "DJ" = (
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "janitor_downstairs"
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "DK" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "DR" = (
 /obj/machinery/conveyor{
 	id = "janitor_downstairs"
 	},
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "EH" = (
 /obj/structure/table/steel,
 /obj/item/weapon/beartrap,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "Fj" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "FS" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/tiled/steel_ridged,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "Gi" = (
 /obj/machinery/light/floor,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "GV" = (
 /obj/machinery/conveyor_switch{
 	id = "janitor_downstairs"
@@ -4490,14 +4490,14 @@
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "Hg" = (
 /obj/random/trash,
 /obj/random/junk,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "Hi" = (
 /obj/machinery/flasher{
 	id = "mineflash";
@@ -4509,24 +4509,24 @@
 "HL" = (
 /obj/structure/windoor_assembly,
 /turf/simulated/floor/tiled/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "IK" = (
 /obj/structure/girder,
 /turf/simulated/floor/outdoors/rocks,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "Jq" = (
 /obj/structure/boulder,
 /obj/structure/boulder,
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "Ko" = (
 /obj/structure/windoor_assembly,
 /turf/simulated/floor/tiled/external,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "KD" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "KO" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/extinguisher,
@@ -4535,21 +4535,21 @@
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "LX" = (
 /obj/structure/showcase/sign{
 	name = "CONDEMNED: DO NOT ENTER"
 	},
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "Mn" = (
 /turf/simulated/wall,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "Mw" = (
 /obj/structure/firedoor_assembly,
 /obj/structure/grille,
 /turf/simulated/mineral/floor/pollux,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "MA" = (
 /obj/structure/table/steel,
 /obj/item/weapon/paper{
@@ -4559,17 +4559,17 @@
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "Ny" = (
 /turf/simulated/floor/tiled/external,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "NL" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/colored/green{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "Ou" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1;
@@ -4587,42 +4587,42 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "OH" = (
 /obj/structure/firedoor_assembly,
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "Qr" = (
 /obj/machinery/light/colored/green,
 /turf/simulated/floor/plating/maglev{
 	dir = 8;
 	icon_state = "maglev"
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "Qw" = (
 /turf/simulated/floor/outdoors/rocks,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "QD" = (
 /obj/structure/firedoor_assembly,
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "Rl" = (
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/tiled/external,
-/area/planets/Ophelia/indoor/sewer/west)
+/area/planets/Geminus/indoor/sewer/west)
 "RU" = (
 /obj/structure/grille,
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "Sr" = (
 /obj/effect/floor_decal/pavement_grit/rough,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "SH" = (
 /obj/item/frame,
 /turf/simulated/floor/tiled/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "TC" = (
 /obj/effect/bump_teleporter,
 /obj/effect/floor_decal/industrial/danger{
@@ -4631,15 +4631,15 @@
 	tag = "icon-danger (EAST)"
 	},
 /turf/simulated/floor,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "TV" = (
 /turf/simulated/floor/tiled/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "UM" = (
 /obj/random/trash,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "US" = (
 /obj/structure/ore_box,
 /obj/item/weapon/ore/coal,
@@ -4650,11 +4650,11 @@
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "VM" = (
 /obj/structure/boulder,
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "VP" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8;
@@ -4666,42 +4666,42 @@
 	icon_state = "straight"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "Wc" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "WD" = (
 /obj/structure/lattice,
 /turf/simulated/floor/outdoors/rocks,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "WH" = (
 /obj/structure/boulder,
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "WO" = (
 /obj/structure/table/bench/wooden,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "Xm" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "Xo" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8;
 	icon_state = "warning_dust"
 	},
 /turf/simulated/floor/plating,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "Xx" = (
 /obj/structure/lattice,
 /turf/simulated/floor/plating/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "Za" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/cell/device/weapon,
@@ -4709,18 +4709,18 @@
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/sewer/north)
+/area/planets/Geminus/indoor/sewer/north)
 "Zi" = (
 /obj/random/junk,
 /obj/random/trash,
 /turf/simulated/floor/pavement/pave_tiling{
 	outdoors = 0
 	},
-/area/planets/Ophelia/indoor/arrivalbus)
+/area/planets/Geminus/indoor/arrivalbus)
 "Zn" = (
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/tiled/external,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 "ZW" = (
 /obj/structure/fence{
 	density = 0;
@@ -4728,12 +4728,12 @@
 	icon_state = "straight_cut3"
 	},
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/south)
+/area/planets/Geminus/indoor/sewer/south)
 "ZX" = (
 /obj/structure/boulder,
 /obj/structure/boulder,
 /turf/simulated/floor/water/sewer,
-/area/planets/Ophelia/indoor/sewer/east)
+/area/planets/Geminus/indoor/sewer/east)
 
 (1,1,1) = {"
 aa

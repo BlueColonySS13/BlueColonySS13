@@ -9,7 +9,7 @@
 
 /datum/map_template/surface/corporate
 	name = "Surface Content - Corporate"
-	desc = "Submaps for NT shenanigans outside of Ophelia and maybe even Pollux!"
+	desc = "Submaps for NT shenanigans outside of Geminus and maybe even Pollux!"
 
 // To be added: Templates for surface exploration when they are made.
 

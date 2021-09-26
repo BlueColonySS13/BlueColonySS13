@@ -273,9 +273,9 @@
 
 /datum/bounty/mining/industrial_supplies
 	name = "Open Contract: Industrial & Commercial Supplies"
-	author = "Ophelia City Office of General Services"
+	author = "Geminus City Office of General Services"
 	description = "The GCOGS has created this open contract, available to all Extraction Industries in the Blue Colony. Development has begun on a new artificial island off the coast of the city. \
-	Industrial quantities of reclaimed land are required for this feat, the first of its kind in the Commonwealth. Further information about this contract can be found at opheliacity.gov.nt using \
+	Industrial quantities of reclaimed land are required for this feat, the first of its kind in the Commonwealth. Further information about this contract can be found at geminuscity.gov.nt using \
 	the tracking code GCOC-0410-2020W."
 
 	stacks_wanted = list("sandstone" = 15000)

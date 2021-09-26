@@ -1,10 +1,10 @@
-[center]Ophelia City High Court
+[center]Geminus City High Court
 [small][b]Court Ruling[/b][/center][br]
 [hr]
-[i]The following constitutes the legally binding decision of the Ophelia High Court[/i]
+[i]The following constitutes the legally binding decision of the Geminus High Court[/i]
 [hr]
 [center][b]Ruling in the Matter Of:
-[u]Ophelia City v. [field][/u][/b][/center]
+[u]Geminus City v. [field][/u][/b][/center]
 
 On the following charges, the Defendant is hereby found:
 (NG - Not Guilty, G - Guilty)[br]
@@ -20,4 +20,4 @@ And shall be sentenced to:[list]
 [b]So orders the Court.[/b]
 
 [sign]
-Judge of the Ophelia High Court
+Judge of the Geminus High Court

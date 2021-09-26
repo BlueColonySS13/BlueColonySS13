@@ -4,7 +4,7 @@
 	extended_round_description = "The Company's majority control of phoron in the system has marked the \
 		city to be a highly valuable target for many competing organizations and individuals. The varied pasts \
 		and experiences of your fellow civilians have left them susceptible to the vices and temptations of humanity. \
-		Is Ophelia City the safe workplace you once thought it was, or has it become a playground \
+		Is Geminus City the safe workplace you once thought it was, or has it become a playground \
 		for the evils of the colony? Who can you trust? Watch your front. Watch your sides. Watch your back. \
 		The familiar faces that you've passed hundreds of times down the streets before can be hiding terrible \
 		secrets and deceptions. Every corner is a mystery. Every conversation is a lie. You will be facing your \

@@ -3,8 +3,8 @@
 //########################################################################################################################
 
 /obj/item/weapon/newspaper
-	name = "The Ophelia Standard"
-	desc = "An issue of The Ophelia Standard, the BEST in Ophelia News."
+	name = "The Geminus Standard"
+	desc = "An issue of The Geminus Standard, the BEST in Geminus News."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "newspaper"
 	w_class = ITEMSIZE_SMALL	//Let's make it fit in trashbags!
