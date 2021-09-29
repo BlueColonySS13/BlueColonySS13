@@ -40,7 +40,7 @@
 	return using_map.council_email
 /datum/job/engineer
 	title = "Firefighter"
-	email_domain = "fire.cityworks.gov.nt"
+
 	flag = ENGINEER
 	department_flag = ENGSEC
 	faction = "City"
