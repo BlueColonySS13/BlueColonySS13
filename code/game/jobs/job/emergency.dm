@@ -38,7 +38,6 @@
 
 /datum/job/chief_engineer/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email
-/*
 /datum/job/engineer
 	title = "Firefighter"
 	email_domain = "fire.cityworks.gov.nt"
@@ -58,7 +57,6 @@
 	minimum_character_age = 18
 	minimal_player_age = 3
 	outfit_type = /decl/hierarchy/outfit/job/engineering/atmos
-*/
 /datum/job/atmos
 	title = "Maintenance Worker"
 
