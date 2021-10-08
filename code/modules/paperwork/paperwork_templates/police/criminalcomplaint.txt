@@ -3,12 +3,12 @@
 [center][large] Pollux High Court [/large] [/center]
 [center] for the 
 
-District of Geminus City [/center]
+District of Ophelia City [/center]
 
-[center] People of Geminus  v. [field] [/center]
+[center] People of Ophelia  v. [field] [/center]
 
 [center][large][b]CRIMINAL COMPLAINT[/b][/large][/center]
-I, [field], the complainant in this case, state that the following is true to the best of my knowledge and belief. On or about the date(s) of 2564-[field]-[field] in the county of Pollux in the District of Geminus, the defendant(s) [field] violated:
+I, [field], the complainant in this case, state that the following is true to the best of my knowledge and belief. On or about the date(s) of 2564-[field]-[field] in the county of Pollux in the District of Ophelia, the defendant(s) [field] violated:
 
  Code section  -  Offense Description [hr]
 1. [field] - [field] [hr]

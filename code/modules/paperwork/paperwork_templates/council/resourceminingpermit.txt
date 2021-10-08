@@ -1,0 +1,17 @@
+[table][cell][center][h3][u]Resource Mining Permit[/u][/h3]
+This document certifies that the company or individual known as [field][small](Recipient)[/small] has received permission from the city of Ophelia to procure minerals and resources within the city's designated mining area.
+
+Furthermore, this document certifies that the undersigned representative of the city has received all required dues to be paid to city hall as outlined in the Resource Preservation and Harvesting Act 2558 [small](C46A15)[/small].
+[/center]
+[hr]
+_[u][field][/u]_
+[small]Signature, Recipient[/small]
+_[u][field][/u]_
+[small]Printed Name, Recipient[/small]
+
+_[u][field][/u]_
+[small]Signature, City Hall Representative[/small]
+_[u][field][/u]_
+[small]Printed Name, City Hall Representative[/small]
+[hr]
+[small]Stamp with City Clerk's Seal below to certify[/small]
