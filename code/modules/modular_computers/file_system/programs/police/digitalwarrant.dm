@@ -72,7 +72,7 @@ var/warrant_uid = 0
 
 		output = {"
 		<HTML><HEAD><TITLE>[activewarrant.fields["namewarrant"]]</TITLE></HEAD>
-		<BODY bgcolor='#FFFFFF'><center><large><b>Geminus City Police Department Bureau</b></large></br>
+		<BODY bgcolor='#FFFFFF'><center><large><b>Ophelia City Police Department Bureau</b></large></br>
 		in the jurisdiction of the Colonial Polluxian Government</br>
 		</br>
 		</br>
@@ -80,7 +80,7 @@ var/warrant_uid = 0
 		</br>
 		This document serves as authorization and notice for the arrest of _<u>[activewarrant.fields["namewarrant"]]</u>____ for the crime(s) of:</br>[activewarrant.fields["charges"]]</br>
 		</br>
-		Area of Warrant: _<u>Geminus City</u>____</br>
+		Area of Warrant: _<u>Ophelia City</u>____</br>
 		</br>_<u>[activewarrant.fields["auth"]]</u>____</br>
 		<small>Person authorizing arrest</small></br>
 		</BODY></HTML>
@@ -109,7 +109,7 @@ var/warrant_uid = 0
 		</br>
 		<b>Warrant issued by: </b> [activewarrant.fields["auth"]]</br>
 		</br>
-		Location: _<u>Geminus City</u>____</br>
+		Location: _<u>Ophelia City</u>____</br>
 		</BODY></HTML>
 		"}
 

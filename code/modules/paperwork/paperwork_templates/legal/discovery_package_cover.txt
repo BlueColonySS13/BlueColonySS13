@@ -1,7 +1,7 @@
-[center]Geminus City High Court
+[center]Ophelia City High Court
 [small][b]Discovery Package[/b][/center][br]
 [hr]
-This Discovery Package is being submitted to the Geminus City High Court, by the:
+This Discovery Package is being submitted to the Ophelia City High Court, by the:
 
 [[field]] Prosecuting Attorney's Office
 [[field]] Defense Attorney's Office
