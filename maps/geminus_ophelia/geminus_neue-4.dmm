@@ -267,7 +267,7 @@
 "afg" = (/obj/machinery/door/airlock/glass_command{name = "Escape Shuttle Cockpit"; req_access = list(19)},/turf/simulated/shuttle/floor/glass,/area/shuttle/escape/centcom)
 "afh" = (/obj/machinery/light/colored/blue{dir = 4; icon_state = "blue1"; tag = "icon-blue1 (EAST)"},/turf/simulated/shuttle/floor/glass,/area/shuttle/escape/centcom)
 "afi" = (/obj/effect/step_trigger/thrower{affect_ghosts = 1; direction = 2; name = "thrower_throwdown"; tiles = 0},/turf/simulated/floor/holofloor/beach/water,/area/space)
-"afj" = (/turf/simulated/floor/plating/maglev{dir = 8; icon_state = "maglev"},/area/space)
+"afj" = (/turf/simulated/floor/plating/maglevmove,/area/space)
 "afk" = (/obj/machinery/door/airlock/external{frequency = 1380; icon_state = "closed"; id_tag = "arrivals_dock"; locked = 1; name = "Shuttle Hatch"; req_access = list(13)},/turf/simulated/shuttle/floor/white,/area/shuttle/arrival/pre_game)
 "afl" = (/obj/machinery/door/airlock/external{frequency = 1380; icon_state = "closed"; id_tag = "arrivals_shuttle_hatch"; locked = 1; name = "Shuttle Hatch"; req_access = list(13)},/turf/simulated/shuttle/floor/white,/area/shuttle/arrival/pre_game)
 "afm" = (/obj/structure/bed/chair/holochair{dir = 8},/turf/simulated/floor/holofloor/grass,/area/holodeck/source_picnicarea)
