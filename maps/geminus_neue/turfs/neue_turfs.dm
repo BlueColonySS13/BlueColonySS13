@@ -138,6 +138,14 @@
 	icon_state = "maglev"
 	initial_flooring = /decl/flooring/maglev
 
+/turf/simulated/floor/plating/maglevmove
+	icon = 'icons/turf/maglevmove.dmi'
+	icon_state = "mover"
+
+/turf/simulated/floor/plating/maglevmove/initialize()
+	. = ..()
+	update_icon()
+
 /turf/simulated/sky
 	oxygen		= MOLES_O2POLLUX
 	nitrogen	= MOLES_N2POLLUX
