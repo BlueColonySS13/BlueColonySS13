@@ -233,6 +233,18 @@
 	path = /obj/item/clothing/shoes/boots/winter/hydro
 	allowed_roles = list("Botanist", "Xenobiologist")
 
+/datum/gear/shoes/clowncivilian
+	display_name = "clown shoes"
+	path = /obj/item/clothing/shoes/clown_shoes
+	allowed_roles = list("Civilian")
+	cost=5 //it is sort of rare
+
+/datum/gear/shoes/mimecivilian
+	display_name = "mime shoes"
+	path = /obj/item/clothing/shoes/mime
+	allowed_roles = list("Civilian")
+	cost=5 //it is sort of rare
+
 /datum/gear/shoes/boots/stylish
 	display_name = "stylish boots selection"
 	path = /obj/item/clothing/shoes/boots/stylish
