@@ -296,7 +296,9 @@ var/global/photo_count = 0
 
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-	if(!on || !pictures_left || ismob(target.loc)) return
+
+	if(!on || !pictures_left || ismob(target.loc) || istype(target.loc, /obj/item/weapon/storage) ) return
+	if(user.contains(target) || istype(target, /obj/screen)) return
 	captureimage(target, user, flag)
 
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 75, 1, -3)
