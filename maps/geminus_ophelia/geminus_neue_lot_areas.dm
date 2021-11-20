@@ -175,3 +175,5 @@
 	lot_id = "farmlot2"
 
 // Event Hall
+
+// residental
