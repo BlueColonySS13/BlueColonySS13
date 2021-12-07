@@ -51,16 +51,16 @@
 		qdel(src)
 
 /obj/machinery/computer/arcade/proc/prizevend()
-	if(!contents.len)
-		var/prizeselect = pickweight(prizes)
-		new prizeselect(src.loc)
-
-		if(istype(prizeselect, /obj/item/clothing/suit/syndicatefake)) //Helmet is part of the suit
-			new	/obj/item/clothing/head/syndicatefake(src.loc)
-
-	else
-		var/atom/movable/prize = pick(contents)
-		prize.loc = src.loc
+	//if(!(contents-circuit).len)
+	var/prizeselect = pickweight(prizes)
+	new prizeselect(src.loc)
+	if(istype(prizeselect, /obj/item/weapon/gun/projectile/revolver/capgun)) //Ammo comes with the gun
+		new /obj/item/projectile/bullet/pistol/cap(src.loc)
+	if(istype(prizeselect, /obj/item/clothing/suit/syndicatefake)) //Helmet is part of the suit
+		new	/obj/item/clothing/head/syndicatefake(src.loc)
+	//else
+	//	var/atom/movable/prize = pick(contents-circuit)
+	//	prize.loc = src.loc
 
 /obj/machinery/computer/arcade/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -111,6 +111,9 @@
 	var/gameover = 0
 	var/blocked = 0 //Player cannot attack/heal while set
 	var/turtle = 0
+
+/obj/machinery/computer/arcade/battle/free
+	requires_token = FALSE
 
 /obj/machinery/computer/arcade/battle/New()
 	..()
@@ -361,6 +364,9 @@
 	var/last_spaceport_action = ""
 	var/gameStatus = ORION_STATUS_START
 	var/canContinueEvent = 0
+
+/obj/machinery/computer/arcade/orion_trail/free
+	requires_token = FALSE
 
 /obj/machinery/computer/arcade/orion_trail/New()
 	..()

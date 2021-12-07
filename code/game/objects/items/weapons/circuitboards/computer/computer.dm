@@ -92,10 +92,20 @@
 	build_path = /obj/machinery/computer/arcade/battle
 	origin_tech = list(TECH_DATA = 1)
 
+/obj/item/weapon/circuitboard/arcade/battlefree
+	name = T_BOARD("battle arcade machine unlocked")
+	build_path = /obj/machinery/computer/arcade/battle/free
+	origin_tech = list(TECH_DATA = 4)
+
 /obj/item/weapon/circuitboard/arcade/orion_trail
 	name = T_BOARD("orion trail arcade machine")
 	build_path = /obj/machinery/computer/arcade/orion_trail
 	origin_tech = list(TECH_DATA = 1)
+
+/obj/item/weapon/circuitboard/arcade/orion_trailfree
+	name = T_BOARD("orion trail arcade machine unlocked")
+	build_path = /obj/machinery/computer/arcade/orion_trail/free
+	origin_tech = list(TECH_DATA = 4)
 
 /obj/item/weapon/circuitboard/turbine_control
 	name = T_BOARD("turbine control console")
