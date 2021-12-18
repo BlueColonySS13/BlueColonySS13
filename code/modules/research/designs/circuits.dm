@@ -36,6 +36,22 @@
 	sort_string = "MAAAA"
 	protected = TRUE
 
+/datum/design/circuit/arcademachinefree
+	name = "battle arcade unlocked"
+	id = "arcademachineunlocked"
+	req_tech = list(TECH_DATA = 4)
+	build_path = /obj/item/weapon/circuitboard/arcade/battlefree
+	sort_string = "MAAAL"
+	protected = TRUE
+
+/datum/design/circuit/oriontrailfree
+	name = "orion trail arcade unlocked"
+	id = "oriontrailunlocked"
+	req_tech = list(TECH_DATA = 4)
+	build_path = /obj/item/weapon/circuitboard/arcade/orion_trailfree
+	sort_string = "MAAAN"
+	protected = TRUE
+
 /datum/design/circuit/jukebox
 	name = "jukebox"
 	id = "jukebox"
