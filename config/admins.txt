@@ -21,3 +21,4 @@ artofwasd - Code Wizard
 slayingcreepers - Code Wizard
 n8toe - Developer
 APsychonaut - Code Wizard
+semorerith - Host
