@@ -1,12 +1,12 @@
 #define LOC_KITCHEN 0
-#define LOC_ATMOS 1
+#define LOC_FITNESS 1
 #define LOC_CHAPEL 2
-#define LOC_LIBRARY 3
-#define LOC_HYDRO 4
-#define LOC_VAULT 5
-#define LOC_CONSTR 6
-#define LOC_TECH 7
-#define LOC_GARDEN 8
+#define LOC_PARK 3
+#define LOC_RESEARCH 4
+#define LOC_SECURITY 5
+#define LOC_CARGO 6
+#define LOC_MEDICAL 7
+#define LOC_CITYHALL 8
 
 #define VERM_MICE 0
 #define VERM_LIZARDS 1
@@ -29,30 +29,30 @@
 		if(LOC_KITCHEN)
 			spawn_area_type = /area/crew_quarters/kitchen
 			locstring = "the kitchen"
-		if(LOC_ATMOS)
-			spawn_area_type = /area/engineering/atmos
-			locstring = "atmospherics"
+		if(LOC_FITNESS)
+			spawn_area_type = /area/crew_quarters/fitness
+			locstring = "fitness area"
 		if(LOC_CHAPEL)
 			spawn_area_type = /area/chapel/main
 			locstring = "the chapel"
-		if(LOC_LIBRARY)
-			spawn_area_type = /area/library
-			locstring = "the library"
-		if(LOC_HYDRO)
-			spawn_area_type = /area/hydroponics
-			locstring = "hydroponics"
-		if(LOC_VAULT)
-			spawn_area_type = /area/security/nuke_storage
-			locstring = "the vault"
-		if(LOC_CONSTR)
-			spawn_area_type = /area/construction
-			locstring = "the construction area"
-		if(LOC_TECH)
-			spawn_area_type = /area/storage/tech
-			locstring = "technical storage"
-		if(LOC_GARDEN)
-			spawn_area_type = /area/hydroponics/garden
-			locstring = "the public garden"
+		if(LOC_PARK)
+			spawn_area_type = /area/planets/Geminus/outdoor/park
+			locstring = "the recreation area"
+		if(LOC_RESEARCH)
+			spawn_area_type = /area/rnd/research_foyer
+			locstring = "the research facility"
+		if(LOC_SECURITY)
+			spawn_area_type = /area/security/main
+			locstring = "the police department"
+		if(LOC_CARGO)
+			spawn_area_type = /area/quartermaster/storage
+			locstring = "the supply terminal"
+		if(LOC_MEDICAL)
+			spawn_area_type = /area/medical/medbay2
+			locstring = "the medical area"
+		if(LOC_CITYHALL)
+			spawn_area_type = /area/planets/Geminus/indoor/city_hall
+			locstring = "the city hall"
 
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
@@ -93,16 +93,18 @@
 
 
 /datum/event/infestation/announce()
+	//should it be announced in public? maybe, use global_announcer.autosay(warnmessage, "Pest Control", "Engineering")
 	command_announcement.Announce("Bioscans indicate that [vermstring] have been breeding in [locstring]. Clear them out, before this starts to affect productivity.", "Vermin infestation")
 
 #undef LOC_KITCHEN
-#undef LOC_ATMOS
+#undef LOC_FITNESS
 #undef LOC_CHAPEL
-#undef LOC_LIBRARY
-#undef LOC_HYDRO
-#undef LOC_VAULT
-#undef LOC_TECH
-#undef LOC_GARDEN
+#undef LOC_PARK
+#undef LOC_RESEARCH
+#undef LOC_SECURITY
+#undef LOC_CARGO
+#undef LOC_MEDICAL
+#undef LOC_CITYHALL
 
 #undef VERM_MICE
 #undef VERM_LIZARDS
