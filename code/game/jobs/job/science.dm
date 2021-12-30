@@ -28,7 +28,7 @@
 	ideal_character_age = 50
 
 	clean_record_required = TRUE
-	allows_synths = FALSE
+	allows_synths = TRUE
 
 
 	outfit_type = /decl/hierarchy/outfit/job/science/rd
@@ -115,7 +115,7 @@
 	alt_titles = list("Biomechanical Engineer","Mechatronic Engineer","Car Engineer")
 
 	clean_record_required = TRUE
-	allows_synths = FALSE
+	allows_synths = TRUE
 
 /datum/job/scienceintern
 	title = "Research Assistant"

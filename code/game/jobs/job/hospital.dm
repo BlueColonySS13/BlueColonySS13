@@ -13,7 +13,7 @@
 	idtype = /obj/item/weapon/card/id/medical/head
 	req_admin_notify = 1
 	wage = 4250
-	allows_synths = FALSE
+	allows_synths = TRUE
 
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
