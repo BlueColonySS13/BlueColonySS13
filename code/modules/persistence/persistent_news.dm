@@ -1,7 +1,7 @@
 var/global/datum/economy/news/news_data = new /datum/economy/news
 
 /datum/feed_network/New()
-	CreateFeedChannel("Geminus Standard", "NanoTrasen News Authority", 1, 1, "New Issue of Geminus Standard!", 1)
+	CreateFeedChannel("Ophelia Standard", "NanoTrasen News Authority", 1, 1, "New Issue of Ophelia Standard!", 1)
 	CreateFeedChannel("City Announcements", "City Council", 1, 1, "New City Announcement Available", 0)
 
 /datum/economy/news
@@ -11,15 +11,15 @@ var/global/datum/economy/news/news_data = new /datum/economy/news
 	var/datum/feed_channel/city_newspaper
 	var/datum/feed_channel/save_data
 	
-	var/city_anchors = list()		// list of uids of editors for geminus standard
-	var/city_anchor_managers = list()	// list of uids of managers for geminus standard
+	var/city_anchors = list()		// list of uids of editors for Ophelia standard
+	var/city_anchor_managers = list()	// list of uids of managers for Ophelia standard
 	
 	var/photo_data_path = "data/persistent/news/images"
 
 /datum/economy/news/New()
 	..()
 	for(var/datum/feed_channel/F in news_network.network_channels)
-		if(F.channel_name == "Geminus Standard")
+		if(F.channel_name == "Ophelia Standard")
 			city_newspaper = F
 			break
 
@@ -39,7 +39,7 @@ var/global/datum/economy/news/news_data = new /datum/economy/news
 		return
 
 	if(!city_newspaper)
-		message_admins("Save: Could not find Geminus Standard.", 1)
+		message_admins("Save: Could not find Ophelia Standard.", 1)
 		return
 
 	//just in case.
@@ -66,7 +66,7 @@ var/global/datum/economy/news/news_data = new /datum/economy/news
 		return
 
 	if(!city_newspaper)
-		message_admins("Load: Could not find Geminus Standard.", 1)
+		message_admins("Load: Could not find Ophelia Standard.", 1)
 		return
 
 	S["city_newspaper_articles"] >> save_data

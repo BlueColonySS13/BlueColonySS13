@@ -88,7 +88,7 @@
 /datum/category_item/player_setup_item/general/background/content(var/mob/user)
 	. += "<h1>Character Background:</h1><hr>"
 	if(!pref.existing_character)
-		. += "Geminus City is on the planet Pollux, and is located in Blue Colony, in the Vetra star system. You may choose a different background. Social class and the system you are born in cannot be changed once set.</br><br>"
+		. += "Ophelia City is on the planet Pollux, and is located in Blue Colony, in the Vetra star system. You may choose a different background. Social class and the system you are born in cannot be changed once set.</br><br>"
 
 		. += "There are the minimum days required to start each class:<br><br>"
 		. += "Working Class Minimum: 0 days (2000CR inheritance)<br>"

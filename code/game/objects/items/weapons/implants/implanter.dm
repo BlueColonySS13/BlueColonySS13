@@ -57,7 +57,7 @@
 
 					add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
 
-					if(imp.handle_implant(M))
+					if(imp.handle_implant(M, user.zone_sel.selecting))
 						imp.post_implant(M)
 
 						if(ishuman(M))

@@ -254,6 +254,7 @@
 
 /obj/item/weapon/pen/crayon/spraycan
 	name = "spray can"
+	base_name = "spray can"
 	icon_state = "spraycan_cap"
 	item_state = "spraycan"
 	desc = "A metallic container containing tasty paint."
@@ -282,7 +283,10 @@
 /obj/item/weapon/pen/crayon/spraycan/New()
 	..()
 	name = "spray can"
+	base_name = "spray can"
 	colour = pick("#DA0000","#FF9300","#FFF200","#A8E61D","#00B7EF","#DA00FF")
+	// it can change colors. Useful but weird
+	colourName = "colorful"
 	update_icon()
 /obj/item/weapon/pen/crayon/spraycan/examine(mob/user)
 	..()

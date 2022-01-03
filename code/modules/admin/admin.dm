@@ -662,7 +662,7 @@ proc/admin_notice(var/message, var/rights)
 	set desc="Restarts the world"
 	if (!usr.client.holder)
 		return
-	var/confirm = alert("Restart the game world?", "Restart", "Yes", "Cancel")
+	var/confirm = alert("Restart the game world? (DOES NOT SAVE ROUND)", "Restart", "Yes", "Cancel")
 	if(confirm == "Cancel")
 		return
 	if(confirm == "Yes")

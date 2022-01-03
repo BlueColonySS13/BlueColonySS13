@@ -94,7 +94,7 @@ var/global/datum/global_init/init = new ()
 	callHook("startup")
 	if (config.serverstart_webhook_address != "")
 		send_post_request(config.paic_webhook_address, " { \"embeds\" : \[ { \"title\" : \"Server Starting...\", \"description\" : \"[config.serverstart_webhook_message]\", \"color\" : 1007776 } ] } ", " { \"Content-Type\" : \"application/json\" } ")
-	
+
 	//Emergency Fix
 	load_mods()
 	//end-emergency fix
@@ -570,10 +570,10 @@ var/world_topic_spam_protect_time = world.timeofday
 	if (config && config.server_name)
 		s += "<b>[config.server_name]</b> &#8212; "
 
-	s += "<b>Official World Server | Roleplaying</b>";
-	s += " | Persistent money, partial map saving, elections."
+	s += "<b>Official Blue Colony | Heavy Roleplaying, With less bombings </b>";
+	s += " | Persistent money, own a business, conspire against your friends."
 
-	s += "(<a href=\"https://discord.gg/4KUpvnJ\">" //Change this to wherever you want the hub to link to.
+	s += "(<a href=\"https://discord.gg/mQUmnRx7wF\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
 	s += "DISCORD"
 	s += "</a>"
@@ -698,13 +698,19 @@ proc/setup_old_database_connection()
 
 	dbcon_old.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
 	. = dbcon_old.IsConnected()
-	if ( . )
+	if(.)
 		failed_old_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
 	else
 		failed_old_db_connections++		//If it failed, increase the failed connections counter.
 		world.log << dbcon.ErrorMsg()
+		world.log << "ERROR: Could not connect to mysql server (old db). Error: [dbcon.ErrorMsg()] - Details: [db]:[address]:[port] - User: [user] - Pass: [pass]"
 
 	return .
+
+//This proc is still needed to allow troubleshooting from in-game
+proc/reset_db_chances()
+	failed_old_db_connections = 0
+	return 1
 
 //This proc ensures that the connection to the feedback database (global variable dbcon) is established
 proc/establish_old_db_connection()

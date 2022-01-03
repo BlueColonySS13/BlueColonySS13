@@ -83,7 +83,8 @@
 
 	add_overlay(ovr)
 	compile_overlays()	// The delay looks weird, so we force an update immediately.
-	src.desc = "They are worth [cash2text( worth, FALSE, TRUE, TRUE )] credits."
+	name = "[cash2text( worth, FALSE, FALSE, TRUE)] credit chip"
+	desc = "They are worth [cash2text( worth, FALSE, TRUE, TRUE )] credits."
 
 /obj/item/weapon/spacecash/bundle/attack_self(mob/user as mob)
 	var/amount = input(user, "How many credits do you want to take? (0 to [src.worth])", "Take Money", 20) as num
@@ -238,22 +239,22 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 			won = 10
 			speak("You've won: [won] CREDITS. SUPER WINNER! You're lucky!")
 		else if (result <= 97500) // 0.25% chance
-			won = 20
+			won = 15
 			speak("You've won: [won] CREDITS. MEGA WINNER! You're super lucky!")
 		else if (result <= 99000) // 0.15% chance
-			won = 50
+			won = 20
 			speak("You've won: [won] CREDITS. ULTRA WINNER! You're mega lucky!")
 		else if (result <= 99500) // 0.05% chance
-			won = 80
+			won = 25
 			speak("You've won: [won] CREDITS. ULTIMATE WINNER! You're ultra lucky!")
 		else if (result <= 99750) // 0.025% chance
-			won = 100
+			won = 30
 			speak("You've won: [won] CREDITS. ULTIMATE WINNER! You're ultra lucky!")
 		else if (result <= 99990) // 0.024% chance
-			won = 150
+			won = 35
 			speak("You've won: [won] CREDITS. ULTIMATE WINNER! You're ultra lucky!")
 		else ///0.001% chance
-			won = 200
+			won = 100
 			speak("You've won: [won] CREDITS. JACKPOT WINNER! You're JACKPOT lucky!")
 
 		scratches_remaining -= 1

@@ -12,7 +12,7 @@
 	slot = ACCESSORY_SLOT_INSIGNIA
 
 	var/stored_name
-	var/badge_string = "Geminus City Police Department"
+	var/badge_string = "Ophelia City Police Department"
 	var/name_reset = ""
 	var/news_network_name
 

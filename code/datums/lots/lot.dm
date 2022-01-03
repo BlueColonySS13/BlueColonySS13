@@ -17,7 +17,7 @@
 
 	var/service_light_warning = 5000
 	var/service_charge_warning = 20000			// how much debt landlord is in before letters start arriving.
-	var/service_charge_possession = 50000  		//how much debt landlord is in with service charges before council come be a bitch.
+	var/service_charge_possession = 500  		//how much debt landlord is in with service charges before council come be a bitch.
 
 	var/required_deposit = 2000
 	var/autorent_deposit = 0					// the minimum deposit needed to rent this property instantly without landlord approval

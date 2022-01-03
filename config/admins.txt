@@ -8,9 +8,9 @@
 # not_a_user - Admin
 
 maverikknight - Head Admin
-shadowkiller104 - Game Admin
 ncrranger21 - Moderator
 sovietcyanide - Moderator
+rand0mname - Moderator
 monos - Trial Moderator
 fighterslam - Trial Moderator
 
@@ -20,3 +20,5 @@ theflagbearer - Code Wizard
 artofwasd - Code Wizard
 slayingcreepers - Code Wizard
 n8toe - Developer
+APsychonaut - Code Wizard
+semorerith - Host

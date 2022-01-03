@@ -38,10 +38,9 @@
 
 /datum/job/chief_engineer/get_job_email()	// whatever this is set to will be the job's communal email. should be persistent.
 	return using_map.council_email
-/*
 /datum/job/engineer
 	title = "Firefighter"
-	email_domain = "fire.cityworks.gov.nt"
+
 	flag = ENGINEER
 	department_flag = ENGSEC
 	faction = "City"
@@ -57,8 +56,7 @@
 	alt_titles = list("Firefighter/EMT")
 	minimum_character_age = 18
 	minimal_player_age = 3
-	outfit_type = /decl/hierarchy/outfit/job/engineering/engineer
-*/
+	outfit_type = /decl/hierarchy/outfit/job/engineering/atmos
 /datum/job/atmos
 	title = "Maintenance Worker"
 
@@ -71,7 +69,7 @@
 	spawn_positions = 2
 	supervisors = "the maintenance director"
 	selection_color = "#5B4D20"
-	idtype = /obj/item/weapon/card/id/engineering/atmos
+	idtype = /obj/item/weapon/card/id/engineering/engineer
 	wage = 500
 	synth_wage = 250
 

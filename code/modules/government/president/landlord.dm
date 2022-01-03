@@ -38,6 +38,7 @@
 	name = "Minimum Arrears For Tenant Eviction"
 	description = "In negative numbers, how low must the tenant fall into arrears before their landlord can evict them?"
 	id = "min_arrears_tenant"
+	required_access_edit = access_captain
 	value = -50000
 	max_value = -1000
 	min_value = -100000

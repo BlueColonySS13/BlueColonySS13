@@ -106,6 +106,7 @@
 	name = "Hephaestus robolimb blueprints"
 	contains = list(/obj/item/weapon/disk/limb/hephaestus,
 					/obj/item/weapon/disk/limb/hephaestus/athena,
+					/obj/item/weapon/disk/limb/hephaestus/athena/alt,
 					/obj/item/weapon/disk/limb/hephaestus/frontier,
 					/obj/item/weapon/disk/limb/hephaestus/monitor)
 	cost = 180000

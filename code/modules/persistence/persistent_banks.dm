@@ -15,13 +15,13 @@
 /datum/money_account/proc/load_persistent_account(var/mob/living/carbon/human/H)
 
 	if(H.mind.prefs.bank_pin)
-		H.mind.prefs.bank_pin = remote_access_pin
+		remote_access_pin = H.mind.prefs.bank_pin
 
 	if(H.mind.prefs.bank_account)
 		account_number = H.mind.prefs.bank_account
 
 	if(H.mind.prefs.expenses)
-		H.mind.prefs.expenses = expenses
+		expenses = H.mind.prefs.expenses
 
 	transaction_log = get_persistent_acc_logs(account_number)
 

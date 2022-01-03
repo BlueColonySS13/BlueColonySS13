@@ -289,7 +289,7 @@ SUBSYSTEM_DEF(vote)
 	else
 		. += "<h2>Start a vote:</h2><hr><ul><li>"
 		if(admin || config.allow_vote_restart)
-			. += "<a href='?src=\ref[src];vote=restart'>Restart</a>"
+			. += "<a href='?src=\ref[src];vote=restart'>Restart (DOES NOT SAVE ROUND)</a>"
 		else
 			. += "<font color='grey'>Restart (Disallowed)</font>"
 		. += "</li><li>"

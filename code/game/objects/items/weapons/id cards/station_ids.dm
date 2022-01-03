@@ -350,12 +350,10 @@
 	icon_state = "eng"
 	primary_color = rgb(189,94,0)
 	secondary_color = rgb(223,159,95)
-/*
 /obj/item/weapon/card/id/engineering/engineer
 	assignment = "City Engineer"
 	rank = "City Engineer"
 	job_access_type = /datum/job/engineer
-*/
 /obj/item/weapon/card/id/engineering/atmos
 	assignment = "Maintenance Worker"
 	rank = "Maintenance Worker"

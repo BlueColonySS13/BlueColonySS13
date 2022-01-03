@@ -687,6 +687,18 @@
 	display_name = "disheveled suit"
 	path = /obj/item/clothing/under/disheveled
 
+/datum/gear/uniform/clowncivilian
+	display_name = "clown suit"
+	path = /obj/item/clothing/under/rank/clown
+	allowed_roles = list("Civilian")
+	cost=5 //it is sort of rare
+
+/datum/gear/uniform/mimecivilian
+	display_name = "mime suit"
+	path = /obj/item/clothing/under/mime
+	allowed_roles = list("Civilian")
+	cost=5 //it is sort of rare
+
 /// Comment the items below out one week after the "Ports clothing from Polaris + Additional" PR is merged! Excxlusivity! ///
 
 /datum/gear/uniform/whitegown
