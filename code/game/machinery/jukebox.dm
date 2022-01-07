@@ -43,6 +43,8 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("Electrified", 'sound/music/disco/Electrified.ogg'),
 		new/datum/track("Hack or be Hacked", 'sound/music/disco/Hack_or_be_hacked.ogg'),
 		new/datum/track("Hyper", 'sound/music/disco/Hyper.ogg'),
+		new/datum/track("Lilium", 'sound/music/disco/Lilium.ogg'),
+		new/datum/track("Moments In Love", 'sound/music/disco/Moments In Love.ogg'),
 		new/datum/track("Psionic Souls", 'sound/music/disco/Psionic_souls.ogg'),
 		new/datum/track("Scavenger Hideout", 'sound/music/disco/Scavenger_hideout.ogg'),
 		new/datum/track("Sunyo", 'sound/music/disco/Sunyo.ogg'),
