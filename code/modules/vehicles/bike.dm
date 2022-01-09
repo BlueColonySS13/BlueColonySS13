@@ -12,6 +12,7 @@
 
 	locked = 0
 	powered = 1
+	charge_use = 0.75
 
 	fire_dam_coeff = 0.6
 	brute_dam_coeff = 0.5
