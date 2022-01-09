@@ -27,10 +27,10 @@
 	description = "Everyone is going to be wearing a watch computer soon. It is not a fad. I need like, 100 sheets of plastic for my \
 	new prototypes. And we are making an app. Like us on Space Microblogger. Buy our space merch."
 
-	stacks_wanted = list("plastic" = 1000)
+	stacks_wanted = list("plastic" = 500)
 
-	department_reward = 11000
-	individual_reward = 1100
+	department_reward = 3250
+	individual_reward = 1250
 
 /datum/bounty/mining/sister_rust
 	name = "Mekhanikal Hands"
@@ -39,10 +39,10 @@
 	Fear not, for when She arises, you will be spared for having constructed Her most holy hands. This world will understand that Mekhanikal \
 	Hands are the ruler of everything."
 
-	stacks_wanted = list("iron" = 1000)
+	stacks_wanted = list("iron" = 100)
 
 	department_reward = 550
-	individual_reward = 55
+	individual_reward = 250
 
 
 /datum/bounty/mining/steel_here
@@ -51,10 +51,10 @@
 	description = " The Sisterhood of Mekhanikal Hands requests that you send steel to adorn the hair of our lovely goddess. Let us not ask questions \
 	as it will be all clear soon."
 
-	stacks_wanted = list("steel" = 2000)
+	stacks_wanted = list("steel" = 500)
 
-	department_reward = 1100
-	individual_reward = 110
+	department_reward = 3200
+	individual_reward = 1200
 
 
 /datum/bounty/mining/back_to_the_future
@@ -64,10 +64,10 @@
 	a nuclear weapon... unless it goes critical. But, again - don't worry! With my patented Flux Capacitor(tm), that won't be a problem at \
 	all! Once this bad boy hits 88 mph, we're gonna see some serious \[Expletive Redacted\]."
 
-	stacks_wanted = list("uranium" = 1500)
+	stacks_wanted = list("uranium" = 250)
 
-	department_reward = 99000
-	individual_reward = 9900
+	department_reward = 4200
+	individual_reward = 2500
 
 /datum/bounty/mining/minting
 	name = "Commemerative Minting"
@@ -76,9 +76,9 @@
 	in New Britannia. Our first batch of coins, the \"Autochthon Set,\" are beautiful golden coins dedicated to humanity and its achievements. \
 	To continue minting new coins, we need more gold ingots to melt down. Please send us 200 ingots."
 
-	stacks_wanted = list("gold" = 1000)
+	stacks_wanted = list("gold" = 500)
 
-	department_reward = 55000
+	department_reward = 12500
 	individual_reward = 5500
 
 /datum/bounty/mining/better_than_gold
@@ -102,7 +102,7 @@
 
 	stacks_wanted = list("phoron" = 1000)
 
-	department_reward = 55000
+	department_reward = 12500
 	individual_reward = 5500
 
 
@@ -114,7 +114,7 @@
 
 	stacks_wanted = list("durasteel" = 500)
 
-	department_reward = 27500
+	department_reward = 6000
 	individual_reward = 2750
 
 
@@ -127,7 +127,7 @@
 
 	stacks_wanted = list("plasteel" = 500)
 
-	department_reward = 11000
+	department_reward = 3200
 	individual_reward = 1100
 
 
@@ -141,7 +141,7 @@
 
 	stacks_wanted = list("osmium" = 500)
 
-	department_reward = 13750
+	department_reward = 3200
 	individual_reward = 1375
 
 
@@ -167,10 +167,10 @@
 	description = "It is said that if one looks into the void, the void will reciprocate. We require the exceedingly rare gems known as void opals for our Mekhanika's eyes. You will \
 	receive our utmost respect and bountiful compensation for successfully completing this task."
 
-	stacks_wanted = list("void opal" = 500)
+	stacks_wanted = list("void opal" = 50)
 
-	department_reward = 110000
-	individual_reward = 11000
+	department_reward = 2400
+	individual_reward = 1200
 
 
 /datum/bounty/mining/thirty_pieces
@@ -180,9 +180,9 @@
 	One of my workers has been preaching of the benefits of unions and teaching men to fish. I have been offered new workers, in exchange for any excess silver I have. Send me silver so that \
 	production can begin again!"
 
-	stacks_wanted = list("silver" = 1000)
+	stacks_wanted = list("silver" = 500)
 
-	department_reward = 55000
+	department_reward = 12500
 	individual_reward = 5500
 
 /datum/bounty/mining/wires_everywhere
@@ -191,10 +191,10 @@
 	description = "One of our workers has made a grave error and the resulting cascade failure has shut down our plant. Unfortunately, we promised a rather powerful man that we would route most \
 	of our recycled copper to his factories. We need you to send us copper ingots ASAP before we come down with a case of cement poisoning!"
 
-	stacks_wanted = list("copper" = 2000)
+	stacks_wanted = list("copper" = 200)
 
 	department_reward = 2200
-	individual_reward = 220
+	individual_reward = 550
 
 /datum/bounty/mining/can_you_can_can
 	name = "Can You Can-Can?"
@@ -202,10 +202,10 @@
 	description = "Despite our name, we don't actually can food items or beverages. We make the cans! We need aluminium to cover the increase in can demand here in Blue Colony. I suppose people \
 	really enjoy drinking Space Cola and eating that disgusting Carp-in-a-Can. 200 ingots should cover our needs for the time being. We will send payment once we receive the ingots."
 
-	stacks_wanted = list("aluminium" = 2000)
+	stacks_wanted = list("aluminium" = 200)
 
 	department_reward = 2200
-	individual_reward = 220
+	individual_reward = 550
 
 /datum/bounty/mining/contemporary_art
 	name = "Contemporary Art Piece"
@@ -214,10 +214,10 @@
 	The time has come for me to create my next great piece! I will erect a giant sculpture of myself out in the wilds of Blue Colony to proclaim my dominion over this planet! I will need bronze, \
 	lots of it! Send it to me and know that you will have contributed to the greatest artistic endeavour in the history of sculpture! Is there no greater reward?"
 
-	stacks_wanted = list("bronze" = 1000)
+	stacks_wanted = list("bronze" = 200)
 
 	department_reward = 2200
-	individual_reward = 220
+	individual_reward = 500
 
 /datum/bounty/mining/superconductor
 	name = "Superconductor Trials"
@@ -226,10 +226,10 @@
 	big. We need a large amount of tin which will be alloyed here at our facilities into a niobium-tin alloy that will then be used to construct out superconductors. Payment will be remitted once \
 	we have received the materials."
 
-	stacks_wanted = list("tin" = 2000)
+	stacks_wanted = list("tin" = 200)
 
 	department_reward = 2200
-	individual_reward = 220
+	individual_reward = 550
 
 /datum/bounty/mining/mechatronic_dreams
 	name = "Mechatronic Dreams"
@@ -237,10 +237,10 @@
 	description = "Our team is currently working on a new generation of exosuits for use in the industrial sector and we need titanium to construct our prototypes. The next generation of mechas will \
 	prove to be unparalleled by any other company on Pollux. Lark Industries will become a household name for its groundbreaking innovations in chassis design!"
 
-	stacks_wanted = list("titanium" = 2000)
+	stacks_wanted = list("titanium" = 200)
 
-	department_reward = 11000
-	individual_reward = 1100
+	department_reward = 2400
+	individual_reward = 1200
 
 /datum/bounty/mining/jay_jewellers
 	name = "Every Joyful Moment Begins With Jay"
@@ -248,9 +248,9 @@
 	description = "Jay Jewellers is searching for a precious gem that will set us apart from other jewelry businesses in our area. Our experts have identified painite as one such gem that will \
 	attract more discerning customers to our business. Please deliver the cut jewels to us for use in a variety of necklaces, rings, and other accessories."
 
-	stacks_wanted = list("painite" = 500)
+	stacks_wanted = list("painite" = 50)
 
-	department_reward = 16500
+	department_reward = 4800
 	individual_reward = 1650
 
 
@@ -266,10 +266,10 @@
 	level maintenance, field service representative support, contingency maintenance support, new equipment training and total package fielding for the family of Ubentia auto-loader vehicles \
 	and construction line. Further information about this contract can be found at publicworks.gov.nt using the tracking code PWOC-1008-2564V."
 
-	stacks_wanted = list("plasteel" = 12500)
+	stacks_wanted = list("plasteel" = 1250)
 
-	department_reward = 275000
-	individual_reward = 27500
+	department_reward = 7500
+	individual_reward = 3750
 
 /datum/bounty/mining/industrial_supplies
 	name = "Open Contract: Industrial & Commercial Supplies"
@@ -278,10 +278,10 @@
 	Industrial quantities of reclaimed land are required for this feat, the first of its kind in the Commonwealth. Further information about this contract can be found at geminuscity.gov.nt using \
 	the tracking code GCOC-0410-2020W."
 
-	stacks_wanted = list("sandstone" = 15000)
+	stacks_wanted = list("sandstone" = 1500)
 
 	department_reward = 16500
-	individual_reward = 1650
+	individual_reward = 3200
 
 
 /datum/bounty/mining/final_frontier
@@ -290,10 +290,10 @@
 	description = "We are a new research company dedicated to unlocking the secrets of the cosmos. We've received approval to construct a space station around VS 6494 and construction is to begin \
 	once our contractor receives the necessary supplies. This open contract will be considered fulfilled once the required materials have been confirmed as delivered."
 
-	stacks_wanted = list("titanium" = 15000)
+	stacks_wanted = list("titanium" = 1500)
 
-	department_reward = 82500
-	individual_reward = 82500
+	department_reward = 16500
+	individual_reward = 8250
 
 
 /datum/bounty/mining/ultraconductor
@@ -302,7 +302,7 @@
 	description = "We believe that a new era of megastructural engineering is coming soon. Based on centuries old research, we believe we are close to developing a new type of ultraconductor using \
 	\"superatoms\" of aluminium. This contract is available to all Extraction Industries on Pollux until such time as our research has been completed."
 
-	stacks_wanted = list("aluminium" = 12500)
+	stacks_wanted = list("aluminium" = 1250)
 
 	department_reward = 13750
 	individual_reward = 8250
@@ -314,9 +314,9 @@
 	description = "We have just won the bid on constructing a super solar array on Castor and require reinforced glass for our photovoltaic cells. A supplementary contract has also been \
 	created to supply the Company with the required conductive elements."
 
-	stacks_wanted = list("rglass" = 3000)
+	stacks_wanted = list("rglass" = 300)
 
-	department_reward = 33000
-	individual_reward = 3300
+	department_reward = 5000
+	individual_reward = 2500
 
 
