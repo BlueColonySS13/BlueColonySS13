@@ -26,8 +26,8 @@
 	/obj/item/weapon/circuitboard/mecha/durand/main = 2
 	)
 
-	department_reward = 600
-	individual_reward = 225
+	department_reward = 6000
+	individual_reward = 2250
 
 	days_until_expiry = 3
 
@@ -40,8 +40,8 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/manipulator/nano = 20)
 
-	department_reward = 300
-	individual_reward = 185
+	department_reward = 3000
+	individual_reward = 1850
 
 	days_until_expiry = 2
 
@@ -55,8 +55,8 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/micro_laser/high = 25)
 
-	department_reward = 350
-	individual_reward = 155
+	department_reward = 3500
+	individual_reward = 1550
 
 /datum/bounty/tech/poxball_parts
 	name = "URGENT: Poxlauncher Parts Needed"
@@ -66,8 +66,8 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/capacitor/adv = 20)
 
-	department_reward = 525
-	individual_reward = 55
+	department_reward = 5250
+	individual_reward = 550
 
 /datum/bounty/tech/family_matters
 	name = "Family Matters"
@@ -77,8 +77,8 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/matter_bin/adv = 10)
 
-	department_reward = 300
-	individual_reward = 85
+	department_reward = 3000
+	individual_reward = 850
 
 /datum/bounty/tech/unlawful_search
 	name = "We Left a Note So It's Fine"
@@ -89,8 +89,8 @@
 
 	items_wanted = list(/obj/item/weapon/surgical/scalpel/laser2 = 1)
 
-	department_reward = 200
-	individual_reward = 60
+	department_reward = 2000
+	individual_reward = 600
 
 /datum/bounty/tech/freq1487
 	name = "... --- ..."
@@ -99,8 +99,8 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/subspace/sub_filter = 5)
 
-	department_reward = 275
-	individual_reward = 150
+	department_reward = 2750
+	individual_reward = 1500
 
 /datum/bounty/tech/scanning_module
 	name = "Food Printer Malfunction"
@@ -112,8 +112,8 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/scanning_module/adv = 10)
 
-	department_reward = 280
-	individual_reward = 85
+	department_reward = 2800
+	individual_reward = 850
 
 /datum/bounty/tech/plants_vs_diyaabs
 	name = "Plants vs Diyaabs"
@@ -123,5 +123,5 @@
 
 	items_wanted = list(/obj/item/weapon/gun/energy/floragun = 1)
 
-	department_reward = 200
-	individual_reward = 100
+	department_reward = 6000
+	individual_reward = 4500

@@ -10,7 +10,7 @@
 	grown_wanted = list("cannabis" = 30)
 
 	department_reward = 260
-	individual_reward = 40
+	individual_reward = 400
 
 	days_until_expiry = 1
 
@@ -21,10 +21,10 @@
 	description = "Afternoon all. We're looking for more shipments of cocaine to be delivered - 500 units to be exact, \
 	the assigned Semyonoviche on our end went missing, and our clients are getting antsy. A.S.A.P please."
 
-	reagents_wanted = list("cocaine" = 500)
+	reagents_wanted = list("cocaine" = 100)
 
-	department_reward = 3000
-	individual_reward = 500
+	department_reward = 7000
+	individual_reward = 5000
 
 	days_until_expiry = 2
 
@@ -35,10 +35,10 @@
 	description = "Afternoon, right so - this is obviously not about talc. We need crack - not the one in the cellar walls \
 	over here, the actual shit. Send some over and you'll be compensated nicely."
 
-	reagents_wanted = list("crack" = 500)
+	reagents_wanted = list("crack" = 100)
 
-	department_reward = 1900
-	individual_reward = 300
+	department_reward = 6000
+	individual_reward = 3000
 
 	days_until_expiry = 1
 
@@ -52,8 +52,8 @@
 
 	item_rewards = list(/obj/item/seeds/coca)
 
-	department_reward = 420
-	individual_reward = 120
+	department_reward = 4200
+	individual_reward = 1200
 
 	days_until_expiry = 1
 
@@ -77,10 +77,10 @@
 
 	description = "notimetowastereallyneedstimmneedtogofastgottagofastgottagofast!!!!"
 
-	reagents_wanted = list("stimm" = 500)
+	reagents_wanted = list("stimm" = 100)
 
-	department_reward = 1300
-	individual_reward = 225
+	department_reward = 4300
+	individual_reward = 2250
 
 	days_until_expiry = 2
 
@@ -92,9 +92,9 @@
 	description = "Clients asking for top-up of krokodil, you can do, da? We do six shipments. Stop asking if clients are \
 	suicidal comrade, their life choices - not us"
 
-	reagents_wanted = list("krokodil" = 60)
+	reagents_wanted = list("krokodil" = 50)
 
-	department_reward = 1300
-	individual_reward = 225
+	department_reward = 4300
+	individual_reward = 2200
 
 	days_until_expiry = 2

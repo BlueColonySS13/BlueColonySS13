@@ -10,7 +10,7 @@
 	but a potato blight somehow managed to get onto the ship. We need to speed up our acquisition, ASAP. \
 	It's not too much, since it's just seed stock, though."
 
-	grown_wanted = list("potato" = 400)
+	grown_wanted = list("potato" = 40)
 
 	department_reward = 1300
 	individual_reward = 500
@@ -24,7 +24,7 @@
 	the police think that there is a lot of blood. I know, I am a pretty original thinker. \
 	Don't copy that idea though, it's mine."
 
-	grown_wanted = list("tomato" = 200)
+	grown_wanted = list("tomato" = 20)
 
 	department_reward = 1000
 	individual_reward = 300
@@ -35,7 +35,7 @@
 	author = "Melvis Press"
 	description = "I eat cereal with lemonade."
 
-	grown_wanted = list("lemon" = 80)
+	grown_wanted = list("lemon" = 8)
 
 	department_reward = 200
 	individual_reward = 200
@@ -50,8 +50,8 @@
 
 	items_wanted = list(/obj/item/weapon/storage/fancy/egg_box = 1)
 
-	department_reward = 60
-	individual_reward = 50
+	department_reward = 600
+	individual_reward = 300
 
 	days_until_expiry = 1
 
@@ -78,8 +78,8 @@
 
 	grown_wanted = list("wheat" = 30)
 
-	department_reward = 120
-	individual_reward = 50
+	department_reward = 1200
+	individual_reward = 500
 
 	days_until_expiry = 1
 
@@ -89,10 +89,10 @@
 	description = "Howdy, pardner! We’re fixin’ to celebrate the Gran Fiesta down here in a few days but we’ve been sufferin’ from some \
 	sort o’ fungus that’s killin’ our beans. Send us some soybeans so we can start cookin’ Meemaw’s Bowl o’ Red in time fer the festival!"
 
-	grown_wanted = list("soybean" = 80)
+	grown_wanted = list("soybean" = 50)
 
-	department_reward = 200
-	individual_reward = 90
+	department_reward = 2000
+	individual_reward = 900
 
 	days_until_expiry = 1
 
@@ -102,10 +102,10 @@
 	description = "We're expecting an increase in Soykaf sales over in Glace Grace. Those scientists sure love their coffee. Anyway, \
 	we need alot more soybeans than our usual supplier can provide. Send some our way and we'll be more than amicable with our payment."
 
-	grown_wanted = list("soybean" = 50)
+	grown_wanted = list("soybean" = 40)
 
-	department_reward = 130
-	individual_reward = 65
+	department_reward = 1300
+	individual_reward = 650
 
 /datum/bounty/agriculture/renewable_fuels_corn
 	name = "Corn is the Future"
@@ -115,8 +115,8 @@
 
 	grown_wanted = list("corn" = 40)
 
-	department_reward = 90
-	individual_reward = 75
+	department_reward = 900
+	individual_reward = 750
 
 /datum/bounty/agriculture/cabbages
 	name = "Not The Cabbages"
@@ -126,6 +126,6 @@
 
 	grown_wanted = list("cabbage" = 30)
 
-	department_reward = 70
-	individual_reward = 75
+	department_reward = 700
+	individual_reward = 750
 
