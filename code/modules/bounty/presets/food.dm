@@ -11,7 +11,7 @@
 	Well, we send a lot of things to doors and we need some \"Like Mama Used to Make\" fast foods \
 	for our new Like-Mama-Used-To-Make(tm) delivery services. This order needs about five cheese burgers for a client."
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/cheeseburger = 100)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/cheeseburger = 10)
 
 	department_reward = 1700
 	individual_reward = 800
@@ -26,7 +26,7 @@
 	memos have passed my desk. Please send us 30 slime sandwiches and make it snappy. \
 	I fear our scientists are going to retaliate over my student�s cuisine soon with mechs and other sciencey devices"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/cherry = 100)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/cherry = 10)
 
 	department_reward = 3500
 	individual_reward = 1600
@@ -38,7 +38,7 @@
 	description = "Our meatbread supply is low. We are THE space sandwich shop and our Suez Meat Sub is our number one product! \
 	If we have no meatbread, we cannot sell our Suez subs to the masses. You get bread, we get money, deal?"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/meatbread = 60)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/meatbread = 6)
 
 	department_reward = 500
 	individual_reward = 150
@@ -50,10 +50,10 @@
 	description = "Another company BBQ is going to happen soon and all we have planned out are ribs and hotdogs. I need something \
 	out there to impress the boss and steal the show. Do you have anything edible on Pollux that I can throw on the grill?"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/xenomeat/spidermeat = 40)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/xenomeat/spidermeat = 50)
 
-	department_reward = 2000
-	individual_reward = 600
+	department_reward = 6000
+	individual_reward = 3000
 
 /datum/bounty/food/doorsprint_00
 	name = "DoorSprint Order: Delicious Burgers"
@@ -61,10 +61,10 @@
 	description = "I'll take a double triple bossy deluxe, on a raft, four by four animal style, extra shingles with a shimmy and \
 	a squeeze, light axle grease, make it cry, burn it, and let it swim."
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger = 10)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger = 1)
 
-	department_reward = 400
-	individual_reward = 150
+	department_reward = 1400
+	individual_reward = 800
 
 
 /datum/bounty/food/doorsprint_01
@@ -72,14 +72,14 @@
 	author = "Melvin Smoak"
 	description = "I'll have two number 9s, a number 9 large, a number 6 with extra dip, a number 7, two number 45s, one with cheese, and a large soda."
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/superbiteburger = 2,
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/superbiteburger = 1,
 						/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger = 1,
 						/obj/item/weapon/reagent_containers/food/snacks/cheeseburger = 1,
 						/obj/item/weapon/reagent_containers/food/snacks/fries = 1,
 						/obj/item/weapon/reagent_containers/food/snacks/cheesyfries = 1)
 
-	department_reward = 240
-	individual_reward = 120
+	department_reward = 4400
+	individual_reward = 2400
 
 	days_until_expiry = 1
 
@@ -89,10 +89,10 @@
 	description = "Sweet and savory meatpies, please. I would have ordered shepherd's pie but I hear some chefs are wont to pepper \
 	actual shepherds on top!"
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/meatpie = 2)
+	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/meatpie = 1)
 
-	department_reward = 40
-	individual_reward = 20
+	department_reward = 400
+	individual_reward = 250
 
 	days_until_expiry = 1
 
@@ -103,8 +103,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/xenoburger = 1)
 
-	department_reward = 40
-	individual_reward = 20
+	department_reward = 4000
+	individual_reward = 2000
 
 	days_until_expiry = 1
 
@@ -117,8 +117,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/omelette = 2)
 
-	department_reward = 55
-	individual_reward = 18
+	department_reward = 550
+	individual_reward = 200
 
 	days_until_expiry = 1
 
@@ -130,8 +130,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita = 5)
 
-	department_reward = 90
-	individual_reward = 25
+	department_reward = 3000
+	individual_reward = 1300
 
 	days_until_expiry = 1
 
@@ -143,7 +143,7 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/meatbun = 1)
 
-	department_reward = 30
-	individual_reward = 15
+	department_reward = 300
+	individual_reward = 150
 
 	days_until_expiry = 1

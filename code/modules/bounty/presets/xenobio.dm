@@ -13,8 +13,8 @@
 	/obj/item/slime_extract/metal = 1
 	)
 
-	department_reward = 150
-	individual_reward = 60
+	department_reward = 1500
+	individual_reward = 500
 
 	days_until_expiry = 2
 
@@ -28,8 +28,8 @@
 	items_wanted = list(
 	/obj/item/weapon/reagent_containers/food/snacks/monkeycube = 8)
 
-	department_reward = 150	// monkey cubes aren't scarce
-	individual_reward = 60
+	department_reward = 250	// monkey cubes aren't scarce
+	individual_reward = 150
 
 	days_until_expiry = 1
 
@@ -40,8 +40,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/grey = 10)
 
-	department_reward = 300
-	individual_reward = 110
+	department_reward = 2500
+	individual_reward = 750
 
 	days_until_expiry = 2
 
@@ -53,8 +53,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/blue = 10)
 
-	department_reward = 450
-	individual_reward = 260
+	department_reward = 3000
+	individual_reward = 1500
 
 	days_until_expiry = 2
 
@@ -67,8 +67,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/orange = 10)
 
-	department_reward = 400
-	individual_reward = 210
+	department_reward = 3200
+	individual_reward = 1650
 
 	days_until_expiry = 2
 
@@ -80,8 +80,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/yellow = 7)
 
-	department_reward = 760
-	individual_reward = 570
+	department_reward = 3500
+	individual_reward = 1750
 
 	days_until_expiry = 2
 
@@ -94,8 +94,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/dark_purple = 3) // this is a rare slime
 
-	department_reward = 400
-	individual_reward = 210
+	department_reward = 4000
+	individual_reward = 2000
 
 	days_until_expiry = 2
 
@@ -108,8 +108,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/dark_blue = 3)	// an uncommon slime
 
-	department_reward = 350
-	individual_reward = 180
+	department_reward = 3500
+	individual_reward = 1750
 
 	days_until_expiry = 2
 
@@ -121,8 +121,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/red = 3)
 
-	department_reward = 300
-	individual_reward = 110
+	department_reward = 2500
+	individual_reward = 1000
 
 	days_until_expiry = 2
 
@@ -134,8 +134,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/green = 7)
 
-	department_reward = 620
-	individual_reward = 430
+	department_reward = 4000
+	individual_reward = 1500
 
 	days_until_expiry = 2
 
@@ -147,8 +147,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/pink = 5)
 
-	department_reward = 550
-	individual_reward = 360
+	department_reward = 4000
+	individual_reward = 1500
 
 	days_until_expiry = 2
 
@@ -160,8 +160,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/oil = 5)
 
-	department_reward = 400
-	individual_reward = 210
+	department_reward = 4500
+	individual_reward = 2500
 
 	days_until_expiry = 2
 
@@ -173,8 +173,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/amber = 10)
 
-	department_reward = 700
-	individual_reward = 510
+	department_reward = 7000
+	individual_reward = 5000
 
 	days_until_expiry = 2
 

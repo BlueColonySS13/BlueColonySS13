@@ -11,8 +11,8 @@
 
 	reagents_wanted = list("mintjulep" = 30)
 
-	department_reward = 30
-	individual_reward = 15
+	department_reward = 300
+	individual_reward = 150
 
 	days_until_expiry = 1
 
@@ -24,8 +24,8 @@
 
 	reagents_wanted = list("cloverclub" = 30)
 
-	department_reward = 20
-	individual_reward = 15
+	department_reward = 200
+	individual_reward = 150
 
 	days_until_expiry = 1
 
@@ -37,8 +37,8 @@
 
 	reagents_wanted = list("euphoria" = 30)
 
-	department_reward = 125
-	individual_reward = 32
+	department_reward = 1250
+	individual_reward = 320
 
 	days_until_expiry = 1
 
@@ -50,8 +50,8 @@
 
 	reagents_wanted = list("margarita" = 30)
 
-	department_reward = 30
-	individual_reward = 15
+	department_reward = 300
+	individual_reward = 150
 
 	days_until_expiry = 1
 
@@ -63,8 +63,8 @@
 
 	reagents_wanted = list("rotgut" = 40)
 
-	department_reward = 30
-	individual_reward = 15
+	department_reward = 300
+	individual_reward = 150
 
 	days_until_expiry = 1
 
@@ -77,8 +77,8 @@
 
 	reagents_wanted = list("tokyorose" = 30)
 
-	department_reward = 120
-	individual_reward = 60
+	department_reward = 1200
+	individual_reward = 600
 
 	days_until_expiry = 1
 
@@ -90,8 +90,8 @@
 
 	reagents_wanted = list("xanaducannon" = 30)
 
-	department_reward = 40
-	individual_reward = 15
+	department_reward = 400
+	individual_reward = 150
 
 	days_until_expiry = 1
 
@@ -102,8 +102,8 @@
 
 	reagents_wanted = list("chrysanthemum" = 30)
 
-	department_reward = 30
-	individual_reward = 15
+	department_reward = 300
+	individual_reward = 150
 
 	days_until_expiry = 1
 
@@ -114,8 +114,8 @@
 
 	reagents_wanted = list("lovepotion" = 60)
 
-	department_reward = 60
-	individual_reward = 30
+	department_reward = 600
+	individual_reward = 300
 
 	days_until_expiry = 1
 
@@ -126,8 +126,8 @@
 
 	reagents_wanted = list("icecoffee" = 30)
 
-	department_reward = 30
-	individual_reward = 10
+	department_reward = 300
+	individual_reward = 100
 
 	days_until_expiry = 1
 
@@ -138,7 +138,7 @@
 
 	reagents_wanted = list("coffee" = 80)
 
-	department_reward = 30
-	individual_reward = 10
+	department_reward = 300
+	individual_reward = 100
 
 	days_until_expiry = 1

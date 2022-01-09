@@ -102,7 +102,7 @@ other types of metals and chemistry for reagents).
 	materials = list("plastic" = 50, "aluminium" = 50)
 	build_path = /obj/item/weapon/stock_parts/capacitor
 	sort_string = "CAAAA"
-	price = 50
+	price = 150
 
 /datum/design/item/stock_part/adv_capacitor
 	id = "adv_capacitor"
@@ -110,7 +110,7 @@ other types of metals and chemistry for reagents).
 	materials = list("plastic" = 50, "aluminium" = 50, "silver" = 50)
 	build_path = /obj/item/weapon/stock_parts/capacitor/adv
 	sort_string = "CAAAB"
-	price = 100
+	price = 450
 
 /datum/design/item/stock_part/super_capacitor
 	id = "super_capacitor"
@@ -118,7 +118,7 @@ other types of metals and chemistry for reagents).
 	materials = list("plastic" = 50, "aluminium" = 50, "gold" = 20)
 	build_path = /obj/item/weapon/stock_parts/capacitor/super
 	sort_string = "CAAAC"
-	price = 250
+	price = 1000
 
 /datum/design/item/stock_part/micro_mani
 	id = "micro_mani"
@@ -126,7 +126,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 30, "copper" = 10, "aluminium" = 10)
 	build_path = /obj/item/weapon/stock_parts/manipulator
 	sort_string = "CAABA"
-	price = 50
+	price = 150
 
 /datum/design/item/stock_part/nano_mani
 	id = "nano_mani"
@@ -134,7 +134,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 30, "copper" = 10, "silver" = 10)
 	build_path = /obj/item/weapon/stock_parts/manipulator/nano
 	sort_string = "CAABB"
-	price = 100
+	price = 450
 
 /datum/design/item/stock_part/pico_mani
 	id = "pico_mani"
@@ -142,7 +142,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 30, "silver" = 10, "gold" = 10)
 	build_path = /obj/item/weapon/stock_parts/manipulator/pico
 	sort_string = "CAABC"
-	price = 250
+	price = 1000
 
 /datum/design/item/stock_part/basic_matter_bin
 	id = "basic_matter_bin"
@@ -150,7 +150,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 80, "aluminium" = 30)
 	build_path = /obj/item/weapon/stock_parts/matter_bin
 	sort_string = "CAACA"
-	price = 50
+	price = 100
 
 /datum/design/item/stock_part/adv_matter_bin
 	id = "adv_matter_bin"
@@ -158,7 +158,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 80, "aluminium" = 30, "copper" = 10)
 	build_path = /obj/item/weapon/stock_parts/matter_bin/adv
 	sort_string = "CAACB"
-	price = 100
+	price = 350
 
 /datum/design/item/stock_part/super_matter_bin
 	id = "super_matter_bin"
@@ -166,7 +166,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 80, "aluminium" = 50, "silver" = 10)
 	build_path = /obj/item/weapon/stock_parts/matter_bin/super
 	sort_string = "CAACC"
-	price = 250
+	price = 1500
 
 /datum/design/item/stock_part/basic_micro_laser
 	id = "basic_micro_laser"
@@ -174,7 +174,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 10, "glass" = 20)
 	build_path = /obj/item/weapon/stock_parts/micro_laser
 	sort_string = "CAADA"
-	price = 50
+	price = 150
 
 /datum/design/item/stock_part/high_micro_laser
 	id = "high_micro_laser"
@@ -182,7 +182,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 10, "glass" = 20)
 	build_path = /obj/item/weapon/stock_parts/micro_laser/high
 	sort_string = "CAADB"
-	price = 100
+	price = 450
 
 /datum/design/item/stock_part/ultra_micro_laser
 	id = "ultra_micro_laser"
@@ -190,7 +190,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 10, "glass" = 10, "diamond" = 10)
 	build_path = /obj/item/weapon/stock_parts/micro_laser/ultra
 	sort_string = "CAADC"
-	price = 250
+	price = 1000
 
 /datum/design/item/stock_part/basic_sensor
 	id = "basic_sensor"
@@ -198,7 +198,7 @@ other types of metals and chemistry for reagents).
 	materials = list("aluminium" = 50, "glass" = 20, "copper" = 10)
 	build_path = /obj/item/weapon/stock_parts/scanning_module
 	sort_string = "CAAEA"
-	price = 50
+	price = 150
 
 /datum/design/item/stock_part/adv_sensor
 	id = "adv_sensor"
@@ -206,7 +206,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20, "silver" = 10)
 	build_path = /obj/item/weapon/stock_parts/scanning_module/adv
 	sort_string = "CAAEB"
-	price = 100
+	price = 450
 
 /datum/design/item/stock_part/phasic_sensor
 	id = "phasic_sensor"
@@ -214,7 +214,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20, "gold" = 10)
 	build_path = /obj/item/weapon/stock_parts/scanning_module/phasic
 	sort_string = "CAAEC"
-	price = 250
+	price = 1000
 
 /datum/design/item/stock_part/RPED
 	name = "Rapid Part Exchange Device"
@@ -224,7 +224,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 5000, "copper" = 500)
 	build_path = /obj/item/weapon/storage/part_replacer
 	sort_string = "CBAAA"
-	price = 500
+	price = 3000
 
 /datum/design/item/powercell
 	build_type = PROTOLATHE | MECHFAB
@@ -262,7 +262,7 @@ other types of metals and chemistry for reagents).
 	build_path = /obj/item/weapon/cell/high
 	category = "Misc"
 	sort_string = "DAAAB"
-	price = 150
+	price = 350
 
 /datum/design/item/powercell/super
 	name = "super-capacity"
@@ -273,7 +273,7 @@ other types of metals and chemistry for reagents).
 	category = "Misc"
 	sort_string = "DAAAC"
 	protected = TRUE
-	price = 200
+	price = 1000
 
 /datum/design/item/powercell/hyper
 	name = "hyper-capacity"
@@ -284,7 +284,7 @@ other types of metals and chemistry for reagents).
 	category = "Misc"
 	sort_string = "DAAAD"
 	protected = TRUE
-	price = 250
+	price = 3000
 
 /datum/design/item/powercell/device
 	name = "device"
@@ -381,7 +381,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 1000, "copper" = 150) //expensive, but no need for miners.
 	build_path = /obj/item/weapon/pickaxe/drill
 	sort_string = "KAAAB"
-	price = 200
+	price = 500
 
 /datum/design/item/weapon/mining/plasmacutter
 	id = "plasmacutter"
@@ -407,7 +407,7 @@ other types of metals and chemistry for reagents).
 	build_path = /obj/item/weapon/pickaxe/diamonddrill
 	sort_string = "KAAAE"
 	protected = TRUE
-	price = 800
+	price = 5000
 
 
 /datum/design/item/device/depth_scanner
@@ -440,7 +440,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 200, "copper" = 50)
 	build_path = /obj/item/device/robotanalyzer
 	sort_string = "MACFA"
-	price = 150
+	price = 300
 
 /datum/design/item/medical/mass_spectrometer
 	desc = "A device for analyzing chemicals in blood."
@@ -448,7 +448,7 @@ other types of metals and chemistry for reagents).
 	req_tech = list(TECH_BIO = 2, TECH_MAGNET = 2)
 	build_path = /obj/item/device/mass_spectrometer
 	sort_string = "MACAA"
-	price = 100
+	price = 350
 
 /datum/design/item/medical/adv_mass_spectrometer
 	desc = "A device for analyzing chemicals in blood and their quantities."
@@ -457,7 +457,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 200, "copper" = 100)
 	build_path = /obj/item/device/mass_spectrometer/adv
 	sort_string = "MACAB"
-	price = 200
+	price = 1500
 
 /datum/design/item/medical/reagent_scanner
 	desc = "A device for identifying chemicals."
@@ -465,7 +465,7 @@ other types of metals and chemistry for reagents).
 	req_tech = list(TECH_BIO = 2, TECH_MAGNET = 2)
 	build_path = /obj/item/device/reagent_scanner
 	sort_string = "MACBA"
-	price = 150
+	price = 350
 
 /datum/design/item/medical/adv_reagent_scanner
 	desc = "A device for identifying chemicals and their proportions."
@@ -474,7 +474,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 200, "copper" = 100)
 	build_path = /obj/item/device/reagent_scanner/adv
 	sort_string = "MACBB"
-	price = 200
+	price = 1500
 
 /datum/design/item/beaker/AssembleDesignName()
 	name = "Beaker prototype ([item_name])"
@@ -487,7 +487,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "silver" = 100, "copper" = 100)
 	build_path = /obj/item/weapon/reagent_containers/glass/beaker/noreact
 	sort_string = "MADAA"
-	price = 250
+	price = 1500
 
 /datum/design/item/beaker/bluespace
 	name = TECH_BLUESPACE
@@ -497,7 +497,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "phoron" = 3000, "diamond" = 500)
 	build_path = /obj/item/weapon/reagent_containers/glass/beaker/bluespace
 	sort_string = "MADAB"
-	price = 500
+	price = 5000
 
 /datum/design/item/medical/nanopaste
 	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery."
@@ -506,7 +506,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 7000, "glass" = 7000, "silver" = 300)
 	build_path = /obj/item/stack/nanopaste
 	sort_string = "MBAAA"
-	price = 75
+	price = 300
 
 /datum/design/item/medical/scalpel_laser1
 	name = "Basic Laser Scalpel"
@@ -516,7 +516,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "copper" = 2500)
 	build_path = /obj/item/weapon/surgical/scalpel/laser1
 	sort_string = "MBBAA"
-	price = 100
+	price = 450
 
 /datum/design/item/medical/scalpel_laser2
 	name = "Improved Laser Scalpel"
@@ -526,7 +526,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 2500)
 	build_path = /obj/item/weapon/surgical/scalpel/laser2
 	sort_string = "MBBAB"
-	price = 150
+	price = 1200
 
 /datum/design/item/medical/scalpel_laser3
 	name = "Advanced Laser Scalpel"
@@ -536,7 +536,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 2000, "gold" = 1500)
 	build_path = /obj/item/weapon/surgical/scalpel/laser3
 	sort_string = "MBBAC"
-	price = 200
+	price = 2000
 
 /datum/design/item/medical/scalpel_manager
 	name = "Incision Management System"
@@ -546,7 +546,7 @@ other types of metals and chemistry for reagents).
 	materials = list (DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 1500, "gold" = 1500, "diamond" = 750, "copper" = 500)
 	build_path = /obj/item/weapon/surgical/scalpel/manager
 	sort_string = "MBBAD"
-	price = 300
+	price = 4000
 
 /datum/design/item/medical/bone_clamp
 	name = "Bone Clamp"
@@ -556,7 +556,7 @@ other types of metals and chemistry for reagents).
 	materials = list (DEFAULT_WALL_MATERIAL = 12500, "glass" = 7500, "silver" = 2500, "copper" = 500, "plastic" = 500)
 	build_path = /obj/item/weapon/surgical/bone_clamp
 	sort_string = "MBBAE"
-	price = 300
+	price = 3000
 
 /datum/design/item/medical/advanced_roller
 	name = "advanced roller bed"
@@ -566,7 +566,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 2000, "phoron" = 2000, "plastic" = 1000)
 	build_path = /obj/item/roller/adv
 	sort_string = "MBBAF"
-	price = 150
+	price = 400
 
 /datum/design/item/medical/improved_analyzer
 	name = "improved health analyzer"
@@ -576,7 +576,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000, "silver" = 1000, "gold" = 1500, "copper" = 1000)
 	build_path = /obj/item/device/healthanalyzer/improved
 	sort_string = "MBBAG"
-	price = 200
+	price = 1500
 
 /datum/design/item/implant
 	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50, "plastic" = 50)
@@ -628,7 +628,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "iron" = 500, "plastic" = 500)
 	build_path = /obj/item/weapon/gun/energy/stunrevolver
 	sort_string = "TAAAA"
-	price = 3500
+	price = 7000
 
 /datum/design/item/weapon/nuclear_gun
 	id = "nuclear_gun"
@@ -645,7 +645,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 1000, "diamond" = 2000, "silver" = 500)
 	build_path = /obj/item/weapon/gun/energy/lasercannon
 	sort_string = "TAAAC"
-	price = 7000
+	price = 25000
 
 /datum/design/item/weapon/phoronpistol
 	id = "ppistol"
@@ -653,7 +653,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 1000, "phoron" = 3000)
 	build_path = /obj/item/weapon/gun/energy/toxgun
 	sort_string = "TAAAD"
-	price = 6000
+	price = 9000
 
 /datum/design/item/weapon/decloner
 	id = "decloner"
@@ -721,7 +721,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 3000)
 	build_path = /obj/item/weapon/grenade/chem_grenade/large
 	sort_string = "TACAA"
-	price = 2000
+	price = 3000
 
 /datum/design/item/weapon/dartgun
 	desc = "A gun that fires small hollow chemical-payload darts."
@@ -879,7 +879,7 @@ other types of metals and chemistry for reagents).
 	materials = list("glass" = 500, DEFAULT_WALL_MATERIAL = 500, "copper" = 150, "aluminium" = 250)
 	build_path = /obj/item/device/paicard
 	sort_string = "VABAI"
-	price = 200
+	price = 250
 
 /datum/design/item/communicator
 	name = "Communicator"
@@ -898,7 +898,7 @@ other types of metals and chemistry for reagents).
 	materials = list("glass" = 1000, "gold" = 200, "silver" = 150, "copper" = 100, "aluminium" = 100)
 	build_path = /obj/item/device/aicard
 	sort_string = "VACAA"
-	price = 700
+	price = 5000
 
 /datum/design/item/dronebrain
 	name = "Robotic intelligence circuit"
@@ -1013,7 +1013,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 300, "silver" = 100, "aluminium" = 100, "copper" = 100)
 	build_path = /obj/item/weapon/screwdriver/power
 	sort_string = "VASDA"
-	price = 300
+	price = 3000
 
 /datum/design/item/jaws_life
 	name = "Jaws of life"
@@ -1023,7 +1023,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 300, "silver" = 100, "copper" = 100, "aluminium" = 100)
 	build_path = /obj/item/weapon/crowbar/power
 	sort_string = "VASEA"
-	price = 350
+	price = 3000
 
 /datum/design/item/device/t_scanner_upg
 	name = "Upgraded T-ray Scanner"
@@ -1033,7 +1033,7 @@ other types of metals and chemistry for reagents).
 	materials = list(DEFAULT_WALL_MATERIAL = 500, "phoron" = 150, "copper" = 100)
 	build_path = /obj/item/device/t_scanner/upgraded
 	sort_string = "VASSA"
-	price = 275
+	price = 300
 
 /datum/design/item/device/t_scanner_adv
 	name = "Advanced T-ray Scanner"
