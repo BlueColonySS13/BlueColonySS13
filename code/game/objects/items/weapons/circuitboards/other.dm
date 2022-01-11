@@ -52,7 +52,7 @@
 							/obj/item/weapon/stock_parts/capacitor = 1,
 							/obj/item/weapon/stock_parts/console_screen = 1,
 							/obj/item/stack/cable_coil = 1)
-
+/*
 /obj/item/weapon/circuitboard/jukebox/cyberpunk
 	name = T_BOARD("Cyberpunk Jukebox")
 	build_path = /obj/machinery/media/jukebox/cyberpunk
@@ -62,7 +62,7 @@
 							/obj/item/weapon/stock_parts/capacitor = 1,
 							/obj/item/weapon/stock_parts/console_screen = 1,
 							/obj/item/stack/cable_coil = 1)
-
+*/
 /obj/item/weapon/circuitboard/reagentgrinder
 	name = T_BOARD("All-in-one Grinder")
 	build_path = /obj/machinery/reagentgrinder

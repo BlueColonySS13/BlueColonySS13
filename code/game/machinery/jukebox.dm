@@ -62,6 +62,9 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("The Rebel Path", 'sound/music/disco/The Rebel Path.ogg'),
 		new/datum/track("Yacht Song", 'sound/music/disco/Yacht Song.ogg'),
 		new/datum/track("Wake Up", 'sound/music/disco/Wake Up.ogg'),
+		// 'RAVE' SONGS
+		new/datum/track("It Went", 'sound/music/disco/It Went.ogg'),
+		new/datum/track("Jurassic Park", 'sound/music/disco/Jurassic Park.ogg')
 	)
 
 	// Only visible if hacked
@@ -316,7 +319,7 @@ datum/track/New(var/title_name, var/audio)
 	if(playing)
 		StartPlaying()
 	updateDialog()
-
+/*
 /obj/machinery/media/jukebox/cyberpunk
 	name = "Punkmaster 9077 jukebox"
 	desc = "An immense, standalone touchscreen on a swiveling base, equipped with phased array speakers. Embossed on one corner of the ultrathin bezel is the brand name, 'Punkmaster 9077'."
@@ -362,3 +365,4 @@ datum/track/New(var/title_name, var/audio)
 		new/datum/track("GR4VES", 'sound/music/disco/GR4VES.ogg'),
 		new/datum/track("Major Crimes", 'sound/music/disco/Major Crimes.ogg')
 	)
+*/
