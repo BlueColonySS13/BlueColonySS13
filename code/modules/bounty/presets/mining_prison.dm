@@ -13,7 +13,7 @@
 
 	items_wanted = list(/obj/item/weapon/ore/coal = 50)
 	days_until_expiry = 10
-	department_reward = 140
+	department_reward = 2400
 
 /datum/bounty/prison_mining/hematite
 	name = "Factory Hematite Stock"
@@ -21,7 +21,7 @@
 
 	items_wanted = list(/obj/item/weapon/ore/iron = 50)
 	days_until_expiry = 6
-	department_reward = 140
+	department_reward = 2400
 
 /datum/bounty/prison_mining/diamond
 	name = "Factory Diamond Export Stock"
@@ -29,7 +29,7 @@
 
 	items_wanted = list(/obj/item/weapon/ore/diamond = 20)
 	days_until_expiry = 12
-	department_reward = 2500
+	department_reward = 3500
 
 /datum/bounty/prison_mining/sol_sand
 	name = "Factory Sand Stock"
@@ -37,7 +37,7 @@
 
 	items_wanted = list(/obj/item/weapon/ore/glass = 50)
 	days_until_expiry = 2
-	department_reward = 100
+	department_reward = 1100
 
 /datum/bounty/prison_mining/phoron // yes science is on it too
 	name = "Research Phoron Stock"
@@ -46,7 +46,7 @@
 
 	items_wanted = list(/obj/item/weapon/ore/phoron = 50)
 
-	department_reward = 200
+	department_reward = 2300
 
 /datum/bounty/prison_mining/phoron_healthcare // yes even the hospital
 	name = "Chemistry Phoron Stock"
@@ -54,7 +54,7 @@
 	author_department = DEPT_HEALTHCARE
 	items_wanted = list(/obj/item/weapon/ore/phoron = 100)
 
-	department_reward = 400
+	department_reward = 5400
 
 /datum/bounty/prison_mining/sol_gold // yes even sol
 	name = "Sol Mineral Exports: Gold"
@@ -63,7 +63,7 @@
 	author_department = DEPT_SOLGOV
 	items_wanted = list(/obj/item/weapon/ore/gold = 100)
 
-	department_reward = 1400
+	department_reward = 2400
 
 /datum/bounty/prison_mining/sol_silver
 	name = "Sol Mineral Exports: Silver"
@@ -72,7 +72,7 @@
 	author_department = DEPT_SOLGOV
 	items_wanted = list(/obj/item/weapon/ore/silver = 100)
 
-	department_reward = 900
+	department_reward = 2900
 
 /datum/bounty/prison_mining/solgov_phoron // yes even solgov
 	name = "SolGov Phoron Trade Agreement"
@@ -80,7 +80,7 @@
 	author_department = DEPT_SOLGOV
 	items_wanted = list(/obj/item/weapon/ore/phoron = 300)
 
-	department_reward = 3400
+	department_reward = 12500
 
 /datum/bounty/prison_mining/solgov_uranium
 	name = "SolGov Uranium Trade Agreement"
@@ -88,4 +88,4 @@
 	author_department = DEPT_SOLGOV
 	items_wanted = list(/obj/item/weapon/ore/uranium = 150)
 
-	department_reward = 1400
+	department_reward = 3400

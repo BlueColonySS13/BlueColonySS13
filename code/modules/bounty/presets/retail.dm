@@ -3,7 +3,7 @@
 	bounty_expires = FALSE
 
 
-	days_until_expiry = 30
+	days_until_expiry = 7
 
 /datum/bounty/retail/stagecraft
 	name = "Stagecraft"
@@ -13,8 +13,8 @@
 
 	items_wanted = list(/obj/item/weapon/hand_labeler = 100)
 
-	department_reward = 42000
-	individual_reward = 7000
+	department_reward = 2200
+	individual_reward = 2000
 
 
 /datum/bounty/retail/inner_toolbox
@@ -26,8 +26,8 @@
 
 	items_wanted = list(/obj/item/weapon/storage/toolbox = 100)
 
-	department_reward = 30000
-	individual_reward = 8500
+	department_reward = 2200
+	individual_reward = 2800
 
 	allow_subtypes = TRUE
 
@@ -41,8 +41,8 @@
 
 	items_wanted = list(/obj/item/dye_bottle = 100)
 
-	department_reward = 4000
-	individual_reward = 3000
+	department_reward = 3200
+	individual_reward = 2600
 
 
 
@@ -53,10 +53,10 @@
 	description = "Yeah, so I invited some friends over. We all like to smoke... now my sofa's ruined. Can't find an ashtray anywhere in my \
 	area, if you can send two for us it would be great."
 
-	items_wanted = list(/obj/item/weapon/material/ashtray = 20)
+	items_wanted = list(/obj/item/weapon/material/ashtray = 25)
 
 	department_reward = 2000
-	individual_reward = 1000
+	individual_reward = 1200
 
 	allow_subtypes = TRUE
 
@@ -66,10 +66,10 @@
 	author = "Lord Buckethead"
 	description = "It appears I faced a terrifying humiliation at the palace today. I require a new face before going to confront them again."
 
-	items_wanted = list(/obj/item/weapon/reagent_containers/glass/bucket = 60)
+	items_wanted = list(/obj/item/weapon/reagent_containers/glass/bucket = 100)
 
-	department_reward = 14000
-	individual_reward = 5000
+	department_reward = 2100
+	individual_reward = 1750
 
 
 /datum/bounty/retail/fireman
@@ -80,7 +80,7 @@
 	items_wanted = list(/obj/item/weapon/extinguisher = 1)
 
 	department_reward = 750
-	individual_reward = 80
+	individual_reward = 380
 
 	days_until_expiry = 1
 	allow_subtypes = TRUE
@@ -92,10 +92,10 @@
 	description = "It's time to stick it up to the government again, there's many of us so make sure none of our hands are empty. We will be heard! \
 	Justice will be served!"
 
-	items_wanted = list(/obj/item/weapon/picket_sign = 120)
+	items_wanted = list(/obj/item/weapon/picket_sign = 100)
 
-	department_reward = 29500
-	individual_reward = 6000
+	department_reward = 2400
+	individual_reward = 3200
 
 
 /datum/bounty/retail/soapy_sods
@@ -106,8 +106,8 @@
 
 	items_wanted = list(/obj/item/weapon/soap = 100)
 
-	department_reward = 30000
-	individual_reward = 14000
+	department_reward = 2300
+	individual_reward = 3200
 
 
 	allow_subtypes = TRUE
@@ -117,10 +117,10 @@
 	author = "Bear Grillis"
 	description = "I'm getting him. I'm getting him this time!"
 
-	items_wanted = list(/obj/item/weapon/beartrap = 30)
+	items_wanted = list(/obj/item/weapon/beartrap = 15)
 
-	department_reward = 12500
-	individual_reward = 5500
+	department_reward = 2200
+	individual_reward = 1800
 
 	days_until_expiry = 2
 
@@ -146,8 +146,8 @@
 
 	items_wanted = list(/obj/item/device/flashlight = 70)
 
-	department_reward = 13600
-	individual_reward = 7000
+	department_reward = 1300
+	individual_reward = 1900
 
 /datum/bounty/retail/whatacooler
 	name = "What-A-Cooler Water Coolers"
@@ -156,8 +156,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/glass/cooler_bottle = 80)
 
-	department_reward = 20000
-	individual_reward = 4000
+	department_reward = 2600
+	individual_reward = 2400
 
 
 /datum/bounty/retail/skateboard
@@ -166,10 +166,10 @@
 	description = "Hello fellow skateboarders! That's our slogan. We've gotta show these kids how hip and cool we are as part of our marketing campaign. \
 	WROoooM! Boawsa!"
 
-	items_wanted = list(/obj/item/melee/skateboard = 30)
+	items_wanted = list(/obj/item/melee/skateboard = 20)
 
-	department_reward = 30000
-	individual_reward = 7000
+	department_reward = 3300
+	individual_reward = 8700
 
 	days_until_expiry = 7
 
@@ -178,9 +178,9 @@
 	author = "Bill Kush"
 	description = "Yeah... -giggles- Send some of those grinders yeah? Be a pal..."
 
-	items_wanted = list(/obj/item/weapon/grinder = 10)
+	items_wanted = list(/obj/item/weapon/grinder = 15)
 
 	department_reward = 1800
-	individual_reward = 500
+	individual_reward = 1500
 
 	days_until_expiry = 3

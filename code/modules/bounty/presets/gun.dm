@@ -11,8 +11,8 @@
 
 	items_wanted = list(/obj/item/weapon/gun/projectile/automatic = 4)
 
-	department_reward = 3000
-	individual_reward = 900
+	department_reward = 3200
+	individual_reward = 1800
 
 	days_until_expiry = 2
 
@@ -25,8 +25,8 @@
 
 	items_wanted = list(/obj/item/weapon/gun/energy/toxgun = 4)
 
-	department_reward = 2000
-	individual_reward = 600
+	department_reward = 4200
+	individual_reward = 2600
 
 	days_until_expiry = 2
 
@@ -37,8 +37,8 @@
 
 	items_wanted = list(/obj/item/weapon/gun/magnetic/fuelrod = 1)
 
-	department_reward = 3000
-	individual_reward = 1000
+	department_reward = 7500
+	individual_reward = 5400
 
 	days_until_expiry = 2
 
@@ -50,8 +50,8 @@
 
 	items_wanted = list(/obj/item/weapon/gun/energy/temperature = 2)
 
-	department_reward = 1200
-	individual_reward = 300
+	department_reward = 4200
+	individual_reward = 2750
 
 	days_until_expiry = 2
 
@@ -62,8 +62,8 @@
 
 	items_wanted = list(/obj/item/weapon/gun/energy/decloner = 1)
 
-	department_reward = 600
-	individual_reward = 150
+	department_reward = 3750
+	individual_reward = 2150
 
 /datum/bounty/gun/spider_hunter
 	name = "Spider Infestation: No More"
@@ -74,8 +74,8 @@
 
 	items_wanted = list(/obj/item/weapon/gun/energy/lasercannon = 2)
 
-	department_reward = 900
-	individual_reward = 250
+	department_reward = 7200
+	individual_reward = 4250
 
 /datum/bounty/gun/dont_taze_me_bro
 	name = "Don't Taze Me Bro!"
@@ -86,8 +86,8 @@
 
 	items_wanted = list(/obj/item/weapon/gun/energy/stunrevolver = 3)
 
-	department_reward = 2200
-	individual_reward = 850
+	department_reward = 4200
+	individual_reward = 2850
 
 /*
 /datum/bounty/gun/low_demand

@@ -11,8 +11,8 @@
 
 	items_wanted = list(/obj/item/weapon/hand_tele = 1)
 
-	department_reward = 150
-	individual_reward = 70
+	department_reward = 1500
+	individual_reward = 750
 
 	days_until_expiry = 2
 
@@ -24,8 +24,8 @@
 
 	seeds_wanted = list("bluespacetomato" = 5)
 
-	department_reward = 300
-	individual_reward = 100
+	department_reward = 3000
+	individual_reward = 1750
 
 	days_until_expiry = 3
 
@@ -38,8 +38,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/glass/beaker/bluespace = 1)
 
-	department_reward = 250
-	individual_reward = 80
+	department_reward = 2500
+	individual_reward = 1800
 
 	days_until_expiry = 3
 
@@ -51,8 +51,8 @@
 
 	items_wanted = list(/obj/item/weapon/storage/toolbox/lunchbox/bluespace_lunchbox = 1)
 
-	department_reward = 30
-	individual_reward = 15
+	department_reward = 1300
+	individual_reward = 750
 
 	days_until_expiry = 1
 
@@ -67,8 +67,8 @@
 
 	items_wanted = list(/obj/item/slime_extract/bluespace = 1)
 
-	department_reward = 400
-	individual_reward = 250
+	department_reward = 3400
+	individual_reward = 2250
 
 	days_until_expiry = 1
 
@@ -82,8 +82,8 @@
 
 	items_wanted = list(/obj/item/weapon/disk/tech_disk = 1)
 
-	department_reward = 300
-	individual_reward = 150
+	department_reward = 3300
+	individual_reward = 4750
 
 /datum/bounty/piracy/corporate_espionage/meets_standards(var/obj/O) // additional custom checks
 	if(istype(O, /obj/item/weapon/disk/tech_disk))
@@ -103,8 +103,8 @@
 
 	items_wanted = list(/obj/item/weapon/disk/design_disk = 1)
 
-	department_reward = 300
-	individual_reward = 175
+	department_reward = 3200
+	individual_reward = 1850
 
 /datum/bounty/piracy/radio_pirate/meets_standards(var/obj/O) // additional custom checks
 	if(istype(O, /obj/item/weapon/disk/design_disk))
@@ -124,5 +124,5 @@
 
 	items_wanted = list(/obj/item/device/mmi/digital/robot = 3)
 
-	department_reward = 190
-	individual_reward = 90
+	department_reward = 3000
+	individual_reward = 2300
