@@ -17,7 +17,7 @@
 
 	stacks_wanted = list("diamond" = 500)
 
-	department_reward = 55000
+	department_reward = 5500
 	individual_reward = 5500
 
 
@@ -30,7 +30,7 @@
 	stacks_wanted = list("plastic" = 500)
 
 	department_reward = 3250
-	individual_reward = 1250
+	individual_reward = 1550
 
 /datum/bounty/mining/sister_rust
 	name = "Mekhanikal Hands"
@@ -41,8 +41,8 @@
 
 	stacks_wanted = list("iron" = 100)
 
-	department_reward = 550
-	individual_reward = 250
+	department_reward = 1550
+	individual_reward = 1250
 
 
 /datum/bounty/mining/steel_here
@@ -54,7 +54,7 @@
 	stacks_wanted = list("steel" = 500)
 
 	department_reward = 3200
-	individual_reward = 1200
+	individual_reward = 1750
 
 
 /datum/bounty/mining/back_to_the_future
@@ -64,7 +64,7 @@
 	a nuclear weapon... unless it goes critical. But, again - don't worry! With my patented Flux Capacitor(tm), that won't be a problem at \
 	all! Once this bad boy hits 88 mph, we're gonna see some serious \[Expletive Redacted\]."
 
-	stacks_wanted = list("uranium" = 250)
+	stacks_wanted = list("uranium" = 150)
 
 	department_reward = 4200
 	individual_reward = 2500
@@ -78,7 +78,7 @@
 
 	stacks_wanted = list("gold" = 500)
 
-	department_reward = 12500
+	department_reward = 5500
 	individual_reward = 5500
 
 /datum/bounty/mining/better_than_gold
@@ -88,10 +88,10 @@
 	modelling the handbags during Sinon Fashion Week. 50 platinum ingots should be enough to develop the iterations of our prototype handbag. Suppliers \
 	of platinum ingots will be rewarded handsomely for ensuring the continued fashionability of the people of Pollux."
 
-	stacks_wanted = list("platinum" = 500)
+	stacks_wanted = list("platinum" = 250)
 
-	department_reward = 13750
-	individual_reward = 1375
+	department_reward = 6250
+	individual_reward = 3200
 
 
 /datum/bounty/mining/phoron_slime
@@ -100,9 +100,9 @@
 	description = "We are a slime breeding and research company, and we're in dire need of phoron. Our slimes simply refuse to mutate into their wonderful \
 	colorful variants! We're stuck researching slime extracts until then and we need alot of phoron!"
 
-	stacks_wanted = list("phoron" = 1000)
+	stacks_wanted = list("phoron" = 500)
 
-	department_reward = 12500
+	department_reward = 6500
 	individual_reward = 5500
 
 
@@ -114,7 +114,7 @@
 
 	stacks_wanted = list("durasteel" = 500)
 
-	department_reward = 6000
+	department_reward = 4000
 	individual_reward = 2750
 
 
@@ -127,8 +127,8 @@
 
 	stacks_wanted = list("plasteel" = 500)
 
-	department_reward = 3200
-	individual_reward = 1100
+	department_reward = 2800
+	individual_reward = 2600
 
 
 /datum/bounty/mining/stargazing
@@ -139,10 +139,10 @@
 	Quick science fact: We coat the mirrors of our spectrometer with osmium because of its high reflectivity in the UV range! And they say bounties don't teach \
 	you anything!"
 
-	stacks_wanted = list("osmium" = 500)
+	stacks_wanted = list("osmium" = 200)
 
 	department_reward = 3200
-	individual_reward = 1375
+	individual_reward = 1780
 
 
 /*
@@ -169,8 +169,8 @@
 
 	stacks_wanted = list("void opal" = 50)
 
-	department_reward = 2400
-	individual_reward = 1200
+	department_reward = 6400
+	individual_reward = 4200
 
 
 /datum/bounty/mining/thirty_pieces
@@ -180,9 +180,9 @@
 	One of my workers has been preaching of the benefits of unions and teaching men to fish. I have been offered new workers, in exchange for any excess silver I have. Send me silver so that \
 	production can begin again!"
 
-	stacks_wanted = list("silver" = 500)
+	stacks_wanted = list("silver" = 250)
 
-	department_reward = 12500
+	department_reward = 4500
 	individual_reward = 5500
 
 /datum/bounty/mining/wires_everywhere
@@ -191,10 +191,10 @@
 	description = "One of our workers has made a grave error and the resulting cascade failure has shut down our plant. Unfortunately, we promised a rather powerful man that we would route most \
 	of our recycled copper to his factories. We need you to send us copper ingots ASAP before we come down with a case of cement poisoning!"
 
-	stacks_wanted = list("copper" = 200)
+	stacks_wanted = list("copper" = 250)
 
 	department_reward = 2200
-	individual_reward = 550
+	individual_reward = 2550
 
 /datum/bounty/mining/can_you_can_can
 	name = "Can You Can-Can?"
@@ -202,10 +202,10 @@
 	description = "Despite our name, we don't actually can food items or beverages. We make the cans! We need aluminium to cover the increase in can demand here in Blue Colony. I suppose people \
 	really enjoy drinking Space Cola and eating that disgusting Carp-in-a-Can. 200 ingots should cover our needs for the time being. We will send payment once we receive the ingots."
 
-	stacks_wanted = list("aluminium" = 200)
+	stacks_wanted = list("aluminium" = 250)
 
 	department_reward = 2200
-	individual_reward = 550
+	individual_reward = 3550
 
 /datum/bounty/mining/contemporary_art
 	name = "Contemporary Art Piece"
@@ -216,8 +216,8 @@
 
 	stacks_wanted = list("bronze" = 200)
 
-	department_reward = 2200
-	individual_reward = 500
+	department_reward = 3200
+	individual_reward = 2500
 
 /datum/bounty/mining/superconductor
 	name = "Superconductor Trials"
@@ -226,10 +226,10 @@
 	big. We need a large amount of tin which will be alloyed here at our facilities into a niobium-tin alloy that will then be used to construct out superconductors. Payment will be remitted once \
 	we have received the materials."
 
-	stacks_wanted = list("tin" = 200)
+	stacks_wanted = list("tin" = 100)
 
 	department_reward = 2200
-	individual_reward = 550
+	individual_reward = 1550
 
 /datum/bounty/mining/mechatronic_dreams
 	name = "Mechatronic Dreams"
@@ -237,10 +237,10 @@
 	description = "Our team is currently working on a new generation of exosuits for use in the industrial sector and we need titanium to construct our prototypes. The next generation of mechas will \
 	prove to be unparalleled by any other company on Pollux. Lark Industries will become a household name for its groundbreaking innovations in chassis design!"
 
-	stacks_wanted = list("titanium" = 200)
+	stacks_wanted = list("titanium" = 250)
 
-	department_reward = 2400
-	individual_reward = 1200
+	department_reward = 3800
+	individual_reward = 2200
 
 /datum/bounty/mining/jay_jewellers
 	name = "Every Joyful Moment Begins With Jay"
@@ -250,7 +250,7 @@
 
 	stacks_wanted = list("painite" = 50)
 
-	department_reward = 4800
+	department_reward = 3200
 	individual_reward = 1650
 
 
@@ -280,8 +280,8 @@
 
 	stacks_wanted = list("sandstone" = 1500)
 
-	department_reward = 16500
-	individual_reward = 3200
+	department_reward = 11500
+	individual_reward = 5200
 
 
 /datum/bounty/mining/final_frontier
@@ -292,8 +292,8 @@
 
 	stacks_wanted = list("titanium" = 1500)
 
-	department_reward = 16500
-	individual_reward = 8250
+	department_reward = 11500
+	individual_reward = 6250
 
 
 /datum/bounty/mining/ultraconductor
@@ -304,8 +304,8 @@
 
 	stacks_wanted = list("aluminium" = 1250)
 
-	department_reward = 13750
-	individual_reward = 8250
+	department_reward = 10750
+	individual_reward = 7250
 
 
 /datum/bounty/mining/praise_the_sun
@@ -316,7 +316,7 @@
 
 	stacks_wanted = list("rglass" = 300)
 
-	department_reward = 5000
+	department_reward = 3200
 	individual_reward = 2500
 
 

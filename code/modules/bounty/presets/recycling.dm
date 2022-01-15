@@ -8,7 +8,7 @@
 	description = "Plastic recycling is so important for our economy and planet. If you please, send us some bread tube packets. \
 	We'll use it for the Ando-shower curtain company that needs it. God bless."
 
-	items_wanted = list(/obj/item/trash/tastybread = 100)
+	items_wanted = list(/obj/item/trash/tastybread = 50)
 
 	department_reward = 1000
 	individual_reward = 2000
@@ -22,10 +22,10 @@
 	and get paid while you're at it! Pick up any cardboard boxes you find out on the streets and send it to us for recycling! Let's keep \
 	Pollux clean for future generations! Be sure to flatten the boxes before sending them!"
 
-	items_wanted = list(/obj/item/stack/material/cardboard = 30)
+	items_wanted = list(/obj/item/stack/material/cardboard = 300)
 
-	department_reward = 3000
-	individual_reward = 5000
+	department_reward = 1300
+	individual_reward = 2700
 
 /datum/bounty/recycling/dont_box
 	name = "Don't Put Me In A Box"
@@ -53,7 +53,7 @@
 	)
 
 	department_reward = 1000
-	individual_reward = 750
+	individual_reward = 1750
 
 	allow_subtypes = TRUE
 
@@ -88,7 +88,7 @@
 	)
 
 	department_reward = 900
-	individual_reward = 500
+	individual_reward = 1350
 
 
 /datum/bounty/recycling/toy_for_christmas
@@ -123,6 +123,6 @@
 				/obj/item/toy/stickhorse)
 
 	department_reward = 1450
-	individual_reward = 950
+	individual_reward = 2550
 
 	days_until_expiry = 5

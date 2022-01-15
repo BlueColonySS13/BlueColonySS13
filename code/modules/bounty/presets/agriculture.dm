@@ -1,6 +1,6 @@
 /datum/bounty/agriculture
 	category = CAT_FARM
-	days_until_expiry = 15
+	days_until_expiry = 7
 	tax_type = AGRICULTURE_TAX
 
 /datum/bounty/agriculture/potato_famine
@@ -12,8 +12,8 @@
 
 	grown_wanted = list("potato" = 40)
 
-	department_reward = 1300
-	individual_reward = 500
+	department_reward = 2200
+	individual_reward = 1400
 
 
 
@@ -24,10 +24,10 @@
 	the police think that there is a lot of blood. I know, I am a pretty original thinker. \
 	Don't copy that idea though, it's mine."
 
-	grown_wanted = list("tomato" = 20)
+	grown_wanted = list("tomato" = 40)
 
-	department_reward = 1000
-	individual_reward = 300
+	department_reward = 2500
+	individual_reward = 1300
 
 
 /datum/bounty/agriculture/lemon_genes
@@ -35,10 +35,10 @@
 	author = "Melvis Press"
 	description = "I eat cereal with lemonade."
 
-	grown_wanted = list("lemon" = 8)
+	grown_wanted = list("lemon" = 50)
 
-	department_reward = 200
-	individual_reward = 200
+	department_reward = 2000
+	individual_reward = 1200
 
 
 
@@ -50,8 +50,8 @@
 
 	items_wanted = list(/obj/item/weapon/storage/fancy/egg_box = 1)
 
-	department_reward = 600
-	individual_reward = 300
+	department_reward = 1600
+	individual_reward = 800
 
 	days_until_expiry = 1
 
@@ -76,10 +76,10 @@
 	wheat before I tear this whole bloody kitchen apart. I can't believe it. Next they'll tell me the ice is frozen too? End speech transcription. \
 	You! Over there, come here! Where's the lamb saaaaauce!? What the... is this thing still recording?"
 
-	grown_wanted = list("wheat" = 30)
+	grown_wanted = list("wheat" = 50)
 
-	department_reward = 1200
-	individual_reward = 500
+	department_reward = 2200
+	individual_reward = 1500
 
 	days_until_expiry = 1
 
@@ -91,8 +91,8 @@
 
 	grown_wanted = list("soybean" = 50)
 
-	department_reward = 2000
-	individual_reward = 900
+	department_reward = 2100
+	individual_reward = 1200
 
 	days_until_expiry = 1
 
@@ -102,10 +102,10 @@
 	description = "We're expecting an increase in Soykaf sales over in Glace Grace. Those scientists sure love their coffee. Anyway, \
 	we need alot more soybeans than our usual supplier can provide. Send some our way and we'll be more than amicable with our payment."
 
-	grown_wanted = list("soybean" = 40)
+	grown_wanted = list("soybean" = 250)
 
-	department_reward = 1300
-	individual_reward = 650
+	department_reward = 2400
+	individual_reward = 3200
 
 /datum/bounty/agriculture/renewable_fuels_corn
 	name = "Corn is the Future"
@@ -113,10 +113,10 @@
 	description = "Greetings. Nikola is researching a new biofuel made entirely from glycerol. We need corn to manufacture a prototype. \
 	Imagine it. An antique gas guzzler that smells like popcorn!"
 
-	grown_wanted = list("corn" = 40)
+	grown_wanted = list("corn" = 60)
 
-	department_reward = 900
-	individual_reward = 750
+	department_reward = 2200
+	individual_reward = 1450
 
 /datum/bounty/agriculture/cabbages
 	name = "Not The Cabbages"
@@ -124,8 +124,8 @@
 	description = "Every single time! Those kids from Sol are up to no good, constantly ruining my stock of cabbages! This time I need \
 	the stock pronto, can you help a farmer out?"
 
-	grown_wanted = list("cabbage" = 30)
+	grown_wanted = list("cabbage" = 150)
 
-	department_reward = 700
-	individual_reward = 750
+	department_reward = 1750
+	individual_reward = 2400
 
