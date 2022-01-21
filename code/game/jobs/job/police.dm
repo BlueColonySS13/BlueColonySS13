@@ -62,8 +62,7 @@
 
 	clean_record_required = TRUE
 	allows_synths = TRUE
-
-
+  
 	description = "Your job? Look after the criminals of this society. Keep an eye on them and try not to leave the prison area unless you really, really need \
 	to. Your responsibility to also maintain the prison and make sure no one is breaking in or out, You make sure prisoners are fed, get their visitation met, \
 	and aren't being abused by police while in your custody. (Or not.)"

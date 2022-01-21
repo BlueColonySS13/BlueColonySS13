@@ -12,8 +12,8 @@
 
 	reagents_wanted = list("blood" = 500)
 
-	department_reward = 900	// blood isn't that hard to get - vatborn cubes and hospital break ins can usually prove this
-	individual_reward = 250
+	department_reward = 15000	// blood isn't that hard to get - vatborn cubes and hospital break ins can usually prove this
+	individual_reward = 8000
 
 	days_until_expiry = 3
 
@@ -29,8 +29,8 @@
 	item_rewards = list(/obj/item/weapon/reagent_containers/spray/sterilizine = 1,
 	/obj/item/device/uv_light = 1)
 
-	department_reward = 200
-	individual_reward = 90
+	department_reward = 16000
+	individual_reward = 9000
 
 	days_until_expiry = 3
 
@@ -57,7 +57,7 @@
 		/obj/item/organ/external/hand/right
 		)
 
-	department_reward = 800
-	individual_reward = 350
+	department_reward = 44000
+	individual_reward = 35000
 
-	days_until_expiry = 3
+	days_until_expiry = 7

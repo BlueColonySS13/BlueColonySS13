@@ -1,6 +1,6 @@
 /datum/bounty/food
 	category = CAT_FOOD
-	days_until_expiry = 15
+	days_until_expiry = 7
 	delete_upon_completion = FALSE
 	tax_type = FOOD_TAX
 
@@ -13,8 +13,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/cheeseburger = 10)
 
-	department_reward = 1700
-	individual_reward = 800
+	department_reward = 2400
+	individual_reward = 1800
 
 
 /datum/bounty/food/army_marches
@@ -28,7 +28,7 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/jellysandwich/cherry = 10)
 
-	department_reward = 3500
+	department_reward = 2500
 	individual_reward = 1600
 
 
@@ -40,8 +40,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/meatbread = 6)
 
-	department_reward = 500
-	individual_reward = 150
+	department_reward = 1500
+	individual_reward = 1150
 
 
 /datum/bounty/food/nibble_before_chew
@@ -63,8 +63,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/bigbiteburger = 1)
 
-	department_reward = 1400
-	individual_reward = 800
+	department_reward = 1499
+	individual_reward = 899
 
 
 /datum/bounty/food/doorsprint_01
@@ -78,7 +78,7 @@
 						/obj/item/weapon/reagent_containers/food/snacks/fries = 1,
 						/obj/item/weapon/reagent_containers/food/snacks/cheesyfries = 1)
 
-	department_reward = 4400
+	department_reward = 3400
 	individual_reward = 2400
 
 	days_until_expiry = 1
@@ -117,8 +117,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/omelette = 2)
 
-	department_reward = 550
-	individual_reward = 200
+	department_reward = 750
+	individual_reward = 400
 
 	days_until_expiry = 1
 
@@ -130,8 +130,8 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/margherita = 5)
 
-	department_reward = 3000
-	individual_reward = 1300
+	department_reward = 2200
+	individual_reward = 1400
 
 	days_until_expiry = 1
 
@@ -143,7 +143,7 @@
 
 	items_wanted = list(/obj/item/weapon/reagent_containers/food/snacks/meatbun = 1)
 
-	department_reward = 300
-	individual_reward = 150
+	department_reward = 400
+	individual_reward = 275
 
 	days_until_expiry = 1

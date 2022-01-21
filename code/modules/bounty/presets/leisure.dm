@@ -1,7 +1,7 @@
 /datum/bounty/leisure
 	category = CAT_LEISURE
 
-	days_until_expiry = 10
+	days_until_expiry = 7
 	tax_type = CLOTHING_TAX
 
 /datum/bounty/leisure/diva_dresses
@@ -25,8 +25,8 @@
 	/obj/item/clothing/under/dress/festivedress = 1
 	)
 
-	department_reward = 1500
-	individual_reward = 500
+	department_reward = 3400
+	individual_reward = 2500
 
 	days_until_expiry = 2
 
@@ -38,10 +38,10 @@
 	description = "Right, it says here on the magazine that customers want silk beanies. So that's what we want. Any color, doesn't matter - they are \
 	into that avant garde stuff anyway. It has to be made out silk, you hear me?"
 
-	items_wanted = list(/obj/item/clothing/head/beanie = 200)
+	items_wanted = list(/obj/item/clothing/head/beanie = 100)
 
-	department_reward = 40000
-	individual_reward = 17000
+	department_reward = 2600
+	individual_reward = 3400
 
 
 /datum/bounty/leisure/beanies/meets_standards(var/obj/O) // additional custom checks
@@ -59,10 +59,10 @@
 	Hurry! Angelo's foundation is melting! Our designer told us the perfect photo-finish hex color is \
 	%MAKEUPCOLOR, no other colors will be accepted."
 
-	items_wanted = list(/obj/item/weapon/lipstick = 200)
+	items_wanted = list(/obj/item/weapon/lipstick = 100)
 
-	department_reward = 150000
-	individual_reward = 25000
+	department_reward = 3600
+	individual_reward = 4400
 
 	var/makeup_color = "#FF0000"
 
@@ -92,10 +92,10 @@
 	description = "We're doing makeup for a superhero themed photoshoot. For one of the villains we need an eyeshadow that's powerful \
 	and memorable. Our designer said an eyeshadow with %MAKEUPCOLOR would do the trick! You know what to do."
 
-	items_wanted = list(/obj/item/weapon/lipstick/eyeshadow = 200)
+	items_wanted = list(/obj/item/weapon/lipstick/eyeshadow = 100)
 
-	department_reward = 42000
-	individual_reward = 17000
+	department_reward = 4200
+	individual_reward = 3800
 
 
 /datum/bounty/leisure/pucker_up/making_me_blush
@@ -104,10 +104,10 @@
 	description = "We're having an exciting romance based shoot in Blue Colony today for our internet portfolio. The rosey cheeks must \
 	be on point as that's what the competition judges mark for. Our designer insists blusher with the color %MAKEUPCOLOR would be the best choice."
 
-	items_wanted = list(/obj/item/weapon/lipstick/blusher = 200)
+	items_wanted = list(/obj/item/weapon/lipstick/blusher = 100)
 
-	department_reward = 120000
-	individual_reward = 17000
+	department_reward = 3300
+	individual_reward = 3700
 
 
 /datum/bounty/leisure/jackening
@@ -124,7 +124,7 @@
 	)
 
 	department_reward = 1400
-	individual_reward = 250
+	individual_reward = 2500
 
 	days_until_expiry = 1
 
@@ -150,10 +150,10 @@
 	Anyway, I plan to introduce many women to this concept by giving out these hats for free and dropping random knowledge like I did now. Hopefully \
 	it lands with at least one of them. Any color fedora is fine, truly."
 
-	items_wanted = list(/obj/item/clothing/head/fedora = 250)
+	items_wanted = list(/obj/item/clothing/head/fedora = 100)
 
-	department_reward = 35000
-	individual_reward = 16000
+	department_reward = 2400
+	individual_reward = 4600
 
 	days_until_expiry = 10
 	allow_subtypes = TRUE

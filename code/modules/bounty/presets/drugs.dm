@@ -7,10 +7,10 @@
 	description = "Yes, we vape. We're looking to sell THC and CBD vape fluid, we're lacking in both at the moment and plan to make more. \
 	We'll shoot a decent sum if you send us 30 cannabis plants so we can make the stoners happy. Peace and, no deus strains, please."
 
-	grown_wanted = list("cannabis" = 30)
+	grown_wanted = list("cannabis" = 50)
 
-	department_reward = 260
-	individual_reward = 400
+	department_reward = 2600
+	individual_reward = 1350
 
 	days_until_expiry = 1
 
@@ -23,8 +23,8 @@
 
 	reagents_wanted = list("cocaine" = 100)
 
-	department_reward = 7000
-	individual_reward = 5000
+	department_reward = 8000
+	individual_reward = 5500
 
 	days_until_expiry = 2
 
@@ -66,8 +66,8 @@
 
 	reagents_wanted = list("dimethyltryptamine" = 150)
 
-	department_reward = 600
-	individual_reward = 175
+	department_reward = 6000
+	individual_reward = 3750
 
 	days_until_expiry = 2
 
@@ -92,7 +92,7 @@
 	description = "Clients asking for top-up of krokodil, you can do, da? We do six shipments. Stop asking if clients are \
 	suicidal comrade, their life choices - not us"
 
-	reagents_wanted = list("krokodil" = 50)
+	reagents_wanted = list("krokodil" = 60)
 
 	department_reward = 4300
 	individual_reward = 2200

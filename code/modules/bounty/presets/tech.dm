@@ -26,7 +26,7 @@
 	/obj/item/weapon/circuitboard/mecha/durand/main = 2
 	)
 
-	department_reward = 6000
+	department_reward = 3000
 	individual_reward = 2250
 
 	days_until_expiry = 3
@@ -40,7 +40,7 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/manipulator/nano = 20)
 
-	department_reward = 3000
+	department_reward = 2800
 	individual_reward = 1850
 
 	days_until_expiry = 2
@@ -55,7 +55,7 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/micro_laser/high = 25)
 
-	department_reward = 3500
+	department_reward = 2500
 	individual_reward = 1550
 
 /datum/bounty/tech/poxball_parts
@@ -66,8 +66,8 @@
 
 	items_wanted = list(/obj/item/weapon/stock_parts/capacitor/adv = 20)
 
-	department_reward = 5250
-	individual_reward = 550
+	department_reward = 2250
+	individual_reward = 1550
 
 /datum/bounty/tech/family_matters
 	name = "Family Matters"
@@ -75,10 +75,10 @@
 	description = "Everyone says we need to look back on what matters. So I thought I would show off with some Matter Containment \
 	Bins and flaunt how I can read between the lines. Genius."
 
-	items_wanted = list(/obj/item/weapon/stock_parts/matter_bin/adv = 10)
+	items_wanted = list(/obj/item/weapon/stock_parts/matter_bin/adv = 20)
 
-	department_reward = 3000
-	individual_reward = 850
+	department_reward = 2800
+	individual_reward = 1850
 
 /datum/bounty/tech/unlawful_search
 	name = "We Left a Note So It's Fine"
@@ -89,8 +89,8 @@
 
 	items_wanted = list(/obj/item/weapon/surgical/scalpel/laser2 = 1)
 
-	department_reward = 2000
-	individual_reward = 600
+	department_reward = 1900
+	individual_reward = 800
 
 /datum/bounty/tech/freq1487
 	name = "... --- ..."
@@ -100,7 +100,7 @@
 	items_wanted = list(/obj/item/weapon/stock_parts/subspace/sub_filter = 5)
 
 	department_reward = 2750
-	individual_reward = 1500
+	individual_reward = 1900
 
 /datum/bounty/tech/scanning_module
 	name = "Food Printer Malfunction"
@@ -110,10 +110,10 @@
 	loyal customers says it might be an issue with something called a scanning module. We've offered to give him free Instant Food for a year if he \
 	installs the parts for us. Please send us some advanced scanning modules!"
 
-	items_wanted = list(/obj/item/weapon/stock_parts/scanning_module/adv = 10)
+	items_wanted = list(/obj/item/weapon/stock_parts/scanning_module/adv = 15)
 
 	department_reward = 2800
-	individual_reward = 850
+	individual_reward = 1850
 
 /datum/bounty/tech/plants_vs_diyaabs
 	name = "Plants vs Diyaabs"
@@ -123,5 +123,5 @@
 
 	items_wanted = list(/obj/item/weapon/gun/energy/floragun = 1)
 
-	department_reward = 6000
+	department_reward = 4000
 	individual_reward = 4500

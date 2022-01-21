@@ -8,10 +8,10 @@
 	twenty newspapers shipped over for wrapping our fish and chips. Should do us 'til our supplier gives us our own. \
 	We're not hipsters, we swear!"
 
-	items_wanted = list(/obj/item/weapon/newspaper = 20)
+	items_wanted = list(/obj/item/weapon/newspaper = 30)
 
-	department_reward = 500
-	individual_reward = 200
+	department_reward = 1700
+	individual_reward = 1500
 
 	days_until_expiry = 2
 
@@ -24,7 +24,7 @@
 	items_wanted = list(/obj/item/weapon/photo = 5)
 
 	department_reward = 2000
-	individual_reward = 300
+	individual_reward = 600
 
 	days_until_expiry = 3
 
