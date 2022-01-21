@@ -61,7 +61,7 @@
 	alt_titles = list("Correctional Officer", "Brig Attendant", "Police Sergeant")
 
 	clean_record_required = TRUE
-	allows_synths = FALSE
+	allows_synths = true
 
 
 	description = "Your job? Look after the criminals of this society. Keep an eye on them and try not to leave the prison area unless you really, really need \
