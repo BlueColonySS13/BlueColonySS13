@@ -28,7 +28,7 @@
 	alt_titles = list("Head of Police", "Police Commander", "Police Commissioner", "Police Chief")
 
 	clean_record_required = TRUE
-	allows_synths = FALSE
+	allows_synths = TRUE
 
 	description = "Your job is to ensure the police unit runs correctly, you should make sure that police officers are enforcing the law correctly and \
 	not breaking SOP. You authorize warrants and make sure that the police departments runs like a well-oiled cog."
@@ -61,7 +61,7 @@
 	alt_titles = list("Correctional Officer", "Brig Attendant", "Police Sergeant")
 
 	clean_record_required = TRUE
-	allows_synths = FALSE
+	allows_synths = TRUE
 
 
 	description = "Your job? Look after the criminals of this society. Keep an eye on them and try not to leave the prison area unless you really, really need \
