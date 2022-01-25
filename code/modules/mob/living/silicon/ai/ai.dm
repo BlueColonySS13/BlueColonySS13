@@ -273,7 +273,9 @@ var/list/ai_verbs_default = list(
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
-/obj/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null)
+/obj/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null) // `New(loc)` new is usually called when calling new resulting in a "not cool location"
+	if(!istype(ai))
+		qdel(src)
 	powered_ai = ai
 	powered_ai.psupply = src
 	forceMove(powered_ai.loc)
