@@ -273,8 +273,9 @@ var/list/ai_verbs_default = list(
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
-/obj/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null) // `New(loc)` new is usually called when calling new resulting in a "not cool location"
+/obj/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null) // `New(loc)` new is usually called with it's location resulting in a not AI powered_ai assignment.
 	if(!istype(ai))
+		message_admins("Warning, AI Power Supply created outside of an AI.")
 		qdel(src)
 	powered_ai = ai
 	powered_ai.psupply = src
