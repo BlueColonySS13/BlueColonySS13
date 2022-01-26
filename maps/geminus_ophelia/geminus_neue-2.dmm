@@ -809,13 +809,10 @@
 "apC" = (/obj/machinery/door/airlock/multi_tile/glass/medical{id_tag = "MedbayFoyer"; name = "Hospital Foyer"; req_access = list(5)},/turf/simulated/floor/tiled/dark,/area/medical/reception)
 "apD" = (/obj/machinery/door/airlock/multi_tile/glass/medical{name = "city hospital"; req_access = newlist()},/turf/simulated/floor/tiled/dark,/area/medical/reception)
 "apE" = (/obj/structure/disposalpipe/segment,/turf/simulated/floor/pavement{dir = 8; icon_state = "pavement"; tag = "icon-pavement (WEST)"},/area/planets/Geminus/outdoor/north)
-<<<<<<< Updated upstream
 "apF" = (/obj/machinery/disposal,/obj/structure/disposalpipe/trunk{dir = 1; icon_state = "pipe-t"},/turf/simulated/floor/tiled/dark,/area/medical/chemistry)
 "apG" = (/obj/structure/ladder/up,/turf/simulated/floor/tiled/dark,/area/lots/business/business_lot_six)
-=======
 "apF" = (/obj/machinery/light/colored,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "apG" = (/obj/machinery/inventory_machine/nanotrasen,/turf/simulated/floor/bluegeo_light,/area/planets/Geminus/indoor/shoppingarea)
->>>>>>> Stashed changes
 "apJ" = (/obj/effect/floor_decal/corner/red{dir = 9},/obj/machinery/computer/security,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/city_hall)
 "apR" = (/turf/simulated/floor/stairs{dir = 1; icon_state = "ramptop"},/area/outpost/research/anomaly)
 "apU" = (/obj/machinery/button/remote/blast_door{id = "cityhallsec"; name = "city security office button"; pixel_x = 7; pixel_y = -3; req_access = list(19)},/obj/machinery/button/remote/blast_door{id = "city_hall_entrance"; name = "city hall entrance button"; pixel_x = -7; pixel_y = -3; req_access = list(19)},/obj/machinery/button/remote/blast_door{id = "city_hall_hallway"; name = "hallway access button"; pixel_x = -7; pixel_y = 6; req_access = list(19)},/obj/structure/table/standard,/obj/machinery/recharger{pixel_x = 6; pixel_y = 9},/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/city_hall)
@@ -1820,10 +1817,7 @@
 "etu" = (/obj/structure/sign/neon/exit{pixel_y = 25},/turf/simulated/floor/pavement{dir = 8; icon_state = "pavement"; tag = "icon-pavement (WEST)"},/area/planets/Geminus/outdoor/south)
 "evP" = (/obj/machinery/inventory_machine/nanotrasen,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/outdoor/central)
 "ewD" = (/obj/machinery/shower{dir = 4; icon_state = "shower"; pixel_x = 5; pixel_y = 0},/obj/structure/curtain/open/shower,/turf/simulated/floor/tiled/white,/area/crew_quarters/fitness)
-<<<<<<< Updated upstream
-=======
 "exi" = (/obj/machinery/atmospherics/portables_connector{dir = 1},/obj/effect/floor_decal/industrial/hatch/yellow,/obj/machinery/portable_atmospherics/canister/oxygen,/turf/simulated/floor/tiled/dark,/area/medical/reception)
->>>>>>> Stashed changes
 "exF" = (/obj/item/weapon/stool,/turf/simulated/floor/tiled/dark,/area/crew_quarters/fitness)
 "eAf" = (/obj/structure/disposalpipe/segment{dir = 8; icon_state = "pipe-c"},/turf/simulated/floor/tiled/dark,/area/crew_quarters/kitchen)
 "eAs" = (/obj/effect/floor_decal/corner/red/diagonal,/turf/simulated/floor/tiled/neutral,/area/crew_quarters)
@@ -1927,10 +1921,7 @@
 "geq" = (/obj/effect/floor_decal/industrial/warning/dust,/turf/simulated/floor/tiled,/area/quartermaster/office)
 "gez" = (/obj/item/device/radio/intercom{broadcasting = 0; dir = 2; listening = 0; name = "Common Channel"; pixel_y = 21},/turf/simulated/floor/tiled/dark,/area/crew_quarters/fitness)
 "gfC" = (/obj/machinery/light/floor,/turf/simulated/floor/tiled/paleblue,/area/prison/cell_block/A)
-<<<<<<< Updated upstream
-=======
 "ggC" = (/obj/effect/floor_decal/industrial/hatch/yellow,/obj/machinery/atmospherics/portables_connector{dir = 1},/obj/machinery/light/colored/blue,/obj/machinery/portable_atmospherics/canister/oxygen,/turf/simulated/floor/tiled/dark,/area/medical/reception)
->>>>>>> Stashed changes
 "giw" = (/obj/machinery/light/colored,/turf/simulated/floor/bluegeo,/area/planets/Geminus/indoor/shoppingarea)
 "gjl" = (/obj/effect/wallframe_spawn,/turf/simulated/floor/tiled/freezer,/area/rnd/xenobiology/xenoflora)
 "gjN" = (/obj/effect/wallframe_spawn,/obj/machinery/door/blast/regular{density = 0; icon_state = "pdoor0"; id = "rlockd"; name = "Research Lockdown"; opacity = 0},/turf/simulated/floor/tiled,/area/rnd/xenobiology/xenoflora)
@@ -1965,10 +1956,7 @@
 "gIL" = (/obj/machinery/light/colored{dir = 4; icon_state = "yellow1"; tag = "icon-yellow1 (EAST)"},/turf/simulated/floor/wood/bamboo,/area/lots/business/business_lot_fourteen)
 "gJP" = (/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/science)
 "gKY" = (/obj/machinery/light/colored/purple{dir = 1},/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/science)
-<<<<<<< Updated upstream
-=======
 "gMm" = (/obj/machinery/sleeper{dir = 4},/turf/simulated/floor/tiled/dark,/area/medical/reception)
->>>>>>> Stashed changes
 "gMH" = (/obj/effect/floor_decal/corner/green/diagonal,/obj/effect/floor_decal/corner/green{dir = 10},/obj/structure/table/glass,/obj/machinery/cooker/cereal,/turf/simulated/floor/tiled/dark,/area/crew_quarters/kitchen)
 "gOb" = (/obj/machinery/door/airlock/research{name = "Break Room"},/turf/simulated/floor/tiled/dark,/area/rnd/research_breakroom)
 "gOe" = (/obj/effect/floor_decal/spline/fancy{dir = 1; icon_state = "spline_fancy"},/obj/structure/disposalpipe/segment,/turf/simulated/floor/carpet/sblucarpet,/area/security/main)
@@ -2071,11 +2059,8 @@
 "ikW" = (/obj/structure/table/glass/white,/turf/simulated/floor/carpet/purcarpet,/area/crew_quarters/heads/hor)
 "ilE" = (/turf/simulated/wall/iron/silver_paint,/area/prison/cell_block/B)
 "ilN" = (/obj/structure/bed/chair/frilly/black{dir = 8; icon_state = "frillychair"},/turf/simulated/floor/carpet/purcarpet,/area/crew_quarters/heads/hor)
-<<<<<<< Updated upstream
 "imL" = (/obj/machinery/atmospherics/pipe/manifold/visible{dir = 8},/turf/simulated/floor/tiled/dark,/area/medical/reception)
-=======
 "imL" = (/obj/effect/floor_decal/industrial/hatch/yellow,/obj/machinery/atmospherics/unary/freezer{dir = 2; icon_state = "freezer"},/turf/simulated/floor/tiled/dark,/area/medical/reception)
->>>>>>> Stashed changes
 "imY" = (/obj/machinery/mech_recharger,/turf/simulated/floor/road/garage,/area/medical/first_aid_station)
 "inh" = (/obj/machinery/shower{dir = 8},/obj/structure/curtain/open/shower,/turf/simulated/floor/tiled/white,/area/crew_quarters/fitness)
 "ioJ" = (/mob/living/bot/cleanbot,/turf/simulated/floor/carpet/purcarpet,/area/crew_quarters/fitness)
@@ -2249,10 +2234,7 @@
 "kHL" = (/obj/effect/floor_decal/corner/yellow/diagonal,/obj/effect/floor_decal/corner/yellow/border,/obj/effect/floor_decal/corner/yellow/border{dir = 4; icon_state = "bordercolor"},/obj/machinery/vending/wallmed1{dir = 8; name = "NanoTrasen-Provided Emergency Medical Dispenser"; pixel_x = 21; pixel_y = 0},/obj/structure/window/reinforced,/turf/simulated/floor/tiled/dark,/area/engineering/storage)
 "kIn" = (/obj/structure/disposalpipe/segment{dir = 8; icon_state = "pipe-c"},/turf/simulated/floor/wood/maple,/area/chapel/office)
 "kJb" = (/obj/structure/bed/chair/general{dir = 8; icon_state = "chair_preview"},/turf/simulated/floor/tiled/dark,/area/crew_quarters/fitness)
-<<<<<<< Updated upstream
-=======
 "kJS" = (/obj/machinery/sleep_console,/turf/simulated/floor/tiled/dark,/area/medical/reception)
->>>>>>> Stashed changes
 "kMc" = (/obj/effect/floor_decal/plaque,/obj/structure/disposalpipe/segment,/turf/simulated/floor/diamond,/area/crew_quarters/fitness)
 "kMZ" = (/obj/structure/table/steel_reinforced,/obj/item/device/flash/synthetic,/obj/item/device/flash/synthetic,/obj/item/weapon/handcuffs/cyborg,/obj/item/weapon/handcuffs/cyborg,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "kNb" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/grenade/chem_grenade/metalfoam,/obj/item/weapon/grenade/chem_grenade/metalfoam,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
