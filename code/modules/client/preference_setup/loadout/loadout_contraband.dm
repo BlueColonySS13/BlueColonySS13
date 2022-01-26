@@ -38,14 +38,14 @@
 	description = "You actually hope this is clean."
 	path = /obj/item/weapon/reagent_containers/syringe
 	sort_category = "Contraband"
-	cost = 2
+	cost = 1
 
 /datum/gear/contraband/grinder
-	display_name = "herb grinder"
-	description = "Used to grind up drugs for snorting. NOT FOR CANNABIS"
+	display_name = "powder grinder"
+	description = "Used to grind up drugs for snorting. NOT FOR CANNABIS... unless youre a weirdo"
 	path = /obj/item/weapon/grinder
 	sort_category = "Contraband"
-	cost = 3
+	cost = 1
 
 /datum/gear/contraband/zipgun
 	display_name = "zipgun"
@@ -58,21 +58,21 @@
 	description = "Home-made pellets of death and destruction in an incospicuous box"
 	path = /obj/item/weapon/storage/box/shotgunammo/contraband
 	sort_category = "Contraband"
-	cost = 8
+	cost = 5
 
 /datum/gear/contraband/baggie
 	display_name = "baggie"
 	description = "A small plastic baggie, for whatever small plastic baggies are for."
 	path = /obj/item/weapon/reagent_containers/drugs/baggie
 	sort_category = "Contraband"
-	cost = 2
+	cost = 1
 
 /datum/gear/contraband/baggie/cannabis
 	display_name = "baggie (Cannabis)"
 	description = "A painkilling and toxin healing drug. THC is found in this, and is extracted from the cannabis plant."
 	path = /obj/item/weapon/reagent_containers/drugs/baggie/cannabis
 	sort_category = "Contraband"
-	cost = 8
+	cost = 5
 	
 /datum/gear/contraband/paper
 	display_name = "Rolling Paper"
@@ -100,7 +100,7 @@
 	description = "Also known as MDMA. An illegal chemical compound used as a drug. Do it for the lit parties."
 	path = /obj/item/weapon/storage/pill_bottle/ecstasy
 	sort_category = "Contraband"
-	cost = 13
+	cost = 10
 
 /datum/gear/contraband/pot_brownie
 	display_name = "Pot Brownie"
@@ -114,4 +114,4 @@
 	description = "A small chunk of cocaine."
 	path =  /obj/item/weapon/reagent_containers/pill/cocaine
 	sort_category = "Contraband"
-	cost = 12
+	cost = 10
