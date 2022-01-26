@@ -778,7 +778,12 @@
 "Ny" = (/turf/simulated/floor/tiled/external,/area/planets/Geminus/indoor/sewer/west)
 "NB" = (/obj/machinery/light/colored/purple{dir = 1; icon_state = "purple1"; tag = "icon-purple1 (NORTH)"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "NE" = (/obj/machinery/door/airlock/multi_tile/research{name = "Xenobiology Lab"; req_access = list(55)},/obj/machinery/door/blast/regular{density = 0; icon_state = "pdoor0"; id = "rlockd"; name = "Research Lockdown"; opacity = 0},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
+<<<<<<< Updated upstream
 "NL" = (/obj/machinery/light/colored/green{dir = 8; icon_state = "green1"; tag = "icon-green1 (WEST)"},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+=======
+"NL" = (/obj/machinery/light/colored/green{dir = 8},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"NX" = (/obj/machinery/disposal{pixel_x = 8},/obj/structure/disposalpipe/trunk,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
+>>>>>>> Stashed changes
 "Oh" = (/turf/simulated/wall/wood,/area/planets/Geminus/indoor/sewer/south)
 "Os" = (/obj/machinery/light/floor,/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly)
 "Ou" = (/obj/structure/disposalpipe/trunk{dir = 1; icon_state = "pipe-t"},/obj/structure/disposaloutlet{dir = 1},/obj/effect/floor_decal/industrial/warning{dir = 8},/obj/effect/floor_decal/industrial/warning{dir = 4; icon_state = "warning"},/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/holofloor/tiled/dark,/area/planets/Geminus/indoor/sewer/south)
