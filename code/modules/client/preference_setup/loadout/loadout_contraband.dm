@@ -42,7 +42,7 @@
 
 /datum/gear/contraband/grinder
 	display_name = "herb grinder"
-	description = "For various, totally legal purposes!"
+	description = "Used to grind up drugs for snorting. NOT FOR CANNABIS"
 	path = /obj/item/weapon/grinder
 	sort_category = "Contraband"
 	cost = 3
@@ -73,6 +73,13 @@
 	path = /obj/item/weapon/reagent_containers/drugs/baggie/cannabis
 	sort_category = "Contraband"
 	cost = 8
+	
+/datum/gear/contraband/paper
+	display_name = "Rolling Paper"
+	description = "Used to roll up a smokable joint from the cannabis baggie. OR used to snort grinded drugs"
+	path = /obj/item/weapon/rollingpaper
+	sort_category = "Contraband"
+	cost = 1
 
 /datum/gear/contraband/baggie/meth
 	display_name = "baggie (Meth)"
