@@ -1393,15 +1393,12 @@
 "aRE" = (/obj/effect/floor_decal/corner/red/full{dir = 8},/obj/structure/filingcabinet,/obj/item/device/taperecorder,/turf/simulated/floor/bluegeo_light,/area/crew_quarters/courtroom)
 "aRI" = (/obj/effect/floor_decal/corner/red/full{dir = 1},/obj/item/device/mic_stand/prosecutor{dir = 8; icon_state = "micstand"},/obj/structure/window/reinforced{dir = 4},/obj/structure/table/woodentable/walnut,/turf/simulated/floor/bluegeo_light,/area/crew_quarters/courtroom)
 "aRK" = (/obj/effect/floor_decal/corner/lightgrey{dir = 9; icon_state = "corner_white"; tag = "icon-corner_white (NORTHWEST)"},/obj/structure/filingcabinet/chestdrawer,/turf/simulated/floor/bluegeo,/area/crew_quarters/courtroom)
-<<<<<<< Updated upstream
 "aRN" = (/obj/structure/table/reinforced,/obj/effect/floor_decal/corner/paleblue{dir = 9},/obj/item/device/defib_kit/loaded,/obj/machinery/recharger/wallcharger{dir = 4; icon_state = "wrecharger0"; pixel_x = -25},/turf/simulated/floor/tiled/white,/area/medical/surgery)
 "aRP" = (/turf/simulated/floor/tiled/white,/area/medical/surgery)
 "aRQ" = (/obj/machinery/iv_drip,/turf/simulated/floor/tiled/white,/area/medical/surgery)
-=======
 "aRN" = (/obj/effect/floor_decal/corner/paleblue{dir = 5},/obj/machinery/vending/medical/hospital/gcchgms,/turf/simulated/floor/tiled/dark,/area/medical/medbay2)
 "aRP" = (/obj/effect/floor_decal/corner/paleblue{dir = 5},/obj/structure/noticeboard{pixel_y = 32},/obj/structure/table/glass/white,/obj/item/weapon/reagent_containers/spray/cleaner{dont_save = 1},/turf/simulated/floor/tiled/dark,/area/medical/medbay2)
 "aRQ" = (/obj/effect/floor_decal/corner/paleblue{dir = 5},/obj/machinery/light/colored/blue{dir = 1; icon_state = "blue1"; tag = "icon-blue1 (NORTH)"},/obj/effect/floor_decal/corner/paleblue{dir = 6},/obj/machinery/inventory_machine/nanotrasen,/turf/simulated/floor/tiled/dark,/area/medical/medbay2)
->>>>>>> Stashed changes
 "aRR" = (/obj/machinery/flasher{id = "permaflash"; name = "Floor mounted flash"; pixel_x = 0},/turf/simulated/floor/tiled/dark,/area/security/holding)
 "aRS" = (/turf/simulated/floor/wood/ebony,/area/lots/business/business_lot_three)
 "aRT" = (/obj/machinery/computer/security/telescreen/entertainment{icon_state = "frame"; pixel_x = 0; pixel_y = 25},/obj/loudspeaker,/turf/simulated/floor/tiled{color = ""; name = "exterior tiles"; outdoors = 1},/area/planets/Geminus/outdoor/east)
