@@ -77,6 +77,10 @@ var/datum/category_collection/crafting/autolathe/autolathe_recipes
 	name = "General"
 	category_item_type = /datum/category_item/crafting/autolathe/general
 
+/datum/category_group/crafting/autolathe/stack
+	name = "Material Sheets"
+	category_item_type = /datum/category_item/crafting/autolathe/stack
+
 /datum/category_group/crafting/autolathe/medical
 	name = "Medical"
 	category_item_type = /datum/category_item/crafting/autolathe/medical
