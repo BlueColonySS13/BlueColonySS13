@@ -1,6 +1,8 @@
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/GeneriedJenelle/The-World-Server-Redux) 
 
+
 # Blue Colony Based on World server redux
+
 [Forums](http://geminus.city/forums/index.php) - [Wiki](https://bluewiki.herma.moe/index.php/Main_Page) - [Discord](https://discord.gg/mQUmnRx7wF)
 
 World Server is a fork of the Polaris code branch for the game Spacestation13.
