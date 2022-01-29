@@ -132,7 +132,7 @@
 	name = "Distilling Synthplas"
 	id = "distill_synthplas"
 	result = "synthblood_dilute"
-	required_reagents = list("protein" = 2, "blood" = 1, "bicaridine" = 1)
+	required_reagents = list("protein" = 2, "antibodies" = 1, "bicaridine" = 1)
 	result_amount = 3
 
 	reaction_rate = HALF_LIFE(15)
