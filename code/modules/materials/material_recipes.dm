@@ -173,7 +173,6 @@
 	recipes += new/datum/stack_recipe("sink", /obj/item/frame/plastic/sink, 12, time = 20, one_per_turf = 1, on_floor = 1)
 	recipes += new/datum/stack_recipe("kitchen sink", /obj/item/frame/plastic/kitchensink, 15, time = 20, on_floor = 1)
 	recipes += new/datum/stack_recipe("toilet", /obj/item/frame/plastic/toilet, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
-	recipes += new/datum/stack_recipe("shower", /obj/item/frame/plastic/shower, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("urinal", /obj/item/frame/plastic/urinal, 15, time = 20, on_floor = 1, apply_material_color = TRUE)
 	recipes += new/datum/stack_recipe("tape", /obj/item/device/tape/random, 15, time = 20, on_floor = 1)
 	recipes += new/datum/stack_recipe("mop bucket", /obj/structure/mopbucket, 5, time = 20, on_floor = 1)
