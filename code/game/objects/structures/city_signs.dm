@@ -57,6 +57,11 @@
 	icon_state = "beer"
 	light_color = "#CBDC54" //yellow
 
+/obj/structure/sign/neon/train
+	name = "train"
+	icon_state = "train"
+	light_color = "#454B1B" //yellow
+
 /obj/structure/sign/neon/inn
 	name = "inn"
 	icon_state = "inn"
