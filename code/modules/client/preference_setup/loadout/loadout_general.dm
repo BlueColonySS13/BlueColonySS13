@@ -110,15 +110,3 @@
 	display_name = "Cards Against The Galaxy (black deck)"
 	path = /obj/item/weapon/deck/cah/black
 	description = "The ever-popular Cards Against The Galaxy word game. Warning: may include traces of broken fourth wall. This is the black deck."
-
-/datum/gear/baby
-	display_name = "baby selection"
-	path = /obj/item/clothing/suit/baby
-
-/*/datum/gear/baby/New()
-	..()
-	var/baby = list()
-	baby["baby, light"] = /obj/item/clothing/suit/baby
-	baby["baby, tanned"] = /obj/item/clothing/suit/baby/tanned
-	baby["baby, dark"] = /obj/item/clothing/suit/baby/black
-	gear_tweaks += new/datum/gear_tweak/path(baby)*/
