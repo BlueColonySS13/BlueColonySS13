@@ -103,24 +103,6 @@
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.90
 
-/obj/item/clothing/mask/stone
-	name = "stone mask"
-	desc = "A finely chiseled stone mask depicting a masculine face with fangs."
-	icon_state = "stone_mask"
-	flags_inv = HIDEFACE
-	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
-
-/obj/item/clothing/mask/jeweledstone
-	name = "bejeweled stone mask"
-	desc = "A finely chiseled stone mask depicting a masculine face with fangs, adorned with a black opal."
-	icon_state = "stone_mask_jewel"
-	flags_inv = HIDEFACE
-	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
-
 /obj/item/clothing/mask/redscarf
 	name = "red scarf"
 	desc = "A red and white checkered neck scarf."
