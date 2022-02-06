@@ -89,11 +89,6 @@
 	desc = "A warning sign which reads 'HIGH VOLTAGE'."
 	icon_state = "shock"
 
-/obj/structure/sign/metro
-	name = "\improper TRAIN"
-	desc = "A guidance sign which reads 'TRAIN'."
-	icon_state = "train"
-
 /obj/structure/sign/examroom
 	name = "\improper EXAM"
 	desc = "A guidance sign which reads 'EXAM ROOM'."

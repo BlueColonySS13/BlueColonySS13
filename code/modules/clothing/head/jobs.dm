@@ -176,14 +176,6 @@
 
 //Blue Police Hats
 
-/obj/item/clothing/head/helmet/opd_patrol
-	name = "\improper OPD Patrol helmet"
-	desc = "A oval helmet painted in reflective white. Stands out like a sore egghead."
-	icon_state = "opd_patrol"
-	item_state_slots = list(slot_r_hand_str = "opd_patrol", slot_l_hand_str = "opd_patrol")
-	armor = list(melee = 55, bullet = 25, laser = 40,energy = 35, bomb = 30, bio = 0, rad = 0)
-	valid_accessory_slots = null
-
 /obj/item/clothing/head/police/policeofficercap
 	name = "police officer's cap"
 	desc = "A blue peaked cap belonging to a police office"
@@ -238,25 +230,6 @@
 	icon_state = "policeberetred"
 	item_state_slots = list(slot_r_hand_str = "beret_navy", slot_l_hand_str = "beret_navy")
 
-//Black|Green Police Hats
-
-/obj/item/clothing/head/police/gamewarden
-	name = "game warden's cap"
-	desc = "A black peaked cap belonging to a game warden."
-	icon_state = "gwardensoft"
-	item_state_slots = list(slot_r_hand_str = "blacksoft", slot_l_hand_str = "blacksoft")
-
-/obj/item/clothing/head/police/cadetgamewarden
-	name = "cadet game warden's cap"
-	desc = "A black peaked cap belonging to a cadet game warden."
-	icon_state = "gwardencadetsoft"
-	item_state_slots = list(slot_r_hand_str = "blacksoft", slot_l_hand_str = "blacksoft")
-
-/obj/item/clothing/head/police/ltgamewarden
-	name = "game warden lieutenant's cap"
-	desc = "A black peaked honorific cap belonging to a lieutenant game warden."
-	icon_state = "gwardenltsoft"
-	item_state_slots = list(slot_r_hand_str = "blacksoft", slot_l_hand_str = "blacksoft")
 
 //Medical
 /obj/item/clothing/head/surgery
