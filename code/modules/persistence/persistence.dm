@@ -195,11 +195,13 @@
 /obj/structure/safe
 	unique_save_vars = list("open","tumbler_1_pos","tumbler_1_open","tumbler_2_pos","tumbler_2_open","dial")
 
-
+/obj/machinery/conveyor
+	unique_save_vars = list("forwards")
+	
 /obj/structure/on_persistence_load()
 	update_connections()
 	update_icon()
-
+	
 // Don't save list - Better to keep a track of things here.
 
 /mob
