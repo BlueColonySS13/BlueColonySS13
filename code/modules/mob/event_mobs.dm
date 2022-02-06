@@ -13,6 +13,7 @@
 	src.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(src), slot_shoes)
 	src.equip_to_slot_or_del(new /obj/item/clothing/under/pants/baggy/white(src), slot_w_uniform)
 	src.equip_to_slot_or_del(new /obj/item/clothing/suit/kimono(src), slot_wear_suit)
+	src.equip_to_slot_or_del(new /obj/item/weapon/card/id/nanotrasen/ceo(src), slot_wear_id)
 	name = "Jesus Christ"
 	real_name = "Jesus Christ"
 
