@@ -23,7 +23,7 @@
 	var/list/affecting	// the list of all items that will be moved this ptick
 	var/id = ""			// the control ID	- must match controller ID
 
-	unique_save_vars = list("id")
+	unique_save_vars = list("id","forwards")
 
 /obj/machinery/conveyor/centcom_auto
 	id = "round_end_belt"
@@ -188,7 +188,7 @@
 	var/list/conveyors		// the list of converyors that are controlled by this switch
 	anchored = 1
 
-	unique_save_vars = list("id")
+	unique_save_vars = list("id","forwards")
 
 /obj/machinery/conveyor_switch/initialize()
 	..()
