@@ -103,9 +103,15 @@
 
 /obj/item/clothing/suit/storage/toggle/policejacket
 	name = "police jacket"
-	desc = "A dark blue jacket featuring a white checker, belonging to the GCPD"
+	desc = "A dark blue jacket featuring a white checker, belonging to the OCPD"
 	icon_state = "policejacket"
 	item_state_slots = list(slot_r_hand_str = "suit_navy", slot_l_hand_str = "suit_navy")
+
+/obj/item/clothing/suit/storage/toggle/policebomber
+	name = "police bomber jacket"
+	desc = "A dark blue thick leather jacket featuring a white checker, belonging to the OCPD"
+	icon_state = "policebomber"
+	item_state_slots = list(slot_r_hand_str = "policebomber", slot_l_hand_str = "policebomber")
 
 //Detective
 /obj/item/clothing/suit/storage/det_trench
