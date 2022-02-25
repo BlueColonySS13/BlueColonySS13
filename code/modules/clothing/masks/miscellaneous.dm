@@ -105,7 +105,7 @@
 
 /obj/item/clothing/mask/stone
 	name = "stone mask"
-	desc = "A finely chiseled stone mask depicting a masculine face with fangs."
+	desc = "An ancient finely chiseled stone mask depicting a masculine face with fangs."
 	icon_state = "stone_mask"
 	flags_inv = HIDEFACE
 	w_class = ITEMSIZE_SMALL
@@ -114,7 +114,7 @@
 
 /obj/item/clothing/mask/jeweledstone
 	name = "bejeweled stone mask"
-	desc = "A finely chiseled stone mask depicting a masculine face with fangs, adorned with a black opal."
+	desc = "An ancient finely chiseled stone mask depicting a masculine face with fangs, adorned with a black opal."
 	icon_state = "stone_mask_jewel"
 	flags_inv = HIDEFACE
 	w_class = ITEMSIZE_SMALL

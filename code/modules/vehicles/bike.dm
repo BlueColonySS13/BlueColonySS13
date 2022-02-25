@@ -1,6 +1,6 @@
 /obj/vehicle/bike
-	name = "space-bike"
-	desc = "Space wheelies! Woo!"
+	name = "hover-bike"
+	desc = "Hover wheelies! Woo!"
 	icon = 'icons/obj/bike.dmi'
 	icon_state = "bike_off"
 	dir = SOUTH
