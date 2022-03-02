@@ -16,6 +16,7 @@
 	name = "Non-National Voting Rights"
 	description = "Can people with non-Polluxian nationality vote?"
 	id = "voting_nonnational"
+	toggle_status = TRUE
 
 /datum/persistent_option/toggle/rights/voting/human
 	name = "Human Voting Rights"
