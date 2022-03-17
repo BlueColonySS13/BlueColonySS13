@@ -713,6 +713,7 @@ var/global/list/robot_modules = list(
 	channels = list("Science" = 1)
 	sprites = list(
 					"L'Ouef" = "peaceborg",
+					"CUPCAKE" = "Noble-SCI",
 					"Cabeiri" = "eyebot-science",
 					"Haruka" = "marinaSCI",
 					"WTDove" = "whitespider",
