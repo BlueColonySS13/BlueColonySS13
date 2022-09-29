@@ -538,6 +538,7 @@ var/global/list/robot_modules = list(
 					"Arachne" = "crawler",
 					"Cabeiri" = "eyebot-janitor",
 					"CUPCAKE" = "Noble-CLN",
+					"Arachnid" = "Arachnid-CLN",
 					"Haruka" = "marinaJN",
 					"Telemachus" = "toiletbotjanitor",
 					"WTOperator" = "sleekjanitor",
@@ -690,6 +691,7 @@ var/global/list/robot_modules = list(
 					"XI-GUS" = "spidermining",
 					"XI-ALP" = "heavyMiner",
 					"Basic" = "Miner_old",
+					"Arachnid" = "Arachnid-DIG",
 					"Advanced Droid" = "droid-miner",
 					"Treadhead" = "Miner",
 					"Drone" = "drone-miner"
@@ -905,4 +907,32 @@ var/global/list/robot_modules = list(
 	src.modules += new /obj/item/weapon/pickaxe/borgdrill(src)
 	src.modules += new /obj/item/weapon/storage/bag/ore(src)
 	src.modules += new /obj/item/weapon/storage/bag/sheetsnatcher/borg(src)
+	src.emag = new /obj/item/weapon/pickaxe/diamonddrill(src)
+
+
+/obj/item/weapon/robot_module/robot/emergency
+	name = "emergency robot module"
+	sprites = list(
+					"M-USE NanoTrasen" = "robotSecy",
+					"Cabeiri" = "eyebot-standard",
+					"CUPCAKE" = "Noble-EMR",
+					"Haruka" = "marinaEMR",
+					)
+
+/obj/item/weapon/robot_module/robot/emergency/New()
+	..()
+	src.modules += new /obj/item/weapon/melee/baton/loaded(src)
+	src.modules += new /obj/item/weapon/weldingtool/electric/mounted/cyborg(src)
+	src.modules += new /obj/item/device/multitool(src)
+	src.modules += new /obj/item/borg/sight/thermal(src)
+	src.modules += new /obj/item/weapon/wrench/cyborg(src)
+	src.modules += new /obj/item/weapon/crowbar/cyborg(src)
+	src.modules += new /obj/item/weapon/screwdriver/cyborg(src)
+	src.modules += new /obj/item/weapon/extinguisher(src)
+	src.modules += new /obj/item/weapon/pickaxe/borgdrill(src)
+	src.modules += new /obj/item/weapon/shockpaddles/robot(src)
+	src.modules += new /obj/item/weapon/gun/energy/taser/xeno/robot(src)
+	src.modules += new /obj/item/device/healthanalyzer(src)
+	src.modules += new /obj/item/weapon/hand_tele(src)
+	src.emag = new /obj/item/weapon/melee/energy/sword(src)
 	src.emag = new /obj/item/weapon/pickaxe/diamonddrill(src)
