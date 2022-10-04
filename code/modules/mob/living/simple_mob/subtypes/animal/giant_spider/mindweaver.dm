@@ -17,6 +17,6 @@
 	melee_damage_upper = 10
 
 	movement_cooldown = 0
-
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 
