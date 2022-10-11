@@ -1,5 +1,5 @@
 /datum/job/nanotrasen
-	title = "Government Representative"
+	title = "NanoTrasen Representative"
 	flag = NANOTRASEN
 	department = DEPT_NANOTRASEN
 	head_position = 0
@@ -164,7 +164,7 @@
 	faction = "City"
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "the PDSI Director"
+	supervisors = "the PDSI Director and NT's Central Special Investigation"
 
 	selection_color = "#0F0F6F"
 	idtype = /obj/item/weapon/card/id/nanotrasen/pdsi
