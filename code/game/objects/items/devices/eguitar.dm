@@ -31,6 +31,7 @@
 		if("Bn5")	soundfile = 'sound/eguitar/Bn5.ogg'
 		if("Bn6")	soundfile = 'sound/eguitar/Bn6.ogg'
 		if("Cn4")	soundfile = 'sound/eguitar/Cn4.ogg'
+		if("C2")	soundfile = 'sound/eguitar/C2.ogg'
 		if("Cn5")	soundfile = 'sound/eguitar/Cn5.ogg'
 		if("Cn6")	soundfile = 'sound/eguitar/Cn6.ogg'
 		if("Db4")	soundfile = 'sound/eguitar/Db4.ogg'
