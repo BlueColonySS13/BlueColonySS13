@@ -2,7 +2,7 @@
 // It'd be nice to make a generalized instrument object we can subtype off of
 
 /obj/item/device/guitar
-	name = "space guitar"
+	name = "guitar"
 	desc = "A wooden musical instrument with six strings. \"Look buddy, I'm an engineer. That means I solve problems.\""
 	icon = 'icons/obj/musician.dmi'
 	icon_state = "guitar"
@@ -229,7 +229,7 @@
 
 		else if(href_list["import"])
 			var/t = ""
-			do 
+			do
 				t = html_encode(input(usr, "Please paste the entire song, formatted:", text("[]", name), t)  as message)
 				if(!in_range(src, usr))
 					return
