@@ -1,73 +1,65 @@
-//copy pasta of the violin.dm, don't hurt me
-// It'd be nice to make a generalized instrument object we can subtype off of
-
-/obj/item/device/guitar
-	name = "guitar"
-	desc = "A wooden musical instrument with six strings. \"Look buddy, I'm an engineer. That means I solve problems.\""
+/obj/item/device/eguitar
+	name = "electric guitar"
+	desc = "Makes all your shredding needs possible."
 	icon = 'icons/obj/musician.dmi'
-	icon_state = "guitar"
-	force = 10
+	icon_state = "eguitar"
+	item_state = "eguitar"
+	force = 12
+	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
 	var/datum/song/song
 	var/playing = 0
 	var/help = 0
 	var/edit = 1
 	var/repeat = 0
 
-/obj/item/device/guitar/proc/playnote(var/note as text)
+/obj/item/device/eguitar/proc/playnote(var/note as text)
 	//world << "Note: [note]"
 	var/soundfile
 	/*BYOND loads resource files at compile time if they are ''. This means you can't really manipulate them dynamically.
 	Tried doing it dynamically at first but its more trouble than its worth. Would have saved many lines tho.*/
 	switch(note)
-		if("Ab3")	soundfile = 'sound/guitar/Ab3.ogg'
-		if("Ab4")	soundfile = 'sound/guitar/Ab4.ogg'
-		if("Ab5")	soundfile = 'sound/guitar/Ab5.ogg'
-		if("Ab6")	soundfile = 'sound/guitar/Ab6.ogg'
-		if("An3")	soundfile = 'sound/guitar/An3.ogg'
-		if("An4")	soundfile = 'sound/guitar/An4.ogg'
-		if("An5")	soundfile = 'sound/guitar/An5.ogg'
-		if("An6")	soundfile = 'sound/guitar/An6.ogg'
-		if("Bb3")	soundfile = 'sound/guitar/Bb3.ogg'
-		if("Bb4")	soundfile = 'sound/guitar/Bb4.ogg'
-		if("Bb5")	soundfile = 'sound/guitar/Bb5.ogg'
-		if("Bb6")	soundfile = 'sound/guitar/Bb6.ogg'
-		if("Bn3")	soundfile = 'sound/guitar/Bn3.ogg'
-		if("Bn4")	soundfile = 'sound/guitar/Bn4.ogg'
-		if("Bn5")	soundfile = 'sound/guitar/Bn5.ogg'
-		if("Bn6")	soundfile = 'sound/guitar/Bn6.ogg'
-		if("Cn4")	soundfile = 'sound/guitar/Cn4.ogg'
-		if("Cn5")	soundfile = 'sound/guitar/Cn5.ogg'
-		if("Cn6")	soundfile = 'sound/guitar/Cn6.ogg'
-		if("Db4")	soundfile = 'sound/guitar/Db4.ogg'
-		if("Db5")	soundfile = 'sound/guitar/Db5.ogg'
-		if("Db6")	soundfile = 'sound/guitar/Db6.ogg'
-		if("Dn4")	soundfile = 'sound/guitar/Dn4.ogg'
-		if("Dn5")	soundfile = 'sound/guitar/Dn5.ogg'
-		if("Dn6")	soundfile = 'sound/guitar/Dn6.ogg'
-		if("Eb4")	soundfile = 'sound/guitar/Eb4.ogg'
-		if("Eb5")	soundfile = 'sound/guitar/Eb5.ogg'
-		if("Eb6")	soundfile = 'sound/guitar/Eb6.ogg'
-		if("En3")	soundfile = 'sound/guitar/En3.ogg'
-		if("En4")	soundfile = 'sound/guitar/En4.ogg'
-		if("En5")	soundfile = 'sound/guitar/En5.ogg'
-		if("En6")	soundfile = 'sound/guitar/En6.ogg'
-		if("Fn3")	soundfile = 'sound/guitar/Fn3.ogg'
-		if("Fn4")	soundfile = 'sound/guitar/Fn4.ogg'
-		if("Fn5")	soundfile = 'sound/guitar/Fn5.ogg'
-		if("Fn6")	soundfile = 'sound/guitar/Fn6.ogg'
-		if("Gb3")	soundfile = 'sound/guitar/Gb3.ogg'
-		if("Gb4")	soundfile = 'sound/guitar/Gb4.ogg'
-		if("Gb5")	soundfile = 'sound/guitar/Gb5.ogg'
-		if("Gb6")	soundfile = 'sound/guitar/Gb6.ogg'
-		if("Gn3")	soundfile = 'sound/guitar/Gn3.ogg'
-		if("Gn4")	soundfile = 'sound/guitar/Gn4.ogg'
-		if("Gn5")	soundfile = 'sound/guitar/Gn5.ogg'
-		if("Gn6")	soundfile = 'sound/guitar/Gn6.ogg'
+		if("Ab4")	soundfile = 'sound/eguitar/Ab4.ogg'
+		if("Ab5")	soundfile = 'sound/eguitar/Ab5.ogg'
+		if("Ab6")	soundfile = 'sound/eguitar/Ab6.ogg'
+		if("An4")	soundfile = 'sound/eguitar/An4.ogg'
+		if("An5")	soundfile = 'sound/eguitar/An5.ogg'
+		if("An6")	soundfile = 'sound/eguitar/An6.ogg'
+		if("Bb4")	soundfile = 'sound/eguitar/Bb4.ogg'
+		if("Bb5")	soundfile = 'sound/eguitar/Bb5.ogg'
+		if("Bb6")	soundfile = 'sound/eguitar/Bb6.ogg'
+		if("Bn4")	soundfile = 'sound/eguitar/Bn4.ogg'
+		if("Bn5")	soundfile = 'sound/eguitar/Bn5.ogg'
+		if("Bn6")	soundfile = 'sound/eguitar/Bn6.ogg'
+		if("Cn4")	soundfile = 'sound/eguitar/Cn4.ogg'
+		if("C2")	soundfile = 'sound/eguitar/C2.ogg'
+		if("Cn5")	soundfile = 'sound/eguitar/Cn5.ogg'
+		if("Cn6")	soundfile = 'sound/eguitar/Cn6.ogg'
+		if("Db4")	soundfile = 'sound/eguitar/Db4.ogg'
+		if("Db5")	soundfile = 'sound/eguitar/Db5.ogg'
+		if("Db6")	soundfile = 'sound/eguitar/Db6.ogg'
+		if("Dn4")	soundfile = 'sound/eguitar/Dn4.ogg'
+		if("Dn5")	soundfile = 'sound/eguitar/Dn5.ogg'
+		if("Dn6")	soundfile = 'sound/eguitar/Dn6.ogg'
+		if("Eb4")	soundfile = 'sound/eguitar/Eb4.ogg'
+		if("Eb5")	soundfile = 'sound/eguitar/Eb5.ogg'
+		if("Eb6")	soundfile = 'sound/eguitar/Eb6.ogg'
+		if("En4")	soundfile = 'sound/eguitar/En4.ogg'
+		if("En5")	soundfile = 'sound/eguitar/En5.ogg'
+		if("En6")	soundfile = 'sound/eguitar/En6.ogg'
+		if("Fn4")	soundfile = 'sound/eguitar/Fn4.ogg'
+		if("Fn5")	soundfile = 'sound/eguitar/Fn5.ogg'
+		if("Fn6")	soundfile = 'sound/eguitar/Fn6.ogg'
+		if("Gb4")	soundfile = 'sound/eguitar/Gb4.ogg'
+		if("Gb5")	soundfile = 'sound/eguitar/Gb5.ogg'
+		if("Gb6")	soundfile = 'sound/eguitar/Gb6.ogg'
+		if("Gn4")	soundfile = 'sound/eguitar/Gn4.ogg'
+		if("Gn5")	soundfile = 'sound/eguitar/Gn5.ogg'
+		if("Gn6")	soundfile = 'sound/eguitar/Gn6.ogg'
 		else		return
 
 	hearers(15, get_turf(src)) << sound(soundfile)
 
-/obj/item/device/guitar/proc/playsong()
+/obj/item/device/eguitar/proc/playsong()
 	do
 		var/cur_oct[7]
 		var/cur_acc[7]
@@ -110,7 +102,7 @@
 	while(repeat > 0)
 	playing = 0
 
-/obj/item/device/guitar/attack_self(mob/user as mob)
+/obj/item/device/eguitar/attack_self(mob/user as mob)
 	if(!isliving(user) || user.stat || user.restrained() || user.lying)	return
 	user.set_machine(src)
 
@@ -160,13 +152,13 @@
 			dat += "<A href='?src=\ref[src];help=2'>Show Help</A><BR>"
 	dat += "</BODY></HTML>"
 	user << browse(dat, "window=guitar;size=700x300")
-	onclose(user, "guitar")
+	onclose(user, "eguitar")
 
-/obj/item/device/guitar/Topic(href, href_list)
+/obj/item/device/eguitar/Topic(href, href_list)
 
 	if(!in_range(src, usr) || issilicon(usr) || !isliving(usr) || !usr.canmove || usr.restrained())
-		usr << browse(null, "window=guitar;size=700x300")
-		onclose(usr, "guitar")
+		usr << browse(null, "window=eguitar;size=700x300")
+		onclose(usr, "eguitar")
 		return
 
 	if(href_list["newsong"])
