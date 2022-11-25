@@ -37,10 +37,11 @@ var/global/datum/controller/gameticker/ticker
 	login_music = pick(\
 	/*'sound/music/halloween/skeletons.ogg',\
 	'sound/music/halloween/halloween.ogg',\
-	'sound/music/halloween/ghosts.ogg'*/
+	'sound/music/halloween/ghosts.ogg'
 	'sound/music/thecity.ogg',\
 	'sound/music/smthingaboutus.ogg',\
-	'sound/music/starvetheego.ogg')
+	'sound/music/starvetheego.ogg'*/
+	'sound/music/christmas.ogg')
 
 	send2mainirc("Server lobby is loaded and open at byond://[config.serverurl ? config.serverurl : (config.server ? config.server : "[world.address]:[world.port]")]")
 
