@@ -7,20 +7,22 @@
 "ao" = (/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/rooms)
 "ar" = (/obj/structure/lattice,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/rooms)
 "as" = (/turf/simulated/floor/carpet/purcarpet,/area/rnd/xenobiology)
+"aw" = (/obj/effect/overlay/palmtree_l,/turf/simulated/floor/beach/sand,/area/outpost/research/anomaly_analysis)
 "ay" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/machinery/gateway{dir = 5; icon_state = "off"},/turf/simulated/floor/tiled/techfloor/grid,/area/teleporter)
 "aA" = (/obj/structure/closet/radiation,/obj/effect/floor_decal/corner/white/border{dir = 9},/turf/simulated/floor/tiled/dark,/area/rnd/storage)
 "aB" = (/obj/effect/floor_decal/industrial/warning/corner{dir = 1; icon_state = "warningcorner"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
 "aD" = (/obj/machinery/door/window/westleft{dir = 2; req_access = list(55,30)},/obj/machinery/door/window/westleft{dir = 1; health = 15000; req_access = list(55,30)},/obj/machinery/door/blast/regular{id = "xeno1"},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
+"aE" = (/obj/machinery/light{dir = 1; icon_state = "tube1"},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "aG" = (/obj/structure/barricade,/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/rooms)
 "aL" = (/obj/machinery/light/small{dir = 1; pixel_y = 0},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/north)
 "aM" = (/obj/structure/table/bench/wooden,/turf/simulated/floor/pavement/pave_tiling{outdoors = 0},/area/planets/Geminus/indoor/arrivalbus)
 "aR" = (/obj/structure/table/steel_reinforced,/obj/machinery/door/window{dir = 2; icon_state = "right"; req_access = list(55)},/obj/item/weapon/archaeological_find{pixel_y = 10},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_storage)
-"aT" = (/obj/structure/bed/chair/general{dir = 8; icon_state = "chair_preview"},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"aT" = (/obj/structure/bed/chair/general{dir = 8; icon_state = "chair_preview"},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "bc" = (/obj/structure/closet/radiation,/obj/effect/floor_decal/corner/white/border{dir = 1},/turf/simulated/floor/tiled/dark,/area/rnd/storage)
 "be" = (/obj/machinery/door/window/westleft{dir = 2; health = 15000; req_access = list(55)},/obj/machinery/door/blast/regular{id = "monkeydoor2"},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
 "bi" = (/obj/machinery/light/small/flicker{dir = 4},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "bl" = (/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/maintenance/asmaint)
-"bm" = (/obj/effect/floor_decal/corner/lightgrey/border{dir = 5},/obj/effect/floor_decal/corner/white/bordercorner{dir = 8},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"bm" = (/obj/effect/floor_decal/corner/lightgrey/border{dir = 5},/obj/effect/floor_decal/corner/white/bordercorner{dir = 8},/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "bn" = (/obj/structure/bed/chair/office/dark{dir = 4},/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
 "bo" = (/obj/machinery/light/colored/purple,/obj/effect/floor_decal/corner_steel_grid/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/research_breakroom)
 "bq" = (/obj/structure/bed/chair/wood,/obj/machinery/light/small,/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/rooms)
@@ -38,26 +40,27 @@
 "bO" = (/obj/effect/spider/cocoon,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/east)
 "bS" = (/obj/effect/floor_decal/corner/paleblue/border{dir = 9},/obj/structure/table/reinforced,/obj/item/device/flashlight/lamp,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
 "bU" = (/obj/structure/window/reinforced{dir = 8; health = 1e+006},/obj/machinery/door/blast/regular{id = "xeno5"},/obj/structure/window/reinforced{maxhealth = 15000},/obj/structure/disposalpipe/segment,/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
-"bV" = (/obj/machinery/camera/network/mining{c_tag = "MNG - Mining Production Room"; dir = 8},/turf/simulated/floor/tiled,/area/space)
-"bY" = (/turf/simulated/floor/carpet/oracarpet,/area/space)
+"bV" = (/obj/machinery/camera/network/mining{c_tag = "MNG - Mining Production Room"; dir = 8},/turf/simulated/floor/tiled,/area/quartermaster/office)
+"bY" = (/turf/simulated/floor/carpet/oracarpet,/area/quartermaster/office)
 "ca" = (/turf/simulated/floor/tiled,/area/teleporter)
 "cc" = (/obj/effect/floor_decal/corner/mauve/bordercorner{dir = 8},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "cf" = (/obj/effect/floor_decal/industrial/warning{dir = 1; icon_state = "warning"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/east)
 "ci" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/plating,/area/maintenance/asmaint)
-"ck" = (/obj/effect/wallframe_spawn,/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"ck" = (/obj/effect/wallframe_spawn,/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "cl" = (/obj/effect/floor_decal/industrial/warning{dir = 10},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/central)
 "cn" = (/obj/structure/window/basic{dir = 8},/turf/simulated/floor/beach/water/ocean,/area/rnd/xenobiology)
 "cx" = (/obj/effect/spider/stickyweb,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
+"cA" = (/obj/effect/floor_decal/corner/brown{dir = 10},/obj/machinery/light/colored/orange,/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "cB" = (/obj/machinery/light/small/flicker{dir = 1},/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/rooms)
 "cE" = (/obj/structure/bed/chair/sofa/left{dir = 4},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "cF" = (/turf/simulated/wall/iron,/area/planets/Geminus/indoor/sewer/north)
-"cH" = (/obj/structure/bed/chair/general{dir = 4; icon_state = "chair_preview"},/turf/simulated/floor/carpet/oracarpet,/area/space)
-"cI" = (/obj/effect/floor_decal/corner/brown{dir = 10},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"cH" = (/obj/structure/bed/chair/general{dir = 4; icon_state = "chair_preview"},/turf/simulated/floor/carpet/oracarpet,/area/quartermaster/office)
+"cI" = (/obj/effect/floor_decal/corner/brown{dir = 10},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "cK" = (/obj/effect/overlay/palmtree_l,/turf/simulated/floor/beach/sand,/area/planets/Geminus/outdoor/east)
 "cL" = (/obj/structure/table/glass/white,/obj/item/weapon/melee/baton/slime/loaded,/obj/item/weapon/melee/baton/slime/loaded,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "cM" = (/obj/effect/decal/cleanable/blood,/turf/simulated/floor/wood{icon_state = "wood3"},/area/planets/Geminus/indoor/sewer/rooms)
 "cQ" = (/turf/simulated/wall/plastic,/area/planets/Geminus/indoor/sewer/rooms)
-"cS" = (/obj/machinery/mineral/unloading_machine,/obj/machinery/light/colored/orange{dir = 1},/turf/simulated/floor/tiled/dark,/area/space)
+"cS" = (/obj/machinery/mineral/unloading_machine,/obj/machinery/light/colored/orange{dir = 1},/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "cU" = (/obj/structure/reagent_dispensers/coolanttank,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1; health = 1e+006},/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
 "cW" = (/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/sewer/rooms)
 "cX" = (/obj/structure/table/steel_reinforced,/obj/machinery/door/window{dir = 1; icon_state = "right"; req_access = list(55)},/obj/structure/window/phoronreinforced{dir = 8; icon_state = "rwindow"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_storage)
@@ -83,16 +86,16 @@
 "ea" = (/obj/effect/floor_decal/corner/purple/full{dir = 1},/turf/simulated/floor/tiled/dark,/area/outpost/research/hallway)
 "eb" = (/turf/simulated/floor/beach/water/ocean,/area/planets/Geminus/outdoor/east)
 "ee" = (/obj/structure/catwalk,/obj/structure/railing{dir = 4; icon_state = "railing0"; tag = "icon-railing0 (EAST)"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
-"ef" = (/obj/effect/floor_decal/corner/white/border{dir = 5},/turf/simulated/floor/tiled/dark,/area/space)
+"ef" = (/obj/effect/floor_decal/corner/white/border{dir = 5},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "eg" = (/turf/simulated/floor/stairs{dir = 4},/area/teleporter)
 "ei" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/simulated/floor,/area/planets/Geminus/indoor/sewer/rooms)
-"en" = (/obj/machinery/door/window/westleft{name = "Production Area"},/turf/simulated/floor/tiled/steel_dirty,/area/space)
-"eu" = (/turf/simulated/wall/plastic/science,/area/space)
+"en" = (/obj/machinery/door/window/westleft{name = "Production Area"; req_access = list(50)},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
+"eu" = (/obj/effect/floor_decal/corner/brown{dir = 9},/obj/machinery/light/colored/orange{tag = "icon-orange1 (WEST)"; icon_state = "orange1"; dir = 8},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "ez" = (/obj/effect/floor_decal/corner/purple{dir = 10},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "eD" = (/obj/structure/fence{dir = 8; icon_state = "straight"},/turf/simulated/floor/beach/water/ocean,/area/planets/Geminus/outdoor/east)
 "eE" = (/obj/structure/barricade,/turf/simulated/floor/water/sewer,/area/planets/Geminus/indoor/sewer/north)
 "eF" = (/obj/machinery/light/floor,/obj/effect/floor_decal/corner/purple{dir = 10},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
-"eH" = (/obj/machinery/mineral/processing_unit_console,/turf/simulated/wall,/area/space)
+"eH" = (/obj/machinery/mineral/processing_unit_console,/turf/simulated/wall,/area/quartermaster/office)
 "eI" = (/obj/machinery/portable_atmospherics/hydroponics,/turf/simulated/floor/tiled/lime,/area/rnd/xenobiology/xenoflora)
 "eJ" = (/obj/structure/toilet,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "eL" = (/turf/simulated/floor/outdoors/dirt,/area/planets/Geminus/indoor/sewer/south)
@@ -124,18 +127,20 @@
 "gm" = (/obj/effect/decal/cleanable/generic,/obj/effect/decal/cleanable/graffiti{pixel_y = 30},/turf/simulated/floor/pavement/pave_tiling{outdoors = 0},/area/planets/Geminus/indoor/arrivalbus)
 "gv" = (/obj/effect/floor_decal/corner/purple/full{dir = 4},/turf/simulated/floor/tiled/dark,/area/outpost/research/hallway)
 "gy" = (/obj/effect/floor_decal/corner/white/border{dir = 8},/obj/effect/floor_decal/corner/lightgrey/border{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"gz" = (/obj/effect/floor_decal/corner/brown{dir = 5},/obj/machinery/light/colored/orange{dir = 1},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "gB" = (/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/sewer/rooms)
 "gG" = (/obj/structure/loot_pile/maint/technical,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/sewer/rooms)
 "gH" = (/obj/machinery/light/floor,/obj/effect/floor_decal/corner/purple{dir = 5},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "gK" = (/obj/machinery/light/small{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "gM" = (/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/east)
-"gS" = (/obj/machinery/door/airlock/glass_civilian{dir = 8},/turf/simulated/floor/tiled/steel_grid,/area/space)
+"gR" = (/obj/effect/floor_decal/corner/brown/full{dir = 4},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
+"gS" = (/obj/machinery/door/airlock/glass_civilian{dir = 8},/turf/simulated/floor/tiled/steel_grid,/area/lots/business/business_lot_one)
 "gT" = (/obj/effect/floor_decal/industrial/warning{dir = 6; icon_state = "warning"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/east)
 "gU" = (/obj/machinery/light/colored/green,/turf/simulated/floor/plating/maglev{dir = 8; icon_state = "maglev"},/area/planets/Geminus/indoor/arrivalbus)
 "gV" = (/obj/effect/floor_decal/corner/mauve/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "gX" = (/obj/effect/decal/cleanable/dirt,/obj/structure/closet/secure_closet,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"gZ" = (/obj/machinery/light/colored/orange{dir = 4; icon_state = "orange1"; tag = "icon-orange1 (EAST)"},/turf/simulated/floor/tiled,/area/space)
-"hd" = (/obj/effect/wallframe_spawn,/turf/simulated/floor/plating,/area/space)
+"gZ" = (/obj/machinery/light/colored/orange{dir = 4; icon_state = "orange1"; tag = "icon-orange1 (EAST)"},/turf/simulated/floor/tiled,/area/quartermaster/office)
+"hd" = (/obj/effect/wallframe_spawn,/turf/simulated/floor/plating,/area/quartermaster/office)
 "hh" = (/obj/structure/table/bench/wooden,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "hi" = (/obj/item/robot_parts/l_leg,/obj/item/robot_parts/head,/obj/item/robot_parts/r_arm,/obj/structure/closet,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "hn" = (/obj/structure/inflatable,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
@@ -149,11 +154,11 @@
 "hB" = (/obj/effect/spider/stickyweb/dark,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
 "hC" = (/obj/machinery/power/emitter{dir = 8; icon_state = "emitter"},/obj/effect/floor_decal/corner/mauve/border{dir = 4},/obj/effect/floor_decal/corner/white/bordercorner{dir = 8},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "hL" = (/obj/effect/floor_decal/corner/lightgrey/border{dir = 1},/obj/effect/floor_decal/corner/white/border,/obj/structure/reagent_dispensers/water_cooler/full,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
-"hO" = (/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/tiled,/area/space)
+"hO" = (/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/tiled,/area/quartermaster/office)
 "hQ" = (/obj/effect/floor_decal/corner/lime{dir = 9},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "hR" = (/obj/effect/floor_decal/corner/white/border{dir = 4},/turf/simulated/floor/tiled/dark,/area/rnd/storage)
-"hS" = (/obj/effect/floor_decal/corner/brown/full{dir = 1},/turf/simulated/floor/tiled/steel_dirty,/area/space)
-"hU" = (/obj/structure/table/rack,/obj/item/clothing/suit/towel/random,/obj/item/clothing/suit/towel/random,/obj/item/clothing/suit/towel/random,/obj/item/clothing/suit/towel/random,/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/arrivalbus)
+"hS" = (/obj/effect/floor_decal/corner/brown/full{dir = 1},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
+"hU" = (/obj/structure/table/rack,/obj/item/clothing/suit/towel/random,/obj/item/clothing/suit/towel/random,/obj/item/clothing/suit/towel/random,/obj/item/clothing/suit/towel/random,/obj/machinery/light,/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/arrivalbus)
 "hX" = (/mob/living/simple_mob/animal/giant_spider/nurse,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
 "hZ" = (/obj/structure/loot_pile/surface/bones,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
 "ic" = (/turf/simulated/floor/tiled,/area/planets/Geminus/indoor/sewer/rooms)
@@ -163,6 +168,7 @@
 "ij" = (/obj/effect/floor_decal/industrial/warning{dir = 4},/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "il" = (/obj/machinery/portable_atmospherics/canister/oxygen,/obj/effect/floor_decal/corner/mauve/border{dir = 9},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "im" = (/obj/effect/floor_decal/industrial/warning/corner{dir = 8; icon_state = "warningcorner"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
+"in" = (/obj/effect/floor_decal/corner/paleblue/border,/obj/machinery/light/colored/blue,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
 "io" = (/obj/structure/sink{dir = 1},/obj/structure/mirror{pixel_y = -30},/turf/simulated/floor/tiled/white,/area/outpost/research/bathroom)
 "ip" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/archaeological_find{pixel_y = 10},/obj/structure/window/phoronreinforced,/obj/machinery/door/window{dir = 8; icon_state = "right"; req_access = list(65)},/obj/structure/window/phoronreinforced{dir = 4; icon_state = "rwindow"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "iv" = (/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
@@ -173,10 +179,11 @@
 "iJ" = (/obj/structure/loot_pile/mecha/deathripley,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
 "iK" = (/obj/machinery/biogenerator,/turf/simulated/floor/tiled/lime,/area/rnd/xenobiology/xenoflora)
 "iL" = (/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/rooms)
+"iN" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/lime,/area/planets/Geminus/indoor/arrivalbus)
 "iP" = (/obj/machinery/crystal,/turf/simulated/floor/outdoors/dirt,/area/planets/Geminus/indoor/sewer/south)
-"iS" = (/obj/structure/railing{icon_state = "railing0"; dir = 1},/turf/simulated/floor/tiled/steel_grid,/area/space)
-"iU" = (/obj/structure/stairs{dir = 8},/turf/simulated/floor/beach/sand,/area/space)
-"iY" = (/turf/simulated/floor/tiled/steel_grid,/area/space)
+"iS" = (/obj/structure/stairs{dir = 8},/turf/simulated/floor/tiled/steel_grid,/area/lots/business/business_lot_one)
+"iU" = (/obj/structure/stairs{dir = 8},/turf/simulated/floor/beach/sand,/area/outpost/research/anomaly_storage)
+"iY" = (/turf/simulated/floor/tiled/steel_grid,/area/lots/business/business_lot_one)
 "ja" = (/obj/effect/floor_decal/corner/white/border,/turf/simulated/floor/tiled/dark,/area/rnd/storage)
 "jb" = (/obj/effect/floor_decal/corner/lightgrey/border{dir = 1},/obj/effect/floor_decal/corner/white/border,/obj/machinery/vending/sovietsoda,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "jc" = (/obj/machinery/suspension_gen,/turf/simulated/floor/tiled/dark,/area/rnd/storage)
@@ -189,7 +196,7 @@
 "jt" = (/obj/structure/catwalk,/obj/structure/railing{dir = 4; icon_state = "railing0"; tag = "icon-railing0 (EAST)"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
 "ju" = (/turf/simulated/wall/plastic/science,/area/outpost/research/hallway)
 "jx" = (/mob/living/simple_mob/animal/giant_spider/nurse,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
-"jA" = (/obj/effect/floor_decal/corner/brown{dir = 9},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"jA" = (/obj/effect/floor_decal/corner/brown{dir = 9},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "jC" = (/obj/structure/reagent_dispensers/watertank,/obj/item/weapon/reagent_containers/glass/bucket,/obj/item/weapon/reagent_containers/glass/bucket,/turf/simulated/floor/tiled/lime,/area/rnd/xenobiology/xenoflora)
 "jD" = (/obj/item/weapon/beach_ball,/turf/simulated/floor/beach/sand,/area/planets/Geminus/outdoor/east)
 "jE" = (/turf/simulated/wall/plastic/science,/area/rnd/xenobiology)
@@ -210,16 +217,17 @@
 "kA" = (/obj/machinery/door/airlock/glass_civilian{dir = 8; name = "Bathroom Stall 3"},/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/arrivalbus)
 "kC" = (/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
 "kD" = (/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
-"kJ" = (/turf/simulated/floor/tiled/steel_ridged,/area/space)
+"kJ" = (/obj/machinery/light,/turf/simulated/floor/tiled/paleblue,/area/planets/Geminus/indoor/arrivalbus)
 "kK" = (/obj/structure/table/rack,/obj/item/weapon/material/knife/machete,/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/sewer/rooms)
 "kL" = (/obj/effect/overlay/palmtree_l,/turf/simulated/floor/beach/sand,/area/planets/Geminus/outdoor/south)
 "kO" = (/obj/machinery/light/small{dir = 1; pixel_y = 0},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"kQ" = (/obj/effect/floor_decal/industrial/warning{dir = 8; icon_state = "warning"},/turf/simulated/floor/tiled,/area/space)
+"kQ" = (/obj/effect/floor_decal/industrial/warning{dir = 8; icon_state = "warning"},/turf/simulated/floor/tiled,/area/quartermaster/office)
 "kU" = (/mob/living/simple_mob/animal/giant_spider/hunter,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "kW" = (/turf/simulated/wall/durasteel,/area/planets/Geminus/indoor/sewer/west)
-"kY" = (/obj/machinery/conveyor_switch/oneway{id = "mining_internal"; name = "mining conveyor"},/turf/simulated/floor/tiled,/area/space)
+"kY" = (/obj/machinery/conveyor_switch/oneway{id = "mining_internal"; name = "mining conveyor"},/turf/simulated/floor/tiled,/area/quartermaster/office)
 "kZ" = (/obj/machinery/gateway{dir = 4; icon_state = "off"},/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/tiled/techfloor/grid,/area/teleporter)
 "la" = (/obj/effect/spider/cocoon,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
+"ld" = (/obj/effect/floor_decal/corner/white/border{dir = 10},/obj/effect/floor_decal/corner/white/border{dir = 10},/obj/machinery/light{dir = 1; icon_state = "tube1"},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "le" = (/obj/machinery/computer/security/wooden_tv/entertainment,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "lg" = (/obj/turbolift_map_holder/science,/turf/simulated/floor/tiled/steel_ridged,/area/turbolift/geminus_ground_science)
 "li" = (/obj/effect/floor_decal/corner/mauve/border{dir = 10},/turf/simulated/floor/tiled/neutral,/area/teleporter)
@@ -235,21 +243,23 @@
 "lG" = (/obj/structure/closet/crate/trashcart,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "lI" = (/obj/effect/floor_decal/corner/paleblue/border{dir = 8},/obj/structure/table/reinforced,/obj/machinery/light/colored/blue{dir = 4; icon_state = "blue1"; tag = "icon-blue1 (EAST)"},/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
 "lK" = (/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/rooms)
+"lM" = (/obj/machinery/light/colored/orange{tag = "icon-orange1 (WEST)"; icon_state = "orange1"; dir = 8},/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "lU" = (/obj/structure/table/steel_reinforced,/obj/item/clothing/glasses/science,/obj/item/clothing/glasses/science,/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
 "lW" = (/obj/machinery/door/window/westleft{dir = 1; health = 15000; req_access = list(55)},/obj/machinery/door/blast/regular{id = "monkeydoor6"},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
 "lX" = (/obj/structure/barricade,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "lY" = (/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/tiled/steel_grid,/area/maintenance/asmaint)
 "mb" = (/obj/structure/reagent_dispensers/fueltank,/obj/effect/floor_decal/corner/white/border{dir = 6},/turf/simulated/floor/tiled/dark,/area/rnd/storage)
 "mf" = (/obj/structure/table/glass/white,/obj/machinery/reagentgrinder,/obj/effect/floor_decal/corner/mauve/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
-"mg" = (/obj/structure/closet/crate/secure/bin,/turf/simulated/floor/tiled/steel_dirty,/area/space)
-"mk" = (/obj/effect/floor_decal/industrial/warning/corner{dir = 8},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
-"ml" = (/obj/machinery/vending/snack,/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"mg" = (/obj/structure/closet/crate/secure/bin,/obj/machinery/light/colored/orange{dir = 4; icon_state = "orange1"; tag = "icon-orange1 (EAST)"},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
+"mk" = (/obj/effect/floor_decal/industrial/warning/corner{dir = 8},/obj/machinery/light/colored/orange{dir = 4; icon_state = "orange1"; tag = "icon-orange1 (EAST)"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
+"ml" = (/obj/machinery/vending/snack,/obj/machinery/light/colored/orange{dir = 4; icon_state = "orange1"; tag = "icon-orange1 (EAST)"},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "mm" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/archaeological_find{pixel_y = 10},/obj/structure/window/phoronreinforced{dir = 1; icon_state = "rwindow"},/obj/machinery/door/window{dir = 8; icon_state = "right"; req_access = list(65)},/obj/structure/window/phoronreinforced{dir = 4; icon_state = "rwindow"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "mo" = (/obj/structure/table/reinforced,/obj/effect/floor_decal/corner/mauve/border{dir = 9},/turf/simulated/floor/tiled/neutral,/area/teleporter)
 "mp" = (/obj/structure/table/steel_reinforced,/obj/machinery/door/window{dir = 1; icon_state = "right"; req_access = list(55)},/obj/item/weapon/archaeological_find{pixel_y = 10},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_storage)
 "mu" = (/turf/simulated/wall,/area/planets/Geminus/indoor/sewer/west)
 "mv" = (/obj/machinery/light/floor,/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_storage)
 "mB" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4; health = 1e+006},/obj/structure/filingcabinet,/obj/effect/floor_decal/spline/fancy{dir = 6; icon_state = "spline_fancy"},/turf/simulated/floor/wood/ebony,/area/outpost/research/anomaly_analysis)
+"mC" = (/obj/structure/stairs{dir = 4},/obj/machinery/light/colored/orange,/turf/simulated/mineral/floor/pollux,/area/quartermaster/office)
 "mG" = (/turf/simulated/wall/plastic/science,/area/janitor)
 "mI" = (/obj/effect/overlay/palmtree_r,/turf/simulated/floor/beach/sand,/area/planets/Geminus/outdoor/south)
 "mJ" = (/obj/machinery/door/airlock/maintenance{req_access = list(12); dir = 1},/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/sewer/rooms)
@@ -260,7 +270,7 @@
 "mU" = (/obj/structure/table/woodentable,/obj/effect/floor_decal/spline/fancy{dir = 1; icon_state = "spline_fancy"},/obj/machinery/photocopier/faxmachine,/turf/simulated/floor/wood/ebony,/area/outpost/research/anomaly_analysis)
 "mV" = (/obj/machinery/botany/extractor,/obj/effect/floor_decal/corner/lime{dir = 10},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "mX" = (/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
-"mY" = (/obj/structure/sign/securearea{desc = "A warning sign which reads 'MOVING PARTS'."; name = "\improper MOVING PARTS"; pixel_x = 0; pixel_y = -32},/obj/effect/floor_decal/industrial/loading{dir = 8; icon_state = "loadingarea"},/obj/machinery/light/colored/orange,/turf/simulated/floor/tiled,/area/space)
+"mY" = (/obj/structure/sign/securearea{desc = "A warning sign which reads 'MOVING PARTS'."; name = "\improper MOVING PARTS"; pixel_x = 0; pixel_y = -32},/obj/effect/floor_decal/industrial/loading{dir = 8; icon_state = "loadingarea"},/obj/machinery/light/colored/orange,/turf/simulated/floor/tiled,/area/quartermaster/office)
 "na" = (/obj/effect/floor_decal/industrial/outline/yellow,/obj/machinery/shieldwallgen,/turf/simulated/floor/tiled,/area/teleporter)
 "nd" = (/obj/effect/spider/eggcluster/small,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
 "nf" = (/obj/structure/table/standard,/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,/turf/simulated/floor/beach/sand,/area/planets/Geminus/outdoor/south)
@@ -270,12 +280,13 @@
 "np" = (/obj/machinery/suit_storage_unit/standard_unit,/obj/effect/floor_decal/corner_steel_grid/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/research_breakroom)
 "nw" = (/obj/structure/frame,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "nx" = (/obj/machinery/light/floor,/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
-"nA" = (/obj/structure/stairs{dir = 4},/obj/structure/railing{icon_state = "railing0"; dir = 1},/turf/simulated/floor/tiled/steel_grid,/area/space)
-"nD" = (/turf/simulated/floor/tiled/paleblue,/area/planets/Geminus/indoor/arrivalbus)
+"nz" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"nA" = (/obj/machinery/light/colored/orange{tag = "icon-orange1 (WEST)"; icon_state = "orange1"; dir = 2},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
+"nD" = (/obj/machinery/light{dir = 1; icon_state = "tube1"},/turf/simulated/floor/tiled/paleblue,/area/planets/Geminus/indoor/arrivalbus)
 "nH" = (/obj/effect/spider/stickyweb,/obj/effect/spider/stickyweb{icon_state = "stickyweb2"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
 "nK" = (/obj/structure/anomaly_container,/obj/effect/floor_decal/corner/white/border{dir = 10},/turf/simulated/floor/tiled/dark,/area/rnd/storage)
 "nM" = (/obj/effect/floor_decal/rust,/turf/simulated/floor/pavement/pave_tiling{outdoors = 0},/area/planets/Geminus/indoor/arrivalbus)
-"nN" = (/obj/machinery/mineral/input,/obj/effect/floor_decal/industrial/loading{dir = 4},/turf/simulated/floor/tiled,/area/space)
+"nN" = (/obj/machinery/mineral/input,/obj/effect/floor_decal/industrial/loading{dir = 4},/turf/simulated/floor/tiled,/area/quartermaster/office)
 "nO" = (/obj/machinery/light/colored/purple{dir = 8},/obj/effect/floor_decal/corner/mauve/border{dir = 4},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "nP" = (/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
 "nR" = (/obj/structure/table/reinforced,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4; health = 1e+006},/obj/effect/floor_decal/corner/paleblue/border{dir = 10},/obj/structure/flora/pottedplant/blueflower,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
@@ -285,17 +296,19 @@
 "oa" = (/obj/structure/table/glass,/obj/effect/floor_decal/corner/lime{dir = 10},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "of" = (/obj/effect/floor_decal/corner/purple/full{dir = 1},/obj/structure/sign/neon/bathrooms{pixel_x = -32},/turf/simulated/floor/tiled/dark,/area/outpost/research/hallway)
 "oi" = (/obj/effect/floor_decal/corner/mauve/border{dir = 5},/obj/effect/floor_decal/corner/white/bordercorner{dir = 8},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
+"ok" = (/obj/machinery/light/colored/orange{tag = "icon-orange1 (WEST)"; icon_state = "orange1"; dir = 2},/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "ol" = (/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/west)
 "om" = (/mob/living/simple_mob/animal/giant_spider/hunter{dir = 1},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
 "oo" = (/obj/effect/spider/stickyweb,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
-"op" = (/turf/unsimulated/wall/planetary/pollux,/area/space)
+"op" = (/turf/unsimulated/wall/planetary/pollux,/area/planets/Geminus/indoor/sewer/west)
 "os" = (/obj/structure/closet/crate/trashcart,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/west)
 "ov" = (/obj/machinery/flasher{id = "xenoflash1"; name = "Xeno Floor Mounted flash"},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
 "oy" = (/mob/living/simple_mob/animal/giant_spider/nurse{dir = 1},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "oC" = (/obj/effect/floor_decal/corner/paleblue/border{dir = 5},/obj/structure/table/reinforced,/obj/item/weapon/paper_bin,/obj/item/weapon/pen,/obj/item/weapon/pen/blue,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
-"oH" = (/obj/effect/floor_decal/corner/white/border{dir = 6},/turf/simulated/floor/tiled/dark,/area/space)
+"oH" = (/obj/effect/floor_decal/corner/white/border{dir = 6},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
+"oL" = (/obj/effect/floor_decal/corner/lightgrey/border{dir = 1},/obj/effect/floor_decal/corner/white/border,/obj/machinery/light{dir = 1; icon_state = "tube1"},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "oP" = (/turf/simulated/floor/tiled/steel_ridged,/area/planets/Geminus/indoor/sewer/west)
-"oS" = (/obj/effect/floor_decal/corner/brown/full{dir = 4},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"oS" = (/obj/effect/floor_decal/corner/brown/full{dir = 4},/obj/structure/table/reinforced,/obj/machinery/light/colored/orange{dir = 4},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "oT" = (/obj/effect/floor_decal/corner/white/border{dir = 1},/obj/effect/floor_decal/corner/white/border,/obj/machinery/vending/snack,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "oU" = (/obj/structure/table/glass,/obj/item/weapon/paper_bin{pixel_x = 1; pixel_y = 9},/obj/item/weapon/pen,/obj/effect/floor_decal/corner/lime{dir = 6},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "pg" = (/obj/structure/railing,/obj/effect/floor_decal/corner/white/border{dir = 1},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
@@ -303,11 +316,11 @@
 "pn" = (/obj/structure/table/reinforced,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/obj/effect/floor_decal/corner/paleblue/border{dir = 6},/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
 "pv" = (/obj/machinery/seed_storage/xenobotany,/turf/simulated/floor/tiled/lime,/area/rnd/xenobiology/xenoflora)
 "pw" = (/obj/machinery/door/blast/regular/open{dir = 4},/obj/effect/floor_decal/corner/white/border{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
-"pB" = (/obj/structure/railing,/obj/effect/floor_decal/corner/white/bordercorner{dir = 1},/obj/effect/floor_decal/corner/white/border{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"pB" = (/obj/structure/railing,/obj/effect/floor_decal/corner/white/bordercorner{dir = 1},/obj/effect/floor_decal/corner/white/border{dir = 4},/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "pE" = (/turf/simulated/mineral/pollux,/area/planets/Geminus/indoor/sewer/central)
 "pF" = (/obj/effect/floor_decal/corner/mauve/border,/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "pL" = (/obj/effect/decal/cleanable/blood/splatter,/turf/simulated/floor/wood{icon_state = "wood2"},/area/planets/Geminus/indoor/sewer/rooms)
-"pN" = (/obj/structure/table/standard,/turf/simulated/floor/carpet/oracarpet,/area/space)
+"pN" = (/obj/structure/table/standard,/turf/simulated/floor/carpet/oracarpet,/area/quartermaster/office)
 "pR" = (/obj/machinery/door/window/westleft{dir = 2; req_access = list(55,30)},/obj/machinery/door/window/westleft{dir = 1; health = 15000; req_access = list(55,30)},/obj/machinery/door/blast/regular{id = "xeno2"},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
 "pS" = (/obj/structure/loot_pile/maint/trash,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "pW" = (/obj/machinery/door/window/westleft{dir = 2; health = 15000; req_access = list(55,30)},/obj/machinery/door/window/westleft{dir = 1; req_access = list(55,30)},/obj/machinery/door/blast/regular{id = "xeno5"},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
@@ -315,7 +328,7 @@
 "pZ" = (/obj/structure/closet/boxinggloves,/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/central)
 "qb" = (/obj/structure/barricade,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
 "qd" = (/obj/structure/reagent_dispensers/coolanttank,/obj/machinery/light/colored/purple{dir = 8},/obj/effect/floor_decal/corner/mauve/border{dir = 4},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
-"qg" = (/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"qg" = (/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "qh" = (/obj/machinery/door/blast/regular{density = 0; icon_state = "pdoor0"; id = "rlockd"; name = "Research Lockdown"; opacity = 0; dir = 4},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "ql" = (/obj/structure/loot_pile/maint/junk,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/central)
 "qm" = (/turf/simulated/floor/beach/sand,/area/planets/Geminus/outdoor/east)
@@ -339,6 +352,7 @@
 "qX" = (/obj/structure/fence/door{dir = 8; icon_state = "door_closed"},/turf/simulated/floor/tiled/steel_ridged,/area/planets/Geminus/indoor/sewer/north)
 "rb" = (/obj/structure/closet/cabinet,/obj/item/clothing/head/welding/demon,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "re" = (/obj/machinery/light/floor,/obj/effect/floor_decal/corner/purple/full{dir = 8; icon_state = "corner_white_full"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
+"rf" = (/obj/effect/floor_decal/industrial/warning/corner{dir = 1; icon_state = "warningcorner"},/obj/machinery/light/colored/orange{dir = 4; icon_state = "orange1"; tag = "icon-orange1 (EAST)"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
 "rp" = (/obj/effect/floor_decal/industrial/warning{dir = 4},/obj/effect/spider/stickyweb{icon_state = "stickyweb2"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "rr" = (/obj/random/trash,/turf/simulated/floor/tiled/steel_ridged,/area/planets/Geminus/indoor/sewer/north)
 "ru" = (/obj/effect/floor_decal/corner/mauve/border{dir = 5},/turf/simulated/floor/tiled/neutral,/area/teleporter)
@@ -348,7 +362,7 @@
 "rH" = (/obj/structure/reagent_dispensers/coolanttank,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced,/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
 "rI" = (/obj/structure/bed/chair/wood/walnut,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "rK" = (/obj/machinery/door/airlock/maintenance,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"rL" = (/obj/structure/closet/secure_closet/freezer/fridge/stocked,/turf/simulated/floor/tiled/dark,/area/space)
+"rL" = (/obj/structure/closet/secure_closet/freezer/fridge/stocked,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "rM" = (/mob/living/simple_mob/animal/giant_spider/thermic{dir = 8},/turf/simulated/floor/outdoors/dirt,/area/planets/Geminus/indoor/sewer/south)
 "rQ" = (/obj/structure/table/steel_reinforced,/obj/machinery/door/window{dir = 2; icon_state = "right"; req_access = list(55)},/obj/structure/window/phoronreinforced{dir = 8; icon_state = "rwindow"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_storage)
 "rW" = (/obj/machinery/floodlight,/obj/effect/floor_decal/corner/white/borderfull,/turf/simulated/floor/tiled/dark,/area/rnd/storage)
@@ -356,14 +370,14 @@
 "sd" = (/obj/effect/floor_decal/industrial/warning/corner{dir = 8; icon_state = "warningcorner"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "se" = (/obj/machinery/light/small{brightness_color = "#DA0205"; brightness_power = 1; brightness_range = 5},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "sh" = (/obj/structure/table/glass/white,/obj/item/weapon/reagent_containers/spray/chemsprayer{dont_save = 1},/obj/effect/floor_decal/corner/mauve/border{dir = 10},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
-"sj" = (/obj/structure/closet/crate,/obj/effect/floor_decal/industrial/warning{dir = 8; icon_state = "warning"},/turf/simulated/floor/tiled,/area/space)
+"sj" = (/obj/structure/closet/crate,/obj/effect/floor_decal/industrial/warning{dir = 8; icon_state = "warning"},/turf/simulated/floor/tiled,/area/quartermaster/office)
 "sm" = (/obj/structure/table/reinforced,/obj/machinery/photocopier/faxmachine,/obj/effect/floor_decal/corner/mauve/border{dir = 8},/turf/simulated/floor/tiled/neutral,/area/teleporter)
 "st" = (/obj/effect/spider/stickyweb{icon_state = "stickyweb2"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "sv" = (/obj/structure/lattice,/turf/simulated/mineral/floor/pollux,/area/maintenance/asmaint)
 "sz" = (/obj/effect/spider/cocoon{icon_state = "cocoon_large2"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "sB" = (/obj/machinery/gateway{dir = 8; icon_state = "off"},/turf/simulated/floor/tiled/techfloor/grid,/area/teleporter)
 "sC" = (/obj/structure/loot_pile/surface/medicine_cabinet{pixel_x = 30},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"sF" = (/obj/machinery/conveyor{dir = 2; id = "mining_internal"},/obj/machinery/mineral/output,/turf/simulated/floor/tiled/dark,/area/space)
+"sF" = (/obj/machinery/conveyor{dir = 2; id = "mining_internal"},/obj/machinery/mineral/output,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "sG" = (/obj/effect/floor_decal/corner/mauve/border{dir = 9},/obj/effect/floor_decal/corner/white/bordercorner,/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "sI" = (/obj/machinery/light/small{dir = 4; pixel_y = 0},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "sJ" = (/obj/machinery/light/small{brightness_color = "#DA0205"; brightness_power = 1; brightness_range = 5; dir = 8},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
@@ -371,11 +385,11 @@
 "sU" = (/obj/machinery/light/colored/purple,/obj/effect/floor_decal/corner/mauve/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "sV" = (/obj/machinery/door/airlock/maintenance{req_access = list(12); dir = 1},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "tc" = (/mob/living/simple_mob/animal/giant_spider/spitter{dir = 1},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
-"tj" = (/obj/structure/table/standard,/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"tj" = (/obj/structure/table/standard,/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "tl" = (/obj/structure/bed/chair{dir = 1; icon_state = "chair_preview"},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "tm" = (/obj/effect/floor_decal/industrial/warning{dir = 5; icon_state = "warning"},/turf/simulated/floor/plating,/area/planets/Geminus/outdoor/east)
 "tp" = (/obj/effect/spider/cocoon{icon_state = "cocoon_large1"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/east)
-"tt" = (/turf/simulated/floor/beach/sand,/area/space)
+"tt" = (/turf/simulated/floor/beach/sand,/area/outpost/research/anomaly_storage)
 "tu" = (/turf/simulated/floor/water/sewer,/area/planets/Geminus/outdoor/east)
 "tv" = (/obj/effect/spider/stickyweb/dark,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
 "tw" = (/obj/effect/floor_decal/industrial/warning/corner,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
@@ -398,16 +412,16 @@
 "up" = (/obj/machinery/artifact_harvester,/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
 "uq" = (/obj/effect/floor_decal/corner/paleblue/border{dir = 10},/obj/structure/filingcabinet,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
 "ut" = (/obj/effect/wallframe_spawn,/turf/simulated/wall/plastic/science,/area/teleporter)
-"ux" = (/obj/effect/floor_decal/corner/brown{dir = 6},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"ux" = (/obj/effect/floor_decal/corner/brown{dir = 6},/obj/machinery/door/blast/gate/thin/open{dir = 2; icon_state = "shutter2_1"; id = "cargogate"; name = "cargo office gates"},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "uz" = (/obj/machinery/door/airlock/maintenance,/obj/item/tape/engineering{icon_state = "police_h_0"},/turf/simulated/floor/pavement/pave_tiling{outdoors = 0},/area/planets/Geminus/indoor/arrivalbus)
 "uA" = (/obj/effect/floor_decal/industrial/warning{dir = 4; icon_state = "warning"},/obj/structure/barricade,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
-"uB" = (/obj/machinery/mineral/stacking_machine,/turf/simulated/floor/tiled/dark,/area/space)
+"uB" = (/obj/machinery/mineral/stacking_machine,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "uF" = (/obj/structure/bed/chair/wood{dir = 4; icon_state = "wooden_chair"},/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/rooms)
 "uI" = (/turf/simulated/floor/tiled,/area/turbolift/geminus_ground_mining)
 "uV" = (/obj/structure/table/steel_reinforced,/obj/machinery/door/window{dir = 1; icon_state = "right"; req_access = list(55)},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_storage)
 "uW" = (/obj/structure/table/steel_reinforced,/obj/machinery/door/window{dir = 4},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_storage)
 "uY" = (/obj/structure/anomaly_container,/obj/effect/floor_decal/corner/white/border{dir = 1},/turf/simulated/floor/tiled/dark,/area/rnd/storage)
-"vb" = (/obj/machinery/vending/cigarette,/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"vb" = (/obj/machinery/vending/cigarette,/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "vd" = (/obj/structure/table/glass/white,/obj/item/weapon/storage/box/beakers,/obj/effect/floor_decal/corner/mauve/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "ve" = (/obj/effect/spider/stickyweb,/mob/living/simple_mob/animal/giant_spider/hunter{dir = 1},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/east)
 "vi" = (/obj/effect/overlay/palmtree_r,/turf/simulated/floor/beach/sand,/area/planets/Geminus/indoor/sewer/north)
@@ -419,7 +433,7 @@
 "vy" = (/obj/effect/floor_decal/corner/purple/full,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "vA" = (/obj/structure/stairs{dir = 8},/turf/simulated/floor/tiled,/area/planets/Geminus/indoor/sewer/rooms)
 "vD" = (/obj/effect/floor_decal/industrial/warning{dir = 8; icon_state = "warning"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
-"vF" = (/obj/effect/floor_decal/corner/brown{dir = 5},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"vF" = (/obj/effect/floor_decal/corner/brown{dir = 5},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "vH" = (/obj/machinery/power/emitter,/obj/structure/window/phoronreinforced{dir = 8; icon_state = "rwindow"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "vJ" = (/obj/machinery/door/airlock/maintenance,/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/sewer/rooms)
 "vM" = (/obj/structure/table/glass,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
@@ -432,13 +446,14 @@
 "wo" = (/obj/turbolift_map_holder/geminusmining,/turf/simulated/floor/tiled,/area/turbolift/geminus_ground_mining)
 "wp" = (/obj/effect/floor_decal/industrial/warning{dir = 9; icon_state = "warning"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
 "wq" = (/obj/structure/lattice,/obj/structure/table/standard,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/rooms)
-"wr" = (/obj/structure/bed/chair/general{dir = 1; icon_state = "chair_preview"},/turf/simulated/floor/carpet/oracarpet,/area/space)
+"wr" = (/obj/structure/bed/chair/general{dir = 1; icon_state = "chair_preview"},/turf/simulated/floor/carpet/oracarpet,/area/quartermaster/office)
 "ww" = (/turf/simulated/wall/iron,/area/planets/Geminus/indoor/sewer/rooms)
 "wC" = (/obj/effect/spider/eggcluster/small,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "wE" = (/obj/structure/table/rack,/obj/item/clothing/suit/towel,/obj/item/clothing/suit/towel,/obj/item/clothing/suit/towel,/turf/simulated/floor/tiled/white,/area/outpost/research/bathroom)
 "wH" = (/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
 "wI" = (/obj/structure/loot_pile/surface/medicine_cabinet{pixel_y = 28},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "wJ" = (/obj/machinery/portable_atmospherics/canister/empty,/obj/effect/floor_decal/corner/mauve/border,/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
+"wL" = (/obj/structure/bed/chair/general{dir = 8; icon_state = "chair_preview"},/obj/machinery/light/colored/orange{dir = 1},/turf/simulated/floor/carpet/oracarpet,/area/quartermaster/office)
 "wM" = (/obj/effect/floor_decal/industrial/warning{dir = 5; icon_state = "warning"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "wO" = (/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/central)
 "wP" = (/obj/machinery/suspension_gen,/obj/effect/floor_decal/corner/white/border,/turf/simulated/floor/tiled/dark,/area/rnd/storage)
@@ -449,9 +464,9 @@
 "xe" = (/obj/random/junk,/turf/simulated/floor/pavement/pave_tiling{outdoors = 0},/area/planets/Geminus/indoor/arrivalbus)
 "xf" = (/obj/effect/floor_decal/corner/mauve/border{dir = 6},/turf/simulated/floor/tiled/neutral,/area/teleporter)
 "xg" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/storage/box/gloves,/obj/item/weapon/storage/box/masks,/obj/item/weapon/storage/box/samplebags,/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
-"xh" = (/obj/machinery/conveyor{dir = 4; id = "mining_internal"},/obj/machinery/mineral/output,/obj/structure/sign/securearea{desc = "A warning sign which reads 'MOVING PARTS'."; name = "\improper MOVING PARTS"; pixel_x = 0; pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/space)
+"xh" = (/obj/machinery/conveyor{dir = 4; id = "mining_internal"},/obj/machinery/mineral/output,/obj/structure/sign/securearea{desc = "A warning sign which reads 'MOVING PARTS'."; name = "\improper MOVING PARTS"; pixel_x = 0; pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "xi" = (/obj/structure/table/glass,/obj/machinery/reagentgrinder,/obj/effect/floor_decal/corner/lime{dir = 6},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
-"xl" = (/obj/structure/extinguisher_cabinet{pixel_x = -5; pixel_y = 30},/obj/effect/floor_decal/industrial/warning{dir = 8; icon_state = "warning"},/turf/simulated/floor/tiled,/area/space)
+"xl" = (/obj/structure/extinguisher_cabinet{pixel_x = -5; pixel_y = 30},/obj/effect/floor_decal/industrial/warning{dir = 8; icon_state = "warning"},/obj/machinery/light/colored/orange{tag = "icon-orange1 (WEST)"; icon_state = "orange1"; dir = 1},/turf/simulated/floor/tiled,/area/quartermaster/office)
 "xn" = (/turf/simulated/mineral/pollux,/area/planets/Geminus/indoor/sewer/north)
 "xo" = (/obj/machinery/vending/wallmed2{dir = 8; pixel_x = 21},/obj/structure/table/steel_reinforced,/obj/item/weapon/reagent_containers/glass/bucket,/obj/item/weapon/reagent_containers/dropper{pixel_y = -4},/obj/effect/floor_decal/corner/purple/full{dir = 1},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "xp" = (/turf/simulated/wall/iron,/area/turbolift/geminus_subway_ground)
@@ -486,7 +501,7 @@
 "yM" = (/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "yN" = (/obj/machinery/door/airlock/vault{dir = 4},/turf/simulated/floor/tiled/dark,/area/teleporter)
 "yO" = (/turf/simulated/wall/durasteel,/area/planets/Geminus/indoor/sewer/east)
-"yS" = (/obj/effect/floor_decal/corner/white/border{dir = 4},/turf/simulated/floor/tiled/dark,/area/space)
+"yS" = (/obj/effect/floor_decal/corner/white/border{dir = 4},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "yT" = (/turf/simulated/mineral/pollux,/area/planets/Geminus/indoor/sewer/east)
 "yW" = (/obj/structure/table/steel,/obj/random/action_figure,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "zc" = (/obj/machinery/power/port_gen/pacman,/obj/effect/floor_decal/corner/mauve/border{dir = 8},/obj/effect/floor_decal/corner/white/bordercorner,/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
@@ -501,13 +516,14 @@
 "zr" = (/obj/structure/railing,/obj/effect/floor_decal/industrial/outline/yellow,/obj/machinery/shieldwallgen,/turf/simulated/floor/tiled,/area/teleporter)
 "zt" = (/obj/effect/spider/stickyweb,/turf/simulated/floor/water/sewer,/area/planets/Geminus/indoor/sewer/north)
 "zw" = (/obj/structure/window/basic,/turf/simulated/floor/beach/water/ocean,/area/rnd/xenobiology)
+"zy" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/paleblue,/area/planets/Geminus/indoor/arrivalbus)
 "zE" = (/obj/effect/floor_decal/rust,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/arrivalbus)
 "zL" = (/obj/effect/floor_decal/corner/purple{dir = 5},/turf/simulated/floor/tiled/dark,/area/outpost/research/hallway)
 "zN" = (/obj/structure/table/glass/white,/obj/item/stack/nanopaste,/obj/item/stack/nanopaste,/obj/item/stack/nanopaste,/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
 "zO" = (/obj/effect/floor_decal/corner/purple{dir = 5},/obj/structure/closet/secure_closet/hydroponics,/turf/simulated/floor/tiled/dark,/area/outpost/research/hallway)
 "zQ" = (/turf/simulated/floor/beach/water/ocean,/area/planets/Geminus/indoor/sewer/north)
 "zV" = (/obj/machinery/light/small/flicker{dir = 8; icon_state = "bulb1"},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"zY" = (/obj/effect/floor_decal/corner/brown{dir = 5},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"zY" = (/obj/effect/floor_decal/corner/brown{dir = 5},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "Ab" = (/turf/simulated/wall/plastic/science,/area/teleporter)
 "Ac" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/archaeological_find{pixel_y = 10},/obj/machinery/door/window{dir = 4},/obj/structure/window/phoronreinforced,/obj/structure/window/phoronreinforced{dir = 8; icon_state = "rwindow"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "Ad" = (/obj/machinery/door/blast/gate{dir = 2; icon_state = "shutter1"; id = null; name = "sewer gate"},/turf/simulated/floor/water/sewer,/area/planets/Geminus/indoor/sewer/north)
@@ -529,6 +545,7 @@
 "AZ" = (/obj/effect/floor_decal/industrial/warning{dir = 8; icon_state = "warning"},/mob/living/simple_mob/animal/giant_spider/hunter{dir = 8},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "Bb" = (/turf/simulated/mineral/impassable,/area/planets/Geminus/indoor/sewer/south)
 "Bc" = (/obj/structure/anomaly_container,/obj/effect/floor_decal/corner/white/border{dir = 8},/turf/simulated/floor/tiled/dark,/area/rnd/storage)
+"Bh" = (/obj/machinery/light/colored/orange{dir = 4; icon_state = "orange1"; tag = "icon-orange1 (EAST)"},/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "Bi" = (/obj/structure/barricade,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "Bl" = (/obj/structure/barricade,/obj/structure/inflatable,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
 "Bo" = (/turf/unsimulated/wall/planetary/pollux,/area/planets/Geminus/indoor/arrivalbus)
@@ -551,7 +568,7 @@
 "Ca" = (/obj/structure/bed/chair,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "Cd" = (/obj/random/trash,/obj/structure/closet/crate/trashcart,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "Ce" = (/obj/structure/window/reinforced{dir = 8; health = 1e+006},/obj/machinery/door/blast/regular{id = "xeno4"},/obj/structure/window/reinforced{maxhealth = 15000},/obj/structure/disposalpipe/segment,/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
-"Cf" = (/turf/simulated/mineral/pollux,/area/space)
+"Cf" = (/turf/simulated/mineral/pollux,/area/planets/Geminus/outdoor/east)
 "Ch" = (/turf/simulated/wall,/area/planets/Geminus/indoor/sewer/north)
 "Cj" = (/obj/machinery/light/small{dir = 1; pixel_y = 0},/obj/structure/table/steel,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "Ck" = (/mob/living/simple_mob/animal/sif/hooligan_crab{icon_state = "sif_crab"; dir = 4},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
@@ -561,14 +578,14 @@
 "Cw" = (/obj/structure/lattice,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/west)
 "Cx" = (/obj/effect/floor_decal/industrial/danger{dir = 1; icon_state = "danger"; tag = "icon-danger (NORTH)"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "Cz" = (/obj/structure/fence{dir = 1; icon_state = "straight"},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/north)
-"CA" = (/obj/effect/floor_decal/corner/brown{dir = 1; icon_state = "corner_white"},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"CA" = (/obj/effect/floor_decal/corner/brown{dir = 1; icon_state = "corner_white"},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "CB" = (/obj/item/frame/shutters/regular,/turf/simulated/floor/stairs,/area/teleporter)
 "CD" = (/obj/random/trash,/turf/simulated/floor/pavement/pave_tiling{outdoors = 0},/area/planets/Geminus/indoor/arrivalbus)
 "CG" = (/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/dirt,/obj/structure/ladder/up,/turf/simulated/floor/plating,/area/maintenance/asmaint)
 "CH" = (/obj/effect/floor_decal/spline/fancy{dir = 8; icon_state = "spline_fancy"},/turf/simulated/floor/wood,/area/rnd/xenobiology)
 "CI" = (/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "CN" = (/obj/structure/table/glass/white,/turf/simulated/floor/carpet/purcarpet,/area/rnd/xenobiology)
-"CQ" = (/obj/structure/table/reinforced,/obj/structure/window/reinforced{dir = 8},/obj/effect/floor_decal/corner/brown{dir = 9},/obj/effect/floor_decal/corner/brown{dir = 6},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"CQ" = (/obj/structure/table/reinforced,/obj/structure/window/reinforced{dir = 8},/obj/effect/floor_decal/corner/brown{dir = 9},/obj/effect/floor_decal/corner/brown{dir = 6},/obj/machinery/button/remote/blast_door{id = "cargogate"; name = "cargo office gate"; pixel_y = 2; req_access = list(50)},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "CZ" = (/turf/simulated/wall,/area/rnd/xenobiology)
 "Dk" = (/obj/effect/spider/stickyweb,/obj/effect/spider/stickyweb,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "Dm" = (/obj/effect/floor_decal/corner/mauve/bordercorner{dir = 1},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
@@ -579,10 +596,11 @@
 "Dz" = (/obj/machinery/door/window/westleft{dir = 2; health = 15000; req_access = list(55,30)},/obj/machinery/door/window/westleft{dir = 1; req_access = list(55,30)},/obj/machinery/door/blast/regular{id = "xeno4"},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
 "DC" = (/obj/structure/window/reinforced{dir = 4; health = 1e+006},/obj/machinery/door/blast/regular{id = "xeno6"},/obj/structure/window/reinforced{maxhealth = 15000},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
 "DD" = (/turf/simulated/floor/water{color = "#049660"; name = "green toxic waste"},/area/planets/Geminus/indoor/sewer/south)
-"DF" = (/obj/effect/floor_decal/corner/brown{dir = 8},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"DF" = (/obj/effect/floor_decal/corner/brown{dir = 8},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "DH" = (/obj/structure/loot_pile/surface/bones,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
 "DJ" = (/obj/effect/floor_decal/industrial/warning{dir = 4},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "DK" = (/obj/random/junk,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
+"DN" = (/obj/effect/floor_decal/corner/brown{dir = 6},/obj/structure/table/reinforced,/obj/machinery/recharger,/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "DP" = (/obj/machinery/flasher{id = "xenoflash4"; name = "Xeno Floor Mounted flash"},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
 "DU" = (/obj/effect/floor_decal/industrial/warning{dir = 6; icon_state = "warning"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
 "Ee" = (/obj/structure/bed/chair/sofa/brown,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/rooms)
@@ -590,7 +608,7 @@
 "Eg" = (/obj/machinery/light/small/flicker{dir = 1},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/rooms)
 "Ek" = (/obj/machinery/light/small{dir = 4},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/north)
 "Ep" = (/obj/structure/bookcase/manuals/xenoarchaeology,/obj/effect/floor_decal/spline/fancy{dir = 9; icon_state = "spline_fancy"},/turf/simulated/floor/wood/ebony,/area/outpost/research/anomaly_analysis)
-"Ew" = (/obj/structure/table/reinforced,/turf/simulated/floor/tiled/dark,/area/space)
+"Ew" = (/obj/structure/table/reinforced,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "Ey" = (/mob/living/simple_mob/animal/giant_spider/carrier,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/east)
 "EA" = (/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/west)
 "EJ" = (/obj/structure/fence/door{dir = 8; icon_state = "door_closed"},/turf/simulated/floor/tiled/steel_ridged,/area/planets/Geminus/indoor/sewer/central)
@@ -599,28 +617,29 @@
 "ES" = (/obj/effect/spider/cocoon{icon_state = "cobweb1"},/obj/effect/spider/stickyweb/dark,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/east)
 "EX" = (/obj/effect/floor_decal/industrial/warning{dir = 4; icon_state = "warning"},/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "EY" = (/obj/structure/filingcabinet,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"Fa" = (/obj/effect/floor_decal/corner/white/bordercorner{dir = 1},/obj/effect/floor_decal/corner/white/border{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"Fa" = (/obj/effect/floor_decal/corner/white/bordercorner{dir = 1},/obj/effect/floor_decal/corner/white/border{dir = 4},/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Fb" = (/obj/effect/floor_decal/industrial/warning{dir = 2},/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "Fd" = (/obj/effect/floor_decal/corner/paleblue/bordercorner{dir = 8},/obj/machinery/modular_computer/console/preset/security{dir = 4; icon_state = "console"},/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
 "Fe" = (/obj/effect/floor_decal/industrial/warning{dir = 2; icon_state = "warning"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
 "Fh" = (/obj/structure/barricade,/obj/structure/inflatable,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"Fs" = (/obj/machinery/conveyor{dir = 2; id = "mining_internal"},/turf/simulated/floor/tiled/dark,/area/space)
+"Fq" = (/obj/effect/floor_decal/corner/brown{dir = 6},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
+"Fs" = (/obj/machinery/conveyor{dir = 2; id = "mining_internal"},/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "Fv" = (/obj/machinery/radiocarbon_spectrometer,/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
 "Fw" = (/obj/structure/bed/chair/sofa/right{dir = 4; icon_state = "sofaend_right"},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"FA" = (/obj/effect/floor_decal/corner/white/border{dir = 1},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/arrivalbus)
+"FA" = (/obj/effect/floor_decal/corner/white/border{dir = 1},/obj/structure/railing,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "FF" = (/obj/structure/mirror{pixel_y = 5},/turf/simulated/wall/iron,/area/planets/Geminus/indoor/arrivalbus)
 "FI" = (/obj/effect/floor_decal/corner/mauve/border{dir = 6},/obj/effect/floor_decal/corner/white/bordercorner{dir = 1},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "FJ" = (/obj/machinery/light/small{brightness_color = "#DA0205"; brightness_power = 1; brightness_range = 5; dir = 8},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/west)
 "FK" = (/obj/structure/bed/chair/comfy/purp{dir = 8},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "FL" = (/obj/structure/bed/chair/general{dir = 4; icon_state = "chair_preview"},/turf/simulated/floor/pavement/pave_tiling,/area/planets/Geminus/outdoor/east)
 "FM" = (/obj/structure/table/rack,/obj/machinery/light/small{dir = 4; pixel_y = 0},/obj/effect/floor_decal/corner/white/borderfull,/turf/simulated/floor/tiled/dark,/area/rnd/storage)
-"FR" = (/obj/effect/floor_decal/corner/brown/full{dir = 8},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"FR" = (/obj/effect/floor_decal/corner/brown/full{dir = 8},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "FW" = (/obj/effect/floor_decal/industrial/warning{dir = 8; icon_state = "warning"},/mob/living/simple_mob/animal/giant_spider/spitter,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "Ga" = (/obj/effect/floor_decal/corner/paleblue/border{dir = 1},/obj/structure/table/reinforced,/obj/machinery/photocopier/faxmachine,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
 "Gb" = (/obj/machinery/light/colored/purple{dir = 1},/obj/effect/floor_decal/corner_steel_grid/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/research_breakroom)
 "Gc" = (/mob/living/simple_mob/animal/giant_spider/mindweaver,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/west)
 "Gd" = (/obj/machinery/shower{pixel_y = 15},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
-"Gj" = (/obj/effect/floor_decal/corner/brown{dir = 4},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"Gj" = (/obj/effect/floor_decal/corner/brown{dir = 4},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "Gk" = (/mob/living/simple_mob/animal/giant_spider/spitter{dir = 8},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
 "Gq" = (/obj/machinery/artifact_scanpad,/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
 "Gs" = (/obj/machinery/light/small{dir = 4},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/west)
@@ -629,7 +648,7 @@
 "Gw" = (/turf/simulated/floor/water,/area/planets/Geminus/indoor/sewer/central)
 "GD" = (/obj/structure/table/steel_reinforced,/obj/machinery/door/window{dir = 4},/obj/item/weapon/archaeological_find{pixel_y = 10},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_storage)
 "GF" = (/obj/structure/barricade,/obj/structure/inflatable,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
-"GH" = (/obj/machinery/mineral/processing_unit,/turf/simulated/floor/tiled/dark,/area/space)
+"GH" = (/obj/machinery/mineral/processing_unit,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "GJ" = (/obj/effect/spider/cocoon{icon_state = "cocoon2"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/east)
 "GN" = (/turf/simulated/floor/plating/maglev{dir = 8; icon_state = "maglev"},/area/shuttle/arrival/station)
 "GO" = (/obj/turbolift_map_holder,/turf/simulated/floor/tiled,/area/turbolift/geminus_subway_ground)
@@ -649,14 +668,14 @@
 "Hy" = (/obj/structure/table/wooden_reinforced,/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/rooms)
 "HC" = (/turf/simulated/wall,/area/planets/Geminus/indoor/sewer/east)
 "HD" = (/turf/simulated/wall/plastic/science{color = ""},/area/outpost/research/hallway)
-"HE" = (/obj/machinery/conveyor{dir = 8; id = "mining_internal"},/obj/structure/plasticflaps,/turf/simulated/floor/tiled/dark,/area/space)
+"HE" = (/obj/machinery/conveyor{dir = 8; id = "mining_internal"},/obj/structure/plasticflaps,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "HG" = (/mob/living/simple_mob/animal/sif/hooligan_crab{icon_state = "sif_crab"; dir = 4},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/north)
 "HK" = (/obj/structure/table/glass/white,/obj/item/weapon/storage/pill_bottle/rezadone,/obj/item/weapon/storage/pill_bottle/rezadone,/obj/effect/floor_decal/corner/mauve/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
-"HS" = (/obj/structure/bed/chair/general{dir = 8; icon_state = "chair_preview"},/turf/simulated/floor/carpet/oracarpet,/area/space)
+"HS" = (/obj/structure/bed/chair/general{dir = 8; icon_state = "chair_preview"},/turf/simulated/floor/carpet/oracarpet,/area/quartermaster/office)
 "HV" = (/obj/machinery/light/small{dir = 4; pixel_y = 8},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/north)
 "HW" = (/obj/structure/window/reinforced{dir = 1},/obj/machinery/gateway{dir = 1; icon_state = "off"},/turf/simulated/floor/tiled/techfloor/grid,/area/teleporter)
-"HZ" = (/obj/structure/stairs{dir = 4},/turf/simulated/mineral/floor/pollux,/area/space)
-"Io" = (/obj/machinery/autolathe,/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"HZ" = (/obj/structure/stairs{dir = 4},/turf/simulated/mineral/floor/pollux,/area/quartermaster/office)
+"Io" = (/obj/machinery/autolathe,/obj/machinery/light/colored/orange{tag = "icon-orange1 (WEST)"; icon_state = "orange1"; dir = 8},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "Ip" = (/obj/structure/reagent_dispensers/fueltank,/obj/effect/floor_decal/corner_steel_grid/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/research_breakroom)
 "Is" = (/obj/structure/catwalk,/obj/structure/railing,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/central)
 "Iu" = (/obj/effect/floor_decal/corner/mauve/border,/turf/simulated/floor/tiled/neutral,/area/teleporter)
@@ -670,10 +689,10 @@
 "IR" = (/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/arrivalbus)
 "IV" = (/obj/structure/disposalpipe/trunk{dir = 1; icon_state = "pipe-t"},/obj/structure/disposaloutlet{density = 0; dir = 8; name = "slime disposal outlet"; pixel_x = 10},/obj/machinery/light/colored/purple,/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
 "IX" = (/obj/structure/disposaloutlet{density = 0; dir = 8; name = "slime disposal outlet"; pixel_x = 10},/obj/structure/disposalpipe/trunk,/obj/machinery/light/colored/purple{dir = 1; icon_state = "purple1"; tag = "icon-purple1 (NORTH)"},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
-"Jf" = (/turf/simulated/wall/plastic/science{color = ""},/area/space)
+"Jf" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Jh" = (/turf/simulated/floor/water,/area/planets/Geminus/outdoor/east)
 "Ji" = (/obj/effect/floor_decal/industrial/danger,/obj/effect/floor_decal/corner/purple{dir = 4},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
-"Jm" = (/obj/effect/floor_decal/corner/white/border{dir = 6},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"Jm" = (/obj/effect/floor_decal/corner/white/border{dir = 6},/obj/machinery/light{dir = 1; icon_state = "tube1"},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Jq" = (/obj/machinery/light/small{dir = 4},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "Jr" = (/obj/effect/floor_decal/rust,/obj/machinery/light/small/emergency{dir = 4; icon_state = "bulb1"},/turf/simulated/floor/pavement/pave_tiling{outdoors = 0},/area/planets/Geminus/indoor/arrivalbus)
 "Jt" = (/obj/effect/floor_decal/corner/white/bordercorner,/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
@@ -683,23 +702,27 @@
 "JD" = (/obj/structure/catwalk,/obj/structure/railing{dir = 1; icon_state = "railing0"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "JE" = (/obj/structure/table/standard,/obj/item/weapon/hand_tele{dont_save = 1},/obj/effect/floor_decal/corner_steel_grid/full,/turf/simulated/floor/tiled/dark,/area/teleporter)
 "JI" = (/obj/structure/sign/warning/secure_area,/turf/simulated/wall/plastic/science,/area/teleporter)
-"JL" = (/turf/simulated/mineral/floor/pollux,/area/space)
+"JL" = (/turf/simulated/mineral/floor/pollux,/area/quartermaster/office)
 "JN" = (/obj/structure/fence,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/north)
+"JQ" = (/obj/machinery/door/airlock/glass_mining{name = "Factory Office"; req_access = list(50)},/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "JS" = (/obj/machinery/door/airlock/maintenance{req_access = list(12); dir = 1},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/rooms)
 "JT" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/archaeological_find{pixel_y = 10},/obj/machinery/door/window{dir = 8; icon_state = "right"; req_access = list(65)},/obj/structure/window/phoronreinforced{dir = 4; icon_state = "rwindow"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "JU" = (/obj/structure/table/woodentable_reinforced,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "JV" = (/obj/effect/spider/stickyweb{icon_state = "stickyweb2"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
-"Kc" = (/obj/effect/wallframe_spawn/phoron,/turf/simulated/floor/tiled/dark,/area/space)
+"Kb" = (/obj/structure/ore_box,/turf/simulated/floor/tiled,/area/quartermaster/office)
+"Kc" = (/obj/effect/wallframe_spawn/phoron,/turf/simulated/floor/tiled/dark,/area/outpost/research/hallway)
 "Ke" = (/obj/structure/table/glass/white,/obj/item/device/slime_scanner,/obj/item/device/slime_scanner,/obj/effect/floor_decal/corner/mauve/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "Kf" = (/obj/effect/floor_decal/corner/purple{dir = 10},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "Kk" = (/obj/structure/railing{dir = 8; icon_state = "railing0"; tag = "icon-railing0 (WEST)"},/obj/machinery/door/blast/regular/open{dir = 4},/obj/effect/floor_decal/corner/white/bordercorner,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Km" = (/obj/structure/table/glass/white,/obj/item/weapon/storage/box/monkeycubes{dont_save = 1},/obj/item/weapon/storage/box/monkeycubes{dont_save = 1},/obj/item/weapon/storage/box/monkeycubes{dont_save = 1},/obj/item/weapon/storage/box/monkeycubes{dont_save = 1},/obj/machinery/light/colored/purple{dir = 4},/obj/effect/floor_decal/corner/mauve/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "Ko" = (/obj/random/mob/spider/mutant,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
+"Ku" = (/obj/machinery/light/colored/orange{dir = 1},/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "Kw" = (/obj/structure/closet/l3closet/scientist/double,/obj/item/weapon/tank/air,/obj/effect/floor_decal/corner/mauve/border{dir = 8},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "Ky" = (/obj/structure/barricade,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
+"Kz" = (/obj/effect/floor_decal/corner/white/border{dir = 10},/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "KE" = (/obj/structure/bed/chair/general{dir = 1; icon_state = "chair_preview"},/obj/effect/floor_decal/corner/white/border{dir = 1},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "KJ" = (/obj/structure/lattice,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/rooms)
-"KK" = (/turf/simulated/floor/tiled,/area/space)
+"KK" = (/turf/simulated/floor/tiled,/area/quartermaster/office)
 "KL" = (/obj/structure/closet,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "KO" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/archaeological_find{pixel_y = 10},/obj/structure/window/phoronreinforced{dir = 1; icon_state = "rwindow"},/obj/machinery/door/window{dir = 4},/obj/structure/window/phoronreinforced{dir = 8; icon_state = "rwindow"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "KP" = (/turf/simulated/wall/plastic/science,/area/rnd/research_breakroom)
@@ -711,13 +734,13 @@
 "Lc" = (/turf/simulated/floor/plating{icon_state = "asteroidplating2"},/area/planets/Geminus/indoor/sewer/south)
 "Lf" = (/obj/machinery/hologram/holopad,/obj/effect/floor_decal/corner/lime/borderfull,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "Lh" = (/obj/machinery/door/airlock/maintenance/common{dir = 4},/obj/item/tape/engineering{icon_state = "police_h_0"; dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
-"Lj" = (/obj/effect/floor_decal/corner/brown{dir = 10},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"Lj" = (/obj/effect/floor_decal/corner/brown{dir = 10},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "Lm" = (/mob/living/simple_mob/animal/giant_spider/thermic{dir = 1},/turf/simulated/floor/outdoors/dirt,/area/planets/Geminus/indoor/sewer/south)
 "Lo" = (/obj/structure/catwalk,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/central)
-"Lq" = (/obj/structure/table/reinforced,/obj/machinery/microwave,/turf/simulated/floor/tiled/dark,/area/space)
+"Lq" = (/obj/structure/table/reinforced,/obj/machinery/microwave,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "Lt" = (/obj/structure/table/glass,/obj/machinery/reagentgrinder,/obj/effect/floor_decal/corner/lime{dir = 9},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
 "Lv" = (/obj/structure/catwalk,/obj/structure/railing,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
-"Lz" = (/obj/machinery/conveyor{dir = 4; id = "mining_internal"},/obj/structure/plasticflaps/mining,/turf/simulated/floor/tiled/dark,/area/space)
+"Lz" = (/obj/machinery/conveyor{dir = 4; id = "mining_internal"},/obj/structure/plasticflaps/mining,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "LB" = (/obj/effect/floor_decal/industrial/warning{dir = 1; icon_state = "warning"},/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "LJ" = (/obj/structure/bed/chair/office/dark{dir = 4},/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
 "LK" = (/obj/structure/loot_pile/maint,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
@@ -738,18 +761,21 @@
 "ME" = (/obj/structure/reagent_dispensers/coolanttank,/obj/effect/floor_decal/corner/mauve/border{dir = 5},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "MG" = (/obj/effect/floor_decal/industrial/warning{dir = 9},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/central)
 "MI" = (/obj/structure/table/steel_reinforced,/obj/item/clothing/mask/stone,/obj/machinery/door/window/northleft,/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
-"MJ" = (/obj/machinery/conveyor{dir = 9; id = "mining_internal"},/obj/machinery/mineral/output,/turf/simulated/floor/tiled/dark,/area/space)
+"MJ" = (/obj/machinery/conveyor{dir = 9; id = "mining_internal"},/obj/machinery/mineral/output,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "MM" = (/obj/structure/bookcase,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "MP" = (/obj/machinery/light/colored/purple{dir = 1; icon_state = "purple1"; tag = "icon-purple1 (NORTH)"},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
-"MT" = (/turf/simulated/wall/iron,/area/space)
+"MR" = (/obj/effect/floor_decal/corner/white/border{dir = 6},/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"MT" = (/turf/simulated/wall/iron,/area/lots/business/business_lot_one)
 "MV" = (/obj/structure/loot_pile/mecha,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
+"MX" = (/obj/item/weapon/reagent_containers/food/drinks/bottle/holywater{desc = "NT branded Bath water from CEO Akiko Nishimura"; name = "Flask of akiko bathwater"},/obj/effect/spider/stickyweb{icon_state = "stickyweb2"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
+"Nd" = (/obj/machinery/light/colored/orange{dir = 4; icon_state = "orange1"; tag = "icon-orange1 (EAST)"},/turf/simulated/floor/carpet/oracarpet,/area/quartermaster/office)
 "Ni" = (/turf/simulated/wall/iron,/area/outpost/research/anomaly_storage)
 "Nl" = (/obj/structure/loot_pile/surface/medicine_cabinet{pixel_y = 28},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/central)
 "No" = (/obj/effect/floor_decal/industrial/danger,/obj/effect/floor_decal/corner/purple{dir = 1; icon_state = "corner_white"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "Np" = (/obj/effect/wallframe_spawn/phoron,/turf/simulated/wall/plastic/science{color = ""},/area/outpost/research/anomaly_analysis)
 "Nq" = (/obj/effect/spider/stickyweb/dark,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/east)
 "Nr" = (/obj/effect/floor_decal/rust,/obj/random/junk,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/arrivalbus)
-"Nt" = (/obj/effect/floor_decal/corner/white/border{dir = 1},/obj/effect/floor_decal/corner/white/bordercorner{dir = 8},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"Nt" = (/obj/effect/floor_decal/corner/white/border{dir = 1},/obj/effect/floor_decal/corner/white/bordercorner{dir = 8},/obj/machinery/light{dir = 1; icon_state = "tube1"},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Nu" = (/obj/effect/floor_decal/corner/purple{dir = 5},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "Nv" = (/obj/effect/floor_decal/industrial/warning{dir = 8},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "Nw" = (/obj/effect/spider/stickyweb{icon_state = "stickyweb2"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
@@ -767,12 +793,13 @@
 "NX" = (/obj/effect/spider/cocoon{icon_state = "cocoon_large1"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "NZ" = (/obj/structure/table/glass/white,/obj/item/weapon/storage/box/syringes,/obj/effect/floor_decal/corner/mauve/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "Oa" = (/obj/effect/spider/cocoon{icon_state = "cocoon_large3"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
+"Oe" = (/obj/effect/floor_decal/corner/brown{dir = 9},/obj/machinery/door/blast/gate/thin/open{dir = 2; icon_state = "shutter2_1"; id = "cargogate"; name = "cargo office gates"},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "Of" = (/mob/living/simple_mob/animal/giant_spider/hunter{dir = 8},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "Og" = (/mob/living/simple_mob/animal/giant_spider{dir = 1},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
 "Oh" = (/obj/effect/floor_decal/industrial/danger/corner{dir = 8; icon_state = "dangercorner"; tag = "icon-dangercorner (WEST)"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "Ol" = (/obj/effect/floor_decal/industrial/warning{dir = 1; icon_state = "warning"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "Os" = (/obj/structure/sink{dir = 8; icon_state = "sink"; pixel_x = -12; pixel_y = 0},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"Ou" = (/obj/effect/floor_decal/corner/brown,/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"Ou" = (/obj/effect/floor_decal/corner/brown,/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "Ov" = (/turf/simulated/wall,/area/planets/Geminus/indoor/sewer/south)
 "Oz" = (/obj/structure/bed/chair/sofa/brown/corner{dir = 1},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/rooms)
 "OA" = (/obj/machinery/cell_charger,/obj/item/weapon/screwdriver{pixel_y = 15},/obj/item/weapon/melee/baton/loaded,/obj/item/weapon/anobattery,/obj/item/weapon/anobattery,/obj/structure/table/steel_reinforced,/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
@@ -783,16 +810,18 @@
 "OG" = (/obj/structure/bed/chair/wood,/turf/simulated/floor/wood{icon_state = "wood2"},/area/planets/Geminus/indoor/sewer/rooms)
 "OH" = (/obj/machinery/door/airlock/glass_civilian{name = "Kiel Metro Public Restroom"},/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/arrivalbus)
 "OS" = (/mob/living/simple_mob/animal/giant_spider/tunneler{dir = 4},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
+"OW" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/lime,/area/planets/Geminus/indoor/arrivalbus)
 "OX" = (/obj/machinery/door/airlock/multi_tile/research{dir = 8; name = "Xenobiology Lab"; req_access = list(55)},/obj/machinery/door/blast/regular{density = 0; icon_state = "pdoor0"; id = "rlockd"; name = "Research Lockdown"; opacity = 0; dir = 4},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "OZ" = (/turf/simulated/floor/water/sewer,/area/planets/Geminus/indoor/sewer/east)
 "Pa" = (/obj/structure/catwalk,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
 "Pc" = (/obj/effect/floor_decal/industrial/warning{dir = 8; icon_state = "warning"},/obj/effect/spider/stickyweb{icon_state = "stickyweb2"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "Pg" = (/obj/structure/table/steel,/obj/random/toolbox,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/sewer/rooms)
+"Ph" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/paleblue,/area/planets/Geminus/indoor/arrivalbus)
 "Pi" = (/obj/structure/window/basic{dir = 8},/obj/structure/window/basic,/turf/simulated/floor/beach/water/ocean,/area/rnd/xenobiology)
-"Po" = (/obj/effect/floor_decal/corner/white/border{dir = 5},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"Po" = (/obj/effect/floor_decal/corner/white/border{dir = 5},/obj/machinery/light,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Pv" = (/obj/structure/bed/chair/general{dir = 8; icon_state = "chair_preview"},/obj/effect/floor_decal/corner/white/border{dir = 8},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Pz" = (/obj/effect/floor_decal/industrial/warning{dir = 4},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
-"PD" = (/obj/effect/floor_decal/corner/white/border{dir = 9},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"PD" = (/obj/effect/floor_decal/corner/white/border{dir = 9},/obj/machinery/light,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "PF" = (/turf/simulated/wall/plastic/science,/area/outpost/research/tempstorage)
 "PG" = (/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "PI" = (/obj/effect/floor_decal/corner_steel_grid/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/research_breakroom)
@@ -803,11 +832,11 @@
 "PX" = (/obj/effect/floor_decal/corner/lightgrey/border{dir = 1},/obj/effect/floor_decal/corner/white/border,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Qb" = (/obj/structure/loot_pile/surface/medicine_cabinet{pixel_x = 30},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/north)
 "Qc" = (/turf/simulated/floor/tiled/neutral,/area/teleporter)
-"Qf" = (/obj/structure/toilet{dir = 4},/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/arrivalbus)
-"Ql" = (/obj/machinery/mineral/stacking_unit_console,/turf/simulated/wall,/area/space)
+"Qf" = (/obj/structure/toilet{dir = 4},/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/arrivalbus)
+"Ql" = (/obj/machinery/mineral/stacking_unit_console,/turf/simulated/wall,/area/quartermaster/office)
 "Qo" = (/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/north)
 "Qq" = (/obj/effect/floor_decal/corner/paleblue/border{dir = 6},/obj/structure/closet/crate/secure/bin,/turf/simulated/floor/tiled/dark,/area/planets/Geminus/indoor/arrivalbus)
-"Qt" = (/obj/effect/floor_decal/corner/white/bordercorner{dir = 8},/obj/effect/floor_decal/corner/white/border{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"Qt" = (/obj/effect/floor_decal/corner/white/bordercorner{dir = 8},/obj/effect/floor_decal/corner/white/border{dir = 4},/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Qu" = (/obj/machinery/smartfridge/secure/extract,/obj/effect/floor_decal/corner/mauve/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "Qx" = (/obj/effect/spider/cocoon{icon_state = "cocoon_large2"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
 "QE" = (/turf/simulated/floor/water/sewer,/area/planets/Geminus/indoor/sewer/north)
@@ -815,32 +844,33 @@
 "QP" = (/obj/structure/stairs/east,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "QQ" = (/obj/structure/table/steel_reinforced,/obj/machinery/door/window{dir = 1; icon_state = "right"; req_access = list(65)},/obj/random/tool/alien,/obj/effect/floor_decal/corner/purple{dir = 10},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "QV" = (/obj/effect/spider/stickyweb{icon_state = "stickyweb2"},/turf/simulated/mineral/pollux,/area/planets/Geminus/indoor/sewer/south)
-"QX" = (/obj/effect/floor_decal/industrial/warning{dir = 1; icon_state = "warning"},/obj/machinery/power/apc{dir = 1; name = "north bump"; pixel_x = 0; pixel_y = 24},/turf/simulated/floor/tiled,/area/space)
+"QX" = (/obj/effect/floor_decal/industrial/warning{dir = 1; icon_state = "warning"},/obj/machinery/power/apc{dir = 1; name = "north bump"; pixel_x = 0; pixel_y = 24},/turf/simulated/floor/tiled,/area/quartermaster/office)
 "QZ" = (/obj/structure/lattice,/obj/random/trash,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/rooms)
 "Ra" = (/mob/living/simple_mob/animal/sif/hooligan_crab{icon_state = "sif_crab"; dir = 1},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "Rb" = (/obj/effect/floor_decal/industrial/warning/corner,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/central)
 "Rc" = (/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "Rg" = (/obj/structure/fence/end{dir = 4},/turf/simulated/floor/tiled/steel_ridged,/area/planets/Geminus/indoor/sewer/north)
 "Ri" = (/obj/machinery/door/airlock/multi_tile/research{name = "Xenobiology Lab"; req_access = list(55)},/obj/effect/floor_decal/corner/mauve/border{dir = 1},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
-"Rj" = (/obj/structure/ore_box,/turf/simulated/floor/tiled,/area/space)
+"Rj" = (/obj/structure/ore_box,/obj/machinery/light/colored/orange{tag = "icon-orange1 (WEST)"; icon_state = "orange1"; dir = 1},/turf/simulated/floor/tiled,/area/quartermaster/office)
 "Rk" = (/obj/effect/spider/cocoon{icon_state = "cocoon_large3"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "Rn" = (/turf/simulated/wall,/area/janitor)
 "Rp" = (/obj/structure/table/steel,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "Ru" = (/mob/living/simple_mob/animal/giant_spider/webslinger{dir = 1},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "RA" = (/turf/simulated/wall/plastic/science,/area/outpost/research/anomaly_analysis)
-"RB" = (/obj/machinery/conveyor{dir = 4; id = "mining_internal"},/turf/simulated/floor/tiled/dark,/area/space)
+"RB" = (/obj/machinery/conveyor{dir = 4; id = "mining_internal"},/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "RC" = (/obj/effect/floor_decal/industrial/warning/corner{dir = 4},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/central)
 "RF" = (/obj/structure/table/steel_reinforced,/obj/item/weapon/archaeological_find{pixel_y = 10},/obj/machinery/door/window{dir = 4},/obj/structure/window/phoronreinforced{dir = 8; icon_state = "rwindow"},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
+"RH" = (/obj/effect/floor_decal/corner/brown/full{dir = 1},/obj/structure/table/reinforced,/obj/machinery/light/colored/orange{dir = 4},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "RI" = (/mob/living/simple_mob/animal/giant_spider/carrier{dir = 4},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
 "RJ" = (/obj/structure/table/steel,/obj/random/trash,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"RM" = (/turf/simulated/floor/tiled/dark,/area/space)
+"RM" = (/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "Sb" = (/obj/structure/closet/secure_closet/xenoarchaeologist,/obj/effect/floor_decal/corner/purple{dir = 5},/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
 "Sg" = (/obj/machinery/light/colored/purple{dir = 1},/obj/effect/floor_decal/corner/mauve/diagonal,/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "Sh" = (/obj/structure/loot_pile/surface/bones,/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "Sm" = (/obj/structure/fence{dir = 8; icon_state = "straight"},/turf/simulated/floor/beach/sand,/area/planets/Geminus/outdoor/east)
 "Sq" = (/obj/structure/fence/end,/turf/simulated/floor/tiled/steel_ridged,/area/planets/Geminus/indoor/sewer/central)
-"St" = (/obj/structure/table/reinforced,/obj/item/weapon/material/knife,/turf/simulated/floor/tiled/dark,/area/space)
-"Su" = (/obj/structure/table/reinforced,/obj/machinery/cash_register/cargo{dir = 4; icon_state = "register_idle"},/obj/machinery/door/window/westleft{dir = 8; name = "Mining Desk"},/obj/effect/floor_decal/corner/brown{dir = 9},/obj/effect/floor_decal/corner/brown{dir = 6},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"St" = (/obj/structure/table/reinforced,/obj/item/weapon/material/knife,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
+"Su" = (/obj/structure/table/reinforced,/obj/machinery/cash_register/cargo{dir = 4; icon_state = "register_idle"},/obj/machinery/door/window/westleft{dir = 8; name = "Mining Desk"; req_access = list(50)},/obj/effect/floor_decal/corner/brown{dir = 9},/obj/effect/floor_decal/corner/brown{dir = 6},/obj/machinery/light/colored/orange{dir = 1},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "Sy" = (/obj/effect/floor_decal/corner/white/border{dir = 8},/obj/effect/floor_decal/corner/white/border{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Sz" = (/obj/structure/catwalk,/obj/structure/railing{dir = 8; icon_state = "railing0"; tag = "icon-railing0 (WEST)"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
 "SI" = (/obj/structure/table/standard,/turf/simulated/floor/tiled/dark,/area/teleporter)
@@ -854,7 +884,7 @@
 "Te" = (/obj/structure/window/reinforced{dir = 1; maxhealth = 15000},/obj/structure/window/reinforced{dir = 4; health = 1e+006},/obj/machinery/door/blast/regular{id = "xeno1"},/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
 "Th" = (/obj/structure/fence{dir = 8; icon_state = "straight"},/turf/simulated/floor/water,/area/planets/Geminus/outdoor/east)
 "Ti" = (/turf/simulated/floor/tiled/white,/area/outpost/research/bathroom)
-"Tl" = (/turf/simulated/wall,/area/space)
+"Tl" = (/turf/simulated/wall,/area/quartermaster/office)
 "Tm" = (/obj/machinery/light/colored/purple,/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
 "To" = (/obj/structure/table/glass/white,/obj/item/weapon/clipboard,/obj/item/weapon/pen,/turf/simulated/floor/carpet/purcarpet,/area/rnd/xenobiology)
 "Tq" = (/obj/effect/spider/cocoon{icon_state = "cocoon2"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
@@ -870,11 +900,11 @@
 "TQ" = (/obj/structure/table/reinforced,/obj/effect/floor_decal/corner/mauve/border{dir = 8},/turf/simulated/floor/tiled/neutral,/area/teleporter)
 "TR" = (/obj/structure/bed/chair/general{dir = 8; icon_state = "chair_preview"},/turf/simulated/floor/pavement/pave_tiling,/area/planets/Geminus/outdoor/east)
 "TT" = (/turf/simulated/floor/plating/maglev{dir = 8; icon_state = "maglev"},/area/planets/Geminus/indoor/arrivalbus)
-"TV" = (/obj/structure/table/standard,/obj/structure/reagent_dispensers/beerkeg,/turf/simulated/floor/carpet/oracarpet,/area/space)
+"TV" = (/obj/structure/table/standard,/obj/structure/reagent_dispensers/beerkeg,/turf/simulated/floor/carpet/oracarpet,/area/quartermaster/office)
 "TZ" = (/obj/machinery/door/blast/regular/open{dir = 4},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Uc" = (/obj/machinery/light/small,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "Uf" = (/obj/effect/floor_decal/industrial/warning{dir = 1; icon_state = "warning"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
-"Ui" = (/obj/effect/floor_decal/corner/white/border{dir = 1},/obj/effect/floor_decal/corner/white/bordercorner,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"Ui" = (/obj/effect/floor_decal/corner/white/border{dir = 1},/obj/effect/floor_decal/corner/white/bordercorner,/obj/machinery/light{dir = 1; icon_state = "tube1"},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Uj" = (/obj/structure/catwalk,/obj/structure/railing{dir = 1; icon_state = "railing0"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/central)
 "Uk" = (/mob/living/simple_mob/animal/giant_spider/carrier{dir = 1},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/south)
 "Uq" = (/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/central)
@@ -885,9 +915,9 @@
 "UL" = (/obj/structure/bed/chair/office/dark{dir = 1},/turf/simulated/floor/carpet/purcarpet,/area/rnd/xenobiology)
 "UN" = (/mob/living/simple_mob/animal/giant_spider/nurse{dir = 4},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/north)
 "UP" = (/obj/machinery/power/emitter{dir = 8; icon_state = "emitter"},/obj/effect/floor_decal/corner/mauve/border{dir = 4},/obj/effect/floor_decal/corner/white/bordercorner{dir = 1},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
-"UR" = (/obj/structure/table/standard,/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,/turf/simulated/floor/carpet/oracarpet,/area/space)
+"UR" = (/obj/structure/table/standard,/obj/item/weapon/reagent_containers/food/drinks/bottle/small/beer,/turf/simulated/floor/carpet/oracarpet,/area/quartermaster/office)
 "US" = (/obj/machinery/light/small,/obj/structure/closet/crate/trashcart,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"UU" = (/obj/machinery/mineral/input,/turf/simulated/floor/tiled/dark,/area/space)
+"UU" = (/obj/machinery/mineral/input,/obj/machinery/conveyor{dir = 2; id = "mining_internal"},/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "UV" = (/obj/effect/floor_decal/corner/white/border,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Va" = (/mob/living/simple_mob/animal/giant_spider/lurker,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/rooms)
 "Vc" = (/obj/structure/table/glass,/obj/item/device/analyzer/plant_analyzer,/obj/item/weapon/tape_roll,/obj/effect/floor_decal/corner/lime{dir = 10},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology/xenoflora)
@@ -895,7 +925,7 @@
 "Vj" = (/obj/structure/fence/door/opened,/turf/simulated/floor/tiled/steel_ridged,/area/planets/Geminus/indoor/sewer/west)
 "Vp" = (/obj/structure/simple_door/wood,/turf/simulated/floor/wood,/area/planets/Geminus/indoor/sewer/central)
 "Vr" = (/obj/effect/decal/cleanable/dirt,/obj/structure/frame,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"Vt" = (/obj/effect/floor_decal/corner/brown/full,/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"Vt" = (/obj/effect/floor_decal/corner/brown/full,/obj/machinery/light/colored/orange,/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "Vu" = (/obj/structure/toilet,/turf/simulated/floor/tiled/white,/area/outpost/research/bathroom)
 "Vv" = (/obj/machinery/modular_computer/console/preset/research{dir = 4; icon_state = "console"},/obj/effect/floor_decal/corner/mauve/border{dir = 8},/turf/simulated/floor/tiled/neutral,/area/teleporter)
 "VA" = (/obj/effect/floor_decal/corner/white/bordercorner{dir = 1},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
@@ -911,9 +941,9 @@
 "We" = (/obj/effect/floor_decal/corner/mauve/bordercorner{dir = 4},/turf/simulated/floor/tiled/dark,/area/rnd/xenobiology)
 "Wj" = (/obj/effect/floor_decal/corner_steel_grid{dir = 9},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "Wk" = (/mob/living/simple_mob/animal/passive/fish/solarfish{name = "Simon"},/turf/simulated/floor/beach/water/ocean,/area/rnd/xenobiology)
-"Wn" = (/obj/effect/floor_decal/corner/white/border{dir = 10},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"Wn" = (/obj/effect/floor_decal/corner/white/border{dir = 10},/obj/machinery/light{dir = 1; icon_state = "tube1"},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Wr" = (/obj/machinery/light/small{dir = 8},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
-"Wu" = (/obj/machinery/conveyor{dir = 8; id = "mining_internal"},/obj/machinery/mineral/output,/turf/simulated/floor/tiled/dark,/area/space)
+"Wu" = (/obj/machinery/conveyor{dir = 8; id = "mining_internal"},/obj/machinery/mineral/output,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "Ww" = (/obj/machinery/pipedispenser/orderable,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/sewer/rooms)
 "WB" = (/obj/machinery/door/airlock/glass_medical{name = "Lab Bathroom"; req_access = list(5); dir = 8},/turf/simulated/floor/tiled/white,/area/outpost/research/bathroom)
 "WD" = (/obj/structure/catwalk,/obj/structure/railing{dir = 1; icon_state = "railing0"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
@@ -921,13 +951,14 @@
 "WH" = (/obj/effect/spider/stickyweb,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "WJ" = (/obj/machinery/light/small/flicker,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "WK" = (/obj/effect/spider/cocoon{icon_state = "cobweb1"},/turf/simulated/mineral/floor/pollux,/area/planets/Geminus/indoor/sewer/central)
-"WL" = (/obj/machinery/conveyor{dir = 5; icon_state = "conveyor0"; id = "mining_internal"},/obj/machinery/mineral/input,/turf/simulated/floor/tiled/dark,/area/space)
+"WL" = (/obj/machinery/conveyor{dir = 5; icon_state = "conveyor0"; id = "mining_internal"},/obj/machinery/mineral/input,/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
+"WN" = (/obj/effect/floor_decal/industrial/warning{dir = 8; icon_state = "warning"},/obj/machinery/light/colored/orange{dir = 4; icon_state = "orange1"; tag = "icon-orange1 (EAST)"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
 "WO" = (/obj/machinery/computer,/turf/simulated/floor/carpet/purcarpet,/area/rnd/xenobiology)
 "WP" = (/obj/machinery/modular_computer/console/preset/research{dir = 8; icon_state = "console"},/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
 "WR" = (/turf/simulated/wall/plastic/science{color = ""},/area/outpost/research/anomaly_analysis)
 "WY" = (/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
-"WZ" = (/obj/structure/railing{dir = 8; icon_state = "railing0"; tag = "icon-railing0 (WEST)"},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
-"Xa" = (/obj/effect/floor_decal/corner/brown{dir = 1},/turf/simulated/floor/tiled/steel_dirty,/area/space)
+"WZ" = (/obj/structure/railing{dir = 8; icon_state = "railing0"; tag = "icon-railing0 (WEST)"},/obj/machinery/light,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
+"Xa" = (/obj/effect/floor_decal/corner/brown{dir = 1},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "Xg" = (/obj/machinery/door/airlock/glass_civilian{opacity = 0},/turf/simulated/floor/tiled,/area/planets/Geminus/indoor/sewer/rooms)
 "Xk" = (/obj/structure/sign/biohazard,/turf/simulated/wall,/area/rnd/xenobiology)
 "Xo" = (/obj/structure/bed/chair/general{dir = 8; icon_state = "chair_preview"},/turf/simulated/floor/tiled/white,/area/planets/Geminus/indoor/sewer/rooms)
@@ -947,27 +978,30 @@
 "XV" = (/obj/effect/floor_decal/corner/purple/full,/turf/simulated/floor/tiled/dark,/area/outpost/research/hallway)
 "XX" = (/obj/effect/floor_decal/industrial/warning/corner{dir = 1; icon_state = "warningcorner"},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/north)
 "XY" = (/obj/structure/window/reinforced{dir = 8; health = 1e+006},/obj/machinery/door/blast/regular{id = "xeno1"},/obj/structure/window/reinforced{dir = 1; maxhealth = 15000},/obj/structure/disposalpipe/segment,/turf/simulated/floor/tiled/steel_ridged,/area/rnd/xenobiology)
+"XZ" = (/obj/effect/floor_decal/corner/brown{dir = 6},/obj/machinery/light/colored/orange{dir = 4},/turf/simulated/floor/tiled/steel_dirty,/area/quartermaster/office)
 "Yf" = (/obj/structure/loot_pile/maint/junk,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/sewer/rooms)
-"Yi" = (/obj/effect/floor_decal/industrial/warning/dust,/obj/effect/floor_decal/corner/white/border{dir = 1},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/arrivalbus)
+"Yi" = (/obj/effect/floor_decal/industrial/warning/dust,/obj/effect/floor_decal/corner/white/border{dir = 1},/obj/machinery/light/floor,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/arrivalbus)
 "Ym" = (/obj/structure/bed,/obj/item/weapon/bedsheet/brown,/obj/item/weapon/material/knife/boot,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "Yn" = (/turf/simulated/wall/plastic/science{color = ""},/area/rnd/xenobiology/xenoflora)
+"Yr" = (/obj/effect/floor_decal/corner/white/border{dir = 1},/obj/effect/floor_decal/corner/white/border,/obj/machinery/light{dir = 1; icon_state = "tube1"},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Yt" = (/obj/effect/floor_decal/corner/white/border{dir = 1},/obj/effect/floor_decal/corner/white/border,/obj/structure/sign/neon/bathrooms{pixel_y = 32},/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/arrivalbus)
 "Yu" = (/obj/effect/floor_decal/corner_steel_grid{dir = 10},/turf/simulated/floor/tiled/dark,/area/teleporter)
 "Yv" = (/obj/machinery/portable_atmospherics/canister/nitrogen,/obj/effect/floor_decal/corner/mauve/border{dir = 1},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
+"Yx" = (/obj/effect/floor_decal/industrial/warning/dust,/obj/effect/floor_decal/corner/white/border{dir = 1},/obj/machinery/light{icon_state = "tube1"; dir = 8},/obj/machinery/light/floor,/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/arrivalbus)
 "Yz" = (/obj/effect/floor_decal/industrial/warning/corner,/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/south)
 "YD" = (/obj/machinery/portable_atmospherics/canister/carbon_dioxide,/obj/effect/floor_decal/corner/mauve/border{dir = 10},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "YF" = (/obj/random/junk,/obj/machinery/light/small/emergency,/turf/simulated/floor/pavement/pave_tiling{outdoors = 0},/area/planets/Geminus/indoor/arrivalbus)
 "YG" = (/obj/machinery/portable_atmospherics/canister/oxygen,/obj/effect/floor_decal/corner/mauve/border{dir = 1},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "YS" = (/obj/effect/floor_decal/industrial/warning{dir = 8},/turf/simulated/floor/plating,/area/planets/Geminus/indoor/sewer/central)
-"YT" = (/obj/structure/closet/crate,/turf/simulated/floor/tiled,/area/space)
+"YT" = (/obj/structure/closet/crate,/turf/simulated/floor/tiled,/area/quartermaster/office)
 "YW" = (/obj/structure/fence{dir = 8; icon_state = "straight"},/turf/simulated/floor/tiled/steel_ridged,/area/planets/Geminus/indoor/sewer/north)
 "Ze" = (/obj/structure/loot_pile/maint/trash,/turf/simulated/floor/tiled/steel,/area/planets/Geminus/indoor/sewer/rooms)
 "Zi" = (/obj/machinery/light/floor,/turf/simulated/floor/tiled/techfloor,/area/outpost/research/anomaly_analysis)
 "Zk" = (/obj/random/trash,/obj/structure/bed/chair/sofa{dir = 4},/turf/simulated/floor/tiled/steel_grid,/area/planets/Geminus/indoor/sewer/rooms)
 "Zl" = (/obj/structure/window/phoronreinforced{dir = 8; icon_state = "rwindow"},/obj/structure/table/steel_reinforced,/obj/machinery/door/window{dir = 1; icon_state = "right"; req_access = list(65)},/obj/random/tool/alien,/obj/effect/floor_decal/corner/purple/full,/turf/simulated/floor/tiled/dark,/area/outpost/research/anomaly_analysis)
-"Zp" = (/turf/simulated/wall/plastic/green,/area/space)
+"Zp" = (/turf/simulated/wall/plastic/green,/area/quartermaster/office)
 "Zq" = (/turf/simulated/floor/tiled/steel_ridged,/area/planets/Geminus/indoor/sewer/north)
-"Zv" = (/obj/machinery/conveyor{dir = 8; id = "mining_internal"},/turf/simulated/floor/tiled/dark,/area/space)
+"Zv" = (/obj/machinery/conveyor{dir = 8; id = "mining_internal"},/turf/simulated/floor/tiled/dark,/area/quartermaster/office)
 "Zw" = (/turf/simulated/wall/iron,/area/maintenance/asmaint)
 "ZE" = (/obj/effect/floor_decal/corner/mauve/border{dir = 10},/obj/effect/floor_decal/corner/white/bordercorner{dir = 4},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
 "ZF" = (/obj/machinery/portable_atmospherics/canister/empty,/obj/effect/floor_decal/corner/mauve/border{dir = 6},/turf/simulated/floor/tiled/dark,/area/outpost/research/tempstorage)
@@ -984,32 +1018,32 @@
 opopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopopop
 opxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhFFFFFFFFzhzhzhzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChQEQEQEQEQEChxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCop
 opxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnzhbSigtYAQahahahAQGaoCzhQflznDgkgkgkgknDkAkozhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChQEQEQEQEQEChxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCop
-opxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnzhlIKYnPnPnPnPnPnPLJrvzhzhzhnDIRIRIRIRnDzhzhzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChQEQEQEQEQEChxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCop
-opxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnzhuqIvnPIvFdXQWaIvnPQqzhQfdwnDIRIRhUIRnDBCkozhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChQEQEQEQEQEChxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCop
+opxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnzhlIKYnPnPnPnPnPnPLJrvzhzhzhPhIRIRIRIRzyzhzhzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChQEQEQEQEQEChxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCop
+opxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnzhuqIvnPinFdXQWainnPQqzhQfdwkJIRIRhUIRkJBCkozhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChQEQEQEQEQEChxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCop
 opxnwwwwwwwwwwwwwwwwwwwwcFcFcFcFzhzhzhzhzhzhtQzhnRnVpnzhtQzhzhzhzhzhzhOHzhzhzhzhzhzhzhzhzhzhzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChChAdAdAdAdAdChChxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCop
-opxnwwCjjdwwjdjdjdjdjdwwQoaLQoQozhgmxeCDzhzhCICITZCIKkGWUVPXoTjbGWhLYtPXNtzhUiPXGWPXGWPXGWbmzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChjLQEQEQEQEQEUJChxnxnxnxnxnxnTdTdTdTdTdTdTdxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCop
+opxnwwCjjdwwjdjdjdjdjdwwQoaLQoQozhgmxeCDzhzhJfaETZCIKkYrUVPXoTjbYrhLYtPXNtzhUiPXGWoLGWPXYrbmzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChjLQEQEQEQEQEUJChxnxnxnxnxnxnTdTdTdTdTdTdTdxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCop
 opxnwwRpjdZGjdjdjdjdjdwwQoZqZqQozhqNnMzEzhzhCICIfHWZpwXOXOXOXOXOXOXOXOXOPvzfNJXOXOXOXOXOXOSyzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChjLQEQEQEQEQEUJChxnxnxnxnxnxnTdTdTdTdTdTdTdxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCop
-opxnwwjdjdwwjdlGUSjdjdwwQoZqZqQozhxezEnMzhzhCICIzhzhzhXOXOXOXOXOXOXOXOXOPvzfNJXOXOXOXOXOXOgyzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChjLQEQEQEQEQEUJChxnxnxnxnxnxnTduIuIuIuITdTdxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCviJCJCJCop
+opxnwwjdjdwwjdlGUSjdjdwwQoZqZqQozhxezEnMzhzhCInzzhzhzhOWXOXOXOXOXOXOXOXOPvzfNJXOXOXOXOXOXOgyzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChjLQEQEQEQEQEUJChxnxnxnxnxnxnTduIuIuIuITdTdxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCviJCJCJCop
 opxnwwwwrKwwwwwwwwjdjdZGQoZqZqQozhnMvTqNzhzhCICICIQPzhXOXOPDKEKEKEPoXOXOPvzfNJXOXOPDKEKEKEFazhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnChjLQEQEQEQEQEUJChxnxnxnxnxnxnTduIuIuIuITdTdxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcRcRcRcRcxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCop
-opxnwwjdjdjdlGjdwwjdjdwwQoZqZqQozhCDaMyBdFzhCICICIQPzhXOXOzhzfzfzfzhXOXOWndFJmXOXOzhzfzfzfzhzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcRcRcRcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnChjLQEQEQEQEQEUJChxnxnxnxnxnxnTduIuIuIuITdTdxnxnRcRcRcxnxnxnxnxnxnxnxnRcRcRcRcRcRcRcRcRcRcRcRcRcRcRcxnxnxnxnJCJCJCJCJCJCJCJCJCAfJCJCJCJCJCJCop
-opxnwwjdsejdjdjdwwRpRpwwQoZqZqQozhnMaMzEnMLhCICIzhzhzhXOXOWnqQqQqQJmXOXOXOXOXOXOXOWnqQqQqQQtzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcRcRcRcRcRcRcRcRcxnxnxnxnxnxnxnxnxnxnxnChjLQEQEQEQEQEUJChxnxnxnxnxnxnTdwouIuIuITdTdRcRcRcRcRcRcxnxnxnxnRcRcRcRcRcRcxnxnxnxnxnxnxnxnRcRcRcRcxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvop
-opxnwwwwwwwwrKwwwwwwwwwwQoZqZqEkzhzEyBCDzhzhCICIzhXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOgyzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoNPJDJDJDJDJDbrQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoRcRcRcRcRcRcRcRcRcRcxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcRcxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvop
-opxnwwZRjdjdjdjdwwjdjdwwQoZqZqQozhzEnMyBzhzhzhzhzhYiYipgYiYipgFApgpgpgpgpgYiYipgYiYipgpgpgpBzhzhzhzhzhzhzhzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqfyATATATATATfyZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqQoRcRcRcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcRcJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvop
+opxnwwjdjdjdlGjdwwjdjdwwQoZqZqQozhCDaMyBdFzhJfCICIQPzhXOXOzhzfzfzfzhXOXOKzdFMRXOiNzhzfzfzfzhzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcRcRcRcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnChjLQEQEQEQEQEUJChxnxnxnxnxnxnTduIuIuIuITdTdxnxnRcRcRcxnxnxnxnxnxnxnxnRcRcRcRcRcRcRcRcRcRcRcRcRcRcRcxnxnxnxnJCJCJCJCJCJCJCJCJCAfJCJCJCJCJCJCop
+opxnwwjdsejdjdjdwwRpRpwwQoZqZqQozhnMaMzEnMLhCInzzhzhzhOWXOldqQqQqQJmXOXOXOXOXOXOXOWnqQqQqQQtzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcRcRcRcRcRcRcRcRcxnxnxnxnxnxnxnxnxnxnxnChjLQEQEQEQEQEUJChxnxnxnxnxnxnTdwouIuIuITdTdRcRcRcRcRcRcxnxnxnxnRcRcRcRcRcRcxnxnxnxnxnxnxnxnRcRcRcRcxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvop
+opxnwwwwwwwwrKwwwwwwwwwwQoZqZqEkzhzEyBCDzhzhJfCIzhXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOgyzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoNPJDJDJDJDJDbrQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoRcRcRcRcRcRcRcRcRcRcxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcRcxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvop
+opxnwwZRjdjdjdjdwwjdjdwwQoZqZqQozhzEnMyBzhzhzhzhzhYxYipgYiYipgFApgpgpgpgpgYiYipgYiYipgpgpgpBzhzhzhzhzhzhzhzhxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqfyATATATATATfyZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqQoRcRcRcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcRcRcJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvop
 opxnwwjdjdjdjdjdwwjdsIwwqzZqZqQozhyBzEJrzhBoGNGNGNGNGNGNGNGNGNGNGNTTGNGNGNGNGNGNGNGNGNGNGNTTGNGNGNGNGNTTBozhChChChChChChChChChChChChChChChChChChChChxnxnxnxnxnxnxnxnxnxnZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqfyATATATATATfyZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqQoRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcJCJCJCJCJCJCJCJCJCJCJCXvJCJCJCJCXvXvzQop
 opxnwwwwrKwwwwwwwwjdjdZGQoZqZqQozhyBnMxezhBoGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNBozhstFbtExMxMxMFbFbGRxMxMxMxMxMFbxMxMFbWHChxnxnxnxnxnxnxnxnxnxnZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqfyATATATATATfyZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqQoRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCXvXvJCXvXvXvXvzQop
 opxnwwjdjdwwjdkOjdjdjdwwQoZqZqQozhCDyBzEzhBoGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNBozhijQEQEQEQEQEQEkeztQEQEQEQEQEQEztkekeFWChxnxnxnxnxnxnxnxnxnxnQoZqZqZqQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQoQotwqVqVqVqVqVsdQoQoQoQoQoQoQoQoQoQofEQoQoQoQoQoQoRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvzQzQop
 opxnwwjdjdZGjdjdjdjdjdwwQoZqZqQozhyBaMnMzhBoGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNGNBozhDJztQEQEQEQEQEQEkekeQEQEQEQEQEQEkeQEUJwwwwwwwwwwwwwwwwwwwwwwQoZqZqZqQoxnxnxnxnxnxnxnRcRcRcRcxnxnxnxnChjLQEQEQEQEQEUJRcRcRcRcQERcRcRcRcRcRcRcRcRcQEQERcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvzQzQop
-opxnwwUcjdwwjdjdjdjdRpwwQoZqZqqzdFzEaMyBzhBoGNGNGNGNGNGNGNGNGNGNGNgUGNGNGNGNGNGNGNGNGNGNTTgUGNGNGNGNGNgUBozhDJkeQEQEQEQEQEQEQEztkeQEQEQEQEQEQEztPcwwjdjdjdwwEYjdwIjdjdwwQoZqZqZqQoxnxnxnxnxnxnRcRcRcxnxnxnxnxnxnChjLQEQEQEQEQEUJRcRcQEQEQERcQERcRcRcRcRcQEQEQEQERcRcQERcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvzQzQzQop
+opxnwwUcjdwwjdjdjdjdRpwwQoZqZqqzdFzEaMyBzhBoGNGNGNGNGNGNGNGNGNGNGNgUGNGNGNGNGNGNGNGNGNGNGNgUGNGNGNGNGNgUBozhDJkeQEQEQEQEQEQEQEztkeQEQEQEQEQEQEztPcwwjdjdjdwwEYjdwIjdjdwwQoZqZqZqQoxnxnxnxnxnxnRcRcRcxnxnxnxnxnxnChjLQEQEQEQEQEUJRcRcQEQEQERcQERcRcRcRcRcQEQEQEQERcRcQERcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvzQzQzQop
 opwwwwwwwwwwwwwwwwwwwwwwQoZqZqQoLhyBqNyBzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhzhrpQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEPcwwjdjdjdwwjdjdjdjdjdwwQoZqZqZqQoxnxnxnxnxnxnRcRcxnxnxnxnxnxnxnChjLQEQEQEQEQEUJRcRcQERcQEQEQEQEQERcQEQEQEQEQEQEQEQERcRcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvXvzQzQzQop
 opwwsKcWcWsKwwCdkOjdjdwwxJZqZqQozhnMyBnMzEgmxezEnMCDqNyBnMzEnMzhjdjdjdjdjdjdwwKLjdjdjdjdjdjdwwOzEeGtEgCqcMLXrpztQEQEQEQEQEQEQEQEQEkeQEQEQEQEQEQEUJwwjdjdjdwwjdnZjdjdjdZGQoZqZqZqQoxnxnxnxnxnxnxnRcxnxnxnxnxnxnxnChjLQEQEQEQEQEQEQEQEQERcRcRcRcQEQEQEQEQEQEQEQEQEQERcRcRcRcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvzQzQzQzQop
 opwwsKrCcWcWwwjdjdjdjdwwQoZqZqQozhzExeyBnMnMzEaMaMyBnMnMCDaMzEzhsJjdjdjdRasIwwjdjdjdjdjdjdJqwwdtdDlKCqHylKLXstLBLBOlOlOlOlOlOlOlLBOlHrztQEQEQEQEUJwwwwrKwwwwjdjdjdjdjdwwQoZqZqZqQoxnxnxnxnxnxnxnRcRcxnxnxnxnxnxnChjLQEQEQEQEQEUJRcRcQERcRcRcRcRcQEQEQEQEQEQEQEQEQEQEQEQERcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvzQzQzQzQzQop
 opwwwwwwvJwwwwjdjdjdjdZGQoZqZqQozhNrzECDyBqNnMyByBYFzEzEnMzEqNzhjdjdjdjdjdjdwwjdjdjdjdjdjdjdTKaGCqpLuFHySPLXChChChJVRcRcRcRcRcRcxncxEXQEQEQEQEQEUJwwwmjdrbwwjdjdjdjdEYwwQoZqZqZqQoxnxnxnxnxnxnxnxnRcRcxnxnxnxnxnChjLQEQEQEQEQEUJRcRcRcRcRcRcRcRcQERcQEQEQEQEQEQEQEQEQEQERcRcRcxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCAfJCJCJCJCXvXvXvXvzQzQzQzQzQzQop
 opwwjdjdjdpSwwjdjdjdjdwwQoZqZqQozhzhzhzhzhuzdFzhzhzhzhzhuzzhzhzhwwwwwwsVwwwwwwjdjdjdjdjdjdjdwweWCqCqCqtZXTLXxnkbkbxnJVRcRcRcRcxnxnJVjLQEQEQEQEQEUJwwjdjdjdwwwwwwrKwwwwwwQoZqZqZqQoxnxnxnxnxnxnxnxnxnlXxnxnxnxnxnChjLQEQEQEQEQEUJRcRcRcRcRcRcRcRcXDRcQEQEQEQEQEQEQEQEQERcQERcxnxnxnxnxnxnxnxnxnxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvzQzQzQzQzQzQzQop
 opwwRpjdjdLKwwjdjdjdjdwwQoZqZqQoQoubQoQoQoQoQoQoQoQoQoQoQoQoQoQowwRpjdjdjdjdwwjdjdjdjdjdjdjdwwOGbqlKlKCqlKLXxnxnkbkbxnRcRcRcxnxnxnRcjLQEQEQEQEQEUJwwjdjdjdJUmRjdjdjduawwQoZqZqZqQoxnxnxnxnxnxnxnxnxnGFGFxnxnxnxnChjLQEQEQEQEQEUJRcRcRcRcRcRcRcRcRcQEQEQEQEQEQEQEQEQEQERcRcRckbkbkbxnxnkbkbkbkbxnxnxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvzQzQzQzQzQzQzQzQop
-opwwRpfIjdjdZGjdjdjdfIwwQoZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqQowwjdjdjdjdjdZGjdjdjdjdjdjdjdwwLXLXLXLXLXLXLXxnxnxnkbkbxnxnRcRcxnJVRcjLQEQEQEQEQEPcwwRpjdjdRpRpmRjdjdjdwwQoZqZqZqQoxnxnxnxnxnxnxnxnxnRcGFlXxnxnxnChjLQEQEQEQEQEUJRcRcRcRcRcRcRcRcQEQEQEQEQEQEQEQEQEQERcRcRckbkbkbkbkbkbkbkbkbkbkbxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvzQzQzQzQzQzQzQzQop
-opwwMMjdjdJqwwjdjdjdjdwwQoZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqQoZGjdjdjdjdbiwwsJjdjdjdjdjdjdwwxnxnxnxnxnxnxnxnxnxnxnkbkbxnxnRccxJVRcjLQEQEQEQEQEqnwwRpjdjduaRpEfjdjdjdwwQoZqZqZqQoxnxnxnxnxnxnxnxnRcRcRcRcxnxnxnChjLQEQEQEQEQEUJRcRcRcRcRcRcRcRcQEQEQEQEQEQEQERcRcRcMTMTMTMTMTMTMTMTMTMTMTMTMTkbxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvzQzQzQzQzQzQzQzQzQop
-opwwcEjdjdjdwwjdjdUcjdwwQoQoQoQoQoQoQoQoQoZqZqQoQoQoQoQoQoQoENQowwjdRpRpRpjdwwjdjdjdjdjdjdjdwwxnxnxnxnxnxnxnxnxnxnxnxnkbxnxnRcRcJVcxjLQEQEQEQEQEqnwwEfjdjdjdjdRpjdjdjdwwQoZqZqZqQoxnxnxnxnxnxnxnRcRcRcRcRcxnxnxnChjLQEQEQEQEQEUJRcRcRcRcRcRcRcRcRcQEQEQEQERcRcQERcRcMTiYiYiYgSiYiYiYiYiYiYiYMTkbJCJCJCviJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvzQzQzQzQzQzQzQzQzQop
-opwwZkjdjdBiwwwwwwwwwwwwwwwwwwrKwwwwwwwwQoZqZqHVwwwwwwwwsVwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxnxnxnxnxnxnxnxnxnxnxnxnkbxncxRcRcRccxjLQEQEQEQEztqnwwiFjdjdjdjdjdjdjdJUwwQoZqZqZqQoxnxnxnxnxnxnxnRcRcRcRcRcRcxnxnChjLQEQEQEQEQEUJRcRcRcRcRcRcRcRcQERcRcQERcRcQERcRcxnMTiYnAiSMTiYiYiYiYiYiYiYMTJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvXvzQzQzQzQzQzQzQzQzQop
+opwwRpfIjdjdZGjdjdjdfIwwQoZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqQowwjdjdjdjdjdZGjdjdjdjdjdjdjdwwLXLXLXLXLXLXLXxnxnxnkbkbxnxnRcRcxnJVRcjLQEQEQEQEQEPcwwRpjdjdRpRpmRjdjdjdwwQoZqZqZqQoxnxnxnxnxnxnxnxnxnRcGFlXxnxnxnChjLQEQEQEQEQEUJRcRcRcRcRcRcRcRcQEQEQEQEQEQEQEQEQEQERcRckbkbkbkbkbkbkbkbkbkbkbkbxnxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvzQzQzQzQzQzQzQzQop
+opwwMMjdjdJqwwjdjdjdjdwwQoZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqZqQoZGjdjdjdjdbiwwsJjdjdjdjdjdjdwwxnxnxnxnxnxnxnxnxnxnxnkbkbxnxnRccxJVRcjLQEQEQEQEQEqnwwRpjdjduaRpEfjdjdjdwwQoZqZqZqQoxnxnxnxnxnxnxnxnRcRcRcRcxnxnxnChjLQEQEQEQEQEUJRcRcRcRcRcRcRcRcQEQEQEQEQEQEQERcRcRcRcxnMTMTMTMTMTMTMTMTMTMTMTkbxnJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvzQzQzQzQzQzQzQzQzQop
+opwwcEjdjdjdwwjdjdUcjdwwQoQoQoQoQoQoQoQoQoZqZqQoQoQoQoQoQoQoENQowwjdRpRpRpjdwwjdjdjdjdjdjdjdwwxnxnxnxnxnxnxnxnxnxnxnxnkbxnxnRcRcJVcxjLQEQEQEQEQEqnwwEfjdjdjdjdRpjdjdjdwwQoZqZqZqQoxnxnxnxnxnxnxnRcRcRcRcRcxnxnxnChjLQEQEQEQEQEUJRcRcRcRcRcRcRcRcRcQEQEQEQERcRcQERcRcRcxnMTiYiYiYiYiYiYiYiYiYMTkbJCJCJCviJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvzQzQzQzQzQzQzQzQzQop
+opwwZkjdjdBiwwwwwwwwwwwwwwwwwwrKwwwwwwwwQoZqZqHVwwwwwwwwsVwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxnxnxnxnxnxnxnxnxnxnxnxnkbxncxRcRcRccxjLQEQEQEQEztqnwwiFjdjdjdjdjdjdjdJUwwQoZqZqZqQoxnxnxnxnxnxnxnRcRcRcRcRcRcxnxnChjLQEQEQEQEQEUJRcRcRcRcRcRcRcRcQERcRcQERcRcQERcRcxnxnxnMTiSiYiYiYiYiYiYiYiYMTJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvXvzQzQzQzQzQzQzQzQzQop
 opwwFwjdBiBiYmmRmRjdjdwwjdjdjdjdjdjdjdwwQoZqZqQowwjdjdjdjdRpRpRpwwfIjdjdRpjdwwjdjdjdkOjdjdKLwwxnxnxnxnxnxnxnxnxnxnxnkbxnxnJVRcRcRcRcjLQEQEQEQEztPcwwwwwwwwwwwwwwwwwwwwwwCpYWfQYWCpwwwwwwwwwwwwwwariLiLiLarjdwwwwLXjLQEQEQEQEQEUJChRcRcRcRcRcRcRcRcRcRcRcRcRcxnxnkbkbMTMTMTMTMTiYiYiYiYiYiYiYMTJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvXvzQzQzQzQzQzQzQzQzQop
 opwwHdjdBijdjdpSRJjdBiZGjdjdjdjdjdjdjdLXQoZqZqQoLXgKjdjdjdjdjdRpwwjdjdjdjdjdwwjdjdjdjdRJjdKLwwxnxnxnxnxnxnxnxnxnxnxnkbxnJVJVRcKoRcRcjLQEQEQEkekeUJwwjdjdjdjdjdjdjdjdjdwwQoZqZqZqQowwjdjdjdwwlKararariLararlKjdrILXjLQEQEQEQEQEUJChxnRcRcRcRcRcRcRcRcRcxnkbkbkbkbkbkbMTMTiYiYiYiYiYiYiYiYiYiYMTJCJCJCJCJCJCJCJCJCJCJCJCJCJCJCXvXvXvXvXvXvXvzQzQzQzQzQzQzQzQzQop
 opwwWrjdjdjdjdjdjdMMJqwwjdjdjdjdjdjdjdLXQoZqZqQoLXjdjdjdjdjdjdJqwwsJjdRpjdjdZGjdjdjdjdjdjdjdwwxnxnxnxnxnxnxnxnxnxnkbkbxnRccxJVRcRcRcjLQEQEkeQEQEAZwwjdjdjdjdjdjdjdjdjdwwQoZqZqZqQowwjdjdjdwwlKarararararlKjdlKjdLXjLQEQEQEQEQEUJChxnxnRcRcRcRcRcRcRcRcMTMTMTMTMTMTMTMTMTiYiYiYiYiYiYiYiYiYiYMTJCJCJCJCJCJCJCJCJCJCdJJCJCJCJCXvXvXvXvXvXvzQzQzQzQzQzQzQzQzQzQop
@@ -1050,42 +1084,42 @@ opZwylylsvEACwEABIBIBIBIBIBIBIBIBIBIBImuoloPoPolLXbubuqFjdjdjdfILXQoZqZqQoChxnxn
 opZwylylsvCwEAEABIBIBIBIBIBIBIBIBIBIBImuoloPoPolLXtltljdOEyWjdjdZGQoZqZqQoChxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcxnxnxnxnChjLQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEeUATATATeeQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEQEQENvRcRcxnjETmWYIVjETmWYIVjETmWYIVjEgVgVgVgVgVgVgVgVgVyhqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebop
 opZwylylsvCwEAEABIBIBIBIBIBIBIBIBIBIBImuoloPoPolLXfIjdjdjdRpjdjdLXQoZqZqQoChxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnxnRcRcxnxnxnxnChfyOlOlOlOlOlOlOlOlOlOlOlOlOlOlOlOlOlXXfyfyfyNPOlOlOlOlOlOlOlOlOlOlOlOlOlOlOlOlwMQEQEQEQEQENvRcxnxnjEjElWjEjEjEamjEjEjEakjEjEgVgVgVgVXkCZdCdCCZjEqmqmqmqmqmqmqmqmqmJhJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebop
 opZwylylsvCwCwBIBIBIBIBIBIBIBIBIBIBIBImuoloPoPolLXCaCajdjdfIjdOELXQoZqZqqzChxnxnxnxnxnxnxnwwwwwwwwwwwwwwwwwwwwwwpEpEpEpEmXmXmXpEpELXLXLXLXLXLXLXLXLXLXLXLXLXLXLXLXLXLXLXUqnlnlnlUqLXLXLXLXLXLXLXLXLXLXLXLXLXLXLXRcDJQEQEQEQEQENvChxnxnjEjEDqjEjEjEDqjEjEjEDqjEjEgVgVgVgVCZqGqGqGqGjEqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebop
-opZwylylsvBIBIBIBIBIBIBIBIBIBIBIBIBIBImuoloPoPolLXbubujdDKjdOEgXLXQoZqZqQoChxnxnxnxnxnxnxnwwjdjdNWrZZKjdjdKLjdwwpEpEpEpEpEmXmXpEpEwwjdjdlKjdjdjdKJjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQicicicLXvAicicicLXmXBOpYpYpYpYpYYSTlAbAbAbAbAbAbAbAbAbjEjEjEjEjEjEjEjEgVgVCZqGqGqGqGjEqmqmqmqmqmqmqmBFqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIBIBIBIBIBIBIBIBIBIBIBImuoloPoPolLXLXLXLXLXLXlwLXLXQoZqZqQoChxnxnxnxnxnxnxnwwjdjdNWrZZKjdjdjdjdwwpEpEpEpEpEmXmXmXpEwwjdlKjdjdjdKJjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQicicicLXLXLXicicLXmXBOpYpYpYpYpYYSTlAbzjHWayAbmokdruJIAFAFujjEdAvMFKjEgVgVCZqGqGqGqGjEqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhJhebebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIBIBIBIBIBIBIBIBIBIBIBImuFJoPoPolLXhuOEnwLXOsjdeJLXQorrZqQoChxnxnxnxnxnxnxnwwKLjdjdjdjdjdjdjdrZwwpEpEpEpEpEpEmXmXmXiLiLiLarlKlKjdjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQcQXgcQcQicicicicLXmXBOpYpYpYpYpYYSTlAbsBqykZAbTQfxQcjXLRLRjVjEezezezjERidCCZtIqGqGqGjEqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIBIBIBIBIBIBIBIBIBIBIBImudQkuVjdQLXjdOEjdLXLXLXLXLXQoQoQoidChxnxnxnxnxnxnxnwwKLjdjdjdjdjdjdjdrZwwpEpEpEpEpEpEpEmXmXiLararararlKjdjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQicicicicicicicicLXmXBOpYpYpYpYpYYSTlAbtFJwUwAbsmQcgbJIeaLRLRqhPGPGPGPGPGPGCZRnRnRnRnRnRnCfqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIBIBIBIBIBIBIBIBIBIBIBIEAoloPoPolZGjdjdOELXjdjdHdLXwwwwsVwwwwwwwwwwwwwwwwwwwwjdjdjdjdmRjdjdrZrZwwpEpEpEpEpEpEpEpEmXarjdlKlKjdjdlKjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQicicicicysicicicicicicicicLXmXBOpYpYpYpYpYYSTlAbCBCBCBAbVvfxgbutHkLRLROXPGPGPGPGPGPGvymGGYGYGYGYRnCfqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIBIBIBIBIBIBIBIBIBIEAEAEAoloPoPolLXOEjdjdLXpSjdjdjdwwjdlKjdlKjdlKwwkKcWggggwwwwwwsVwwwwwwwwwwwwwwpEpEpEpEwwwwwwwwwwwwwwwwwwwwwwwwrKwwwwwwwwwwwwwwrKwwwwwwUqnlnlnlUqcQiciciciccQiciccQcQcQXgcQcQLXmXBOpYpYpYpYpYYSTlAbMmMmMmAbTQQcgbutHkLRHpjEfJNuNuvyPGPGPGGYGYGYGYGYRnCfqmcKqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIBIBIBIBIEAEAEAEAEAEAEAEAoloPoPolLXjdOEjdZGjdjdjdjdwwlKjdjdjdlKjdwwjMcWcWcWwwjdjdjdjdjdwwjdjdRpwwpEpEpEpEwwjdjdjdwwjdjdjdjdjdjdjdjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSTlAbMmMmMmyNQcQcgbutHkLRAVjEdccLPGCsxHXCNumGGYGYGYGYRnCfqmqmqmqmqmqmqmqmqmqmqmBFJhJhJhJhebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIBIBIBIEAEABIBIEAEAEAEAEAoloPoPolLXVrHdOELXjdjdjdMVwwlKlKjdjdjdjdwwxKXocWKZwwjdjdjdjdjdwwjdjdjdwwpEpEpEpEwwjdjdjdwwjdjdjdjdjdjdjdjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSTlAbMmMmMmAbliIuxfAbHkLRAVTATATATATATATATATATATATATATATAqmqmqmqmqmqmqmqmqmjDqmqmqmJhJhJhebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIBIBIBIEABIBIBIBIBIEAEAEAoloPoPolLXLXLXLXLXLXLXLXLXwwwwwwsVwwwwwwwwwwwwmJwwwwjdjdjdjdjdZGjdjdjdwwpEpEpEpEwwjdjdjdwwjdjdjdjdwwwwwwwwrKwwwwjdjdjdjdjdjdjdZGUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSTlAbAbAbAbAbAbAbAbAbHkLRAVTAaAbckrkrzqQKQKTAVMuYzquouoTAqmqmqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIBIBIBIEABIBIBIBIBIBIEAEAoloPoPolpEpEpEpEpEpEpEpEpEwwlKjdjdjdjdjdjdjdlKjdlKwwjdjdjdjdjdwwjdjdjdwwpEpEpEpEwwjdjdjdZGjdjdjdjdwwjdjdjdjdjdjdjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSTlCfXNVuXNVuXNkgTiXNHkLRAVTAyDIAIAIAIAIAhRTABcIAIAIAhRTAqmqmqmqmvRvRvRvRvRvRvRqmqmJhJhJhJhebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIBIBIEAEABIBIBIBIBIBIBIBIoloPoPolmXpEpEpEpEpEmXpEpEwwjdjdlKjdjdjdlKjdlKlKjdwwRpjdjdjdjdwwjdjdjdwwpEpEmXmXwwjdjdjdwwjdjdjdjdZGjdjdjdjdjdjdjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSTlCfXNfNXNxPXNTiTiXNgvLRAVTAyDIAIAIAIAQKQKTANAIAIAuoFMTAqmqmqmqmvRxsFLqBTRxsvRqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIBIEAEAEABIBIBIBIBIBIBIBIoloPoPolmXmXpEpEpEmXmXpEpEwwjdjdlKlKjdjdjdlKlKjdjdwwRpRpRpjdjdwwjdhyjdwwmXmXmXmXwwjdjdjdwwjdjdjdjdwwjdjdjdjdjdjdjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSTlCfXNTiTiTiTiTiTiWBLRLRAVTAfCjcIAIAIAIAhRTABcIAIAIAhRTAqmqmqmqmvRxsFLqBTRxsvRqmqmqmJhJhJhebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIEAEABIBIBIBIBIBIBIBIBIBIoloPoPolmXmXmXmXmXmXmXmXpEwwwwwwwwwwsVwwwwwwwwwwwwwwwwwwwwrKwwwwwwwwwwwwmXmXmXmXwwwwwwwwwwwwwwwwwwwwwwwwrKwwwwwwwwwwwwwwwwwwwwwwUqnlnlnlUqcQcQcQcQcQcQcQcQcQcQcQcQcQcQLXmXBOpYpYpYpYpYYSJLCfXNTiiowEioTiTiXNofLRAVTAvYwPjaIAjabCmbTAnKjaIArWrWTAqmqmqmqmvRxsFLqBTRxsvRqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIEABIBIBIBIBIBIBIBIBIBIBIoloPoPolUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqyHUqUqUqUqUqUqUqUqUqUqUqIGUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqNlUqyHUqUqUqUqUqUqUqnlnlnlUqUqUqUqUqUqUqUqUqUqUqIGUqUqUqUqUqRCUjUjUjUjUjwUJLJLXNXNXNXNXNXNXNXNHkLRAVTATATATAIATATATATATATAIATATATAqmqmqmqmvRxsFLqBTRxsvRqmqmcKJhJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIBIBIEAoPoPoPoPnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnltWnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlzdnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlqSLoLoLoLoLoqSiYiYjuXVAFAFAFAFAFAFgvLRXVAFAFAFgvLRXVAFAFAFAFgvLRXVAFeuvRvRvRvRvRxsxsxsxsxsvRqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIBIBIEAoPoPoPoPnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlSqnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlEJnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlqSLoLoLoLoLoqSkJkJLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRRMxsxsxsxsxsxsxsxsxsxsvRqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIBIEAEABIBIBIBIBIBIBIBIEAEAoPoPoPoPnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlEJnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlqSLoLoLoLoLoqSkJkJTuLRLRLRLRLRLRTyzLzLzLzLeaLRLRTyzLzLzLzLzLzLzLAVHkJfvRvRvRvRvRxsxsxsxsxsvRqmqmqmqmJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIEAEAEAoPoPoPoPnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlTPnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnltWnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlqSLoLoLoLoLoqSiYiYjuTyzLeaLRTyzOdNRAWRNpNpWReNeNWRNpNpWRWRHDHDHDKUHkJfqmqmqmqmvRxsxsxsxsxsvRcKqmqmqmJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIEAEAEAololololUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqyHUqIGUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqyHUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqRbIsIsIsIsIszgJLJLYnXzXzXzqqXzXzXzYnEpmUbtreeNeNgHSbSbxoWRLRLRHDAVHkJfqmqmqmqmvRxsxsxsxsxsvRqmqmqmqmJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIEABIBIBIBIBIBIBIBIBIBIEAEAEAEAEAEAmXmXmXxBEMEMxBmXHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxpEHxHxHxHxHxHxHxmXmXEMEMmXmXHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxmXEMEMmXmXmXHxHxHxHxHxBOpYpYpYpYpYYSJLJLYneIeIeIAIlqIOpvZHBZMpPRxceNIDADADADJiNpqRqRHDAVHkKcqmBFqmqmvRxsxsxsxsxsvRqmqmqmqmJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIEAEAEABIBIBIBIBIBIBIBIBIBIBIEAEAEAEAmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXxBEMEMxBpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpExBEMEMxBmXpEpEpEpEpEHxBOpYpYpYpYpYYSJLJLYnUGAIAIAIAIAIjYZHXAZPmBxceNqwupZilULTNpAVdVzLdjHkKcqmqmqmqmvRxsxsxsxsxsvRqmqmqmqmJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIEAEAEABIBIBIBIBIBIBIBIBIBIBIBIEAEAEAfrfrfrmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSJLJLZHeIeIeIAIAIAIaaZHAHMkwQXReNqwGqivbnWPNpXVAFAFLRgvKcqmqmqmqmvRxsxsxsxsxsvRqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIfrfrfrmXEMEMmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXEMEMmXpEpEpEpEpEpEHxBOpYpYpYpYpYYSJLJLZHeIeIeIAIAIAIiKYnNoBBeNmmKOqwJxivivffWRWRWRWRRMJfJfqmqmqmqmvRxsxsxsxsxsvRqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIfrfrfrmXEMEMmXmXmXpEmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXEMEMmXpEpEpEpEpEpEHxBOpYpYpYpYpYYSJLJLZHhQAIAIAILfAIjCYnHaTMeNJTRFqwGqZixgOArHivFvWRRMefJfqmqmqmqmvRvRvRvRvRvRvRqmqmJhJhJhJhebebebebebebebebebebebebebebebebebop
-opZwylylZwBIEAEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIpEpEmXmXEMEMmXmXmXmXmXmXmXmXpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXpEpEmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXEMEMmXpEpEpEpEpEpEHxBOpYpYpYpYpYYSJLJLZHlyAIAIAIAIAIxiYnbATMeNipAcvSCxCxCxCxNOivzNWRRMySJfqmqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebop
-opZwylylZwBIEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIpEpEmXmXEMEMmXmXmXmXmXmXmXpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXpEpEpEpEpEpEpEmXmXmXEMEMmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSJLJLYnLtVYAIAIAIdzoUYnUBOhnxeNeNeNvHVgeNhtcUivFvWRRMoHJfqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIEAEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIpEpEpExBEMEMxBmXmXmXmXmXpEpEpEpEpEpEpEpEpEpEmXmXmXmXpEpEpEpEpEpEpEpEpEpEmXmXmXEMEMmXmXmXpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXpEpEpEpEpEpEpEpEmXmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSJLJLYnAuoaoamVtNVclsYnZlQQbwKfKfeFXMXMnxWGWRWRWRWRJfJfJfqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIpEpEpEmXEMEMmXmXmXmXmXpEpEpEpEpEpEpEpEpEpEpEmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXEMEMmXmXmXmXpEpEpEpEpEpEpEmXmXmXfrfrfrmXmXmXmXpEpEpEpEpEpEpEmXmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSJLJLYnYnYnYnYnYnYnYnYnWRWRWRWRMINxNxNxdLNxNxNxNxNxyTyTyTqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebop
+opZwylylsvBIBIBIBIBIBIBIBIBIBIBIBIBIBImuoloPoPolLXbubujdDKjdOEgXLXQoZqZqQoChxnxnxnxnxnxnxnwwjdjdNWrZZKjdjdKLjdwwpEpEpEpEpEmXmXpEpEwwjdjdlKjdjdjdKJjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQicicicLXvAicicicLXmXBOpYpYpYpYpYYSHxAbAbAbAbAbAbAbAbAbjEjEjEjEjEjEjEjEgVgVCZqGqGqGqGjEqmqmqmqmqmqmqmBFqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIBIBIBIBIBIBIBIBIBIBIBImuoloPoPolLXLXLXLXLXLXlwLXLXQoZqZqQoChxnxnxnxnxnxnxnwwjdjdNWrZZKjdjdjdjdwwpEpEpEpEpEmXmXmXpEwwjdlKjdjdjdKJjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQicicicLXLXLXicicLXmXBOpYpYpYpYpYYSHxAbzjHWayAbmokdruJIAFAFujjEdAvMFKjEgVgVCZqGqGqGqGjEqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhJhebebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIBIBIBIBIBIBIBIBIBIBIBImuFJoPoPolLXhuOEnwLXOsjdeJLXQorrZqQoChxnxnxnxnxnxnxnwwKLjdjdjdjdjdjdjdrZwwpEpEpEpEpEpEmXmXmXiLiLiLarlKlKjdjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQcQXgcQcQicicicicLXmXBOpYpYpYpYpYYSHxAbsBqykZAbTQfxQcjXLRLRjVjEezezezjERidCCZtIqGqGqGjEqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIBIBIBIBIBIBIBIBIBIBIBImudQkuVjdQLXjdOEjdLXLXLXLXLXQoQoQoidChxnxnxnxnxnxnxnwwKLjdjdjdjdjdjdjdrZwwpEpEpEpEpEpEpEmXmXiLararararlKjdjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQicicicicicicicicLXmXBOpYpYpYpYpYYSHxAbtFJwUwAbsmQcgbJIeaLRLRqhPGPGPGPGPGPGCZRnRnRnRnRnRnCfqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIBIBIBIBIBIBIBIBIBIBIBIEAoloPoPolZGjdjdOELXjdjdHdLXwwwwsVwwwwwwwwwwwwwwwwwwwwjdjdjdjdmRjdjdrZrZwwpEpEpEpEpEpEpEpEmXarjdlKlKjdjdlKjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQicicicicysicicicicicicicicLXmXBOpYpYpYpYpYYSHxAbCBCBCBAbVvfxgbutHkLRLROXPGPGPGPGPGPGvymGGYGYGYGYRnCfqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIBIBIBIBIBIBIBIBIBIEAEAEAoloPoPolLXOEjdjdLXpSjdjdjdwwjdlKjdlKjdlKwwkKcWggggwwwwwwsVwwwwwwwwwwwwwwpEpEpEpEwwwwwwwwwwwwwwwwwwwwwwwwrKwwwwwwwwwwwwwwrKwwwwwwUqnlnlnlUqcQiciciciccQiciccQcQcQXgcQcQLXmXBOpYpYpYpYpYYSHxAbMmMmMmAbTQQcgbutHkLRHpjEfJNuNuvyPGPGPGGYGYGYGYGYRnCfqmcKqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIBIBIBIBIEAEAEAEAEAEAEAEAoloPoPolLXjdOEjdZGjdjdjdjdwwlKjdjdjdlKjdwwjMcWcWcWwwjdjdjdjdjdwwjdjdRpwwpEpEpEpEwwjdjdjdwwjdjdjdjdjdjdjdjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSHxAbMmMmMmyNQcQcgbutHkLRAVjEdccLPGCsxHXCNumGGYGYGYGYRnCfqmqmqmqmqmqmqmqmqmqmqmBFJhJhJhJhebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIBIBIBIEAEABIBIEAEAEAEAEAoloPoPolLXVrHdOELXjdjdjdMVwwlKlKjdjdjdjdwwxKXocWKZwwjdjdjdjdjdwwjdjdjdwwpEpEpEpEwwjdjdjdwwjdjdjdjdjdjdjdjdjdjdwwjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSHxAbMmMmMmAbliIuxfAbHkLRAVTATATATATATATATATATATATATATATAqmqmqmqmqmqmqmqmqmjDqmqmqmJhJhJhebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIBIBIBIEABIBIBIBIBIEAEAEAoloPoPolLXLXLXLXLXLXLXLXLXwwwwwwsVwwwwwwwwwwwwmJwwwwjdjdjdjdjdZGjdjdjdwwpEpEpEpEwwjdjdjdwwjdjdjdjdwwwwwwwwrKwwwwjdjdjdjdjdjdjdZGUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSHxAbAbAbAbAbAbAbAbAbHkLRAVTAaAbckrkrzqQKQKTAVMuYzquouoTAqmqmqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIBIBIBIEABIBIBIBIBIBIEAEAoloPoPolpEpEpEpEpEpEpEpEpEwwlKjdjdjdjdjdjdjdlKjdlKwwjdjdjdjdjdwwjdjdjdwwpEpEpEpEwwjdjdjdZGjdjdjdjdwwjdjdjdjdjdjdjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSHxpEXNVuXNVuXNkgTiXNHkLRAVTAyDIAIAIAIAIAhRTABcIAIAIAhRTAqmqmqmqmvRvRvRvRvRvRvRqmqmJhJhJhJhebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIBIBIEAEABIBIBIBIBIBIBIBIoloPoPolmXpEpEpEpEpEmXpEpEwwjdjdlKjdjdjdlKjdlKlKjdwwRpjdjdjdjdwwjdjdjdwwpEpEmXmXwwjdjdjdwwjdjdjdjdZGjdjdjdjdjdjdjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSHxpEXNfNXNxPXNTiTiXNgvLRAVTAyDIAIAIAIAQKQKTANAIAIAuoFMTAqmqmqmqmvRxsFLqBTRxsvRqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIBIEAEAEABIBIBIBIBIBIBIBIoloPoPolmXmXpEpEpEmXmXpEpEwwjdjdlKlKjdjdjdlKlKjdjdwwRpRpRpjdjdwwjdhyjdwwmXmXmXmXwwjdjdjdwwjdjdjdjdwwjdjdjdjdjdjdjdjdjdjdjdjdjdwwUqnlnlnlUqcQiciciciccQiciccQicicicicicLXmXBOpYpYpYpYpYYSHxpEXNTiTiTiTiTiTiWBLRLRAVTAfCjcIAIAIAIAhRTABcIAIAIAhRTAqmqmqmqmvRxsFLqBTRxsvRqmqmqmJhJhJhebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIEAEABIBIBIBIBIBIBIBIBIBIoloPoPolmXmXmXmXmXmXmXmXpEwwwwwwwwwwsVwwwwwwwwwwwwwwwwwwwwrKwwwwwwwwwwwwmXmXmXmXwwwwwwwwwwwwwwwwwwwwwwwwrKwwwwwwwwwwwwwwwwwwwwwwUqnlnlnlUqcQcQcQcQcQcQcQcQcQcQcQcQcQcQLXmXBOpYpYpYpYpYYSmXpEXNTiiowEioTiTiXNofLRAVTAvYwPjaIAjabCmbTAnKjaIArWrWTAqmqmqmqmvRxsFLqBTRxsvRqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIEABIBIBIBIBIBIBIBIBIBIBIoloPoPolUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqyHUqUqUqUqUqUqUqUqUqUqUqIGUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqNlUqyHUqUqUqUqUqUqUqnlnlnlUqUqUqUqUqUqUqUqUqUqUqIGUqUqUqUqUqRCUjUjUjUjUjwUmXmXXNXNXNXNXNXNXNXNHkLRAVTATATATAIATATATATATATAIATATATAqmqmqmqmvRxsFLqBTRxsvRqmqmcKJhJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIBIBIEAoPoPoPoPnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnltWnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlzdnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlqSLoLoLoLoLoqSUqUqjuXVAFAFAFAFAFAFgvLRXVAFAFAFgvLRXVAFAFAFAFgvLRXVAFjuvRvRvRvRvRxsxsxsxsxsvRqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIBIBIEAoPoPoPoPnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlSqnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlEJnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlqSLoLoLoLoLoqSnlnlLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRLRxsxsxsxsxsxsxsxsxsxsvRqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIBIEAEABIBIBIBIBIBIBIBIEAEAoPoPoPoPnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlEJnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlqSLoLoLoLoLoqSnlnlTuLRLRLRLRLRLRTyzLzLzLzLeaLRLRTyzLzLzLzLzLzLzLAVHkHDvRvRvRvRvRxsxsxsxsxsvRqmqmqmqmJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIEAEAEAoPoPoPoPnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlTPnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnltWnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlnlqSLoLoLoLoLoqSUqUqjuTyzLeaLRTyzOdNRAWRNpNpWReNeNWRNpNpWRWRHDHDHDKUHkHDqmqmqmqmvRxsxsxsxsxsvRawqmqmqmJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIEAEAEAololololUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqyHUqIGUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqyHUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqUqRbIsIsIsIsIszgmXmXYnXzXzXzqqXzXzXzYnEpmUbtreeNeNgHSbSbxoWRLRLRHDAVHkHDqmqmqmqmvRxsxsxsxsxsvRqmqmqmqmJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEABIBIBIBIBIBIBIBIBIBIEAEAEAEAEAEAmXmXmXxBEMEMxBmXHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxpEHxHxHxHxHxHxHxmXmXEMEMmXmXHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxHxmXEMEMmXmXmXHxHxHxHxHxBOpYpYpYpYpYYSmXmXYneIeIeIAIlqIOpvZHBZMpPRxceNIDADADADJiNpqRqRHDAVHkKcqmBFqmqmvRxsxsxsxsxsvRqmqmqmqmJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIEAEAEABIBIBIBIBIBIBIBIBIBIBIEAEAEAEAmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXxBEMEMxBpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpExBEMEMxBmXpEpEpEpEpEHxBOpYpYpYpYpYYSmXmXYnUGAIAIAIAIAIjYZHXAZPmBxceNqwupZilULTNpAVdVzLdjHkKcqmqmqmqmvRxsxsxsxsxsvRqmqmqmqmJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIEAEAEABIBIBIBIBIBIBIBIBIBIBIBIEAEAEAfrfrfrmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSmXmXZHeIeIeIAIAIAIaaZHAHMkwQXReNqwGqivbnWPNpXVAFAFLRgvKcqmqmqmqmvRxsxsxsxsxsvRqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIfrfrfrmXEMEMmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXEMEMmXpEpEpEpEpEpEHxBOpYpYpYpYpYYSmXmXZHeIeIeIAIAIAIiKYnNoBBeNmmKOqwJxivivffWRWRWRWReNWRWRqmqmqmqmvRxsxsxsxsxsvRqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIfrfrfrmXEMEMmXmXmXpEmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXEMEMmXpEpEpEpEpEpEHxBOpYpYpYpYpYYSmXmXZHhQAIAIAILfAIjCYnHaTMeNJTRFqwGqZixgOArHivFvWReNefWRqmqmqmqmvRvRvRvRvRvRvRqmqmJhJhJhJhebebebebebebebebebebebebebebebebebop
+opZwylylZwBIEAEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIpEpEmXmXEMEMmXmXmXmXmXmXmXmXpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXpEpEmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXEMEMmXpEpEpEpEpEpEHxBOpYpYpYpYpYYSmXmXZHlyAIAIAIAIAIxiYnbATMeNipAcvSCxCxCxCxNOivzNWReNySWRqmqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebop
+opZwylylZwBIEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIpEpEmXmXEMEMmXmXmXmXmXmXmXpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXpEpEpEpEpEpEpEmXmXmXEMEMmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSmXmXYnLtVYAIAIAIdzoUYnUBOhnxeNeNeNvHVgeNhtcUivFvWReNoHWRqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIEAEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIpEpEpExBEMEMxBmXmXmXmXmXpEpEpEpEpEpEpEpEpEpEmXmXmXmXpEpEpEpEpEpEpEpEpEpEmXmXmXEMEMmXmXmXpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXpEpEpEpEpEpEpEpEmXmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSmXmXYnAuoaoamVtNVclsYnZlQQbwKfKfeFXMXMnxWGWRWRWRWRWRWRWRqmqmqmqmqmqmqmqmqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIBIpEpEpEmXEMEMmXmXmXmXmXpEpEpEpEpEpEpEpEpEpEpEmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXEMEMmXmXmXmXpEpEpEpEpEpEpEmXmXmXfrfrfrmXmXmXmXpEpEpEpEpEpEpEmXmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSmXmXYnYnYnYnYnYnYnYnYnWRWRWRWRMINxNxNxdLNxNxNxNxNxyTyTyTqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebop
 opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIpEpEpEmXEMEMmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXEMEMmXmXmXmXpEpEpEpEpEmXmXmXmXmXfrfrfrmXmXmXmXmXpEpEpEpEpEpEmXmXEMEMmXmXmXpEpEpEpEHxBOpYpYpYpYpYYSgMgMgMgMyTyTyTyTyTyTyTyTyTyTWRWRNxuWmvdLdLrQaRaRNxyTyTyTqmqmqmcKqmqmqmqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebop
 opZwylylZwBIBIBIEABIBIBIBIBIBIBIBIBIBIBIBIBIBIBIpEpEpEmXEMEMmXmXmXpEpEpEpEpEpEpEpEpEpEmXmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpExBEMEMxBmXmXmXmXpEpEpEmXmXmXmXmXmXfrfrfrmXmXmXmXmXpEpEpEpEpEmXmXxBEMEMxBmXmXpEpEpEpEHxBOpYpYpYpYpYYSgMgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTNxGDdLdLdLdLdLdLNxyTyTyTqmqmqmqmqmqmqmqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebop
 opZwylylZwBIBIBIEAEABIBIBIBIBIBIBIBIBIBIBIBIBIBIpEpEpEmXEMEMmXmXmXpEpEpEpEpEpEpEpEpEmXmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXEMEMmXmXmXmXmXxBmXmXmXmXmXmXmXmXmXmXmXmXxBmXmXmXmXmXpEpEmXmXmXmXEMEMmXmXmXpEpEpEpEHxBOpYpYpYpYpYYSgMgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTNxuWdLdLdLdLdLmvNxyTyTyTqmqmqmqmqmqmqmqmqmcKJhJhJhebebebebebebebebebebebebebebebebebebebebebop
 opZwylylZwBIBIBIEAEABIBIBIBIBIBIBIBIEAEAEABIBIBIpEpEmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEmXmXmXmXpEpEpEpEpEpEfrfrfrpEpEpEpEpEpEpEpEmXEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMmXmXmXpEpEpEpEHxBOpYpYpYpYpYYSgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTNxuWmvcXmpuVuVuVNihwhwhwSmSmSmSmSmSmSmSmSmThThThTheDeDeDeDeDeDeDeDeDeDeDeDeDeDeDeDeDeDeDeDeDop
-opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIEAEAEAEAEAEABIpEmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEmXmXmXpEpEpEpEpEpEpEpEfrfrfrpEpEpEpEpEpEpEmXmXEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTNxNxNxNxNxNxMTMTMTqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIEABIBIBIBIBIBIBIBIEAEAEAEAEAEAEAEAmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEmXmXmXpEpEpEpEpEpEpEpEpEfrfrfrpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXxBmXmXmXmXmXmXEMEMmXmXmXmXxBmXmXmXmXmXmXmXmXmXmXmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSgMgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTMTiUttqmqmqmqmqmqmqmqmqmJhJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIEABIBIBIBIBIBIBIEAEAEABIBIBIEAEAEAmXmXmXxBEMEMxBmXpEpEpEpEpEpEpEpEmXmXmXpEmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXmXmXmXmXmXmXEMEMmXmXmXmXmXmXmXvtvtvtvtvtvtvtmXmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSgMgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTMTiUttqmqmqmqmqmqmqmqmJhJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
-opZwylylZwBIBIEAEABIBIBIBIBIBIEABIBIBIBIBIBIBIEAmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXpEpEpEmXmXEMEMmXmXvtvtvtvtvtvtwOqSwOwOqSvtmXmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSgMgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTMTMTMTqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEAEABIBIBIBIBIBIBIBIEAEAEAEAEAEABIpEmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEmXmXmXpEpEpEpEpEpEpEpEfrfrfrpEpEpEpEpEpEpEmXmXEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTNxNxNxNxNxNxNiNiNiqmqmqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEABIBIBIBIBIBIBIBIEAEAEAEAEAEAEAEAmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEmXmXmXpEpEpEpEpEpEpEpEpEfrfrfrpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXxBmXmXmXmXmXmXEMEMmXmXmXmXxBmXmXmXmXmXmXmXmXmXmXmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSgMgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTNiiUttqmqmqmqmqmqmqmqmqmJhJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEABIBIBIBIBIBIBIEAEAEABIBIBIEAEAEAmXmXmXxBEMEMxBmXpEpEpEpEpEpEpEpEmXmXmXpEmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXmXmXmXmXmXmXEMEMmXmXmXmXmXmXmXvtvtvtvtvtvtvtmXmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSgMgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTNiiUttqmqmqmqmqmqmqmqmJhJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
+opZwylylZwBIBIEAEABIBIBIBIBIBIEABIBIBIBIBIBIBIEAmXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXmXmXmXmXmXpEpEpEmXmXEMEMmXmXvtvtvtvtvtvtwOqSwOwOqSvtmXmXEMEMmXmXpEpEpEpEpEHxBOpYpYpYpYpYYSgMgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTNiNiNiqmqmqmqmqmqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
 opZwylylZwBIBIBIEABIBIBIBIBIBIEABIBIBIBIBIBIBIBImXmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEmXmXpEpEpEmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXpEpEpEpEpEpEmXmXEMEMmXmXvtywwOqSqSvtqSwOwOwOqSvtmXxBEMEMxBmXmXpEpEpEpEHxBOpYpYpYpYpYYSgMgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTqmqmqmqmqmqmJhJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
 opZwylylZwBIBIBIEAEAEAEABIBIEAEABIBIBIBIBIBIBIBIpEmXmXmXEMEMmXmXpEpEpEpEpEpEpEpEpEmXpEpEpEpEpEmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXpEpEpEpEpEpEmXmXmXEMEMmXmXvtqSwOwOqSvtqSwOwOqSwOvtmXmXEMEMmXmXmXmXpEpEpEHxBOpYpYpYpYpYYSgMgMgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTqmqmqmqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebebebop
 opZwylylZwBIBIBIBIEAEAEAEAEAEABIBIBIBIBIBIBIBIBIpEpEmXmXEMEMmXmXmXpEpEpEpEpEpEpEpEpEpEpEpEpEpEmXmXmXpEpEpEpEpEpEpEpEmXpEpEpEpEpEpEmXmXpEpEpEpEpEpEpEmXmXxBEMEMxBmXvtpZwOwOwOvtvtvtVpvtvtvtmXmXEMEMmXmXmXmXpEpEpEHxBOpYpYpYpYpYYSgMgMgMgMgMgMgMyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTyTqmqmqmqmJhJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebebebop
@@ -1132,29 +1166,29 @@ opBIBIBIBIBIBIBIBIBIBIBIEAEABIBIBIBIBIxpBGBGBGBGxpDnDnBbBbDnLUXxXxXxXxXxwHDHwHwH
 opBIBIBIBIBIBIBIBIBIBIBIEABIBIBIBIBIBIxpBGBGBGBGxpDnDnBbBbDnwHXxLUwHwHjxwHndnHXxXxtvLUwHwHXxDnLULUwHwHXxDnDnIwwHDHXxtvDnDnBbBbDnDnDnDnDnDnDnDnPzXHXHXHXHXHvDwHwHwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHwHwHLcLcDnDnOvPzXHXHXHXHXHXHOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZLZOZOZebebebebebebebebebebebebebebebebebebebebebebebebebebebebebop
 opBIBIBIBIBIBIBIBIBIBIBIEABIBIBIBIBIBIxpGOBGBGBGxpDnDnDnBbDnDnXxXxwHndwHwHwHwHwHXxLUwHwHXxtvtvLUIwXxXxDnDnDnLUwHtvXxtvDnDnDnBbDnDnDnDnDnDnDnwHPzXHXHXHXHXHvDDnwHwHwHwHDnDnDnDnDnDnDnDnDnDnDnwHwHwHwHwHwHLcLcDnDnOvPzXHXHXHXHXHXHOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZOZLZOZOZJhebebebebebebebebebebebebebebebebebebebebebebebebebebebebop
 opBIBIBIBIEABIBIBIBIBIBIEAEABIBIBIBIBIEAEAEAEAEAEADnDnDnBbBbDnLUwHwHwHXxwHLUwHXxwHwHtvXxXxiJtvtvtvXxXxXxXxXxLULUtvtvXxDnDnDnBbDnDnDnDnDnDnwHwHPzXHXHXHXHXHvDDnDnwHwHwHwHDnwHwHDnDnDnDnDnwHwHwHwHwHwHwHwHLcLcDnDnOvPzXHXHXHXHXHwpcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfcfjocfcftmJhJhebebebebebebebebebebebebebebebebebebebebebebebebebebop
-opBIBIBIEAEAEABIBIBIBIBIBIEAEAEABIBIBIEAEAEAEAEAEADnDnDnDnBbDnDnwHSNwHXxwHwHmMXxXxtvXxwHwHXxXxXxXxDnDnwHXxXxwHIwLULUXxXxDnDnBbDnDnDnDnDnwHwHwHPzXHXHXHXHXHvDDnDnDnwHwHwHwHwHwHwHDnDnDnwHwHDnDnDnwHwHwHwHLcLcDnDnOvPzXHXHXHXHXHvDTlTlTlTlckckckckckTlTlTlTlTlTlTlTlTlTlTlTlTlHCHCHCHCHCHCHCHCHCyTyTyTqmJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
-opBIBIEAEAEAEAEABIBIBIBIBIEAEAEABIBIEAEAEAEAEAEAEADnDnDnDnBbBbDnDnwHQxwHXxwHwHtvtvtvlDXxDHwHwHDnDnDnPWwHXxXxUktvtvndwHmMDnDnBbDnDnDnDnDnwHwHDnPzXHXHXHXHXHvDDnDnDnDnwHwHDnDnwHwHwHwHwHwHDnDnDnDnDnwHwHwHLcLcDnDnOvPzXHXHXHXHXHvDTlZpStRMEwRMcHpNTVHSZpIoFRvFhSnNcSxhLzRBMJZpyTyTyTyTyTyTyTyTyTyTyTyTqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
-opBIBIEAEAEAEAEAEABIBIBIBIBIEAEAEABIEAEAEAEAEAEAEAwHDnDnDnDnBbBbDnDnDnwHXxwHbxwHwHwHwHXxXxwHndTqDnDnDnwHwHXxwHwHwHwHXxwHDnDnBbDnDnDnDnwHwHDnDnPzXHXHXHXHXHvDDnDnDnDnDnDnDnDnDnDnDnwHDnDnDnDnDnDnDnDnwHTaLcLcDnDnOvPzXHXHXHXHXHvDTlZpRMRMEwRMcHURpNHSZptjjAqguxTlTlTlTlhdFsZpyTyTyTyTyTyTyTyTyTqmqmqmBFqmJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
-opBIBIBIEAEAEAEAEABIBIBIBIBIEAEAEAEAEAEAEAEAEAEAEAwHwHDnDnDnDnDnBbDnDnDnwHXxwHwHwHwHXxXxwHjxwHXxXxDnGkBUXxXxndwHjxXxXxwHDnDnBbDnDnDnwHwHwHDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHLcLcDnDnOvPzXHXHXHXHXHvDTlZprLRMEwRMbYwrwrbYZpZpjAqguxQXxlRjRjhdFsZpyTyTgMyTyTyTyTyTyTcKqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
-opBIBIBIEAEAEAEABIBIBIBIBIBIBIEAEAEAEAEAEAEAEAEAEAwHwHwHDnDnDnDnBbBbDnDnDnXxXxwHLUwHmMwHndwHXxXxwHwHBUwHXxwHwHwHwHXxwHwHDnDnBbDnDnDnwHwHDnDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHLcLcDnDnOvPzXHXHXHXHXHvDTlZpLqRMTlRMRMRMRMRMmlZpjAqguxKKkQKKbVhdUUZpyTgMgMyTyTyTyTyTyTqmqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
-opBIBIBIEAEAEABIBIBIBIBIBIBIBIEAEAEAEAEAEAEAEAEAEAwHwHwHDnDnDnDnDnBbBbBbDnDnQVwHwHXxXxXxXxXxXxLUwHwHwHOSXxmMXxndXxXxwHcZDnBbBbDnDnwHwHwHDnDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnDnwHwHDnDnwHwHwHwHwHwHwHLcLcwHDnOvPzXHXHXHXHXHvDTlZpRMRMRMRMRMRMRMRMvbZpjAqguxKKkQkYgZeHGHZpgMgMgMyTyTyTyTyTyTqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
-opBIBIBIBIEAEABIBIBIBIBIBIBIEAEAEAEAEAEAEAEAEAEAEAwHwHwHDnDnDnDnDnDnDnBbBbDnDnDnXxwHXxXxtvwHwHwHwHwHwHmMmMmMwHwHXxwHwHDnDnBbDnDnDnwHwHDnDnDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnwHwHwHwHwHwHDnDnDnDnwHwHLcLcwHDnOvPzXHXHXHXHXHvDTlZpRMRMRMRMRMqgqgqgmgZpjAqguxhOsjYTKKhdsFZpgMgMgMyTyTyTyTyTyTqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
-opBIBIBIBIEAEABIBIBIBIBIEAEAEABIBIEAEAEAEAEAEAEAEAwHwHwHwHwHwHwHDnDnDnDnBbBbDnDnwHwHwHtvXxXxPWwHwHwHwHXxwHwHwHwHwHwHDnDnDnBbDnDnDnwHwHDnDnDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnwHwHwHDnDnDnDnDnDnDnDnwHLcLcwHDnOvPzXHXHXHXHXHvDTlZpZpckckZpRMZpckckZpZpjAqguxRMhdhdQlhdFsZpgMgMgMyTyTyTyTyTyTqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
-opBIBIBIBIBIEAEABIBIBIBIEAEABIBIBIBIEAEAEAEAEAEAEAwHwHwHwHDnDnwHwHwHDnDnDnBbBbDnDnwHwHwHtvtvXxwHSNwHXxwHwHwHXxwHwHDnDnDnBbDnDnDnDnDnwHDnDnDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnDnDnDnDnDnwHLcLcwHDnOvPzXHXHXHXHXHvDTlZpFRvFvFvFqgvFvFvFhSZpjAOuoSmYHEZvWuuBWLZpgMgMgMyTyTyTyTyTyTqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
-opBIBIBIBIBIBIEABIBIBIBIBIEABIBIBIBIBIBIEAEAEAEAEADnDnDnDnDnDnDnDnwHwHDnDnDnBbBbDnDnDnwHwHwHXxwHwHwHwHXxXxXxwHwHDnDnDnBbBbDnDnDnwHwHwHwHDnDnDnPzXHXHXHXHXHvDLXLXLXLXLXLXLXLXLXLXLXybDnDnDnDnDnDnDnDnwHwHLcLcwHwHHvPzXHXHXHXHXHvDTlZpjAOucIcIcIDFqgqguxZpjAuxZpZpZpZpZpZpZpZpgMgMgMyTyTyTyTyTyTqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
-opBIBIBIBIBIBIEAEABIBIBIBIEAEABIBIBIBIBIBIBIEABIBIDnDnDnDnDnDnDnDnDnwHDnDnDnDnDnBbBbDnDnDnDnwHwHXxXxXxwHDnDnDnDnDnDnBbBbDnDnDnwHwHwHwHwHDnDnDnPzXHXHXHXHXHvDLXgGPggBaoWwKQLXZegjaoybybwHwHDnDnDnDnDnDnwHLcLcwHwHwHPzXHXHXHXHXHvDTlZpjAuxZpZpZpjAqgqgGjzYXaGjvFvFhSZpDnDnDnDnwHwHDnDnDnDnDnDnDnqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
-opDnDnDnDnDnDnwHwHwHDnDnDnDnwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHwHDnDnDnDnDnDnBbBbBbDnDnDnDnDnDnDnDnDnDnDnDnBbBbBbDnDnDnDnwHwHwHwHDnDnDnDnPzXHXHXHXHXHvDLXaogBgBdsgGgBLXgBgBaogBaogBarwHwHwHwHDnDnwHLcLcwHwHwHPzXHXHXHXHXHvDTlZpjAqgHZJLZpjAqgqgqgenqgqgqgqguxZpDnDnDnwHwHwHDnDnDnDnDnDnDnqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
-opDnDnDnDnDnDnDnDnwHwHwHwHwHwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnDnDnDnDnDnDnBbBbBbBbDnDnDnDnDnDnBbBbBbBbDnDnDnDnDnDnDnwHwHwHDnDnDnDnPzXHXHXHXHXHvDaogBxALXLXaoaogBgBaogBLXgBaoaoLXDnDnwHwHDnTaLcLcTawHwHPzXHXHXHXHXHvDTlZpjAqgHZJLZpVtDFOucILjDFOucIcIoSZpDnDnwHwHwHwHDnDnDnDnDnDnDnqmBFqmJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
-opDnDnDnDnDnDnDnDnDnDnwHwHwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnBbBbBbBbBbBbBbBbDnDnDnDnDnDnDnDnDnDnDnwHDnDnDnDnDnPzXHXHXHXHXHvDgBaoaoLXLXgBaoaogBgBgBLXgBaoYfLXDnDnDnwHwHwHLcLcwHwHwHKSWDWDWDWDWDaBTlZpZpZpZpZpZpZpjAuxZpZpvFhSZpZpZpZpDnDnwHwHwHwHDnDnDnDnDnDnDnqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
-opDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnPzXHXHXHXHXHvDLXaogBcBaoaogBLXgBaoaoLXgBgBeiLXDnDnDnDnDnDnLcLcLcLcLckDPaPaPaPaPakDvFvFvFvFvFvFvFvFCAGjvFSuaTuxZpDnDnDnDnwHwHwHwHwHDnDnDnDnDnDnDnqmqmqmJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
-opDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnPzXHXHXHXHXHvDLXWwgBaogGgGaoLXaoyigBgBaogBgBLXDnDnDnDnDnDnLcLcLcLcLckDPaPaPaPaPakDcIcIcIcIcIcIcIcIcIcIcICQcIoSZpDnDnDnDnDnwHwHwHwHDnDnDnDnDnDnDnqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
+opBIBIBIEAEAEABIBIBIBIBIBIEAEAEABIBIBIEAEAEAEAEAEADnDnDnDnBbDnDnwHSNwHXxwHwHmMXxXxtvXxwHwHXxXxXxXxDnDnwHXxXxwHIwLULUXxXxDnDnBbDnDnDnDnDnwHwHwHPzXHXHXHXHXHvDDnDnDnwHwHwHwHwHwHwHDnDnDnwHwHDnDnDnwHwHwHwHLcLcDnDnOvPzXHXHXHXHXHWNTlTlTlTlckckckckckTlTlTlTlTlTlTlTlTlTlTlTlTlHCHCHCHCHCHCHCHCHCyTyTyTqmJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
+opBIBIEAEAEAEAEABIBIBIBIBIEAEAEABIBIEAEAEAEAEAEAEADnDnDnDnBbBbDnDnwHQxwHXxwHwHtvtvtvlDXxDHwHwHDnDnDnPWwHXxXxUktvtvndwHmMDnDnBbDnDnDnDnDnwHwHDnPzXHXHXHXHXHvDDnDnDnDnwHwHDnDnwHwHwHwHwHwHDnDnDnDnDnwHwHwHLcLcDnDnOvPzXHXHXHXHXHvDTlZpStKuEwRMcHpNTVwLZpIoFRvFhSnNcSxhLzRBMJZpyTyTyTyTyTyTyTyTyTyTyTyTqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
+opBIBIEAEAEAEAEAEABIBIBIBIBIEAEAEABIEAEAEAEAEAEAEAwHDnDnDnDnBbBbDnDnDnwHXxwHbxwHwHwHwHXxXxwHndTqDnDnDnwHwHXxwHwHwHwHXxwHDnDnBbDnDnDnDnwHwHDnDnPzXHXHXHXHXHvDDnDnDnDnDnDnDnDnDnDnDnwHDnDnDnDnDnDnDnDnwHTaLcLcDnDnOvPzXHXHXHXHXHvDTlZplMRMEwRMcHURpNHSZptjjAqgFqTlTlTlTlhdFsZpyTyTyTyTyTyTyTyTyTqmqmqmBFqmJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
+opBIBIBIEAEAEAEAEABIBIBIBIBIEAEAEAEAEAEAEAEAEAEAEAwHwHDnDnDnDnDnBbDnDnDnwHXxwHwHwHwHXxXxwHjxwHXxXxDnGkBUXxXxndwHjxXxXxwHDnDnBbDnDnDnwHwHwHDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHLcLcDnDnOvPzXHXHXHXHXHvDTlZprLRMEwRMbYwrwrNdZpZpeuqgFqQXxlKbRjhdFsZpyTyTgMyTyTyTyTyTyTcKqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
+opBIBIBIEAEAEAEABIBIBIBIBIBIBIEAEAEAEAEAEAEAEAEAEAwHwHwHDnDnDnDnBbBbDnDnDnXxXxwHLUwHmMwHndwHXxXxMXwHBUwHXxwHwHwHwHXxwHwHDnDnBbDnDnDnwHwHDnDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHLcLcDnDnOvPzXHXHXHXHXHvDTlZpLqBhTllMRMRMRMRMmlZpjAqgFqKKkQKKbVhdUUZpyTgMgMyTyTyTyTyTyTqmqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
+opBIBIBIEAEAEABIBIBIBIBIBIBIBIEAEAEAEAEAEAEAEAEAEAwHwHwHDnDnDnDnDnBbBbBbDnDnQVwHwHXxXxXxXxXxXxLUwHwHwHOSXxmMXxndXxXxwHcZDnBbBbDnDnwHwHwHDnDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnDnwHwHDnDnwHwHwHwHwHwHwHLcLcwHDnOvPzXHXHXHXHXHvDTlZplMRMRMRMRMRMRMRMvbZpeuqgFqKKkQkYgZeHGHZpgMgMgMyTyTyTyTyTyTqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
+opBIBIBIBIEAEABIBIBIBIBIBIBIEAEAEAEAEAEAEAEAEAEAEAwHwHwHDnDnDnDnDnDnDnBbBbDnDnDnXxwHXxXxtvwHwHwHwHwHwHmMmMmMwHwHXxwHwHDnDnBbDnDnDnwHwHDnDnDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnwHwHwHwHwHwHDnDnDnDnwHwHLcLcwHDnOvPzXHXHXHXHXHWNTlZpRMRMRMokRMnAqgqgmgZpjAqgFqhOsjYTKKhdsFZpgMgMgMyTyTyTyTyTyTqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
+opBIBIBIBIEAEABIBIBIBIBIEAEAEABIBIEAEAEAEAEAEAEAEAwHwHwHwHwHwHwHDnDnDnDnBbBbDnDnwHwHwHtvXxXxPWwHwHwHwHXxwHwHwHwHwHwHDnDnDnBbDnDnDnwHwHDnDnDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnwHwHwHDnDnDnDnDnDnDnDnwHLcLcwHDnOvPzXHXHXHXHXHvDTlZpZpckckZpJQZpckckZpZpeuqgFqRMhdhdQlhdFsZpgMgMgMyTyTyTyTyTyTqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
+opBIBIBIBIBIEAEABIBIBIBIEAEABIBIBIBIEAEAEAEAEAEAEAwHwHwHwHDnDnwHwHwHDnDnDnBbBbDnDnwHwHwHtvtvXxwHSNwHXxwHwHwHXxwHwHDnDnDnBbDnDnDnDnDnwHDnDnDnDnPzXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnDnDnDnDnDnwHLcLcwHDnOvPzXHXHXHXHXHvDTlZpFRvFvFgzqggzvFvFhSZpjAOugRmYHEZvWuuBWLZpgMgMgMyTyTyTyTyTyTqmqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebop
+opBIBIBIBIBIBIEABIBIBIBIBIEABIBIBIBIBIBIEAEAEAEAEADnDnDnDnDnDnDnDnwHwHDnDnDnBbBbDnDnDnwHwHwHXxwHwHwHwHXxXxXxwHwHDnDnDnBbBbDnDnDnwHwHwHwHDnDnDnPzXHXHXHXHXHvDLXLXLXLXLXLXLXLXLXLXLXybDnDnDnDnDnDnDnDnwHwHLcLcwHwHHvPzXHXHXHXHXHvDTlZpjAOucAcIcIDFqgqgXZZpOeuxZpZpZpZpZpZpZpZpgMgMgMyTyTyTyTyTyTqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
+opBIBIBIBIBIBIEAEABIBIBIBIEAEABIBIBIBIBIBIBIEABIBIDnDnDnDnDnDnDnDnDnwHDnDnDnDnDnBbBbDnDnDnDnwHwHXxXxXxwHDnDnDnDnDnDnBbBbDnDnDnwHwHwHwHwHDnDnDnPzXHXHXHXHXHvDLXgGPggBaoWwKQLXZegjaoybybwHwHDnDnDnDnDnDnwHLcLcwHwHwHPzXHXHXHXHXHvDTlZpjAXZZpZpZpjAqgqgGjzYXaGjgzvFRHZpDnDnDnDnwHwHDnDnDnDnDnDnDnqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
+opDnDnDnDnDnDnwHwHwHDnDnDnDnwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHwHDnDnDnDnDnDnBbBbBbDnDnDnDnDnDnDnDnDnDnDnDnBbBbBbDnDnDnDnwHwHwHwHDnDnDnDnPzXHXHXHXHXHvDLXaogBgBdsgGgBLXgBgBaogBaogBarwHwHwHwHDnDnwHLcLcwHwHwHPzXHXHXHXHXHvDTlZpjAqgHZJLZpjAqgqgqgenqgqgqgqgDNZpDnDnDnwHwHwHDnDnDnDnDnDnDnqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
+opDnDnDnDnDnDnDnDnwHwHwHwHwHwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnDnDnDnDnDnDnBbBbBbBbDnDnDnDnDnDnBbBbBbBbDnDnDnDnDnDnDnwHwHwHDnDnDnDnPzXHXHXHXHXHvDaogBxALXLXaoaogBgBaogBLXgBaoaoLXDnDnwHwHDnTaLcLcTawHwHPzXHXHXHXHXHvDTlZpjAqgmCJLZpVtDFOucALjDFOucIcIoSZpDnDnwHwHwHwHDnDnDnDnDnDnDnqmBFqmJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
+opDnDnDnDnDnDnDnDnDnDnwHwHwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnBbBbBbBbBbBbBbBbDnDnDnDnDnDnDnDnDnDnDnwHDnDnDnDnDnPzXHXHXHXHXHvDgBaoaoLXLXgBaoaogBgBgBLXgBaoYfLXDnDnDnwHwHwHLcLcwHwHwHKSWDWDWDWDWDrfTlZpZpZpZpZpZpZpOeuxZpZpvFhSZpZpZpZpDnDnwHwHwHwHDnDnDnDnDnDnDnqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
+opDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnPzXHXHXHXHXHvDLXaogBcBaoaogBLXgBaoaoLXgBgBeiLXDnDnDnDnDnDnLcLcLcLcLckDPaPaPaPaPakDvFgzvFvFvFvFvFgzCAGjvFSuaTXZZpDnDnDnDnwHwHwHwHwHDnDnDnDnDnDnDnqmqmqmJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
+opDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnPzXHXHXHXHXHvDLXWwgBaogGgGaoLXaoyigBgBaogBgBLXDnDnDnDnDnDnLcLcLcLcLckDPaPaPaPaPakDcIcAcIcIcIcIcIcAcIcIcICQcAgRZpDnDnDnDnDnwHwHwHwHDnDnDnDnDnDnDnqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
 opOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvwHOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvPzXHXHXHXHXHvDLXLXLXgBLXLXLXLXLXLXLXLXLXLXLXLXOvOvOvOvOvwHLcLcwHwHwHYzLvLvLvLvLvmkTlZpZpZpZpZpZpZpZpZpZpZpZpZpZpDnDnDnDnDnwHwHwHDnDnDnDnDnDnDnDnqmqmqmJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
 opFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeFeDUXHXHXHXHXHZMkCkCkCkCkCkCkCkCkCkCkCkCkCkCkCkCkCkCkCkCkCimkDkDYzkCkCDUXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnDnDnDnwHqmqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
 opXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHSzPaPajtXHXHXHXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnDnDnwHwHqmqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
 opXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHSzPaPajtXHXHXHXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHDnDnDnDnDnDnwHwHwHcKqmJhJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebop
 opXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHSzPaPajtXHXHXHXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnwHwHwHDnqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
 opXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHXHSzPaPajtXHXHXHXHXHXHXHXHvDOvDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHDnDnDnwHwHwHDnDnqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
-opUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfaBkDkDKSUfUfUfUfUfUfUfUfaBOvDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHwHwHwHwHDnDnDnDnqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
+opUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfUfaBkDkDKSUfUfUfUfUfUfUfUfrfOvDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHwHwHwHwHDnDnDnDnqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
 opOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvwHwHOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvOvwHwHwHwHwHwHwHOvOvOvOvOvOvOvOvOvDnDnDnDnDnDnDnDnDnDnwHDnDnDnDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnDnqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
 opDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHwHwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnqmqmJhJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebop
 opDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHwHwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnwHwHDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnDnqmqmJhJhJhebebebebebebebebebebebebebebebebebebebebebebebebebebop

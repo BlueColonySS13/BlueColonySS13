@@ -271,7 +271,7 @@
 
 /obj/structure/sign/neon/big/police_dept
 	name = "police department sign"
-	desc = "A sign for the police department of Ophelia City. It glows blue."
+	desc = "A sign for the police department of Kiel City. It glows blue."
 	icon_state = "police_dept"
 	light_color = "#63C4D6" //light blue
 

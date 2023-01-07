@@ -353,7 +353,7 @@
 			page_msg += "</fieldset>"
 
 	else if(index == 13) // View all lots
-		page_msg = "This is a list of all lots available in Ophelia City. <br>"
+		page_msg = "This is a list of all lots available in Kiel City. <br>"
 
 		for(var/datum/lot/L in SSlots.all_lots)
 			page_msg += "<a href='?src=\ref[src];choice=select_lot;lot=\ref[L]'>Select</a> "
