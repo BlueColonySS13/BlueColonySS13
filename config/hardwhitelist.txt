@@ -5,7 +5,6 @@ maveriknight - Research Director
 theflagbearer - City Clerk
 robinkhaliq - Chief Medical Officer
 herma - Maintenance Director
-APsychonaut - President
 slayingcreepers - Nanotrasen CEO
 ooglepunk - Research Director
 ooglepunk - Advisor of Innovation
@@ -13,3 +12,4 @@ Gomezash - Judge
 nope63 - Mayor
 WoodenTucker - PDSI Agent
 Fyrioss - Medical Director
+Dreata - PDSI Agent
