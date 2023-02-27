@@ -573,7 +573,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	s += "<b>Official Blue Colony | Heavy Roleplaying, With less bombings </b>";
 	s += " | Persistent money, own a business, conspire against your friends."
 
-	s += "(<a href=\"https://discord.gg/mQUmnRx7wF\">" //Change this to wherever you want the hub to link to.
+	s += "(<a href=\"https://discord.gg/6gk5xsyuSs\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
 	s += "DISCORD"
 	s += "</a>"
