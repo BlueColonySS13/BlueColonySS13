@@ -156,6 +156,17 @@
 	icon_state = "hangskele"
 	desc = "It's an anatomical model of a human skeletal system made of plaster."
 
+/obj/structure/flora/worm1
+	name = "polluxian sea worm fossil"
+	icon = 'icons/obj/plants.dmi' //what an interesting plant
+	icon_state = "worm1"
+	desc = "It's an actual polluxian sea worm fossil, but its just a hatchling."
+
+/obj/structure/flora/worm2
+	name = "polluxian sea worm fossil"
+	icon = 'icons/obj/plants.dmi' //what an interesting plant
+	icon_state = "worm2"
+	desc = "It's an actual polluxian sea worm fossil, but its just a hatchling."
 
 //potted plants credit: Flashkirby
 /obj/structure/flora/pottedplant
