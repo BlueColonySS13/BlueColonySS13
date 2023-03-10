@@ -168,6 +168,36 @@
 	icon_state = "worm2"
 	desc = "It's an actual polluxian sea worm fossil, but its just a hatchling."
 
+/obj/structure/flora/velociraptor
+	name = "velociraptor skeleton model"
+	icon = 'icons/obj/plants.dmi' //what an interesting plant
+	icon_state = "velociraptor"
+	desc = "It's an anatomical model of a small Dromaeosaurid skeletal system made of fossilized bone."
+
+/obj/structure/flora/naut1
+	name = "Nautilus Fossil display"
+	icon = 'icons/obj/plants.dmi' //what an interesting plant
+	icon_state = "naut1"
+	desc = "It's an  nautilius fossil of a large member of the Nautilidae."
+
+/obj/structure/flora/naut2
+	name = "Nautilus Fossil display "
+	icon = 'icons/obj/plants.dmi' //what an interesting plant
+	icon_state = "naut2"
+	desc = "It's an  nautilius fossil of a large member of the Nautilidae."
+
+/obj/structure/flora/naut3
+	name = "Nautilus Fossil display "
+	icon = 'icons/obj/plants.dmi' //what an interesting plant
+	icon_state = "naut3"
+	desc = "It's a nautilius fossil of a small member of the Nautilidae."
+
+/obj/structure/flora/naut4
+	name = "Nautilus Fossil display "
+	icon = 'icons/obj/plants.dmi' //what an interesting plant
+	icon_state = "naut4"
+	desc = "It's a nautilius fossil of a small member of the Nautilidae."
+
 //potted plants credit: Flashkirby
 /obj/structure/flora/pottedplant
 	name = "potted plant"
